@@ -81,7 +81,12 @@ describe('Ausführung ohne Rückschaufehler', () => {
     const ev = [vormerkung('a', VORGEMERKT)];
     const teuer = lauf(ev, '2026-10-21T06:00:00Z', { a: kurs(1500, '2026-10-21T05:59:00Z') });
     expect(teuer.ereignisse[0]).toMatchObject({ typ: 'verworfen' });
-    const alt = lauf(ev, '2026-10-22T08:00:00Z', {});
+    // EU-Wert (nur Tagesschlusskurs): Frist 64 h statt 26 h
+    expect(lauf(ev, '2026-10-22T08:00:00Z', {}).ereignisse).toEqual([]);
+    expect(lauf(ev, '2026-10-23T22:00:00Z', {}).ereignisse[0]).toMatchObject({ typ: 'verworfen', daten: { grund: 'kein Kurs verfügbar' } });
+    // US-Wert: Frist 26 h
+    const us = plan({ wertpapier: { ...plan().wertpapier, kursbasis: { markt: 'us', symbol: 'TST', waehrung: 'USD' } } });
+    const alt = lauf([vormerkung('u', VORGEMERKT, us)], '2026-10-22T08:00:00Z', {});
     expect(alt.ereignisse[0]).toMatchObject({ typ: 'verworfen', daten: { grund: 'kein Kurs verfügbar' } });
   });
 });
