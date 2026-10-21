@@ -24,11 +24,12 @@ App: https://pennyboberde-source.github.io/schattendepot/ (auf dem iPad in Safar
 
 ```
 06:27  Datensammler  → lagebild/<datum>.md (≤ ~6.000 Tokens) + Tracking der Kandidaten
-07:32  Morgenlauf    → Branch claude/lauf-<datum>-morgenlauf (laeufe/<datum>-morgenlauf.json)
+07:40  Morgenlauf    → Branch claude/lauf-<datum>-morgenlauf (laeufe/<datum>-morgenlauf.json)
        Übernahme     → prüft Schema, schreibt Vormerkungen ins Protokoll, ☀️ Briefing-Push
 08:00–22:00 alle 15 Min. Kurswächter → kauft zum Briefkurs (nur mit Kurs NACH der Entscheidung),
        prüft Ziel/Stop/Termin/Knock-out, 🟢 ✅ 🔻 ⚡ Pushes, termine.ics, bei ±5 % → Ereignislauf
-stündlich Datensammler → Nachrichten zu Positionen, starke Meldung → Ereignislauf (max. 1/Tag)
+stündlich Datensammler → Nachrichten zu Positionen, gettex-Kursraketen-Scanner, starke Meldung → Push + Vormerkung
+~15:50 Mittagslauf    → Gelegenheiten des Tages, höchstens 1 (spekulative) Order im Risiko-Budget
 22:17  Abendlauf     → Abschlussberichte 📘, Lektionen, Gewichtsvorschläge
 Sa     Datensammler (Gewichte anpassen) → Wochenrückblick 📊
 ```
@@ -64,11 +65,14 @@ Sa     Datensammler (Gewichte anpassen) → Wochenrückblick 📊
 | Frankfurter (EZB) | – | – | EUR/USD-Fallback (täglich) | Wechselkurs |
 | FRED | `FRED_API_KEY` (optional) | großzügig | 1–4/Tag | VIX, US-Rendite, EUR/USD, Brent |
 | OpenInsider | – | – | 2/Tag | Insider-Cluster-Käufe (US, aus SEC Form 4) |
+| FINRA Reg SHO | – | frei (cdn.finra.org) | 2–3 Dateien/Tag | Leerverkaufsquote US-Aktien |
+| gettex-Scanner | – | kostenlos (MiFIR) | 8 Dateien/Stunde | Kursraketen aller gettex-Werte inkl. Penny Stocks |
+| OpenFIGI | `OPENFIGI_API_KEY` (optional) | ohne Schlüssel 25 Abfragen/Min. | ≤ 1/Stunde | ISIN → Name/Ticker |
 | ApeWisdom | – | – | 1/Tag | Reddit-Erwähnungen (Stimmung, geringes Gewicht) |
 | tagesschau, Handelsblatt, FAZ, CNBC, MarketWatch (RSS) | – | – | je 1 pro Lauf | Schlagzeilen → Signale über Stichworte |
 | GDELT | – | zurückhaltend nutzen | je offene Position/Lauf | Nachrichten zu Positionen |
 
-Bewusst **nicht** genutzt: Yahoo Finance (Nutzungsbedingungen verbieten automatisierten Abruf), Google-News-RSS (per robots.txt gesperrt), Tradegate-JSON (per robots.txt gesperrt), EQS (sperrt KI-Bots). Vorschläge für später: BaFin-Datenbank Eigengeschäfte, Bundesanzeiger Leerverkäufe, SEC 8-K, Wikipedia-Seitenaufrufe, CoinGecko, OpenFIGI.
+Bewusst **nicht** genutzt: BaFin-Datenbank und Bundesanzeiger-Leerverkäufe (robots.txt verbietet automatisierten Abruf), Yahoo Finance (Nutzungsbedingungen verbieten automatisierten Abruf), Google-News-RSS (per robots.txt gesperrt), Tradegate-JSON (per robots.txt gesperrt), EQS (sperrt KI-Bots). Vorschläge für später: BaFin-Datenbank Eigengeschäfte, Bundesanzeiger Leerverkäufe, SEC 8-K, Wikipedia-Seitenaufrufe, CoinGecko, OpenFIGI.
 
 ## Kosten und Limits
 

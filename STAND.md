@@ -12,6 +12,13 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 - `ausfallWarnungAktiv: true`.
 - Erster echter Morgenlauf: Do 22.10. 07:40. **Nächste Sitzung: Lauf prüfen** (`RemoteTrigger list_runs` trig_01TAvkP41ZEYZE9azpzewhPq, `get_run_log`), daten/laeufe/, Positionen, Pushes; Verbrauch nach einer Woche prüfen (ggf. Modell → Sonnet per `RemoteTrigger update`).
 
+## Quellen-Ausbau + Spekulation + Mittagslauf (21.10. spätabends)
+- Neu: `jobs/quellen/finra.ts` (FINRA Reg-SHO-Tagesdateien, Leerverkaufsquote US), `jobs/quellen/gettexscanner.ts` (Kursraketen aus allen gettex-Geschäften der letzten Stunde, Namen via OpenFIGI), `jobs/quellen/anreicherung.ts` (2. Stufe Hauptlauf: Finnhub-Analystentrend `/stock/recommendation` + Drift nach Quartalszahlen über `/quote` dp), Alpha Vantage Top-Gewinner → `kursrakete`. Gelegenheiten des Tages in `daten/gelegenheiten.json`.
+- **BaFin (robots Disallow /) und Bundesanzeiger /nlp (Disallow) bewusst NICHT genutzt.**
+- Risiko-Budget (`config/einstellungen.json risikoBudget`): `risikoklasse: spekulativ`, max. 1 je Lauf, max. 30 % der aktiven Positionen, Stop ≥ −25 %, Spread-Klasse `spekulativ` (3 %), Mindestkurs 0,01 €. Erzwungen in `core/entscheidung.ts` bzw. `core/waechter.ts`; Statistik `nachRisikoklasse`.
+- **Mittagslauf** `trig_01PkFLbMgdJxtZhLPmdexexL`, cron `52 14 * * 1-5` UTC (16:52 Sommer / 15:52 Winter): offene Ereignisse + Gelegenheiten, max. 1 Order (bevorzugt spekulativ), keine Pflicht-Order. Ersetzt den Ereignislauf-Slot (3 Claude-Läufe Mo–Fr).
+- Hinweis: Am Live-Start-Abend (21.10.) hat die Ausfallwarnung einmal ausgelöst (Warnung nur protokolliert, Push noch nicht verbunden) – erwartbar, kein Fehler.
+
 ## gettex als Hauptkursquelle (21.10. abends)
 - `jobs/kurse/gettex.ts`: kostenlose MiFIR-Nachhandelsdaten der Bayerischen Börse (Dateiliste auf gettex.de/en/trading/delayed-data/posttrade-data/, Dateien `erdk.bayerische-boerse.de:8000/.../posttrade.JJJJMMTT.HH.MM.munc|mund.csv.gz`, Format `ISIN,HH:MM:SS.ffffff(UTC),EUR,Kurs,Stück`, ~0,3 MB/15 Min., ≥ 24 h abrufbar). Wächter holt Kurse nach ISIN (+ Vergleichs-ETF IE00B4L5Y983), merkt Vortageskurs in `schlusskurse.json`. `core/waechter.ts` nimmt `direktKurse` vorrangig (Zeitprüfung gegen den Geschäftszeitpunkt → kein Rückschaufehler); Knock-out weiter am Basiswert (falls Kursbasis vorhanden) oder Produktkurs ≤ 0,001.
 - Live-Test 21.10. 21:06: SAP, Siemens, Allianz, Apple, MSCI-World-ETF, BTC-ETN geliefert (5–21 Min. alt). gettex robots: `User-agent: *` Allow (ClaudeBot u. a. gesperrt – Abruf erfolgt per GitHub Action, nicht per Claude).
