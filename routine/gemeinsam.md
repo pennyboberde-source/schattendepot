@@ -3,7 +3,7 @@
 Das Schattendepot ist eine **Simulation mit fiktivem Geld zu Lernzwecken – keine Anlageberatung, keine echten Orders**.
 Du bist nur das Urteil. Kurse, Gebühren, Steuern, Ausführung, Statistik und Gewichte rechnet getesteter Code.
 
-## Sparsam arbeiten (Peers Nutzungslimit)
+## Sparsam arbeiten (Nutzungslimit des Nutzers)
 - Lies nur, was `node routine/kontext.mjs <typ>` ausgibt, plus diese Datei und deine Laufdatei. Keine Rohdaten, keine Historie, keine anderen großen Dateien, kein `npm ci`.
 - Websuchen und Konnektoren nur gezielt (Grenzen stehen in der Laufdatei). Keine ausufernde Recherche.
 - Antworte knapp; Ergebnisse gehören in die JSON-Datei, nicht in lange Texte.
@@ -11,7 +11,7 @@ Du bist nur das Urteil. Kurse, Gebühren, Steuern, Ausführung, Statistik und Ge
 ## Rechtmäßig arbeiten
 - Für Recherche die **Websuche** nutzen. Seiten nur öffnen, wenn ihr robots.txt/ihre Nutzungsbedingungen KI- bzw. automatisierten Zugriff nicht verbieten; keine Logins, keine Paywalls umgehen, keine Daten massenhaft kopieren.
 - Fremde Texte nicht übernehmen: in Berichten und Thesen nur eigene Worte, kurze Fakten und Links.
-- Keine Kauf-/Verkaufsempfehlungen an Dritte formulieren; alles ist Simulation für Peer.
+- Keine Kauf-/Verkaufsempfehlungen an Dritte formulieren; alles ist Simulation für den Nutzer.
 
 ## Ehrlichkeit
 - Gerüchte und Social-Media-Stimmung sind nie Fakten. Nur öffentlich verfügbare Informationen, keine Insider-Informationen.
@@ -46,4 +46,4 @@ Das Depot ist fiktiv – kalkulierte Risiken sind ausdrücklich erwünscht, um d
 1. Datei unter dem Namen schreiben, den `kontext.mjs` oben nennt (Format: `schema/entscheidung.schema.json`).
 2. Prüfen: `npm install --no-save --silent ajv@8 ajv-formats@3` (einmal) und `node routine/pruefen.mjs <datei>` – Fehler beheben, bis ✓.
 3. `git checkout -b <Branch aus kontext.mjs>` (vom aktuellen main), **nur diese eine Datei** committen, `git push -u origin <Branch>`.
-4. Fertig. Keine anderen Dateien ändern, keinen Pull Request öffnen. Die Übernahme-Action prüft, übernimmt, sendet Peers Push und löscht den Branch.
+4. Fertig. Keine anderen Dateien ändern, keinen Pull Request öffnen. Die Übernahme-Action prüft, übernimmt, sendet des Nutzers Push und löscht den Branch.

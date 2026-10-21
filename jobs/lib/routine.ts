@@ -12,7 +12,7 @@ export interface OffenesEreignis {
 
 /**
  * Ereignis behandeln: Ereignislauf per /fire starten (falls Token hinterlegt), sonst für den nächsten
- * Morgen-/Abendlauf vormerken (offene-ereignisse.json). In beiden Fällen sofort ein Push an Peer.
+ * Morgen-/Abendlauf vormerken (offene-ereignisse.json). In beiden Fällen sofort ein Push an den Nutzer.
  */
 export async function ereignisBehandeln(orderId: string, name: string, kurz: string, text: string, jetzt: Date): Promise<PushNachricht> {
   const f = await feuereEreignislauf(text);

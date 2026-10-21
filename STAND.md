@@ -14,7 +14,7 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 
 ## Selbstlernen erweitert (21.10. spätabends)
 - `core/lernhinweise.ts`: Code leitet aus der Statistik Hinweise ab (Kalibrierung, Strategien/Haltedauer/Anlageklasse, Verkaufsgründe, Spekulativ vs. normal, Pflicht vs. Überzeugung, stärkste/schwächste Signale) → `statistik.lernhinweise` + in `zusammenfassung` (Kontext der Routinen) + Lernen-Ansicht. `wirksamesRisikoBudget` lernt mit (ab 10 spekulativen Orders; Leitplanken 10–50 %, 1–2 je Lauf) → `statistik.risikoBudget`, von der Übernahme verwendet.
-- Peer: „eigenständig lernen, verbessern, gewinnen“ – kein menschliches Urteil nötig.
+- Nutzer: „eigenständig lernen, verbessern, gewinnen“ – kein menschliches Urteil nötig.
 - **TODO nach Zeitumstellung (So 25.10.):** Crons per `RemoteTrigger update` auf Winterzeit ziehen, damit Ortszeiten gleich bleiben: Morgenlauf `40 6 * * 1-5` (07:40), Mittagslauf `52 14` bleibt (15:52), Abendlauf `17 21` bleibt (22:17), Wochenrückblick `7 9 * * 6` (10:07); Sammler-Hauptlauf passt automatisch. Ende März umgekehrt.
 
 ## Quellen-Ausbau + Spekulation + Mittagslauf (21.10. spätabends)
@@ -27,45 +27,45 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 ## gettex als Hauptkursquelle (21.10. abends)
 - `jobs/kurse/gettex.ts`: kostenlose MiFIR-Nachhandelsdaten der Bayerischen Börse (Dateiliste auf gettex.de/en/trading/delayed-data/posttrade-data/, Dateien `erdk.bayerische-boerse.de:8000/.../posttrade.JJJJMMTT.HH.MM.munc|mund.csv.gz`, Format `ISIN,HH:MM:SS.ffffff(UTC),EUR,Kurs,Stück`, ~0,3 MB/15 Min., ≥ 24 h abrufbar). Wächter holt Kurse nach ISIN (+ Vergleichs-ETF IE00B4L5Y983), merkt Vortageskurs in `schlusskurse.json`. `core/waechter.ts` nimmt `direktKurse` vorrangig (Zeitprüfung gegen den Geschäftszeitpunkt → kein Rückschaufehler); Knock-out weiter am Basiswert (falls Kursbasis vorhanden) oder Produktkurs ≤ 0,001.
 - Live-Test 21.10. 21:06: SAP, Siemens, Allianz, Apple, MSCI-World-ETF, BTC-ETN geliefert (5–21 Min. alt). gettex robots: `User-agent: *` Allow (ClaudeBot u. a. gesperrt – Abruf erfolgt per GitHub Action, nicht per Claude).
-- Peers Fragen (Ereignislauf/Edge) beantwortet: Ereignislauf vorerst nicht nötig → **messen** (TODO: bei Ereignis Kurs zum Ereigniszeitpunkt und beim nächsten Claude-Lauf festhalten, nach 3–4 Wochen auswerten). Ehrliche Einschätzung: kein Geschwindigkeitsvorteil; Chance nur bei langsamen Mustern (Insider-Cluster, Nach-Quartalszahlen-Drift, Analysten-Revisionen); Gebühren-Hürde 2,2 %.
-- Nächste Quellen (0 €): BaFin Directors' Dealings, Bundesanzeiger Leerverkäufe, Finnhub-Analystenempfehlungen (`/stock/recommendation`), PEAD-Signal aus Kursen. Option für Peer: Routinen-Netzwerk „Custom“ mit wenigen Nachrichten-Domains (kleiner Sicherheitskompromiss).
+- Fragen des Nutzers (Ereignislauf/Edge) beantwortet: Ereignislauf vorerst nicht nötig → **messen** (TODO: bei Ereignis Kurs zum Ereigniszeitpunkt und beim nächsten Claude-Lauf festhalten, nach 3–4 Wochen auswerten). Ehrliche Einschätzung: kein Geschwindigkeitsvorteil; Chance nur bei langsamen Mustern (Insider-Cluster, Nach-Quartalszahlen-Drift, Analysten-Revisionen); Gebühren-Hürde 2,2 %.
+- Nächste Quellen (0 €): BaFin Directors' Dealings, Bundesanzeiger Leerverkäufe, Finnhub-Analystenempfehlungen (`/stock/recommendation`), PEAD-Signal aus Kursen. Option für der Nutzer: Routinen-Netzwerk „Custom“ mit wenigen Nachrichten-Domains (kleiner Sicherheitskompromiss).
 
 ## Phase
-- M1 Grundgerüst ✅ · M2 Kurswächter/Push/Kalender ✅ (Code fertig, Live-Test wartet auf Secrets) · M3 Routinen-Anweisungen/Übernahme ✅ (Routinen-Anlage wartet auf Peer, Schritt 3) · M4 Datensammler ✅ (13 Quellen, 9–10 ohne Schlüssel live geprüft)
+- M1 Grundgerüst ✅ · M2 Kurswächter/Push/Kalender ✅ (Code fertig, Live-Test wartet auf Secrets) · M3 Routinen-Anweisungen/Übernahme ✅ (Routinen-Anlage wartet auf der Nutzer, Schritt 3) · M4 Datensammler ✅ (13 Quellen, 9–10 ohne Schlüssel live geprüft)
 - **Jetzt: M5 Lernschleife.** Danach M6 Trockenlauf + Live-Start, dann M7 Quellen-Ausbau.
-- **Peer will ohne Halt bis zum Nutzungslimit** („Mach so lange automatisch weiter“). Neue Sitzung: einfach beim nächsten Schritt weitermachen.
+- **Der Nutzer will ohne Halt bis zum Nutzungslimit** („Mach so lange automatisch weiter“). Neue Sitzung: einfach beim nächsten Schritt weitermachen.
 
 ## Links
 - Repo: https://github.com/pennyboberde-source/schattendepot (öffentlich; `main` = Code, `daten` = Laufzeitdaten nur von Actions, `claude/lauf-*` = Routinen-Ergebnisse)
 - App: https://pennyboberde-source.github.io/schattendepot/
 - Lokaler Worktree `_daten/` = Branch `daten`. GitHub-Konto `pennyboberde-source` (gh angemeldet, Keyring).
 
-## Wichtige Vorgaben von Peer
+## Wichtige Vorgaben des Nutzers
 - **Gebühren: immer Consorsbank-Standardpreis**, keine Stufen, keine Freetrades.
 - Erfolgschance („Chance ~x %“) im Kauf-Push; später mit Kalibrierung („bisher y % Treffer“, ab 10 Fällen).
 - Leicht reparierbar: Fehler melden → GitHub-Issue (Label `fehler`); neue Sitzung: `gh issue list -R pennyboberde-source/schattendepot --label fehler`.
-- Alles, was Peer tun muss, iPad-tauglich (Links, kopierbare Namen); Freigaben mit 🔴❗ + Push.
+- Alles, was der Nutzer tun muss, iPad-tauglich (Links, kopierbare Namen); Freigaben mit 🔴❗ + Push.
 
-## Sicherheit (21.10. geprüft und gehärtet – Peer: „höchste Priorität“)
+## Sicherheit (21.10. geprüft und gehärtet – Nutzer: „höchste Priorität“)
 - Secrets nur als GitHub-Secrets; Code/Daten/Logs gescannt: 0 Schlüsselspuren. `jobs/lib/schwaerzen.ts` schwärzt alle Secret-Werte + abgeleitete Teile (Push-Endpoint/Keys, Fire-URL-Pfad) vor jedem Schreiben in Dateien/Logs; `logsMaskieren()` (::add-mask::) läuft beim Import von pushen.ts.
 - Repo: Secret-Scanning + Push-Protection an; Default-Workflow-Rechte read; nur GitHub-eigene Actions erlaubt; Rulesets: `daten` (kein Löschen, kein Force-Push), `main` (kein Löschen).
 - Routinen: OHNE Konnektoren (Crypto.com-Konnektor könnte echtes Konto berühren) und Standard-Netzwerk „Trusted“ (nicht Full).
-- **Fund:** Commit 54a090c („Vorlage: Leerzeile (Actions-Test)“, per Contents-API erzeugt) trägt als Autor-/Committer-Mail die private Adresse des GitHub-Kontos; zusätzlich stand sie versehentlich in einer früheren Fassung dieser Datei (Commit 1d15fb1). Bereinigung = Historie von main umschreiben (Mail in Metadaten → noreply-Adresse, Dateiinhalt bereinigen) + `git push --force-with-lease` – **vom Auto-Modus blockiert, wartet auf Peers ausdrückliches „Ja, Historie bereinigen“**. Nie wieder Commits per Contents-API; private Adressen nie in Repo-Dateien schreiben.
-- Kosten: kein API-Schlüssel, Gratis-Tarife ohne Karte, öffentliches Repo. Einziges Restrisiko: „Extra usage“ in claude.ai → Peer prüft (C).
+- **Fund:** Commit 54a090c („Vorlage: Leerzeile (Actions-Test)“, per Contents-API erzeugt) trägt als Autor-/Committer-Mail die private Adresse des GitHub-Kontos; zusätzlich stand sie versehentlich in einer früheren Fassung dieser Datei (Commit 1d15fb1). Bereinigung = Historie von main umschreiben (Mail in Metadaten → noreply-Adresse, Dateiinhalt bereinigen) + `git push --force-with-lease` – **vom Auto-Modus blockiert, wartet auf ausdrückliches „Ja, Historie bereinigen“**. Nie wieder Commits per Contents-API; private Adressen nie in Repo-Dateien schreiben.
+- Kosten: kein API-Schlüssel, Gratis-Tarife ohne Karte, öffentliches Repo. Einziges Restrisiko: „Extra usage“ in claude.ai → der Nutzer prüft (C).
 - SEC 8-K braucht Kontakt-Mail im User-Agent (sonst 403) → nur mit Secret `SEC_KONTAKT`; private Mail NICHT ungefragt verwenden.
 
 ## Routinen per API (RemoteTrigger)
-- `RemoteTrigger create` funktioniert grundsätzlich; Pflicht: `job_config.ccr.environment_id` (Wert `"default"` wurde akzeptiert) und verbundenes GitHub-Konto in claude.ai (Fehler `github_token_missing` → Peer B).
+- `RemoteTrigger create` funktioniert grundsätzlich; Pflicht: `job_config.ccr.environment_id` (Wert `"default"` wurde akzeptiert) und verbundenes GitHub-Konto in claude.ai (Fehler `github_token_missing` → der Nutzer B).
 - Body-Vorlage: `{"name","cron_expression":"32 7 * * 1-5","enabled":false,"job_config":{"ccr":{"environment_id":"default","events":[{"data":{"message":{"content":"Lies routine/morgenlauf.md …","role":"user"},"type":"user","parent_tool_use_id":null}}],"session_context":{"sources":[{"git_repository":{"url":"https://github.com/pennyboberde-source/schattendepot"}}],"model":"claude-opus-5-5"}}},"mcp_connections":[]}` – Zeitzone der Cron-Angabe nach dem Anlegen am Ergebnis prüfen (Server meldet Laufzeit).
 - API-Token für /fire nur im Web erzeugbar → **Ersatz ohne Token gebaut**: `ereignisBehandeln()` → sofort Push + `offene-ereignisse.json`; kontext.mjs zeigt sie Morgen-/Abendlauf; Übernahme leert die Liste. Ist ROUTINE_FIRE_* gesetzt, wird direkt gefeuert.
 
-## Offene Schritte für Peer (Stand 21.10. abends)
+## Offene Schritte für den Nutzer (Stand 21.10. abends)
 - D: App auf Home-Bildschirm + Mitteilungen erlauben + Secret PUSH_SUBSCRIPTION (bis dahin werden Pushes nur protokolliert, siehe daten/pushes.json). Danach `gh workflow run test-push.yml`.
 - github.com/settings/emails: „Keep my email addresses private“ + „Block command line pushes …“ (Claude fehlt Scope `user`).
 - A: Historie bereinigen nur nach ausdrücklichem „Ja, Historie bereinigen“.
-- Optional: FRED_API_KEY, SEC_KONTAKT (Kontakt-Mail für SEC – nur wenn Peer will), Kalender-Abo.
+- Optional: FRED_API_KEY, SEC_KONTAKT (Kontakt-Mail für SEC – nur wenn gewünscht), Kalender-Abo.
 
-## (alt) Offene Schritte für Peer (am 21.10. ~17:35 als Anleitung geschickt)
+## (alt) Offene Schritte für den Nutzer (am 21.10. ~17:35 als Anleitung geschickt)
 Prüfen: `gh secret list -R pennyboberde-source/schattendepot` · `RemoteTrigger list`
 1. Secrets: FINNHUB_API_KEY, TWELVEDATA_API_KEY, FMP_API_KEY, ALPHAVANTAGE_API_KEY, (FRED_API_KEY empfohlen). CoinGecko/OpenFIGI erst M7.
 2. Claude GitHub App auf `schattendepot` + claude.ai/code mit GitHub verbunden.

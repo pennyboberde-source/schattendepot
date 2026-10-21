@@ -1,4 +1,4 @@
-# Plan Schattendepot (Entwurf, wartet auf Peers Bestätigung)
+# Plan Schattendepot (Entwurf, wartet auf Bestätigung des Nutzers)
 
 ## Architektur
 Ein öffentliches GitHub-Repo `schattendepot`, keine eigenen Server, 0 € laufend.
@@ -33,9 +33,9 @@ main (Code)                       daten (nur Actions schreiben)          claude/
 
 **Einstellungen ohne Server:** Reine Anzeige-Einstellungen (Steuerzeile, Theme) speichert die App lokal. Einstellungen, die die Actions brauchen (Ruhezeit, Nachrichtentypen, Hebel-Limit, Ereignis-Schwelle, Gebührenstatus, Steuern), liegen in `config/einstellungen.json`. Die App zeigt sie an, und ein Knopf öffnet die Datei direkt im GitHub-Editor.
 
-**Wartbarkeit (Wunsch Peer):** Fixes landen immer in derselben App (Push auf `main` → automatischer Deploy → PWA aktualisiert sich selbst). Rechenlogik getrennt von der Oberfläche in `core/` mit Tests. In der App öffnet „Fehler melden“ ein vorbefülltes GitHub-Issue (Label `fehler`), das eine neue Sitzung abarbeitet.
+**Wartbarkeit (Wunsch des Nutzers):** Fixes landen immer in derselben App (Push auf `main` → automatischer Deploy → PWA aktualisiert sich selbst). Rechenlogik getrennt von der Oberfläche in `core/` mit Tests. In der App öffnet „Fehler melden“ ein vorbefülltes GitHub-Issue (Label `fehler`), das eine neue Sitzung abarbeitet.
 
-**Erfolgschance im Kauf-Push (Wunsch Peer):** `konfidenz` = geschätzte Erfolgschance in % (Wahrscheinlichkeit, nach Gebühren mit Gewinn zu schließen). Push: „… · Chance ~60 %“. Sobald die Kalibrierung genug Fälle hat (M5), zusätzlich „(bisher bei ~60 %: 52 % Treffer)“.
+**Erfolgschance im Kauf-Push (Wunsch des Nutzers):** `konfidenz` = geschätzte Erfolgschance in % (Wahrscheinlichkeit, nach Gebühren mit Gewinn zu schließen). Push: „… · Chance ~60 %“. Sobald die Kalibrierung genug Fälle hat (M5), zusätzlich „(bisher bei ~60 %: 52 % Treffer)“.
 
 ## Datenmodell (Kern)
 - **Order:** id, isin, wkn, ticker, name, anlageklasse, handelsplatz, stueck, vorgemerkt_um, kauf {kurs, zeit, quelle}, ziel, stop, verkaufstermin, erwartete_rendite_netto, konfidenz 0–100, pflicht_order, strategie_typ, these, ausloeser, signal_ids[], risiken[], links[], einfluss_lektionen, hebel? {typ, basiswert, basispreis, bezugsverhaeltnis, ko_schwelle, richtung}, verkauf {kurs, zeit, grund}, gebuehren {kauf, verkauf}, ergebnis {brutto, netto, nach_steuern}, etf_vergleich, bericht.

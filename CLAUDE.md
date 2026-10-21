@@ -3,16 +3,16 @@
 Lernende Börsen-**Simulation** mit fiktivem Geld. Keine Anlageberatung, keine echten Orders, kein echtes Depot.
 Der vollständige Auftrag steht in `schattendepot-prompt.md` (Abschnitte 0–9). Den aktuellen Stand und den nächsten Schritt gibt es in `STAND.md`.
 
-## Arbeitsweise mit Peer
+## Arbeitsweise mit dem Nutzer
 - Sitzungsstart: „Lies STAND.md und mach weiter“ → STAND.md lesen, beim „Nächsten Schritt“ weitermachen.
 - **Nach jedem Meilenstein anhalten**: STAND.md aktualisieren, kurzen Stand geben, auf „weiter“ warten.
 - STAND.md und diese Datei nach jedem Arbeitsschritt aktuell halten.
-- Freigabe-Anfragen (Zugänge, Klicks, Konten, Secrets) gebündelt stellen, jede Zeile mit 🔴❗ beginnen und zusätzlich eine Push-Benachrichtigung senden. Peer steuert oft per Remote Control vom iPad: alles, was er bestätigen muss, so gestalten, dass es im iPad-Safari geht (nichts am PC tippen lassen).
+- Freigabe-Anfragen (Zugänge, Klicks, Konten, Secrets) gebündelt stellen, jede Zeile mit 🔴❗ beginnen und zusätzlich eine Push-Benachrichtigung senden. der Nutzer steuert oft per Remote Control vom iPad: alles, was er bestätigen muss, so gestalten, dass es im iPad-Safari geht (nichts am PC tippen lassen).
 - Windows PowerShell 5.1 setzt beim Pipen in Programme eine UTF-8-BOM davor → Geheimnisse/Daten nie per `|` an native Programme geben, sondern per Datei + `cmd /c "prog < datei"`.
 - `schattendepot-prompt.md` (Originalauftrag) bleibt lokal und wird nicht committet (persönliche Angaben).
 - Nutzungslimit schonen: keine ausufernde Recherche, große Dateien nicht wiederholt ganz lesen. Ungewöhnlich aufwendige Schritte vorher ankündigen.
 - **0-€-Regel**: nichts einrichten, das Geld kosten kann oder eine Zahlungsmethode verlangt (bezahlte Tarife, Kreditkarte, Anthropic-API-Schlüssel, kostenpflichtige GitHub-Funktionen, Claude-„Zusatznutzung“). Nur bezahlt sinnvolle Dienste weglassen und als Vorschlag in STAND.md notieren.
-- API-Schlüssel und Tokens nie in den Chat oder ins Repo. Peer setzt Secrets selbst per `gh secret set NAME` (Wert wird interaktiv abgefragt) oder in den GitHub-Repo-Einstellungen.
+- API-Schlüssel und Tokens nie in den Chat oder ins Repo. Der Nutzer setzt Secrets selbst per `gh secret set NAME` (Wert wird interaktiv abgefragt) oder in den GitHub-Repo-Einstellungen.
 
 ## Leitprinzip
 Alles, was Code kann, macht Code. Claude (Routinen) urteilt nur: Auswahl, Begründung, Berichte, Learnings.
@@ -23,7 +23,7 @@ Vite + Preact + TypeScript, vite-plugin-pwa, Vitest, Playwright (iPad hoch/quer,
 Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, die in GitHub Actions laufen. Laufende Kosten: 0 €.
 
 ## Branches (wichtig)
-- `main`: nur Code, Konfiguration und Routinen-Anweisungen (`routine/*.md`). Schreiben: Peer/Claude lokal.
+- `main`: nur Code, Konfiguration und Routinen-Anweisungen (`routine/*.md`). Schreiben: Nutzer/Claude lokal.
 - `daten`: alle Laufzeitdaten (Ereignisprotokoll, Positionen, Signale, Lagebilder, Statistik, Lektionen, `termine.ics`). Schreiben: **nur** GitHub Actions (gemeinsame Concurrency-Gruppe `daten-schreiben`).
 - `claude/lauf-<datum>-<typ>`: Ausgabe je Routinen-Lauf. Eine Action prüft gegen JSON-Schema, übernimmt nach `daten`, sendet Pushes, deployt, löscht den Branch.
 - Routinen und Actions schreiben nie auf denselben Branch.

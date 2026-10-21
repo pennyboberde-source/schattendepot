@@ -1,5 +1,5 @@
 // Web-Push-Anmeldung im Browser. Ohne Server: Die App zeigt den „Push-Code“ (Subscription-JSON),
-// Peer hinterlegt ihn als GitHub-Secret PUSH_SUBSCRIPTION.
+// Der Nutzer hinterlegt ihn als GitHub-Secret PUSH_SUBSCRIPTION.
 import pushCfg from '../../config/push.json';
 
 export function pushMoeglich(): boolean {
