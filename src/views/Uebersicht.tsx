@@ -36,6 +36,10 @@ export function UebersichtView() {
               <Betrag wert={(nachSteuern ? k.nachSteuern : k.netto) - k.etfNetto} />
             </div>
             <div class="kennzahl">
+              <span class="kennzahl-label">Offene Positionen (unrealisiert, nach Gebühren)</span>
+              <Betrag wert={k.unrealisiert ?? 0} />
+            </div>
+            <div class="kennzahl">
               <span class="kennzahl-label">Trefferquote</span>
               <strong>{k.trefferquote === null ? '–' : prozent(k.trefferquote, { vorzeichen: false, stellen: 0 })}</strong>
               <span class="klein">{k.anzahlGeschlossen} abgeschlossen · {k.anzahlOffen} offen</span>

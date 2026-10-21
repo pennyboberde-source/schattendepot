@@ -19,6 +19,7 @@ export interface Kennzahlen {
   anzahlGeschlossen: number;
   netto: number;
   nachSteuern: number;
+  unrealisiert?: number;
   trefferquote: number | null;
   etfNetto: number;
   kurve: { datum: string; depot: number; etf: number }[];
