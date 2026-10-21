@@ -1,0 +1,31 @@
+name: Trockenlauf Kurswächter
+
+# Test mit echten Kursen in einer Datenkopie: nichts wird committet, keine Pushes, kein Ereignislauf.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  trockenlauf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Trockenlauf
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+        run: node jobs/trockenlauf.ts
