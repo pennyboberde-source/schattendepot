@@ -5,7 +5,7 @@ name: Übernahme Claude-Lauf
 # sendet die Pushes, deployt und löscht den Branch.
 on:
   push:
-    branches: ['claude/**']
+    branches: ['claude/lauf-*'] # nur Routinen-Ergebnisse; Code-Sitzungen (claude/…) bleiben unberührt
   workflow_dispatch:
 
 permissions:

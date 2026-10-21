@@ -5,6 +5,8 @@ Der vollständige Auftrag steht in `schattendepot-prompt.md` (Abschnitte 0–9).
 
 ## Arbeitsweise mit dem Nutzer
 - Sitzungsstart: „Lies STAND.md und mach weiter“ → STAND.md lesen, beim „Nächsten Schritt“ weitermachen.
+- Fehler: „Lies STAND.md und behebe die offenen Fehler-Issues“ → Ablauf in STAND.md › „Fehler beheben in einer neuen Sitzung“ (Issues mit Label `fehler` aus dem App-Knopf „Fehler melden“).
+- Das System ist live: jede Änderung an `main` wird sofort deployt und von den Jobs genutzt → nur mit grünen Tests committen, Daten-Branch nie von Hand ändern.
 - **Nach jedem Meilenstein anhalten**: STAND.md aktualisieren, kurzen Stand geben, auf „weiter“ warten.
 - STAND.md und diese Datei nach jedem Arbeitsschritt aktuell halten.
 - Freigabe-Anfragen (Zugänge, Klicks, Konten, Secrets) gebündelt stellen, jede Zeile mit 🔴❗ beginnen und zusätzlich eine Push-Benachrichtigung senden. der Nutzer steuert oft per Remote Control vom iPad: alles, was er bestätigen muss, so gestalten, dass es im iPad-Safari geht (nichts am PC tippen lassen).

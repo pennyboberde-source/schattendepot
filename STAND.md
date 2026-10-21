@@ -1,10 +1,23 @@
 # STAND – Schattendepot
 
-_Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
+_Zuletzt aktualisiert: 21.10.2026 ~22:15 (Sitzung 1, Ende)_
+
+## 🛠️ Fehler beheben in einer neuen Sitzung
+1. In der App „Fehler melden“ (Einstellungen oder Order-Detail) → GitHub-Issue mit Label `fehler` (Ansicht, App-Version, Gerät stehen schon drin).
+2. Neue Claude-Code-Sitzung starten – egal wo:
+   - **iPad/iPhone (PC darf aus sein):** claude.ai/code → Repo `pennyboberde-source/schattendepot` wählen.
+   - **PC:** Claude-App → Code → Ordner `schattendepot`.
+3. Erster Satz: **„Lies STAND.md und behebe die offenen Fehler-Issues.“** (oder den Fehler direkt beschreiben)
+4. Ablauf für Claude: `gh issue list --label fehler` → Ursache im Code finden → Test dazu → `npx tsc --noEmit` + `npx vitest run` grün → Commit auf `main` (Push startet Deploy) → Issue mit kurzer Erklärung schließen → STAND.md nachziehen.
+   - Cloud-Sitzung (claude.ai/code) arbeitet auf einem Branch `claude/…` → Pull Request; der Nutzer tippt auf GitHub „Merge“. Die Übernahme-Action reagiert nur auf `claude/lauf-*`, Code-Branches sind sicher.
+   - Ist `gh` in der Cloud-Sitzung nicht angemeldet: Nutzer kopiert den Issue-Link/-Text in den Chat.
+   - Daten nie von Hand ändern (`daten`-Branch schreiben nur Actions). Ereignisprotokoll nur anhängen.
+   - Laufzeitfehler ansehen: Actions-Logs (`gh run list`, `gh run view --log-failed`), `daten/system.json` (Quellenstatus), `daten/laeufe/ungueltig/`, Routinen-Läufe per `RemoteTrigger list_runs`/`get_run_log`.
 
 ## 🚀 LIVE seit 21.10.2026 ~18:15 Berlin
 - Routinen (claude.ai, per RemoteTrigger angelegt, Umgebung `env_01BSC8PJ9ffzbBH7oX6fy8wc` „Default“ = Trusted, keine Variablen; Modell claude-opus-5-5; Konnektoren NUR Alpha Vantage/FMP/Crypto.com Market Data – der Server hängt sonst ALLE Konnektoren an, daher immer explizite Liste übergeben):
   - Morgenlauf `trig_01TAvkP41ZEYZE9azpzewhPq` – cron `40 5 * * 1-5` (UTC! = 07:40 Sommer / 06:40 Winter)
+  - Mittagslauf `trig_01PkFLbMgdJxtZhLPmdexexL` – cron `52 14 * * 1-5` (= 16:52 Sommer / 15:52 Winter)
   - Abendlauf `trig_01H3UdvCwFfTDni3gumeM5wZ` – cron `17 21 * * 1-5` (= 23:17 Sommer / 22:17 Winter)
   - Wochenrückblick `trig_01HJbMVApAyYKb9vzdo4rZdQ` – cron `7 8 * * 6` (= 10:07 Sommer / 09:07 Winter)
   - Kein Ereignislauf-Routine (API-Token nur im Web) → tokenfreier Ersatz über offene-ereignisse.json.
@@ -69,7 +82,7 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 - API-Token für /fire nur im Web erzeugbar → **Ersatz ohne Token gebaut**: `ereignisBehandeln()` → sofort Push + `offene-ereignisse.json`; kontext.mjs zeigt sie Morgen-/Abendlauf; Übernahme leert die Liste. Ist ROUTINE_FIRE_* gesetzt, wird direkt gefeuert.
 
 ## Offene Schritte für den Nutzer (Stand 21.10. abends)
-- D: App auf Home-Bildschirm + Mitteilungen erlauben + Secret PUSH_SUBSCRIPTION (bis dahin werden Pushes nur protokolliert, siehe daten/pushes.json). Danach `gh workflow run test-push.yml`.
+- ✅ App auf Home-Bildschirm, Mitteilungen erlaubt, Secret PUSH_SUBSCRIPTION gesetzt (21.10. 21:55), Test-Push erfolgreich gesendet.
 - github.com/settings/emails: „Keep my email addresses private“ + „Block command line pushes …“ (Claude fehlt Scope `user`).
 - A: Historie bereinigen nur nach ausdrücklichem „Ja, Historie bereinigen“.
 - Optional: YOUTUBE_API_KEY (Google-Cloud-Projekt ohne Zahlungsdaten), FRED_API_KEY, SEC_KONTAKT (Kontakt-Mail für SEC – nur wenn gewünscht), Kalender-Abo.
@@ -100,10 +113,10 @@ Prüfen: `gh secret list -R pennyboberde-source/schattendepot` · `RemoteTrigger
 - FRED-Webseite war 21.10. in Wartung (liefert HTML) → Fehler wird jetzt erkannt; mit FRED_API_KEY offizielle API.
 - Kurse für US-Werte: Finnhub-Zeitstempel = letzter US-Handel → Vormerkungen für US-Werte werden erst nach US-Eröffnung (15:30) ausgeführt (kein Rückschaufehler, bewusst konservativ).
 
-## Nächste Schritte (M5 Lernschleife)
-1. `core/statistik.ts`: Trefferquote/Ø-Rendite (netto, nach Steuern) je Strategie, Signal-Typ, Quelle, Anlageklasse, Haltedauer, Konfidenzstufe; Kalibrierung; Pflicht vs. Überzeugung; erwartet vs. tatsächlich → `daten/statistik.json` (+ `zusammenfassung` für kontext.mjs).
-2. Nicht-Käufe mitverfolgen: Kandidaten aus `signale/<datum>.json` → Kurs nach 1 T/1 W/1 M (sparsam, Kontingente!) → `daten/kandidaten-tracking.json`.
-3. Gewichte wöchentlich (Samstag) im Code anpassen, in Grenzen (`config/signale.json grenzen`), Claude-Vorschläge (`lernen/vorschlaege.json`) nur innerhalb der Grenzen → `daten/gewichte.json`, `lernen/gewichtsaenderungen.json`.
-4. ETF-Vergleich je Order (iShares Core MSCI World IE00B4L5Y983, Kursbasis z. B. `EUNL.DE` über FMP oder `URTH` US-Proxy) inkl. gleicher Gebühren → Ereignis `etfVergleich` beim Verkauf.
-5. Lernen-Ansicht: Lektionen, Statistik-Diagramme, Kalibrierung, Rangliste Quellen/Signale mit Gewichten. Kalibrierte Chance in den Kauf-Push.
-6. Dann M6 (Trockenlauf: Sammler, Wächter, jede Routine manuell, Test-Push; `ausfallWarnungAktiv: true`; Routinen aktivieren) und M7.
+## Nächste Schritte
+1. **Do 22.10.:** ersten echten Morgenlauf prüfen (`RemoteTrigger list_runs` trig_01TAvkP41ZEYZE9azpzewhPq, `get_run_log`), Übernahme, `daten/laeufe/`, Vormerkungen → Ausführung im Wächter, Pushes angekommen? Danach Mittags- und Abendlauf.
+2. Offene Fehler-Issues: `gh issue list --label fehler`.
+3. **Ab So 25.10. (Winterzeit):** Crons per `RemoteTrigger update` anpassen – Morgenlauf `40 6 * * 1-5`, Wochenrückblick `7 9 * * 6` (Mittag/Abend prüfen: gewünschte Berliner Uhrzeit halten).
+4. Nach einer Woche: Nutzungsverbrauch der Routinen prüfen (ggf. Modell Sonnet).
+5. Nach 3–4 Wochen: Statistik, Kalibrierung, Ereignis-Messung auswerten.
+6. Optional auf Wunsch: YouTube-Schlüssel, FRED_API_KEY, SEC_KONTAKT; Historie bereinigen nur nach „Ja, Historie bereinigen“.
