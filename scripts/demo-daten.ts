@@ -132,6 +132,12 @@ const tracking = [
   { datum: '2026-10-14', schluessel: 'T:BETA', name: 'Beta', ticker: 'BETA', score: 1, typen: ['nachricht'], quellen: ['CNBC Top News'], start: 20, r1T: -0.5, r1W: -1.1 },
 ];
 schreibe('kandidaten-tracking.json', tracking);
+schreibe('verlauf/2026-10-21-demo-c.json', [
+  ['2026-10-21T06:00:00Z', 238.1],
+  ['2026-10-21T08:00:00Z', 239.4],
+  ['2026-10-21T10:00:00Z', 237.9],
+  ['2026-10-21T12:45:00Z', 241.3],
+]);
 schreibe('statistik.json', statistikBerechnen([...abgeschlossen, offen], tracking, stand));
 schreibe('gewichte.json', { stand, signale: { insider_cluster_kauf: 3.3 }, quellen: { 'CNBC Top News': 0.9 } });
 schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal', name: 'insider_cluster_kauf', alt: 3, neu: 3.3, grund: 'DEMO: Ø 1-Wochen-Rendite 3,4 % (n=9)' }]);

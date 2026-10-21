@@ -271,6 +271,23 @@ a {
 .legende.etf::before {
   background: var(--muted);
 }
+.legende.ziel::before {
+  background: var(--plus);
+}
+.legende.stop::before {
+  background: var(--minus);
+}
+.linie-ziel,
+.linie-stop {
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+.linie-ziel {
+  stroke: var(--plus);
+}
+.linie-stop {
+  stroke: var(--minus);
+}
 
 /* Listen und Tabellen */
 .liste {

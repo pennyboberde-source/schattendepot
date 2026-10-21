@@ -93,6 +93,11 @@ const offeneIds = new Set(aktiv.map((o) => o.id));
 for (const id of Object.keys(kurse)) if (!offeneIds.has(id)) delete kurse[id];
 Object.assign(kurse, r.kurse);
 schreibeJson('kurse.json', kurse);
+// Kursverlauf je Position (für das Order-Detail): ein Punkt pro Lauf, höchstens 2.500
+for (const [id, k] of Object.entries(r.kurse)) {
+  const verlauf = leseJson<[string, number][]>(`verlauf/${id}.json`, []);
+  if (verlauf.at(-1)?.[0] !== k.zeit) schreibeJson(`verlauf/${id}.json`, [...verlauf, [k.zeit, k.wert] as [string, number]].slice(-2500));
+}
 
 const a = abgeleitetSchreiben(jetzt);
 

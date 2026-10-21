@@ -5,6 +5,7 @@ import { fehlerMeldenUrl, inClaudeBesprechenUrl } from '../lib/links';
 import { datumUhr } from '../lib/zeit';
 import { STRATEGIE_TEXT, VERKAUFSGRUND_TEXT } from '../lib/texte';
 import { Betrag, Icon, Karte, Leer } from '../ui';
+import { Verlauf } from './Verlauf';
 
 export function OrderDetailView({ id }: { id: string }) {
   const pos = useDaten<Positionen>('positionen.json');
@@ -112,6 +113,8 @@ function Detail({ o }: { o: Order }) {
           {(o.kauf?.synthetisch || o.verkauf?.synthetisch) && <p class="klein">Geld-/Briefkurs berechnet aus letztem Kurs und Spread der Anlageklasse.</p>}
         </Karte>
       )}
+
+      <Verlauf id={o.id} kauf={o.kauf?.kurs} ziel={o.zielkurs} stop={o.stopkurs} />
 
       <Karte titel="Zeitleiste">
         <ol class="zeitleiste">

@@ -11,6 +11,7 @@ export interface Lagebild {
   termine: { zeit: string; text: string }[];
   meldungen: { titel: string; quelle: string; link: string; wertpapier?: string }[];
   insider: { wertpapier: string; text: string; link: string }[];
+  positionen?: { id: string; name: string; meldungen: { titel: string; quelle: string; link: string }[] }[];
   kandidaten: { name: string; isin?: string; score: number; fakten: string[]; quellen: { name: string; link: string }[] }[];
 }
 
@@ -67,6 +68,33 @@ export function BriefingView({ datum: gewaehlt }: { datum?: string }) {
                 )}
               </Karte>
             </div>
+            {l.positionen && l.positionen.length > 0 && (
+              <Karte titel="Nachrichten zu offenen Positionen">
+                <ul class="liste">
+                  {l.positionen.map((p) => (
+                    <li key={p.id}>
+                      <a href={`#/order/${p.id}`}>
+                        <strong>{p.name}</strong>
+                      </a>
+                      {p.meldungen.length === 0 ? (
+                        <span class="klein"> – nichts Neues</span>
+                      ) : (
+                        <ul>
+                          {p.meldungen.map((m) => (
+                            <li key={m.link}>
+                              <a href={m.link} target="_blank" rel="noopener noreferrer">
+                                {m.titel}
+                              </a>{' '}
+                              <span class="klein">{m.quelle}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </Karte>
+            )}
             <Karte titel="Kandidaten">
               {l.kandidaten.length ? (
                 <table class="tabelle">
