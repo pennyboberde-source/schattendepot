@@ -22,8 +22,10 @@ import { openInsider } from './quellen/openinsider.ts';
 import { rssQuellen } from './quellen/rss.ts';
 import { alphaVantage, finnhub, fmp } from './quellen/schluesselquellen.ts';
 import type { Laufart, Quelle, QuellenErgebnis } from './quellen/typen.ts';
+import { wirtschaftskalender } from './quellen/wirtschaftskalender.ts';
+import { sec8k } from './quellen/sec.ts';
 
-const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt];
+const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k];
 const STARK_NEGATIV = new Set(['prognose_senkung', 'gewinn_enttaeuschung', 'analysten_abstufung']);
 const STARK = new Set([...STARK_NEGATIV, 'uebernahmeangebot', 'prognose_erhoehung']);
 

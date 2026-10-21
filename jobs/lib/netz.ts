@@ -18,6 +18,7 @@ export async function holeText(url: string, opt: { versuche?: number; zeitlimitM
   for (let i = 0; i < versuche; i++) {
     try {
       const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT, Accept: 'application/json, text/plain, */*', ...header }, signal: AbortSignal.timeout(zeitlimitMs) });
+      // (header kann User-Agent überschreiben, z. B. SEC-Vorgabe)
       if (!res.ok) throw new HttpFehler(res.status, `HTTP ${res.status} bei ${new URL(url).host}`);
       return await res.text();
     } catch (e) {

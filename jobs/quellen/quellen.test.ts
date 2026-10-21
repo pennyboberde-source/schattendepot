@@ -5,6 +5,8 @@ import { kandidaten, type SignalConfig } from '../../core/signale.ts';
 import { apeWisdomAuswerten, fredMakro } from './maerkte.ts';
 import { openInsiderAuswerten } from './openinsider.ts';
 import { quartalszahlenAuswerten } from './schluesselquellen.ts';
+import { kalenderTermine } from './wirtschaftskalender.ts';
+import { secAuswerten } from './sec.ts';
 
 const jetzt = new Date('2026-10-21T04:30:00Z');
 
@@ -55,6 +57,35 @@ describe('Quartalszahlen', () => {
     expect(r.termine).toEqual([{ zeit: 'nach US-Schluss', text: 'AAPL Quartalszahlen (Erwartung EPS 1.5)' }]);
     expect(r.signale.find((s) => s.typ === 'gewinn_ueberraschung')?.wertpapier.ticker).toBe('NFLX');
     expect(r.signale.some((s) => s.wertpapier.ticker === 'SMALL')).toBe(false);
+  });
+});
+
+describe('SEC 8-K', () => {
+  it('Items → Signale, nur bekannte Ticker', () => {
+    const atom = `<feed><entry><title>8-K - ACME CORP (0000123456) (Filer)</title><link rel="alternate" href="https://www.sec.gov/a"/><summary type="html">&lt;b&gt;Filed:&lt;/b&gt; 2026-10-20 Item 1.01: Entry into a Material Definitive Agreement Item 9.01</summary><updated>2026-10-20T16:05:00-04:00</updated></entry>
+      <entry><title>8-K - UNKNOWN LLC (0000999999) (Filer)</title><link rel="alternate" href="https://www.sec.gov/b"/><summary>Item 1.03</summary><updated>2026-10-20T16:05:00-04:00</updated></entry></feed>`;
+    const s = secAuswerten(atom, new Map([[123456, { ticker: 'ACME', name: 'Acme Corp' }]]), jetzt);
+    expect(s).toHaveLength(1);
+    expect(s[0]).toMatchObject({ typ: 'grossauftrag', wertpapier: { ticker: 'ACME' }, richtung: 1 });
+  });
+});
+
+describe('Wirtschaftskalender', () => {
+  it('nur heute, wichtige USD/EUR-Termine, Berliner Zeit', () => {
+    const t = kalenderTermine(
+      [
+        { title: 'CPI m/m', country: 'USD', date: '2026-10-21T08:30:00-04:00', impact: 'High', forecast: '0.3%', previous: '0.2%' },
+        { title: 'ZEW Economic Sentiment', country: 'EUR', date: '2026-10-21T05:00:00-04:00', impact: 'Medium' },
+        { title: 'Retail Sales', country: 'NZD', date: '2026-10-21T17:45:00-04:00', impact: 'High' },
+        { title: 'Bank Holiday', country: 'USD', date: '2026-10-22T08:30:00-04:00', impact: 'High' },
+        { title: 'Minor', country: 'USD', date: '2026-10-21T10:00:00-04:00', impact: 'Low' },
+      ],
+      new Date('2026-10-21T04:30:00Z'),
+    );
+    expect(t).toEqual([
+      { zeit: '11:00', text: 'Eurozone: ZEW Economic Sentiment' },
+      { zeit: '14:30', text: 'USA: CPI m/m (wichtig) – Prognose 0.3%, zuvor 0.2%' },
+    ]);
   });
 });
 
