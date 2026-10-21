@@ -50,7 +50,7 @@ export function schwaerzen(text: string, env: Record<string, string | undefined>
   let t = text;
   for (const w of geheimeWerte(env)) t = t.split(w).join('***');
   return t
-    .replace(/((?:api_?key|apikey|token|access_token|key|auth)=)[^&\s"']+/gi, '$1***')
+    .replace(/((?:api_?key|apikey|token|access_token|key|auth)=)[A-Za-z0-9*._~%+/-]+/gi, '$1***')
     .replace(/(Bearer\s+)[A-Za-z0-9._-]+/g, '$1***')
     .replace(/sk-ant-[A-Za-z0-9_-]+/g, 'sk-ant-***');
 }
