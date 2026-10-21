@@ -14,7 +14,7 @@ import { kontingentFrei, kontingentGenutzt, kontingentZaehlen } from './lib/netz
 import { gewichteAnpassen, type Grenzen, type Vorschlag } from '../core/gewichte.ts';
 import { abgeleitetSchreiben } from './lib/abgeleitet.ts';
 import { pushen } from './lib/pushen.ts';
-import { feuereEreignislauf } from './lib/routine.ts';
+import { ereignisBehandeln } from './lib/routine.ts';
 import { schwaerzen } from './lib/schwaerzen.ts';
 import { trackingAktualisieren } from './lib/tracking.ts';
 import { gdelt } from './quellen/gdelt.ts';
@@ -175,10 +175,10 @@ const kritisch = zusammen.find(
 );
 if (kritisch && heute.length < cfg.einstellungen.ereignisLaeufeProTag && istHandelstag(b.datum)) {
   const o = offen.find((x) => x.ticker?.replace(/\..*$/, '') === kritisch.wertpapier.ticker?.replace(/\..*$/, ''))!;
-  const text = `Wichtige Meldung zu offener Position ${o.name} (Order ${o.id}): ${signalCfg.typen[kritisch.typ]?.name ?? kritisch.typ}. ${kritisch.quellen.map((q) => `${q.quelle}: ${q.fakt} ${q.link ?? ''}`).join(' | ')}`;
-  const f = await feuereEreignislauf(text);
-  console.log(`Ereignislauf (Meldung): ${f.ok ? 'gestartet' : 'nicht gestartet'} – ${f.info}`);
-  if (f.ok) system.ereignislaeufe = { [b.datum]: [...heute, o.id] };
+  const typName = signalCfg.typen[kritisch.typ]?.name ?? kritisch.typ;
+  const text = `Wichtige Meldung zu offener Position ${o.name} (Order ${o.id}): ${typName}. ${kritisch.quellen.map((q) => `${q.quelle}: ${q.fakt} ${q.link ?? ''}`).join(' | ')}`;
+  pushes.push(await ereignisBehandeln(o.id, o.name, typName, text, jetzt));
+  system.ereignislaeufe = { [b.datum]: [...heute, o.id] };
 }
 schreibeJson('system.json', system);
 await pushen(pushes, jetzt);

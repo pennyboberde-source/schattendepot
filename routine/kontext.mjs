@@ -91,6 +91,13 @@ for (const o of pos.offen) {
 if (pos.vorgemerkt.length) p(`Vorgemerkt (noch nicht ausgeführt): ${pos.vorgemerkt.map((o) => `${o.id} ${o.plan.wertpapier.name}`).join('; ')}`);
 p('');
 
+const offeneEreignisse = await json('offene-ereignisse.json', []);
+if (offeneEreignisse.length && typ !== 'wochenrueckblick') {
+  p(`## ⚡ Offene Ereignisse (${offeneEreignisse.length}) – bitte wie im Ereignislauf prüfen und ggf. anpassen`);
+  for (const e of offeneEreignisse) p(`- ${e.zeit.slice(0, 16)} UTC · Order ${e.orderId}: ${kurz(e.text, 400)}`);
+  p('');
+}
+
 if (typ === 'abendlauf' || typ === 'wochenrueckblick') {
   const abg = await json('abgeschlossen.json', { orders: [] });
   const offenBericht = abg.orders.filter((o) => !o.bericht);

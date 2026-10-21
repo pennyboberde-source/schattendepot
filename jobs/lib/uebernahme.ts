@@ -116,6 +116,8 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
       const system = leseJson<Record<string, unknown>>('system.json', {});
       system.letzterClaudeLauf = { zeit: jetzt.toISOString(), typ: TYP_TEXT[e.typ] };
       schreibeJson('system.json', system);
+      // Offene Ereignisse wurden diesem Lauf im Kontext gezeigt → erledigt (Wochenrückblick behandelt keine Positionen)
+      if (e.typ !== 'wochenrueckblick') schreibeJson('offene-ereignisse.json', leseJson<{ zeit: string }[]>('offene-ereignisse.json', []).filter((x) => x.zeit > e.erstellt));
       console.log(`${name}: ${neu.length} Ereignisse übernommen.`);
     }
     // Alles ist im daten-Branch archiviert (gültig unter laeufe/, ungültig unter laeufe/ungueltig/) → Branch aufräumen.

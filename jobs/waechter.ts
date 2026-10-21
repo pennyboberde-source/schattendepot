@@ -11,7 +11,7 @@ import { holeEurUsd, holeKurs, type Abrufprotokoll } from './kurse/anbieter.ts';
 import { abgeleitetSchreiben } from './lib/abgeleitet.ts';
 import { haengeEreignisseAn, ladeConfig, leseEreignisse, leseJson, schreibeJson } from './lib/dateien.ts';
 import { pushen } from './lib/pushen.ts';
-import { feuereEreignislauf } from './lib/routine.ts';
+import { ereignisBehandeln } from './lib/routine.ts';
 import { uebernehmeAlle } from './lib/uebernahme.ts';
 
 interface System {
@@ -108,10 +108,12 @@ for (const [id, k] of Object.entries(r.kurse)) {
 const a = abgeleitetSchreiben(jetzt);
 
 if (neu.some((e) => e.typ === 'warnung')) system.ausfallWarnung = b.datum;
+const ereignisPushes = [];
 if (r.ereignislauf) {
-  const f = await feuereEreignislauf(r.ereignislauf.text);
-  console.log(`Ereignislauf: ${f.ok ? 'gestartet' : 'nicht gestartet'} – ${f.info}`);
-  if (f.ok) system.ereignislaeufe = { [b.datum]: [...heuteLaeufe, r.ereignislauf.orderId] };
+  const o = a.orders.find((x) => x.id === r.ereignislauf!.orderId);
+  const pct = (neu.find((e) => e.typ === 'ereignislauf')?.daten as { tagesProzent?: number } | undefined)?.tagesProzent;
+  ereignisPushes.push(await ereignisBehandeln(r.ereignislauf.orderId, o?.plan.wertpapier.name ?? r.ereignislauf.orderId, `Kursausschlag ${pct !== undefined && pct > 0 ? '+' : ''}${pct ?? '?'} % heute`, r.ereignislauf.text, jetzt));
+  system.ereignislaeufe = { [b.datum]: [...heuteLaeufe, r.ereignislauf.orderId] };
 }
 system.stand = jetzt.toISOString();
 system.letzterWaechterLauf = jetzt.toISOString();
@@ -119,7 +121,7 @@ system.hinweise = r.hinweise;
 if (Object.keys(protokoll).length) system.kursabrufe = protokoll;
 schreibeJson('system.json', system);
 
-const pushes = [...uebernahme.pushes, ...pushesFuerEreignisse(neu, a.orders, (k) => kalibrierteQuote(a.statistik, k))];
+const pushes = [...uebernahme.pushes, ...pushesFuerEreignisse(neu, a.orders, (k) => kalibrierteQuote(a.statistik, k)), ...ereignisPushes];
 const gesendet = await pushen(pushes, jetzt);
 console.log(
   `Wächter ${b.datum} ${String(b.stunde).padStart(2, '0')}:${String(b.minute).padStart(2, '0')}: ${aktiv.length} aktiv, ${Object.keys(basisKurse).length} Kurse, ${neu.length} Ereignisse, ${gesendet} Push(es).`,
