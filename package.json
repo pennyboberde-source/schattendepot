@@ -1,0 +1,38 @@
+{
+  "name": "schattendepot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Schattendepot – lernende Börsen-Simulation mit fiktivem Geld. Keine Anlageberatung.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && tsc --noEmit -p tsconfig.sw.json && vite build",
+    "preview": "vite preview --port 4174 --strictPort",
+    "test": "vitest run",
+    "e2e": "node scripts/daten-einbinden.mjs demo/daten && playwright test",
+    "icons": "node scripts/gen-icons.mjs",
+    "demo": "node scripts/demo-daten.ts",
+    "daten:einbinden": "node scripts/daten-einbinden.mjs"
+  },
+  "dependencies": {
+    "preact": "^11.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^24.19.2",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.0.3",
+    "workbox-precaching": "^7.4.1",
+    "workbox-routing": "^7.4.1",
+    "workbox-strategies": "^7.4.1",
+    "workbox-window": "^7.4.1"
+  }
+}

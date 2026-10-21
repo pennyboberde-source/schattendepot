@@ -1,0 +1,61 @@
+name: Deploy auf GitHub Pages
+
+# Baut die App aus main und legt die Laufzeitdaten aus dem daten-Branch daneben (/daten/…).
+# Läuft bei Code-Pushes, manuell und nach Datenänderungen (workflow_dispatch durch die Jobs).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - name: Daten-Branch holen
+        uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Unit-Tests
+        run: npm test
+      - name: Build
+        env:
+          VITE_REPO: ${{ github.repository }}
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          if [[ "$REPO" == *.github.io ]]; then export BASE_PATH="/"; else export BASE_PATH="/$REPO/"; fi
+          export VITE_VERSION="$(date -u +%Y-%m-%d)-$(git rev-parse --short HEAD)"
+          npm run build
+      - name: Daten einbinden
+        run: node scripts/daten-einbinden.mjs _daten
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

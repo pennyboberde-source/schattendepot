@@ -1,0 +1,112 @@
+{
+  "stand": "2026-10-21T12:45:00Z",
+  "offen": [
+    {
+      "id": "2026-10-21-demo-c",
+      "status": "offen",
+      "vorgemerktUm": "2026-10-21T05:35:00Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Demo Gamma AG",
+          "isin": "DE000DEMO0003",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_dax",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien"
+        },
+        "strategie": "quartalszahlen_momentum",
+        "these": "DEMO: Demo Gamma AG – fiktive These für die Entwicklung.",
+        "ausloeser": "DEMO-Signal",
+        "signalIds": [
+          "demo-1"
+        ],
+        "quellen": [
+          {
+            "name": "Beispielquelle",
+            "link": "https://example.org/"
+          }
+        ],
+        "konfidenz": 60,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 3,
+        "zielNettoProzent": 5,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-10-29T16:00:00Z",
+        "risiken": [
+          "Demo-Risiko"
+        ],
+        "einflussLektionen": "Demo: keine Lektionen vorhanden."
+      },
+      "zielkurs": 255.6,
+      "stopkurs": 230.96,
+      "verkaufstermin": "2026-10-29T16:00:00Z",
+      "kauf": {
+        "zeit": "2026-10-21T06:00:00Z",
+        "stueck": 4,
+        "kurs": 238.1,
+        "kurswert": 952.4,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9,
+          "stufe": "Silver",
+          "freetrade": false
+        },
+        "betrag": 963.3,
+        "kursquelle": "demo",
+        "synthetisch": true
+      },
+      "anpassungen": [],
+      "letzterKurs": {
+        "wert": 241.3,
+        "zeit": "2026-10-21T12:45:00Z",
+        "quelle": "demo",
+        "verzoegertMin": 15,
+        "synthetisch": false
+      }
+    }
+  ],
+  "vorgemerkt": [
+    {
+      "id": "2026-10-21-demo-d",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-10-21T05:35:00Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Demo Delta ETF",
+          "isin": "IE000DEMO004",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_dax",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien"
+        },
+        "strategie": "sektor_rotation",
+        "these": "DEMO: Demo Delta ETF – fiktive These für die Entwicklung.",
+        "ausloeser": "DEMO-Signal",
+        "signalIds": [
+          "demo-1"
+        ],
+        "quellen": [
+          {
+            "name": "Beispielquelle",
+            "link": "https://example.org/"
+          }
+        ],
+        "konfidenz": 45,
+        "pflichtOrder": true,
+        "erwarteteRenditeNetto": 3,
+        "zielNettoProzent": 5,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-10-29T16:00:00Z",
+        "risiken": [
+          "Demo-Risiko"
+        ],
+        "einflussLektionen": "Demo: keine Lektionen vorhanden."
+      },
+      "verkaufstermin": "2026-11-04T16:00:00Z",
+      "anpassungen": []
+    }
+  ]
+}

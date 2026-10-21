@@ -1,0 +1,173 @@
+{
+  "stand": "2026-10-21T12:45:00Z",
+  "orders": [
+    {
+      "id": "2026-10-14-demo-a",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-10-14T07:15:00Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Demo Alpha AG",
+          "isin": "DE000DEMO0001",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_dax",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien"
+        },
+        "strategie": "insider_kauf",
+        "these": "DEMO: Demo Alpha AG – fiktive These für die Entwicklung.",
+        "ausloeser": "DEMO-Signal",
+        "signalIds": [
+          "demo-1"
+        ],
+        "quellen": [
+          {
+            "name": "Beispielquelle",
+            "link": "https://example.org/"
+          }
+        ],
+        "konfidenz": 65,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 3,
+        "zielNettoProzent": 5,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-10-29T16:00:00Z",
+        "risiken": [
+          "Demo-Risiko"
+        ],
+        "einflussLektionen": "Demo: keine Lektionen vorhanden."
+      },
+      "zielkurs": 102.2,
+      "stopkurs": 92.34,
+      "verkaufstermin": "2026-10-29T16:00:00Z",
+      "kauf": {
+        "zeit": "2026-10-14T07:15:00Z",
+        "stueck": 10,
+        "kurs": 95.2,
+        "kurswert": 952,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9,
+          "stufe": "Silver",
+          "freetrade": false
+        },
+        "betrag": 962.9,
+        "kursquelle": "demo",
+        "synthetisch": true
+      },
+      "verkauf": {
+        "zeit": "2026-10-16T13:30:00Z",
+        "stueck": 10,
+        "kurs": 101.4,
+        "kurswert": 1014,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9,
+          "stufe": "Silver",
+          "freetrade": false
+        },
+        "betrag": 1003.1,
+        "kursquelle": "demo",
+        "synthetisch": true,
+        "grund": "ziel"
+      },
+      "anpassungen": [],
+      "ergebnis": {
+        "kursProzent": 6.51,
+        "netto": 40.2,
+        "nettoProzent": 4.17,
+        "gebuehren": 21.8,
+        "steuer": 10.6,
+        "nachSteuern": 29.6
+      },
+      "bericht": "DEMO-Abschlussbericht: Verlauf, These, Signale, Learnings."
+    },
+    {
+      "id": "2026-10-15-demo-b",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-10-15T07:15:00Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Demo Beta SE",
+          "isin": "DE000DEMO0002",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_dax",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien"
+        },
+        "strategie": "analysten_hochstufung",
+        "these": "DEMO: Demo Beta SE – fiktive These für die Entwicklung.",
+        "ausloeser": "DEMO-Signal",
+        "signalIds": [
+          "demo-1"
+        ],
+        "quellen": [
+          {
+            "name": "Beispielquelle",
+            "link": "https://example.org/"
+          }
+        ],
+        "konfidenz": 55,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 3,
+        "zielNettoProzent": 5,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-10-29T16:00:00Z",
+        "risiken": [
+          "Demo-Risiko"
+        ],
+        "einflussLektionen": "Demo: keine Lektionen vorhanden."
+      },
+      "zielkurs": 257.59,
+      "stopkurs": 232.8,
+      "verkaufstermin": "2026-10-29T16:00:00Z",
+      "kauf": {
+        "zeit": "2026-10-15T07:15:00Z",
+        "stueck": 4,
+        "kurs": 240,
+        "kurswert": 960,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9,
+          "stufe": "Silver",
+          "freetrade": false
+        },
+        "betrag": 970.9,
+        "kursquelle": "demo",
+        "synthetisch": true
+      },
+      "verkauf": {
+        "zeit": "2026-10-17T09:45:00Z",
+        "stueck": 4,
+        "kurs": 232.5,
+        "kurswert": 930,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9,
+          "stufe": "Silver",
+          "freetrade": false
+        },
+        "betrag": 919.1,
+        "kursquelle": "demo",
+        "synthetisch": true,
+        "grund": "stop"
+      },
+      "anpassungen": [],
+      "ergebnis": {
+        "kursProzent": -3.13,
+        "netto": -51.8,
+        "nettoProzent": -5.34,
+        "gebuehren": 21.8,
+        "steuer": -10.6,
+        "nachSteuern": -41.2
+      },
+      "bericht": "DEMO-Abschlussbericht: Verlauf, These, Signale, Learnings."
+    }
+  ]
+}

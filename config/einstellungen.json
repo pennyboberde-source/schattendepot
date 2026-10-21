@@ -1,0 +1,23 @@
+{
+  "orderBetrag": 1000,
+  "hebelMax": 10,
+  "haltedauerMinMinuten": 15,
+  "haltedauerMaxTage": 31,
+  "ereignisSchwelleProzent": 5,
+  "ereignisLaeufeProTag": 1,
+  "ausfallWarnungUhrzeit": "10:00",
+  "ruhezeit": { "von": "22:30", "bis": "07:00" },
+  "pushTypen": {
+    "briefing": true,
+    "gekauft": true,
+    "angepasst": true,
+    "verkauft": true,
+    "stop": true,
+    "knockout": true,
+    "bericht": true,
+    "warnung": true,
+    "wochenrueckblick": true
+  },
+  "vergleichsEtf": { "name": "iShares Core MSCI World", "isin": "IE00B4L5Y983" },
+  "zeitzone": "Europe/Berlin"
+}
