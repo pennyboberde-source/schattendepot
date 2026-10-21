@@ -91,6 +91,7 @@ export function PushKarte() {
               </a>
             )}
           </div>
+          <p class="klein">Zeigt GitHub „404“? Die Home-Bildschirm-App ist dort nicht angemeldet. Dann den Code kopieren, <strong>Safari</strong> öffnen, bei GitHub anmelden und <code>github.com/{REPO}/settings/secrets/actions/new</code> aufrufen.</p>
           <p class="klein">Kurz danach kommt automatisch eine Test-Mitteilung „✅ Push verbunden“.</p>
         </div>
       )}
