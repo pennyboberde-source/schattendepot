@@ -1,29 +1,54 @@
 {
-  "stand": "2026-10-21T15:25:20.991Z",
+  "stand": "2026-10-21T15:28:12.285Z",
   "kandidaten": [
     {
-      "schluessel": "T:BPRE",
-      "name": "Bluerock Private Real Estate Fund",
-      "ticker": "BPRE",
-      "score": 3.39,
+      "schluessel": "T:SPCX",
+      "name": "SpaceX",
+      "ticker": "SPCX",
+      "score": 2.66,
       "typen": [
-        "insider_cluster_kauf",
-        "insider_kauf"
+        "stimmung_social",
+        "gewinn_ueberraschung"
       ],
       "quellen": [
-        "OpenInsider"
+        "ApeWisdom",
+        "Finnhub"
       ]
     },
     {
-      "schluessel": "T:FUL",
-      "name": "Fuller H B Co",
-      "ticker": "FUL",
-      "score": 2.96,
+      "schluessel": "T:ELV",
+      "name": "ELV",
+      "ticker": "ELV",
+      "score": 2.5,
       "typen": [
-        "insider_cluster_kauf"
+        "gewinn_ueberraschung"
       ],
       "quellen": [
-        "OpenInsider"
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CLF",
+      "name": "CLF",
+      "ticker": "CLF",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:RTX",
+      "name": "RTX",
+      "ticker": "RTX",
+      "score": 2.3,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
       ]
     },
     {
@@ -39,15 +64,51 @@
       ]
     },
     {
-      "schluessel": "T:DX",
-      "name": "Dynex Capital Inc",
-      "ticker": "DX",
-      "score": 1.42,
+      "schluessel": "T:COF",
+      "name": "COF",
+      "ticker": "COF",
+      "score": 2.02,
       "typen": [
-        "insider_cluster_kauf"
+        "gewinn_ueberraschung"
       ],
       "quellen": [
-        "OpenInsider"
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CB",
+      "name": "CB",
+      "ticker": "CB",
+      "score": 1.46,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:DHR",
+      "name": "DHR",
+      "ticker": "DHR",
+      "score": 1.45,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:NOC",
+      "name": "NOC",
+      "ticker": "NOC",
+      "score": 1.44,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
       ]
     },
     {
@@ -60,6 +121,18 @@
       ],
       "quellen": [
         "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:T",
+      "name": "T",
+      "ticker": "T",
+      "score": 1.32,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
       ]
     },
     {
@@ -114,6 +187,18 @@
       "schluessel": "T:SCISX",
       "name": "SCISX",
       "ticker": "SCISX",
+      "score": 0.97,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BPRE",
+      "name": "BPRE",
+      "ticker": "BPRE",
       "score": 0.97,
       "typen": [
         "insider_kauf"
@@ -258,6 +343,21 @@
       ]
     },
     {
+      "schluessel": "T:TSLA",
+      "name": "Tesla",
+      "ticker": "TSLA",
+      "score": 0.26,
+      "typen": [
+        "nachricht",
+        "quartalstermin"
+      ],
+      "quellen": [
+        "tagesschau Wirtschaft",
+        "CNBC Top News",
+        "Finnhub"
+      ]
+    },
+    {
       "schluessel": "T:SMCI",
       "name": "Supermicro",
       "ticker": "SMCI",
@@ -268,109 +368,7 @@
       "quellen": [
         "ApeWisdom"
       ]
-    },
-    {
-      "schluessel": "T:GOOGL",
-      "name": "Alphabet",
-      "ticker": "GOOGL",
-      "score": 0.22,
-      "typen": [
-        "nachricht",
-        "stimmung_social"
-      ],
-      "quellen": [
-        "CNBC Top News",
-        "ApeWisdom"
-      ]
-    },
-    {
-      "schluessel": "T:MSFT",
-      "name": "Microsoft",
-      "ticker": "MSFT",
-      "score": 0.2,
-      "typen": [
-        "nachricht",
-        "stimmung_social"
-      ],
-      "quellen": [
-        "CNBC Top News",
-        "ApeWisdom"
-      ]
-    },
-    {
-      "schluessel": "T:SPCX",
-      "name": "SpaceX",
-      "ticker": "SPCX",
-      "score": 0.16,
-      "typen": [
-        "stimmung_social"
-      ],
-      "quellen": [
-        "ApeWisdom"
-      ]
-    },
-    {
-      "schluessel": "T:GOOG",
-      "name": "Alphabet (Google)",
-      "ticker": "GOOG",
-      "score": 0.15,
-      "typen": [
-        "stimmung_social"
-      ],
-      "quellen": [
-        "ApeWisdom"
-      ]
-    },
-    {
-      "schluessel": "T:IT",
-      "name": "Gartner",
-      "ticker": "IT",
-      "score": 0.13,
-      "typen": [
-        "stimmung_social"
-      ],
-      "quellen": [
-        "ApeWisdom"
-      ]
-    },
-    {
-      "schluessel": "T:ASTS",
-      "name": "AST SpaceMobile",
-      "ticker": "ASTS",
-      "score": 0.12,
-      "typen": [
-        "stimmung_social"
-      ],
-      "quellen": [
-        "ApeWisdom"
-      ]
-    },
-    {
-      "schluessel": "T:TSLA",
-      "name": "Tesla",
-      "ticker": "TSLA",
-      "score": 0.1,
-      "typen": [
-        "nachricht"
-      ],
-      "quellen": [
-        "tagesschau Wirtschaft",
-        "CNBC Top News"
-      ]
-    },
-    {
-      "schluessel": "T:MUV2",
-      "name": "Münchener Rück",
-      "ticker": "MUV2.DE",
-      "score": 0.1,
-      "typen": [
-        "nachricht"
-      ],
-      "quellen": [
-        "Handelsblatt Finanzen",
-        "FAZ Finanzen"
-      ]
     }
   ],
-  "anzahlSignale": 41
+  "anzahlSignale": 55
 }
