@@ -18,6 +18,19 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 - Leicht reparierbar: Fehler melden → GitHub-Issue (Label `fehler`); neue Sitzung: `gh issue list -R pennyboberde-source/schattendepot --label fehler`.
 - Alles, was Peer tun muss, iPad-tauglich (Links, kopierbare Namen); Freigaben mit 🔴❗ + Push.
 
+## Sicherheit (21.10. geprüft und gehärtet – Peer: „höchste Priorität“)
+- Secrets nur als GitHub-Secrets; Code/Daten/Logs gescannt: 0 Schlüsselspuren. `jobs/lib/schwaerzen.ts` schwärzt alle Secret-Werte + abgeleitete Teile (Push-Endpoint/Keys, Fire-URL-Pfad) vor jedem Schreiben in Dateien/Logs; `logsMaskieren()` (::add-mask::) läuft beim Import von pushen.ts.
+- Repo: Secret-Scanning + Push-Protection an; Default-Workflow-Rechte read; nur GitHub-eigene Actions erlaubt; Rulesets: `daten` (kein Löschen, kein Force-Push), `main` (kein Löschen).
+- Routinen: OHNE Konnektoren (Crypto.com-Konnektor könnte echtes Konto berühren) und Standard-Netzwerk „Trusted“ (nicht Full).
+- **Fund:** Commit 54a090c („Vorlage: Leerzeile (Actions-Test)“, per Contents-API erzeugt) trägt Autor-/Committer-Mail `pennyboberde@gmail.com`. Bereinigung = `git filter-branch --env-filter` (Mail → 344003264+pennyboberde-source@users.noreply.github.com) + `git push --force-with-lease` auf main – **vom Auto-Modus blockiert, wartet auf Peers ausdrückliches „Ja, Historie bereinigen“**. Nie wieder Commits per Contents-API.
+- Kosten: kein API-Schlüssel, Gratis-Tarife ohne Karte, öffentliches Repo. Einziges Restrisiko: „Extra usage“ in claude.ai → Peer prüft (C).
+- SEC 8-K braucht Kontakt-Mail im User-Agent (sonst 403) → nur mit Secret `SEC_KONTAKT`; private Mail NICHT ungefragt verwenden.
+
+## Routinen per API (RemoteTrigger)
+- `RemoteTrigger create` funktioniert grundsätzlich; Pflicht: `job_config.ccr.environment_id` (Wert `"default"` wurde akzeptiert) und verbundenes GitHub-Konto in claude.ai (Fehler `github_token_missing` → Peer B).
+- Body-Vorlage: `{"name","cron_expression":"32 7 * * 1-5","enabled":false,"job_config":{"ccr":{"environment_id":"default","events":[{"data":{"message":{"content":"Lies routine/morgenlauf.md …","role":"user"},"type":"user","parent_tool_use_id":null}}],"session_context":{"sources":[{"git_repository":{"url":"https://github.com/pennyboberde-source/schattendepot"}}],"model":"claude-opus-5-5"}}},"mcp_connections":[]}` – Zeitzone der Cron-Angabe nach dem Anlegen am Ergebnis prüfen (Server meldet Laufzeit).
+- API-Token für /fire nur im Web erzeugbar → **Ersatz ohne Token gebaut**: `ereignisBehandeln()` → sofort Push + `offene-ereignisse.json`; kontext.mjs zeigt sie Morgen-/Abendlauf; Übernahme leert die Liste. Ist ROUTINE_FIRE_* gesetzt, wird direkt gefeuert.
+
 ## Offene Schritte für Peer (am 21.10. ~17:35 als Anleitung geschickt)
 Prüfen: `gh secret list -R pennyboberde-source/schattendepot` · `RemoteTrigger list`
 1. Secrets: FINNHUB_API_KEY, TWELVEDATA_API_KEY, FMP_API_KEY, ALPHAVANTAGE_API_KEY, (FRED_API_KEY empfohlen). CoinGecko/OpenFIGI erst M7.
