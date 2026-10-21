@@ -83,7 +83,7 @@ export interface Ausfuehrung {
   stueck: number;
   kurs: number;
   kurswert: number;
-  entgelt: { provision: number; handelsplatz: number; gesamt: number; stufe: string; freetrade: boolean };
+  entgelt: { provision: number; handelsplatz: number; gesamt: number };
   betrag: number;
   kursquelle: string;
   synthetisch: boolean;

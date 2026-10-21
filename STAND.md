@@ -3,7 +3,7 @@
 _Zuletzt aktualisiert: 21.10.2026 (Sitzung 1)_
 
 ## Phase
-**Meilenstein 1 – Grundgerüst: ERLEDIGT** (21.10.2026). Warte auf Peers „weiter“ für **Meilenstein 2** (Kurswächter + Web Push + Kalender-Abo).
+**Meilenstein 1 – Grundgerüst: ERLEDIGT** (21.10.2026). **Meilenstein 2** (Kurswächter + Web Push + Kalender-Abo) läuft – Peer will ohne Halt bis zum Nutzungslimit.
 
 - Repo: https://github.com/pennyboberde-source/schattendepot (öffentlich, Default-Branch `main`, Branch `daten` existiert)
 - App: https://pennyboberde-source.github.io/schattendepot/
@@ -17,7 +17,7 @@ _Zuletzt aktualisiert: 21.10.2026 (Sitzung 1)_
   `$env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User')`
 - Lokales Git-Repo `main` initialisiert (noch kein Commit, noch kein Remote). Git-Identität noch nicht gesetzt → nach Login die GitHub-noreply-Adresse verwenden (nicht die private Mail).
 - Projekt-Gerüst: `package.json` (Versionen wie Feierabend + ajv, workbox), `tsconfig.json` (+ `tsconfig.sw.json` für den Service Worker), `vite.config.ts` (injectManifest, Dev-Server liefert `/daten/` aus `_daten/` bzw. `demo/daten/`), `.gitignore`, `.gitattributes`, `index.html`, Icons (aus `public/favicon.svg` per `npm run icons`).
-- `config/`: `gebuehren.json` (Consorsbank inkl. Statusstufen/Freetrades), `steuern.json`, `spreads.json`, `einstellungen.json`.
+- `config/`: `gebuehren.json` (Consorsbank **immer Standardpreis**, keine Stufen/Freetrades – Vorgabe Peer), `steuern.json`, `spreads.json`, `einstellungen.json`.
 - `core/` (getestet, 27 Unit-Tests grün): `geld.ts` (Rundung, de-Format), `gebuehren.ts`, `steuern.ts` (Verlustverrechnung Aktien/Sonstige, Vortrag, Teilfreistellung, KiSt, Pauschbetrag), `spreads.ts`, `rendite.ts` (Stückzahl, Kauf/Verkauf, Ergebnis, Zielkurs nach Gebühren per Bisektion), `typen.ts` (Datenmodell).
 - App (`src/`): Tabs Übersicht, Briefing, Abgeschlossen, Lernen, Quellen, Einstellungen + Order-Detail; Pflichthinweis fix über der Tab-Leiste; Service Worker mit Push-Handler und NetworkFirst für `/daten/`; „Fehler melden“ (GitHub-Issue), „In Claude besprechen“ (claude.ai/new?q=…), „Auf GitHub ändern“ für `config/`, Kalender-Abo-Link, JSON-Export, lokale Anzeige-Option „nach Steuern“.
 - `scripts/`: `demo-daten.ts` (Demo-Daten aus core berechnet), `daten-einbinden.mjs`, `gen-icons.mjs`.
@@ -50,6 +50,8 @@ GitHub CLI bricht bei sporadischen HTTP-503 im Device-Flow ab, und PowerShell-Pi
 - **iPadOS Web Push:** ab 16.4 nur für zum Home-Bildschirm hinzugefügte Web-Apps (Safari), Anmeldung nur nach Nutzer-Tipp, VAPID-Standard. Peers iPad: **iPadOS 26.2** ✓.
 
 ## Antworten von Peer
+- **21.10.: „Mach so lange automatisch weiter, bis das Nutzungslimit kommt.“** → Meilensteine ohne Halt nacheinander abarbeiten; STAND.md nach jedem Schritt pflegen. Neue Sitzung: einfach beim nächsten Schritt weitermachen.
+- **Gebühren: immer Standardpreis, keine Freetrades, keine Stufen.**
 - Plan bestätigt; Git/gh per winget erlaubt; öffentliches Repo `schattendepot` ok.
 - iPadOS 26.2.
 - Konnektoren Alpha Vantage, FMP, Crypto.com sind in claude.ai verbunden.

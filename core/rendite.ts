@@ -28,7 +28,7 @@ export function verkaufen(stueck: number, geld: number, cfg: GebuehrenConfig, op
   const kurswert = runde(stueck * geld);
   // Restwert 0 (z. B. Knock-out ohne Restwert): keine Order, kein Entgelt.
   if (kurswert <= 0) {
-    return { stueck, kurs: geld, kurswert: 0, entgelt: { provision: 0, handelsplatz: 0, gesamt: 0, stufe: '-', freetrade: false }, betrag: 0 };
+    return { stueck, kurs: geld, kurswert: 0, entgelt: { provision: 0, handelsplatz: 0, gesamt: 0 }, betrag: 0 };
   }
   const entgelt = orderentgelt(kurswert, cfg, opt);
   return { stueck, kurs: geld, kurswert, entgelt, betrag: runde(kurswert - entgelt.gesamt) };

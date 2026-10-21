@@ -25,7 +25,7 @@ export function EinstellungenView() {
   const [nachSteuern, setNachSteuern] = useEinstellung('nachSteuern', false);
   const bearbeiten = konfigBearbeitenUrl('einstellungen.json');
   const fehlerUrl = fehlerMeldenUrl('Einstellungen');
-  const stufe = gebuehren.stufen[0];
+  const stufe = gebuehren.orderentgelt;
 
   return (
     <div class="seite">
@@ -98,8 +98,8 @@ export function EinstellungenView() {
           <dd>
             {stufe.grundpreis.toLocaleString('de-DE')} € + {stufe.prozent.toLocaleString('de-DE')} %, mind. {stufe.min.toLocaleString('de-DE')} €, max. {stufe.max} € + Handelsplatz
           </dd>
-          <dt>Status-Aufstieg simulieren</dt>
-          <dd>{gebuehren.statusSimulation ? 'an' : 'aus'}</dd>
+          <dt>Status/Freetrades</dt>
+          <dd>keine – immer Standardpreis</dd>
           <dt>Steuern</dt>
           <dd>
             {steuern.aktiv ? `${prozent(steuersatz(steuern as SteuerConfig) * 100, { vorzeichen: false, stellen: 3 })} mit Verlustverrechnung` : 'aus'}
