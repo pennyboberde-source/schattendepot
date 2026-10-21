@@ -17,6 +17,8 @@ export interface WaechterEinstellungen {
   ereignisSchwelleProzent: number;
   ereignisLaeufeProTag: number;
   ausfallWarnungUhrzeit: string;
+  /** erst ab Live-Start (Meilenstein 6) einschalten */
+  ausfallWarnungAktiv?: boolean;
 }
 
 export interface WaechterKontext {
@@ -185,7 +187,13 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
   }
 
   const b = berlin(jetzt);
-  if (istHandelstag(b.datum) && b.minuten >= uhrzeitMinuten(cfg.einstellungen.ausfallWarnungUhrzeit) && !ctx.heute.vorgemerkt && !ctx.heute.ausfallWarnung) {
+  if (
+    cfg.einstellungen.ausfallWarnungAktiv !== false &&
+    istHandelstag(b.datum) &&
+    b.minuten >= uhrzeitMinuten(cfg.einstellungen.ausfallWarnungUhrzeit) &&
+    !ctx.heute.vorgemerkt &&
+    !ctx.heute.ausfallWarnung
+  ) {
     ereignisse.push(ev('warnung', undefined, { art: 'ausfall', text: 'Morgenlauf ausgefallen – heute noch keine Order' }));
   }
 

@@ -58,6 +58,7 @@ export interface Einstellungen {
   ereignisSchwelleProzent: number;
   ereignisLaeufeProTag: number;
   ausfallWarnungUhrzeit: string;
+  ausfallWarnungAktiv?: boolean;
   ruhezeit: { von: string; bis: string };
   pushTypen: Record<string, boolean>;
   vergleichsEtf: { name: string; isin: string };
