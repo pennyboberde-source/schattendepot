@@ -28,8 +28,11 @@ import { sec8k } from './quellen/sec.ts';
 import { finra } from './quellen/finra.ts';
 import { gettexScanner } from './quellen/gettexscanner.ts';
 import { anreichern } from './quellen/anreicherung.ts';
+import { aufmerksamkeit } from './quellen/aufmerksamkeit.ts';
+import { youtube } from './quellen/youtube.ts';
+import { kalenderEffekte } from '../core/kalendereffekte.ts';
 
-const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner];
+const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube];
 const STARK_NEGATIV = new Set(['prognose_senkung', 'gewinn_enttaeuschung', 'analysten_abstufung']);
 const STARK = new Set([...STARK_NEGATIV, 'uebernahmeangebot', 'prognose_erhoehung']);
 
@@ -138,7 +141,7 @@ if (laufart === 'haupt' || laufart === 'samstag') {
   const daten: LagebildDaten = {
     datum: b.datum,
     erstellt: jetzt.toISOString(),
-    makro: ergebnisse.flatMap(([, r]) => r?.makro ?? []),
+    makro: [...kalenderEffekte(b.datum).map((k) => `Kalender: ${k}`), ...ergebnisse.flatMap(([, r]) => r?.makro ?? [])],
     termine: ergebnisse.flatMap(([, r]) => r?.termine ?? []),
     meldungen: meldungen.filter((m) => !offen.some((o) => o.name === m.wertpapier)).sort((x, y) => (y.zeit ?? '').localeCompare(x.zeit ?? '')),
     insider: ergebnisse.flatMap(([, r]) => r?.insider ?? []),

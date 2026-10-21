@@ -12,6 +12,14 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 - `ausfallWarnungAktiv: true`.
 - Erster echter Morgenlauf: Do 22.10. 07:40. **Nächste Sitzung: Lauf prüfen** (`RemoteTrigger list_runs` trig_01TAvkP41ZEYZE9azpzewhPq, `get_run_log`), daten/laeufe/, Positionen, Pushes; Verbrauch nach einer Woche prüfen (ggf. Modell → Sonnet per `RemoteTrigger update`).
 
+## Frühe Signale + unkonventionelle Quellen (21.10. nachts)
+- Wikipedia-Seitenaufrufe (`jobs/quellen/aufmerksamkeit.ts`, `wiki`-Titel in `config/universum.json`): Spitze ≥ 3× Median der Vortage und ≥ 2.000 Aufrufe → `stimmung_social`.
+- Kalender-Effekte (`core/kalendereffekte.ts`): Verfall, Monats-/Quartalswechsel, Tag vor Feiertag → im Makro-Teil des Lagebilds.
+- YouTube Data API v3 (`jobs/quellen/youtube.ts`, Secret `YOUTUBE_API_KEY`, optional): 4 Suchen im Hauptlauf (400 von 10.000 Einheiten), Wert ab 2 viel gesehenen Videos → Stimmung. Speichert nur eigene Zählung (Richtlinien YouTube API). Ohne Schlüssel wird die Quelle übersprungen.
+- Bewusst nicht: Instagram/Facebook/TikTok/X (Bedingungen verbieten Auslesen), Presse-Verteiler (sperren Bots). Routinen dürfen kostenlose Berichte (IR-Seiten, EDGAR, EZB/Bundesbank/Destatis/Fed) lesen.
+- Ehrliche Einordnung: kein Geschwindigkeitsvorteil möglich; Chancen liegen in langsamen Mustern (Insider-Cluster, Drift nach Zahlen, Analysten-Trend, Aufmerksamkeit). Hürde 2,2 % Gebühren.
+- Vorschläge: USAspending (Staatsaufträge), openFDA (Zulassungen) – Zuordnung zu Tickern aufwendig.
+
 ## Selbstlernen erweitert (21.10. spätabends)
 - `core/lernhinweise.ts`: Code leitet aus der Statistik Hinweise ab (Kalibrierung, Strategien/Haltedauer/Anlageklasse, Verkaufsgründe, Spekulativ vs. normal, Pflicht vs. Überzeugung, stärkste/schwächste Signale) → `statistik.lernhinweise` + in `zusammenfassung` (Kontext der Routinen) + Lernen-Ansicht. `wirksamesRisikoBudget` lernt mit (ab 10 spekulativen Orders; Leitplanken 10–50 %, 1–2 je Lauf) → `statistik.risikoBudget`, von der Übernahme verwendet.
 - Nutzer: „eigenständig lernen, verbessern, gewinnen“ – kein menschliches Urteil nötig.
@@ -63,7 +71,7 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 - D: App auf Home-Bildschirm + Mitteilungen erlauben + Secret PUSH_SUBSCRIPTION (bis dahin werden Pushes nur protokolliert, siehe daten/pushes.json). Danach `gh workflow run test-push.yml`.
 - github.com/settings/emails: „Keep my email addresses private“ + „Block command line pushes …“ (Claude fehlt Scope `user`).
 - A: Historie bereinigen nur nach ausdrücklichem „Ja, Historie bereinigen“.
-- Optional: FRED_API_KEY, SEC_KONTAKT (Kontakt-Mail für SEC – nur wenn gewünscht), Kalender-Abo.
+- Optional: YOUTUBE_API_KEY (Google-Cloud-Projekt ohne Zahlungsdaten), FRED_API_KEY, SEC_KONTAKT (Kontakt-Mail für SEC – nur wenn gewünscht), Kalender-Abo.
 
 ## (alt) Offene Schritte für den Nutzer (am 21.10. ~17:35 als Anleitung geschickt)
 Prüfen: `gh secret list -R pennyboberde-source/schattendepot` · `RemoteTrigger list`

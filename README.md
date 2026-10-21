@@ -71,8 +71,14 @@ Sa     Datensammler (Gewichte anpassen) → Wochenrückblick 📊
 | ApeWisdom | – | – | 1/Tag | Reddit-Erwähnungen (Stimmung, geringes Gewicht) |
 | tagesschau, Handelsblatt, FAZ, CNBC, MarketWatch (RSS) | – | – | je 1 pro Lauf | Schlagzeilen → Signale über Stichworte |
 | GDELT | – | zurückhaltend nutzen | je offene Position/Lauf | Nachrichten zu Positionen |
+| Wikipedia (Wikimedia-Seitenaufrufe) | – | frei, mit Kennung im User-Agent | ~40/Tag | Aufmerksamkeits-Spitzen (≥ 3× üblich) als frühes Stimmungssignal |
+| YouTube Data API v3 | `YOUTUBE_API_KEY` (optional) | 10.000 Einheiten/Tag, ohne Zahlungsdaten | 4 Suchen/Tag (400 Einheiten) | Viel gesehene Börsenvideos → erwähnte Werte (nur Stimmung, geringes Gewicht) |
+| SEC EDGAR 8-K | `SEC_KONTAKT` (optional) | 10 Abfragen/Sek. mit Kontaktangabe | stündlich | Pflichtmeldungen US-Firmen |
+| Kalender-Effekte | – | reiner Code | jeder Lauf | Verfallstage, Monats-/Quartalswechsel, Tag vor Feiertag |
 
-Bewusst **nicht** genutzt: BaFin-Datenbank und Bundesanzeiger-Leerverkäufe (robots.txt verbietet automatisierten Abruf), Yahoo Finance (Nutzungsbedingungen verbieten automatisierten Abruf), Google-News-RSS (per robots.txt gesperrt), Tradegate-JSON (per robots.txt gesperrt), EQS (sperrt KI-Bots). Vorschläge für später: BaFin-Datenbank Eigengeschäfte, Bundesanzeiger Leerverkäufe, SEC 8-K, Wikipedia-Seitenaufrufe, CoinGecko, OpenFIGI.
+Bewusst **nicht** genutzt: BaFin-Datenbank und Bundesanzeiger-Leerverkäufe (robots.txt verbietet automatisierten Abruf), Yahoo Finance (Nutzungsbedingungen verbieten automatisierten Abruf), Google-News-RSS (per robots.txt gesperrt), Tradegate-JSON (per robots.txt gesperrt), EQS (sperrt KI-Bots), Presse-Verteiler PR Newswire/GlobeNewswire/Business Wire (sperren Bots), Instagram/Facebook/TikTok/X (Nutzungsbedingungen verbieten automatisiertes Auslesen; offizielle Schnittstellen nur für eigene Konten). Vorschläge für später: USAspending (US-Staatsaufträge), openFDA (Zulassungen), CoinGecko.
+
+YouTube-Daten kommen ausschließlich über die offiziellen YouTube API Services; es gelten die [YouTube-Nutzungsbedingungen](https://www.youtube.com/t/terms) und die [Google-Datenschutzerklärung](https://policies.google.com/privacy). Gespeichert wird nur die eigene Zählung, keine Titel oder Video-IDs.
 
 ## Kosten und Limits
 

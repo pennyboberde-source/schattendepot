@@ -56,3 +56,21 @@ describe('Anreicherung', () => {
     expect(nachzahlenDrift(k, 1, jetzt)).toBeNull();
   });
 });
+
+import { aufmerksamkeitsSpitze } from './aufmerksamkeit.ts';
+describe('Wikipedia-Aufmerksamkeit', () => {
+  it('Spitze ab 3× Median und Mindestaufrufen', () => {
+    expect(aufmerksamkeitsSpitze([1000, 1100, 900, 1200, 1000, 1050, 950, 4000])?.faktor).toBe(4);
+    expect(aufmerksamkeitsSpitze([100, 110, 90, 120, 100, 400])).toBeNull();
+    expect(aufmerksamkeitsSpitze([1000, 1100, 900, 1200, 2000])).toBeNull();
+  });
+});
+
+import { youtubeWerte } from './youtube.ts';
+describe('YouTube-Titel', () => {
+  it('$TICKER und Namen aus dem Universum', () => {
+    const u = [{ name: 'Nvidia', ticker: 'NVDA', aliase: ['nvidia'] }];
+    expect(youtubeWerte('Why $PLTR and Nvidia will EXPLODE this week', u)).toEqual([{ name: 'PLTR', ticker: 'PLTR' }, { name: 'Nvidia', ticker: 'NVDA' }]);
+    expect(youtubeWerte('Stock market today', u)).toEqual([]);
+  });
+});

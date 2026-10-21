@@ -1,82 +1,606 @@
 {
   "hinweis": "Werte für die Zuordnung von Schlagzeilen (Namen/Aliase) und Kursbasis-Vorschläge. Ticker im FMP-Format (.DE = Xetra). ISINs ergänzt Claude bei der Order (prüfen!). Erweiterbar.",
   "werte": [
-    { "name": "Adidas", "ticker": "ADS.DE", "aliase": ["adidas"] },
-    { "name": "Airbus", "ticker": "AIR.DE", "aliase": ["airbus"] },
-    { "name": "Allianz", "ticker": "ALV.DE", "aliase": ["allianz"] },
-    { "name": "BASF", "ticker": "BAS.DE", "aliase": ["basf"] },
-    { "name": "Bayer", "ticker": "BAYN.DE", "aliase": ["bayer"] },
-    { "name": "Beiersdorf", "ticker": "BEI.DE", "aliase": ["beiersdorf", "nivea"] },
-    { "name": "BMW", "ticker": "BMW.DE", "aliase": ["bmw"] },
-    { "name": "Brenntag", "ticker": "BNR.DE", "aliase": ["brenntag"] },
-    { "name": "Commerzbank", "ticker": "CBK.DE", "aliase": ["commerzbank"] },
-    { "name": "Continental", "ticker": "CON.DE", "aliase": ["continental"] },
-    { "name": "Daimler Truck", "ticker": "DTG.DE", "aliase": ["daimler truck"] },
-    { "name": "Deutsche Bank", "ticker": "DBK.DE", "aliase": ["deutsche bank"] },
-    { "name": "Deutsche Börse", "ticker": "DB1.DE", "aliase": ["deutsche börse", "deutsche boerse"] },
-    { "name": "DHL Group", "ticker": "DHL.DE", "aliase": ["dhl", "deutsche post"] },
-    { "name": "Deutsche Telekom", "ticker": "DTE.DE", "aliase": ["deutsche telekom", "telekom"] },
-    { "name": "E.ON", "ticker": "EOAN.DE", "aliase": ["e.on", "eon"] },
-    { "name": "Fresenius", "ticker": "FRE.DE", "aliase": ["fresenius"] },
-    { "name": "Fresenius Medical Care", "ticker": "FME.DE", "aliase": ["fresenius medical care", "fmc"] },
-    { "name": "GEA Group", "ticker": "G1A.DE", "aliase": ["gea"] },
-    { "name": "Hannover Rück", "ticker": "HNR1.DE", "aliase": ["hannover rück", "hannover re"] },
-    { "name": "Heidelberg Materials", "ticker": "HEI.DE", "aliase": ["heidelberg materials", "heidelbergcement"] },
-    { "name": "Henkel", "ticker": "HEN3.DE", "aliase": ["henkel"] },
-    { "name": "Infineon", "ticker": "IFX.DE", "aliase": ["infineon"] },
-    { "name": "Mercedes-Benz", "ticker": "MBG.DE", "aliase": ["mercedes-benz", "mercedes"] },
-    { "name": "Merck KGaA", "ticker": "MRK.DE", "aliase": ["merck kgaa"] },
-    { "name": "MTU Aero Engines", "ticker": "MTX.DE", "aliase": ["mtu aero", "mtu"] },
-    { "name": "Münchener Rück", "ticker": "MUV2.DE", "aliase": ["münchener rück", "munich re"] },
-    { "name": "Porsche AG", "ticker": "P911.DE", "aliase": ["porsche ag"] },
-    { "name": "Porsche SE", "ticker": "PAH3.DE", "aliase": ["porsche se"] },
-    { "name": "Qiagen", "ticker": "QIA.DE", "aliase": ["qiagen"] },
-    { "name": "Rheinmetall", "ticker": "RHM.DE", "aliase": ["rheinmetall"] },
-    { "name": "RWE", "ticker": "RWE.DE", "aliase": ["rwe"] },
-    { "name": "SAP", "ticker": "SAP.DE", "aliase": ["sap"] },
-    { "name": "Scout24", "ticker": "G24.DE", "aliase": ["scout24"] },
-    { "name": "Siemens", "ticker": "SIE.DE", "aliase": ["siemens"] },
-    { "name": "Siemens Energy", "ticker": "ENR.DE", "aliase": ["siemens energy"] },
-    { "name": "Siemens Healthineers", "ticker": "SHL.DE", "aliase": ["siemens healthineers", "healthineers"] },
-    { "name": "Symrise", "ticker": "SY1.DE", "aliase": ["symrise"] },
-    { "name": "Volkswagen", "ticker": "VOW3.DE", "aliase": ["volkswagen", "vw"] },
-    { "name": "Vonovia", "ticker": "VNA.DE", "aliase": ["vonovia"] },
-    { "name": "Zalando", "ticker": "ZAL.DE", "aliase": ["zalando"] },
-    { "name": "Lufthansa", "ticker": "LHA.DE", "aliase": ["lufthansa"] },
-    { "name": "Hensoldt", "ticker": "HAG.DE", "aliase": ["hensoldt"] },
-    { "name": "Renk", "ticker": "R3NK.DE", "aliase": ["renk"] },
-    { "name": "Apple", "ticker": "AAPL", "aliase": ["apple"] },
-    { "name": "Microsoft", "ticker": "MSFT", "aliase": ["microsoft"] },
-    { "name": "Nvidia", "ticker": "NVDA", "aliase": ["nvidia"] },
-    { "name": "Amazon", "ticker": "AMZN", "aliase": ["amazon"] },
-    { "name": "Alphabet", "ticker": "GOOGL", "aliase": ["alphabet", "google"] },
-    { "name": "Meta Platforms", "ticker": "META", "aliase": ["meta platforms", "facebook"] },
-    { "name": "Tesla", "ticker": "TSLA", "aliase": ["tesla"] },
-    { "name": "Broadcom", "ticker": "AVGO", "aliase": ["broadcom"] },
-    { "name": "AMD", "ticker": "AMD", "aliase": ["amd", "advanced micro devices"] },
-    { "name": "Netflix", "ticker": "NFLX", "aliase": ["netflix"] },
-    { "name": "Intel", "ticker": "INTC", "aliase": ["intel"] },
-    { "name": "Oracle", "ticker": "ORCL", "aliase": ["oracle"] },
-    { "name": "Salesforce", "ticker": "CRM", "aliase": ["salesforce"] },
-    { "name": "Adobe", "ticker": "ADBE", "aliase": ["adobe"] },
-    { "name": "Palantir", "ticker": "PLTR", "aliase": ["palantir"] },
-    { "name": "JPMorgan", "ticker": "JPM", "aliase": ["jpmorgan", "jp morgan"] },
-    { "name": "Goldman Sachs", "ticker": "GS", "aliase": ["goldman sachs", "goldman"] },
-    { "name": "Visa", "ticker": "V", "aliase": ["visa"] },
-    { "name": "Mastercard", "ticker": "MA", "aliase": ["mastercard"] },
-    { "name": "Berkshire Hathaway", "ticker": "BRK-B", "aliase": ["berkshire"] },
-    { "name": "Eli Lilly", "ticker": "LLY", "aliase": ["eli lilly", "lilly"] },
-    { "name": "Novo Nordisk", "ticker": "NVO", "aliase": ["novo nordisk"] },
-    { "name": "Pfizer", "ticker": "PFE", "aliase": ["pfizer"] },
-    { "name": "Boeing", "ticker": "BA", "aliase": ["boeing"] },
-    { "name": "Exxon Mobil", "ticker": "XOM", "aliase": ["exxon"] },
-    { "name": "Walmart", "ticker": "WMT", "aliase": ["walmart"] },
-    { "name": "Coca-Cola", "ticker": "KO", "aliase": ["coca-cola"] },
-    { "name": "Disney", "ticker": "DIS", "aliase": ["disney"] },
-    { "name": "Uber", "ticker": "UBER", "aliase": ["uber"] },
-    { "name": "Coinbase", "ticker": "COIN", "aliase": ["coinbase"] },
-    { "name": "MicroStrategy", "ticker": "MSTR", "aliase": ["microstrategy", "strategy inc"] },
-    { "name": "Bitcoin", "ticker": "BTC", "aliase": ["bitcoin"], "krypto": true },
-    { "name": "Ethereum", "ticker": "ETH", "aliase": ["ethereum", "ether"], "krypto": true }
+    {
+      "name": "Adidas",
+      "ticker": "ADS.DE",
+      "aliase": [
+        "adidas"
+      ],
+      "wiki": "Adidas"
+    },
+    {
+      "name": "Airbus",
+      "ticker": "AIR.DE",
+      "aliase": [
+        "airbus"
+      ],
+      "wiki": "Airbus"
+    },
+    {
+      "name": "Allianz",
+      "ticker": "ALV.DE",
+      "aliase": [
+        "allianz"
+      ],
+      "wiki": "Allianz"
+    },
+    {
+      "name": "BASF",
+      "ticker": "BAS.DE",
+      "aliase": [
+        "basf"
+      ],
+      "wiki": "BASF"
+    },
+    {
+      "name": "Bayer",
+      "ticker": "BAYN.DE",
+      "aliase": [
+        "bayer"
+      ],
+      "wiki": "Bayer"
+    },
+    {
+      "name": "Beiersdorf",
+      "ticker": "BEI.DE",
+      "aliase": [
+        "beiersdorf",
+        "nivea"
+      ]
+    },
+    {
+      "name": "BMW",
+      "ticker": "BMW.DE",
+      "aliase": [
+        "bmw"
+      ],
+      "wiki": "BMW"
+    },
+    {
+      "name": "Brenntag",
+      "ticker": "BNR.DE",
+      "aliase": [
+        "brenntag"
+      ]
+    },
+    {
+      "name": "Commerzbank",
+      "ticker": "CBK.DE",
+      "aliase": [
+        "commerzbank"
+      ],
+      "wiki": "Commerzbank"
+    },
+    {
+      "name": "Continental",
+      "ticker": "CON.DE",
+      "aliase": [
+        "continental"
+      ]
+    },
+    {
+      "name": "Daimler Truck",
+      "ticker": "DTG.DE",
+      "aliase": [
+        "daimler truck"
+      ]
+    },
+    {
+      "name": "Deutsche Bank",
+      "ticker": "DBK.DE",
+      "aliase": [
+        "deutsche bank"
+      ],
+      "wiki": "Deutsche_Bank"
+    },
+    {
+      "name": "Deutsche Börse",
+      "ticker": "DB1.DE",
+      "aliase": [
+        "deutsche börse",
+        "deutsche boerse"
+      ]
+    },
+    {
+      "name": "DHL Group",
+      "ticker": "DHL.DE",
+      "aliase": [
+        "dhl",
+        "deutsche post"
+      ]
+    },
+    {
+      "name": "Deutsche Telekom",
+      "ticker": "DTE.DE",
+      "aliase": [
+        "deutsche telekom",
+        "telekom"
+      ],
+      "wiki": "Deutsche_Telekom"
+    },
+    {
+      "name": "E.ON",
+      "ticker": "EOAN.DE",
+      "aliase": [
+        "e.on",
+        "eon"
+      ]
+    },
+    {
+      "name": "Fresenius",
+      "ticker": "FRE.DE",
+      "aliase": [
+        "fresenius"
+      ]
+    },
+    {
+      "name": "Fresenius Medical Care",
+      "ticker": "FME.DE",
+      "aliase": [
+        "fresenius medical care",
+        "fmc"
+      ]
+    },
+    {
+      "name": "GEA Group",
+      "ticker": "G1A.DE",
+      "aliase": [
+        "gea"
+      ]
+    },
+    {
+      "name": "Hannover Rück",
+      "ticker": "HNR1.DE",
+      "aliase": [
+        "hannover rück",
+        "hannover re"
+      ]
+    },
+    {
+      "name": "Heidelberg Materials",
+      "ticker": "HEI.DE",
+      "aliase": [
+        "heidelberg materials",
+        "heidelbergcement"
+      ]
+    },
+    {
+      "name": "Henkel",
+      "ticker": "HEN3.DE",
+      "aliase": [
+        "henkel"
+      ]
+    },
+    {
+      "name": "Infineon",
+      "ticker": "IFX.DE",
+      "aliase": [
+        "infineon"
+      ],
+      "wiki": "Infineon_Technologies"
+    },
+    {
+      "name": "Mercedes-Benz",
+      "ticker": "MBG.DE",
+      "aliase": [
+        "mercedes-benz",
+        "mercedes"
+      ],
+      "wiki": "Mercedes-Benz_Group"
+    },
+    {
+      "name": "Merck KGaA",
+      "ticker": "MRK.DE",
+      "aliase": [
+        "merck kgaa"
+      ]
+    },
+    {
+      "name": "MTU Aero Engines",
+      "ticker": "MTX.DE",
+      "aliase": [
+        "mtu aero",
+        "mtu"
+      ]
+    },
+    {
+      "name": "Münchener Rück",
+      "ticker": "MUV2.DE",
+      "aliase": [
+        "münchener rück",
+        "munich re"
+      ]
+    },
+    {
+      "name": "Porsche AG",
+      "ticker": "P911.DE",
+      "aliase": [
+        "porsche ag"
+      ]
+    },
+    {
+      "name": "Porsche SE",
+      "ticker": "PAH3.DE",
+      "aliase": [
+        "porsche se"
+      ]
+    },
+    {
+      "name": "Qiagen",
+      "ticker": "QIA.DE",
+      "aliase": [
+        "qiagen"
+      ]
+    },
+    {
+      "name": "Rheinmetall",
+      "ticker": "RHM.DE",
+      "aliase": [
+        "rheinmetall"
+      ],
+      "wiki": "Rheinmetall"
+    },
+    {
+      "name": "RWE",
+      "ticker": "RWE.DE",
+      "aliase": [
+        "rwe"
+      ]
+    },
+    {
+      "name": "SAP",
+      "ticker": "SAP.DE",
+      "aliase": [
+        "sap"
+      ],
+      "wiki": "SAP"
+    },
+    {
+      "name": "Scout24",
+      "ticker": "G24.DE",
+      "aliase": [
+        "scout24"
+      ]
+    },
+    {
+      "name": "Siemens",
+      "ticker": "SIE.DE",
+      "aliase": [
+        "siemens"
+      ],
+      "wiki": "Siemens"
+    },
+    {
+      "name": "Siemens Energy",
+      "ticker": "ENR.DE",
+      "aliase": [
+        "siemens energy"
+      ],
+      "wiki": "Siemens_Energy"
+    },
+    {
+      "name": "Siemens Healthineers",
+      "ticker": "SHL.DE",
+      "aliase": [
+        "siemens healthineers",
+        "healthineers"
+      ]
+    },
+    {
+      "name": "Symrise",
+      "ticker": "SY1.DE",
+      "aliase": [
+        "symrise"
+      ]
+    },
+    {
+      "name": "Volkswagen",
+      "ticker": "VOW3.DE",
+      "aliase": [
+        "volkswagen",
+        "vw"
+      ],
+      "wiki": "Volkswagen"
+    },
+    {
+      "name": "Vonovia",
+      "ticker": "VNA.DE",
+      "aliase": [
+        "vonovia"
+      ]
+    },
+    {
+      "name": "Zalando",
+      "ticker": "ZAL.DE",
+      "aliase": [
+        "zalando"
+      ],
+      "wiki": "Zalando"
+    },
+    {
+      "name": "Lufthansa",
+      "ticker": "LHA.DE",
+      "aliase": [
+        "lufthansa"
+      ],
+      "wiki": "Lufthansa"
+    },
+    {
+      "name": "Hensoldt",
+      "ticker": "HAG.DE",
+      "aliase": [
+        "hensoldt"
+      ]
+    },
+    {
+      "name": "Renk",
+      "ticker": "R3NK.DE",
+      "aliase": [
+        "renk"
+      ]
+    },
+    {
+      "name": "Apple",
+      "ticker": "AAPL",
+      "aliase": [
+        "apple"
+      ],
+      "wiki": "Apple_Inc."
+    },
+    {
+      "name": "Microsoft",
+      "ticker": "MSFT",
+      "aliase": [
+        "microsoft"
+      ],
+      "wiki": "Microsoft"
+    },
+    {
+      "name": "Nvidia",
+      "ticker": "NVDA",
+      "aliase": [
+        "nvidia"
+      ],
+      "wiki": "Nvidia"
+    },
+    {
+      "name": "Amazon",
+      "ticker": "AMZN",
+      "aliase": [
+        "amazon"
+      ],
+      "wiki": "Amazon_(company)"
+    },
+    {
+      "name": "Alphabet",
+      "ticker": "GOOGL",
+      "aliase": [
+        "alphabet",
+        "google"
+      ],
+      "wiki": "Alphabet_Inc."
+    },
+    {
+      "name": "Meta Platforms",
+      "ticker": "META",
+      "aliase": [
+        "meta platforms",
+        "facebook"
+      ],
+      "wiki": "Meta_Platforms"
+    },
+    {
+      "name": "Tesla",
+      "ticker": "TSLA",
+      "aliase": [
+        "tesla"
+      ],
+      "wiki": "Tesla,_Inc."
+    },
+    {
+      "name": "Broadcom",
+      "ticker": "AVGO",
+      "aliase": [
+        "broadcom"
+      ],
+      "wiki": "Broadcom"
+    },
+    {
+      "name": "AMD",
+      "ticker": "AMD",
+      "aliase": [
+        "amd",
+        "advanced micro devices"
+      ],
+      "wiki": "AMD"
+    },
+    {
+      "name": "Netflix",
+      "ticker": "NFLX",
+      "aliase": [
+        "netflix"
+      ],
+      "wiki": "Netflix"
+    },
+    {
+      "name": "Intel",
+      "ticker": "INTC",
+      "aliase": [
+        "intel"
+      ],
+      "wiki": "Intel"
+    },
+    {
+      "name": "Oracle",
+      "ticker": "ORCL",
+      "aliase": [
+        "oracle"
+      ],
+      "wiki": "Oracle_Corporation"
+    },
+    {
+      "name": "Salesforce",
+      "ticker": "CRM",
+      "aliase": [
+        "salesforce"
+      ]
+    },
+    {
+      "name": "Adobe",
+      "ticker": "ADBE",
+      "aliase": [
+        "adobe"
+      ]
+    },
+    {
+      "name": "Palantir",
+      "ticker": "PLTR",
+      "aliase": [
+        "palantir"
+      ],
+      "wiki": "Palantir_Technologies"
+    },
+    {
+      "name": "JPMorgan",
+      "ticker": "JPM",
+      "aliase": [
+        "jpmorgan",
+        "jp morgan"
+      ]
+    },
+    {
+      "name": "Goldman Sachs",
+      "ticker": "GS",
+      "aliase": [
+        "goldman sachs",
+        "goldman"
+      ]
+    },
+    {
+      "name": "Visa",
+      "ticker": "V",
+      "aliase": [
+        "visa"
+      ]
+    },
+    {
+      "name": "Mastercard",
+      "ticker": "MA",
+      "aliase": [
+        "mastercard"
+      ]
+    },
+    {
+      "name": "Berkshire Hathaway",
+      "ticker": "BRK-B",
+      "aliase": [
+        "berkshire"
+      ]
+    },
+    {
+      "name": "Eli Lilly",
+      "ticker": "LLY",
+      "aliase": [
+        "eli lilly",
+        "lilly"
+      ],
+      "wiki": "Eli_Lilly_and_Company"
+    },
+    {
+      "name": "Novo Nordisk",
+      "ticker": "NVO",
+      "aliase": [
+        "novo nordisk"
+      ],
+      "wiki": "Novo_Nordisk"
+    },
+    {
+      "name": "Pfizer",
+      "ticker": "PFE",
+      "aliase": [
+        "pfizer"
+      ]
+    },
+    {
+      "name": "Boeing",
+      "ticker": "BA",
+      "aliase": [
+        "boeing"
+      ],
+      "wiki": "Boeing"
+    },
+    {
+      "name": "Exxon Mobil",
+      "ticker": "XOM",
+      "aliase": [
+        "exxon"
+      ]
+    },
+    {
+      "name": "Walmart",
+      "ticker": "WMT",
+      "aliase": [
+        "walmart"
+      ]
+    },
+    {
+      "name": "Coca-Cola",
+      "ticker": "KO",
+      "aliase": [
+        "coca-cola"
+      ]
+    },
+    {
+      "name": "Disney",
+      "ticker": "DIS",
+      "aliase": [
+        "disney"
+      ]
+    },
+    {
+      "name": "Uber",
+      "ticker": "UBER",
+      "aliase": [
+        "uber"
+      ],
+      "wiki": "Uber"
+    },
+    {
+      "name": "Coinbase",
+      "ticker": "COIN",
+      "aliase": [
+        "coinbase"
+      ],
+      "wiki": "Coinbase"
+    },
+    {
+      "name": "MicroStrategy",
+      "ticker": "MSTR",
+      "aliase": [
+        "microstrategy",
+        "strategy inc"
+      ],
+      "wiki": "Strategy_Inc."
+    },
+    {
+      "name": "Bitcoin",
+      "ticker": "BTC",
+      "aliase": [
+        "bitcoin"
+      ],
+      "krypto": true,
+      "wiki": "Bitcoin"
+    },
+    {
+      "name": "Ethereum",
+      "ticker": "ETH",
+      "aliase": [
+        "ethereum",
+        "ether"
+      ],
+      "krypto": true,
+      "wiki": "Ethereum"
+    }
   ]
 }

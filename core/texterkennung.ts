@@ -5,6 +5,8 @@ export interface UniversumWert {
   ticker: string;
   aliase: string[];
   krypto?: boolean;
+  /** Titel des englischen Wikipedia-Artikels (für Aufmerksamkeits-Signale) */
+  wiki?: string;
 }
 
 /** Findet erwähnte Werte; längste Aliase zuerst (z. B. „Siemens Energy“ vor „Siemens“), ganze Wörter. */

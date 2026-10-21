@@ -48,6 +48,7 @@ jobs:
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
           OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
           SEC_KONTAKT: ${{ secrets.SEC_KONTAKT }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ROUTINE_FIRE_URL: ${{ secrets.ROUTINE_FIRE_URL }}
           ROUTINE_FIRE_TOKEN: ${{ secrets.ROUTINE_FIRE_TOKEN }}
         run: node jobs/sammler.ts "${{ github.event.inputs.laufart || 'auto' }}"
