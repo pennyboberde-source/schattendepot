@@ -2,6 +2,16 @@
 
 _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 
+## 🚀 LIVE seit 21.10.2026 ~18:15 Berlin
+- Routinen (claude.ai, per RemoteTrigger angelegt, Umgebung `env_01BSC8PJ9ffzbBH7oX6fy8wc` „Default“ = Trusted, keine Variablen; Modell claude-opus-5-5; Konnektoren NUR Alpha Vantage/FMP/Crypto.com Market Data – der Server hängt sonst ALLE Konnektoren an, daher immer explizite Liste übergeben):
+  - Morgenlauf `trig_01TAvkP41ZEYZE9azpzewhPq` – cron `40 5 * * 1-5` (UTC! = 07:40 Sommer / 06:40 Winter)
+  - Abendlauf `trig_01H3UdvCwFfTDni3gumeM5wZ` – cron `17 21 * * 1-5` (= 23:17 Sommer / 22:17 Winter)
+  - Wochenrückblick `trig_01HJbMVApAyYKb9vzdo4rZdQ` – cron `7 8 * * 6` (= 10:07 Sommer / 09:07 Winter)
+  - Kein Ereignislauf-Routine (API-Token nur im Web) → tokenfreier Ersatz über offene-ereignisse.json.
+- Trockenlauf Abendlauf am 21.10. erfolgreich: Routine → `claude/lauf-2026-10-21-abendlauf` → Übernahme (Schema ok) → Branch gelöscht.
+- `ausfallWarnungAktiv: true`.
+- Erster echter Morgenlauf: Do 22.10. 07:40. **Nächste Sitzung: Lauf prüfen** (`RemoteTrigger list_runs` trig_01TAvkP41ZEYZE9azpzewhPq, `get_run_log`), daten/laeufe/, Positionen, Pushes; Verbrauch nach einer Woche prüfen (ggf. Modell → Sonnet per `RemoteTrigger update`).
+
 ## Phase
 - M1 Grundgerüst ✅ · M2 Kurswächter/Push/Kalender ✅ (Code fertig, Live-Test wartet auf Secrets) · M3 Routinen-Anweisungen/Übernahme ✅ (Routinen-Anlage wartet auf Peer, Schritt 3) · M4 Datensammler ✅ (13 Quellen, 9–10 ohne Schlüssel live geprüft)
 - **Jetzt: M5 Lernschleife.** Danach M6 Trockenlauf + Live-Start, dann M7 Quellen-Ausbau.
@@ -31,7 +41,13 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 - Body-Vorlage: `{"name","cron_expression":"32 7 * * 1-5","enabled":false,"job_config":{"ccr":{"environment_id":"default","events":[{"data":{"message":{"content":"Lies routine/morgenlauf.md …","role":"user"},"type":"user","parent_tool_use_id":null}}],"session_context":{"sources":[{"git_repository":{"url":"https://github.com/pennyboberde-source/schattendepot"}}],"model":"claude-opus-5-5"}}},"mcp_connections":[]}` – Zeitzone der Cron-Angabe nach dem Anlegen am Ergebnis prüfen (Server meldet Laufzeit).
 - API-Token für /fire nur im Web erzeugbar → **Ersatz ohne Token gebaut**: `ereignisBehandeln()` → sofort Push + `offene-ereignisse.json`; kontext.mjs zeigt sie Morgen-/Abendlauf; Übernahme leert die Liste. Ist ROUTINE_FIRE_* gesetzt, wird direkt gefeuert.
 
-## Offene Schritte für Peer (am 21.10. ~17:35 als Anleitung geschickt)
+## Offene Schritte für Peer (Stand 21.10. abends)
+- D: App auf Home-Bildschirm + Mitteilungen erlauben + Secret PUSH_SUBSCRIPTION (bis dahin werden Pushes nur protokolliert, siehe daten/pushes.json). Danach `gh workflow run test-push.yml`.
+- github.com/settings/emails: „Keep my email addresses private“ + „Block command line pushes …“ (Claude fehlt Scope `user`).
+- A: Historie bereinigen nur nach ausdrücklichem „Ja, Historie bereinigen“.
+- Optional: FRED_API_KEY, SEC_KONTAKT (Kontakt-Mail für SEC – nur wenn Peer will), Kalender-Abo.
+
+## (alt) Offene Schritte für Peer (am 21.10. ~17:35 als Anleitung geschickt)
 Prüfen: `gh secret list -R pennyboberde-source/schattendepot` · `RemoteTrigger list`
 1. Secrets: FINNHUB_API_KEY, TWELVEDATA_API_KEY, FMP_API_KEY, ALPHAVANTAGE_API_KEY, (FRED_API_KEY empfohlen). CoinGecko/OpenFIGI erst M7.
 2. Claude GitHub App auf `schattendepot` + claude.ai/code mit GitHub verbunden.
