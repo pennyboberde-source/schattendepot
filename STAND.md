@@ -14,6 +14,7 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 
 ## Frühe Signale + unkonventionelle Quellen (21.10. nachts)
 - Wikipedia-Seitenaufrufe (`jobs/quellen/aufmerksamkeit.ts`, `wiki`-Titel in `config/universum.json`): Spitze ≥ 3× Median der Vortage und ≥ 2.000 Aufrufe → `stimmung_social`.
+- Wikimedia-Regeln 2026: User-Agent mit https-Kontakt-URL → 200/Min.; ohne → 10/Min. Quelle pausiert 0,7 s je Abfrage und bricht bei 429 ab (live geprüft 21.10.: 39 Abfragen ok).
 - Kalender-Effekte (`core/kalendereffekte.ts`): Verfall, Monats-/Quartalswechsel, Tag vor Feiertag → im Makro-Teil des Lagebilds.
 - YouTube Data API v3 (`jobs/quellen/youtube.ts`, Secret `YOUTUBE_API_KEY`, optional): 4 Suchen im Hauptlauf (400 von 10.000 Einheiten), Wert ab 2 viel gesehenen Videos → Stimmung. Speichert nur eigene Zählung (Richtlinien YouTube API). Ohne Schlüssel wird die Quelle übersprungen.
 - Bewusst nicht: Instagram/Facebook/TikTok/X (Bedingungen verbieten Auslesen), Presse-Verteiler (sperren Bots). Routinen dürfen kostenlose Berichte (IR-Seiten, EDGAR, EZB/Bundesbank/Destatis/Fed) lesen.
