@@ -1,11 +1,11 @@
 name: Datensammler
 
-# Hauptlauf ~06:30 Berlin (zwei UTC-Zeiten für Sommer-/Winterzeit; der Job entscheidet selbst),
-# stündlich 08–22 Uhr an Handelstagen, samstags ein Lauf für den Wochenrückblick.
+# Hauptlauf ~06:07 Berlin (zwei UTC-Zeiten für Sommer-/Winterzeit; der Job entscheidet selbst) – vor dem
+# Morgenlauf (Routine 05:40 UTC = 07:40 Sommer / 06:40 Winter), stündlich 08–22 Uhr, samstags vor dem Wochenrückblick.
 on:
   schedule:
-    - cron: '27 4 * * 1-5'
-    - cron: '27 5 * * 1-5'
+    - cron: '7 4 * * 1-5'
+    - cron: '7 5 * * 1-5'
     - cron: '7 6-20 * * 1-5'
     - cron: '17 7 * * 6'
   workflow_dispatch:
