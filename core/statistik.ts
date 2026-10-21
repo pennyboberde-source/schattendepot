@@ -46,6 +46,11 @@ export interface Statistik {
   nachQuelle: Record<string, Gruppe>;
   nachAnlageklasse: Record<string, Gruppe>;
   nachRisikoklasse: Record<string, Gruppe>;
+  nachVerkaufsgrund: Record<string, Gruppe>;
+  /** vom Code abgeleitete Lern-Hinweise (ohne menschliches Urteil) */
+  lernhinweise?: string[];
+  /** wirksames, mitlernendes Risiko-Budget */
+  risikoBudget?: import("./lernhinweise.ts").RisikoBudgetWirksam;
   nachHaltedauer: Record<string, Gruppe>;
   nachKonfidenz: Record<string, Gruppe>;
   kalibrierung: { stufe: string; erwartet: number; tatsaechlich: number; anzahl: number }[];
@@ -122,6 +127,7 @@ export function statistikBerechnen(alle: Order[], tracking: TrackingEintrag[], s
     nachQuelle: gruppiert(g, (o) => (o.plan.quellen.length ? o.plan.quellen.map((q) => q.name) : ['(ohne Quelle)'])),
     nachAnlageklasse: gruppiert(g, (o) => [o.plan.wertpapier.anlageklasse]),
     nachRisikoklasse: gruppiert(g, (o) => [o.plan.risikoklasse === 'spekulativ' ? 'spekulativ' : 'normal']),
+    nachVerkaufsgrund: gruppiert(g, (o) => [o.verkauf!.grund]),
     nachHaltedauer: gruppiert(g, (o) => [haltedauer(o)]),
     nachKonfidenz: gruppiert(g, (o) => [KONFIDENZ_STUFEN.find(([, v, b]) => o.plan.konfidenz >= v && o.plan.konfidenz <= b)![0]]),
     kalibrierung,

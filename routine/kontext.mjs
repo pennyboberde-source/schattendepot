@@ -71,6 +71,7 @@ const kennzahlen = await json('kennzahlen.json', null);
 p('## 1. Statistik');
 if (kennzahlen) p(`Abgeschlossen ${kennzahlen.anzahlGeschlossen}, offen ${kennzahlen.anzahlOffen}, Ergebnis nach Gebühren ${kennzahlen.netto} €, Trefferquote ${kennzahlen.trefferquote ?? '–'} %, vs. ETF ${(kennzahlen.netto - kennzahlen.etfNetto).toFixed(2)} €`);
 if (statistik?.zusammenfassung) p(statistik.zusammenfassung);
+if (statistik?.risikoBudget) p(`Risiko-Budget jetzt: max. ${statistik.risikoBudget.maxSpekulativJeLauf} spekulativ je Lauf, max. ${Math.round(statistik.risikoBudget.maxAnteilSpekulativ * 100)} % der Positionen (${statistik.risikoBudget.begruendung})`);
 else p('(noch keine ausführliche Statistik)');
 const gewichte = await json('gewichte.json', null);
 if (gewichte?.signale) p(`Gewichte Signal-Typen: ${Object.entries(gewichte.signale).map(([k, v]) => `${k} ${v}`).join(', ')}`);

@@ -65,6 +65,15 @@ export function LernenView() {
               </div>
             </div>
 
+            <Karte titel="Was das System selbst gelernt hat">
+              {s.lernhinweise && s.lernhinweise.length ? (
+                <ul class="liste">{s.lernhinweise.map((h) => <li key={h}>{h}</li>)}</ul>
+              ) : (
+                <Leer>Noch keine Schlüsse – dafür braucht es genug abgeschlossene Orders.</Leer>
+              )}
+              {s.risikoBudget && <p class="klein">Risiko-Budget: max. {s.risikoBudget.maxSpekulativJeLauf} spekulativ je Lauf, max. {Math.round(s.risikoBudget.maxAnteilSpekulativ * 100)} % der Positionen – {s.risikoBudget.begruendung}</p>}
+            </Karte>
+
             <Karte titel="Kalibrierung – hält die Konfidenz, was sie verspricht?">
               {s.kalibrierung.length === 0 ? (
                 <Leer>Noch keine Daten.</Leer>

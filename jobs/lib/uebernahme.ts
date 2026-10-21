@@ -85,7 +85,8 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
       }
 
       const vorher = ordersAusEreignissen(leseEreignisse());
-      const u = entscheidungUebernehmen(e, vorher, jetzt, cfg.einstellungen);
+      const wirksam = leseJson<{ risikoBudget?: typeof cfg.einstellungen.risikoBudget }>('statistik.json', {}).risikoBudget;
+      const u = entscheidungUebernehmen(e, vorher, jetzt, { ...cfg.einstellungen, risikoBudget: wirksam ?? cfg.einstellungen.risikoBudget });
       const neu = haengeEreignisseAn(u.ereignisse);
       const nachher = ordersAusEreignissen(leseEreignisse());
       const nachId = new Map<string, Order>(nachher.map((o) => [o.id, o]));

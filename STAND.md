@@ -12,6 +12,11 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 - `ausfallWarnungAktiv: true`.
 - Erster echter Morgenlauf: Do 22.10. 07:40. **Nächste Sitzung: Lauf prüfen** (`RemoteTrigger list_runs` trig_01TAvkP41ZEYZE9azpzewhPq, `get_run_log`), daten/laeufe/, Positionen, Pushes; Verbrauch nach einer Woche prüfen (ggf. Modell → Sonnet per `RemoteTrigger update`).
 
+## Selbstlernen erweitert (21.10. spätabends)
+- `core/lernhinweise.ts`: Code leitet aus der Statistik Hinweise ab (Kalibrierung, Strategien/Haltedauer/Anlageklasse, Verkaufsgründe, Spekulativ vs. normal, Pflicht vs. Überzeugung, stärkste/schwächste Signale) → `statistik.lernhinweise` + in `zusammenfassung` (Kontext der Routinen) + Lernen-Ansicht. `wirksamesRisikoBudget` lernt mit (ab 10 spekulativen Orders; Leitplanken 10–50 %, 1–2 je Lauf) → `statistik.risikoBudget`, von der Übernahme verwendet.
+- Peer: „eigenständig lernen, verbessern, gewinnen“ – kein menschliches Urteil nötig.
+- **TODO nach Zeitumstellung (So 25.10.):** Crons per `RemoteTrigger update` auf Winterzeit ziehen, damit Ortszeiten gleich bleiben: Morgenlauf `40 6 * * 1-5` (07:40), Mittagslauf `52 14` bleibt (15:52), Abendlauf `17 21` bleibt (22:17), Wochenrückblick `7 9 * * 6` (10:07); Sammler-Hauptlauf passt automatisch. Ende März umgekehrt.
+
 ## Quellen-Ausbau + Spekulation + Mittagslauf (21.10. spätabends)
 - Neu: `jobs/quellen/finra.ts` (FINRA Reg-SHO-Tagesdateien, Leerverkaufsquote US), `jobs/quellen/gettexscanner.ts` (Kursraketen aus allen gettex-Geschäften der letzten Stunde, Namen via OpenFIGI), `jobs/quellen/anreicherung.ts` (2. Stufe Hauptlauf: Finnhub-Analystentrend `/stock/recommendation` + Drift nach Quartalszahlen über `/quote` dp), Alpha Vantage Top-Gewinner → `kursrakete`. Gelegenheiten des Tages in `daten/gelegenheiten.json`.
 - **BaFin (robots Disallow /) und Bundesanzeiger /nlp (Disallow) bewusst NICHT genutzt.**
