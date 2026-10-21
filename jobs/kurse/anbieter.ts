@@ -4,6 +4,7 @@
 // FMP-Gratis liefert für EU-Symbole HTTP 402 (geprüft 21.10.2026) → für eu nicht abgefragt.
 import type { Kurs, Kursbasis } from '../../core/typen.ts';
 import { holeJson, kontingentFrei, kontingentZaehlen } from '../lib/netz.ts';
+import { schwaerzen } from '../lib/schwaerzen.ts';
 import { parseAlphaVantage, parseFinnhub, parseFmp, parseFrankfurter, parseKraken, parseTwelveData, symbolFuer } from './parser.ts';
 
 interface Anbieter {
@@ -59,7 +60,7 @@ function protokolliere(p: Abrufprotokoll, id: string, ok: boolean, jetzt: Date, 
     p[id].zuletztOk = jetzt.toISOString();
   } else {
     p[id].fehler++;
-    p[id].letzterFehler = `${jetzt.toISOString()}: ${fehler}`;
+    p[id].letzterFehler = schwaerzen(`${jetzt.toISOString()}: ${fehler}`);
   }
 }
 

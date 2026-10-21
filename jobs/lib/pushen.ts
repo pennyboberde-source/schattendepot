@@ -3,6 +3,9 @@ import { createHash } from 'node:crypto';
 import webpush from 'web-push';
 import { zustellen, type PushNachricht } from '../../core/push.ts';
 import { ladeConfig, leseJson, schreibeJson } from './dateien.ts';
+import { logsMaskieren, schwaerzen } from './schwaerzen.ts';
+
+logsMaskieren();
 
 interface PushStatus {
   stand?: string;
@@ -39,7 +42,7 @@ async function sendeEine(sub: webpush.PushSubscription, n: PushNachricht): Promi
     return 'ok';
   } catch (e) {
     const status = (e as { statusCode?: number }).statusCode;
-    console.error(`Push fehlgeschlagen (${status ?? '?'}): ${(e as Error).message}`);
+    console.error(schwaerzen(`Push fehlgeschlagen (${status ?? '?'}): ${(e as Error).message}`));
     return status === 404 || status === 410 ? 'abgelaufen' : 'fehler';
   }
 }

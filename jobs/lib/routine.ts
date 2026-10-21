@@ -1,5 +1,6 @@
 // Löst den Ereignislauf der Claude-Routine über ihren API-Trigger aus (/fire). Kein Anthropic-API-Schlüssel:
 // URL und per-Routine-Token kommen aus den Secrets ROUTINE_FIRE_URL / ROUTINE_FIRE_TOKEN.
+import { schwaerzen } from './schwaerzen.ts';
 
 export async function feuereEreignislauf(text: string): Promise<{ ok: boolean; info: string }> {
   const url = process.env.ROUTINE_FIRE_URL?.trim();
@@ -13,10 +14,10 @@ export async function feuereEreignislauf(text: string): Promise<{ ok: boolean; i
       signal: AbortSignal.timeout(20000),
     });
     const body = await res.text();
-    if (!res.ok) return { ok: false, info: `HTTP ${res.status}: ${body.slice(0, 200)}` };
-    const j = JSON.parse(body) as { claude_code_session_url?: string };
-    return { ok: true, info: j.claude_code_session_url ?? 'gestartet' };
+    if (!res.ok) return { ok: false, info: schwaerzen(`HTTP ${res.status}: ${body.slice(0, 200)}`) };
+    JSON.parse(body);
+    return { ok: true, info: 'gestartet' };
   } catch (e) {
-    return { ok: false, info: (e as Error).message };
+    return { ok: false, info: schwaerzen((e as Error).message) };
   }
 }

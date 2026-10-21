@@ -15,6 +15,7 @@ import { gewichteAnpassen, type Grenzen, type Vorschlag } from '../core/gewichte
 import { abgeleitetSchreiben } from './lib/abgeleitet.ts';
 import { pushen } from './lib/pushen.ts';
 import { feuereEreignislauf } from './lib/routine.ts';
+import { schwaerzen } from './lib/schwaerzen.ts';
 import { trackingAktualisieren } from './lib/tracking.ts';
 import { gdelt } from './quellen/gdelt.ts';
 import { apeWisdom, fred, krakenKrypto } from './quellen/maerkte.ts';
@@ -95,7 +96,7 @@ const ergebnisse = await Promise.all(
       return [q, r];
     } catch (e) {
       kontingentZaehlen(kid, jetzt, 1);
-      st.letzterFehler = `${jetzt.toISOString()}: ${(e as Error).message.replace(/(apikey|token)=[^&\s]+/gi, '$1=***').slice(0, 200)}`;
+      st.letzterFehler = schwaerzen(`${jetzt.toISOString()}: ${(e as Error).message}`).slice(0, 200);
       return [q, null];
     } finally {
       if (q.tageslimit) st.kontingent = { genutzt: kontingentGenutzt(kid, jetzt), limit: q.tageslimit, zeitraum: 'Tag' };
