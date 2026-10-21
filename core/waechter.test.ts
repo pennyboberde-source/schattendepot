@@ -146,6 +146,31 @@ describe('Knock-out', () => {
   });
 });
 
+describe('ETF-Vergleich', () => {
+  it('ETF-Kurs beim Kauf gemerkt, beim Verkauf Vergleich mit gleichen Gebühren', () => {
+    const ev = [vormerkung('a', VORGEMERKT)];
+    const ctx = (jetzt: string, basis: Kurs, etf: number): WaechterKontext => ({
+      jetzt: new Date(jetzt),
+      orders: ordersAusEreignissen(alle),
+      basisKurse: { a: basis },
+      etfKurs: { wert: etf, zeit: jetzt, quelle: 'test' },
+      cfg,
+      heute: { ereignisLaeufe: 0, ereignislaufOrders: [], ausfallWarnung: false, vorgemerkt: true },
+    });
+    let alle = ev;
+    const k = waechterLauf(ctx('2026-10-21T06:00:00Z', kurs(100, '2026-10-21T05:59:00Z'), 110)).ereignisse;
+    expect((k[0].daten as { etf: Kurs }).etf.wert).toBe(110);
+    alle = [...ev, ...k];
+    const v = waechterLauf(ctx('2026-10-21T08:00:00Z', kurs(110, '2026-10-21T07:59:00Z'), 112)).ereignisse;
+    expect(v.map((e) => e.typ)).toEqual(['verkauft', 'etfVergleich']);
+    const etf = v[1].daten as { netto: number; nettoProzent: number };
+    // 9 Stück zu 110,066 € (Brief) = 990,59 € → Verkauf zu 111,933 € (Geld) = 1.007,40 €; je Seite 10,90 € Gebühren
+    expect(etf.netto).toBe(-4.99);
+    const a = ableiten([...alle, ...v], {}, { steuern, gebuehren: cfg.gebuehren, spreads: cfg.spreads }, 's');
+    expect(a.kennzahlen.etfNetto).toBe(-4.99);
+  });
+});
+
 describe('Ausfallsicherung', () => {
   it('ab 10:00 ohne Vormerkung genau eine Warnung', () => {
     const r = lauf([], '2026-10-21T08:00:00Z', {}, { vorgemerkt: false });

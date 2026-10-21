@@ -4,6 +4,7 @@
 import { ordersAusEreignissen } from '../core/ableiten.ts';
 import { benoetigteKursbasis } from '../core/bewertung.ts';
 import { berlin, inHandelszeit } from '../core/kalender.ts';
+import { kalibrierteQuote } from '../core/statistik.ts';
 import type { Kurs } from '../core/typen.ts';
 import { pushesFuerEreignisse, waechterLauf } from '../core/waechter.ts';
 import { holeEurUsd, holeKurs, type Abrufprotokoll } from './kurse/anbieter.ts';
@@ -37,6 +38,7 @@ const kursZeit = inHandelszeit(jetzt) || inHandelszeit(new Date(jetzt.getTime() 
 const protokoll: Abrufprotokoll = {};
 const basisKurse: Record<string, Kurs> = {};
 let eurUsd: number | undefined;
+let etfKurs: Kurs | undefined;
 if (kursZeit && aktiv.length) {
   const cache = new Map<string, Kurs | null>();
   for (const o of aktiv) {
@@ -59,7 +61,13 @@ if (kursZeit && aktiv.length) {
       return false;
     }
   });
-  if (brauchtUsd) eurUsd = await holeEurUsd(jetzt, protokoll);
+  // Vergleichs-ETF (für „Schattendepot vs. ETF“): EUNL über Xetra, sonst URTH (USD) umgerechnet
+  const etf = cfg.einstellungen.vergleichsEtf;
+  const etfDirekt = await holeKurs(etf.kursbasis, jetzt, protokoll);
+  const etfErsatz = etfDirekt ? null : await holeKurs(etf.ersatz, jetzt, protokoll);
+  if (brauchtUsd || etfErsatz) eurUsd = await holeEurUsd(jetzt, protokoll);
+  if (etfDirekt) etfKurs = etfDirekt;
+  else if (etfErsatz && eurUsd) etfKurs = { ...etfErsatz, wert: etfErsatz.wert / eurUsd, synthetisch: true, hinweis: `${etf.ersatz.symbol} umgerechnet` };
 }
 
 const system = leseJson<System>('system.json', {});
@@ -69,6 +77,7 @@ const r = waechterLauf({
   orders,
   basisKurse,
   eurUsd,
+  etfKurs,
   cfg: { gebuehren: cfg.gebuehren, spreads: cfg.spreads, einstellungen: cfg.einstellungen },
   heute: {
     ereignisLaeufe: heuteLaeufe.length,
@@ -99,7 +108,7 @@ system.hinweise = r.hinweise;
 if (Object.keys(protokoll).length) system.kursabrufe = protokoll;
 schreibeJson('system.json', system);
 
-const pushes = [...uebernahme.pushes, ...pushesFuerEreignisse(neu, a.orders)];
+const pushes = [...uebernahme.pushes, ...pushesFuerEreignisse(neu, a.orders, (k) => kalibrierteQuote(a.statistik, k))];
 const gesendet = await pushen(pushes, jetzt);
 console.log(
   `Wächter ${b.datum} ${String(b.stunde).padStart(2, '0')}:${String(b.minute).padStart(2, '0')}: ${aktiv.length} aktiv, ${Object.keys(basisKurse).length} Kurse, ${neu.length} Ereignisse, ${gesendet} Push(es).`,

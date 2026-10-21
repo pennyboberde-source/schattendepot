@@ -4,6 +4,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import type { GebuehrenConfig } from '../core/gebuehren.ts';
 import { ergebnis, kaufen, verkaufen, zielkurs } from '../core/rendite.ts';
+import { statistikBerechnen } from '../core/statistik.ts';
 import { steuernBerechnen, type SteuerConfig } from '../core/steuern.ts';
 import type { Order, OrderPlan } from '../core/typen.ts';
 
@@ -126,4 +127,12 @@ schreibe('lagebild/heute.json', lagebild);
 schreibe('lagebild/2026-10-21.json', lagebild);
 schreibe('quellenstatus.json', { stand, quellen: [{ id: 'demo', name: 'Demo-Quelle', zuletztOk: stand, kontingent: { genutzt: 3, limit: 25, zeitraum: 'Tag' } }] });
 schreibe('lernen/lektionen.md', '# Lektionen (DEMO)\n\n1. Demo-Regel – Beleg: 2026-10-14-demo-a – Stärke: schwach\n');
+const tracking = [
+  { datum: '2026-10-14', schluessel: 'T:ACME', name: 'Acme', ticker: 'ACME', score: 3, typen: ['insider_cluster_kauf'], quellen: ['OpenInsider'], start: 10, r1T: 1.2, r1W: 3.4 },
+  { datum: '2026-10-14', schluessel: 'T:BETA', name: 'Beta', ticker: 'BETA', score: 1, typen: ['nachricht'], quellen: ['CNBC Top News'], start: 20, r1T: -0.5, r1W: -1.1 },
+];
+schreibe('kandidaten-tracking.json', tracking);
+schreibe('statistik.json', statistikBerechnen([...abgeschlossen, offen], tracking, stand));
+schreibe('gewichte.json', { stand, signale: { insider_cluster_kauf: 3.3 }, quellen: { 'CNBC Top News': 0.9 } });
+schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal', name: 'insider_cluster_kauf', alt: 3, neu: 3.3, grund: 'DEMO: Ø 1-Wochen-Rendite 3,4 % (n=9)' }]);
 console.log('Demo-Daten geschrieben nach', ziel);

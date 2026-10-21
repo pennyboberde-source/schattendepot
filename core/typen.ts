@@ -142,6 +142,8 @@ export interface Order {
   anpassungen: Anpassung[];
   letzterKurs?: Kurs;
   ergebnis?: { kursProzent: number; netto: number; nettoProzent: number; gebuehren: number; steuer: number; nachSteuern: number };
+  /** Kurs des Vergleichs-ETFs (EUR) zum Kaufzeitpunkt */
+  etfKauf?: Kurs;
   etfVergleich?: { netto: number; nettoProzent: number };
   bericht?: string;
   verwerfGrund?: string;

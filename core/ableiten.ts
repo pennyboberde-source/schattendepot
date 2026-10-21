@@ -10,7 +10,7 @@ import type { Anpassung, Ausfuehrung, Ereignis, Kurs, Order, OrderPlan, Verkaufs
 
 export interface EreignisDaten {
   vorgemerkt: { plan: OrderPlan; verkaufstermin: string };
-  gekauft: { kauf: Ausfuehrung; zielkurs: number; stopkurs: number };
+  gekauft: { kauf: Ausfuehrung; zielkurs: number; stopkurs: number; etf?: Kurs };
   angepasst: { anpassung: Anpassung };
   verkauft: { verkauf: Ausfuehrung & { grund: Verkaufsgrund }; ergebnis: { kursProzent: number; netto: number; nettoProzent: number; gebuehren: number } };
   verworfen: { grund: string };
@@ -42,7 +42,7 @@ export function ordersAusEreignissen(ereignisse: Ereignis[]): Order[] {
       case 'gekauft': {
         const d = e.daten as unknown as EreignisDaten['gekauft'];
         if (!o || o.status !== 'vorgemerkt') throw new Error(`Kauf ohne Vormerkung: ${e.orderId}`);
-        Object.assign(o, { status: 'offen', kauf: d.kauf, zielkurs: d.zielkurs, stopkurs: d.stopkurs });
+        Object.assign(o, { status: 'offen', kauf: d.kauf, zielkurs: d.zielkurs, stopkurs: d.stopkurs, etfKauf: d.etf });
         break;
       }
       case 'angepasst': {

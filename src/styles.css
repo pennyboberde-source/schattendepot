@@ -391,6 +391,46 @@ a {
   margin: 0 0 10px;
 }
 
+/* Kalibrierung */
+.kalibrierung {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.kal-zeile {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  align-items: center;
+  gap: 12px;
+}
+.kal-balken {
+  position: relative;
+  height: 14px;
+  border-radius: 7px;
+  background: var(--surface-2);
+}
+.kal-ist {
+  height: 100%;
+  border-radius: 7px;
+  background: var(--accent);
+  opacity: 0.8;
+}
+.kal-soll {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 3px;
+  margin-left: -1px;
+  background: var(--text);
+  border-radius: 2px;
+}
+@media (max-width: 600px) {
+  .kal-zeile {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
 /* Bedienelemente */
 .knopfreihe {
   display: flex;

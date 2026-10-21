@@ -1,0 +1,169 @@
+{
+  "stand": "2026-10-21T12:45:00Z",
+  "gesamt": {
+    "anzahl": 2,
+    "treffer": 1,
+    "quote": 50,
+    "oeNetto": -0.59,
+    "oeNachSteuern": -0.58,
+    "summeNetto": -11.6
+  },
+  "nachStrategie": {
+    "insider_kauf": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 4.17,
+      "oeNachSteuern": 3.07,
+      "summeNetto": 40.2
+    },
+    "analysten_hochstufung": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -5.34,
+      "oeNachSteuern": -4.24,
+      "summeNetto": -51.8
+    }
+  },
+  "nachSignalTyp": {
+    "demo-1": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "oeNetto": -0.59,
+      "oeNachSteuern": -0.58,
+      "summeNetto": -11.6
+    }
+  },
+  "nachQuelle": {
+    "Beispielquelle": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "oeNetto": -0.59,
+      "oeNachSteuern": -0.58,
+      "summeNetto": -11.6
+    }
+  },
+  "nachAnlageklasse": {
+    "aktie": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "oeNetto": -0.59,
+      "oeNachSteuern": -0.58,
+      "summeNetto": -11.6
+    }
+  },
+  "nachHaltedauer": {
+    "1–3 Tage": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "oeNetto": -0.59,
+      "oeNachSteuern": -0.58,
+      "summeNetto": -11.6
+    }
+  },
+  "nachKonfidenz": {
+    "60–79 %": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 4.17,
+      "oeNachSteuern": 3.07,
+      "summeNetto": 40.2
+    },
+    "40–59 %": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -5.34,
+      "oeNachSteuern": -4.24,
+      "summeNetto": -51.8
+    }
+  },
+  "kalibrierung": [
+    {
+      "stufe": "40–59 %",
+      "erwartet": 55,
+      "tatsaechlich": 0,
+      "anzahl": 1
+    },
+    {
+      "stufe": "60–79 %",
+      "erwartet": 65,
+      "tatsaechlich": 100,
+      "anzahl": 1
+    }
+  ],
+  "pflicht": {
+    "anzahl": 0,
+    "treffer": 0,
+    "quote": 0,
+    "oeNetto": 0,
+    "oeNachSteuern": 0,
+    "summeNetto": 0
+  },
+  "ueberzeugung": {
+    "anzahl": 2,
+    "treffer": 1,
+    "quote": 50,
+    "oeNetto": -0.59,
+    "oeNachSteuern": -0.58,
+    "summeNetto": -11.6
+  },
+  "erwartetVsTatsaechlich": {
+    "erwartet": 3,
+    "tatsaechlich": -0.59,
+    "anzahl": 2
+  },
+  "etf": {
+    "depotNetto": 0,
+    "etfNetto": 0,
+    "anzahlMitVergleich": 0
+  },
+  "kandidaten": {
+    "gesamt": {
+      "anzahl": 2,
+      "oe1T": 0.35,
+      "oe1W": 1.15,
+      "oe1M": null,
+      "quote1W": 50
+    },
+    "nachSignalTyp": {
+      "insider_cluster_kauf": {
+        "anzahl": 1,
+        "oe1T": 1.2,
+        "oe1W": 3.4,
+        "oe1M": null,
+        "quote1W": 100
+      },
+      "nachricht": {
+        "anzahl": 1,
+        "oe1T": -0.5,
+        "oe1W": -1.1,
+        "oe1M": null,
+        "quote1W": 0
+      }
+    },
+    "nachQuelle": {
+      "OpenInsider": {
+        "anzahl": 1,
+        "oe1T": 1.2,
+        "oe1W": 3.4,
+        "oe1M": null,
+        "quote1W": 100
+      },
+      "CNBC Top News": {
+        "anzahl": 1,
+        "oe1T": -0.5,
+        "oe1W": -1.1,
+        "oe1M": null,
+        "quote1W": 0
+      }
+    }
+  },
+  "zusammenfassung": "Gesamt: 2 Orders, Trefferquote 50 %, Ø -0.59 % nach Gebühren (erwartet waren Ø 3 %).\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 0 % (n=1); 60–79 %: 100 % (n=1)."
+}

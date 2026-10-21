@@ -40,8 +40,20 @@ test('Order-Detail mit Gebührenaufstellung und Claude-Knopf', async ({ page }) 
   await expect(claude).toHaveAttribute('href', /^https:\/\/claude\.ai\/new\?q=/);
 });
 
+test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
+  await page.goto('/#/lernen');
+  await expect(page.getByText('Kalibrierung – hält die Konfidenz, was sie verspricht?')).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Insider-Cluster-Kauf' })).toBeVisible();
+  await expect(page.getByText('3 → 3,3')).toBeVisible();
+});
+
+test('Einstellungen: Push-Hinweis außerhalb der Home-Bildschirm-App', async ({ page }) => {
+  await page.goto('/#/einstellungen');
+  await expect(page.getByText('Zum Home-Bildschirm')).toBeVisible();
+});
+
 test('Keine horizontale Scrollleiste', async ({ page }) => {
-  for (const route of ['/', '/#/briefing', '/#/abgeschlossen', '/#/einstellungen', '/#/order/2026-10-21-demo-c']) {
+  for (const route of ['/', '/#/briefing', '/#/abgeschlossen', '/#/lernen', '/#/einstellungen', '/#/order/2026-10-21-demo-c']) {
     await page.goto(route);
     await page.waitForTimeout(200);
     const breit = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);

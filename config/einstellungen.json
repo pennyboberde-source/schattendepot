@@ -19,6 +19,12 @@
     "warnung": true,
     "wochenrueckblick": true
   },
-  "vergleichsEtf": { "name": "iShares Core MSCI World", "isin": "IE00B4L5Y983" },
+  "vergleichsEtf": {
+    "name": "iShares Core MSCI World",
+    "isin": "IE00B4L5Y983",
+    "kursbasis": { "markt": "eu", "symbol": "EUNL.DE", "waehrung": "EUR" },
+    "ersatz": { "markt": "us", "symbol": "URTH", "waehrung": "USD" }
+  },
+  "tracking": { "kandidatenProTag": 10, "maxAbrufeProLauf": 40 },
   "zeitzone": "Europe/Berlin"
 }

@@ -4,7 +4,7 @@ import { dirname, join } from 'node:path';
 import type { GebuehrenConfig } from '../../core/gebuehren.ts';
 import type { SpreadConfig } from '../../core/spreads.ts';
 import type { SteuerConfig } from '../../core/steuern.ts';
-import type { Ereignis } from '../../core/typen.ts';
+import type { Ereignis, Kursbasis } from '../../core/typen.ts';
 
 export const DATEN_DIR = process.env.DATEN_DIR ?? '_daten';
 const ROOT = process.cwd();
@@ -61,7 +61,8 @@ export interface Einstellungen {
   ausfallWarnungAktiv?: boolean;
   ruhezeit: { von: string; bis: string };
   pushTypen: Record<string, boolean>;
-  vergleichsEtf: { name: string; isin: string };
+  vergleichsEtf: { name: string; isin: string; kursbasis: Kursbasis; ersatz: Kursbasis };
+  tracking: { kandidatenProTag: number; maxAbrufeProLauf: number };
 }
 
 export function ladeConfig() {

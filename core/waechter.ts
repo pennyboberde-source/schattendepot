@@ -2,6 +2,7 @@
 // Ziel/Stop/Termin/Knock-out prüfen, Ereignislauf und Ausfallwarnung auslösen.
 // Grundsatz: nie zu einem Kurs handeln, der zum Entscheidungszeitpunkt schon bekannt war.
 import { instrumentKurs, type EurUsd } from './bewertung.ts';
+import { etfVergleich } from './etf.ts';
 import { runde } from './geld.ts';
 import type { GebuehrenConfig } from './gebuehren.ts';
 import { berlin, inHandelszeit, istHandelstag, uhrzeitMinuten } from './kalender.ts';
@@ -27,6 +28,8 @@ export interface WaechterKontext {
   /** Kurs der Kursbasis je Order-ID (Währung der Kursbasis). Fehlt = kein Kurs verfügbar. */
   basisKurse: Record<string, Kurs>;
   eurUsd?: EurUsd;
+  /** Kurs des Vergleichs-ETFs in Euro (für „Schattendepot vs. ETF“) */
+  etfKurs?: Kurs;
   cfg: { gebuehren: GebuehrenConfig; spreads: SpreadConfig; einstellungen: WaechterEinstellungen };
   heute: { ereignisLaeufe: number; ereignislaufOrders: string[]; ausfallWarnung: boolean; vorgemerkt: boolean };
 }
@@ -119,6 +122,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
           },
           zielkurs: ziel,
           stopkurs: stop,
+          ...(ctx.etfKurs ? { etf: ctx.etfKurs } : {}),
         }),
       );
       continue;
@@ -167,6 +171,10 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
           ergebnis: ergebnis(seiteAus(o), vk),
         }),
       );
+      if (o.etfKauf && ctx.etfKurs) {
+        const v = etfVergleich(o.etfKauf, ctx.etfKurs, cfg, cfg.einstellungen.orderBetrag);
+        if (v) ereignisse.push(ev('etfVergleich', o.id, { ...v, etfKauf: o.etfKauf.wert, etfVerkauf: ctx.etfKurs.wert }));
+      }
       continue;
     }
 

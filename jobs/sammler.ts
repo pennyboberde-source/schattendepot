@@ -11,8 +11,11 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { DATEN_DIR, ladeConfig, leseEreignisse, leseJson, schreibeJson, schreibeText } from './lib/dateien.ts';
 import { kontingentFrei, kontingentGenutzt, kontingentZaehlen } from './lib/netz.ts';
+import { gewichteAnpassen, type Grenzen, type Vorschlag } from '../core/gewichte.ts';
+import { abgeleitetSchreiben } from './lib/abgeleitet.ts';
 import { pushen } from './lib/pushen.ts';
 import { feuereEreignislauf } from './lib/routine.ts';
+import { trackingAktualisieren } from './lib/tracking.ts';
 import { gdelt } from './quellen/gdelt.ts';
 import { apeWisdom, fred, krakenKrypto } from './quellen/maerkte.ts';
 import { openInsider } from './quellen/openinsider.ts';
@@ -136,6 +139,29 @@ if (laufart === 'haupt' || laufart === 'samstag') {
     anzahlSignale: zusammen.length,
   });
   console.log(`Lagebild ${b.datum}: ${zusammen.length} Signale, ${top.length} Kandidaten, Länge ${lagebildMarkdown(daten, typNamen).length} Zeichen.`);
+
+  // Lernschleife: Kandidaten mitverfolgen (Nicht-Käufe), Statistik neu rechnen
+  const abrufe = await trackingAktualisieren(jetzt, {});
+  const { statistik } = abgeleitetSchreiben(jetzt);
+  console.log(`Tracking: ${abrufe} Kursabrufe.`);
+
+  // Samstags: Gewichte anpassen (in Grenzen, ab Mindestfallzahl; Claude-Vorschläge nur, wenn die Daten sie stützen)
+  if (laufart === 'samstag') {
+    const r = gewichteAnpassen(
+      gewichte,
+      signalCfg as SignalConfig & { grenzen: Grenzen },
+      statistik.kandidaten.nachSignalTyp,
+      statistik.kandidaten.nachQuelle,
+      leseJson<Vorschlag[]>('lernen/vorschlaege.json', []),
+      b.datum,
+    );
+    schreibeJson('gewichte.json', { stand: jetzt.toISOString(), ...r.gewichte });
+    const verlauf = leseJson<unknown[]>('lernen/gewichtsaenderungen.json', []);
+    schreibeJson('lernen/gewichtsaenderungen.json', [...r.aenderungen, ...verlauf].slice(0, 300));
+    const offeneVorschlaege = leseJson<Vorschlag[]>('lernen/vorschlaege.json', []);
+    schreibeJson('lernen/vorschlaege.json', offeneVorschlaege.map((v) => r.vorschlaegeErledigt.find((e) => e.name === v.name && e.datum === v.datum && e.art === v.art) ?? v));
+    console.log(`Gewichte: ${r.aenderungen.length} Änderung(en).`);
+  }
 }
 
 // Starke Meldung zu offener Position → Ereignislauf (höchstens 1 pro Tag insgesamt)

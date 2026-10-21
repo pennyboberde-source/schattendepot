@@ -1,0 +1,34 @@
+[
+  {
+    "datum": "2026-10-14",
+    "schluessel": "T:ACME",
+    "name": "Acme",
+    "ticker": "ACME",
+    "score": 3,
+    "typen": [
+      "insider_cluster_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 10,
+    "r1T": 1.2,
+    "r1W": 3.4
+  },
+  {
+    "datum": "2026-10-14",
+    "schluessel": "T:BETA",
+    "name": "Beta",
+    "ticker": "BETA",
+    "score": 1,
+    "typen": [
+      "nachricht"
+    ],
+    "quellen": [
+      "CNBC Top News"
+    ],
+    "start": 20,
+    "r1T": -0.5,
+    "r1W": -1.1
+  }
+]
