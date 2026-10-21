@@ -22,7 +22,8 @@
   "vergleichsEtf": {
     "name": "iShares Core MSCI World",
     "isin": "IE00B4L5Y983",
-    "kursbasis": { "markt": "eu", "symbol": "EUNL.DE", "waehrung": "EUR" },
+    "hinweis": "Kurs über den US-Zwilling iShares MSCI World (URTH), in EUR umgerechnet – für EU-ETFs gibt es keinen Gratis-Intraday-Kurs.",
+    "kursbasis": { "markt": "us", "symbol": "URTH", "waehrung": "USD" },
     "ersatz": { "markt": "us", "symbol": "URTH", "waehrung": "USD" }
   },
   "tracking": { "kandidatenProTag": 10, "maxAbrufeProLauf": 40 },

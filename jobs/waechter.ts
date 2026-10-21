@@ -50,6 +50,13 @@ if (kursZeit && aktiv.length) {
       continue;
     }
     const schluessel = `${kb.markt}:${kb.symbol}`;
+    // EU-Werte: nur Tagesschlusskurs verfügbar (Alpha Vantage, knappes Kontingent) → einmal täglich ab 20:30 Uhr.
+    if (kb.markt === 'eu') {
+      const euCache = leseJson<Record<string, string>>('eu-abrufe.json', {});
+      if (b.minuten < 20 * 60 + 30 || euCache[kb.symbol] === b.datum) continue;
+      euCache[kb.symbol] = b.datum;
+      schreibeJson('eu-abrufe.json', euCache);
+    }
     if (!cache.has(schluessel)) cache.set(schluessel, await holeKurs(kb, jetzt, protokoll));
     const k = cache.get(schluessel);
     if (k) basisKurse[o.id] = k;
@@ -63,11 +70,10 @@ if (kursZeit && aktiv.length) {
   });
   // Vergleichs-ETF (für „Schattendepot vs. ETF“): EUNL über Xetra, sonst URTH (USD) umgerechnet
   const etf = cfg.einstellungen.vergleichsEtf;
-  const etfDirekt = await holeKurs(etf.kursbasis, jetzt, protokoll);
-  const etfErsatz = etfDirekt ? null : await holeKurs(etf.ersatz, jetzt, protokoll);
-  if (brauchtUsd || etfErsatz) eurUsd = await holeEurUsd(jetzt, protokoll);
-  if (etfDirekt) etfKurs = etfDirekt;
-  else if (etfErsatz && eurUsd) etfKurs = { ...etfErsatz, wert: etfErsatz.wert / eurUsd, synthetisch: true, hinweis: `${etf.ersatz.symbol} umgerechnet` };
+  const etfRoh = await holeKurs(etf.kursbasis, jetzt, protokoll);
+  if (brauchtUsd || (etfRoh && etf.kursbasis.waehrung === 'USD')) eurUsd = await holeEurUsd(jetzt, protokoll);
+  if (etfRoh && etf.kursbasis.waehrung === 'EUR') etfKurs = etfRoh;
+  else if (etfRoh && eurUsd) etfKurs = { ...etfRoh, wert: etfRoh.wert / eurUsd, synthetisch: true, hinweis: `${etf.kursbasis.symbol} umgerechnet` };
 }
 
 const system = leseJson<System>('system.json', {});

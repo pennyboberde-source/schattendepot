@@ -1,6 +1,7 @@
 // Kursquellen hinter einer Schnittstelle mit Fallbacks. Gratis-Kontingente werden nie überschritten.
-// Reihenfolge je Markt: us → Finnhub, Twelve Data, FMP, Alpha Vantage; eu → FMP, Alpha Vantage; krypto → Kraken.
-// Yahoo Finance wird bewusst NICHT genutzt (Nutzungsbedingungen verbieten automatisierten Abruf).
+// Reihenfolge je Markt: us → Finnhub, Twelve Data, FMP, Alpha Vantage; eu → Alpha Vantage (nur Tagesschluss); krypto → Kraken.
+// Yahoo Finance (ToS), Stooq und Tradegate-JSON (robots.txt) werden bewusst NICHT genutzt.
+// FMP-Gratis liefert für EU-Symbole HTTP 402 (geprüft 21.10.2026) → für eu nicht abgefragt.
 import type { Kurs, Kursbasis } from '../../core/typen.ts';
 import { holeJson, kontingentFrei, kontingentZaehlen } from '../lib/netz.ts';
 import { parseAlphaVantage, parseFinnhub, parseFmp, parseFrankfurter, parseKraken, parseTwelveData, symbolFuer } from './parser.ts';
@@ -43,7 +44,7 @@ const ANBIETER: Record<string, Anbieter> = {
 
 const REIHENFOLGE: Record<Kursbasis['markt'], string[]> = {
   us: ['finnhub', 'twelvedata', 'fmp', 'alphavantage'],
-  eu: ['fmp', 'alphavantage'],
+  eu: ['alphavantage'],
   krypto: ['kraken'],
 };
 

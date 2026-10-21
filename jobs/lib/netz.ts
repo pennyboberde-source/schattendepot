@@ -39,7 +39,7 @@ export const KONTINGENT: Record<string, number> = {
   finnhub: 3000,
   twelvedata: 700,
   fmp: 150,
-  alphavantage: 5,
+  alphavantage: 8,
   kraken: 5000,
   frankfurter: 200,
 };

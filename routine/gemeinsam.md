@@ -19,9 +19,10 @@ Du bist nur das Urteil. Kurse, Gebühren, Steuern, Ausführung, Statistik und Ge
 - Haltedauer 15 Minuten bis 1 Monat (`verkaufstermin` als ISO-Zeit, UTC mit `Z`). Handelsplatz Standard `TGT` (Tradegate, 08–22 Uhr).
 - Erlaubt: Aktien (DE/EU/US), ETFs/ETCs, Knock-outs/Turbos (long/short, Hebel ≤ 10), Krypto-ETNs. Optionsscheine nicht (kein berechenbarer Kurs).
 - Ausführung erst beim nächsten Kurscheck zum Briefkurs (nach deiner Entscheidung) – plane also nicht mit dem aktuellen Kurs als Kaufkurs.
-- **`kursbasis` ist Pflicht** – sonst kann der Kurswächter keinen Kurs holen und verwirft die Order:
+- **`kursbasis` ist Pflicht** – sonst kann der Kurswächter keinen Kurs holen und verwirft die Order.
+  **Kursqualität (Gratis-Quellen):** US-Werte und Krypto in Echtzeit; **deutsche/EU-Aktien nur mit Tagesschlusskurs** (Kauf/Ziel/Stop werden dort nur einmal täglich am Abend geprüft). Bevorzuge daher US-Werte, Krypto-ETNs und Hebel auf US-Aktien/BTC; deutsche/EU-Aktien nur mit Haltedauer ≥ 3 Handelstage und weitem Stop. Viele deutsche Konzerne haben ein US-Listing (z. B. SAP `SAP`, Deutsche Bank `DB`) – das ergibt Echtzeitkurse.
   - US-Aktie/ETF: `{"markt":"us","symbol":"AAPL","waehrung":"USD"}` (wird in EUR umgerechnet)
-  - Deutsche Aktie/ETF (Xetra): `{"markt":"eu","symbol":"SAP.DE","waehrung":"EUR"}`; andere EU-Börsen: `.PA` Paris, `.AS` Amsterdam, `.MI` Mailand, `.MC` Madrid
+  - Deutsche Aktie/ETF (Xetra, nur Tagesschluss): `{"markt":"eu","symbol":"SAP.DE","waehrung":"EUR"}`; andere EU-Börsen: `.PA` Paris, `.AS` Amsterdam, `.MI` Mailand, `.MC` Madrid
   - Krypto-ETN: `etn.basiswert = {"markt":"krypto","symbol":"BTC","waehrung":"EUR"}`, dazu `anteilProStueck` (Krypto je ETN-Stück laut Emittent) und `kostenProzentJahr`
   - Knock-out/Turbo: reales Produkt mit echter ISIN/WKN und Emittent; `hebel.basiswert.kursbasis` wie oben (**keine Indizes als Basiswert** – dafür gibt es keinen Gratis-Kurs; Aktien oder BTC/ETH nehmen). `basispreis`/`koSchwelle` in der Währung des Basiswerts, `bezugsverhaeltnis` (z. B. 0.1).
 - `steuertopf`: `aktien` für Aktien, sonst `sonstige`. Aktien-ETFs: `teilfreistellung: 0.3`.

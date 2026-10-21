@@ -1,7 +1,7 @@
 // Entscheidungslogik des Kurswächters (rein funktional, ohne Netz): Vormerkungen ausführen,
 // Ziel/Stop/Termin/Knock-out prüfen, Ereignislauf und Ausfallwarnung auslösen.
 // Grundsatz: nie zu einem Kurs handeln, der zum Entscheidungszeitpunkt schon bekannt war.
-import { instrumentKurs, type EurUsd } from './bewertung.ts';
+import { benoetigteKursbasis, instrumentKurs, type EurUsd } from './bewertung.ts';
 import { etfVergleich } from './etf.ts';
 import { runde } from './geld.ts';
 import type { GebuehrenConfig } from './gebuehren.ts';
@@ -43,6 +43,8 @@ export interface WaechterErgebnis {
 }
 
 const VERWERFEN_NACH_STUNDEN = 26;
+/** EU-Werte haben nur Tagesschlusskurse → bis zum übernächsten Abend warten */
+const VERWERFEN_NACH_STUNDEN_TAGESSCHLUSS = 64;
 
 function seiteAus(o: Order): Seite {
   const k = o.kauf!;
@@ -78,8 +80,14 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
     if (o.status === 'vorgemerkt') {
       const alterStd = (jetzt.getTime() - new Date(o.vorgemerktUm).getTime()) / 3600000;
       const neuerKurs = basis && new Date(basis.zeit) > new Date(o.vorgemerktUm);
+      let tagesschluss = false;
+      try {
+        tagesschluss = benoetigteKursbasis(o.plan).markt === 'eu';
+      } catch {
+        /* ohne Kursbasis → normale Frist */
+      }
       if (!neuerKurs || !offenZumHandeln) {
-        if (alterStd > VERWERFEN_NACH_STUNDEN) {
+        if (alterStd > (tagesschluss ? VERWERFEN_NACH_STUNDEN_TAGESSCHLUSS : VERWERFEN_NACH_STUNDEN)) {
           ereignisse.push(ev('verworfen', o.id, { grund: basis ? 'kein neuer Kurs seit der Vormerkung' : 'kein Kurs verfügbar' }));
         }
         continue;
