@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-21T19:06:24.003Z",
+  "stand": "2026-10-21T19:38:55.910Z",
   "gesamt": {
     "anzahl": 0,
     "treffer": 0,
@@ -12,6 +12,8 @@
   "nachSignalTyp": {},
   "nachQuelle": {},
   "nachAnlageklasse": {},
+  "nachRisikoklasse": {},
+  "nachVerkaufsgrund": {},
   "nachHaltedauer": {},
   "nachKonfidenz": {},
   "kalibrierung": [],
@@ -52,5 +54,14 @@
     "nachSignalTyp": {},
     "nachQuelle": {}
   },
-  "zusammenfassung": "Gesamt: 0 Orders, Trefferquote 0 %, Ø 0 % nach Gebühren (erwartet waren Ø 0 %)."
+  "zusammenfassung": "Gesamt: 0 Orders, Trefferquote 0 %, Ø 0 % nach Gebühren (erwartet waren Ø 0 %).",
+  "lernhinweise": [],
+  "risikoBudget": {
+    "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoin-ETNs) – begrenzt, damit das Depot nicht nur daraus besteht.",
+    "maxSpekulativJeLauf": 1,
+    "maxAnteilSpekulativ": 0.3,
+    "stopMinProzent": -25,
+    "mindestKursEuro": 0.01,
+    "begruendung": "Grundeinstellung (erst 0 von 10 spekulativen Orders für eine Anpassung)"
+  }
 }
