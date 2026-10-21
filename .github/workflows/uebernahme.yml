@@ -1,0 +1,48 @@
+name: Übernahme Claude-Lauf
+
+# Ein Routinen-Lauf pusht seine Entscheidung auf claude/lauf-<datum>-<typ> (Branch von main abgezweigt).
+# Diese Action prüft sie gegen schema/entscheidung.schema.json, übernimmt sie in den daten-Branch,
+# sendet die Pushes, deployt und löscht den Branch.
+on:
+  push:
+    branches: ['claude/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: daten-schreiben
+  cancel-in-progress: false
+
+jobs:
+  uebernahme:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Übernahme
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+        run: node jobs/uebernahme.ts
+      - name: Daten sichern
+        id: sichern
+        run: bash scripts/daten-sichern.sh "Übernahme Claude-Lauf $(date -u +%Y-%m-%dT%H:%MZ)"
+      - name: Deploy anstoßen
+        if: steps.sichern.outputs.geaendert == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

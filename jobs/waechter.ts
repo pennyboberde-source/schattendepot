@@ -11,6 +11,7 @@ import { abgeleitetSchreiben } from './lib/abgeleitet.ts';
 import { haengeEreignisseAn, ladeConfig, leseEreignisse, leseJson, schreibeJson } from './lib/dateien.ts';
 import { pushen } from './lib/pushen.ts';
 import { feuereEreignislauf } from './lib/routine.ts';
+import { uebernehmeAlle } from './lib/uebernahme.ts';
 
 interface System {
   stand?: string;
@@ -25,6 +26,8 @@ interface System {
 const jetzt = new Date(process.env.JETZT ?? Date.now());
 const cfg = ladeConfig();
 const b = berlin(jetzt);
+// Liegengebliebene Claude-Ergebnisse zuerst übernehmen (falls deren Action verworfen wurde).
+const uebernahme = process.env.OHNE_UEBERNAHME ? { dateien: 0, pushes: [], geloeschteBranches: [] } : uebernehmeAlle(jetzt);
 const ereignisse = leseEreignisse();
 const orders = ordersAusEreignissen(ereignisse);
 const aktiv = orders.filter((o) => o.status === 'vorgemerkt' || o.status === 'offen');
@@ -96,7 +99,7 @@ system.hinweise = r.hinweise;
 if (Object.keys(protokoll).length) system.kursabrufe = protokoll;
 schreibeJson('system.json', system);
 
-const pushes = pushesFuerEreignisse(neu, a.orders);
+const pushes = [...uebernahme.pushes, ...pushesFuerEreignisse(neu, a.orders)];
 const gesendet = await pushen(pushes, jetzt);
 console.log(
   `Wächter ${b.datum} ${String(b.stunde).padStart(2, '0')}:${String(b.minute).padStart(2, '0')}: ${aktiv.length} aktiv, ${Object.keys(basisKurse).length} Kurse, ${neu.length} Ereignisse, ${gesendet} Push(es).`,
