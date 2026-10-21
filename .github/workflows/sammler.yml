@@ -1,0 +1,61 @@
+name: Datensammler
+
+# Hauptlauf ~06:30 Berlin (zwei UTC-Zeiten für Sommer-/Winterzeit; der Job entscheidet selbst),
+# stündlich 08–22 Uhr an Handelstagen, samstags ein Lauf für den Wochenrückblick.
+on:
+  schedule:
+    - cron: '27 4 * * 1-5'
+    - cron: '27 5 * * 1-5'
+    - cron: '7 6-20 * * 1-5'
+    - cron: '17 7 * * 6'
+  workflow_dispatch:
+    inputs:
+      laufart:
+        description: 'haupt | stuendlich | samstag | auto'
+        default: auto
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: daten-schreiben
+  cancel-in-progress: false
+
+jobs:
+  sammler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Datensammler
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
+          ROUTINE_FIRE_URL: ${{ secrets.ROUTINE_FIRE_URL }}
+          ROUTINE_FIRE_TOKEN: ${{ secrets.ROUTINE_FIRE_TOKEN }}
+        run: node jobs/sammler.ts "${{ github.event.inputs.laufart || 'auto' }}"
+      - name: Daten sichern
+        id: sichern
+        run: bash scripts/daten-sichern.sh "Datensammler $(date -u +%Y-%m-%dT%H:%MZ)"
+      - name: Deploy anstoßen (neues Lagebild)
+        if: steps.sichern.outputs.geaendert == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git -C _daten diff HEAD~1 --name-only | grep -q '^lagebild/'; then gh workflow run deploy.yml --ref main; fi

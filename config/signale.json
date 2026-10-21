@@ -1,0 +1,34 @@
+{
+  "stand": "2026-10-21",
+  "hinweis": "Grundgewichte je Signal-Typ und Quelle. Der Code passt die aktuellen Gewichte (daten/gewichte.json) wöchentlich anhand der Statistik an – nur innerhalb der Grenzen und ab der Mindestfallzahl.",
+  "typen": {
+    "insider_cluster_kauf": { "name": "Insider-Cluster-Kauf", "gewicht": 3.0, "richtung": 1 },
+    "insider_kauf": { "name": "Insider-Kauf", "gewicht": 1.5, "richtung": 1 },
+    "prognose_erhoehung": { "name": "Prognoseerhöhung", "gewicht": 3.0, "richtung": 1 },
+    "prognose_senkung": { "name": "Prognosesenkung", "gewicht": 3.0, "richtung": -1 },
+    "gewinn_ueberraschung": { "name": "Gewinnüberraschung", "gewicht": 2.5, "richtung": 1 },
+    "gewinn_enttaeuschung": { "name": "Gewinnenttäuschung", "gewicht": 2.5, "richtung": -1 },
+    "uebernahmeangebot": { "name": "Übernahmeangebot", "gewicht": 3.0, "richtung": 1 },
+    "grossauftrag": { "name": "Großauftrag", "gewicht": 2.0, "richtung": 1 },
+    "aktienrueckkauf": { "name": "Aktienrückkauf", "gewicht": 1.5, "richtung": 1 },
+    "analysten_hochstufung": { "name": "Analysten-Hochstufung", "gewicht": 1.5, "richtung": 1 },
+    "analysten_abstufung": { "name": "Analysten-Abstufung", "gewicht": 1.5, "richtung": -1 },
+    "kursluecke_nachricht": { "name": "Kurslücke mit Nachricht", "gewicht": 1.5, "richtung": 0 },
+    "volumen_ungewoehnlich": { "name": "Ungewöhnliches Volumen", "gewicht": 1.0, "richtung": 0 },
+    "hoch_52w": { "name": "52-Wochen-Hoch", "gewicht": 1.0, "richtung": 1 },
+    "ueberreaktion": { "name": "Starke Überreaktion", "gewicht": 1.5, "richtung": 0 },
+    "leerverkauf_aenderung": { "name": "Leerverkaufsänderung", "gewicht": 1.0, "richtung": 0 },
+    "stimmung_social": { "name": "Stimmung soziale Medien", "gewicht": 0.5, "richtung": 0 },
+    "quartalstermin": { "name": "Quartalszahlen-Termin", "gewicht": 0.8, "richtung": 0 },
+    "nachricht": { "name": "Nachricht", "gewicht": 0.5, "richtung": 0 },
+    "tagesgewinner": { "name": "Tagesgewinner", "gewicht": 0.8, "richtung": 1 },
+    "tagesverlierer": { "name": "Tagesverlierer", "gewicht": 0.8, "richtung": -1 }
+  },
+  "quellen": {
+    "standardGewicht": 1.0
+  },
+  "grenzen": { "min": 0.25, "max": 3.0, "maxAenderungProWoche": 0.2, "mindestFaelle": 8 },
+  "mehrfachBonus": 0.35,
+  "zusammenfuehrenStunden": 48,
+  "topKandidaten": 30
+}

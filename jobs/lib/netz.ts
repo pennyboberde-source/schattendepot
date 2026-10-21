@@ -50,11 +50,13 @@ interface Zaehler {
 
 const DATEI = 'kontingente.json';
 
-export function kontingentFrei(anbieter: string, jetzt: Date, anzahl = 1): boolean {
+export function kontingentGenutzt(anbieter: string, jetzt: Date): number {
   const z = leseJson<Zaehler>(DATEI, {});
-  const heute = berlin(jetzt).datum;
-  const genutzt = z[anbieter]?.datum === heute ? z[anbieter].genutzt : 0;
-  return genutzt + anzahl <= (KONTINGENT[anbieter] ?? Infinity);
+  return z[anbieter]?.datum === berlin(jetzt).datum ? z[anbieter].genutzt : 0;
+}
+
+export function kontingentFrei(anbieter: string, jetzt: Date, anzahl = 1, limit = KONTINGENT[anbieter] ?? Infinity): boolean {
+  return kontingentGenutzt(anbieter, jetzt) + anzahl <= limit;
 }
 
 export function kontingentZaehlen(anbieter: string, jetzt: Date, anzahl = 1) {
