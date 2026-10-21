@@ -30,6 +30,13 @@ Du bist nur das Urteil. Kurse, Gebühren, Steuern, Ausführung, Statistik und Ge
 - `strategie` aus: quartalszahlen_momentum, insider_kauf, analysten_hochstufung, ueberreaktion_rebound, sektor_rotation, makro_termin, chart_ausbruch, stimmungswelle, uebernahme, sonstige.
 - `signalIds`: IDs aus dem Lagebild (in eckigen Klammern), sonst leer. `quellen`: echte Links.
 
+## Spekulation und Risiko-Budget
+Das Depot ist fiktiv – kalkulierte Risiken sind ausdrücklich erwünscht, um daraus zu lernen. Aber nicht nur Spekulation:
+- `risikoklasse: "spekulativ"` für Small Caps, Penny Stocks (ab 0,01 €), Kursraketen, Biotech-Katalysatoren, Reddit-Momentum, Altcoin-ETNs, enge Knock-outs. Der Code erzwingt: **höchstens 1 spekulative Order je Lauf** und **höchstens 30 % der aktiven Positionen**; Stop nicht weiter als −25 %; Spread 3 % (realistisch teuer).
+- Haltedauer spekulativ eher kurz (Minuten bis wenige Tage), Ziel ambitioniert, Stop konsequent.
+- **Werbe-Warnung:** Aussagen wie „steigt in 3 Tagen von 3 auf 28 Cent“ stammen oft aus bezahlter Werbung („Pump and Dump“). Sie zählen als Stimmung, nicht als Fakt. Kaufen ist erlaubt, wenn es einen unabhängigen Hinweis gibt (echter Handel/Umsatz auf gettex, Pflichtmeldung, Nachricht einer seriösen Quelle) – mit ehrlich niedriger `konfidenz` und dem Risiko in `risiken`.
+- Ob sich Spekulation lohnt, zeigt die Statistik („Normal vs. spekulativ“) – nicht das Bauchgefühl.
+
 ## Ergebnis abliefern (immer gleich)
 1. Datei unter dem Namen schreiben, den `kontext.mjs` oben nennt (Format: `schema/entscheidung.schema.json`).
 2. Prüfen: `npm install --no-save --silent ajv@8 ajv-formats@3` (einmal) und `node routine/pruefen.mjs <datei>` – Fehler beheben, bis ✓.

@@ -19,7 +19,7 @@ const ajv = new Ajv({ allErrors: true, allowUnionTypes: true });
 addFormats(ajv);
 const pruefe = ajv.compile(schema);
 
-const TYP_TEXT: Record<Entscheidung['typ'], string> = { morgenlauf: 'Morgenlauf', abendlauf: 'Abendlauf', ereignislauf: 'Ereignislauf', wochenrueckblick: 'Wochenrückblick' };
+const TYP_TEXT: Record<Entscheidung['typ'], string> = { morgenlauf: 'Morgenlauf', mittagslauf: 'Mittagslauf', abendlauf: 'Abendlauf', ereignislauf: 'Ereignislauf', wochenrueckblick: 'Wochenrückblick' };
 
 function briefingSpeichern(e: Entscheidung) {
   const datei = `lagebild/${e.datum}.json`;

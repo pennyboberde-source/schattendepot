@@ -63,6 +63,7 @@ export interface Einstellungen {
   pushTypen: Record<string, boolean>;
   vergleichsEtf: { name: string; isin: string; kursbasis: Kursbasis; ersatz: Kursbasis };
   tracking: { kandidatenProTag: number; maxAbrufeProLauf: number };
+  risikoBudget: { maxSpekulativJeLauf: number; maxAnteilSpekulativ: number; stopMinProzent: number; mindestKursEuro: number };
 }
 
 export function ladeConfig() {

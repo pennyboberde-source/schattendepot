@@ -34,6 +34,58 @@ export function dateiInfo(url: string): { datum: string; schluessel: string } | 
   return m ? { datum: `${m[1]}-${m[2]}-${m[3]}`, schluessel: `${m[1]}${m[2]}${m[3]}${m[4]}${m[5]}` } : null;
 }
 
+export interface Bewegung {
+  isin: string;
+  erster: number;
+  letzter: number;
+  geschaefte: number;
+  umsatz: number;
+  von: string;
+  bis: string;
+}
+
+/** Alle Geschäfte mehrerer Dateien je ISIN verdichten: erster/letzter Kurs, Anzahl, Umsatz in EUR. */
+export function aggregiere(dateien: { csv: string; datum: string }[]): Map<string, Bewegung> {
+  const m = new Map<string, Bewegung>();
+  for (const { csv, datum } of dateien) {
+    for (const zeile of csv.split('\n')) {
+      const [isin, zeit, waehrung, kurs, stueck] = zeile.split(',');
+      const k = Number(kurs);
+      if (!isin || waehrung !== 'EUR' || !(k > 0)) continue;
+      const t = `${datum}T${(zeit ?? '').slice(0, 12)}Z`;
+      const b = m.get(isin) ?? { isin, erster: k, letzter: k, geschaefte: 0, umsatz: 0, von: t, bis: t };
+      if (t < b.von) Object.assign(b, { von: t, erster: k });
+      if (t >= b.bis) Object.assign(b, { bis: t, letzter: k });
+      b.geschaefte++;
+      b.umsatz += k * (Number(stueck) || 0);
+      m.set(isin, b);
+    }
+  }
+  return m;
+}
+
+/** Kursraketen/-abstürze: starke Bewegung innerhalb des Fensters bei vielen Geschäften und Mindestumsatz. */
+export function auffaellige(m: Map<string, Bewegung>, opt = { minProzent: 15, minGeschaefte: 15, minUmsatz: 20000, max: 10 }): (Bewegung & { prozent: number })[] {
+  return [...m.values()]
+    .map((b) => ({ ...b, prozent: (b.letzter / b.erster - 1) * 100 }))
+    .filter((b) => Math.abs(b.prozent) >= opt.minProzent && b.geschaefte >= opt.minGeschaefte && b.umsatz >= opt.minUmsatz)
+    .sort((a, b) => Math.abs(b.prozent) - Math.abs(a.prozent))
+    .slice(0, opt.max);
+}
+
+/** Lädt die Dateien der letzten `fenster` 15-Minuten-Fenster (Standard: 1 Stunde). */
+export async function gettexFenster(fenster = 4): Promise<{ csv: string; datum: string }[]> {
+  const html = await holeText(SEITE, { header: { Accept: 'text/html' } });
+  const urls = [...new Set(html.match(/https:\/\/erdk\.bayerische-boerse\.de:8000\/[^"' ]+\.csv\.gz/g) ?? [])]
+    .map((u) => ({ u, info: dateiInfo(u) }))
+    .filter((x): x is { u: string; info: { datum: string; schluessel: string } } => !!x.info)
+    .sort((a, b) => b.info.schluessel.localeCompare(a.info.schluessel));
+  const neueste = new Set([...new Set(urls.map((x) => x.info.schluessel))].slice(0, fenster));
+  const out: { csv: string; datum: string }[] = [];
+  for (const { u, info } of urls.filter((x) => neueste.has(x.info.schluessel))) out.push({ csv: await entpacken(u), datum: info.datum });
+  return out;
+}
+
 async function entpacken(url: string): Promise<string> {
   const res = await fetch(url, { headers: { 'User-Agent': 'Schattendepot/0.2 (private Boersen-Simulation)' }, signal: AbortSignal.timeout(30000) });
   if (!res.ok) throw new Error(`gettex HTTP ${res.status}`);

@@ -3,7 +3,7 @@
 import type { Anpassung, Ereignis, Laufquelle, Order, OrderPlan } from './typen.ts';
 
 export interface Entscheidung {
-  typ: 'morgenlauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick';
+  typ: 'morgenlauf' | 'mittagslauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick';
   datum: string;
   erstellt: string;
   briefing?: string[];
@@ -14,6 +14,13 @@ export interface Entscheidung {
   gewichtsvorschlaege?: { art: 'signal' | 'quelle'; name: string; faktor: number; begruendung: string }[];
   wochenrueckblick?: { push: string; text: string };
   notiz?: string;
+}
+
+export interface RisikoBudget {
+  maxSpekulativJeLauf: number;
+  maxAnteilSpekulativ: number;
+  stopMinProzent: number;
+  mindestKursEuro: number;
 }
 
 export interface Uebernahme {
@@ -54,7 +61,7 @@ export function entscheidungUebernehmen(
   e: Entscheidung,
   orders: Order[],
   jetzt: Date,
-  cfg: { haltedauerMinMinuten: number; haltedauerMaxTage: number; hebelMax: number },
+  cfg: { haltedauerMinMinuten: number; haltedauerMaxTage: number; hebelMax: number; risikoBudget?: RisikoBudget },
 ): Uebernahme {
   const iso = jetzt.toISOString();
   const quelle: Laufquelle = e.typ;
@@ -75,12 +82,36 @@ export function entscheidungUebernehmen(
   const frueheste = jetzt.getTime() + Math.max(30, cfg.haltedauerMinMinuten * 2) * 60000;
   const spaeteste = jetzt.getTime() + cfg.haltedauerMaxTage * 86400000;
 
-  for (const plan of e.orders ?? []) {
+  // Risiko-Budget für spekulative Orders: höchstens n je Lauf und höchstens ein Anteil aller aktiven Positionen
+  const rb = cfg.risikoBudget;
+  const aktive = orders.filter((o) => o.status === 'offen' || o.status === 'vorgemerkt');
+  let spekAktiv = aktive.filter((o) => o.plan.risikoklasse === 'spekulativ').length;
+  let gesamtAktiv = aktive.length;
+  let spekNeu = 0;
+
+  for (const original of e.orders ?? []) {
+    let plan = original;
     const fehler = planFehler(plan, cfg.hebelMax);
     if (fehler) {
       hinweise.push(`Order ${plan.wertpapier.name} abgelehnt: ${fehler}`);
       continue;
     }
+    if (plan.risikoklasse === 'spekulativ' && rb) {
+      const erlaubt = Math.max(1, Math.floor(rb.maxAnteilSpekulativ * (gesamtAktiv + 1)));
+      if (spekNeu >= rb.maxSpekulativJeLauf || spekAktiv + 1 > erlaubt) {
+        hinweise.push(`Order ${plan.wertpapier.name} abgelehnt: Risiko-Budget für spekulative Orders ausgeschöpft`);
+        continue;
+      }
+      if (plan.stopProzent < rb.stopMinProzent) {
+        hinweise.push(`Order ${plan.wertpapier.name} abgelehnt: Stop ${plan.stopProzent} % weiter als erlaubt (${rb.stopMinProzent} %)`);
+        continue;
+      }
+      // realistische Kosten: spekulative Werte haben breite Spreads
+      plan = { ...plan, wertpapier: { ...plan.wertpapier, spreadKlasse: 'spekulativ' } };
+      spekNeu++;
+      spekAktiv++;
+    }
+    gesamtAktiv++;
     let id = `${e.datum}-${slug(plan.wertpapier.name)}`;
     for (let n = 2; vergeben.has(id); n++) id = `${e.datum}-${slug(plan.wertpapier.name)}-${n}`;
     vergeben.add(id);

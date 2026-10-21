@@ -25,8 +25,11 @@ import { alphaVantage, finnhub, fmp } from './quellen/schluesselquellen.ts';
 import type { Laufart, Quelle, QuellenErgebnis } from './quellen/typen.ts';
 import { wirtschaftskalender } from './quellen/wirtschaftskalender.ts';
 import { sec8k } from './quellen/sec.ts';
+import { finra } from './quellen/finra.ts';
+import { gettexScanner } from './quellen/gettexscanner.ts';
+import { anreichern } from './quellen/anreicherung.ts';
 
-const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k];
+const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner];
 const STARK_NEGATIV = new Set(['prognose_senkung', 'gewinn_enttaeuschung', 'analysten_abstufung']);
 const STARK = new Set([...STARK_NEGATIV, 'uebernahmeangebot', 'prognose_erhoehung']);
 
@@ -106,14 +109,31 @@ const ergebnisse = await Promise.all(
 schreibeJson('quellenstatus.json', { stand: jetzt.toISOString(), quellen: [...status.values()].sort((a, c) => a.name.localeCompare(c.name)) });
 
 const alleSignale: Signal[] = ergebnisse.flatMap(([, r]) => r?.signale ?? []);
-const zusammen = zusammenfuehren(alleSignale, signalCfg);
+let zusammen = zusammenfuehren(alleSignale, signalCfg);
+
+// Gelegenheiten des Tages (Kursraketen u. a.) für den Mittagslauf sammeln
+{
+  const heuteGel = leseJson<{ datum: string; liste: unknown[] }>('gelegenheiten.json', { datum: b.datum, liste: [] });
+  const liste = heuteGel.datum === b.datum ? (heuteGel.liste as { id: string }[]) : [];
+  for (const s of zusammen.filter((x) => x.typ === 'kursrakete' || x.typ === 'nachzahlen_drift' || x.typ === 'uebernahmeangebot')) {
+    if (!liste.some((g) => g.id === s.id)) liste.push({ id: s.id, zeit: s.zeit, typ: s.typ, wertpapier: s.wertpapier, fakt: s.quellen[0]?.fakt, link: s.quellen[0]?.link, quellen: s.quellen.map((q) => q.quelle) } as { id: string });
+  }
+  schreibeJson('gelegenheiten.json', { datum: b.datum, liste: liste.slice(-60) });
+}
 const system = leseJson<Record<string, unknown> & { ereignislaeufe?: Record<string, string[]> }>('system.json', {});
 system.letzterSammlerLauf = jetzt.toISOString();
 const pushes: PushNachricht[] = [];
 
 if (laufart === 'haupt' || laufart === 'samstag') {
   const gewichte = leseJson<Gewichte>('gewichte.json', {});
-  const top = kandidaten(zusammen, signalCfg, gewichte);
+  let top = kandidaten(zusammen, signalCfg, gewichte);
+  // Zweite Stufe: Analysten-Trend und Drift nach Quartalszahlen für die besten US-Kandidaten
+  const extra = await anreichern(top, jetzt);
+  if (extra.signale.length) {
+    zusammen = zusammenfuehren([...alleSignale, ...extra.signale], signalCfg);
+    top = kandidaten(zusammen, signalCfg, gewichte);
+  }
+  console.log(`Anreicherung: ${extra.signale.length} Signale aus ${extra.abfragen} Abfragen.`);
   const meldungen = ergebnisse.flatMap(([, r]) => r?.meldungen ?? []);
   const daten: LagebildDaten = {
     datum: b.datum,

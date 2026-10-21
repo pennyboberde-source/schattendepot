@@ -20,6 +20,7 @@ export interface WaechterEinstellungen {
   ausfallWarnungUhrzeit: string;
   /** erst ab Live-Start (Meilenstein 6) einschalten */
   ausfallWarnungAktiv?: boolean;
+  risikoBudget?: { mindestKursEuro: number };
 }
 
 export interface WaechterKontext {
@@ -128,6 +129,11 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
         continue;
       }
       const { brief } = geldBrief(ik.kurs, o.plan.wertpapier.spreadKlasse, cfg.spreads);
+      const mindestKurs = cfg.einstellungen.risikoBudget?.mindestKursEuro ?? 0;
+      if (o.plan.wertpapier.anlageklasse === 'aktie' && brief < mindestKurs) {
+        ereignisse.push(ev('verworfen', o.id, { grund: `Kurs ${brief} € unter der Mindestgrenze ${mindestKurs} € (kaum handelbar)` }));
+        continue;
+      }
       const stueck = stueckFuerBetrag(brief, cfg.einstellungen.orderBetrag);
       if (stueck === 0) {
         ereignisse.push(ev('verworfen', o.id, { grund: `Ein Stück kostet ${brief} € und damit mehr als ${cfg.einstellungen.orderBetrag} €` }));

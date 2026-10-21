@@ -10,6 +10,8 @@ export const STRATEGIE_TEXT: Record<Strategie, string> = {
   chart_ausbruch: 'Chart-Ausbruch',
   stimmungswelle: 'Stimmungswelle',
   uebernahme: 'Übernahme',
+  nachzahlen_drift: 'Drift nach Quartalszahlen',
+  spekulation: 'Spekulation',
   sonstige: 'Sonstige',
 };
 

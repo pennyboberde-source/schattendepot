@@ -15,11 +15,13 @@ export type Strategie =
   | 'chart_ausbruch'
   | 'stimmungswelle'
   | 'uebernahme'
+  | 'nachzahlen_drift'
+  | 'spekulation'
   | 'sonstige';
 
 export type Verkaufsgrund = 'ziel' | 'stop' | 'termin' | 'knockout' | 'claude';
 
-export type Laufquelle = 'morgenlauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick' | 'waechter' | 'sammler' | 'system';
+export type Laufquelle = 'morgenlauf' | 'mittagslauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick' | 'waechter' | 'sammler' | 'system';
 
 /**
  * Woher der Kurswächter einen Kurs holt. us = US-Börse (USD, wird in EUR umgerechnet),
@@ -87,6 +89,8 @@ export interface OrderPlan {
   wertpapier: Wertpapier;
   hebel?: Hebel;
   etn?: KryptoEtn;
+  /** spekulativ = Small Cap/Penny Stock/Kursrakete o. Ä. – begrenzt durch das Risiko-Budget (config/einstellungen.json) */
+  risikoklasse?: 'normal' | 'spekulativ';
   strategie: Strategie;
   these: string;
   ausloeser: string;

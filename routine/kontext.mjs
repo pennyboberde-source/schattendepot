@@ -125,6 +125,15 @@ if (typ === 'ereignislauf' && orderArg) {
   p('## Betroffene Position (vollständig)', o ? JSON.stringify(o, null, 1).slice(0, 6000) : `(Order ${orderArg} nicht offen)`, '');
 }
 
+if (typ === 'mittagslauf' || typ === 'morgenlauf') {
+  const gel = await json('gelegenheiten.json', { datum: '', liste: [] });
+  const liste = gel.datum === datum ? gel.liste : [];
+  p(`## ⚡ Gelegenheiten heute (${liste.length}) – Kursraketen, Drift nach Zahlen, Übernahmen`);
+  if (!liste.length) p('(keine)');
+  for (const g of liste.slice(-25)) p(`- [${g.id}] ${g.wertpapier.name}${g.wertpapier.isin ? ' ' + g.wertpapier.isin : ''}${g.wertpapier.ticker ? ' (' + g.wertpapier.ticker + ')' : ''}: ${kurz(g.fakt, 200)} · ${g.quellen.join(', ')} ${g.link ?? ''}`);
+  p('');
+}
+
 if (typ === 'morgenlauf' || typ === 'ereignislauf') {
   const lb = (await lies(`lagebild/${datum}.md`)) ?? (await lies('lagebild/heute.md'));
   p('## 5. Lagebild', lb?.trim() || '(heute kein Lagebild – Datensammler prüfen; Auswahl dann mit wenigen gezielten Websuchen)');

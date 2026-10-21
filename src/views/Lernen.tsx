@@ -94,6 +94,7 @@ export function LernenView() {
               <GruppenTabelle titel="Nach Signal-Typ (gekaufte Orders)" daten={s.nachSignalTyp} name={(k) => TYP_NAME[k] ?? k} />
               <GruppenTabelle titel="Nach Quelle" daten={s.nachQuelle} />
               <GruppenTabelle titel="Nach Anlageklasse" daten={s.nachAnlageklasse} />
+              <GruppenTabelle titel="Normal vs. spekulativ" daten={s.nachRisikoklasse ?? {}} />
               <GruppenTabelle titel="Nach Haltedauer" daten={s.nachHaltedauer} />
               <GruppenTabelle titel="Nach Konfidenz" daten={s.nachKonfidenz} />
             </div>

@@ -45,6 +45,7 @@ export interface Statistik {
   nachSignalTyp: Record<string, Gruppe>;
   nachQuelle: Record<string, Gruppe>;
   nachAnlageklasse: Record<string, Gruppe>;
+  nachRisikoklasse: Record<string, Gruppe>;
   nachHaltedauer: Record<string, Gruppe>;
   nachKonfidenz: Record<string, Gruppe>;
   kalibrierung: { stufe: string; erwartet: number; tatsaechlich: number; anzahl: number }[];
@@ -120,6 +121,7 @@ export function statistikBerechnen(alle: Order[], tracking: TrackingEintrag[], s
     nachSignalTyp: gruppiert(g, (o) => (o.plan.signalIds.length ? o.plan.signalIds.map(signalTyp) : ['(ohne Signal)'])),
     nachQuelle: gruppiert(g, (o) => (o.plan.quellen.length ? o.plan.quellen.map((q) => q.name) : ['(ohne Quelle)'])),
     nachAnlageklasse: gruppiert(g, (o) => [o.plan.wertpapier.anlageklasse]),
+    nachRisikoklasse: gruppiert(g, (o) => [o.plan.risikoklasse === 'spekulativ' ? 'spekulativ' : 'normal']),
     nachHaltedauer: gruppiert(g, (o) => [haltedauer(o)]),
     nachKonfidenz: gruppiert(g, (o) => [KONFIDENZ_STUFEN.find(([, v, b]) => o.plan.konfidenz >= v && o.plan.konfidenz <= b)![0]]),
     kalibrierung,
@@ -144,6 +146,8 @@ function zusammenfassung(s: Statistik): string {
   const g = s.gesamt;
   z.push(`Gesamt: ${g.anzahl} Orders, Trefferquote ${g.quote} %, Ø ${g.oeNetto} % nach Gebühren (erwartet waren Ø ${s.erwartetVsTatsaechlich.erwartet} %).`);
   if (s.pflicht.anzahl) z.push(`Pflicht-Orders: ${s.pflicht.anzahl}, Quote ${s.pflicht.quote} %, Ø ${s.pflicht.oeNetto} % · Überzeugung: ${s.ueberzeugung.anzahl}, Quote ${s.ueberzeugung.quote} %, Ø ${s.ueberzeugung.oeNetto} %.`);
+  const rk = s.nachRisikoklasse;
+  if (rk.spekulativ) z.push(`Spekulativ: ${rk.spekulativ.anzahl} Orders, Quote ${rk.spekulativ.quote} %, Ø ${rk.spekulativ.oeNetto} % · normal: ${rk.normal?.anzahl ?? 0} Orders, Ø ${rk.normal?.oeNetto ?? 0} %.`);
   if (s.kalibrierung.length) z.push(`Kalibrierung (Konfidenz → tatsächliche Quote): ${s.kalibrierung.map((k) => `${k.stufe}: ${k.tatsaechlich} % (n=${k.anzahl})`).join('; ')}.`);
   const beste = Object.entries(s.nachStrategie).filter(([, v]) => v.anzahl >= 3);
   if (beste.length) z.push(`Strategien (n≥3): ${beste.map(([k, v]) => `${k} ${v.quote} %/Ø ${v.oeNetto} %`).join('; ')}.`);

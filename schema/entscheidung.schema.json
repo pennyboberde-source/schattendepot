@@ -4,24 +4,78 @@
   "title": "Entscheidung eines Claude-Laufs (laeufe/<datum>-<typ>.json)",
   "type": "object",
   "additionalProperties": false,
-  "required": ["typ", "datum", "erstellt"],
+  "required": [
+    "typ",
+    "datum",
+    "erstellt"
+  ],
   "properties": {
-    "typ": { "enum": ["morgenlauf", "abendlauf", "ereignislauf", "wochenrueckblick"] },
-    "datum": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-    "erstellt": { "type": "string", "format": "date-time" },
-    "briefing": { "type": "array", "maxItems": 3, "items": { "type": "string", "minLength": 3, "maxLength": 140 } },
-    "orders": { "type": "array", "maxItems": 5, "items": { "$ref": "#/definitions/orderPlan" } },
+    "typ": {
+      "enum": [
+        "morgenlauf",
+        "mittagslauf",
+        "abendlauf",
+        "ereignislauf",
+        "wochenrueckblick"
+      ]
+    },
+    "datum": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "erstellt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "briefing": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 140
+      }
+    },
+    "orders": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/definitions/orderPlan"
+      }
+    },
     "anpassungen": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["orderId", "feld", "neu", "begruendung"],
+        "required": [
+          "orderId",
+          "feld",
+          "neu",
+          "begruendung"
+        ],
         "properties": {
-          "orderId": { "type": "string" },
-          "feld": { "enum": ["ziel", "stop", "verkaufstermin"] },
-          "neu": { "type": ["number", "string"] },
-          "begruendung": { "type": "string", "minLength": 5, "maxLength": 200 }
+          "orderId": {
+            "type": "string"
+          },
+          "feld": {
+            "enum": [
+              "ziel",
+              "stop",
+              "verkaufstermin"
+            ]
+          },
+          "neu": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "begruendung": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 200
+          }
         }
       }
     },
@@ -30,49 +84,121 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["orderId", "text", "learnings"],
+        "required": [
+          "orderId",
+          "text",
+          "learnings"
+        ],
         "properties": {
-          "orderId": { "type": "string" },
-          "text": { "type": "string", "minLength": 50, "maxLength": 4000 },
-          "learnings": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "type": "string", "maxLength": 300 } }
+          "orderId": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 50,
+            "maxLength": 4000
+          },
+          "learnings": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3,
+            "items": {
+              "type": "string",
+              "maxLength": 300
+            }
+          }
         }
       }
     },
-    "lektionen": { "type": "string", "maxLength": 20000, "description": "Vollständiger neuer Inhalt von lernen/lektionen.md (nur Abendlauf)" },
+    "lektionen": {
+      "type": "string",
+      "maxLength": 20000,
+      "description": "Vollständiger neuer Inhalt von lernen/lektionen.md (nur Abendlauf)"
+    },
     "gewichtsvorschlaege": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["art", "name", "faktor", "begruendung"],
+        "required": [
+          "art",
+          "name",
+          "faktor",
+          "begruendung"
+        ],
         "properties": {
-          "art": { "enum": ["signal", "quelle"] },
-          "name": { "type": "string" },
-          "faktor": { "type": "number", "minimum": 0.5, "maximum": 1.5 },
-          "begruendung": { "type": "string", "maxLength": 300 }
+          "art": {
+            "enum": [
+              "signal",
+              "quelle"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "faktor": {
+            "type": "number",
+            "minimum": 0.5,
+            "maximum": 1.5
+          },
+          "begruendung": {
+            "type": "string",
+            "maxLength": 300
+          }
         }
       }
     },
     "wochenrueckblick": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["push", "text"],
+      "required": [
+        "push",
+        "text"
+      ],
       "properties": {
-        "push": { "type": "string", "maxLength": 180 },
-        "text": { "type": "string", "maxLength": 8000 }
+        "push": {
+          "type": "string",
+          "maxLength": 180
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 8000
+        }
       }
     },
-    "notiz": { "type": "string", "maxLength": 2000 }
+    "notiz": {
+      "type": "string",
+      "maxLength": 2000
+    }
   },
   "definitions": {
     "kursbasis": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["markt", "symbol", "waehrung"],
+      "required": [
+        "markt",
+        "symbol",
+        "waehrung"
+      ],
       "properties": {
-        "markt": { "enum": ["us", "eu", "krypto"] },
-        "symbol": { "type": "string", "minLength": 1, "maxLength": 20 },
-        "waehrung": { "enum": ["EUR", "USD"] }
+        "markt": {
+          "enum": [
+            "us",
+            "eu",
+            "krypto"
+          ]
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20
+        },
+        "waehrung": {
+          "enum": [
+            "EUR",
+            "USD"
+          ]
+        }
       }
     },
     "orderPlan": {
@@ -98,47 +224,161 @@
         "wertpapier": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["name", "isin", "anlageklasse", "spreadKlasse", "handelsplatz", "steuertopf"],
+          "required": [
+            "name",
+            "isin",
+            "anlageklasse",
+            "spreadKlasse",
+            "handelsplatz",
+            "steuertopf"
+          ],
           "properties": {
-            "name": { "type": "string", "minLength": 2, "maxLength": 80 },
-            "isin": { "type": "string", "pattern": "^[A-Z]{2}[A-Z0-9]{9}[0-9]$" },
-            "wkn": { "type": "string", "pattern": "^[A-Z0-9]{6}$" },
-            "ticker": { "type": "string", "maxLength": 15 },
-            "anlageklasse": { "enum": ["aktie", "etf", "etc", "hebel", "krypto_etn"] },
-            "spreadKlasse": { "enum": ["aktie_dax", "aktie_large", "aktie_neben", "etf", "hebel", "krypto_etn"] },
-            "handelsplatz": { "enum": ["TGT", "GTX", "LSX", "XETRA", "FRA", "STU"] },
-            "steuertopf": { "enum": ["aktien", "sonstige"] },
-            "teilfreistellung": { "type": "number", "minimum": 0, "maximum": 0.3 },
-            "kursbasis": { "$ref": "#/definitions/kursbasis" }
+            "name": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 80
+            },
+            "isin": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}[A-Z0-9]{9}[0-9]$"
+            },
+            "wkn": {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{6}$"
+            },
+            "ticker": {
+              "type": "string",
+              "maxLength": 15
+            },
+            "anlageklasse": {
+              "enum": [
+                "aktie",
+                "etf",
+                "etc",
+                "hebel",
+                "krypto_etn"
+              ]
+            },
+            "spreadKlasse": {
+              "enum": [
+                "aktie_dax",
+                "aktie_large",
+                "aktie_neben",
+                "etf",
+                "hebel",
+                "krypto_etn",
+                "spekulativ"
+              ]
+            },
+            "handelsplatz": {
+              "enum": [
+                "TGT",
+                "GTX",
+                "LSX",
+                "XETRA",
+                "FRA",
+                "STU"
+              ]
+            },
+            "steuertopf": {
+              "enum": [
+                "aktien",
+                "sonstige"
+              ]
+            },
+            "teilfreistellung": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.3
+            },
+            "kursbasis": {
+              "$ref": "#/definitions/kursbasis"
+            }
           }
         },
         "hebel": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["typ", "richtung", "emittent", "basiswert", "basispreis", "koSchwelle", "bezugsverhaeltnis"],
+          "required": [
+            "typ",
+            "richtung",
+            "emittent",
+            "basiswert",
+            "basispreis",
+            "koSchwelle",
+            "bezugsverhaeltnis"
+          ],
           "properties": {
-            "typ": { "enum": ["knockout", "turbo"] },
-            "richtung": { "enum": ["long", "short"] },
-            "emittent": { "type": "string" },
+            "typ": {
+              "enum": [
+                "knockout",
+                "turbo"
+              ]
+            },
+            "richtung": {
+              "enum": [
+                "long",
+                "short"
+              ]
+            },
+            "emittent": {
+              "type": "string"
+            },
             "basiswert": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["name", "kursbasis"],
-              "properties": { "name": { "type": "string" }, "isin": { "type": "string" }, "kursbasis": { "$ref": "#/definitions/kursbasis" } }
+              "required": [
+                "name",
+                "kursbasis"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "isin": {
+                  "type": "string"
+                },
+                "kursbasis": {
+                  "$ref": "#/definitions/kursbasis"
+                }
+              }
             },
-            "basispreis": { "type": "number", "exclusiveMinimum": 0 },
-            "koSchwelle": { "type": "number", "exclusiveMinimum": 0 },
-            "bezugsverhaeltnis": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 }
+            "basispreis": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "koSchwelle": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "bezugsverhaeltnis": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 10
+            }
           }
         },
         "etn": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["basiswert", "anteilProStueck", "kostenProzentJahr"],
+          "required": [
+            "basiswert",
+            "anteilProStueck",
+            "kostenProzentJahr"
+          ],
           "properties": {
-            "basiswert": { "$ref": "#/definitions/kursbasis" },
-            "anteilProStueck": { "type": "number", "exclusiveMinimum": 0 },
-            "kostenProzentJahr": { "type": "number", "minimum": 0, "maximum": 5 }
+            "basiswert": {
+              "$ref": "#/definitions/kursbasis"
+            },
+            "anteilProStueck": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "kostenProzentJahr": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 5
+            }
           }
         },
         "strategie": {
@@ -152,30 +392,95 @@
             "chart_ausbruch",
             "stimmungswelle",
             "uebernahme",
+            "nachzahlen_drift",
+            "spekulation",
             "sonstige"
           ]
         },
-        "these": { "type": "string", "minLength": 20, "maxLength": 800 },
-        "ausloeser": { "type": "string", "minLength": 5, "maxLength": 300 },
-        "signalIds": { "type": "array", "items": { "type": "string" }, "maxItems": 20 },
+        "these": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 800
+        },
+        "ausloeser": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 300
+        },
+        "signalIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20
+        },
         "quellen": {
           "type": "array",
           "maxItems": 10,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["name", "link"],
-            "properties": { "name": { "type": "string" }, "link": { "type": "string", "pattern": "^https?://" } }
+            "required": [
+              "name",
+              "link"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string",
+                "pattern": "^https?://"
+              }
+            }
           }
         },
-        "konfidenz": { "type": "integer", "minimum": 0, "maximum": 100 },
-        "pflichtOrder": { "type": "boolean" },
-        "erwarteteRenditeNetto": { "type": "number", "minimum": -50, "maximum": 200 },
-        "zielNettoProzent": { "type": "number", "exclusiveMinimum": 0, "maximum": 200 },
-        "stopProzent": { "type": "number", "minimum": -90, "exclusiveMaximum": 0 },
-        "verkaufstermin": { "type": "string", "format": "date-time" },
-        "risiken": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "type": "string", "maxLength": 200 } },
-        "einflussLektionen": { "type": "string", "maxLength": 500 }
+        "konfidenz": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "pflichtOrder": {
+          "type": "boolean"
+        },
+        "erwarteteRenditeNetto": {
+          "type": "number",
+          "minimum": -50,
+          "maximum": 200
+        },
+        "zielNettoProzent": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 200
+        },
+        "stopProzent": {
+          "type": "number",
+          "minimum": -90,
+          "exclusiveMaximum": 0
+        },
+        "verkaufstermin": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "risiken": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "string",
+            "maxLength": 200
+          }
+        },
+        "einflussLektionen": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "risikoklasse": {
+          "enum": [
+            "normal",
+            "spekulativ"
+          ]
+        }
       }
     }
   }

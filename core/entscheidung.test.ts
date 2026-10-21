@@ -89,6 +89,20 @@ describe('Übernahme', () => {
     expect(u.hinweise).toHaveLength(3);
   });
 
+  it('Risiko-Budget: höchstens 1 spekulative Order je Lauf, Spread-Klasse wird erzwungen, Stop-Grenze', () => {
+    const rb = { maxSpekulativJeLauf: 1, maxAnteilSpekulativ: 0.3, stopMinProzent: -25, mindestKursEuro: 0.1 };
+    const spek = { ...plan, risikoklasse: 'spekulativ' as const, wertpapier: { ...plan.wertpapier, name: 'Rakete Inc', spreadKlasse: 'aktie_neben' as const } };
+    const zuWeit = { ...spek, wertpapier: { ...spek.wertpapier, name: 'Zu Weit Inc' }, stopProzent: -40 };
+    const u = entscheidungUebernehmen({ ...morgen, orders: [spek, spek, plan] }, [], jetzt, { ...cfg, risikoBudget: rb });
+    const vorgemerkt = u.ereignisse.filter((e) => e.typ === 'vorgemerkt');
+    expect(vorgemerkt).toHaveLength(2);
+    expect((vorgemerkt[0].daten as { plan: OrderPlan }).plan.wertpapier.spreadKlasse).toBe('spekulativ');
+    expect(u.hinweise.some((h) => h.includes('Risiko-Budget'))).toBe(true);
+    const u2 = entscheidungUebernehmen({ ...morgen, orders: [zuWeit] }, [], jetzt, { ...cfg, risikoBudget: rb });
+    expect(u2.hinweise[0]).toMatch(/Stop -40 % weiter als erlaubt/);
+    expect(pruefe({ ...morgen, orders: [spek] })).toBe(true);
+  });
+
   it('Morgenlauf ohne Order wird vermerkt', () => {
     expect(entscheidungUebernehmen({ ...morgen, orders: [] }, [], jetzt, cfg).hinweise).toContain('Morgenlauf ohne neue Order – Pflicht-Order fehlt');
   });

@@ -144,6 +144,11 @@ export const alphaVantage: Quelle = {
       `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${k}`,
     );
     erg.abfragen++;
+    for (const e of (tg.top_gainers ?? []).slice(0, 15)) {
+      const pct = parseFloat(e.change_percentage);
+      if (!(pct >= 20) || Number(e.volume) < 2e6 || Number(e.price) < 0.01) continue;
+      erg.signale.push(signal('kursrakete', { name: e.ticker, ticker: e.ticker }, Math.min(1, 0.3 + pct / 200), 0, ctx.jetzt.toISOString(), 'Alpha Vantage', `Tagesgewinner +${pct.toFixed(0)} % bei ${Number(e.price)} $ (Volumen ${Math.round(Number(e.volume) / 1e6)} Mio.) – spekulativ`));
+    }
     for (const e of (tg.most_actively_traded ?? []).slice(0, 10)) {
       if (Number(e.volume) < 5e6) continue;
       erg.signale.push(signal('volumen_ungewoehnlich', { name: e.ticker, ticker: e.ticker }, 0.4, 0, ctx.jetzt.toISOString(), 'Alpha Vantage', `meistgehandelt am Vortag (${e.change_percentage}, Volumen ${Number(e.volume).toLocaleString('de-DE')})`));

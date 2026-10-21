@@ -2,11 +2,61 @@
   "stand": "2026-10-21",
   "hinweis": "Spanne zwischen Geld- und Briefkurs in Prozent vom Mittelkurs. Wird nur genutzt, wenn die Kursquelle keinen echten Geld-/Briefkurs liefert.",
   "klassen": {
-    "aktie_dax": { "name": "DAX-/Large-Cap-Aktie", "prozent": 0.08, "spanne": [0.05, 0.1] },
-    "aktie_large": { "name": "Große EU-/US-Aktie", "prozent": 0.15, "spanne": [0.1, 0.3] },
-    "aktie_neben": { "name": "Nebenwert", "prozent": 0.6, "spanne": [0.3, 1.0] },
-    "etf": { "name": "ETF/ETC", "prozent": 0.12, "spanne": [0.05, 0.2] },
-    "hebel": { "name": "Hebelprodukt", "prozent": 1.0, "spanne": [0.5, 2.0] },
-    "krypto_etn": { "name": "Krypto-ETN", "prozent": 0.35, "spanne": [0.2, 0.5] }
+    "aktie_dax": {
+      "name": "DAX-/Large-Cap-Aktie",
+      "prozent": 0.08,
+      "spanne": [
+        0.05,
+        0.1
+      ]
+    },
+    "aktie_large": {
+      "name": "Große EU-/US-Aktie",
+      "prozent": 0.15,
+      "spanne": [
+        0.1,
+        0.3
+      ]
+    },
+    "aktie_neben": {
+      "name": "Nebenwert",
+      "prozent": 0.6,
+      "spanne": [
+        0.3,
+        1
+      ]
+    },
+    "etf": {
+      "name": "ETF/ETC",
+      "prozent": 0.12,
+      "spanne": [
+        0.05,
+        0.2
+      ]
+    },
+    "hebel": {
+      "name": "Hebelprodukt",
+      "prozent": 1,
+      "spanne": [
+        0.5,
+        2
+      ]
+    },
+    "krypto_etn": {
+      "name": "Krypto-ETN",
+      "prozent": 0.35,
+      "spanne": [
+        0.2,
+        0.5
+      ]
+    },
+    "spekulativ": {
+      "name": "Spekulativer Wert (Small Cap/Penny Stock)",
+      "prozent": 3,
+      "spanne": [
+        1,
+        10
+      ]
+    }
   }
 }
