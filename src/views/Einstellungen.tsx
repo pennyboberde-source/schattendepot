@@ -8,18 +8,7 @@ import { kalenderUrl, ladeJson } from '../lib/daten';
 import { fehlerMeldenUrl, konfigBearbeitenUrl } from '../lib/links';
 import { useEinstellung } from '../lib/lokal';
 import { Karte } from '../ui';
-
-const PUSH_TYP_TEXT: Record<string, string> = {
-  briefing: '☀️ Briefing',
-  gekauft: '🟢 Gekauft',
-  angepasst: '🔁 Anpassung',
-  verkauft: '✅ Verkauft',
-  stop: '🔻 Stop',
-  knockout: '⚡ Knock-out',
-  bericht: '📘 Abschlussbericht',
-  warnung: '⚠️ Warnungen',
-  wochenrueckblick: '📊 Wochenrückblick',
-};
+import { PushKarte } from './PushKarte';
 
 export function EinstellungenView() {
   const [nachSteuern, setNachSteuern] = useEinstellung('nachSteuern', false);
@@ -31,19 +20,7 @@ export function EinstellungenView() {
     <div class="seite">
       <h1>Einstellungen</h1>
 
-      <Karte titel="Mitteilungen">
-        <p>Push-Anmeldung, „Push-Code“ und Test-Push folgen mit Meilenstein 2.</p>
-        <p class="klein">
-          Ruhezeit {einstellungen.ruhezeit.von}–{einstellungen.ruhezeit.bis} Uhr: Nachrichten werden gesammelt und danach zugestellt.
-        </p>
-        <ul class="chips">
-          {Object.entries(einstellungen.pushTypen).map(([typ, an]) => (
-            <li key={typ} class={an ? 'an' : 'aus'}>
-              {PUSH_TYP_TEXT[typ] ?? typ}: {an ? 'an' : 'aus'}
-            </li>
-          ))}
-        </ul>
-      </Karte>
+      <PushKarte />
 
       <Karte titel="Anzeige (nur dieses Gerät)">
         <label class="schalter">

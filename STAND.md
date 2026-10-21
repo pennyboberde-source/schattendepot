@@ -58,8 +58,15 @@ GitHub CLI bricht bei sporadischen HTTP-503 im Device-Flow ab, und PowerShell-Pi
 - Claude Code im Web: Einrichtung in M3 gemeinsam (vom iPad aus).
 - Peer steuert die Sitzung per Remote Control vom iPad/iPhone; Eingaben am PC per Fernzugriff sind mühsam (kein @) → **alles, was Peer bestätigen muss, so gestalten, dass es auf dem iPad geht.**
 
+## Offene Schritte für Peer (am 21.10. gebündelt angefragt – prüfen, ob erledigt!)
+Prüfen mit `gh secret list -R pennyboberde-source/schattendepot` und `RemoteTrigger list`.
+- A. Secrets: FINNHUB_API_KEY, TWELVEDATA_API_KEY, FMP_API_KEY, ALPHAVANTAGE_API_KEY, FRED_API_KEY, COINGECKO_API_KEY, OPENFIGI_API_KEY.
+- B. claude.ai/code mit GitHub verbunden + Claude GitHub App auf `schattendepot`.
+- C. Routine „Schattendepot Ereignislauf“ im Web (nur API-Trigger, Opus, Repo, Netzwerk Full, nur Konnektoren AV/FMP/Crypto.com) + Secrets ROUTINE_FIRE_URL, ROUTINE_FIRE_TOKEN. **Danach legt Claude Morgenlauf (Mo–Fr 07:32), Abendlauf (Mo–Fr 22:17), Wochenrückblick (Sa 10:07) per RemoteTrigger an – Konfiguration von der Ereignislauf-Routine übernehmen (`RemoteTrigger get`), pausiert bis M6.**
+- D. (später, Push an Peer schicken) App auf Home-Bildschirm, „Mitteilungen erlauben“, Push-Code als Secret PUSH_SUBSCRIPTION.
+
 ## Offene Fragen an Peer
-- Weiter mit Meilenstein 2?
+- keine
 
 ## Vorschläge (kosten Geld oder später)
 - (noch keine)

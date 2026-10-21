@@ -30,6 +30,7 @@ export interface Systemstatus {
   letzterSammlerLauf?: string;
   letzterClaudeLauf?: { zeit: string; typ: string };
   pushAbgelaufen?: boolean;
+  letzterPush?: string;
   hinweise?: string[];
 }
 

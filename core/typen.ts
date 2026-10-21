@@ -21,6 +21,16 @@ export type Verkaufsgrund = 'ziel' | 'stop' | 'termin' | 'knockout' | 'claude';
 
 export type Laufquelle = 'morgenlauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick' | 'waechter' | 'sammler' | 'system';
 
+/**
+ * Woher der Kurswächter einen Kurs holt. us = US-Börse (USD, wird in EUR umgerechnet),
+ * eu = europäische Börse (Symbol mit Börsensuffix, z. B. SAP.DE), krypto = Kryptopaar (z. B. BTC → BTC/EUR).
+ */
+export interface Kursbasis {
+  markt: 'us' | 'eu' | 'krypto';
+  symbol: string;
+  waehrung: 'EUR' | 'USD';
+}
+
 export interface Wertpapier {
   name: string;
   isin: string;
@@ -32,17 +42,29 @@ export interface Wertpapier {
   handelsplatz: string;
   steuertopf: Steuertopf;
   teilfreistellung?: number;
+  /** Kursquelle für Aktien/ETFs/ETCs. Bei Hebelprodukten und Krypto-ETNs steht sie am Basiswert. */
+  kursbasis?: Kursbasis;
 }
 
-/** Hebelprodukt eines echten Emittenten; Kurs ggf. synthetisch aus dem Basiswert. */
+/** Hebelprodukt eines echten Emittenten (ISIN/WKN); Kurs synthetisch aus dem Basiswert (Turbo-Formel). */
 export interface Hebel {
-  typ: 'knockout' | 'turbo' | 'optionsschein';
+  typ: 'knockout' | 'turbo';
   richtung: 'long' | 'short';
   emittent: string;
-  basiswert: { name: string; isin?: string; ticker?: string };
+  basiswert: { name: string; isin?: string; kursbasis: Kursbasis };
+  /** Basispreis und Knock-out-Schwelle in der Währung des Basiswerts. */
   basispreis: number;
   koSchwelle: number;
+  /** z. B. 0.1 = 10 Produkte je Basiswert */
   bezugsverhaeltnis: number;
+}
+
+/** Krypto-ETN: synthetisch aus dem Basiswert (z. B. BTC/EUR) abzüglich laufender Kosten. */
+export interface KryptoEtn {
+  basiswert: Kursbasis;
+  /** Menge des Basiswerts je ETN-Stück, z. B. 0.0005 BTC */
+  anteilProStueck: number;
+  kostenProzentJahr: number;
 }
 
 /** Kurs mit Herkunft – jede Ausführung und jede Anzeige nennt Zeitpunkt und Quelle. */
@@ -50,16 +72,21 @@ export interface Kurs {
   wert: number;
   geld?: number;
   brief?: number;
+  /** Schlusskurs des Vortags (für Tagesveränderung / Ereignislauf). */
+  vortag?: number;
   zeit: string;
   quelle: string;
   verzoegertMin?: number;
+  /** berechnet: aus Basiswert (Hebel/ETN) oder per Wechselkurs umgerechnet */
   synthetisch?: boolean;
+  hinweis?: string;
 }
 
 /** Was Claude im Morgen-/Ereignislauf vormerkt. Ausgeführt wird erst beim nächsten Kurscheck. */
 export interface OrderPlan {
   wertpapier: Wertpapier;
   hebel?: Hebel;
+  etn?: KryptoEtn;
   strategie: Strategie;
   these: string;
   ausloeser: string;
@@ -127,8 +154,10 @@ export type EreignisTyp =
   | 'verkauft'
   | 'verworfen'
   | 'bericht'
+  | 'etfVergleich'
   | 'briefing'
   | 'warnung'
+  | 'ereignislauf'
   | 'lauf';
 
 /** Eintrag im Ereignisprotokoll (daten/ereignisse.jsonl). Wird nur angehängt, nie geändert. */

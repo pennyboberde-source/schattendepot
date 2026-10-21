@@ -1,0 +1,145 @@
+// Kurze Push-Texte mit Typ-Symbol und Ruhezeit-Warteschlange.
+import { euro, prozent } from './geld.ts';
+import { berlin, inRuhezeit } from './kalender.ts';
+import type { Anpassung, Order } from './typen.ts';
+
+export type PushTyp = 'briefing' | 'gekauft' | 'angepasst' | 'verkauft' | 'stop' | 'knockout' | 'bericht' | 'warnung' | 'wochenrueckblick';
+
+export interface PushNachricht {
+  typ: PushTyp;
+  titel: string;
+  text: string;
+  /** Hash-Route der App, z. B. "#/order/<id>" */
+  ziel: string;
+  tag?: string;
+  erstellt: string;
+}
+
+const WT = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+/** "Mi 29.10." in Berliner Zeit */
+export function tagKurz(iso: string): string {
+  const b = berlin(new Date(iso));
+  const wt = WT[b.wochentag % 7];
+  return `${wt} ${String(b.tag).padStart(2, '0')}.${String(b.monat).padStart(2, '0')}.`;
+}
+
+/** Optional: kalibrierte Trefferquote ähnlicher Konfidenz („bisher 52 %“), sobald genug Fälle vorliegen. */
+export function chanceText(konfidenz: number, kalibriert?: { quote: number; faelle: number }): string {
+  const basis = `Chance ~${Math.round(konfidenz)} %`;
+  return kalibriert && kalibriert.faelle >= 10 ? `${basis} (bisher ${Math.round(kalibriert.quote)} % Treffer)` : basis;
+}
+
+export function pushGekauft(o: Order, jetzt: string, kalibriert?: { quote: number; faelle: number }): PushNachricht {
+  const p = o.plan;
+  const k = o.kauf!;
+  return {
+    typ: 'gekauft',
+    titel: `🟢 Gekauft: ${p.wertpapier.name}`,
+    text: [
+      `${k.stueck} Stk. à ${euro(k.kurs)}`,
+      `Ziel ${prozent(p.zielNettoProzent)} nach Gebühren bis ${tagKurz(o.verkaufstermin)}`,
+      `Stop ${prozent(p.stopProzent)}`,
+      chanceText(p.konfidenz, kalibriert),
+      p.pflichtOrder ? 'Pflicht-Order' : '',
+    ]
+      .filter(Boolean)
+      .join(' · '),
+    ziel: `#/order/${o.id}`,
+    tag: o.id,
+    erstellt: jetzt,
+  };
+}
+
+const FELD_TEXT: Record<Anpassung['feld'], string> = { ziel: 'Ziel', stop: 'Stop', verkaufstermin: 'Verkauf' };
+
+export function pushAngepasst(o: Order, a: Anpassung): PushNachricht {
+  const neu = a.feld === 'verkaufstermin' ? `verschoben auf ${tagKurz(String(a.neu))}` : `${FELD_TEXT[a.feld]} jetzt ${euro(Number(a.neu))}`;
+  return {
+    typ: 'angepasst',
+    titel: `🔁 ${o.plan.wertpapier.name}`,
+    text: `${a.feld === 'verkaufstermin' ? 'Verkauf ' : ''}${neu} – ${a.begruendung}`,
+    ziel: `#/order/${o.id}`,
+    tag: o.id,
+    erstellt: a.zeit,
+  };
+}
+
+export function pushVerkauft(o: Order, jetzt: string): PushNachricht {
+  const v = o.verkauf!;
+  const e = o.ergebnis!;
+  const typ: PushTyp = v.grund === 'stop' ? 'stop' : v.grund === 'knockout' ? 'knockout' : 'verkauft';
+  const kopf = typ === 'stop' ? '🔻 Stop ausgelöst' : typ === 'knockout' ? '⚡ Knock-out' : '✅ Verkauft';
+  return {
+    typ,
+    titel: `${kopf}: ${o.plan.wertpapier.name}`,
+    text: [
+      `Kurs ${prozent(e.kursProzent)}`,
+      `nach Gebühren ${prozent(e.nettoProzent)} (${euro(e.netto, { vorzeichen: true })})`,
+      `erhofft waren ${prozent(o.plan.erwarteteRenditeNetto)}`,
+      v.grund === 'termin' ? 'Verkaufstermin erreicht' : '',
+    ]
+      .filter(Boolean)
+      .join(' · '),
+    ziel: `#/order/${o.id}`,
+    tag: o.id,
+    erstellt: jetzt,
+  };
+}
+
+export function pushBericht(o: Order, learnings: number, jetzt: string): PushNachricht {
+  return {
+    typ: 'bericht',
+    titel: `📘 Abschlussbericht ${o.plan.wertpapier.name}`,
+    text: `${learnings} ${learnings === 1 ? 'Learning' : 'Learnings'}`,
+    ziel: `#/order/${o.id}`,
+    tag: `bericht-${o.id}`,
+    erstellt: jetzt,
+  };
+}
+
+export function pushBriefing(punkte: string[], jetzt: string): PushNachricht {
+  return {
+    typ: 'briefing',
+    titel: '☀️ Briefing',
+    text: punkte.map((p, i) => `${i + 1}) ${p}`).join(' '),
+    ziel: '#/briefing',
+    tag: `briefing-${jetzt.slice(0, 10)}`,
+    erstellt: jetzt,
+  };
+}
+
+export function pushWarnung(text: string, jetzt: string, ziel = '#/quellen'): PushNachricht {
+  return { typ: 'warnung', titel: '⚠️ Schattendepot', text, ziel, tag: `warnung-${jetzt.slice(0, 13)}`, erstellt: jetzt };
+}
+
+export interface Zustellung {
+  senden: PushNachricht[];
+  warteschlange: PushNachricht[];
+}
+
+/**
+ * Filtert abgeschaltete Typen und hält Nachrichten während der Ruhezeit zurück.
+ * Außerhalb der Ruhezeit wird die Warteschlange mitgesendet – ab 4 Nachrichten als Sammelnachricht.
+ */
+export function zustellen(
+  neu: PushNachricht[],
+  warteschlange: PushNachricht[],
+  jetzt: Date,
+  einstellungen: { ruhezeit: { von: string; bis: string }; pushTypen: Record<string, boolean> },
+): Zustellung {
+  const erlaubt = neu.filter((n) => einstellungen.pushTypen[n.typ] !== false);
+  if (inRuhezeit(jetzt, einstellungen.ruhezeit)) return { senden: [], warteschlange: [...warteschlange, ...erlaubt] };
+  const alle = [...warteschlange, ...erlaubt];
+  if (alle.length >= 4 && warteschlange.length > 0) {
+    const sammel: PushNachricht = {
+      typ: 'warnung',
+      titel: `📬 ${alle.length} Nachrichten`,
+      text: alle.map((n) => n.titel).join(' · '),
+      ziel: '#/uebersicht',
+      tag: `sammel-${jetzt.toISOString().slice(0, 13)}`,
+      erstellt: jetzt.toISOString(),
+    };
+    return { senden: [sammel], warteschlange: [] };
+  }
+  return { senden: alle, warteschlange: [] };
+}
