@@ -151,6 +151,36 @@ describe('Knock-out', () => {
   });
 });
 
+describe('Direktkurs (gettex nach ISIN)', () => {
+  const ctx = (alle: Ereignis[], jetzt: string, direkt: Record<string, Kurs>, basis: Record<string, Kurs> = {}): WaechterKontext => ({
+    jetzt: new Date(jetzt),
+    orders: ordersAusEreignissen(alle),
+    basisKurse: basis,
+    direktKurse: direkt,
+    cfg,
+    heute: { ereignisLaeufe: 0, ereignislaufOrders: [], ausfallWarnung: false, vorgemerkt: true },
+  });
+
+  it('kauft zum Direktkurs, nur wenn dessen Geschäft nach der Vormerkung lag', () => {
+    const ev = [vormerkung('a', VORGEMERKT)];
+    expect(waechterLauf(ctx(ev, '2026-10-21T06:20:00Z', { a: kurs(100, '2026-10-21T05:30:00Z') })).ereignisse).toEqual([]);
+    const r = waechterLauf(ctx(ev, '2026-10-21T06:20:00Z', { a: kurs(100, '2026-10-21T06:02:00Z') }, { a: kurs(999, '2026-10-21T06:19:00Z') }));
+    expect((r.ereignisse[0].daten as { kauf: { kurs: number } }).kauf.kurs).toBe(100.04);
+  });
+
+  it('Knock-out wird am Basiswert erkannt, obwohl der Produktkurs direkt kommt', () => {
+    const p = plan({
+      wertpapier: { name: 'Turbo', isin: 'DE000TURBO03', anlageklasse: 'hebel', spreadKlasse: 'hebel', handelsplatz: 'TGT', steuertopf: 'sonstige' },
+      hebel: { typ: 'knockout', richtung: 'long', emittent: 'Bank', basiswert: { name: 'Basis', kursbasis: { markt: 'eu', symbol: 'B.DE', waehrung: 'EUR' } }, basispreis: 90, koSchwelle: 90, bezugsverhaeltnis: 0.1 },
+    });
+    const ev = [vormerkung('k', VORGEMERKT, p)];
+    const kauf = waechterLauf(ctx(ev, '2026-10-21T06:20:00Z', { k: kurs(1, '2026-10-21T06:05:00Z') }, { k: kurs(100, '2026-10-21T06:05:00Z') }));
+    expect(kauf.ereignisse[0].typ).toBe('gekauft');
+    const ko = waechterLauf(ctx([...ev, ...kauf.ereignisse], '2026-10-21T06:40:00Z', { k: kurs(0.4, '2026-10-21T06:30:00Z') }, { k: kurs(89, '2026-10-21T06:39:00Z') }));
+    expect(ko.ereignisse[0]).toMatchObject({ typ: 'verkauft', daten: { verkauf: { grund: 'knockout' } } });
+  });
+});
+
 describe('ETF-Vergleich', () => {
   it('ETF-Kurs beim Kauf gemerkt, beim Verkauf Vergleich mit gleichen Gebühren', () => {
     const ev = [vormerkung('a', VORGEMERKT)];

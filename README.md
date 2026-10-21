@@ -55,6 +55,7 @@ Sa     Datensammler (Gewichte anpassen) → Wochenrückblick 📊
 
 | Quelle | Schlüssel | Gratis-Kontingent | Nutzung hier | Wofür |
 |---|---|---|---|---|
+| gettex (Bayerische Börse) | – | kostenlos (MiFIR Art. 13, ≤ 15 Min. verzögert) | Hauptquelle Kurse nach ISIN, je Wächter-Lauf 1–2 Dateien à ~0,3 MB | Echte Euro-Kurse für Aktien DE/EU/US, ETFs, ETNs, Hebelprodukte; Vergleichs-ETF |
 | Finnhub | `FINNHUB_API_KEY` | 60 Abfragen/Min. | Kurse US (Wächter), Quartalszahlen, Nachrichten | Kurse, Termine, Überraschungen |
 | Twelve Data | `TWELVEDATA_API_KEY` | 800/Tag, 8/Min., nur US + Forex | EUR/USD je Wächter-Lauf, Kurs-Fallback US | Wechselkurs |
 | Financial Modeling Prep | `FMP_API_KEY` | ca. 250/Tag | Wächter ≤ 150, Sammler ≤ 80 | EU-Kurse (`.DE`), Gewinner/Verlierer, Quartalszahlen |
@@ -103,7 +104,7 @@ deployt; die App auf dem iPad aktualisiert sich beim nächsten Öffnen selbst.
 | Keine Mitteilungen | App vom Home-Bildschirm öffnen → Einstellungen → „Push neu verbinden“, neuen Code als Secret `PUSH_SUBSCRIPTION` speichern. iPad-Einstellungen → Mitteilungen → Schattendepot prüfen. |
 | „Push-Anmeldung abgelaufen“ | Der Versand meldete 404/410 → wie oben neu verbinden. |
 | Order wird nicht ausgeführt | Quellenstatus prüfen: Kurs nur nach der Entscheidung und in der Handelszeit (Tradegate 08–22 Uhr). US-Werte erst nach US-Eröffnung (15:30). Nach 26 h ohne Kurs wird die Vormerkung verworfen (Push). |
-| Deutsche Aktien ohne Kurs | `FMP_API_KEY` fehlt oder FMP deckt das Symbol im Gratis-Tarif nicht ab (Quellenstatus → `system.json kursabrufe`). |
+| Order ohne Kurs (DE/EU) | ISIN falsch oder Wert wird auf gettex nicht gehandelt → Quellenstatus/`system.json kursabrufe` prüfen. Ersatz: Alpha Vantage-Tagesschluss (abends). |
 | „⚠️ Morgenlauf ausgefallen“ | Routine prüfen: claude.ai/code/routines → Läufe ansehen (GitHub-Verbindung? Nutzungslimit?). |
 | Claude-Ergebnis „verletzt das Schema“ | Datei liegt unter `daten/laeufe/ungueltig/` mit Fehlertext; Anweisungen in `routine/` schärfen. |
 | Quelle ausgefallen | Tab „Quellen“ zeigt letzten Fehler; der Rest läuft weiter. Kontingent erschöpft → am nächsten Tag automatisch wieder. |

@@ -11,7 +11,7 @@ const quelle = process.env.DATEN_DIR ?? '_daten';
 const kopie = mkdtempSync(join(tmpdir(), 'trockenlauf-'));
 cpSync(quelle, kopie, { recursive: true, filter: (p) => !p.includes('.git') });
 
-const vor = new Date(Date.now() - 60000).toISOString();
+const vor = new Date(Date.now() - 45 * 60000).toISOString(); // vor den (bis 15 Min. verzögerten) gettex-Kursen
 const basis = (name: string, isin: string, extra: Partial<OrderPlan>): OrderPlan => ({
   wertpapier: { name, isin, anlageklasse: 'aktie', spreadKlasse: 'aktie_large', handelsplatz: 'TGT', steuertopf: 'aktien' },
   strategie: 'sonstige',

@@ -1,7 +1,7 @@
 // Entscheidungslogik des Kurswächters (rein funktional, ohne Netz): Vormerkungen ausführen,
 // Ziel/Stop/Termin/Knock-out prüfen, Ereignislauf und Ausfallwarnung auslösen.
 // Grundsatz: nie zu einem Kurs handeln, der zum Entscheidungszeitpunkt schon bekannt war.
-import { benoetigteKursbasis, instrumentKurs, type EurUsd } from './bewertung.ts';
+import { benoetigteKursbasis, instrumentKurs, type EurUsd, type InstrumentKurs } from './bewertung.ts';
 import { etfVergleich } from './etf.ts';
 import { runde } from './geld.ts';
 import type { GebuehrenConfig } from './gebuehren.ts';
@@ -27,6 +27,8 @@ export interface WaechterKontext {
   orders: Order[];
   /** Kurs der Kursbasis je Order-ID (Währung der Kursbasis). Fehlt = kein Kurs verfügbar. */
   basisKurse: Record<string, Kurs>;
+  /** Echter Kurs des gehandelten Instruments in EUR (z. B. gettex nach ISIN) – hat Vorrang vor der Berechnung aus der Kursbasis. */
+  direktKurse?: Record<string, Kurs>;
   eurUsd?: EurUsd;
   /** Kurs des Vergleichs-ETFs in Euro (für „Schattendepot vs. ETF“) */
   etfKurs?: Kurs;
@@ -73,13 +75,35 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
     begruendung,
   });
 
+  /** Instrumentkurs: echter Direktkurs (falls vorhanden) mit KO-Prüfung am Basiswert, sonst aus der Kursbasis berechnet. */
+  const bewerte = (o: Order, basis: Kurs | undefined, direkt: Kurs | undefined, etnSeit: Date): InstrumentKurs => {
+    if (!direkt) return instrumentKurs(o.plan, basis!, ctx.eurUsd, jetzt, etnSeit);
+    let knockout = direkt.wert <= 0.001;
+    let hebel: number | undefined;
+    let tagesProzent = direkt.vortag ? runde((direkt.wert / direkt.vortag - 1) * 100, 2) : undefined;
+    if (basis) {
+      try {
+        const ausBasis = instrumentKurs(o.plan, basis, ctx.eurUsd, jetzt, etnSeit);
+        knockout ||= ausBasis.knockout;
+        tagesProzent ??= ausBasis.tagesProzent;
+        if (o.plan.hebel) hebel = runde(((basis.wert / (o.plan.hebel.basiswert.kursbasis.waehrung === 'USD' ? (ctx.eurUsd ?? 1) : 1)) * o.plan.hebel.bezugsverhaeltnis) / direkt.wert, 2);
+      } catch {
+        /* Basis nicht verwertbar → nur Direktkurs */
+      }
+    }
+    return { kurs: direkt, knockout, hebel, tagesProzent };
+  };
+
   for (const o of ctx.orders) {
+    const direkt = ctx.direktKurse?.[o.id];
     const basis = ctx.basisKurse[o.id];
+    /** maßgeblicher Kurs für Zeitprüfungen (kein Rückschaufehler) */
+    const zeitKurs = direkt ?? basis;
     const hp = { handelsplatz: o.plan.wertpapier.handelsplatz };
 
     if (o.status === 'vorgemerkt') {
       const alterStd = (jetzt.getTime() - new Date(o.vorgemerktUm).getTime()) / 3600000;
-      const neuerKurs = basis && new Date(basis.zeit) > new Date(o.vorgemerktUm);
+      const neuerKurs = zeitKurs && new Date(zeitKurs.zeit) > new Date(o.vorgemerktUm);
       let tagesschluss = false;
       try {
         tagesschluss = benoetigteKursbasis(o.plan).markt === 'eu';
@@ -88,13 +112,13 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
       }
       if (!neuerKurs || !offenZumHandeln) {
         if (alterStd > (tagesschluss ? VERWERFEN_NACH_STUNDEN_TAGESSCHLUSS : VERWERFEN_NACH_STUNDEN)) {
-          ereignisse.push(ev('verworfen', o.id, { grund: basis ? 'kein neuer Kurs seit der Vormerkung' : 'kein Kurs verfügbar' }));
+          ereignisse.push(ev('verworfen', o.id, { grund: zeitKurs ? 'kein neuer Kurs seit der Vormerkung' : 'kein Kurs verfügbar' }));
         }
         continue;
       }
       let ik;
       try {
-        ik = instrumentKurs(o.plan, basis, ctx.eurUsd, jetzt, jetzt);
+        ik = bewerte(o, basis, direkt, jetzt);
       } catch (e) {
         hinweise.push(`${o.plan.wertpapier.name}: ${(e as Error).message}`);
         continue;
@@ -137,19 +161,19 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
     }
 
     if (o.status !== 'offen' || !o.kauf) continue;
-    if (!basis) {
+    if (!zeitKurs) {
       hinweise.push(`${o.plan.wertpapier.name}: kein Kurs`);
       continue;
     }
     let ik;
     try {
-      ik = instrumentKurs(o.plan, basis, ctx.eurUsd, jetzt, new Date(o.kauf.zeit));
+      ik = bewerte(o, basis, direkt, new Date(o.kauf.zeit));
     } catch (e) {
       hinweise.push(`${o.plan.wertpapier.name}: ${(e as Error).message}`);
       continue;
     }
     kurse[o.id] = ik.kurs;
-    if (new Date(basis.zeit) <= new Date(o.kauf.zeit) || !offenZumHandeln) continue;
+    if (new Date(zeitKurs.zeit) <= new Date(o.kauf.zeit) || !offenZumHandeln) continue;
 
     const { geld } = geldBrief(ik.kurs, o.plan.wertpapier.spreadKlasse, cfg.spreads);
     const gehaltenMin = (jetzt.getTime() - new Date(o.kauf.zeit).getTime()) / 60000;

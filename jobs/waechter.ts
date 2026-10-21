@@ -8,6 +8,8 @@ import { kalibrierteQuote } from '../core/statistik.ts';
 import type { Kurs } from '../core/typen.ts';
 import { pushesFuerEreignisse, waechterLauf } from '../core/waechter.ts';
 import { holeEurUsd, holeKurs, type Abrufprotokoll } from './kurse/anbieter.ts';
+import { gettexKurse } from './kurse/gettex.ts';
+import { schwaerzen } from './lib/schwaerzen.ts';
 import { abgeleitetSchreiben } from './lib/abgeleitet.ts';
 import { haengeEreignisseAn, ladeConfig, leseEreignisse, leseJson, schreibeJson } from './lib/dateien.ts';
 import { pushen } from './lib/pushen.ts';
@@ -37,20 +39,48 @@ const aktiv = orders.filter((o) => o.status === 'vorgemerkt' || o.status === 'of
 const kursZeit = inHandelszeit(jetzt) || inHandelszeit(new Date(jetzt.getTime() + 20 * 60000));
 const protokoll: Abrufprotokoll = {};
 const basisKurse: Record<string, Kurs> = {};
+const direktKurse: Record<string, Kurs> = {};
 let eurUsd: number | undefined;
 let etfKurs: Kurs | undefined;
 if (kursZeit && aktiv.length) {
+  // 1. gettex: echte Euro-Kurse nach ISIN (kostenlos, ≤ 15 Min. verzögert) – Hauptquelle für alle gehandelten Instrumente.
+  const etfIsin = cfg.einstellungen.vergleichsEtf.isin;
+  const isins = [...new Set([...aktiv.map((o) => o.plan.wertpapier.isin), etfIsin])];
+  let gettex = new Map<string, Kurs>();
+  try {
+    gettex = await gettexKurse(isins, jetzt);
+    protokoll.gettex = { ok: gettex.size, fehler: isins.length - gettex.size, zuletztOk: jetzt.toISOString() };
+  } catch (e) {
+    protokoll.gettex = { ok: 0, fehler: 1, letzterFehler: schwaerzen(`${jetzt.toISOString()}: ${(e as Error).message}`) };
+  }
+  // Vortageskurs je ISIN merken (für die Tagesveränderung / Ereignislauf)
+  const schluss = leseJson<Record<string, { datum: string; kurs: number; vortag?: number }>>('schlusskurse.json', {});
+  for (const [isin, k] of gettex) {
+    const tag = berlin(new Date(k.zeit)).datum;
+    const alt = schluss[isin];
+    schluss[isin] = alt?.datum === tag ? { ...alt, kurs: k.wert } : { datum: tag, kurs: k.wert, vortag: alt?.kurs };
+    if (schluss[isin].vortag) k.vortag = schluss[isin].vortag;
+  }
+  schreibeJson('schlusskurse.json', schluss);
+  for (const o of aktiv) {
+    const k = gettex.get(o.plan.wertpapier.isin);
+    if (k) direktKurse[o.id] = k;
+  }
+  if (gettex.get(etfIsin)) etfKurs = gettex.get(etfIsin);
+
+  // 2. Kursbasis (Finnhub/Twelve Data/Kraken …): Fallback ohne gettex-Kurs, Basiswert für Knock-out-Prüfung, Vortag US
   const cache = new Map<string, Kurs | null>();
   for (const o of aktiv) {
     let kb;
     try {
       kb = benoetigteKursbasis(o.plan);
     } catch (e) {
-      console.error((e as Error).message);
+      if (!direktKurse[o.id]) console.error((e as Error).message);
       continue;
     }
     const schluessel = `${kb.markt}:${kb.symbol}`;
-    // EU-Werte: nur Tagesschlusskurs verfügbar (Alpha Vantage, knappes Kontingent) → einmal täglich ab 20:30 Uhr.
+    // EU-Werte: gettex reicht; sonst nur Tagesschlusskurs (Alpha Vantage, knappes Kontingent) einmal täglich ab 20:30 Uhr.
+    if (kb.markt === 'eu' && direktKurse[o.id] && !o.plan.hebel) continue;
     if (kb.markt === 'eu') {
       const euCache = leseJson<Record<string, string>>('eu-abrufe.json', {});
       if (b.minuten < 20 * 60 + 30 || euCache[kb.symbol] === b.datum) continue;
@@ -68,9 +98,9 @@ if (kursZeit && aktiv.length) {
       return false;
     }
   });
-  // Vergleichs-ETF (für „Schattendepot vs. ETF“): EUNL über Xetra, sonst URTH (USD) umgerechnet
+  // Vergleichs-ETF: gettex (IE00B4L5Y983) bevorzugt, sonst URTH (USD) umgerechnet
   const etf = cfg.einstellungen.vergleichsEtf;
-  const etfRoh = await holeKurs(etf.kursbasis, jetzt, protokoll);
+  const etfRoh = etfKurs ? null : await holeKurs(etf.kursbasis, jetzt, protokoll);
   if (brauchtUsd || (etfRoh && etf.kursbasis.waehrung === 'USD')) eurUsd = await holeEurUsd(jetzt, protokoll);
   if (etfRoh && etf.kursbasis.waehrung === 'EUR') etfKurs = etfRoh;
   else if (etfRoh && eurUsd) etfKurs = { ...etfRoh, wert: etfRoh.wert / eurUsd, synthetisch: true, hinweis: `${etf.kursbasis.symbol} umgerechnet` };
@@ -82,6 +112,7 @@ const r = waechterLauf({
   jetzt,
   orders,
   basisKurse,
+  direktKurse,
   eurUsd,
   etfKurs,
   cfg: { gebuehren: cfg.gebuehren, spreads: cfg.spreads, einstellungen: cfg.einstellungen },

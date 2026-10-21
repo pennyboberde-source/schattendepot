@@ -12,6 +12,12 @@ _Zuletzt aktualisiert: 21.10.2026 ~17:40 (Sitzung 1)_
 - `ausfallWarnungAktiv: true`.
 - Erster echter Morgenlauf: Do 22.10. 07:40. **Nächste Sitzung: Lauf prüfen** (`RemoteTrigger list_runs` trig_01TAvkP41ZEYZE9azpzewhPq, `get_run_log`), daten/laeufe/, Positionen, Pushes; Verbrauch nach einer Woche prüfen (ggf. Modell → Sonnet per `RemoteTrigger update`).
 
+## gettex als Hauptkursquelle (21.10. abends)
+- `jobs/kurse/gettex.ts`: kostenlose MiFIR-Nachhandelsdaten der Bayerischen Börse (Dateiliste auf gettex.de/en/trading/delayed-data/posttrade-data/, Dateien `erdk.bayerische-boerse.de:8000/.../posttrade.JJJJMMTT.HH.MM.munc|mund.csv.gz`, Format `ISIN,HH:MM:SS.ffffff(UTC),EUR,Kurs,Stück`, ~0,3 MB/15 Min., ≥ 24 h abrufbar). Wächter holt Kurse nach ISIN (+ Vergleichs-ETF IE00B4L5Y983), merkt Vortageskurs in `schlusskurse.json`. `core/waechter.ts` nimmt `direktKurse` vorrangig (Zeitprüfung gegen den Geschäftszeitpunkt → kein Rückschaufehler); Knock-out weiter am Basiswert (falls Kursbasis vorhanden) oder Produktkurs ≤ 0,001.
+- Live-Test 21.10. 21:06: SAP, Siemens, Allianz, Apple, MSCI-World-ETF, BTC-ETN geliefert (5–21 Min. alt). gettex robots: `User-agent: *` Allow (ClaudeBot u. a. gesperrt – Abruf erfolgt per GitHub Action, nicht per Claude).
+- Peers Fragen (Ereignislauf/Edge) beantwortet: Ereignislauf vorerst nicht nötig → **messen** (TODO: bei Ereignis Kurs zum Ereigniszeitpunkt und beim nächsten Claude-Lauf festhalten, nach 3–4 Wochen auswerten). Ehrliche Einschätzung: kein Geschwindigkeitsvorteil; Chance nur bei langsamen Mustern (Insider-Cluster, Nach-Quartalszahlen-Drift, Analysten-Revisionen); Gebühren-Hürde 2,2 %.
+- Nächste Quellen (0 €): BaFin Directors' Dealings, Bundesanzeiger Leerverkäufe, Finnhub-Analystenempfehlungen (`/stock/recommendation`), PEAD-Signal aus Kursen. Option für Peer: Routinen-Netzwerk „Custom“ mit wenigen Nachrichten-Domains (kleiner Sicherheitskompromiss).
+
 ## Phase
 - M1 Grundgerüst ✅ · M2 Kurswächter/Push/Kalender ✅ (Code fertig, Live-Test wartet auf Secrets) · M3 Routinen-Anweisungen/Übernahme ✅ (Routinen-Anlage wartet auf Peer, Schritt 3) · M4 Datensammler ✅ (13 Quellen, 9–10 ohne Schlüssel live geprüft)
 - **Jetzt: M5 Lernschleife.** Danach M6 Trockenlauf + Live-Start, dann M7 Quellen-Ausbau.
