@@ -1,0 +1,392 @@
+{
+  "stand": "2026-10-22T04:31:41.017Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:SPCX",
+      "name": "SPCX",
+      "ticker": "SPCX",
+      "score": 4.54,
+      "typen": [
+        "gewinn_ueberraschung",
+        "volumen_ungewoehnlich",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Alpha Vantage",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:FUL",
+      "name": "Fuller H B Co",
+      "ticker": "FUL",
+      "score": 3.81,
+      "typen": [
+        "insider_cluster_kauf",
+        "analysten_hochstufung"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "Finnhub Analysten"
+      ]
+    },
+    {
+      "schluessel": "T:BPRE",
+      "name": "Bluerock Private Real Estate Fund",
+      "ticker": "BPRE",
+      "score": 3.46,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TSLA",
+      "name": "Tesla",
+      "ticker": "TSLA",
+      "score": 3.42,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "tagesschau Wirtschaft",
+        "CNBC Top News",
+        "MarketWatch",
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:COF",
+      "name": "COF",
+      "ticker": "COF",
+      "score": 3.16,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:ELV",
+      "name": "ELV",
+      "ticker": "ELV",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:RTX",
+      "name": "RTX",
+      "ticker": "RTX",
+      "score": 2.3,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:ADS",
+      "name": "Adidas",
+      "ticker": "ADS.DE",
+      "score": 2.1,
+      "typen": [
+        "prognose_erhoehung"
+      ],
+      "quellen": [
+        "tagesschau Wirtschaft"
+      ]
+    },
+    {
+      "schluessel": "T:MOH",
+      "name": "MOH",
+      "ticker": "MOH",
+      "score": 1.93,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:T",
+      "name": "T",
+      "ticker": "T",
+      "score": 1.89,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:DX",
+      "name": "Dynex Capital Inc",
+      "ticker": "DX",
+      "score": 1.69,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LUV",
+      "name": "LUV",
+      "ticker": "LUV",
+      "score": 1.66,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:NFLX",
+      "name": "Netflix",
+      "ticker": "NFLX",
+      "score": 1.61,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "tagesschau Wirtschaft",
+        "CNBC Top News",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:GE",
+      "name": "GE",
+      "ticker": "GE",
+      "score": 1.6,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:CB",
+      "name": "CB",
+      "ticker": "CB",
+      "score": 1.46,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:DHR",
+      "name": "DHR",
+      "ticker": "DHR",
+      "score": 1.45,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:NOC",
+      "name": "NOC",
+      "ticker": "NOC",
+      "score": 1.44,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:TXN",
+      "name": "TXN",
+      "ticker": "TXN",
+      "score": 1.37,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:GXVIX",
+      "name": "GXVIX",
+      "ticker": "GXVIX",
+      "score": 1.35,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CRBG",
+      "name": "CRBG",
+      "ticker": "CRBG",
+      "score": 1.23,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:IAM",
+      "name": "IAM",
+      "ticker": "IAM",
+      "score": 1.22,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SPHL",
+      "name": "Springview Holdings Ltd Class A Ordinary Shares",
+      "ticker": "SPHL",
+      "score": 1.09,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:AHT",
+      "name": "Ashford Hospitality Trust, Inc.",
+      "ticker": "AHT",
+      "score": 1.06,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:CTY",
+      "name": "CTY",
+      "ticker": "CTY",
+      "score": 1.01,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SCISX",
+      "name": "SCISX",
+      "ticker": "SCISX",
+      "score": 0.97,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LEO",
+      "name": "LEO",
+      "ticker": "LEO",
+      "score": 0.93,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FBK",
+      "name": "FBK",
+      "ticker": "FBK",
+      "score": 0.9,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TENX",
+      "name": "TENX",
+      "ticker": "TENX",
+      "score": 0.89,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DSM",
+      "name": "DSM",
+      "ticker": "DSM",
+      "score": 0.84,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:GF",
+      "name": "GF",
+      "ticker": "GF",
+      "score": 0.81,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    }
+  ],
+  "anzahlSignale": 102
+}

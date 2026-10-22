@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-21T22:08:21.508Z",
+  "stand": "2026-10-22T04:31:41.017Z",
   "gesamt": {
     "anzahl": 0,
     "treffer": 0,
@@ -45,14 +45,135 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 0,
+      "anzahl": 10,
       "oe1T": null,
       "oe1W": null,
       "oe1M": null,
       "quote1W": null
     },
-    "nachSignalTyp": {},
-    "nachQuelle": {}
+    "nachSignalTyp": {
+      "gewinn_ueberraschung": {
+        "anzahl": 7,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "nachzahlen_drift": {
+        "anzahl": 3,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "insider_cluster_kauf": {
+        "anzahl": 2,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "volumen_ungewoehnlich": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "analysten_hochstufung": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "insider_kauf": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "nachricht": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "prognose_erhoehung": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      }
+    },
+    "nachQuelle": {
+      "Finnhub": {
+        "anzahl": 7,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "Finnhub Kurs": {
+        "anzahl": 3,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "OpenInsider": {
+        "anzahl": 2,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "tagesschau Wirtschaft": {
+        "anzahl": 2,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "FMP": {
+        "anzahl": 2,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "Alpha Vantage": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "Finnhub Analysten": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "CNBC Top News": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "MarketWatch": {
+        "anzahl": 1,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      }
+    }
   },
   "zusammenfassung": "Gesamt: 0 Orders, Trefferquote 0 %, Ø 0 % nach Gebühren (erwartet waren Ø 0 %).",
   "lernhinweise": [],
