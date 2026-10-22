@@ -7,4 +7,30 @@ X-WR-CALNAME:Schattendepot Verkaufstermine
 X-WR-TIMEZONE:Europe/Berlin
 REFRESH-INTERVAL;VALUE=DURATION:PT1H
 X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:2026-10-22-capital-one-financial-corp@schattendepot
+DTSTAMP:20261022T054231Z
+SEQUENCE:0
+DTSTART:20261112T150000Z
+DTEND:20261112T151500Z
+SUMMARY:Verkauf geplant: Capital One Financial Corp.
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +3\,0 % netto\nStop
+  −5\,0 %\nChance ~45 %\nhttps://pennyboberde-source.github.io/schattend
+ epot/#/order/2026-10-22-capital-one-financial-corp
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-22-
+ capital-one-financial-corp
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-22-space-exploration-technologies@schattendepot
+DTSTAMP:20261022T054231Z
+SEQUENCE:0
+DTSTART:20261105T150000Z
+DTEND:20261105T151500Z
+SUMMARY:Verkauf geplant: Space Exploration Technologies Corp. (SpaceX)
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +6\,0 % netto\nStop
+  −8\,0 %\nChance ~50 %\nhttps://pennyboberde-source.github.io/schattend
+ epot/#/order/2026-10-22-space-exploration-technologies
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-22-
+ space-exploration-technologies
+END:VEVENT
 END:VCALENDAR

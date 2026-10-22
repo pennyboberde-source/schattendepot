@@ -1,5 +1,117 @@
 {
-  "stand": "2026-10-22T04:31:41.017Z",
+  "stand": "2026-10-22T05:42:31.040Z",
   "offen": [],
-  "vorgemerkt": []
+  "vorgemerkt": [
+    {
+      "id": "2026-10-22-capital-one-financial-corp",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-10-22T05:42:31.040Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Capital One Financial Corp.",
+          "isin": "US14040H1059",
+          "ticker": "COF",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_large",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "COF",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "nachzahlen_drift",
+        "these": "Capital One meldete am 20.10. EPS 6,69 $ statt erwarteter 5,56 $ (+20 %); die Kursreaktion von +2,5 % ist im Verhältnis zur Überraschung moderat. Klassischer Post-Earnings-Drift bei einer großen, liquiden US-Bank – weniger spektakulär als SPCX, dient als ruhigerer Gegenpol.",
+        "ausloeser": "Gewinnüberraschung +20 % mit bestätigender Kursreaktion (Lagebild)",
+        "signalIds": [
+          "gewinn_ueberraschung:COF:2026-10-22",
+          "nachzahlen_drift:COF:2026-10-22"
+        ],
+        "quellen": [
+          {
+            "name": "Capital One Investor Relations",
+            "link": "https://investor.capitalone.com/"
+          }
+        ],
+        "konfidenz": 45,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.5,
+        "zielNettoProzent": 3,
+        "stopProzent": -5,
+        "verkaufstermin": "2026-11-12T15:00:00.000Z",
+        "risiken": [
+          "Überraschung evtl. schon eingepreist; Drift bei Large Caps oft schwach",
+          "Konjunktur-/Kreditausfallsorgen treffen Kartenbanken stark",
+          "Geopolitik (Nahost) belastet Gesamtmarkt",
+          "Gebührenhürde ~2,2 % frisst kleinen Drift auf"
+        ],
+        "einflussLektionen": "Keine Lektionen vorhanden. Zweite Order bewusst in anderem Sektor (Finanzen statt Raumfahrt/Tech), um Klumpenrisiko zu vermeiden.",
+        "risikoklasse": "normal"
+      },
+      "verkaufstermin": "2026-11-12T15:00:00.000Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-10-22-space-exploration-technologies",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-10-22T05:42:31.040Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Space Exploration Technologies Corp. (SpaceX)",
+          "isin": "US84615Q1031",
+          "ticker": "SPCX",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_large",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "SPCX",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "nachzahlen_drift",
+        "these": "SpaceX hat am 20.10. mit EPS 0,35 $ die Erwartung (0,14 $) deutlich übertroffen; der Markt bestätigte das mit +7,8 % bei sehr hohem Volumen (220 Mio. Stück). Drift nach starken Überraschungen hält oft einige Tage bis Wochen. Dazu Fantasie rund um einen möglichen Zusammenschluss mit Tesla vor Teslas Hauptversammlung am 6.12.",
+        "ausloeser": "Gewinnüberraschung +157 % mit positiver Kursreaktion und Rekordvolumen (Lagebild)",
+        "signalIds": [
+          "gewinn_ueberraschung:SPCX:2026-10-22",
+          "volumen_ungewoehnlich:SPCX:2026-10-22",
+          "nachzahlen_drift:SPCX:2026-10-22"
+        ],
+        "quellen": [
+          {
+            "name": "TradingView NASDAQ:SPCX (ISIN)",
+            "link": "https://in.tradingview.com/symbols/NASDAQ-SPCX/"
+          },
+          {
+            "name": "BusinessDay: SpaceX- und Tesla-Zahlen nähren Fusionsspekulation",
+            "link": "https://www.businessday.co.za/world/international-companies/2026-10-19-spacex-and-tesla-earnings-stoke-merger-speculation/"
+          },
+          {
+            "name": "tagesschau: Tesla und SpaceX prüfen Zusammenschluss",
+            "link": "https://www.tagesschau.de/wirtschaft/unternehmen/tesla-spacex-zusammenschluss-moeglich-100.html"
+          }
+        ],
+        "konfidenz": 50,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 1.5,
+        "zielNettoProzent": 6,
+        "stopProzent": -8,
+        "verkaufstermin": "2026-11-05T15:00:00.000Z",
+        "risiken": [
+          "Junge Aktie (IPO Juni 2026), hohe Schwankung; Gewinnmitnahmen nach +7,8 %",
+          "Fusion mit Tesla: als Käufer könnte SpaceX unter Verwässerung leiden",
+          "Quellen widersprechen sich zum Berichtstermin – Datenlage nicht ganz sauber",
+          "Nahost-Eskalation (Iran) kann Risikoappetit drücken"
+        ],
+        "einflussLektionen": "Noch keine Lektionen/Statistik (0 Orders). Wahl folgt dem höchsten Score im Lagebild; Konfidenz bewusst bei 50, da Kalibrierung fehlt.",
+        "risikoklasse": "normal"
+      },
+      "verkaufstermin": "2026-11-05T15:00:00.000Z",
+      "anpassungen": []
+    }
+  ]
 }
