@@ -1,6 +1,20 @@
 # STAND – Schattendepot
 
-_Zuletzt aktualisiert: 21.10.2026 ~22:15 (Sitzung 1, Ende)_
+_Zuletzt aktualisiert: 23.10.2026 abends (Sitzung 2: Daytrader + Randquellen, Planung)_
+
+## 🆕 Sitzung 2 (23.10. abends): Daytrader + Randquellen – Entscheidungen des Nutzers
+Auftrag: Daytrader-Skill `Jakeschincariol/day-trader-skill` (MIT, Stand 3d0f4ef vom 20.10.2026, 11 Skills, Python) in die App holen, wie das normale Depot simulieren und auswerten; zusätzlich gründliche Recherche nach Randplattformen (alle Anlageklassen).
+- **Keine bestehende Quelle je entfernen.** Neue Quellen kommen nur zusätzlich dazu.
+- **Eigener Bereich „Daytrading“ in der App**: eigene Konten, Kurve, Statistik. Nichts fließt in die Kennzahlen des normalen Depots.
+- Skill-Logik wird nach TypeScript portiert (getestet, `core/`), kein Plugin/Python nötig. Yahoo bleibt verboten → Kerzen aus gettex-Geschäftsdaten, 60-Tage-Historie für die Time Machine von Twelve Data (US), Kraken (Krypto). Broker-Skill entfällt (keine echten Orders); Alerts → eigene Pushes.
+- **Zwei Zweige, getrennt ausgewertet:** Code (Skill-Regeln mechanisch) und Claude (Watchlist im Morgenlauf, kein zusätzlicher Lauf).
+- **Märkte:** US-Aktien (Original), DAX/EU-Aktien, Krypto-ETNs, Hebel/Turbos – je getrennt ausgewertet.
+- **Konto:** 5.000 € je Konto, 1 % Risiko (50 €) je Trade – wie im Skill, aber **bis 10 Trades/Tag** je Konto (Nutzer 23.10.: „ruhig mehr nach eigenem Ermessen, ~10“; kostet kein Nutzungslimit, läuft als Code in Actions), Tagesverlust-Grenze mitgezogen, Puffer 10 %, max. 75 % je Position, Chance/Risiko ≥ 1, flach vor Börsenschluss).
+- **Gebühren Daytrading:** Hauptmodell **Smartbroker+** (gettex 0 € ab 500 €, darunter 1 €; Turbos UniCredit 0 € ab 500 €, andere Emittenten 4 €). Vergleichsspalten: **Consorsbank**, **Trade Republic** (1 € Bestpreis), dazu immer das Ergebnis vor Gebühren. Quellen: smartbrokerplus.de/de-de/konditionen (PLV 2026_07), Trade Republic seit 02.07.2026 1 € Bestpreis / 2 € Direktpreis.
+- **Normales Depot:** rechnet weiter mit Consorsbank, zeigt zusätzlich einen Smartbroker+-Vergleichswert. Risiko-Budget mutiger: 2 spekulative je Lauf, 50 % (config/einstellungen.json, 23.10.).
+- **Pushes Daytrader:** Einstieg + Ausstieg (je Wächter-Lauf gebündelt).
+- **Recherche Randplattformen:** gründlich (~40–60 Webabfragen, Bedingungen/robots je Quelle), kostenlose Anmeldung ohne Zahlungsdaten erlaubt (iPad-Anleitung, Schlüssel per GitHub-Einstellungen). Ergebnis: Rangliste → nach „weiter“ einbauen.
+- **Meilensteine:** D1 Daytrader-Kern in `core/` (Kerzen, Eröffnungsspanne, Einstieg, Ausstieg, Time Machine, Größe, Risiko, Simulation, Statistik, Gebührenmodelle) · D2 Jobs (Scanner, Kurse, Wächter-Anbindung, Pushes, Claude-Watchlist im Morgenlauf + Schema) · D3 App-Bereich Daytrading + E2E · D4 Recherche-Bericht Randplattformen · D5 Einbau der besten Quellen.
 
 ## 🛠️ Fehler beheben in einer neuen Sitzung
 1. In der App „Fehler melden“ (Einstellungen oder Order-Detail) → GitHub-Issue mit Label `fehler` (Ansicht, App-Version, Gerät stehen schon drin).

@@ -43,9 +43,9 @@
   },
   "zeitzone": "Europe/Berlin",
   "risikoBudget": {
-    "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoin-ETNs) – begrenzt, damit das Depot nicht nur daraus besteht.",
-    "maxSpekulativJeLauf": 1,
-    "maxAnteilSpekulativ": 0.3,
+    "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoin-ETNs) – begrenzt, damit das Depot nicht nur daraus besteht. Seit 23.10.2026 mutiger (Nutzerwunsch): 2 je Lauf, 50 %. Die Lernregel steuert innerhalb 10–50 % / 1–2 je Lauf nach.",
+    "maxSpekulativJeLauf": 2,
+    "maxAnteilSpekulativ": 0.5,
     "stopMinProzent": -25,
     "mindestKursEuro": 0.01
   }

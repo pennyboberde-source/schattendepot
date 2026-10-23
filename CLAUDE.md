@@ -36,6 +36,9 @@ Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, d
 - Rohdaten nicht committen, nur verdichtete Signale/Lagebilder; Rohdaten höchstens im Actions-Cache.
 - Keine Geheimnisse ins Repo (öffentlich). VAPID-Private-Key, Push-Anmeldung, Routinen-Token, API-Schlüssel nur als GitHub-Secrets.
 - Gebühren, Spreads, Steuern, Gewichtsgrenzen in `config/*.json`, nie hart codiert.
+- Normales Depot: Consorsbank-Standardpreis. Daytrading: Smartbroker+ (Vergleich Consorsbank, Trade Republic, vor Gebühren).
+- Daytrading ist ein eigener Bereich mit eigenen Konten und Kennzahlen – nie mit dem normalen Depot vermischen.
+- Bestehende Datenquellen nie entfernen; neue nur zusätzlich einbauen.
 
 ## Konventionen
 - Alles auf Deutsch (UI, Push, Berichte, README). Zahlen im deutschen Format, Zeiten in Europe/Berlin.
