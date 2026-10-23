@@ -1,0 +1,392 @@
+{
+  "stand": "2026-10-23T04:31:20.299Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:LAD",
+      "name": "LAD",
+      "ticker": "LAD",
+      "score": 4.39,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:FUL",
+      "name": "Fuller H B Co",
+      "ticker": "FUL",
+      "score": 3.81,
+      "typen": [
+        "insider_cluster_kauf",
+        "analysten_hochstufung"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "Finnhub Analysten"
+      ]
+    },
+    {
+      "schluessel": "T:AAL",
+      "name": "AAL",
+      "ticker": "AAL",
+      "score": 3.7,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:ELV",
+      "name": "ELV",
+      "ticker": "ELV",
+      "score": 3.64,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:LMT",
+      "name": "LMT",
+      "ticker": "LMT",
+      "score": 3.5,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:BPRE",
+      "name": "Bluerock Private Real Estate Fund",
+      "ticker": "BPRE",
+      "score": 3.46,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:RAPP",
+      "name": "Rapport Therapeutics, Inc.",
+      "ticker": "RAPP",
+      "score": 3.2,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:T",
+      "name": "T",
+      "ticker": "T",
+      "score": 3.19,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:META",
+      "name": "META",
+      "ticker": "META",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:NOK",
+      "name": "NOK",
+      "ticker": "NOK",
+      "score": 2.45,
+      "typen": [
+        "gewinn_ueberraschung",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:TSLA",
+      "name": "Tesla",
+      "ticker": "TSLA",
+      "score": 2.14,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "FAZ Finanzen",
+        "CNBC Top News",
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:MOH",
+      "name": "MOH",
+      "ticker": "MOH",
+      "score": 1.93,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AGMB",
+      "name": "Agomab Therapeutics Nv",
+      "ticker": "AGMB",
+      "score": 1.75,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DX",
+      "name": "Dynex Capital Inc",
+      "ticker": "DX",
+      "score": 1.69,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:VLO",
+      "name": "VLO",
+      "ticker": "VLO",
+      "score": 1.62,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:SPOT",
+      "name": "SPOT",
+      "ticker": "SPOT",
+      "score": -1.55,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:DOW",
+      "name": "DOW",
+      "ticker": "DOW",
+      "score": 1.51,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:DHR",
+      "name": "DHR",
+      "ticker": "DHR",
+      "score": 1.45,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:TXN",
+      "name": "TXN",
+      "ticker": "TXN",
+      "score": 1.37,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:GXVIX",
+      "name": "GXVIX",
+      "ticker": "GXVIX",
+      "score": 1.35,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CMCSA",
+      "name": "CMCSA",
+      "ticker": "CMCSA",
+      "score": 1.29,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:LUV",
+      "name": "LUV",
+      "ticker": "LUV",
+      "score": -1.27,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CRBG",
+      "name": "CRBG",
+      "ticker": "CRBG",
+      "score": 1.23,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DOLE",
+      "name": "DOLE",
+      "ticker": "DOLE",
+      "score": 1.18,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:XLAB",
+      "name": "Exascale Labs Holdings Inc.",
+      "ticker": "XLAB",
+      "score": 1.13,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:FBK",
+      "name": "FBK",
+      "ticker": "FBK",
+      "score": 0.9,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TENX",
+      "name": "TENX",
+      "ticker": "TENX",
+      "score": 0.89,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:GF",
+      "name": "GF",
+      "ticker": "GF",
+      "score": 0.81,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TANH",
+      "name": "Tantech Holdings Ltd",
+      "ticker": "TANH",
+      "score": 0.8,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:NCPL",
+      "name": "Netcapital Inc.",
+      "ticker": "NCPL",
+      "score": 0.8,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    }
+  ],
+  "anzahlSignale": 98
+}

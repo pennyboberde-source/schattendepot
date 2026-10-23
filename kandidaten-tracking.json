@@ -15,7 +15,8 @@
       "Alpha Vantage",
       "Finnhub Kurs"
     ],
-    "start": 159.31
+    "start": 159.31,
+    "r1T": -9.14
   },
   {
     "datum": "2026-10-22",
@@ -31,7 +32,8 @@
       "OpenInsider",
       "Finnhub Analysten"
     ],
-    "start": 50.66
+    "start": 50.66,
+    "r1T": 0.45
   },
   {
     "datum": "2026-10-22",
@@ -46,7 +48,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 12.3
+    "start": 12.3,
+    "r1T": 0.57
   },
   {
     "datum": "2026-10-22",
@@ -67,7 +70,8 @@
       "FMP",
       "Finnhub Kurs"
     ],
-    "start": 386.47
+    "start": 386.47,
+    "r1T": -3.08
   },
   {
     "datum": "2026-10-22",
@@ -83,7 +87,8 @@
       "Finnhub",
       "Finnhub Kurs"
     ],
-    "start": 206.66
+    "start": 206.66,
+    "r1T": -1.56
   },
   {
     "datum": "2026-10-22",
@@ -97,7 +102,8 @@
     "quellen": [
       "Finnhub"
     ],
-    "start": 434.13
+    "start": 434.13,
+    "r1T": 2.57
   },
   {
     "datum": "2026-10-22",
@@ -111,7 +117,8 @@
     "quellen": [
       "Finnhub"
     ],
-    "start": 191.6
+    "start": 191.6,
+    "r1T": 1.62
   },
   {
     "datum": "2026-10-22",
@@ -125,7 +132,8 @@
     "quellen": [
       "tagesschau Wirtschaft"
     ],
-    "start": 160.75
+    "start": 160.75,
+    "r1T": -1.09
   },
   {
     "datum": "2026-10-22",
@@ -139,7 +147,8 @@
     "quellen": [
       "Finnhub"
     ],
-    "start": 214.9
+    "start": 214.9,
+    "r1T": 0.81
   },
   {
     "datum": "2026-10-22",
@@ -154,6 +163,167 @@
       "Finnhub",
       "FMP"
     ],
-    "start": 21.91
+    "start": 21.91,
+    "r1T": 3.79
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:LAD",
+    "name": "LAD",
+    "ticker": "LAD",
+    "score": 4.39,
+    "typen": [
+      "gewinn_ueberraschung",
+      "nachzahlen_drift"
+    ],
+    "quellen": [
+      "Finnhub",
+      "Finnhub Kurs"
+    ],
+    "start": 291.07
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:FUL",
+    "name": "Fuller H B Co",
+    "ticker": "FUL",
+    "score": 3.81,
+    "typen": [
+      "insider_cluster_kauf",
+      "analysten_hochstufung"
+    ],
+    "quellen": [
+      "OpenInsider",
+      "Finnhub Analysten"
+    ],
+    "start": 50.89
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:AAL",
+    "name": "AAL",
+    "ticker": "AAL",
+    "score": 3.7,
+    "typen": [
+      "gewinn_ueberraschung",
+      "nachzahlen_drift"
+    ],
+    "quellen": [
+      "Finnhub",
+      "FMP",
+      "Finnhub Kurs"
+    ],
+    "start": 12.6
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:ELV",
+    "name": "ELV",
+    "ticker": "ELV",
+    "score": 3.64,
+    "typen": [
+      "gewinn_ueberraschung",
+      "nachzahlen_drift"
+    ],
+    "quellen": [
+      "Finnhub",
+      "Finnhub Kurs"
+    ],
+    "start": 445.28
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:LMT",
+    "name": "LMT",
+    "ticker": "LMT",
+    "score": 3.5,
+    "typen": [
+      "gewinn_ueberraschung",
+      "nachzahlen_drift"
+    ],
+    "quellen": [
+      "Finnhub",
+      "FMP",
+      "Finnhub Kurs"
+    ],
+    "start": 589.91
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:BPRE",
+    "name": "Bluerock Private Real Estate Fund",
+    "ticker": "BPRE",
+    "score": 3.46,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 12.37
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:RAPP",
+    "name": "Rapport Therapeutics, Inc.",
+    "ticker": "RAPP",
+    "score": 3.2,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 26.53
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:T",
+    "name": "T",
+    "ticker": "T",
+    "score": 3.19,
+    "typen": [
+      "gewinn_ueberraschung",
+      "nachzahlen_drift"
+    ],
+    "quellen": [
+      "Finnhub",
+      "FMP",
+      "Finnhub Kurs"
+    ],
+    "start": 22.74
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:META",
+    "name": "META",
+    "ticker": "META",
+    "score": 2.5,
+    "typen": [
+      "gewinn_ueberraschung"
+    ],
+    "quellen": [
+      "Finnhub",
+      "FMP"
+    ],
+    "start": 648.85
+  },
+  {
+    "datum": "2026-10-23",
+    "schluessel": "T:NOK",
+    "name": "NOK",
+    "ticker": "NOK",
+    "score": 2.45,
+    "typen": [
+      "gewinn_ueberraschung",
+      "volumen_ungewoehnlich"
+    ],
+    "quellen": [
+      "FMP",
+      "Alpha Vantage"
+    ],
+    "start": 7.88
   }
 ]
