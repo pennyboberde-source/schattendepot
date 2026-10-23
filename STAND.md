@@ -14,6 +14,8 @@ Auftrag: Daytrader-Skill `Jakeschincariol/day-trader-skill` (MIT, Stand 3d0f4ef 
 - **Normales Depot:** rechnet weiter mit Consorsbank, zeigt zusätzlich einen Smartbroker+-Vergleichswert. Risiko-Budget mutiger: 2 spekulative je Lauf, 50 % (config/einstellungen.json, 23.10.).
 - **Pushes Daytrader:** Einstieg + Ausstieg (je Wächter-Lauf gebündelt).
 - **Recherche Randplattformen:** gründlich (~40–60 Webabfragen, Bedingungen/robots je Quelle), kostenlose Anmeldung ohne Zahlungsdaten erlaubt (iPad-Anleitung, Schlüssel per GitHub-Einstellungen). Ergebnis: Rangliste → nach „weiter“ einbauen.
+- **Nutzungslimit (Pro):** am 23.10. ~23:45 Woche 76 %, Reset **Di 27.10. 06:00 Berlin**. Daytrades selbst kosten nichts (Code in Actions); teuer sind Bauen und Recherche. → **D1 erst nach dem Wochen-Reset starten**, Recherche (D4) sparsam aufteilen. Routinen (Mo 3 Läufe, Sa Wochenrückblick) brauchen den Wochenrest.
+- **Nächster Schritt:** D1 Daytrader-Kern. Skill-Quelle zum Nachlesen: `git clone --depth 1 https://github.com/Jakeschincariol/day-trader-skill` in den Scratchpad (nur lesen, nicht ausführen; v. a. trader-scanner/scan.py, trader-entry/entry.py, trader-exit/exit.py, trader-timemachine/timemachine.py, trader-budget/size.py, trader-risk/check.py + config.example.json).
 - **Meilensteine:** D1 Daytrader-Kern in `core/` (Kerzen, Eröffnungsspanne, Einstieg, Ausstieg, Time Machine, Größe, Risiko, Simulation, Statistik, Gebührenmodelle) · D2 Jobs (Scanner, Kurse, Wächter-Anbindung, Pushes, Claude-Watchlist im Morgenlauf + Schema) · D3 App-Bereich Daytrading + E2E · D4 Recherche-Bericht Randplattformen · D5 Einbau der besten Quellen.
 
 ## 🛠️ Fehler beheben in einer neuen Sitzung
@@ -130,7 +132,8 @@ Prüfen: `gh secret list -R pennyboberde-source/schattendepot` · `RemoteTrigger
 ## Nächste Schritte
 1. **Do 22.10.:** ersten echten Morgenlauf prüfen (`RemoteTrigger list_runs` trig_01TAvkP41ZEYZE9azpzewhPq, `get_run_log`), Übernahme, `daten/laeufe/`, Vormerkungen → Ausführung im Wächter, Pushes angekommen? Danach Mittags- und Abendlauf.
 2. Offene Fehler-Issues: `gh issue list --label fehler`.
-3. **Ab So 25.10. (Winterzeit):** Crons per `RemoteTrigger update` anpassen – Morgenlauf `40 6 * * 1-5`, Wochenrückblick `7 9 * * 6` (Mittag/Abend prüfen: gewünschte Berliner Uhrzeit halten).
+3. Winterzeit: Morgenlauf ✅ am 23.10. auf `40 6 * * 1-5` gestellt (nächster Lauf Mo 26.10. 07:40). **Offen: Wochenrückblick nach dem Lauf am Sa 24.10. auf `7 9 * * 6`** (sonst 09:07 statt 10:07). Mittag/Abend bleiben.
+3a. **Daytrader D1 nach Wochen-Reset (Di 27.10.)** – siehe Abschnitt Sitzung 2 oben.
 4. Nach einer Woche: Nutzungsverbrauch der Routinen prüfen (ggf. Modell Sonnet).
 5. Nach 3–4 Wochen: Statistik, Kalibrierung, Ereignis-Messung auswerten.
 6. Optional auf Wunsch: YouTube-Schlüssel, FRED_API_KEY, SEC_KONTAKT; Historie bereinigen nur nach „Ja, Historie bereinigen“.
