@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-23T06:19:12.625Z",
+  "stand": "2026-10-23T07:12:59.444Z",
   "offen": [
     {
       "id": "2026-10-22-space-exploration-technologies",
@@ -84,12 +84,87 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 132.68,
-        "zeit": "2026-10-23T06:14:52.656Z",
+        "wert": 132.58,
+        "zeit": "2026-10-23T06:58:49.262Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 4,
+        "verzoegertMin": 14,
         "hinweis": "letztes Geschäft 2026-10-23",
         "vortag": 129.66
+      }
+    },
+    {
+      "id": "2026-10-23-lithia-motors-inc",
+      "status": "offen",
+      "vorgemerktUm": "2026-10-23T05:42:39.815Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Lithia Motors Inc.",
+          "isin": "US5367971034",
+          "wkn": "914076",
+          "ticker": "LAD",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_large",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "LAD",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "nachzahlen_drift",
+        "these": "Lithia meldete am 21.10. Rekordumsatz von 9,9 Mrd. $, bereinigtes EPS 10,34 $ (+9 %), Aktienrückkäufe und 7 % mehr Dividende. Der Markt reagierte am 22.10. mit +8,2 % und schloss fast am Tageshoch (291 $) – starkes Zeichen für eine Drift über einige Tage bis Wochen.",
+        "ausloeser": "Positive Gewinnüberraschung mit bestätigender Kursreaktion (+8,2 %, Schluss am Hoch), höchster Score im Lagebild",
+        "signalIds": [
+          "gewinn_ueberraschung:LAD:2026-10-23",
+          "nachzahlen_drift:LAD:2026-10-23"
+        ],
+        "quellen": [
+          {
+            "name": "Lithia Q3-2026-Ergebnis (SEC 8-K)",
+            "link": "https://www.sec.gov/Archives/edgar/data/0001023128/000102312826000057/a2026q3exx99earningsrelease.htm"
+          }
+        ],
+        "konfidenz": 48,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 1,
+        "zielNettoProzent": 5,
+        "stopProzent": -7,
+        "verkaufstermin": "2026-11-06T15:00:00.000Z",
+        "risiken": [
+          "Lagebild-Überraschung (+34 %) vergleicht unbereinigtes EPS 13,22 $ mit bereinigter Erwartung – echte Überraschung eher ~+5 %",
+          "Nach +8,2 % an einem Tag sind Gewinnmitnahmen möglich",
+          "Autohandel zinsabhängig; Zinssorgen belasten derzeit Märkte"
+        ],
+        "einflussLektionen": "Noch keine Lektionen/Statistik (0 abgeschlossene Orders). Wahl folgt höchstem Score; Konfidenz unter 50, weil die Überraschung im Signal überzeichnet ist.",
+        "risikoklasse": "normal"
+      },
+      "verkaufstermin": "2026-11-06T15:00:00.000Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-10-23T07:12:59.444Z",
+        "stueck": 3,
+        "kurs": 256.792,
+        "kurswert": 770.38,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 781.28,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-23T06:44:08.589Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 277.09,
+      "stopkurs": 238.82,
+      "etfKauf": {
+        "wert": 129.965,
+        "zeit": "2026-10-23T06:57:45.909Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 15,
+        "hinweis": "letztes Geschäft 2026-10-23",
+        "vortag": 129.67
       }
     },
     {
@@ -167,18 +242,16 @@
       },
       "letzterKurs": {
         "wert": 181.22,
-        "zeit": "2026-10-23T05:30:42.581Z",
+        "zeit": "2026-10-23T06:43:55.151Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 49,
+        "verzoegertMin": 29,
         "hinweis": "letztes Geschäft 2026-10-23",
         "vortag": 181.22
       }
-    }
-  ],
-  "vorgemerkt": [
+    },
     {
       "id": "2026-10-23-elevance-health-inc",
-      "status": "vorgemerkt",
+      "status": "offen",
       "vorgemerktUm": "2026-10-23T05:42:39.815Z",
       "vorgemerktVon": "morgenlauf",
       "plan": {
@@ -229,58 +302,32 @@
         "risikoklasse": "normal"
       },
       "verkaufstermin": "2026-11-13T15:00:00.000Z",
-      "anpassungen": []
-    },
-    {
-      "id": "2026-10-23-lithia-motors-inc",
-      "status": "vorgemerkt",
-      "vorgemerktUm": "2026-10-23T05:42:39.815Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "Lithia Motors Inc.",
-          "isin": "US5367971034",
-          "wkn": "914076",
-          "ticker": "LAD",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_large",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "LAD",
-            "waehrung": "USD"
-          }
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-10-23T07:12:59.444Z",
+        "stueck": 2,
+        "kurs": 398.148,
+        "kurswert": 796.3,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
         },
-        "strategie": "nachzahlen_drift",
-        "these": "Lithia meldete am 21.10. Rekordumsatz von 9,9 Mrd. $, bereinigtes EPS 10,34 $ (+9 %), Aktienrückkäufe und 7 % mehr Dividende. Der Markt reagierte am 22.10. mit +8,2 % und schloss fast am Tageshoch (291 $) – starkes Zeichen für eine Drift über einige Tage bis Wochen.",
-        "ausloeser": "Positive Gewinnüberraschung mit bestätigender Kursreaktion (+8,2 %, Schluss am Hoch), höchster Score im Lagebild",
-        "signalIds": [
-          "gewinn_ueberraschung:LAD:2026-10-23",
-          "nachzahlen_drift:LAD:2026-10-23"
-        ],
-        "quellen": [
-          {
-            "name": "Lithia Q3-2026-Ergebnis (SEC 8-K)",
-            "link": "https://www.sec.gov/Archives/edgar/data/0001023128/000102312826000057/a2026q3exx99earningsrelease.htm"
-          }
-        ],
-        "konfidenz": 48,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 1,
-        "zielNettoProzent": 5,
-        "stopProzent": -7,
-        "verkaufstermin": "2026-11-06T15:00:00.000Z",
-        "risiken": [
-          "Lagebild-Überraschung (+34 %) vergleicht unbereinigtes EPS 13,22 $ mit bereinigter Erwartung – echte Überraschung eher ~+5 %",
-          "Nach +8,2 % an einem Tag sind Gewinnmitnahmen möglich",
-          "Autohandel zinsabhängig; Zinssorgen belasten derzeit Märkte"
-        ],
-        "einflussLektionen": "Noch keine Lektionen/Statistik (0 abgeschlossene Orders). Wahl folgt höchstem Score; Konfidenz unter 50, weil die Überraschung im Signal überzeichnet ist.",
-        "risikoklasse": "normal"
+        "betrag": 807.2,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-23T06:44:13.987Z)",
+        "synthetisch": true
       },
-      "verkaufstermin": "2026-11-06T15:00:00.000Z",
-      "anpassungen": []
+      "zielkurs": 425.2,
+      "stopkurs": 374.26,
+      "etfKauf": {
+        "wert": 129.965,
+        "zeit": "2026-10-23T06:57:45.909Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 15,
+        "hinweis": "letztes Geschäft 2026-10-23",
+        "vortag": 129.67
+      }
     }
-  ]
+  ],
+  "vorgemerkt": []
 }
