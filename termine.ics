@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT1H
 X-PUBLISHED-TTL:PT1H
 BEGIN:VEVENT
 UID:2026-10-22-capital-one-financial-corp@schattendepot
-DTSTAMP:20261023T043120Z
+DTSTAMP:20261023T054239Z
 SEQUENCE:0
 DTSTART:20261112T150000Z
 DTEND:20261112T151500Z
@@ -22,7 +22,7 @@ URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-22-
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-22-space-exploration-technologies@schattendepot
-DTSTAMP:20261023T043120Z
+DTSTAMP:20261023T054239Z
 SEQUENCE:0
 DTSTART:20261105T150000Z
 DTEND:20261105T151500Z
@@ -32,5 +32,31 @@ DESCRIPTION:Simulation – keine Anlageberatung.\nZiel 150\,28 €\nStop 1
  epot/#/order/2026-10-22-space-exploration-technologies
 URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-22-
  space-exploration-technologies
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-23-elevance-health-inc@schattendepot
+DTSTAMP:20261023T054239Z
+SEQUENCE:0
+DTSTART:20261113T150000Z
+DTEND:20261113T151500Z
+SUMMARY:Verkauf geplant: Elevance Health Inc.
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +4\,0 % netto\nStop
+  −6\,0 %\nChance ~45 %\nhttps://pennyboberde-source.github.io/schattend
+ epot/#/order/2026-10-23-elevance-health-inc
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-23-
+ elevance-health-inc
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-23-lithia-motors-inc@schattendepot
+DTSTAMP:20261023T054239Z
+SEQUENCE:0
+DTSTART:20261106T150000Z
+DTEND:20261106T151500Z
+SUMMARY:Verkauf geplant: Lithia Motors Inc.
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +5\,0 % netto\nStop
+  −7\,0 %\nChance ~48 %\nhttps://pennyboberde-source.github.io/schattend
+ epot/#/order/2026-10-23-lithia-motors-inc
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-23-
+ lithia-motors-inc
 END:VEVENT
 END:VCALENDAR

@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-23T04:31:20.299Z",
+  "stand": "2026-10-23T05:42:39.815Z",
   "offen": [
     {
       "id": "2026-10-22-space-exploration-technologies",
@@ -173,5 +173,112 @@
       }
     }
   ],
-  "vorgemerkt": []
+  "vorgemerkt": [
+    {
+      "id": "2026-10-23-elevance-health-inc",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-10-23T05:42:39.815Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Elevance Health Inc.",
+          "isin": "US0367521038",
+          "wkn": "A12FMV",
+          "ticker": "ELV",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_large",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "ELV",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "nachzahlen_drift",
+        "these": "Elevance übertraf mit bereinigtem EPS 6,99 $ die Erwartung (ca. 4,71 $) deutlich, hob die Prognose 2026 auf mindestens 29 $ an und stellt für 2027 mindestens 12 % EPS-Wachstum in Aussicht. Kostenquote sank auf 90,6 %. Kursreaktion nur +2,6 % – Raum für Drift, zumal die Aktie nach dem Q2-Einbruch tief steht.",
+        "ausloeser": "Gewinnüberraschung +48 % mit Prognoseanhebung und positiver, aber verhaltener Kursreaktion (Lagebild)",
+        "signalIds": [
+          "gewinn_ueberraschung:ELV:2026-10-23",
+          "nachzahlen_drift:ELV:2026-10-23"
+        ],
+        "quellen": [
+          {
+            "name": "Elevance Q3-2026-Ergebnis (SEC 8-K)",
+            "link": "https://www.sec.gov/Archives/edgar/data/0001156039/000115603926000068/a3q2026elvearningsrelease.htm"
+          },
+          {
+            "name": "Dow Jones via iTiger: Elevance übertrifft Erwartungen",
+            "link": "https://www.itiger.com/hant/news/2677986627"
+          }
+        ],
+        "konfidenz": 45,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.5,
+        "zielNettoProzent": 4,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-13T15:00:00.000Z",
+        "risiken": [
+          "Teil der Überraschung ist ein nicht-operativer Sondereffekt (ca. 1,85 $ je Aktie)",
+          "Nach dem Q2-Plus fiel die Aktie trotzdem um ca. 9 % – Markt misstraut Krankenversicherern",
+          "Politisches Risiko (Medicare Advantage, Medicaid)"
+        ],
+        "einflussLektionen": "Noch keine Lektionen/Statistik. Bewusst ein zweiter Drift-Fall mit schwacher Kursreaktion als Vergleich zu LAD (starke Reaktion).",
+        "risikoklasse": "normal"
+      },
+      "verkaufstermin": "2026-11-13T15:00:00.000Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-10-23-lithia-motors-inc",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-10-23T05:42:39.815Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Lithia Motors Inc.",
+          "isin": "US5367971034",
+          "wkn": "914076",
+          "ticker": "LAD",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_large",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "LAD",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "nachzahlen_drift",
+        "these": "Lithia meldete am 21.10. Rekordumsatz von 9,9 Mrd. $, bereinigtes EPS 10,34 $ (+9 %), Aktienrückkäufe und 7 % mehr Dividende. Der Markt reagierte am 22.10. mit +8,2 % und schloss fast am Tageshoch (291 $) – starkes Zeichen für eine Drift über einige Tage bis Wochen.",
+        "ausloeser": "Positive Gewinnüberraschung mit bestätigender Kursreaktion (+8,2 %, Schluss am Hoch), höchster Score im Lagebild",
+        "signalIds": [
+          "gewinn_ueberraschung:LAD:2026-10-23",
+          "nachzahlen_drift:LAD:2026-10-23"
+        ],
+        "quellen": [
+          {
+            "name": "Lithia Q3-2026-Ergebnis (SEC 8-K)",
+            "link": "https://www.sec.gov/Archives/edgar/data/0001023128/000102312826000057/a2026q3exx99earningsrelease.htm"
+          }
+        ],
+        "konfidenz": 48,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 1,
+        "zielNettoProzent": 5,
+        "stopProzent": -7,
+        "verkaufstermin": "2026-11-06T15:00:00.000Z",
+        "risiken": [
+          "Lagebild-Überraschung (+34 %) vergleicht unbereinigtes EPS 13,22 $ mit bereinigter Erwartung – echte Überraschung eher ~+5 %",
+          "Nach +8,2 % an einem Tag sind Gewinnmitnahmen möglich",
+          "Autohandel zinsabhängig; Zinssorgen belasten derzeit Märkte"
+        ],
+        "einflussLektionen": "Noch keine Lektionen/Statistik (0 abgeschlossene Orders). Wahl folgt höchstem Score; Konfidenz unter 50, weil die Überraschung im Signal überzeichnet ist.",
+        "risikoklasse": "normal"
+      },
+      "verkaufstermin": "2026-11-06T15:00:00.000Z",
+      "anpassungen": []
+    }
+  ]
 }
