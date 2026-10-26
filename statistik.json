@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-24T08:09:32.780Z",
+  "stand": "2026-10-26T04:34:02.647Z",
   "gesamt": {
     "anzahl": 0,
     "treffer": 0,
@@ -45,8 +45,8 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 24,
-      "oe1T": -0.51,
+      "anzahl": 34,
+      "oe1T": -0.69,
       "oe1W": null,
       "oe1M": null,
       "quote1W": null
@@ -54,49 +54,63 @@
     "nachSignalTyp": {
       "gewinn_ueberraschung": {
         "anzahl": 14,
-        "oe1T": -0.71,
+        "oe1T": -0.84,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "insider_cluster_kauf": {
+        "anzahl": 9,
+        "oe1T": -0.62,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
       "nachzahlen_drift": {
         "anzahl": 8,
-        "oe1T": -4.59,
+        "oe1T": -2.86,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
-      "insider_cluster_kauf": {
-        "anzahl": 5,
-        "oe1T": 0.51,
+      "insider_kauf": {
+        "anzahl": 8,
+        "oe1T": -0.35,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
       "nachricht": {
         "anzahl": 5,
-        "oe1T": -3.08,
+        "oe1T": -0.77,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
-      "insider_kauf": {
-        "anzahl": 3,
-        "oe1T": 0.57,
+      "tagesgewinner": {
+        "anzahl": 4,
+        "oe1T": null,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "kursrakete": {
+        "anzahl": 4,
+        "oe1T": null,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
       "volumen_ungewoehnlich": {
         "anzahl": 2,
-        "oe1T": -9.14,
+        "oe1T": -2.92,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
       "analysten_hochstufung": {
         "anzahl": 2,
-        "oe1T": 0.45,
+        "oe1T": -1.04,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
@@ -112,56 +126,56 @@
     "nachQuelle": {
       "Finnhub": {
         "anzahl": 13,
-        "oe1T": -0.71,
+        "oe1T": -1.16,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "OpenInsider": {
+        "anzahl": 11,
+        "oe1T": -0.62,
+        "oe1W": null,
+        "oe1M": null,
+        "quote1W": null
+      },
+      "FMP": {
+        "anzahl": 11,
+        "oe1T": -0.91,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
       "Finnhub Kurs": {
         "anzahl": 8,
-        "oe1T": -4.59,
+        "oe1T": -2.86,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
-      "FMP": {
-        "anzahl": 7,
-        "oe1T": 0.36,
-        "oe1W": null,
-        "oe1M": null,
-        "quote1W": null
-      },
-      "OpenInsider": {
-        "anzahl": 5,
-        "oe1T": 0.51,
+      "Alpha Vantage": {
+        "anzahl": 6,
+        "oe1T": -2.92,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
       "tagesschau Wirtschaft": {
         "anzahl": 3,
-        "oe1T": -2.09,
+        "oe1T": -1.39,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
       "CNBC Top News": {
         "anzahl": 3,
-        "oe1T": -3.08,
-        "oe1W": null,
-        "oe1M": null,
-        "quote1W": null
-      },
-      "Alpha Vantage": {
-        "anzahl": 2,
-        "oe1T": -9.14,
+        "oe1T": -1.03,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null
       },
       "Finnhub Analysten": {
         "anzahl": 2,
-        "oe1T": 0.45,
+        "oe1T": -1.04,
         "oe1W": null,
         "oe1M": null,
         "quote1W": null

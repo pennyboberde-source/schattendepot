@@ -180,7 +180,8 @@
       "Finnhub",
       "Finnhub Kurs"
     ],
-    "start": 291.07
+    "start": 291.07,
+    "r1T": 1.55
   },
   {
     "datum": "2026-10-23",
@@ -196,7 +197,8 @@
       "OpenInsider",
       "Finnhub Analysten"
     ],
-    "start": 50.89
+    "start": 50.89,
+    "r1T": -2.52
   },
   {
     "datum": "2026-10-23",
@@ -213,7 +215,8 @@
       "FMP",
       "Finnhub Kurs"
     ],
-    "start": 12.6
+    "start": 12.6,
+    "r1T": -3.89
   },
   {
     "datum": "2026-10-23",
@@ -229,7 +232,8 @@
       "Finnhub",
       "Finnhub Kurs"
     ],
-    "start": 445.28
+    "start": 445.28,
+    "r1T": -1.2
   },
   {
     "datum": "2026-10-23",
@@ -246,7 +250,8 @@
       "FMP",
       "Finnhub Kurs"
     ],
-    "start": 589.91
+    "start": 589.91,
+    "r1T": 2.42
   },
   {
     "datum": "2026-10-23",
@@ -261,7 +266,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 12.37
+    "start": 12.37,
+    "r1T": 0.65
   },
   {
     "datum": "2026-10-23",
@@ -276,7 +282,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 26.53
+    "start": 26.53,
+    "r1T": -2.26
   },
   {
     "datum": "2026-10-23",
@@ -293,7 +300,8 @@
       "FMP",
       "Finnhub Kurs"
     ],
-    "start": 22.74
+    "start": 22.74,
+    "r1T": -7.96
   },
   {
     "datum": "2026-10-23",
@@ -308,7 +316,8 @@
       "Finnhub",
       "FMP"
     ],
-    "start": 648.85
+    "start": 648.85,
+    "r1T": -0.96
   },
   {
     "datum": "2026-10-23",
@@ -324,7 +333,8 @@
       "FMP",
       "Alpha Vantage"
     ],
-    "start": 7.88
+    "start": 7.88,
+    "r1T": 3.3
   },
   {
     "datum": "2026-10-24",
@@ -338,7 +348,8 @@
     "quellen": [
       "tagesschau Wirtschaft"
     ],
-    "start": 69.1
+    "start": 69.1,
+    "r1T": 0
   },
   {
     "datum": "2026-10-24",
@@ -352,7 +363,8 @@
     "quellen": [
       "CNBC Top News"
     ],
-    "start": 372.22
+    "start": 372.22,
+    "r1T": 0
   },
   {
     "datum": "2026-10-24",
@@ -379,6 +391,157 @@
     "quellen": [
       "CNBC Top News"
     ],
-    "start": 347.725
+    "start": 347.725,
+    "r1T": 0
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:RAPP",
+    "name": "Rapport Therapeutics, Inc.",
+    "ticker": "RAPP",
+    "score": 3.42,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 25.93
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:CRAFX",
+    "name": "Cascade Real Assets Fund",
+    "ticker": "CRAFX",
+    "score": 2.85,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ]
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:NXG",
+    "name": "Nxg Nextgen Infrastructure Income Fund",
+    "ticker": "NXG",
+    "score": 2.48,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 44.41
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:AGMB",
+    "name": "Agomab Therapeutics Nv",
+    "ticker": "AGMB",
+    "score": 1.75,
+    "typen": [
+      "insider_cluster_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 9.05
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:AIOK",
+    "name": "AI OKTO Corp.",
+    "ticker": "AIOK",
+    "score": 1.3,
+    "typen": [
+      "tagesgewinner",
+      "kursrakete"
+    ],
+    "quellen": [
+      "FMP",
+      "Alpha Vantage"
+    ],
+    "start": 12.02
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:DOLE",
+    "name": "DOLE",
+    "ticker": "DOLE",
+    "score": 1.18,
+    "typen": [
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 13.44
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:CRBG",
+    "name": "CRBG",
+    "ticker": "CRBG",
+    "score": 1.16,
+    "typen": [
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 34.13
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:CLRO",
+    "name": "ClearOne, Inc.",
+    "ticker": "CLRO",
+    "score": 1.12,
+    "typen": [
+      "tagesgewinner",
+      "kursrakete"
+    ],
+    "quellen": [
+      "FMP",
+      "Alpha Vantage"
+    ],
+    "start": 3.25
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:LYCA",
+    "name": "Lycia Therapeutics Inc.",
+    "ticker": "LYCA",
+    "score": 1.12,
+    "typen": [
+      "tagesgewinner",
+      "kursrakete"
+    ],
+    "quellen": [
+      "FMP",
+      "Alpha Vantage"
+    ],
+    "start": 30
+  },
+  {
+    "datum": "2026-10-26",
+    "schluessel": "T:BOLT",
+    "name": "Bolt Biotherapeutics, Inc.",
+    "ticker": "BOLT",
+    "score": 1.08,
+    "typen": [
+      "tagesgewinner",
+      "kursrakete"
+    ],
+    "quellen": [
+      "FMP",
+      "Alpha Vantage"
+    ],
+    "start": 6.27
   }
 ]
