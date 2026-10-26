@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT1H
 X-PUBLISHED-TTL:PT1H
 BEGIN:VEVENT
 UID:2026-10-22-capital-one-financial-corp@schattendepot
-DTSTAMP:20261026T062214Z
+DTSTAMP:20261026T064253Z
 SEQUENCE:0
 DTSTART:20261112T150000Z
 DTEND:20261112T151500Z
@@ -22,7 +22,7 @@ URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-22-
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-22-space-exploration-technologies@schattendepot
-DTSTAMP:20261026T062214Z
+DTSTAMP:20261026T064253Z
 SEQUENCE:0
 DTSTART:20261105T150000Z
 DTEND:20261105T151500Z
@@ -35,7 +35,7 @@ URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-22-
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-elevance-health-inc@schattendepot
-DTSTAMP:20261026T062214Z
+DTSTAMP:20261026T064253Z
 SEQUENCE:0
 DTSTART:20261113T150000Z
 DTEND:20261113T151500Z
@@ -48,7 +48,7 @@ URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-23-
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-lithia-motors-inc@schattendepot
-DTSTAMP:20261026T062214Z
+DTSTAMP:20261026T064253Z
 SEQUENCE:0
 DTSTART:20261106T150000Z
 DTEND:20261106T151500Z
@@ -58,5 +58,18 @@ DESCRIPTION:Simulation – keine Anlageberatung.\nZiel 277\,09 €\nStop 2
  epot/#/order/2026-10-23-lithia-motors-inc
 URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-23-
  lithia-motors-inc
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-26-rapport-therapeutics-inc@schattendepot
+DTSTAMP:20261026T064253Z
+SEQUENCE:0
+DTSTART:20261113T150000Z
+DTEND:20261113T151500Z
+SUMMARY:Verkauf geplant: Rapport Therapeutics\, Inc.
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +9\,0 % netto\nStop
+  −12\,0 %\nChance ~40 %\nhttps://pennyboberde-source.github.io/schatten
+ depot/#/order/2026-10-26-rapport-therapeutics-inc
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-10-26-
+ rapport-therapeutics-inc
 END:VEVENT
 END:VCALENDAR

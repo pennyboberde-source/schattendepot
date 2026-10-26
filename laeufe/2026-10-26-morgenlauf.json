@@ -1,0 +1,52 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-10-26",
+  "erstellt": "2026-10-26T06:50:00Z",
+  "briefing": [
+    "Vorgemerkt (spekulativ): Rapport Therapeutics (RAPP) – 6 Insider kauften für 1,66 Mio. $",
+    "Heute: Verizon-Quartalszahlen vor US-Eröffnung (ca. 13:00 Uhr), abends HIG, NUE, OKE",
+    "SpaceX −5,5 % nahe Stop: Musk meldet 40-Mrd.-$-Kreditdeal für KI-Chips – Schulden-Sorgen"
+  ],
+  "orders": [
+    {
+      "wertpapier": {
+        "name": "Rapport Therapeutics, Inc.",
+        "isin": "US75383L1026",
+        "wkn": "A40EP8",
+        "ticker": "RAPP",
+        "anlageklasse": "aktie",
+        "spreadKlasse": "aktie_neben",
+        "handelsplatz": "TGT",
+        "steuertopf": "aktien",
+        "kursbasis": { "markt": "us", "symbol": "RAPP", "waehrung": "USD" }
+      },
+      "strategie": "insider_kauf",
+      "these": "Sechs Insider von Rapport (Biotech, Epilepsie-Wirkstoff vor Phase 3) kauften laut Form 4 zusammen für 1,66 Mio. $, allein Direktor Steven Paul knapp 1 Mio. $ zu rund 24,65 $. Käufe mehrerer Führungskräfte gleichzeitig gelten als stärkeres Signal als Einzelkäufe. Kurs schloss am 23.10. bei 25,93 $ (−2,3 %), also nahe am Insider-Einstieg.",
+      "ausloeser": "Insider-Cluster-Kauf mit höchstem Score im Lagebild (+3,42)",
+      "signalIds": [
+        "insider_cluster_kauf:RAPP:2026-10-26",
+        "insider_kauf:RAPP:2026-10-26"
+      ],
+      "quellen": [
+        { "name": "OpenInsider RAPP", "link": "http://openinsider.com/RAPP" },
+        { "name": "Quantisnow: Direktor Paul kauft für 1,03 Mio. $", "link": "https://quantisnow.com/insight/director-paul-steven-m-bought-1027111-worth-of-shares-41666-6200859" },
+        { "name": "Onvista RAPP (ISIN)", "link": "https://www.onvista.de/aktien/US75383L1026" }
+      ],
+      "konfidenz": 40,
+      "pflichtOrder": false,
+      "erwarteteRenditeNetto": 0,
+      "zielNettoProzent": 9,
+      "stopProzent": -12,
+      "verkaufstermin": "2026-11-13T15:00:00Z",
+      "risiken": [
+        "Biotech: Studien- und Finanzierungsnachrichten können den Kurs zweistellig bewegen",
+        "Käufe könnten Teil einer Platzierung/Kapitalerhöhung sein – dann schwächeres Signal (nicht bestätigt)",
+        "Früher großer Verkauf durch Großaktionär Third Rock (April 2026)",
+        "Spread auf Tradegate bei Nebenwerten hoch"
+      ],
+      "einflussLektionen": "Noch keine Lektionen/Statistik (0 abgeschlossene Orders). Bisher nur Drift-nach-Zahlen im Depot – bewusst erste Insider-Order als Vergleich der Strategien.",
+      "risikoklasse": "spekulativ"
+    }
+  ],
+  "notiz": "Offene Positionen ohne Anpassung: SpaceX −5,5 % (Stop 127,64 € nahe), 40-Mrd.-$-Kreditdeal ist seit Anfang Oktober bekannt, kein neuer klarer Grund. Capital One, Lithia, Elevance ohne Neuigkeiten. Verizon-Zahlen erst 13:00 Uhr – vor Veröffentlichung kein Urteil möglich, Mittagslauf prüfen. Kursraketen (AIOK, CLRO, LYCA, BOLT, MYND) ausgelassen: kein unabhängiger Hinweis. Fonds-Insider (CRAFX, NXG) ausgelassen. Alpha-Vantage-Insiderabfrage am Limit. Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung."
+}
