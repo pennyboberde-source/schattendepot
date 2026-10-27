@@ -1,0 +1,18 @@
+{
+  "typ": "abendlauf",
+  "datum": "2026-10-27",
+  "erstellt": "2026-10-27T21:25:00Z",
+  "berichte": [
+    {
+      "orderId": "2026-10-27-gentherm-inc",
+      "text": "Ergebnis: Gewinn. Kauf am 27.10. um 07:16 UTC zu 26,28 €, Verkauf am selben Tag um 15:33 UTC zu 28,71 € über das Kursziel. Der Kurs stieg um 9,3 %, das sind netto 70,73 € (+7,0 %) nach Gebühren. Ein MSCI-World-ETF hätte im gleichen Zeitraum 16,46 € verloren. Die These: Zwei Direktoren kauften am 23.10. zusammen für 0,66 Mio. $ eigene Aktien, gemeldet am 26.10. Dazu stieg der Anteil der Kaufempfehlungen der Analysten von 64 % auf 73 %. Getragen haben die Signale Insider-Cluster-Kauf, Insider-Kauf und Analysten-Hochstufung. Was die These richtig sah: Die Kombination aus Cluster-Kauf und besserer Analystenstimmung kurz nach den Q3-Zahlen (22.10., im Rahmen der Erwartungen, Rückkauf über 60 Mio. $ im Oktober) gab dem Kurs Rückenwind. Was nicht stimmt: Die Ursache für den Sprung um über 9 % noch am Kauftag ist nicht belegt. Eine gezielte Suche fand keine eigene Nachricht dazu. Gut möglich, dass der Kurs vor allem durch den Nachrichtenfluss und Zufall stieg. Der Gewinn ist deshalb kein Beweis für die Strategie. Kalibrierung: Erwartet waren 1 % netto bei 42 % Konfidenz. Das Ziel lag mit ca. 9 % weit über der erwarteten Rendite, die Angaben waren also nicht stimmig. Schon am Morgen hätte man wissen können, dass der Wert eng gehandelt wird (Nebenwert, Börsenwert ca. 1,3 Mrd. $). Starke Ausschläge in beide Richtungen sind daher normal. Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung.",
+      "learnings": [
+        "Insider-Cluster-Kauf plus Analysten-Hochstufung bei einem Nebenwert kurz nach den Quartalszahlen: erster Treffer (+7 % netto), aber n=1 und Ursache des Sprungs unbelegt.",
+        "erwarteteRenditeNetto und Kursziel müssen zueinander passen: 1 % erwartet bei 9 % Ziel ist widersprüchlich und verzerrt die Kalibrierung.",
+        "Bei Nebenwerten sind Tagesausschläge von über 9 % möglich; Ziel und Stop an die tatsächliche Schwankung anpassen statt an Large-Cap-Maßstäbe."
+      ]
+    }
+  ],
+  "lektionen": "# Lektionen\n\nVerdichtete Regeln aus abgeschlossenen Orders (Stärke: schwach/mittel/stark). Simulation mit fiktivem Geld – keine Anlageberatung.\n\n1. Insider-Cluster-Kauf (mehrere Direktoren, Form 4) plus Analysten-Hochstufung bei Nebenwerten ist ein brauchbarer Kauf-Auslöser; Haltedauer kurz halten, Gewinne am Ziel mitnehmen. – Belege: 2026-10-27-gentherm-inc · Stärke: schwach (n=1)\n2. erwarteteRenditeNetto, zielNettoProzent und konfidenz widerspruchsfrei setzen (erwartete Rendite ≈ Konfidenz × Ziel + (1 − Konfidenz) × Stop); sonst ist die Kalibrierung wertlos. – Belege: 2026-10-27-gentherm-inc · Stärke: mittel\n3. Bei Nebenwerten Ziel und Stop an die übliche Tagesschwankung anlehnen; Sprünge von 5–10 % an einem Tag sind ohne eigene Nachricht möglich. – Belege: 2026-10-27-gentherm-inc · Stärke: schwach\n4. Einen Gewinn ohne belegte Ursache nicht als Bestätigung der These werten; erst die Statistik über mehrere Orders entscheidet. – Belege: 2026-10-27-gentherm-inc · Stärke: mittel\n",
+  "notiz": "Ein Abschlussbericht (Gentherm, +70,73 € netto). Erste Lektionen angelegt. Keine offenen Ereignisse; keine Anpassungen an den 6 offenen Positionen. Elevance liegt mit −5,2 % knapp über dem Stop (374,26 €) – der Code greift bei Unterschreiten. Keine Gewichtsvorschläge (n=1 zu klein)."
+}
