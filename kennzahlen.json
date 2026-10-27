@@ -1,11 +1,22 @@
 {
-  "stand": "2026-10-27T14:59:13.387Z",
-  "anzahlOffen": 7,
-  "anzahlGeschlossen": 0,
-  "netto": 0,
-  "nachSteuern": 0,
-  "unrealisiert": -207.21,
-  "trefferquote": null,
-  "etfNetto": 0,
-  "kurve": []
+  "stand": "2026-10-27T15:33:57.518Z",
+  "anzahlOffen": 6,
+  "anzahlGeschlossen": 1,
+  "netto": 70.73,
+  "nachSteuern": 52.07,
+  "unrealisiert": -248.82,
+  "trefferquote": 100,
+  "etfNetto": -16.46,
+  "kurve": [
+    {
+      "datum": "2026-10-27",
+      "depot": 0,
+      "etf": 0
+    },
+    {
+      "datum": "2026-10-27",
+      "depot": 70.73,
+      "etf": -16.46
+    }
+  ]
 }

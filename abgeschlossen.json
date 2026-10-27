@@ -1,4 +1,122 @@
 {
-  "stand": "2026-10-27T14:59:13.387Z",
-  "orders": []
+  "stand": "2026-10-27T15:33:57.518Z",
+  "orders": [
+    {
+      "id": "2026-10-27-gentherm-inc",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-10-27T06:42:43.636Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Gentherm Inc.",
+          "isin": "US37253A1034",
+          "ticker": "THRM",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "THRM",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "insider_kauf",
+        "these": "Zwei Direktoren von Gentherm kauften am 23.10. zusammen für 0,66 Mio. $ eigene Aktien (gemeldet 26.10.), einer davon allein 0,53 Mio. $. Gleichzeitig stieg der Anteil der Kaufempfehlungen von 64 % auf 73 %. Cluster-Käufe von Direktoren nach der Modine-Kombination deuten auf Zuversicht ins neue Geschäft; erwartet wird eine langsame Aufwärtsdrift über zwei bis drei Wochen.",
+        "ausloeser": "Insider-Cluster-Kauf (Form 4) plus Analysten-Hochstufung im Lagebild vom 27.10.",
+        "signalIds": [
+          "insider_cluster_kauf:THRM:2026-10-27",
+          "insider_kauf:THRM:2026-10-27",
+          "analysten_hochstufung:THRM:2026-10-27"
+        ],
+        "quellen": [
+          {
+            "name": "OpenInsider THRM",
+            "link": "http://openinsider.com/THRM"
+          },
+          {
+            "name": "Börse Stuttgart Gentherm",
+            "link": "https://www.boerse-stuttgart.de/en/products/equities/stuttgart/a1j4ac-gentherm-inc/"
+          }
+        ],
+        "konfidenz": 42,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 1,
+        "zielNettoProzent": 4,
+        "stopProzent": -7,
+        "verkaufstermin": "2026-11-17T15:00:00.000Z",
+        "risiken": [
+          "Quartalszahlen voraussichtlich Ende Oktober/Anfang November – Kurssprung in beide Richtungen",
+          "Integration des Modine-Geschäfts und neue Aktien können den Kurs belasten",
+          "Autozulieferer-Branche konjunkturabhängig",
+          "Kaufbetrag der Insider gemessen an der Firmengröße eher klein"
+        ],
+        "einflussLektionen": "Noch keine Lektionen und keine abgeschlossene Statistik. Bewusst eine Insider-Order statt einer weiteren reinen Drift-Order, weil 4 von 5 offenen Positionen nachzahlen_drift sind – so lernt die Statistik mehr über Signaltypen."
+      },
+      "verkaufstermin": "2026-11-17T15:00:00.000Z",
+      "anpassungen": [
+        {
+          "zeit": "2026-10-27T14:59:13.387Z",
+          "quelle": "mittagslauf",
+          "feld": "stop",
+          "alt": 24.44,
+          "neu": 26.9,
+          "begruendung": "Kurs +6,5 % seit Kauf und über dem Ziel; keine neue Meldung gefunden. Stop auf ca. Einstand nach Gebühren, damit der Gewinn nicht zum Verlust wird."
+        }
+      ],
+      "kauf": {
+        "zeit": "2026-10-27T07:16:13.329Z",
+        "stueck": 38,
+        "kurs": 26.279,
+        "kurswert": 998.6,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 1009.5,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-27T06:46:24.977Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 27.92,
+      "stopkurs": 26.9,
+      "etfKauf": {
+        "wert": 130.665,
+        "zeit": "2026-10-27T06:59:35.038Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 17,
+        "hinweis": "letztes Geschäft 2026-10-27",
+        "vortag": 130.525
+      },
+      "etfVergleich": {
+        "netto": -16.46,
+        "nettoProzent": -1.78,
+        "etfKauf": 130.665,
+        "etfVerkauf": 131.585
+      },
+      "verkauf": {
+        "zeit": "2026-10-27T15:33:57.518Z",
+        "stueck": 38,
+        "kurs": 28.714,
+        "kurswert": 1091.13,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 1080.23,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-27T15:19:00.670Z)",
+        "synthetisch": true,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "kursProzent": 9.27,
+        "netto": 70.73,
+        "nettoProzent": 7.01,
+        "gebuehren": 21.8,
+        "steuer": 18.66,
+        "nachSteuern": 52.07
+      }
+    }
+  ]
 }

@@ -1,22 +1,125 @@
 {
-  "stand": "2026-10-27T14:59:13.387Z",
+  "stand": "2026-10-27T15:33:57.518Z",
   "gesamt": {
-    "anzahl": 0,
-    "treffer": 0,
-    "quote": 0,
-    "oeNetto": 0,
-    "oeNachSteuern": 0,
-    "summeNetto": 0
+    "anzahl": 1,
+    "treffer": 1,
+    "quote": 100,
+    "oeNetto": 7.01,
+    "oeNachSteuern": 5.16,
+    "summeNetto": 70.73
   },
-  "nachStrategie": {},
-  "nachSignalTyp": {},
-  "nachQuelle": {},
-  "nachAnlageklasse": {},
-  "nachRisikoklasse": {},
-  "nachVerkaufsgrund": {},
-  "nachHaltedauer": {},
-  "nachKonfidenz": {},
-  "kalibrierung": [],
+  "nachStrategie": {
+    "insider_kauf": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    }
+  },
+  "nachSignalTyp": {
+    "insider_cluster_kauf": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    },
+    "insider_kauf": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    },
+    "analysten_hochstufung": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    }
+  },
+  "nachQuelle": {
+    "OpenInsider THRM": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    },
+    "Börse Stuttgart Gentherm": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    }
+  },
+  "nachAnlageklasse": {
+    "aktie": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    }
+  },
+  "nachRisikoklasse": {
+    "normal": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    }
+  },
+  "nachVerkaufsgrund": {
+    "ziel": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    }
+  },
+  "nachHaltedauer": {
+    "< 1 Tag": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    }
+  },
+  "nachKonfidenz": {
+    "40–59 %": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 7.01,
+      "oeNachSteuern": 5.16,
+      "summeNetto": 70.73
+    }
+  },
+  "kalibrierung": [
+    {
+      "stufe": "40–59 %",
+      "erwartet": 42,
+      "tatsaechlich": 100,
+      "anzahl": 1
+    }
+  ],
   "pflicht": {
     "anzahl": 0,
     "treffer": 0,
@@ -26,22 +129,22 @@
     "summeNetto": 0
   },
   "ueberzeugung": {
-    "anzahl": 0,
-    "treffer": 0,
-    "quote": 0,
-    "oeNetto": 0,
-    "oeNachSteuern": 0,
-    "summeNetto": 0
+    "anzahl": 1,
+    "treffer": 1,
+    "quote": 100,
+    "oeNetto": 7.01,
+    "oeNachSteuern": 5.16,
+    "summeNetto": 70.73
   },
   "erwartetVsTatsaechlich": {
-    "erwartet": 0,
-    "tatsaechlich": 0,
-    "anzahl": 0
+    "erwartet": 1,
+    "tatsaechlich": 7.01,
+    "anzahl": 1
   },
   "etf": {
-    "depotNetto": 0,
-    "etfNetto": 0,
-    "anzahlMitVergleich": 0
+    "depotNetto": 70.73,
+    "etfNetto": -16.46,
+    "anzahlMitVergleich": 1
   },
   "kandidaten": {
     "gesamt": {
@@ -203,7 +306,7 @@
       }
     }
   },
-  "zusammenfassung": "Gesamt: 0 Orders, Trefferquote 0 %, Ø 0 % nach Gebühren (erwartet waren Ø 0 %).",
+  "zusammenfassung": "Gesamt: 1 Orders, Trefferquote 100 %, Ø 7.01 % nach Gebühren (erwartet waren Ø 1 %).\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 100 % (n=1).\nVs. MSCI World (gleiche Zeiträume): Depot 70.73 € vs. ETF -16.46 €.",
   "lernhinweise": [],
   "risikoBudget": {
     "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoin-ETNs) – begrenzt, damit das Depot nicht nur daraus besteht. Seit 23.10.2026 mutiger (Nutzerwunsch): 2 je Lauf, 50 %. Die Lernregel steuert innerhalb 10–50 % / 1–2 je Lauf nach.",
