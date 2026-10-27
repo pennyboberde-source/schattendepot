@@ -407,7 +407,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 25.93
+    "start": 25.93,
+    "r1T": -2.31
   },
   {
     "datum": "2026-10-26",
@@ -436,7 +437,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 44.41
+    "start": 44.41,
+    "r1T": 3.92
   },
   {
     "datum": "2026-10-26",
@@ -450,7 +452,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 9.05
+    "start": 9.05,
+    "r1T": -5.3
   },
   {
     "datum": "2026-10-26",
@@ -466,7 +469,8 @@
       "FMP",
       "Alpha Vantage"
     ],
-    "start": 12.02
+    "start": 12.02,
+    "r1T": -23.79
   },
   {
     "datum": "2026-10-26",
@@ -480,7 +484,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 13.44
+    "start": 13.44,
+    "r1T": -1.04
   },
   {
     "datum": "2026-10-26",
@@ -494,7 +499,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 34.13
+    "start": 34.13,
+    "r1T": 1.55
   },
   {
     "datum": "2026-10-26",
@@ -510,7 +516,8 @@
       "FMP",
       "Alpha Vantage"
     ],
-    "start": 3.25
+    "start": 3.25,
+    "r1T": 52.92
   },
   {
     "datum": "2026-10-26",
@@ -526,7 +533,8 @@
       "FMP",
       "Alpha Vantage"
     ],
-    "start": 30
+    "start": 30,
+    "r1T": -3.83
   },
   {
     "datum": "2026-10-26",
@@ -542,6 +550,156 @@
       "FMP",
       "Alpha Vantage"
     ],
-    "start": 6.27
+    "start": 6.27,
+    "r1T": 5.1
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:BPRE",
+    "name": "Bluerock Private Real Estate Fund",
+    "ticker": "BPRE",
+    "score": 3.39,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 12.56
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:THRM",
+    "name": "Gentherm Inc",
+    "ticker": "THRM",
+    "score": 3.21,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf",
+      "analysten_hochstufung"
+    ],
+    "quellen": [
+      "OpenInsider",
+      "Finnhub Analysten"
+    ],
+    "start": 28.59
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:CRAFX",
+    "name": "Cascade Real Assets Fund",
+    "ticker": "CRAFX",
+    "score": 2.85,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ]
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:RAPP",
+    "name": "Rapport Therapeutics, Inc.",
+    "ticker": "RAPP",
+    "score": 2.6,
+    "typen": [
+      "insider_cluster_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 25.33
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:NXG",
+    "name": "Nxg Nextgen Infrastructure Income Fund",
+    "ticker": "NXG",
+    "score": 2.48,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 46.15
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:HIG",
+    "name": "HIG",
+    "ticker": "HIG",
+    "score": 1.45,
+    "typen": [
+      "gewinn_ueberraschung"
+    ],
+    "quellen": [
+      "Finnhub"
+    ],
+    "start": 135.94
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:GPI",
+    "name": "GPI",
+    "ticker": "GPI",
+    "score": 1.35,
+    "typen": [
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 243.88
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:CRBG",
+    "name": "CRBG",
+    "ticker": "CRBG",
+    "score": 1.18,
+    "typen": [
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 34.66
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:CLRO",
+    "name": "ClearOne, Inc.",
+    "ticker": "CLRO",
+    "score": 1.08,
+    "typen": [
+      "tagesgewinner",
+      "kursrakete"
+    ],
+    "quellen": [
+      "FMP",
+      "Alpha Vantage"
+    ],
+    "start": 4.97
+  },
+  {
+    "datum": "2026-10-27",
+    "schluessel": "T:XP",
+    "name": "XP Inc.",
+    "ticker": "XP",
+    "score": -1,
+    "typen": [
+      "tagesverlierer",
+      "volumen_ungewoehnlich"
+    ],
+    "quellen": [
+      "FMP",
+      "Alpha Vantage"
+    ],
+    "start": 15.705
   }
 ]
