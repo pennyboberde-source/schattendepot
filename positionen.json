@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-27T14:54:10.626Z",
+  "stand": "2026-10-27T14:59:13.387Z",
   "offen": [
     {
       "id": "2026-10-22-space-exploration-technologies",
@@ -573,7 +573,16 @@
         "einflussLektionen": "Noch keine Lektionen und keine abgeschlossene Statistik. Bewusst eine Insider-Order statt einer weiteren reinen Drift-Order, weil 4 von 5 offenen Positionen nachzahlen_drift sind – so lernt die Statistik mehr über Signaltypen."
       },
       "verkaufstermin": "2026-11-17T15:00:00.000Z",
-      "anpassungen": [],
+      "anpassungen": [
+        {
+          "zeit": "2026-10-27T14:59:13.387Z",
+          "quelle": "mittagslauf",
+          "feld": "stop",
+          "alt": 24.44,
+          "neu": 26.9,
+          "begruendung": "Kurs +6,5 % seit Kauf und über dem Ziel; keine neue Meldung gefunden. Stop auf ca. Einstand nach Gebühren, damit der Gewinn nicht zum Verlust wird."
+        }
+      ],
       "kauf": {
         "zeit": "2026-10-27T07:16:13.329Z",
         "stueck": 38,
@@ -589,7 +598,7 @@
         "synthetisch": true
       },
       "zielkurs": 27.92,
-      "stopkurs": 24.44,
+      "stopkurs": 26.9,
       "etfKauf": {
         "wert": 130.665,
         "zeit": "2026-10-27T06:59:35.038Z",
