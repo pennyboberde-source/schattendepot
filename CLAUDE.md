@@ -36,8 +36,8 @@ Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, d
 - Rohdaten nicht committen, nur verdichtete Signale/Lagebilder; Rohdaten höchstens im Actions-Cache.
 - Keine Geheimnisse ins Repo (öffentlich). VAPID-Private-Key, Push-Anmeldung, Routinen-Token, API-Schlüssel nur als GitHub-Secrets.
 - Gebühren, Spreads, Steuern, Gewichtsgrenzen in `config/*.json`, nie hart codiert.
-- Normales Depot: Consorsbank-Standardpreis. Daytrading: Smartbroker+ (Vergleich Consorsbank, Trade Republic, vor Gebühren).
-- Daytrading ist ein eigener Bereich mit eigenen Konten und Kennzahlen – nie mit dem normalen Depot vermischen.
+- Drei getrennte Händler mit eigenen Konten und Kennzahlen (nie vermischen), eine gemeinsame Lernbasis: **Claude-Depot** (Consorsbank-Standardpreis, Smartbroker+ als Vergleich), **Code-Depot** (Code-Händler/Strategie-Turnier, Smartbroker+), **Daytrader** (Smartbroker+, Vergleich Consorsbank/Trade Republic, vor Gebühren). Krypto direkt (24/7): Trade Republic 1 € + Spread.
+- Jeder Kauf (Code und Claude) nur bei Chance ≥ 40 % und positivem Erwartungswert nach Gebühren; keine Pflicht-Orders.
 - Bestehende Datenquellen nie entfernen; neue nur zusätzlich einbauen.
 
 ## Konventionen
