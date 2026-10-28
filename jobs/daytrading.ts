@@ -28,6 +28,8 @@ interface DtConfig {
   orderBetrag: number;
   maxTradesJeTag: number;
   maxOffen: number;
+  /** gettex-Fenster je Lauf (Aufholen nach Lücken) */
+  maxFensterJeLauf?: number;
   spanneMinuten: number;
   zielR: number;
   stopProzentLevel: number;
@@ -246,7 +248,7 @@ const mitIsin = () => zustand.beobachtungen.some((x) => x.isin) || offen.some((t
 if (mitIsin()) {
   try {
     const liste = (await gettexDateiliste()).filter((d) => d.datum === datum && !zustand.dateien.includes(d.name));
-    const fenster = [...new Set(liste.map((d) => d.schluessel))].slice(0, 10);
+    const fenster = [...new Set(liste.map((d) => d.schluessel))].slice(0, dt.maxFensterJeLauf ?? 40);
     for (const f of fenster) {
       const dateien = liste.filter((d) => d.schluessel === f);
       // beide Segmente (MUNC/MUND) abwarten, außer das Fenster ist schon > 30 Min. alt

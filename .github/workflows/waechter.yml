@@ -1,11 +1,11 @@
 name: Kurswächter
 
-# Alle 15 Min. Mo–Fr. Cron läuft in UTC: 06–21 Uhr UTC deckt 08–22 Uhr Berlin in Sommer- und Winterzeit ab;
+# Alle 15 Min. Mo–Fr (krumme Minuten :04/:19/:34/:49 – zu vollen Viertelstunden startet GitHub Zeitpläne stark verzögert). Cron läuft in UTC: 06–21 Uhr UTC deckt 08–22 Uhr Berlin in Sommer- und Winterzeit ab;
 # der Job prüft Handelstag/-zeit selbst (core/kalender.ts). Außerhalb der Börsenzeit (nachts, Wochenende)
 # alle 30 Min. nur Krypto direkt (S2, rund um die Uhr); ohne Krypto-Positionen endet der Lauf sofort.
 on:
   schedule:
-    - cron: '*/15 6-21 * * 1-5'
+    - cron: '4,19,34,49 6-21 * * 1-5'
     - cron: '7,37 0-5,22,23 * * *'
     - cron: '7,37 6-21 * * 0,6'
   workflow_dispatch:
