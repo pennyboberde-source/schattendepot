@@ -1,39 +1,39 @@
 {
-  "stand": "2026-10-28T12:57:32.087Z",
+  "stand": "2026-10-28T13:45:35.345Z",
   "gesamt": {
-    "anzahl": 1,
+    "anzahl": 2,
     "treffer": 1,
-    "quote": 100,
-    "oeNetto": 7.01,
-    "oeNachSteuern": 5.16,
-    "summeNetto": 70.73
+    "quote": 50,
+    "oeNetto": -4.51,
+    "oeNachSteuern": -4.49,
+    "summeNetto": -88.19
   },
   "nachStrategie": {
     "insider_kauf": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 1,
-      "quote": 100,
-      "oeNetto": 7.01,
-      "oeNachSteuern": 5.16,
-      "summeNetto": 70.73
+      "quote": 50,
+      "oeNetto": -4.51,
+      "oeNachSteuern": -4.49,
+      "summeNetto": -88.19
     }
   },
   "nachSignalTyp": {
     "insider_cluster_kauf": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 1,
-      "quote": 100,
-      "oeNetto": 7.01,
-      "oeNachSteuern": 5.16,
-      "summeNetto": 70.73
+      "quote": 50,
+      "oeNetto": -4.51,
+      "oeNachSteuern": -4.49,
+      "summeNetto": -88.19
     },
     "insider_kauf": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 1,
-      "quote": 100,
-      "oeNetto": 7.01,
-      "oeNachSteuern": 5.16,
-      "summeNetto": 70.73
+      "quote": 50,
+      "oeNetto": -4.51,
+      "oeNachSteuern": -4.49,
+      "summeNetto": -88.19
     },
     "analysten_hochstufung": {
       "anzahl": 1,
@@ -45,6 +45,30 @@
     }
   },
   "nachQuelle": {
+    "OpenInsider RAPP": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -16.02,
+      "oeNachSteuern": -14.14,
+      "summeNetto": -158.92
+    },
+    "Quantisnow: Direktor Paul kauft für 1,03 Mio. $": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -16.02,
+      "oeNachSteuern": -14.14,
+      "summeNetto": -158.92
+    },
+    "Onvista RAPP (ISIN)": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -16.02,
+      "oeNachSteuern": -14.14,
+      "summeNetto": -158.92
+    },
     "OpenInsider THRM": {
       "anzahl": 1,
       "treffer": 1,
@@ -64,15 +88,23 @@
   },
   "nachAnlageklasse": {
     "aktie": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 1,
-      "quote": 100,
-      "oeNetto": 7.01,
-      "oeNachSteuern": 5.16,
-      "summeNetto": 70.73
+      "quote": 50,
+      "oeNetto": -4.51,
+      "oeNachSteuern": -4.49,
+      "summeNetto": -88.19
     }
   },
   "nachRisikoklasse": {
+    "spekulativ": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -16.02,
+      "oeNachSteuern": -14.14,
+      "summeNetto": -158.92
+    },
     "normal": {
       "anzahl": 1,
       "treffer": 1,
@@ -83,6 +115,14 @@
     }
   },
   "nachVerkaufsgrund": {
+    "stop": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -16.02,
+      "oeNachSteuern": -14.14,
+      "summeNetto": -158.92
+    },
     "ziel": {
       "anzahl": 1,
       "treffer": 1,
@@ -93,6 +133,14 @@
     }
   },
   "nachHaltedauer": {
+    "1–3 Tage": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -16.02,
+      "oeNachSteuern": -14.14,
+      "summeNetto": -158.92
+    },
     "< 1 Tag": {
       "anzahl": 1,
       "treffer": 1,
@@ -104,20 +152,20 @@
   },
   "nachKonfidenz": {
     "40–59 %": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 1,
-      "quote": 100,
-      "oeNetto": 7.01,
-      "oeNachSteuern": 5.16,
-      "summeNetto": 70.73
+      "quote": 50,
+      "oeNetto": -4.51,
+      "oeNachSteuern": -4.49,
+      "summeNetto": -88.19
     }
   },
   "kalibrierung": [
     {
       "stufe": "40–59 %",
-      "erwartet": 42,
-      "tatsaechlich": 100,
-      "anzahl": 1
+      "erwartet": 41,
+      "tatsaechlich": 50,
+      "anzahl": 2
     }
   ],
   "pflicht": {
@@ -129,22 +177,22 @@
     "summeNetto": 0
   },
   "ueberzeugung": {
-    "anzahl": 1,
+    "anzahl": 2,
     "treffer": 1,
-    "quote": 100,
-    "oeNetto": 7.01,
-    "oeNachSteuern": 5.16,
-    "summeNetto": 70.73
+    "quote": 50,
+    "oeNetto": -4.51,
+    "oeNachSteuern": -4.49,
+    "summeNetto": -88.19
   },
   "erwartetVsTatsaechlich": {
-    "erwartet": 1,
-    "tatsaechlich": 7.01,
-    "anzahl": 1
+    "erwartet": 0.5,
+    "tatsaechlich": -4.51,
+    "anzahl": 2
   },
   "etf": {
-    "depotNetto": 70.73,
-    "etfNetto": -16.46,
-    "anzahlMitVergleich": 1
+    "depotNetto": -88.19,
+    "etfNetto": -26.72,
+    "anzahlMitVergleich": 2
   },
   "kandidaten": {
     "gesamt": {
@@ -313,7 +361,7 @@
       }
     }
   },
-  "zusammenfassung": "Gesamt: 1 Orders, Trefferquote 100 %, Ø 7.01 % nach Gebühren (erwartet waren Ø 1 %).\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 100 % (n=1).\nVs. MSCI World (gleiche Zeiträume): Depot 70.73 € vs. ETF -16.46 €.",
+  "zusammenfassung": "Gesamt: 2 Orders, Trefferquote 50 %, Ø -4.51 % nach Gebühren (erwartet waren Ø 0.5 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -16.02 % · normal: 1 Orders, Ø 7.01 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=2).\nVs. MSCI World (gleiche Zeiträume): Depot -88.19 € vs. ETF -26.72 €.",
   "lernhinweise": [],
   "risikoBudget": {
     "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoin-ETNs) – begrenzt, damit das Depot nicht nur daraus besteht. Seit 23.10.2026 mutiger (Nutzerwunsch): 2 je Lauf, 50 %. Die Lernregel steuert innerhalb 10–50 % / 1–2 je Lauf nach.",
@@ -321,6 +369,6 @@
     "maxAnteilSpekulativ": 0.5,
     "stopMinProzent": -25,
     "mindestKursEuro": 0.01,
-    "begruendung": "Grundeinstellung (erst 0 von 10 spekulativen Orders für eine Anpassung)"
+    "begruendung": "Grundeinstellung (erst 1 von 10 spekulativen Orders für eine Anpassung)"
   }
 }

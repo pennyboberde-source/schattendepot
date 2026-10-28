@@ -1,12 +1,12 @@
 {
-  "stand": "2026-10-28T12:57:32.087Z",
+  "stand": "2026-10-28T13:45:35.345Z",
   "anzahlOffen": 7,
-  "anzahlGeschlossen": 1,
-  "netto": 70.73,
-  "nachSteuern": 52.07,
-  "unrealisiert": -207.72,
-  "trefferquote": 100,
-  "etfNetto": -16.46,
+  "anzahlGeschlossen": 2,
+  "netto": -88.19,
+  "nachSteuern": -88.19,
+  "unrealisiert": -210.45,
+  "trefferquote": 50,
+  "etfNetto": -26.72,
   "kurve": [
     {
       "datum": "2026-10-27",
@@ -17,6 +17,11 @@
       "datum": "2026-10-27",
       "depot": 70.73,
       "etf": -16.46
+    },
+    {
+      "datum": "2026-10-28",
+      "depot": -88.19,
+      "etf": -26.72
     }
   ]
 }

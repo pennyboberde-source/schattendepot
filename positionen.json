@@ -1,108 +1,6 @@
 {
-  "stand": "2026-10-28T12:57:32.087Z",
+  "stand": "2026-10-28T13:45:35.345Z",
   "offen": [
-    {
-      "id": "2026-10-26-rapport-therapeutics-inc",
-      "status": "offen",
-      "vorgemerktUm": "2026-10-26T06:42:53.646Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "Rapport Therapeutics, Inc.",
-          "isin": "US75383L1026",
-          "wkn": "A40EP8",
-          "ticker": "RAPP",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "spekulativ",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "RAPP",
-            "waehrung": "USD"
-          }
-        },
-        "strategie": "insider_kauf",
-        "these": "Sechs Insider von Rapport (Biotech, Epilepsie-Wirkstoff vor Phase 3) kauften laut Form 4 zusammen für 1,66 Mio. $, allein Direktor Steven Paul knapp 1 Mio. $ zu rund 24,65 $. Käufe mehrerer Führungskräfte gleichzeitig gelten als stärkeres Signal als Einzelkäufe. Kurs schloss am 23.10. bei 25,93 $ (−2,3 %), also nahe am Insider-Einstieg.",
-        "ausloeser": "Insider-Cluster-Kauf mit höchstem Score im Lagebild (+3,42)",
-        "signalIds": [
-          "insider_cluster_kauf:RAPP:2026-10-26",
-          "insider_kauf:RAPP:2026-10-26"
-        ],
-        "quellen": [
-          {
-            "name": "OpenInsider RAPP",
-            "link": "http://openinsider.com/RAPP"
-          },
-          {
-            "name": "Quantisnow: Direktor Paul kauft für 1,03 Mio. $",
-            "link": "https://quantisnow.com/insight/director-paul-steven-m-bought-1027111-worth-of-shares-41666-6200859"
-          },
-          {
-            "name": "Onvista RAPP (ISIN)",
-            "link": "https://www.onvista.de/aktien/US75383L1026"
-          }
-        ],
-        "konfidenz": 40,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 0,
-        "zielNettoProzent": 9,
-        "stopProzent": -12,
-        "verkaufstermin": "2026-11-13T15:00:00.000Z",
-        "risiken": [
-          "Biotech: Studien- und Finanzierungsnachrichten können den Kurs zweistellig bewegen",
-          "Käufe könnten Teil einer Platzierung/Kapitalerhöhung sein – dann schwächeres Signal (nicht bestätigt)",
-          "Früher großer Verkauf durch Großaktionär Third Rock (April 2026)",
-          "Spread auf Tradegate bei Nebenwerten hoch"
-        ],
-        "einflussLektionen": "Noch keine Lektionen/Statistik (0 abgeschlossene Orders). Bisher nur Drift-nach-Zahlen im Depot – bewusst erste Insider-Order als Vergleich der Strategien.",
-        "risikoklasse": "spekulativ"
-      },
-      "verkaufstermin": "2026-11-04T15:00:00.000Z",
-      "anpassungen": [
-        {
-          "zeit": "2026-10-28T06:43:32.061Z",
-          "quelle": "morgenlauf",
-          "feld": "verkaufstermin",
-          "alt": "2026-11-13T15:00:00.000Z",
-          "neu": "2026-11-04T15:00:00.000Z",
-          "begruendung": "Rapport kündigte am 27.10. eine Aktienplatzierung plus Wandelanleihe an (SEC 424B5). Verwässerung schwächt die Insider-These; Haltedauer verkürzt, Stop bleibt."
-        }
-      ],
-      "kauf": {
-        "zeit": "2026-10-26T13:48:50.843Z",
-        "stueck": 40,
-        "kurs": 24.523,
-        "kurswert": 980.92,
-        "entgelt": {
-          "provision": 9.95,
-          "handelsplatz": 0.95,
-          "gesamt": 10.9
-        },
-        "betrag": 991.82,
-        "kursquelle": "Finnhub (2026-10-26T13:48:41.000Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 27.3,
-      "stopkurs": 21.58,
-      "etfKauf": {
-        "wert": 130.065,
-        "zeit": "2026-10-26T13:44:53.351Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 4,
-        "hinweis": "letztes Geschäft 2026-10-26",
-        "vortag": 129.58
-      },
-      "letzterKurs": {
-        "wert": 24.734,
-        "vortag": 22.749,
-        "zeit": "2026-10-27T20:00:00.000Z",
-        "quelle": "Finnhub",
-        "verzoegertMin": 1018,
-        "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11346 USD/EUR"
-      }
-    },
     {
       "id": "2026-10-22-space-exploration-technologies",
       "status": "offen",
@@ -186,10 +84,10 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 133.54,
-        "zeit": "2026-10-28T12:44:22.215Z",
+        "wert": 132.44,
+        "zeit": "2026-10-28T13:29:50.720Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 13,
+        "verzoegertMin": 16,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 134
       }
@@ -270,9 +168,9 @@
       },
       "letzterKurs": {
         "wert": 258.9,
-        "zeit": "2026-10-28T12:43:48.528Z",
+        "zeit": "2026-10-28T13:13:53.347Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 14,
+        "verzoegertMin": 32,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 258.9
       }
@@ -355,9 +253,9 @@
       },
       "letzterKurs": {
         "wert": 119.72,
-        "zeit": "2026-10-28T12:44:05.161Z",
+        "zeit": "2026-10-28T13:13:04.814Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 13,
+        "verzoegertMin": 33,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 119.72
       }
@@ -440,11 +338,89 @@
         "vortag": 131.705
       },
       "letzterKurs": {
-        "wert": 15.974,
-        "zeit": "2026-10-28T12:43:36.090Z",
+        "wert": 15.6,
+        "zeit": "2026-10-28T13:13:33.485Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 14,
+        "verzoegertMin": 32,
         "hinweis": "letztes Geschäft 2026-10-28"
+      }
+    },
+    {
+      "id": "2026-10-28-stewart-information-services-c",
+      "status": "offen",
+      "vorgemerktUm": "2026-10-28T06:43:32.061Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Stewart Information Services Corp.",
+          "isin": "US8603721015",
+          "wkn": "887667",
+          "ticker": "STC",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "STC",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "insider_kauf",
+        "these": "Fünf Insider des Titelversicherers Stewart kauften am 23.10. zusammen für 0,46 Mio. $ eigene Aktien (gemeldet 27.10.) – wenige Tage vor den Quartalszahlen, die laut Kalender heute (28.10.) erscheinen. Ein Cluster mehrerer Führungskräfte direkt vor den Zahlen deutet auf Zuversicht. Erwartet wird eine Aufwärtsdrift über zwei Wochen, gestützt durch das Zahlen-Ereignis.",
+        "ausloeser": "Insider-Cluster-Kauf (5 Personen, Form 4) im Lagebild vom 28.10., Quartalszahlen heute",
+        "signalIds": [
+          "insider_cluster_kauf:STC:2026-10-28"
+        ],
+        "quellen": [
+          {
+            "name": "OpenInsider STC",
+            "link": "http://openinsider.com/STC"
+          },
+          {
+            "name": "onvista Stewart Information Services",
+            "link": "https://www.onvista.de/aktien/STEWART-INFORMATION-SERVICES-CORP-Aktie-US8603721015"
+          }
+        ],
+        "konfidenz": 48,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": -0.2,
+        "zielNettoProzent": 4,
+        "stopProzent": -4,
+        "verkaufstermin": "2026-11-11T15:00:00.000Z",
+        "risiken": [
+          "Quartalszahlen heute – Kurssprung in beide Richtungen möglich",
+          "Kaufsumme der Insider gering (0,46 Mio. $), Cluster per Websuche nicht unabhängig bestätigt",
+          "Titelversicherer hängen stark an Hypothekenzinsen und Immobilienmarkt (Fed heute)",
+          "Geringe Tagesschwankung: 4 % netto nach 2,2 % Gebühren ist ambitioniert"
+        ],
+        "einflussLektionen": "Lektion 1 (Insider-Cluster bei Nebenwerten brauchbar, schwach, n=1) gibt den Ausschlag für einen zweiten Insider-Test. Lektion 2: 0,48 × 4 + 0,52 × (−4) ≈ −0,2 – ehrlich knapp unter null wegen der Gebührenhürde. Lektion 4: Einzelgewinn Gentherm nicht überbewerten, daher Konfidenz unter 50."
+      },
+      "verkaufstermin": "2026-11-11T15:00:00.000Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-10-28T13:45:35.345Z",
+        "stueck": 25,
+        "kurs": 38.916,
+        "kurswert": 972.9,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 983.8,
+        "kursquelle": "Finnhub (2026-10-28T13:41:24.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 41.37,
+      "stopkurs": 37.36,
+      "etfKauf": {
+        "wert": 131.87,
+        "zeit": "2026-10-28T13:26:59.292Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 19,
+        "hinweis": "letztes Geschäft 2026-10-28",
+        "vortag": 131.705
       }
     },
     {
@@ -521,10 +497,10 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 182.4,
-        "zeit": "2026-10-28T12:44:25.429Z",
+        "wert": 182.54,
+        "zeit": "2026-10-28T13:13:20.054Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 13,
+        "verzoegertMin": 32,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 183.54
       }
@@ -609,68 +585,13 @@
       },
       "letzterKurs": {
         "wert": 379.85,
-        "zeit": "2026-10-28T12:43:31.079Z",
+        "zeit": "2026-10-28T13:14:06.571Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 14,
+        "verzoegertMin": 31,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 377.5
       }
     }
   ],
-  "vorgemerkt": [
-    {
-      "id": "2026-10-28-stewart-information-services-c",
-      "status": "vorgemerkt",
-      "vorgemerktUm": "2026-10-28T06:43:32.061Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "Stewart Information Services Corp.",
-          "isin": "US8603721015",
-          "wkn": "887667",
-          "ticker": "STC",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_neben",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "STC",
-            "waehrung": "USD"
-          }
-        },
-        "strategie": "insider_kauf",
-        "these": "Fünf Insider des Titelversicherers Stewart kauften am 23.10. zusammen für 0,46 Mio. $ eigene Aktien (gemeldet 27.10.) – wenige Tage vor den Quartalszahlen, die laut Kalender heute (28.10.) erscheinen. Ein Cluster mehrerer Führungskräfte direkt vor den Zahlen deutet auf Zuversicht. Erwartet wird eine Aufwärtsdrift über zwei Wochen, gestützt durch das Zahlen-Ereignis.",
-        "ausloeser": "Insider-Cluster-Kauf (5 Personen, Form 4) im Lagebild vom 28.10., Quartalszahlen heute",
-        "signalIds": [
-          "insider_cluster_kauf:STC:2026-10-28"
-        ],
-        "quellen": [
-          {
-            "name": "OpenInsider STC",
-            "link": "http://openinsider.com/STC"
-          },
-          {
-            "name": "onvista Stewart Information Services",
-            "link": "https://www.onvista.de/aktien/STEWART-INFORMATION-SERVICES-CORP-Aktie-US8603721015"
-          }
-        ],
-        "konfidenz": 48,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": -0.2,
-        "zielNettoProzent": 4,
-        "stopProzent": -4,
-        "verkaufstermin": "2026-11-11T15:00:00.000Z",
-        "risiken": [
-          "Quartalszahlen heute – Kurssprung in beide Richtungen möglich",
-          "Kaufsumme der Insider gering (0,46 Mio. $), Cluster per Websuche nicht unabhängig bestätigt",
-          "Titelversicherer hängen stark an Hypothekenzinsen und Immobilienmarkt (Fed heute)",
-          "Geringe Tagesschwankung: 4 % netto nach 2,2 % Gebühren ist ambitioniert"
-        ],
-        "einflussLektionen": "Lektion 1 (Insider-Cluster bei Nebenwerten brauchbar, schwach, n=1) gibt den Ausschlag für einen zweiten Insider-Test. Lektion 2: 0,48 × 4 + 0,52 × (−4) ≈ −0,2 – ehrlich knapp unter null wegen der Gebührenhürde. Lektion 4: Einzelgewinn Gentherm nicht überbewerten, daher Konfidenz unter 50."
-      },
-      "verkaufstermin": "2026-11-11T15:00:00.000Z",
-      "anpassungen": []
-    }
-  ]
+  "vorgemerkt": []
 }

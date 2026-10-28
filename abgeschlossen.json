@@ -1,6 +1,128 @@
 {
-  "stand": "2026-10-28T12:57:32.087Z",
+  "stand": "2026-10-28T13:45:35.345Z",
   "orders": [
+    {
+      "id": "2026-10-26-rapport-therapeutics-inc",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-10-26T06:42:53.646Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Rapport Therapeutics, Inc.",
+          "isin": "US75383L1026",
+          "wkn": "A40EP8",
+          "ticker": "RAPP",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "spekulativ",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "RAPP",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "insider_kauf",
+        "these": "Sechs Insider von Rapport (Biotech, Epilepsie-Wirkstoff vor Phase 3) kauften laut Form 4 zusammen für 1,66 Mio. $, allein Direktor Steven Paul knapp 1 Mio. $ zu rund 24,65 $. Käufe mehrerer Führungskräfte gleichzeitig gelten als stärkeres Signal als Einzelkäufe. Kurs schloss am 23.10. bei 25,93 $ (−2,3 %), also nahe am Insider-Einstieg.",
+        "ausloeser": "Insider-Cluster-Kauf mit höchstem Score im Lagebild (+3,42)",
+        "signalIds": [
+          "insider_cluster_kauf:RAPP:2026-10-26",
+          "insider_kauf:RAPP:2026-10-26"
+        ],
+        "quellen": [
+          {
+            "name": "OpenInsider RAPP",
+            "link": "http://openinsider.com/RAPP"
+          },
+          {
+            "name": "Quantisnow: Direktor Paul kauft für 1,03 Mio. $",
+            "link": "https://quantisnow.com/insight/director-paul-steven-m-bought-1027111-worth-of-shares-41666-6200859"
+          },
+          {
+            "name": "Onvista RAPP (ISIN)",
+            "link": "https://www.onvista.de/aktien/US75383L1026"
+          }
+        ],
+        "konfidenz": 40,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0,
+        "zielNettoProzent": 9,
+        "stopProzent": -12,
+        "verkaufstermin": "2026-11-13T15:00:00.000Z",
+        "risiken": [
+          "Biotech: Studien- und Finanzierungsnachrichten können den Kurs zweistellig bewegen",
+          "Käufe könnten Teil einer Platzierung/Kapitalerhöhung sein – dann schwächeres Signal (nicht bestätigt)",
+          "Früher großer Verkauf durch Großaktionär Third Rock (April 2026)",
+          "Spread auf Tradegate bei Nebenwerten hoch"
+        ],
+        "einflussLektionen": "Noch keine Lektionen/Statistik (0 abgeschlossene Orders). Bisher nur Drift-nach-Zahlen im Depot – bewusst erste Insider-Order als Vergleich der Strategien.",
+        "risikoklasse": "spekulativ"
+      },
+      "verkaufstermin": "2026-11-04T15:00:00.000Z",
+      "anpassungen": [
+        {
+          "zeit": "2026-10-28T06:43:32.061Z",
+          "quelle": "morgenlauf",
+          "feld": "verkaufstermin",
+          "alt": "2026-11-13T15:00:00.000Z",
+          "neu": "2026-11-04T15:00:00.000Z",
+          "begruendung": "Rapport kündigte am 27.10. eine Aktienplatzierung plus Wandelanleihe an (SEC 424B5). Verwässerung schwächt die Insider-These; Haltedauer verkürzt, Stop bleibt."
+        }
+      ],
+      "kauf": {
+        "zeit": "2026-10-26T13:48:50.843Z",
+        "stueck": 40,
+        "kurs": 24.523,
+        "kurswert": 980.92,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 991.82,
+        "kursquelle": "Finnhub (2026-10-26T13:48:41.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 27.3,
+      "stopkurs": 21.58,
+      "etfKauf": {
+        "wert": 130.065,
+        "zeit": "2026-10-26T13:44:53.351Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 4,
+        "hinweis": "letztes Geschäft 2026-10-26",
+        "vortag": 129.58
+      },
+      "etfVergleich": {
+        "netto": -10.26,
+        "nettoProzent": -1.11,
+        "etfKauf": 130.065,
+        "etfVerkauf": 131.87
+      },
+      "verkauf": {
+        "zeit": "2026-10-28T13:45:35.345Z",
+        "stueck": 40,
+        "kurs": 21.095,
+        "kurswert": 843.8,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 832.9,
+        "kursquelle": "Finnhub (2026-10-28T13:45:29.000Z)",
+        "synthetisch": true,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "kursProzent": -13.98,
+        "netto": -158.92,
+        "nettoProzent": -16.02,
+        "gebuehren": 21.8,
+        "steuer": -18.66,
+        "nachSteuern": -140.26
+      }
+    },
     {
       "id": "2026-10-27-gentherm-inc",
       "status": "geschlossen",
