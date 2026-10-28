@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-28T16:49:52.735Z",
-  "anzahl": 45,
+  "stand": "2026-10-28T17:44:21.475Z",
+  "anzahl": 47,
   "signale": [
     {
       "id": "nachricht:BA:2026-10-27",
@@ -560,7 +560,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.48,
+      "st": 0.59,
       "q": [
         "Upbit"
       ],
@@ -574,7 +574,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.42,
+      "st": 0.45,
       "q": [
         "Upbit"
       ],
@@ -605,6 +605,33 @@
         "Finnhub"
       ],
       "z": "2026-10-28T16:08:00.000Z"
+    },
+    {
+      "id": "handelsstopp:REED:2026-10-28",
+      "s": "T:REED",
+      "n": "Reed's, Inc. Common Stock",
+      "t": "REED",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DOS:2026-10-28",
+      "s": "T:DOS",
+      "n": "DAPPOS",
+      "t": "DOS",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.45,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T17:44:21.475Z"
     }
   ]
 }
