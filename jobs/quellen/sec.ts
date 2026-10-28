@@ -58,12 +58,14 @@ export const sec8k: Quelle = {
  * Verwässerung (Ersatz für Dilution Tracker, S4): neue Prospekte 424B5 (Platzierung läuft) und Shelf-Registrierungen S-3
  * aus demselben EDGAR-Atom-Feed wie die 8-K. Trifft vor allem Penny Stocks/Small Caps (Daytrading, spekulativ).
  */
-export function verwaesserungAuswerten(atom: string, form: '424B5' | 'S-3', cikZuTicker: Map<number, { ticker: string; name: string }>, jetzt: Date): Signal[] {
+export function verwaesserungAuswerten(atom: string, form: '424B5' | 'S-3', cikZuTicker: Map<number, { ticker: string; name: string; rang?: number }>, jetzt: Date, minRang = 1500): Signal[] {
   const out: Signal[] = [];
   for (const e of parseRss(atom)) {
     const cik = Number(e.titel.match(/\((\d{10})\)/)?.[1]);
     const firma = cikZuTicker.get(cik);
     if (!firma || !e.titel.startsWith(form)) continue;
+    // Große Konzerne reichen 424B5/S-3 fast immer für Anleihen ein, nicht für neue Aktien → nur Small Caps/Penny Stocks
+    if (firma.rang !== undefined && firma.rang < minRang) continue;
     const text = form === '424B5' ? 'Prospekt 424B5: Aktienplatzierung (Verwässerung)' : 'Shelf-Registrierung S-3: künftige Kapitalerhöhung möglich';
     out.push(signal('verwaesserung', { name: firma.name, ticker: firma.ticker }, form === '424B5' ? 0.6 : 0.3, -1, e.zeit ?? jetzt.toISOString(), 'SEC EDGAR', text, e.link));
   }
@@ -79,7 +81,10 @@ export const secVerwaesserung: Quelle = {
   async abrufen(ctx) {
     const header = { 'User-Agent': secUa(), Accept: 'application/json, application/atom+xml' };
     const tickers = await holeJson<Record<string, { cik_str: number; ticker: string; title: string }>>('https://www.sec.gov/files/company_tickers.json', { header });
-    const karte = new Map(Object.values(tickers).map((t) => [t.cik_str, { ticker: t.ticker, name: t.title }]));
+    // company_tickers.json ist nach Börsenwert sortiert (Platz 0 = größte Firma) – Rang nur nutzen, wenn das sichtbar stimmt
+    const liste = Object.values(tickers);
+    const sortiert = liste.slice(0, 10).some((t) => ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META'].includes(t.ticker));
+    const karte = new Map(liste.map((t, i) => [t.cik_str, { ticker: t.ticker, name: t.title, ...(sortiert ? { rang: i } : {}) }]));
     const signale: Signal[] = [];
     for (const form of ['424B5', 'S-3'] as const) {
       const atom = await holeText(`https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=${form}&company=&dateb=&owner=include&count=100&output=atom`, { header });

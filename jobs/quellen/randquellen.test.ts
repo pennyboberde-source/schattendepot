@@ -159,5 +159,10 @@ describe('SEC Verwässerung (S4, gleiches Atom-Format wie 8-K)', async () => {
     const s = verwaesserungAuswerten(atom, '424B5', new Map([[123456, { ticker: 'TINY', name: 'Tiny Bio Inc' }]]), new Date('2026-10-28T13:00:00Z'));
     expect(s).toHaveLength(1);
     expect(s[0]).toMatchObject({ typ: 'verwaesserung', richtung: -1, wertpapier: { ticker: 'TINY' } });
+    // Großkonzern (Platz 5 nach Börsenwert): 424B5 = meist Anleihe → kein Signal; Small Cap (Platz 4000) → Signal
+    const karte = new Map([[123456, { ticker: 'TINY', name: 'Tiny Bio Inc', rang: 5 }]]);
+    expect(verwaesserungAuswerten(atom, '424B5', karte, new Date())).toHaveLength(0);
+    karte.set(123456, { ticker: 'TINY', name: 'Tiny Bio Inc', rang: 4000 });
+    expect(verwaesserungAuswerten(atom, '424B5', karte, new Date())).toHaveLength(1);
   });
 });
