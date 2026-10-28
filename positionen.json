@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-28T07:29:29.146Z",
+  "stand": "2026-10-28T08:18:37.712Z",
   "offen": [
     {
       "id": "2026-10-26-rapport-therapeutics-inc",
@@ -94,13 +94,13 @@
         "vortag": 129.58
       },
       "letzterKurs": {
-        "wert": 24.766,
-        "vortag": 22.778,
+        "wert": 24.756,
+        "vortag": 22.769,
         "zeit": "2026-10-27T20:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 689,
+        "verzoegertMin": 739,
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11203 USD/EUR"
+        "hinweis": "umgerechnet zu 1.11247 USD/EUR"
       }
     },
     {
@@ -186,10 +186,10 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 135.24,
-        "zeit": "2026-10-28T07:14:26.500Z",
+        "wert": 134.72,
+        "zeit": "2026-10-28T08:14:42.450Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 15,
+        "verzoegertMin": 4,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 134
       }
@@ -270,9 +270,9 @@
       },
       "letzterKurs": {
         "wert": 258.9,
-        "zeit": "2026-10-28T06:31:09.635Z",
+        "zeit": "2026-10-28T08:13:39.302Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 58,
+        "verzoegertMin": 5,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 258.9
       }
@@ -355,11 +355,89 @@
       },
       "letzterKurs": {
         "wert": 119.72,
-        "zeit": "2026-10-28T06:30:37.951Z",
+        "zeit": "2026-10-28T08:13:55.545Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 59,
+        "verzoegertMin": 5,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 119.72
+      }
+    },
+    {
+      "id": "2026-10-28-galaxy-digital-inc",
+      "status": "offen",
+      "vorgemerktUm": "2026-10-28T06:43:32.061Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Galaxy Digital Inc.",
+          "isin": "US36317J2096",
+          "ticker": "GLXY",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_large",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "GLXY",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "nachzahlen_drift",
+        "these": "Galaxy Digital drehte im dritten Quartal 2026 von einem Verlust (Q2: −0,09 $ je Aktie) auf einen Gewinn von 323 Mio. $, bereinigtes EPS 0,83 $ statt erwarteter rund −0,14 $. Das Rechenzentrum Helios liefert jetzt planbare Mieteinnahmen von CoreWeave (ca. 80 Mio. $ je Quartal). Der Markt bestätigte mit +9,6 % bei rund 1,6-fachem Normalvolumen. Die Aktie notiert trotzdem nahe dem Jahrestief (Spanne 14–39 $) – Raum für eine mehrtägige Drift.",
+        "ausloeser": "Gewinnüberraschung +713 % und bestätigende Kursreaktion +9,6 % laut Lagebild vom 28.10.",
+        "signalIds": [
+          "gewinn_ueberraschung:GLXY:2026-10-28",
+          "nachzahlen_drift:GLXY:2026-10-28"
+        ],
+        "quellen": [
+          {
+            "name": "Galaxy Q3-2026-Pressemitteilung (SEC 8-K)",
+            "link": "https://www.sec.gov/Archives/edgar/data/0001859392/000185939226000108/glxy-20260930xpressrelease.htm"
+          },
+          {
+            "name": "Galaxy Investor Relations",
+            "link": "https://investor.galaxy.com/static-files/f325cc7a-50b8-48a8-b669-9a53584badca"
+          }
+        ],
+        "konfidenz": 45,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 1,
+        "zielNettoProzent": 12,
+        "stopProzent": -8,
+        "verkaufstermin": "2026-11-11T15:00:00.000Z",
+        "risiken": [
+          "Sehr hohe Schwankung (Beta ca. 3,8) – stark vom Kryptomarkt abhängig",
+          "Gewinn stammt zum Teil aus Bewertungsgewinnen des Portfolios, nicht aus wiederkehrendem Geschäft",
+          "In früheren Quartalen fiel die Aktie nach Zahlen teils zweistellig – Reaktionen sind unberechenbar",
+          "Fed-Entscheid heute Abend kann Risikoanlagen bewegen"
+        ],
+        "einflussLektionen": "Lektion 2 umgesetzt: erwartete Rendite = 0,45 × 12 + 0,55 × (−8) ≈ 1,0. Lektion 3: Ziel und Stop weit, weil die Tagesschwankung hoch ist. Statistik hat erst n=1 – Drift-Strategie bewusst an einem volatilen Wert testen."
+      },
+      "verkaufstermin": "2026-11-11T15:00:00.000Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-10-28T08:18:37.712Z",
+        "stueck": 64,
+        "kurs": 15.438,
+        "kurswert": 988.03,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 998.93,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-28T08:14:02.569Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 17.66,
+      "stopkurs": 14.2,
+      "etfKauf": {
+        "wert": 131.775,
+        "zeit": "2026-10-28T08:13:19.275Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 5,
+        "hinweis": "letztes Geschäft 2026-10-28",
+        "vortag": 131.705
       }
     },
     {
@@ -437,9 +515,9 @@
       },
       "letzterKurs": {
         "wert": 182.7,
-        "zeit": "2026-10-28T06:30:48.999Z",
+        "zeit": "2026-10-28T08:13:00.201Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 59,
+        "verzoegertMin": 6,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 183.54
       }
@@ -524,69 +602,15 @@
       },
       "letzterKurs": {
         "wert": 377.5,
-        "zeit": "2026-10-28T06:30:50.398Z",
+        "zeit": "2026-10-28T08:13:20.652Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 59,
+        "verzoegertMin": 5,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 377.5
       }
     }
   ],
   "vorgemerkt": [
-    {
-      "id": "2026-10-28-galaxy-digital-inc",
-      "status": "vorgemerkt",
-      "vorgemerktUm": "2026-10-28T06:43:32.061Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "Galaxy Digital Inc.",
-          "isin": "US36317J2096",
-          "ticker": "GLXY",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_large",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "GLXY",
-            "waehrung": "USD"
-          }
-        },
-        "strategie": "nachzahlen_drift",
-        "these": "Galaxy Digital drehte im dritten Quartal 2026 von einem Verlust (Q2: −0,09 $ je Aktie) auf einen Gewinn von 323 Mio. $, bereinigtes EPS 0,83 $ statt erwarteter rund −0,14 $. Das Rechenzentrum Helios liefert jetzt planbare Mieteinnahmen von CoreWeave (ca. 80 Mio. $ je Quartal). Der Markt bestätigte mit +9,6 % bei rund 1,6-fachem Normalvolumen. Die Aktie notiert trotzdem nahe dem Jahrestief (Spanne 14–39 $) – Raum für eine mehrtägige Drift.",
-        "ausloeser": "Gewinnüberraschung +713 % und bestätigende Kursreaktion +9,6 % laut Lagebild vom 28.10.",
-        "signalIds": [
-          "gewinn_ueberraschung:GLXY:2026-10-28",
-          "nachzahlen_drift:GLXY:2026-10-28"
-        ],
-        "quellen": [
-          {
-            "name": "Galaxy Q3-2026-Pressemitteilung (SEC 8-K)",
-            "link": "https://www.sec.gov/Archives/edgar/data/0001859392/000185939226000108/glxy-20260930xpressrelease.htm"
-          },
-          {
-            "name": "Galaxy Investor Relations",
-            "link": "https://investor.galaxy.com/static-files/f325cc7a-50b8-48a8-b669-9a53584badca"
-          }
-        ],
-        "konfidenz": 45,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 1,
-        "zielNettoProzent": 12,
-        "stopProzent": -8,
-        "verkaufstermin": "2026-11-11T15:00:00.000Z",
-        "risiken": [
-          "Sehr hohe Schwankung (Beta ca. 3,8) – stark vom Kryptomarkt abhängig",
-          "Gewinn stammt zum Teil aus Bewertungsgewinnen des Portfolios, nicht aus wiederkehrendem Geschäft",
-          "In früheren Quartalen fiel die Aktie nach Zahlen teils zweistellig – Reaktionen sind unberechenbar",
-          "Fed-Entscheid heute Abend kann Risikoanlagen bewegen"
-        ],
-        "einflussLektionen": "Lektion 2 umgesetzt: erwartete Rendite = 0,45 × 12 + 0,55 × (−8) ≈ 1,0. Lektion 3: Ziel und Stop weit, weil die Tagesschwankung hoch ist. Statistik hat erst n=1 – Drift-Strategie bewusst an einem volatilen Wert testen."
-      },
-      "verkaufstermin": "2026-11-11T15:00:00.000Z",
-      "anpassungen": []
-    },
     {
       "id": "2026-10-28-stewart-information-services-c",
       "status": "vorgemerkt",
