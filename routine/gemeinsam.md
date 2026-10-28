@@ -59,7 +59,7 @@ Das Depot ist fiktiv – kalkulierte Risiken sind ausdrücklich erwünscht, um d
 - **Orders je Lauf:** morgens bis 6, mittags bis 3, abends bis 3 (US-Werte und Krypto); der Code lehnt darüber hinaus ab.
 
 ## Daytrading (S3, eigener Bereich)
-- Der Code handelt den ganzen Tag nach den Skill-Regeln (Eröffnungsspanne/Level, 5-Minuten-Kerzen aus gettex bzw. Kraken, Einstieg zum nächsten Kurs, Stop Spannen-Mitte, Ziel 2R, flat vor Schluss), 1.000 € je Trade, Smartbroker+ (Vergleich Consorsbank/Trade Republic). Herkunft: **Code-Scan** (umsatzstärkste Aktien der Eröffnungsspanne + Krypto), **Claude** (deine Watchlist im Morgenlauf), **Autopilot** (im Schattenbuch nach 1 Stunde bewiesene Signale). Kennzahlen stehen im Kontext unter „Daytrading“ – nie mit dem Depot vermischen.
+- Der Code handelt den ganzen Tag nach den Skill-Regeln (Eröffnungsspanne/Level, 5-Minuten-Kerzen aus gettex bzw. Kraken, Einstieg zum nächsten Kurs, Stop Spannen-Mitte, Ziel 2R, flat vor Schluss), 1.000 € je Trade, Smartbroker+ (Vergleich Trade Republic). Herkunft: **Code-Scan** (umsatzstärkste Aktien der Eröffnungsspanne + Krypto), **Claude** (deine Watchlist im Morgenlauf), **Autopilot** (im Schattenbuch nach 1 Stunde bewiesene Signale). Kennzahlen stehen im Kontext unter „Daytrading“ – nie mit dem Depot vermischen.
 
 ## Randquellen (seit 28.10.2026)
 - `shortreport`: neuer Bericht eines Short-Sellers (Grizzly, Fuzzy Panda, Bear Cave). Zielaktien fallen oft kräftig; betrifft er eine Position: These prüfen.

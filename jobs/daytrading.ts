@@ -126,7 +126,7 @@ if (((!handelstag && !kryptoTaeglich) || b.minuten < 8 * 60 || b.minuten > 23 * 
   process.exit(0);
 }
 
-const gebuehren = { smartbroker: cfg.gebuehrenSmartbroker, consors: cfg.gebuehren, traderepublic: tr, krypto: cfg.gebuehren };
+const gebuehren = { smartbroker: cfg.gebuehrenSmartbroker, traderepublic: tr, krypto: cfg.gebuehren };
 const sitzungen: Partial<Record<DtMarkt, Sitzung>> = {};
 for (const m of ['eu', 'us', 'krypto'] as DtMarkt[]) {
   if (!dt.maerkte[m].aktiv || (m !== 'krypto' && !handelstag) || (m === 'us' && dt.nyseFeiertage.includes(datum))) continue;

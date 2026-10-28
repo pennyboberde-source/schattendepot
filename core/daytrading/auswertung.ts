@@ -10,7 +10,6 @@ export interface DtGruppe {
   quote: number;
   netto: number;
   brutto: number;
-  nettoConsors: number;
   nettoTR: number;
   oeNettoProzent: number;
   oeR: number;
@@ -20,7 +19,7 @@ export interface DtUebersicht {
   stand: string;
   heute: { datum: string; gruppe: DtGruppe; offen: number };
   gesamt: DtGruppe;
-  kurve: { datum: string; netto: number; brutto: number; nettoConsors: number; nettoTR: number }[];
+  kurve: { datum: string; netto: number; brutto: number; nettoTR: number }[];
   nachHerkunft: Record<string, DtGruppe>;
   nachMarkt: Record<string, DtGruppe>;
   nachSetup: Record<string, DtGruppe>;
@@ -47,7 +46,6 @@ export function dtGruppe(l: DtTrade[]): DtGruppe {
     quote: n ? runde((treffer / n) * 100, 1) : 0,
     netto: s((t) => t.ergebnis!.netto),
     brutto: s((t) => t.ergebnis!.brutto),
-    nettoConsors: s((t) => t.ergebnis!.nettoConsors),
     nettoTR: s((t) => t.ergebnis!.nettoTR),
     oeNettoProzent: n ? runde(g.reduce((a, t) => a + t.ergebnis!.nettoProzent, 0) / n, 2) : 0,
     oeR: n ? runde(g.reduce((a, t) => a + t.ergebnis!.r, 0) / n, 2) : 0,
@@ -71,11 +69,11 @@ export function uebersichtBerechnen(alle: DtTrade[], heute: string, stand: strin
   const zu = alle.filter((t) => t.ergebnis).sort((a, b) => b.ausstieg!.zeit.localeCompare(a.ausstieg!.zeit));
   const tage = new Map<string, DtTrade[]>();
   for (const t of [...zu].reverse()) tage.set(t.datum, [...(tage.get(t.datum) ?? []), t]);
-  let summe = { netto: 0, brutto: 0, nettoConsors: 0, nettoTR: 0 };
+  let summe = { netto: 0, brutto: 0, nettoTR: 0 };
   const kurve = [...tage.entries()].map(([datum, l]) => {
     const g = dtGruppe(l);
-    summe = { netto: summe.netto + g.netto, brutto: summe.brutto + g.brutto, nettoConsors: summe.nettoConsors + g.nettoConsors, nettoTR: summe.nettoTR + g.nettoTR };
-    return { datum, netto: runde(summe.netto), brutto: runde(summe.brutto), nettoConsors: runde(summe.nettoConsors), nettoTR: runde(summe.nettoTR) };
+    summe = { netto: summe.netto + g.netto, brutto: summe.brutto + g.brutto, nettoTR: summe.nettoTR + g.nettoTR };
+    return { datum, netto: runde(summe.netto), brutto: runde(summe.brutto), nettoTR: runde(summe.nettoTR) };
   });
   const mitZm = zu.filter((t) => t.timeMachine);
   return {
@@ -111,7 +109,7 @@ export function abendbilanzText(u: DtUebersicht, heuteTrades: DtTrade[]): { tite
   ).map(([k, v]) => `${HERKUNFT_TEXT[k] ?? k} ${euro(v, { vorzeichen: true })}`);
   return {
     titel: `📊 Daytrading heute: ${euro(g.netto, { vorzeichen: true })}`,
-    text: [`${g.anzahl} Trades, ${prozent(g.quote, { vorzeichen: false })} Treffer`, `vor Gebühren ${euro(g.brutto, { vorzeichen: true })}`, `Consorsbank wäre ${euro(g.nettoConsors, { vorzeichen: true })}`, ...je, u.heute.offen ? `${u.heute.offen} noch offen` : '']
+    text: [`${g.anzahl} Trades, ${prozent(g.quote, { vorzeichen: false })} Treffer`, `vor Gebühren ${euro(g.brutto, { vorzeichen: true })}`, `Trade Republic wäre ${euro(g.nettoTR, { vorzeichen: true })}`, ...je, u.heute.offen ? `${u.heute.offen} noch offen` : '']
       .filter(Boolean)
       .join(' · '),
   };

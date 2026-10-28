@@ -1,5 +1,5 @@
 // Bereich „Daytrading“ (Plan Datenkrake S3): eigener Bereich, nie mit dem Depot vermischt.
-// Smartbroker+ als Hauptmodell, Vergleich Consorsbank und Trade Republic, immer auch vor Gebühren.
+// Smartbroker+ als Hauptmodell, Vergleich Trade Republic, immer auch vor Gebühren.
 import { euro, prozent } from '../../core/geld.ts';
 import type { SignalBeweis } from '../../core/autopilot.ts';
 import type { DtGruppe, DtUebersicht } from '../../core/daytrading/auswertung.ts';
@@ -25,7 +25,7 @@ export function DaytradingView() {
   return (
     <div class="seite">
       <h1>Daytrading</h1>
-      <p class="untertitel">Innerhalb eines Tages, 1.000 € je Trade · Smartbroker+ (Vergleich Consorsbank, Trade Republic) · eigener Bereich</p>
+      <p class="untertitel">Innerhalb eines Tages, 1.000 € je Trade · Smartbroker+ (Vergleich Trade Republic) · eigener Bereich</p>
       <Geladen z={u} leer="Noch keine Daytrades – der erste Handelstag füllt diesen Bereich." kinder={(d) => <Inhalt d={d} />} />
       {ap.status === 'ok' && <AutopilotKarte b={ap.daten.beweise} />}
     </div>
@@ -58,10 +58,8 @@ function Inhalt({ d }: { d: Daten }) {
           <Betrag wert={g.brutto} />
         </div>
         <div class="kennzahl">
-          <span class="kennzahl-label">Vergleich Consorsbank / Trade Republic</span>
-          <strong>
-            {euro(g.nettoConsors, { vorzeichen: true })} / {euro(g.nettoTR, { vorzeichen: true })}
-          </strong>
+          <span class="kennzahl-label">Vergleich Trade Republic</span>
+          <Betrag wert={g.nettoTR} />
         </div>
       </div>
 
@@ -186,7 +184,7 @@ function DtKurve({ punkte }: { punkte: DtUebersicht['kurve'] }) {
   const b = 600;
   const hoehe = 160;
   const r = 8;
-  const werte = punkte.flatMap((p) => [p.netto, p.brutto, p.nettoConsors, 0]);
+  const werte = punkte.flatMap((p) => [p.netto, p.brutto, 0]);
   const min = Math.min(...werte);
   const max = Math.max(...werte);
   const x = (i: number) => r + (i / (punkte.length - 1)) * (b - 2 * r);
@@ -197,13 +195,13 @@ function DtKurve({ punkte }: { punkte: DtUebersicht['kurve'] }) {
     <figure class="kurve">
       <svg viewBox={`0 0 ${b} ${hoehe}`} preserveAspectRatio="none" role="img" aria-label={`Daytrading ${euro(l.netto)}`}>
         <line x1={r} x2={b - r} y1={y(0)} y2={y(0)} class="kurve-null" vector-effect="non-scaling-stroke" />
-        <polyline points={linie((p) => p.nettoConsors)} class="kurve-etf" vector-effect="non-scaling-stroke" />
+        <polyline points={linie((p) => p.brutto)} class="kurve-etf" vector-effect="non-scaling-stroke" />
         <polyline points={linie((p) => p.netto)} class="kurve-depot" vector-effect="non-scaling-stroke" />
       </svg>
       <figcaption class="klein">
         <span class="legende depot">Smartbroker+ {euro(l.netto, { vorzeichen: true })}</span>
-        <span class="legende etf">Consorsbank {euro(l.nettoConsors, { vorzeichen: true })}</span>
-        <span>vor Gebühren {euro(l.brutto, { vorzeichen: true })}</span>
+        <span class="legende etf">vor Gebühren {euro(l.brutto, { vorzeichen: true })}</span>
+        <span>Trade Republic {euro(l.nettoTR, { vorzeichen: true })}</span>
       </figcaption>
     </figure>
   );

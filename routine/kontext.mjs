@@ -105,7 +105,7 @@ p('');
 if (typ === 'morgenlauf' || typ === 'abendlauf' || typ === 'wochenrueckblick') {
   const dtU = await json('daytrading/uebersicht.json', null);
   if (dtU?.gesamt?.anzahl) {
-    const gz = (n, g) => `${n} ${g.anzahl} Trades, Quote ${g.quote} %, netto ${g.netto} € (vor Gebühren ${g.brutto} €, Consorsbank ${g.nettoConsors} €), Ø ${g.oeR} R`;
+    const gz = (n, g) => `${n} ${g.anzahl} Trades, Quote ${g.quote} %, netto ${g.netto} € (vor Gebühren ${g.brutto} €, Trade Republic ${g.nettoTR} €), Ø ${g.oeR} R`;
     p('## Daytrading (eigener Bereich, Smartbroker+)', gz('Gesamt:', dtU.gesamt), gz(`Zuletzt (${dtU.heute.datum}):`, dtU.heute.gruppe));
     p(`Nach Herkunft: ${Object.entries(dtU.nachHerkunft).map(([k, v]) => `${k} ${v.anzahl}/${v.quote} %/${v.netto} €`).join('; ')} · nach Setup: ${Object.entries(dtU.nachSetup).map(([k, v]) => `${k} ${v.anzahl}/Ø ${v.oeR} R`).join('; ')}`);
     if (dtU.zeitmaschine?.length) p(`Time Machine (Chance Ziel zuerst → tatsächlich): ${dtU.zeitmaschine.map((x) => `${x.stufe}: ${x.quote} % (n=${x.anzahl})`).join('; ')}`);

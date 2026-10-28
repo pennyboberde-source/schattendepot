@@ -69,7 +69,8 @@ test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
 test('Daytrading: eigener Bereich mit Kennzahlen, Herkunft und Trades', async ({ page }) => {
   await page.goto('/#/daytrading');
   await expect(page.getByTestId('daytrading-kennzahlen')).toBeVisible();
-  await expect(page.getByText('Vergleich Consorsbank / Trade Republic')).toBeVisible();
+  await expect(page.getByText('Vergleich Trade Republic', { exact: true })).toBeVisible();
+  await expect(page.getByText(/Consorsbank/)).toHaveCount(0);
   await expect(page.getByRole('cell', { name: '🧠 Claude' })).toBeVisible();
   await expect(page.getByText('Demo Alpha AG').first()).toBeVisible();
 });

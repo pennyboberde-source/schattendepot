@@ -9,7 +9,7 @@ _Zuletzt aktualisiert: 28.10.2026 spätabends (Sitzung 2: Plan „Datenkrake“ 
 1. **Datenkrake (Code, kostet kein Limit):** Alle Quellen, Hot Stuff und Strategie-Ideen werden **virtuell gekauft und nachverfolgt** (Schattenbuch: nach 1/3/5/10 Tagen bzw. zum Tagesende beim Daytrading, nach Gebühren). Daraus entsteht eine gemessene Trefferquote je Quelle, Signal, Strategie, Markt und Marktphase. Sie speist die Gewichte, die Rangliste und die Chancen-Korrektur.
 2. **Schaufenster (sichtbar):** Nur das Allerbeste wird mit **1.000 € je Order** gekauft, in **zwei Bereichen**, nie vermischt:
    - **Depot** (Tage bis Wochen): Consorsbank, Vergleich Smartbroker+
-   - **Daytrading** (innerhalb eines Tages): Smartbroker+, Vergleich Consorsbank und Trade Republic, dazu immer das Ergebnis vor Gebühren
+   - **Daytrading** (innerhalb eines Tages): Smartbroker+, Vergleich Trade Republic, dazu immer das Ergebnis vor Gebühren (Consorsbank-Vergleich am 28.10. spätabends vom Nutzer gestrichen – „jenseits von Gut und Böse“; ältere Ereignisse behalten das Feld `nettoConsors`)
 
 **Wer entscheidet**
 - **Claude** 3× täglich aus der Code-Rangliste: morgens bis 6 Orders, mittags bis 3, abends US-Werte.

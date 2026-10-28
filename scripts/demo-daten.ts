@@ -167,7 +167,7 @@ schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal
     maxTradesJeTag: 40,
     maxOffen: 30,
     emittent: 'UniCredit (synthetisch)',
-    gebuehren: { smartbroker: lese('gebuehren-smartbroker.json'), consors: cfg, traderepublic: lese('gebuehren-traderepublic.json'), krypto: cfg },
+    gebuehren: { smartbroker: lese('gebuehren-smartbroker.json'), traderepublic: lese('gebuehren-traderepublic.json'), krypto: cfg },
   };
   const beob = [
     beobachtung({ basis: 'DE000DEMO0001', herkunft: 'code_scan', markt: 'eu', name: 'Demo Alpha AG', isin: 'DE000DEMO0001', instrumentLong: 'aktie', hebel: 5, spekulativ: false }, 'orb', ['long', 'short']),

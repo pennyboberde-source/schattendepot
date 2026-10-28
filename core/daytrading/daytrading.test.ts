@@ -9,7 +9,7 @@ import { kerzenAusGeschaeften, krakenKerzen, ortszeitZuUtc, sitzung, tradesAusEr
 import { historie, monteCarlo, volleSitzungen, type SKerze } from './zeitmaschine.ts';
 
 const g = (x: unknown) => x as GebuehrenConfig;
-const GEB = { smartbroker: g(smartbrokerDatei), consors: g(gebuehrenDatei), traderepublic: g(trDatei), krypto: g(gebuehrenDatei) };
+const GEB = { smartbroker: g(smartbrokerDatei), traderepublic: g(trDatei), krypto: g(gebuehrenDatei) };
 const DATUM = '2026-10-29'; // Do; New York noch Sommerzeit (bis 1.11.), Berlin schon Winterzeit
 const EU = { aktiv: true, zeitzone: 'Europe/Berlin', eroeffnung: '09:00', keineEinstiegeNach: '17:00', flatBis: '17:25' };
 const US = { aktiv: true, zeitzone: 'America/New_York', eroeffnung: '09:30', keineEinstiegeNach: '15:30', flatBis: '15:55' };
@@ -78,7 +78,7 @@ describe('Eröffnungsspanne (ORB) Kerze für Kerze', () => {
     expect(t).toMatchObject({ richtung: 'long', instrument: 'aktie', stop: 100.5, ziel: 105, ausloeser: { level: 101.5 }, einstieg: { basisKurs: 102, kurs: 102.051, stueck: 9 } });
     expect(t.ausstieg).toMatchObject({ grund: 'ziel', basisKurs: 105 });
     expect(t.ergebnis!.gebuehren.haupt).toBe(0);
-    expect(t.ergebnis!.gebuehren.consors).toBeGreaterThan(20);
+    expect(t.ergebnis!.gebuehren.consors).toBeUndefined(); // Consorsbank-Vergleich im Daytrading gestrichen
     expect(t.ergebnis!.gebuehren.tr).toBe(2);
     expect(t.ergebnis!.r).toBe(2);
     expect(t.ergebnis!.netto).toBe(t.ergebnis!.brutto);
@@ -161,9 +161,11 @@ describe('Auswertung und Abendbilanz', () => {
     const u = uebersichtBerechnen(trades, DATUM, 'x');
     expect(u.heute.gruppe.anzahl).toBe(1);
     expect(u.nachHerkunft.claude.quote).toBe(100);
-    expect(u.gesamt.nettoConsors).toBeLessThan(u.gesamt.netto);
+    expect(u.gesamt.nettoTR).toBeLessThan(u.gesamt.netto);
     const a = abendbilanzText(u, trades);
     expect(a.titel).toMatch(/^📊 Daytrading heute: \+/);
     expect(a.text).toMatch(/Claude/);
+    expect(a.text).toMatch(/Trade Republic wäre/);
+    expect(a.text).not.toMatch(/Consorsbank/);
   });
 });

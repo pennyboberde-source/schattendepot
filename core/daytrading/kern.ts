@@ -103,9 +103,10 @@ export interface DtErgebnis {
   /** nach Gebühren im Hauptmodell (Smartbroker+, Krypto Trade Republic) */
   netto: number;
   nettoProzent: number;
-  nettoConsors: number;
+  /** nur in älteren Ereignissen (Consorsbank-Vergleich im Daytrading am 28.10.2026 vom Nutzer gestrichen) */
+  nettoConsors?: number;
   nettoTR: number;
-  gebuehren: { haupt: number; consors: number; tr: number };
+  gebuehren: { haupt: number; consors?: number; tr: number };
   /** Ergebnis in R (Vielfache des Risikos) am Basiswert */
   r: number;
 }
@@ -315,7 +316,6 @@ export function instrumentMitte(tr: Pick<DtTrade, 'instrument' | 'turbo'>, basis
 
 export interface DtGebuehren {
   smartbroker: GebuehrenConfig;
-  consors: GebuehrenConfig;
   traderepublic: GebuehrenConfig;
   /** Krypto direkt: Trade Republic (gebuehren.json, Handelsplatz TRK) */
   krypto: GebuehrenConfig;
@@ -334,7 +334,6 @@ export function ergebnisRechnen(tr: DtTrade, ausstieg: NonNullable<DtTrade['auss
   const verkauf = ausstieg.kurswert;
   const brutto = runde(verkauf - kauf);
   const haupt = tr.instrument === 'krypto' ? entgelt(kauf, g.krypto, 'TRK') + entgelt(verkauf, g.krypto, 'TRK') : entgelt(kauf, g.smartbroker) + entgelt(verkauf, g.smartbroker);
-  const consors = entgelt(kauf, g.consors) + entgelt(verkauf, g.consors);
   const trg = entgelt(kauf, g.traderepublic) + entgelt(verkauf, g.traderepublic);
   const d = tr.richtung === 'long' ? 1 : -1;
   const risiko = Math.abs(tr.einstieg.basisKurs - tr.stop);
@@ -343,9 +342,8 @@ export function ergebnisRechnen(tr: DtTrade, ausstieg: NonNullable<DtTrade['auss
     bruttoProzent: runde((brutto / kauf) * 100, 2),
     netto: runde(brutto - haupt),
     nettoProzent: runde(((brutto - haupt) / (kauf + entgelt(kauf, tr.instrument === 'krypto' ? g.krypto : g.smartbroker, tr.instrument === 'krypto' ? 'TRK' : undefined))) * 100, 2),
-    nettoConsors: runde(brutto - consors),
     nettoTR: runde(brutto - trg),
-    gebuehren: { haupt: runde(haupt), consors: runde(consors), tr: runde(trg) },
+    gebuehren: { haupt: runde(haupt), tr: runde(trg) },
     r: risiko > 0 ? runde((d * (ausstieg.basisKurs - tr.einstieg.basisKurs)) / risiko, 2) : 0,
   };
 }
