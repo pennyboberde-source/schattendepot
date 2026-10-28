@@ -1,47 +1,47 @@
 {
-  "stand": "2026-10-28T20:44:08.078Z",
+  "stand": "2026-10-28T21:21:20.110Z",
   "heute": {
     "datum": "2026-10-28",
     "gruppe": {
-      "anzahl": 37,
+      "anzahl": 40,
       "treffer": 6,
-      "quote": 16.2,
-      "netto": -538.21,
-      "brutto": -524.21,
-      "nettoTR": -598.21,
-      "oeNettoProzent": -1.47,
-      "oeR": -0.39
+      "quote": 15,
+      "netto": -572.36,
+      "brutto": -552.36,
+      "nettoTR": -632.36,
+      "oeNettoProzent": -1.45,
+      "oeR": -0.37
     },
-    "offen": 3
+    "offen": 0
   },
   "gesamt": {
-    "anzahl": 37,
+    "anzahl": 40,
     "treffer": 6,
-    "quote": 16.2,
-    "netto": -538.21,
-    "brutto": -524.21,
-    "nettoTR": -598.21,
-    "oeNettoProzent": -1.47,
-    "oeR": -0.39
+    "quote": 15,
+    "netto": -572.36,
+    "brutto": -552.36,
+    "nettoTR": -632.36,
+    "oeNettoProzent": -1.45,
+    "oeR": -0.37
   },
   "kurve": [
     {
       "datum": "2026-10-28",
-      "netto": -538.21,
-      "brutto": -524.21,
-      "nettoTR": -598.21
+      "netto": -572.36,
+      "brutto": -552.36,
+      "nettoTR": -632.36
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 37,
+      "anzahl": 40,
       "treffer": 6,
-      "quote": 16.2,
-      "netto": -538.21,
-      "brutto": -524.21,
-      "nettoTR": -598.21,
-      "oeNettoProzent": -1.47,
-      "oeR": -0.39
+      "quote": 15,
+      "netto": -572.36,
+      "brutto": -552.36,
+      "nettoTR": -632.36,
+      "oeNettoProzent": -1.45,
+      "oeR": -0.37
     }
   },
   "nachMarkt": {
@@ -55,6 +55,16 @@
       "oeNettoProzent": -0.45,
       "oeR": -0.4
     },
+    "krypto": {
+      "anzahl": 10,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -130.88,
+      "brutto": -110.88,
+      "nettoTR": -130.88,
+      "oeNettoProzent": -1.31,
+      "oeR": -0.11
+    },
     "us": {
       "anzahl": 10,
       "treffer": 1,
@@ -64,16 +74,6 @@
       "nettoTR": -377.07,
       "oeNettoProzent": -3.59,
       "oeR": -0.58
-    },
-    "krypto": {
-      "anzahl": 7,
-      "treffer": 0,
-      "quote": 0,
-      "netto": -96.73,
-      "brutto": -82.73,
-      "nettoTR": -96.73,
-      "oeNettoProzent": -1.38,
-      "oeR": -0.07
     }
   },
   "nachSetup": {
@@ -98,14 +98,14 @@
       "oeR": -0.38
     },
     "level_long": {
-      "anzahl": 2,
+      "anzahl": 5,
       "treffer": 0,
       "quote": 0,
-      "netto": -54.09,
-      "brutto": -50.09,
-      "nettoTR": -54.09,
-      "oeNettoProzent": -2.71,
-      "oeR": -1
+      "netto": -88.24,
+      "brutto": -78.24,
+      "nettoTR": -88.24,
+      "oeNettoProzent": -1.76,
+      "oeR": -0.53
     }
   },
   "nachInstrument": {
@@ -119,6 +119,16 @@
       "oeNettoProzent": -1.34,
       "oeR": -0.33
     },
+    "krypto": {
+      "anzahl": 10,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -130.88,
+      "brutto": -110.88,
+      "nettoTR": -130.88,
+      "oeNettoProzent": -1.31,
+      "oeR": -0.11
+    },
     "aktie": {
       "anzahl": 9,
       "treffer": 1,
@@ -128,38 +138,28 @@
       "nettoTR": -180.28,
       "oeNettoProzent": -1.87,
       "oeR": -0.75
-    },
-    "krypto": {
-      "anzahl": 7,
-      "treffer": 0,
-      "quote": 0,
-      "netto": -96.73,
-      "brutto": -82.73,
-      "nettoTR": -96.73,
-      "oeNettoProzent": -1.38,
-      "oeR": -0.07
     }
   },
   "nachRisiko": {
-    "spekulativ": {
-      "anzahl": 19,
-      "treffer": 4,
-      "quote": 21.1,
-      "netto": -142.88,
-      "brutto": -132.88,
-      "nettoTR": -170.88,
-      "oeNettoProzent": -0.76,
-      "oeR": -0.3
-    },
     "skill_filter": {
-      "anzahl": 18,
+      "anzahl": 20,
       "treffer": 2,
-      "quote": 11.1,
-      "netto": -395.33,
-      "brutto": -391.33,
-      "nettoTR": -427.33,
-      "oeNettoProzent": -2.23,
-      "oeR": -0.47
+      "quote": 10,
+      "netto": -419.57,
+      "brutto": -411.57,
+      "nettoTR": -451.57,
+      "oeNettoProzent": -2.13,
+      "oeR": -0.45
+    },
+    "spekulativ": {
+      "anzahl": 20,
+      "treffer": 4,
+      "quote": 20,
+      "netto": -152.79,
+      "brutto": -140.79,
+      "nettoTR": -180.79,
+      "oeNettoProzent": -0.77,
+      "oeR": -0.29
     }
   },
   "nachAusstieg": {
@@ -174,14 +174,14 @@
       "oeR": -1.07
     },
     "schluss": {
-      "anzahl": 8,
+      "anzahl": 11,
       "treffer": 2,
-      "quote": 25,
-      "netto": -232.29,
-      "brutto": -232.29,
-      "nettoTR": -248.29,
-      "oeNettoProzent": -2.92,
-      "oeR": -0.28
+      "quote": 18.2,
+      "netto": -266.44,
+      "brutto": -260.44,
+      "nettoTR": -282.44,
+      "oeNettoProzent": -2.43,
+      "oeR": -0.26
     },
     "ziel": {
       "anzahl": 6,
@@ -208,92 +208,7 @@
       "oeR": -1
     }
   ],
-  "offen": [
-    {
-      "id": "2026-10-28-scan-eth",
-      "datum": "2026-10-28",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "level",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "ETH",
-      "symbol": "ETH",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-28T08:20:00.000Z",
-        "kurs": 2122.88,
-        "level": 2120.58
-      },
-      "stop": 2081.03,
-      "ziel": 2208.44,
-      "zielR": 2,
-      "flatBis": "2026-10-28T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-28T08:20:00.000Z",
-        "basisKurs": 2123.5,
-        "kurs": 2128.809,
-        "stueck": 0.469746,
-        "kurswert": 1000
-      }
-    },
-    {
-      "id": "2026-10-28-scan-sol",
-      "datum": "2026-10-28",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "level",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "SOL",
-      "symbol": "SOL",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-28T08:20:00.000Z",
-        "kurs": 91.95,
-        "level": 91.41
-      },
-      "stop": 90.13,
-      "ziel": 95.65,
-      "zielR": 2,
-      "flatBis": "2026-10-28T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-28T08:20:00.000Z",
-        "basisKurs": 91.97,
-        "kurs": 92.2,
-        "stueck": 10.845986,
-        "kurswert": 1000
-      }
-    },
-    {
-      "id": "2026-10-28-scan-btc-2",
-      "datum": "2026-10-28",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "level",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "BTC",
-      "symbol": "BTC",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-28T08:30:00.000Z",
-        "kurs": 73079.2,
-        "level": 72943.8
-      },
-      "stop": 71638.78,
-      "ziel": 76024.83,
-      "zielR": 2,
-      "flatBis": "2026-10-28T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-28T08:30:00.000Z",
-        "basisKurs": 73100.8,
-        "kurs": 73283.552,
-        "stueck": 0.013645,
-        "kurswert": 999.95
-      }
-    }
-  ],
+  "offen": [],
   "trades": [
     {
       "id": "2026-10-28-scan-eth",
@@ -321,6 +236,25 @@
         "kurs": 2128.809,
         "stueck": 0.469746,
         "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-10-28T20:55:00.000Z",
+        "basisKurs": 2112.28,
+        "kurs": 2106.999,
+        "kurswert": 989.75,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": -10.25,
+        "bruttoProzent": -1.03,
+        "netto": -12.25,
+        "nettoProzent": -1.22,
+        "nettoTR": -12.25,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -0.26
       }
     },
     {
@@ -349,6 +283,25 @@
         "kurs": 92.2,
         "stueck": 10.845986,
         "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-10-28T20:55:00.000Z",
+        "basisKurs": 91.7,
+        "kurs": 91.471,
+        "kurswert": 992.09,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": -7.91,
+        "bruttoProzent": -0.79,
+        "netto": -9.91,
+        "nettoProzent": -0.99,
+        "nettoTR": -9.91,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -0.15
       }
     },
     {
@@ -377,6 +330,25 @@
         "kurs": 73283.552,
         "stueck": 0.013645,
         "kurswert": 999.95
+      },
+      "ausstieg": {
+        "zeit": "2026-10-28T20:55:00.000Z",
+        "basisKurs": 72732.9,
+        "kurs": 72551.068,
+        "kurswert": 989.96,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": -9.99,
+        "bruttoProzent": -1,
+        "netto": -11.99,
+        "nettoProzent": -1.2,
+        "nettoTR": -11.99,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -0.25
       }
     },
     {
