@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-28T20:03:35.746Z",
+  "stand": "2026-10-28T20:44:01.633Z",
   "gesamt": {
     "anzahl": 5,
     "treffer": 2,
@@ -276,7 +276,7 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 55,
+      "anzahl": 57,
       "n1T": 41,
       "n3T": 23,
       "n1W": 0,
@@ -351,6 +351,21 @@
         "quote3T": 25,
         "quote1W": null
       },
+      "kursrakete": {
+        "anzahl": 7,
+        "n1T": 5,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": null,
+        "oe1T": 6.16,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 60,
+        "quote3T": null,
+        "quote1W": null
+      },
       "nachricht": {
         "anzahl": 6,
         "n1T": 4,
@@ -367,21 +382,6 @@
         "quote1W": null
       },
       "tagesgewinner": {
-        "anzahl": 5,
-        "n1T": 5,
-        "n3T": 0,
-        "n1W": 0,
-        "oe1h": null,
-        "oe1T": 6.16,
-        "oe3T": null,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 60,
-        "quote3T": null,
-        "quote1W": null
-      },
-      "kursrakete": {
         "anzahl": 5,
         "n1T": 5,
         "n3T": 0,
@@ -622,11 +622,26 @@
         "quote1T": 0,
         "quote3T": 100,
         "quote1W": null
+      },
+      "gettex-Scanner": {
+        "anzahl": 2,
+        "n1T": 0,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": null,
+        "oe1T": null,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": null,
+        "quote3T": null,
+        "quote1W": null
       }
     },
     "nachRisiko": {
       "normal": {
-        "anzahl": 55,
+        "anzahl": 57,
         "n1T": 41,
         "n3T": 23,
         "n1W": 0,
@@ -643,7 +658,7 @@
     },
     "nachMarkt": {
       "us": {
-        "anzahl": 51,
+        "anzahl": 53,
         "n1T": 39,
         "n3T": 21,
         "n1W": 0,
@@ -746,14 +761,25 @@
         "chance": 28.6,
         "oeNetto": -1.71,
         "wertung": -3.44,
-        "knockout": 0
+        "knockout": 0,
+        "hebelGrenze": 1
+      },
+      "volltreffer": {
+        "anteil": 6.7,
+        "faelle": 15,
+        "schwelle": 15
       }
     },
     {
       "typ": "volumen_ungewoehnlich",
       "gruppe": "aktie",
       "beste": null,
-      "basis": null
+      "basis": null,
+      "volltreffer": {
+        "anteil": 33.3,
+        "faelle": 3,
+        "schwelle": 15
+      }
     },
     {
       "typ": "nachzahlen_drift",
@@ -767,7 +793,13 @@
         "chance": 25,
         "oeNetto": -2.55,
         "wertung": -4.45,
-        "knockout": 0
+        "knockout": 0,
+        "hebelGrenze": 1
+      },
+      "volltreffer": {
+        "anteil": 0,
+        "faelle": 8,
+        "schwelle": 15
       }
     },
     {
@@ -782,14 +814,25 @@
         "chance": 40,
         "oeNetto": -3.82,
         "wertung": -6.53,
-        "knockout": 0
+        "knockout": 0,
+        "hebelGrenze": 1
+      },
+      "volltreffer": {
+        "anteil": 0,
+        "faelle": 12,
+        "schwelle": 15
       }
     },
     {
       "typ": "analysten_hochstufung",
       "gruppe": "aktie",
       "beste": null,
-      "basis": null
+      "basis": null,
+      "volltreffer": {
+        "anteil": 0,
+        "faelle": 3,
+        "schwelle": 15
+      }
     },
     {
       "typ": "insider_kauf",
@@ -803,7 +846,13 @@
         "chance": 66.7,
         "oeNetto": -4.54,
         "wertung": -9.41,
-        "knockout": 0
+        "knockout": 0,
+        "hebelGrenze": 1
+      },
+      "volltreffer": {
+        "anteil": 0,
+        "faelle": 12,
+        "schwelle": 15
       }
     },
     {
@@ -818,20 +867,36 @@
         "chance": 50,
         "oeNetto": 2.09,
         "wertung": 0.02,
-        "knockout": 0
+        "knockout": 0,
+        "hebelGrenze": 6.1
+      },
+      "volltreffer": {
+        "anteil": 0,
+        "faelle": 4,
+        "schwelle": 15
       }
     },
     {
       "typ": "tagesgewinner",
       "gruppe": "aktie",
       "beste": null,
-      "basis": null
+      "basis": null,
+      "volltreffer": {
+        "anteil": 20,
+        "faelle": 5,
+        "schwelle": 15
+      }
     },
     {
       "typ": "kursrakete",
       "gruppe": "aktie",
       "beste": null,
-      "basis": null
+      "basis": null,
+      "volltreffer": {
+        "anteil": 20,
+        "faelle": 5,
+        "schwelle": 15
+      }
     }
   ],
   "lernhinweise": [
