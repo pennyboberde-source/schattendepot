@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-28T19:17:38.495Z",
+  "stand": "2026-10-28T19:31:16.218Z",
   "heute": {
     "datum": "2026-10-28",
     "gruppe": {
@@ -8,7 +8,6 @@
       "quote": 16.1,
       "netto": -374.56,
       "brutto": -360.56,
-      "nettoConsors": -1036.36,
       "nettoTR": -422.56,
       "oeNettoProzent": -1.23,
       "oeR": -0.43
@@ -21,7 +20,6 @@
     "quote": 16.1,
     "netto": -374.56,
     "brutto": -360.56,
-    "nettoConsors": -1036.36,
     "nettoTR": -422.56,
     "oeNettoProzent": -1.23,
     "oeR": -0.43
@@ -31,7 +29,6 @@
       "datum": "2026-10-28",
       "netto": -374.56,
       "brutto": -360.56,
-      "nettoConsors": -1036.36,
       "nettoTR": -422.56
     }
   ],
@@ -42,7 +39,6 @@
       "quote": 16.1,
       "netto": -374.56,
       "brutto": -360.56,
-      "nettoConsors": -1036.36,
       "nettoTR": -422.56,
       "oeNettoProzent": -1.23,
       "oeR": -0.43
@@ -55,7 +51,6 @@
       "quote": 25,
       "netto": -84.41,
       "brutto": -84.41,
-      "nettoConsors": -520.41,
       "nettoTR": -124.41,
       "oeNettoProzent": -0.45,
       "oeR": -0.4
@@ -66,7 +61,6 @@
       "quote": 0,
       "netto": -96.73,
       "brutto": -82.73,
-      "nettoConsors": -235.33,
       "nettoTR": -96.73,
       "oeNettoProzent": -1.38,
       "oeR": -0.07
@@ -77,7 +71,6 @@
       "quote": 0,
       "netto": -193.42,
       "brutto": -193.42,
-      "nettoConsors": -280.62,
       "nettoTR": -201.42,
       "oeNettoProzent": -4.86,
       "oeR": -1.23
@@ -90,7 +83,6 @@
       "quote": 25,
       "netto": -130.1,
       "brutto": -130.1,
-      "nettoConsors": -478.9,
       "nettoTR": -162.1,
       "oeNettoProzent": -0.82,
       "oeR": -0.41
@@ -101,7 +93,6 @@
       "quote": 7.7,
       "netto": -190.37,
       "brutto": -180.37,
-      "nettoConsors": -463.77,
       "nettoTR": -206.37,
       "oeNettoProzent": -1.5,
       "oeR": -0.37
@@ -112,7 +103,6 @@
       "quote": 0,
       "netto": -54.09,
       "brutto": -50.09,
-      "nettoConsors": -93.69,
       "nettoTR": -54.09,
       "oeNettoProzent": -2.71,
       "oeR": -1
@@ -125,7 +115,6 @@
       "quote": 25,
       "netto": -130.1,
       "brutto": -130.1,
-      "nettoConsors": -478.9,
       "nettoTR": -162.1,
       "oeNettoProzent": -0.82,
       "oeR": -0.41
@@ -136,7 +125,6 @@
       "quote": 12.5,
       "netto": -147.73,
       "brutto": -147.73,
-      "nettoConsors": -322.13,
       "nettoTR": -163.73,
       "oeNettoProzent": -1.91,
       "oeR": -0.8
@@ -147,7 +135,6 @@
       "quote": 0,
       "netto": -96.73,
       "brutto": -82.73,
-      "nettoConsors": -235.33,
       "nettoTR": -96.73,
       "oeNettoProzent": -1.38,
       "oeR": -0.07
@@ -160,7 +147,6 @@
       "quote": 23.5,
       "netto": -2.59,
       "brutto": 7.41,
-      "nettoConsors": -363.19,
       "nettoTR": -26.59,
       "oeNettoProzent": -0.02,
       "oeR": -0.24
@@ -171,7 +157,6 @@
       "quote": 7.1,
       "netto": -371.97,
       "brutto": -367.97,
-      "nettoConsors": -673.17,
       "nettoTR": -395.97,
       "oeNettoProzent": -2.69,
       "oeR": -0.66
@@ -184,7 +169,6 @@
       "quote": 0,
       "netto": -701.86,
       "brutto": -691.86,
-      "nettoConsors": -1193.26,
       "nettoTR": -737.86,
       "oeNettoProzent": -3.08,
       "oeR": -1.07
@@ -195,7 +179,6 @@
       "quote": 60,
       "netto": 324.61,
       "brutto": 328.61,
-      "nettoConsors": 219.61,
       "nettoTR": 318.61,
       "oeNettoProzent": 6.5,
       "oeR": 2.1
@@ -206,7 +189,6 @@
       "quote": 66.7,
       "netto": 2.69,
       "brutto": 2.69,
-      "nettoConsors": -62.71,
       "nettoTR": -3.31,
       "oeNettoProzent": 0.09,
       "oeR": 0.23
@@ -923,6 +905,23 @@
         "stueck": 98,
         "kurswert": 995.19
       },
+      "timeMachine": {
+        "zielZuerst": 24.4,
+        "stopZuerst": 65,
+        "keins": 10.7,
+        "gruen": 32.5,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 32,
+          "ziel": 3,
+          "stop": 15,
+          "oeR": -0.18
+        }
+      },
       "ausstieg": {
         "zeit": "2026-10-28T16:55:00.000Z",
         "basisKurs": 511.6,
@@ -943,23 +942,6 @@
           "tr": 2
         },
         "r": -1
-      },
-      "timeMachine": {
-        "zielZuerst": 24.4,
-        "stopZuerst": 65,
-        "keins": 10.7,
-        "gruen": 32.5,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 32,
-          "ziel": 3,
-          "stop": 15,
-          "oeR": -0.18
-        }
       }
     },
     {
@@ -1568,6 +1550,23 @@
         "stueck": 57,
         "kurswert": 991.17
       },
+      "timeMachine": {
+        "zielZuerst": 30.3,
+        "stopZuerst": 68.6,
+        "keins": 1,
+        "gruen": 31.1,
+        "schwelle": 33.3,
+        "urteil": "Nahe an der Gewinnschwelle",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 27,
+          "ziel": 3,
+          "stop": 7,
+          "oeR": 0.12
+        }
+      },
       "ausstieg": {
         "zeit": "2026-10-28T14:00:00.000Z",
         "basisKurs": 874.2,
@@ -1588,23 +1587,6 @@
           "tr": 2
         },
         "r": -1
-      },
-      "timeMachine": {
-        "zielZuerst": 30.3,
-        "stopZuerst": 68.6,
-        "keins": 1,
-        "gruen": 31.1,
-        "schwelle": 33.3,
-        "urteil": "Nahe an der Gewinnschwelle",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 27,
-          "ziel": 3,
-          "stop": 7,
-          "oeR": 0.12
-        }
       }
     },
     {
@@ -2673,23 +2655,6 @@
     "autopilot": 0
   },
   "hinweise": [
-    "RHEINMETALL AG: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)",
-    "WESTERN DIGITAL CORP: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "XYLEM INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "INTEL CORP: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "BLOOM ENERGY CORP- A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "TERADYNE INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "BOEING CO/THE: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "ROBINHOOD MARKETS INC - A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "COREWEAVE INC-CL A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "SK HYNIX INC-ADR: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "ENPHASE ENERGY INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "NETFLIX INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "TESLA INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "SK HYNIX INC-GDS REG S: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "MICROSOFT CORP: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "AMAZON.COM INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "ORACLE CORP: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "GE VERNOVA INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
+    "VERTIV HOLDINGS CO-A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
   ]
 }
