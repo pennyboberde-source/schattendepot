@@ -2,9 +2,22 @@ import { expect, test } from '@playwright/test';
 
 const HINWEIS = 'Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung.';
 
-test('Übersicht zeigt Kennzahlen, Positionen und den Pflichthinweis', async ({ page }) => {
+test('Heute: Tagesbilanz, Briefing, Gelernt, Marktphase und Wochenzeugnis', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Übersicht', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Heute', exact: true })).toBeVisible();
+  await expect(page.getByTestId('heute-bilanz')).toBeVisible();
+  await expect(page.getByText('Daytrading heute (Smartbroker+)')).toBeVisible();
+  await expect(page.getByText('DEMO: Insider-Cluster tragen')).toBeVisible();
+  await expect(page.getByText('Aufwärts, ruhig')).toBeVisible();
+  await expect(page.getByTestId('zeugnis-note')).toHaveText('2,3 (gut)');
+});
+
+test('Depot zeigt Kennzahlen, Positionen und den Pflichthinweis; alte Links funktionieren', async ({ page }) => {
+  await page.goto('/#/uebersicht');
+  await expect(page.getByRole('heading', { name: 'Depot', exact: true })).toBeVisible();
+  await page.getByRole('link', { name: 'Abgeschlossen' }).click();
+  await expect(page.getByRole('heading', { name: 'Abgeschlossen', exact: true })).toBeVisible();
+  await page.goto('/#/depot');
   await expect(page.getByText('Schattendepot vs. ETF', { exact: true })).toBeVisible();
   await expect(page.getByText('Demo Gamma AG')).toBeVisible();
   await expect(page.locator('.hinweis-fuss')).toHaveText(HINWEIS);
@@ -15,13 +28,11 @@ test('Alle Tabs erreichbar, Touch-Ziele groß genug', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Hauptnavigation' });
   for (const [tab, ueberschrift] of [
-    ['Briefing', 'Briefing'],
-    ['Abgeschlossen', 'Abgeschlossen'],
+    ['Depot', 'Depot'],
     ['Daytrading', 'Daytrading'],
     ['Lernen', 'Lernen'],
-    ['Quellen', 'Quellenstatus'],
     ['Einstellungen', 'Einstellungen'],
-    ['Übersicht', 'Übersicht'],
+    ['Heute', 'Heute'],
   ]) {
     const link = nav.getByRole('link', { name: tab });
     const box = await link.boundingBox();
@@ -69,7 +80,7 @@ test('Einstellungen: Push-Hinweis außerhalb der Home-Bildschirm-App', async ({ 
 });
 
 test('Keine horizontale Scrollleiste', async ({ page }) => {
-  for (const route of ['/', '/#/briefing', '/#/abgeschlossen', '/#/daytrading', '/#/lernen', '/#/einstellungen', '/#/order/2026-10-21-demo-c']) {
+  for (const route of ['/', '/#/depot', '/#/briefing', '/#/abgeschlossen', '/#/daytrading', '/#/lernen', '/#/quellen', '/#/einstellungen', '/#/order/2026-10-21-demo-c']) {
     await page.goto(route);
     await page.waitForTimeout(200);
     const breit = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);

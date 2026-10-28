@@ -118,3 +118,46 @@ describe('Short-Seller-Berichte', () => {
     expect(r.meldungen).toHaveLength(3);
   });
 });
+
+describe('GDELT (S4: eine Abfrage statt vieler)', async () => {
+  const { gdeltAbfrage, gdeltArtikel, suchname } = await import('./gdelt.ts');
+  it('baut eine ODER-Abfrage aus allen Positionen ohne Rechtsform', () => {
+    expect(suchname('Space Exploration Technologies Corp. (SpaceX)')).toBe('Space Exploration Technologies');
+    expect(suchname('Lithia Motors Inc.')).toBe('Lithia Motors');
+    const u = decodeURIComponent(gdeltAbfrage(['Lithia Motors Inc.', 'Galaxy Digital Inc.', 'Lithia Motors Inc.'], '24h'));
+    expect(u).toContain('query=("Lithia Motors" OR "Galaxy Digital")');
+    expect(u).toContain('timespan=24h');
+  });
+  it('erkennt die Klartext-Drosselung (aufgezeichnete Antwort vom 28.10.2026)', () => {
+    expect(() => gdeltArtikel('Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries.')).toThrow(/ohne JSON/);
+    expect(gdeltArtikel('{"articles":[{"url":"https://x","title":"Lithia Motors beats","seendate":"20261028T120000Z"}]}')).toHaveLength(1);
+  });
+});
+
+describe('Coinalyze (S4, Format laut OpenAPI-Spezifikation vom 28.10.2026)', async () => {
+  const { fundingAuswerten, liquidationenAuswerten } = await import('./coinalyze.ts');
+  const stunde = (t: number, l: number, s: number) => ({ t, l, s });
+  it('Liquidations-Spitze: ≥ 3× Median und ≥ 1 Mio. $, überwiegend Longs → Gegenbewegung (+1)', () => {
+    const history = [...Array(23)].map((_, i) => stunde(1793200000 + i * 3600, 300000, 200000)).concat([stunde(1793282800, 4000000, 500000)]);
+    const r = liquidationenAuswerten([{ symbol: 'BTCUSDT_PERP.A', history }, { symbol: 'ETHUSDT_PERP.A', history: history.slice(0, -1) }]);
+    expect(r.signale).toHaveLength(1);
+    expect(r.signale[0]).toMatchObject({ typ: 'liquidationen_spitze', richtung: 1, wertpapier: { ticker: 'BTC', markt: 'krypto' } });
+    expect(r.makro[0]).toMatch(/^Coinalyze BTC: Liquidationen 24 h 16,0|^Coinalyze BTC: Liquidationen 24 h 16\.0/);
+  });
+  it('vorhergesagtes Funding ≥ 0,05 % → überfüllt (−1)', () => {
+    const s = fundingAuswerten([{ symbol: 'SOLUSDT_PERP.A', value: 0.08, update: 1793282800000 }, { symbol: 'BTCUSDT_PERP.A', value: 0.01, update: 1793282800000 }]);
+    expect(s).toHaveLength(1);
+    expect(s[0]).toMatchObject({ typ: 'funding_extrem', richtung: -1, wertpapier: { ticker: 'SOL' } });
+  });
+});
+
+describe('SEC Verwässerung (S4, gleiches Atom-Format wie 8-K)', async () => {
+  const { verwaesserungAuswerten } = await import('./sec.ts');
+  it('424B5 → Verwässerungssignal für bekannte Ticker', () => {
+    const atom = `<feed><entry><title>424B5 - TINY BIO INC (0000123456) (Filer)</title><link rel="alternate" href="https://www.sec.gov/x"/><summary>Filed 2026-10-28</summary><updated>2026-10-28T08:05:00-04:00</updated></entry>
+      <entry><title>424B5 - UNKNOWN LLC (0000999999) (Filer)</title><link rel="alternate" href="https://www.sec.gov/y"/><summary>x</summary><updated>2026-10-28T08:05:00-04:00</updated></entry></feed>`;
+    const s = verwaesserungAuswerten(atom, '424B5', new Map([[123456, { ticker: 'TINY', name: 'Tiny Bio Inc' }]]), new Date('2026-10-28T13:00:00Z'));
+    expect(s).toHaveLength(1);
+    expect(s[0]).toMatchObject({ typ: 'verwaesserung', richtung: -1, wertpapier: { ticker: 'TINY' } });
+  });
+});

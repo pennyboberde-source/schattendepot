@@ -301,6 +301,74 @@
           }
         }
       }
+    },
+    "heuteGelernt": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "description": "Abendlauf: was heute gelernt wurde (Push „Heute gelernt“ und Seite Heute)",
+      "items": {
+        "type": "string",
+        "minLength": 5,
+        "maxLength": 140
+      }
+    },
+    "monatspruefung": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "vorschlaege"
+      ],
+      "description": "Wochenrückblick am ersten Samstag des Monats: Tiefenprüfung aller Daten",
+      "properties": {
+        "push": {
+          "type": "string",
+          "maxLength": 180
+        },
+        "text": {
+          "type": "string",
+          "minLength": 100,
+          "maxLength": 8000
+        },
+        "vorschlaege": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "bereich",
+              "vorschlag",
+              "begruendung"
+            ],
+            "properties": {
+              "bereich": {
+                "enum": [
+                  "depot",
+                  "daytrading",
+                  "autopilot",
+                  "quellen",
+                  "signale",
+                  "risiko",
+                  "routinen",
+                  "sonstiges"
+                ]
+              },
+              "vorschlag": {
+                "type": "string",
+                "minLength": 5,
+                "maxLength": 300
+              },
+              "begruendung": {
+                "type": "string",
+                "minLength": 5,
+                "maxLength": 400
+              }
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {

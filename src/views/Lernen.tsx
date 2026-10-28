@@ -42,6 +42,9 @@ export function LernenView() {
   return (
     <div class="seite">
       <h1>Lernen</h1>
+      <p class="klein">
+        <a href="#/quellen">Quellenstatus ansehen</a>
+      </p>
       <p class="klein">Die Datenkrake verfolgt jeden Tag bis zu 40 Kandidaten und tagsüber schnelle Signale virtuell mit – ohne Geld – und misst, was klappt. Daraus lernen Gewichte, Chancen und Claude.</p>
       <Geladen
         z={statistik}

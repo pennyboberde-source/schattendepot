@@ -14,7 +14,7 @@ export function UebersichtView() {
 
   return (
     <div class="seite">
-      <h1>Übersicht</h1>
+      <h1>Depot</h1>
       {system.status === 'ok' && system.daten.pushAbgelaufen && (
         <a class="banner warnung" href="#/einstellungen">Push-Anmeldung abgelaufen – bitte „Push neu verbinden“.</a>
       )}

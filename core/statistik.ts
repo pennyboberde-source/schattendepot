@@ -1,6 +1,7 @@
 // Statistik über abgeschlossene Orders und mitverfolgte Nicht-Käufe – Grundlage der Lernschleife.
 import { runde } from './geld.ts';
 import type { Order } from './typen.ts';
+import { phaseAm, type PhasenVerlauf } from './marktphase.ts';
 
 export interface Gruppe {
   anzahl: number;
@@ -85,7 +86,11 @@ export interface Statistik {
     /** Pump-Verdacht getrennt messen (Penny Stocks/Altcoins ohne handfeste Grundlage) */
     nachRisiko?: Record<string, TrackingGruppe>;
     nachMarkt?: Record<string, TrackingGruppe>;
+    /** je Marktphase am Tag der Aufnahme (Aktien- bzw. Krypto-Phase) */
+    nachPhase?: Record<string, TrackingGruppe>;
   };
+  /** abgeschlossene Orders je Marktphase am Kauftag */
+  nachPhase?: Record<string, Gruppe>;
   /** Claudes Tagesprognose (morgens bis 10 Werte, Richtung ohne Geld) – gemessen wie das Schattenbuch */
   prognose?: TrackingGruppe;
   /** Orders nach Herkunft (Claude vs. Autopilot) */
@@ -169,7 +174,9 @@ function trackingGruppiert(l: TrackingEintrag[], f: (t: TrackingEintrag) => stri
   return Object.fromEntries([...m.entries()].sort((a, b) => b[1].length - a[1].length).map(([k, v]) => [k, trackingGruppe(v)]));
 }
 
-export function statistikBerechnen(alle: Order[], trackingAlle: TrackingEintrag[], stand: string): Statistik {
+const istKryptoMarkt = (t: TrackingEintrag) => t.markt === 'krypto' || ['BTC', 'ETH', 'SOL', 'XRP', 'ADA', 'DOT'].includes(t.ticker ?? '');
+
+export function statistikBerechnen(alle: Order[], trackingAlle: TrackingEintrag[], stand: string, phasen: PhasenVerlauf = {}): Statistik {
   // Claudes Tagesprognosen getrennt messen – sie sind keine Kandidaten des Schattenbuchs
   const tracking = trackingAlle.filter((t) => t.art !== 'prognose');
   const prognosen = trackingAlle.filter((t) => t.art === 'prognose');
@@ -207,7 +214,11 @@ export function statistikBerechnen(alle: Order[], trackingAlle: TrackingEintrag[
       nachQuelle: trackingGruppiert(tracking, (t) => t.quellen),
       nachRisiko: trackingGruppiert(tracking, (t) => [t.pump ? 'pump_verdacht' : 'normal']),
       nachMarkt: trackingGruppiert(tracking, (t) => [t.markt ?? (['BTC', 'ETH', 'SOL', 'XRP', 'ADA', 'DOT'].includes(t.ticker ?? '') ? 'krypto' : /\.(DE|PA|AS|MI|MC|F)$/.test(t.ticker ?? '') ? 'eu' : 'us')]),
+      ...(Object.keys(phasen).length ? { nachPhase: trackingGruppiert(tracking, (t) => [phaseAm(phasen, t.datum, istKryptoMarkt(t) ? 'krypto' : 'aktien') ?? 'unbekannt']) } : {}),
     },
+    ...(Object.keys(phasen).length
+      ? { nachPhase: gruppiert(g, (o) => [phaseAm(phasen, o.kauf!.zeit.slice(0, 10), o.plan.wertpapier.anlageklasse === 'krypto' || o.plan.wertpapier.anlageklasse === 'krypto_etn' ? 'krypto' : 'aktien') ?? 'unbekannt']) }
+      : {}),
     ...(prognosen.length ? { prognose: trackingGruppe(prognosen) } : {}),
     nachHerkunft: gruppiert(g, (o) => [o.plan.herkunft ?? 'claude']),
     ...(mitEinwand.length

@@ -373,7 +373,7 @@ if (dt.timeMachine.aktiv && tdKey) {
 // --- Schreiben ---
 const geschrieben = anhaengen(alleEreignisse, neueEreignisse);
 const nachher = tradesAusEreignissen([...alleEreignisse, ...geschrieben]);
-const uebersicht = uebersichtBerechnen(nachher, datum, jetzt.toISOString());
+const uebersicht = uebersichtBerechnen(nachher, datum, jetzt.toISOString(), leseJson('lernen/marktphasen.json', {}));
 schreibeJson('daytrading/uebersicht.json', {
   ...uebersicht,
   beobachtet: Object.fromEntries((['code_scan', 'claude', 'autopilot'] as const).map((h) => [h, zustand.beobachtungen.filter((x) => x.herkunft === h).length])),

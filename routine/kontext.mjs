@@ -85,6 +85,12 @@ if (nachTyp.length) {
 }
 const pumpGr = statistik?.kandidaten?.nachRisiko?.pump_verdacht;
 if (pumpGr?.anzahl >= 5) p(`Pump-Verdacht im Schattenbuch: n=${pumpGr.anzahl}, Ø ${pumpGr.oe1T ?? '–'} % nach 1 Tag, ${pumpGr.oe1W ?? '–'} % nach 1 Woche`);
+// S4: Marktphase und was je Phase klappt
+const mp = await json('lernen/marktphase.json', null);
+const pt = (x) => (x ? `${x.trend}/${x.unruhe} (Schluss ${x.schluss}, 50-T-Linie ${x.sma50}, Schwankung ${x.vol20} % vs. üblich ${x.volMedian} %)` : '–');
+if (mp) p(`Marktphase heute: Aktien ${pt(mp.aktien)} · Krypto ${pt(mp.krypto)}`);
+const jePhase = Object.entries(statistik?.kandidaten?.nachPhase ?? {}).filter(([, v]) => (v.n1T ?? v.anzahl) >= 5);
+if (jePhase.length) p(`Schattenbuch je Marktphase (1 Tag): ${jePhase.map(([k, v]) => `${k} ${v.quote1T ?? '–'} % im Plus, Ø ${v.oe1T ?? '–'} % (n=${v.n1T ?? v.anzahl})`).join('; ')}`);
 // S2: Autopilot, Ziel/Stop-Vorschläge, Tagesprognose, Gegenprüfung
 const ap = statistik?.autopilot ?? [];
 const apBew = ap.filter((b) => b.bewiesen);
@@ -152,10 +158,39 @@ if (typ === 'abendlauf' || typ === 'wochenrueckblick') {
   if (typ === 'wochenrueckblick') {
     const woche = abg.orders.filter((o) => Date.now() - new Date(o.verkauf.zeit).getTime() < 7 * 864e5);
     p('', `## Diese Woche geschlossen: ${woche.length}, netto ${woche.reduce((s, o) => s + o.ergebnis.netto, 0).toFixed(2)} €`);
+    const wz = await json('wochen/zeugnis-letztes.json', null);
+    if (wz) p(`Wochenzeugnis KW ${wz.kw} (Code): Note ${wz.notenText} – ${wz.faecher.map((f) => `${f.fach} ${f.note} (${f.wert})`).join('; ')}`);
     const gew = await json('lernen/gewichtsaenderungen.json', []);
     if (gew.length) p(`Gewichtsänderungen: ${gew.slice(0, 5).map((g) => `${g.name} ${g.alt}→${g.neu}`).join(', ')}`);
   }
   p('');
+}
+
+// S4: Monatsprüfung am ersten Samstag des Monats (Tiefenprüfung im Wochenrückblick, kein eigener Lauf)
+if (typ === 'wochenrueckblick' && Number(teile.day) <= 7) {
+  p('## 🔬 Monatsprüfung (erster Samstag im Monat) – alle Gruppen mit genug Fällen');
+  const zeile = (name, o, f) => {
+    const e = Object.entries(o ?? {}).filter(([, v]) => f(v) !== null);
+    if (e.length) p(`${name}: ${e.map(([k, v]) => `${k} ${f(v)}`).join('; ')}`);
+  };
+  const ord = (v) => (v.anzahl >= 3 ? `${v.quote} %/Ø ${v.oeNetto} % (n=${v.anzahl})` : null);
+  const tr = (v) => ((v.n1T ?? v.anzahl) >= 5 ? `1T ${v.quote1T ?? '–'} %/Ø ${v.oe1T ?? '–'} %, 1W Ø ${v.oe1W ?? '–'} % (n=${v.anzahl})` : null);
+  zeile('Depot je Strategie', statistik?.nachStrategie, ord);
+  zeile('Depot je Signaltyp', statistik?.nachSignalTyp, ord);
+  zeile('Depot je Quelle', statistik?.nachQuelle, ord);
+  zeile('Depot je Anlageklasse', statistik?.nachAnlageklasse, ord);
+  zeile('Depot je Verkaufsgrund', statistik?.nachVerkaufsgrund, ord);
+  zeile('Depot je Marktphase', statistik?.nachPhase, ord);
+  zeile('Depot je Herkunft', statistik?.nachHerkunft, ord);
+  zeile('Schattenbuch je Signaltyp', statistik?.kandidaten?.nachSignalTyp, tr);
+  zeile('Schattenbuch je Quelle', statistik?.kandidaten?.nachQuelle, tr);
+  zeile('Schattenbuch je Markt', statistik?.kandidaten?.nachMarkt, tr);
+  zeile('Schattenbuch je Marktphase', statistik?.kandidaten?.nachPhase, tr);
+  const dtU = await json('daytrading/uebersicht.json', null);
+  const dg = (v) => (v.anzahl >= 3 ? `${v.quote} %/${v.netto} €/Ø ${v.oeR} R (n=${v.anzahl})` : null);
+  for (const [n, k] of [['Daytrading je Setup', 'nachSetup'], ['Daytrading je Markt', 'nachMarkt'], ['Daytrading je Herkunft', 'nachHerkunft'], ['Daytrading je Risiko', 'nachRisiko'], ['Daytrading je Marktphase', 'nachPhase']]) zeile(n, dtU?.[k], dg);
+  if (statistik?.lernhinweise?.length) p(`Lern-Hinweise: ${statistik.lernhinweise.join(' | ')}`);
+  p('Aufgabe: `monatspruefung` schreiben (siehe routine/wochenrueckblick.md).', '');
 }
 
 if (typ === 'ereignislauf' && orderArg) {

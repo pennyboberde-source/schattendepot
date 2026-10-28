@@ -40,6 +40,7 @@ Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, d
 - Jeder Kauf (Code und Claude) nur bei Chance ≥ 40 % und positivem Erwartungswert nach Gebühren; keine Pflicht-Orders.
 - Seit S2: Teilverkäufe sind ein eigenes Ereignis `teilverkauft` (`verkauft` enthält dann nur den Rest, `ergebnis` alles); Krypto direkt = `anlageklasse: krypto`, Handelsplatz `TRK`, ohne ISIN, Bruchstücke; Verkaufsregeln/Autopilot/Claude-Order-Grenzen stehen in `config/einstellungen.json`.
 - Seit S3: Daytrading ist ein eigener Bereich mit eigenem Protokoll `daytrading/ereignisse.jsonl` (nur anhängen) und eigener Config `config/daytrading.json`; Kennzahlen nie mit dem Depot mischen. Job `jobs/daytrading.ts` läuft als eigener Schritt im Kurswächter-Workflow. gettex-Dateinamen nennen das ENDE des 15-Minuten-Fensters.
+- Seit S4: App hat 4 Bereiche (Heute · Depot · Daytrading · Lernen) + Einstellungen; alte Routen bleiben gültig. Marktphasen in `lernen/marktphasen.json`, Wochenzeugnis samstags vom Code, Monatsprüfung im Wochenrückblick am ersten Samstag, „Heute gelernt“ aus dem Abendlauf.
 - Bestehende Datenquellen nie entfernen; neue nur zusätzlich einbauen.
 
 ## Konventionen

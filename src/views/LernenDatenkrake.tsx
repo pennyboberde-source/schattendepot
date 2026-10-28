@@ -7,6 +7,7 @@ import type { Ladezustand } from '../lib/daten';
 import { datumKurz } from '../lib/zeit';
 import { Geladen, Karte, Leer } from '../ui';
 import { JederzeitKarten } from './LernenS2';
+import { MonatspruefungKarte, PhasenKarte } from './LernenS4';
 
 const TYP_NAME = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name])) as Record<string, string>;
 const p = (x: number | null | undefined) => (x === null || x === undefined ? '–' : prozent(x));
@@ -38,6 +39,8 @@ export function DatenkrakeKarten({ s, gewichte, hotstuff, vorlauf }: { s: Statis
     <>
       <WasKlappt s={s} gewichte={gewichte} />
       <JederzeitKarten s={s} />
+      <PhasenKarte s={s} />
+      <MonatspruefungKarte />
       <HotStuffKarte z={hotstuff} vorlauf={vorlauf} />
       <VorlaufKarte s={s} />
       <div class="zwei-spalten">

@@ -621,3 +621,27 @@ select {
 .ampel.gelb {
   background: #d6a400;
 }
+
+/* Unter-Navigation im Bereich Depot (Positionen | Abgeschlossen) */
+.unternav {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.unternav a {
+  flex: 1;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.unternav a.aktiv {
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}

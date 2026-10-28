@@ -27,7 +27,7 @@ export function abgeleitetSchreiben(jetzt: Date) {
   schreibeJson('abgeschlossen.json', a.abgeschlossen);
   schreibeJson('kennzahlen.json', a.kennzahlen);
   const tracking = leseJson<TrackingEintrag[]>('kandidaten-tracking.json', []);
-  const statistik = statistikBerechnen(a.orders, tracking, stand);
+  const statistik = statistikBerechnen(a.orders, tracking, stand, leseJson('lernen/marktphasen.json', {}));
   // S2: Autopilot-Beweise und Ziel/Stop-Vorschläge aus dem Schattenbuch
   const huerden = huerdenAusConfig(cfg);
   const ap = cfg.einstellungen.autopilot;

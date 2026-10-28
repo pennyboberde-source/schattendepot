@@ -18,6 +18,10 @@ export interface Entscheidung {
   lektionen?: string;
   gewichtsvorschlaege?: { art: 'signal' | 'quelle'; name: string; faktor: number; begruendung: string }[];
   wochenrueckblick?: { push: string; text: string };
+  /** Abendlauf (S4): 1–3 Punkte „Heute gelernt“ */
+  heuteGelernt?: string[];
+  /** Wochenrückblick am ersten Samstag im Monat (S4): Tiefenprüfung mit Vorschlägen */
+  monatspruefung?: { push?: string; text: string; vorschlaege: { bereich: string; vorschlag: string; begruendung: string }[] };
   notiz?: string;
 }
 

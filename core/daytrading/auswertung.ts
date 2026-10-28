@@ -2,6 +2,7 @@
 // Gruppen nach Herkunft, Markt, Setup, Instrument und Risiko, Time-Machine-Kalibrierung, Abendbilanz-Text.
 import { euro, prozent, runde } from '../geld.ts';
 import type { DtTrade } from './kern.ts';
+import { phaseAm, type PhasenVerlauf } from '../marktphase.ts';
 
 export interface DtGruppe {
   anzahl: number;
@@ -26,6 +27,8 @@ export interface DtUebersicht {
   nachInstrument: Record<string, DtGruppe>;
   nachRisiko: Record<string, DtGruppe>;
   nachAusstieg: Record<string, DtGruppe>;
+  /** je Marktphase (Aktien- bzw. Krypto-Phase des Tages) */
+  nachPhase?: Record<string, DtGruppe>;
   /** Hätte ein Time-Machine-Filter geholfen? Trades nach simulierter Ziel-zuerst-Chance */
   zeitmaschine: { stufe: string; anzahl: number; quote: number; oeR: number }[];
   offen: DtTrade[];
@@ -64,7 +67,7 @@ const STUFEN: [string, number, number][] = [
   ['60–100 %', 60, 100],
 ];
 
-export function uebersichtBerechnen(alle: DtTrade[], heute: string, stand: string): DtUebersicht {
+export function uebersichtBerechnen(alle: DtTrade[], heute: string, stand: string, phasen: PhasenVerlauf = {}): DtUebersicht {
   const zu = alle.filter((t) => t.ergebnis).sort((a, b) => b.ausstieg!.zeit.localeCompare(a.ausstieg!.zeit));
   const tage = new Map<string, DtTrade[]>();
   for (const t of [...zu].reverse()) tage.set(t.datum, [...(tage.get(t.datum) ?? []), t]);
@@ -86,6 +89,7 @@ export function uebersichtBerechnen(alle: DtTrade[], heute: string, stand: strin
     nachInstrument: gruppiert(zu, (t) => t.instrument),
     nachRisiko: gruppiert(zu, (t) => (t.spekulativ ? 'spekulativ' : 'skill_filter')),
     nachAusstieg: gruppiert(zu, (t) => t.ausstieg!.grund),
+    ...(Object.keys(phasen).length ? { nachPhase: gruppiert(zu, (t) => phaseAm(phasen, t.datum, t.markt === 'krypto' ? 'krypto' : 'aktien') ?? 'unbekannt') } : {}),
     zeitmaschine: STUFEN.map(([stufe, von, bis]) => {
       const l = mitZm.filter((t) => t.timeMachine!.zielZuerst >= von && t.timeMachine!.zielZuerst <= bis);
       const g = dtGruppe(l);

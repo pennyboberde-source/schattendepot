@@ -124,6 +124,20 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
         });
         schreibeJson(`daytrading/watchlist/${e.datum}.json`, { datum: e.datum, erstellt: e.erstellt, eintraege: gut.slice(0, 5) });
       }
+      // S4: „Heute gelernt“ (Abendlauf) → Push und Seite Heute; Monatsprüfung (erster Samstag) → lernen/monatspruefung/
+      if (e.heuteGelernt?.length && e.typ !== 'wochenrueckblick') {
+        const hg = leseJson<{ datum: string; punkte: string[] }[]>('lernen/heute-gelernt.json', []);
+        schreibeJson('lernen/heute-gelernt.json', [{ datum: e.datum, punkte: e.heuteGelernt }, ...hg.filter((x) => x.datum !== e.datum)].slice(0, 60));
+        ergebnis.pushes.push({ typ: 'bericht', titel: '🎓 Heute gelernt', text: e.heuteGelernt.map((p, i) => `${i + 1}) ${p}`).join(' '), ziel: '#/heute', tag: `gelernt-${e.datum}`, erstellt: jetzt.toISOString() });
+      }
+      if (e.monatspruefung) {
+        const monat = e.datum.slice(0, 7);
+        const md = [`# Monatsprüfung ${monat}`, '', e.monatspruefung.text.trim(), '', '## Vorschläge', ...e.monatspruefung.vorschlaege.map((v, i) => `${i + 1}. **${v.bereich}:** ${v.vorschlag} – ${v.begruendung}`), ''].join('\n');
+        schreibeText(`lernen/monatspruefung/${monat}.md`, md);
+        const idx = leseJson<{ monat: string; vorschlaege: number; erstellt: string }[]>('lernen/monatspruefung/index.json', []);
+        schreibeJson('lernen/monatspruefung/index.json', [{ monat, vorschlaege: e.monatspruefung.vorschlaege.length, erstellt: e.erstellt }, ...idx.filter((x) => x.monat !== monat)]);
+        ergebnis.pushes.push({ typ: 'wochenrueckblick', titel: `🔬 Monatsprüfung ${monat}`, text: e.monatspruefung.push ?? `${e.monatspruefung.vorschlaege.length} Vorschläge – siehe App › Lernen`, ziel: '#/lernen', tag: `monat-${monat}`, erstellt: jetzt.toISOString() });
+      }
       if (e.wochenrueckblick) {
         schreibeText(`wochen/${e.datum}.md`, e.wochenrueckblick.text + '\n');
         ergebnis.pushes.push({ typ: 'wochenrueckblick', titel: '📊 Wochenrückblick', text: e.wochenrueckblick.push, ziel: '#/lernen', tag: `woche-${e.datum}`, erstellt: jetzt.toISOString() });

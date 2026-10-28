@@ -152,7 +152,7 @@ export function zustellen(
       typ: 'warnung',
       titel: `📬 ${alle.length} Nachrichten`,
       text: alle.map((n) => n.titel).join(' · '),
-      ziel: '#/uebersicht',
+      ziel: '#/heute',
       tag: `sammel-${jetzt.toISOString().slice(0, 13)}`,
       erstellt: jetzt.toISOString(),
     };

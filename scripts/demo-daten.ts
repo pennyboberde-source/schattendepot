@@ -186,4 +186,24 @@ schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal
   schreibe('daytrading/uebersicht.json', { ...uebersichtBerechnen(tradesAusEreignissen(r.ereignisse), d, stand), beobachtet: { code_scan: 21, claude: 1, autopilot: 0 } });
   schreibe('daytrading/autopilot.json', { stand, horizont: 'r1h', beweise: [] });
 }
+// S4 (DEMO): Heute gelernt, Marktphase, Wochenzeugnis, Marktphasen-Verlauf
+schreibe('lernen/heute-gelernt.json', [{ datum: '2026-10-21', punkte: ['DEMO: Insider-Cluster tragen auch im Daytrading', 'DEMO: ORB short bei Nebenwerten schwach'] }]);
+schreibe('lernen/marktphase.json', {
+  stand,
+  aktien: { datum: '2026-10-21', trend: 'aufwaerts', unruhe: 'ruhig', phase: 'aufwaerts_ruhig', schluss: 580.1, sma50: 571.2, sma200: 549.9, vol20: 12.4, volMedian: 13.1 },
+  krypto: { datum: '2026-10-21', trend: 'seitwaerts', unruhe: 'nervoes', phase: 'seitwaerts_nervoes', schluss: 61000, sma50: 61500, sma200: 58000, vol20: 48.2, volMedian: 35.7 },
+  fehler: [],
+});
+schreibe('lernen/marktphasen.json', { '2026-10-14': { aktien: 'aufwaerts_ruhig', krypto: 'seitwaerts_nervoes' } });
+schreibe('wochen/zeugnis-letztes.json', {
+  von: '2026-10-19',
+  bis: '2026-10-23',
+  kw: 43,
+  note: 2.3,
+  notenText: '2,3 (gut)',
+  faecher: [
+    { fach: 'Depot gegen MSCI World', note: 2, gewicht: 3, wert: '+1,2 % je Order (3 Orders)' },
+    { fach: 'Daytrading nach Gebühren', note: 3, gewicht: 2, wert: '+0,05 % je Trade (2 Trades)' },
+  ],
+});
 console.log('Demo-Daten geschrieben nach', ziel);

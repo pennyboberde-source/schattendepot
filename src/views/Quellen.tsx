@@ -13,6 +13,9 @@ export function QuellenView() {
   return (
     <div class="seite">
       <h1>Quellenstatus</h1>
+      <p class="klein">
+        Krypto-Derivatedaten (Liquidationen, Funding): <a href="https://coinalyze.net/" target="_blank" rel="noopener">Coinalyze</a> · Nachrichten: GDELT · Börsendaten: gettex (Bayerische Börse)
+      </p>
       <Geladen
         z={system}
         kinder={(s) => (

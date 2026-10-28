@@ -18,6 +18,9 @@ import { ereignisBehandeln } from './lib/routine.ts';
 import { schwaerzen } from './lib/schwaerzen.ts';
 import { trackingAktualisieren } from './lib/tracking.ts';
 import { autopilotLauf } from './lib/autopilot.ts';
+import { marktphaseAktualisieren } from './lib/marktphase.ts';
+import { wochenzeugnisErstellen } from './lib/wochenzeugnis.ts';
+import { phaseText } from '../core/marktphase.ts';
 import { gegensignaleFinden } from '../core/gegensignal.ts';
 import type { Gegensignal } from '../core/waechter.ts';
 import type { AutopilotKandidat } from '../core/autopilot.ts';
@@ -29,7 +32,8 @@ import { rssQuellen } from './quellen/rss.ts';
 import { alphaVantage, finnhub, fmp } from './quellen/schluesselquellen.ts';
 import type { Laufart, Quelle, QuellenErgebnis } from './quellen/typen.ts';
 import { wirtschaftskalender } from './quellen/wirtschaftskalender.ts';
-import { sec8k } from './quellen/sec.ts';
+import { sec8k, secVerwaesserung } from './quellen/sec.ts';
+import { coinalyze } from './quellen/coinalyze.ts';
 import { finra } from './quellen/finra.ts';
 import { gettexScanner } from './quellen/gettexscanner.ts';
 import { anreichern } from './quellen/anreicherung.ts';
@@ -44,7 +48,7 @@ import { finraShortInterest, shortSeller } from './quellen/shortdaten.ts';
 import { appRaenge, cftcCot, handelsstopps, kryptoStimmung, polymarket } from './quellen/stimmungrand.ts';
 
 // Bestehende Quellen bleiben immer drin; neue werden nur hinten angehängt (Randquellen seit 28.10.2026).
-const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube, upbit, krakenFutures, defiLlama, finraShortInterest, shortSeller, handelsstopps, appRaenge, kryptoStimmung, polymarket, cftcCot];
+const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube, upbit, krakenFutures, defiLlama, finraShortInterest, shortSeller, handelsstopps, appRaenge, kryptoStimmung, polymarket, cftcCot, coinalyze, secVerwaesserung];
 const STARK_NEGATIV = new Set(['prognose_senkung', 'gewinn_enttaeuschung', 'analysten_abstufung', 'shortreport']);
 const STARK = new Set([...STARK_NEGATIV, 'uebernahmeangebot', 'prognose_erhoehung']);
 
@@ -166,6 +170,10 @@ const pushes: PushNachricht[] = [];
 }
 
 if (laufart === 'haupt' || laufart === 'samstag') {
+  // S4: Marktphase des Tages (vor Lagebild und Statistik)
+  const mp = await marktphaseAktualisieren(b.datum);
+  for (const x of mp.fehler) console.log(`Marktphase: ${x}`);
+  const phasenZeile = [mp.aktien ? `Aktien (S&P 500) ${phaseText(mp.aktien.phase)}` : '', mp.krypto ? `Krypto (Bitcoin) ${phaseText(mp.krypto.phase)}` : ''].filter(Boolean).join(' · ');
   const gewichte = leseJson<Gewichte>('gewichte.json', {});
   let top = kandidaten(zusammen, signalCfg, gewichte);
   // Zweite Stufe: Analysten-Trend und Drift nach Quartalszahlen für die besten US-Kandidaten
@@ -179,7 +187,7 @@ if (laufart === 'haupt' || laufart === 'samstag') {
   const daten: LagebildDaten = {
     datum: b.datum,
     erstellt: jetzt.toISOString(),
-    makro: [...kalenderEffekte(b.datum).map((k) => `Kalender: ${k}`), ...ergebnisse.flatMap(([, r]) => r?.makro ?? [])],
+    makro: [...(phasenZeile ? [`Marktphase: ${phasenZeile}`] : []), ...kalenderEffekte(b.datum).map((k) => `Kalender: ${k}`), ...ergebnisse.flatMap(([, r]) => r?.makro ?? [])],
     termine: ergebnisse.flatMap(([, r]) => r?.termine ?? []),
     meldungen: meldungen.filter((m) => !offen.some((o) => o.name === m.wertpapier)).sort((x, y) => (y.zeit ?? '').localeCompare(x.zeit ?? '')),
     insider: ergebnisse.flatMap(([, r]) => r?.insider ?? []),
@@ -212,8 +220,13 @@ if (laufart === 'haupt' || laufart === 'samstag') {
   const { statistik } = abgeleitetSchreiben(jetzt);
   console.log(`Tracking: ${abrufe} Kursabrufe. Hot Stuff: ${hs.anzahl} Raketen, ${hs.abdeckung ?? '–'} % mit Vorzeichen.`);
 
-  // Samstags: Gewichte anpassen (in Grenzen, ab Mindestfallzahl; Claude-Vorschläge nur, wenn die Daten sie stützen)
+  // Samstags: Wochenzeugnis (Code vergibt eine Note, Push) und Gewichte anpassen
   if (laufart === 'samstag') {
+    const wz = wochenzeugnisErstellen(jetzt);
+    if (wz) {
+      pushes.push(wz.push);
+      console.log(`Wochenzeugnis KW ${wz.zeugnis.kw}: ${wz.zeugnis.notenText}`);
+    }
     const r = gewichteAnpassen(
       gewichte,
       signalCfg as SignalConfig & { grenzen: Grenzen },
