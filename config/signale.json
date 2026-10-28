@@ -151,6 +151,31 @@
       "name": "Protokoll-Gebühren stark gestiegen",
       "gewicht": 1.2,
       "richtung": 1
+    },
+    "handelsstopp": {
+      "name": "Handelsstopp an der Nasdaq",
+      "gewicht": 1,
+      "richtung": 0
+    },
+    "app_ranking": {
+      "name": "Broker-/Krypto-App steigt in den Charts",
+      "gewicht": 0.8,
+      "richtung": 0
+    },
+    "stimmung_extrem": {
+      "name": "Extreme Marktstimmung (Fear & Greed)",
+      "gewicht": 1,
+      "richtung": 0
+    },
+    "volatilitaet_sprung": {
+      "name": "Sprung der impliziten Volatilität",
+      "gewicht": 0.8,
+      "richtung": 0
+    },
+    "cot_extrem": {
+      "name": "Extreme Positionierung der Spekulanten (COT)",
+      "gewicht": 1,
+      "richtung": 0
     }
   },
   "quellen": {

@@ -48,7 +48,8 @@ Das Depot ist fiktiv – kalkulierte Risiken sind ausdrücklich erwünscht, um d
 - `shortreport`: neuer Bericht eines Short-Sellers (Grizzly, Fuzzy Panda, Bear Cave). Zielaktien fallen oft kräftig; betrifft er eine Position: These prüfen.
 - `leerverkauf_quote`/`leerverkauf_aenderung` aus FINRA Short Interest: viele Tage zum Eindecken + steigender Kurs = Squeeze-Kandidat; Abbau = Leerverkäufer geben auf.
 - Krypto: `upbit_warnung` (Warnhinweise der größten koreanischen Börse), `neulistung` (Upbit-Sprünge verpuffen oft binnen Stunden), `funding_extrem`/`open_interest_sprung` (Kraken Futures, Hebel im Markt), `krypto_einnahmen` (DefiLlama: echte Protokoll-Gebühren wachsen). Makro: Kimchi-Prämie, Stablecoin-Menge, Funding p. a.
-- Krypto nur über in Deutschland handelbare ETNs (ISIN prüfen). Upbit-/Funding-Signale sind Stimmung, kein Fakt.
+- `handelsstopp` (Nasdaq: Volatilitätspause/Nachrichtenstopp, T12/H10 = Warnzeichen), `app_ranking` (Coinbase/Robinhood-App steigt = Andrang von Privatanlegern), `stimmung_extrem` (Fear & Greed ≤ 15/≥ 85), `volatilitaet_sprung` (Deribit DVOL), `cot_extrem` (Spekulanten extrem positioniert, dreht oft). Makro zusätzlich: Polymarket-Wahrscheinlichkeiten, COT-Zeile.
+- Krypto nur über in Deutschland handelbare ETNs (ISIN prüfen), Rohstoffe über ETCs. Upbit-/Funding-/App-Signale sind Stimmung, kein Fakt.
 
 ## Ergebnis abliefern (immer gleich)
 1. Datei unter dem Namen schreiben, den `kontext.mjs` oben nennt (Format: `schema/entscheidung.schema.json`).
