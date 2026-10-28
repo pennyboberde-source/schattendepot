@@ -248,6 +248,9 @@ describe('Ableitung, Push-Texte, Kalender', () => {
     const morgens = zustellen([n, n], nachts.warteschlange, new Date('2026-10-22T05:30:00Z'), e);
     expect(morgens.senden).toHaveLength(1);
     expect(morgens.senden[0].titel).toBe('📬 4 Nachrichten');
+    // schon eine Nacht-Meldung plus eine neue → gebündelt; eine einzelne Nacht-Meldung kommt einzeln
+    expect(zustellen([n], [n], new Date('2026-10-22T05:30:00Z'), e).senden.map((x) => x.titel)).toEqual(['📬 2 Nachrichten']);
+    expect(zustellen([], [n], new Date('2026-10-22T05:30:00Z'), e).senden).toEqual([n]);
     expect(zustellen([{ ...n, typ: 'bericht' }], [], new Date('2026-10-22T10:00:00Z'), e).senden).toEqual([]);
   });
 

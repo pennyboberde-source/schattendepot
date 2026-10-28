@@ -116,19 +116,19 @@ const alleEreignisse = leseDtEreignisse();
 const trades = tradesAusEreignissen(alleEreignisse);
 const offen = trades.filter((t) => !t.ausstieg);
 const handelstag = istHandelstag(datum);
-// Nachts, am Wochenende und vor 08:00 nichts tun (außer liegengebliebene Trades schließen)
-if ((!handelstag || b.minuten < 8 * 60 || b.minuten > 23 * 60 + 30) && !offen.length) {
+// Krypto-Daytrading läuft jeden Tag, auch am Wochenende und an Börsenfeiertagen (Nutzer 28.10.2026); Aktien nur an Handelstagen.
+const kryptoTaeglich = dt.maerkte.krypto.aktiv;
+// Nachts, vor 08:00 und an Tagen ohne Markt nichts tun (außer liegengebliebene Trades schließen)
+if (((!handelstag && !kryptoTaeglich) || b.minuten < 8 * 60 || b.minuten > 23 * 60 + 30) && !offen.length) {
   console.log(`Daytrading ${datum} ${b.stunde}:${String(b.minute).padStart(2, '0')}: außerhalb der Handelszeit – nichts zu tun.`);
   process.exit(0);
 }
 
 const gebuehren = { smartbroker: cfg.gebuehrenSmartbroker, consors: cfg.gebuehren, traderepublic: tr, krypto: cfg.gebuehren };
 const sitzungen: Partial<Record<DtMarkt, Sitzung>> = {};
-if (handelstag) {
-  for (const m of ['eu', 'us', 'krypto'] as DtMarkt[]) {
-    if (!dt.maerkte[m].aktiv || (m === 'us' && dt.nyseFeiertage.includes(datum))) continue;
-    sitzungen[m] = sitzung(datum, dt.maerkte[m], dt.spanneMinuten);
-  }
+for (const m of ['eu', 'us', 'krypto'] as DtMarkt[]) {
+  if (!dt.maerkte[m].aktiv || (m !== 'krypto' && !handelstag) || (m === 'us' && dt.nyseFeiertage.includes(datum))) continue;
+  sitzungen[m] = sitzung(datum, dt.maerkte[m], dt.spanneMinuten);
 }
 const laufCfg: DtLaufCfg = {
   datum,
@@ -393,7 +393,9 @@ for (const e of claudeAus) {
   pushes.push({ typ: 'verkauft', titel: `⚡ Daytrade beendet: ${t.name} ${euro(e.ergebnis.netto, { vorzeichen: true })}`, text: `${e.ausstieg.grund === 'ziel' ? 'Ziel erreicht' : e.ausstieg.grund === 'stop' ? 'Stop' : e.ausstieg.grund === 'knockout' ? 'Knock-out' : 'Schluss des Tages'} · ${e.ergebnis.r} R · vor Gebühren ${euro(e.ergebnis.brutto, { vorzeichen: true })}`, ziel: '#/daytrading', tag: `dt-aus-${t.id}`, erstellt: iso });
 }
 if (pushes.length > 4) pushes = [{ typ: 'gekauft', titel: `⚡ ${pushes.length} Daytrade-Meldungen`, text: pushes.map((p) => p.titel).join(' · '), ziel: '#/daytrading', tag: `dt-sammel-${iso.slice(0, 16)}`, erstellt: iso }];
-if (handelstag && b.minuten >= uhrzeitMinuten(dt.abendbilanzAb) && zustand.abendbilanz !== datum) {
+// Abendbilanz: werktags ab 22:10 (US-Daten kommen verzögert); am Wochenende nur Krypto (Kraken in Echtzeit) → kurz nach „flat bis“
+const bilanzAb = handelstag ? uhrzeitMinuten(dt.abendbilanzAb) : uhrzeitMinuten(dt.maerkte.krypto.flatBis) + 5;
+if ((handelstag || kryptoTaeglich) && b.minuten >= bilanzAb && zustand.abendbilanz !== datum) {
   const heute = nachher.filter((t) => t.datum === datum);
   if (heute.length) {
     const a = abendbilanzText(uebersicht, heute);

@@ -136,7 +136,7 @@ export interface Zustellung {
 
 /**
  * Filtert abgeschaltete Typen und hält Nachrichten während der Ruhezeit zurück.
- * Außerhalb der Ruhezeit wird die Warteschlange mitgesendet – ab 4 Nachrichten als Sammelnachricht.
+ * Außerhalb der Ruhezeit wird die Warteschlange mitgesendet – ab 2 Nachrichten als eine Sammelnachricht.
  */
 export function zustellen(
   neu: PushNachricht[],
@@ -147,7 +147,8 @@ export function zustellen(
   const erlaubt = neu.filter((n) => einstellungen.pushTypen[n.typ] !== false);
   if (inRuhezeit(jetzt, einstellungen.ruhezeit)) return { senden: [], warteschlange: [...warteschlange, ...erlaubt] };
   const alle = [...warteschlange, ...erlaubt];
-  if (alle.length >= 4 && warteschlange.length > 0) {
+  // Was in der Ruhezeit anfiel, kommt morgens gebündelt als eine Sammelnachricht (Nutzer 28.10.2026)
+  if (alle.length >= 2 && warteschlange.length > 0) {
     const sammel: PushNachricht = {
       typ: 'warnung',
       titel: `📬 ${alle.length} Nachrichten`,

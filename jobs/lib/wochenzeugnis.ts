@@ -21,7 +21,8 @@ export function arbeitswoche(datum: string): { von: string; bis: string } {
 export function wochenzeugnisErstellen(jetzt: Date): { zeugnis: Wochenzeugnis; push: PushNachricht } | null {
   const { von, bis } = arbeitswoche(berlin(jetzt).datum);
   if (existsSync(join(DATEN_DIR, `wochen/zeugnis-${bis}.json`))) return null;
-  const inWoche = (d: string) => d >= von && d <= bis;
+  // Samstag/Sonntag vor dem Montag gehören dazu (Krypto handelt auch am Wochenende)
+  const inWoche = (d: string) => d >= tag(von, -2) && d <= bis;
   const zu = ordersAusEreignissen(leseEreignisse()).filter((o) => o.status === 'geschlossen' && o.verkauf && inWoche(berlin(new Date(o.verkauf.zeit)).datum));
   const pfad = join(DATEN_DIR, 'daytrading/ereignisse.jsonl');
   const dtEv = existsSync(pfad) ? readFileSync(pfad, 'utf8').split('\n').filter((z) => z.trim()).map((z) => JSON.parse(z) as DtEreignis) : [];
