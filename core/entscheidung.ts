@@ -10,11 +10,22 @@ export interface Entscheidung {
   briefing?: string[];
   orders?: OrderPlan[];
   anpassungen?: { orderId: string; feld: Anpassung['feld']; neu: number | string; begruendung: string }[];
-  berichte?: { orderId: string; text: string; learnings: string[] }[];
+  berichte?: { orderId: string; text: string; learnings: string[]; einwandEingetreten?: boolean }[];
+  /** Claudes Tagesprognose (Morgenlauf): bis 10 Werte mit Richtung, ohne Geld – wird im Schattenbuch gemessen */
+  prognose?: TagesPrognose[];
   lektionen?: string;
   gewichtsvorschlaege?: { art: 'signal' | 'quelle'; name: string; faktor: number; begruendung: string }[];
   wochenrueckblick?: { push: string; text: string };
   notiz?: string;
+}
+
+export interface TagesPrognose {
+  name: string;
+  ticker: string;
+  markt: 'us' | 'eu' | 'krypto';
+  richtung: 'hoch' | 'runter';
+  chance?: number;
+  grund?: string;
 }
 
 export interface RisikoBudget {
@@ -47,6 +58,11 @@ export function planFehler(p: OrderPlan, hebelMax: number): string | null {
   if (k === 'hebel' && !p.hebel) return 'Hebelprodukt ohne Hebel-Angaben (Basiswert, Basispreis, KO-Schwelle, Bezugsverhältnis)';
   if (k === 'krypto_etn' && !p.etn) return 'Krypto-ETN ohne ETN-Angaben (Basiswert, Anteil je Stück)';
   if (k !== 'hebel' && k !== 'krypto_etn' && !p.wertpapier.kursbasis) return 'Kursbasis fehlt (markt/symbol/waehrung)';
+  if (k === 'krypto') {
+    if (p.wertpapier.kursbasis?.markt !== 'krypto') return 'Krypto direkt braucht kursbasis {markt: "krypto", symbol: "BTC", waehrung: "EUR"}';
+    if (p.wertpapier.handelsplatz !== 'TRK') return 'Krypto direkt wird über Trade Republic gehandelt (handelsplatz "TRK")';
+  } else if (!p.wertpapier.isin) return 'ISIN fehlt (nur Krypto direkt kommt ohne ISIN aus)';
+  if (p.wertpapier.handelsplatz === 'TRK' && k !== 'krypto') return 'Handelsplatz TRK nur für Krypto direkt';
   if (p.hebel) {
     const h = p.hebel;
     if (h.richtung === 'long' && h.koSchwelle < h.basispreis) return 'Long-Knock-out: KO-Schwelle unter Basispreis ist unplausibel';
@@ -71,6 +87,8 @@ export function entscheidungUebernehmen(
     mindestChance?: number;
     /** bisherige Treffsicherheit je Konfidenz-Stufe → Chancen-Korrektur */
     kalibrierung?: KalibrierStufe[];
+    /** Höchstzahl neuer Orders je Lauf-Typ (S2: morgens 6, mittags 3, abends 3) */
+    claudeOrders?: Partial<Record<Entscheidung['typ'], number>>;
   },
 ): Uebernahme {
   const iso = jetzt.toISOString();
@@ -99,8 +117,14 @@ export function entscheidungUebernehmen(
   let gesamtAktiv = aktive.length;
   let spekNeu = 0;
 
+  const maxOrders = cfg.claudeOrders?.[e.typ];
+  let angenommen = 0;
   for (const original of e.orders ?? []) {
-    let plan = original;
+    let plan: OrderPlan = { ...original, herkunft: 'claude' };
+    if (maxOrders !== undefined && angenommen >= maxOrders) {
+      hinweise.push(`Order ${plan.wertpapier.name} abgelehnt: höchstens ${maxOrders} neue Orders im ${e.typ}`);
+      continue;
+    }
     const fehler = planFehler(plan, cfg.hebelMax);
     if (fehler) {
       hinweise.push(`Order ${plan.wertpapier.name} abgelehnt: ${fehler}`);
@@ -135,6 +159,7 @@ export function entscheidungUebernehmen(
       spekAktiv++;
     }
     gesamtAktiv++;
+    angenommen++;
     let id = `${e.datum}-${slug(plan.wertpapier.name)}`;
     for (let n = 2; vergeben.has(id); n++) id = `${e.datum}-${slug(plan.wertpapier.name)}-${n}`;
     vergeben.add(id);
@@ -191,11 +216,11 @@ export function entscheidungUebernehmen(
       continue;
     }
     const text = `${b.text.trim()}\n\nLearnings:\n${b.learnings.map((l, i) => `${i + 1}. ${l}`).join('\n')}`;
-    ereignisse.push(ev('bericht', o.id, { text, learnings: b.learnings }));
+    ereignisse.push(ev('bericht', o.id, { text, learnings: b.learnings, ...(typeof b.einwandEingetreten === 'boolean' ? { einwandEingetreten: b.einwandEingetreten } : {}) }));
   }
 
   if (e.briefing?.length) ereignisse.push(ev('briefing', undefined, { punkte: e.briefing }));
   ereignisse.push(ev('lauf', undefined, { typ: e.typ, datum: e.datum, erstellt: e.erstellt, orders: (e.orders ?? []).length, notiz: e.notiz ?? '' }));
-  if (e.typ === 'morgenlauf' && !(e.orders ?? []).length) hinweise.push('Morgenlauf ohne neue Order – Pflicht-Order fehlt');
+  if (e.prognose?.length && e.typ !== 'morgenlauf') hinweise.push('Tagesprognose nur im Morgenlauf – ignoriert');
   return { ereignisse, hinweise };
 }

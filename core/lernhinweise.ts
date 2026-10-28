@@ -70,7 +70,7 @@ export interface RisikoBudgetWirksam {
   begruendung: string;
 }
 
-/** Risiko-Budget lernt mit: wächst, wenn Spekulation nachweislich besser ist, schrumpft, wenn sie verliert. Leitplanken 10–50 %, 1–2 je Lauf. */
+/** Risiko-Budget lernt mit: wächst, wenn Spekulation nachweislich besser ist, schrumpft, wenn sie verliert. Leitplanken 10–70 %, 1–4 je Lauf (S2). */
 export function wirksamesRisikoBudget(
   basis: { maxSpekulativJeLauf: number; maxAnteilSpekulativ: number; stopMinProzent: number; mindestKursEuro: number },
   s: Statistik | null,
@@ -80,8 +80,8 @@ export function wirksamesRisikoBudget(
   if (!sp || sp.anzahl < 10) return { ...basis, begruendung: `Grundeinstellung (erst ${sp?.anzahl ?? 0} von 10 spekulativen Orders für eine Anpassung)` };
   const vergleich = no?.oeNetto ?? 0;
   if (sp.oeNetto > vergleich + 1 && sp.quote >= 35)
-    return { ...basis, maxSpekulativJeLauf: Math.min(2, basis.maxSpekulativJeLauf + 1), maxAnteilSpekulativ: Math.round(Math.min(0.5, basis.maxAnteilSpekulativ * 1.5) * 100) / 100, begruendung: `erweitert: spekulativ Ø ${p(sp.oeNetto)} vs. normal ${p(vergleich)} (n=${sp.anzahl})` };
+    return { ...basis, maxSpekulativJeLauf: Math.min(4, basis.maxSpekulativJeLauf + 1), maxAnteilSpekulativ: Math.round(Math.min(0.7, basis.maxAnteilSpekulativ * 1.5) * 100) / 100, begruendung: `erweitert: spekulativ Ø ${p(sp.oeNetto)} vs. normal ${p(vergleich)} (n=${sp.anzahl})` };
   if (sp.oeNetto < Math.min(-3, vergleich - 2))
-    return { ...basis, maxSpekulativJeLauf: 1, maxAnteilSpekulativ: Math.round(Math.max(0.1, basis.maxAnteilSpekulativ * 0.5) * 100) / 100, begruendung: `verkleinert: spekulativ Ø ${p(sp.oeNetto)} vs. normal ${p(vergleich)} (n=${sp.anzahl})` };
+    return { ...basis, maxSpekulativJeLauf: Math.max(1, Math.floor(basis.maxSpekulativJeLauf / 2)), maxAnteilSpekulativ: Math.round(Math.max(0.1, basis.maxAnteilSpekulativ * 0.5) * 100) / 100, begruendung: `verkleinert: spekulativ Ø ${p(sp.oeNetto)} vs. normal ${p(vergleich)} (n=${sp.anzahl})` };
   return { ...basis, begruendung: `unverändert: spekulativ Ø ${p(sp.oeNetto)} vs. normal ${p(vergleich)} (n=${sp.anzahl})` };
 }

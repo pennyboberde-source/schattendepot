@@ -3,7 +3,8 @@
 import type { SpreadKlasse } from './spreads.ts';
 import type { Steuertopf } from './steuern.ts';
 
-export type Anlageklasse = 'aktie' | 'etf' | 'etc' | 'hebel' | 'krypto_etn';
+/** krypto = Coin direkt (Trade Republic, 24/7, Bruchstücke), krypto_etn = börsengehandeltes ETN */
+export type Anlageklasse = 'aktie' | 'etf' | 'etc' | 'hebel' | 'krypto_etn' | 'krypto';
 
 export type Strategie =
   | 'quartalszahlen_momentum'
@@ -19,9 +20,10 @@ export type Strategie =
   | 'spekulation'
   | 'sonstige';
 
-export type Verkaufsgrund = 'ziel' | 'stop' | 'termin' | 'knockout' | 'claude';
+/** nachziehstop = vom Wächter nachgezogener Stop, teilziel = Teilverkauf am 1. Ziel, gegensignal = starkes Gegensignal, zeit = Zeit-Ausstieg ohne Bewegung */
+export type Verkaufsgrund = 'ziel' | 'stop' | 'termin' | 'knockout' | 'claude' | 'nachziehstop' | 'teilziel' | 'gegensignal' | 'zeit';
 
-export type Laufquelle = 'morgenlauf' | 'mittagslauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick' | 'waechter' | 'sammler' | 'system';
+export type Laufquelle = 'morgenlauf' | 'mittagslauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick' | 'waechter' | 'sammler' | 'system' | 'autopilot';
 
 /**
  * Woher der Kurswächter einen Kurs holt. us = US-Börse (USD, wird in EUR umgerechnet),
@@ -101,6 +103,10 @@ export interface OrderPlan {
   /** vom Code mit der bisherigen Treffsicherheit verrechnete Chance (Chancen-Korrektur), falls abweichend */
   chanceKorrigiert?: number;
   pflichtOrder: boolean;
+  /** Wer hat die Order ausgewählt? Fehlt = Claude (ältere Orders). autopilot = Code kauft bewiesene Signale selbst. */
+  herkunft?: 'claude' | 'autopilot';
+  /** Gegenprüfung vor dem Kauf: „woran könnte es scheitern“ + Claudes Wahrscheinlichkeit dafür in % (wird später gemessen) */
+  gegenpruefung?: { einwand: string; risiko: number };
   /** Erwartete Rendite nach Gebühren in % des Kapitaleinsatzes. */
   erwarteteRenditeNetto: number;
   /** Ziel als Netto-Rendite in %, Stop als Kursveränderung in % (negativ). */
@@ -145,6 +151,8 @@ export interface Order {
   verkaufstermin: string;
   kauf?: Ausfuehrung;
   verkauf?: Ausfuehrung & { grund: Verkaufsgrund };
+  /** Teilverkäufe vor dem Schlussverkauf (z. B. Hälfte am 1. Ziel); `verkauf` enthält dann nur den Rest, `ergebnis` alles zusammen */
+  teilverkaeufe?: (Ausfuehrung & { grund: Verkaufsgrund })[];
   anpassungen: Anpassung[];
   letzterKurs?: Kurs;
   ergebnis?: { kursProzent: number; netto: number; nettoProzent: number; gebuehren: number; steuer: number; nachSteuern: number };
@@ -152,6 +160,8 @@ export interface Order {
   etfKauf?: Kurs;
   etfVergleich?: { netto: number; nettoProzent: number };
   bericht?: string;
+  /** aus dem Abschlussbericht: ist der Einwand der Gegenprüfung eingetreten? */
+  einwandEingetreten?: boolean;
   verwerfGrund?: string;
 }
 
@@ -160,6 +170,7 @@ export type EreignisTyp =
   | 'gekauft'
   | 'angepasst'
   | 'verkauft'
+  | 'teilverkauft'
   | 'verworfen'
   | 'bericht'
   | 'etfVergleich'

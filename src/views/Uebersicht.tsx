@@ -97,11 +97,15 @@ function PositionKarte({ o }: { o: Order }) {
   return (
     <a class="position" href={`#/order/${o.id}`}>
       <div class="position-kopf">
-        <strong>{o.plan.wertpapier.name}</strong>
+        <strong>
+          {o.plan.herkunft === 'autopilot' ? '🤖 ' : ''}
+          {o.plan.wertpapier.name}
+        </strong>
         <span class={veraenderung >= 0 ? 'plus' : 'minus'}>{prozent(veraenderung)}</span>
       </div>
       <div class="klein">
-        {o.kauf?.stueck} Stk. · Kauf {o.kauf ? euro(o.kauf.kurs) : '–'} · Chance ~{o.plan.konfidenz} %{o.plan.pflichtOrder ? ' · Pflicht-Order' : ''}
+        {o.kauf?.stueck.toLocaleString('de-DE', { maximumFractionDigits: 6 })} Stk. · Kauf {o.kauf ? euro(o.kauf.kurs) : '–'} · Chance ~{o.plan.konfidenz} %{o.plan.pflichtOrder ? ' · Pflicht-Order' : ''}
+        {o.teilverkaeufe?.length ? ' · Hälfte verkauft' : ''}
       </div>
       <Fortschritt wert={anteil} label="Position zwischen Stop und Ziel" />
       <div class="position-skala klein">

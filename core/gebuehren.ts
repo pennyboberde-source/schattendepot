@@ -6,6 +6,8 @@ export interface Handelsplatz {
   name: string;
   entgelt: number;
   variabelProzent: number;
+  /** true = nur das Handelsplatz-Entgelt, keine Provision (z. B. Trade Republic Krypto: 1 € je Order) */
+  ohneProvision?: boolean;
 }
 
 export interface GebuehrenConfig {
@@ -35,7 +37,7 @@ export function orderentgelt(kurswert: number, cfg: GebuehrenConfig, opt: Entgel
   if (!hp) throw new Error(`Unbekannter Handelsplatz: ${kuerzel}`);
   const { grundpreis, prozent, min, max } = cfg.orderentgelt;
   const mindermenge = cfg.mindermenge && kurswert < cfg.mindermenge.unter ? cfg.mindermenge.entgelt : 0;
-  const provision = runde(Math.min(max, Math.max(min, grundpreis + (kurswert * prozent) / 100)) + mindermenge);
+  const provision = hp.ohneProvision ? 0 : runde(Math.min(max, Math.max(min, grundpreis + (kurswert * prozent) / 100)) + mindermenge);
   const handelsplatz = runde(hp.entgelt + (kurswert * hp.variabelProzent) / 100);
   return { provision, handelsplatz, gesamt: runde(provision + handelsplatz) };
 }

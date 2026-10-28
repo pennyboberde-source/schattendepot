@@ -48,6 +48,10 @@ test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
   await expect(page.getByText('🔥 Hot Stuff – hätte man es erkennen können?')).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Insider-Cluster-Kauf' }).first()).toBeVisible();
   await expect(page.getByText('3 → 3,3')).toBeVisible();
+  // S2: Autopilot und Ziel/Stop-Vorschläge
+  await expect(page.getByText('🤖 Autopilot – bewiesene Signale')).toBeVisible();
+  await expect(page.getByTestId('autopilot-tabelle').getByText('✅ kauft')).toBeVisible();
+  await expect(page.getByText('Ziel/Stop je Signal – selbst optimiert')).toBeVisible();
 });
 
 test('Einstellungen: Push-Hinweis außerhalb der Home-Bildschirm-App', async ({ page }) => {

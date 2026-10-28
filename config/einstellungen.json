@@ -2,7 +2,7 @@
   "orderBetrag": 1000,
   "mindestChance": 40,
   "mindestChanceHinweis": "Jeder Kauf nur bei Chance ≥ 40 % (vom Code mit der bisherigen Treffsicherheit korrigiert) und positivem Erwartungswert nach Gebühren. Keine Pflicht-Orders (Plan Datenkrake, 28.10.2026).",
-  "hebelMax": 10,
+  "hebelMax": 20,
   "haltedauerMinMinuten": 15,
   "haltedauerMaxTage": 31,
   "ereignisSchwelleProzent": 5,
@@ -45,10 +45,43 @@
   },
   "zeitzone": "Europe/Berlin",
   "risikoBudget": {
-    "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoin-ETNs) – begrenzt, damit das Depot nicht nur daraus besteht. Seit 23.10.2026 mutiger (Nutzerwunsch): 2 je Lauf, 50 %. Die Lernregel steuert innerhalb 10–50 % / 1–2 je Lauf nach.",
-    "maxSpekulativJeLauf": 2,
-    "maxAnteilSpekulativ": 0.5,
+    "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoins, Short-Turbos) – begrenzt, damit das Depot nicht nur daraus besteht. Seit S2 (Plan Datenkrake, 28.10.2026): bis 4 je Lauf, 70 %. Die Lernregel steuert innerhalb 10–70 % / 1–4 je Lauf nach.",
+    "maxSpekulativJeLauf": 4,
+    "maxAnteilSpekulativ": 0.7,
     "stopMinProzent": -25,
     "mindestKursEuro": 0.01
+  },
+  "claudeOrders": {
+    "hinweis": "Höchstzahl neuer Orders je Claude-Lauf (Plan Datenkrake S2): morgens bis 6, mittags bis 3, abends US-Werte/Krypto bis 3.",
+    "morgenlauf": 6,
+    "mittagslauf": 3,
+    "abendlauf": 3,
+    "ereignislauf": 2,
+    "wochenrueckblick": 2
+  },
+  "verkaufsregeln": {
+    "hinweis": "Schlaue Verkaufsregeln im Kurswächter (alle 15 Min., Krypto rund um die Uhr). Stop wird nur nach oben gezogen; Teilverkauf einmal je Position, danach Stop auf Einstand; Gegensignale nur zu Kursen nach dem Erkennen (kein Rückschaufehler).",
+    "nachziehenderStop": { "aktivAbProzent": 4, "abstandProzent": 5, "aktivAbHebelProzent": 10, "abstandHebelProzent": 12 },
+    "teilverkauf": { "beiZielAnteil": 0.5, "anteil": 0.5, "mindestKurswert": 300 },
+    "gegensignal": true,
+    "zeitAusstieg": { "nachTagen": 6, "spekulativNachTagen": 2, "bandProzent": 2 }
+  },
+  "autopilot": {
+    "hinweis": "Code kauft zwischen den Claude-Läufen selbst ins Depot (1.000 € je Order), aber nur Signaltypen, die sich im Schattenbuch bewiesen haben: Mindestfallzahl (nur Long-Fälle, gemessen nach 'horizont'), Chance nach Gebühren ≥ mindestChance und positiver Erwartungswert nach Gebühren. Claude prüft im nächsten Lauf.",
+    "aktiv": true,
+    "mindestFaelle": 20,
+    "horizont": "r3T",
+    "maxJeLauf": 2,
+    "maxJeTag": 4,
+    "maxOffen": 8,
+    "zielNettoProzent": 6,
+    "stopProzent": -6,
+    "maerkte": ["us", "krypto"]
+  },
+  "zielStop": {
+    "hinweis": "Ziel/Stop je Signaltyp aus dem Schattenbuch optimieren (Messpunkte 1/3/5 Handelstage, nach Gebühren). Vorschlag für Claude und Autopilot ab mindestFaelle.",
+    "mindestFaelle": 10,
+    "zieleBruttoProzent": [3, 5, 8, 12, 20],
+    "stopsProzent": [-3, -5, -8, -12, -20]
   }
 }

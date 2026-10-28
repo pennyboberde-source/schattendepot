@@ -35,8 +35,8 @@ export interface TrackingEintrag {
   markt?: 'krypto' | 'us' | 'eu' | 'rohstoff';
   /** Pump-&-Dump-Verdacht (nur Stimmung/Rakete, nichts Handfestes) */
   pump?: boolean;
-  /** schnell = tagsüber aufgenommenes Ereignis-Signal (Reaktionszeit), sonst Kandidat des Hauptlaufs */
-  art?: 'kandidat' | 'schnell';
+  /** schnell = tagsüber aufgenommenes Ereignis-Signal (Reaktionszeit), prognose = Claudes Tagesprognose (ohne Geld), sonst Kandidat des Hauptlaufs */
+  art?: 'kandidat' | 'schnell' | 'prognose';
 }
 
 export interface TrackingGruppe {
@@ -51,6 +51,11 @@ export interface TrackingGruppe {
   quote1T?: number | null;
   /** Anteil mit gerichteter 1-Wochen-Rendite > 0 in % */
   quote1W: number | null;
+  quote3T?: number | null;
+  /** Anzahl gemessener Fälle je Messpunkt */
+  n1T?: number;
+  n3T?: number;
+  n1W?: number;
 }
 
 export interface Statistik {
@@ -81,6 +86,16 @@ export interface Statistik {
     nachRisiko?: Record<string, TrackingGruppe>;
     nachMarkt?: Record<string, TrackingGruppe>;
   };
+  /** Claudes Tagesprognose (morgens bis 10 Werte, Richtung ohne Geld) – gemessen wie das Schattenbuch */
+  prognose?: TrackingGruppe;
+  /** Orders nach Herkunft (Claude vs. Autopilot) */
+  nachHerkunft?: Record<string, Gruppe>;
+  /** Gegenprüfung: Orders mit starkem (Risiko ≥ 40 %) vs. schwachem Einwand; wie oft trat der Einwand bei Verlusten ein? */
+  gegenpruefung?: { stark: Gruppe; schwach: Gruppe; verlusteMitUrteil: number; einwandEingetreten: number };
+  /** Autopilot: welche Signaltypen haben sich bewiesen (wird von abgeleitet.ts ergänzt) */
+  autopilot?: import('./autopilot.ts').SignalBeweis[];
+  /** Ziel/Stop-Vorschläge je Signaltyp aus dem Schattenbuch (wird von abgeleitet.ts ergänzt) */
+  zielStop?: import('./zielstop.ts').ZielStopVorschlag[];
   /** Vorlauf-Quote je Signaltyp vor Raketen (Hot-Stuff-Rückblick), wird von abgeleitet.ts ergänzt */
   vorlauf?: { typ: string; quote: number; lift: number | null; signale: number }[];
   zusammenfassung: string;
@@ -130,8 +145,12 @@ function trackingGruppe(l: TrackingEintrag[]): TrackingGruppe {
     const w = l.map(f).filter((x): x is number => typeof x === 'number');
     return w.length ? runde((w.filter((x) => x > 0).length / w.length) * 100, 1) : null;
   };
+  const n = (f: (t: TrackingEintrag) => number | undefined) => l.filter((t) => typeof f(t) === 'number').length;
   return {
     anzahl: l.length,
+    n1T: n((t) => t.r1T),
+    n3T: n((t) => t.r3T),
+    n1W: n((t) => t.r1W),
     oe1h: mittel((t) => t.r1h),
     oe1T: mittel((t) => t.r1T),
     oe3T: mittel((t) => t.r3T),
@@ -139,6 +158,7 @@ function trackingGruppe(l: TrackingEintrag[]): TrackingGruppe {
     oe10T: mittel((t) => t.r10T),
     oe1M: mittel((t) => t.r1M),
     quote1T: quote((t) => t.r1T),
+    quote3T: quote((t) => t.r3T),
     quote1W: quote((t) => t.r1W),
   };
 }
@@ -149,13 +169,18 @@ function trackingGruppiert(l: TrackingEintrag[], f: (t: TrackingEintrag) => stri
   return Object.fromEntries([...m.entries()].sort((a, b) => b[1].length - a[1].length).map(([k, v]) => [k, trackingGruppe(v)]));
 }
 
-export function statistikBerechnen(alle: Order[], tracking: TrackingEintrag[], stand: string): Statistik {
+export function statistikBerechnen(alle: Order[], trackingAlle: TrackingEintrag[], stand: string): Statistik {
+  // Claudes Tagesprognosen getrennt messen – sie sind keine Kandidaten des Schattenbuchs
+  const tracking = trackingAlle.filter((t) => t.art !== 'prognose');
+  const prognosen = trackingAlle.filter((t) => t.art === 'prognose');
   const g = alle.filter((o) => o.status === 'geschlossen' && o.ergebnis && o.kauf && o.verkauf);
   const kalibrierung = KONFIDENZ_STUFEN.map(([stufe, von, bis]) => {
     const l = g.filter((o) => o.plan.konfidenz >= von && o.plan.konfidenz <= bis);
     return { stufe, erwartet: l.length ? runde(l.reduce((s, o) => s + o.plan.konfidenz, 0) / l.length, 1) : 0, tatsaechlich: gruppe(l).quote, anzahl: l.length };
   }).filter((k) => k.anzahl > 0);
   const mitEtf = g.filter((o) => o.etfVergleich);
+  const mitEinwand = g.filter((o) => o.plan.gegenpruefung);
+  const verlusteMitUrteil = mitEinwand.filter((o) => o.ergebnis!.netto <= 0 && typeof o.einwandEingetreten === 'boolean');
   const s: Statistik = {
     stand,
     gesamt: gruppe(g),
@@ -183,6 +208,18 @@ export function statistikBerechnen(alle: Order[], tracking: TrackingEintrag[], s
       nachRisiko: trackingGruppiert(tracking, (t) => [t.pump ? 'pump_verdacht' : 'normal']),
       nachMarkt: trackingGruppiert(tracking, (t) => [t.markt ?? (['BTC', 'ETH', 'SOL', 'XRP', 'ADA', 'DOT'].includes(t.ticker ?? '') ? 'krypto' : /\.(DE|PA|AS|MI|MC|F)$/.test(t.ticker ?? '') ? 'eu' : 'us')]),
     },
+    ...(prognosen.length ? { prognose: trackingGruppe(prognosen) } : {}),
+    nachHerkunft: gruppiert(g, (o) => [o.plan.herkunft ?? 'claude']),
+    ...(mitEinwand.length
+      ? {
+          gegenpruefung: {
+            stark: gruppe(mitEinwand.filter((o) => o.plan.gegenpruefung!.risiko >= 40)),
+            schwach: gruppe(mitEinwand.filter((o) => o.plan.gegenpruefung!.risiko < 40)),
+            verlusteMitUrteil: verlusteMitUrteil.length,
+            einwandEingetreten: verlusteMitUrteil.filter((o) => o.einwandEingetreten).length,
+          },
+        }
+      : {}),
     zusammenfassung: '',
   };
   s.zusammenfassung = zusammenfassung(s);
@@ -202,6 +239,11 @@ function zusammenfassung(s: Statistik): string {
   if (beste.length) z.push(`Strategien (n≥3): ${beste.map(([k, v]) => `${k} ${v.quote} %/Ø ${v.oeNetto} %`).join('; ')}.`);
   const sig = Object.entries(s.kandidaten.nachSignalTyp).filter(([, v]) => (v.anzahl ?? 0) >= 5 && v.oe1W !== null);
   if (sig.length) z.push(`Mitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: ${sig.map(([k, v]) => `${k} ${v.oe1W} % (n=${v.anzahl})`).join('; ')}.`);
+  const au = s.nachHerkunft?.autopilot;
+  if (au) z.push(`Autopilot: ${au.anzahl} Orders, Quote ${au.quote} %, Ø ${au.oeNetto} % · Claude: ${s.nachHerkunft?.claude?.anzahl ?? 0} Orders, Ø ${s.nachHerkunft?.claude?.oeNetto ?? 0} %.`);
+  if (s.prognose && (s.prognose.n1T ?? 0) > 0) z.push(`Claudes Tagesprognose: ${s.prognose.quote1T} % Richtung richtig nach 1 Tag (n=${s.prognose.n1T}), Ø ${s.prognose.oe1T} %.`);
+  const gp = s.gegenpruefung;
+  if (gp && gp.stark.anzahl + gp.schwach.anzahl >= 3) z.push(`Gegenprüfung: starker Einwand → Quote ${gp.stark.quote} % (n=${gp.stark.anzahl}), schwacher → ${gp.schwach.quote} % (n=${gp.schwach.anzahl}); Einwand trat bei ${gp.einwandEingetreten} von ${gp.verlusteMitUrteil} Verlusten ein.`);
   if (s.etf.anzahlMitVergleich) z.push(`Vs. MSCI World (gleiche Zeiträume): Depot ${s.etf.depotNetto} € vs. ETF ${s.etf.etfNetto} €.`);
   return z.join('\n');
 }

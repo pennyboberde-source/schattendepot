@@ -30,7 +30,8 @@ function Detail({ o }: { o: Order }) {
       </a>
       <h1>{p.wertpapier.name}</h1>
       <p class="untertitel">
-        {p.wertpapier.isin}
+        {p.herkunft === 'autopilot' ? '🤖 Autopilot · ' : ''}
+        {p.wertpapier.isin || (p.wertpapier.anlageklasse === 'krypto' ? `Krypto direkt (${p.wertpapier.ticker ?? ''}, Trade Republic)` : '')}
         {p.wertpapier.wkn ? ` · WKN ${p.wertpapier.wkn}` : ''} · {STRATEGIE_TEXT[p.strategie]} · Erfolgschance ~{p.konfidenz} %
         {p.pflichtOrder ? ' · Pflicht-Order' : ''}
       </p>
@@ -62,6 +63,12 @@ function Detail({ o }: { o: Order }) {
         <p>{p.these}</p>
         <p class="klein">Auslöser: {p.ausloeser}</p>
         {p.einflussLektionen && <p class="klein">Einfluss der Lektionen: {p.einflussLektionen}</p>}
+        {p.gegenpruefung && (
+          <p class="klein">
+            Gegenprüfung – woran es scheitern könnte ({p.gegenpruefung.risiko} %): {p.gegenpruefung.einwand}
+            {typeof o.einwandEingetreten === 'boolean' ? (o.einwandEingetreten ? ' → ist eingetreten' : ' → ist nicht eingetreten') : ''}
+          </p>
+        )}
         {p.risiken.length > 0 && (
           <>
             <h3>Risiken</h3>
@@ -107,6 +114,9 @@ function Detail({ o }: { o: Order }) {
             </thead>
             <tbody>
               {o.kauf && <Zeile name="Kauf (Brief)" a={o.kauf} />}
+              {(o.teilverkaeufe ?? []).map((t) => (
+                <Zeile key={t.zeit} name={`Teilverkauf (Geld) – ${VERKAUFSGRUND_TEXT[t.grund]}`} a={t} />
+              ))}
               {o.verkauf && <Zeile name={`Verkauf (Geld) – ${VERKAUFSGRUND_TEXT[o.verkauf.grund]}`} a={o.verkauf} />}
             </tbody>
           </table>
@@ -126,6 +136,11 @@ function Detail({ o }: { o: Order }) {
               <span class="klein">{datumUhr(o.kauf.zeit)}</span> Gekauft zu {euro(o.kauf.kurs)}
             </li>
           )}
+          {(o.teilverkaeufe ?? []).map((t) => (
+            <li key={`teil-${t.zeit}`}>
+              <span class="klein">{datumUhr(t.zeit)}</span> Teilverkauf {t.stueck.toLocaleString('de-DE', { maximumFractionDigits: 6 })} Stk. zu {euro(t.kurs)}
+            </li>
+          ))}
           {o.anpassungen.map((a) => (
             <li key={a.zeit + a.feld}>
               <span class="klein">{datumUhr(a.zeit)}</span> {a.feld}: {String(a.alt)} → {String(a.neu)} – {a.begruendung}
@@ -179,7 +194,7 @@ function Zeile({ name, a }: { name: string; a: Ausfuehrung }) {
     <tr>
       <th scope="row">{name}</th>
       <td>{datumUhr(a.zeit)}</td>
-      <td>{a.stueck}</td>
+      <td>{a.stueck.toLocaleString('de-DE', { maximumFractionDigits: 6 })}</td>
       <td>{euro(a.kurs)}</td>
       <td>{euro(a.kurswert)}</td>
       <td>{euro(a.entgelt.provision)}</td>

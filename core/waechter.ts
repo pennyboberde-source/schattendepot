@@ -6,10 +6,35 @@ import { etfVergleich } from './etf.ts';
 import { runde } from './geld.ts';
 import type { GebuehrenConfig } from './gebuehren.ts';
 import { berlin, inHandelszeit, istHandelstag, uhrzeitMinuten } from './kalender.ts';
-import { pushAngepasst, pushGekauft, pushVerkauft, pushWarnung, type PushNachricht } from './push.ts';
-import { ergebnis, kaufen, stueckFuerBetrag, verkaufen, zielkurs, type Seite } from './rendite.ts';
+import { restStueck } from './ableiten.ts';
+import { pushAngepasst, pushGekauft, pushTeilverkauf, pushVerkauft, pushWarnung, type PushNachricht } from './push.ts';
+import { ergebnis, kaufen, stueckFuerBetrag, summeSeiten, verkaufen, zielkurs, type Seite } from './rendite.ts';
 import { geldBrief, type SpreadConfig } from './spreads.ts';
-import type { Ereignis, Kurs, Order, Verkaufsgrund } from './typen.ts';
+import type { Anpassung, Ausfuehrung, Ereignis, Kurs, Order, Verkaufsgrund } from './typen.ts';
+
+/** Schlaue Verkaufsregeln (config/einstellungen.json → verkaufsregeln). Jede Regel ist einzeln abschaltbar (Feld weglassen). */
+export interface Verkaufsregeln {
+  /** Stop nachziehen, sobald der Geldkurs aktivAbProzent über dem Kaufkurs liegt; neuer Stop = Geldkurs − abstandProzent (nur nach oben). Hebel: eigene Werte. */
+  nachziehenderStop?: { aktivAbProzent: number; abstandProzent: number; aktivAbHebelProzent?: number; abstandHebelProzent?: number };
+  /** Teilverkauf, wenn beiZielAnteil des Wegs vom Kauf- zum Zielkurs geschafft ist: anteil der Stücke verkaufen, Stop auf Einstand. */
+  teilverkauf?: { beiZielAnteil: number; anteil: number; mindestKurswert: number };
+  /** sofort verkaufen bei starkem Gegensignal (Short-Report, Prognosesenkung, Handelsaussetzung H10/T12) */
+  gegensignal?: boolean;
+  /** verkaufen, wenn sich nach n Tagen kaum etwas bewegt hat (|Kurs| < bandProzent) – Kapital frei für Besseres */
+  zeitAusstieg?: { nachTagen: number; spekulativNachTagen: number; bandProzent: number };
+}
+
+/** Vom Sammler erkanntes starkes Gegensignal zu einer offenen Position (daten/gegensignale.json). */
+export interface Gegensignal {
+  typ: string;
+  /** Zeitpunkt der Meldung */
+  zeit: string;
+  /** wann unser Sammler sie erkannt hat – erst Kurse danach dürfen verwendet werden (kein Rückschaufehler) */
+  erkannt: string;
+  text: string;
+}
+
+export const istKrypto = (o: Order) => o.plan.wertpapier.anlageklasse === 'krypto';
 
 export interface WaechterEinstellungen {
   orderBetrag: number;
@@ -21,6 +46,7 @@ export interface WaechterEinstellungen {
   /** erst ab Live-Start (Meilenstein 6) einschalten */
   ausfallWarnungAktiv?: boolean;
   risikoBudget?: { mindestKursEuro: number };
+  verkaufsregeln?: Verkaufsregeln;
 }
 
 export interface WaechterKontext {
@@ -35,6 +61,10 @@ export interface WaechterKontext {
   etfKurs?: Kurs;
   cfg: { gebuehren: GebuehrenConfig; spreads: SpreadConfig; einstellungen: WaechterEinstellungen };
   heute: { ereignisLaeufe: number; ereignislaufOrders: string[]; ausfallWarnung: boolean; vorgemerkt: boolean };
+  /** starke Gegensignale je Order-ID (vom Sammler) */
+  gegensignale?: Record<string, Gegensignal>;
+  /** außerhalb der Börsenzeiten (nachts/Wochenende): nur Krypto direkt handeln */
+  nurKrypto?: boolean;
 }
 
 export interface WaechterErgebnis {
@@ -57,6 +87,35 @@ function seiteAus(o: Order): Seite {
 function stellen(x: number): number {
   return x < 10 ? 4 : 2;
 }
+
+/** Krypto direkt: Bruchstücke (6 Nachkommastellen), sonst ganze Stücke. */
+function stueckZahl(o: Order, brief: number, betrag: number): number {
+  if (!istKrypto(o)) return stueckFuerBetrag(brief, betrag);
+  if (!(brief > 0)) throw new Error(`Briefkurs muss positiv sein (${brief})`);
+  return Math.floor((betrag / brief) * 1e6 + 1e-6) / 1e6;
+}
+
+function ausfuehrung(zeit: string, s: Seite, ik: InstrumentKurs): Ausfuehrung {
+  return {
+    zeit,
+    stueck: s.stueck,
+    kurs: s.kurs,
+    kurswert: s.kurswert,
+    entgelt: s.entgelt,
+    betrag: s.betrag,
+    kursquelle: `${ik.kurs.quelle} (${ik.kurs.zeit})`,
+    synthetisch: !!ik.kurs.synthetisch || !(ik.kurs.geld && ik.kurs.brief),
+  };
+}
+
+/** Krypto direkt: Trade Republic hat einen eigenen Spread – die engen Kraken-Geld/Brief-Kurse nicht verwenden. */
+function spreadKurs(o: Order, k: Kurs): Kurs {
+  return istKrypto(o) ? { ...k, geld: undefined, brief: undefined } : k;
+}
+
+/** Gegensignale, die eine Position der jeweiligen Richtung entwerten. */
+export const GEGENSIGNALE_LONG = new Set(['shortreport', 'prognose_senkung', 'handelsstopp']);
+export const GEGENSIGNALE_SHORT = new Set(['prognose_erhoehung', 'uebernahmeangebot']);
 
 export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
   const { jetzt, cfg } = ctx;
@@ -96,6 +155,9 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
   };
 
   for (const o of ctx.orders) {
+    if (ctx.nurKrypto && !istKrypto(o)) continue;
+    // Krypto direkt wird rund um die Uhr gehandelt, alles andere nur zur Börsenzeit
+    const handelbar = istKrypto(o) || offenZumHandeln;
     const direkt = ctx.direktKurse?.[o.id];
     const basis = ctx.basisKurse[o.id];
     /** maßgeblicher Kurs für Zeitprüfungen (kein Rückschaufehler) */
@@ -111,7 +173,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
       } catch {
         /* ohne Kursbasis → normale Frist */
       }
-      if (!neuerKurs || !offenZumHandeln) {
+      if (!neuerKurs || !handelbar) {
         if (alterStd > (tagesschluss ? VERWERFEN_NACH_STUNDEN_TAGESSCHLUSS : VERWERFEN_NACH_STUNDEN)) {
           ereignisse.push(ev('verworfen', o.id, { grund: zeitKurs ? 'kein neuer Kurs seit der Vormerkung' : 'kein Kurs verfügbar' }));
         }
@@ -128,14 +190,14 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
         ereignisse.push(ev('verworfen', o.id, { grund: 'Knock-out-Schwelle bereits erreicht' }));
         continue;
       }
-      const { brief } = geldBrief(ik.kurs, o.plan.wertpapier.spreadKlasse, cfg.spreads);
+      const { brief } = geldBrief(spreadKurs(o, ik.kurs), o.plan.wertpapier.spreadKlasse, cfg.spreads);
       const mindestKurs = cfg.einstellungen.risikoBudget?.mindestKursEuro ?? 0;
       if (o.plan.wertpapier.anlageklasse === 'aktie' && brief < mindestKurs) {
         ereignisse.push(ev('verworfen', o.id, { grund: `Kurs ${brief} € unter der Mindestgrenze ${mindestKurs} € (kaum handelbar)` }));
         continue;
       }
-      const stueck = stueckFuerBetrag(brief, cfg.einstellungen.orderBetrag);
-      if (stueck === 0) {
+      const stueck = stueckZahl(o, brief, cfg.einstellungen.orderBetrag);
+      if (stueck === 0 || stueck * brief < 1) {
         ereignisse.push(ev('verworfen', o.id, { grund: `Ein Stück kostet ${brief} € und damit mehr als ${cfg.einstellungen.orderBetrag} €` }));
         continue;
       }
@@ -148,16 +210,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
       const stop = runde(brief * (1 + o.plan.stopProzent / 100), stellen(brief));
       ereignisse.push(
         ev('gekauft', o.id, {
-          kauf: {
-            zeit: iso,
-            stueck,
-            kurs: brief,
-            kurswert: kauf.kurswert,
-            entgelt: kauf.entgelt,
-            betrag: kauf.betrag,
-            kursquelle: `${ik.kurs.quelle} (${ik.kurs.zeit})`,
-            synthetisch: !!ik.kurs.synthetisch || !(ik.kurs.geld && ik.kurs.brief),
-          },
+          kauf: ausfuehrung(iso, kauf, ik),
           zielkurs: ziel,
           stopkurs: stop,
           ...(ctx.etfKurs ? { etf: ctx.etfKurs } : {}),
@@ -179,41 +232,92 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
       continue;
     }
     kurse[o.id] = ik.kurs;
-    if (new Date(zeitKurs.zeit) <= new Date(o.kauf.zeit) || !offenZumHandeln) continue;
+    if (new Date(zeitKurs.zeit) <= new Date(o.kauf.zeit) || !handelbar) continue;
 
-    const { geld } = geldBrief(ik.kurs, o.plan.wertpapier.spreadKlasse, cfg.spreads);
+    const regeln = cfg.einstellungen.verkaufsregeln ?? {};
+    const { geld } = geldBrief(spreadKurs(o, ik.kurs), o.plan.wertpapier.spreadKlasse, cfg.spreads);
     const gehaltenMin = (jetzt.getTime() - new Date(o.kauf.zeit).getTime()) / 60000;
     const mindestErreicht = gehaltenMin >= cfg.einstellungen.haltedauerMinMinuten;
+    const kursProzent = (geld / o.kauf.kurs - 1) * 100;
+    const nachgezogen = o.anpassungen.some((a) => a.quelle === 'waechter' && a.feld === 'stop');
+    const gegen = ctx.gegensignale?.[o.id];
+    const gegenRichtung = o.plan.hebel?.richtung === 'short' ? GEGENSIGNALE_SHORT : GEGENSIGNALE_LONG;
+    const gegenGilt =
+      !!regeln.gegensignal &&
+      !!gegen &&
+      gegenRichtung.has(gegen.typ) &&
+      new Date(gegen.erkannt) > new Date(o.kauf.zeit) &&
+      // nur zu einem Kurs, der erst nach dem Erkennen des Signals entstanden ist
+      new Date(zeitKurs.zeit) > new Date(gegen.erkannt);
+    const za = regeln.zeitAusstieg;
+    const zeitTage = za ? (o.plan.risikoklasse === 'spekulativ' ? za.spekulativNachTagen : za.nachTagen) : Infinity;
+
     let grund: Verkaufsgrund | null = null;
     if (ik.knockout) grund = 'knockout';
-    else if (mindestErreicht && o.stopkurs !== undefined && geld <= o.stopkurs) grund = 'stop';
+    else if (gegenGilt) grund = 'gegensignal';
+    else if (mindestErreicht && o.stopkurs !== undefined && geld <= o.stopkurs) grund = nachgezogen ? 'nachziehstop' : 'stop';
     else if (mindestErreicht && o.zielkurs !== undefined && geld >= o.zielkurs) grund = 'ziel';
     else if (mindestErreicht && jetzt >= new Date(o.verkaufstermin)) grund = 'termin';
+    else if (za && gehaltenMin >= zeitTage * 1440 && Math.abs(kursProzent) < za.bandProzent) grund = 'zeit';
 
     if (grund) {
       const vkKurs = grund === 'knockout' ? 0 : geld;
-      const vk = verkaufen(o.kauf.stueck, vkKurs, cfg.gebuehren, hp);
+      const vk = verkaufen(restStueck(o), vkKurs, cfg.gebuehren, hp);
+      const teile = (o.teilverkaeufe ?? []).map((t): Seite => ({ stueck: t.stueck, kurs: t.kurs, kurswert: t.kurswert, entgelt: t.entgelt, betrag: t.betrag }));
       ereignisse.push(
-        ev('verkauft', o.id, {
-          verkauf: {
-            zeit: iso,
-            stueck: vk.stueck,
-            kurs: vkKurs,
-            kurswert: vk.kurswert,
-            entgelt: vk.entgelt,
-            betrag: vk.betrag,
-            kursquelle: `${ik.kurs.quelle} (${ik.kurs.zeit})`,
-            synthetisch: !!ik.kurs.synthetisch || !(ik.kurs.geld && ik.kurs.brief),
-            grund,
+        ev(
+          'verkauft',
+          o.id,
+          {
+            verkauf: { ...ausfuehrung(iso, vk, ik), grund },
+            ergebnis: ergebnis(seiteAus(o), teile.length ? summeSeiten([...teile, vk]) : vk),
+            ...(grund === 'gegensignal' ? { gegensignal: gegen } : {}),
           },
-          ergebnis: ergebnis(seiteAus(o), vk),
-        }),
+          grund === 'gegensignal' ? `Gegensignal: ${gegen!.text}`.slice(0, 300) : undefined,
+        ),
       );
       if (o.etfKauf && ctx.etfKurs) {
         const v = etfVergleich(o.etfKauf, ctx.etfKurs, cfg, cfg.einstellungen.orderBetrag);
         if (v) ereignisse.push(ev('etfVergleich', o.id, { ...v, etfKauf: o.etfKauf.wert, etfVerkauf: ctx.etfKurs.wert }));
       }
       continue;
+    }
+
+    // Kein Verkauf: Teilverkauf am 1. Ziel und Stop nachziehen (nur nach der Mindesthaltedauer)
+    let neuerStop = o.stopkurs;
+    const begruendung: string[] = [];
+    const tv = regeln.teilverkauf;
+    if (mindestErreicht && tv && !o.teilverkaeufe?.length && o.zielkurs !== undefined && o.zielkurs > o.kauf.kurs) {
+      const erstesZiel = o.kauf.kurs + tv.beiZielAnteil * (o.zielkurs - o.kauf.kurs);
+      const rest = restStueck(o);
+      const teil = istKrypto(o) ? Math.floor(rest * tv.anteil * 1e6) / 1e6 : Math.floor(rest * tv.anteil);
+      if (geld >= erstesZiel && teil > 0 && rest - teil > 0 && teil * geld >= tv.mindestKurswert) {
+        const vk = verkaufen(teil, geld, cfg.gebuehren, hp);
+        ereignisse.push(ev('teilverkauft', o.id, { verkauf: { ...ausfuehrung(iso, vk, ik), grund: 'teilziel' } }));
+        const einstand = runde(o.kauf.kurs, stellen(o.kauf.kurs));
+        if (neuerStop === undefined || einstand > neuerStop) {
+          neuerStop = einstand;
+          begruendung.push(`Teilverkauf ${teil} Stk. am 1. Ziel, Stop auf Einstand`);
+        }
+      }
+    }
+    const ns = regeln.nachziehenderStop;
+    if (mindestErreicht && ns) {
+      const hebel = o.plan.wertpapier.anlageklasse === 'hebel';
+      const aktivAb = hebel ? (ns.aktivAbHebelProzent ?? ns.aktivAbProzent) : ns.aktivAbProzent;
+      const abstand = hebel ? (ns.abstandHebelProzent ?? ns.abstandProzent) : ns.abstandProzent;
+      if (kursProzent >= aktivAb) {
+        const kandidat = runde(geld * (1 - abstand / 100), stellen(geld));
+        // nur spürbare Schritte (≥ 0,5 %), damit das Protokoll nicht alle 15 Minuten wächst
+        if (neuerStop === undefined || kandidat > neuerStop * 1.005) {
+          neuerStop = kandidat;
+          begruendung.push(`Nachziehender Stop: ${abstand} % unter Geldkurs ${geld} € (+${runde(kursProzent, 1)} %)`);
+        }
+      }
+    }
+    if (neuerStop !== o.stopkurs && neuerStop !== undefined && begruendung.length) {
+      const anpassung: Anpassung = { zeit: iso, quelle: 'waechter', feld: 'stop', alt: o.stopkurs ?? '', neu: neuerStop, begruendung: begruendung.join('; ') };
+      ereignisse.push(ev('angepasst', o.id, { anpassung }, anpassung.begruendung));
     }
 
     const schwelle = cfg.einstellungen.ereignisSchwelleProzent;
@@ -234,6 +338,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
 
   const b = berlin(jetzt);
   if (
+    !ctx.nurKrypto &&
     cfg.einstellungen.ausfallWarnungAktiv !== false &&
     istHandelstag(b.datum) &&
     b.minuten >= uhrzeitMinuten(cfg.einstellungen.ausfallWarnungUhrzeit) &&
@@ -254,7 +359,9 @@ export function pushesFuerEreignisse(neu: Ereignis[], orders: Order[], kalibrier
     const o = e.orderId ? nachId.get(e.orderId) : undefined;
     if (e.typ === 'gekauft' && o) pushes.push(pushGekauft(o, e.zeit, kalibriert?.(o.plan.konfidenz)));
     else if (e.typ === 'verkauft' && o) pushes.push(pushVerkauft(o, e.zeit));
-    else if (e.typ === 'angepasst' && o) pushes.push(pushAngepasst(o, (e.daten as { anpassung: Order['anpassungen'][0] }).anpassung));
+    else if (e.typ === 'teilverkauft' && o) pushes.push(pushTeilverkauf(o, (e.daten as { verkauf: Ausfuehrung }).verkauf));
+    // automatisch nachgezogene Stops ohne Push (sonst alle 15 Minuten eine Nachricht); der Verkauf meldet sich
+    else if (e.typ === 'angepasst' && o && e.quelle !== 'waechter') pushes.push(pushAngepasst(o, (e.daten as { anpassung: Order['anpassungen'][0] }).anpassung));
     else if (e.typ === 'verworfen' && o) pushes.push(pushWarnung(`${o.plan.wertpapier.name} nicht gekauft: ${(e.daten as { grund: string }).grund}`, e.zeit, `#/order/${o.id}`));
     else if (e.typ === 'warnung') pushes.push(pushWarnung(String((e.daten as { text: string }).text), e.zeit));
   }

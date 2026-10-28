@@ -4,19 +4,13 @@
 import { berlin, handelstageZwischen } from '../../core/kalender.ts';
 import { pumpVerdacht, type KompaktSignal } from '../../core/datenkrake.ts';
 import { runde } from '../../core/geld.ts';
+import { kursbasisAusTicker } from '../../core/autopilot.ts';
 import type { TrackingEintrag } from '../../core/statistik.ts';
-import type { Kursbasis } from '../../core/typen.ts';
 import { holeKurs, type Abrufprotokoll } from '../kurse/anbieter.ts';
 import { ladeConfig, leseJson, schreibeJson } from './dateien.ts';
 
-export function kursbasisAusTicker(ticker: string, markt?: TrackingEintrag['markt']): Kursbasis | null {
-  const t = ticker.toUpperCase();
-  if (markt === 'rohstoff') return null;
-  if (markt === 'krypto' || ['BTC', 'ETH', 'SOL', 'XRP', 'ADA', 'DOT'].includes(t)) return /^[A-Z0-9]{2,10}$/.test(t) ? { markt: 'krypto', symbol: t, waehrung: 'EUR' } : null;
-  if (/\.(DE|PA|AS|MI|MC|F)$/.test(t)) return { markt: 'eu', symbol: t, waehrung: 'EUR' };
-  if (/^[A-Z][A-Z0-9-]{0,5}$/.test(t)) return { markt: 'us', symbol: t, waehrung: 'USD' };
-  return null;
-}
+// Kursbasis aus dem Kürzel: liegt jetzt in core/autopilot.ts (auch der Autopilot braucht sie)
+export { kursbasisAusTicker };
 
 const FAELLIG: [keyof TrackingEintrag & ('r1T' | 'r3T' | 'r1W' | 'r10T' | 'r1M'), number][] = [
   ['r1T', 1],
@@ -56,6 +50,13 @@ export async function trackingAktualisieren(jetzt: Date, protokoll: Abrufprotoko
   };
   const gerichtet = (t: TrackingEintrag, w: number) => runde((w / t.start! - 1) * 100 * (t.score < 0 ? -1 : 1), 2);
 
+  // 0. Claudes Tagesprognosen (von der Übernahme ohne Kurs angelegt): Startkurs beim ersten Lauf danach
+  for (const t of liste) {
+    if (t.art !== 'prognose' || t.start || !t.ticker || t.datum !== heute) continue;
+    const w = await kurs(t.ticker, t.markt);
+    if (w !== null) Object.assign(t, { start: w, startZeit: jetzt.toISOString() });
+  }
+
   // 1. Reaktionszeit: ~1 Stunde nach dem Start (50 Min. bis 6 Std.)
   for (const t of liste) {
     if (!t.ticker || !t.start || !t.startZeit || typeof t.r1h === 'number') continue;
@@ -77,7 +78,7 @@ export async function trackingAktualisieren(jetzt: Date, protokoll: Abrufprotoko
   }
 
   // 3a. Hauptlauf: Tageskandidaten aufnehmen (nur einmal pro Tag, mit Startkurs)
-  if (modus === 'haupt' && !liste.some((t) => t.datum === heute && t.art !== 'schnell')) {
+  if (modus === 'haupt' && !liste.some((t) => t.datum === heute && (t.art ?? 'kandidat') === 'kandidat')) {
     const neu = leseJson<{ kandidaten?: { schluessel: string; name: string; ticker?: string; markt?: TrackingEintrag['markt']; pump?: boolean; score: number; typen: string[]; quellen: string[] }[] }>(`signale/${heute}.json`, {});
     const top = (neu.kandidaten ?? []).filter((k) => k.ticker && kursbasisAusTicker(k.ticker, k.markt)).slice(0, einstellungen.tracking.kandidatenProTag);
     for (const k of top) {

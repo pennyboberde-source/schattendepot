@@ -38,6 +38,7 @@ Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, d
 - Gebühren, Spreads, Steuern, Gewichtsgrenzen in `config/*.json`, nie hart codiert.
 - Zwei Ebenen (Plan „Datenkrake“, STAND.md oben): **Datenkrake/Schattenbuch** verfolgt alles virtuell und misst Trefferquoten; **Schaufenster** kauft nur das Beste mit 1.000 € je Order in zwei getrennten Bereichen (Kennzahlen nie vermischen): **Depot** (Consorsbank-Standardpreis, Vergleich Smartbroker+) und **Daytrading** (Smartbroker+, Vergleich Consorsbank/Trade Republic, vor Gebühren). Krypto direkt (24/7): Trade Republic 1 € + Spread. Autopilot (Code kauft selbst) nur für im Schattenbuch bewiesene Signaltypen.
 - Jeder Kauf (Code und Claude) nur bei Chance ≥ 40 % und positivem Erwartungswert nach Gebühren; keine Pflicht-Orders.
+- Seit S2: Teilverkäufe sind ein eigenes Ereignis `teilverkauft` (`verkauft` enthält dann nur den Rest, `ergebnis` alles); Krypto direkt = `anlageklasse: krypto`, Handelsplatz `TRK`, ohne ISIN, Bruchstücke; Verkaufsregeln/Autopilot/Claude-Order-Grenzen stehen in `config/einstellungen.json`.
 - Bestehende Datenquellen nie entfernen; neue nur zusätzlich einbauen.
 
 ## Konventionen

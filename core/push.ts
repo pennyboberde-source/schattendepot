@@ -1,7 +1,7 @@
 // Kurze Push-Texte mit Typ-Symbol und Ruhezeit-Warteschlange.
 import { euro, prozent } from './geld.ts';
 import { berlin, inRuhezeit } from './kalender.ts';
-import type { Anpassung, Order } from './typen.ts';
+import type { Anpassung, Ausfuehrung, Order } from './typen.ts';
 
 export type PushTyp = 'briefing' | 'gekauft' | 'angepasst' | 'verkauft' | 'stop' | 'knockout' | 'bericht' | 'warnung' | 'wochenrueckblick';
 
@@ -34,13 +34,14 @@ export function pushGekauft(o: Order, jetzt: string, kalibriert?: { quote: numbe
   const k = o.kauf!;
   return {
     typ: 'gekauft',
-    titel: `🟢 Gekauft: ${p.wertpapier.name}`,
+    titel: `${p.herkunft === 'autopilot' ? '🤖 Autopilot kauft' : '🟢 Gekauft'}: ${p.wertpapier.name}`,
     text: [
-      `${k.stueck} Stk. à ${euro(k.kurs)}`,
+      `${k.stueck.toLocaleString('de-DE', { maximumFractionDigits: 6 })} Stk. à ${euro(k.kurs)}`,
       `Ziel ${prozent(p.zielNettoProzent)} nach Gebühren bis ${tagKurz(o.verkaufstermin)}`,
       `Stop ${prozent(p.stopProzent)}`,
       chanceText(p.konfidenz, kalibriert),
       p.pflichtOrder ? 'Pflicht-Order' : '',
+      p.herkunft === 'autopilot' ? 'bewiesenes Signal, Claude prüft im nächsten Lauf' : '',
     ]
       .filter(Boolean)
       .join(' · '),
@@ -68,7 +69,8 @@ export function pushVerkauft(o: Order, jetzt: string): PushNachricht {
   const v = o.verkauf!;
   const e = o.ergebnis!;
   const typ: PushTyp = v.grund === 'stop' ? 'stop' : v.grund === 'knockout' ? 'knockout' : 'verkauft';
-  const kopf = typ === 'stop' ? '🔻 Stop ausgelöst' : typ === 'knockout' ? '⚡ Knock-out' : '✅ Verkauft';
+  const kopf =
+    typ === 'stop' ? '🔻 Stop ausgelöst' : typ === 'knockout' ? '⚡ Knock-out' : v.grund === 'nachziehstop' ? '🔒 Gewinn gesichert' : v.grund === 'gegensignal' ? '🚨 Gegensignal – verkauft' : v.grund === 'zeit' ? '⏱ Zeit-Ausstieg' : '✅ Verkauft';
   return {
     typ,
     titel: `${kopf}: ${o.plan.wertpapier.name}`,
@@ -77,12 +79,27 @@ export function pushVerkauft(o: Order, jetzt: string): PushNachricht {
       `nach Gebühren ${prozent(e.nettoProzent)} (${euro(e.netto, { vorzeichen: true })})`,
       `erhofft waren ${prozent(o.plan.erwarteteRenditeNetto)}`,
       v.grund === 'termin' ? 'Verkaufstermin erreicht' : '',
+      v.grund === 'nachziehstop' ? 'nachgezogener Stop' : '',
+      v.grund === 'zeit' ? 'kaum Bewegung' : '',
+      o.teilverkaeufe?.length ? 'inkl. Teilverkauf' : '',
     ]
       .filter(Boolean)
       .join(' · '),
     ziel: `#/order/${o.id}`,
     tag: o.id,
     erstellt: jetzt,
+  };
+}
+
+export function pushTeilverkauf(o: Order, v: Ausfuehrung): PushNachricht {
+  const pct = o.kauf ? ((v.kurs / o.kauf.kurs - 1) * 100) : 0;
+  return {
+    typ: 'verkauft',
+    titel: `💰 Teilverkauf: ${o.plan.wertpapier.name}`,
+    text: [`${v.stueck.toLocaleString('de-DE', { maximumFractionDigits: 6 })} Stk. à ${euro(v.kurs)}`, `Kurs ${prozent(pct)}`, '1. Ziel erreicht, Rest läuft mit Stop auf Einstand'].join(' · '),
+    ziel: `#/order/${o.id}`,
+    tag: `teil-${o.id}`,
+    erstellt: v.zeit,
   };
 }
 

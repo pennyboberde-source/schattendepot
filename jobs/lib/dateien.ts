@@ -66,6 +66,11 @@ export interface Einstellungen {
   /** Mindest-Chance in % für jeden Kauf (Plan Datenkrake) */
   mindestChance?: number;
   risikoBudget: { maxSpekulativJeLauf: number; maxAnteilSpekulativ: number; stopMinProzent: number; mindestKursEuro: number };
+  /** Höchstzahl neuer Orders je Claude-Lauf (S2) */
+  claudeOrders?: Partial<Record<'morgenlauf' | 'mittagslauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick', number>>;
+  verkaufsregeln?: import('../../core/waechter.ts').Verkaufsregeln;
+  autopilot?: import('../../core/autopilot.ts').AutopilotEinstellungen;
+  zielStop?: import('../../core/zielstop.ts').ZielStopEinstellungen;
 }
 
 export function ladeConfig() {

@@ -138,7 +138,15 @@ schreibe('verlauf/2026-10-21-demo-c.json', [
   ['2026-10-21T10:00:00Z', 237.9],
   ['2026-10-21T12:45:00Z', 241.3],
 ]);
-schreibe('statistik.json', statistikBerechnen([...abgeschlossen, offen], tracking, stand));
+schreibe('statistik.json', {
+  ...statistikBerechnen([...abgeschlossen, offen], tracking, stand),
+  // S2 (DEMO): Autopilot-Beweise und Ziel/Stop-Vorschläge aus dem Schattenbuch
+  autopilot: [
+    { typ: 'insider_cluster_kauf', gruppe: 'aktie', faelle: 24, chance: 54.2, oeNetto: 1.8, huerde: 2.78, bewiesen: true },
+    { typ: 'neulistung', gruppe: 'krypto', faelle: 9, chance: 33.3, oeNetto: -1.2, huerde: 0.7, bewiesen: false },
+  ],
+  zielStop: [{ typ: 'insider_cluster_kauf', faelle: 14, zielBruttoProzent: 8, zielNettoProzent: 5.2, stopProzent: -5, oeNetto: 1.9, ohneRegelOeNetto: 0.6, huerde: 2.78 }],
+});
 schreibe('gewichte.json', { stand, signale: { insider_cluster_kauf: 3.3 }, quellen: { 'CNBC Top News': 0.9 } });
 schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal', name: 'insider_cluster_kauf', alt: 3, neu: 3.3, grund: 'DEMO: Ø 1-Wochen-Rendite 3,4 % (n=9)' }]);
 console.log('Demo-Daten geschrieben nach', ziel);

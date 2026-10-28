@@ -6,6 +6,7 @@ import type { Statistik, TrackingGruppe } from '../../core/statistik.ts';
 import type { Ladezustand } from '../lib/daten';
 import { datumKurz } from '../lib/zeit';
 import { Geladen, Karte, Leer } from '../ui';
+import { JederzeitKarten } from './LernenS2';
 
 const TYP_NAME = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name])) as Record<string, string>;
 const p = (x: number | null | undefined) => (x === null || x === undefined ? '–' : prozent(x));
@@ -36,6 +37,7 @@ export function DatenkrakeKarten({ s, gewichte, hotstuff, vorlauf }: { s: Statis
   return (
     <>
       <WasKlappt s={s} gewichte={gewichte} />
+      <JederzeitKarten s={s} />
       <HotStuffKarte z={hotstuff} vorlauf={vorlauf} />
       <VorlaufKarte s={s} />
       <div class="zwei-spalten">

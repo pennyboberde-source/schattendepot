@@ -34,6 +34,21 @@ export function verkaufen(stueck: number, geld: number, cfg: GebuehrenConfig, op
   return { stueck, kurs: geld, kurswert, entgelt, betrag: runde(kurswert - entgelt.gesamt) };
 }
 
+/** Fasst mehrere Verkäufe (Teilverkäufe + Rest) zu einer Seite zusammen; Kurs = mengengewichteter Durchschnitt. */
+export function summeSeiten(teile: Seite[]): Seite {
+  const stueck = teile.reduce((a, t) => a + t.stueck, 0);
+  const kurswert = runde(teile.reduce((a, t) => a + t.kurswert, 0));
+  const provision = runde(teile.reduce((a, t) => a + t.entgelt.provision, 0));
+  const handelsplatz = runde(teile.reduce((a, t) => a + t.entgelt.handelsplatz, 0));
+  return {
+    stueck,
+    kurs: stueck > 0 ? kurswert / stueck : 0,
+    kurswert,
+    entgelt: { provision, handelsplatz, gesamt: runde(provision + handelsplatz) },
+    betrag: runde(teile.reduce((a, t) => a + t.betrag, 0)),
+  };
+}
+
 export interface Ergebnis {
   /** Kursveränderung in % (Geldkurs Verkauf zu Briefkurs Kauf). */
   kursProzent: number;

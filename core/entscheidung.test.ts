@@ -103,7 +103,7 @@ describe('Übernahme', () => {
     expect(pruefe({ ...morgen, orders: [spek] })).toBe(true);
   });
 
-  it('Morgenlauf ohne Order wird vermerkt', () => {
-    expect(entscheidungUebernehmen({ ...morgen, orders: [] }, [], jetzt, cfg).hinweise).toContain('Morgenlauf ohne neue Order – Pflicht-Order fehlt');
+  it('Morgenlauf ohne Order ist erlaubt (keine Pflicht-Orders mehr, keine Warnung)', () => {
+    expect(entscheidungUebernehmen({ ...morgen, orders: [] }, [], jetzt, cfg).hinweise.some((h) => /Pflicht-Order/.test(h))).toBe(false);
   });
 });

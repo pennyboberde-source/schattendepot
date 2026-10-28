@@ -6,7 +6,7 @@ import { benoetigteKursbasis } from '../core/bewertung.ts';
 import { berlin, inHandelszeit } from '../core/kalender.ts';
 import { kalibrierteQuote } from '../core/statistik.ts';
 import type { Kurs } from '../core/typen.ts';
-import { pushesFuerEreignisse, waechterLauf } from '../core/waechter.ts';
+import { istKrypto, pushesFuerEreignisse, waechterLauf, type Gegensignal } from '../core/waechter.ts';
 import { holeEurUsd, holeKurs, type Abrufprotokoll } from './kurse/anbieter.ts';
 import { gettexKurse } from './kurse/gettex.ts';
 import { schwaerzen } from './lib/schwaerzen.ts';
@@ -33,21 +33,28 @@ const b = berlin(jetzt);
 const uebernahme = process.env.OHNE_UEBERNAHME ? { dateien: 0, pushes: [], geloeschteBranches: [] } : uebernehmeAlle(jetzt);
 const ereignisse = leseEreignisse();
 const orders = ordersAusEreignissen(ereignisse);
-const aktiv = orders.filter((o) => o.status === 'vorgemerkt' || o.status === 'offen');
-
-// Kurse nur in (bzw. kurz vor) der Handelszeit holen – spart Kontingent.
 const kursZeit = inHandelszeit(jetzt) || inHandelszeit(new Date(jetzt.getTime() + 20 * 60000));
+// Außerhalb der Börsenzeit (nachts, Wochenende, Feiertag): nur Krypto direkt – rund um die Uhr (S2)
+const nurKrypto = !kursZeit;
+const aktiv = orders.filter((o) => (o.status === 'vorgemerkt' || o.status === 'offen') && (!nurKrypto || istKrypto(o)));
+if (nurKrypto && !aktiv.length && !uebernahme.dateien) {
+  console.log(`Wächter ${b.datum} ${b.stunde}:${String(b.minute).padStart(2, '0')}: Börsen zu, keine Krypto-Positionen – nichts zu tun.`);
+  process.exit(0);
+}
+
+// Kurse nur in (bzw. kurz vor) der Handelszeit holen – spart Kontingent. Krypto (Kraken) immer.
 const protokoll: Abrufprotokoll = {};
 const basisKurse: Record<string, Kurs> = {};
 const direktKurse: Record<string, Kurs> = {};
 let eurUsd: number | undefined;
 let etfKurs: Kurs | undefined;
-if (kursZeit && aktiv.length) {
+if (aktiv.length) {
   // 1. gettex: echte Euro-Kurse nach ISIN (kostenlos, ≤ 15 Min. verzögert) – Hauptquelle für alle gehandelten Instrumente.
   const etfIsin = cfg.einstellungen.vergleichsEtf.isin;
-  const isins = [...new Set([...aktiv.map((o) => o.plan.wertpapier.isin), etfIsin])];
+  // Krypto direkt hat keine ISIN (Kurs von Kraken); nachts gibt es keine gettex-Kurse
+  const isins = nurKrypto ? [] : [...new Set([...aktiv.filter((o) => !istKrypto(o) && o.plan.wertpapier.isin).map((o) => o.plan.wertpapier.isin), etfIsin])];
   let gettex = new Map<string, Kurs>();
-  try {
+  if (isins.length) try {
     gettex = await gettexKurse(isins, jetzt);
     protokoll.gettex = { ok: gettex.size, fehler: isins.length - gettex.size, zuletztOk: jetzt.toISOString() };
   } catch (e) {
@@ -100,7 +107,7 @@ if (kursZeit && aktiv.length) {
   });
   // Vergleichs-ETF: gettex (IE00B4L5Y983) bevorzugt, sonst URTH (USD) umgerechnet
   const etf = cfg.einstellungen.vergleichsEtf;
-  const etfRoh = etfKurs ? null : await holeKurs(etf.kursbasis, jetzt, protokoll);
+  const etfRoh = etfKurs || nurKrypto ? null : await holeKurs(etf.kursbasis, jetzt, protokoll);
   if (brauchtUsd || (etfRoh && etf.kursbasis.waehrung === 'USD')) eurUsd = await holeEurUsd(jetzt, protokoll);
   if (etfRoh && etf.kursbasis.waehrung === 'EUR') etfKurs = etfRoh;
   else if (etfRoh && eurUsd) etfKurs = { ...etfRoh, wert: etfRoh.wert / eurUsd, synthetisch: true, hinweis: `${etf.kursbasis.symbol} umgerechnet` };
@@ -116,6 +123,8 @@ const r = waechterLauf({
   eurUsd,
   etfKurs,
   cfg: { gebuehren: cfg.gebuehren, spreads: cfg.spreads, einstellungen: cfg.einstellungen },
+  gegensignale: leseJson<Record<string, Gegensignal>>('gegensignale.json', {}),
+  nurKrypto,
   heute: {
     ereignisLaeufe: heuteLaeufe.length,
     ereignislaufOrders: heuteLaeufe,
@@ -126,7 +135,8 @@ const r = waechterLauf({
 
 const neu = haengeEreignisseAn(r.ereignisse);
 const kurse = leseJson<Record<string, Kurs>>('kurse.json', {});
-const offeneIds = new Set(aktiv.map((o) => o.id));
+// nachts nur Krypto bewertet → Kurse der übrigen offenen Positionen behalten
+const offeneIds = new Set(orders.filter((o) => o.status === 'vorgemerkt' || o.status === 'offen').map((o) => o.id));
 for (const id of Object.keys(kurse)) if (!offeneIds.has(id)) delete kurse[id];
 Object.assign(kurse, r.kurse);
 schreibeJson('kurse.json', kurse);
@@ -155,6 +165,6 @@ schreibeJson('system.json', system);
 const pushes = [...uebernahme.pushes, ...pushesFuerEreignisse(neu, a.orders, (k) => kalibrierteQuote(a.statistik, k)), ...ereignisPushes];
 const gesendet = await pushen(pushes, jetzt);
 console.log(
-  `Wächter ${b.datum} ${String(b.stunde).padStart(2, '0')}:${String(b.minute).padStart(2, '0')}: ${aktiv.length} aktiv, ${Object.keys(basisKurse).length} Kurse, ${neu.length} Ereignisse, ${gesendet} Push(es).`,
+  `Wächter ${b.datum} ${String(b.stunde).padStart(2, '0')}:${String(b.minute).padStart(2, '0')}${nurKrypto ? ' (nur Krypto)' : ''}: ${aktiv.length} aktiv, ${Object.keys(basisKurse).length} Kurse, ${neu.length} Ereignisse, ${gesendet} Push(es).`,
 );
 for (const h of r.hinweise) console.log(`Hinweis: ${h}`);

@@ -66,6 +66,24 @@
       "summeNetto": -11.6
     }
   },
+  "nachVerkaufsgrund": {
+    "ziel": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 4.17,
+      "oeNachSteuern": 3.07,
+      "summeNetto": 40.2
+    },
+    "stop": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -5.34,
+      "oeNachSteuern": -4.24,
+      "summeNetto": -51.8
+    }
+  },
   "nachHaltedauer": {
     "1–3 Tage": {
       "anzahl": 2,
@@ -137,43 +155,159 @@
   "kandidaten": {
     "gesamt": {
       "anzahl": 2,
+      "n1T": 2,
+      "n3T": 0,
+      "n1W": 2,
+      "oe1h": null,
       "oe1T": 0.35,
+      "oe3T": null,
       "oe1W": 1.15,
+      "oe10T": null,
       "oe1M": null,
+      "quote1T": 50,
+      "quote3T": null,
       "quote1W": 50
     },
     "nachSignalTyp": {
       "insider_cluster_kauf": {
         "anzahl": 1,
+        "n1T": 1,
+        "n3T": 0,
+        "n1W": 1,
+        "oe1h": null,
         "oe1T": 1.2,
+        "oe3T": null,
         "oe1W": 3.4,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 100,
+        "quote3T": null,
         "quote1W": 100
       },
       "nachricht": {
         "anzahl": 1,
+        "n1T": 1,
+        "n3T": 0,
+        "n1W": 1,
+        "oe1h": null,
         "oe1T": -0.5,
+        "oe3T": null,
         "oe1W": -1.1,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 0,
+        "quote3T": null,
         "quote1W": 0
       }
     },
     "nachQuelle": {
       "OpenInsider": {
         "anzahl": 1,
+        "n1T": 1,
+        "n3T": 0,
+        "n1W": 1,
+        "oe1h": null,
         "oe1T": 1.2,
+        "oe3T": null,
         "oe1W": 3.4,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 100,
+        "quote3T": null,
         "quote1W": 100
       },
       "CNBC Top News": {
         "anzahl": 1,
+        "n1T": 1,
+        "n3T": 0,
+        "n1W": 1,
+        "oe1h": null,
         "oe1T": -0.5,
+        "oe3T": null,
         "oe1W": -1.1,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 0,
+        "quote3T": null,
         "quote1W": 0
+      }
+    },
+    "nachRisiko": {
+      "normal": {
+        "anzahl": 2,
+        "n1T": 2,
+        "n3T": 0,
+        "n1W": 2,
+        "oe1h": null,
+        "oe1T": 0.35,
+        "oe3T": null,
+        "oe1W": 1.15,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 50,
+        "quote3T": null,
+        "quote1W": 50
+      }
+    },
+    "nachMarkt": {
+      "us": {
+        "anzahl": 2,
+        "n1T": 2,
+        "n3T": 0,
+        "n1W": 2,
+        "oe1h": null,
+        "oe1T": 0.35,
+        "oe3T": null,
+        "oe1W": 1.15,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 50,
+        "quote3T": null,
+        "quote1W": 50
       }
     }
   },
-  "zusammenfassung": "Gesamt: 2 Orders, Trefferquote 50 %, Ø -0.59 % nach Gebühren (erwartet waren Ø 3 %).\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 0 % (n=1); 60–79 %: 100 % (n=1)."
+  "nachHerkunft": {
+    "claude": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "oeNetto": -0.59,
+      "oeNachSteuern": -0.58,
+      "summeNetto": -11.6
+    }
+  },
+  "zusammenfassung": "Gesamt: 2 Orders, Trefferquote 50 %, Ø -0.59 % nach Gebühren (erwartet waren Ø 3 %).\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 0 % (n=1); 60–79 %: 100 % (n=1).",
+  "autopilot": [
+    {
+      "typ": "insider_cluster_kauf",
+      "gruppe": "aktie",
+      "faelle": 24,
+      "chance": 54.2,
+      "oeNetto": 1.8,
+      "huerde": 2.78,
+      "bewiesen": true
+    },
+    {
+      "typ": "neulistung",
+      "gruppe": "krypto",
+      "faelle": 9,
+      "chance": 33.3,
+      "oeNetto": -1.2,
+      "huerde": 0.7,
+      "bewiesen": false
+    }
+  ],
+  "zielStop": [
+    {
+      "typ": "insider_cluster_kauf",
+      "faelle": 14,
+      "zielBruttoProzent": 8,
+      "zielNettoProzent": 5.2,
+      "stopProzent": -5,
+      "oeNetto": 1.9,
+      "ohneRegelOeNetto": 0.6,
+      "huerde": 2.78
+    }
+  ]
 }

@@ -13,9 +13,17 @@ export interface EreignisDaten {
   gekauft: { kauf: Ausfuehrung; zielkurs: number; stopkurs: number; etf?: Kurs };
   angepasst: { anpassung: Anpassung };
   verkauft: { verkauf: Ausfuehrung & { grund: Verkaufsgrund }; ergebnis: { kursProzent: number; netto: number; nettoProzent: number; gebuehren: number } };
+  teilverkauft: { verkauf: Ausfuehrung & { grund: Verkaufsgrund } };
   verworfen: { grund: string };
-  bericht: { text: string; learnings: string[] };
+  bericht: { text: string; learnings: string[]; einwandEingetreten?: boolean };
   etfVergleich: { netto: number; nettoProzent: number };
+}
+
+/** Noch gehaltene Stücke (Kauf minus Teilverkäufe). Krypto direkt kennt Bruchstücke. */
+export function restStueck(o: Order): number {
+  if (!o.kauf) return 0;
+  const weg = (o.teilverkaeufe ?? []).reduce((a, t) => a + t.stueck, 0);
+  return runde(o.kauf.stueck - weg, 8);
 }
 
 export function ordersAusEreignissen(ereignisse: Ereignis[]): Order[] {
@@ -54,6 +62,12 @@ export function ordersAusEreignissen(ereignisse: Ereignis[]): Order[] {
         if (a.feld === 'verkaufstermin') o.verkaufstermin = String(a.neu);
         break;
       }
+      case 'teilverkauft': {
+        const d = e.daten as unknown as EreignisDaten['teilverkauft'];
+        if (!o || o.status !== 'offen') throw new Error(`Teilverkauf ohne offene Position: ${e.orderId}`);
+        o.teilverkaeufe = [...(o.teilverkaeufe ?? []), d.verkauf];
+        break;
+      }
       case 'verkauft': {
         const d = e.daten as unknown as EreignisDaten['verkauft'];
         if (!o || o.status !== 'offen') throw new Error(`Verkauf ohne offene Position: ${e.orderId}`);
@@ -65,7 +79,11 @@ export function ordersAusEreignissen(ereignisse: Ereignis[]): Order[] {
         break;
       }
       case 'bericht': {
-        if (o) o.bericht = (e.daten as unknown as EreignisDaten['bericht']).text;
+        if (o) {
+          const d = e.daten as unknown as EreignisDaten['bericht'];
+          o.bericht = d.text;
+          if (typeof d.einwandEingetreten === 'boolean') o.einwandEingetreten = d.einwandEingetreten;
+        }
         break;
       }
       case 'etfVergleich': {
@@ -125,7 +143,9 @@ export function ableiten(
     if (k) o.letzterKurs = k;
     if (!k || !o.kauf) continue;
     const { geld } = geldBrief(k, o.plan.wertpapier.spreadKlasse, cfg.spreads);
-    unrealisiert += verkaufen(o.kauf.stueck, geld, cfg.gebuehren, { handelsplatz: o.plan.wertpapier.handelsplatz }).betrag - o.kauf.betrag;
+    const teile = (o.teilverkaeufe ?? []).reduce((a, t) => a + t.betrag, 0);
+    const rest = restStueck(o);
+    unrealisiert += (rest > 0 ? verkaufen(rest, geld, cfg.gebuehren, { handelsplatz: o.plan.wertpapier.handelsplatz }).betrag : 0) + teile - o.kauf.betrag;
   }
 
   const nachDatum = [...geschlossen].sort((a, b) => a.verkauf!.zeit.localeCompare(b.verkauf!.zeit));
@@ -163,7 +183,13 @@ export function ableiten(
       ...(cfg.gebuehrenSmartbroker
         ? {
             nettoSmartbroker: runde(
-              geschlossen.reduce((s, o) => s + o.ergebnis!.netto + o.kauf!.entgelt.gesamt + o.verkauf!.entgelt.gesamt - entgeltVergleich([o.kauf!.kurswert, o.verkauf!.kurswert], cfg.gebuehrenSmartbroker!), 0),
+              geschlossen.reduce((s, o) => {
+                // Krypto direkt läuft immer über Trade Republic (Smartbroker+ hat keinen Direkthandel) → unverändert
+                if (o.plan.wertpapier.anlageklasse === 'krypto') return s + o.ergebnis!.netto;
+                const teile = o.teilverkaeufe ?? [];
+                const consors = o.kauf!.entgelt.gesamt + o.verkauf!.entgelt.gesamt + teile.reduce((a, t) => a + t.entgelt.gesamt, 0);
+                return s + o.ergebnis!.netto + consors - entgeltVergleich([o.kauf!.kurswert, ...teile.map((t) => t.kurswert), o.verkauf!.kurswert], cfg.gebuehrenSmartbroker!);
+              }, 0),
             ),
           }
         : {}),

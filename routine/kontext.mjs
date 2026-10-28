@@ -85,6 +85,14 @@ if (nachTyp.length) {
 }
 const pumpGr = statistik?.kandidaten?.nachRisiko?.pump_verdacht;
 if (pumpGr?.anzahl >= 5) p(`Pump-Verdacht im Schattenbuch: n=${pumpGr.anzahl}, Ø ${pumpGr.oe1T ?? '–'} % nach 1 Tag, ${pumpGr.oe1W ?? '–'} % nach 1 Woche`);
+// S2: Autopilot, Ziel/Stop-Vorschläge, Tagesprognose, Gegenprüfung
+const ap = statistik?.autopilot ?? [];
+const apBew = ap.filter((b) => b.bewiesen);
+if (apBew.length) p(`🤖 Autopilot kauft selbst (bewiesen): ${apBew.map((b) => `${b.typ}/${b.gruppe} ${b.chance} % im Plus, Ø ${b.oeNetto} % (n=${b.faelle})`).join('; ')}`);
+else if (ap.length) p(`🤖 Autopilot: noch nichts bewiesen. Am nächsten dran: ${ap.slice(0, 3).map((b) => `${b.typ}/${b.gruppe} n=${b.faelle}, ${b.chance} %, Ø ${b.oeNetto} %`).join('; ')}`);
+const zs = statistik?.zielStop ?? [];
+if (zs.length) p(`Ziel/Stop-Vorschlag je Signaltyp (Schattenbuch, nach Gebühren): ${zs.slice(0, 6).map((z) => `${z.typ}: Ziel ${z.zielNettoProzent} % netto / Stop ${z.stopProzent} % → Ø ${z.oeNetto} % (ohne Regel ${z.ohneRegelOeNetto} %, n=${z.faelle})`).join('; ')}`);
+if (statistik?.prognose?.n1T) p(`Deine Tagesprognosen bisher: ${statistik.prognose.quote1T} % Richtung richtig (n=${statistik.prognose.n1T}), Ø ${statistik.prognose.oe1T} % gerichtet.`);
 p('');
 
 p('## 2. Lektionen');
@@ -95,11 +103,11 @@ p(`## 3. Offene Positionen (${pos.offen.length})`);
 for (const o of pos.offen) {
   const k = o.letzterKurs;
   p(
-    `- ${o.id}: ${o.plan.wertpapier.name} (${o.plan.wertpapier.isin}) · ${o.kauf.stueck} Stk. Kauf ${o.kauf.kurs} € (${o.kauf.zeit.slice(0, 16)}) · jetzt ${k ? `${k.wert} € (${k.zeit.slice(11, 16)} UTC, ${k.quelle})` : '–'} = ${pct(k?.wert, o.kauf.kurs)} · Ziel ${o.zielkurs} € · Stop ${o.stopkurs} € · Verkauf ${o.verkaufstermin.slice(0, 16)} · Chance war ${o.plan.konfidenz} % · ${o.plan.strategie}`,
-    `  These: ${kurz(o.plan.these)}`,
+    `- ${o.plan.herkunft === 'autopilot' ? '🤖 ' : ''}${o.id}: ${o.plan.wertpapier.name} (${o.plan.wertpapier.isin || o.plan.wertpapier.ticker || 'Krypto'}) · ${o.kauf.stueck} Stk.${o.teilverkaeufe?.length ? ` (davon ${o.teilverkaeufe.reduce((a, t) => a + t.stueck, 0)} schon verkauft)` : ''} Kauf ${o.kauf.kurs} € (${o.kauf.zeit.slice(0, 16)}) · jetzt ${k ? `${k.wert} € (${k.zeit.slice(11, 16)} UTC, ${k.quelle})` : '–'} = ${pct(k?.wert, o.kauf.kurs)} · Ziel ${o.zielkurs} € · Stop ${o.stopkurs} € · Verkauf ${o.verkaufstermin.slice(0, 16)} · Chance war ${o.plan.konfidenz} % · ${o.plan.strategie}`,
+    `  These: ${kurz(o.plan.these)}${o.plan.gegenpruefung ? ` · Einwand (${o.plan.gegenpruefung.risiko} %): ${kurz(o.plan.gegenpruefung.einwand, 120)}` : ''}`,
   );
 }
-if (pos.vorgemerkt.length) p(`Vorgemerkt (noch nicht ausgeführt): ${pos.vorgemerkt.map((o) => `${o.id} ${o.plan.wertpapier.name}`).join('; ')}`);
+if (pos.vorgemerkt.length) p(`Vorgemerkt (noch nicht ausgeführt): ${pos.vorgemerkt.map((o) => `${o.plan.herkunft === 'autopilot' ? '🤖 ' : ''}${o.id} ${o.plan.wertpapier.name}`).join('; ')}`);
 p('');
 
 const offeneEreignisse = await json('offene-ereignisse.json', []);
@@ -115,8 +123,8 @@ if (typ === 'abendlauf' || typ === 'wochenrueckblick') {
   p(`## 4. Abgeschlossen ohne Bericht (${offenBericht.length})`);
   for (const o of offenBericht.slice(0, 8)) {
     p(
-      `- ${o.id}: ${o.plan.wertpapier.name} · ${o.plan.strategie} · Chance war ${o.plan.konfidenz} %${o.plan.pflichtOrder ? ' (Pflicht)' : ''} · erhofft ${o.plan.erwarteteRenditeNetto} %`,
-      `  Kauf ${o.kauf.kurs} € ${o.kauf.zeit.slice(0, 16)} → Verkauf ${o.verkauf.kurs} € ${o.verkauf.zeit.slice(0, 16)} (${o.verkauf.grund}) · Kurs ${o.ergebnis.kursProzent} % · netto ${o.ergebnis.netto} € (${o.ergebnis.nettoProzent} %) · ETF ${o.etfVergleich?.netto ?? '–'} €`,
+      `- ${o.plan.herkunft === 'autopilot' ? '🤖 ' : ''}${o.id}: ${o.plan.wertpapier.name} · ${o.plan.strategie} · Chance war ${o.plan.konfidenz} %${o.plan.pflichtOrder ? ' (Pflicht)' : ''} · erhofft ${o.plan.erwarteteRenditeNetto} %${o.plan.gegenpruefung ? ` · Einwand (${o.plan.gegenpruefung.risiko} %): ${kurz(o.plan.gegenpruefung.einwand, 120)} → einwandEingetreten?` : ''}`,
+      `  Kauf ${o.kauf.kurs} € ${o.kauf.zeit.slice(0, 16)} → ${o.teilverkaeufe?.length ? `Teilverkauf ${o.teilverkaeufe.map((t) => `${t.stueck} Stk. à ${t.kurs} €`).join(', ')}, Rest ` : ''}Verkauf ${o.verkauf.kurs} € ${o.verkauf.zeit.slice(0, 16)} (${o.verkauf.grund}) · Kurs ${o.ergebnis.kursProzent} % · netto ${o.ergebnis.netto} € (${o.ergebnis.nettoProzent} %) · ETF ${o.etfVergleich?.netto ?? '–'} €`,
       `  These: ${kurz(o.plan.these, 300)}`,
       `  Auslöser: ${kurz(o.plan.ausloeser)} · Signale: ${o.plan.signalIds.join(', ') || '–'} · Anpassungen: ${o.anpassungen.map((a) => `${a.feld}→${a.neu}`).join(', ') || '–'}`,
     );
@@ -143,13 +151,24 @@ if (typ === 'ereignislauf' && orderArg) {
   p('## Betroffene Position (vollständig)', o ? JSON.stringify(o, null, 1).slice(0, 6000) : `(Order ${orderArg} nicht offen)`, '');
 }
 
-if (typ === 'mittagslauf' || typ === 'morgenlauf') {
+if (typ === 'mittagslauf' || typ === 'morgenlauf' || typ === 'abendlauf') {
   const gel = await json('gelegenheiten.json', { datum: '', liste: [] });
   const liste = gel.datum === datum ? gel.liste : [];
   p(`## ⚡ Gelegenheiten heute (${liste.length}) – Kursraketen, Drift nach Zahlen, Übernahmen`);
   if (!liste.length) p('(keine)');
-  for (const g of liste.slice(-25)) p(`- [${g.id}] ${g.wertpapier.name}${g.wertpapier.isin ? ' ' + g.wertpapier.isin : ''}${g.wertpapier.ticker ? ' (' + g.wertpapier.ticker + ')' : ''}: ${kurz(g.fakt, 200)} · ${g.quellen.join(', ')} ${g.link ?? ''}`);
+  for (const g of liste.slice(typ === 'abendlauf' ? -12 : -25)) p(`- [${g.id}] ${g.wertpapier.name}${g.wertpapier.isin ? ' ' + g.wertpapier.isin : ''}${g.wertpapier.ticker ? ' (' + g.wertpapier.ticker + ')' : ''}: ${kurz(g.fakt, 200)} · ${g.quellen.join(', ')} ${g.link ?? ''}`);
   p('');
+}
+
+if (typ === 'abendlauf') {
+  // Abends dürfen US-Werte gekauft werden: die besten US-/Krypto-Kandidaten des Tages kompakt
+  const sig = await json(`signale/${datum}.json`, { kandidaten: [] });
+  const us = (sig.kandidaten ?? []).filter((k) => k.ticker && (k.markt === 'us' || k.markt === 'krypto' || /^[A-Z][A-Z0-9-]{0,5}$/.test(k.ticker)) && !k.pump).slice(0, 12);
+  if (us.length) {
+    p(`## US-/Krypto-Kandidaten heute (${us.length})`);
+    for (const k of us) p(`- ${k.name} (${k.ticker}${k.isin ? ' ' + k.isin : ''}): Score ${k.score} · ${k.typen.join(', ')} · ${k.quellen.slice(0, 3).join(', ')}`);
+    p('');
+  }
 }
 
 if (typ === 'morgenlauf' || typ === 'ereignislauf') {

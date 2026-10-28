@@ -11,6 +11,7 @@ import { entscheidungUebernehmen, type Entscheidung } from '../../core/entscheid
 import type { KalibrierStufe } from '../../core/datenkrake.ts';
 import { pushAngepasst, pushBericht, pushBriefing, pushWarnung, type PushNachricht } from '../../core/push.ts';
 import type { Order } from '../../core/typen.ts';
+import type { TrackingEintrag } from '../../core/statistik.ts';
 import { DATEN_DIR, haengeEreignisseAn, ladeConfig, leseEreignisse, leseJson, schreibeJson, schreibeText } from './dateien.ts';
 
 const git = (...args: string[]) => execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
@@ -87,7 +88,7 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
 
       const vorher = ordersAusEreignissen(leseEreignisse());
       const st = leseJson<{ risikoBudget?: typeof cfg.einstellungen.risikoBudget; kalibrierung?: KalibrierStufe[] }>('statistik.json', {});
-      const u = entscheidungUebernehmen(e, vorher, jetzt, { ...cfg.einstellungen, risikoBudget: st.risikoBudget ?? cfg.einstellungen.risikoBudget, mindestChance: cfg.einstellungen.mindestChance ?? 40, kalibrierung: st.kalibrierung });
+      const u = entscheidungUebernehmen(e, vorher, jetzt, { ...cfg.einstellungen, risikoBudget: st.risikoBudget ?? cfg.einstellungen.risikoBudget, mindestChance: cfg.einstellungen.mindestChance ?? 40, kalibrierung: st.kalibrierung, claudeOrders: cfg.einstellungen.claudeOrders });
       const neu = haengeEreignisseAn(u.ereignisse);
       const nachher = ordersAusEreignissen(leseEreignisse());
       const nachId = new Map<string, Order>(nachher.map((o) => [o.id, o]));
@@ -102,6 +103,17 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
       if (e.gewichtsvorschlaege?.length) {
         const v = leseJson<unknown[]>('lernen/vorschlaege.json', []);
         schreibeJson('lernen/vorschlaege.json', [...e.gewichtsvorschlaege.map((g) => ({ ...g, datum: e.datum, status: 'offen' })), ...v].slice(0, 200));
+      }
+      // Claudes Tagesprognose (ohne Geld): ins Schattenbuch, Startkurs setzt der nächste Sammler-Lauf
+      if (e.typ === 'morgenlauf' && e.prognose?.length) {
+        schreibeJson(`lernen/prognosen/${e.datum}.json`, { datum: e.datum, erstellt: e.erstellt, prognose: e.prognose });
+        const liste = leseJson<TrackingEintrag[]>('kandidaten-tracking.json', []);
+        for (const p of e.prognose.slice(0, 10)) {
+          const schluessel = `prognose:${p.markt}:${p.ticker.toUpperCase()}`;
+          if (liste.some((t) => t.datum === e.datum && t.schluessel === schluessel)) continue;
+          liste.push({ datum: e.datum, schluessel, name: p.name, ticker: p.ticker.toUpperCase(), markt: p.markt, score: p.richtung === 'runter' ? -1 : 1, typen: ['claude_prognose'], quellen: ['Claude-Tagesprognose'], art: 'prognose' });
+        }
+        schreibeJson('kandidaten-tracking.json', liste);
       }
       if (e.wochenrueckblick) {
         schreibeText(`wochen/${e.datum}.md`, e.wochenrueckblick.text + '\n');

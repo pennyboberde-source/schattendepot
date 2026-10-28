@@ -1,7 +1,7 @@
 // Geld-/Briefkurs: echt, wenn die Quelle ihn liefert, sonst synthetisch aus Mittelkurs und Spread (config/spreads.json).
 import { runde } from './geld.ts';
 
-export type SpreadKlasse = 'aktie_dax' | 'aktie_large' | 'aktie_neben' | 'etf' | 'hebel' | 'krypto_etn' | 'spekulativ';
+export type SpreadKlasse = 'aktie_dax' | 'aktie_large' | 'aktie_neben' | 'etf' | 'hebel' | 'krypto_etn' | 'krypto' | 'spekulativ';
 
 export interface SpreadConfig {
   klassen: Record<SpreadKlasse, { name: string; prozent: number; spanne: [number, number] }>;

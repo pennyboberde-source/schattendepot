@@ -21,4 +21,8 @@ export const VERKAUFSGRUND_TEXT: Record<Verkaufsgrund, string> = {
   termin: 'Verkaufstermin',
   knockout: 'Knock-out',
   claude: 'Entscheidung Claude',
+  nachziehstop: 'Nachgezogener Stop',
+  teilziel: 'Teilverkauf am 1. Ziel',
+  gegensignal: 'Starkes Gegensignal',
+  zeit: 'Zeit-Ausstieg ohne Bewegung',
 };
