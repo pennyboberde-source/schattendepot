@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-28T04:42:47.200Z",
+  "stand": "2026-10-28T07:57:03.522Z",
   "quellen": [
     {
       "id": "alphavantage",
@@ -23,14 +23,14 @@
     {
       "id": "cnbc",
       "name": "CNBC Top News",
-      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "zuletztOk": "2026-10-28T07:57:03.522Z",
       "signale": 7
     },
     {
       "id": "faz",
       "name": "FAZ Finanzen",
-      "zuletztOk": "2026-10-28T04:42:47.200Z",
-      "signale": 3
+      "zuletztOk": "2026-10-28T07:57:03.522Z",
+      "signale": 4
     },
     {
       "id": "fmp",
@@ -48,10 +48,10 @@
       "id": "finnhub",
       "name": "Finnhub",
       "letzterFehler": "2026-10-21T15:25:20.991Z: Schlüssel FINNHUB_API_KEY fehlt",
-      "zuletztOk": "2026-10-28T04:42:47.200Z",
-      "signale": 59,
+      "zuletztOk": "2026-10-28T07:57:03.522Z",
+      "signale": 0,
       "kontingent": {
-        "genutzt": 8,
+        "genutzt": 16,
         "limit": 1500,
         "zeitraum": "Tag"
       }
@@ -74,30 +74,30 @@
       "name": "GDELT (Nachrichten zu Positionen)",
       "zuletztOk": "2026-10-22T14:35:50.701Z",
       "signale": 0,
-      "letzterFehler": "2026-10-28T04:42:47.200Z: Zeitlimit 45 s"
+      "letzterFehler": "2026-10-28T07:57:03.522Z: Zeitlimit 45 s"
     },
     {
       "id": "gettex-scanner",
       "name": "gettex-Kursraketen-Scanner",
-      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "zuletztOk": "2026-10-28T07:57:03.522Z",
       "signale": 0
     },
     {
       "id": "handelsblatt",
       "name": "Handelsblatt Finanzen",
-      "zuletztOk": "2026-10-28T04:42:47.200Z",
-      "signale": 3
+      "zuletztOk": "2026-10-28T07:57:03.522Z",
+      "signale": 4
     },
     {
       "id": "kraken",
       "name": "Kraken (Krypto)",
-      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "zuletztOk": "2026-10-28T07:57:03.522Z",
       "signale": 0
     },
     {
       "id": "marketwatch",
       "name": "MarketWatch",
-      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "zuletztOk": "2026-10-28T07:57:03.522Z",
       "signale": 2
     },
     {
@@ -114,7 +114,7 @@
     {
       "id": "tagesschau",
       "name": "tagesschau Wirtschaft",
-      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "zuletztOk": "2026-10-28T07:57:03.522Z",
       "signale": 1
     },
     {
