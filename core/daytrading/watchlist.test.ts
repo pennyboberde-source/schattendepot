@@ -11,10 +11,11 @@ const pruefe = ajv.compile(schema);
 const sap: DaytradingWunsch = { name: 'SAP', markt: 'eu', isin: 'DE0007164600', setup: 'orb', richtung: 'beide', instrument: 'aktie', chance: 45, these: 'Zahlen vor Börsenstart, hohes Interesse' };
 
 describe('Daytrading-Watchlist (Morgenlauf)', () => {
-  it('Schema: bis 5 Einträge, Turbo-Hebel 2–10', () => {
+  it('Schema: bis 5 Einträge, Turbo-Hebel 2–100 (keine feste Grenze, nur Sicherheitsnetz)', () => {
     const e = { typ: 'morgenlauf', datum: '2026-10-29', erstellt: '2026-10-29T06:40:00Z', daytrading: [sap, { ...sap, name: 'Turbo', instrument: 'turbo', hebel: 8 }] };
     expect(pruefe(e)).toBe(true);
-    expect(pruefe({ ...e, daytrading: [{ ...sap, hebel: 20 }] })).toBe(false);
+    expect(pruefe({ ...e, daytrading: [{ ...sap, hebel: 50 }] })).toBe(true);
+    expect(pruefe({ ...e, daytrading: [{ ...sap, hebel: 150 }] })).toBe(false);
     expect(pruefe({ ...e, daytrading: [sap, sap, sap, sap, sap, sap] })).toBe(false);
   });
   it('fachlich: ISIN für Aktien, Kürzel für Krypto (nur long), Level braucht Kurs', () => {

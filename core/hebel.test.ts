@@ -61,9 +61,10 @@ describe('Varianten-Schattenbuch', () => {
   it('steigt das Signal stetig, gewinnt mit dem Signal mit Hebel; Knock-outs werden mitgerechnet', () => {
     const l = [...Array(30)].map((_, i) => fall(1 + (i % 3) * 0.2, 2.5, 4 + (i % 5) * 0.3));
     const [v] = variantenSchattenbuch(l, () => 'aktie', KOSTEN, { mindestFaelle: 25, mindestChance: 40 });
-    expect(v.beste).toMatchObject({ richtung: 'mit', horizont: 'r1W', hebel: 10, knockout: 0 });
+    // völlig gleichmäßige Testdaten → die Kelly-Grenze trägt sogar Hebel 50 (in echten Daten selten)
+    expect(v.beste).toMatchObject({ richtung: 'mit', horizont: 'r1W', hebel: 50, knockout: 0 });
     expect(v.basis).toMatchObject({ richtung: 'mit', hebel: 1 });
-    expect(varianteText(v.beste!)).toMatch(/^mit dem Signal, Turbo Hebel 10, 1 Woche: Ø \+/);
+    expect(varianteText(v.beste!)).toMatch(/^mit dem Signal, Turbo Hebel 50, 1 Woche: Ø \+/);
     // Ein Einbruch von −12 % am ersten Tag haut einen Turbo Hebel 10 raus (KO bei −10 %)
     const mitAbsturz = [...l, fall(-12, 0, 5)];
     const v2 = variantenSchattenbuch(mitAbsturz, () => 'aktie', KOSTEN, { mindestFaelle: 25, mindestChance: 40 })[0];
@@ -124,7 +125,7 @@ describe('Daytrading: Spielart je Setup', () => {
   it('scheitern Ausbrüche nach oben regelmäßig, gewinnt „gegen den Auslöser“ mit Turbo', () => {
     const t = (i: number): DtTrade => ({ herkunft: 'code_scan', markt: 'eu', setup: 'orb', richtung: 'long', ausloeser: { zeit: '', kurs: 0, level: 0, richtung: 'long' }, einstieg: { zeit: '', basisKurs: 100, kurs: 100, stueck: 10, kurswert: 1000 }, ausstieg: { zeit: '', basisKurs: 99 - (i % 3) * 0.2, kurs: 0, kurswert: 0, grund: 'stop' }, ergebnis: { brutto: 0, bruttoProzent: 0, netto: -10, nettoProzent: -1, nettoTR: 0, gebuehren: { haupt: 0, tr: 0 }, r: -1 } }) as unknown as DtTrade;
     const v = setupVarianten([...Array(40)].map((_, i) => t(i)), { aktie: 0.15, turbo: 0.5 }, { mindestTrades: 30, mindestChance: 40 });
-    expect(v['eu:orb_long'].beste).toMatchObject({ richtung: 'gegen', hebel: 10 });
+    expect(v['eu:orb_long'].beste).toMatchObject({ richtung: 'gegen', hebel: 50 });
   });
 
   it('mit „gegen“-Wahl: Ausbruch nach oben wird als Turbo short gehandelt, ausgewertet nach dem Auslöser', () => {
@@ -135,5 +136,41 @@ describe('Daytrading: Spielart je Setup', () => {
     expect(tr).toMatchObject({ richtung: 'short', instrument: 'turbo', ausloeser: { richtung: 'long' }, turbo: { richtung: 'short', hebel: 5 } });
     const u = uebersichtBerechnen([tr], DATUM, 'x');
     expect(Object.keys(u.nachSetup)).toEqual(['orb_long']);
+  });
+});
+
+describe('Hauptziel: mittelfristige Hebel-Trades (2 Wochen, Hebel 20, vorsichtiger Knock-out, Zinsen)', async () => {
+  const { instrumentKurs } = await import('./bewertung.ts');
+  const fall = (r1T: number, r3T: number, r1W: number, r10T: number): TrackingEintrag => ({ datum: '2026-10-20', schluessel: `${Math.random()}`, name: 'X', ticker: 'ACME', score: 3, typen: ['gewinn_ueberraschung'], quellen: ['Q'], start: 10, r1T, r3T, r1W, r10T });
+
+  it('2 Wochen und hohe Hebel werden geprüft; ein Rücksetzer von −3,1 % zählt bei Hebel 20 schon als Knock-out (Puffer 0,6)', () => {
+    const l = [...Array(30)].map(() => fall(2, 6, 10, 21));
+    const [v] = variantenSchattenbuch(l, () => 'aktie', { ...KOSTEN, koPuffer: 0.6 }, { mindestFaelle: 25, mindestChance: 40 });
+    expect(v.beste).toMatchObject({ horizont: 'r10T', hebel: 50, knockout: 0 });
+    expect(varianteText(v.beste!)).toMatch(/2 Wochen/);
+    expect(v.volltreffer).toEqual({ anteil: 100, faelle: 30, schwelle: 15 });
+    const mitRuecksetzer = [...Array(30)].map(() => fall(-3.1, 6, 10, 21));
+    const [w] = variantenSchattenbuch(mitRuecksetzer, () => 'aktie', { ...KOSTEN, koPuffer: 0.6 }, { mindestFaelle: 25, mindestChance: 40 });
+    expect(w.beste!.hebel).toBeLessThan(20); // Hebel 20 wäre jedes Mal ausgeknockt
+  });
+
+  it('Finanzierungszinsen: nachgebildeter Turbo verliert mit der Zeit an Wert (Basispreis wandert)', () => {
+    const p = plan({ wertpapier: { ...plan().wertpapier, anlageklasse: 'hebel', spreadKlasse: 'hebel' }, hebel: { typ: 'turbo', richtung: 'long', emittent: 'U', basiswert: { name: 'SAP', kursbasis: { markt: 'eu', symbol: 'SAP.DE', waehrung: 'EUR' } }, basispreis: 180.5, koSchwelle: 180.5, bezugsverhaeltnis: 0.1, synthetisch: true, finanzierungProzentJahr: 5 } });
+    const kauf = new Date('2026-10-01T08:00:00Z');
+    const sofort = instrumentKurs(p, { wert: 190, zeit: 'x', quelle: 'x' }, undefined, kauf, kauf).kurs.wert;
+    const nach10 = instrumentKurs(p, { wert: 190, zeit: 'x', quelle: 'x' }, undefined, new Date(kauf.getTime() + 10 * 86400000), kauf).kurs.wert;
+    expect(sofort).toBe(0.95);
+    expect(nach10).toBeCloseTo(0.95 - (180.5 * 0.05 * 10) / 365.25 / 10, 3); // ≈ 0,9253 €
+  });
+});
+
+describe('Hebel klug begrenzt (halbe Kelly-Grenze)', () => {
+  const fall = (r: number): TrackingEintrag => ({ datum: '2026-10-20', schluessel: `${Math.random()}`, name: 'X', ticker: 'ACME', score: 3, typen: ['insider_kauf'], quellen: ['Q'], start: 10, r1T: r, r3T: r, r1W: r, r10T: r });
+  it('wackliger Vorteil (abwechselnd +8 % / −2 %) → höchstens Hebel 3, nicht 20', () => {
+    const l = [...Array(40)].map((_, i) => fall(i % 2 ? 8 : -2));
+    const [v] = variantenSchattenbuch(l, () => 'aktie', { ...KOSTEN, koPuffer: 0.6 }, { mindestFaelle: 25, mindestChance: 40 });
+    expect(v.beste!.hebel).toBeLessThanOrEqual(3);
+    expect(v.beste!.hebelGrenze).toBeGreaterThan(3);
+    expect(v.beste!.hebelGrenze).toBeLessThan(5);
   });
 });

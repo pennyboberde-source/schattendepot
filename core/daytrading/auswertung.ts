@@ -70,7 +70,7 @@ export interface DtVariante {
 
 /**
  * Varianten je Setup (Markt:Setup_Auslöserrichtung) des Code-Scans: Was hätte jeder Trade gebracht – mit/gegen den
- * Auslöser, als Aktie oder Turbo Hebel 3/5/10? Grundlage ist die tatsächliche Bewegung des Basiswerts vom Einstieg bis
+ * Auslöser, als Aktie oder Turbo Hebel 3–50 (höchstens bis zur halben Kelly-Grenze)? Grundlage ist die tatsächliche Bewegung des Basiswerts vom Einstieg bis
  * zum Ausstieg. Beste Variante = Ø minus ein Standardfehler > 0 (vorsichtig), ab mindestTrades.
  */
 export function setupVarianten(trades: DtTrade[], kosten: { aktie: number; turbo: number }, e: { mindestTrades: number; mindestChance: number }): Record<string, { beste: DtVariante | null; basis: DtVariante | null }> {
@@ -89,7 +89,7 @@ export function setupVarianten(trades: DtTrade[], kosten: { aktie: number; turbo
     const alle: DtVariante[] = [];
     for (const richtung of ['mit', 'gegen'] as const) {
       const long = ausloeserLong === (richtung === 'mit');
-      for (const hebel of krypto ? [1] : [1, 3, 5, 10]) {
+      for (const hebel of krypto ? [1] : [1, 3, 5, 10, 20, 50]) {
         if (hebel === 1 && !long) continue; // ohne Hebel kein Leerverkauf
         if (krypto && richtung === 'gegen') continue;
         const r = bew.map((m) => Math.max(-100, hebel * (richtung === 'mit' ? m : -m)) - (hebel === 1 ? kosten.aktie : kosten.turbo));
@@ -99,7 +99,14 @@ export function setupVarianten(trades: DtTrade[], kosten: { aktie: number; turbo
         alle.push({ richtung, hebel, faelle: n, chance: runde((r.filter((x) => x > 0).length / n) * 100, 1), oeNetto: runde(m, 2), wertung: runde(m - sd / Math.sqrt(n), 2) });
       }
     }
-    const beste = alle.filter((v) => v.faelle >= e.mindestTrades && v.chance >= e.mindestChance && v.wertung > 0).sort((a, b) => b.wertung - a.wertung)[0] ?? null;
+    // Hebel höchstens bis zur halben Kelly-Grenze der Basiswert-Bewegung (nicht automatisch den größten Hebel)
+    const grenze = (richtung: 'mit' | 'gegen') => {
+      const r = bew.map((m) => (richtung === 'mit' ? m : -m) - kosten.aktie);
+      const m = r.reduce((x, y) => x + y, 0) / r.length;
+      const sd = Math.max(0.1, Math.sqrt(r.reduce((x, y) => x + (y - m) ** 2, 0) / Math.max(1, r.length - 1)));
+      return m <= 0 ? 1 : Math.min(50, 0.5 * ((100 * m) / sd ** 2));
+    };
+    const beste = alle.filter((v) => v.faelle >= e.mindestTrades && v.chance >= e.mindestChance && v.wertung > 0 && (v.hebel === 1 || v.hebel <= grenze(v.richtung))).sort((a, b) => b.wertung - a.wertung)[0] ?? null;
     out[k] = { beste, basis: alle.find((v) => v.richtung === 'mit' && (v.hebel === 1 || !ausloeserLong)) ?? null };
   }
   return out;

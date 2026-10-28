@@ -63,6 +63,8 @@ export interface Hebel {
   bezugsverhaeltnis: number;
   /** vom Code beim Kauf nachgebildeter Turbo (kein echtes Produkt; Basiswert-Kurs in EUR) */
   synthetisch?: boolean;
+  /** Finanzierungskosten in % p. a.: Basispreis und Knock-out wandern täglich (long nach oben, short nach unten) */
+  finanzierungProzentJahr?: number;
 }
 
 /** Krypto-ETN: synthetisch aus dem Basiswert (z. B. BTC/EUR) abzüglich laufender Kosten. */

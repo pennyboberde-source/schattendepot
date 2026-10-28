@@ -6,7 +6,8 @@
   "gebuehrenHinweis": "Gebührenmodell für Depot und Daytrading: Smartbroker+ (gettex). Alle Orders werden damit gerechnet.",
   "mindestChance": 40,
   "mindestChanceHinweis": "Jeder Kauf nur bei Chance ≥ 40 % (vom Code mit der bisherigen Treffsicherheit korrigiert) und positivem Erwartungswert nach Gebühren. Keine Pflicht-Orders (Plan Datenkrake, 28.10.2026).",
-  "hebelMax": 20,
+  "hebelMax": 100,
+  "hebelHinweis": "Nutzer 28.10.2026: Hebelgrenze aufgehoben – wenn es wirklich passt, auch Hebel 50; normalerweise nur, was Sinn macht. 100 ist nur ein technisches Sicherheitsnetz gegen Tippfehler; die eigentliche Bremse sind halbe Kelly-Grenze, Stop ≤ −25 % des Turbos und das Risiko-Budget.",
   "haltedauerMinMinuten": 15,
   "haltedauerMaxTage": 31,
   "ereignisSchwelleProzent": 5,
@@ -85,7 +86,14 @@
   "varianten": {
     "hinweis": "Varianten-Schattenbuch (Nutzer 28.10.2026: herausfiltern, wo Hebel, Richtung und Haltedauer passen): je Signal virtuell mit/gegen das Signal, ohne Hebel bzw. Turbo Hebel 2/3/5/10, 1/3/5 Tage; beste Spielart = Ø minus ein Standardfehler > 0, ab mindestFaelle. Der Autopilot handelt die beste Spielart.",
     "mindestFaelle": 25,
-    "finanzierungProzentJahr": 5
+    "finanzierungProzentJahr": 5,
+    "koPuffer": 0.6,
+    "koPufferHinweis": "Turbo gilt schon als ausgeknockt, wenn ein Messpunkt 60 % des Abstands zum Knock-out erreicht (Tiefs zwischen den Messpunkten sind unbekannt) – vorsichtig, gerade bei Hebel 10/20.",
+    "volltrefferProzent": 15,
+    "kellyAnteil": 0.5,
+    "hebelMax": 50,
+    "kellyHinweis": "Hebel klug begrenzt (Nutzer: „nicht immer Hebel 20, aber als Option im Hinterkopf“): höchstens die halbe Kelly-Grenze μ/σ² der ungehebelten Bewegung – Hebel 20 nur bei starkem und sehr gleichmäßigem Vorteil.",
+    "hauptzielHinweis": "Hauptziel des Nutzers (28.10.2026): herauskristallisieren, wo sich mittelfristige Hebel-Trades lohnen (z. B. SAP 190 → 230 € in 10 Tagen mit Hebel) – Haltedauer bis 2 Wochen, Hebel bis 20, Volltreffer-Quote je Signal."
   },
   "zielStop": {
     "hinweis": "Ziel/Stop je Signaltyp aus dem Schattenbuch optimieren (Messpunkte 1/3/5 Handelstage, nach Gebühren). Vorschlag für Claude und Autopilot ab mindestFaelle.",

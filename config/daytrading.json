@@ -33,6 +33,6 @@
   "nyseFeiertage": ["2026-11-26", "2026-12-25", "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24"],
   "timeMachine": { "aktiv": true, "maxJeLauf": 3, "wiederholungen": 10000, "seed": 19, "minSitzungen": 20 },
   "autopilot": { "aktiv": true, "horizont": "r1h", "mindestFaelle": 20, "maxJeTag": 6, "maxSignalAlterMin": 90 },
-  "claude": { "maxWatchlist": 5, "hebelMin": 2, "hebelMax": 10 },
+  "claude": { "maxWatchlist": 5, "hebelMin": 2, "hebelMax": 100 },
   "abendbilanzAb": "22:10"
 }

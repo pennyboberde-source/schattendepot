@@ -102,6 +102,8 @@ if (apBew.length) p(`🤖 Autopilot kauft selbst (bewiesen): ${apBew.map((b) => 
 else if (ap.length) p(`🤖 Autopilot: noch nichts bewiesen. Am nächsten dran: ${ap.slice(0, 3).map((b) => `${b.typ}/${b.gruppe} n=${b.faelle}, ${b.chance} %, Ø ${b.oeNetto} %`).join('; ')}`);
 const zs = statistik?.zielStop ?? [];
 if (zs.length) p(`Ziel/Stop-Vorschlag je Signaltyp (Schattenbuch, nach Gebühren): ${zs.slice(0, 6).map((z) => `${z.typ}: Ziel ${z.zielNettoProzent} % netto / Stop ${z.stopProzent} % → Ø ${z.oeNetto} % (ohne Regel ${z.ohneRegelOeNetto} %, n=${z.faelle})`).join('; ')}`);
+const vt = (statistik?.varianten ?? []).filter((x) => x.volltreffer && x.volltreffer.faelle >= 10).sort((a, b) => b.volltreffer.anteil - a.volltreffer.anteil).slice(0, 5);
+if (vt.length) p(`Volltreffer-Quote (≥ 15 % binnen 2 Wochen in Signalrichtung – Hebel-Kandidaten): ${vt.map((x) => `${x.typ}/${x.gruppe} ${x.volltreffer.anteil} % (n=${x.volltreffer.faelle})`).join('; ')}`);
 if (statistik?.prognose?.n1T) p(`Deine Tagesprognosen bisher: ${statistik.prognose.quote1T} % Richtung richtig (n=${statistik.prognose.n1T}), Ø ${statistik.prognose.oe1T} % gerichtet.`);
 p('');
 

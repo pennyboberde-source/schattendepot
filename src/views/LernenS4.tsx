@@ -75,20 +75,27 @@ export function MonatspruefungKarte() {
 /** Varianten-Schattenbuch: welche Spielart (Richtung, Hebel, Haltedauer) je Signal am besten gewesen wäre. */
 export function SpielartKarte({ s }: { s: Statistik }) {
   const v = (s.varianten ?? []).filter((x) => x.beste).slice(0, 12);
+  const vt = (s.varianten ?? []).filter((x) => x.volltreffer && x.volltreffer.faelle >= 10).sort((a, b) => b.volltreffer!.anteil - a.volltreffer!.anteil).slice(0, 6);
   return (
     <Karte titel="Beste Spielart je Signal – Hebel, Richtung, Haltedauer">
-      <p class="klein">Für jedes Signal rechnet die Datenkrake nach, was mit oder gegen das Signal, ohne Hebel oder als Turbo (Hebel 2–10) und bei 1, 3 oder 5 Tagen Haltedauer herausgekommen wäre – vorsichtig bewertet, damit kein Zufallstreffer gewinnt. Der Autopilot handelt die beste Spielart.</p>
+      <p class="klein">Für jedes Signal rechnet die Datenkrake nach, was mit oder gegen das Signal, ohne Hebel oder als Turbo (Hebel 2–20) und bei 1, 3, 5 oder 10 Handelstagen Haltedauer herausgekommen wäre – vorsichtig bewertet, damit kein Zufallstreffer gewinnt. Der Autopilot handelt die beste Spielart.</p>
       {v.length ? (
         <ul class="liste" data-testid="spielart-liste">
           {v.map((x) => (
             <li key={`${x.typ}-${x.gruppe}`}>
               <strong>{x.typ}</strong> <span class="klein">({x.gruppe === 'krypto' ? 'Krypto' : 'Aktien'})</span>: {varianteText(x.beste!)}
               {x.basis ? <span class="klein"> · einfach kaufen: Ø {prozent(x.basis.oeNetto)}</span> : null}
+              {x.volltreffer ? <span class="klein"> · Volltreffer (≥ {x.volltreffer.schwelle} % in 2 Wochen): {prozent(x.volltreffer.anteil, { vorzeichen: false })}</span> : null}
             </li>
           ))}
         </ul>
       ) : (
         <p class="leer">Noch kein Signal mit genug Fällen (ab 25) und klarem Vorteil – füllt sich in den nächsten Wochen.</p>
+      )}
+      {vt.length > 0 && (
+        <p class="klein" data-testid="volltreffer">
+          Volltreffer-Quote (Wert lief binnen 2 Wochen ≥ 15 % in Signalrichtung – Kandidaten für Hebel): {vt.map((x) => `${x.typ} ${prozent(x.volltreffer!.anteil, { vorzeichen: false })} (n=${x.volltreffer!.faelle})`).join(' · ')}
+        </p>
       )}
     </Karte>
   );

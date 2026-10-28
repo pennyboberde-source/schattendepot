@@ -73,7 +73,7 @@ export interface Einstellungen {
   /** Höchstzahl neuer Orders je Claude-Lauf (S2) */
   claudeOrders?: Partial<Record<'morgenlauf' | 'mittagslauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick', number>>;
   /** Varianten-Schattenbuch: Mindestfälle und Turbo-Finanzierung */
-  varianten?: { mindestFaelle: number; finanzierungProzentJahr: number };
+  varianten?: { mindestFaelle: number; finanzierungProzentJahr: number; koPuffer?: number; volltrefferProzent?: number; kellyAnteil?: number; hebelMax?: number };
   verkaufsregeln?: import('../../core/waechter.ts').Verkaufsregeln;
   autopilot?: import('../../core/autopilot.ts').AutopilotEinstellungen;
   zielStop?: import('../../core/zielstop.ts').ZielStopEinstellungen;

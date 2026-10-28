@@ -76,7 +76,14 @@ export function instrumentKurs(p: OrderPlan, basis: Kurs, eurUsd: EurUsd | undef
   const kb = benoetigteKursbasis(p);
   const tagesProzent = basis.vortag ? runde((basis.wert / basis.vortag - 1) * 100, 2) : undefined;
   if (p.hebel) {
-    const hw = hebelWert(p.hebel, basis.wert, eurUsd);
+    // Finanzierungskosten nachgebildeter Turbos: Basispreis/KO wandern seit dem Kauf zulasten des Anlegers
+    let h = p.hebel;
+    if (h.synthetisch && h.finanzierungProzentJahr && etnSeit) {
+      const f = (h.finanzierungProzentJahr / 100) * Math.max(0, (jetzt.getTime() - etnSeit.getTime()) / (365.25 * 86400000));
+      const faktor = h.richtung === 'long' ? 1 + f : 1 - f;
+      h = { ...h, basispreis: h.basispreis * faktor, koSchwelle: h.koSchwelle * faktor };
+    }
+    const hw = hebelWert(h, basis.wert, eurUsd);
     return {
       kurs: { wert: hw.wert, zeit: basis.zeit, quelle: basis.quelle, verzoegertMin: basis.verzoegertMin, synthetisch: true, hinweis: `berechnet aus ${p.hebel.basiswert.name} ${basis.wert}` },
       knockout: hw.knockout,

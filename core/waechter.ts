@@ -40,11 +40,11 @@ export const istKrypto = (o: Order) => o.plan.wertpapier.anlageklasse === 'krypt
 export const SYNTH_EMITTENT = 'UniCredit (synthetisch)';
 
 /** Wunsch-Hebel → nachgebildeter Turbo zum aktuellen Basiskurs (EUR): Basispreis = KO-Schwelle, Hebel wie gewünscht. */
-export function synthetischerTurbo(plan: OrderPlan, basisEur: number): Hebel {
+export function synthetischerTurbo(plan: OrderPlan, basisEur: number, finanzierungProzentJahr?: number): Hebel {
   const w = plan.hebelWunsch!;
   const t = turboAnlegen(basisEur, w.richtung, w.hebel, SYNTH_EMITTENT);
   const kb = plan.wertpapier.kursbasis!;
-  return { typ: 'turbo', richtung: w.richtung, emittent: SYNTH_EMITTENT, basiswert: { name: plan.wertpapier.name, isin: plan.wertpapier.isin, kursbasis: { ...kb, waehrung: 'EUR' } }, basispreis: t.basispreis, koSchwelle: t.basispreis, bezugsverhaeltnis: t.bezugsverhaeltnis, synthetisch: true };
+  return { typ: 'turbo', richtung: w.richtung, emittent: SYNTH_EMITTENT, basiswert: { name: plan.wertpapier.name, isin: plan.wertpapier.isin, kursbasis: { ...kb, waehrung: 'EUR' } }, basispreis: t.basispreis, koSchwelle: t.basispreis, bezugsverhaeltnis: t.bezugsverhaeltnis, synthetisch: true, ...(finanzierungProzentJahr ? { finanzierungProzentJahr } : {}) };
 }
 
 export interface WaechterEinstellungen {
@@ -58,6 +58,8 @@ export interface WaechterEinstellungen {
   ausfallWarnungAktiv?: boolean;
   risikoBudget?: { mindestKursEuro: number };
   verkaufsregeln?: Verkaufsregeln;
+  /** Finanzierungskosten nachgebildeter Turbos (config/einstellungen.json → varianten) */
+  varianten?: { finanzierungProzentJahr?: number };
 }
 
 export interface WaechterKontext {
@@ -196,7 +198,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
         if (o.plan.hebelWunsch && !o.plan.hebel) {
           // Basiskurs in Euro (gettex direkt, sonst Kursbasis umgerechnet) → Turbo nachbilden und bewerten
           const s = direkt ?? inEuro(basis!, o.plan.wertpapier.kursbasis!.waehrung, ctx.eurUsd);
-          turbo = synthetischerTurbo(o.plan, s.wert);
+          turbo = synthetischerTurbo(o.plan, s.wert, cfg.einstellungen.varianten?.finanzierungProzentJahr);
           ik = instrumentKurs({ ...o.plan, hebel: turbo }, { ...s, wert: s.wert }, ctx.eurUsd, jetzt);
         } else ik = bewerte(o, basis, direkt, jetzt);
       } catch (e) {
