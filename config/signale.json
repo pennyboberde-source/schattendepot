@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-21",
+  "stand": "2026-10-28",
   "hinweis": "Grundgewichte je Signal-Typ und Quelle. Der Code passt die aktuellen Gewichte (daten/gewichte.json) wöchentlich anhand der Statistik an – nur innerhalb der Grenzen und ab der Mindestfallzahl.",
   "typen": {
     "insider_cluster_kauf": {
@@ -121,6 +121,36 @@
       "name": "Kursrakete (Small Cap)",
       "gewicht": 1,
       "richtung": 0
+    },
+    "shortreport": {
+      "name": "Short-Seller-Bericht",
+      "gewicht": 2.5,
+      "richtung": -1
+    },
+    "neulistung": {
+      "name": "Neulistung an einer Krypto-Börse",
+      "gewicht": 1,
+      "richtung": 1
+    },
+    "upbit_warnung": {
+      "name": "Warnhinweis der Börse Upbit",
+      "gewicht": 0.8,
+      "richtung": 0
+    },
+    "funding_extrem": {
+      "name": "Extremes Funding (Krypto-Futures)",
+      "gewicht": 1,
+      "richtung": 0
+    },
+    "open_interest_sprung": {
+      "name": "Sprung im Open Interest",
+      "gewicht": 0.8,
+      "richtung": 0
+    },
+    "krypto_einnahmen": {
+      "name": "Protokoll-Gebühren stark gestiegen",
+      "gewicht": 1.2,
+      "richtung": 1
     }
   },
   "quellen": {

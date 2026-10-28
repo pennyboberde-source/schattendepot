@@ -31,9 +31,12 @@ import { anreichern } from './quellen/anreicherung.ts';
 import { aufmerksamkeit } from './quellen/aufmerksamkeit.ts';
 import { youtube } from './quellen/youtube.ts';
 import { kalenderEffekte } from '../core/kalendereffekte.ts';
+import { defiLlama, krakenFutures, upbit } from './quellen/kryptorand.ts';
+import { finraShortInterest, shortSeller } from './quellen/shortdaten.ts';
 
-const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube];
-const STARK_NEGATIV = new Set(['prognose_senkung', 'gewinn_enttaeuschung', 'analysten_abstufung']);
+// Bestehende Quellen bleiben immer drin; neue werden nur hinten angehängt (Randquellen seit 28.10.2026).
+const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube, upbit, krakenFutures, defiLlama, finraShortInterest, shortSeller];
+const STARK_NEGATIV = new Set(['prognose_senkung', 'gewinn_enttaeuschung', 'analysten_abstufung', 'shortreport']);
 const STARK = new Set([...STARK_NEGATIV, 'uebernahmeangebot', 'prognose_erhoehung']);
 
 const jetzt = new Date(process.env.JETZT ?? Date.now());

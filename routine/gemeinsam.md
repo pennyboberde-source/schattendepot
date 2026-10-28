@@ -44,6 +44,12 @@ Das Depot ist fiktiv – kalkulierte Risiken sind ausdrücklich erwünscht, um d
 - **Werbe-Warnung:** Aussagen wie „steigt in 3 Tagen von 3 auf 28 Cent“ stammen oft aus bezahlter Werbung („Pump and Dump“). Sie zählen als Stimmung, nicht als Fakt. Kaufen ist erlaubt, wenn es einen unabhängigen Hinweis gibt (echter Handel/Umsatz auf gettex, Pflichtmeldung, Nachricht einer seriösen Quelle) – mit ehrlich niedriger `konfidenz` und dem Risiko in `risiken`.
 - Ob sich Spekulation lohnt, zeigt die Statistik („Normal vs. spekulativ“) – nicht das Bauchgefühl.
 
+## Randquellen (seit 28.10.2026)
+- `shortreport`: neuer Bericht eines Short-Sellers (Grizzly, Fuzzy Panda, Bear Cave). Zielaktien fallen oft kräftig; betrifft er eine Position: These prüfen.
+- `leerverkauf_quote`/`leerverkauf_aenderung` aus FINRA Short Interest: viele Tage zum Eindecken + steigender Kurs = Squeeze-Kandidat; Abbau = Leerverkäufer geben auf.
+- Krypto: `upbit_warnung` (Warnhinweise der größten koreanischen Börse), `neulistung` (Upbit-Sprünge verpuffen oft binnen Stunden), `funding_extrem`/`open_interest_sprung` (Kraken Futures, Hebel im Markt), `krypto_einnahmen` (DefiLlama: echte Protokoll-Gebühren wachsen). Makro: Kimchi-Prämie, Stablecoin-Menge, Funding p. a.
+- Krypto nur über in Deutschland handelbare ETNs (ISIN prüfen). Upbit-/Funding-Signale sind Stimmung, kein Fakt.
+
 ## Ergebnis abliefern (immer gleich)
 1. Datei unter dem Namen schreiben, den `kontext.mjs` oben nennt (Format: `schema/entscheidung.schema.json`).
 2. Prüfen: `npm install --no-save --silent ajv@8 ajv-formats@3` (einmal) und `node routine/pruefen.mjs <datei>` – Fehler beheben, bis ✓.
