@@ -1,0 +1,11 @@
+{
+  "modell": "Trade Republic (Bestpreis)",
+  "stand": "2026-10-28",
+  "quelle": "https://traderepublic.com/de-de/faq (seit 02.07.2026: 1 € je Bestpreis-Order, 2 € Direktpreis)",
+  "hinweis": "Vergleichswert im Daytrading (Plan Datenkrake): 1 € Fremdkostenpauschale je Order, keine Provision. Krypto direkt läuft über gebuehren.json (Handelsplatz TRK).",
+  "orderentgelt": { "grundpreis": 0, "prozent": 0, "min": 0, "max": 0 },
+  "handelsplaetze": {
+    "LSX": { "name": "LS Exchange (Bestpreis)", "entgelt": 1, "variabelProzent": 0, "ohneProvision": true }
+  },
+  "standardHandelsplatz": "LSX"
+}

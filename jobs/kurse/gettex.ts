@@ -121,3 +121,44 @@ export async function gettexKurse(isins: string[], jetzt: Date, maxFenster = 8):
   }
   return ergebnis;
 }
+
+export interface GettexDatei {
+  url: string;
+  /** Dateiname, z. B. posttrade.20261029.08.00.mund.csv.gz */
+  name: string;
+  datum: string;
+  /** Fensterende JJJJMMTTHHMM (UTC) – der Dateiname nennt das ENDE des 15-Minuten-Fensters (live geprüft 28.10.2026) */
+  schluessel: string;
+  /** Fensterbeginn und -ende als ISO-Zeit (UTC) */
+  beginn: string;
+  ende: string;
+}
+
+/** Alle aktuell angebotenen Dateien (beide Segmente MUNC/MUND je 15-Minuten-Fenster), älteste zuerst. */
+export async function gettexDateiliste(): Promise<GettexDatei[]> {
+  const html = await holeText(SEITE, { header: { Accept: 'text/html' } });
+  return [...new Set(html.match(/https:\/\/erdk\.bayerische-boerse\.de:8000\/[^"' ]+\.csv\.gz/g) ?? [])]
+    .map((url) => {
+      const info = dateiInfo(url);
+      if (!info) return null;
+      const s = info.schluessel;
+      const ende = `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}T${s.slice(8, 10)}:${s.slice(10, 12)}:00.000Z`;
+      return { url, name: url.split('/').pop()!, datum: info.datum, schluessel: s, beginn: new Date(Date.parse(ende) - 15 * 60000).toISOString(), ende };
+    })
+    .filter((x): x is GettexDatei => !!x)
+    .sort((a, b) => a.schluessel.localeCompare(b.schluessel) || a.name.localeCompare(b.name));
+}
+
+export const gettexDateiLaden = (url: string) => entpacken(url);
+
+/** Alle Geschäfte einer Datei (nur EUR), optional nur bestimmte ISINs. */
+export function geschaefteAusCsv(csv: string, datum: string, nur?: Set<string>): { isin: string; zeit: string; kurs: number; stueck: number }[] {
+  const out: { isin: string; zeit: string; kurs: number; stueck: number }[] = [];
+  for (const zeile of csv.split('\n')) {
+    const [isin, zeit, waehrung, kurs, stueck] = zeile.split(',');
+    if (!isin || !zeit || waehrung !== 'EUR' || (nur && !nur.has(isin))) continue;
+    const k = Number(kurs);
+    if (k > 0) out.push({ isin, zeit: `${datum}T${zeit.slice(0, 12)}Z`, kurs: k, stueck: Number(stueck) || 0 });
+  }
+  return out;
+}

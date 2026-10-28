@@ -1,0 +1,284 @@
+{
+  "stand": "2026-10-21T12:45:00Z",
+  "heute": {
+    "datum": "2026-10-21",
+    "gruppe": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "netto": -59.96,
+      "brutto": -59.96,
+      "nettoConsors": -103.56,
+      "nettoTR": -63.96,
+      "oeNettoProzent": -2.9,
+      "oeR": 0.5
+    },
+    "offen": 0
+  },
+  "gesamt": {
+    "anzahl": 2,
+    "treffer": 1,
+    "quote": 50,
+    "netto": -59.96,
+    "brutto": -59.96,
+    "nettoConsors": -103.56,
+    "nettoTR": -63.96,
+    "oeNettoProzent": -2.9,
+    "oeR": 0.5
+  },
+  "kurve": [
+    {
+      "datum": "2026-10-21",
+      "netto": -59.96,
+      "brutto": -59.96,
+      "nettoConsors": -103.56,
+      "nettoTR": -63.96
+    }
+  ],
+  "nachHerkunft": {
+    "claude": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -85.56,
+      "brutto": -85.56,
+      "nettoConsors": -107.36,
+      "nettoTR": -87.56,
+      "oeNettoProzent": -8.59,
+      "oeR": -1
+    },
+    "code_scan": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoConsors": 3.8,
+      "nettoTR": 23.6,
+      "oeNettoProzent": 2.79,
+      "oeR": 2
+    }
+  },
+  "nachMarkt": {
+    "eu": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "netto": -59.96,
+      "brutto": -59.96,
+      "nettoConsors": -103.56,
+      "nettoTR": -63.96,
+      "oeNettoProzent": -2.9,
+      "oeR": 0.5
+    }
+  },
+  "nachSetup": {
+    "orb_short": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -85.56,
+      "brutto": -85.56,
+      "nettoConsors": -107.36,
+      "nettoTR": -87.56,
+      "oeNettoProzent": -8.59,
+      "oeR": -1
+    },
+    "orb_long": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoConsors": 3.8,
+      "nettoTR": 23.6,
+      "oeNettoProzent": 2.79,
+      "oeR": 2
+    }
+  },
+  "nachInstrument": {
+    "turbo": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -85.56,
+      "brutto": -85.56,
+      "nettoConsors": -107.36,
+      "nettoTR": -87.56,
+      "oeNettoProzent": -8.59,
+      "oeR": -1
+    },
+    "aktie": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoConsors": 3.8,
+      "nettoTR": 23.6,
+      "oeNettoProzent": 2.79,
+      "oeR": 2
+    }
+  },
+  "nachRisiko": {
+    "skill_filter": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "netto": -59.96,
+      "brutto": -59.96,
+      "nettoConsors": -103.56,
+      "nettoTR": -63.96,
+      "oeNettoProzent": -2.9,
+      "oeR": 0.5
+    }
+  },
+  "nachAusstieg": {
+    "stop": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -85.56,
+      "brutto": -85.56,
+      "nettoConsors": -107.36,
+      "nettoTR": -87.56,
+      "oeNettoProzent": -8.59,
+      "oeR": -1
+    },
+    "ziel": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoConsors": 3.8,
+      "nettoTR": 23.6,
+      "oeNettoProzent": 2.79,
+      "oeR": 2
+    }
+  },
+  "zeitmaschine": [],
+  "offen": [],
+  "trades": [
+    {
+      "id": "2026-10-21-claude-demo-beta-ag",
+      "datum": "2026-10-21",
+      "herkunft": "claude",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "Demo Beta AG",
+      "isin": "DE000DEMO0002",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 59.04,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-21T07:20:00.000Z",
+        "kurs": 49.3,
+        "level": 49.5,
+        "spanne": {
+          "hoch": 50.5,
+          "tief": 49.5
+        }
+      },
+      "stop": 50,
+      "ziel": 47.6,
+      "zielR": 2,
+      "flatBis": "2026-10-21T15:25:00.000Z",
+      "chance": 55,
+      "these": "DEMO",
+      "einstieg": {
+        "zeit": "2026-10-21T07:20:00.000Z",
+        "basisKurs": 49.2,
+        "kurs": 9.8646,
+        "stueck": 101,
+        "kurswert": 996.32
+      },
+      "ausstieg": {
+        "zeit": "2026-10-21T07:45:00.000Z",
+        "basisKurs": 50,
+        "kurs": 9.0174,
+        "kurswert": 910.76,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -85.56,
+        "bruttoProzent": -8.59,
+        "netto": -85.56,
+        "nettoProzent": -8.59,
+        "nettoConsors": -107.36,
+        "nettoTR": -87.56,
+        "gebuehren": {
+          "haupt": 0,
+          "consors": 21.8,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-10-21-scan-demo-alpha-ag",
+      "datum": "2026-10-21",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "Demo Alpha AG",
+      "isin": "DE000DEMO0001",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-21T07:25:00.000Z",
+        "kurs": 101.9,
+        "level": 101.5,
+        "spanne": {
+          "hoch": 101.5,
+          "tief": 99.5
+        }
+      },
+      "stop": 100.5,
+      "ziel": 105,
+      "zielR": 2,
+      "flatBis": "2026-10-21T15:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-21T07:25:00.000Z",
+        "basisKurs": 102,
+        "kurs": 102.077,
+        "stueck": 9,
+        "kurswert": 918.69
+      },
+      "ausstieg": {
+        "zeit": "2026-10-21T07:35:00.000Z",
+        "basisKurs": 105,
+        "kurs": 104.921,
+        "kurswert": 944.29,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 25.6,
+        "bruttoProzent": 2.79,
+        "netto": 25.6,
+        "nettoProzent": 2.79,
+        "nettoConsors": 3.8,
+        "nettoTR": 23.6,
+        "gebuehren": {
+          "haupt": 0,
+          "consors": 21.8,
+          "tr": 2
+        },
+        "r": 2
+      }
+    }
+  ],
+  "beobachtet": {
+    "code_scan": 21,
+    "claude": 1,
+    "autopilot": 0
+  }
+}

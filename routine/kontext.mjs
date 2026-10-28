@@ -95,6 +95,18 @@ if (zs.length) p(`Ziel/Stop-Vorschlag je Signaltyp (Schattenbuch, nach Gebühren
 if (statistik?.prognose?.n1T) p(`Deine Tagesprognosen bisher: ${statistik.prognose.quote1T} % Richtung richtig (n=${statistik.prognose.n1T}), Ø ${statistik.prognose.oe1T} % gerichtet.`);
 p('');
 
+// S3: Daytrading (eigener Bereich) knapp – nur Morgen-/Abendlauf und Wochenrückblick
+if (typ === 'morgenlauf' || typ === 'abendlauf' || typ === 'wochenrueckblick') {
+  const dtU = await json('daytrading/uebersicht.json', null);
+  if (dtU?.gesamt?.anzahl) {
+    const gz = (n, g) => `${n} ${g.anzahl} Trades, Quote ${g.quote} %, netto ${g.netto} € (vor Gebühren ${g.brutto} €, Consorsbank ${g.nettoConsors} €), Ø ${g.oeR} R`;
+    p('## Daytrading (eigener Bereich, Smartbroker+)', gz('Gesamt:', dtU.gesamt), gz(`Zuletzt (${dtU.heute.datum}):`, dtU.heute.gruppe));
+    p(`Nach Herkunft: ${Object.entries(dtU.nachHerkunft).map(([k, v]) => `${k} ${v.anzahl}/${v.quote} %/${v.netto} €`).join('; ')} · nach Setup: ${Object.entries(dtU.nachSetup).map(([k, v]) => `${k} ${v.anzahl}/Ø ${v.oeR} R`).join('; ')}`);
+    if (dtU.zeitmaschine?.length) p(`Time Machine (Chance Ziel zuerst → tatsächlich): ${dtU.zeitmaschine.map((x) => `${x.stufe}: ${x.quote} % (n=${x.anzahl})`).join('; ')}`);
+    p('');
+  }
+}
+
 p('## 2. Lektionen');
 p((await lies('lernen/lektionen.md'))?.trim() || '(keine)', '');
 

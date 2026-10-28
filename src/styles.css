@@ -560,6 +560,7 @@ select {
 }
 .tabbar a {
   flex: 1;
+  min-width: 0;
   max-width: 160px;
   display: flex;
   flex-direction: column;
@@ -569,6 +570,12 @@ select {
   font-size: 0.72rem;
   color: var(--muted);
   text-decoration: none;
+}
+.tabbar a span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .tabbar a.aktiv {
   color: var(--accent);

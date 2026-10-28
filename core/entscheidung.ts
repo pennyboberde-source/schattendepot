@@ -13,10 +13,35 @@ export interface Entscheidung {
   berichte?: { orderId: string; text: string; learnings: string[]; einwandEingetreten?: boolean }[];
   /** Claudes Tagesprognose (Morgenlauf): bis 10 Werte mit Richtung, ohne Geld – wird im Schattenbuch gemessen */
   prognose?: TagesPrognose[];
+  /** Daytrading-Watchlist (Morgenlauf, S3): bis 5 Werte für den eigenen Bereich Daytrading */
+  daytrading?: DaytradingWunsch[];
   lektionen?: string;
   gewichtsvorschlaege?: { art: 'signal' | 'quelle'; name: string; faktor: number; begruendung: string }[];
   wochenrueckblick?: { push: string; text: string };
   notiz?: string;
+}
+
+export interface DaytradingWunsch {
+  name: string;
+  markt: 'us' | 'eu' | 'krypto';
+  isin?: string;
+  symbol?: string;
+  setup: 'orb' | 'level';
+  level?: number;
+  richtung: 'long' | 'short' | 'beide';
+  instrument?: 'aktie' | 'turbo';
+  hebel?: number;
+  chance: number;
+  these: string;
+}
+
+/** Fachliche Prüfung eines Daytrading-Wunschs; Fehlertext oder null. */
+export function daytradingFehler(d: DaytradingWunsch): string | null {
+  if (d.markt === 'krypto' && !d.symbol) return 'Krypto braucht ein Kürzel (symbol, z. B. BTC)';
+  if (d.markt !== 'krypto' && !d.isin) return 'Aktien brauchen die ISIN (gettex-Kurse)';
+  if (d.setup === 'level' && !(d.level && d.level > 0)) return 'Level-Setup braucht einen Level-Kurs in Euro';
+  if (d.markt === 'krypto' && d.richtung !== 'long') return 'Krypto nur long (kein Krypto-Turbo)';
+  return null;
 }
 
 export interface TagesPrognose {

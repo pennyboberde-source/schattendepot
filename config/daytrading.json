@@ -1,0 +1,35 @@
+{
+  "hinweis": "Daytrading-Bereich (Plan Datenkrake S3): eigener Bereich, nie mit dem Depot vermischt. Regeln aus dem Daytrader-Skill (Eröffnungsspanne 15 Min., Auslöser = erste 5-Minuten-Kerze, die über dem Hoch bzw. unter dem Tief SCHLIESST, Einstieg zum nächsten Kurs, Stop Spannen-Mitte, Ziel 2R, flat vor Schluss). 1.000 € je Order, Hauptmodell Smartbroker+ (gettex 0 € ab 500 €), Vergleich Consorsbank und Trade Republic, dazu immer vor Gebühren. Short nur über Turbos (Code Hebel 5, Claude 2–10).",
+  "aktiv": true,
+  "orderBetrag": 1000,
+  "maxTradesJeTag": 40,
+  "maxOffen": 30,
+  "spanneMinuten": 15,
+  "zielR": 2,
+  "stopProzentLevel": 2,
+  "minRisikoProzent": 0.05,
+  "minSpannenKerzen": 2,
+  "volumenFaktor": 0,
+  "maerkte": {
+    "eu": { "aktiv": true, "zeitzone": "Europe/Berlin", "eroeffnung": "09:00", "keineEinstiegeNach": "17:00", "flatBis": "17:25" },
+    "us": { "aktiv": true, "zeitzone": "America/New_York", "eroeffnung": "09:30", "keineEinstiegeNach": "15:30", "flatBis": "15:55" },
+    "krypto": { "aktiv": true, "zeitzone": "Europe/Berlin", "eroeffnung": "09:00", "keineEinstiegeNach": "21:00", "flatBis": "21:55" }
+  },
+  "universum": {
+    "hinweis": "Code-Scan: je Sitzung die umsatzstärksten Aktien der Eröffnungsspanne auf gettex (nur Stammaktien/ADRs laut OpenFIGI).",
+    "jeSitzung": 30,
+    "minGeschaefte": 15,
+    "minUmsatzEuro": 20000,
+    "laenderEu": ["DE", "FR", "NL", "IT", "ES", "BE", "AT", "FI", "IE", "LU", "PT", "CH", "GB", "DK", "SE", "NO"],
+    "laenderUs": ["US", "CA"]
+  },
+  "krypto": { "symbole": ["BTC", "ETH", "SOL", "XRP", "ADA"] },
+  "spekulativ": { "hinweis": "unter dem Skill-Filter (≥ 5 $, viel Umsatz) → spekulativ, getrennt ausgewertet", "unterKursEuro": 4.5, "unterUmsatzEuro": 100000 },
+  "turbo": { "hebelCode": 5, "emittent": "UniCredit (synthetisch)" },
+  "spreads": { "aktie": 0.15, "spekulativ": 1, "krypto": 0.5, "turbo": 0.5 },
+  "nyseFeiertage": ["2026-11-26", "2026-12-25", "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24"],
+  "timeMachine": { "aktiv": true, "maxJeLauf": 3, "wiederholungen": 10000, "seed": 19, "minSitzungen": 20 },
+  "autopilot": { "aktiv": true, "horizont": "r1h", "mindestFaelle": 20, "maxJeTag": 6, "maxSignalAlterMin": 90 },
+  "claude": { "maxWatchlist": 5, "hebelMin": 2, "hebelMax": 10 },
+  "abendbilanzAb": "22:10"
+}

@@ -7,6 +7,9 @@ import { ergebnis, kaufen, verkaufen, zielkurs } from '../core/rendite.ts';
 import { statistikBerechnen } from '../core/statistik.ts';
 import { steuernBerechnen, type SteuerConfig } from '../core/steuern.ts';
 import type { Order, OrderPlan } from '../core/typen.ts';
+import { beobachtung, kerzenVerarbeiten } from '../core/daytrading/ablauf.ts';
+import { uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
+import { ortszeitZuUtc, sitzung, tradesAusEreignissen, type Kerze } from '../core/daytrading/kern.ts';
 
 const root = join(dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, '$1')), '..');
 const cfg = JSON.parse(readFileSync(join(root, 'config/gebuehren.json'), 'utf8')) as GebuehrenConfig;
@@ -149,4 +152,38 @@ schreibe('statistik.json', {
 });
 schreibe('gewichte.json', { stand, signale: { insider_cluster_kauf: 3.3 }, quellen: { 'CNBC Top News': 0.9 } });
 schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal', name: 'insider_cluster_kauf', alt: 3, neu: 3.3, grund: 'DEMO: Ø 1-Wochen-Rendite 3,4 % (n=9)' }]);
+// S3 (DEMO): Daytrading – zwei Trades nach der Eröffnungsspannen-Regel, mit echter Kern-Logik erzeugt
+{
+  const d = '2026-10-21';
+  const lese = (n: string) => JSON.parse(readFileSync(join(root, 'config', n), 'utf8')) as GebuehrenConfig;
+  const k = (hhmm: string, o: number, h: number, l: number, c: number): Kerze => ({ t: ortszeitZuUtc(d, hhmm, 'Europe/Berlin').toISOString(), o, h, l, c, v: 100, n: 5 });
+  const lauf = {
+    datum: d,
+    sitzungen: { eu: sitzung(d, { aktiv: true, zeitzone: 'Europe/Berlin', eroeffnung: '09:00', keineEinstiegeNach: '17:00', flatBis: '17:25' }, 15) },
+    regeln: { minSpannenKerzen: 2, volumenFaktor: 0 },
+    plan: { zielR: 2, stopProzentLevel: 2, minRisikoProzent: 0.05 },
+    spreads: { aktie: 0.15, spekulativ: 1, krypto: 0.5, turbo: 0.5 },
+    orderBetrag: 1000,
+    maxTradesJeTag: 40,
+    maxOffen: 30,
+    emittent: 'UniCredit (synthetisch)',
+    gebuehren: { smartbroker: lese('gebuehren-smartbroker.json'), consors: cfg, traderepublic: lese('gebuehren-traderepublic.json'), krypto: cfg },
+  };
+  const beob = [
+    beobachtung({ basis: 'DE000DEMO0001', herkunft: 'code_scan', markt: 'eu', name: 'Demo Alpha AG', isin: 'DE000DEMO0001', instrumentLong: 'aktie', hebel: 5, spekulativ: false }, 'orb', ['long', 'short']),
+    beobachtung({ basis: 'DE000DEMO0002', herkunft: 'claude', markt: 'eu', name: 'Demo Beta AG', isin: 'DE000DEMO0002', instrumentLong: 'aktie', hebel: 5, spekulativ: false, chance: 55, these: 'DEMO' }, 'orb', ['long', 'short']),
+  ];
+  const r = kerzenVerarbeiten(
+    new Map([
+      ['DE000DEMO0001', [k('09:00', 100, 101, 99.5, 100.5), k('09:05', 100.5, 101.5, 100, 101), k('09:10', 101, 101.2, 100.2, 100.8), k('09:20', 101.4, 102, 101.3, 101.9), k('09:25', 102, 102.5, 101.9, 102.4), k('09:30', 102.4, 105.1, 102.3, 105)]],
+      ['DE000DEMO0002', [k('09:00', 50, 50.5, 49.5, 50), k('09:05', 50, 50.2, 49.8, 50), k('09:10', 50, 50.1, 49.9, 50), k('09:15', 49.9, 50, 49.2, 49.3), k('09:20', 49.2, 49.3, 49, 49.1), k('09:40', 49.6, 50.2, 49.5, 50.1)]],
+    ]),
+    beob,
+    [],
+    lauf,
+    { heuteEroeffnet: 0, vergeben: new Set<string>() },
+  );
+  schreibe('daytrading/uebersicht.json', { ...uebersichtBerechnen(tradesAusEreignissen(r.ereignisse), d, stand), beobachtet: { code_scan: 21, claude: 1, autopilot: 0 } });
+  schreibe('daytrading/autopilot.json', { stand, horizont: 'r1h', beweise: [] });
+}
 console.log('Demo-Daten geschrieben nach', ziel);

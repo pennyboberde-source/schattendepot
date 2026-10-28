@@ -5,6 +5,7 @@ import { UebersichtView } from './views/Uebersicht';
 import { BriefingView } from './views/Briefing';
 import { OrderDetailView } from './views/OrderDetail';
 import { AbgeschlossenView } from './views/Abgeschlossen';
+import { DaytradingView } from './views/Daytrading';
 import { LernenView } from './views/Lernen';
 import { QuellenView } from './views/Quellen';
 import { EinstellungenView } from './views/Einstellungen';
@@ -13,6 +14,7 @@ const TABS = [
   { route: 'uebersicht', label: 'Übersicht', icon: 'uebersicht' },
   { route: 'briefing', label: 'Briefing', icon: 'briefing' },
   { route: 'abgeschlossen', label: 'Abgeschlossen', icon: 'abgeschlossen' },
+  { route: 'daytrading', label: 'Daytrading', icon: 'daytrading' },
   { route: 'lernen', label: 'Lernen', icon: 'lernen' },
   { route: 'quellen', label: 'Quellen', icon: 'quellen' },
   { route: 'einstellungen', label: 'Einstellungen', icon: 'einstellungen' },
@@ -47,6 +49,7 @@ export function App() {
         {top === 'briefing' && <BriefingView datum={arg} />}
         {top === 'order' && arg && <OrderDetailView id={arg} />}
         {top === 'abgeschlossen' && <AbgeschlossenView />}
+        {top === 'daytrading' && <DaytradingView />}
         {top === 'lernen' && <LernenView />}
         {top === 'quellen' && <QuellenView />}
         {top === 'einstellungen' && <EinstellungenView />}

@@ -221,6 +221,86 @@
           }
         }
       }
+    },
+    "daytrading": {
+      "type": "array",
+      "maxItems": 5,
+      "description": "Daytrading-Watchlist (nur Morgenlauf): der Code handelt die Werte nach der Skill-Regel (Eröffnungsspanne oder Level) im eigenen Bereich Daytrading",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "markt",
+          "setup",
+          "richtung",
+          "chance",
+          "these"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
+          },
+          "markt": {
+            "enum": [
+              "us",
+              "eu",
+              "krypto"
+            ]
+          },
+          "isin": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}[A-Z0-9]{9}[0-9]$",
+            "description": "Pflicht bei us/eu (gettex-Kurse nach ISIN)"
+          },
+          "symbol": {
+            "type": "string",
+            "pattern": "^[A-Z0-9]{2,10}$",
+            "description": "Pflicht bei krypto (Kraken-Kürzel, z. B. BTC)"
+          },
+          "setup": {
+            "enum": [
+              "orb",
+              "level"
+            ]
+          },
+          "level": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "description": "nur bei setup level: Kurs in EURO (gettex/Kraken), dessen Überschreiten (long) bzw. Unterschreiten (short) per Schlusskurs einer 5-Minuten-Kerze auslöst"
+          },
+          "richtung": {
+            "enum": [
+              "long",
+              "short",
+              "beide"
+            ]
+          },
+          "instrument": {
+            "enum": [
+              "aktie",
+              "turbo"
+            ]
+          },
+          "hebel": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 10
+          },
+          "chance": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "these": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 300
+          }
+        }
+      }
     }
   },
   "definitions": {

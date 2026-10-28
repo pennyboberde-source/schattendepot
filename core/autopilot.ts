@@ -13,7 +13,7 @@ export interface AutopilotEinstellungen {
   /** Mindestzahl gemessener Long-Fälle je Signaltyp und Marktgruppe */
   mindestFaelle: number;
   /** Messpunkt des Schattenbuchs, an dem gemessen wird (r1T = 1, r3T = 3, r1W = 5 Handelstage) */
-  horizont: 'r1T' | 'r3T' | 'r1W';
+  horizont: 'r1h' | 'r1T' | 'r3T' | 'r1W';
   maxJeLauf: number;
   maxJeTag: number;
   /** höchstens so viele offene/vorgemerkte Autopilot-Orders gleichzeitig */
@@ -52,8 +52,8 @@ export interface AutopilotKandidat {
 }
 
 const KRYPTO_KUERZEL = ['BTC', 'ETH', 'SOL', 'XRP', 'ADA', 'DOT'];
-const HORIZONT_TAGE: Record<AutopilotEinstellungen['horizont'], number> = { r1T: 1, r3T: 3, r1W: 5 };
-const HORIZONT_TEXT: Record<AutopilotEinstellungen['horizont'], string> = { r1T: '1 Handelstag', r3T: '3 Handelstagen', r1W: '5 Handelstagen' };
+const HORIZONT_TAGE: Record<AutopilotEinstellungen['horizont'], number> = { r1h: 1, r1T: 1, r3T: 3, r1W: 5 };
+const HORIZONT_TEXT: Record<AutopilotEinstellungen['horizont'], string> = { r1h: '1 Stunde', r1T: '1 Handelstag', r3T: '3 Handelstagen', r1W: '5 Handelstagen' };
 
 /** Kursbasis aus einem Kürzel des Schattenbuchs (US-Ticker, .DE/.PA …, Krypto-Kürzel). */
 export function kursbasisAusTicker(ticker: string, markt?: TrackingEintrag['markt']): Kursbasis | null {

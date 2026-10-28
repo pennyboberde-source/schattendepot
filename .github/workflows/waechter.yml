@@ -44,6 +44,13 @@ jobs:
           ROUTINE_FIRE_URL: ${{ secrets.ROUTINE_FIRE_URL }}
           ROUTINE_FIRE_TOKEN: ${{ secrets.ROUTINE_FIRE_TOKEN }}
         run: node jobs/waechter.ts
+      - name: Daytrading (eigener Bereich, Fehler stoppen den Wächter nicht)
+        continue-on-error: true
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+        run: node jobs/daytrading.ts
       - name: Daten sichern
         id: sichern
         run: bash scripts/daten-sichern.sh "Kurswächter $(date -u +%Y-%m-%dT%H:%MZ)"

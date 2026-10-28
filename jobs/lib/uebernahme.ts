@@ -7,7 +7,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ordersAusEreignissen } from '../../core/ableiten.ts';
-import { entscheidungUebernehmen, type Entscheidung } from '../../core/entscheidung.ts';
+import { daytradingFehler, entscheidungUebernehmen, type Entscheidung } from '../../core/entscheidung.ts';
 import type { KalibrierStufe } from '../../core/datenkrake.ts';
 import { pushAngepasst, pushBericht, pushBriefing, pushWarnung, type PushNachricht } from '../../core/push.ts';
 import type { Order } from '../../core/typen.ts';
@@ -114,6 +114,15 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
           liste.push({ datum: e.datum, schluessel, name: p.name, ticker: p.ticker.toUpperCase(), markt: p.markt, score: p.richtung === 'runter' ? -1 : 1, typen: ['claude_prognose'], quellen: ['Claude-Tagesprognose'], art: 'prognose' });
         }
         schreibeJson('kandidaten-tracking.json', liste);
+      }
+      // Daytrading-Watchlist (S3): der Daytrading-Job handelt die Werte heute nach der Skill-Regel
+      if (e.typ === 'morgenlauf' && e.daytrading?.length) {
+        const gut = e.daytrading.filter((d) => {
+          const f = daytradingFehler(d);
+          if (f) ergebnis.pushes.push(pushWarnung(`Daytrading-Watchlist ${d.name} abgelehnt: ${f}`, jetzt.toISOString()));
+          return !f;
+        });
+        schreibeJson(`daytrading/watchlist/${e.datum}.json`, { datum: e.datum, erstellt: e.erstellt, eintraege: gut.slice(0, 5) });
       }
       if (e.wochenrueckblick) {
         schreibeText(`wochen/${e.datum}.md`, e.wochenrueckblick.text + '\n');

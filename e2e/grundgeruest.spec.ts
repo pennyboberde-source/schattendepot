@@ -17,6 +17,7 @@ test('Alle Tabs erreichbar, Touch-Ziele groß genug', async ({ page }) => {
   for (const [tab, ueberschrift] of [
     ['Briefing', 'Briefing'],
     ['Abgeschlossen', 'Abgeschlossen'],
+    ['Daytrading', 'Daytrading'],
     ['Lernen', 'Lernen'],
     ['Quellen', 'Quellenstatus'],
     ['Einstellungen', 'Einstellungen'],
@@ -54,13 +55,21 @@ test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
   await expect(page.getByText('Ziel/Stop je Signal – selbst optimiert')).toBeVisible();
 });
 
+test('Daytrading: eigener Bereich mit Kennzahlen, Herkunft und Trades', async ({ page }) => {
+  await page.goto('/#/daytrading');
+  await expect(page.getByTestId('daytrading-kennzahlen')).toBeVisible();
+  await expect(page.getByText('Vergleich Consorsbank / Trade Republic')).toBeVisible();
+  await expect(page.getByRole('cell', { name: '🧠 Claude' })).toBeVisible();
+  await expect(page.getByText('Demo Alpha AG').first()).toBeVisible();
+});
+
 test('Einstellungen: Push-Hinweis außerhalb der Home-Bildschirm-App', async ({ page }) => {
   await page.goto('/#/einstellungen');
   await expect(page.getByText('Zum Home-Bildschirm')).toBeVisible();
 });
 
 test('Keine horizontale Scrollleiste', async ({ page }) => {
-  for (const route of ['/', '/#/briefing', '/#/abgeschlossen', '/#/lernen', '/#/einstellungen', '/#/order/2026-10-21-demo-c']) {
+  for (const route of ['/', '/#/briefing', '/#/abgeschlossen', '/#/daytrading', '/#/lernen', '/#/einstellungen', '/#/order/2026-10-21-demo-c']) {
     await page.goto(route);
     await page.waitForTimeout(200);
     const breit = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);

@@ -58,6 +58,9 @@ Das Depot ist fiktiv – kalkulierte Risiken sind ausdrücklich erwünscht, um d
 - **Verkaufsregeln des Wächters** (alle 15 Min., Krypto rund um die Uhr): Stop wird ab +4 % nachgezogen (5 % Abstand, Hebel 12 %), am halben Weg zum Ziel wird die Hälfte verkauft und der Stop auf Einstand gesetzt, bei starkem Gegensignal (Short-Report, Prognosesenkung, Handelsaussetzung) wird sofort verkauft, nach 6 Tagen ohne Bewegung (< 2 %, spekulativ 2 Tage) ebenso. Du musst das nicht selbst nachbauen – setze Ziel/Stop/Termin wie gewohnt.
 - **Orders je Lauf:** morgens bis 6, mittags bis 3, abends bis 3 (US-Werte und Krypto); der Code lehnt darüber hinaus ab.
 
+## Daytrading (S3, eigener Bereich)
+- Der Code handelt den ganzen Tag nach den Skill-Regeln (Eröffnungsspanne/Level, 5-Minuten-Kerzen aus gettex bzw. Kraken, Einstieg zum nächsten Kurs, Stop Spannen-Mitte, Ziel 2R, flat vor Schluss), 1.000 € je Trade, Smartbroker+ (Vergleich Consorsbank/Trade Republic). Herkunft: **Code-Scan** (umsatzstärkste Aktien der Eröffnungsspanne + Krypto), **Claude** (deine Watchlist im Morgenlauf), **Autopilot** (im Schattenbuch nach 1 Stunde bewiesene Signale). Kennzahlen stehen im Kontext unter „Daytrading“ – nie mit dem Depot vermischen.
+
 ## Randquellen (seit 28.10.2026)
 - `shortreport`: neuer Bericht eines Short-Sellers (Grizzly, Fuzzy Panda, Bear Cave). Zielaktien fallen oft kräftig; betrifft er eine Position: These prüfen.
 - `leerverkauf_quote`/`leerverkauf_aenderung` aus FINRA Short Interest: viele Tage zum Eindecken + steigender Kurs = Squeeze-Kandidat; Abbau = Leerverkäufer geben auf.
