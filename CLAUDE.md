@@ -36,7 +36,7 @@ Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, d
 - Rohdaten nicht committen, nur verdichtete Signale/Lagebilder; Rohdaten höchstens im Actions-Cache.
 - Keine Geheimnisse ins Repo (öffentlich). VAPID-Private-Key, Push-Anmeldung, Routinen-Token, API-Schlüssel nur als GitHub-Secrets.
 - Gebühren, Spreads, Steuern, Gewichtsgrenzen in `config/*.json`, nie hart codiert.
-- Drei getrennte Händler mit eigenen Konten und Kennzahlen (nie vermischen), eine gemeinsame Lernbasis: **Claude-Depot** (Consorsbank-Standardpreis, Smartbroker+ als Vergleich), **Code-Depot** (Code-Händler/Strategie-Turnier, Smartbroker+), **Daytrader** (Smartbroker+, Vergleich Consorsbank/Trade Republic, vor Gebühren). Krypto direkt (24/7): Trade Republic 1 € + Spread.
+- Zwei Ebenen (Plan „Datenkrake“, STAND.md oben): **Datenkrake/Schattenbuch** verfolgt alles virtuell und misst Trefferquoten; **Schaufenster** kauft nur das Beste mit 1.000 € je Order in zwei getrennten Bereichen (Kennzahlen nie vermischen): **Depot** (Consorsbank-Standardpreis, Vergleich Smartbroker+) und **Daytrading** (Smartbroker+, Vergleich Consorsbank/Trade Republic, vor Gebühren). Krypto direkt (24/7): Trade Republic 1 € + Spread. Autopilot (Code kauft selbst) nur für im Schattenbuch bewiesene Signaltypen.
 - Jeder Kauf (Code und Claude) nur bei Chance ≥ 40 % und positivem Erwartungswert nach Gebühren; keine Pflicht-Orders.
 - Bestehende Datenquellen nie entfernen; neue nur zusätzlich einbauen.
 

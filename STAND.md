@@ -1,8 +1,39 @@
 # STAND – Schattendepot
 
-_Zuletzt aktualisiert: 28.10.2026 abends (Sitzung 2: 18 Randquellen live, Plan „Datenkrake“ entschieden, nächster Schritt K1 Lernbasis)_
+_Zuletzt aktualisiert: 28.10.2026 spätabends (Sitzung 2: 18 Randquellen live, Plan „Datenkrake“ vereinfacht und entschieden, nächster Schritt S1)_
 
-## 🆕 Sitzung 2 (23.10. abends): Daytrader + Randquellen – Entscheidungen des Nutzers
+## ✅ GÜLTIGER PLAN „Datenkrake“ (vom Nutzer entschieden am 28.10.2026 abends) – geht allem darunter vor
+**Ziel:** ein Programm auf dem iPad, das so gut wie möglich Aktien, ETFs, ETNs, Krypto und Hebel kauft und verkauft (Depot) und Daytrading betreibt. Es sammelt alles (Datenkrake), lernt daraus laufend und wird jeden Tag messbar besser. Dazu: wenig Nutzungslimit, schöne Oberfläche, Pushes, zeigt was klappt und was nicht.
+
+**Zwei Ebenen**
+1. **Datenkrake (Code, kostet kein Limit):** Alle Quellen, Hot Stuff und Strategie-Ideen werden **virtuell gekauft und nachverfolgt** (Schattenbuch: nach 1/3/5/10 Tagen bzw. zum Tagesende beim Daytrading, nach Gebühren). Daraus entsteht eine gemessene Trefferquote je Quelle, Signal, Strategie, Markt und Marktphase. Sie speist die Gewichte, die Rangliste und die Chancen-Korrektur.
+2. **Schaufenster (sichtbar):** Nur das Allerbeste wird mit **1.000 € je Order** gekauft, in **zwei Bereichen**, nie vermischt:
+   - **Depot** (Tage bis Wochen): Consorsbank, Vergleich Smartbroker+
+   - **Daytrading** (innerhalb eines Tages): Smartbroker+, Vergleich Consorsbank und Trade Republic, dazu immer das Ergebnis vor Gebühren
+
+**Wer entscheidet**
+- **Claude** 3× täglich aus der Code-Rangliste: morgens bis 6 Orders, mittags bis 3, abends US-Werte.
+- **Autopilot:** Der Code kauft zwischen den Läufen selbst, aber nur Signaltypen, die sich im Schattenbuch **bewiesen** haben (Mindestfallzahl, Chance ≥ 40 % und positiver Erwartungswert). Claude prüft im nächsten Lauf.
+- **Verkäufe:** Code alle 15 Min. mit schlauen Regeln (nachziehender Stop, Teilverkauf am 1. Ziel, sofort bei starkem Gegensignal, Zeit-Ausstieg), dazu Claude.
+
+**Kaufregel:** Chance ≥ 40 % und positiver Erwartungswert nach Gebühren. Keine Pflicht-Orders.
+
+**Mehr Risiko:** Hebel bis 20, bis 4 spekulative Orders je Lauf, Anteil bis 70 %, Penny Stocks/Small Caps gezielt prüfen, Short-Turbos bei fallenden Kursen, Krypto direkt rund um die Uhr (Trade Republic 1 € + Spread, Kurse Kraken).
+
+**Daytrading:** ein Bereich. Skill-Regeln (Eröffnungsspanne, Level-Ausbruch, Time Machine) den ganzen Handelstag. Märkte US, DAX, Krypto, Turbos. Jede Order gekennzeichnet nach Herkunft (Claude-Watchlist, Code-Scan, Autopilot) und Markt. Vor Börsenschluss alles verkauft. Turbos: Code Hebel 5, Claude 2–10. Pushes: Herkunft Claude einzeln, Code-Scan in der Abendbilanz.
+
+**Lernen:** Schattenbuch, Hot-Stuff-Rückblick („hätte man es erkennen können?“), Chancen-Korrektur, Marktphasen, monatliche Tiefenprüfung durch Claude, Lektionen im Abendlauf und Wochenrückblick.
+
+**App, 4 Bereiche:** Heute · Depot · Daytrading · Lernen („Was klappt“, Hot Stuff, Lernkurve). Pushes: Käufe/Verkäufe, Briefing, Abendbilanz mit „Heute gelernt“.
+
+**Modelle:** überall Opus (Nutzer).
+**Verworfen:** eigenes Code-Depot mit Turnier, 8 Daytrading-Konten mit Risikoformel, Einsatz nach Chance, Sonnet für Abend/Woche.
+**Daten nie verlieren:** nur anhängen, neue Funktionen in neue Dateien/Ordner, Formate abwärtskompatibel, Ereignisprotokoll unangetastet.
+
+**Bauschritte (nach jedem anhalten):** **S1 Datenkrake + Lernen** → **S2 Jederzeit handeln** (Autopilot, Verkaufsregeln, Krypto 24/7, Short-Turbos, mehr Claude-Orders, mehr Risiko) → **S3 Daytrading-Bereich** → **S4 Feinschliff** (Marktphasen, Monatsprüfung, weitere Quellen mit 🔴❗-Anleitung für Coinalyze/SEC_KONTAKT, GDELT-Zeitlimit reparieren).
+**➡️ Nächster Schritt: S1 Datenkrake + Lernen.**
+
+## Sitzung 2 (23.–28.10.): Verlauf der Entscheidungen (wo abweichend, gilt der Plan oben)
 Auftrag: Daytrader-Skill `Jakeschincariol/day-trader-skill` (MIT, Stand 3d0f4ef vom 20.10.2026, 11 Skills, Python) in die App holen, wie das normale Depot simulieren und auswerten; zusätzlich gründliche Recherche nach Randplattformen (alle Anlageklassen).
 - **Keine bestehende Quelle je entfernen.** Neue Quellen kommen nur zusätzlich dazu.
 - **Eigener Bereich „Daytrading“ in der App**: eigene Konten, Kurve, Statistik. Nichts fließt in die Kennzahlen des normalen Depots.
@@ -28,16 +59,7 @@ Auftrag: Daytrader-Skill `Jakeschincariol/day-trader-skill` (MIT, Stand 3d0f4ef 
   Ergänzung des Nutzers: **Was lohnenswert ist, wird virtuell gekauft** (nicht nur beobachtet) **und zusätzlich hervorgehoben.** **Selbst lernen** und sich laufend verbessern ist das Wichtigste, im ständigen Austausch mit Claude (Routinen lesen Statistik und Lektionen, schreiben neue Lektionen; der Code passt die Gewichte an). Im Plan entscheiden lassen: Kauft der Code die Chancen automatisch in einem eigenen „Chancen-Konto“ (sauber messbar, getrennt von Claudes Auswahl), oder fließen sie ins normale Depot?
 - **28.10.: Quellen geprüft und 18 neue eingebaut** (Ergebnis + Einordnung aller ~110 Nutzerquellen in `recherche/quellen-nutzer-2026-10-25.md`, Commits ad13102 + 1892c71). Neue Module: `jobs/quellen/kryptorand.ts` (Upbit, Kraken Futures, DefiLlama), `shortdaten.ts` (FINRA Short Interest, Short-Seller-RSS), `stimmungrand.ts` (Nasdaq-Handelsstopps, App Store, Fear & Greed, Deribit DVOL, Polymarket, CFTC COT), `zustand.ts` (Merkzustand je Quelle unter `daten/zustand/`). 4 neue RSS-Feeds in `rss.ts`. 11 neue Signaltypen in `config/signale.json`; `shortreport` löst bei offener Position ein Ereignis aus. Routinen-Hinweis in `routine/gemeinsam.md` („Randquellen“). FinancialJuice raus (Bedingungen verbieten Bots).
 - **28.10.: Wunsch „Hot Stuff“-Rückblick (Nutzer):** täglich die extremsten Kursbewegungen aller beobachtbaren Märkte (gettex alle ISINs, US-Gewinner/-Verlierer, Upbit/Kraken alle Coins) sichten. Rückwärts prüfen, ob es vorher Signale gab (eigene Signal-Historie der Vortage). Code misst je Signaltyp/Quelle die Vorlauf-Trefferquote vs. Fehlalarme → fließt in die Gewichte. Claude zieht im Abend-/Wochenlauf Lehren („hätte man es erkennen können?“) → Lektionen. Teil des Plans „Datenkrake“.
-- **28.10.: Plan „Datenkrake“ vom Nutzer entschieden:**
-  - **Drei getrennte Händler, eine gemeinsame Lernbasis:** (1) **Claude-Depot** (bisheriges normales Depot, Consorsbank + Smartbroker+-Vergleichswert), (2) **Code-Depot** NEU (Code-Händler ohne KI-Urteil, alle 15 Min., als **Strategie-Turnier**: 6–8 Strategien je 5.000 € Startkapital, wöchentlich mehr Kapital für die beste und weniger für die schlechteste, Gebühren **Smartbroker+**, Consorsbank als Vergleich), (3) **Daytrader** (siehe oben, ganztägig bei jedem gültigen Signal, nicht nur zur Eröffnung). Eigene App-Bereiche, Kennzahlen nie vermischt.
-  - **Mindest-Chance für jeden Kauf (Code und Claude): ≥ 40 % und positiver Erwartungswert nach Gebühren.** Pflicht-Order entfällt.
-  - **Jederzeit handeln:** Code-Händler alle 15 Min.; **schlaue Verkaufsregeln** (nachziehender Stop, Teilverkauf am 1. Ziel, sofortiger Verkauf bei starkem Gegensignal wie `shortreport`/Prognosesenkung/Handelsaussetzung, Zeit-Ausstieg); **Krypto rund um die Uhr** als direkte Coins (Gebühren wie Trade Republic: 1 € + Spread; Kurse Kraken; Wächter dafür auch nachts/Wochenende); **mehr Claude-Orders** (Morgenlauf bis 6, Mittagslauf bis 3, Abendlauf darf US-Werte kaufen).
-  - **Selbstlernen:** Strategie-Turnier, **Chancen-Korrektur** (Claudes Konfidenz gegen Eingetroffenes kalibrieren, automatisch korrigieren), **Marktphasen-Erkennung** (Risiko an/aus aus DVOL/Fear & Greed/COT/Polymarket/Trend; Erfolg je Strategie und Phase messen), **monatliche Tiefenprüfung** (1 Claude-Lauf/Monat schlägt Regeländerungen vor, Code setzt innerhalb von Leitplanken um), plus fest: **jedes Signal virtuell nachverfolgen** (1/3/5/10 Tage, nach Gebühren) und **Hot-Stuff-Rückblick**.
-  - **Mehr Risiko:** Hebel bis 20 (statt 10), bis 4 spekulative Orders je Lauf, Anteil bis 70 %; **fallende Kurse nutzen** (Short-Turbos aktiv, z. B. bei Short-Reports, Prognosesenkungen, COT-Extremen).
-  - **Seite „Was klappt“:** Trefferquote je Quelle/Signal/Strategie/Markt/Marktphase mit Ampel und Stichproben-Hinweis.
-  - **Abgelehnt:** Einsatz nach Chance (feste Orderbeträge bleiben).
-  - **Baureihenfolge (nach jedem Baustein anhalten):** **K1 Lernbasis** (virtuelles Nachverfolgen aller Signale, Hot-Stuff-Rückblick, Chancen-Korrektur, Seite „Was klappt“, Mindest-Chance + Pflicht-Order weg, Smartbroker+-Vergleichswert) → **K2 Code-Depot** (Code-Händler + Turnier, schlaue Verkaufsregeln, Krypto 24/7, Short-Turbos, App-Bereich) → **K3 Claude-Depot mutiger** (mehr Orders, Hebel 20, Risiko-Budget, Marktphasen, Monats-Tiefenprüfung) → **D1–D3 Daytrader** → **D5 weitere Quellen**.
-- **Nächster Schritt: K1 Lernbasis bauen.** (Alt: 1) Plan „Datenkrake“ vorlegen (virtuelles Nachverfolgen aller Signale, Trefferquote je Quelle/Signal/Strategie, Chancenliste + virtueller Kauf mit Mindest-Chance, mehr Orders/Risiko/Penny Stocks, Hot-Stuff-Rückblick, Pflicht-Order überdenken, Smartbroker+-Vergleichswert) → anhalten. 2) D1 Daytrader-Kern. 3) D5: weitere Quellen aus „Als Nächstes möglich“ (inkl. 🔴❗-Anleitung für Schlüssel: Coinalyze, SEC_KONTAKT). Skill-Quelle zum Nachlesen: `git clone --depth 1 https://github.com/Jakeschincariol/day-trader-skill` in den Scratchpad (nur lesen, nicht ausführen; v. a. trader-scanner/scan.py, trader-entry/entry.py, trader-exit/exit.py, trader-timemachine/timemachine.py, trader-budget/size.py, trader-risk/check.py + config.example.json).
+- **28.10.: erster Plan „drei Händler“ (Code-Depot mit Turnier, 8 Daytrading-Konten) → am selben Abend vom Nutzer durch den GÜLTIGEN PLAN oben ersetzt.** Skill-Quelle zum Nachlesen: `git clone --depth 1 https://github.com/Jakeschincariol/day-trader-skill` in den Scratchpad (nur lesen, nicht ausführen; v. a. trader-scanner/scan.py, trader-entry/entry.py, trader-exit/exit.py, trader-timemachine/timemachine.py, trader-budget/size.py, trader-risk/check.py + config.example.json).
 - **Meilensteine:** D1 Daytrader-Kern in `core/` (Kerzen, Eröffnungsspanne, Einstieg, Ausstieg, Time Machine, Größe, Risiko, Simulation, Statistik, Gebührenmodelle) · D2 Jobs (Scanner, Kurse, Wächter-Anbindung, Pushes, Claude-Watchlist im Morgenlauf + Schema) · D3 App-Bereich Daytrading + E2E · D4 Recherche-Bericht Randplattformen · D5 Einbau der besten Quellen.
 
 ## 🛠️ Fehler beheben in einer neuen Sitzung
