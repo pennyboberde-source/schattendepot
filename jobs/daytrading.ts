@@ -7,7 +7,7 @@ import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { signalBeweise } from '../core/autopilot.ts';
 import { beobachtung, kerzenVerarbeiten, spreadFuer, type DtBeobachtung, type DtLaufCfg } from '../core/daytrading/ablauf.ts';
-import { abendbilanzText, setupVarianten, uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
+import { abendbilanzText, setupVarianten, tradeBeschreibung, uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
 import { kerzenAusGeschaeften, krakenKerzen, sitzung, tradesAusEreignissen, tradeSchritt, ausstiegAusfuehren, ergebnisRechnen, type DtEreignis, type DtMarkt, type DtTrade, type Kerze, type MarktConfig, type Sitzung } from '../core/daytrading/kern.ts';
 import { historie, monteCarlo, volleSitzungen } from '../core/daytrading/zeitmaschine.ts';
 import { euro } from '../core/geld.ts';
@@ -404,10 +404,13 @@ let pushes: PushNachricht[] = [];
 const iso = jetzt.toISOString();
 const claudeEin = geschrieben.filter((e) => e.typ === 'einstieg' && e.trade.herkunft === 'claude') as Extract<DtEreignis, { typ: 'einstieg' }>[];
 const claudeAus = geschrieben.filter((e) => e.typ === 'ausstieg' && nachher.find((t) => t.id === e.tradeId)?.herkunft === 'claude') as Extract<DtEreignis, { typ: 'ausstieg' }>[];
-for (const e of claudeEin) pushes.push({ typ: 'gekauft', titel: `⚡ Daytrade ${e.trade.richtung === 'short' ? 'Short' : 'Kauf'}: ${e.trade.name}`, text: `${e.trade.instrument === 'turbo' ? `Turbo Hebel ${e.trade.turbo?.hebel} · ` : ''}Einstieg ${euro(e.trade.einstieg.kurs)} · Stop ${euro(e.trade.stop)} · Ziel ${euro(e.trade.ziel)} (Basiswert) · flat bis ${berlin(new Date(e.trade.flatBis)).stunde}:${String(berlin(new Date(e.trade.flatBis)).minute).padStart(2, '0')}`, ziel: '#/daytrading', tag: `dt-${e.trade.id}`, erstellt: iso });
+for (const e of claudeEin) {
+  const b = tradeBeschreibung(e.trade);
+  pushes.push({ typ: 'gekauft', titel: `⚡ Daytrade: ${b.was}`, text: `${b.einstieg} · ${b.plan}`, ziel: '#/daytrading', tag: `dt-${e.trade.id}`, erstellt: iso });
+}
 for (const e of claudeAus) {
   const t = nachher.find((x) => x.id === e.tradeId)!;
-  pushes.push({ typ: 'verkauft', titel: `⚡ Daytrade beendet: ${t.name} ${euro(e.ergebnis.netto, { vorzeichen: true })}`, text: `${e.ausstieg.grund === 'ziel' ? 'Ziel erreicht' : e.ausstieg.grund === 'stop' ? 'Stop' : e.ausstieg.grund === 'knockout' ? 'Knock-out' : 'Schluss des Tages'} · ${e.ergebnis.r} R · vor Gebühren ${euro(e.ergebnis.brutto, { vorzeichen: true })}`, ziel: '#/daytrading', tag: `dt-aus-${t.id}`, erstellt: iso });
+  pushes.push({ typ: 'verkauft', titel: `⚡ Daytrade beendet: ${t.name} ${euro(e.ergebnis.netto, { vorzeichen: true })}`, text: tradeBeschreibung(t).ausstieg ?? '', ziel: '#/daytrading', tag: `dt-aus-${t.id}`, erstellt: iso });
 }
 if (pushes.length > 4) pushes = [{ typ: 'gekauft', titel: `⚡ ${pushes.length} Daytrade-Meldungen`, text: pushes.map((p) => p.titel).join(' · '), ziel: '#/daytrading', tag: `dt-sammel-${iso.slice(0, 16)}`, erstellt: iso }];
 // Abendbilanz: werktags ab 22:10 (US-Daten kommen verzögert); am Wochenende nur Krypto (Kraken in Echtzeit) → kurz nach „flat bis“

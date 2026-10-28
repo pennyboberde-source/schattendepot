@@ -161,3 +161,28 @@ export function abendbilanzText(u: DtUebersicht, heuteTrades: DtTrade[]): { tite
       .join(' · '),
   };
 }
+
+const berlinUhr = (iso: string) => new Date(iso).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin' });
+const stk = (x: number) => x.toLocaleString('de-DE', { maximumFractionDigits: 6 });
+
+/**
+ * Verständliche Beschreibung eines Trades: Was wurde gekauft (Aktie, Krypto oder Turbo auf den Wert), zu welchem
+ * Preis, und wann greifen Stop und Ziel (immer am Kurs des Werts selbst). Ohne Fachkürzel.
+ */
+export function tradeBeschreibung(t: DtTrade): { was: string; einstieg: string; plan: string; ausstieg?: string } {
+  const wert = t.name;
+  const turbo = t.instrument === 'turbo';
+  const was = turbo ? `Turbo ${t.richtung === 'short' ? 'short (Wette auf fallende Kurse)' : 'long (Wette auf steigende Kurse)'}, Hebel ${t.turbo?.hebel} auf ${wert}` : t.instrument === 'krypto' ? `${wert} direkt gekauft` : `Aktie ${wert} gekauft`;
+  const einstieg = turbo
+    ? `Einstieg ${berlinUhr(t.einstieg.zeit)}: ${wert} stand bei ${euro(t.einstieg.basisKurs)} → ${stk(t.einstieg.stueck)} Turbos zu je ${euro(t.einstieg.kurs)} (zusammen ${euro(t.einstieg.kurswert)})`
+    : `Einstieg ${berlinUhr(t.einstieg.zeit)}: ${stk(t.einstieg.stueck)} Stück zu je ${euro(t.einstieg.kurs)} (zusammen ${euro(t.einstieg.kurswert)})`;
+  const runter = (x: number) => `${wert} unter ${euro(x)} fällt`;
+  const rauf = (x: number) => `${wert} über ${euro(x)} steigt`;
+  const plan = t.richtung === 'long' ? `Stop, wenn ${runter(t.stop)} · Ziel, wenn ${rauf(t.ziel)} · spätestens ${berlinUhr(t.flatBis)} verkaufen` : `Stop, wenn ${rauf(t.stop)} · Ziel, wenn ${runter(t.ziel)} · spätestens ${berlinUhr(t.flatBis)} verkaufen`;
+  const GRUND: Record<string, string> = { ziel: 'Ziel erreicht', stop: 'Stop', schluss: 'Tagesschluss', knockout: 'Knock-out' };
+  const a = t.ausstieg;
+  const ausstieg = a
+    ? `Ausstieg ${berlinUhr(a.zeit)} (${GRUND[a.grund] ?? a.grund}): ${turbo ? `${wert} bei ${euro(a.basisKurs)} → Turbo zu je ${euro(a.kurs)}` : `zu je ${euro(a.kurs)}`} · Ergebnis ${euro(t.ergebnis!.netto, { vorzeichen: true })}${t.ergebnis!.brutto !== t.ergebnis!.netto ? ` (vor Gebühren ${euro(t.ergebnis!.brutto, { vorzeichen: true })})` : ''}`
+    : undefined;
+  return { was, einstieg, plan, ...(ausstieg ? { ausstieg } : {}) };
+}

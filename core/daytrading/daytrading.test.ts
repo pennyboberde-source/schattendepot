@@ -169,3 +169,19 @@ describe('Auswertung und Abendbilanz', () => {
     expect(a.text).not.toMatch(/Consorsbank/);
   });
 });
+
+describe('Verständliche Trade-Beschreibung (Nutzerfrage 28.10.: „wieso Einstieg 4,21 € bei SAP?“)', async () => {
+  const { tradeBeschreibung } = await import('./auswertung.ts');
+  it('SAP-Turbo short: Turbopreis und SAP-Kurs klar getrennt, Stop/Ziel am SAP-Kurs', () => {
+    const t = {
+      name: 'SAP SE', richtung: 'short', instrument: 'turbo', turbo: { richtung: 'short', hebel: 5, basispreis: 252.24, bezugsverhaeltnis: 0.1, emittent: 'U' },
+      einstieg: { zeit: '2026-10-28T10:15:00.000Z', basisKurs: 210.2, kurs: 4.2145, stueck: 237, kurswert: 998.84 }, stop: 211.58, ziel: 207.45, flatBis: '2026-10-28T16:25:00.000Z',
+      ausstieg: { zeit: '2026-10-28T13:35:00.000Z', basisKurs: 211.58, kurs: 4.0558, kurswert: 961.22, grund: 'stop' }, ergebnis: { netto: -37.62, brutto: -37.62 },
+    } as unknown as DtTrade;
+    const b = tradeBeschreibung(t);
+    expect(b.was).toBe('Turbo short (Wette auf fallende Kurse), Hebel 5 auf SAP SE');
+    expect(b.einstieg.replace(/ /g, ' ')).toBe('Einstieg 11:15: SAP SE stand bei 210,20 € → 237 Turbos zu je 4,21 € (zusammen 998,84 €)');
+    expect(b.plan.replace(/ /g, ' ')).toBe('Stop, wenn SAP SE über 211,58 € steigt · Ziel, wenn SAP SE unter 207,45 € fällt · spätestens 17:25 verkaufen');
+    expect(b.ausstieg!.replace(/ /g, ' ')).toBe('Ausstieg 14:35 (Stop): SAP SE bei 211,58 € → Turbo zu je 4,06 € · Ergebnis −37,62 €');
+  });
+});

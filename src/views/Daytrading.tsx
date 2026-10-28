@@ -2,7 +2,7 @@
 // Smartbroker+ als Hauptmodell, Vergleich Trade Republic, immer auch vor Gebühren.
 import { euro, prozent } from '../../core/geld.ts';
 import type { SignalBeweis } from '../../core/autopilot.ts';
-import type { DtGruppe, DtUebersicht, DtVariante } from '../../core/daytrading/auswertung.ts';
+import { tradeBeschreibung, type DtGruppe, type DtUebersicht, type DtVariante } from '../../core/daytrading/auswertung.ts';
 import type { DtTrade } from '../../core/daytrading/kern.ts';
 import { useDaten } from '../lib/daten';
 import { datumKurz } from '../lib/zeit';
@@ -16,8 +16,6 @@ const SETUP: Record<string, string> = { orb_long: 'Spanne ▲', orb_short: 'Span
 const GRUND: Record<string, string> = { ziel: 'Ziel', stop: 'Stop', schluss: 'Schluss', knockout: 'Knock-out' };
 const INSTR: Record<string, string> = { aktie: 'Aktie', turbo: 'Turbo', krypto: 'Krypto' };
 const RISIKO: Record<string, string> = { skill_filter: 'im Skill-Filter', spekulativ: 'spekulativ (Penny/Small Cap)' };
-
-const uhr = (iso: string) => new Date(iso).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin' });
 
 export function DaytradingView() {
   const u = useDaten<Daten>('daytrading/uebersicht.json');
@@ -80,6 +78,7 @@ function Inhalt({ d }: { d: Daten }) {
       </Karte>
 
       <Karte titel="Was klappt im Daytrading">
+        <p class="klein">„R“ = Vielfaches des geplanten Risikos: −1 R heißt Stop erreicht (geplanter Verlust), +2 R heißt Ziel erreicht (doppelter Gewinn). Ø R über 0 = die Regel verdient.</p>
         <GruppenTabelle titel="Herkunft" daten={d.nachHerkunft} name={(k) => HERKUNFT[k] ?? k} />
         <GruppenTabelle titel="Markt" daten={d.nachMarkt} name={(k) => MARKT[k] ?? k} />
         <GruppenTabelle titel="Setup" daten={d.nachSetup} name={(k) => SETUP[k] ?? k} />
@@ -144,16 +143,28 @@ function TradeListe({ trades }: { trades: DtTrade[] }) {
             </strong>
             {t.ergebnis ? <span class={t.ergebnis.netto >= 0 ? 'plus' : 'minus'}>{euro(t.ergebnis.netto, { vorzeichen: true })}</span> : <span class="klein">offen</span>}
           </div>
-          <div class="klein">
-            {HERKUNFT[t.herkunft]} · {MARKT[t.markt]} · {SETUP[`${t.setup}_${t.richtung}`] ?? t.setup}
-            {t.instrument === 'turbo' ? ` · Turbo Hebel ${t.turbo?.hebel}` : ''}
-            {t.spekulativ ? ' · spekulativ' : ''}
-          </div>
-          <div class="klein">
-            {uhr(t.einstieg.zeit)} Einstieg {euro(t.einstieg.kurs)} · Stop {euro(t.stop)} · Ziel {euro(t.ziel)}{t.instrument === 'turbo' ? ' (Basiswert)' : ''}
-            {t.ausstieg ? ` → ${uhr(t.ausstieg.zeit)} ${GRUND[t.ausstieg.grund]} ${euro(t.ausstieg.kurs)} (${t.ergebnis!.r.toLocaleString('de-DE')} R, vor Gebühren ${euro(t.ergebnis!.brutto, { vorzeichen: true })})` : ''}
-            {t.timeMachine ? ` · Time Machine ${prozent(t.timeMachine.zielZuerst, { vorzeichen: false })} Ziel zuerst (${t.timeMachine.urteil})` : ''}
-          </div>
+          {(() => {
+            const b = tradeBeschreibung(t);
+            return (
+              <>
+                <div class="klein">
+                  <strong>{b.was}</strong>
+                </div>
+                <div class="klein">
+                  {HERKUNFT[t.herkunft]} · {MARKT[t.markt]} · {SETUP[`${t.setup}_${t.ausloeser.richtung ?? t.richtung}`] ?? t.setup}
+                  {t.spekulativ ? ' · spekulativ' : ''}
+                </div>
+                <div class="klein">{b.einstieg}</div>
+                <div class="klein">{b.plan}</div>
+                {b.ausstieg && <div class="klein">{b.ausstieg}</div>}
+                {t.timeMachine && (
+                  <div class="klein">
+                    Time Machine: in {prozent(t.timeMachine.zielZuerst, { vorzeichen: false })} der nachgespielten Tage wäre zuerst das Ziel erreicht worden ({t.timeMachine.urteil})
+                  </div>
+                )}
+              </>
+            );
+          })()}
         </li>
       ))}
     </ul>
