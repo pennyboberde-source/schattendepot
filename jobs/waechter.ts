@@ -1,7 +1,7 @@
 // Kurswächter (GitHub Action, alle 15 Min., reiner Code). Aufruf: node jobs/waechter.ts
 // 1. Kurse für vorgemerkte/offene Orders holen  2. core/waechter entscheiden lassen
 // 3. Ereignisse anhängen, abgeleitete Dateien schreiben  4. Pushes senden  5. ggf. Ereignislauf feuern
-import { ordersAusEreignissen } from '../core/ableiten.ts';
+import { gebuehrenUmrechnen, ordersAusEreignissen } from '../core/ableiten.ts';
 import { benoetigteKursbasis } from '../core/bewertung.ts';
 import { berlin, inHandelszeit } from '../core/kalender.ts';
 import { kalibrierteQuote } from '../core/statistik.ts';
@@ -32,7 +32,8 @@ const b = berlin(jetzt);
 // Liegengebliebene Claude-Ergebnisse zuerst übernehmen (falls deren Action verworfen wurde).
 const uebernahme = process.env.OHNE_UEBERNAHME ? { dateien: 0, pushes: [], geloeschteBranches: [] } : uebernehmeAlle(jetzt);
 const ereignisse = leseEreignisse();
-const orders = ordersAusEreignissen(ereignisse);
+// Gebühren mit dem aktuellen Depot-Modell (Smartbroker+, rückwirkend) – damit Verkaufsergebnisse und Pushes dazu passen
+const orders = gebuehrenUmrechnen(ordersAusEreignissen(ereignisse), cfg.gebuehren, { spreads: cfg.spreads, orderBetrag: cfg.einstellungen.orderBetrag });
 const kursZeit = inHandelszeit(jetzt) || inHandelszeit(new Date(jetzt.getTime() + 20 * 60000));
 // Außerhalb der Börsenzeit (nachts, Wochenende, Feiertag): nur Krypto direkt – rund um die Uhr (S2)
 const nurKrypto = !kursZeit;

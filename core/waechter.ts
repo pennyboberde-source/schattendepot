@@ -4,7 +4,7 @@
 import { benoetigteKursbasis, instrumentKurs, type EurUsd, type InstrumentKurs } from './bewertung.ts';
 import { etfVergleich } from './etf.ts';
 import { runde } from './geld.ts';
-import type { GebuehrenConfig } from './gebuehren.ts';
+import { depotEntgeltOpt, type GebuehrenConfig } from './gebuehren.ts';
 import { berlin, inHandelszeit, istHandelstag, uhrzeitMinuten } from './kalender.ts';
 import { restStueck } from './ableiten.ts';
 import { pushAngepasst, pushGekauft, pushTeilverkauf, pushVerkauft, pushWarnung, type PushNachricht } from './push.ts';
@@ -162,7 +162,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
     const basis = ctx.basisKurse[o.id];
     /** maßgeblicher Kurs für Zeitprüfungen (kein Rückschaufehler) */
     const zeitKurs = direkt ?? basis;
-    const hp = { handelsplatz: o.plan.wertpapier.handelsplatz };
+    const hp = depotEntgeltOpt(o.plan);
 
     if (o.status === 'vorgemerkt') {
       const alterStd = (jetzt.getTime() - new Date(o.vorgemerktUm).getTime()) / 3600000;

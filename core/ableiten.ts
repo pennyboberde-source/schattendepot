@@ -2,8 +2,9 @@
 // Das Protokoll ist die einzige Wahrheit; alles andere wird hieraus neu berechnet (nie von Hand).
 import { runde } from './geld.ts';
 import { berlin } from './kalender.ts';
-import { entgeltVergleich, type GebuehrenConfig } from './gebuehren.ts';
-import { verkaufen } from './rendite.ts';
+import { depotEntgeltOpt, orderentgelt, type GebuehrenConfig } from './gebuehren.ts';
+import { etfVergleich } from './etf.ts';
+import { ergebnis as ergebnisRechnen, summeSeiten, verkaufen, type Seite } from './rendite.ts';
 import { geldBrief, type SpreadConfig } from './spreads.ts';
 import { steuernBerechnen, type SteuerConfig } from './steuern.ts';
 import type { Anpassung, Ausfuehrung, Ereignis, Kurs, Order, OrderPlan, Verkaufsgrund } from './typen.ts';
@@ -24,6 +25,38 @@ export function restStueck(o: Order): number {
   if (!o.kauf) return 0;
   const weg = (o.teilverkaeufe ?? []).reduce((a, t) => a + t.stueck, 0);
   return runde(o.kauf.stueck - weg, 8);
+}
+
+/**
+ * Gebühren aller Orders mit dem aktuellen Gebührenmodell neu rechnen – „als wären alle Käufe und Verkäufe dort gehandelt
+ * worden“ (Nutzer 28.10.2026: Smartbroker+ statt Consorsbank, rückwirkend). Kurse und Stückzahlen bleiben, wie sie
+ * ausgeführt wurden; das Ereignisprotokoll behält die ursprüngliche Buchung (nur anhängen, nie umschreiben).
+ */
+export function gebuehrenUmrechnen(orders: Order[], g: GebuehrenConfig, etf?: { spreads: SpreadConfig; orderBetrag: number }): Order[] {
+  for (const o of orders) {
+    if (!o.kauf) continue;
+    const opt = depotEntgeltOpt(o.plan);
+    const neu = <T extends Ausfuehrung>(a: T, kauf: boolean): T => {
+      const entgelt = a.kurswert > 0 ? orderentgelt(a.kurswert, g, opt) : { provision: 0, handelsplatz: 0, gesamt: 0 };
+      return { ...a, entgelt, betrag: runde(kauf ? a.kurswert + entgelt.gesamt : a.kurswert - entgelt.gesamt) };
+    };
+    o.kauf = neu(o.kauf, true);
+    if (o.teilverkaeufe) o.teilverkaeufe = o.teilverkaeufe.map((t) => neu(t, false));
+    if (o.verkauf && o.ergebnis) {
+      o.verkauf = neu(o.verkauf, false);
+      const seite = (a: Ausfuehrung): Seite => ({ stueck: a.stueck, kurs: a.kurs, kurswert: a.kurswert, entgelt: a.entgelt, betrag: a.betrag });
+      const teile = (o.teilverkaeufe ?? []).map(seite);
+      const e = ergebnisRechnen(seite(o.kauf), teile.length ? summeSeiten([...teile, seite(o.verkauf)]) : seite(o.verkauf));
+      o.ergebnis = { ...o.ergebnis, ...e, nachSteuern: e.netto };
+    }
+    // Vergleichs-ETF mit denselben Gebühren (gespeichert sind Kauf- und Verkaufskurs des ETFs)
+    const ev = o.etfVergleich as (Order['etfVergleich'] & { etfKauf?: number; etfVerkauf?: number }) | undefined;
+    if (etf && ev && ev.etfKauf && ev.etfVerkauf) {
+      const v = etfVergleich({ wert: ev.etfKauf, zeit: '', quelle: '' }, { wert: ev.etfVerkauf, zeit: '', quelle: '' }, { gebuehren: g, spreads: etf.spreads }, etf.orderBetrag);
+      if (v) o.etfVergleich = { ...ev, ...v };
+    }
+  }
+  return orders;
 }
 
 export function ordersAusEreignissen(ereignisse: Ereignis[]): Order[] {
@@ -119,10 +152,10 @@ export interface Abgeleitet {
 export function ableiten(
   ereignisse: Ereignis[],
   kurse: Record<string, Kurs>,
-  cfg: { steuern: SteuerConfig; gebuehren: GebuehrenConfig; spreads: SpreadConfig; gebuehrenSmartbroker?: GebuehrenConfig },
+  cfg: { steuern: SteuerConfig; gebuehren: GebuehrenConfig; spreads: SpreadConfig; einstellungen?: { orderBetrag: number } },
   stand: string,
 ): Abgeleitet {
-  const orders = ordersAusEreignissen(ereignisse);
+  const orders = gebuehrenUmrechnen(ordersAusEreignissen(ereignisse), cfg.gebuehren, { spreads: cfg.spreads, orderBetrag: cfg.einstellungen?.orderBetrag ?? 1000 });
   const geschlossen = orders.filter((o) => o.status === 'geschlossen');
   const steuer = steuernBerechnen(
     geschlossen.map((o) => ({
@@ -145,7 +178,7 @@ export function ableiten(
     const { geld } = geldBrief(k, o.plan.wertpapier.spreadKlasse, cfg.spreads);
     const teile = (o.teilverkaeufe ?? []).reduce((a, t) => a + t.betrag, 0);
     const rest = restStueck(o);
-    unrealisiert += (rest > 0 ? verkaufen(rest, geld, cfg.gebuehren, { handelsplatz: o.plan.wertpapier.handelsplatz }).betrag : 0) + teile - o.kauf.betrag;
+    unrealisiert += (rest > 0 ? verkaufen(rest, geld, cfg.gebuehren, depotEntgeltOpt(o.plan)).betrag : 0) + teile - o.kauf.betrag;
   }
 
   const nachDatum = [...geschlossen].sort((a, b) => a.verkauf!.zeit.localeCompare(b.verkauf!.zeit));
@@ -180,19 +213,6 @@ export function ableiten(
       unrealisiert: runde(unrealisiert),
       trefferquote: geschlossen.length ? runde((gewinner / geschlossen.length) * 100, 1) : null,
       etfNetto: runde(etf),
-      ...(cfg.gebuehrenSmartbroker
-        ? {
-            nettoSmartbroker: runde(
-              geschlossen.reduce((s, o) => {
-                // Krypto direkt läuft immer über Trade Republic (Smartbroker+ hat keinen Direkthandel) → unverändert
-                if (o.plan.wertpapier.anlageklasse === 'krypto') return s + o.ergebnis!.netto;
-                const teile = o.teilverkaeufe ?? [];
-                const consors = o.kauf!.entgelt.gesamt + o.verkauf!.entgelt.gesamt + teile.reduce((a, t) => a + t.entgelt.gesamt, 0);
-                return s + o.ergebnis!.netto + consors - entgeltVergleich([o.kauf!.kurswert, ...teile.map((t) => t.kurswert), o.verkauf!.kurswert], cfg.gebuehrenSmartbroker!);
-              }, 0),
-            ),
-          }
-        : {}),
       kurve,
     },
   };

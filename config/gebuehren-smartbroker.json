@@ -2,11 +2,40 @@
   "modell": "Smartbroker+ (gettex)",
   "stand": "2026-10-28",
   "quelle": "https://www.smartbrokerplus.de/de-de/konditionen/ (Preis-Leistungsverzeichnis 2026_07)",
-  "hinweis": "Vergleichswert fürs Depot und Hauptmodell fürs Daytrading (Plan Datenkrake): gettex 0 € ab 500 € Ordervolumen, darunter 1 € Mindermengenzuschlag. Spreads wie im Depot.",
-  "orderentgelt": { "grundpreis": 0, "prozent": 0, "min": 0, "max": 0 },
-  "mindermenge": { "unter": 500, "entgelt": 1 },
-  "handelsplaetze": {
-    "GTX": { "name": "gettex", "entgelt": 0, "variabelProzent": 0 }
+  "hinweis": "Hauptmodell für Depot (seit 28.10.2026, Nutzer: alles rückwirkend umgerechnet, als wären alle Käufe/Verkäufe dort) und Daytrading: gettex 0 € ab 500 € Ordervolumen, darunter 1 € Mindermengenzuschlag; Hebelprodukte von UniCredit/HVB (onemarkets) 0 €, andere Emittenten 4 €. Alle Orders werden wie über gettex gehandelt gerechnet. Krypto direkt läuft über Trade Republic (1 €). Spreads wie gehabt.",
+  "orderentgelt": {
+    "grundpreis": 0,
+    "prozent": 0,
+    "min": 0,
+    "max": 0
   },
-  "standardHandelsplatz": "GTX"
+  "mindermenge": {
+    "unter": 500,
+    "entgelt": 1
+  },
+  "handelsplaetze": {
+    "GTX": {
+      "name": "gettex",
+      "entgelt": 0,
+      "variabelProzent": 0
+    },
+    "TRK": {
+      "name": "Trade Republic (Krypto direkt)",
+      "entgelt": 1,
+      "variabelProzent": 0,
+      "ohneProvision": true,
+      "hinweis": "Krypto direkt wird wie bisher mit Trade Republic gerechnet: 1 € je Order plus Spread, rund um die Uhr."
+    }
+  },
+  "standardHandelsplatz": "GTX",
+  "fallbackStandardHandelsplatz": true,
+  "emittentAufschlag": {
+    "entgelt": 4,
+    "ausserEmittenten": [
+      "UniCredit",
+      "HypoVereinsbank",
+      "HVB",
+      "onemarkets"
+    ]
+  }
 }

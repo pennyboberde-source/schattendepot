@@ -46,7 +46,7 @@ Sa     Datensammler (Gewichte anpassen) → Wochenrückblick 📊
 |---|---|
 | `core/` | Reine, getestete Logik (Gebühren, Steuern, Spreads, Rendite, Kalender, Bewertung, Wächter, Signale, Statistik, Gewichte …) |
 | `jobs/` | Action-Skripte (`waechter.ts`, `sammler.ts`, `uebernahme.ts`, `test-push.ts`, `trockenlauf.ts`), Kursanbieter (`kurse/`), Quellen (`quellen/`) |
-| `config/` | Gebühren (Consorsbank-Standardpreis), Steuern, Spreads, Einstellungen, Signal-Gewichte, Universum, Push |
+| `config/` | Gebühren (Smartbroker+ für Depot und Daytrading, Consorsbank nur noch als Datei), Steuern, Spreads, Einstellungen, Signal-Gewichte, Universum, Push |
 | `routine/` | Anweisungen für die vier Claude-Läufe + `kontext.mjs` (kompakter Kontext) + `pruefen.mjs` (Schema-Prüfung) |
 | `src/` | PWA (Ansichten in `src/views/`, Service Worker `src/sw.ts`) |
 | `demo/daten/` | Demo-Daten für Entwicklung und E2E-Tests (werden nie deployt) |

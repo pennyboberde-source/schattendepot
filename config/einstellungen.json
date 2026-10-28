@@ -1,5 +1,7 @@
 {
   "orderBetrag": 1000,
+  "gebuehrenDatei": "gebuehren-smartbroker.json",
+  "gebuehrenHinweis": "Gebührenmodell des Depots. Seit 28.10.2026 Smartbroker+ (Nutzer), alle bisherigen Orders werden beim Ableiten so umgerechnet, als wären sie dort gehandelt worden; das Ereignisprotokoll behält die ursprüngliche Buchung (Consorsbank).",
   "mindestChance": 40,
   "mindestChanceHinweis": "Jeder Kauf nur bei Chance ≥ 40 % (vom Code mit der bisherigen Treffsicherheit korrigiert) und positivem Erwartungswert nach Gebühren. Keine Pflicht-Orders (Plan Datenkrake, 28.10.2026).",
   "hebelMax": 20,

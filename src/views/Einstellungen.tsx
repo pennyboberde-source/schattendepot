@@ -1,5 +1,5 @@
 import einstellungen from '../../config/einstellungen.json';
-import gebuehren from '../../config/gebuehren.json';
+import gebuehren from '../../config/gebuehren-smartbroker.json';
 import steuern from '../../config/steuern.json';
 import { prozent } from '../../core/geld.ts';
 import { steuersatz, type SteuerConfig } from '../../core/steuern.ts';
@@ -59,8 +59,8 @@ export function EinstellungenView() {
       <Karte
         titel="Gebühren und Steuern"
         aktion={
-          konfigBearbeitenUrl('gebuehren.json') && (
-            <a class="knopf klein-knopf" href={konfigBearbeitenUrl('gebuehren.json')!} target="_blank" rel="noopener noreferrer">
+          konfigBearbeitenUrl('gebuehren-smartbroker.json') && (
+            <a class="knopf klein-knopf" href={konfigBearbeitenUrl('gebuehren-smartbroker.json')!} target="_blank" rel="noopener noreferrer">
               Auf GitHub ändern
             </a>
           )
@@ -73,10 +73,10 @@ export function EinstellungenView() {
           </dd>
           <dt>Orderentgelt</dt>
           <dd>
-            {stufe.grundpreis.toLocaleString('de-DE')} € + {stufe.prozent.toLocaleString('de-DE')} %, mind. {stufe.min.toLocaleString('de-DE')} €, max. {stufe.max} € + Handelsplatz
+            0 € ab 500 € (gettex), darunter 1 € · Hebelprodukte UniCredit 0 €, andere Emittenten 4 € · Krypto Trade Republic 1 €{stufe.grundpreis ? ` · Grundpreis ${stufe.grundpreis} €` : ''}
           </dd>
-          <dt>Status/Freetrades</dt>
-          <dd>keine – immer Standardpreis</dd>
+          <dt>Umstellung</dt>
+          <dd>Seit 28.10.2026 Smartbroker+ statt Consorsbank – alle bisherigen Orders rückwirkend umgerechnet</dd>
           <dt>Steuern</dt>
           <dd>
             {steuern.aktiv ? `${prozent(steuersatz(steuern as SteuerConfig) * 100, { vorzeichen: false, stellen: 3 })} mit Verlustverrechnung` : 'aus'}

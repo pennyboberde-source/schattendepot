@@ -8,7 +8,7 @@ _Zuletzt aktualisiert: 28.10.2026 spätabends (Sitzung 2: Plan „Datenkrake“ 
 **Zwei Ebenen**
 1. **Datenkrake (Code, kostet kein Limit):** Alle Quellen, Hot Stuff und Strategie-Ideen werden **virtuell gekauft und nachverfolgt** (Schattenbuch: nach 1/3/5/10 Tagen bzw. zum Tagesende beim Daytrading, nach Gebühren). Daraus entsteht eine gemessene Trefferquote je Quelle, Signal, Strategie, Markt und Marktphase. Sie speist die Gewichte, die Rangliste und die Chancen-Korrektur.
 2. **Schaufenster (sichtbar):** Nur das Allerbeste wird mit **1.000 € je Order** gekauft, in **zwei Bereichen**, nie vermischt:
-   - **Depot** (Tage bis Wochen): Consorsbank, Vergleich Smartbroker+
+   - **Depot** (Tage bis Wochen): **Smartbroker+** (gettex 0 € ab 500 €, Hebel UniCredit 0 €/andere 4 €, Krypto TR 1 €) – seit 28.10. spätabends auf Nutzerwunsch, **alle bisherigen Orders rückwirkend umgerechnet** (beim Ableiten; das Protokoll behält die Consorsbank-Buchung). Vorher: Consorsbank
    - **Daytrading** (innerhalb eines Tages): Smartbroker+, Vergleich Trade Republic, dazu immer das Ergebnis vor Gebühren (Consorsbank-Vergleich am 28.10. spätabends vom Nutzer gestrichen – „jenseits von Gut und Böse“; ältere Ereignisse behalten das Feld `nettoConsors`)
 
 **Wer entscheidet**
@@ -134,7 +134,7 @@ Auftrag: Daytrader-Skill `Jakeschincariol/day-trader-skill` (MIT, Stand 3d0f4ef 
 - Lokaler Worktree `_daten/` = Branch `daten`. GitHub-Konto `pennyboberde-source` (gh angemeldet, Keyring).
 
 ## Wichtige Vorgaben des Nutzers
-- **Gebühren: immer Consorsbank-Standardpreis**, keine Stufen, keine Freetrades.
+- ~~Gebühren: immer Consorsbank-Standardpreis~~ → **seit 28.10.2026: Smartbroker+ für Depot und Daytrading, rückwirkend** (Nutzer: „alles ummünzen auf Smartbroker, als wären alle Käufe und Verkäufe dort“). Umsetzung: `config/einstellungen.json gebuehrenDatei`, `core/ableiten.ts gebuehrenUmrechnen` (auch im Wächter), ETF-Vergleich mit denselben Gebühren. Probe 28.10.: netto −232,25 → −123,25 €, offen −80,19 → +17,91 €, ETF −62,69 → +46,31 €.
 - Erfolgschance („Chance ~x %“) im Kauf-Push; später mit Kalibrierung („bisher y % Treffer“, ab 10 Fällen).
 - Leicht reparierbar: Fehler melden → GitHub-Issue (Label `fehler`); neue Sitzung: `gh issue list -R pennyboberde-source/schattendepot --label fehler`.
 - Alles, was der Nutzer tun muss, iPad-tauglich (Links, kopierbare Namen); Freigaben mit 🔴❗ + Push.

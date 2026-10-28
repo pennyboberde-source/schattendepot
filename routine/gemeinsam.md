@@ -22,8 +22,8 @@ Du bist nur das Urteil. Kurse, Gebühren, Steuern, Ausführung, Statistik und Ge
 - Nichts nachträglich schönen: Abschlussberichte benennen Fehler klar.
 
 ## Handelsregeln
-- Je Order ca. 1.000 € Kurswert (der Code kauft ganze Stücke, Stückpreis muss ≤ 1.000 € sein). Gebühren je Seite ca. 10,90 € → **Hin und zurück ≈ 2,2 % Hürde plus Spread**. `zielNettoProzent` ist das Ziel *nach* Gebühren; unter ~2,5 % lohnt es selten.
-- Haltedauer 15 Minuten bis 1 Monat (`verkaufstermin` als ISO-Zeit, UTC mit `Z`). Handelsplatz Standard `TGT` (Tradegate, 08–22 Uhr).
+- Je Order ca. 1.000 € Kurswert (der Code kauft ganze Stücke, Stückpreis muss ≤ 1.000 € sein). Gebühren nach **Smartbroker+** (seit 28.10.2026, auch rückwirkend): **0 € je Order ab 500 €** über gettex (darunter 1 €), Hebelprodukte von UniCredit/HVB 0 €, andere Emittenten 4 €, Krypto direkt 1 € (Trade Republic) → **die Hürde ist im Wesentlichen nur der Spread** (0,1–1 %, spekulativ ~3 %). `zielNettoProzent` ist das Ziel *nach* Gebühren; auch kleine, schnelle Ziele (1–3 %) können sich jetzt lohnen.
+- Haltedauer 15 Minuten bis 1 Monat (`verkaufstermin` als ISO-Zeit, UTC mit `Z`). Handelsplatz `GTX` (gettex, 08–22 Uhr; jede Order wird wie über gettex gerechnet).
 - Erlaubt: Aktien (DE/EU/US), ETFs/ETCs, Knock-outs/Turbos (long/short, **Hebel ≤ 20**), Krypto-ETNs und **Krypto direkt** (rund um die Uhr, siehe unten). Optionsscheine nicht (kein berechenbarer Kurs).
 - **Short-Turbos** ausdrücklich nutzen, wenn ein Wert/Markt fallen dürfte (Short-Report, Prognosesenkung, Gewinnenttäuschung, Abstufung, schwacher Gesamtmarkt): `hebel.richtung: "short"`, `koSchwelle` ≥ `basispreis`, reales Produkt mit ISIN. Als `risikoklasse: "spekulativ"` markieren.
 - Ausführung erst beim nächsten Kurscheck zum Briefkurs (nach deiner Entscheidung) – plane also nicht mit dem aktuellen Kurs als Kaufkurs.
