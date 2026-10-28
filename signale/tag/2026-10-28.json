@@ -1,0 +1,584 @@
+{
+  "stand": "2026-10-28T15:53:55.879Z",
+  "anzahl": 43,
+  "signale": [
+    {
+      "id": "nachricht:BA:2026-10-27",
+      "s": "T:BA",
+      "n": "Boeing",
+      "t": "BA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-27T17:07:01.000Z"
+    },
+    {
+      "id": "nachricht:ETH:2026-10-27",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-10-27T18:00:00.000Z"
+    },
+    {
+      "id": "nachricht:AMZN:2026-10-27",
+      "s": "T:AMZN",
+      "n": "Amazon",
+      "t": "AMZN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-27T18:57:45.000Z"
+    },
+    {
+      "id": "handelsstopp:MGN:2026-10-28",
+      "s": "T:MGN",
+      "n": "Megan Holdings Ltd Cl A Ord Sh",
+      "t": "MGN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ROMA:2026-10-28",
+      "s": "T:ROMA",
+      "n": "Roma Grn Fin Ltd Ord A",
+      "t": "ROMA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CHSN:2026-10-28",
+      "s": "T:CHSN",
+      "n": "Chanson Intl Hldg Cl A Ords",
+      "t": "CHSN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GLE:2026-10-28",
+      "s": "T:GLE",
+      "n": "Global Eng Gr Hd CL A Ord Shs",
+      "t": "GLE",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:NIPG:2026-10-28",
+      "s": "T:NIPG",
+      "n": "NIP Group Inc. American Dep Sh",
+      "t": "NIPG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AXNX:2026-10-28",
+      "s": "T:AXNX",
+      "n": "Axonex AI Grp Ltd Ord Shs A",
+      "t": "AXNX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:POM:2026-10-28",
+      "s": "T:POM",
+      "n": "POMDOCTOR LTD Cl A Ord Shs",
+      "t": "POM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SVCC:2026-10-28",
+      "s": "T:SVCC",
+      "n": "Stellar V Cap Ord A",
+      "t": "SVCC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CPOP:2026-10-28",
+      "s": "T:CPOP",
+      "n": "Pop Culture Group Cl A Or Sh",
+      "t": "CPOP",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:FFTT:2026-10-28",
+      "s": "T:FFTT",
+      "n": "Masonglory Ltd Ord A",
+      "t": "FFTT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TELG:2026-10-28",
+      "s": "T:TELG",
+      "n": "Leverage Shares 2X Long TEL Daily ETF",
+      "t": "TELG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:APUS:2026-10-28",
+      "s": "T:APUS",
+      "n": "Apimeds Pharmaceuticals US, Inc. Common Stock",
+      "t": "APUS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GERN:2026-10-28",
+      "s": "T:GERN",
+      "n": "Geron Corporation",
+      "t": "GERN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-10-28",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-28T00:14:24.000Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-10-28",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "CNBC Top News",
+        "FAZ Finanzen"
+      ],
+      "z": "2026-10-28T00:14:24.000Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-10-28",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-10-28T03:00:00.000Z"
+    },
+    {
+      "id": "nachricht:DBK:2026-10-28",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "FAZ Finanzen",
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-10-28T06:45:05.000Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-10-28",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "CNBC Top News",
+        "BTC-ECHO"
+      ],
+      "z": "2026-10-28T07:48:35.000Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:DBK:2026-10-28",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.7,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-28T09:31:25.000Z"
+    },
+    {
+      "id": "nachricht:COIN:2026-10-28",
+      "s": "T:COIN",
+      "n": "Coinbase",
+      "t": "COIN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-10-28T10:36:16.000Z"
+    },
+    {
+      "id": "nachricht:MBG:2026-10-28",
+      "s": "T:MBG",
+      "n": "Mercedes-Benz",
+      "t": "MBG.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-10-28T11:58:54.000Z"
+    },
+    {
+      "id": "nachricht:SPCX:2026-10-28",
+      "s": "T:SPCX",
+      "n": "Space Exploration Technologies Corp. (SpaceX)",
+      "t": "SPCX",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-10-28T13:57:34.000Z"
+    },
+    {
+      "id": "nachricht:SY1:2026-10-28",
+      "s": "T:SY1",
+      "n": "Symrise",
+      "t": "SY1.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-28T15:01:16.000Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-10-28",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-28T15:12:09.000Z"
+    },
+    {
+      "id": "upbit_warnung:HBAR:2026-10-28",
+      "s": "T:HBAR",
+      "n": "Hedera",
+      "t": "HBAR",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:NIL:2026-10-28",
+      "s": "T:NIL",
+      "n": "Nillion",
+      "t": "NIL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:EGLD:2026-10-28",
+      "s": "T:EGLD",
+      "n": "MultiversX",
+      "t": "EGLD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:MANTRA:2026-10-28",
+      "s": "T:MANTRA",
+      "n": "MANTRA",
+      "t": "MANTRA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:BLUR:2026-10-28",
+      "s": "T:BLUR",
+      "n": "Blur",
+      "t": "BLUR",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:POD:2026-10-28",
+      "s": "T:POD",
+      "n": "Dolphin",
+      "t": "POD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:NMR:2026-10-28",
+      "s": "T:NMR",
+      "n": "Numeraire",
+      "t": "NMR",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:PUFFER:2026-10-28",
+      "s": "T:PUFFER",
+      "n": "Puffer",
+      "t": "PUFFER",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:POKT:2026-10-28",
+      "s": "T:POKT",
+      "n": "Pocket Network",
+      "t": "POKT",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:MPLX:2026-10-28",
+      "s": "T:MPLX",
+      "n": "Metaplex",
+      "t": "MPLX",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:SOPH:2026-10-28",
+      "s": "T:SOPH",
+      "n": "Sophon",
+      "t": "SOPH",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:ZIL:2026-10-28",
+      "s": "T:ZIL",
+      "n": "Zilliqa",
+      "t": "ZIL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "upbit_warnung:GRVT:2026-10-28",
+      "s": "T:GRVT",
+      "n": "Grvt",
+      "t": "GRVT",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "kursrakete:MPLX:2026-10-28",
+      "s": "T:MPLX",
+      "n": "Metaplex",
+      "t": "MPLX",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "kursrakete:AXIS:2026-10-28",
+      "s": "T:AXIS",
+      "n": "Axis Robotics",
+      "t": "AXIS",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": -1,
+      "st": 0.43,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    },
+    {
+      "id": "kursrakete:CAP:2026-10-28",
+      "s": "T:CAP",
+      "n": "Cap",
+      "t": "CAP",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": -1,
+      "st": 0.42,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-28T15:53:55.879Z"
+    }
+  ]
+}
