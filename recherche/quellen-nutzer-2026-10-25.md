@@ -79,3 +79,38 @@ MicroCapClub (Artikel), Value Investors Club (Gastzugang, 45 Tage verzögert), S
 ## X – raus
 - **Kostenpflichtig/Bezahlschranke:** Dilution Tracker (ersetzt durch EDGAR), Fintel (ersetzt durch FINRA + IBKR-Leihdatei), Nansen, Delphi Digital, Blockworks Research.
 - **Keine Schnittstelle:** getquin (nur App), Arkham (API nur auf Antrag).
+
+---
+
+# Ergebnis der Prüfung (28.10.2026)
+Geprüft: robots.txt, Nutzungsbedingungen, Schnittstelle (echter Abruf), Kosten. Die rund 110 genannten Quellen sind unten eingeordnet, dazu 8 selbst gefundene.
+
+## ✅ Eingebaut und live (Commits ad13102, 1892c71), alle ohne Anmeldung
+| Quelle | Herkunft | Was der Code daraus macht | Umfang je Lauf |
+|---|---|---|---|
+| Upbit (Korea) | Liste 3 | Warnhinweise je Coin, Neulistungen, Kimchi-Prämie | alle ~300 KRW-Coins |
+| DefiLlama | Liste 1 | Gebührensprünge von Protokollen mit Token, Stablecoin-Menge | ~3.100 Protokolle |
+| Grizzly, Fuzzy Panda, The Bear Cave | Liste 1 | Short-Seller-Bericht → Signal `shortreport`, bei Position Ereignis | alle neuen Berichte |
+| BTC-ECHO | Liste 1 | deutsche Krypto-Schlagzeilen | stündlich |
+| Asian Century Stocks, Emerging Market Skeptic, The Mikro Kap | Listen 1+3 | Ideen-Schlagzeilen Asien/Frontier/EU-Nebenwerte | täglich |
+| Kraken Futures | eigener Fund (ersetzt Coinglass/Coinalyze) | Funding p. a., Open-Interest-Sprünge, auch Gold/Öl | ~200 Kontrakte |
+| FINRA Short Interest | eigener Fund (ersetzt Fintel/Tapeboard) | Squeeze-Kandidaten, Auf-/Abbau von Leerverkäufen | alle US-Aktien inkl. OTC, 2×/Monat |
+| Nasdaq-Handelsstopps | eigener Fund | Volatilitätspausen/Nachrichtenstopps je Wert | alle Stopps |
+| Apple App Store | eigener Fund | Rang von Coinbase/Robinhood/Kalshi = Andrang Privatanleger | Top 100 USA |
+| alternative.me Fear & Greed, Deribit DVOL | eigener Fund | Krypto-Stimmung und -Volatilität | täglich |
+| Polymarket | eigener Fund | Wahrscheinlichkeiten Fed/Konjunktur/Krypto | ~10 Ereignisse |
+| CFTC COT | eigener Fund | Spekulanten-Positionierung mit 3-Jahres-Perzentil | 8 Märkte |
+Schon vorher in der App: OpenInsider, SEC 8-K, Reddit (ApeWisdom).
+
+## ⏭️ Als Nächstes möglich (kostenlos)
+- **Mit Schlüssel/Secret (Nutzer legt an):** Coinalyze (Funding/Liquidationen mehrerer Börsen), SEC EDGAR Volltext + Fails-to-Deliver (`SEC_KONTAKT`, ersetzt Dilution Tracker), Dune, OpenDART.
+- **Ohne Anmeldung, nur noch Feed-Adresse/Bedingungen klären:** Kalshi (eigener Fund), US-Kongress-Trades (House Clerk), Börsengeflüster, Montega/SMC/GBC (HTML), Kabutan (Japan), ValuePickr (Indien), Nairametrics (Afrika), Substacks mit noch unbekannter Feed-Adresse (Japan Language Gap Alpha, Microcap Mavericks, Microcap Opportunities, European Hidden Gem Stocks, Silba, Norwegian Hidden Gems, Frontier Markets Ideas, LatAm Special Situations, Inside Corner, Kimchi Premium, Praya, Value Investing MY, LATAM STOCKS).
+- **Prüfen, ob Gratis-Schnittstelle:** Tokenomist, Artemis, Token Terminal, Screener.in/Trendlyne/Tijori (Indien, Bedingungen streng).
+
+## 📚 Nur Lernstoff (kein Datenabruf)
+NexusFi, Elite Trader, r/RealDayTrading, Tradingqna, Jigsaw, Axia, Bookmap Learning Center, Quantpedia, TradesViz, MicroCapClub, Value Investors Club, Small Cap Discoveries, TrackingDifferences, etf.capital, ETF.com, findmymoat, Mirae Research, Four Pillars, Asia Frontier Capital, Vietnam Holdings, Offpiste, Kenkyo (seit 2023 still), The Hermit (seit 2023 still).
+
+## ❌ Raus
+- **Kostenpflichtig:** Shikiho, Smartkarma, Edgewonk, Newsquawk, SpotGamma-Kern, Dilution Tracker, Bookmap, FX Replay Pro, Argaam, Opstra, CryptoQuant-API, Nikkei Asia, Caixin, Coinglass-API (ab 29 $), Nansen, Delphi, Blockworks, DefiLlama-Unlocks (402), Fintel, Market Chameleon.
+- **Verbot/Sperre:** FinancialJuice (Bedingungen verbieten Bots), TDnet (robots sperrt alles), Upbit-Website (nur die API ist frei), african-markets (sperrt KI-Bots), Culper (403), OTC Markets (blockt Abrufe), alte iTunes-RSS (robots), Minkabu (sperrt ClaudeBot), ClinicalTrials-API (robots sperrt /api/), Cboe-CDN (403).
+- **Login/keine Schnittstelle:** Xueqiu, Eastmoney Guba, getquin, Sensibull, NiftyTrader, Chartink, Gammalens, Tapeboard, Arkham, CapEdge (API gesperrt), wikifolio (keine offene Schnittstelle), Wu Blockchain (X/Telegram), Telegram-/WhatsApp-Gruppen (BaFin-Warnungen), Kenyan Wall Street (Feed abgeschaltet), Bamboo Works (Verbindung verweigert), Spruce Point (kein Feed).
