@@ -12,7 +12,7 @@ import { uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
 import { ortszeitZuUtc, sitzung, tradesAusEreignissen, type Kerze } from '../core/daytrading/kern.ts';
 
 const root = join(dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, '$1')), '..');
-const cfg = JSON.parse(readFileSync(join(root, 'config/gebuehren.json'), 'utf8')) as GebuehrenConfig;
+const cfg = JSON.parse(readFileSync(join(root, 'config/gebuehren-smartbroker.json'), 'utf8')) as GebuehrenConfig;
 const steuerCfg = JSON.parse(readFileSync(join(root, 'config/steuern.json'), 'utf8')) as SteuerConfig;
 const ziel = join(root, 'demo/daten');
 

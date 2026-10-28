@@ -1,7 +1,7 @@
 // Wochenzeugnis im Samstagslauf des Sammlers: Daten der Woche (Mo–Fr) sammeln, Note vergeben, speichern, Push.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { ordersAusEreignissen } from '../../core/ableiten.ts';
+import { gebuehrenUmrechnen, ordersAusEreignissen } from '../../core/ableiten.ts';
 import { tradesAusEreignissen, type DtEreignis } from '../../core/daytrading/kern.ts';
 import { berlin } from '../../core/kalender.ts';
 import type { PushNachricht } from '../../core/push.ts';
@@ -23,7 +23,8 @@ export function wochenzeugnisErstellen(jetzt: Date): { zeugnis: Wochenzeugnis; p
   if (existsSync(join(DATEN_DIR, `wochen/zeugnis-${bis}.json`))) return null;
   // Samstag/Sonntag vor dem Montag gehören dazu (Krypto handelt auch am Wochenende)
   const inWoche = (d: string) => d >= tag(von, -2) && d <= bis;
-  const zu = ordersAusEreignissen(leseEreignisse()).filter((o) => o.status === 'geschlossen' && o.verkauf && inWoche(berlin(new Date(o.verkauf.zeit)).datum));
+  const cfg = ladeConfig();
+  const zu = gebuehrenUmrechnen(ordersAusEreignissen(leseEreignisse()), cfg.gebuehren, { spreads: cfg.spreads, orderBetrag: cfg.einstellungen.orderBetrag }).filter((o) => o.status === 'geschlossen' && o.verkauf && inWoche(berlin(new Date(o.verkauf.zeit)).datum));
   const pfad = join(DATEN_DIR, 'daytrading/ereignisse.jsonl');
   const dtEv = existsSync(pfad) ? readFileSync(pfad, 'utf8').split('\n').filter((z) => z.trim()).map((z) => JSON.parse(z) as DtEreignis) : [];
   const dt = tradesAusEreignissen(dtEv).filter((t) => t.ergebnis && inWoche(t.datum));
@@ -46,7 +47,7 @@ export function wochenzeugnisErstellen(jetzt: Date): { zeugnis: Wochenzeugnis; p
     },
     von,
     bis,
-    ladeConfig().einstellungen.orderBetrag,
+    cfg.einstellungen.orderBetrag,
   );
   schreibeJson(`wochen/zeugnis-${bis}.json`, zeugnis);
   schreibeJson('wochen/zeugnis-letztes.json', zeugnis);

@@ -47,7 +47,8 @@ test('Order-Detail mit Gebührenaufstellung und Claude-Knopf', async ({ page }) 
   await page.getByText('Demo Alpha AG').click();
   await expect(page.getByRole('heading', { name: 'Demo Alpha AG' })).toBeVisible();
   await expect(page.getByText('Ausführung und Gebühren')).toBeVisible();
-  await expect(page.getByRole('cell', { name: '9,95 €' }).first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: '0,00 €' }).first()).toBeVisible();
+  await expect(page.getByText(/Consorsbank/)).toHaveCount(0);
   const claude = page.getByRole('link', { name: 'In Claude besprechen' });
   await expect(claude).toHaveAttribute('href', /^https:\/\/claude\.ai\/new\?q=/);
 });

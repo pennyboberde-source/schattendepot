@@ -148,6 +148,22 @@ if (typ === 'abendlauf' || typ === 'wochenrueckblick') {
     );
   }
   if (offenBericht.length > 8) p(`(+${offenBericht.length - 8} weitere – im nächsten Lauf)`);
+  // Berichte mit veralteten Gebührenzahlen einmal neu schreiben (Zahlen oben in positionen/abgeschlossen sind die gültigen)
+  if (typ === 'abendlauf') {
+    let neuVor = null;
+    try {
+      neuVor = JSON.parse((await import('node:fs')).readFileSync('config/einstellungen.json', 'utf8')).berichteNeuVor ?? null;
+    } catch {
+      /* ohne Einstellung nichts zu tun */
+    }
+    const alt = neuVor ? abg.orders.filter((o) => o.bericht && o.berichtZeit && o.berichtZeit < neuVor) : [];
+    if (alt.length) {
+      p('', `## 📝 Berichte neu schreiben (${alt.length}) – die Gebührenzahlen darin sind veraltet`);
+      for (const o of alt.slice(0, 5))
+        p(`- ${o.id}: ${o.plan.wertpapier.name} · gültig: netto ${o.ergebnis.netto} € (${o.ergebnis.nettoProzent} %), Gebühren ${o.ergebnis.gebuehren} €, Kurs ${o.ergebnis.kursProzent} % · bisheriger Bericht: ${kurz(o.bericht, 300)}`);
+      p('Aufgabe: je Order einen Eintrag in `berichte` mit `"ersetzt": true` – gleicher Inhalt, aber nur mit den gültigen Zahlen oben (keine alten Gebührenbeträge nennen).');
+    }
+  }
   // Hot Stuff: Kursraketen und ihre Vorzeichen → Lehren ziehen („hätte man es erkennen können?“)
   const hs = await json('lernen/hotstuff-letzte.json', null);
   if (hs?.mover?.length) {

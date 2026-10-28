@@ -10,7 +10,7 @@ export interface Entscheidung {
   briefing?: string[];
   orders?: OrderPlan[];
   anpassungen?: { orderId: string; feld: Anpassung['feld']; neu: number | string; begruendung: string }[];
-  berichte?: { orderId: string; text: string; learnings: string[]; einwandEingetreten?: boolean }[];
+  berichte?: { orderId: string; text: string; learnings: string[]; einwandEingetreten?: boolean; ersetzt?: boolean }[];
   /** Claudes Tagesprognose (Morgenlauf): bis 10 Werte mit Richtung, ohne Geld – wird im Schattenbuch gemessen */
   prognose?: TagesPrognose[];
   /** Daytrading-Watchlist (Morgenlauf, S3): bis 5 Werte für den eigenen Bereich Daytrading */
@@ -116,6 +116,8 @@ export function entscheidungUebernehmen(
     mindestChance?: number;
     /** bisherige Treffsicherheit je Konfidenz-Stufe → Chancen-Korrektur */
     kalibrierung?: KalibrierStufe[];
+    /** Berichte, die vor diesem Zeitpunkt geschrieben wurden, dürfen einmal ersetzt werden (Gebührenmodell geändert) */
+    berichteNeuVor?: string;
     /** Höchstzahl neuer Orders je Lauf-Typ (S2: morgens 6, mittags 3, abends 3) */
     claudeOrders?: Partial<Record<Entscheidung['typ'], number>>;
   },
@@ -240,7 +242,8 @@ export function entscheidungUebernehmen(
       hinweise.push(`Bericht für ${b.orderId} ignoriert: Order nicht abgeschlossen`);
       continue;
     }
-    if (o.bericht) {
+    const ersetzbar = !!b.ersetzt && !!cfg.berichteNeuVor && !!o.berichtZeit && o.berichtZeit < cfg.berichteNeuVor;
+    if (o.bericht && !ersetzbar) {
       hinweise.push(`Bericht für ${b.orderId} ignoriert: existiert bereits`);
       continue;
     }

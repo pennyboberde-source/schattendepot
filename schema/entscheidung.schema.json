@@ -110,6 +110,10 @@
           "einwandEingetreten": {
             "type": "boolean",
             "description": "Ist der Einwand der Gegenprüfung eingetreten? (nur bei Orders mit gegenpruefung)"
+          },
+          "ersetzt": {
+            "type": "boolean",
+            "description": "true = ersetzt einen alten Bericht mit veralteten Gebührenzahlen (nur für Orders, die der Kontext dafür nennt)"
           }
         }
       }

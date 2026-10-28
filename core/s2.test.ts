@@ -2,7 +2,7 @@
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { describe, expect, it } from 'vitest';
-import gebuehrenDatei from '../config/gebuehren.json';
+import gebuehrenDatei from './testdaten/gebuehren-prozentmodell.json';
 import schema from '../schema/entscheidung.schema.json';
 import { ordersAusEreignissen } from './ableiten.ts';
 import { autopilotOrders, kostenHuerdeProzent, kursbasisAusTicker, signalBeweise, type AutopilotEinstellungen, type AutopilotKandidat } from './autopilot.ts';

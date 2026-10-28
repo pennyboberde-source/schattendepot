@@ -88,7 +88,7 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
 
       const vorher = ordersAusEreignissen(leseEreignisse());
       const st = leseJson<{ risikoBudget?: typeof cfg.einstellungen.risikoBudget; kalibrierung?: KalibrierStufe[] }>('statistik.json', {});
-      const u = entscheidungUebernehmen(e, vorher, jetzt, { ...cfg.einstellungen, risikoBudget: st.risikoBudget ?? cfg.einstellungen.risikoBudget, mindestChance: cfg.einstellungen.mindestChance ?? 40, kalibrierung: st.kalibrierung, claudeOrders: cfg.einstellungen.claudeOrders });
+      const u = entscheidungUebernehmen(e, vorher, jetzt, { ...cfg.einstellungen, risikoBudget: st.risikoBudget ?? cfg.einstellungen.risikoBudget, mindestChance: cfg.einstellungen.mindestChance ?? 40, kalibrierung: st.kalibrierung, claudeOrders: cfg.einstellungen.claudeOrders, berichteNeuVor: cfg.einstellungen.berichteNeuVor });
       const neu = haengeEreignisseAn(u.ereignisse);
       const nachher = ordersAusEreignissen(leseEreignisse());
       const nachId = new Map<string, Order>(nachher.map((o) => [o.id, o]));

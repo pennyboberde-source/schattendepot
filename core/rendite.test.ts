@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import gebuehrenDatei from '../config/gebuehren.json';
+import gebuehrenDatei from './testdaten/gebuehren-prozentmodell.json';
 import spreadDatei from '../config/spreads.json';
 import { euro, prozent } from './geld.ts';
 import type { GebuehrenConfig } from './gebuehren.ts';

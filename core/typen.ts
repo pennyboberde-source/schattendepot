@@ -42,7 +42,7 @@ export interface Wertpapier {
   ticker?: string;
   anlageklasse: Anlageklasse;
   spreadKlasse: SpreadKlasse;
-  /** Kürzel aus config/gebuehren.json, Standard "TGT". */
+  /** Handelsplatz-Kürzel (gerechnet wird wie über gettex, Krypto direkt: TRK) */
   handelsplatz: string;
   steuertopf: Steuertopf;
   teilfreistellung?: number;
@@ -160,6 +160,8 @@ export interface Order {
   etfKauf?: Kurs;
   etfVergleich?: { netto: number; nettoProzent: number };
   bericht?: string;
+  /** Zeitpunkt des (zuletzt geschriebenen) Abschlussberichts */
+  berichtZeit?: string;
   /** aus dem Abschlussbericht: ist der Einwand der Gegenprüfung eingetreten? */
   einwandEingetreten?: boolean;
   verwerfGrund?: string;

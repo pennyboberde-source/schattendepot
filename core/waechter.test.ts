@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import gebuehrenDatei from '../config/gebuehren.json';
+import gebuehrenDatei from './testdaten/gebuehren-prozentmodell.json';
 import spreadDatei from '../config/spreads.json';
 import steuerDatei from '../config/steuern.json';
 import { ableiten, ordersAusEreignissen } from './ableiten.ts';

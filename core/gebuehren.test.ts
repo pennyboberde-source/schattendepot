@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import cfgDatei from '../config/gebuehren.json';
+import cfgDatei from './testdaten/gebuehren-prozentmodell.json';
 import sbDatei from '../config/gebuehren-smartbroker.json';
 import { entgeltVergleich, orderentgelt, type GebuehrenConfig } from './gebuehren.ts';
 

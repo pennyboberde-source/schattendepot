@@ -1,0 +1,53 @@
+{
+  "modell": "Prozent-Gebührenmodell (nur Testdaten)",
+  "hinweis": "Nur für Tests der Gebührenlogik (Grundpreis + Prozent, Minimum, Maximum, Handelsplatzentgelte). Das Programm rechnet ausschließlich mit config/gebuehren-smartbroker.json.",
+  "orderentgelt": {
+    "grundpreis": 4.95,
+    "prozent": 0.25,
+    "min": 9.95,
+    "max": 69
+  },
+  "handelsplaetze": {
+    "TGT": {
+      "name": "Tradegate",
+      "entgelt": 0.95,
+      "variabelProzent": 0
+    },
+    "GTX": {
+      "name": "gettex",
+      "entgelt": 1.95,
+      "variabelProzent": 0
+    },
+    "LSX": {
+      "name": "LS Exchange",
+      "entgelt": 1.95,
+      "variabelProzent": 0
+    },
+    "XETRA": {
+      "name": "Xetra",
+      "entgelt": 1.95,
+      "variabelProzent": 0,
+      "hinweis": "zzgl. variabler Entgelte (nicht modelliert)"
+    },
+    "FRA": {
+      "name": "Börse Frankfurt",
+      "entgelt": 2.95,
+      "variabelProzent": 0,
+      "hinweis": "zzgl. variabler Entgelte (nicht modelliert)"
+    },
+    "STU": {
+      "name": "Börse Stuttgart",
+      "entgelt": 2.95,
+      "variabelProzent": 0,
+      "hinweis": "zzgl. variabler Entgelte (nicht modelliert)"
+    },
+    "TRK": {
+      "name": "Trade Republic (Krypto direkt)",
+      "entgelt": 1,
+      "variabelProzent": 0,
+      "ohneProvision": true,
+      "hinweis": "Krypto direkt: 1 € je Order, keine Provision (Testdaten)"
+    }
+  },
+  "standardHandelsplatz": "TGT"
+}

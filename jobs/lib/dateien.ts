@@ -52,7 +52,9 @@ function config<T>(datei: string): T {
 
 export interface Einstellungen {
   orderBetrag: number;
-  /** Gebührenmodell des Depots (Datei in config/), Standard gebuehren.json */
+  /** Berichte vor diesem Zeitpunkt dürfen einmal neu geschrieben werden */
+  berichteNeuVor?: string;
+  /** Gebührenmodell des Depots (Datei in config/), Standard gebuehren-smartbroker.json */
   gebuehrenDatei?: string;
   hebelMax: number;
   haltedauerMinMinuten: number;
@@ -78,9 +80,8 @@ export interface Einstellungen {
 export function ladeConfig() {
   const einstellungen = config<Einstellungen>('einstellungen.json');
   return {
-    /** Gebührenmodell des Depots (seit 28.10.2026 Smartbroker+, rückwirkend) */
-    gebuehren: config<GebuehrenConfig>(einstellungen.gebuehrenDatei ?? 'gebuehren.json'),
-    gebuehrenConsors: config<GebuehrenConfig>('gebuehren.json'),
+    /** Gebührenmodell des Depots: Smartbroker+ */
+    gebuehren: config<GebuehrenConfig>(einstellungen.gebuehrenDatei ?? 'gebuehren-smartbroker.json'),
     gebuehrenSmartbroker: config<GebuehrenConfig>('gebuehren-smartbroker.json'),
     steuern: config<SteuerConfig>('steuern.json'),
     spreads: config<SpreadConfig>('spreads.json'),

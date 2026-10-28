@@ -103,10 +103,8 @@ export interface DtErgebnis {
   /** nach Gebühren im Hauptmodell (Smartbroker+, Krypto Trade Republic) */
   netto: number;
   nettoProzent: number;
-  /** nur in älteren Ereignissen (Consorsbank-Vergleich im Daytrading am 28.10.2026 vom Nutzer gestrichen) */
-  nettoConsors?: number;
   nettoTR: number;
-  gebuehren: { haupt: number; consors?: number; tr: number };
+  gebuehren: { haupt: number; tr: number };
   /** Ergebnis in R (Vielfache des Risikos) am Basiswert */
   r: number;
 }
@@ -394,7 +392,12 @@ export function tradesAusEreignissen(ev: DtEreignis[]): DtTrade[] {
     if (e.typ === 'einstieg' && !m.has(e.trade.id)) m.set(e.trade.id, { ...e.trade });
     if (e.typ === 'ausstieg') {
       const t = m.get(e.tradeId);
-      if (t && !t.ausstieg) Object.assign(t, { ausstieg: e.ausstieg, ergebnis: e.ergebnis });
+      if (t && !t.ausstieg) {
+        // ältere Ereignisse tragen noch einen gestrichenen Vergleichswert – beim Ableiten weglassen
+        const { nettoConsors: _n, ...ergebnis } = e.ergebnis as DtErgebnis & { nettoConsors?: number };
+        const { consors: _c, ...gebuehren } = ergebnis.gebuehren as DtErgebnis['gebuehren'] & { consors?: number };
+        Object.assign(t, { ausstieg: e.ausstieg, ergebnis: { ...ergebnis, gebuehren } });
+      }
     }
   }
   return [...m.values()];

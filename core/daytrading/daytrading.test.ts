@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import gebuehrenDatei from '../../config/gebuehren.json';
+import gebuehrenDatei from '../testdaten/gebuehren-prozentmodell.json';
 import smartbrokerDatei from '../../config/gebuehren-smartbroker.json';
 import trDatei from '../../config/gebuehren-traderepublic.json';
 import type { GebuehrenConfig } from '../gebuehren.ts';
@@ -78,7 +78,7 @@ describe('Eröffnungsspanne (ORB) Kerze für Kerze', () => {
     expect(t).toMatchObject({ richtung: 'long', instrument: 'aktie', stop: 100.5, ziel: 105, ausloeser: { level: 101.5 }, einstieg: { basisKurs: 102, kurs: 102.051, stueck: 9 } });
     expect(t.ausstieg).toMatchObject({ grund: 'ziel', basisKurs: 105 });
     expect(t.ergebnis!.gebuehren.haupt).toBe(0);
-    expect(t.ergebnis!.gebuehren.consors).toBeUndefined(); // Consorsbank-Vergleich im Daytrading gestrichen
+    expect('consors' in t.ergebnis!.gebuehren).toBe(false);
     expect(t.ergebnis!.gebuehren.tr).toBe(2);
     expect(t.ergebnis!.r).toBe(2);
     expect(t.ergebnis!.netto).toBe(t.ergebnis!.brutto);

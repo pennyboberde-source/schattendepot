@@ -1,4 +1,4 @@
-// Orderentgelte nach Consorsbank-Standardpreis. Alle Werte kommen aus config/gebuehren.json.
+// Orderentgelte nach dem Gebührenmodell aus config/ (Smartbroker+). Alle Werte kommen aus der Konfiguration.
 // Bewusst immer Standard: keine Statusstufen, keine Freetrades.
 import { runde } from './geld.ts';
 

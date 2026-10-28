@@ -38,7 +38,7 @@
         ],
         "einflussLektionen": "Demo: keine Lektionen vorhanden."
       },
-      "zielkurs": 102.2,
+      "zielkurs": 99.96,
       "stopkurs": 92.34,
       "verkaufstermin": "2026-10-29T16:00:00Z",
       "kauf": {
@@ -47,11 +47,11 @@
         "kurs": 95.2,
         "kurswert": 952,
         "entgelt": {
-          "provision": 9.95,
-          "handelsplatz": 0.95,
-          "gesamt": 10.9
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
         },
-        "betrag": 962.9,
+        "betrag": 952,
         "kursquelle": "demo",
         "synthetisch": true
       },
@@ -61,11 +61,11 @@
         "kurs": 101.4,
         "kurswert": 1014,
         "entgelt": {
-          "provision": 9.95,
-          "handelsplatz": 0.95,
-          "gesamt": 10.9
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
         },
-        "betrag": 1003.1,
+        "betrag": 1014,
         "kursquelle": "demo",
         "synthetisch": true,
         "grund": "ziel"
@@ -73,11 +73,11 @@
       "anpassungen": [],
       "ergebnis": {
         "kursProzent": 6.51,
-        "netto": 40.2,
-        "nettoProzent": 4.17,
-        "gebuehren": 21.8,
-        "steuer": 10.6,
-        "nachSteuern": 29.6
+        "netto": 62,
+        "nettoProzent": 6.51,
+        "gebuehren": 0,
+        "steuer": 16.35,
+        "nachSteuern": 45.65
       },
       "bericht": "DEMO-Abschlussbericht: Verlauf, These, Signale, Learnings."
     },
@@ -118,7 +118,7 @@
         ],
         "einflussLektionen": "Demo: keine Lektionen vorhanden."
       },
-      "zielkurs": 257.59,
+      "zielkurs": 252,
       "stopkurs": 232.8,
       "verkaufstermin": "2026-10-29T16:00:00Z",
       "kauf": {
@@ -127,11 +127,11 @@
         "kurs": 240,
         "kurswert": 960,
         "entgelt": {
-          "provision": 9.95,
-          "handelsplatz": 0.95,
-          "gesamt": 10.9
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
         },
-        "betrag": 970.9,
+        "betrag": 960,
         "kursquelle": "demo",
         "synthetisch": true
       },
@@ -141,11 +141,11 @@
         "kurs": 232.5,
         "kurswert": 930,
         "entgelt": {
-          "provision": 9.95,
-          "handelsplatz": 0.95,
-          "gesamt": 10.9
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
         },
-        "betrag": 919.1,
+        "betrag": 930,
         "kursquelle": "demo",
         "synthetisch": true,
         "grund": "stop"
@@ -153,11 +153,11 @@
       "anpassungen": [],
       "ergebnis": {
         "kursProzent": -3.13,
-        "netto": -51.8,
-        "nettoProzent": -5.34,
-        "gebuehren": 21.8,
-        "steuer": -10.6,
-        "nachSteuern": -41.2
+        "netto": -30,
+        "nettoProzent": -3.13,
+        "gebuehren": 0,
+        "steuer": -7.91,
+        "nachSteuern": -22.09
       },
       "bericht": "DEMO-Abschlussbericht: Verlauf, These, Signale, Learnings."
     }

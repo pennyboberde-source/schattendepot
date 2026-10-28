@@ -29,7 +29,7 @@ export function restStueck(o: Order): number {
 
 /**
  * Gebühren aller Orders mit dem aktuellen Gebührenmodell neu rechnen – „als wären alle Käufe und Verkäufe dort gehandelt
- * worden“ (Nutzer 28.10.2026: Smartbroker+ statt Consorsbank, rückwirkend). Kurse und Stückzahlen bleiben, wie sie
+ * worden“ (Smartbroker+, für alle Orders). Kurse und Stückzahlen bleiben, wie sie
  * ausgeführt wurden; das Ereignisprotokoll behält die ursprüngliche Buchung (nur anhängen, nie umschreiben).
  */
 export function gebuehrenUmrechnen(orders: Order[], g: GebuehrenConfig, etf?: { spreads: SpreadConfig; orderBetrag: number }): Order[] {
@@ -115,6 +115,7 @@ export function ordersAusEreignissen(ereignisse: Ereignis[]): Order[] {
         if (o) {
           const d = e.daten as unknown as EreignisDaten['bericht'];
           o.bericht = d.text;
+          o.berichtZeit = e.zeit;
           if (typeof d.einwandEingetreten === 'boolean') o.einwandEingetreten = d.einwandEingetreten;
         }
         break;
@@ -137,8 +138,6 @@ export interface Kennzahlen {
   unrealisiert: number;
   trefferquote: number | null;
   etfNetto: number;
-  /** Vergleich: Ergebnis der abgeschlossenen Orders, wenn sie bei Smartbroker+ statt Consorsbank gehandelt worden wären */
-  nettoSmartbroker?: number;
   kurve: { datum: string; depot: number; etf: number }[];
 }
 

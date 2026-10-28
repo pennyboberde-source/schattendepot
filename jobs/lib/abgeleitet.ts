@@ -9,7 +9,7 @@ import { zielStopVorschlaege } from '../../core/zielstop.ts';
 import type { Kurs } from '../../core/typen.ts';
 import { APP_URL, ladeConfig, leseEreignisse, leseJson, schreibeJson, schreibeText } from './dateien.ts';
 
-/** Kostenhürde hin und zurück je Marktgruppe (1.000 € Order): Aktie = Consorsbank + Nebenwert-Spread, Krypto = Trade Republic. */
+/** Kostenhürde hin und zurück je Marktgruppe (1.000 € Order): Aktie = Smartbroker+ (gettex) + Nebenwert-Spread, Krypto = Trade Republic. */
 export function huerdenAusConfig(cfg: ReturnType<typeof ladeConfig>): Record<MarktGruppe, number> {
   const b = cfg.einstellungen.orderBetrag;
   return {

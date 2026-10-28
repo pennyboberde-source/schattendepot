@@ -75,8 +75,6 @@ export function EinstellungenView() {
           <dd>
             0 € ab 500 € (gettex), darunter 1 € · Hebelprodukte UniCredit 0 €, andere Emittenten 4 € · Krypto Trade Republic 1 €{stufe.grundpreis ? ` · Grundpreis ${stufe.grundpreis} €` : ''}
           </dd>
-          <dt>Umstellung</dt>
-          <dd>Seit 28.10.2026 Smartbroker+ statt Consorsbank – alle bisherigen Orders rückwirkend umgerechnet</dd>
           <dt>Steuern</dt>
           <dd>
             {steuern.aktiv ? `${prozent(steuersatz(steuern as SteuerConfig) * 100, { vorzeichen: false, stellen: 3 })} mit Verlustverrechnung` : 'aus'}
