@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-28T20:44:01.633Z",
+  "stand": "2026-10-28T21:20:42.289Z",
   "orders": [
     {
       "id": "2026-10-23-elevance-health-inc",
@@ -107,7 +107,9 @@
         "gebuehren": 0,
         "steuer": 0,
         "nachSteuern": -49.36
-      }
+      },
+      "bericht": "Ergebnis: Verlust. Kauf am 23.10. zu 398,15 €, Verkauf am 28.10. zum Stop bei 373,47 €; Kurs −6,2 %, netto −49,36 € (−6,2 %). Ein MSCI-World-ETF hätte im gleichen Zeitraum 11,54 € gewonnen. These: Deutliche Gewinnüberraschung (EPS 6,99 $ statt ca. 4,71 $) mit Prognoseanhebung, aber nur verhaltene Kursreaktion von +2,6 % – erhoffte Drift. Falsch lag die These darin, dass eine verhaltene Reaktion auf eine riesige Überraschung eher Skepsis des Marktes signalisiert (Kostenquote, Branchenrisiken im Krankenversicherungssektor) als unentdecktes Potenzial. Die Signale gewinn_ueberraschung und nachzahlen_drift haben nicht getragen. Vorher wissen konnte man: Das Schattenbuch zeigt für nachzahlen_drift nur 25 % Trefferquote nach 1 Tag (n=11), und die erwartete Rendite von +0,5 % war bei einem Stop von gut 6 % kaum ein positiver Erwartungswert.\n\nLearnings:\n1. Verhaltene Kursreaktion auf eine sehr große Gewinnüberraschung ist kein Drift-Signal, sondern oft Skepsis des Marktes – nicht kaufen ohne zusätzliche Bestätigung.\n2. Erwartete Rendite +0,5 % bei Stop −6 % ist praktisch kein Vorteil; solche Orders auslassen.",
+      "berichtZeit": "2026-10-28T21:20:42.289Z"
     },
     {
       "id": "2026-10-22-capital-one-financial-corp",
@@ -210,7 +212,9 @@
         "gebuehren": 0,
         "steuer": 0,
         "nachSteuern": 11.34
-      }
+      },
+      "bericht": "Ergebnis: kleiner Gewinn. Kauf am 22.10. zu 180,78 €, Verkauf am 28.10. zum Zeitpunkt (Wächter: keine Bewegung) bei 183,04 €; Kurs +1,25 %, netto 11,34 € (+1,25 %). Ein MSCI-World-ETF hätte mit 11,15 € praktisch gleich viel gebracht. These: EPS 6,69 $ statt 5,56 $ (+20 %) bei moderater Kursreaktion, klassischer Post-Earnings-Drift einer großen, liquiden Bank als ruhiger Gegenpol. Die These war nicht falsch, aber die Drift blieb aus – der Kurs lief seitwärts, der Wächter verkaufte nach sechs Tagen ohne nennenswerte Bewegung. Gegenüber dem Markt kein Mehrwert; das Signal nachzahlen_drift hat nur so viel getragen wie der Gesamtmarkt. Vorher wissen konnte man, dass bei großen, gut beobachteten Banken Überraschungen schnell eingepreist werden.\n\nLearnings:\n1. Nachzahlen-Drift bei großen, liquiden US-Werten brachte nur Marktrendite – ohne Zusatzsignal kein Vorteil gegenüber dem ETF.",
+      "berichtZeit": "2026-10-28T21:20:42.289Z"
     },
     {
       "id": "2026-10-27-the-hartford-insurance-group-i",
@@ -316,7 +320,9 @@
         "gebuehren": 0,
         "steuer": 0,
         "nachSteuern": -40.64
-      }
+      },
+      "bericht": "Ergebnis: Verlust. Kauf am 27.10. zu 122,27 €, Verkauf schon am 28.10. zum Stop bei 117,19 €; Kurs −4,15 %, netto −40,64 € (−4,15 %). Ein MSCI-World-ETF hätte 6,74 € gewonnen. These: EPS 3,50 $ statt 3,21 $ (+9 %), bei Versicherern mit stabilen Margen folge oft eine mehrtägige Drift; die Telefonkonferenz sollte den Ausblick bestätigen. Falsch: Gekauft wurde vor der Telefonkonferenz – also vor einem Ereignis, das den Kurs in beide Richtungen bewegen kann. Der Kurs fiel binnen eines Tages zum Stop, offenbar überzeugte der Ausblick nicht. Eine Überraschung von nur 9 % ist schwach. Die Konfidenz lag am Minimum von 40 %; der Code-Hinweis „erwartete Renditen zu hoch“ trifft hier zu. Vorher wissen konnte man: nachzahlen_drift läuft im Schattenbuch schlecht (25 %, n=11).\n\nLearnings:\n1. Nicht vor einer Telefonkonferenz/Ausblick kaufen, wenn die These erst durch sie bestätigt werden soll – erst danach einsteigen.\n2. Gewinnüberraschungen unter ca. 10 % tragen keine Drift; Konfidenz 40 % am Minimum heißt eher: keine Order.",
+      "berichtZeit": "2026-10-28T21:20:42.289Z"
     },
     {
       "id": "2026-10-26-rapport-therapeutics-inc",
@@ -438,7 +444,9 @@
         "gebuehren": 0,
         "steuer": -24.4,
         "nachSteuern": -112.72
-      }
+      },
+      "bericht": "Ergebnis: deutlicher Verlust. Kauf am 26.10. zu 24,52 €, Verkauf am 28.10. zum Stop bei 21,10 €; Kurs −13,98 %, netto −137,12 € (−13,98 %). Ein MSCI-World-ETF hätte 11,54 € gewonnen. These: Sechs Insider kauften laut Form 4 für zusammen 1,66 Mio. $, darunter ein Direktor knapp 1 Mio. $ zu rund 24,65 $ – Cluster-Käufe gelten als starkes Signal. Falsch: Bei einem Biotech vor Phase 3 überlagern Studien- und Finanzierungsrisiken das Insider-Signal; Insider kaufen dort oft langfristig, nicht für Tage. Der Stop bei rund −14 % war für eine spekulative Position weit, und der Verkaufstermin wurde zusätzlich nach hinten geschoben, was die Haltedauer gegen die Regel „spekulativ kurz“ verlängerte. Das Insider-Signal trug nicht. Vorher wissen konnte man: Die Volltreffer-Quote für insider_cluster_kauf liegt bei 0 % (n=12) – kurzfristig sind große Sprünge nach Cluster-Käufen nicht belegt.\n\nLearnings:\n1. Insider-Cluster bei Biotech vor Studiendaten ist kein Kurzfrist-Signal; Studien- und Finanzierungsrisiko dominieren.\n2. Bei spekulativen Positionen den Verkaufstermin nicht ohne neuen Grund verlängern und den Stop enger als −14 % setzen.",
+      "berichtZeit": "2026-10-28T21:20:42.289Z"
     },
     {
       "id": "2026-10-27-gentherm-inc",
@@ -556,8 +564,8 @@
         "steuer": 24.4,
         "nachSteuern": 68.13
       },
-      "bericht": "Ergebnis: Gewinn. Kauf am 27.10. um 07:16 UTC zu 26,28 €, Verkauf am selben Tag um 15:33 UTC zu 28,71 € über das Kursziel. Der Kurs stieg um 9,3 %, das sind netto 70,73 € (+7,0 %) nach Gebühren. Ein MSCI-World-ETF hätte im gleichen Zeitraum 16,46 € verloren. Die These: Zwei Direktoren kauften am 23.10. zusammen für 0,66 Mio. $ eigene Aktien, gemeldet am 26.10. Dazu stieg der Anteil der Kaufempfehlungen der Analysten von 64 % auf 73 %. Getragen haben die Signale Insider-Cluster-Kauf, Insider-Kauf und Analysten-Hochstufung. Was die These richtig sah: Die Kombination aus Cluster-Kauf und besserer Analystenstimmung kurz nach den Q3-Zahlen (22.10., im Rahmen der Erwartungen, Rückkauf über 60 Mio. $ im Oktober) gab dem Kurs Rückenwind. Was nicht stimmt: Die Ursache für den Sprung um über 9 % noch am Kauftag ist nicht belegt. Eine gezielte Suche fand keine eigene Nachricht dazu. Gut möglich, dass der Kurs vor allem durch den Nachrichtenfluss und Zufall stieg. Der Gewinn ist deshalb kein Beweis für die Strategie. Kalibrierung: Erwartet waren 1 % netto bei 42 % Konfidenz. Das Ziel lag mit ca. 9 % weit über der erwarteten Rendite, die Angaben waren also nicht stimmig. Schon am Morgen hätte man wissen können, dass der Wert eng gehandelt wird (Nebenwert, Börsenwert ca. 1,3 Mrd. $). Starke Ausschläge in beide Richtungen sind daher normal. Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung.\n\nLearnings:\n1. Insider-Cluster-Kauf plus Analysten-Hochstufung bei einem Nebenwert kurz nach den Quartalszahlen: erster Treffer (+7 % netto), aber n=1 und Ursache des Sprungs unbelegt.\n2. erwarteteRenditeNetto und Kursziel müssen zueinander passen: 1 % erwartet bei 9 % Ziel ist widersprüchlich und verzerrt die Kalibrierung.\n3. Bei Nebenwerten sind Tagesausschläge von über 9 % möglich; Ziel und Stop an die tatsächliche Schwankung anpassen statt an Large-Cap-Maßstäbe.",
-      "berichtZeit": "2026-10-27T21:20:09.750Z"
+      "bericht": "Ergebnis: Gewinn. Kauf am 27.10. um 07:16 UTC zu 26,28 €, Verkauf am selben Tag um 15:33 UTC zu 28,71 € am Kursziel. Der Kurs stieg um 9,27 %, netto 92,53 € (+9,27 %), Gebühren 0 € (Smartbroker+). These: Mehrere Direktoren kauften laut Form 4 kurz zuvor eigene Aktien, dazu kam eine Analysten-Hochstufung – ein Insider-Cluster bei einem Nebenwert. Getragen hat vermutlich die Kombination aus Insider-Cluster und Hochstufung; eine eigene Nachricht für den Sprung am selben Tag ist nicht belegt. Ein Teil des Gewinns kann daher Zufall bzw. normale Nebenwert-Schwankung sein. Kritisch: Ziel, Konfidenz und erwartete Rendite waren nicht widerspruchsfrei gesetzt. Vorher wissen konnte man nur, dass Insider-Cluster plus Hochstufung im Schattenbuch tendenziell positiv laufen – ein einzelner Treffer beweist das nicht.\n\nLearnings:\n1. Insider-Cluster plus Analysten-Hochstufung bei Nebenwerten war ein brauchbarer Auslöser; ein Einzeltreffer ohne belegte Ursache ist kein Beweis.\n2. Bei 0 € Gebühren ab 500 € ist die Hürde nur noch der Spread – kurze Ziele von wenigen Prozent sind rechnerisch sinnvoll.",
+      "berichtZeit": "2026-10-28T21:20:42.289Z"
     }
   ]
 }

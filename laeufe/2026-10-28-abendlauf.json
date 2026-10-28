@@ -1,0 +1,68 @@
+{
+  "typ": "abendlauf",
+  "datum": "2026-10-28",
+  "erstellt": "2026-10-28T21:25:00Z",
+  "berichte": [
+    {
+      "orderId": "2026-10-27-gentherm-inc",
+      "ersetzt": true,
+      "text": "Ergebnis: Gewinn. Kauf am 27.10. um 07:16 UTC zu 26,28 €, Verkauf am selben Tag um 15:33 UTC zu 28,71 € am Kursziel. Der Kurs stieg um 9,27 %, netto 92,53 € (+9,27 %), Gebühren 0 € (Smartbroker+). These: Mehrere Direktoren kauften laut Form 4 kurz zuvor eigene Aktien, dazu kam eine Analysten-Hochstufung – ein Insider-Cluster bei einem Nebenwert. Getragen hat vermutlich die Kombination aus Insider-Cluster und Hochstufung; eine eigene Nachricht für den Sprung am selben Tag ist nicht belegt. Ein Teil des Gewinns kann daher Zufall bzw. normale Nebenwert-Schwankung sein. Kritisch: Ziel, Konfidenz und erwartete Rendite waren nicht widerspruchsfrei gesetzt. Vorher wissen konnte man nur, dass Insider-Cluster plus Hochstufung im Schattenbuch tendenziell positiv laufen – ein einzelner Treffer beweist das nicht.",
+      "learnings": [
+        "Insider-Cluster plus Analysten-Hochstufung bei Nebenwerten war ein brauchbarer Auslöser; ein Einzeltreffer ohne belegte Ursache ist kein Beweis.",
+        "Bei 0 € Gebühren ab 500 € ist die Hürde nur noch der Spread – kurze Ziele von wenigen Prozent sind rechnerisch sinnvoll."
+      ]
+    },
+    {
+      "orderId": "2026-10-23-elevance-health-inc",
+      "text": "Ergebnis: Verlust. Kauf am 23.10. zu 398,15 €, Verkauf am 28.10. zum Stop bei 373,47 €; Kurs −6,2 %, netto −49,36 € (−6,2 %). Ein MSCI-World-ETF hätte im gleichen Zeitraum 11,54 € gewonnen. These: Deutliche Gewinnüberraschung (EPS 6,99 $ statt ca. 4,71 $) mit Prognoseanhebung, aber nur verhaltene Kursreaktion von +2,6 % – erhoffte Drift. Falsch lag die These darin, dass eine verhaltene Reaktion auf eine riesige Überraschung eher Skepsis des Marktes signalisiert (Kostenquote, Branchenrisiken im Krankenversicherungssektor) als unentdecktes Potenzial. Die Signale gewinn_ueberraschung und nachzahlen_drift haben nicht getragen. Vorher wissen konnte man: Das Schattenbuch zeigt für nachzahlen_drift nur 25 % Trefferquote nach 1 Tag (n=11), und die erwartete Rendite von +0,5 % war bei einem Stop von gut 6 % kaum ein positiver Erwartungswert.",
+      "learnings": [
+        "Verhaltene Kursreaktion auf eine sehr große Gewinnüberraschung ist kein Drift-Signal, sondern oft Skepsis des Marktes – nicht kaufen ohne zusätzliche Bestätigung.",
+        "Erwartete Rendite +0,5 % bei Stop −6 % ist praktisch kein Vorteil; solche Orders auslassen."
+      ]
+    },
+    {
+      "orderId": "2026-10-22-capital-one-financial-corp",
+      "text": "Ergebnis: kleiner Gewinn. Kauf am 22.10. zu 180,78 €, Verkauf am 28.10. zum Zeitpunkt (Wächter: keine Bewegung) bei 183,04 €; Kurs +1,25 %, netto 11,34 € (+1,25 %). Ein MSCI-World-ETF hätte mit 11,15 € praktisch gleich viel gebracht. These: EPS 6,69 $ statt 5,56 $ (+20 %) bei moderater Kursreaktion, klassischer Post-Earnings-Drift einer großen, liquiden Bank als ruhiger Gegenpol. Die These war nicht falsch, aber die Drift blieb aus – der Kurs lief seitwärts, der Wächter verkaufte nach sechs Tagen ohne nennenswerte Bewegung. Gegenüber dem Markt kein Mehrwert; das Signal nachzahlen_drift hat nur so viel getragen wie der Gesamtmarkt. Vorher wissen konnte man, dass bei großen, gut beobachteten Banken Überraschungen schnell eingepreist werden.",
+      "learnings": [
+        "Nachzahlen-Drift bei großen, liquiden US-Werten brachte nur Marktrendite – ohne Zusatzsignal kein Vorteil gegenüber dem ETF."
+      ]
+    },
+    {
+      "orderId": "2026-10-27-the-hartford-insurance-group-i",
+      "text": "Ergebnis: Verlust. Kauf am 27.10. zu 122,27 €, Verkauf schon am 28.10. zum Stop bei 117,19 €; Kurs −4,15 %, netto −40,64 € (−4,15 %). Ein MSCI-World-ETF hätte 6,74 € gewonnen. These: EPS 3,50 $ statt 3,21 $ (+9 %), bei Versicherern mit stabilen Margen folge oft eine mehrtägige Drift; die Telefonkonferenz sollte den Ausblick bestätigen. Falsch: Gekauft wurde vor der Telefonkonferenz – also vor einem Ereignis, das den Kurs in beide Richtungen bewegen kann. Der Kurs fiel binnen eines Tages zum Stop, offenbar überzeugte der Ausblick nicht. Eine Überraschung von nur 9 % ist schwach. Die Konfidenz lag am Minimum von 40 %; der Code-Hinweis „erwartete Renditen zu hoch“ trifft hier zu. Vorher wissen konnte man: nachzahlen_drift läuft im Schattenbuch schlecht (25 %, n=11).",
+      "learnings": [
+        "Nicht vor einer Telefonkonferenz/Ausblick kaufen, wenn die These erst durch sie bestätigt werden soll – erst danach einsteigen.",
+        "Gewinnüberraschungen unter ca. 10 % tragen keine Drift; Konfidenz 40 % am Minimum heißt eher: keine Order."
+      ]
+    },
+    {
+      "orderId": "2026-10-26-rapport-therapeutics-inc",
+      "text": "Ergebnis: deutlicher Verlust. Kauf am 26.10. zu 24,52 €, Verkauf am 28.10. zum Stop bei 21,10 €; Kurs −13,98 %, netto −137,12 € (−13,98 %). Ein MSCI-World-ETF hätte 11,54 € gewonnen. These: Sechs Insider kauften laut Form 4 für zusammen 1,66 Mio. $, darunter ein Direktor knapp 1 Mio. $ zu rund 24,65 $ – Cluster-Käufe gelten als starkes Signal. Falsch: Bei einem Biotech vor Phase 3 überlagern Studien- und Finanzierungsrisiken das Insider-Signal; Insider kaufen dort oft langfristig, nicht für Tage. Der Stop bei rund −14 % war für eine spekulative Position weit, und der Verkaufstermin wurde zusätzlich nach hinten geschoben, was die Haltedauer gegen die Regel „spekulativ kurz“ verlängerte. Das Insider-Signal trug nicht. Vorher wissen konnte man: Die Volltreffer-Quote für insider_cluster_kauf liegt bei 0 % (n=12) – kurzfristig sind große Sprünge nach Cluster-Käufen nicht belegt.",
+      "learnings": [
+        "Insider-Cluster bei Biotech vor Studiendaten ist kein Kurzfrist-Signal; Studien- und Finanzierungsrisiko dominieren.",
+        "Bei spekulativen Positionen den Verkaufstermin nicht ohne neuen Grund verlängern und den Stop enger als −14 % setzen."
+      ]
+    }
+  ],
+  "lektionen": "# Lektionen\n\nVerdichtete Regeln aus abgeschlossenen Orders (Stärke: schwach/mittel/stark). Simulation mit fiktivem Geld – keine Anlageberatung.\n\n1. Insider-Cluster-Kauf (mehrere Direktoren, Form 4) plus Analysten-Hochstufung bei Nebenwerten ist ein brauchbarer Kauf-Auslöser; Haltedauer kurz halten, Gewinne am Ziel mitnehmen. Ohne Hochstufung und bei Biotech nicht ausreichend. – Belege: 2026-10-27-gentherm-inc (+), 2026-10-26-rapport-therapeutics-inc (−) · Stärke: schwach (n=2)\n2. erwarteteRenditeNetto, zielNettoProzent und konfidenz widerspruchsfrei setzen (erwartete Rendite ≈ Konfidenz × Ziel + (1 − Konfidenz) × Stop); eine erwartete Rendite von +0,5 % bei Stop −4 bis −6 % ist kein echter Vorteil → keine Order. – Belege: 2026-10-27-gentherm-inc, 2026-10-23-elevance-health-inc, 2026-10-27-the-hartford-insurance-group-i · Stärke: mittel\n3. Bei Nebenwerten Ziel und Stop an die übliche Tagesschwankung anlehnen; Sprünge von 5–10 % an einem Tag sind ohne eigene Nachricht möglich. – Belege: 2026-10-27-gentherm-inc · Stärke: schwach\n4. Einen Gewinn ohne belegte Ursache nicht als Bestätigung der These werten; erst die Statistik über mehrere Orders entscheidet. – Belege: 2026-10-27-gentherm-inc · Stärke: mittel\n5. Nachzahlen-Drift (US) trägt bisher nicht: echte Orders 1 von 3 abgeschlossenen im Plus, Schattenbuch 25 % nach 1 Tag (n=11). Nur noch mit Zusatzsignal (Insider, Hochstufung, starker Volumen-Ausbruch) kaufen. – Belege: 2026-10-23-elevance-health-inc, 2026-10-27-the-hartford-insurance-group-i, 2026-10-22-capital-one-financial-corp · Stärke: mittel\n6. Verhaltene Kursreaktion (< 3 %) auf eine sehr große Gewinnüberraschung ist eher Skepsis des Marktes als unentdecktes Potenzial. – Belege: 2026-10-23-elevance-health-inc · Stärke: schwach\n7. Nicht vor Telefonkonferenz/Ausblick kaufen, wenn erst dieser die These bestätigen soll; Überraschungen unter ca. 10 % tragen keine Drift. – Belege: 2026-10-27-the-hartford-insurance-group-i · Stärke: schwach\n8. Große, liquide US-Werte preisen Überraschungen schnell ein; Drift-Orders dort brachten nur Marktrendite. – Belege: 2026-10-22-capital-one-financial-corp · Stärke: schwach\n9. Insider-Cluster bei Biotech vor Studiendaten ist kein Kurzfrist-Signal (Volltreffer-Quote insider_cluster_kauf 0 %, n=12); Studien- und Finanzierungsrisiko dominieren. – Belege: 2026-10-26-rapport-therapeutics-inc · Stärke: schwach\n10. Spekulative Positionen kurz halten: Verkaufstermin nicht ohne neuen Grund verlängern, Stop nicht weiter als nötig. – Belege: 2026-10-26-rapport-therapeutics-inc · Stärke: schwach\n",
+  "gewichtsvorschlaege": [
+    {
+      "art": "signal",
+      "name": "nachzahlen_drift",
+      "faktor": 0.7,
+      "begruendung": "Schattenbuch 25 % nach 1 Tag (n=11), echte Orders Ø −3 %; Autopilot-Nähe ebenfalls 25 % (n=8)."
+    },
+    {
+      "art": "signal",
+      "name": "insider_kauf",
+      "faktor": 1.15,
+      "begruendung": "Schattenbuch 66,7 % nach 1 Tag (n=17), bestes Signal mit nennenswerter Fallzahl."
+    }
+  ],
+  "heuteGelernt": [
+    "Nachzahlen-Drift: heute 2 Stopps (ELV −6,2 %, HIG −4,2 %), Schattenbuch nur 25 % Treffer (n=11) – nur noch mit Zusatzsignal.",
+    "Daytrading: 37 Trades, Quote 16 %, netto −538 €; ORB long und short beide negativ (Ø −0,4/−0,3 R).",
+    "Insider-Kauf im Schattenbuch 67 % nach 1 Tag (n=17), aber Biotech-Cluster RAPP −14 % – Branche zählt."
+  ],
+  "notiz": "Keine Abend-Orders: FTNT (−24 %) und NOW (−17 %) nach Zahlen sind binäre Nachbeben ohne belegte Spielart; Volltreffer-Quoten zu niedrig für Hebel. Offene Positionen ohne Gegenmeldung, keine Autopilot-Positionen. Keine Websuche genutzt."
+}
