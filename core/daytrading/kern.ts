@@ -65,7 +65,7 @@ export interface DtTrade {
   turbo?: Turbo;
   /** Penny Stock/Small Cap unter dem Skill-Filter (≥ 5 $, viel Umsatz) → getrennt ausgewertet */
   spekulativ: boolean;
-  ausloeser: { zeit: string; kurs: number; level: number; spanne?: { hoch: number; tief: number } };
+  ausloeser: { zeit: string; kurs: number; level: number; spanne?: { hoch: number; tief: number }; /** Richtung des Auslösers (kann von der gehandelten Richtung abweichen, wenn das Setup umgekehrt gehandelt wird) */ richtung?: DtRichtung };
   /** Stop und Ziel am Basiswert (EUR), Risiko = Abstand Einstieg–Stop */
   stop: number;
   ziel: number;

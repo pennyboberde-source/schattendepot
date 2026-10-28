@@ -99,6 +99,8 @@ export interface Statistik {
   gegenpruefung?: { stark: Gruppe; schwach: Gruppe; verlusteMitUrteil: number; einwandEingetreten: number };
   /** Autopilot: welche Signaltypen haben sich bewiesen (wird von abgeleitet.ts ergänzt) */
   autopilot?: import('./autopilot.ts').SignalBeweis[];
+  /** Beste Spielart je Signaltyp: Richtung × Hebel × Haltedauer (Varianten-Schattenbuch, wird von abgeleitet.ts ergänzt) */
+  varianten?: import('./varianten.ts').VariantenErgebnis[];
   /** Ziel/Stop-Vorschläge je Signaltyp aus dem Schattenbuch (wird von abgeleitet.ts ergänzt) */
   zielStop?: import('./zielstop.ts').ZielStopVorschlag[];
   /** Vorlauf-Quote je Signaltyp vor Raketen (Hot-Stuff-Rückblick), wird von abgeleitet.ts ergänzt */

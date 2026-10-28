@@ -82,6 +82,11 @@
     "stopProzent": -6,
     "maerkte": ["us", "krypto"]
   },
+  "varianten": {
+    "hinweis": "Varianten-Schattenbuch (Nutzer 28.10.2026: herausfiltern, wo Hebel, Richtung und Haltedauer passen): je Signal virtuell mit/gegen das Signal, ohne Hebel bzw. Turbo Hebel 2/3/5/10, 1/3/5 Tage; beste Spielart = Ø minus ein Standardfehler > 0, ab mindestFaelle. Der Autopilot handelt die beste Spielart.",
+    "mindestFaelle": 25,
+    "finanzierungProzentJahr": 5
+  },
   "zielStop": {
     "hinweis": "Ziel/Stop je Signaltyp aus dem Schattenbuch optimieren (Messpunkte 1/3/5 Handelstage, nach Gebühren). Vorschlag für Claude und Autopilot ab mindestFaelle.",
     "mindestFaelle": 10,

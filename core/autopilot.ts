@@ -6,6 +6,7 @@ import { runde } from './geld.ts';
 import { berlin } from './kalender.ts';
 import type { TrackingEintrag } from './statistik.ts';
 import type { ZielStopVorschlag } from './zielstop.ts';
+import { HORIZONT_TAGE as V_TAGE, type Variante, type VariantenErgebnis } from './varianten.ts';
 import type { Ereignis, Kursbasis, Order, OrderPlan, Strategie } from './typen.ts';
 
 export interface AutopilotEinstellungen {
@@ -144,7 +145,7 @@ export function autopilotOrders(
   orders: Order[],
   jetzt: Date,
   e: AutopilotEinstellungen,
-  opt: { zielStop?: ZielStopVorschlag[]; appUrl?: string } = {},
+  opt: { zielStop?: ZielStopVorschlag[]; appUrl?: string; varianten?: VariantenErgebnis[] } = {},
 ): AutopilotErgebnis {
   const hinweise: string[] = [];
   const ereignisse: Ereignis[] = [];
@@ -159,17 +160,26 @@ export function autopilotOrders(
   const heuteSchluessel = new Set(auto.filter((o) => berlin(new Date(o.vorgemerktUm)).datum === heute).map((o) => o.plan.ausloeser));
   const vergeben = new Set(orders.map((o) => o.id));
   const bewiesen = beweise.filter((b) => b.bewiesen);
-  if (!bewiesen.length) return { ereignisse, hinweise: ['Autopilot: noch kein Signaltyp im Schattenbuch bewiesen'] };
+  const mitVariante = (opt.varianten ?? []).filter((v) => v.beste);
+  if (!bewiesen.length && !mitVariante.length) return { ereignisse, hinweise: ['Autopilot: noch kein Signaltyp im Schattenbuch bewiesen'] };
 
   for (const k of kandidaten) {
     if (ereignisse.length >= e.maxJeLauf || heuteGekauft >= e.maxJeTag || offen >= e.maxOffen) break;
-    if (!(k.score > 0) || k.pump || !k.ticker) continue;
+    if (k.pump || !k.ticker || k.score === 0) continue;
     const kb = kursbasisAusTicker(k.ticker, k.markt);
     if (!kb || !e.maerkte.includes(kb.markt)) continue;
     if (kb.markt === 'eu' && !k.isin) continue; // ohne ISIN nur Tagesschlusskurse → nicht automatisch
     const gruppe: MarktGruppe = kb.markt === 'krypto' ? 'krypto' : 'aktie';
-    const beweis = bewiesen.filter((b) => b.gruppe === gruppe && k.typen.includes(b.typ)).sort((a, b) => b.oeNetto - a.oeNetto)[0];
-    if (!beweis) continue;
+    // 1. Wahl: beste gemessene Spielart (Richtung × Hebel × Haltedauer); 2. Wahl: einfacher Beweis (kaufen, ohne Hebel)
+    const vErg = mitVariante.filter((v) => v.gruppe === gruppe && k.typen.includes(v.typ)).sort((a, b) => b.beste!.wertung - a.beste!.wertung)[0];
+    const v: Variante | undefined = vErg?.beste ?? undefined;
+    const handelLong = v ? (k.score > 0) === (v.richtung === 'mit') : true;
+    if (v && v.hebel === 1 && !handelLong) continue; // ohne Hebel kein Leerverkauf
+    const beweisAlt = bewiesen.filter((b) => b.gruppe === gruppe && k.typen.includes(b.typ)).sort((a, b) => b.oeNetto - a.oeNetto)[0];
+    if (!v && (!beweisAlt || !(k.score > 0))) continue;
+    const beweis = v
+      ? { typ: vErg!.typ, gruppe, faelle: v.faelle, chance: v.chance, oeNetto: v.oeNetto, huerde: 0, bewiesen: true }
+      : beweisAlt!;
     const symbol = kb.symbol.toUpperCase().replace(/\..*$/, '');
     if (belegt.has(symbol) || (k.isin && belegt.has(k.isin))) continue;
     const ausloeser = `Autopilot-Kandidat ${k.schluessel}: ${k.typen.join(', ')} (Score ${k.score})`.slice(0, 300);
@@ -177,7 +187,7 @@ export function autopilotOrders(
 
     const zs = opt.zielStop?.find((z) => z.typ === beweis.typ);
     const krypto = kb.markt === 'krypto';
-    const tage = HORIZONT_TAGE[e.horizont];
+    const tage = v ? V_TAGE[v.horizont] : HORIZONT_TAGE[e.horizont];
     // Krypto handelt 24/7 (Kalendertage), Aktien grob 5 von 7 Tagen
     const termin = new Date(jetzt.getTime() + (krypto ? tage : Math.ceil((tage * 7) / 5)) * 86400000);
     const plan: OrderPlan = {
@@ -207,6 +217,19 @@ export function autopilotOrders(
       risiken: ['Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf', 'Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)'],
       einflussLektionen: zs ? `Schattenbuch-Beweis + Ziel/Stop-Vorschlag (${zs.faelle} Fälle)` : 'Schattenbuch-Beweis (Code)',
     };
+    // Spielart mit Hebel bzw. gegen das Signal → nachgebildeter Turbo; Ziel/Stop mit dem Hebel skaliert
+    if (v && v.hebel > 1 && !krypto) {
+      const h = v.hebel;
+      Object.assign(plan, {
+        hebelWunsch: { richtung: handelLong ? 'long' : 'short', hebel: h },
+        risikoklasse: 'spekulativ',
+        zielNettoProzent: runde(Math.max(1, (zs && zs.zielNettoProzent > 0 ? zs.zielNettoProzent : e.zielNettoProzent) * h), 1),
+        stopProzent: Math.max(-50, runde((zs ? zs.stopProzent : e.stopProzent) * h, 1)),
+        these: `Autopilot: beste gemessene Spielart für „${vErg!.typ}“ – ${v.richtung === 'mit' ? 'mit' : 'gegen'} dem Signal, Turbo Hebel ${h}, ${tage} Tage: Ø ${v.oeNetto} % nach Kosten, ${v.chance} % im Plus (${v.faelle} Fälle, vorsichtig bewertet).`,
+      });
+    } else if (v) {
+      plan.these = `Autopilot: beste gemessene Spielart für „${vErg!.typ}“ – direkt kaufen, ${tage} Tage: Ø ${v.oeNetto} % nach Kosten, ${v.chance} % im Plus (${v.faelle} Fälle, vorsichtig bewertet).`;
+    }
     let id = `${heute}-auto-${slug(k.name)}`;
     for (let n = 2; vergeben.has(id); n++) id = `${heute}-auto-${slug(k.name)}-${n}`;
     vergeben.add(id);

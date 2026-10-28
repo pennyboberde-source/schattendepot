@@ -72,12 +72,15 @@ if (aktiv.length) {
   schreibeJson('schlusskurse.json', schluss);
   for (const o of aktiv) {
     const k = gettex.get(o.plan.wertpapier.isin);
-    if (k) direktKurse[o.id] = k;
+    // nachgebildeter Turbo: der gettex-Kurs der ISIN ist der Basiswert (EUR), nicht das Produkt
+    if (k && o.plan.hebel?.synthetisch) basisKurse[o.id] = k;
+    else if (k) direktKurse[o.id] = k;
   }
   if (gettex.get(etfIsin)) etfKurs = gettex.get(etfIsin);
 
   // 2. Kursbasis (Finnhub/Twelve Data/Kraken …): Fallback ohne gettex-Kurs, Basiswert für Knock-out-Prüfung, Vortag US
   const cache = new Map<string, Kurs | null>();
+  const synthUsd = new Set<string>();
   for (const o of aktiv) {
     let kb;
     try {
@@ -85,6 +88,11 @@ if (aktiv.length) {
     } catch (e) {
       if (!direktKurse[o.id]) console.error((e as Error).message);
       continue;
+    }
+    if (o.plan.hebel?.synthetisch) {
+      if (basisKurse[o.id]) continue; // gettex-Kurs des Basiswerts vorhanden
+      kb = { ...kb, waehrung: o.plan.wertpapier.kursbasis?.waehrung ?? kb.waehrung }; // Ersatzkurs in Originalwährung, unten in EUR
+      synthUsd.add(o.id);
     }
     const schluessel = `${kb.markt}:${kb.symbol}`;
     // EU-Werte: gettex reicht; sonst nur Tagesschlusskurs (Alpha Vantage, knappes Kontingent) einmal täglich ab 20:30 Uhr.
@@ -101,7 +109,7 @@ if (aktiv.length) {
   }
   const brauchtUsd = aktiv.some((o) => {
     try {
-      return benoetigteKursbasis(o.plan).waehrung === 'USD';
+      return benoetigteKursbasis(o.plan).waehrung === 'USD' || synthUsd.size > 0;
     } catch {
       return false;
     }
@@ -110,6 +118,15 @@ if (aktiv.length) {
   const etf = cfg.einstellungen.vergleichsEtf;
   const etfRoh = etfKurs || nurKrypto ? null : await holeKurs(etf.kursbasis, jetzt, protokoll);
   if (brauchtUsd || (etfRoh && etf.kursbasis.waehrung === 'USD')) eurUsd = await holeEurUsd(jetzt, protokoll);
+  // Ersatzkurse nachgebildeter Turbos in Euro umrechnen (Basispreis/KO stehen in Euro)
+  for (const id of synthUsd) {
+    const k = basisKurse[id];
+    const o = aktiv.find((x) => x.id === id);
+    if (k && o?.plan.wertpapier.kursbasis?.waehrung === 'USD') {
+      if (eurUsd) basisKurse[id] = { ...k, wert: k.wert / eurUsd, vortag: k.vortag ? k.vortag / eurUsd : undefined, synthetisch: true, hinweis: 'in EUR umgerechnet' };
+      else delete basisKurse[id];
+    }
+  }
   if (etfRoh && etf.kursbasis.waehrung === 'EUR') etfKurs = etfRoh;
   else if (etfRoh && eurUsd) etfKurs = { ...etfRoh, wert: etfRoh.wert / eurUsd, synthetisch: true, hinweis: `${etf.kursbasis.symbol} umgerechnet` };
 }

@@ -61,6 +61,8 @@ export interface Hebel {
   koSchwelle: number;
   /** z. B. 0.1 = 10 Produkte je Basiswert */
   bezugsverhaeltnis: number;
+  /** vom Code beim Kauf nachgebildeter Turbo (kein echtes Produkt; Basiswert-Kurs in EUR) */
+  synthetisch?: boolean;
 }
 
 /** Krypto-ETN: synthetisch aus dem Basiswert (z. B. BTC/EUR) abzüglich laufender Kosten. */
@@ -105,6 +107,8 @@ export interface OrderPlan {
   pflichtOrder: boolean;
   /** Wer hat die Order ausgewählt? Fehlt = Claude (ältere Orders). autopilot = Code kauft bewiesene Signale selbst. */
   herkunft?: 'claude' | 'autopilot';
+  /** Wunsch-Hebel: statt der Aktie/des ETFs einen Turbo mit diesem Hebel kaufen – der Code bildet ihn beim Kauf nach (Basispreis = KO aus dem Kurs) */
+  hebelWunsch?: { richtung: 'long' | 'short'; hebel: number };
   /** Gegenprüfung vor dem Kauf: „woran könnte es scheitern“ + Claudes Wahrscheinlichkeit dafür in % (wird später gemessen) */
   gegenpruefung?: { einwand: string; risiko: number };
   /** Erwartete Rendite nach Gebühren in % des Kapitaleinsatzes. */

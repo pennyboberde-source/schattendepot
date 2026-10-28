@@ -28,6 +28,7 @@
   "krypto": { "symbole": ["BTC", "ETH", "SOL", "XRP", "ADA"] },
   "spekulativ": { "hinweis": "unter dem Skill-Filter (≥ 5 $, viel Umsatz) → spekulativ, getrennt ausgewertet", "unterKursEuro": 4.5, "unterUmsatzEuro": 100000 },
   "turbo": { "hebelCode": 5, "emittent": "UniCredit (synthetisch)" },
+  "varianten": { "aktiv": true, "mindestTrades": 30, "mindestChance": 40, "hinweis": "Spielart je Setup aus dem Varianten-Schattenbuch (Nutzer 28.10.2026): mit/gegen den Auslöser, Aktie oder Turbo Hebel 3/5/10 – erst ab 30 Trades und nur, wenn Ø minus ein Standardfehler > 0. Ausgewertet wird immer nach dem ursprünglichen Auslöser." },
   "spreads": { "aktie": 0.15, "spekulativ": 1, "krypto": 0.5, "turbo": 0.5 },
   "nyseFeiertage": ["2026-11-26", "2026-12-25", "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24"],
   "timeMachine": { "aktiv": true, "maxJeLauf": 3, "wiederholungen": 10000, "seed": 19, "minSitzungen": 20 },

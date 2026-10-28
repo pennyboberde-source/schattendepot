@@ -709,6 +709,28 @@
               "maximum": 100
             }
           }
+        },
+        "hebelWunsch": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "richtung",
+            "hebel"
+          ],
+          "description": "Statt der Aktie/des ETFs einen Turbo mit diesem Hebel kaufen; der Code bildet ihn beim Kauf nach (Basispreis = KO aus dem Kurs). Ziel/Stop beziehen sich dann auf den Turbo.",
+          "properties": {
+            "richtung": {
+              "enum": [
+                "long",
+                "short"
+              ]
+            },
+            "hebel": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 20
+            }
+          }
         }
       }
     }

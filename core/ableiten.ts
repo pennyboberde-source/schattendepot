@@ -7,11 +7,11 @@ import { etfVergleich } from './etf.ts';
 import { ergebnis as ergebnisRechnen, summeSeiten, verkaufen, type Seite } from './rendite.ts';
 import { geldBrief, type SpreadConfig } from './spreads.ts';
 import { steuernBerechnen, type SteuerConfig } from './steuern.ts';
-import type { Anpassung, Ausfuehrung, Ereignis, Kurs, Order, OrderPlan, Verkaufsgrund } from './typen.ts';
+import type { Anpassung, Ausfuehrung, Ereignis, Hebel, Kurs, Order, OrderPlan, Verkaufsgrund } from './typen.ts';
 
 export interface EreignisDaten {
   vorgemerkt: { plan: OrderPlan; verkaufstermin: string };
-  gekauft: { kauf: Ausfuehrung; zielkurs: number; stopkurs: number; etf?: Kurs };
+  gekauft: { kauf: Ausfuehrung; zielkurs: number; stopkurs: number; etf?: Kurs; hebel?: Hebel };
   angepasst: { anpassung: Anpassung };
   verkauft: { verkauf: Ausfuehrung & { grund: Verkaufsgrund }; ergebnis: { kursProzent: number; netto: number; nettoProzent: number; gebuehren: number } };
   teilverkauft: { verkauf: Ausfuehrung & { grund: Verkaufsgrund } };
@@ -84,6 +84,8 @@ export function ordersAusEreignissen(ereignisse: Ereignis[]): Order[] {
         const d = e.daten as unknown as EreignisDaten['gekauft'];
         if (!o || o.status !== 'vorgemerkt') throw new Error(`Kauf ohne Vormerkung: ${e.orderId}`);
         Object.assign(o, { status: 'offen', kauf: d.kauf, zielkurs: d.zielkurs, stopkurs: d.stopkurs, etfKauf: d.etf });
+        // Wunsch-Hebel: gekauft wurde ein nachgebildeter Turbo auf den Wert
+        if (d.hebel) o.plan = { ...o.plan, hebel: d.hebel, wertpapier: { ...o.plan.wertpapier, anlageklasse: 'hebel', spreadKlasse: 'hebel' } };
         break;
       }
       case 'angepasst': {

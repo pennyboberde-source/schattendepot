@@ -72,6 +72,8 @@ export interface Einstellungen {
   risikoBudget: { maxSpekulativJeLauf: number; maxAnteilSpekulativ: number; stopMinProzent: number; mindestKursEuro: number };
   /** Höchstzahl neuer Orders je Claude-Lauf (S2) */
   claudeOrders?: Partial<Record<'morgenlauf' | 'mittagslauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick', number>>;
+  /** Varianten-Schattenbuch: Mindestfälle und Turbo-Finanzierung */
+  varianten?: { mindestFaelle: number; finanzierungProzentJahr: number };
   verkaufsregeln?: import('../../core/waechter.ts').Verkaufsregeln;
   autopilot?: import('../../core/autopilot.ts').AutopilotEinstellungen;
   zielStop?: import('../../core/zielstop.ts').ZielStopEinstellungen;

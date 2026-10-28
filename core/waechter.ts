@@ -1,7 +1,8 @@
 // Entscheidungslogik des Kurswächters (rein funktional, ohne Netz): Vormerkungen ausführen,
 // Ziel/Stop/Termin/Knock-out prüfen, Ereignislauf und Ausfallwarnung auslösen.
 // Grundsatz: nie zu einem Kurs handeln, der zum Entscheidungszeitpunkt schon bekannt war.
-import { benoetigteKursbasis, instrumentKurs, type EurUsd, type InstrumentKurs } from './bewertung.ts';
+import { benoetigteKursbasis, inEuro, instrumentKurs, type EurUsd, type InstrumentKurs } from './bewertung.ts';
+import { turboAnlegen } from './daytrading/kern.ts';
 import { etfVergleich } from './etf.ts';
 import { runde } from './geld.ts';
 import { depotEntgeltOpt, type GebuehrenConfig } from './gebuehren.ts';
@@ -10,7 +11,7 @@ import { restStueck } from './ableiten.ts';
 import { pushAngepasst, pushGekauft, pushTeilverkauf, pushVerkauft, pushWarnung, type PushNachricht } from './push.ts';
 import { ergebnis, kaufen, stueckFuerBetrag, summeSeiten, verkaufen, zielkurs, type Seite } from './rendite.ts';
 import { geldBrief, type SpreadConfig } from './spreads.ts';
-import type { Anpassung, Ausfuehrung, Ereignis, Kurs, Order, Verkaufsgrund } from './typen.ts';
+import type { Anpassung, Ausfuehrung, Ereignis, Hebel, Kurs, Order, OrderPlan, Verkaufsgrund } from './typen.ts';
 
 /** Schlaue Verkaufsregeln (config/einstellungen.json → verkaufsregeln). Jede Regel ist einzeln abschaltbar (Feld weglassen). */
 export interface Verkaufsregeln {
@@ -35,6 +36,16 @@ export interface Gegensignal {
 }
 
 export const istKrypto = (o: Order) => o.plan.wertpapier.anlageklasse === 'krypto';
+
+export const SYNTH_EMITTENT = 'UniCredit (synthetisch)';
+
+/** Wunsch-Hebel → nachgebildeter Turbo zum aktuellen Basiskurs (EUR): Basispreis = KO-Schwelle, Hebel wie gewünscht. */
+export function synthetischerTurbo(plan: OrderPlan, basisEur: number): Hebel {
+  const w = plan.hebelWunsch!;
+  const t = turboAnlegen(basisEur, w.richtung, w.hebel, SYNTH_EMITTENT);
+  const kb = plan.wertpapier.kursbasis!;
+  return { typ: 'turbo', richtung: w.richtung, emittent: SYNTH_EMITTENT, basiswert: { name: plan.wertpapier.name, isin: plan.wertpapier.isin, kursbasis: { ...kb, waehrung: 'EUR' } }, basispreis: t.basispreis, koSchwelle: t.basispreis, bezugsverhaeltnis: t.bezugsverhaeltnis, synthetisch: true };
+}
 
 export interface WaechterEinstellungen {
   orderBetrag: number;
@@ -180,8 +191,14 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
         continue;
       }
       let ik;
+      let turbo: Hebel | undefined;
       try {
-        ik = bewerte(o, basis, direkt, jetzt);
+        if (o.plan.hebelWunsch && !o.plan.hebel) {
+          // Basiskurs in Euro (gettex direkt, sonst Kursbasis umgerechnet) → Turbo nachbilden und bewerten
+          const s = direkt ?? inEuro(basis!, o.plan.wertpapier.kursbasis!.waehrung, ctx.eurUsd);
+          turbo = synthetischerTurbo(o.plan, s.wert);
+          ik = instrumentKurs({ ...o.plan, hebel: turbo }, { ...s, wert: s.wert }, ctx.eurUsd, jetzt);
+        } else ik = bewerte(o, basis, direkt, jetzt);
       } catch (e) {
         hinweise.push(`${o.plan.wertpapier.name}: ${(e as Error).message}`);
         continue;
@@ -190,9 +207,9 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
         ereignisse.push(ev('verworfen', o.id, { grund: 'Knock-out-Schwelle bereits erreicht' }));
         continue;
       }
-      const { brief } = geldBrief(spreadKurs(o, ik.kurs), o.plan.wertpapier.spreadKlasse, cfg.spreads);
+      const { brief } = geldBrief(spreadKurs(o, ik.kurs), turbo ? 'hebel' : o.plan.wertpapier.spreadKlasse, cfg.spreads);
       const mindestKurs = cfg.einstellungen.risikoBudget?.mindestKursEuro ?? 0;
-      if (o.plan.wertpapier.anlageklasse === 'aktie' && brief < mindestKurs) {
+      if (!turbo && o.plan.wertpapier.anlageklasse === 'aktie' && brief < mindestKurs) {
         ereignisse.push(ev('verworfen', o.id, { grund: `Kurs ${brief} € unter der Mindestgrenze ${mindestKurs} € (kaum handelbar)` }));
         continue;
       }
@@ -205,8 +222,9 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
         ereignisse.push(ev('verworfen', o.id, { grund: `Hebel ${ik.hebel} über dem Limit ${cfg.einstellungen.hebelMax}` }));
         continue;
       }
-      const kauf = kaufen(stueck, brief, cfg.gebuehren, hp);
-      const ziel = zielkurs(kauf, o.plan.zielNettoProzent, cfg.gebuehren, hp);
+      const hpKauf = turbo ? { ...hp, emittent: turbo.emittent } : hp;
+      const kauf = kaufen(stueck, brief, cfg.gebuehren, hpKauf);
+      const ziel = zielkurs(kauf, o.plan.zielNettoProzent, cfg.gebuehren, hpKauf);
       const stop = runde(brief * (1 + o.plan.stopProzent / 100), stellen(brief));
       ereignisse.push(
         ev('gekauft', o.id, {
@@ -214,6 +232,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
           zielkurs: ziel,
           stopkurs: stop,
           ...(ctx.etfKurs ? { etf: ctx.etfKurs } : {}),
+          ...(turbo ? { hebel: turbo } : {}),
         }),
       );
       continue;

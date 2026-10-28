@@ -41,6 +41,7 @@ export function pushGekauft(o: Order, jetzt: string, kalibriert?: { quote: numbe
       `Stop ${prozent(p.stopProzent)}`,
       chanceText(p.konfidenz, kalibriert),
       p.pflichtOrder ? 'Pflicht-Order' : '',
+      p.hebelWunsch ? `Turbo ${p.hebelWunsch.richtung} Hebel ${p.hebelWunsch.hebel}` : '',
       p.herkunft === 'autopilot' ? 'bewiesenes Signal, Claude prüft im nächsten Lauf' : '',
     ]
       .filter(Boolean)

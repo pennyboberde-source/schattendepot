@@ -58,6 +58,53 @@ function gruppiert(l: DtTrade[], f: (t: DtTrade) => string): Record<string, DtGr
   return Object.fromEntries([...m.entries()].sort((a, b) => b[1].length - a[1].length).map(([k, v]) => [k, dtGruppe(v)]));
 }
 
+export interface DtVariante {
+  richtung: 'mit' | 'gegen';
+  hebel: number;
+  faelle: number;
+  chance: number;
+  /** Ø Ergebnis in % des Einsatzes nach Spread */
+  oeNetto: number;
+  wertung: number;
+}
+
+/**
+ * Varianten je Setup (Markt:Setup_Auslöserrichtung) des Code-Scans: Was hätte jeder Trade gebracht – mit/gegen den
+ * Auslöser, als Aktie oder Turbo Hebel 3/5/10? Grundlage ist die tatsächliche Bewegung des Basiswerts vom Einstieg bis
+ * zum Ausstieg. Beste Variante = Ø minus ein Standardfehler > 0 (vorsichtig), ab mindestTrades.
+ */
+export function setupVarianten(trades: DtTrade[], kosten: { aktie: number; turbo: number }, e: { mindestTrades: number; mindestChance: number }): Record<string, { beste: DtVariante | null; basis: DtVariante | null }> {
+  const je = new Map<string, DtTrade[]>();
+  for (const t of trades) {
+    if (!t.ergebnis || !t.ausstieg || t.herkunft !== 'code_scan') continue;
+    const k = `${t.markt}:${t.setup}_${t.ausloeser.richtung ?? t.richtung}`;
+    je.set(k, [...(je.get(k) ?? []), t]);
+  }
+  const out: Record<string, { beste: DtVariante | null; basis: DtVariante | null }> = {};
+  for (const [k, l] of je) {
+    const krypto = k.startsWith('krypto:');
+    const ausloeserLong = k.endsWith('_long');
+    // Bewegung des Basiswerts in Auslöser-Richtung, in %
+    const bew = l.map((t) => (t.ausstieg!.basisKurs / t.einstieg.basisKurs - 1) * 100 * (ausloeserLong ? 1 : -1));
+    const alle: DtVariante[] = [];
+    for (const richtung of ['mit', 'gegen'] as const) {
+      const long = ausloeserLong === (richtung === 'mit');
+      for (const hebel of krypto ? [1] : [1, 3, 5, 10]) {
+        if (hebel === 1 && !long) continue; // ohne Hebel kein Leerverkauf
+        if (krypto && richtung === 'gegen') continue;
+        const r = bew.map((m) => Math.max(-100, hebel * (richtung === 'mit' ? m : -m)) - (hebel === 1 ? kosten.aktie : kosten.turbo));
+        const n = r.length;
+        const m = r.reduce((a, x) => a + x, 0) / n;
+        const sd = Math.sqrt(r.reduce((a, x) => a + (x - m) ** 2, 0) / Math.max(1, n - 1));
+        alle.push({ richtung, hebel, faelle: n, chance: runde((r.filter((x) => x > 0).length / n) * 100, 1), oeNetto: runde(m, 2), wertung: runde(m - sd / Math.sqrt(n), 2) });
+      }
+    }
+    const beste = alle.filter((v) => v.faelle >= e.mindestTrades && v.chance >= e.mindestChance && v.wertung > 0).sort((a, b) => b.wertung - a.wertung)[0] ?? null;
+    out[k] = { beste, basis: alle.find((v) => v.richtung === 'mit' && (v.hebel === 1 || !ausloeserLong)) ?? null };
+  }
+  return out;
+}
+
 const STUFEN: [string, number, number][] = [
   ['0–29 %', 0, 29.99],
   ['30–44 %', 30, 44.99],
@@ -83,7 +130,7 @@ export function uebersichtBerechnen(alle: DtTrade[], heute: string, stand: strin
     kurve,
     nachHerkunft: gruppiert(zu, (t) => t.herkunft),
     nachMarkt: gruppiert(zu, (t) => t.markt),
-    nachSetup: gruppiert(zu, (t) => `${t.setup}_${t.richtung}`),
+    nachSetup: gruppiert(zu, (t) => `${t.setup}_${t.ausloeser.richtung ?? t.richtung}`),
     nachInstrument: gruppiert(zu, (t) => t.instrument),
     nachRisiko: gruppiert(zu, (t) => (t.spekulativ ? 'spekulativ' : 'skill_filter')),
     nachAusstieg: gruppiert(zu, (t) => t.ausstieg!.grund),

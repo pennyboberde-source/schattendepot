@@ -98,6 +98,11 @@ export function planFehler(p: OrderPlan, hebelMax: number): string | null {
     if (h.richtung === 'short' && h.koSchwelle > h.basispreis) return 'Short-Knock-out: KO-Schwelle über Basispreis ist unplausibel';
     if (hebelMax <= 0) return 'Hebelprodukte sind ausgeschaltet';
   }
+  if (p.hebelWunsch) {
+    if (p.hebel || p.etn) return 'Wunsch-Hebel nur ohne eigene Hebel-/ETN-Angaben (der Code bildet den Turbo nach)';
+    if (k !== 'aktie' && k !== 'etf') return 'Wunsch-Hebel nur für Aktien und ETFs';
+    if (!(p.hebelWunsch.hebel >= 2) || p.hebelWunsch.hebel > hebelMax) return `Wunsch-Hebel muss zwischen 2 und ${hebelMax} liegen`;
+  }
   if (p.pflichtOrder && p.konfidenz > 50) return 'Pflicht-Order mit Konfidenz über 50 ist widersprüchlich';
   if (p.zielNettoProzent <= 0 || p.stopProzent >= 0) return 'Ziel muss positiv, Stop negativ sein';
   return null;
@@ -174,6 +179,8 @@ export function entscheidungUebernehmen(
       }
       if (k.chance !== plan.konfidenz) plan = { ...plan, chanceKorrigiert: k.chance };
     }
+    // Hebel ist immer spekulativ (Risiko-Budget, Stop-Grenze, eigene Auswertung)
+    if (plan.hebelWunsch && plan.risikoklasse !== 'spekulativ') plan = { ...plan, risikoklasse: 'spekulativ' };
     if (plan.risikoklasse === 'spekulativ' && rb) {
       const erlaubt = Math.max(1, Math.floor(rb.maxAnteilSpekulativ * (gesamtAktiv + 1)));
       if (spekNeu >= rb.maxSpekulativJeLauf || spekAktiv + 1 > erlaubt) {

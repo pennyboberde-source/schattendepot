@@ -2,13 +2,13 @@
 // Smartbroker+ als Hauptmodell, Vergleich Trade Republic, immer auch vor Gebühren.
 import { euro, prozent } from '../../core/geld.ts';
 import type { SignalBeweis } from '../../core/autopilot.ts';
-import type { DtGruppe, DtUebersicht } from '../../core/daytrading/auswertung.ts';
+import type { DtGruppe, DtUebersicht, DtVariante } from '../../core/daytrading/auswertung.ts';
 import type { DtTrade } from '../../core/daytrading/kern.ts';
 import { useDaten } from '../lib/daten';
 import { datumKurz } from '../lib/zeit';
 import { Betrag, Geladen, Karte } from '../ui';
 
-type Daten = DtUebersicht & { beobachtet?: Record<string, number>; hinweise?: string[] };
+type Daten = DtUebersicht & { beobachtet?: Record<string, number>; hinweise?: string[]; varianten?: Record<string, { beste: DtVariante | null; basis: DtVariante | null }> };
 
 const HERKUNFT: Record<string, string> = { code_scan: '🔎 Code-Scan', claude: '🧠 Claude', autopilot: '🤖 Autopilot' };
 const MARKT: Record<string, string> = { us: 'USA', eu: 'Europa', krypto: 'Krypto' };
@@ -86,6 +86,15 @@ function Inhalt({ d }: { d: Daten }) {
         <GruppenTabelle titel="Instrument" daten={d.nachInstrument} name={(k) => INSTR[k] ?? k} />
         <GruppenTabelle titel="Risiko" daten={d.nachRisiko} name={(k) => RISIKO[k] ?? k} />
         <GruppenTabelle titel="Ausstieg" daten={d.nachAusstieg} name={(k) => GRUND[k] ?? k} />
+        <p class="klein" data-testid="dt-spielart">
+          Spielart je Setup (ab 30 Trades, vorsichtig bewertet):{' '}
+          {Object.entries(d.varianten ?? {}).filter(([, v]) => v.beste).length
+            ? Object.entries(d.varianten ?? {})
+                .filter(([, v]) => v.beste)
+                .map(([k, v]) => `${k}: ${v.beste!.richtung === 'mit' ? 'mit' : 'gegen'} dem Auslöser, ${v.beste!.hebel === 1 ? 'ohne Hebel' : `Turbo Hebel ${v.beste!.hebel}`} (Ø ${v.beste!.oeNetto.toLocaleString('de-DE')} %, n=${v.beste!.faelle})`)
+                .join(' · ')
+            : 'noch keine – bis dahin gilt die Grundregel (long Aktie, short Turbo Hebel 5).'}
+        </p>
       </Karte>
 
       <Karte titel="Time Machine – hätte der Filter geholfen?">

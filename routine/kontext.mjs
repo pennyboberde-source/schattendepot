@@ -85,6 +85,10 @@ if (nachTyp.length) {
 }
 const pumpGr = statistik?.kandidaten?.nachRisiko?.pump_verdacht;
 if (pumpGr?.anzahl >= 5) p(`Pump-Verdacht im Schattenbuch: n=${pumpGr.anzahl}, Ø ${pumpGr.oe1T ?? '–'} % nach 1 Tag, ${pumpGr.oe1W ?? '–'} % nach 1 Woche`);
+// Hebel vs. ohne (Depot): lohnt sich der Hebel?
+const hb = statistik?.nachAnlageklasse?.hebel;
+const ak = statistik?.nachAnlageklasse?.aktie;
+if (hb) p(`Hebel im Depot: ${hb.anzahl} Orders, Quote ${hb.quote} %, Ø ${hb.oeNetto} % · Aktien ohne Hebel: ${ak?.anzahl ?? 0} Orders, Ø ${ak?.oeNetto ?? 0} %`);
 // S4: Marktphase und was je Phase klappt
 const mp = await json('lernen/marktphase.json', null);
 const pt = (x) => (x ? `${x.trend}/${x.unruhe} (Schluss ${x.schluss}, 50-T-Linie ${x.sma50}, Schwankung ${x.vol20} % vs. üblich ${x.volMedian} %)` : '–');
@@ -107,6 +111,9 @@ if (typ === 'morgenlauf' || typ === 'abendlauf' || typ === 'wochenrueckblick') {
   if (dtU?.gesamt?.anzahl) {
     const gz = (n, g) => `${n} ${g.anzahl} Trades, Quote ${g.quote} %, netto ${g.netto} € (vor Gebühren ${g.brutto} €, Trade Republic ${g.nettoTR} €), Ø ${g.oeR} R`;
     p('## Daytrading (eigener Bereich, Smartbroker+)', gz('Gesamt:', dtU.gesamt), gz(`Zuletzt (${dtU.heute.datum}):`, dtU.heute.gruppe));
+    if (dtU.nachInstrument) p(`Nach Instrument: ${Object.entries(dtU.nachInstrument).map(([k, v]) => `${k} ${v.anzahl}/${v.netto} €/Ø ${v.oeR} R`).join('; ')}`);
+    const dv = Object.entries(dtU.varianten ?? {}).filter(([, v]) => v.beste);
+    if (dv.length) p(`Beste Spielart je Setup: ${dv.map(([k, v]) => `${k} → ${v.beste.richtung === 'mit' ? 'mit' : 'gegen'} dem Auslöser, ${v.beste.hebel === 1 ? 'ohne Hebel' : `Turbo Hebel ${v.beste.hebel}`}: Ø ${v.beste.oeNetto} % (n=${v.beste.faelle})`).join('; ')}`);
     p(`Nach Herkunft: ${Object.entries(dtU.nachHerkunft).map(([k, v]) => `${k} ${v.anzahl}/${v.quote} %/${v.netto} €`).join('; ')} · nach Setup: ${Object.entries(dtU.nachSetup).map(([k, v]) => `${k} ${v.anzahl}/Ø ${v.oeR} R`).join('; ')}`);
     if (dtU.zeitmaschine?.length) p(`Time Machine (Chance Ziel zuerst → tatsächlich): ${dtU.zeitmaschine.map((x) => `${x.stufe}: ${x.quote} % (n=${x.anzahl})`).join('; ')}`);
     p('');

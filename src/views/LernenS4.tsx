@@ -3,6 +3,7 @@ import { useState } from 'preact/hooks';
 import { prozent } from '../../core/geld.ts';
 import { phaseText } from '../../core/marktphase.ts';
 import type { Statistik } from '../../core/statistik.ts';
+import { varianteText } from '../../core/varianten.ts';
 import { ladeText, useDaten } from '../lib/daten';
 import { Karte } from '../ui';
 
@@ -67,6 +68,28 @@ export function MonatspruefungKarte() {
         <p class="leer">Am ersten Samstag im Monat prüft Claude im Wochenrückblick alle Zahlen gründlich und macht Vorschläge.</p>
       )}
       {offen && <div class="bericht">{offen.text}</div>}
+    </Karte>
+  );
+}
+
+/** Varianten-Schattenbuch: welche Spielart (Richtung, Hebel, Haltedauer) je Signal am besten gewesen wäre. */
+export function SpielartKarte({ s }: { s: Statistik }) {
+  const v = (s.varianten ?? []).filter((x) => x.beste).slice(0, 12);
+  return (
+    <Karte titel="Beste Spielart je Signal – Hebel, Richtung, Haltedauer">
+      <p class="klein">Für jedes Signal rechnet die Datenkrake nach, was mit oder gegen das Signal, ohne Hebel oder als Turbo (Hebel 2–10) und bei 1, 3 oder 5 Tagen Haltedauer herausgekommen wäre – vorsichtig bewertet, damit kein Zufallstreffer gewinnt. Der Autopilot handelt die beste Spielart.</p>
+      {v.length ? (
+        <ul class="liste" data-testid="spielart-liste">
+          {v.map((x) => (
+            <li key={`${x.typ}-${x.gruppe}`}>
+              <strong>{x.typ}</strong> <span class="klein">({x.gruppe === 'krypto' ? 'Krypto' : 'Aktien'})</span>: {varianteText(x.beste!)}
+              {x.basis ? <span class="klein"> · einfach kaufen: Ø {prozent(x.basis.oeNetto)}</span> : null}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="leer">Noch kein Signal mit genug Fällen (ab 25) und klarem Vorteil – füllt sich in den nächsten Wochen.</p>
+      )}
     </Karte>
   );
 }

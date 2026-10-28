@@ -38,6 +38,8 @@ export interface DtBeobachtung {
   spekulativ: boolean;
   chance?: number;
   these?: string;
+  /** Spielart je Auslöser-Richtung (aus dem Varianten-Schattenbuch): Richtung, Instrument, Hebel */
+  wahl?: Partial<Record<DtRichtung, { richtung: DtRichtung; instrument: DtInstrument; hebel: number }>>;
   zustand: SetupZustand;
 }
 
@@ -133,9 +135,12 @@ export function kerzenVerarbeiten(
   return { ereignisse, hinweise, neu };
 }
 
-function tradeAnlegen(b: DtBeobachtung, richtung: DtRichtung, k: Kerze, s: Sitzung, cfg: DtLaufCfg, vergeben: Set<string>): DtTrade | null {
+function tradeAnlegen(b: DtBeobachtung, ausloeserRichtung: DtRichtung, k: Kerze, s: Sitzung, cfg: DtLaufCfg, vergeben: Set<string>): DtTrade | null {
+  const w = b.wahl?.[ausloeserRichtung];
+  const richtung: DtRichtung = w?.richtung ?? ausloeserRichtung;
   if (richtung === 'short' && b.markt === 'krypto') return null;
-  const instrument: DtInstrument = richtung === 'short' ? 'turbo' : b.instrumentLong;
+  const instrument: DtInstrument = w?.instrument ?? (richtung === 'short' ? 'turbo' : b.instrumentLong);
+  const hebel = w?.hebel ?? b.hebel;
   const plan = ausstiegsPlan(k.o, richtung, b.zustand.setup === 'orb' ? b.zustand : {}, cfg.plan);
   if (!plan) return null;
   let id = `${cfg.datum}-${b.herkunft === 'code_scan' ? 'scan' : b.herkunft}-${slug(b.name)}`;
@@ -151,13 +156,14 @@ function tradeAnlegen(b: DtBeobachtung, richtung: DtRichtung, k: Kerze, s: Sitzu
     name: b.name,
     ...(b.isin ? { isin: b.isin } : {}),
     ...(b.symbol ? { symbol: b.symbol } : {}),
-    ...(instrument === 'turbo' ? { turbo: turboAnlegen(k.o, richtung, b.hebel, cfg.emittent) } : {}),
+    ...(instrument === 'turbo' ? { turbo: turboAnlegen(k.o, richtung, hebel, cfg.emittent) } : {}),
     spekulativ: b.spekulativ,
     ausloeser: {
       zeit: b.zustand.ausloeser?.zeit ?? k.t,
       kurs: b.zustand.ausloeser?.kurs ?? k.o,
       level: runde(b.zustand.ausloeser?.level ?? k.o, 4),
       ...(b.zustand.spanne ? { spanne: { hoch: b.zustand.spanne.hoch, tief: b.zustand.spanne.tief } } : {}),
+      richtung: ausloeserRichtung,
     },
     stop: plan.stop,
     ziel: plan.ziel,

@@ -7,7 +7,7 @@ import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { signalBeweise } from '../core/autopilot.ts';
 import { beobachtung, kerzenVerarbeiten, spreadFuer, type DtBeobachtung, type DtLaufCfg } from '../core/daytrading/ablauf.ts';
-import { abendbilanzText, uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
+import { abendbilanzText, setupVarianten, uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
 import { kerzenAusGeschaeften, krakenKerzen, sitzung, tradesAusEreignissen, tradeSchritt, ausstiegAusfuehren, ergebnisRechnen, type DtEreignis, type DtMarkt, type DtTrade, type Kerze, type MarktConfig, type Sitzung } from '../core/daytrading/kern.ts';
 import { historie, monteCarlo, volleSitzungen } from '../core/daytrading/zeitmaschine.ts';
 import { euro } from '../core/geld.ts';
@@ -41,6 +41,8 @@ interface DtConfig {
   krypto: { symbole: string[] };
   spekulativ: { unterKursEuro: number; unterUmsatzEuro: number };
   turbo: { hebelCode: number; emittent: string };
+  /** Spielart je Setup aus dem Varianten-Schattenbuch (Richtung, Aktie/Turbo, Hebel) */
+  varianten?: { aktiv: boolean; mindestTrades: number; mindestChance: number };
   spreads: DtLaufCfg['spreads'];
   nyseFeiertage: string[];
   timeMachine: { aktiv: boolean; maxJeLauf: number; wiederholungen: number; seed: number; minSitzungen: number };
@@ -145,6 +147,18 @@ const laufCfg: DtLaufCfg = {
   gebuehren,
 };
 
+// Spielart je Setup (Nutzer 28.10.: „herausfiltern, wo Hebel und Co. passen“): erst ab genug Trades, vorsichtig bewertet
+const varianten = dt.varianten?.aktiv ? setupVarianten(trades, { aktie: dt.spreads.aktie, turbo: dt.spreads.turbo }, dt.varianten) : {};
+function wahlFuer(markt: DtMarkt, setup: string): DtBeobachtung['wahl'] {
+  const w: NonNullable<DtBeobachtung['wahl']> = {};
+  for (const r of ['long', 'short'] as const) {
+    const v = varianten[`${markt}:${setup}_${r}`]?.beste;
+    if (!v) continue;
+    const richtung = v.richtung === 'mit' ? r : r === 'long' ? 'short' : 'long';
+    w[r] = { richtung, instrument: v.hebel === 1 ? (markt === 'krypto' ? 'krypto' : 'aktie') : 'turbo', hebel: v.hebel === 1 ? dt.turbo.hebelCode : v.hebel };
+  }
+  return Object.keys(w).length ? w : undefined;
+}
 const neueEreignisse: DtEreignis[] = [];
 const neueTrades: DtTrade[] = [];
 const hinweise: string[] = [];
@@ -292,7 +306,7 @@ async function universumWaehlen(m: 'eu' | 'us', kerzen: Map<string, Kerze[]>, s:
   for (const x of gewaehlt) {
     zustand.beobachtungen.push(
       beobachtung(
-        { basis: x.isin, herkunft: 'code_scan', markt: m, name: info[x.isin].name, isin: x.isin, instrumentLong: 'aktie', hebel: dt.turbo.hebelCode, spekulativ: x.kurs < dt.spekulativ.unterKursEuro || x.umsatz < dt.spekulativ.unterUmsatzEuro },
+        { basis: x.isin, herkunft: 'code_scan', markt: m, name: info[x.isin].name, isin: x.isin, instrumentLong: 'aktie', hebel: dt.turbo.hebelCode, spekulativ: x.kurs < dt.spekulativ.unterKursEuro || x.umsatz < dt.spekulativ.unterUmsatzEuro, wahl: wahlFuer(m, 'orb') },
         'orb',
         ['long', 'short'],
       ),
@@ -329,8 +343,8 @@ if ((sk && jetzt >= sk.eroeffnung) || offen.some((t) => t.markt === 'krypto')) {
         const tage = krakenKerzen(await reihe(sym, 1440), new Date(Date.parse(`${datum}T00:00:00Z`)), 1440);
         const vortag = tage.at(-1);
         const basisDaten = { basis: sym, herkunft: 'code_scan' as const, markt: 'krypto' as const, name: sym, symbol: sym, instrumentLong: 'krypto' as const, hebel: 1, spekulativ: !['BTC', 'ETH'].includes(sym) };
-        zustand.beobachtungen.push(beobachtung(basisDaten, 'orb', ['long']));
-        if (vortag) zustand.beobachtungen.push(beobachtung(basisDaten, 'level', ['long'], { level: vortag.h }));
+        zustand.beobachtungen.push(beobachtung({ ...basisDaten, wahl: wahlFuer('krypto', 'orb') }, 'orb', ['long']));
+        if (vortag) zustand.beobachtungen.push(beobachtung({ ...basisDaten, wahl: wahlFuer('krypto', 'level') }, 'level', ['long'], { level: vortag.h }));
       }
     }
     const basen = new Set([...zustand.beobachtungen.filter((x) => x.markt === 'krypto').map((x) => x.basis), ...offen.filter((t) => t.markt === 'krypto').map((t) => t.symbol!)]);
@@ -378,6 +392,7 @@ const nachher = tradesAusEreignissen([...alleEreignisse, ...geschrieben]);
 const uebersicht = uebersichtBerechnen(nachher, datum, jetzt.toISOString(), leseJson('lernen/marktphasen.json', {}));
 schreibeJson('daytrading/uebersicht.json', {
   ...uebersicht,
+  varianten,
   beobachtet: Object.fromEntries((['code_scan', 'claude', 'autopilot'] as const).map((h) => [h, zustand.beobachtungen.filter((x) => x.herkunft === h).length])),
   hinweise: hinweise.slice(-20),
 });
