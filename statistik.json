@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-28T19:43:44.877Z",
+  "stand": "2026-10-28T20:03:35.746Z",
   "gesamt": {
     "anzahl": 5,
     "treffer": 2,
@@ -733,6 +733,107 @@
     }
   ],
   "zielStop": [],
+  "varianten": [
+    {
+      "typ": "gewinn_ueberraschung",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": {
+        "richtung": "mit",
+        "hebel": 1,
+        "horizont": "r3T",
+        "faelle": 14,
+        "chance": 28.6,
+        "oeNetto": -1.71,
+        "wertung": -3.44,
+        "knockout": 0
+      }
+    },
+    {
+      "typ": "volumen_ungewoehnlich",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": null
+    },
+    {
+      "typ": "nachzahlen_drift",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": {
+        "richtung": "mit",
+        "hebel": 1,
+        "horizont": "r3T",
+        "faelle": 8,
+        "chance": 25,
+        "oeNetto": -2.55,
+        "wertung": -4.45,
+        "knockout": 0
+      }
+    },
+    {
+      "typ": "insider_cluster_kauf",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": {
+        "richtung": "mit",
+        "hebel": 1,
+        "horizont": "r3T",
+        "faelle": 5,
+        "chance": 40,
+        "oeNetto": -3.82,
+        "wertung": -6.53,
+        "knockout": 0
+      }
+    },
+    {
+      "typ": "analysten_hochstufung",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": null
+    },
+    {
+      "typ": "insider_kauf",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": {
+        "richtung": "mit",
+        "hebel": 1,
+        "horizont": "r3T",
+        "faelle": 3,
+        "chance": 66.7,
+        "oeNetto": -4.54,
+        "wertung": -9.41,
+        "knockout": 0
+      }
+    },
+    {
+      "typ": "nachricht",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": {
+        "richtung": "mit",
+        "hebel": 1,
+        "horizont": "r3T",
+        "faelle": 4,
+        "chance": 50,
+        "oeNetto": 2.09,
+        "wertung": 0.02,
+        "knockout": 0
+      }
+    },
+    {
+      "typ": "tagesgewinner",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": null
+    },
+    {
+      "typ": "kursrakete",
+      "gruppe": "aktie",
+      "beste": null,
+      "basis": null
+    }
+  ],
   "lernhinweise": [
     "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,5 %, erreicht Ø -2,8 % → realistischer planen oder Ziele näher setzen."
   ],
