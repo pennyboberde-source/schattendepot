@@ -1,12 +1,12 @@
 {
-  "stand": "2026-10-28T15:28:59.320Z",
+  "stand": "2026-10-28T16:19:17.688Z",
   "gesamt": {
-    "anzahl": 2,
+    "anzahl": 3,
     "treffer": 1,
-    "quote": 50,
-    "oeNetto": -4.51,
-    "oeNachSteuern": -4.49,
-    "summeNetto": -88.19
+    "quote": 33.3,
+    "oeNetto": -5.11,
+    "oeNachSteuern": -5.1,
+    "summeNetto": -150.63
   },
   "nachStrategie": {
     "insider_kauf": {
@@ -16,6 +16,14 @@
       "oeNetto": -4.51,
       "oeNachSteuern": -4.49,
       "summeNetto": -88.19
+    },
+    "nachzahlen_drift": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -6.31,
+      "oeNachSteuern": -6.31,
+      "summeNetto": -62.44
     }
   },
   "nachSignalTyp": {
@@ -42,6 +50,14 @@
       "oeNetto": 7.01,
       "oeNachSteuern": 5.16,
       "summeNetto": 70.73
+    },
+    "gewinn_ueberraschung": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -6.31,
+      "oeNachSteuern": -6.31,
+      "summeNetto": -62.44
     }
   },
   "nachQuelle": {
@@ -84,19 +100,43 @@
       "oeNetto": 7.01,
       "oeNachSteuern": 5.16,
       "summeNetto": 70.73
+    },
+    "The Hartford Q3-Termin (IR)": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -6.31,
+      "oeNachSteuern": -6.31,
+      "summeNetto": -62.44
+    },
+    "comdirect HIG": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -6.31,
+      "oeNachSteuern": -6.31,
+      "summeNetto": -62.44
     }
   },
   "nachAnlageklasse": {
     "aktie": {
-      "anzahl": 2,
+      "anzahl": 3,
       "treffer": 1,
-      "quote": 50,
-      "oeNetto": -4.51,
-      "oeNachSteuern": -4.49,
-      "summeNetto": -88.19
+      "quote": 33.3,
+      "oeNetto": -5.11,
+      "oeNachSteuern": -5.1,
+      "summeNetto": -150.63
     }
   },
   "nachRisikoklasse": {
+    "normal": {
+      "anzahl": 2,
+      "treffer": 1,
+      "quote": 50,
+      "oeNetto": 0.35,
+      "oeNachSteuern": -0.58,
+      "summeNetto": 8.29
+    },
     "spekulativ": {
       "anzahl": 1,
       "treffer": 0,
@@ -104,24 +144,16 @@
       "oeNetto": -16.02,
       "oeNachSteuern": -14.14,
       "summeNetto": -158.92
-    },
-    "normal": {
-      "anzahl": 1,
-      "treffer": 1,
-      "quote": 100,
-      "oeNetto": 7.01,
-      "oeNachSteuern": 5.16,
-      "summeNetto": 70.73
     }
   },
   "nachVerkaufsgrund": {
     "stop": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 0,
       "quote": 0,
-      "oeNetto": -16.02,
-      "oeNachSteuern": -14.14,
-      "summeNetto": -158.92
+      "oeNetto": -11.17,
+      "oeNachSteuern": -10.23,
+      "summeNetto": -221.36
     },
     "ziel": {
       "anzahl": 1,
@@ -134,12 +166,12 @@
   },
   "nachHaltedauer": {
     "1–3 Tage": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 0,
       "quote": 0,
-      "oeNetto": -16.02,
-      "oeNachSteuern": -14.14,
-      "summeNetto": -158.92
+      "oeNetto": -11.17,
+      "oeNachSteuern": -10.23,
+      "summeNetto": -221.36
     },
     "< 1 Tag": {
       "anzahl": 1,
@@ -152,20 +184,20 @@
   },
   "nachKonfidenz": {
     "40–59 %": {
-      "anzahl": 2,
+      "anzahl": 3,
       "treffer": 1,
-      "quote": 50,
-      "oeNetto": -4.51,
-      "oeNachSteuern": -4.49,
-      "summeNetto": -88.19
+      "quote": 33.3,
+      "oeNetto": -5.11,
+      "oeNachSteuern": -5.1,
+      "summeNetto": -150.63
     }
   },
   "kalibrierung": [
     {
       "stufe": "40–59 %",
-      "erwartet": 41,
-      "tatsaechlich": 50,
-      "anzahl": 2
+      "erwartet": 40.7,
+      "tatsaechlich": 33.3,
+      "anzahl": 3
     }
   ],
   "pflicht": {
@@ -177,191 +209,320 @@
     "summeNetto": 0
   },
   "ueberzeugung": {
-    "anzahl": 2,
+    "anzahl": 3,
     "treffer": 1,
-    "quote": 50,
-    "oeNetto": -4.51,
-    "oeNachSteuern": -4.49,
-    "summeNetto": -88.19
+    "quote": 33.3,
+    "oeNetto": -5.11,
+    "oeNachSteuern": -5.1,
+    "summeNetto": -150.63
   },
   "erwartetVsTatsaechlich": {
     "erwartet": 0.5,
-    "tatsaechlich": -4.51,
-    "anzahl": 2
+    "tatsaechlich": -5.11,
+    "anzahl": 3
   },
   "etf": {
-    "depotNetto": -88.19,
-    "etfNetto": -26.72,
-    "anzahlMitVergleich": 2
+    "depotNetto": -150.63,
+    "etfNetto": -41.78,
+    "anzahlMitVergleich": 3
   },
   "kandidaten": {
     "gesamt": {
       "anzahl": 54,
+      "oe1h": null,
       "oe1T": 0.97,
+      "oe3T": -1.17,
       "oe1W": null,
+      "oe10T": null,
       "oe1M": null,
+      "quote1T": 48.8,
       "quote1W": null
     },
     "nachSignalTyp": {
       "gewinn_ueberraschung": {
         "anzahl": 19,
+        "oe1h": null,
         "oe1T": -0.9,
+        "oe3T": -1.11,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 46.7,
         "quote1W": null
       },
       "insider_cluster_kauf": {
         "anzahl": 19,
+        "oe1h": null,
         "oe1T": 1.54,
+        "oe3T": -3.22,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 58.3,
         "quote1W": null
       },
       "insider_kauf": {
         "anzahl": 17,
+        "oe1h": null,
         "oe1T": 1.99,
+        "oe3T": -3.94,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 66.7,
         "quote1W": null
       },
       "nachzahlen_drift": {
         "anzahl": 11,
+        "oe1h": null,
         "oe1T": -2.86,
+        "oe3T": -1.95,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 25,
         "quote1W": null
       },
       "nachricht": {
         "anzahl": 6,
+        "oe1h": null,
         "oe1T": -0.77,
+        "oe3T": 2.69,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 0,
         "quote1W": null
       },
       "tagesgewinner": {
         "anzahl": 5,
+        "oe1h": null,
         "oe1T": 6.16,
+        "oe3T": null,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 60,
         "quote1W": null
       },
       "kursrakete": {
         "anzahl": 5,
+        "oe1h": null,
         "oe1T": 6.16,
+        "oe3T": null,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 60,
         "quote1W": null
       },
       "analysten_hochstufung": {
         "anzahl": 4,
+        "oe1h": null,
         "oe1T": 3.08,
+        "oe3T": -2.16,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 66.7,
         "quote1W": null
       },
       "volumen_ungewoehnlich": {
         "anzahl": 3,
+        "oe1h": null,
         "oe1T": -2.49,
+        "oe3T": 3.21,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 33.3,
         "quote1W": null
       },
       "prognose_erhoehung": {
         "anzahl": 1,
+        "oe1h": null,
         "oe1T": -1.09,
+        "oe3T": -2.05,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 0,
         "quote1W": null
       },
       "tagesverlierer": {
         "anzahl": 1,
+        "oe1h": null,
         "oe1T": -1.62,
+        "oe3T": null,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 0,
         "quote1W": null
       },
       "gewinn_enttaeuschung": {
         "anzahl": 1,
+        "oe1h": null,
         "oe1T": null,
+        "oe3T": null,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": null,
         "quote1W": null
       }
     },
     "nachQuelle": {
       "OpenInsider": {
         "anzahl": 23,
+        "oe1h": null,
         "oe1T": 1.58,
+        "oe3T": -3.22,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 62.5,
         "quote1W": null
       },
       "Finnhub": {
         "anzahl": 19,
+        "oe1h": null,
         "oe1T": -1.2,
+        "oe3T": -2.38,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 42.9,
         "quote1W": null
       },
       "FMP": {
         "anzahl": 16,
+        "oe1h": null,
         "oe1T": 1.75,
+        "oe3T": 1.17,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 46.2,
         "quote1W": null
       },
       "Finnhub Kurs": {
         "anzahl": 11,
+        "oe1h": null,
         "oe1T": -2.86,
+        "oe3T": -1.95,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 25,
         "quote1W": null
       },
       "Alpha Vantage": {
         "anzahl": 8,
+        "oe1h": null,
         "oe1T": 2.92,
+        "oe3T": 3.21,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 50,
         "quote1W": null
       },
       "Finnhub Analysten": {
         "anzahl": 4,
+        "oe1h": null,
         "oe1T": 3.08,
+        "oe3T": -2.16,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 66.7,
         "quote1W": null
       },
       "CNBC Top News": {
         "anzahl": 4,
+        "oe1h": null,
         "oe1T": -1.03,
+        "oe3T": 3.72,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 0,
         "quote1W": null
       },
       "tagesschau Wirtschaft": {
         "anzahl": 3,
+        "oe1h": null,
         "oe1T": -1.39,
+        "oe3T": 0.5,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 0,
         "quote1W": null
       },
       "MarketWatch": {
         "anzahl": 2,
+        "oe1h": null,
         "oe1T": -3.08,
+        "oe3T": 3.99,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": 0,
         "quote1W": null
       },
       "Handelsblatt Finanzen": {
         "anzahl": 2,
+        "oe1h": null,
         "oe1T": null,
+        "oe3T": null,
         "oe1W": null,
+        "oe10T": null,
         "oe1M": null,
+        "quote1T": null,
+        "quote1W": null
+      }
+    },
+    "nachRisiko": {
+      "normal": {
+        "anzahl": 54,
+        "oe1h": null,
+        "oe1T": 0.97,
+        "oe3T": -1.17,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 48.8,
+        "quote1W": null
+      }
+    },
+    "nachMarkt": {
+      "us": {
+        "anzahl": 51,
+        "oe1h": null,
+        "oe1T": 1.05,
+        "oe3T": -1.16,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 51.3,
+        "quote1W": null
+      },
+      "eu": {
+        "anzahl": 3,
+        "oe1h": null,
+        "oe1T": -0.55,
+        "oe3T": -1.24,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 0,
         "quote1W": null
       }
     }
   },
-  "zusammenfassung": "Gesamt: 2 Orders, Trefferquote 50 %, Ø -4.51 % nach Gebühren (erwartet waren Ø 0.5 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -16.02 % · normal: 1 Orders, Ø 7.01 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=2).\nVs. MSCI World (gleiche Zeiträume): Depot -88.19 € vs. ETF -26.72 €.",
+  "zusammenfassung": "Gesamt: 3 Orders, Trefferquote 33.3 %, Ø -5.11 % nach Gebühren (erwartet waren Ø 0.5 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -16.02 % · normal: 2 Orders, Ø 0.35 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 33.3 % (n=3).\nVs. MSCI World (gleiche Zeiträume): Depot -150.63 € vs. ETF -41.78 €.",
   "lernhinweise": [],
   "risikoBudget": {
     "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoin-ETNs) – begrenzt, damit das Depot nicht nur daraus besteht. Seit 23.10.2026 mutiger (Nutzerwunsch): 2 je Lauf, 50 %. Die Lernregel steuert innerhalb 10–50 % / 1–2 je Lauf nach.",
@@ -370,5 +531,6 @@
     "stopMinProzent": -25,
     "mindestKursEuro": 0.01,
     "begruendung": "Grundeinstellung (erst 1 von 10 spekulativen Orders für eine Anpassung)"
-  }
+  },
+  "vorlauf": []
 }

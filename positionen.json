@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-28T15:28:59.320Z",
+  "stand": "2026-10-28T16:19:17.688Z",
   "offen": [
     {
       "id": "2026-10-22-space-exploration-technologies",
@@ -84,10 +84,10 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 129.68,
-        "zeit": "2026-10-28T15:14:57.991Z",
+        "wert": 129.7,
+        "zeit": "2026-10-28T16:14:20.206Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 14,
+        "verzoegertMin": 5,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 134
       }
@@ -167,97 +167,12 @@
         "vortag": 129.67
       },
       "letzterKurs": {
-        "wert": 258.9,
-        "zeit": "2026-10-28T15:14:20.208Z",
+        "wert": 258.2,
+        "zeit": "2026-10-28T16:13:11.032Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 15,
+        "verzoegertMin": 6,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 258.9
-      }
-    },
-    {
-      "id": "2026-10-27-the-hartford-insurance-group-i",
-      "status": "offen",
-      "vorgemerktUm": "2026-10-27T06:42:43.636Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "The Hartford Insurance Group, Inc.",
-          "isin": "US4165151048",
-          "ticker": "HIG",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_large",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "HIG",
-            "waehrung": "USD"
-          }
-        },
-        "strategie": "nachzahlen_drift",
-        "these": "Hartford meldete am 26.10. nach US-Schluss ein EPS von 3,50 $ statt erwarteter 3,21 $ (+9 %). Bei Versicherern mit stabilen Margen folgt auf solide Überraschungen oft eine mehrtägige Drift; die Telefonkonferenz am 27.10. um 15 Uhr (Berlin 14 Uhr) kann den Ausblick bestätigen. Gekauft wird erst beim nächsten Kurscheck, also nach der ersten Reaktion.",
-        "ausloeser": "Gewinnüberraschung +9 % laut Lagebild, Zahlen nach Börsenschluss am 26.10.",
-        "signalIds": [
-          "gewinn_ueberraschung:HIG:2026-10-27"
-        ],
-        "quellen": [
-          {
-            "name": "The Hartford Q3-Termin (IR)",
-            "link": "https://s206.q4cdn.com/854710405/files/doc_news/2026/Sep/28/09282026-Q3-Save-the-Date-Final.pdf"
-          },
-          {
-            "name": "comdirect HIG",
-            "link": "https://www.comdirect.de/inf/aktien/US4165151048"
-          }
-        ],
-        "konfidenz": 40,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 0.5,
-        "zielNettoProzent": 3,
-        "stopProzent": -4,
-        "verkaufstermin": "2026-11-10T15:00:00.000Z",
-        "risiken": [
-          "Reaktion nach Börsenschluss unbekannt – Überraschung kann schon eingepreist sein",
-          "Vor einem Jahr fiel die Aktie trotz Gewinnüberraschung um 1,8 %",
-          "Schadenquoten, Rückstellungen oder schwacher Ausblick in der Telefonkonferenz",
-          "Geringe Schwankung: Ziel nach 2,2 % Gebühren ist ambitioniert"
-        ],
-        "einflussLektionen": "Noch keine Lektionen; Statistik leer. Drift-Order bewusst mit niedrigerer Konfidenz, weil die offenen Drift-Positionen bisher überwiegend im Minus liegen (SpaceX −4,9 %, Elevance −3,1 %)."
-      },
-      "verkaufstermin": "2026-11-10T15:00:00.000Z",
-      "anpassungen": [],
-      "kauf": {
-        "zeit": "2026-10-27T08:46:13.646Z",
-        "stueck": 8,
-        "kurs": 122.272,
-        "kurswert": 978.18,
-        "entgelt": {
-          "provision": 9.95,
-          "handelsplatz": 0.95,
-          "gesamt": 10.9
-        },
-        "betrag": 989.08,
-        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-27T08:14:36.054Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 128.71,
-      "stopkurs": 117.38,
-      "etfKauf": {
-        "wert": 130.605,
-        "zeit": "2026-10-27T08:29:47.146Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 16,
-        "hinweis": "letztes Geschäft 2026-10-27",
-        "vortag": 130.525
-      },
-      "letzterKurs": {
-        "wert": 118.38,
-        "zeit": "2026-10-28T15:13:04.813Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 16,
-        "hinweis": "letztes Geschäft 2026-10-28",
-        "vortag": 119.72
       }
     },
     {
@@ -338,10 +253,10 @@
         "vortag": 131.705
       },
       "letzterKurs": {
-        "wert": 16,
-        "zeit": "2026-10-28T15:13:43.518Z",
+        "wert": 16.436,
+        "zeit": "2026-10-28T16:14:19.397Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 15,
+        "verzoegertMin": 5,
         "hinweis": "letztes Geschäft 2026-10-28"
       }
     },
@@ -423,12 +338,12 @@
         "vortag": 131.705
       },
       "letzterKurs": {
-        "wert": 39.477,
-        "vortag": 39.046,
-        "zeit": "2026-10-28T15:28:34.000Z",
+        "wert": 40.06,
+        "vortag": 39.011,
+        "zeit": "2026-10-28T16:17:50.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11355 USD/EUR"
+        "hinweis": "umgerechnet zu 1.11457 USD/EUR"
       }
     },
     {
@@ -505,10 +420,10 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 182.92,
-        "zeit": "2026-10-28T15:13:17.647Z",
+        "wert": 183.18,
+        "zeit": "2026-10-28T16:13:40.500Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 16,
+        "verzoegertMin": 6,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 183.54
       }
@@ -592,10 +507,10 @@
         "vortag": 129.67
       },
       "letzterKurs": {
-        "wert": 378.65,
-        "zeit": "2026-10-28T15:14:00.563Z",
+        "wert": 379.25,
+        "zeit": "2026-10-28T16:13:20.855Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 15,
+        "verzoegertMin": 6,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 377.5
       }

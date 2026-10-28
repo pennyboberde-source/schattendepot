@@ -1,6 +1,112 @@
 {
-  "stand": "2026-10-28T15:28:59.320Z",
+  "stand": "2026-10-28T16:19:17.688Z",
   "orders": [
+    {
+      "id": "2026-10-27-the-hartford-insurance-group-i",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-10-27T06:42:43.636Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "The Hartford Insurance Group, Inc.",
+          "isin": "US4165151048",
+          "ticker": "HIG",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_large",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "HIG",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "nachzahlen_drift",
+        "these": "Hartford meldete am 26.10. nach US-Schluss ein EPS von 3,50 $ statt erwarteter 3,21 $ (+9 %). Bei Versicherern mit stabilen Margen folgt auf solide Überraschungen oft eine mehrtägige Drift; die Telefonkonferenz am 27.10. um 15 Uhr (Berlin 14 Uhr) kann den Ausblick bestätigen. Gekauft wird erst beim nächsten Kurscheck, also nach der ersten Reaktion.",
+        "ausloeser": "Gewinnüberraschung +9 % laut Lagebild, Zahlen nach Börsenschluss am 26.10.",
+        "signalIds": [
+          "gewinn_ueberraschung:HIG:2026-10-27"
+        ],
+        "quellen": [
+          {
+            "name": "The Hartford Q3-Termin (IR)",
+            "link": "https://s206.q4cdn.com/854710405/files/doc_news/2026/Sep/28/09282026-Q3-Save-the-Date-Final.pdf"
+          },
+          {
+            "name": "comdirect HIG",
+            "link": "https://www.comdirect.de/inf/aktien/US4165151048"
+          }
+        ],
+        "konfidenz": 40,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.5,
+        "zielNettoProzent": 3,
+        "stopProzent": -4,
+        "verkaufstermin": "2026-11-10T15:00:00.000Z",
+        "risiken": [
+          "Reaktion nach Börsenschluss unbekannt – Überraschung kann schon eingepreist sein",
+          "Vor einem Jahr fiel die Aktie trotz Gewinnüberraschung um 1,8 %",
+          "Schadenquoten, Rückstellungen oder schwacher Ausblick in der Telefonkonferenz",
+          "Geringe Schwankung: Ziel nach 2,2 % Gebühren ist ambitioniert"
+        ],
+        "einflussLektionen": "Noch keine Lektionen; Statistik leer. Drift-Order bewusst mit niedrigerer Konfidenz, weil die offenen Drift-Positionen bisher überwiegend im Minus liegen (SpaceX −4,9 %, Elevance −3,1 %)."
+      },
+      "verkaufstermin": "2026-11-10T15:00:00.000Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-10-27T08:46:13.646Z",
+        "stueck": 8,
+        "kurs": 122.272,
+        "kurswert": 978.18,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 989.08,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-27T08:14:36.054Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 128.71,
+      "stopkurs": 117.38,
+      "etfKauf": {
+        "wert": 130.605,
+        "zeit": "2026-10-27T08:29:47.146Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 16,
+        "hinweis": "letztes Geschäft 2026-10-27",
+        "vortag": 130.525
+      },
+      "etfVergleich": {
+        "netto": -15.06,
+        "nettoProzent": -1.63,
+        "etfKauf": 130.605,
+        "etfVerkauf": 131.725
+      },
+      "verkauf": {
+        "zeit": "2026-10-28T16:19:17.688Z",
+        "stueck": 8,
+        "kurs": 117.192,
+        "kurswert": 937.54,
+        "entgelt": {
+          "provision": 9.95,
+          "handelsplatz": 0.95,
+          "gesamt": 10.9
+        },
+        "betrag": 926.64,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-28T16:14:01.360Z)",
+        "synthetisch": true,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "kursProzent": -4.15,
+        "netto": -62.44,
+        "nettoProzent": -6.31,
+        "gebuehren": 21.8,
+        "steuer": 0,
+        "nachSteuern": -62.44
+      }
+    },
     {
       "id": "2026-10-26-rapport-therapeutics-inc",
       "status": "geschlossen",
