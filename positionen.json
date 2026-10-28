@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-28T17:13:09.638Z",
+  "stand": "2026-10-28T17:52:53.970Z",
   "offen": [
     {
       "id": "2026-10-22-space-exploration-technologies",
@@ -84,10 +84,10 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 129.92,
-        "zeit": "2026-10-28T16:59:51.294Z",
+        "wert": 129.54,
+        "zeit": "2026-10-28T17:43:16.253Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 13,
+        "verzoegertMin": 10,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 134
       }
@@ -168,9 +168,9 @@
       },
       "letzterKurs": {
         "wert": 257.75,
-        "zeit": "2026-10-28T16:43:17.449Z",
+        "zeit": "2026-10-28T17:44:16.604Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 30,
+        "verzoegertMin": 9,
         "hinweis": "letztes Geschäft 2026-10-28",
         "vortag": 258.9
       }
@@ -227,7 +227,16 @@
         "einflussLektionen": "Lektion 2 umgesetzt: erwartete Rendite = 0,45 × 12 + 0,55 × (−8) ≈ 1,0. Lektion 3: Ziel und Stop weit, weil die Tagesschwankung hoch ist. Statistik hat erst n=1 – Drift-Strategie bewusst an einem volatilen Wert testen."
       },
       "verkaufstermin": "2026-11-11T15:00:00.000Z",
-      "anpassungen": [],
+      "anpassungen": [
+        {
+          "zeit": "2026-10-28T17:52:53.970Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 14.2,
+          "neu": 15.43,
+          "begruendung": "Nachziehender Stop: 5 % unter Geldkurs 16.244 € (+5.2 %)"
+        }
+      ],
       "kauf": {
         "zeit": "2026-10-28T08:18:37.712Z",
         "stueck": 64,
@@ -243,7 +252,7 @@
         "synthetisch": true
       },
       "zielkurs": 17.66,
-      "stopkurs": 14.2,
+      "stopkurs": 15.43,
       "etfKauf": {
         "wert": 131.775,
         "zeit": "2026-10-28T08:13:19.275Z",
@@ -253,10 +262,10 @@
         "vortag": 131.705
       },
       "letzterKurs": {
-        "wert": 16.286,
-        "zeit": "2026-10-28T16:43:41.112Z",
+        "wert": 16.256,
+        "zeit": "2026-10-28T17:44:34.853Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 29,
+        "verzoegertMin": 8,
         "hinweis": "letztes Geschäft 2026-10-28"
       }
     },
@@ -338,181 +347,12 @@
         "vortag": 131.705
       },
       "letzterKurs": {
-        "wert": 39.655,
-        "vortag": 39,
-        "zeit": "2026-10-28T17:12:41.000Z",
+        "wert": 40.043,
+        "vortag": 39.029,
+        "zeit": "2026-10-28T17:49:42.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11486 USD/EUR"
-      }
-    },
-    {
-      "id": "2026-10-22-capital-one-financial-corp",
-      "status": "offen",
-      "vorgemerktUm": "2026-10-22T05:42:31.040Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "Capital One Financial Corp.",
-          "isin": "US14040H1059",
-          "ticker": "COF",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_large",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "COF",
-            "waehrung": "USD"
-          }
-        },
-        "strategie": "nachzahlen_drift",
-        "these": "Capital One meldete am 20.10. EPS 6,69 $ statt erwarteter 5,56 $ (+20 %); die Kursreaktion von +2,5 % ist im Verhältnis zur Überraschung moderat. Klassischer Post-Earnings-Drift bei einer großen, liquiden US-Bank – weniger spektakulär als SPCX, dient als ruhigerer Gegenpol.",
-        "ausloeser": "Gewinnüberraschung +20 % mit bestätigender Kursreaktion (Lagebild)",
-        "signalIds": [
-          "gewinn_ueberraschung:COF:2026-10-22",
-          "nachzahlen_drift:COF:2026-10-22"
-        ],
-        "quellen": [
-          {
-            "name": "Capital One Investor Relations",
-            "link": "https://investor.capitalone.com/"
-          }
-        ],
-        "konfidenz": 45,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 0.5,
-        "zielNettoProzent": 3,
-        "stopProzent": -5,
-        "verkaufstermin": "2026-11-12T15:00:00.000Z",
-        "risiken": [
-          "Überraschung evtl. schon eingepreist; Drift bei Large Caps oft schwach",
-          "Konjunktur-/Kreditausfallsorgen treffen Kartenbanken stark",
-          "Geopolitik (Nahost) belastet Gesamtmarkt",
-          "Gebührenhürde ~2,2 % frisst kleinen Drift auf"
-        ],
-        "einflussLektionen": "Keine Lektionen vorhanden. Zweite Order bewusst in anderem Sektor (Finanzen statt Raumfahrt/Tech), um Klumpenrisiko zu vermeiden.",
-        "risikoklasse": "normal"
-      },
-      "verkaufstermin": "2026-11-12T15:00:00.000Z",
-      "anpassungen": [],
-      "kauf": {
-        "zeit": "2026-10-22T07:15:50.667Z",
-        "stueck": 5,
-        "kurs": 180.775,
-        "kurswert": 903.88,
-        "entgelt": {
-          "provision": 9.95,
-          "handelsplatz": 0.95,
-          "gesamt": 10.9
-        },
-        "betrag": 914.78,
-        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-22T06:44:02.168Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 190.63,
-      "stopkurs": 171.74,
-      "etfKauf": {
-        "wert": 130.02,
-        "zeit": "2026-10-22T06:59:09.935Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 17,
-        "hinweis": "letztes Geschäft 2026-10-22"
-      },
-      "letzterKurs": {
-        "wert": 183.18,
-        "zeit": "2026-10-28T16:44:24.618Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 29,
-        "hinweis": "letztes Geschäft 2026-10-28",
-        "vortag": 183.54
-      }
-    },
-    {
-      "id": "2026-10-23-elevance-health-inc",
-      "status": "offen",
-      "vorgemerktUm": "2026-10-23T05:42:39.815Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "Elevance Health Inc.",
-          "isin": "US0367521038",
-          "wkn": "A12FMV",
-          "ticker": "ELV",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_large",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "ELV",
-            "waehrung": "USD"
-          }
-        },
-        "strategie": "nachzahlen_drift",
-        "these": "Elevance übertraf mit bereinigtem EPS 6,99 $ die Erwartung (ca. 4,71 $) deutlich, hob die Prognose 2026 auf mindestens 29 $ an und stellt für 2027 mindestens 12 % EPS-Wachstum in Aussicht. Kostenquote sank auf 90,6 %. Kursreaktion nur +2,6 % – Raum für Drift, zumal die Aktie nach dem Q2-Einbruch tief steht.",
-        "ausloeser": "Gewinnüberraschung +48 % mit Prognoseanhebung und positiver, aber verhaltener Kursreaktion (Lagebild)",
-        "signalIds": [
-          "gewinn_ueberraschung:ELV:2026-10-23",
-          "nachzahlen_drift:ELV:2026-10-23"
-        ],
-        "quellen": [
-          {
-            "name": "Elevance Q3-2026-Ergebnis (SEC 8-K)",
-            "link": "https://www.sec.gov/Archives/edgar/data/0001156039/000115603926000068/a3q2026elvearningsrelease.htm"
-          },
-          {
-            "name": "Dow Jones via iTiger: Elevance übertrifft Erwartungen",
-            "link": "https://www.itiger.com/hant/news/2677986627"
-          }
-        ],
-        "konfidenz": 45,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 0.5,
-        "zielNettoProzent": 4,
-        "stopProzent": -6,
-        "verkaufstermin": "2026-11-13T15:00:00.000Z",
-        "risiken": [
-          "Teil der Überraschung ist ein nicht-operativer Sondereffekt (ca. 1,85 $ je Aktie)",
-          "Nach dem Q2-Plus fiel die Aktie trotzdem um ca. 9 % – Markt misstraut Krankenversicherern",
-          "Politisches Risiko (Medicare Advantage, Medicaid)"
-        ],
-        "einflussLektionen": "Noch keine Lektionen/Statistik. Bewusst ein zweiter Drift-Fall mit schwacher Kursreaktion als Vergleich zu LAD (starke Reaktion).",
-        "risikoklasse": "normal"
-      },
-      "verkaufstermin": "2026-11-13T15:00:00.000Z",
-      "anpassungen": [],
-      "kauf": {
-        "zeit": "2026-10-23T07:12:59.444Z",
-        "stueck": 2,
-        "kurs": 398.148,
-        "kurswert": 796.3,
-        "entgelt": {
-          "provision": 9.95,
-          "handelsplatz": 0.95,
-          "gesamt": 10.9
-        },
-        "betrag": 807.2,
-        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-23T06:44:13.987Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 425.2,
-      "stopkurs": 374.26,
-      "etfKauf": {
-        "wert": 129.965,
-        "zeit": "2026-10-23T06:57:45.909Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 15,
-        "hinweis": "letztes Geschäft 2026-10-23",
-        "vortag": 129.67
-      },
-      "letzterKurs": {
-        "wert": 376.95,
-        "zeit": "2026-10-28T16:45:27.290Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 28,
-        "hinweis": "letztes Geschäft 2026-10-28",
-        "vortag": 377.5
+        "hinweis": "umgerechnet zu 1.11405 USD/EUR"
       }
     }
   ],

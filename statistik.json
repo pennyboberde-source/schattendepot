@@ -1,14 +1,22 @@
 {
-  "stand": "2026-10-28T17:13:09.638Z",
+  "stand": "2026-10-28T17:52:53.970Z",
   "gesamt": {
-    "anzahl": 3,
+    "anzahl": 5,
     "treffer": 1,
-    "quote": 33.3,
-    "oeNetto": -5.11,
-    "oeNachSteuern": -5.1,
-    "summeNetto": -150.63
+    "quote": 20,
+    "oeNetto": -5.06,
+    "oeNachSteuern": -5.05,
+    "summeNetto": -232.25
   },
   "nachStrategie": {
+    "nachzahlen_drift": {
+      "anzahl": 3,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -5.42,
+      "oeNachSteuern": -5.42,
+      "summeNetto": -144.06
+    },
     "insider_kauf": {
       "anzahl": 2,
       "treffer": 1,
@@ -16,17 +24,25 @@
       "oeNetto": -4.51,
       "oeNachSteuern": -4.49,
       "summeNetto": -88.19
-    },
-    "nachzahlen_drift": {
-      "anzahl": 1,
-      "treffer": 0,
-      "quote": 0,
-      "oeNetto": -6.31,
-      "oeNachSteuern": -6.31,
-      "summeNetto": -62.44
     }
   },
   "nachSignalTyp": {
+    "gewinn_ueberraschung": {
+      "anzahl": 3,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -5.42,
+      "oeNachSteuern": -5.42,
+      "summeNetto": -144.06
+    },
+    "nachzahlen_drift": {
+      "anzahl": 2,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -4.98,
+      "oeNachSteuern": -4.98,
+      "summeNetto": -81.62
+    },
     "insider_cluster_kauf": {
       "anzahl": 2,
       "treffer": 1,
@@ -50,17 +66,33 @@
       "oeNetto": 7.01,
       "oeNachSteuern": 5.16,
       "summeNetto": 70.73
-    },
-    "gewinn_ueberraschung": {
-      "anzahl": 1,
-      "treffer": 0,
-      "quote": 0,
-      "oeNetto": -6.31,
-      "oeNachSteuern": -6.31,
-      "summeNetto": -62.44
     }
   },
   "nachQuelle": {
+    "Capital One Investor Relations": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -1.14,
+      "oeNachSteuern": -1.14,
+      "summeNetto": -10.46
+    },
+    "Elevance Q3-2026-Ergebnis (SEC 8-K)": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -8.82,
+      "oeNachSteuern": -8.82,
+      "summeNetto": -71.16
+    },
+    "Dow Jones via iTiger: Elevance übertrifft Erwartungen": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -8.82,
+      "oeNachSteuern": -8.82,
+      "summeNetto": -71.16
+    },
     "OpenInsider RAPP": {
       "anzahl": 1,
       "treffer": 0,
@@ -120,22 +152,22 @@
   },
   "nachAnlageklasse": {
     "aktie": {
-      "anzahl": 3,
+      "anzahl": 5,
       "treffer": 1,
-      "quote": 33.3,
-      "oeNetto": -5.11,
-      "oeNachSteuern": -5.1,
-      "summeNetto": -150.63
+      "quote": 20,
+      "oeNetto": -5.06,
+      "oeNachSteuern": -5.05,
+      "summeNetto": -232.25
     }
   },
   "nachRisikoklasse": {
     "normal": {
-      "anzahl": 2,
+      "anzahl": 4,
       "treffer": 1,
-      "quote": 50,
-      "oeNetto": 0.35,
-      "oeNachSteuern": -0.58,
-      "summeNetto": 8.29
+      "quote": 25,
+      "oeNetto": -2.32,
+      "oeNachSteuern": -2.78,
+      "summeNetto": -73.33
     },
     "spekulativ": {
       "anzahl": 1,
@@ -148,12 +180,20 @@
   },
   "nachVerkaufsgrund": {
     "stop": {
-      "anzahl": 2,
+      "anzahl": 3,
       "treffer": 0,
       "quote": 0,
-      "oeNetto": -11.17,
-      "oeNachSteuern": -10.23,
-      "summeNetto": -221.36
+      "oeNetto": -10.38,
+      "oeNachSteuern": -9.76,
+      "summeNetto": -292.52
+    },
+    "zeit": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -1.14,
+      "oeNachSteuern": -1.14,
+      "summeNetto": -10.46
     },
     "ziel": {
       "anzahl": 1,
@@ -165,6 +205,14 @@
     }
   },
   "nachHaltedauer": {
+    "3–7 Tage": {
+      "anzahl": 2,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -4.98,
+      "oeNachSteuern": -4.98,
+      "summeNetto": -81.62
+    },
     "1–3 Tage": {
       "anzahl": 2,
       "treffer": 0,
@@ -184,20 +232,20 @@
   },
   "nachKonfidenz": {
     "40–59 %": {
-      "anzahl": 3,
+      "anzahl": 5,
       "treffer": 1,
-      "quote": 33.3,
-      "oeNetto": -5.11,
-      "oeNachSteuern": -5.1,
-      "summeNetto": -150.63
+      "quote": 20,
+      "oeNetto": -5.06,
+      "oeNachSteuern": -5.05,
+      "summeNetto": -232.25
     }
   },
   "kalibrierung": [
     {
       "stufe": "40–59 %",
-      "erwartet": 40.7,
-      "tatsaechlich": 33.3,
-      "anzahl": 3
+      "erwartet": 42.4,
+      "tatsaechlich": 20,
+      "anzahl": 5
     }
   ],
   "pflicht": {
@@ -209,49 +257,60 @@
     "summeNetto": 0
   },
   "ueberzeugung": {
-    "anzahl": 3,
+    "anzahl": 5,
     "treffer": 1,
-    "quote": 33.3,
-    "oeNetto": -5.11,
-    "oeNachSteuern": -5.1,
-    "summeNetto": -150.63
+    "quote": 20,
+    "oeNetto": -5.06,
+    "oeNachSteuern": -5.05,
+    "summeNetto": -232.25
   },
   "erwartetVsTatsaechlich": {
     "erwartet": 0.5,
-    "tatsaechlich": -5.11,
-    "anzahl": 3
+    "tatsaechlich": -5.06,
+    "anzahl": 5
   },
   "etf": {
-    "depotNetto": -150.63,
-    "etfNetto": -41.78,
-    "anzahlMitVergleich": 3
+    "depotNetto": -232.25,
+    "etfNetto": -62.69,
+    "anzahlMitVergleich": 5
   },
   "kandidaten": {
     "gesamt": {
       "anzahl": 55,
-      "oe1h": null,
+      "n1T": 41,
+      "n3T": 23,
+      "n1W": 0,
+      "oe1h": 0,
       "oe1T": 0.97,
       "oe3T": -1.17,
       "oe1W": null,
       "oe10T": null,
       "oe1M": null,
       "quote1T": 48.8,
+      "quote3T": 30.4,
       "quote1W": null
     },
     "nachSignalTyp": {
       "gewinn_ueberraschung": {
         "anzahl": 20,
-        "oe1h": null,
+        "n1T": 15,
+        "n3T": 14,
+        "n1W": 0,
+        "oe1h": 0,
         "oe1T": -0.9,
         "oe3T": -1.11,
         "oe1W": null,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 46.7,
+        "quote3T": 28.6,
         "quote1W": null
       },
       "insider_cluster_kauf": {
         "anzahl": 19,
+        "n1T": 12,
+        "n3T": 5,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 1.54,
         "oe3T": -3.22,
@@ -259,10 +318,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 58.3,
+        "quote3T": 40,
         "quote1W": null
       },
       "insider_kauf": {
         "anzahl": 17,
+        "n1T": 12,
+        "n3T": 3,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 1.99,
         "oe3T": -3.94,
@@ -270,10 +333,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 66.7,
+        "quote3T": 66.7,
         "quote1W": null
       },
       "nachzahlen_drift": {
         "anzahl": 11,
+        "n1T": 8,
+        "n3T": 8,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -2.86,
         "oe3T": -1.95,
@@ -281,10 +348,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 25,
+        "quote3T": 25,
         "quote1W": null
       },
       "nachricht": {
         "anzahl": 6,
+        "n1T": 4,
+        "n3T": 4,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -0.77,
         "oe3T": 2.69,
@@ -292,10 +363,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
+        "quote3T": 50,
         "quote1W": null
       },
       "tagesgewinner": {
         "anzahl": 5,
+        "n1T": 5,
+        "n3T": 0,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 6.16,
         "oe3T": null,
@@ -303,10 +378,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 60,
+        "quote3T": null,
         "quote1W": null
       },
       "kursrakete": {
         "anzahl": 5,
+        "n1T": 5,
+        "n3T": 0,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 6.16,
         "oe3T": null,
@@ -314,10 +393,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 60,
+        "quote3T": null,
         "quote1W": null
       },
       "analysten_hochstufung": {
         "anzahl": 4,
+        "n1T": 3,
+        "n3T": 2,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 3.08,
         "oe3T": -2.16,
@@ -325,10 +408,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 66.7,
+        "quote3T": 0,
         "quote1W": null
       },
       "volumen_ungewoehnlich": {
         "anzahl": 3,
+        "n1T": 3,
+        "n3T": 2,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -2.49,
         "oe3T": 3.21,
@@ -336,10 +423,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 33.3,
+        "quote3T": 50,
         "quote1W": null
       },
       "prognose_erhoehung": {
         "anzahl": 1,
+        "n1T": 1,
+        "n3T": 1,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -1.09,
         "oe3T": -2.05,
@@ -347,10 +438,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
+        "quote3T": 0,
         "quote1W": null
       },
       "tagesverlierer": {
         "anzahl": 1,
+        "n1T": 1,
+        "n3T": 0,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -1.62,
         "oe3T": null,
@@ -358,10 +453,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
+        "quote3T": null,
         "quote1W": null
       },
       "gewinn_enttaeuschung": {
         "anzahl": 1,
+        "n1T": 0,
+        "n3T": 0,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": null,
         "oe3T": null,
@@ -369,12 +468,16 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": null,
+        "quote3T": null,
         "quote1W": null
       }
     },
     "nachQuelle": {
       "OpenInsider": {
         "anzahl": 23,
+        "n1T": 16,
+        "n3T": 5,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 1.58,
         "oe3T": -3.22,
@@ -382,10 +485,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 62.5,
+        "quote3T": 40,
         "quote1W": null
       },
       "Finnhub": {
         "anzahl": 19,
+        "n1T": 14,
+        "n3T": 13,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -1.2,
         "oe3T": -2.38,
@@ -393,10 +500,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 42.9,
+        "quote3T": 23.1,
         "quote1W": null
       },
       "FMP": {
         "anzahl": 16,
+        "n1T": 13,
+        "n3T": 7,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 1.75,
         "oe3T": 1.17,
@@ -404,10 +515,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 46.2,
+        "quote3T": 42.9,
         "quote1W": null
       },
       "Finnhub Kurs": {
         "anzahl": 11,
+        "n1T": 8,
+        "n3T": 8,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -2.86,
         "oe3T": -1.95,
@@ -415,10 +530,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 25,
+        "quote3T": 25,
         "quote1W": null
       },
       "Alpha Vantage": {
         "anzahl": 8,
+        "n1T": 8,
+        "n3T": 2,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 2.92,
         "oe3T": 3.21,
@@ -426,10 +545,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 50,
+        "quote3T": 50,
         "quote1W": null
       },
       "Finnhub Analysten": {
         "anzahl": 4,
+        "n1T": 3,
+        "n3T": 2,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 3.08,
         "oe3T": -2.16,
@@ -437,10 +560,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 66.7,
+        "quote3T": 0,
         "quote1W": null
       },
       "CNBC Top News": {
         "anzahl": 4,
+        "n1T": 3,
+        "n3T": 3,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -1.03,
         "oe3T": 3.72,
@@ -448,10 +575,14 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
+        "quote3T": 66.7,
         "quote1W": null
       },
       "tagesschau Wirtschaft": {
         "anzahl": 3,
+        "n1T": 3,
+        "n3T": 3,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -1.39,
         "oe3T": 0.5,
@@ -459,21 +590,29 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
+        "quote3T": 33.3,
         "quote1W": null
       },
       "Handelsblatt Finanzen": {
         "anzahl": 3,
-        "oe1h": null,
+        "n1T": 0,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": 0,
         "oe1T": null,
         "oe3T": null,
         "oe1W": null,
         "oe10T": null,
         "oe1M": null,
         "quote1T": null,
+        "quote3T": null,
         "quote1W": null
       },
       "MarketWatch": {
         "anzahl": 2,
+        "n1T": 1,
+        "n3T": 1,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": -3.08,
         "oe3T": 3.99,
@@ -481,25 +620,33 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
+        "quote3T": 100,
         "quote1W": null
       }
     },
     "nachRisiko": {
       "normal": {
         "anzahl": 55,
-        "oe1h": null,
+        "n1T": 41,
+        "n3T": 23,
+        "n1W": 0,
+        "oe1h": 0,
         "oe1T": 0.97,
         "oe3T": -1.17,
         "oe1W": null,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 48.8,
+        "quote3T": 30.4,
         "quote1W": null
       }
     },
     "nachMarkt": {
       "us": {
         "anzahl": 51,
+        "n1T": 39,
+        "n3T": 21,
+        "n1W": 0,
         "oe1h": null,
         "oe1T": 1.05,
         "oe3T": -1.16,
@@ -507,27 +654,92 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 51.3,
+        "quote3T": 33.3,
         "quote1W": null
       },
       "eu": {
         "anzahl": 4,
-        "oe1h": null,
+        "n1T": 2,
+        "n3T": 2,
+        "n1W": 0,
+        "oe1h": 0,
         "oe1T": -0.55,
         "oe3T": -1.24,
         "oe1W": null,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
+        "quote3T": 0,
         "quote1W": null
       }
     }
   },
-  "zusammenfassung": "Gesamt: 3 Orders, Trefferquote 33.3 %, Ø -5.11 % nach Gebühren (erwartet waren Ø 0.5 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -16.02 % · normal: 2 Orders, Ø 0.35 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 33.3 % (n=3).\nVs. MSCI World (gleiche Zeiträume): Depot -150.63 € vs. ETF -41.78 €.",
-  "lernhinweise": [],
+  "nachHerkunft": {
+    "claude": {
+      "anzahl": 5,
+      "treffer": 1,
+      "quote": 20,
+      "oeNetto": -5.06,
+      "oeNachSteuern": -5.05,
+      "summeNetto": -232.25
+    }
+  },
+  "zusammenfassung": "Gesamt: 5 Orders, Trefferquote 20 %, Ø -5.06 % nach Gebühren (erwartet waren Ø 0.5 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -16.02 % · normal: 4 Orders, Ø -2.32 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 20 % (n=5).\nStrategien (n≥3): nachzahlen_drift 0 %/Ø -5.42 %.\nVs. MSCI World (gleiche Zeiträume): Depot -232.25 € vs. ETF -62.69 €.\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,5 %, erreicht Ø -5,1 % → realistischer planen oder Ziele näher setzen.",
+  "autopilot": [
+    {
+      "typ": "nachricht",
+      "gruppe": "aktie",
+      "faelle": 4,
+      "chance": 50,
+      "oeNetto": -0.1,
+      "huerde": 2.78,
+      "bewiesen": false
+    },
+    {
+      "typ": "gewinn_ueberraschung",
+      "gruppe": "aktie",
+      "faelle": 14,
+      "chance": 21.4,
+      "oeNetto": -3.89,
+      "huerde": 2.78,
+      "bewiesen": false
+    },
+    {
+      "typ": "nachzahlen_drift",
+      "gruppe": "aktie",
+      "faelle": 8,
+      "chance": 25,
+      "oeNetto": -4.73,
+      "huerde": 2.78,
+      "bewiesen": false
+    },
+    {
+      "typ": "insider_cluster_kauf",
+      "gruppe": "aktie",
+      "faelle": 5,
+      "chance": 0,
+      "oeNetto": -6,
+      "huerde": 2.78,
+      "bewiesen": false
+    },
+    {
+      "typ": "insider_kauf",
+      "gruppe": "aktie",
+      "faelle": 3,
+      "chance": 0,
+      "oeNetto": -6.72,
+      "huerde": 2.78,
+      "bewiesen": false
+    }
+  ],
+  "zielStop": [],
+  "lernhinweise": [
+    "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,5 %, erreicht Ø -5,1 % → realistischer planen oder Ziele näher setzen."
+  ],
   "risikoBudget": {
-    "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoin-ETNs) – begrenzt, damit das Depot nicht nur daraus besteht. Seit 23.10.2026 mutiger (Nutzerwunsch): 2 je Lauf, 50 %. Die Lernregel steuert innerhalb 10–50 % / 1–2 je Lauf nach.",
-    "maxSpekulativJeLauf": 2,
-    "maxAnteilSpekulativ": 0.5,
+    "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoins, Short-Turbos) – begrenzt, damit das Depot nicht nur daraus besteht. Seit S2 (Plan Datenkrake, 28.10.2026): bis 4 je Lauf, 70 %. Die Lernregel steuert innerhalb 10–70 % / 1–4 je Lauf nach.",
+    "maxSpekulativJeLauf": 4,
+    "maxAnteilSpekulativ": 0.7,
     "stopMinProzent": -25,
     "mindestKursEuro": 0.01,
     "begruendung": "Grundeinstellung (erst 1 von 10 spekulativen Orders für eine Anpassung)"
