@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-28T19:46:42.227Z",
-  "anzahl": 80,
+  "stand": "2026-10-28T20:40:57.629Z",
+  "anzahl": 89,
   "signale": [
     {
       "id": "nachricht:BA:2026-10-27",
@@ -165,7 +165,7 @@
       "t": "FFTT",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -1064,6 +1064,125 @@
         "Coinalyze"
       ],
       "z": "2026-10-28T18:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:SLXNW:2026-10-28",
+      "s": "T:SLXNW",
+      "n": "Silexion Therapeutics Corp",
+      "t": "SLXNW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-28T20:05:40.000Z"
+    },
+    {
+      "id": "verwaesserung:ETS:2026-10-28",
+      "s": "T:ETS",
+      "n": "Elite Express Holding Inc.",
+      "t": "ETS",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-28T20:05:47.000Z"
+    },
+    {
+      "id": "verwaesserung:CTO-PA:2026-10-28",
+      "s": "T:CTO-PA",
+      "n": "CTO Realty Growth, Inc.",
+      "t": "CTO-PA",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-28T20:15:33.000Z"
+    },
+    {
+      "id": "verwaesserung:MTTN:2026-10-28",
+      "s": "T:MTTN",
+      "n": "Matternet, Inc.",
+      "t": "MTTN",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-28T20:21:21.000Z"
+    },
+    {
+      "id": "kursrakete:FTNT:2026-10-28",
+      "s": "T:FTNT",
+      "n": "FORTINET INC",
+      "t": "FTNT",
+      "i": "US34959E1091",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.54,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-28T20:27:39.935Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0ERU9:2026-10-28",
+      "s": "I:DE000HF0ERU9",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF0ERU9",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.57,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-28T20:28:15.786Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0ES11:2026-10-28",
+      "s": "I:DE000HF0ES11",
+      "n": "DE000HF0ES11",
+      "i": "DE000HF0ES11",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.88,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-28T20:28:53.075Z"
+    },
+    {
+      "id": "kursrakete:NOW:2026-10-28",
+      "s": "T:NOW",
+      "n": "SERVICENOW INC",
+      "t": "NOW",
+      "i": "US81762P1021",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.47,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-28T20:29:17.782Z"
+    },
+    {
+      "id": "verwaesserung:AUROW:2026-10-28",
+      "s": "T:AUROW",
+      "n": "Aurora Innovation, Inc.",
+      "t": "AUROW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-28T20:31:45.000Z"
     }
   ]
 }
