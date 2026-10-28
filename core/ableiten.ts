@@ -2,7 +2,7 @@
 // Das Protokoll ist die einzige Wahrheit; alles andere wird hieraus neu berechnet (nie von Hand).
 import { runde } from './geld.ts';
 import { berlin } from './kalender.ts';
-import type { GebuehrenConfig } from './gebuehren.ts';
+import { entgeltVergleich, type GebuehrenConfig } from './gebuehren.ts';
 import { verkaufen } from './rendite.ts';
 import { geldBrief, type SpreadConfig } from './spreads.ts';
 import { steuernBerechnen, type SteuerConfig } from './steuern.ts';
@@ -86,6 +86,8 @@ export interface Kennzahlen {
   unrealisiert: number;
   trefferquote: number | null;
   etfNetto: number;
+  /** Vergleich: Ergebnis der abgeschlossenen Orders, wenn sie bei Smartbroker+ statt Consorsbank gehandelt worden wären */
+  nettoSmartbroker?: number;
   kurve: { datum: string; depot: number; etf: number }[];
 }
 
@@ -99,7 +101,7 @@ export interface Abgeleitet {
 export function ableiten(
   ereignisse: Ereignis[],
   kurse: Record<string, Kurs>,
-  cfg: { steuern: SteuerConfig; gebuehren: GebuehrenConfig; spreads: SpreadConfig },
+  cfg: { steuern: SteuerConfig; gebuehren: GebuehrenConfig; spreads: SpreadConfig; gebuehrenSmartbroker?: GebuehrenConfig },
   stand: string,
 ): Abgeleitet {
   const orders = ordersAusEreignissen(ereignisse);
@@ -158,6 +160,13 @@ export function ableiten(
       unrealisiert: runde(unrealisiert),
       trefferquote: geschlossen.length ? runde((gewinner / geschlossen.length) * 100, 1) : null,
       etfNetto: runde(etf),
+      ...(cfg.gebuehrenSmartbroker
+        ? {
+            nettoSmartbroker: runde(
+              geschlossen.reduce((s, o) => s + o.ergebnis!.netto + o.kauf!.entgelt.gesamt + o.verkauf!.entgelt.gesamt - entgeltVergleich([o.kauf!.kurswert, o.verkauf!.kurswert], cfg.gebuehrenSmartbroker!), 0),
+            ),
+          }
+        : {}),
       kurve,
     },
   };

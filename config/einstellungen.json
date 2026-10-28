@@ -1,5 +1,7 @@
 {
   "orderBetrag": 1000,
+  "mindestChance": 40,
+  "mindestChanceHinweis": "Jeder Kauf nur bei Chance ≥ 40 % (vom Code mit der bisherigen Treffsicherheit korrigiert) und positivem Erwartungswert nach Gebühren. Keine Pflicht-Orders (Plan Datenkrake, 28.10.2026).",
   "hebelMax": 10,
   "haltedauerMinMinuten": 15,
   "haltedauerMaxTage": 31,
@@ -38,8 +40,8 @@
     }
   },
   "tracking": {
-    "kandidatenProTag": 10,
-    "maxAbrufeProLauf": 40
+    "kandidatenProTag": 40,
+    "maxAbrufeProLauf": 60
   },
   "zeitzone": "Europe/Berlin",
   "risikoBudget": {

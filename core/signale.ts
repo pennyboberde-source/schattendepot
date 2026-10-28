@@ -10,7 +10,8 @@ export interface SignalQuelle {
 export interface Signal {
   /** stabil: <typ>:<schlüssel>:<datum> */
   id: string;
-  wertpapier: { name: string; ticker?: string; isin?: string };
+  /** markt (optional): woher Kurse fürs Mitverfolgen kommen – verhindert Verwechslung Coin/Aktie mit gleichem Kürzel */
+  wertpapier: { name: string; ticker?: string; isin?: string; markt?: 'krypto' | 'us' | 'eu' | 'rohstoff' };
   typ: string;
   /** 0..1 */
   staerke: number;

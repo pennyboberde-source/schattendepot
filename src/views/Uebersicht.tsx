@@ -26,6 +26,9 @@ export function UebersichtView() {
             <div class="kennzahl">
               <span class="kennzahl-label">Schattendepot {nachSteuern ? 'nach Steuern' : 'nach Gebühren'}</span>
               <Betrag wert={nachSteuern ? k.nachSteuern : k.netto} />
+              {k.nettoSmartbroker !== undefined && k.anzahlGeschlossen > 0 && (
+                <span class="klein">bei Smartbroker+: {k.nettoSmartbroker.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} € (Consorsbank bleibt der offizielle Wert)</span>
+              )}
             </div>
             <div class="kennzahl">
               <span class="kennzahl-label">Gleiche Orders im MSCI World</span>

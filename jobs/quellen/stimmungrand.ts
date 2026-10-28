@@ -108,7 +108,7 @@ export const appRaenge: Quelle = {
   maxProLauf: 1,
   async abrufen(ctx) {
     const z = zustandLesen<{ raenge?: Record<string, number> }>('appstore', {});
-    const j = await holeJson<{ feed?: { results?: { name: string }[] } }>('https://rss.marketingtools.apple.com/api/v2/us/apps/top-free/100/apps.json');
+    const j = await holeJson<{ feed?: { results?: { name: string }[] } }>('https://rss.marketingtools.apple.com/api/v2/us/apps/top-free/100/apps.json', { zeitlimitMs: 25000, versuche: 2 });
     const r = appRaengeAuswerten((j.feed?.results ?? []).map((x) => x.name), z.raenge ?? {}, ctx.jetzt);
     zustandSchreiben('appstore', { raenge: r.raenge });
     return { signale: r.signale, makro: r.makro, abfragen: 1 };
@@ -122,7 +122,7 @@ export function angstGierAuswerten(daten: { value: string; value_classification:
   const makro = [`Krypto Fear & Greed: ${heute.wert} (${heute.text})${gestern ? `, gestern ${gestern.wert}` : ''} – Quelle: alternative.me`];
   const signale: Signal[] = [];
   if (heute.wert <= 15 || heute.wert >= 85) {
-    signale.push(signal('stimmung_extrem', { name: 'Bitcoin', ticker: 'BTC' }, Math.min(1, Math.abs(heute.wert - 50) / 45), 0, jetzt.toISOString(), 'alternative.me', `Krypto Fear & Greed ${heute.wert} (${heute.text}) – Extremwerte drehen oft`, 'https://alternative.me/crypto/fear-and-greed-index/'));
+    signale.push(signal('stimmung_extrem', { name: 'Bitcoin', ticker: 'BTC', markt: 'krypto' }, Math.min(1, Math.abs(heute.wert - 50) / 45), 0, jetzt.toISOString(), 'alternative.me', `Krypto Fear & Greed ${heute.wert} (${heute.text}) – Extremwerte drehen oft`, 'https://alternative.me/crypto/fear-and-greed-index/'));
   }
   return { signale, makro };
 }
@@ -137,7 +137,7 @@ export function dvolAuswerten(coin: string, reihe: number[][], jetzt: Date) {
   const d = (letzter / vortag - 1) * 100;
   const signale: Signal[] = [];
   if (Math.abs(d) >= 15) {
-    signale.push(signal('volatilitaet_sprung', { name: coin === 'BTC' ? 'Bitcoin' : 'Ethereum', ticker: coin }, Math.min(1, Math.abs(d) / 40), 0, jetzt.toISOString(), 'Deribit DVOL', `Implizite Volatilität ${pz(d)} % zum Vortag (${letzter.toFixed(1)}) – Markt erwartet große Bewegung`, 'https://www.deribit.com/statistics/BTC/volatility-index'));
+    signale.push(signal('volatilitaet_sprung', { name: coin === 'BTC' ? 'Bitcoin' : 'Ethereum', ticker: coin, markt: 'krypto' }, Math.min(1, Math.abs(d) / 40), 0, jetzt.toISOString(), 'Deribit DVOL', `Implizite Volatilität ${pz(d)} % zum Vortag (${letzter.toFixed(1)}) – Markt erwartet große Bewegung`, 'https://www.deribit.com/statistics/BTC/volatility-index'));
   }
   return { signale, makro };
 }
@@ -230,15 +230,15 @@ export const polymarket: Quelle = {
 };
 
 // ---------- CFTC Commitments of Traders ----------
-const COT_MAERKTE: Record<string, { name: string; ticker: string }> = {
-  'GOLD - COMMODITY EXCHANGE INC.': { name: 'Gold (Rohstoff)', ticker: 'XAU' },
-  'SILVER - COMMODITY EXCHANGE INC.': { name: 'Silber (Rohstoff)', ticker: 'XAG' },
-  'COPPER- #1 - COMMODITY EXCHANGE INC.': { name: 'Kupfer (Rohstoff)', ticker: 'COPPER' },
-  'WTI-PHYSICAL - NEW YORK MERCANTILE EXCHANGE': { name: 'Rohöl WTI (Rohstoff)', ticker: 'WTIOIL' },
-  'NAT GAS NYME - NEW YORK MERCANTILE EXCHANGE': { name: 'Erdgas (Rohstoff)', ticker: 'NATGAS' },
+const COT_MAERKTE: Record<string, { name: string; ticker: string; markt?: 'krypto' | 'rohstoff' }> = {
+  'GOLD - COMMODITY EXCHANGE INC.': { name: 'Gold (Rohstoff)', ticker: 'XAU', markt: 'rohstoff' },
+  'SILVER - COMMODITY EXCHANGE INC.': { name: 'Silber (Rohstoff)', ticker: 'XAG', markt: 'rohstoff' },
+  'COPPER- #1 - COMMODITY EXCHANGE INC.': { name: 'Kupfer (Rohstoff)', ticker: 'COPPER', markt: 'rohstoff' },
+  'WTI-PHYSICAL - NEW YORK MERCANTILE EXCHANGE': { name: 'Rohöl WTI (Rohstoff)', ticker: 'WTIOIL', markt: 'rohstoff' },
+  'NAT GAS NYME - NEW YORK MERCANTILE EXCHANGE': { name: 'Erdgas (Rohstoff)', ticker: 'NATGAS', markt: 'rohstoff' },
   'E-MINI S&P 500 - CHICAGO MERCANTILE EXCHANGE': { name: 'S&P 500', ticker: 'SPX' },
-  'BITCOIN - CHICAGO MERCANTILE EXCHANGE': { name: 'Bitcoin', ticker: 'BTC' },
-  'ETHER CASH SETTLED - CHICAGO MERCANTILE EXCHANGE': { name: 'Ethereum', ticker: 'ETH' },
+  'BITCOIN - CHICAGO MERCANTILE EXCHANGE': { name: 'Bitcoin', ticker: 'BTC', markt: 'krypto' },
+  'ETHER CASH SETTLED - CHICAGO MERCANTILE EXCHANGE': { name: 'Ethereum', ticker: 'ETH', markt: 'krypto' },
 };
 
 export interface CotZeile {

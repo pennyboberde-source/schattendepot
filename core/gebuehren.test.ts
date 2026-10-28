@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import cfgDatei from '../config/gebuehren.json';
-import { orderentgelt, type GebuehrenConfig } from './gebuehren.ts';
+import sbDatei from '../config/gebuehren-smartbroker.json';
+import { entgeltVergleich, orderentgelt, type GebuehrenConfig } from './gebuehren.ts';
 
 const cfg = cfgDatei as unknown as GebuehrenConfig;
 
@@ -34,5 +35,15 @@ describe('Orderentgelt Consorsbank (immer Standardpreis)', () => {
   it('keine Stufen, keine Freetrades: jede Order kostet gleich', () => {
     const eins = orderentgelt(1000, cfg);
     for (let i = 0; i < 300; i++) expect(orderentgelt(1000, cfg)).toEqual(eins);
+  });
+});
+
+describe('Smartbroker+ als Vergleichsmodell', () => {
+  const sb = sbDatei as unknown as GebuehrenConfig;
+  it('0 € ab 500 €, darunter 1 € Mindermengenzuschlag', () => {
+    expect(orderentgelt(1000, sb).gesamt).toBe(0);
+    expect(orderentgelt(499.99, sb).gesamt).toBe(1);
+    expect(entgeltVergleich([1000, 1100], sb)).toBe(0);
+    expect(entgeltVergleich([300, 0], sb)).toBe(1);
   });
 });

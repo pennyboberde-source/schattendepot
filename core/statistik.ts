@@ -23,17 +23,32 @@ export interface TrackingEintrag {
   typen: string[];
   quellen: string[];
   start?: number;
-  /** gerichtete Rendite in % (Long: Kursveränderung, Short: negativ) nach 1 Handelstag / 1 Woche / 1 Monat */
+  /** Zeitpunkt des Startkurses (für die Reaktionszeit) */
+  startZeit?: string;
+  /** gerichtete Rendite in % (Long: Kursveränderung, Short: negativ) nach ~1 Stunde / 1 / 3 / 5 / 10 / 21 Handelstagen */
+  r1h?: number;
   r1T?: number;
+  r3T?: number;
   r1W?: number;
+  r10T?: number;
   r1M?: number;
+  markt?: 'krypto' | 'us' | 'eu' | 'rohstoff';
+  /** Pump-&-Dump-Verdacht (nur Stimmung/Rakete, nichts Handfestes) */
+  pump?: boolean;
+  /** schnell = tagsüber aufgenommenes Ereignis-Signal (Reaktionszeit), sonst Kandidat des Hauptlaufs */
+  art?: 'kandidat' | 'schnell';
 }
 
 export interface TrackingGruppe {
   anzahl: number;
+  oe1h?: number | null;
   oe1T: number | null;
+  oe3T?: number | null;
   oe1W: number | null;
+  oe10T?: number | null;
   oe1M: number | null;
+  /** Anteil mit gerichteter 1-Tages-Rendite > 0 in % */
+  quote1T?: number | null;
   /** Anteil mit gerichteter 1-Wochen-Rendite > 0 in % */
   quote1W: number | null;
 }
@@ -58,7 +73,16 @@ export interface Statistik {
   ueberzeugung: Gruppe;
   erwartetVsTatsaechlich: { erwartet: number; tatsaechlich: number; anzahl: number };
   etf: { depotNetto: number; etfNetto: number; anzahlMitVergleich: number };
-  kandidaten: { gesamt: TrackingGruppe; nachSignalTyp: Record<string, TrackingGruppe>; nachQuelle: Record<string, TrackingGruppe> };
+  kandidaten: {
+    gesamt: TrackingGruppe;
+    nachSignalTyp: Record<string, TrackingGruppe>;
+    nachQuelle: Record<string, TrackingGruppe>;
+    /** Pump-Verdacht getrennt messen (Penny Stocks/Altcoins ohne handfeste Grundlage) */
+    nachRisiko?: Record<string, TrackingGruppe>;
+    nachMarkt?: Record<string, TrackingGruppe>;
+  };
+  /** Vorlauf-Quote je Signaltyp vor Raketen (Hot-Stuff-Rückblick), wird von abgeleitet.ts ergänzt */
+  vorlauf?: { typ: string; quote: number; lift: number | null; signale: number }[];
   zusammenfassung: string;
 }
 
@@ -102,8 +126,21 @@ function trackingGruppe(l: TrackingEintrag[]): TrackingGruppe {
     const w = l.map(f).filter((x): x is number => typeof x === 'number');
     return w.length ? runde(w.reduce((a, b) => a + b, 0) / w.length, 2) : null;
   };
-  const mitW = l.filter((t) => typeof t.r1W === 'number');
-  return { anzahl: l.length, oe1T: mittel((t) => t.r1T), oe1W: mittel((t) => t.r1W), oe1M: mittel((t) => t.r1M), quote1W: mitW.length ? runde((mitW.filter((t) => t.r1W! > 0).length / mitW.length) * 100, 1) : null };
+  const quote = (f: (t: TrackingEintrag) => number | undefined) => {
+    const w = l.map(f).filter((x): x is number => typeof x === 'number');
+    return w.length ? runde((w.filter((x) => x > 0).length / w.length) * 100, 1) : null;
+  };
+  return {
+    anzahl: l.length,
+    oe1h: mittel((t) => t.r1h),
+    oe1T: mittel((t) => t.r1T),
+    oe3T: mittel((t) => t.r3T),
+    oe1W: mittel((t) => t.r1W),
+    oe10T: mittel((t) => t.r10T),
+    oe1M: mittel((t) => t.r1M),
+    quote1T: quote((t) => t.r1T),
+    quote1W: quote((t) => t.r1W),
+  };
 }
 
 function trackingGruppiert(l: TrackingEintrag[], f: (t: TrackingEintrag) => string[]): Record<string, TrackingGruppe> {
@@ -139,7 +176,13 @@ export function statistikBerechnen(alle: Order[], tracking: TrackingEintrag[], s
       anzahl: g.length,
     },
     etf: { depotNetto: runde(mitEtf.reduce((a, o) => a + o.ergebnis!.netto, 0)), etfNetto: runde(mitEtf.reduce((a, o) => a + o.etfVergleich!.netto, 0)), anzahlMitVergleich: mitEtf.length },
-    kandidaten: { gesamt: trackingGruppe(tracking), nachSignalTyp: trackingGruppiert(tracking, (t) => t.typen), nachQuelle: trackingGruppiert(tracking, (t) => t.quellen) },
+    kandidaten: {
+      gesamt: trackingGruppe(tracking),
+      nachSignalTyp: trackingGruppiert(tracking, (t) => t.typen),
+      nachQuelle: trackingGruppiert(tracking, (t) => t.quellen),
+      nachRisiko: trackingGruppiert(tracking, (t) => [t.pump ? 'pump_verdacht' : 'normal']),
+      nachMarkt: trackingGruppiert(tracking, (t) => [t.markt ?? (['BTC', 'ETH', 'SOL', 'XRP', 'ADA', 'DOT'].includes(t.ticker ?? '') ? 'krypto' : /\.(DE|PA|AS|MI|MC|F)$/.test(t.ticker ?? '') ? 'eu' : 'us')]),
+    },
     zusammenfassung: '',
   };
   s.zusammenfassung = zusammenfassung(s);

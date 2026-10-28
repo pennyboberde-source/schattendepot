@@ -98,6 +98,8 @@ export interface OrderPlan {
   quellen: { name: string; link: string }[];
   /** Geschätzte Erfolgschance in % (Wahrscheinlichkeit, nach Gebühren mit Gewinn zu schließen). */
   konfidenz: number;
+  /** vom Code mit der bisherigen Treffsicherheit verrechnete Chance (Chancen-Korrektur), falls abweichend */
+  chanceKorrigiert?: number;
   pflichtOrder: boolean;
   /** Erwartete Rendite nach Gebühren in % des Kapitaleinsatzes. */
   erwarteteRenditeNetto: number;

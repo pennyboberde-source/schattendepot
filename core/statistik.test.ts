@@ -64,7 +64,8 @@ describe('Statistik', () => {
       { datum: 'd', schluessel: 'T:B', name: 'B', score: 2, typen: ['insider_kauf', 'nachricht'], quellen: ['FAZ'], r1W: -1 },
     ];
     const st = statistikBerechnen([], t, 'jetzt');
-    expect(st.kandidaten.nachSignalTyp.insider_kauf).toEqual({ anzahl: 2, oe1T: null, oe1W: 0.5, oe1M: null, quote1W: 50 });
+    expect(st.kandidaten.nachSignalTyp.insider_kauf).toEqual({ anzahl: 2, oe1h: null, oe1T: null, oe3T: null, oe1W: 0.5, oe10T: null, oe1M: null, quote1T: null, quote1W: 50 });
+    expect(st.kandidaten.nachRisiko?.normal?.anzahl).toBe(2);
   });
 });
 

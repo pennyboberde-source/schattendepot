@@ -44,6 +44,11 @@ Das Depot ist fiktiv – kalkulierte Risiken sind ausdrücklich erwünscht, um d
 - **Werbe-Warnung:** Aussagen wie „steigt in 3 Tagen von 3 auf 28 Cent“ stammen oft aus bezahlter Werbung („Pump and Dump“). Sie zählen als Stimmung, nicht als Fakt. Kaufen ist erlaubt, wenn es einen unabhängigen Hinweis gibt (echter Handel/Umsatz auf gettex, Pflichtmeldung, Nachricht einer seriösen Quelle) – mit ehrlich niedriger `konfidenz` und dem Risiko in `risiken`.
 - Ob sich Spekulation lohnt, zeigt die Statistik („Normal vs. spekulativ“) – nicht das Bauchgefühl.
 
+## Datenkrake (seit 28.10.2026)
+- Das **Schattenbuch** verfolgt täglich bis zu 40 Kandidaten und tagsüber schnelle Ereignis-Signale virtuell (nach 1 Std., 1/3/5/10/21 Handelstagen). Kandidaten im Lagebild tragen ↳-Hinweise: „In n ähnlichen Fällen x im Plus, Ø y %“ und ggf. „⚠ Pump-Verdacht“. Stütze deine `konfidenz` darauf.
+- **Kaufregel:** `konfidenz` ≥ 40 und `erwarteteRenditeNetto` > 0, sonst lehnt der Code ab. Liegt deine Treffsicherheit einer Konfidenz-Stufe daneben, korrigiert der Code die Chance (steht im Kontext unter Kalibrierung).
+- **Hot Stuff:** Der Code sammelt täglich die Kursraketen und prüft, welche Signale vorausgingen („Vorlauf“ in der Statistik). Im Abendlauf daraus Lehren ziehen.
+
 ## Randquellen (seit 28.10.2026)
 - `shortreport`: neuer Bericht eines Short-Sellers (Grizzly, Fuzzy Panda, Bear Cave). Zielaktien fallen oft kräftig; betrifft er eine Position: These prüfen.
 - `leerverkauf_quote`/`leerverkauf_aenderung` aus FINRA Short Interest: viele Tage zum Eindecken + steigender Kurs = Squeeze-Kandidat; Abbau = Leerverkäufer geben auf.

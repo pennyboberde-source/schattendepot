@@ -8,6 +8,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ordersAusEreignissen } from '../../core/ableiten.ts';
 import { entscheidungUebernehmen, type Entscheidung } from '../../core/entscheidung.ts';
+import type { KalibrierStufe } from '../../core/datenkrake.ts';
 import { pushAngepasst, pushBericht, pushBriefing, pushWarnung, type PushNachricht } from '../../core/push.ts';
 import type { Order } from '../../core/typen.ts';
 import { DATEN_DIR, haengeEreignisseAn, ladeConfig, leseEreignisse, leseJson, schreibeJson, schreibeText } from './dateien.ts';
@@ -85,8 +86,8 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
       }
 
       const vorher = ordersAusEreignissen(leseEreignisse());
-      const wirksam = leseJson<{ risikoBudget?: typeof cfg.einstellungen.risikoBudget }>('statistik.json', {}).risikoBudget;
-      const u = entscheidungUebernehmen(e, vorher, jetzt, { ...cfg.einstellungen, risikoBudget: wirksam ?? cfg.einstellungen.risikoBudget });
+      const st = leseJson<{ risikoBudget?: typeof cfg.einstellungen.risikoBudget; kalibrierung?: KalibrierStufe[] }>('statistik.json', {});
+      const u = entscheidungUebernehmen(e, vorher, jetzt, { ...cfg.einstellungen, risikoBudget: st.risikoBudget ?? cfg.einstellungen.risikoBudget, mindestChance: cfg.einstellungen.mindestChance ?? 40, kalibrierung: st.kalibrierung });
       const neu = haengeEreignisseAn(u.ereignisse);
       const nachher = ordersAusEreignissen(leseEreignisse());
       const nachId = new Map<string, Order>(nachher.map((o) => [o.id, o]));

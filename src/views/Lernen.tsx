@@ -6,6 +6,8 @@ import { ladeText, useDaten } from '../lib/daten';
 import { STRATEGIE_TEXT } from '../lib/texte';
 import { datumKurz } from '../lib/zeit';
 import { Geladen, Karte, Leer } from '../ui';
+import type { VorlaufStatistik } from '../../core/datenkrake.ts';
+import { DatenkrakeKarten, type HotStuffBericht } from './LernenDatenkrake';
 
 const TYP_NAME = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name])) as Record<string, string>;
 const p = (x: number | null) => (x === null ? '–' : prozent(x));
@@ -27,6 +29,8 @@ export function LernenView() {
   const statistik = useDaten<Statistik>('statistik.json');
   const gewichte = useDaten<Gewichte>('gewichte.json');
   const aenderungen = useDaten<Aenderung[]>('lernen/gewichtsaenderungen.json');
+  const hotstuff = useDaten<HotStuffBericht>('lernen/hotstuff-letzte.json');
+  const vorlauf = useDaten<VorlaufStatistik>('lernen/vorlauf.json');
   const [lektionen, setLektionen] = useState<string | null>(null);
   useEffect(() => {
     ladeText('lernen/lektionen.md')
@@ -38,11 +42,14 @@ export function LernenView() {
   return (
     <div class="seite">
       <h1>Lernen</h1>
+      <p class="klein">Die Datenkrake verfolgt jeden Tag bis zu 40 Kandidaten und tagsüber schnelle Signale virtuell mit – ohne Geld – und misst, was klappt. Daraus lernen Gewichte, Chancen und Claude.</p>
       <Geladen
         z={statistik}
         leer="Noch keine Statistik – sie entsteht mit den ersten abgeschlossenen Orders."
         kinder={(s) => (
           <>
+            <DatenkrakeKarten s={s} gewichte={gw.signale ?? {}} hotstuff={hotstuff} vorlauf={vorlauf.status === 'ok' ? vorlauf.daten : null} />
+            <h2>Claude-Depot (gekaufte Orders)</h2>
             <div class="raster-kennzahlen">
               <div class="kennzahl">
                 <span class="kennzahl-label">Trefferquote (nach Gebühren)</span>

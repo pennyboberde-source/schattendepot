@@ -1,6 +1,7 @@
 // Übernahme einer (bereits schemageprüften) Claude-Entscheidung: fachliche Prüfung und Umwandlung in Ereignisse.
 // Claude merkt nur vor; ausgeführt wird erst beim nächsten Kurscheck (core/waechter.ts).
 import type { Anpassung, Ereignis, Laufquelle, Order, OrderPlan } from './typen.ts';
+import { korrigierteChance, type KalibrierStufe } from './datenkrake.ts';
 
 export interface Entscheidung {
   typ: 'morgenlauf' | 'mittagslauf' | 'abendlauf' | 'ereignislauf' | 'wochenrueckblick';
@@ -61,7 +62,16 @@ export function entscheidungUebernehmen(
   e: Entscheidung,
   orders: Order[],
   jetzt: Date,
-  cfg: { haltedauerMinMinuten: number; haltedauerMaxTage: number; hebelMax: number; risikoBudget?: RisikoBudget },
+  cfg: {
+    haltedauerMinMinuten: number;
+    haltedauerMaxTage: number;
+    hebelMax: number;
+    risikoBudget?: RisikoBudget;
+    /** Mindest-Chance in % für jeden Kauf (Plan Datenkrake: 40); fehlt → keine Prüfung (alte Aufrufe) */
+    mindestChance?: number;
+    /** bisherige Treffsicherheit je Konfidenz-Stufe → Chancen-Korrektur */
+    kalibrierung?: KalibrierStufe[];
+  },
 ): Uebernahme {
   const iso = jetzt.toISOString();
   const quelle: Laufquelle = e.typ;
@@ -95,6 +105,19 @@ export function entscheidungUebernehmen(
     if (fehler) {
       hinweise.push(`Order ${plan.wertpapier.name} abgelehnt: ${fehler}`);
       continue;
+    }
+    // Kaufregel: Chance (mit der Wirklichkeit verrechnet) ≥ Mindest-Chance und positiver Erwartungswert nach Gebühren
+    if (cfg.mindestChance !== undefined) {
+      const k = korrigierteChance(plan.konfidenz, cfg.kalibrierung);
+      if (!(plan.erwarteteRenditeNetto > 0)) {
+        hinweise.push(`Order ${plan.wertpapier.name} abgelehnt: kein positiver Erwartungswert nach Gebühren (${plan.erwarteteRenditeNetto} %)`);
+        continue;
+      }
+      if (k.chance < cfg.mindestChance) {
+        hinweise.push(`Order ${plan.wertpapier.name} abgelehnt: Chance ${k.chance} % unter ${cfg.mindestChance} %${k.chance !== plan.konfidenz ? ` (Claude schätzte ${plan.konfidenz} %, korrigiert nach ${k.faelle} Fällen)` : ''}`);
+        continue;
+      }
+      if (k.chance !== plan.konfidenz) plan = { ...plan, chanceKorrigiert: k.chance };
     }
     if (plan.risikoklasse === 'spekulativ' && rb) {
       const erlaubt = Math.max(1, Math.floor(rb.maxAnteilSpekulativ * (gesamtAktiv + 1)));

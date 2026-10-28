@@ -32,7 +32,7 @@ export function upbitAuswerten(maerkte: UpbitMarkt[], vorher: string[] | null, j
   const zeit = jetzt.toISOString();
   const signale: Signal[] = [];
   for (const m of krw) {
-    const wp = { name: m.english_name, ticker: m.market.slice(4) };
+    const wp = { name: m.english_name, ticker: m.market.slice(4), markt: 'krypto' as const };
     const link = `https://upbit.com/exchange?code=CRIX.UPBIT.${m.market}`;
     if (neu.includes(m.market)) signale.push(signal('neulistung', wp, 0.6, 1, zeit, 'Upbit', `Neu an Upbit gelistet (KRW): ${m.english_name}. Listing-Sprünge verpuffen oft binnen Stunden.`, link));
     const gruende = Object.entries(m.market_event?.caution ?? {}).filter(([, v]) => v).map(([k]) => UPBIT_HINWEIS[k] ?? k);
@@ -40,6 +40,24 @@ export function upbitAuswerten(maerkte: UpbitMarkt[], vorher: string[] | null, j
     if (gruende.length) signale.push(signal('upbit_warnung', wp, Math.min(1, 0.3 + gruende.length * 0.2), 0, zeit, 'Upbit', `Upbit-Hinweis ${m.english_name}: ${gruende.join(', ')}`, link));
   }
   return { signale, codes, neu };
+}
+
+export interface UpbitTicker {
+  market: string;
+  signed_change_rate?: number;
+  acc_trade_price_24h?: number;
+}
+
+/** Tagesraketen an Upbit (≥ 20 % seit Tagesbeginn KST, ≥ 5 Mrd. ₩ Umsatz in 24 h) – für den Hot-Stuff-Rückblick. */
+export function upbitRaketen(ticker: UpbitTicker[], maerkte: UpbitMarkt[], jetzt: Date): Signal[] {
+  const namen = new Map(maerkte.map((m) => [m.market, m.english_name]));
+  return ticker
+    .filter((t) => t.market.startsWith('KRW-') && Math.abs(t.signed_change_rate ?? 0) >= 0.2 && (t.acc_trade_price_24h ?? 0) >= 5e9)
+    .map((t) => {
+      const p = (t.signed_change_rate ?? 0) * 100;
+      const name = namen.get(t.market) ?? t.market.slice(4);
+      return signal('kursrakete', { name, ticker: t.market.slice(4), markt: 'krypto' }, Math.min(1, Math.abs(p) / 50), p > 0 ? 1 : -1, jetzt.toISOString(), 'Upbit', `${name} ${pz(p)} % an Upbit seit Tagesbeginn (Korea)`, `https://upbit.com/exchange?code=CRIX.UPBIT.${t.market}`);
+    });
 }
 
 /** Kimchi-Prämie in %: Bitcoin-Preis in Korea gegen den USD-Weltmarkt zum offiziellen Wechselkurs. */
@@ -56,7 +74,7 @@ export const upbit: Quelle = {
   id: 'upbit',
   name: 'Upbit (Korea, Krypto)',
   laeufe: ['haupt', 'stuendlich', 'samstag'],
-  maxProLauf: 4,
+  maxProLauf: 5,
   async abrufen(ctx) {
     const z = zustandLesen<UpbitZustand>('upbit', {});
     const maerkte = await holeJson<UpbitMarkt[]>('https://api.upbit.com/v1/market/all?isDetails=true');
@@ -78,6 +96,13 @@ export const upbit: Quelle = {
       }
     } catch {
       // Die Prämie ist ein Zusatz – die Marktliste mit Warnhinweisen zählt trotzdem.
+    }
+    try {
+      const alle = await holeJson<UpbitTicker[]>('https://api.upbit.com/v1/ticker/all?quote_currencies=KRW');
+      abfragen++;
+      signale.push(...upbitRaketen(alle, maerkte, ctx.jetzt));
+    } catch {
+      // Zusatz für den Hot-Stuff-Rückblick
     }
     if (neu.length) makro.push(`Upbit-Neulistungen: ${neu.map((c) => c.slice(4)).join(', ')}`);
     zustandSchreiben('upbit', { ...z, krw: codes });
@@ -112,7 +137,7 @@ export function krakenFuturesAuswerten(tickers: FuturesTicker[], oiVorher: Recor
     fundingPa[coin] = pa;
     const oiUsd = (t.openInterest ?? 0) * (t.markPrice ?? 0);
     oi[coin] = Math.round(oiUsd);
-    const wp = ROHSTOFFE[coin] ? { name: `${ROHSTOFFE[coin]} (Rohstoff)`, ticker: coin } : { name: coin, ticker: coin };
+    const wp = ROHSTOFFE[coin] ? { name: `${ROHSTOFFE[coin]} (Rohstoff)`, ticker: coin, markt: 'rohstoff' as const } : { name: coin, ticker: coin, markt: 'krypto' as const };
     const link = `https://futures.kraken.com/trade/futures/${t.symbol}`;
     if (Math.abs(pa) >= 50) {
       const deutung = pa > 0 ? 'viele gehebelte Käufer, überhitzt?' : 'viele gehebelte Leerverkäufer, Short-Squeeze möglich';
@@ -179,7 +204,7 @@ export function gebuehrenSprung(fees: FeesProtokoll[], protokolle: LlamaProtokol
     if (!p?.symbol || (f.total7d ?? 0) < 1_000_000 || w < 40 || w > 1000 || vorwoche < 250_000) continue;
     const name = f.displayName ?? f.name;
     out.push(
-      signal('krypto_einnahmen', { name, ticker: p.symbol.toUpperCase() }, Math.min(1, 0.3 + w / 200), 1, jetzt.toISOString(), 'DefiLlama',
+      signal('krypto_einnahmen', { name, ticker: p.symbol.toUpperCase(), markt: 'krypto' }, Math.min(1, 0.3 + w / 200), 1, jetzt.toISOString(), 'DefiLlama',
         `${name} (${p.symbol}): Gebühren 7 Tage ${kurz(f.total7d!)} $, ${pz(w)} % gegenüber der Vorwoche${p.mcap ? `, Marktwert ${kurz(p.mcap)} $` : ''}`,
         `https://defillama.com/protocol/${encodeURIComponent((f.name ?? '').toLowerCase().replace(/\s+/g, '-'))}`),
     );

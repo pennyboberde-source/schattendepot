@@ -31,6 +31,9 @@ import { anreichern } from './quellen/anreicherung.ts';
 import { aufmerksamkeit } from './quellen/aufmerksamkeit.ts';
 import { youtube } from './quellen/youtube.ts';
 import { kalenderEffekte } from '../core/kalendereffekte.ts';
+import { aehnlicheFaelle, aehnlichText, pumpVerdacht, verdichten } from '../core/datenkrake.ts';
+import type { TrackingEintrag } from '../core/statistik.ts';
+import { hotStuffAuswerten, quellenWaechter, tagesSignaleSpeichern } from './lib/datenkrake.ts';
 import { defiLlama, krakenFutures, upbit } from './quellen/kryptorand.ts';
 import { finraShortInterest, shortSeller } from './quellen/shortdaten.ts';
 import { appRaenge, cftcCot, handelsstopps, kryptoStimmung, polymarket } from './quellen/stimmungrand.ts';
@@ -45,6 +48,19 @@ const b = berlin(jetzt);
 const conf = <T>(d: string) => JSON.parse(readFileSync(join(process.cwd(), 'config', d), 'utf8')) as T;
 const signalCfg = conf<SignalConfig>('signale.json');
 const universum = conf<{ werte: UniversumWert[] }>('universum.json').werte;
+
+/** Datenkrake-Hinweise je Kandidat: Ähnliche Fälle aus dem Schattenbuch und Pump-Verdacht. */
+function kandidatenHinweise(top: ReturnType<typeof kandidaten>, tracking: TrackingEintrag[]): Record<string, string> {
+  const h: Record<string, string> = {};
+  for (const k of top) {
+    const typen = [...new Set(k.signale.map((s) => s.typ))];
+    const teile = [aehnlichText(aehnlicheFaelle(typen, k.score < 0 ? -1 : 1, tracking))];
+    if (pumpVerdacht(typen, { fakten: k.signale.flatMap((s) => s.quellen.map((q) => q.fakt)) })) teile.push('⚠ Pump-Verdacht: nur Stimmung/Rakete, nichts Handfestes');
+    const text = teile.filter(Boolean).join(' · ');
+    if (text) h[k.schluessel] = text;
+  }
+  return h;
+}
 
 function laufartBestimmen(): Laufart | null {
   const arg = process.argv[2] ?? 'auto';
@@ -130,6 +146,11 @@ let zusammen = zusammenfuehren(alleSignale, signalCfg);
 const system = leseJson<Record<string, unknown> & { ereignislaeufe?: Record<string, string[]> }>('system.json', {});
 system.letzterSammlerLauf = jetzt.toISOString();
 const pushes: PushNachricht[] = [];
+// Quellen-Wächter: Quelle > 2 Tage ohne Erfolg → 1 Push pro Tag
+{
+  const qw = quellenWaechter([...status.values()], jetzt, system as { quellenWarnung?: string }, b.datum);
+  if (qw) pushes.push(qw);
+}
 
 if (laufart === 'haupt' || laufart === 'samstag') {
   const gewichte = leseJson<Gewichte>('gewichte.json', {});
@@ -152,6 +173,7 @@ if (laufart === 'haupt' || laufart === 'samstag') {
     positionen: offen.map((o) => ({ id: o.id, name: o.name, meldungen: meldungen.filter((m) => m.wertpapier === o.name).slice(0, 3) })),
     kandidaten: top,
     quellen: ergebnisse.map(([q, r]) => ({ id: q.id, name: q.name, ok: !!r, signale: r?.signale.length ?? 0 })),
+    hinweise: kandidatenHinweise(top, leseJson<TrackingEintrag[]>('kandidaten-tracking.json', [])),
   };
   const typNamen = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name]));
   schreibeText(`lagebild/${b.datum}.md`, lagebildMarkdown(daten, typNamen) + '\n');
@@ -165,15 +187,22 @@ if (laufart === 'haupt' || laufart === 'samstag') {
   // Verdichtete Signale versionieren (Rohdaten nicht) – Grundlage für das Mitverfolgen von Nicht-Käufen (M5).
   schreibeJson(`signale/${b.datum}.json`, {
     stand: jetzt.toISOString(),
-    kandidaten: top.map((k) => ({ schluessel: k.schluessel, name: k.wertpapier.name, ticker: k.wertpapier.ticker, isin: k.wertpapier.isin, score: k.score, typen: [...new Set(k.signale.map((s) => s.typ))], quellen: [...new Set(k.signale.flatMap((s) => s.quellen.map((q) => q.quelle)))] })),
+    kandidaten: top.map((k) => {
+      const typen = [...new Set(k.signale.map((s) => s.typ))];
+      const markt = k.wertpapier.markt ?? k.signale.find((s) => s.wertpapier.markt)?.wertpapier.markt;
+      const pump = pumpVerdacht(typen, { fakten: k.signale.flatMap((s) => s.quellen.map((q) => q.fakt)) });
+      return { schluessel: k.schluessel, name: k.wertpapier.name, ticker: k.wertpapier.ticker, isin: k.wertpapier.isin, ...(markt ? { markt } : {}), ...(pump ? { pump } : {}), score: k.score, typen, quellen: [...new Set(k.signale.flatMap((s) => s.quellen.map((q) => q.quelle)))] };
+    }),
     anzahlSignale: zusammen.length,
   });
   console.log(`Lagebild ${b.datum}: ${zusammen.length} Signale, ${top.length} Kandidaten, Länge ${lagebildMarkdown(daten, typNamen).length} Zeichen.`);
 
   // Lernschleife: Kandidaten mitverfolgen (Nicht-Käufe), Statistik neu rechnen
-  const abrufe = await trackingAktualisieren(jetzt, {});
+  const abrufe = await trackingAktualisieren(jetzt, {}, { modus: 'haupt', schnelle: verdichten(zusammen) });
+  // Hot-Stuff-Rückblick: Raketen und ihre Vorzeichen, Vorlauf-Statistik (vor der Statistik, damit sie mit einfließt)
+  const hs = hotStuffAuswerten(b.datum, verdichten(zusammen), jetzt);
   const { statistik } = abgeleitetSchreiben(jetzt);
-  console.log(`Tracking: ${abrufe} Kursabrufe.`);
+  console.log(`Tracking: ${abrufe} Kursabrufe. Hot Stuff: ${hs.anzahl} Raketen, ${hs.abdeckung ?? '–'} % mit Vorzeichen.`);
 
   // Samstags: Gewichte anpassen (in Grenzen, ab Mindestfallzahl; Claude-Vorschläge nur, wenn die Daten sie stützen)
   if (laufart === 'samstag') {
@@ -192,6 +221,13 @@ if (laufart === 'haupt' || laufart === 'samstag') {
     schreibeJson('lernen/vorschlaege.json', offeneVorschlaege.map((v) => r.vorschlaegeErledigt.find((e) => e.name === v.name && e.datum === v.datum && e.art === v.art) ?? v));
     console.log(`Gewichte: ${r.aenderungen.length} Änderung(en).`);
   }
+}
+
+// Datenkrake: alle Signale dieses Laufs in die Tagesdatei; tagsüber schnelle Signale ins Schattenbuch (Reaktionszeit)
+tagesSignaleSpeichern(b.datum, zusammen, jetzt);
+if (laufart === 'stuendlich') {
+  const n = await trackingAktualisieren(jetzt, {}, { modus: 'stuendlich', schnelle: verdichten(zusammen) });
+  console.log(`Schattenbuch (stündlich): ${n} Kursabrufe.`);
 }
 
 // Starke Meldung zu offener Position → Ereignislauf (höchstens 1 pro Tag insgesamt)

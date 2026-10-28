@@ -594,3 +594,23 @@ select {
     flex-wrap: wrap;
   }
 }
+
+/* Ampel im Bereich Lernen (Datenkrake) */
+.ampel {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+  background: var(--line);
+}
+.ampel.gruen {
+  background: var(--plus);
+}
+.ampel.rot {
+  background: var(--minus);
+}
+.ampel.gelb {
+  background: #d6a400;
+}

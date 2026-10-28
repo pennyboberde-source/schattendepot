@@ -43,7 +43,10 @@ test('Order-Detail mit Gebührenaufstellung und Claude-Knopf', async ({ page }) 
 test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
   await page.goto('/#/lernen');
   await expect(page.getByText('Kalibrierung – hält die Konfidenz, was sie verspricht?')).toBeVisible();
-  await expect(page.getByRole('cell', { name: 'Insider-Cluster-Kauf' })).toBeVisible();
+  // Datenkrake oben: Was klappt (mit Ampel), Hot Stuff, Vorlauf
+  await expect(page.getByText('Was klappt – Signale im Schattenbuch')).toBeVisible();
+  await expect(page.getByText('🔥 Hot Stuff – hätte man es erkennen können?')).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Insider-Cluster-Kauf' }).first()).toBeVisible();
   await expect(page.getByText('3 → 3,3')).toBeVisible();
 });
 

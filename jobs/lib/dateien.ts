@@ -63,12 +63,15 @@ export interface Einstellungen {
   pushTypen: Record<string, boolean>;
   vergleichsEtf: { name: string; isin: string; kursbasis: Kursbasis; ersatz: Kursbasis };
   tracking: { kandidatenProTag: number; maxAbrufeProLauf: number };
+  /** Mindest-Chance in % für jeden Kauf (Plan Datenkrake) */
+  mindestChance?: number;
   risikoBudget: { maxSpekulativJeLauf: number; maxAnteilSpekulativ: number; stopMinProzent: number; mindestKursEuro: number };
 }
 
 export function ladeConfig() {
   return {
     gebuehren: config<GebuehrenConfig>('gebuehren.json'),
+    gebuehrenSmartbroker: config<GebuehrenConfig>('gebuehren-smartbroker.json'),
     steuern: config<SteuerConfig>('steuern.json'),
     spreads: config<SpreadConfig>('spreads.json'),
     einstellungen: config<Einstellungen>('einstellungen.json'),

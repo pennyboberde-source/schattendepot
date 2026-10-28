@@ -11,6 +11,8 @@ export interface LagebildDaten {
   positionen: { id: string; name: string; meldungen: { titel: string; quelle: string; link: string }[] }[];
   kandidaten: Kandidat[];
   quellen: { id: string; name: string; ok: boolean; signale: number }[];
+  /** Datenkrake je Kandidat (Schlüssel → Text): Ähnliche Fälle aus dem Schattenbuch, Pump-Verdacht */
+  hinweise?: Record<string, string>;
 }
 
 /** JSON für die Briefing-Ansicht (Kandidaten verkürzt). */
@@ -29,6 +31,7 @@ export function lagebildJson(l: LagebildDaten, briefing?: string[]) {
       ticker: k.wertpapier.ticker,
       isin: k.wertpapier.isin,
       score: k.score,
+      ...(l.hinweise?.[k.schluessel] ? { hinweis: l.hinweise[k.schluessel] } : {}),
       fakten: k.signale.slice(0, 3).map((s) => s.quellen[0]?.fakt ?? s.typ),
       quellen: dedupe(k.signale.flatMap((s) => s.quellen.filter((q) => q.link).map((q) => ({ name: q.quelle, link: q.link! })))).slice(0, 3),
     })),
@@ -46,7 +49,7 @@ const kuerze = (s: string, n: number) => (s.length > n ? s.slice(0, n - 1) + '�
 export function lagebildMarkdown(l: LagebildDaten, typNamen: Record<string, string>, maxZeichen = 24000): string {
   const z: string[] = [];
   z.push(`# Lagebild ${l.datum} (erstellt ${l.erstellt.slice(11, 16)} UTC)`, '', 'Simulation – keine Anlageberatung. Signal-IDs in [eckigen Klammern] in `signalIds` übernehmen.', '');
-  z.push('## Makro-Kurzlage', ...(l.makro.length ? l.makro.slice(0, 10).map((m) => `- ${m}`) : ['- (keine Daten)']), '');
+  z.push('## Makro-Kurzlage', ...(l.makro.length ? l.makro.slice(0, 22).map((m) => `- ${m}`) : ['- (keine Daten)']), '');
   z.push('## Termine heute', ...(l.termine.length ? l.termine.slice(0, 15).map((t) => `- ${t.zeit}: ${t.text}`) : ['- (keine)']), '');
   z.push('## Nachrichten zu offenen Positionen');
   if (!l.positionen.length) z.push('- (keine offenen Positionen)');
@@ -59,6 +62,7 @@ export function lagebildMarkdown(l: LagebildDaten, typNamen: Record<string, stri
   for (const k of l.kandidaten) {
     const wp = `${k.wertpapier.name}${k.wertpapier.ticker ? ` (${k.wertpapier.ticker})` : ''}${k.wertpapier.isin ? ` ${k.wertpapier.isin}` : ''}`;
     z.push(`### ${k.score > 0 ? '+' : ''}${k.score} ${wp}`);
+    if (l.hinweise?.[k.schluessel]) z.push(`- ↳ ${l.hinweise[k.schluessel]}`);
     for (const s of k.signale.slice(0, 4)) z.push(`- [${s.id}] ${typNamen[s.typ] ?? s.typ} (${s.quellen.length} Quelle${s.quellen.length > 1 ? 'n' : ''}): ${kuerze(s.quellen[0]?.fakt ?? '', 150)}${s.quellen[0]?.link ? ` ${s.quellen[0].link}` : ''}`);
   }
   z.push('', '## Top-Meldungen', ...l.meldungen.slice(0, 12).map((m) => `- ${kuerze(m.titel, 140)} – ${m.quelle}`), '');

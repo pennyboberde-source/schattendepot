@@ -75,6 +75,16 @@ if (statistik?.risikoBudget) p(`Risiko-Budget jetzt: max. ${statistik.risikoBudg
 else p('(noch keine ausführliche Statistik)');
 const gewichte = await json('gewichte.json', null);
 if (gewichte?.signale) p(`Gewichte Signal-Typen: ${Object.entries(gewichte.signale).map(([k, v]) => `${k} ${v}`).join(', ')}`);
+// Datenkrake: Was klappt im Schattenbuch (Signaltypen mit ≥ 5 gemessenen Fällen), knapp
+const nachTyp = Object.entries(statistik?.kandidaten?.nachSignalTyp ?? {}).filter(([, v]) => v.anzahl >= 5 && v.quote1T != null);
+if (nachTyp.length) {
+  const sortiert = nachTyp.sort((a, b) => (b[1].oe1W ?? b[1].oe1T ?? 0) - (a[1].oe1W ?? a[1].oe1T ?? 0));
+  const zeile = ([k, v]) => `${k} ${v.quote1T} % (1 T), Ø ${v.oe1W ?? '–'} % (1 W), n=${v.anzahl}`;
+  p(`Schattenbuch – klappt am besten: ${sortiert.slice(0, 4).map(zeile).join('; ')}`);
+  if (sortiert.length > 4) p(`Schattenbuch – klappt am schlechtesten: ${sortiert.slice(-3).map(zeile).join('; ')}`);
+}
+const pumpGr = statistik?.kandidaten?.nachRisiko?.pump_verdacht;
+if (pumpGr?.anzahl >= 5) p(`Pump-Verdacht im Schattenbuch: n=${pumpGr.anzahl}, Ø ${pumpGr.oe1T ?? '–'} % nach 1 Tag, ${pumpGr.oe1W ?? '–'} % nach 1 Woche`);
 p('');
 
 p('## 2. Lektionen');
@@ -112,6 +122,13 @@ if (typ === 'abendlauf' || typ === 'wochenrueckblick') {
     );
   }
   if (offenBericht.length > 8) p(`(+${offenBericht.length - 8} weitere – im nächsten Lauf)`);
+  // Hot Stuff: Kursraketen und ihre Vorzeichen → Lehren ziehen („hätte man es erkennen können?“)
+  const hs = await json('lernen/hotstuff-letzte.json', null);
+  if (hs?.mover?.length) {
+    p('', `## 🔥 Hot Stuff ${hs.datum}: ${hs.anzahl} Kursraketen, ${hs.abdeckung ?? '–'} % hatten Vorzeichen in unseren Daten`);
+    for (const m of hs.mover.slice(0, 10)) p(`- ${m.n}${m.t ? ` (${m.t})` : ''} ${m.typ}${m.r < 0 ? ' ↓' : ' ↑'}: ${m.vorzeichen.length ? m.vorzeichen.slice(0, 4).map((v) => `${v.typ} ${v.tageVorher} T vorher (${v.q.join('/')})`).join(', ') : 'keine Vorzeichen'}`);
+    p('Aufgabe: 1–2 `learnings`/Lektionen dazu, welche Vorzeichen künftig ernster genommen werden sollten – oder warum es nicht erkennbar war.');
+  }
   if (typ === 'wochenrueckblick') {
     const woche = abg.orders.filter((o) => Date.now() - new Date(o.verkauf.zeit).getTime() < 7 * 864e5);
     p('', `## Diese Woche geschlossen: ${woche.length}, netto ${woche.reduce((s, o) => s + o.ergebnis.netto, 0).toFixed(2)} €`);

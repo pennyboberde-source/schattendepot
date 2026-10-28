@@ -22,6 +22,8 @@ export interface Kennzahlen {
   unrealisiert?: number;
   trefferquote: number | null;
   etfNetto: number;
+  /** Vergleich: Ergebnis bei Smartbroker+ statt Consorsbank */
+  nettoSmartbroker?: number;
   kurve: { datum: string; depot: number; etf: number }[];
 }
 
