@@ -1,11 +1,11 @@
 {
-  "stand": "2026-10-27T20:37:08.279Z",
+  "stand": "2026-10-28T04:42:47.200Z",
   "quellen": [
     {
       "id": "alphavantage",
       "name": "Alpha Vantage",
       "letzterFehler": "2026-10-21T15:28:12.285Z: Schlüssel ALPHAVANTAGE_API_KEY fehlt",
-      "zuletztOk": "2026-10-27T04:32:25.619Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 13,
       "kontingent": {
         "genutzt": 2,
@@ -16,28 +16,28 @@
     {
       "id": "apewisdom",
       "name": "ApeWisdom (Reddit-Erwähnungen)",
-      "zuletztOk": "2026-10-27T04:32:25.619Z",
-      "signale": 14,
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "signale": 4,
       "letzterFehler": "2026-10-22T04:31:41.017Z: Unexpected token '<', \"<?php\n$tim\"... is not valid JSON"
     },
     {
       "id": "cnbc",
       "name": "CNBC Top News",
-      "zuletztOk": "2026-10-27T20:37:08.279Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 7
     },
     {
       "id": "faz",
       "name": "FAZ Finanzen",
-      "zuletztOk": "2026-10-27T20:37:08.279Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 3
     },
     {
       "id": "fmp",
       "name": "Financial Modeling Prep",
       "letzterFehler": "2026-10-21T15:28:12.285Z: Schlüssel FMP_API_KEY fehlt",
-      "zuletztOk": "2026-10-27T04:32:25.619Z",
-      "signale": 21,
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "signale": 17,
       "kontingent": {
         "genutzt": 3,
         "limit": 80,
@@ -48,10 +48,10 @@
       "id": "finnhub",
       "name": "Finnhub",
       "letzterFehler": "2026-10-21T15:25:20.991Z: Schlüssel FINNHUB_API_KEY fehlt",
-      "zuletztOk": "2026-10-27T20:37:08.279Z",
-      "signale": 5,
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "signale": 59,
       "kontingent": {
-        "genutzt": 99,
+        "genutzt": 8,
         "limit": 1500,
         "zeitraum": "Tag"
       }
@@ -59,14 +59,14 @@
     {
       "id": "finra",
       "name": "FINRA Leerverkaufsvolumen (US)",
-      "zuletztOk": "2026-10-27T04:32:25.619Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 15
     },
     {
       "id": "fred",
       "name": "FRED (St. Louis Fed)",
       "letzterFehler": "2026-10-22T04:31:41.017Z: FRED liefert keine CSV (Wartung?)",
-      "zuletztOk": "2026-10-27T04:32:25.619Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 0
     },
     {
@@ -74,65 +74,65 @@
       "name": "GDELT (Nachrichten zu Positionen)",
       "zuletztOk": "2026-10-22T14:35:50.701Z",
       "signale": 0,
-      "letzterFehler": "2026-10-27T20:37:08.279Z: Zeitlimit 45 s"
+      "letzterFehler": "2026-10-28T04:42:47.200Z: Zeitlimit 45 s"
     },
     {
       "id": "gettex-scanner",
       "name": "gettex-Kursraketen-Scanner",
-      "zuletztOk": "2026-10-27T20:37:08.279Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 0
     },
     {
       "id": "handelsblatt",
       "name": "Handelsblatt Finanzen",
-      "zuletztOk": "2026-10-27T20:37:08.279Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 3
     },
     {
       "id": "kraken",
       "name": "Kraken (Krypto)",
-      "zuletztOk": "2026-10-27T20:37:08.279Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 0
     },
     {
       "id": "marketwatch",
       "name": "MarketWatch",
-      "zuletztOk": "2026-10-27T20:37:08.279Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 2
     },
     {
       "id": "openinsider",
       "name": "OpenInsider",
-      "zuletztOk": "2026-10-27T04:32:25.619Z",
-      "signale": 22
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "signale": 25
     },
     {
       "id": "sec",
       "name": "SEC EDGAR (8-K)",
-      "letzterFehler": "2026-10-27T04:32:25.619Z: Schlüssel SEC_KONTAKT fehlt"
+      "letzterFehler": "2026-10-28T04:42:47.200Z: Schlüssel SEC_KONTAKT fehlt"
     },
     {
       "id": "tagesschau",
       "name": "tagesschau Wirtschaft",
-      "zuletztOk": "2026-10-27T20:37:08.279Z",
-      "signale": 2
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
+      "signale": 1
     },
     {
       "id": "wikipedia",
       "name": "Wikipedia-Seitenaufrufe (Aufmerksamkeit)",
-      "zuletztOk": "2026-10-27T04:32:25.619Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 0
     },
     {
       "id": "wirtschaftskalender",
       "name": "Wirtschaftskalender (ForexFactory)",
-      "zuletztOk": "2026-10-27T04:32:25.619Z",
+      "zuletztOk": "2026-10-28T04:42:47.200Z",
       "signale": 0
     },
     {
       "id": "youtube",
       "name": "YouTube (Stimmung)",
-      "letzterFehler": "2026-10-27T04:32:25.619Z: Schlüssel YOUTUBE_API_KEY fehlt"
+      "letzterFehler": "2026-10-28T04:42:47.200Z: Schlüssel YOUTUBE_API_KEY fehlt"
     }
   ]
 }

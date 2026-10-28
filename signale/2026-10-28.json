@@ -1,0 +1,395 @@
+{
+  "stand": "2026-10-28T04:42:47.200Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:BA",
+      "name": "Boeing",
+      "ticker": "BA",
+      "score": -4.63,
+      "typen": [
+        "nachricht",
+        "gewinn_enttaeuschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Handelsblatt Finanzen",
+        "CNBC Top News",
+        "MarketWatch",
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:GLXY",
+      "name": "GLXY",
+      "ticker": "GLXY",
+      "score": 4.5,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:THRM",
+      "name": "Gentherm Inc",
+      "ticker": "THRM",
+      "score": 3.21,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf",
+        "analysten_hochstufung"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "Finnhub Analysten"
+      ]
+    },
+    {
+      "schluessel": "T:PYPL",
+      "name": "PYPL",
+      "ticker": "PYPL",
+      "score": 3.14,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:NPB",
+      "name": "Northpointe Bancshares Inc",
+      "ticker": "NPB",
+      "score": 3.02,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CTEV",
+      "name": "Claritev Corp",
+      "ticker": "CTEV",
+      "score": 2.79,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CNC",
+      "name": "CNC",
+      "ticker": "CNC",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:BPRE",
+      "name": "Bluerock Private Real Estate Fund",
+      "ticker": "BPRE",
+      "score": 2.45,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:STC",
+      "name": "Stewart Information Services Corp",
+      "ticker": "STC",
+      "score": 2.19,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:HCA",
+      "name": "HCA",
+      "ticker": "HCA",
+      "score": 1.93,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:AIOK",
+      "name": "AIOK",
+      "ticker": "AIOK",
+      "score": 1.9,
+      "typen": [
+        "insider_kauf",
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:HIG",
+      "name": "The Hartford Insurance Group, Inc.",
+      "ticker": "HIG",
+      "score": 1.52,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:GPI",
+      "name": "GPI",
+      "ticker": "GPI",
+      "score": 1.51,
+      "typen": [
+        "insider_kauf",
+        "quartalstermin"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:FCX",
+      "name": "FCX",
+      "ticker": "FCX",
+      "score": 1.49,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:LYCA",
+      "name": "LYCA",
+      "ticker": "LYCA",
+      "score": 1.42,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MSM",
+      "name": "MSM",
+      "ticker": "MSM",
+      "score": 1.37,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CRBG",
+      "name": "CRBG",
+      "ticker": "CRBG",
+      "score": 1.32,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LRN",
+      "name": "LRN",
+      "ticker": "LRN",
+      "score": 1.23,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SRRK",
+      "name": "SRRK",
+      "ticker": "SRRK",
+      "score": 1.23,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:NUWE",
+      "name": "Nuwellis, Inc.",
+      "ticker": "NUWE",
+      "score": 1.14,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:BRAI",
+      "name": "Braiin Ltd",
+      "ticker": "BRAI",
+      "score": 1.09,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:PLUR",
+      "name": "PLUR",
+      "ticker": "PLUR",
+      "score": 0.86,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:OPTU",
+      "name": "OPTU",
+      "ticker": "OPTU",
+      "score": 0.85,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DAIO",
+      "name": "DAIO",
+      "ticker": "DAIO",
+      "score": 0.83,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:KRRO",
+      "name": "KRRO",
+      "ticker": "KRRO",
+      "score": 0.81,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MSGK",
+      "name": "MSG Knickerbockers Corp. Class A",
+      "ticker": "MSGK",
+      "score": 0.8,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:AEYE",
+      "name": "AudioEye, Inc.",
+      "ticker": "AEYE",
+      "score": 0.8,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:USGG",
+      "name": "Themes ETF Trust - Leverage Shares 2X Long USAR Daily ETF",
+      "ticker": "USGG",
+      "score": 0.8,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:MBRX",
+      "name": "Moleculin Biotech, Inc.",
+      "ticker": "MBRX",
+      "score": 0.8,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:ARTV",
+      "name": "Artiva Biotherapeutics, Inc.",
+      "ticker": "ARTV",
+      "score": -0.8,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    }
+  ],
+  "anzahlSignale": 119
+}

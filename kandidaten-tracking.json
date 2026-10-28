@@ -566,7 +566,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 12.56
+    "start": 12.56,
+    "r1T": -0.32
   },
   {
     "datum": "2026-10-27",
@@ -583,7 +584,8 @@
       "OpenInsider",
       "Finnhub Analysten"
     ],
-    "start": 28.59
+    "start": 28.59,
+    "r1T": 11.3
   },
   {
     "datum": "2026-10-27",
@@ -611,7 +613,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 25.33
+    "start": 25.33,
+    "r1T": 8.72
   },
   {
     "datum": "2026-10-27",
@@ -626,7 +629,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 46.15
+    "start": 46.15,
+    "r1T": 5.59
   },
   {
     "datum": "2026-10-27",
@@ -640,7 +644,8 @@
     "quellen": [
       "Finnhub"
     ],
-    "start": 135.94
+    "start": 135.94,
+    "r1T": -1.79
   },
   {
     "datum": "2026-10-27",
@@ -654,7 +659,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 243.88
+    "start": 243.88,
+    "r1T": 4.23
   },
   {
     "datum": "2026-10-27",
@@ -668,7 +674,8 @@
     "quellen": [
       "OpenInsider"
     ],
-    "start": 34.66
+    "start": 34.66,
+    "r1T": 2.02
   },
   {
     "datum": "2026-10-27",
@@ -684,7 +691,8 @@
       "FMP",
       "Alpha Vantage"
     ],
-    "start": 4.97
+    "start": 4.97,
+    "r1T": 0.4
   },
   {
     "datum": "2026-10-27",
@@ -700,6 +708,165 @@
       "FMP",
       "Alpha Vantage"
     ],
-    "start": 15.705
+    "start": 15.705,
+    "r1T": -1.62
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:BA",
+    "name": "Boeing",
+    "ticker": "BA",
+    "score": -4.63,
+    "typen": [
+      "nachricht",
+      "gewinn_enttaeuschung",
+      "nachzahlen_drift"
+    ],
+    "quellen": [
+      "Handelsblatt Finanzen",
+      "CNBC Top News",
+      "MarketWatch",
+      "Finnhub",
+      "FMP",
+      "Finnhub Kurs"
+    ],
+    "start": 168.18
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:GLXY",
+    "name": "GLXY",
+    "ticker": "GLXY",
+    "score": 4.5,
+    "typen": [
+      "gewinn_ueberraschung",
+      "nachzahlen_drift"
+    ],
+    "quellen": [
+      "Finnhub",
+      "Finnhub Kurs"
+    ],
+    "start": 17.18
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:THRM",
+    "name": "Gentherm Inc",
+    "ticker": "THRM",
+    "score": 3.21,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf",
+      "analysten_hochstufung"
+    ],
+    "quellen": [
+      "OpenInsider",
+      "Finnhub Analysten"
+    ],
+    "start": 31.82
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:PYPL",
+    "name": "PYPL",
+    "ticker": "PYPL",
+    "score": 3.14,
+    "typen": [
+      "gewinn_ueberraschung",
+      "nachzahlen_drift"
+    ],
+    "quellen": [
+      "Finnhub",
+      "FMP",
+      "Finnhub Kurs"
+    ],
+    "start": 56.09
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:NPB",
+    "name": "Northpointe Bancshares Inc",
+    "ticker": "NPB",
+    "score": 3.02,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 15.76
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:CTEV",
+    "name": "Claritev Corp",
+    "ticker": "CTEV",
+    "score": 2.79,
+    "typen": [
+      "insider_cluster_kauf",
+      "insider_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 22.65
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:CNC",
+    "name": "CNC",
+    "ticker": "CNC",
+    "score": 2.5,
+    "typen": [
+      "gewinn_ueberraschung"
+    ],
+    "quellen": [
+      "Finnhub"
+    ],
+    "start": 68.71
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:BPRE",
+    "name": "Bluerock Private Real Estate Fund",
+    "ticker": "BPRE",
+    "score": 2.45,
+    "typen": [
+      "insider_cluster_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 12.52
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:STC",
+    "name": "Stewart Information Services Corp",
+    "ticker": "STC",
+    "score": 2.19,
+    "typen": [
+      "insider_cluster_kauf"
+    ],
+    "quellen": [
+      "OpenInsider"
+    ],
+    "start": 43.48
+  },
+  {
+    "datum": "2026-10-28",
+    "schluessel": "T:HCA",
+    "name": "HCA",
+    "ticker": "HCA",
+    "score": 1.93,
+    "typen": [
+      "gewinn_ueberraschung"
+    ],
+    "quellen": [
+      "Finnhub",
+      "FMP"
+    ],
+    "start": 449.96
   }
 ]
