@@ -1,6 +1,171 @@
 {
-  "stand": "2026-10-29T18:26:12.777Z",
+  "stand": "2026-10-29T19:27:12.940Z",
   "orders": [
+    {
+      "id": "2026-10-28-galaxy-digital-inc",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-10-28T06:43:32.061Z",
+      "vorgemerktVon": "morgenlauf",
+      "plan": {
+        "wertpapier": {
+          "name": "Galaxy Digital Inc.",
+          "isin": "US36317J2096",
+          "ticker": "GLXY",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_large",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "GLXY",
+            "waehrung": "USD"
+          }
+        },
+        "strategie": "nachzahlen_drift",
+        "these": "Galaxy Digital drehte im dritten Quartal 2026 von einem Verlust (Q2: −0,09 $ je Aktie) auf einen Gewinn von 323 Mio. $, bereinigtes EPS 0,83 $ statt erwarteter rund −0,14 $. Das Rechenzentrum Helios liefert jetzt planbare Mieteinnahmen von CoreWeave (ca. 80 Mio. $ je Quartal). Der Markt bestätigte mit +9,6 % bei rund 1,6-fachem Normalvolumen. Die Aktie notiert trotzdem nahe dem Jahrestief (Spanne 14–39 $) – Raum für eine mehrtägige Drift.",
+        "ausloeser": "Gewinnüberraschung +713 % und bestätigende Kursreaktion +9,6 % laut Lagebild vom 28.10.",
+        "signalIds": [
+          "gewinn_ueberraschung:GLXY:2026-10-28",
+          "nachzahlen_drift:GLXY:2026-10-28"
+        ],
+        "quellen": [
+          {
+            "name": "Galaxy Q3-2026-Pressemitteilung (SEC 8-K)",
+            "link": "https://www.sec.gov/Archives/edgar/data/0001859392/000185939226000108/glxy-20260930xpressrelease.htm"
+          },
+          {
+            "name": "Galaxy Investor Relations",
+            "link": "https://investor.galaxy.com/static-files/f325cc7a-50b8-48a8-b669-9a53584badca"
+          }
+        ],
+        "konfidenz": 45,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 1,
+        "zielNettoProzent": 12,
+        "stopProzent": -8,
+        "verkaufstermin": "2026-11-11T15:00:00.000Z",
+        "risiken": [
+          "Sehr hohe Schwankung (Beta ca. 3,8) – stark vom Kryptomarkt abhängig",
+          "Gewinn stammt zum Teil aus Bewertungsgewinnen des Portfolios, nicht aus wiederkehrendem Geschäft",
+          "In früheren Quartalen fiel die Aktie nach Zahlen teils zweistellig – Reaktionen sind unberechenbar",
+          "Fed-Entscheid heute Abend kann Risikoanlagen bewegen"
+        ],
+        "einflussLektionen": "Lektion 2 umgesetzt: erwartete Rendite = 0,45 × 12 + 0,55 × (−8) ≈ 1,0. Lektion 3: Ziel und Stop weit, weil die Tagesschwankung hoch ist. Statistik hat erst n=1 – Drift-Strategie bewusst an einem volatilen Wert testen."
+      },
+      "verkaufstermin": "2026-11-11T15:00:00.000Z",
+      "anpassungen": [
+        {
+          "zeit": "2026-10-28T17:52:53.970Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 14.2,
+          "neu": 15.43,
+          "begruendung": "Nachziehender Stop: 5 % unter Geldkurs 16.244 € (+5.2 %)"
+        },
+        {
+          "zeit": "2026-10-28T18:26:50.808Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 15.43,
+          "neu": 15.65,
+          "begruendung": "Nachziehender Stop: 5 % unter Geldkurs 16.474 € (+6.7 %)"
+        },
+        {
+          "zeit": "2026-10-28T19:17:31.505Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 15.65,
+          "neu": 15.76,
+          "begruendung": "Nachziehender Stop: 5 % unter Geldkurs 16.586 € (+7.4 %)"
+        },
+        {
+          "zeit": "2026-10-28T20:44:01.633Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 15.76,
+          "neu": 15.9,
+          "begruendung": "Nachziehender Stop: 5 % unter Geldkurs 16.735 € (+8.4 %)"
+        },
+        {
+          "zeit": "2026-10-29T15:51:29.012Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 15.9,
+          "neu": 16.62,
+          "begruendung": "Nachziehender Stop: 5 % unter Geldkurs 17.493 € (+13.3 %)"
+        }
+      ],
+      "kauf": {
+        "zeit": "2026-10-28T08:18:37.712Z",
+        "stueck": 64,
+        "kurs": 15.438,
+        "kurswert": 988.03,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 988.03,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-28T08:14:02.569Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 17.66,
+      "stopkurs": 16.62,
+      "etfKauf": {
+        "wert": 131.775,
+        "zeit": "2026-10-28T08:13:19.275Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 5,
+        "hinweis": "letztes Geschäft 2026-10-28",
+        "vortag": 131.705
+      },
+      "teilverkaeufe": [
+        {
+          "zeit": "2026-10-28T19:17:31.505Z",
+          "stueck": 32,
+          "kurs": 16.586,
+          "kurswert": 530.75,
+          "entgelt": {
+            "provision": 0,
+            "handelsplatz": 0,
+            "gesamt": 0
+          },
+          "betrag": 530.75,
+          "kursquelle": "gettex (verzögert, MiFIR) (2026-10-28T19:14:06.970Z)",
+          "synthetisch": true,
+          "grund": "teilziel"
+        }
+      ],
+      "etfVergleich": {
+        "netto": -4.36,
+        "nettoProzent": -0.47,
+        "etfKauf": 131.775,
+        "etfVerkauf": 131.31
+      },
+      "verkauf": {
+        "zeit": "2026-10-29T19:27:12.940Z",
+        "stueck": 32,
+        "kurs": 16.428,
+        "kurswert": 525.7,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 525.7,
+        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-29T19:13:11.632Z)",
+        "synthetisch": true,
+        "grund": "nachziehstop"
+      },
+      "ergebnis": {
+        "kursProzent": 6.92,
+        "netto": 68.42,
+        "nettoProzent": 6.92,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": 68.42
+      }
+    },
     {
       "id": "2026-10-23-lithia-motors-inc",
       "status": "geschlossen",
