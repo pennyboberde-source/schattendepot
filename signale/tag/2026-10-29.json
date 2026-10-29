@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T11:42:28.007Z",
-  "anzahl": 249,
+  "stand": "2026-10-29T12:51:32.129Z",
+  "anzahl": 252,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3173,9 +3173,10 @@
       "t": "LLY",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-10-29T10:45:48.000Z"
     },
@@ -3284,6 +3285,45 @@
         "SEC EDGAR"
       ],
       "z": "2026-10-29T11:30:37.000Z"
+    },
+    {
+      "id": "handelsstopp:CARX:2026-10-29",
+      "s": "T:CARX",
+      "n": "Corgi CART 2x Daily ETF",
+      "t": "CARX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-29T00:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:HTO:2026-10-29",
+      "s": "T:HTO",
+      "n": "H2O AMERICA",
+      "t": "HTO",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-29T12:08:58.000Z"
+    },
+    {
+      "id": "verwaesserung:CDZIP:2026-10-29",
+      "s": "T:CDZIP",
+      "n": "CADIZ INC",
+      "t": "CDZIP",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-29T12:47:01.000Z"
     }
   ]
 }
