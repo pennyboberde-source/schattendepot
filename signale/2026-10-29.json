@@ -1,0 +1,645 @@
+{
+  "stand": "2026-10-29T04:44:22.645Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:GLXY",
+      "name": "Galaxy Digital Inc.",
+      "ticker": "GLXY",
+      "score": 4.58,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:F",
+      "name": "F",
+      "ticker": "F",
+      "score": 3.57,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:IP",
+      "name": "IP",
+      "ticker": "IP",
+      "score": 3.54,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:BPRE",
+      "name": "Bluerock Private Real Estate Fund",
+      "ticker": "BPRE",
+      "score": 3.41,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:NPB",
+      "name": "Northpointe Bancshares Inc",
+      "ticker": "NPB",
+      "score": 3.02,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TTMI",
+      "name": "Ttm Technologies Inc",
+      "ticker": "TTMI",
+      "score": 2.87,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ACN",
+      "name": "Accenture Plc",
+      "ticker": "ACN",
+      "score": 2.87,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CTEV",
+      "name": "Claritev Corp",
+      "ticker": "CTEV",
+      "score": 2.79,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:GOOGL",
+      "name": "Alphabet",
+      "ticker": "GOOGL",
+      "score": -2.77,
+      "typen": [
+        "nachricht",
+        "stimmung_social",
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub News",
+        "BTC-ECHO",
+        "CNBC Top News",
+        "MarketWatch",
+        "ApeWisdom",
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:DINO",
+      "name": "DINO",
+      "ticker": "DINO",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:BA",
+      "name": "BA",
+      "ticker": "BA",
+      "score": -2.5,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:CNC",
+      "name": "CNC",
+      "ticker": "CNC",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:SW",
+      "name": "SW",
+      "ticker": "SW",
+      "score": -2.3,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:STC",
+      "name": "Stewart Information Services Corp",
+      "ticker": "STC",
+      "score": 2.19,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FDX",
+      "name": "FDX",
+      "ticker": "FDX",
+      "score": 2.16,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:PYPL",
+      "name": "PYPL",
+      "ticker": "PYPL",
+      "score": 2.07,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:AIOK",
+      "name": "AIOK",
+      "ticker": "AIOK",
+      "score": 2.06,
+      "typen": [
+        "insider_kauf",
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:SPCX",
+      "name": "Space Exploration Technologies Corp. (SpaceX)",
+      "ticker": "SPCX",
+      "score": 2.03,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:GEV",
+      "name": "GEV",
+      "ticker": "GEV",
+      "score": 2,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:PSX",
+      "name": "PSX",
+      "ticker": "PSX",
+      "score": 1.94,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:HCA",
+      "name": "HCA",
+      "ticker": "HCA",
+      "score": 1.93,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:DBK",
+      "name": "Deutsche Bank",
+      "ticker": "DBK.DE",
+      "score": 1.83,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "FAZ Finanzen",
+        "Handelsblatt Finanzen"
+      ]
+    },
+    {
+      "schluessel": "T:CVNA",
+      "name": "CVNA",
+      "ticker": "CVNA",
+      "score": -1.65,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:THRM",
+      "name": "Gentherm Inc",
+      "ticker": "THRM",
+      "score": 1.62,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MUSA",
+      "name": "MUSA",
+      "ticker": "MUSA",
+      "score": 1.57,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:FLEX",
+      "name": "FLEX",
+      "ticker": "FLEX",
+      "score": 1.52,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:FCX",
+      "name": "FCX",
+      "ticker": "FCX",
+      "score": 1.49,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:APH",
+      "name": "APH",
+      "ticker": "APH",
+      "score": 1.47,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:GEHC",
+      "name": "GEHC",
+      "ticker": "GEHC",
+      "score": 1.46,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:JLL",
+      "name": "JLL",
+      "ticker": "JLL",
+      "score": 1.43,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:LYCA",
+      "name": "LYCA",
+      "ticker": "LYCA",
+      "score": 1.42,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TMUS",
+      "name": "TMUS",
+      "ticker": "TMUS",
+      "score": 1.42,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AEP",
+      "name": "AEP",
+      "ticker": "AEP",
+      "score": 1.38,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MSM",
+      "name": "MSM",
+      "ticker": "MSM",
+      "score": 1.37,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FNMA",
+      "name": "FNMA",
+      "ticker": "FNMA",
+      "score": 1.36,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CRBG",
+      "name": "CRBG",
+      "ticker": "CRBG",
+      "score": 1.32,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ULBI",
+      "name": "Ultralife Corporation",
+      "ticker": "ULBI",
+      "pump": true,
+      "score": 1.3,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:AXG",
+      "name": "Solowin Hldgs OS A",
+      "ticker": "AXG",
+      "score": -1.26,
+      "typen": [
+        "handelsstopp",
+        "leerverkauf_aenderung"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FINRA Short Interest"
+      ]
+    },
+    {
+      "schluessel": "T:LRN",
+      "name": "LRN",
+      "ticker": "LRN",
+      "score": 1.23,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SRRK",
+      "name": "SRRK",
+      "ticker": "SRRK",
+      "score": 1.23,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BFH-PA",
+      "name": "BREAD FINANCIAL HOLDINGS, INC.",
+      "ticker": "BFH-PA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:KEY-PL",
+      "name": "KEYCORP /NEW/",
+      "ticker": "KEY-PL",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:UWMC",
+      "name": "UWM Holdings Corp",
+      "ticker": "UWMC",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:RAPP",
+      "name": "Rapport Therapeutics, Inc.",
+      "ticker": "RAPP",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ACRS",
+      "name": "Aclaris Therapeutics, Inc.",
+      "ticker": "ACRS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:XXII",
+      "name": "22nd Century Group, Inc.",
+      "ticker": "XXII",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:OSS",
+      "name": "ONE STOP SYSTEMS, INC.",
+      "ticker": "OSS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:WFF",
+      "name": "WF Holding Ltd",
+      "ticker": "WFF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CTO-PA",
+      "name": "CTO Realty Growth, Inc.",
+      "ticker": "CTO-PA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MTTN",
+      "name": "Matternet, Inc.",
+      "ticker": "MTTN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    }
+  ],
+  "anzahlSignale": 228
+}

@@ -1,0 +1,987 @@
+{
+  "datum": "2026-10-29",
+  "erstellt": "2026-10-29T04:44:22.645Z",
+  "makro": [
+    "Marktphase: Aktien (S&P 500) Aufwärts, ruhig · Krypto (Bitcoin) Aufwärts, ruhig",
+    "Ethereum: 2.078 € (-1,7 % seit 00:00 UTC)",
+    "Bitcoin: 71.777 € (-1,5 % seit 00:00 UTC)",
+    "Kimchi-Prämie (BTC in Korea gegen USD-Markt): +0,30 % (vorher +0,21 %). Steigend = Kaufdruck koreanischer Privatanleger.",
+    "Funding p. a. (Kraken Futures): BTC +16,5 %, ETH +7,9 %, SOL -7,0 %. Hoch positiv = gehebelte Käufer dominieren.",
+    "Stablecoin-Menge 302,1 Mrd $ (7 Tage -0,85 %). Wachsend = frisches Geld für Krypto.",
+    "FINRA Short Interest neu (Stichtag 2026-10-15): 25 auffällige Werte",
+    "Nasdaq-Handelsstopps (2 Tage): 3, davon Volatilitätspausen 0, Nachrichten 3",
+    "US-App-Store Gesamt-Top-100: Kalshi #8, Cash App #56 – je höher, desto mehr Andrang von Privatanlegern",
+    "Krypto Fear & Greed: 51 (Neutral), gestern 51 – Quelle: alternative.me",
+    "BTC-Volatilität DVOL (Deribit): 36,9 (Vortag 37,3, vor 7 Tagen 38)",
+    "ETH-Volatilität DVOL (Deribit): 51,8 (Vortag 52,5, vor 7 Tagen 52,2)",
+    "Polymarket „Fed Decision in December?“ – 25 bps increase: 78 %, No change: 20 %",
+    "Polymarket „Another Fed rate hike in 2026?“ – 78 %",
+    "Polymarket „How many Fed rate cuts in 2026?“ – 0 (0 bps): 97 %",
+    "Polymarket „Strait of Hormuz traffic returns to normal by December 31?“ – 11 %",
+    "Polymarket „How low will 5-year Treasury yield get before 2027?“ – Below 4.70%: 62 %, Below 4.65%: 51 %",
+    "COT 2026-10-20 – Spekulanten netto in % des Open Interest, P = Perzentil über 3 Jahre: Bitcoin +11 % (Vorw. +12, P89); Erdgas -14 % (Vorw. -13, P1); Rohöl WTI +5 % (Vorw. +5, P14); Ethereum +7 % (Vorw. +9, P72); Silber +17 % (Vorw. +21, P8); Kupfer +18 % (Vorw. +22, P60); Gold +50 % (Vorw. +52, P62); S&P 500 -7 % (Vorw. -7, P29)",
+    "Coinalyze BTC: Liquidationen 24 h 34.7 Mio. $ (Longs 59 %)",
+    "Coinalyze ETH: Liquidationen 24 h 28.4 Mio. $ (Longs 65 %)"
+  ],
+  "termine": [
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "AMP Quartalszahlen (Erwartung EPS 11.8244)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "AMZN Quartalszahlen (Erwartung EPS 2.001)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "BMY Quartalszahlen (Erwartung EPS 1.209)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "CARR Quartalszahlen (Erwartung EPS 0.7822)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "CAT Quartalszahlen (Erwartung EPS 7.1552)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "COIN Quartalszahlen (Erwartung EPS -0.157)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "CRH Quartalszahlen (Erwartung EPS 2.2192)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "CTSH Quartalszahlen (Erwartung EPS 1.4954)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "DHI Quartalszahlen (Erwartung EPS 3.0528)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "EIX Quartalszahlen (Erwartung EPS 1.8274)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "EME Quartalszahlen (Erwartung EPS 8.4401)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "EPD Quartalszahlen (Erwartung EPS 0.7503)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "GILD Quartalszahlen (Erwartung EPS 2.2436)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "INGM Quartalszahlen (Erwartung EPS 0.7932)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "INTC Quartalszahlen (Erwartung EPS 0.3996)"
+    },
+    {
+      "zeit": "heute",
+      "text": "AMZN Quartalszahlen (Erwartung EPS 1.97)"
+    },
+    {
+      "zeit": "heute",
+      "text": "CARR Quartalszahlen (Erwartung EPS 0.758)"
+    },
+    {
+      "zeit": "heute",
+      "text": "COIN Quartalszahlen (Erwartung EPS -0.23045)"
+    },
+    {
+      "zeit": "heute",
+      "text": "INTC Quartalszahlen (Erwartung EPS 0.4059)"
+    },
+    {
+      "zeit": "heute",
+      "text": "SBUX Quartalszahlen (Erwartung EPS 0.719)"
+    },
+    {
+      "zeit": "13:30",
+      "text": "USA: Advance GDP q/q (wichtig) – Prognose 3.2%, zuvor 1.5%"
+    },
+    {
+      "zeit": "13:30",
+      "text": "USA: Core PCE Price Index m/m (wichtig) – Prognose 0.3%, zuvor 0.2%"
+    },
+    {
+      "zeit": "13:30",
+      "text": "USA: Advance GDP Price Index q/q – Prognose 3.2%, zuvor 6.2%"
+    },
+    {
+      "zeit": "13:30",
+      "text": "USA: Unemployment Claims – Prognose 198K, zuvor 194K"
+    },
+    {
+      "zeit": "14:15",
+      "text": "Eurozone: Main Refinancing Rate (wichtig) – Prognose 2.65%, zuvor 2.65%"
+    },
+    {
+      "zeit": "14:15",
+      "text": "Eurozone: Monetary Policy Statement (wichtig)"
+    },
+    {
+      "zeit": "14:45",
+      "text": "Eurozone: ECB Press Conference (wichtig)"
+    }
+  ],
+  "meldungen": [
+    {
+      "titel": "Over 41,000 U.S. Homeland Security officials' details apparently exposed after massive data breach",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/10/29/dhs-data-breach-ice-cdp-deportations.html",
+      "zeit": "2026-10-29T04:29:32.000Z"
+    },
+    {
+      "titel": "Nikkei, Topix, Kospi: Asiatische Aktien geben nach – Anleger vor Quartalsergebnissen vorsichtig",
+      "quelle": "Handelsblatt Finanzen",
+      "link": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/nikkei-topix-kospi-asiatische-aktien-geben-nach-anleger-vor-quartalsergebnissen-vorsichtig/100265771.html",
+      "zeit": "2026-10-29T04:28:18.000Z"
+    },
+    {
+      "titel": "Trump methane policy rollback may have minimal impact on crude prices, EPA says",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/10/29/trump-methane-rollback-oil-prices-epa.html",
+      "zeit": "2026-10-29T04:00:51.000Z"
+    },
+    {
+      "titel": "Großbank warnt: Haften Kunden für ihre KI-Agenten?",
+      "quelle": "BTC-ECHO",
+      "link": "https://www.btc-echo.de/news/grossbank-warnt-haften-kunden-fuer-ihre-ki-agenten-240013/",
+      "zeit": "2026-10-29T03:30:00.000Z"
+    },
+    {
+      "titel": "Wall Street: Warum sich Anleger mit weniger Wachstum zufriedengeben müssen",
+      "quelle": "Handelsblatt Finanzen",
+      "link": "https://www.handelsblatt.com/finanzen/anlagestrategie/trends/wall-street-warum-sich-anleger-mit-weniger-wachstum-zufriedengeben-muessen/100265278.html",
+      "zeit": "2026-10-29T03:12:26.000Z"
+    },
+    {
+      "titel": "Deep Read: Showdown im italienischen Bankenpoker – Intesa Sanpaolo greift nach der ältesten Bank der Welt",
+      "quelle": "Handelsblatt Finanzen",
+      "link": "https://www.handelsblatt.com/finanzen/italien-intesa-sanpaolo-greift-nach-der-aeltesten-bank-der-welt/100263246.html",
+      "zeit": "2026-10-29T03:07:04.000Z"
+    },
+    {
+      "titel": "Droht dem Ethereum-Kurs ein Absturz auf 2.000 US-Dollar?",
+      "quelle": "BTC-ECHO",
+      "link": "https://www.btc-echo.de/news/droht-dem-ethereum-kurs-ein-absturz-auf-2-000-us-dollar-239974/",
+      "zeit": "2026-10-29T03:00:00.000Z",
+      "wertpapier": "Ethereum"
+    },
+    {
+      "titel": "Samsung Electronics shares slid despite record profit in the third-quarter",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/10/29/samsung-electronics-third-quarter-earnings.html",
+      "zeit": "2026-10-29T02:49:39.000Z"
+    },
+    {
+      "titel": "China’s tech darlings are losing their shine. Here’s what’s behind the sell-off",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/10/29/china-tech-stocks-selloff.html",
+      "zeit": "2026-10-29T02:14:14.000Z"
+    },
+    {
+      "titel": "Why Alphabet&#x2019;s stock could see its worst drop in years after the latest results",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/why-alphabets-stock-could-see-its-worst-drop-in-years-after-the-latest-results-6b64cf98?mod=mw_rss_topstories",
+      "zeit": "2026-10-29T01:58:00.000Z",
+      "wertpapier": "Alphabet"
+    },
+    {
+      "titel": "Oil prices fall as peace hopes offset fears of growing Middle East conflict - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQdy1kTGwzTi1ZWVpiLUFTbF9HS0VGbXFnVWhMVzBfOUhieU95OGhLZnpZLTB3ckdrOEFMZms2UU1qYUMyY01yd3VOQmNhNGU4MmZvNE1uUzdqcXc0OWxLYlRRSk5NaU85cUdZYTd0a1d0QU93S0JfaTNMdlpVa3pMeVBUZnFtd0ZMVXhMWGhHejZOVjQtZlN2ekVsaTdWU2hCVE8xaTlpamEzXzQ?oc=5",
+      "zeit": "2026-10-29T00:28:00.000Z"
+    },
+    {
+      "titel": "Lumentum&#x2019;s stock pops as investors cheer a possible sale to Marvell",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/lumentums-stock-pops-as-investors-cheer-a-possible-sale-to-marvell-07c1d0e8?mod=mw_rss_topstories",
+      "zeit": "2026-10-29T00:20:00.000Z"
+    },
+    {
+      "titel": "EU energy ministers to discuss soaring fuel prices as winter looms - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQVDByQUZwZlZWZ0Rha3NIN2lVRktZNXgwNkRHYUZHcXliRWVDLWFNTWZCczA2aU52UEs2bGo3dlB3Mmx4QnQyVzN2TmZCemJ3NEhPQkhWT0tmX1RGdVFUX0ZVNllZa3dhTXdZODBXdnlqY0hKM18yYTVZblRFSk9ZejBUal9QUGlYN3NOcWhrbExxWFIyQ241TGJJZmNsbmMxY1gxWXFPRDY5bS00QVBaZmpB?oc=5",
+      "zeit": "2026-10-29T00:19:00.000Z"
+    },
+    {
+      "titel": "CoreWeave and other neocloud stocks drop after Microsoft capex comes in below expectations",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/10/28/neocloud-stocks-drop-after-microsoft-revises-capex-down.html",
+      "zeit": "2026-10-29T00:16:39.000Z",
+      "wertpapier": "Microsoft"
+    },
+    {
+      "titel": "&#x2018;Just watch Judge Judy&#x2019;: I&#x2019;m in my 70s. Why do people keep making the same avoidable financial mistakes?",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/you-need-only-watch-episodes-of-judge-judy-im-in-my-70s-why-do-people-keep-making-the-same-avoidable-financial-mistakes-bbf60fe4?mod=mw_rss_topstories",
+      "zeit": "2026-10-29T00:15:00.000Z"
+    }
+  ],
+  "insider": [
+    {
+      "wertpapier": "Ttm Technologies Inc (TTMI)",
+      "text": "3 Insider kauften für 2.99 Mio. $ (Handel 2026-10-28, gemeldet 2026-10-28)",
+      "link": "http://openinsider.com/TTMI"
+    },
+    {
+      "wertpapier": "Bluerock Private Real Estate Fund (BPRE)",
+      "text": "3 Insider kauften für 37.17 Mio. $ (Handel 2026-10-26, gemeldet 2026-10-28)",
+      "link": "http://openinsider.com/BPRE"
+    },
+    {
+      "wertpapier": "Accenture Plc (ACN)",
+      "text": "2 Insider kauften für 3.20 Mio. $ (Handel 2026-10-26, gemeldet 2026-10-28)",
+      "link": "http://openinsider.com/ACN"
+    },
+    {
+      "wertpapier": "Stewart Information Services Corp (STC)",
+      "text": "5 Insider kauften für 0.46 Mio. $ (Handel 2026-10-23, gemeldet 2026-10-27)",
+      "link": "http://openinsider.com/STC"
+    },
+    {
+      "wertpapier": "Claritev Corp (CTEV)",
+      "text": "2 Insider kauften für 3.61 Mio. $ (Handel 2026-08-27, gemeldet 2026-10-27)",
+      "link": "http://openinsider.com/CTEV"
+    },
+    {
+      "wertpapier": "Northpointe Bancshares Inc (NPB)",
+      "text": "3 Insider kauften für 4.52 Mio. $ (Handel 2026-09-01, gemeldet 2026-10-27)",
+      "link": "http://openinsider.com/NPB"
+    },
+    {
+      "wertpapier": "Gentherm Inc (THRM)",
+      "text": "2 Insider kauften für 0.66 Mio. $ (Handel 2026-10-23, gemeldet 2026-10-26)",
+      "link": "http://openinsider.com/THRM"
+    }
+  ],
+  "positionen": [
+    {
+      "id": "2026-10-22-space-exploration-technologies",
+      "name": "Space Exploration Technologies Corp. (SpaceX)",
+      "meldungen": [
+        {
+          "titel": "Space Exploration Technologies Corp. (SpaceX): SPCX Stock Slips Overnight: T-Mobile CEO Again Rejects SpaceX Mobile Network Deal",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=401336f544ac853beeaf8dd8060143aad004b0c692fd64950d64365b7887dc53",
+          "zeit": "2026-10-29T02:13:34.000Z",
+          "wertpapier": "Space Exploration Technologies Corp. (SpaceX)"
+        },
+        {
+          "titel": "Space Exploration Technologies Corp. (SpaceX): T-Mobile US Q3 Earnings Call Highlights",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=33b47cebc9e1dd920be1c8d7a712b6a0906b26de89245ad7830a2c9e22efeb21",
+          "zeit": "2026-10-29T01:04:06.000Z",
+          "wertpapier": "Space Exploration Technologies Corp. (SpaceX)"
+        },
+        {
+          "titel": "Space Exploration Technologies Corp. (SpaceX): Mega-Cap Default Risk",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=2c4f906088ea5fc69e7cdd717bf477ffc6b70acf8256db7ce28844cb73306618",
+          "zeit": "2026-10-29T00:15:00.000Z",
+          "wertpapier": "Space Exploration Technologies Corp. (SpaceX)"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-23-lithia-motors-inc",
+      "name": "Lithia Motors Inc.",
+      "meldungen": [
+        {
+          "titel": "Lithia Motors Inc.: Lithia Motors is seeing benefits from AI in service ‘pre-sales’",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=45506b59cc04e479e9b0ce9c0bed408f0f232dbf64e64ac8e7e5610cc0682c20",
+          "zeit": "2026-10-28T16:08:00.000Z",
+          "wertpapier": "Lithia Motors Inc."
+        },
+        {
+          "titel": "Lithia Motors Inc.: Lithia & Driveway Stock After Q3 Earnings: Buy, Hold or Sell?",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=afb032c4aab3a7f50b9a59003036db2e1e80a23c44d332c54f82ac5b571cb550",
+          "zeit": "2026-10-28T13:48:00.000Z",
+          "wertpapier": "Lithia Motors Inc."
+        },
+        {
+          "titel": "Lithia Motors Inc.: Dividend Announcements: October 17-23, 2026 (Part 1 Of 2)",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=30860eb920e41d2860f78200acfd9eb68059ace40deef784303db0417923295e",
+          "zeit": "2026-10-28T06:00:07.000Z",
+          "wertpapier": "Lithia Motors Inc."
+        }
+      ]
+    },
+    {
+      "id": "2026-10-28-galaxy-digital-inc",
+      "name": "Galaxy Digital Inc.",
+      "meldungen": [
+        {
+          "titel": "Galaxy Digital Inc.: Bitcoin Controls 59.5% of the Crypto Market. Is Altcoin Season Still Possible?",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=2d425621a1ea09439451dc0df5cc01d291902e1a87c91ff0409e1562cd268540",
+          "zeit": "2026-10-29T01:41:42.000Z",
+          "wertpapier": "Galaxy Digital Inc."
+        },
+        {
+          "titel": "Galaxy Digital Inc.: IREN’s $363M GPU Raise, Morgan Stanley’s Bullish TeraWulf Price Target, and SK Hynix’s Earnings",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=3db7ae3a963018767403fad08f7f3d40c4785e37ab82b0d4345cfec6637fa1c2",
+          "zeit": "2026-10-28T22:19:30.000Z",
+          "wertpapier": "Galaxy Digital Inc."
+        },
+        {
+          "titel": "Galaxy Digital Inc.: Galaxy walks away from Helios II tenant deal as Texas regulatory uncertainty slows leasing",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=84a8a685c6dd4c9fbc065603ac61c3ba8fb8eeff1c2ab02984fbfde4e7f6ae4c",
+          "zeit": "2026-10-28T14:59:20.000Z",
+          "wertpapier": "Galaxy Digital Inc."
+        }
+      ]
+    },
+    {
+      "id": "2026-10-28-stewart-information-services-c",
+      "name": "Stewart Information Services Corp.",
+      "meldungen": []
+    }
+  ],
+  "kandidaten": [
+    {
+      "name": "Galaxy Digital Inc.",
+      "ticker": "GLXY",
+      "score": 4.58,
+      "fakten": [
+        "Galaxy Digital Inc.: Galaxy Digital (NasdaqGS:GLXY) Jumped, So What Is Behind The Move?",
+        "EPS 0.83 vs. erwartet -0.1355 (+713 %) am 2026-10-27",
+        "Kursreaktion +11.1 % bestätigt die positive Überraschung (EPS 0.83 vs. erwartet -0.1355 (+713 %) am 2026-10-27)"
+      ],
+      "quellen": [
+        {
+          "name": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=58c45adfc7ec13e0f78bae5100aac75215ca3699f798b4233ae7a491e482d074"
+        }
+      ]
+    },
+    {
+      "name": "F",
+      "ticker": "F",
+      "score": 3.57,
+      "fakten": [
+        "EPS 0.49 vs. erwartet 0.4129 (+19 %) am 2026-10-28",
+        "Kursreaktion +2.0 % bestätigt die positive Überraschung (EPS 0.49 vs. erwartet 0.4129 (+19 %) am 2026-10-28)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "IP",
+      "ticker": "IP",
+      "score": 3.54,
+      "fakten": [
+        "EPS 0.37 vs. erwartet 0.2936 (+26 %) am 2026-10-28",
+        "Kursreaktion +3.3 % bestätigt die positive Überraschung (EPS 0.37 vs. erwartet 0.2936 (+26 %) am 2026-10-28)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Bluerock Private Real Estate Fund",
+      "ticker": "BPRE",
+      "score": 3.41,
+      "fakten": [
+        "3 Insider kauften für 37.17 Mio. $ (Handel 2026-10-26, gemeldet 2026-10-28)",
+        "Kamfar Ramin (Dir) kaufte für 2.23 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/BPRE"
+        }
+      ]
+    },
+    {
+      "name": "Northpointe Bancshares Inc",
+      "ticker": "NPB",
+      "score": 3.02,
+      "fakten": [
+        "3 Insider kauften für 4.52 Mio. $ (Handel 2026-09-01, gemeldet 2026-10-27)",
+        "Williams Charles Alan (COB, CEO) kaufte für 1.54 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/NPB"
+        }
+      ]
+    },
+    {
+      "name": "Ttm Technologies Inc",
+      "ticker": "TTMI",
+      "score": 2.87,
+      "fakten": [
+        "3 Insider kauften für 2.99 Mio. $ (Handel 2026-10-28, gemeldet 2026-10-28)",
+        "Roks Edwin (Pres, CEO) kaufte für 0.44 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/TTMI"
+        }
+      ]
+    },
+    {
+      "name": "Accenture Plc",
+      "ticker": "ACN",
+      "score": 2.87,
+      "fakten": [
+        "2 Insider kauften für 3.20 Mio. $ (Handel 2026-10-26, gemeldet 2026-10-28)",
+        "Sweet Julie Spellman (Chair, CEO) kaufte für 3.00 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/ACN"
+        }
+      ]
+    },
+    {
+      "name": "Claritev Corp",
+      "ticker": "CTEV",
+      "score": 2.79,
+      "fakten": [
+        "2 Insider kauften für 3.61 Mio. $ (Handel 2026-08-27, gemeldet 2026-10-27)",
+        "Ares Management LLC (10%) kaufte für 1.68 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/CTEV"
+        }
+      ]
+    },
+    {
+      "name": "Alphabet",
+      "ticker": "GOOGL",
+      "score": -2.77,
+      "fakten": [
+        "South Korea media commission fines Google and Apple over app payment systems - Reuters",
+        "Reddit-Erwähnungen 172 (24 h vorher 78), Rang 3",
+        "EPS 2.12 vs. erwartet 3.1095 (-32 %) am 2026-10-28"
+      ],
+      "quellen": [
+        {
+          "name": "Finnhub News",
+          "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOcW4xekU2MEFsTlhLV2hTT3luWGVvLVVlb3FWVzJOV3hDX1R2eDFzNVRfQWhCSDFOOE1obl9rblBfSldIYTdwMGlpbmkySzYtYTBZUDZJdXNrUUxjSEw1LVNEUGYwN01obGJOTExsQXdoSm1zMldSS0tUek16cVFqU2I2M2stQXo0eGc0NmNCa1dlV3VBYW0yNGdkYXg0emQ3SFlmbjlmcHQzd0lRZUtJUDlWLWI?oc=5"
+        },
+        {
+          "name": "BTC-ECHO",
+          "link": "https://www.btc-echo.de/news/google-sichert-milliardenmarkt-ab-ethereum-und-solana-profitieren-239998/"
+        },
+        {
+          "name": "CNBC Top News",
+          "link": "https://www.cnbc.com/2026/10/28/alphabet-googl-earnings-q3-2026.html"
+        }
+      ]
+    },
+    {
+      "name": "DINO",
+      "ticker": "DINO",
+      "score": 2.5,
+      "fakten": [
+        "EPS 11.75 vs. erwartet 7.7653 (+51 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "BA",
+      "ticker": "BA",
+      "score": -2.5,
+      "fakten": [
+        "EPS -0.34 vs. erwartet -0.2138 (-59 %) am 2026-10-27"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "CNC",
+      "ticker": "CNC",
+      "score": 2.5,
+      "fakten": [
+        "EPS 0.58 vs. erwartet 0.0982 (+491 %) am 2026-10-27"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "SW",
+      "ticker": "SW",
+      "score": -2.3,
+      "fakten": [
+        "EPS 0.45 vs. erwartet 0.6076 (-26 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Stewart Information Services Corp",
+      "ticker": "STC",
+      "score": 2.19,
+      "fakten": [
+        "5 Insider kauften für 0.46 Mio. $ (Handel 2026-10-23, gemeldet 2026-10-27)"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/STC"
+        }
+      ]
+    },
+    {
+      "name": "FDX",
+      "ticker": "FDX",
+      "score": 2.16,
+      "fakten": [
+        "EPS 3.74 vs. erwartet 3.5173 (+6 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "PYPL",
+      "ticker": "PYPL",
+      "score": 2.07,
+      "fakten": [
+        "EPS 1.45 vs. erwartet 1.3367 (+8 %) am 2026-10-27"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "AIOK",
+      "ticker": "AIOK",
+      "score": 2.06,
+      "fakten": [
+        "Panagiotidis Petros Panagiotis (CEO) kaufte für 1.06 Mio. $",
+        "+109.7 % am Vortag (US)",
+        "Tagesgewinner +110 % bei 28.14 $ (Volumen 24 Mio.) – spekulativ"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/AIOK"
+        }
+      ]
+    },
+    {
+      "name": "Space Exploration Technologies Corp. (SpaceX)",
+      "ticker": "SPCX",
+      "score": 2.03,
+      "fakten": [
+        "Space Exploration Technologies Corp. (SpaceX): Alphabet CFO walks through the company's Q3 results",
+        "Space Exploration Technologies Corp. (SpaceX): T-Mobile Earnings Beat Expectations. Why Investors Still Have Questions.",
+        "meistgehandelt am Vortag (-2.2547%, Volumen 96.560.918)"
+      ],
+      "quellen": [
+        {
+          "name": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=66dba1bcc6c73810ad6ed9b12632cd4be0512f82399ec11ecb8745eefd2ac373"
+        },
+        {
+          "name": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=a35c2acc02cfe9f2b71d8ce982847af38e7f846033ed7cff468e971d90a49b12"
+        }
+      ]
+    },
+    {
+      "name": "GEV",
+      "ticker": "GEV",
+      "score": 2,
+      "fakten": [
+        "EPS 4.81 vs. erwartet 4.0059 (+20 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "PSX",
+      "ticker": "PSX",
+      "score": 1.94,
+      "fakten": [
+        "EPS 14.08 vs. erwartet 11.8446 (+19 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "HCA",
+      "ticker": "HCA",
+      "score": 1.93,
+      "fakten": [
+        "EPS 7.22 vs. erwartet 6.7292 (+7 %) am 2026-10-27"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Deutsche Bank",
+      "ticker": "DBK.DE",
+      "score": 1.83,
+      "fakten": [
+        "Mehr Gewinn: Die Deutsche Bank eilt von Rekord zu Rekord",
+        "Quartalszahlen: Deutsche Bank erzielt Milliardengewinn und übertrifft Erwartungen – Aktie an der Dax-Spitze"
+      ],
+      "quellen": [
+        {
+          "name": "FAZ Finanzen",
+          "link": "https://www.faz.net/aktuell/finanzen/deutsche-bank-uebertrifft-erwartungen-im-dritten-quartal-und-erzielt-rekordgewinn-accg-201625434.html"
+        },
+        {
+          "name": "Handelsblatt Finanzen",
+          "link": "https://www.handelsblatt.com/finanzen/banken-versicherungen/banken/banken-deutsche-bank-uebertrifft-erwartungen-aktie-steigt-deutlich/100263571.html"
+        }
+      ]
+    },
+    {
+      "name": "CVNA",
+      "ticker": "CVNA",
+      "score": -1.65,
+      "fakten": [
+        "EPS 0.39 vs. erwartet 0.4485 (-13 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Gentherm Inc",
+      "ticker": "THRM",
+      "score": 1.62,
+      "fakten": [
+        "2 Insider kauften für 0.66 Mio. $ (Handel 2026-10-23, gemeldet 2026-10-26)"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/THRM"
+        }
+      ]
+    },
+    {
+      "name": "MUSA",
+      "ticker": "MUSA",
+      "score": 1.57,
+      "fakten": [
+        "EPS 9.59 vs. erwartet 8.6132 (+11 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "FLEX",
+      "ticker": "FLEX",
+      "score": 1.52,
+      "fakten": [
+        "EPS 1.18 vs. erwartet 1.0691 (+10 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "FCX",
+      "ticker": "FCX",
+      "score": 1.49,
+      "fakten": [
+        "EPS 0.88 vs. erwartet 0.8023 (+10 %) am 2026-10-27"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "APH",
+      "ticker": "APH",
+      "score": 1.47,
+      "fakten": [
+        "EPS 0.8 vs. erwartet 0.7312 (+9 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "GEHC",
+      "ticker": "GEHC",
+      "score": 1.46,
+      "fakten": [
+        "EPS 1.34 vs. erwartet 1.2279 (+9 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "JLL",
+      "ticker": "JLL",
+      "score": 1.43,
+      "fakten": [
+        "EPS 6.76 vs. erwartet 6.2207 (+9 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "LYCA",
+      "ticker": "LYCA",
+      "score": 1.42,
+      "fakten": [
+        "Venrock Healthcare Capital Partners Iii, L.P. (10%) kaufte für 37.65 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/LYCA"
+        }
+      ]
+    },
+    {
+      "name": "TMUS",
+      "ticker": "TMUS",
+      "score": 1.42,
+      "fakten": [
+        "EPS 3.22 vs. erwartet 2.9699 (+8 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "AEP",
+      "ticker": "AEP",
+      "score": 1.38,
+      "fakten": [
+        "EPS 2.23 vs. erwartet 2.0749 (+7 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "MSM",
+      "ticker": "MSM",
+      "score": 1.37,
+      "fakten": [
+        "Jacobson Mitchell (Dir, 10%) kaufte für 28.98 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/MSM"
+        }
+      ]
+    },
+    {
+      "name": "FNMA",
+      "ticker": "FNMA",
+      "score": 1.36,
+      "fakten": [
+        "EPS 0.72 vs. erwartet 0.6712 (+7 %) am 2026-10-28"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "CRBG",
+      "ticker": "CRBG",
+      "score": 1.32,
+      "fakten": [
+        "Nippon Life Insurance Co (10%) kaufte für 6.39 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/CRBG"
+        }
+      ]
+    },
+    {
+      "name": "Ultralife Corporation",
+      "ticker": "ULBI",
+      "score": 1.3,
+      "hinweis": "⚠ Pump-Verdacht: nur Stimmung/Rakete, nichts Handfestes",
+      "fakten": [
+        "+145.4 % am Vortag (US)",
+        "Tagesgewinner +145 % bei 15.61 $ (Volumen 2 Mio.) – spekulativ"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Solowin Hldgs OS A",
+      "ticker": "AXG",
+      "score": -1.26,
+      "fakten": [
+        "Stopp: Nachricht steht bevor am 2026-10-28",
+        "Short Interest 3,7 Mio Stück (+183,4 % zur Vorperiode), 1 Tage zum Eindecken, Stichtag 2026-10-15. Leerverkäufer bauen auf"
+      ],
+      "quellen": [
+        {
+          "name": "Nasdaq Trader",
+          "link": "https://www.nasdaqtrader.com/trader.aspx?id=TradeHalts"
+        },
+        {
+          "name": "FINRA Short Interest",
+          "link": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+        }
+      ]
+    },
+    {
+      "name": "LRN",
+      "ticker": "LRN",
+      "score": 1.23,
+      "fakten": [
+        "Haggart Dylan G. (Dir) kaufte für 12.18 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/LRN"
+        }
+      ]
+    },
+    {
+      "name": "SRRK",
+      "ticker": "SRRK",
+      "score": 1.23,
+      "fakten": [
+        "Akkaraju Srinivas (Dir) kaufte für 12.00 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/SRRK"
+        }
+      ]
+    },
+    {
+      "name": "BREAD FINANCIAL HOLDINGS, INC.",
+      "ticker": "BFH-PA",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1101215/000119312526432782/0001193125-26-432782-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "KEYCORP /NEW/",
+      "ticker": "KEY-PL",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/91576/000119312526432928/0001193125-26-432928-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "UWM Holdings Corp",
+      "ticker": "UWMC",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1783398/000178339826000131/0001783398-26-000131-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Rapport Therapeutics, Inc.",
+      "ticker": "RAPP",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/2012593/000119312526434371/0001193125-26-434371-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Aclaris Therapeutics, Inc.",
+      "ticker": "ACRS",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1557746/000110465926119223/0001104659-26-119223-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "22nd Century Group, Inc.",
+      "ticker": "XXII",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1347858/000149315226048792/0001493152-26-048792-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "ONE STOP SYSTEMS, INC.",
+      "ticker": "OSS",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1394056/000119312526435254/0001193125-26-435254-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "WF Holding Ltd",
+      "ticker": "WFF",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1980210/000121390026113145/0001213900-26-113145-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "CTO Realty Growth, Inc.",
+      "ticker": "CTO-PA",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/23795/000110465926119633/0001104659-26-119633-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Matternet, Inc.",
+      "ticker": "MTTN",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/2075109/000121390026113325/0001213900-26-113325-index.htm"
+        }
+      ]
+    }
+  ]
+}
