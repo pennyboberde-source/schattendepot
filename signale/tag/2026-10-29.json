@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T16:52:37.895Z",
-  "anzahl": 282,
+  "stand": "2026-10-29T17:47:13.187Z",
+  "anzahl": 283,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3529,7 +3529,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.41,
+      "st": 0.43,
       "q": [
         "Upbit"
       ],
@@ -3597,7 +3597,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.51,
+      "st": 0.52,
       "q": [
         "Upbit"
       ],
@@ -3676,7 +3676,7 @@
       "t": "UCAR",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3720,6 +3720,19 @@
         "CNBC Top News"
       ],
       "z": "2026-10-29T16:22:19.000Z"
+    },
+    {
+      "id": "handelsstopp:GCTK:2026-10-29",
+      "s": "T:GCTK",
+      "n": "GlucoTrack, Inc. Cm St",
+      "t": "GCTK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-29T00:00:00.000Z"
     }
   ]
 }
