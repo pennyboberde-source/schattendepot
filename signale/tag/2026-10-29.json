@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T18:48:07.059Z",
-  "anzahl": 286,
+  "stand": "2026-10-29T19:48:12.021Z",
+  "anzahl": 287,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3529,7 +3529,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.43,
+      "st": 0.44,
       "q": [
         "Upbit"
       ],
@@ -3568,7 +3568,7 @@
       "t": "GOOGL",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.51,
+      "st": 0.62,
       "q": [
         "CNBC Top News",
         "MarketWatch",
@@ -3773,6 +3773,19 @@
         "BTC-ECHO"
       ],
       "z": "2026-10-29T06:46:21.000Z"
+    },
+    {
+      "id": "handelsstopp:WZRD:2026-10-29",
+      "s": "T:WZRD",
+      "n": "Opportunistic Trader ETF",
+      "t": "WZRD",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-29T00:00:00.000Z"
     }
   ]
 }
