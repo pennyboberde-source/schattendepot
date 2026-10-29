@@ -1,0 +1,28 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-10-29",
+  "erstellt": "2026-10-29T06:55:00Z",
+  "briefing": [
+    "Alphabet nachbörslich −8 bis −10 %: erster Umsatz- und Gewinnfehlschlag seit fast 4 Jahren, negativer Free Cashflow",
+    "Heute keine neue Order: kein Kandidat mit echtem Vorteil nach Gebühren (Lektion 2, Statistik Ø −2,8 %)",
+    "Termine: CAT, BMY, CRH vor US-Start; abends AMZN, COIN, INTC, GILD. SpaceX nahe Stop nach T-Mobile-Absage"
+  ],
+  "orders": [],
+  "prognose": [
+    {"name": "Alphabet", "ticker": "GOOGL", "markt": "us", "richtung": "runter", "chance": 80, "grund": "Umsatz und EPS verfehlt, FCF negativ, nachbörslich −8 bis −10 %"},
+    {"name": "AIOK", "ticker": "AIOK", "markt": "us", "richtung": "runter", "chance": 65, "grund": "Nach +110 % an einem Tag ist Gewinnmitnahme wahrscheinlicher als Fortsetzung"},
+    {"name": "Ultralife", "ticker": "ULBI", "markt": "us", "richtung": "runter", "chance": 65, "grund": "+145 % ohne handfeste Nachricht, Pump-Verdacht"},
+    {"name": "Karyopharm", "ticker": "KPTI", "markt": "us", "richtung": "runter", "chance": 60, "grund": "Penny-Rakete +73 %, solche Sprünge verpuffen oft am Folgetag"},
+    {"name": "SpaceX", "ticker": "SPCX", "markt": "us", "richtung": "runter", "chance": 58, "grund": "T-Mobile-Chef lehnt Netz-Deal erneut ab, Aktie über Nacht schwächer"},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 55, "grund": "−1,5 % seit Mitternacht, hohes Funding (+16,5 % p. a.), Risikoabbau nach Alphabet"},
+    {"name": "Ethereum", "ticker": "ETH", "markt": "krypto", "richtung": "runter", "chance": 55, "grund": "−1,7 % seit Mitternacht, 65 % der Liquidationen Longs"},
+    {"name": "Carvana", "ticker": "CVNA", "markt": "us", "richtung": "runter", "chance": 55, "grund": "EPS 13 % unter Erwartung"},
+    {"name": "Deutsche Bank", "ticker": "DBK.DE", "markt": "eu", "richtung": "hoch", "chance": 52, "grund": "Rekordgewinn Q3, Nachrichtensignal bisher stärkster Typ; aber schon gestiegen"},
+    {"name": "International Paper", "ticker": "IP", "markt": "us", "richtung": "hoch", "chance": 53, "grund": "EPS +26 % über Erwartung, Kurs +3,3 % bestätigt"}
+  ],
+  "daytrading": [
+    {"name": "Alphabet", "markt": "us", "isin": "US02079K3059", "setup": "orb", "richtung": "beide", "instrument": "aktie", "chance": 40, "these": "Große Kurslücke nach Zahlenfehlschlag, hohes Volumen erwartet; Ausbruch aus der Eröffnungsspanne zeigt, ob Dip-Käufer oder Verkäufer siegen."},
+    {"name": "Caterpillar", "markt": "us", "isin": "US1491231015", "setup": "orb", "richtung": "beide", "instrument": "aktie", "chance": 38, "these": "Quartalszahlen vor US-Börsenstart, typischerweise kräftige Tagesbewegung in Zahlenrichtung."}
+  ],
+  "notiz": "Keine Order: Websuchen zu TTMI/ACN fanden die gemeldeten Oktober-Insiderkäufe nicht bestätigt; GOOGL-Short nach −10 % Kurslücke bei Großwert ohne Vorteil (Lektion 8, EPS-Fehlschlag großteils Beteiligungsverlust, Cloud stark). SpaceX (−6,8 %, Stop 127,64 €) und Galaxy (Helios-II-Absage, Stop über Einstand) dem Wächter-Stop überlassen. Quellen: https://www.cnbc.com/2026/10/28/alphabet-googl-earnings-q3-2026.html, https://siliconangle.com/2026/10/28/alphabets-stock-sinks-after-shocking-investors-with-top-and-bottom-line-miss/"
+}
