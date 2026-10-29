@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T07:59:24.111Z",
-  "anzahl": 232,
+  "stand": "2026-10-29T08:52:36.052Z",
+  "anzahl": 238,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3041,7 +3041,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.43,
+      "st": 0.44,
       "q": [
         "Upbit"
       ],
@@ -3060,6 +3060,85 @@
         "Upbit"
       ],
       "z": "2026-10-29T07:59:24.111Z"
+    },
+    {
+      "id": "liquidationen_spitze:ETH:2026-10-29",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-10-29T07:00:00.000Z"
+    },
+    {
+      "id": "nachricht:SPCX:2026-10-29",
+      "s": "T:SPCX",
+      "n": "Space Exploration Technologies Corp. (SpaceX)",
+      "t": "SPCX",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-10-29T07:15:20.000Z"
+    },
+    {
+      "id": "nachricht:VOW3:2026-10-29",
+      "s": "T:VOW3",
+      "n": "Volkswagen",
+      "t": "VOW3.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-10-29T08:16:16.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0ETX9:2026-10-29",
+      "s": "I:DE000HF0ETX9",
+      "n": "DE000HF0ETX9",
+      "i": "DE000HF0ETX9",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-29T08:41:04.244Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0ET02:2026-10-29",
+      "s": "I:DE000HF0ET02",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF0ET02",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-29T08:43:42.759Z"
+    },
+    {
+      "id": "nachricht:VNA:2026-10-29",
+      "s": "T:VNA",
+      "n": "Vonovia",
+      "t": "VNA.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-29T08:47:20.000Z"
     }
   ]
 }
