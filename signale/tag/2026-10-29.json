@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T10:46:56.486Z",
-  "anzahl": 241,
+  "stand": "2026-10-29T11:42:28.007Z",
+  "anzahl": 249,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3041,7 +3041,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.49,
+      "st": 0.5,
       "q": [
         "Upbit"
       ],
@@ -3178,6 +3178,112 @@
         "CNBC Top News"
       ],
       "z": "2026-10-29T10:45:48.000Z"
+    },
+    {
+      "id": "handelsstopp:CART:2026-10-29",
+      "s": "T:CART",
+      "n": "Maplebear Inc. Common Stock",
+      "t": "CART",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-29T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:IOVA:2026-10-29",
+      "s": "T:IOVA",
+      "n": "IOVANCE BIOTHERAPEUTICS INC",
+      "t": "IOVA",
+      "i": "US4622601007",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-29T11:17:12.749Z"
+    },
+    {
+      "id": "prognose_erhoehung:LLY:2026-10-29",
+      "s": "T:LLY",
+      "n": "Eli Lilly",
+      "t": "LLY",
+      "typ": "prognose_erhoehung",
+      "r": 1,
+      "st": 0.7,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-10-29T11:19:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000GN6L2W5:2026-10-29",
+      "s": "I:DE000GN6L2W5",
+      "n": "GOLDMAN SACHS EUROPE SE",
+      "i": "DE000GN6L2W5",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.61,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-29T11:26:12.243Z"
+    },
+    {
+      "id": "verwaesserung:BFLY:2026-10-29",
+      "s": "T:BFLY",
+      "n": "Butterfly Network, Inc.",
+      "t": "BFLY",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-29T11:27:41.000Z"
+    },
+    {
+      "id": "kursrakete:HBGRF:2026-10-29",
+      "s": "T:HBGRF",
+      "n": "HEIDELBERGER DRUCKMASCHINEN",
+      "t": "HBGRF",
+      "i": "DE0007314007",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.52,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-29T11:29:32.041Z"
+    },
+    {
+      "id": "verwaesserung:INMB:2026-10-29",
+      "s": "T:INMB",
+      "n": "Inmune Bio, Inc.",
+      "t": "INMB",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-29T11:30:28.000Z"
+    },
+    {
+      "id": "verwaesserung:LXEO:2026-10-29",
+      "s": "T:LXEO",
+      "n": "Lexeo Therapeutics, Inc.",
+      "t": "LXEO",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-29T11:30:37.000Z"
     }
   ]
 }
