@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T04:44:22.645Z",
-  "anzahl": 228,
+  "stand": "2026-10-29T07:59:24.111Z",
+  "anzahl": 232,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3005,6 +3005,61 @@
         "Finnhub Kurs"
       ],
       "z": "2026-10-29T04:44:22.645Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-10-29",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "MarketWatch",
+        "CNBC Top News"
+      ],
+      "z": "2026-10-29T00:10:00.000Z"
+    },
+    {
+      "id": "nachricht:V:2026-10-29",
+      "s": "T:V",
+      "n": "Visa",
+      "t": "V",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-29T07:01:50.000Z"
+    },
+    {
+      "id": "kursrakete:AXIS:2026-10-29",
+      "s": "T:AXIS",
+      "n": "Axis Robotics",
+      "t": "AXIS",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": -1,
+      "st": 0.43,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-29T07:59:24.111Z"
+    },
+    {
+      "id": "kursrakete:QUID:2026-10-29",
+      "s": "T:QUID",
+      "n": "Squid",
+      "t": "QUID",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.43,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-29T07:59:24.111Z"
     }
   ]
 }
