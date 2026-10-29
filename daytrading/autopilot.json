@@ -1,5 +1,60 @@
 {
-  "stand": "2026-10-29T07:58:35.892Z",
+  "stand": "2026-10-29T08:51:46.142Z",
   "horizont": "r1h",
-  "beweise": []
+  "beweise": [
+    {
+      "typ": "nachricht",
+      "gruppe": "aktie",
+      "faelle": 3,
+      "chance": 0,
+      "oeNetto": -0.15,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "nachzahlen_drift",
+      "gruppe": "aktie",
+      "faelle": 3,
+      "chance": 0,
+      "oeNetto": -0.15,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "insider_cluster_kauf",
+      "gruppe": "aktie",
+      "faelle": 7,
+      "chance": 0,
+      "oeNetto": -0.15,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "insider_kauf",
+      "gruppe": "aktie",
+      "faelle": 11,
+      "chance": 0,
+      "oeNetto": -0.15,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "kursrakete",
+      "gruppe": "aktie",
+      "faelle": 3,
+      "chance": 0,
+      "oeNetto": -0.15,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "gewinn_ueberraschung",
+      "gruppe": "aktie",
+      "faelle": 22,
+      "chance": 0,
+      "oeNetto": -0.3,
+      "huerde": 0.15,
+      "bewiesen": false
+    }
+  ]
 }
