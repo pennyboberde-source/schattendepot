@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-29T15:03:52.814Z",
+  "stand": "2026-10-29T15:51:29.012Z",
   "offen": [
     {
       "id": "2026-10-22-space-exploration-technologies",
@@ -84,10 +84,10 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 129.28,
-        "zeit": "2026-10-29T14:44:45.566Z",
+        "wert": 129.58,
+        "zeit": "2026-10-29T15:43:43.444Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 9,
+        "verzoegertMin": 8,
         "hinweis": "letztes Geschäft 2026-10-29",
         "vortag": 129.26
       }
@@ -176,6 +176,14 @@
           "alt": 15.76,
           "neu": 15.9,
           "begruendung": "Nachziehender Stop: 5 % unter Geldkurs 16.735 € (+8.4 %)"
+        },
+        {
+          "zeit": "2026-10-29T15:51:29.012Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 15.9,
+          "neu": 16.62,
+          "begruendung": "Nachziehender Stop: 5 % unter Geldkurs 17.493 € (+13.3 %)"
         }
       ],
       "kauf": {
@@ -193,7 +201,7 @@
         "synthetisch": true
       },
       "zielkurs": 17.66,
-      "stopkurs": 15.9,
+      "stopkurs": 16.62,
       "etfKauf": {
         "wert": 131.775,
         "zeit": "2026-10-28T08:13:19.275Z",
@@ -220,10 +228,10 @@
         }
       ],
       "letzterKurs": {
-        "wert": 16.784,
-        "zeit": "2026-10-29T14:43:44.320Z",
+        "wert": 17.506,
+        "zeit": "2026-10-29T15:43:06.818Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 10,
+        "verzoegertMin": 8,
         "hinweis": "letztes Geschäft 2026-10-29",
         "vortag": 16.748
       }
@@ -332,12 +340,12 @@
         }
       ],
       "letzterKurs": {
-        "wert": 40.677,
-        "vortag": 39.691,
-        "zeit": "2026-10-29T14:52:37.000Z",
+        "wert": 41.063,
+        "vortag": 39.684,
+        "zeit": "2026-10-29T15:50:50.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11612 USD/EUR"
+        "hinweis": "umgerechnet zu 1.11632 USD/EUR"
       }
     }
   ],
