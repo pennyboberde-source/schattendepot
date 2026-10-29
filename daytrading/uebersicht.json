@@ -1,28 +1,28 @@
 {
-  "stand": "2026-10-29T11:17:38.803Z",
+  "stand": "2026-10-29T12:02:05.113Z",
   "heute": {
     "datum": "2026-10-29",
     "gruppe": {
-      "anzahl": 12,
+      "anzahl": 15,
       "treffer": 4,
-      "quote": 33.3,
-      "netto": -78.62,
-      "brutto": -70.62,
-      "nettoTR": -94.62,
-      "oeNettoProzent": -0.66,
-      "oeR": 0
+      "quote": 26.7,
+      "netto": -189.72,
+      "brutto": -181.72,
+      "nettoTR": -211.72,
+      "oeNettoProzent": -1.28,
+      "oeR": -0.2
     },
-    "offen": 18
+    "offen": 16
   },
   "gesamt": {
-    "anzahl": 52,
+    "anzahl": 55,
     "treffer": 10,
-    "quote": 19.2,
-    "netto": -650.98,
-    "brutto": -622.98,
-    "nettoTR": -726.98,
-    "oeNettoProzent": -1.27,
-    "oeR": -0.29
+    "quote": 18.2,
+    "netto": -762.08,
+    "brutto": -734.08,
+    "nettoTR": -844.08,
+    "oeNettoProzent": -1.4,
+    "oeR": -0.33
   },
   "kurve": [
     {
@@ -33,33 +33,33 @@
     },
     {
       "datum": "2026-10-29",
-      "netto": -650.98,
-      "brutto": -622.98,
-      "nettoTR": -726.98
+      "netto": -762.08,
+      "brutto": -734.08,
+      "nettoTR": -844.08
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 52,
+      "anzahl": 55,
       "treffer": 10,
-      "quote": 19.2,
-      "netto": -650.98,
-      "brutto": -622.98,
-      "nettoTR": -726.98,
-      "oeNettoProzent": -1.27,
-      "oeR": -0.29
+      "quote": 18.2,
+      "netto": -762.08,
+      "brutto": -734.08,
+      "nettoTR": -844.08,
+      "oeNettoProzent": -1.4,
+      "oeR": -0.33
     }
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 28,
+      "anzahl": 31,
       "treffer": 9,
-      "quote": 32.1,
-      "netto": -124.06,
-      "brutto": -124.06,
-      "nettoTR": -180.06,
-      "oeNettoProzent": -0.47,
-      "oeR": -0.14
+      "quote": 29,
+      "netto": -235.16,
+      "brutto": -235.16,
+      "nettoTR": -297.16,
+      "oeNettoProzent": -0.79,
+      "oeR": -0.23
     },
     "krypto": {
       "anzahl": 14,
@@ -84,24 +84,24 @@
   },
   "nachSetup": {
     "orb_long": {
+      "anzahl": 26,
+      "treffer": 5,
+      "quote": 19.2,
+      "netto": -220.2,
+      "brutto": -202.2,
+      "nettoTR": -254.2,
+      "oeNettoProzent": -0.88,
+      "oeR": -0.2
+    },
+    "orb_short": {
       "anzahl": 24,
       "treffer": 5,
       "quote": 20.8,
-      "netto": -203.61,
-      "brutto": -185.61,
-      "nettoTR": -233.61,
-      "oeNettoProzent": -0.87,
-      "oeR": -0.13
-    },
-    "orb_short": {
-      "anzahl": 23,
-      "treffer": 5,
-      "quote": 21.7,
-      "netto": -359.13,
-      "brutto": -359.13,
-      "nettoTR": -405.13,
-      "oeNettoProzent": -1.57,
-      "oeR": -0.39
+      "netto": -453.64,
+      "brutto": -453.64,
+      "nettoTR": -501.64,
+      "oeNettoProzent": -1.9,
+      "oeR": -0.42
     },
     "level_long": {
       "anzahl": 5,
@@ -116,24 +116,24 @@
   },
   "nachInstrument": {
     "turbo": {
-      "anzahl": 23,
+      "anzahl": 24,
       "treffer": 5,
-      "quote": 21.7,
-      "netto": -359.13,
-      "brutto": -359.13,
-      "nettoTR": -405.13,
-      "oeNettoProzent": -1.57,
-      "oeR": -0.39
+      "quote": 20.8,
+      "netto": -453.64,
+      "brutto": -453.64,
+      "nettoTR": -501.64,
+      "oeNettoProzent": -1.9,
+      "oeR": -0.42
     },
     "aktie": {
-      "anzahl": 15,
+      "anzahl": 17,
       "treffer": 5,
-      "quote": 33.3,
-      "netto": -122,
-      "brutto": -122,
-      "nettoTR": -152,
-      "oeNettoProzent": -0.85,
-      "oeR": -0.05
+      "quote": 29.4,
+      "netto": -138.59,
+      "brutto": -138.59,
+      "nettoTR": -172.59,
+      "oeNettoProzent": -0.86,
+      "oeR": -0.16
     },
     "krypto": {
       "anzahl": 14,
@@ -148,35 +148,35 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 27,
+      "anzahl": 29,
       "treffer": 5,
-      "quote": 18.5,
-      "netto": -460.4,
-      "brutto": -450.4,
-      "nettoTR": -504.4,
-      "oeNettoProzent": -1.73,
-      "oeR": -0.26
+      "quote": 17.2,
+      "netto": -476.99,
+      "brutto": -466.99,
+      "nettoTR": -524.99,
+      "oeNettoProzent": -1.67,
+      "oeR": -0.31
     },
     "spekulativ": {
-      "anzahl": 25,
+      "anzahl": 26,
       "treffer": 5,
-      "quote": 20,
-      "netto": -190.58,
-      "brutto": -172.58,
-      "nettoTR": -222.58,
-      "oeNettoProzent": -0.77,
-      "oeR": -0.32
+      "quote": 19.2,
+      "netto": -285.09,
+      "brutto": -267.09,
+      "nettoTR": -319.09,
+      "oeNettoProzent": -1.11,
+      "oeR": -0.34
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 31,
+      "anzahl": 34,
       "treffer": 0,
       "quote": 0,
-      "netto": -843.34,
-      "brutto": -825.34,
-      "nettoTR": -887.34,
-      "oeNettoProzent": -2.74,
+      "netto": -954.44,
+      "brutto": -936.44,
+      "nettoTR": -1004.44,
+      "oeNettoProzent": -2.84,
       "oeR": -1.05
     },
     "schluss": {
@@ -212,14 +212,14 @@
       "oeR": -0.37
     },
     "aufwaerts_ruhig": {
-      "anzahl": 12,
+      "anzahl": 15,
       "treffer": 4,
-      "quote": 33.3,
-      "netto": -78.62,
-      "brutto": -70.62,
-      "nettoTR": -94.62,
-      "oeNettoProzent": -0.66,
-      "oeR": 0
+      "quote": 26.7,
+      "netto": -189.72,
+      "brutto": -181.72,
+      "nettoTR": -211.72,
+      "oeNettoProzent": -1.28,
+      "oeR": -0.2
     }
   },
   "zeitmaschine": [
@@ -535,39 +535,6 @@
       }
     },
     {
-      "id": "2026-10-29-scan-hensoldt-ag",
-      "datum": "2026-10-29",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "HENSOLDT AG",
-      "isin": "DE000HAG0005",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-29T08:40:00.000Z",
-        "kurs": 88.68,
-        "level": 88.54,
-        "spanne": {
-          "hoch": 88.54,
-          "tief": 86.98
-        },
-        "richtung": "long"
-      },
-      "stop": 87.76,
-      "ziel": 89.2,
-      "zielR": 2,
-      "flatBis": "2026-10-29T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-29T08:40:00.000Z",
-        "basisKurs": 88.24,
-        "kurs": 88.306,
-        "stueck": 11,
-        "kurswert": 971.37
-      }
-    },
-    {
       "id": "2026-10-29-scan-vonovia-se",
       "datum": "2026-10-29",
       "herkunft": "code_scan",
@@ -766,76 +733,43 @@
       }
     },
     {
-      "id": "2026-10-29-scan-sap-se",
-      "datum": "2026-10-29",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SAP SE",
-      "isin": "DE0007164600",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-29T09:25:00.000Z",
-        "kurs": 209.95,
-        "level": 209.85,
-        "spanne": {
-          "hoch": 209.85,
-          "tief": 205.75
-        },
-        "richtung": "long"
-      },
-      "stop": 207.8,
-      "ziel": 214.25,
-      "zielR": 2,
-      "flatBis": "2026-10-29T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-29T09:25:00.000Z",
-        "basisKurs": 209.95,
-        "kurs": 210.107,
-        "stueck": 4,
-        "kurswert": 840.43
-      }
-    },
-    {
-      "id": "2026-10-29-scan-tk-accelis-group-ag-co-k",
+      "id": "2026-10-29-scan-ohb-se",
       "datum": "2026-10-29",
       "herkunft": "code_scan",
       "markt": "eu",
       "setup": "orb",
       "richtung": "short",
       "instrument": "turbo",
-      "name": "TK ACCELIS GROUP AG & CO KGA",
-      "isin": "DE000TKCC1S8",
+      "name": "OHB SE",
+      "isin": "DE0005936124",
       "turbo": {
         "richtung": "short",
         "hebel": 5,
-        "basispreis": 31.92,
-        "bezugsverhaeltnis": 1,
+        "basispreis": 294,
+        "bezugsverhaeltnis": 0.1,
         "emittent": "UniCredit (synthetisch)"
       },
-      "spekulativ": true,
+      "spekulativ": false,
       "ausloeser": {
-        "zeit": "2026-10-29T10:50:00.000Z",
-        "kurs": 26.54,
-        "level": 26.64,
+        "zeit": "2026-10-29T11:40:00.000Z",
+        "kurs": 246,
+        "level": 247,
         "spanne": {
-          "hoch": 27.46,
-          "tief": 26.64
+          "hoch": 264.5,
+          "tief": 247
         },
         "richtung": "short"
       },
-      "stop": 27.05,
-      "ziel": 25.7,
+      "stop": 255.75,
+      "ziel": 223.5,
       "zielR": 2,
       "flatBis": "2026-10-29T16:25:00.000Z",
       "einstieg": {
-        "zeit": "2026-10-29T10:50:00.000Z",
-        "basisKurs": 26.6,
-        "kurs": 5.3333,
-        "stueck": 187,
-        "kurswert": 997.33
+        "zeit": "2026-10-29T11:40:00.000Z",
+        "basisKurs": 245,
+        "kurs": 4.9123,
+        "stueck": 203,
+        "kurswert": 997.2
       }
     }
   ],
@@ -1138,39 +1072,6 @@
       }
     },
     {
-      "id": "2026-10-29-scan-hensoldt-ag",
-      "datum": "2026-10-29",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "HENSOLDT AG",
-      "isin": "DE000HAG0005",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-29T08:40:00.000Z",
-        "kurs": 88.68,
-        "level": 88.54,
-        "spanne": {
-          "hoch": 88.54,
-          "tief": 86.98
-        },
-        "richtung": "long"
-      },
-      "stop": 87.76,
-      "ziel": 89.2,
-      "zielR": 2,
-      "flatBis": "2026-10-29T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-29T08:40:00.000Z",
-        "basisKurs": 88.24,
-        "kurs": 88.306,
-        "stueck": 11,
-        "kurswert": 971.37
-      }
-    },
-    {
       "id": "2026-10-29-scan-vonovia-se",
       "datum": "2026-10-29",
       "herkunft": "code_scan",
@@ -1369,6 +1270,98 @@
       }
     },
     {
+      "id": "2026-10-29-scan-ohb-se",
+      "datum": "2026-10-29",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "OHB SE",
+      "isin": "DE0005936124",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 294,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-29T11:40:00.000Z",
+        "kurs": 246,
+        "level": 247,
+        "spanne": {
+          "hoch": 264.5,
+          "tief": 247
+        },
+        "richtung": "short"
+      },
+      "stop": 255.75,
+      "ziel": 223.5,
+      "zielR": 2,
+      "flatBis": "2026-10-29T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-29T11:40:00.000Z",
+        "basisKurs": 245,
+        "kurs": 4.9123,
+        "stueck": 203,
+        "kurswert": 997.2
+      }
+    },
+    {
+      "id": "2026-10-29-scan-hensoldt-ag",
+      "datum": "2026-10-29",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "HENSOLDT AG",
+      "isin": "DE000HAG0005",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-29T08:40:00.000Z",
+        "kurs": 88.68,
+        "level": 88.54,
+        "spanne": {
+          "hoch": 88.54,
+          "tief": 86.98
+        },
+        "richtung": "long"
+      },
+      "stop": 87.76,
+      "ziel": 89.2,
+      "zielR": 2,
+      "flatBis": "2026-10-29T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-29T08:40:00.000Z",
+        "basisKurs": 88.24,
+        "kurs": 88.306,
+        "stueck": 11,
+        "kurswert": 971.37
+      },
+      "ausstieg": {
+        "zeit": "2026-10-29T11:55:00.000Z",
+        "basisKurs": 87.76,
+        "kurs": 87.694,
+        "kurswert": 964.63,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -6.74,
+        "bruttoProzent": -0.69,
+        "netto": -6.74,
+        "nettoProzent": -0.69,
+        "nettoTR": -8.74,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
       "id": "2026-10-29-scan-sap-se",
       "datum": "2026-10-29",
       "herkunft": "code_scan",
@@ -1399,6 +1392,25 @@
         "kurs": 210.107,
         "stueck": 4,
         "kurswert": 840.43
+      },
+      "ausstieg": {
+        "zeit": "2026-10-29T11:45:00.000Z",
+        "basisKurs": 207.8,
+        "kurs": 207.644,
+        "kurswert": 830.58,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -9.85,
+        "bruttoProzent": -1.17,
+        "netto": -9.85,
+        "nettoProzent": -1.17,
+        "nettoTR": -11.85,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -1439,6 +1451,25 @@
         "kurs": 5.3333,
         "stueck": 187,
         "kurswert": 997.33
+      },
+      "ausstieg": {
+        "zeit": "2026-10-29T11:30:00.000Z",
+        "basisKurs": 27.08,
+        "kurs": 4.8279,
+        "kurswert": 902.82,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -94.51,
+        "bruttoProzent": -9.48,
+        "netto": -94.51,
+        "nettoProzent": -9.48,
+        "nettoTR": -96.51,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.07
       }
     },
     {
@@ -4326,10 +4357,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 12,
-        "chance": 25,
-        "oeNetto": -0.66,
-        "wertung": -1.28
+        "faelle": 14,
+        "chance": 35.7,
+        "oeNetto": -0.39,
+        "wertung": -0.95
       }
     },
     "krypto:orb_long": {
