@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-29T06:50:15.728Z",
+  "stand": "2026-10-29T07:58:30.416Z",
   "offen": [
     {
       "id": "2026-10-22-space-exploration-technologies",
@@ -84,95 +84,12 @@
         "hinweis": "letztes Geschäft 2026-10-22"
       },
       "letzterKurs": {
-        "wert": 129.3,
-        "zeit": "2026-10-29T06:44:29.077Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 6,
-        "hinweis": "letztes Geschäft 2026-10-29",
-        "vortag": 129.26
-      }
-    },
-    {
-      "id": "2026-10-23-lithia-motors-inc",
-      "status": "offen",
-      "vorgemerktUm": "2026-10-23T05:42:39.815Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "Lithia Motors Inc.",
-          "isin": "US5367971034",
-          "wkn": "914076",
-          "ticker": "LAD",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_large",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "LAD",
-            "waehrung": "USD"
-          }
-        },
-        "strategie": "nachzahlen_drift",
-        "these": "Lithia meldete am 21.10. Rekordumsatz von 9,9 Mrd. $, bereinigtes EPS 10,34 $ (+9 %), Aktienrückkäufe und 7 % mehr Dividende. Der Markt reagierte am 22.10. mit +8,2 % und schloss fast am Tageshoch (291 $) – starkes Zeichen für eine Drift über einige Tage bis Wochen.",
-        "ausloeser": "Positive Gewinnüberraschung mit bestätigender Kursreaktion (+8,2 %, Schluss am Hoch), höchster Score im Lagebild",
-        "signalIds": [
-          "gewinn_ueberraschung:LAD:2026-10-23",
-          "nachzahlen_drift:LAD:2026-10-23"
-        ],
-        "quellen": [
-          {
-            "name": "Lithia Q3-2026-Ergebnis (SEC 8-K)",
-            "link": "https://www.sec.gov/Archives/edgar/data/0001023128/000102312826000057/a2026q3exx99earningsrelease.htm"
-          }
-        ],
-        "konfidenz": 48,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 1,
-        "zielNettoProzent": 5,
-        "stopProzent": -7,
-        "verkaufstermin": "2026-11-06T15:00:00.000Z",
-        "risiken": [
-          "Lagebild-Überraschung (+34 %) vergleicht unbereinigtes EPS 13,22 $ mit bereinigter Erwartung – echte Überraschung eher ~+5 %",
-          "Nach +8,2 % an einem Tag sind Gewinnmitnahmen möglich",
-          "Autohandel zinsabhängig; Zinssorgen belasten derzeit Märkte"
-        ],
-        "einflussLektionen": "Noch keine Lektionen/Statistik (0 abgeschlossene Orders). Wahl folgt höchstem Score; Konfidenz unter 50, weil die Überraschung im Signal überzeichnet ist.",
-        "risikoklasse": "normal"
-      },
-      "verkaufstermin": "2026-11-06T15:00:00.000Z",
-      "anpassungen": [],
-      "kauf": {
-        "zeit": "2026-10-23T07:12:59.444Z",
-        "stueck": 3,
-        "kurs": 256.792,
-        "kurswert": 770.38,
-        "entgelt": {
-          "provision": 0,
-          "handelsplatz": 0,
-          "gesamt": 0
-        },
-        "betrag": 770.38,
-        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-23T06:44:08.589Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 277.09,
-      "stopkurs": 238.82,
-      "etfKauf": {
-        "wert": 129.965,
-        "zeit": "2026-10-23T06:57:45.909Z",
+        "wert": 128.5,
+        "zeit": "2026-10-29T07:43:46.333Z",
         "quelle": "gettex (verzögert, MiFIR)",
         "verzoegertMin": 15,
-        "hinweis": "letztes Geschäft 2026-10-23",
-        "vortag": 129.67
-      },
-      "letzterKurs": {
-        "wert": 257.75,
-        "zeit": "2026-10-29T06:31:03.425Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 19,
         "hinweis": "letztes Geschäft 2026-10-29",
-        "vortag": 257.75
+        "vortag": 129.26
       }
     },
     {
@@ -303,10 +220,10 @@
         }
       ],
       "letzterKurs": {
-        "wert": 16.584,
-        "zeit": "2026-10-29T06:30:36.144Z",
+        "wert": 16.226,
+        "zeit": "2026-10-29T07:43:17.449Z",
         "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 20,
+        "verzoegertMin": 15,
         "hinweis": "letztes Geschäft 2026-10-29",
         "vortag": 16.748
       }
@@ -389,13 +306,13 @@
         "vortag": 131.705
       },
       "letzterKurs": {
-        "wert": 39.768,
-        "vortag": 39.032,
+        "wert": 39.747,
+        "vortag": 39.011,
         "zeit": "2026-10-28T20:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 650,
+        "verzoegertMin": 719,
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11397 USD/EUR"
+        "hinweis": "umgerechnet zu 1.11456 USD/EUR"
       }
     }
   ],

@@ -1,21 +1,21 @@
 {
-  "stand": "2026-10-29T06:50:15.728Z",
+  "stand": "2026-10-29T07:58:30.416Z",
   "gesamt": {
-    "anzahl": 5,
-    "treffer": 2,
-    "quote": 40,
-    "oeNetto": -2.76,
-    "oeNachSteuern": -2.75,
-    "summeNetto": -123.25
+    "anzahl": 6,
+    "treffer": 3,
+    "quote": 50,
+    "oeNetto": -2.25,
+    "oeNachSteuern": -2.25,
+    "summeNetto": -120.96
   },
   "nachStrategie": {
     "nachzahlen_drift": {
-      "anzahl": 3,
-      "treffer": 1,
-      "quote": 33.3,
-      "oeNetto": -3.03,
-      "oeNachSteuern": -3.03,
-      "summeNetto": -78.66
+      "anzahl": 4,
+      "treffer": 2,
+      "quote": 50,
+      "oeNetto": -2.2,
+      "oeNachSteuern": -2.2,
+      "summeNetto": -76.37
     },
     "insider_kauf": {
       "anzahl": 2,
@@ -28,20 +28,20 @@
   },
   "nachSignalTyp": {
     "gewinn_ueberraschung": {
-      "anzahl": 3,
-      "treffer": 1,
-      "quote": 33.3,
-      "oeNetto": -3.03,
-      "oeNachSteuern": -3.03,
-      "summeNetto": -78.66
+      "anzahl": 4,
+      "treffer": 2,
+      "quote": 50,
+      "oeNetto": -2.2,
+      "oeNachSteuern": -2.2,
+      "summeNetto": -76.37
     },
     "nachzahlen_drift": {
-      "anzahl": 2,
-      "treffer": 1,
-      "quote": 50,
-      "oeNetto": -2.48,
-      "oeNachSteuern": -2.47,
-      "summeNetto": -38.02
+      "anzahl": 3,
+      "treffer": 2,
+      "quote": 66.7,
+      "oeNetto": -1.55,
+      "oeNachSteuern": -1.55,
+      "summeNetto": -35.73
     },
     "insider_cluster_kauf": {
       "anzahl": 2,
@@ -92,6 +92,14 @@
       "oeNetto": -6.2,
       "oeNachSteuern": -6.2,
       "summeNetto": -49.36
+    },
+    "Lithia Q3-2026-Ergebnis (SEC 8-K)": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "oeNetto": 0.3,
+      "oeNachSteuern": 0.3,
+      "summeNetto": 2.29
     },
     "OpenInsider RAPP": {
       "anzahl": 1,
@@ -152,22 +160,22 @@
   },
   "nachAnlageklasse": {
     "aktie": {
-      "anzahl": 5,
-      "treffer": 2,
-      "quote": 40,
-      "oeNetto": -2.76,
-      "oeNachSteuern": -2.75,
-      "summeNetto": -123.25
+      "anzahl": 6,
+      "treffer": 3,
+      "quote": 50,
+      "oeNetto": -2.25,
+      "oeNachSteuern": -2.25,
+      "summeNetto": -120.96
     }
   },
   "nachRisikoklasse": {
     "normal": {
-      "anzahl": 4,
-      "treffer": 2,
-      "quote": 50,
-      "oeNetto": 0.04,
-      "oeNachSteuern": -0.57,
-      "summeNetto": 13.87
+      "anzahl": 5,
+      "treffer": 3,
+      "quote": 60,
+      "oeNetto": 0.09,
+      "oeNachSteuern": -0.4,
+      "summeNetto": 16.16
     },
     "spekulativ": {
       "anzahl": 1,
@@ -188,12 +196,12 @@
       "summeNetto": -227.12
     },
     "zeit": {
-      "anzahl": 1,
-      "treffer": 1,
+      "anzahl": 2,
+      "treffer": 2,
       "quote": 100,
-      "oeNetto": 1.25,
-      "oeNachSteuern": 1.25,
-      "summeNetto": 11.34
+      "oeNetto": 0.78,
+      "oeNachSteuern": 0.78,
+      "summeNetto": 13.63
     },
     "ziel": {
       "anzahl": 1,
@@ -206,12 +214,12 @@
   },
   "nachHaltedauer": {
     "3–7 Tage": {
-      "anzahl": 2,
-      "treffer": 1,
-      "quote": 50,
-      "oeNetto": -2.48,
-      "oeNachSteuern": -2.47,
-      "summeNetto": -38.02
+      "anzahl": 3,
+      "treffer": 2,
+      "quote": 66.7,
+      "oeNetto": -1.55,
+      "oeNachSteuern": -1.55,
+      "summeNetto": -35.73
     },
     "1–3 Tage": {
       "anzahl": 2,
@@ -232,20 +240,20 @@
   },
   "nachKonfidenz": {
     "40–59 %": {
-      "anzahl": 5,
-      "treffer": 2,
-      "quote": 40,
-      "oeNetto": -2.76,
-      "oeNachSteuern": -2.75,
-      "summeNetto": -123.25
+      "anzahl": 6,
+      "treffer": 3,
+      "quote": 50,
+      "oeNetto": -2.25,
+      "oeNachSteuern": -2.25,
+      "summeNetto": -120.96
     }
   },
   "kalibrierung": [
     {
       "stufe": "40–59 %",
-      "erwartet": 42.4,
-      "tatsaechlich": 40,
-      "anzahl": 5
+      "erwartet": 43.3,
+      "tatsaechlich": 50,
+      "anzahl": 6
     }
   ],
   "pflicht": {
@@ -257,22 +265,22 @@
     "summeNetto": 0
   },
   "ueberzeugung": {
-    "anzahl": 5,
-    "treffer": 2,
-    "quote": 40,
-    "oeNetto": -2.76,
-    "oeNachSteuern": -2.75,
-    "summeNetto": -123.25
+    "anzahl": 6,
+    "treffer": 3,
+    "quote": 50,
+    "oeNetto": -2.25,
+    "oeNachSteuern": -2.25,
+    "summeNetto": -120.96
   },
   "erwartetVsTatsaechlich": {
-    "erwartet": 0.5,
-    "tatsaechlich": -2.76,
-    "anzahl": 5
+    "erwartet": 0.58,
+    "tatsaechlich": -2.25,
+    "anzahl": 6
   },
   "etf": {
-    "depotNetto": -123.25,
-    "etfNetto": 46.31,
-    "anzahlMitVergleich": 5
+    "depotNetto": -120.96,
+    "etfNetto": 55.5,
+    "anzahlMitVergleich": 6
   },
   "kandidaten": {
     "gesamt": {
@@ -873,12 +881,12 @@
   },
   "nachPhase": {
     "unbekannt": {
-      "anzahl": 5,
-      "treffer": 2,
-      "quote": 40,
-      "oeNetto": -2.76,
-      "oeNachSteuern": -2.75,
-      "summeNetto": -123.25
+      "anzahl": 6,
+      "treffer": 3,
+      "quote": 50,
+      "oeNetto": -2.25,
+      "oeNachSteuern": -2.25,
+      "summeNetto": -120.96
     }
   },
   "prognose": {
@@ -898,15 +906,15 @@
   },
   "nachHerkunft": {
     "claude": {
-      "anzahl": 5,
-      "treffer": 2,
-      "quote": 40,
-      "oeNetto": -2.76,
-      "oeNachSteuern": -2.75,
-      "summeNetto": -123.25
+      "anzahl": 6,
+      "treffer": 3,
+      "quote": 50,
+      "oeNetto": -2.25,
+      "oeNachSteuern": -2.25,
+      "summeNetto": -120.96
     }
   },
-  "zusammenfassung": "Gesamt: 5 Orders, Trefferquote 40 %, Ø -2.76 % nach Gebühren (erwartet waren Ø 0.5 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 4 Orders, Ø 0.04 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 40 % (n=5).\nStrategien (n≥3): nachzahlen_drift 33.3 %/Ø -3.03 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -2.97 % (n=41); insider_kauf 1.06 % (n=28); insider_cluster_kauf -0.77 % (n=26); nachzahlen_drift -1.7 % (n=14); nachricht 4.59 % (n=10).\nVs. MSCI World (gleiche Zeiträume): Depot -123.25 € vs. ETF 46.31 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_kauf 7.1 % (Lift 1.38, n=28); gewinn_ueberraschung 4.3 % (Lift 0.84, n=23).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,5 %, erreicht Ø -2,8 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +4,6 % nach 1 Woche (n=10).\n- Schwächstes Signal: gewinn_ueberraschung Ø -3,0 % nach 1 Woche (n=41) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 6 Orders, Trefferquote 50 %, Ø -2.25 % nach Gebühren (erwartet waren Ø 0.58 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 5 Orders, Ø 0.09 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=6).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -2.2 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -2.97 % (n=41); insider_kauf 1.06 % (n=28); insider_cluster_kauf -0.77 % (n=26); nachzahlen_drift -1.7 % (n=14); nachricht 4.59 % (n=10).\nVs. MSCI World (gleiche Zeiträume): Depot -120.96 € vs. ETF 55.5 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_kauf 7.1 % (Lift 1.38, n=28); gewinn_ueberraschung 4.3 % (Lift 0.84, n=23).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -2,3 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +4,6 % nach 1 Woche (n=10).\n- Schwächstes Signal: gewinn_ueberraschung Ø -3,0 % nach 1 Woche (n=41) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "tagesgewinner",
@@ -1145,7 +1153,7 @@
     }
   ],
   "lernhinweise": [
-    "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,5 %, erreicht Ø -2,8 % → realistischer planen oder Ziele näher setzen.",
+    "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -2,3 % → realistischer planen oder Ziele näher setzen.",
     "Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +4,6 % nach 1 Woche (n=10).",
     "Schwächstes Signal: gewinn_ueberraschung Ø -3,0 % nach 1 Woche (n=41) → nicht darauf verlassen."
   ],
