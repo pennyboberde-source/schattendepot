@@ -1,28 +1,28 @@
 {
-  "stand": "2026-10-29T17:46:16.192Z",
+  "stand": "2026-10-29T18:26:19.158Z",
   "heute": {
     "datum": "2026-10-29",
     "gruppe": {
-      "anzahl": 36,
+      "anzahl": 38,
       "treffer": 14,
-      "quote": 38.9,
-      "netto": -301.93,
-      "brutto": -291.93,
-      "nettoTR": -363.93,
-      "oeNettoProzent": -0.87,
-      "oeR": 0.1
+      "quote": 36.8,
+      "netto": -320.59,
+      "brutto": -310.59,
+      "nettoTR": -386.59,
+      "oeNettoProzent": -0.91,
+      "oeR": 0.05
     },
-    "offen": 4
+    "offen": 2
   },
   "gesamt": {
-    "anzahl": 76,
+    "anzahl": 78,
     "treffer": 20,
-    "quote": 26.3,
-    "netto": -874.29,
-    "brutto": -844.29,
-    "nettoTR": -996.29,
-    "oeNettoProzent": -1.17,
-    "oeR": -0.15
+    "quote": 25.6,
+    "netto": -892.95,
+    "brutto": -862.95,
+    "nettoTR": -1018.95,
+    "oeNettoProzent": -1.18,
+    "oeR": -0.17
   },
   "kurve": [
     {
@@ -33,21 +33,31 @@
     },
     {
       "datum": "2026-10-29",
-      "netto": -874.29,
-      "brutto": -844.29,
-      "nettoTR": -996.29
+      "netto": -892.95,
+      "brutto": -862.95,
+      "nettoTR": -1018.95
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 76,
+      "anzahl": 77,
       "treffer": 20,
-      "quote": 26.3,
-      "netto": -874.29,
-      "brutto": -844.29,
-      "nettoTR": -996.29,
-      "oeNettoProzent": -1.17,
-      "oeR": -0.15
+      "quote": 26,
+      "netto": -883.62,
+      "brutto": -853.62,
+      "nettoTR": -1007.62,
+      "oeNettoProzent": -1.18,
+      "oeR": -0.16
+    },
+    "claude": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -9.33,
+      "brutto": -9.33,
+      "nettoTR": -11.33,
+      "oeNettoProzent": -1.58,
+      "oeR": -1
     }
   },
   "nachMarkt": {
@@ -62,14 +72,14 @@
       "oeR": 0.07
     },
     "us": {
-      "anzahl": 15,
+      "anzahl": 17,
       "treffer": 1,
-      "quote": 6.7,
-      "netto": -520.28,
-      "brutto": -520.28,
-      "nettoTR": -550.28,
-      "oeNettoProzent": -3.53,
-      "oeR": -0.74
+      "quote": 5.9,
+      "netto": -538.94,
+      "brutto": -538.94,
+      "nettoTR": -572.94,
+      "oeNettoProzent": -3.3,
+      "oeR": -0.77
     },
     "krypto": {
       "anzahl": 15,
@@ -84,14 +94,14 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 44,
+      "anzahl": 46,
       "treffer": 14,
-      "quote": 31.8,
-      "netto": -267.87,
-      "brutto": -247.87,
-      "nettoTR": -335.87,
-      "oeNettoProzent": -0.64,
-      "oeR": 0.08
+      "quote": 30.4,
+      "netto": -286.53,
+      "brutto": -266.53,
+      "nettoTR": -358.53,
+      "oeNettoProzent": -0.68,
+      "oeR": 0.03
     },
     "orb_short": {
       "anzahl": 27,
@@ -116,14 +126,14 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 34,
+      "anzahl": 36,
       "treffer": 13,
-      "quote": 38.2,
-      "netto": -187.99,
-      "brutto": -187.99,
-      "nettoTR": -255.99,
-      "oeNettoProzent": -0.6,
-      "oeR": 0.11
+      "quote": 36.1,
+      "netto": -206.65,
+      "brutto": -206.65,
+      "nettoTR": -278.65,
+      "oeNettoProzent": -0.65,
+      "oeR": 0.05
     },
     "turbo": {
       "anzahl": 27,
@@ -148,14 +158,14 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 44,
+      "anzahl": 46,
       "treffer": 13,
-      "quote": 29.5,
-      "netto": -537.31,
-      "brutto": -525.31,
-      "nettoTR": -613.31,
-      "oeNettoProzent": -1.25,
-      "oeR": -0.09
+      "quote": 28.3,
+      "netto": -555.97,
+      "brutto": -543.97,
+      "nettoTR": -635.97,
+      "oeNettoProzent": -1.26,
+      "oeR": -0.13
     },
     "spekulativ": {
       "anzahl": 32,
@@ -170,14 +180,14 @@
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 43,
+      "anzahl": 45,
       "treffer": 0,
       "quote": 0,
-      "netto": -1189.36,
-      "brutto": -1171.36,
-      "nettoTR": -1257.36,
-      "oeNettoProzent": -2.81,
-      "oeR": -1.06
+      "netto": -1208.02,
+      "brutto": -1190.02,
+      "nettoTR": -1280.02,
+      "oeNettoProzent": -2.76,
+      "oeR": -1.05
     },
     "schluss": {
       "anzahl": 17,
@@ -212,14 +222,14 @@
       "oeR": -0.37
     },
     "aufwaerts_ruhig": {
-      "anzahl": 36,
+      "anzahl": 38,
       "treffer": 14,
-      "quote": 38.9,
-      "netto": -301.93,
-      "brutto": -291.93,
-      "nettoTR": -363.93,
-      "oeNettoProzent": -0.87,
-      "oeR": 0.1
+      "quote": 36.8,
+      "netto": -320.59,
+      "brutto": -310.59,
+      "nettoTR": -386.59,
+      "oeNettoProzent": -0.91,
+      "oeR": 0.05
     }
   },
   "zeitmaschine": [
@@ -308,74 +318,6 @@
         "kurs": 17.067,
         "stueck": 58,
         "kurswert": 989.89
-      }
-    },
-    {
-      "id": "2026-10-29-claude-caterpillar",
-      "datum": "2026-10-29",
-      "herkunft": "claude",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "Caterpillar",
-      "isin": "US1491231015",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-29T13:55:00.000Z",
-        "kurs": 589.1,
-        "level": 588.7,
-        "spanne": {
-          "hoch": 588.7,
-          "tief": 574.4
-        },
-        "richtung": "long"
-      },
-      "stop": 581.55,
-      "ziel": 606.9,
-      "zielR": 2,
-      "flatBis": "2026-10-29T19:55:00.000Z",
-      "chance": 38,
-      "these": "Quartalszahlen vor US-Börsenstart, typischerweise kräftige Tagesbewegung in Zahlenrichtung.",
-      "einstieg": {
-        "zeit": "2026-10-29T13:55:00.000Z",
-        "basisKurs": 590,
-        "kurs": 590.443,
-        "stueck": 1,
-        "kurswert": 590.44
-      }
-    },
-    {
-      "id": "2026-10-29-scan-caterpillar-inc",
-      "datum": "2026-10-29",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "CATERPILLAR INC",
-      "isin": "US1491231015",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-29T13:55:00.000Z",
-        "kurs": 589.1,
-        "level": 588.7,
-        "spanne": {
-          "hoch": 588.7,
-          "tief": 574.4
-        },
-        "richtung": "long"
-      },
-      "stop": 581.55,
-      "ziel": 606.9,
-      "zielR": 2,
-      "flatBis": "2026-10-29T19:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-29T13:55:00.000Z",
-        "basisKurs": 590,
-        "kurs": 590.443,
-        "stueck": 1,
-        "kurswert": 590.44
       }
     }
   ],
@@ -486,6 +428,25 @@
         "kurs": 590.443,
         "stueck": 1,
         "kurswert": 590.44
+      },
+      "ausstieg": {
+        "zeit": "2026-10-29T17:55:00.000Z",
+        "basisKurs": 581.55,
+        "kurs": 581.114,
+        "kurswert": 581.11,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -9.33,
+        "bruttoProzent": -1.58,
+        "netto": -9.33,
+        "nettoProzent": -1.58,
+        "nettoTR": -11.33,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -519,6 +480,25 @@
         "kurs": 590.443,
         "stueck": 1,
         "kurswert": 590.44
+      },
+      "ausstieg": {
+        "zeit": "2026-10-29T17:55:00.000Z",
+        "basisKurs": 581.55,
+        "kurs": 581.114,
+        "kurswert": 581.11,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -9.33,
+        "bruttoProzent": -1.58,
+        "netto": -9.33,
+        "nettoProzent": -1.58,
+        "nettoTR": -11.33,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -4778,5 +4758,8 @@
     "claude": 2,
     "autopilot": 0
   },
-  "hinweise": []
+  "hinweise": [
+    "TAKE-TWO INTERACTIVE SOFTWRE: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "NETFLIX INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
+  ]
 }
