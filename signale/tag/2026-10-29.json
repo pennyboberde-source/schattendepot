@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T15:53:08.269Z",
-  "anzahl": 278,
+  "stand": "2026-10-29T16:52:37.895Z",
+  "anzahl": 282,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3610,7 +3610,7 @@
       "t": "GBC",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3668,6 +3668,58 @@
         "Coinalyze"
       ],
       "z": "2026-10-29T14:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:UCAR:2026-10-29",
+      "s": "T:UCAR",
+      "n": "U Pwr Ltd Ord Shs A",
+      "t": "UCAR",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-29T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GTN.A:2026-10-29",
+      "s": "T:GTN.A",
+      "n": "Gray Media, Inc. Class A Common Stock",
+      "t": "GTN.A",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-29T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:AMZN:2026-10-29",
+      "s": "T:AMZN",
+      "n": "Amazon",
+      "t": "AMZN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-29T16:00:01.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-10-29",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-29T16:22:19.000Z"
     }
   ]
 }
