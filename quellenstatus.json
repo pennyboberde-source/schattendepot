@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-29T08:52:36.052Z",
+  "stand": "2026-10-29T09:50:02.912Z",
   "quellen": [
     {
       "id": "alphavantage",
@@ -35,7 +35,7 @@
     {
       "id": "btcecho",
       "name": "BTC-ECHO",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 9
     },
     {
@@ -47,15 +47,15 @@
     {
       "id": "cnbc",
       "name": "CNBC Top News",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
-      "signale": 8
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
+      "signale": 7
     },
     {
       "id": "coinalyze",
       "name": "Coinalyze (Liquidationen, Funding)",
       "letzterFehler": "2026-10-28T18:45:56.603Z: Schlüssel COINALYZE_API_KEY fehlt",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
-      "signale": 1
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
+      "signale": 0
     },
     {
       "id": "defillama",
@@ -71,7 +71,7 @@
     {
       "id": "faz",
       "name": "FAZ Finanzen",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 1
     },
     {
@@ -96,10 +96,10 @@
       "id": "finnhub",
       "name": "Finnhub",
       "letzterFehler": "2026-10-21T15:25:20.991Z: Schlüssel FINNHUB_API_KEY fehlt",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
-      "signale": 1,
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
+      "signale": 0,
       "kontingent": {
-        "genutzt": 12,
+        "genutzt": 15,
         "limit": 1500,
         "zeitraum": "Tag"
       }
@@ -128,24 +128,24 @@
       "name": "GDELT (Nachrichten zu Positionen)",
       "zuletztOk": "2026-10-28T18:57:23.764Z",
       "signale": 0,
-      "letzterFehler": "2026-10-29T08:52:36.052Z: GDELT drosselt (HTTP 429: höchstens 1 Abfrage je 5 s, geteilte IPs oft gesperrt)"
+      "letzterFehler": "2026-10-29T09:50:02.912Z: GDELT drosselt (HTTP 429: höchstens 1 Abfrage je 5 s, geteilte IPs oft gesperrt)"
     },
     {
       "id": "gettex-scanner",
       "name": "gettex-Kursraketen-Scanner",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
-      "signale": 2
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
+      "signale": 0
     },
     {
       "id": "handelsblatt",
       "name": "Handelsblatt Finanzen",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 1
     },
     {
       "id": "kraken",
       "name": "Kraken (Krypto)",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 0
     },
     {
@@ -157,13 +157,13 @@
     {
       "id": "marketwatch",
       "name": "MarketWatch",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
-      "signale": 2
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
+      "signale": 4
     },
     {
       "id": "nasdaqhalts",
       "name": "Nasdaq Trader Handelsstopps",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 3
     },
     {
@@ -189,19 +189,19 @@
       "id": "sec-verwaesserung",
       "name": "SEC EDGAR (Verwässerung 424B5/S-3)",
       "letzterFehler": "2026-10-28T18:45:56.603Z: Schlüssel SEC_KONTAKT fehlt",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 21
     },
     {
       "id": "shortseller",
       "name": "Short-Seller-Berichte (Grizzly, Fuzzy Panda, Bear Cave)",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 0
     },
     {
       "id": "tagesschau",
       "name": "tagesschau Wirtschaft",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 2
     },
     {
@@ -213,7 +213,7 @@
     {
       "id": "upbit",
       "name": "Upbit (Korea, Krypto)",
-      "zuletztOk": "2026-10-29T08:52:36.052Z",
+      "zuletztOk": "2026-10-29T09:50:02.912Z",
       "signale": 16
     },
     {
