@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T17:47:13.187Z",
-  "anzahl": 283,
+  "stand": "2026-10-29T18:48:07.059Z",
+  "anzahl": 286,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3333,7 +3333,7 @@
       "t": "MF",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3572,7 +3572,8 @@
       "q": [
         "CNBC Top News",
         "MarketWatch",
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "FAZ Finanzen"
       ],
       "z": "2026-10-29T12:10:29.000Z"
     },
@@ -3733,6 +3734,45 @@
         "Nasdaq Trader"
       ],
       "z": "2026-10-29T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ORN:2026-10-29",
+      "s": "T:ORN",
+      "n": "Orion Group Holdings, Inc. Common",
+      "t": "ORN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-29T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PCTTU:2026-10-29",
+      "s": "T:PCTTU",
+      "n": "PureCycle Technologies, Inc Ut",
+      "t": "PCTTU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-29T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-10-29",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-10-29T06:46:21.000Z"
     }
   ]
 }
