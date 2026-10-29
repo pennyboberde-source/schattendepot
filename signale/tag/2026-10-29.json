@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-29T09:50:02.912Z",
-  "anzahl": 238,
+  "stand": "2026-10-29T10:46:56.486Z",
+  "anzahl": 241,
   "signale": [
     {
       "id": "verwaesserung:BFH-PA:2026-10-27",
@@ -3139,6 +3139,45 @@
         "Handelsblatt Finanzen"
       ],
       "z": "2026-10-29T08:47:20.000Z"
+    },
+    {
+      "id": "verwaesserung:ARAI:2026-10-29",
+      "s": "T:ARAI",
+      "n": "Arrive AI Inc.",
+      "t": "ARAI",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-29T01:38:06.000Z"
+    },
+    {
+      "id": "nachricht:JPM:2026-10-29",
+      "s": "T:JPM",
+      "n": "JPMorgan",
+      "t": "JPM",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-10-29T09:52:00.000Z"
+    },
+    {
+      "id": "nachricht:LLY:2026-10-29",
+      "s": "T:LLY",
+      "n": "Eli Lilly",
+      "t": "LLY",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-29T10:45:48.000Z"
     }
   ]
 }
