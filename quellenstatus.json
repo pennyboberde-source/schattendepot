@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-29T14:55:01.961Z",
+  "stand": "2026-10-29T15:53:08.269Z",
   "quellen": [
     {
       "id": "alphavantage",
@@ -35,8 +35,8 @@
     {
       "id": "btcecho",
       "name": "BTC-ECHO",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
-      "signale": 7
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
+      "signale": 8
     },
     {
       "id": "cftccot",
@@ -47,15 +47,15 @@
     {
       "id": "cnbc",
       "name": "CNBC Top News",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
       "signale": 6
     },
     {
       "id": "coinalyze",
       "name": "Coinalyze (Liquidationen, Funding)",
       "letzterFehler": "2026-10-28T18:45:56.603Z: Schlüssel COINALYZE_API_KEY fehlt",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
-      "signale": 0
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
+      "signale": 2
     },
     {
       "id": "defillama",
@@ -71,8 +71,8 @@
     {
       "id": "faz",
       "name": "FAZ Finanzen",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
-      "signale": 1
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
+      "signale": 0
     },
     {
       "id": "kryptostimmung",
@@ -96,10 +96,10 @@
       "id": "finnhub",
       "name": "Finnhub",
       "letzterFehler": "2026-10-21T15:25:20.991Z: Schlüssel FINNHUB_API_KEY fehlt",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
-      "signale": 7,
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
+      "signale": 1,
       "kontingent": {
-        "genutzt": 30,
+        "genutzt": 33,
         "limit": 1500,
         "zeitraum": "Tag"
       }
@@ -128,24 +128,24 @@
       "name": "GDELT (Nachrichten zu Positionen)",
       "zuletztOk": "2026-10-28T18:57:23.764Z",
       "signale": 0,
-      "letzterFehler": "2026-10-29T14:55:01.961Z: GDELT drosselt (HTTP 429: höchstens 1 Abfrage je 5 s, geteilte IPs oft gesperrt)"
+      "letzterFehler": "2026-10-29T15:53:08.269Z: GDELT drosselt (HTTP 429: höchstens 1 Abfrage je 5 s, geteilte IPs oft gesperrt)"
     },
     {
       "id": "gettex-scanner",
       "name": "gettex-Kursraketen-Scanner",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
-      "signale": 2
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
+      "signale": 0
     },
     {
       "id": "handelsblatt",
       "name": "Handelsblatt Finanzen",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
       "signale": 2
     },
     {
       "id": "kraken",
       "name": "Kraken (Krypto)",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
       "signale": 0
     },
     {
@@ -157,14 +157,14 @@
     {
       "id": "marketwatch",
       "name": "MarketWatch",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
-      "signale": 2
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
+      "signale": 0
     },
     {
       "id": "nasdaqhalts",
       "name": "Nasdaq Trader Handelsstopps",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
-      "signale": 16
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
+      "signale": 20
     },
     {
       "id": "openinsider",
@@ -189,19 +189,19 @@
       "id": "sec-verwaesserung",
       "name": "SEC EDGAR (Verwässerung 424B5/S-3)",
       "letzterFehler": "2026-10-28T18:45:56.603Z: Schlüssel SEC_KONTAKT fehlt",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
       "signale": 29
     },
     {
       "id": "shortseller",
       "name": "Short-Seller-Berichte (Grizzly, Fuzzy Panda, Bear Cave)",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
       "signale": 0
     },
     {
       "id": "tagesschau",
       "name": "tagesschau Wirtschaft",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
       "signale": 2
     },
     {
@@ -213,8 +213,8 @@
     {
       "id": "upbit",
       "name": "Upbit (Korea, Krypto)",
-      "zuletztOk": "2026-10-29T14:55:01.961Z",
-      "signale": 18
+      "zuletztOk": "2026-10-29T15:53:08.269Z",
+      "signale": 17
     },
     {
       "id": "wikipedia",
