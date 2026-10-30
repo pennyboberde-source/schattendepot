@@ -1,28 +1,28 @@
 {
-  "stand": "2026-10-30T14:14:29.029Z",
+  "stand": "2026-10-30T15:10:00.422Z",
   "heute": {
     "datum": "2026-10-30",
     "gruppe": {
-      "anzahl": 23,
-      "treffer": 3,
-      "quote": 13,
-      "netto": -459.86,
-      "brutto": -451.86,
-      "nettoTR": -497.86,
-      "oeNettoProzent": -2.03,
-      "oeR": -0.42
+      "anzahl": 30,
+      "treffer": 4,
+      "quote": 13.3,
+      "netto": -852.37,
+      "brutto": -844.37,
+      "nettoTR": -904.37,
+      "oeNettoProzent": -2.87,
+      "oeR": -0.47
     },
-    "offen": 17
+    "offen": 10
   },
   "gesamt": {
-    "anzahl": 103,
-    "treffer": 25,
-    "quote": 24.3,
-    "netto": -1262.43,
-    "brutto": -1224.43,
-    "nettoTR": -1430.43,
-    "oeNettoProzent": -1.26,
-    "oeR": -0.2
+    "anzahl": 110,
+    "treffer": 26,
+    "quote": 23.6,
+    "netto": -1654.94,
+    "brutto": -1616.94,
+    "nettoTR": -1836.94,
+    "oeNettoProzent": -1.54,
+    "oeR": -0.23
   },
   "kurve": [
     {
@@ -39,43 +39,53 @@
     },
     {
       "datum": "2026-10-30",
-      "netto": -1262.43,
-      "brutto": -1224.43,
-      "nettoTR": -1430.43
+      "netto": -1654.94,
+      "brutto": -1616.94,
+      "nettoTR": -1836.94
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 102,
-      "treffer": 25,
-      "quote": 24.5,
-      "netto": -1253.1,
-      "brutto": -1215.1,
-      "nettoTR": -1419.1,
-      "oeNettoProzent": -1.26,
-      "oeR": -0.2
+      "anzahl": 108,
+      "treffer": 26,
+      "quote": 24.1,
+      "netto": -1510.25,
+      "brutto": -1472.25,
+      "nettoTR": -1688.25,
+      "oeNettoProzent": -1.43,
+      "oeR": -0.22
     },
     "claude": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 0,
       "quote": 0,
-      "netto": -9.33,
-      "brutto": -9.33,
-      "nettoTR": -11.33,
-      "oeNettoProzent": -1.58,
+      "netto": -144.69,
+      "brutto": -144.69,
+      "nettoTR": -148.69,
+      "oeNettoProzent": -7.58,
       "oeR": -1
     }
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 65,
+      "anzahl": 66,
       "treffer": 21,
-      "quote": 32.3,
-      "netto": -620.96,
-      "brutto": -620.96,
-      "nettoTR": -750.96,
-      "oeNettoProzent": -0.98,
-      "oeR": -0.13
+      "quote": 31.8,
+      "netto": -694.83,
+      "brutto": -694.83,
+      "nettoTR": -826.83,
+      "oeNettoProzent": -1.08,
+      "oeR": -0.15
+    },
+    "us": {
+      "anzahl": 25,
+      "treffer": 4,
+      "quote": 16,
+      "netto": -767.2,
+      "brutto": -767.2,
+      "nettoTR": -817.2,
+      "oeNettoProzent": -3.16,
+      "oeR": -0.57
     },
     "krypto": {
       "anzahl": 19,
@@ -86,38 +96,28 @@
       "nettoTR": -192.91,
       "oeNettoProzent": -1.02,
       "oeR": -0.06
-    },
-    "us": {
-      "anzahl": 19,
-      "treffer": 3,
-      "quote": 15.8,
-      "netto": -448.56,
-      "brutto": -448.56,
-      "nettoTR": -486.56,
-      "oeNettoProzent": -2.47,
-      "oeR": -0.6
     }
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 62,
-      "treffer": 17,
-      "quote": 27.4,
-      "netto": -375.13,
-      "brutto": -347.13,
-      "nettoTR": -471.13,
-      "oeNettoProzent": -0.66,
-      "oeR": -0.04
+      "anzahl": 66,
+      "treffer": 18,
+      "quote": 27.3,
+      "netto": -423.05,
+      "brutto": -395.05,
+      "nettoTR": -527.05,
+      "oeNettoProzent": -0.69,
+      "oeR": -0.05
     },
     "orb_short": {
-      "anzahl": 36,
+      "anzahl": 39,
       "treffer": 8,
-      "quote": 22.2,
-      "netto": -799.06,
-      "brutto": -799.06,
-      "nettoTR": -871.06,
-      "oeNettoProzent": -2.23,
-      "oeR": -0.45
+      "quote": 20.5,
+      "netto": -1143.65,
+      "brutto": -1143.65,
+      "nettoTR": -1221.65,
+      "oeNettoProzent": -2.94,
+      "oeR": -0.5
     },
     "level_long": {
       "anzahl": 5,
@@ -132,24 +132,24 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 48,
-      "treffer": 16,
-      "quote": 33.3,
-      "netto": -270.46,
-      "brutto": -270.46,
-      "nettoTR": -366.46,
-      "oeNettoProzent": -0.63,
-      "oeR": -0.08
+      "anzahl": 52,
+      "treffer": 17,
+      "quote": 32.7,
+      "netto": -318.38,
+      "brutto": -318.38,
+      "nettoTR": -422.38,
+      "oeNettoProzent": -0.68,
+      "oeR": -0.09
     },
     "turbo": {
-      "anzahl": 36,
+      "anzahl": 39,
       "treffer": 8,
-      "quote": 22.2,
-      "netto": -799.06,
-      "brutto": -799.06,
-      "nettoTR": -871.06,
-      "oeNettoProzent": -2.23,
-      "oeR": -0.45
+      "quote": 20.5,
+      "netto": -1143.65,
+      "brutto": -1143.65,
+      "nettoTR": -1221.65,
+      "oeNettoProzent": -2.94,
+      "oeR": -0.5
     },
     "krypto": {
       "anzahl": 19,
@@ -164,45 +164,45 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 64,
-      "treffer": 18,
-      "quote": 28.1,
-      "netto": -814.4,
-      "brutto": -800.4,
-      "nettoTR": -928.4,
-      "oeNettoProzent": -1.32,
-      "oeR": -0.18
+      "anzahl": 68,
+      "treffer": 19,
+      "quote": 27.9,
+      "netto": -1087.3,
+      "brutto": -1073.3,
+      "nettoTR": -1209.3,
+      "oeNettoProzent": -1.64,
+      "oeR": -0.19
     },
     "spekulativ": {
-      "anzahl": 39,
+      "anzahl": 42,
       "treffer": 7,
-      "quote": 17.9,
-      "netto": -448.03,
-      "brutto": -424.03,
-      "nettoTR": -502.03,
-      "oeNettoProzent": -1.17,
-      "oeR": -0.24
+      "quote": 16.7,
+      "netto": -567.64,
+      "brutto": -543.64,
+      "nettoTR": -627.64,
+      "oeNettoProzent": -1.37,
+      "oeR": -0.3
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 63,
+      "anzahl": 69,
       "treffer": 0,
       "quote": 0,
-      "netto": -1711.39,
-      "brutto": -1689.39,
-      "nettoTR": -1815.39,
-      "oeNettoProzent": -2.78,
+      "netto": -2115.33,
+      "brutto": -2093.33,
+      "nettoTR": -2231.33,
+      "oeNettoProzent": -3.13,
       "oeR": -1.07
     },
     "ziel": {
-      "anzahl": 21,
-      "treffer": 16,
-      "quote": 76.2,
-      "netto": 546.6,
-      "brutto": 556.6,
-      "nettoTR": 514.6,
-      "oeNettoProzent": 2.61,
+      "anzahl": 22,
+      "treffer": 17,
+      "quote": 77.3,
+      "netto": 558.03,
+      "brutto": 568.03,
+      "nettoTR": 524.03,
+      "oeNettoProzent": 2.56,
       "oeR": 2.04
     },
     "schluss": {
@@ -218,14 +218,14 @@
   },
   "nachPhase": {
     "aufwaerts_ruhig": {
-      "anzahl": 59,
-      "treffer": 19,
-      "quote": 32.2,
-      "netto": -665.28,
-      "brutto": -655.28,
-      "nettoTR": -773.28,
-      "oeNettoProzent": -1.18,
-      "oeR": -0.14
+      "anzahl": 66,
+      "treffer": 20,
+      "quote": 30.3,
+      "netto": -1057.79,
+      "brutto": -1047.79,
+      "nettoTR": -1179.79,
+      "oeNettoProzent": -1.65,
+      "oeR": -0.19
     },
     "unbekannt": {
       "anzahl": 40,
@@ -251,9 +251,9 @@
   "zeitmaschine": [
     {
       "stufe": "0–29 %",
-      "anzahl": 5,
+      "anzahl": 7,
       "quote": 0,
-      "oeR": -1.05
+      "oeR": -1.03
     },
     {
       "stufe": "30–44 %",
@@ -334,46 +334,6 @@
         "kurs": 26.72,
         "stueck": 37,
         "kurswert": 988.64
-      }
-    },
-    {
-      "id": "2026-10-30-scan-stellantis-nv",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "STELLANTIS NV",
-      "isin": "NL00150001Q9",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 4.8906,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:20:00.000Z",
-        "kurs": 4.077,
-        "level": 4.098,
-        "spanne": {
-          "hoch": 4.13,
-          "tief": 4.098
-        },
-        "richtung": "short"
-      },
-      "stop": 4.114,
-      "ziel": 3.9985,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:20:00.000Z",
-        "basisKurs": 4.0755,
-        "kurs": 0.8171,
-        "stueck": 1223,
-        "kurswert": 999.31
       }
     },
     {
@@ -650,254 +610,6 @@
           "stop": 15,
           "oeR": -0.13
         }
-      }
-    },
-    {
-      "id": "2026-10-30-scan-oracle-corp",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ORACLE CORP",
-      "isin": "US68389X1054",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:50:00.000Z",
-        "kurs": 121,
-        "level": 120.4,
-        "spanne": {
-          "hoch": 120.4,
-          "tief": 117.5
-        },
-        "richtung": "long"
-      },
-      "stop": 118.95,
-      "ziel": 124.56,
-      "zielR": 2,
-      "flatBis": "2026-10-30T19:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T13:50:00.000Z",
-        "basisKurs": 120.82,
-        "kurs": 121.424,
-        "stueck": 8,
-        "kurswert": 971.39
-      }
-    },
-    {
-      "id": "2026-10-30-scan-tesla-inc",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "TESLA INC",
-      "isin": "US88160R1014",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:50:00.000Z",
-        "kurs": 353.05,
-        "level": 352,
-        "spanne": {
-          "hoch": 352,
-          "tief": 347.15
-        },
-        "richtung": "long"
-      },
-      "stop": 349.58,
-      "ziel": 358.95,
-      "zielR": 2,
-      "flatBis": "2026-10-30T19:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T13:50:00.000Z",
-        "basisKurs": 352.7,
-        "kurs": 352.965,
-        "stueck": 2,
-        "kurswert": 705.93
-      }
-    },
-    {
-      "id": "2026-10-30-claude-intel",
-      "datum": "2026-10-30",
-      "herkunft": "claude",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "Intel",
-      "isin": "US4581401001",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 69.36,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "kurs": 57.87,
-        "level": 58.17,
-        "spanne": {
-          "hoch": 60.47,
-          "tief": 58.17
-        },
-        "richtung": "short"
-      },
-      "stop": 59.32,
-      "ziel": 54.76,
-      "zielR": 2,
-      "flatBis": "2026-10-30T19:55:00.000Z",
-      "chance": 40,
-      "these": "Nach Zahlen sehr hohes Volumen und Reddit-Interesse (Rang 5); kräftige Tagesbewegung wahrscheinlich, Richtung offen.",
-      "einstieg": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "basisKurs": 57.8,
-        "kurs": 11.589,
-        "stueck": 86,
-        "kurswert": 996.65
-      },
-      "timeMachine": {
-        "zielZuerst": 1.2,
-        "stopZuerst": 31.1,
-        "keins": 67.7,
-        "gruen": 44.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 35,
-          "ziel": 3,
-          "stop": 16,
-          "oeR": -0.16
-        }
-      }
-    },
-    {
-      "id": "2026-10-30-scan-bloom-energy-corp-a",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "BLOOM ENERGY CORP- A",
-      "isin": "US0937121079",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "kurs": 192.76,
-        "level": 191,
-        "spanne": {
-          "hoch": 191,
-          "tief": 184.46
-        },
-        "richtung": "long"
-      },
-      "stop": 187.73,
-      "ziel": 194.78,
-      "zielR": 2,
-      "flatBis": "2026-10-30T19:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "basisKurs": 190.08,
-        "kurs": 191.03,
-        "stueck": 5,
-        "kurswert": 955.15
-      }
-    },
-    {
-      "id": "2026-10-30-scan-intel-corp",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "INTEL CORP",
-      "isin": "US4581401001",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 69.36,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "kurs": 57.87,
-        "level": 58.17,
-        "spanne": {
-          "hoch": 60.47,
-          "tief": 58.17
-        },
-        "richtung": "short"
-      },
-      "stop": 59.32,
-      "ziel": 54.76,
-      "zielR": 2,
-      "flatBis": "2026-10-30T19:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "basisKurs": 57.8,
-        "kurs": 11.589,
-        "stueck": 86,
-        "kurswert": 996.65
-      },
-      "timeMachine": {
-        "zielZuerst": 1.2,
-        "stopZuerst": 31.1,
-        "keins": 67.7,
-        "gruen": 44.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 35,
-          "ziel": 3,
-          "stop": 16,
-          "oeR": -0.16
-        }
-      }
-    },
-    {
-      "id": "2026-10-30-scan-micron-technology-inc",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "MICRON TECHNOLOGY INC",
-      "isin": "US5951121038",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "kurs": 809.4,
-        "level": 805.9,
-        "spanne": {
-          "hoch": 805.9,
-          "tief": 787.7
-        },
-        "richtung": "long"
-      },
-      "stop": 796.8,
-      "ziel": 834,
-      "zielR": 2,
-      "flatBis": "2026-10-30T19:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "basisKurs": 809.2,
-        "kurs": 809.807,
-        "stueck": 1,
-        "kurswert": 809.81
       }
     },
     {
@@ -1016,46 +728,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-stellantis-nv",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "STELLANTIS NV",
-      "isin": "NL00150001Q9",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 4.8906,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:20:00.000Z",
-        "kurs": 4.077,
-        "level": 4.098,
-        "spanne": {
-          "hoch": 4.13,
-          "tief": 4.098
-        },
-        "richtung": "short"
-      },
-      "stop": 4.114,
-      "ziel": 3.9985,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:20:00.000Z",
-        "basisKurs": 4.0755,
-        "kurs": 0.8171,
-        "stueck": 1223,
-        "kurswert": 999.31
-      }
-    },
-    {
       "id": "2026-10-30-scan-thyssenkrupp-ag",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -1332,36 +1004,102 @@
       }
     },
     {
-      "id": "2026-10-30-scan-oracle-corp",
+      "id": "2026-10-30-scan-moderna-inc",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
       "markt": "us",
       "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ORACLE CORP",
-      "isin": "US68389X1054",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:50:00.000Z",
-        "kurs": 121,
-        "level": 120.4,
-        "spanne": {
-          "hoch": 120.4,
-          "tief": 117.5
-        },
-        "richtung": "long"
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MODERNA INC",
+      "isin": "US60770K1079",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 238.97,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
       },
-      "stop": 118.95,
-      "ziel": 124.56,
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T13:55:00.000Z",
+        "kurs": 199,
+        "level": 199.26,
+        "spanne": {
+          "hoch": 203.9,
+          "tief": 199.26
+        },
+        "richtung": "short"
+      },
+      "stop": 201.58,
+      "ziel": 194.26,
       "zielR": 2,
       "flatBis": "2026-10-30T19:55:00.000Z",
       "einstieg": {
-        "zeit": "2026-10-30T13:50:00.000Z",
-        "basisKurs": 120.82,
-        "kurs": 121.424,
-        "stueck": 8,
-        "kurswert": 971.39
+        "zeit": "2026-10-30T13:55:00.000Z",
+        "basisKurs": 199.14,
+        "kurs": 3.993,
+        "stueck": 250,
+        "kurswert": 998.25
+      }
+    },
+    {
+      "id": "2026-10-30-scan-stellantis-nv",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "STELLANTIS NV",
+      "isin": "NL00150001Q9",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 4.8906,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 4.077,
+        "level": 4.098,
+        "spanne": {
+          "hoch": 4.13,
+          "tief": 4.098
+        },
+        "richtung": "short"
+      },
+      "stop": 4.114,
+      "ziel": 3.9985,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 4.0755,
+        "kurs": 0.8171,
+        "stueck": 1223,
+        "kurswert": 999.31
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T14:55:00.000Z",
+        "basisKurs": 4.132,
+        "kurs": 0.7567,
+        "kurswert": 925.44,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -73.87,
+        "bruttoProzent": -7.39,
+        "netto": -73.87,
+        "nettoProzent": -7.39,
+        "nettoTR": -75.87,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.47
       }
     },
     {
@@ -1395,6 +1133,129 @@
         "kurs": 352.965,
         "stueck": 2,
         "kurswert": 705.93
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T14:45:00.000Z",
+        "basisKurs": 358.95,
+        "kurs": 358.681,
+        "kurswert": 717.36,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 11.43,
+        "bruttoProzent": 1.62,
+        "netto": 11.43,
+        "nettoProzent": 1.62,
+        "nettoTR": 9.43,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
+      }
+    },
+    {
+      "id": "2026-10-30-scan-oracle-corp",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ORACLE CORP",
+      "isin": "US68389X1054",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T13:50:00.000Z",
+        "kurs": 121,
+        "level": 120.4,
+        "spanne": {
+          "hoch": 120.4,
+          "tief": 117.5
+        },
+        "richtung": "long"
+      },
+      "stop": 118.95,
+      "ziel": 124.56,
+      "zielR": 2,
+      "flatBis": "2026-10-30T19:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T13:50:00.000Z",
+        "basisKurs": 120.82,
+        "kurs": 121.424,
+        "stueck": 8,
+        "kurswert": 971.39
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T14:40:00.000Z",
+        "basisKurs": 118.95,
+        "kurs": 118.355,
+        "kurswert": 946.84,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -24.55,
+        "bruttoProzent": -2.53,
+        "netto": -24.55,
+        "nettoProzent": -2.53,
+        "nettoTR": -26.55,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-10-30-scan-micron-technology-inc",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "MICRON TECHNOLOGY INC",
+      "isin": "US5951121038",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T13:55:00.000Z",
+        "kurs": 809.4,
+        "level": 805.9,
+        "spanne": {
+          "hoch": 805.9,
+          "tief": 787.7
+        },
+        "richtung": "long"
+      },
+      "stop": 796.8,
+      "ziel": 834,
+      "zielR": 2,
+      "flatBis": "2026-10-30T19:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T13:55:00.000Z",
+        "basisKurs": 809.2,
+        "kurs": 809.807,
+        "stueck": 1,
+        "kurswert": 809.81
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T14:25:00.000Z",
+        "basisKurs": 796.8,
+        "kurs": 796.202,
+        "kurswert": 796.2,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -13.61,
+        "bruttoProzent": -1.68,
+        "netto": -13.61,
+        "nettoProzent": -1.68,
+        "nettoTR": -15.61,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -1454,39 +1315,25 @@
           "stop": 16,
           "oeR": -0.16
         }
-      }
-    },
-    {
-      "id": "2026-10-30-scan-bloom-energy-corp-a",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "BLOOM ENERGY CORP- A",
-      "isin": "US0937121079",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "kurs": 192.76,
-        "level": 191,
-        "spanne": {
-          "hoch": 191,
-          "tief": 184.46
-        },
-        "richtung": "long"
       },
-      "stop": 187.73,
-      "ziel": 194.78,
-      "zielR": 2,
-      "flatBis": "2026-10-30T19:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "basisKurs": 190.08,
-        "kurs": 191.03,
-        "stueck": 5,
-        "kurswert": 955.15
+      "ausstieg": {
+        "zeit": "2026-10-30T14:20:00.000Z",
+        "basisKurs": 59.32,
+        "kurs": 10.015,
+        "kurswert": 861.29,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -135.36,
+        "bruttoProzent": -13.58,
+        "netto": -135.36,
+        "nettoProzent": -13.58,
+        "nettoTR": -137.36,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -1544,79 +1391,77 @@
           "stop": 16,
           "oeR": -0.16
         }
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T14:20:00.000Z",
+        "basisKurs": 59.32,
+        "kurs": 10.015,
+        "kurswert": 861.29,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -135.36,
+        "bruttoProzent": -13.58,
+        "netto": -135.36,
+        "nettoProzent": -13.58,
+        "nettoTR": -137.36,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
-      "id": "2026-10-30-scan-micron-technology-inc",
+      "id": "2026-10-30-scan-bloom-energy-corp-a",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
       "markt": "us",
       "setup": "orb",
       "richtung": "long",
       "instrument": "aktie",
-      "name": "MICRON TECHNOLOGY INC",
-      "isin": "US5951121038",
-      "spekulativ": false,
+      "name": "BLOOM ENERGY CORP- A",
+      "isin": "US0937121079",
+      "spekulativ": true,
       "ausloeser": {
         "zeit": "2026-10-30T13:55:00.000Z",
-        "kurs": 809.4,
-        "level": 805.9,
+        "kurs": 192.76,
+        "level": 191,
         "spanne": {
-          "hoch": 805.9,
-          "tief": 787.7
+          "hoch": 191,
+          "tief": 184.46
         },
         "richtung": "long"
       },
-      "stop": 796.8,
-      "ziel": 834,
+      "stop": 187.73,
+      "ziel": 194.78,
       "zielR": 2,
       "flatBis": "2026-10-30T19:55:00.000Z",
       "einstieg": {
         "zeit": "2026-10-30T13:55:00.000Z",
-        "basisKurs": 809.2,
-        "kurs": 809.807,
-        "stueck": 1,
-        "kurswert": 809.81
-      }
-    },
-    {
-      "id": "2026-10-30-scan-moderna-inc",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MODERNA INC",
-      "isin": "US60770K1079",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 238.97,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
+        "basisKurs": 190.08,
+        "kurs": 191.03,
+        "stueck": 5,
+        "kurswert": 955.15
       },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "kurs": 199,
-        "level": 199.26,
-        "spanne": {
-          "hoch": 203.9,
-          "tief": 199.26
+      "ausstieg": {
+        "zeit": "2026-10-30T14:15:00.000Z",
+        "basisKurs": 187.73,
+        "kurs": 186.791,
+        "kurswert": 933.96,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -21.19,
+        "bruttoProzent": -2.22,
+        "netto": -21.19,
+        "nettoProzent": -2.22,
+        "nettoTR": -23.19,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
         },
-        "richtung": "short"
-      },
-      "stop": 201.58,
-      "ziel": 194.26,
-      "zielR": 2,
-      "flatBis": "2026-10-30T19:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T13:55:00.000Z",
-        "basisKurs": 199.14,
-        "kurs": 3.993,
-        "stueck": 250,
-        "kurswert": 998.25
+        "r": -1
       }
     },
     {
@@ -7300,10 +7145,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 40,
-        "chance": 37.5,
-        "oeNetto": -0.25,
-        "wertung": -0.5
+        "faelle": 41,
+        "chance": 39,
+        "oeNetto": -0.23,
+        "wertung": -0.47
       }
     },
     "krypto:orb_long": {
@@ -7346,6 +7191,20 @@
     "autopilot": 0
   },
   "hinweise": [
-    "AMAZON.COM INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
+    "SPACE EXPLORATION TECHN-CL A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "TAKE-TWO INTERACTIVE SOFTWRE: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "ALPHABET INC-CL C: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "COCA-COLA CO/THE: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "EVONIK INDUSTRIES AG: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "STRATEGY INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "ALTRIA GROUP INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "ALMONTY INDUSTRIES INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "CATERPILLAR INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "Chevron: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "MARVELL TECHNOLOGY INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "COINBASE GLOBAL INC -CLASS A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "SANDISK CORP: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "ELI LILLY & CO: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "APPLE INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
   ]
 }
