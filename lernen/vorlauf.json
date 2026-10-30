@@ -1,35 +1,36 @@
 {
   "tage": [
     "2026-10-22",
-    "2026-10-21"
+    "2026-10-21",
+    "2026-10-23"
   ],
   "jeTyp": {
     "gewinn_ueberraschung": {
-      "signale": 23,
-      "vorRakete": 1
+      "signale": 37,
+      "vorRakete": 3
     },
     "volumen_ungewoehnlich": {
-      "signale": 2,
-      "vorRakete": 1
+      "signale": 3,
+      "vorRakete": 2
     },
     "nachzahlen_drift": {
-      "signale": 3,
+      "signale": 8,
       "vorRakete": 1
     },
     "insider_cluster_kauf": {
-      "signale": 3,
-      "vorRakete": 1
+      "signale": 8,
+      "vorRakete": 2
     },
     "analysten_hochstufung": {
-      "signale": 1,
+      "signale": 2,
       "vorRakete": 0
     },
     "insider_kauf": {
-      "signale": 28,
-      "vorRakete": 2
+      "signale": 36,
+      "vorRakete": 4
     },
     "nachricht": {
-      "signale": 4,
+      "signale": 5,
       "vorRakete": 0
     },
     "prognose_erhoehung": {
@@ -43,27 +44,31 @@
     "quartalstermin": {
       "signale": 1,
       "vorRakete": 0
+    },
+    "gewinn_enttaeuschung": {
+      "signale": 2,
+      "vorRakete": 0
     }
   },
   "jeQuelle": {
     "Finnhub": {
-      "signale": 22,
-      "vorRakete": 1
+      "signale": 37,
+      "vorRakete": 2
     },
     "Alpha Vantage": {
-      "signale": 2,
-      "vorRakete": 1
+      "signale": 3,
+      "vorRakete": 2
     },
     "Finnhub Kurs": {
-      "signale": 3,
+      "signale": 8,
       "vorRakete": 1
     },
     "OpenInsider": {
-      "signale": 30,
-      "vorRakete": 2
+      "signale": 41,
+      "vorRakete": 4
     },
     "Finnhub Analysten": {
-      "signale": 1,
+      "signale": 2,
       "vorRakete": 0
     },
     "tagesschau Wirtschaft": {
@@ -71,7 +76,7 @@
       "vorRakete": 0
     },
     "CNBC Top News": {
-      "signale": 4,
+      "signale": 5,
       "vorRakete": 0
     },
     "MarketWatch": {
@@ -79,23 +84,32 @@
       "vorRakete": 0
     },
     "FMP": {
-      "signale": 4,
-      "vorRakete": 0
+      "signale": 10,
+      "vorRakete": 2
     },
     "ApeWisdom": {
       "signale": 3,
       "vorRakete": 0
+    },
+    "FAZ Finanzen": {
+      "signale": 1,
+      "vorRakete": 0
     }
   },
   "gesamt": {
-    "signale": 58,
-    "vorRakete": 3
+    "signale": 85,
+    "vorRakete": 7
   },
   "verlauf": [
     {
       "datum": "2026-10-29",
       "mover": 20,
       "abdeckung": 0
+    },
+    {
+      "datum": "2026-10-30",
+      "mover": 35,
+      "abdeckung": 5.7
     }
   ]
 }

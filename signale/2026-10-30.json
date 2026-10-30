@@ -1,0 +1,667 @@
+{
+  "stand": "2026-10-30T04:44:39.050Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:GOOGL",
+      "name": "Alphabet",
+      "ticker": "GOOGL",
+      "score": -4.85,
+      "typen": [
+        "nachricht",
+        "gewinn_enttaeuschung",
+        "volumen_ungewoehnlich",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "FAZ Finanzen",
+        "Finnhub News",
+        "CNBC Top News",
+        "Handelsblatt Finanzen",
+        "Finnhub",
+        "FMP",
+        "Alpha Vantage",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:FMCC",
+      "name": "FMCC",
+      "ticker": "FMCC",
+      "score": -4.22,
+      "typen": [
+        "gewinn_enttaeuschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:F",
+      "name": "F",
+      "ticker": "F",
+      "score": 3.76,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:INTC",
+      "name": "Intel",
+      "ticker": "INTC",
+      "markt": "krypto",
+      "score": 3.5,
+      "typen": [
+        "nachricht",
+        "stimmung_social",
+        "gewinn_ueberraschung",
+        "volumen_ungewoehnlich",
+        "funding_extrem"
+      ],
+      "quellen": [
+        "MarketWatch",
+        "CNBC Top News",
+        "ApeWisdom",
+        "Finnhub",
+        "FMP",
+        "Alpha Vantage",
+        "Kraken Futures"
+      ]
+    },
+    {
+      "schluessel": "T:BPRE",
+      "name": "Bluerock Private Real Estate Fund",
+      "ticker": "BPRE",
+      "score": 3.41,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DINO",
+      "name": "DINO",
+      "ticker": "DINO",
+      "score": 3.34,
+      "typen": [
+        "insider_kauf",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:TTMI",
+      "name": "Ttm Technologies Inc",
+      "ticker": "TTMI",
+      "score": 2.87,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:PNFP",
+      "name": "Pinnacle Financial Partners, Inc.",
+      "ticker": "PNFP",
+      "score": 2.75,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:COIN",
+      "name": "COIN",
+      "ticker": "COIN",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:MSTR",
+      "name": "MSTR",
+      "ticker": "MSTR",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:THC",
+      "name": "THC",
+      "ticker": "THC",
+      "score": 2.5,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CARR",
+      "name": "CARR",
+      "ticker": "CARR",
+      "score": 2.35,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:NPB",
+      "name": "Northpointe Bancshares Inc",
+      "ticker": "NPB",
+      "score": 2.34,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:IP",
+      "name": "IP",
+      "ticker": "IP",
+      "score": 2.3,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:SW",
+      "name": "SW",
+      "ticker": "SW",
+      "score": -2.3,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:STC",
+      "name": "Stewart Information Services Corp.",
+      "ticker": "STC",
+      "score": 2.27,
+      "typen": [
+        "nachricht",
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "Finnhub",
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FDX",
+      "name": "FDX",
+      "ticker": "FDX",
+      "score": 2.16,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:SBUX",
+      "name": "SBUX",
+      "ticker": "SBUX",
+      "score": 2.11,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:WCC",
+      "name": "WCC",
+      "ticker": "WCC",
+      "score": 2.11,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:PBF",
+      "name": "PBF",
+      "ticker": "PBF",
+      "score": 2.06,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:PWR",
+      "name": "PWR",
+      "ticker": "PWR",
+      "score": 2.02,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:GEV",
+      "name": "GEV",
+      "ticker": "GEV",
+      "score": 2,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:PSX",
+      "name": "PSX",
+      "ticker": "PSX",
+      "score": 1.94,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MRK",
+      "name": "MRK",
+      "ticker": "MRK",
+      "score": 1.92,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CTEV",
+      "name": "Claritev Corp",
+      "ticker": "CTEV",
+      "score": 1.88,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:THRM",
+      "name": "Gentherm Inc",
+      "ticker": "THRM",
+      "score": 1.88,
+      "typen": [
+        "insider_cluster_kauf",
+        "leerverkauf_quote"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "FINRA"
+      ]
+    },
+    {
+      "schluessel": "T:ACN",
+      "name": "Accenture Plc",
+      "ticker": "ACN",
+      "score": 1.86,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LNG",
+      "name": "LNG",
+      "ticker": "LNG",
+      "score": -1.8,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:WFF",
+      "name": "WF Holding Ltd",
+      "ticker": "WFF",
+      "pump": true,
+      "score": -1.75,
+      "typen": [
+        "verwaesserung",
+        "handelsstopp",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "SEC EDGAR",
+        "Nasdaq Trader",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:INGM",
+      "name": "INGM",
+      "ticker": "INGM",
+      "score": 1.74,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:LLY",
+      "name": "Eli Lilly",
+      "ticker": "LLY",
+      "score": 1.73,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "CNBC Top News",
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:EME",
+      "name": "EME",
+      "ticker": "EME",
+      "score": 1.69,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:GILD",
+      "name": "GILD",
+      "ticker": "GILD",
+      "score": 1.68,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CVNA",
+      "name": "CVNA",
+      "ticker": "CVNA",
+      "score": -1.65,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:DHI",
+      "name": "DHI",
+      "ticker": "DHI",
+      "score": -1.63,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:BMY",
+      "name": "BMY",
+      "ticker": "BMY",
+      "score": 1.58,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MUSA",
+      "name": "MUSA",
+      "ticker": "MUSA",
+      "score": 1.57,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CRV",
+      "name": "CRV",
+      "ticker": "CRV",
+      "markt": "krypto",
+      "score": 1.57,
+      "typen": [
+        "funding_extrem",
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "Kraken Futures",
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:AMZN",
+      "name": "Amazon",
+      "ticker": "AMZN",
+      "score": -1.54,
+      "typen": [
+        "nachricht",
+        "stimmung_social",
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "CNBC Top News",
+        "MarketWatch",
+        "ApeWisdom",
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:LHX",
+      "name": "LHX",
+      "ticker": "LHX",
+      "score": 1.52,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:FLEX",
+      "name": "FLEX",
+      "ticker": "FLEX",
+      "score": 1.52,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:APH",
+      "name": "APH",
+      "ticker": "APH",
+      "score": 1.47,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:GEHC",
+      "name": "GEHC",
+      "ticker": "GEHC",
+      "score": 1.46,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:JLL",
+      "name": "JLL",
+      "ticker": "JLL",
+      "score": 1.43,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:TMUS",
+      "name": "TMUS",
+      "ticker": "TMUS",
+      "score": 1.42,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:SNDK",
+      "name": "Sandisk",
+      "ticker": "SNDK",
+      "score": 1.39,
+      "typen": [
+        "stimmung_social",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "ApeWisdom",
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MDLZ",
+      "name": "MDLZ",
+      "ticker": "MDLZ",
+      "score": 1.38,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AEP",
+      "name": "AEP",
+      "ticker": "AEP",
+      "score": 1.38,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:FNMA",
+      "name": "FNMA",
+      "ticker": "FNMA",
+      "score": 1.36,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:UNI",
+      "name": "Uniswap",
+      "ticker": "UNI",
+      "markt": "krypto",
+      "score": 1.35,
+      "typen": [
+        "upbit_warnung",
+        "funding_extrem",
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "Upbit",
+        "Kraken Futures",
+        "DefiLlama"
+      ]
+    }
+  ],
+  "anzahlSignale": 227
+}
