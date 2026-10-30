@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T08:52:57.593Z",
-  "anzahl": 229,
+  "stand": "2026-10-30T09:50:10.001Z",
+  "anzahl": 233,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -308,9 +308,10 @@
       "t": "BTC",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "BTC-ECHO"
+        "BTC-ECHO",
+        "CNBC Top News"
       ],
       "z": "2026-10-29T06:46:21.000Z"
     },
@@ -3025,7 +3026,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.44,
+      "st": 0.47,
       "q": [
         "Upbit"
       ],
@@ -3039,11 +3040,64 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.66,
+      "st": 0.77,
       "q": [
         "Upbit"
       ],
       "z": "2026-10-30T07:59:03.785Z"
+    },
+    {
+      "id": "nachricht:COIN:2026-10-29",
+      "s": "T:COIN",
+      "n": "Coinbase",
+      "t": "COIN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-29T21:38:16.000Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-10-30",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-30T00:38:13.000Z"
+    },
+    {
+      "id": "nachricht:INTC:2026-10-30",
+      "s": "T:INTC",
+      "n": "Intel",
+      "t": "INTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "CNBC Top News",
+        "MarketWatch"
+      ],
+      "z": "2026-10-30T09:16:27.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF1UMM1:2026-10-30",
+      "s": "I:DE000HF1UMM1",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF1UMM1",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.61,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-30T09:42:44.125Z"
     }
   ]
 }
