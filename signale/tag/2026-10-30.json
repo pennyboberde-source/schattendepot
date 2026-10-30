@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T10:45:48.352Z",
-  "anzahl": 234,
+  "stand": "2026-10-30T11:39:24.723Z",
+  "anzahl": 238,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -3040,7 +3040,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.77,
+      "st": 0.8,
       "q": [
         "Upbit"
       ],
@@ -3111,6 +3111,60 @@
         "SEC EDGAR"
       ],
       "z": "2026-10-29T22:13:11.000Z"
+    },
+    {
+      "id": "verwaesserung:RAPP:2026-10-30",
+      "s": "T:RAPP",
+      "n": "Rapport Therapeutics, Inc.",
+      "t": "RAPP",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-30T11:04:41.000Z"
+    },
+    {
+      "id": "nachricht:XOM:2026-10-30",
+      "s": "T:XOM",
+      "n": "Exxon Mobil",
+      "t": "XOM",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-30T11:35:51.000Z"
+    },
+    {
+      "id": "upbit_warnung:DKA:2026-10-30",
+      "s": "T:DKA",
+      "n": "dKargo",
+      "t": "DKA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-30T11:39:24.723Z"
+    },
+    {
+      "id": "kursrakete:PUNDIX:2026-10-30",
+      "s": "T:PUNDIX",
+      "n": "Pundi X",
+      "t": "PUNDIX",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.44,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-30T11:39:24.723Z"
     }
   ]
 }
