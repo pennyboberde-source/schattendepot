@@ -1,28 +1,28 @@
 {
-  "stand": "2026-10-30T10:44:46.335Z",
+  "stand": "2026-10-30T11:20:42.578Z",
   "heute": {
     "datum": "2026-10-30",
     "gruppe": {
-      "anzahl": 16,
+      "anzahl": 19,
       "treffer": 1,
-      "quote": 6.3,
-      "netto": -412.29,
-      "brutto": -408.29,
-      "nettoTR": -440.29,
-      "oeNettoProzent": -2.6,
-      "oeR": -0.73
+      "quote": 5.3,
+      "netto": -443.18,
+      "brutto": -437.18,
+      "nettoTR": -475.18,
+      "oeNettoProzent": -2.37,
+      "oeR": -0.62
     },
-    "offen": 14
+    "offen": 13
   },
   "gesamt": {
-    "anzahl": 96,
+    "anzahl": 99,
     "treffer": 23,
-    "quote": 24,
-    "netto": -1214.86,
-    "brutto": -1180.86,
-    "nettoTR": -1372.86,
-    "oeNettoProzent": -1.3,
-    "oeR": -0.24
+    "quote": 23.2,
+    "netto": -1245.75,
+    "brutto": -1209.75,
+    "nettoTR": -1407.75,
+    "oeNettoProzent": -1.29,
+    "oeR": -0.23
   },
   "kurve": [
     {
@@ -39,20 +39,20 @@
     },
     {
       "datum": "2026-10-30",
-      "netto": -1214.86,
-      "brutto": -1180.86,
-      "nettoTR": -1372.86
+      "netto": -1245.75,
+      "brutto": -1209.75,
+      "nettoTR": -1407.75
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 95,
+      "anzahl": 98,
       "treffer": 23,
-      "quote": 24.2,
-      "netto": -1205.53,
-      "brutto": -1171.53,
-      "nettoTR": -1361.53,
-      "oeNettoProzent": -1.3,
+      "quote": 23.5,
+      "netto": -1236.42,
+      "brutto": -1200.42,
+      "nettoTR": -1396.42,
+      "oeNettoProzent": -1.29,
       "oeR": -0.23
     },
     "claude": {
@@ -68,14 +68,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 60,
+      "anzahl": 62,
       "treffer": 19,
-      "quote": 31.7,
-      "netto": -587.26,
-      "brutto": -587.26,
-      "nettoTR": -707.26,
-      "oeNettoProzent": -1,
-      "oeR": -0.16
+      "quote": 30.6,
+      "netto": -616.15,
+      "brutto": -616.15,
+      "nettoTR": -740.15,
+      "oeNettoProzent": -1.02,
+      "oeR": -0.19
     },
     "us": {
       "anzahl": 19,
@@ -88,26 +88,26 @@
       "oeR": -0.6
     },
     "krypto": {
-      "anzahl": 17,
+      "anzahl": 18,
       "treffer": 1,
-      "quote": 5.9,
-      "netto": -179.04,
+      "quote": 5.6,
+      "netto": -181.04,
       "brutto": -145.04,
-      "nettoTR": -179.04,
-      "oeNettoProzent": -1.05,
-      "oeR": -0.12
+      "nettoTR": -181.04,
+      "oeNettoProzent": -1.01,
+      "oeR": -0.01
     }
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 56,
+      "anzahl": 59,
       "treffer": 15,
-      "quote": 26.8,
-      "netto": -347.84,
-      "brutto": -323.84,
-      "nettoTR": -435.84,
-      "oeNettoProzent": -0.68,
-      "oeR": -0.1
+      "quote": 25.4,
+      "netto": -378.73,
+      "brutto": -352.73,
+      "nettoTR": -470.73,
+      "oeNettoProzent": -0.7,
+      "oeR": -0.09
     },
     "orb_short": {
       "anzahl": 35,
@@ -132,14 +132,14 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 44,
+      "anzahl": 46,
       "treffer": 14,
-      "quote": 31.8,
-      "netto": -257.04,
-      "brutto": -257.04,
-      "nettoTR": -345.04,
-      "oeNettoProzent": -0.66,
-      "oeR": -0.14
+      "quote": 30.4,
+      "netto": -285.93,
+      "brutto": -285.93,
+      "nettoTR": -377.93,
+      "oeNettoProzent": -0.69,
+      "oeR": -0.18
     },
     "turbo": {
       "anzahl": 35,
@@ -152,48 +152,58 @@
       "oeR": -0.43
     },
     "krypto": {
-      "anzahl": 17,
+      "anzahl": 18,
       "treffer": 1,
-      "quote": 5.9,
-      "netto": -179.04,
+      "quote": 5.6,
+      "netto": -181.04,
       "brutto": -145.04,
-      "nettoTR": -179.04,
-      "oeNettoProzent": -1.05,
-      "oeR": -0.12
+      "nettoTR": -181.04,
+      "oeNettoProzent": -1.01,
+      "oeR": -0.01
     }
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 58,
+      "anzahl": 60,
       "treffer": 16,
-      "quote": 27.6,
-      "netto": -768.83,
-      "brutto": -756.83,
-      "nettoTR": -872.83,
-      "oeNettoProzent": -1.37,
-      "oeR": -0.2
+      "quote": 26.7,
+      "netto": -797.72,
+      "brutto": -785.72,
+      "nettoTR": -905.72,
+      "oeNettoProzent": -1.38,
+      "oeR": -0.23
     },
     "spekulativ": {
-      "anzahl": 38,
+      "anzahl": 39,
       "treffer": 7,
-      "quote": 18.4,
-      "netto": -446.03,
+      "quote": 17.9,
+      "netto": -448.03,
       "brutto": -424.03,
-      "nettoTR": -500.03,
-      "oeNettoProzent": -1.19,
-      "oeR": -0.29
+      "nettoTR": -502.03,
+      "oeNettoProzent": -1.17,
+      "oeR": -0.24
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 59,
+      "anzahl": 61,
       "treffer": 0,
       "quote": 0,
-      "netto": -1650.35,
-      "brutto": -1630.35,
-      "nettoTR": -1748.35,
-      "oeNettoProzent": -2.86,
+      "netto": -1679.24,
+      "brutto": -1659.24,
+      "nettoTR": -1781.24,
+      "oeNettoProzent": -2.82,
       "oeR": -1.07
+    },
+    "ziel": {
+      "anzahl": 19,
+      "treffer": 14,
+      "quote": 73.7,
+      "netto": 531.13,
+      "brutto": 541.13,
+      "nettoTR": 503.13,
+      "oeNettoProzent": 2.8,
+      "oeR": 2.04
     },
     "schluss": {
       "anzahl": 19,
@@ -204,28 +214,18 @@
       "nettoTR": -129.64,
       "oeNettoProzent": -0.5,
       "oeR": 0.18
-    },
-    "ziel": {
-      "anzahl": 18,
-      "treffer": 14,
-      "quote": 77.8,
-      "netto": 533.13,
-      "brutto": 541.13,
-      "nettoTR": 505.13,
-      "oeNettoProzent": 2.97,
-      "oeR": 2.04
     }
   },
   "nachPhase": {
     "aufwaerts_ruhig": {
-      "anzahl": 54,
+      "anzahl": 56,
       "treffer": 17,
-      "quote": 31.5,
-      "netto": -631.58,
-      "brutto": -621.58,
-      "nettoTR": -729.58,
-      "oeNettoProzent": -1.22,
-      "oeR": -0.17
+      "quote": 30.4,
+      "netto": -660.47,
+      "brutto": -650.47,
+      "nettoTR": -762.47,
+      "oeNettoProzent": -1.23,
+      "oeR": -0.2
     },
     "unbekannt": {
       "anzahl": 40,
@@ -238,14 +238,14 @@
       "oeR": -0.37
     },
     "seitwaerts_ruhig": {
-      "anzahl": 2,
+      "anzahl": 3,
       "treffer": 0,
       "quote": 0,
-      "netto": -10.92,
+      "netto": -12.92,
       "brutto": -6.92,
-      "nettoTR": -10.92,
-      "oeNettoProzent": -0.55,
-      "oeR": 0.53
+      "nettoTR": -12.92,
+      "oeNettoProzent": -0.43,
+      "oeR": 1
     }
   },
   "zeitmaschine": [
@@ -490,72 +490,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-gerresheimer-ag",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "GERRESHEIMER AG",
-      "isin": "DE000A0LD6E6",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:30:00.000Z",
-        "kurs": 33.84,
-        "level": 33.72,
-        "spanne": {
-          "hoch": 33.72,
-          "tief": 32.02
-        },
-        "richtung": "long"
-      },
-      "stop": 32.87,
-      "ziel": 34.76,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:35:00.000Z",
-        "basisKurs": 33.5,
-        "kurs": 33.525,
-        "stueck": 29,
-        "kurswert": 972.23
-      }
-    },
-    {
-      "id": "2026-10-30-scan-sap-se",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SAP SE",
-      "isin": "DE0007164600",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:40:00.000Z",
-        "kurs": 213.1,
-        "level": 212.6,
-        "spanne": {
-          "hoch": 212.6,
-          "tief": 210.1
-        },
-        "richtung": "long"
-      },
-      "stop": 211.35,
-      "ziel": 217.05,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:40:00.000Z",
-        "basisKurs": 213.25,
-        "kurs": 213.41,
-        "stueck": 4,
-        "kurswert": 853.64
-      }
-    },
-    {
       "id": "2026-10-30-scan-siemens-energy-ag",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -742,36 +676,69 @@
       }
     },
     {
-      "id": "2026-10-30-scan-ada",
+      "id": "2026-10-30-scan-eth",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
       "markt": "krypto",
       "setup": "orb",
       "richtung": "long",
       "instrument": "krypto",
-      "name": "ADA",
-      "symbol": "ADA",
-      "spekulativ": true,
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
       "ausloeser": {
-        "zeit": "2026-10-30T10:25:00.000Z",
-        "kurs": 0.172338,
-        "level": 0.1722,
+        "zeit": "2026-10-30T10:40:00.000Z",
+        "kurs": 2001.94,
+        "level": 1998.12,
         "spanne": {
-          "hoch": 0.172163,
-          "tief": 0.171621
+          "hoch": 1998.12,
+          "tief": 1985.93
         },
         "richtung": "long"
       },
-      "stop": 0.1719,
-      "ziel": 0.1731,
+      "stop": 1992.03,
+      "ziel": 2021.53,
       "zielR": 2,
       "flatBis": "2026-10-30T20:55:00.000Z",
       "einstieg": {
-        "zeit": "2026-10-30T10:25:00.000Z",
-        "basisKurs": 0.172308,
-        "kurs": 0.1727,
-        "stueck": 5790.387955,
+        "zeit": "2026-10-30T10:40:00.000Z",
+        "basisKurs": 2001.86,
+        "kurs": 2006.865,
+        "stueck": 0.498289,
         "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-10-30-scan-lvmh-moet-hennessy-louis",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "LVMH MOET HENNESSY LOUIS VUI",
+      "isin": "FR0000121014",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T11:05:00.000Z",
+        "kurs": 387.35,
+        "level": 386.85,
+        "spanne": {
+          "hoch": 386.85,
+          "tief": 385.45
+        },
+        "richtung": "long"
+      },
+      "stop": 386.15,
+      "ziel": 389.9,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T11:05:00.000Z",
+        "basisKurs": 387.4,
+        "kurs": 387.691,
+        "stueck": 2,
+        "kurswert": 775.38
       }
     }
   ],
@@ -1003,72 +970,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-gerresheimer-ag",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "GERRESHEIMER AG",
-      "isin": "DE000A0LD6E6",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:30:00.000Z",
-        "kurs": 33.84,
-        "level": 33.72,
-        "spanne": {
-          "hoch": 33.72,
-          "tief": 32.02
-        },
-        "richtung": "long"
-      },
-      "stop": 32.87,
-      "ziel": 34.76,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:35:00.000Z",
-        "basisKurs": 33.5,
-        "kurs": 33.525,
-        "stueck": 29,
-        "kurswert": 972.23
-      }
-    },
-    {
-      "id": "2026-10-30-scan-sap-se",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SAP SE",
-      "isin": "DE0007164600",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:40:00.000Z",
-        "kurs": 213.1,
-        "level": 212.6,
-        "spanne": {
-          "hoch": 212.6,
-          "tief": 210.1
-        },
-        "richtung": "long"
-      },
-      "stop": 211.35,
-      "ziel": 217.05,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:40:00.000Z",
-        "basisKurs": 213.25,
-        "kurs": 213.41,
-        "stueck": 4,
-        "kurswert": 853.64
-      }
-    },
-    {
       "id": "2026-10-30-scan-siemens-energy-ag",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -1255,6 +1156,72 @@
       }
     },
     {
+      "id": "2026-10-30-scan-eth",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T10:40:00.000Z",
+        "kurs": 2001.94,
+        "level": 1998.12,
+        "spanne": {
+          "hoch": 1998.12,
+          "tief": 1985.93
+        },
+        "richtung": "long"
+      },
+      "stop": 1992.03,
+      "ziel": 2021.53,
+      "zielR": 2,
+      "flatBis": "2026-10-30T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T10:40:00.000Z",
+        "basisKurs": 2001.86,
+        "kurs": 2006.865,
+        "stueck": 0.498289,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-10-30-scan-lvmh-moet-hennessy-louis",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "LVMH MOET HENNESSY LOUIS VUI",
+      "isin": "FR0000121014",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T11:05:00.000Z",
+        "kurs": 387.35,
+        "level": 386.85,
+        "spanne": {
+          "hoch": 386.85,
+          "tief": 385.45
+        },
+        "richtung": "long"
+      },
+      "stop": 386.15,
+      "ziel": 389.9,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T11:05:00.000Z",
+        "basisKurs": 387.4,
+        "kurs": 387.691,
+        "stueck": 2,
+        "kurswert": 775.38
+      }
+    },
+    {
       "id": "2026-10-30-scan-ada",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -1285,6 +1252,129 @@
         "kurs": 0.1727,
         "stueck": 5790.387955,
         "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T10:45:00.000Z",
+        "basisKurs": 0.1731,
+        "kurs": 0.1727,
+        "kurswert": 1000,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 0,
+        "bruttoProzent": 0,
+        "netto": -2,
+        "nettoProzent": -0.2,
+        "nettoTR": -2,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": 1.94
+      }
+    },
+    {
+      "id": "2026-10-30-scan-gerresheimer-ag",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "GERRESHEIMER AG",
+      "isin": "DE000A0LD6E6",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "kurs": 33.84,
+        "level": 33.72,
+        "spanne": {
+          "hoch": 33.72,
+          "tief": 32.02
+        },
+        "richtung": "long"
+      },
+      "stop": 32.87,
+      "ziel": 34.76,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 33.5,
+        "kurs": 33.525,
+        "stueck": 29,
+        "kurswert": 972.23
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T10:35:00.000Z",
+        "basisKurs": 32.86,
+        "kurs": 32.835,
+        "kurswert": 952.22,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -20.01,
+        "bruttoProzent": -2.06,
+        "netto": -20.01,
+        "nettoProzent": -2.06,
+        "nettoTR": -22.01,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.02
+      }
+    },
+    {
+      "id": "2026-10-30-scan-sap-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SAP SE",
+      "isin": "DE0007164600",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:40:00.000Z",
+        "kurs": 213.1,
+        "level": 212.6,
+        "spanne": {
+          "hoch": 212.6,
+          "tief": 210.1
+        },
+        "richtung": "long"
+      },
+      "stop": 211.35,
+      "ziel": 217.05,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:40:00.000Z",
+        "basisKurs": 213.25,
+        "kurs": 213.41,
+        "stueck": 4,
+        "kurswert": 853.64
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T10:35:00.000Z",
+        "basisKurs": 211.35,
+        "kurs": 211.191,
+        "kurswert": 844.76,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -8.88,
+        "bruttoProzent": -1.04,
+        "netto": -8.88,
+        "nettoProzent": -1.04,
+        "nettoTR": -10.88,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -6597,10 +6687,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 34,
-        "chance": 41.2,
-        "oeNetto": -0.16,
-        "wertung": -0.44
+        "faelle": 37,
+        "chance": 37.8,
+        "oeNetto": -0.21,
+        "wertung": -0.47
       }
     },
     "krypto:orb_long": {
