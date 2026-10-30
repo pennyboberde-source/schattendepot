@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T17:47:22.938Z",
-  "anzahl": 278,
+  "stand": "2026-10-30T18:45:07.997Z",
+  "anzahl": 282,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -3069,7 +3069,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-10-30T00:38:13.000Z"
     },
@@ -3080,11 +3081,12 @@
       "t": "INTC",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.51,
+      "st": 0.62,
       "q": [
         "CNBC Top News",
         "MarketWatch",
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "FAZ Finanzen"
       ],
       "z": "2026-10-30T09:16:27.000Z"
     },
@@ -3543,7 +3545,7 @@
       "t": "SFWL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3662,7 +3664,7 @@
       "t": "ALIS",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3693,6 +3695,58 @@
         "Nasdaq Trader"
       ],
       "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RGTC:2026-10-30",
+      "s": "T:RGTC",
+      "n": "Corgi RGTI 2x Daily ETF",
+      "t": "RGTC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-10-30",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-30T16:41:34.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0GCH3:2026-10-30",
+      "s": "I:DE000HF0GCH3",
+      "n": "DE000HF0GCH3",
+      "i": "DE000HF0GCH3",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.53,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-10-30T18:20:42.576Z"
+    },
+    {
+      "id": "verwaesserung:HBCYF:2026-10-30",
+      "s": "T:HBCYF",
+      "n": "HSBC HOLDINGS PLC",
+      "t": "HBCYF",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-30T18:42:42.000Z"
     }
   ]
 }
