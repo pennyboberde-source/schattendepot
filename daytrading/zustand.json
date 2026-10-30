@@ -64,10 +64,19 @@
     "posttrade.20261030.12.45.munc.csv.gz",
     "posttrade.20261030.12.45.mund.csv.gz",
     "posttrade.20261030.13.00.munc.csv.gz",
-    "posttrade.20261030.13.00.mund.csv.gz"
+    "posttrade.20261030.13.00.mund.csv.gz",
+    "posttrade.20261030.13.15.munc.csv.gz",
+    "posttrade.20261030.13.15.mund.csv.gz",
+    "posttrade.20261030.13.30.munc.csv.gz",
+    "posttrade.20261030.13.30.mund.csv.gz",
+    "posttrade.20261030.13.45.munc.csv.gz",
+    "posttrade.20261030.13.45.mund.csv.gz",
+    "posttrade.20261030.14.00.munc.csv.gz",
+    "posttrade.20261030.14.00.mund.csv.gz"
   ],
   "universum": {
-    "eu": true
+    "eu": true,
+    "us": true
   },
   "beobachtungen": [
     {
@@ -107,8 +116,20 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-10-30T12:55:00.000Z"
+        "status": "ausgeloest",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 211,
+          "tief": 210,
+          "volumen": 557,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T14:00:00.000Z",
+          "kurs": 211.65,
+          "level": 211,
+          "richtung": "long"
+        }
       }
     },
     {
@@ -128,8 +149,15 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-10-30T12:55:00.000Z"
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:45:00.000Z",
+        "spanne": {
+          "hoch": 265,
+          "tief": 265,
+          "volumen": 20,
+          "kerzen": 1
+        },
+        "grund": "zu wenig Handel in der Eröffnungsspanne"
       }
     },
     {
@@ -149,8 +177,20 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-10-30T12:55:00.000Z"
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 60.47,
+          "tief": 58.17,
+          "volumen": 13965,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:55:00.000Z",
+          "kurs": 57.87,
+          "level": 58.17,
+          "richtung": "short"
+        }
       }
     },
     {
@@ -170,8 +210,14 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-10-30T12:55:00.000Z"
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 252.5,
+          "tief": 249.9,
+          "volumen": 2658,
+          "kerzen": 3
+        }
       }
     },
     {
@@ -190,7 +236,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 132.76,
           "tief": 128.88,
@@ -221,7 +267,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 50.4,
           "tief": 49.59,
@@ -252,7 +298,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 1050,
           "tief": 1037.8,
@@ -283,7 +329,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 212.6,
           "tief": 210.1,
@@ -314,7 +360,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 52,
           "tief": 51.39,
@@ -345,7 +391,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:50:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 169.4,
           "tief": 166.8,
@@ -376,7 +422,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:45:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 243,
           "tief": 231,
@@ -407,7 +453,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:50:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 270,
           "tief": 268.3,
@@ -438,7 +484,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 25.97,
           "tief": 25.85,
@@ -469,7 +515,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:45:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 16.1,
           "tief": 16.015,
@@ -500,7 +546,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:50:00.000Z",
         "spanne": {
           "hoch": 30.915,
           "tief": 30.575,
@@ -531,7 +577,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 12.515,
           "tief": 12.01,
@@ -562,7 +608,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:50:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 73.65,
           "tief": 71.25,
@@ -593,7 +639,7 @@
           "short"
         ],
         "status": "wartet",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:50:00.000Z",
         "spanne": {
           "hoch": 37.62,
           "tief": 35.945,
@@ -618,7 +664,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:50:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 564.4,
           "tief": 562.4,
@@ -649,7 +695,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:40:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 242.25,
           "tief": 239.95,
@@ -680,7 +726,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:50:00.000Z",
         "spanne": {
           "hoch": 138,
           "tief": 133.2,
@@ -711,7 +757,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 35.485,
           "tief": 35.165,
@@ -742,7 +788,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:45:00.000Z",
+        "letzteKerze": "2026-10-30T13:45:00.000Z",
         "spanne": {
           "hoch": 26.49,
           "tief": 26.13,
@@ -773,7 +819,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:40:00.000Z",
+        "letzteKerze": "2026-10-30T13:40:00.000Z",
         "spanne": {
           "hoch": 33.72,
           "tief": 32.02,
@@ -804,7 +850,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:50:00.000Z",
         "spanne": {
           "hoch": 386.85,
           "tief": 385.45,
@@ -835,7 +881,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:40:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 52.45,
           "tief": 51.75,
@@ -866,7 +912,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:45:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 9.96,
           "tief": 9.83,
@@ -896,13 +942,19 @@
           "long",
           "short"
         ],
-        "status": "wartet",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "status": "ausgeloest",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 21.22,
           "tief": 20.82,
           "volumen": 4513,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T14:00:00.000Z",
+          "kurs": 20.7,
+          "level": 20.82,
+          "richtung": "short"
         }
       }
     },
@@ -922,7 +974,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 80.94,
           "tief": 80.02,
@@ -953,7 +1005,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 33.8,
           "tief": 33.12,
@@ -984,7 +1036,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:50:00.000Z",
+        "letzteKerze": "2026-10-30T13:50:00.000Z",
         "spanne": {
           "hoch": 161.3,
           "tief": 160.3,
@@ -1015,7 +1067,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 194.58,
           "tief": 193,
@@ -1046,7 +1098,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:45:00.000Z",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
         "spanne": {
           "hoch": 4.13,
           "tief": 4.098,
@@ -1077,7 +1129,7 @@
           "short"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T12:55:00.000Z",
+        "letzteKerze": "2026-10-30T13:50:00.000Z",
         "spanne": {
           "hoch": 43.35,
           "tief": 43.21,
@@ -1107,7 +1159,7 @@
           "long"
         ],
         "status": "wartet",
-        "letzteKerze": "2026-10-30T13:05:00.000Z",
+        "letzteKerze": "2026-10-30T14:05:00.000Z",
         "spanne": {
           "hoch": 69792.7,
           "tief": 69558.2,
@@ -1132,7 +1184,7 @@
         ],
         "status": "wartet",
         "level": 73344,
-        "letzteKerze": "2026-10-30T13:05:00.000Z"
+        "letzteKerze": "2026-10-30T14:05:00.000Z"
       }
     },
     {
@@ -1150,7 +1202,7 @@
           "long"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T13:05:00.000Z",
+        "letzteKerze": "2026-10-30T14:05:00.000Z",
         "spanne": {
           "hoch": 1998.12,
           "tief": 1985.93,
@@ -1181,7 +1233,7 @@
         ],
         "status": "wartet",
         "level": 2128.44,
-        "letzteKerze": "2026-10-30T13:05:00.000Z"
+        "letzteKerze": "2026-10-30T14:05:00.000Z"
       }
     },
     {
@@ -1199,7 +1251,7 @@
           "long"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T13:05:00.000Z",
+        "letzteKerze": "2026-10-30T14:05:00.000Z",
         "spanne": {
           "hoch": 86.88,
           "tief": 86.48,
@@ -1230,7 +1282,7 @@
         ],
         "status": "wartet",
         "level": 92.33,
-        "letzteKerze": "2026-10-30T13:05:00.000Z"
+        "letzteKerze": "2026-10-30T14:05:00.000Z"
       }
     },
     {
@@ -1248,7 +1300,7 @@
           "long"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T13:05:00.000Z",
+        "letzteKerze": "2026-10-30T14:05:00.000Z",
         "spanne": {
           "hoch": 1.11935,
           "tief": 1.11376,
@@ -1279,7 +1331,7 @@
         ],
         "status": "wartet",
         "level": 1.18901,
-        "letzteKerze": "2026-10-30T13:05:00.000Z"
+        "letzteKerze": "2026-10-30T14:05:00.000Z"
       }
     },
     {
@@ -1297,7 +1349,7 @@
           "long"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-10-30T13:05:00.000Z",
+        "letzteKerze": "2026-10-30T14:05:00.000Z",
         "spanne": {
           "hoch": 0.172163,
           "tief": 0.171621,
@@ -1328,175 +1380,1103 @@
         ],
         "status": "wartet",
         "level": 0.18667,
-        "letzteKerze": "2026-10-30T13:05:00.000Z"
+        "letzteKerze": "2026-10-30T14:05:00.000Z"
+      }
+    },
+    {
+      "basis": "US78392B1070",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "SK HYNIX INC-GDS REG S",
+      "isin": "US78392B1070",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 948,
+          "tief": 930,
+          "volumen": 1441,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US0231351067",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "AMAZON.COM INC",
+      "isin": "US0231351067",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 213.65,
+          "tief": 205.5,
+          "volumen": 3891,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:50:00.000Z",
+          "kurs": 214.95,
+          "level": 213.65,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "US4581401001",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "INTEL CORP",
+      "isin": "US4581401001",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 60.47,
+          "tief": 58.17,
+          "volumen": 13965,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:55:00.000Z",
+          "kurs": 57.87,
+          "level": 58.17,
+          "richtung": "short"
+        }
+      }
+    },
+    {
+      "basis": "US5951121038",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "MICRON TECHNOLOGY INC",
+      "isin": "US5951121038",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 805.9,
+          "tief": 787.7,
+          "volumen": 857,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:55:00.000Z",
+          "kurs": 809.4,
+          "level": 805.9,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "US02079K3059",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "ALPHABET INC-CL A",
+      "isin": "US02079K3059",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 252.5,
+          "tief": 249.9,
+          "volumen": 2658,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US5949181045",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "MICROSOFT CORP",
+      "isin": "US5949181045",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 468.55,
+          "tief": 461,
+          "volumen": 1389,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:50:00.000Z",
+          "kurs": 469.4,
+          "level": 468.55,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "US84615Q1031",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "SPACE EXPLORATION TECHN-CL A",
+      "isin": "US84615Q1031",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 124.44,
+          "tief": 121.76,
+          "volumen": 3829,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US60770K1079",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "MODERNA INC",
+      "isin": "US60770K1079",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 203.9,
+          "tief": 199.26,
+          "volumen": 2069,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:55:00.000Z",
+          "kurs": 199,
+          "level": 199.26,
+          "richtung": "short"
+        }
+      }
+    },
+    {
+      "basis": "US67066G1040",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "NVIDIA CORP",
+      "isin": "US67066G1040",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 186.8,
+          "tief": 184.22,
+          "volumen": 1992,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US81762P1021",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "SERVICENOW INC",
+      "isin": "US81762P1021",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 98.16,
+          "tief": 95.54,
+          "volumen": 3326,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US88160R1014",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "TESLA INC",
+      "isin": "US88160R1014",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 352,
+          "tief": 347.15,
+          "volumen": 904,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:50:00.000Z",
+          "kurs": 353.05,
+          "level": 352,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "US0079031078",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "ADVANCED MICRO DEVICES",
+      "isin": "US0079031078",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 466.05,
+          "tief": 454.2,
+          "volumen": 658,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US7707001027",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "ROBINHOOD MARKETS INC - A",
+      "isin": "US7707001027",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 76,
+          "tief": 73.9,
+          "volumen": 3582,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US5949724083",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "STRATEGY INC",
+      "isin": "US5949724083",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "ausgeloest",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 115.94,
+          "tief": 111.44,
+          "volumen": 2188,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T14:00:00.000Z",
+          "kurs": 115.98,
+          "level": 115.94,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "US19260Q1076",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "COINBASE GLOBAL INC -CLASS A",
+      "isin": "US19260Q1076",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 131.9,
+          "tief": 124.84,
+          "volumen": 1914,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US8740541094",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "TAKE-TWO INTERACTIVE SOFTWRE",
+      "isin": "US8740541094",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 173.16,
+          "tief": 164.72,
+          "volumen": 1040,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US69608A1088",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "PALANTIR TECHNOLOGIES INC-A",
+      "isin": "US69608A1088",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 172.2,
+          "tief": 166.86,
+          "volumen": 901,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US1912161007",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "COCA-COLA CO/THE",
+      "isin": "US1912161007",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 85.15,
+          "tief": 84.61,
+          "volumen": 1781,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US0378331005",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "APPLE INC",
+      "isin": "US0378331005",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 312.2,
+          "tief": 308.5,
+          "volumen": 475,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US02209S1033",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "ALTRIA GROUP INC",
+      "isin": "US02209S1033",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "ausgeloest",
+        "letzteKerze": "2026-10-30T13:45:00.000Z",
+        "spanne": {
+          "hoch": 71.15,
+          "tief": 70.71,
+          "volumen": 2051,
+          "kerzen": 2
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:50:00.000Z",
+          "kurs": 70.45,
+          "level": 70.71,
+          "richtung": "short"
+        }
+      }
+    },
+    {
+      "basis": "US02079K1079",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "ALPHABET INC-CL C",
+      "isin": "US02079K1079",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 251.15,
+          "tief": 248.85,
+          "volumen": 417,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US5738741041",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "MARVELL TECHNOLOGY INC",
+      "isin": "US5738741041",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 186.14,
+          "tief": 180.76,
+          "volumen": 471,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US0937121079",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "BLOOM ENERGY CORP- A",
+      "isin": "US0937121079",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 191,
+          "tief": 184.46,
+          "volumen": 416,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:55:00.000Z",
+          "kurs": 192.76,
+          "level": 191,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "CA32076V1031",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "FIRST MAJESTIC SILVER CORP",
+      "isin": "CA32076V1031",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:45:00.000Z",
+        "spanne": {
+          "hoch": 13.01,
+          "tief": 12.78,
+          "volumen": 5899,
+          "kerzen": 2
+        }
+      }
+    },
+    {
+      "basis": "US68389X1054",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "ORACLE CORP",
+      "isin": "US68389X1054",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 120.4,
+          "tief": 117.5,
+          "volumen": 615,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T13:50:00.000Z",
+          "kurs": 121,
+          "level": 120.4,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "US80004C2008",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "SANDISK CORP",
+      "isin": "US80004C2008",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 1110,
+          "tief": 1070,
+          "volumen": 65,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US1491231015",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "CATERPILLAR INC",
+      "isin": "US1491231015",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "ausgeloest",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 567.7,
+          "tief": 557.3,
+          "volumen": 111,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-10-30T14:00:00.000Z",
+          "kurs": 569.5,
+          "level": 567.7,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "CA0203987072",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "ALMONTY INDUSTRIES INC",
+      "isin": "CA0203987072",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 7.862,
+          "tief": 7.732,
+          "volumen": 7922,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US5324571083",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "ELI LILLY & CO",
+      "isin": "US5324571083",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:55:00.000Z",
+        "spanne": {
+          "hoch": 1294.6,
+          "tief": 1275.6,
+          "volumen": 39,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "US75886F1075",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "name": "REGENERON PHARMACEUTICALS",
+      "isin": "US75886F1075",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-10-30T13:45:00.000Z",
+        "spanne": {
+          "hoch": 834,
+          "tief": 752.9,
+          "volumen": 56,
+          "kerzen": 3
+        }
       }
     }
   ],
   "kryptoLetzte": {
-    "BTC": "2026-10-30T13:05:00.000Z",
-    "ETH": "2026-10-30T13:05:00.000Z",
-    "SOL": "2026-10-30T13:05:00.000Z",
-    "XRP": "2026-10-30T13:05:00.000Z",
-    "ADA": "2026-10-30T13:05:00.000Z"
+    "BTC": "2026-10-30T14:05:00.000Z",
+    "ETH": "2026-10-30T14:05:00.000Z",
+    "SOL": "2026-10-30T14:05:00.000Z",
+    "XRP": "2026-10-30T14:05:00.000Z",
+    "ADA": "2026-10-30T14:05:00.000Z"
   },
   "watchlist": true,
   "autopilotGenutzt": [],
   "letzteKurse": {
     "US00287Y1091": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 257.75
+      "zeit": "2026-10-30T13:45:00.000Z",
+      "kurs": 265.75
     },
     "US1667641005": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 210.45
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 211.65
     },
     "US02079K3059": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 251.25
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 252.1
     },
     "US4581401001": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 61.24
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 58.86
     },
     "DE0007030009": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 1035.6
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 1036
     },
     "DE0005140008": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 30.18
+      "zeit": "2026-10-30T13:50:00.000Z",
+      "kurs": 30.245
     },
     "DE0005557508": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 25.94
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 25.99
     },
     "DE000BAY0017": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 49.93
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 50.04
     },
     "DE0008430026": {
-      "zeit": "2026-10-30T12:50:00.000Z",
-      "kurs": 568.4
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 567.8
     },
     "DE0006969603": {
-      "zeit": "2026-10-30T12:45:00.000Z",
-      "kurs": 26.78
+      "zeit": "2026-10-30T13:45:00.000Z",
+      "kurs": 26.97
     },
     "DE000A0WMPJ6": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 32.38
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 32.84
     },
     "DK0062498333": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 35.5
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 35.9
     },
     "DE000A1ML7J1": {
-      "zeit": "2026-10-30T12:45:00.000Z",
-      "kurs": 16.215
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 16.12
     },
     "DE0007164600": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 212.55
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 214.3
     },
     "DE000ENER6Y0": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 126
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 128.94
     },
     "DE000A1EWWW0": {
-      "zeit": "2026-10-30T12:50:00.000Z",
-      "kurs": 169.75
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 169.65
     },
     "NL00150001Q9": {
-      "zeit": "2026-10-30T12:45:00.000Z",
-      "kurs": 4.073
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 4.091
     },
     "NL0012044747": {
-      "zeit": "2026-10-30T12:50:00.000Z",
-      "kurs": 70.8
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 69.9
     },
     "DE000SHL1006": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 43.1
+      "zeit": "2026-10-30T13:50:00.000Z",
+      "kurs": 43.18
     },
     "FR0000121972": {
-      "zeit": "2026-10-30T12:40:00.000Z",
-      "kurs": 238.6
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 239.45
     },
     "NL0000235190": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 193.24
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 192.08
     },
     "DE0005936124": {
-      "zeit": "2026-10-30T12:45:00.000Z",
-      "kurs": 226.5
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 225.5
     },
     "DE0006231004": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 51.1
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 51.12
     },
     "DE000RENK730": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 36.615
+      "zeit": "2026-10-30T13:50:00.000Z",
+      "kurs": 36.58
     },
     "DE0007500001": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 12.005
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 12.105
     },
     "DE000A0LD6E6": {
-      "zeit": "2026-10-30T12:40:00.000Z",
-      "kurs": 33.06
+      "zeit": "2026-10-30T13:40:00.000Z",
+      "kurs": 33.02
     },
     "FR0000121014": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 387.6
+      "zeit": "2026-10-30T13:50:00.000Z",
+      "kurs": 386.5
     },
     "DE0007236101": {
-      "zeit": "2026-10-30T12:50:00.000Z",
-      "kurs": 266.1
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 266.35
     },
     "DE0006305006": {
-      "zeit": "2026-10-30T12:45:00.000Z",
-      "kurs": 9.555
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 9.49
     },
     "DE000EVNK013": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 20.86
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 20.7
     },
     "DE000A1K0235": {
-      "zeit": "2026-10-30T12:40:00.000Z",
-      "kurs": 51.25
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 51.6
     },
     "AT0000969985": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 138
+      "zeit": "2026-10-30T13:50:00.000Z",
+      "kurs": 137.4
     },
     "FR0000120578": {
-      "zeit": "2026-10-30T12:55:00.000Z",
-      "kurs": 80.43
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 80.52
     },
     "GB0009895292": {
-      "zeit": "2026-10-30T12:50:00.000Z",
-      "kurs": 165
+      "zeit": "2026-10-30T13:50:00.000Z",
+      "kurs": 167
     },
     "BTC": {
-      "zeit": "2026-10-30T13:05:00.000Z",
-      "kurs": 69101.1
+      "zeit": "2026-10-30T14:05:00.000Z",
+      "kurs": 68986.9
     },
     "ETH": {
-      "zeit": "2026-10-30T13:05:00.000Z",
-      "kurs": 1994.55
+      "zeit": "2026-10-30T14:05:00.000Z",
+      "kurs": 1990.92
     },
     "SOL": {
-      "zeit": "2026-10-30T13:05:00.000Z",
-      "kurs": 86.38
+      "zeit": "2026-10-30T14:05:00.000Z",
+      "kurs": 84.99
     },
     "XRP": {
-      "zeit": "2026-10-30T13:05:00.000Z",
-      "kurs": 1.11194
+      "zeit": "2026-10-30T14:05:00.000Z",
+      "kurs": 1.10783
     },
     "ADA": {
-      "zeit": "2026-10-30T13:05:00.000Z",
-      "kurs": 0.172613
+      "zeit": "2026-10-30T14:05:00.000Z",
+      "kurs": 0.171398
+    },
+    "US7707001027": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 75.57
+    },
+    "US1491231015": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 569.5
+    },
+    "US0378331005": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 309.7
+    },
+    "US19260Q1076": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 128.62
+    },
+    "US81762P1021": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 96.73
+    },
+    "CA0203987072": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 7.8
+    },
+    "US0079031078": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 462.85
+    },
+    "US84615Q1031": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 123.88
+    },
+    "US5949724083": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 115.98
+    },
+    "US5951121038": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 811
+    },
+    "US8740541094": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 171.1
+    },
+    "CA32076V1031": {
+      "zeit": "2026-10-30T13:45:00.000Z",
+      "kurs": 12.925
+    },
+    "US0231351067": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 214.6
+    },
+    "US67066G1040": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 186.1
+    },
+    "US75886F1075": {
+      "zeit": "2026-10-30T13:45:00.000Z",
+      "kurs": 833.3
+    },
+    "US68389X1054": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 121.06
+    },
+    "US02079K1079": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 250.65
+    },
+    "US88160R1014": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 355
+    },
+    "US5949181045": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 470
+    },
+    "US69608A1088": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 169.54
+    },
+    "US5324571083": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 1286.6
+    },
+    "US5738741041": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 183.32
+    },
+    "US60770K1079": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 200.05
+    },
+    "US80004C2008": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 1100
+    },
+    "US1912161007": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 84.64
+    },
+    "US78392B1070": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 944
+    },
+    "US02209S1033": {
+      "zeit": "2026-10-30T13:45:00.000Z",
+      "kurs": 70.45
+    },
+    "US0937121079": {
+      "zeit": "2026-10-30T13:55:00.000Z",
+      "kurs": 190.08
     }
   }
 }
