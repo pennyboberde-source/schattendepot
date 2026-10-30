@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T16:46:44.818Z",
-  "anzahl": 275,
+  "stand": "2026-10-30T17:47:22.938Z",
+  "anzahl": 278,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -3398,7 +3398,7 @@
       "t": "CUVL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3654,6 +3654,45 @@
         "CNBC Top News"
       ],
       "z": "2026-10-30T05:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ALIS:2026-10-30",
+      "s": "T:ALIS",
+      "n": "Calisa Acquisition Corp Ord Sh",
+      "t": "ALIS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TNMG:2026-10-30",
+      "s": "T:TNMG",
+      "n": "TNL Mediagene Ord Share",
+      "t": "TNMG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CAMC:2026-10-30",
+      "s": "T:CAMC",
+      "n": "Corgi CAMT 2x Daily ETF",
+      "t": "CAMC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
     }
   ]
 }
