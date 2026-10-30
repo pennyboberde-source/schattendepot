@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T11:39:24.723Z",
-  "anzahl": 238,
+  "stand": "2026-10-30T12:50:47.941Z",
+  "anzahl": 241,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -3132,9 +3132,10 @@
       "t": "XOM",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-10-30T11:35:51.000Z"
     },
@@ -3165,6 +3166,45 @@
         "Upbit"
       ],
       "z": "2026-10-30T11:39:24.723Z"
+    },
+    {
+      "id": "nachricht:CBK:2026-10-30",
+      "s": "T:CBK",
+      "n": "Commerzbank",
+      "t": "CBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "FAZ Finanzen"
+      ],
+      "z": "2026-10-30T11:41:52.000Z"
+    },
+    {
+      "id": "nachricht:DTE:2026-10-30",
+      "s": "T:DTE",
+      "n": "Deutsche Telekom",
+      "t": "DTE.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-30T11:55:42.000Z"
+    },
+    {
+      "id": "verwaesserung:VOR:2026-10-30",
+      "s": "T:VOR",
+      "n": "Vor Biopharma Inc.",
+      "t": "VOR",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-30T12:45:36.000Z"
     }
   ]
 }
