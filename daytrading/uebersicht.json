@@ -1,28 +1,28 @@
 {
-  "stand": "2026-10-30T07:58:24.383Z",
+  "stand": "2026-10-30T08:51:23.952Z",
   "heute": {
     "datum": "2026-10-30",
     "gruppe": {
-      "anzahl": 0,
+      "anzahl": 2,
       "treffer": 0,
       "quote": 0,
-      "netto": 0,
-      "brutto": 0,
-      "nettoTR": 0,
-      "oeNettoProzent": 0,
-      "oeR": 0
+      "netto": -27.93,
+      "brutto": -25.93,
+      "nettoTR": -29.93,
+      "oeNettoProzent": -1.42,
+      "oeR": -1.44
     },
-    "offen": 0
+    "offen": 15
   },
   "gesamt": {
-    "anzahl": 80,
+    "anzahl": 82,
     "treffer": 22,
-    "quote": 27.5,
-    "netto": -802.57,
-    "brutto": -772.57,
-    "nettoTR": -932.57,
-    "oeNettoProzent": -1.04,
-    "oeR": -0.14
+    "quote": 26.8,
+    "netto": -830.5,
+    "brutto": -798.5,
+    "nettoTR": -962.5,
+    "oeNettoProzent": -1.05,
+    "oeR": -0.17
   },
   "kurve": [
     {
@@ -36,18 +36,24 @@
       "netto": -802.57,
       "brutto": -772.57,
       "nettoTR": -932.57
+    },
+    {
+      "datum": "2026-10-30",
+      "netto": -830.5,
+      "brutto": -798.5,
+      "nettoTR": -962.5
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 79,
+      "anzahl": 81,
       "treffer": 22,
-      "quote": 27.8,
-      "netto": -793.24,
-      "brutto": -763.24,
-      "nettoTR": -921.24,
-      "oeNettoProzent": -1.03,
-      "oeR": -0.13
+      "quote": 27.2,
+      "netto": -821.17,
+      "brutto": -789.17,
+      "nettoTR": -951.17,
+      "oeNettoProzent": -1.04,
+      "oeR": -0.16
     },
     "claude": {
       "anzahl": 1,
@@ -62,14 +68,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 46,
+      "anzahl": 47,
       "treffer": 18,
-      "quote": 39.1,
-      "netto": -185.89,
-      "brutto": -185.89,
-      "nettoTR": -277.89,
-      "oeNettoProzent": -0.42,
-      "oeR": 0.07
+      "quote": 38.3,
+      "netto": -204.54,
+      "brutto": -204.54,
+      "nettoTR": -298.54,
+      "oeNettoProzent": -0.46,
+      "oeR": 0.03
     },
     "us": {
       "anzahl": 19,
@@ -82,26 +88,26 @@
       "oeR": -0.6
     },
     "krypto": {
-      "anzahl": 15,
+      "anzahl": 16,
       "treffer": 1,
-      "quote": 6.7,
-      "netto": -168.12,
-      "brutto": -138.12,
-      "nettoTR": -168.12,
-      "oeNettoProzent": -1.12,
-      "oeR": -0.21
+      "quote": 6.3,
+      "netto": -177.4,
+      "brutto": -145.4,
+      "nettoTR": -177.4,
+      "oeNettoProzent": -1.11,
+      "oeR": -0.26
     }
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 47,
+      "anzahl": 49,
       "treffer": 15,
-      "quote": 31.9,
-      "netto": -273.92,
-      "brutto": -253.92,
-      "nettoTR": -347.92,
-      "oeNettoProzent": -0.64,
-      "oeR": 0.04
+      "quote": 30.6,
+      "netto": -301.85,
+      "brutto": -279.85,
+      "nettoTR": -377.85,
+      "oeNettoProzent": -0.67,
+      "oeR": -0.02
     },
     "orb_short": {
       "anzahl": 28,
@@ -126,14 +132,14 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 37,
+      "anzahl": 38,
       "treffer": 14,
-      "quote": 37.8,
-      "netto": -194.04,
-      "brutto": -194.04,
-      "nettoTR": -268.04,
-      "oeNettoProzent": -0.6,
-      "oeR": 0.06
+      "quote": 36.8,
+      "netto": -212.69,
+      "brutto": -212.69,
+      "nettoTR": -288.69,
+      "oeNettoProzent": -0.63,
+      "oeR": 0.01
     },
     "turbo": {
       "anzahl": 28,
@@ -146,14 +152,14 @@
       "oeR": -0.38
     },
     "krypto": {
-      "anzahl": 15,
+      "anzahl": 16,
       "treffer": 1,
-      "quote": 6.7,
-      "netto": -168.12,
-      "brutto": -138.12,
-      "nettoTR": -168.12,
-      "oeNettoProzent": -1.12,
-      "oeR": -0.21
+      "quote": 6.3,
+      "netto": -177.4,
+      "brutto": -145.4,
+      "nettoTR": -177.4,
+      "oeNettoProzent": -1.11,
+      "oeR": -0.26
     }
   },
   "nachRisiko": {
@@ -168,26 +174,26 @@
       "oeR": -0.09
     },
     "spekulativ": {
-      "anzahl": 32,
+      "anzahl": 34,
       "treffer": 7,
-      "quote": 21.9,
-      "netto": -336.98,
-      "brutto": -318.98,
-      "nettoTR": -382.98,
-      "oeNettoProzent": -1.07,
-      "oeR": -0.23
+      "quote": 20.6,
+      "netto": -364.91,
+      "brutto": -344.91,
+      "nettoTR": -412.91,
+      "oeNettoProzent": -1.09,
+      "oeR": -0.3
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 45,
+      "anzahl": 47,
       "treffer": 0,
       "quote": 0,
-      "netto": -1208.02,
-      "brutto": -1190.02,
-      "nettoTR": -1280.02,
-      "oeNettoProzent": -2.76,
-      "oeR": -1.05
+      "netto": -1235.95,
+      "brutto": -1215.95,
+      "nettoTR": -1309.95,
+      "oeNettoProzent": -2.7,
+      "oeR": -1.07
     },
     "schluss": {
       "anzahl": 19,
@@ -212,14 +218,14 @@
   },
   "nachPhase": {
     "aufwaerts_ruhig": {
-      "anzahl": 40,
+      "anzahl": 41,
       "treffer": 16,
-      "quote": 40,
-      "netto": -230.21,
-      "brutto": -220.21,
-      "nettoTR": -300.21,
-      "oeNettoProzent": -0.63,
-      "oeR": 0.09
+      "quote": 39,
+      "netto": -248.86,
+      "brutto": -238.86,
+      "nettoTR": -320.86,
+      "oeNettoProzent": -0.66,
+      "oeR": 0.04
     },
     "unbekannt": {
       "anzahl": 40,
@@ -230,6 +236,16 @@
       "nettoTR": -632.36,
       "oeNettoProzent": -1.45,
       "oeR": -0.37
+    },
+    "seitwaerts_ruhig": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -9.28,
+      "brutto": -7.28,
+      "nettoTR": -9.28,
+      "oeNettoProzent": -0.93,
+      "oeR": -1
     }
   },
   "zeitmaschine": [
@@ -246,8 +262,1201 @@
       "oeR": -1
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-10-30-scan-aixtron-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "AIXTRON SE",
+      "isin": "DE000A0WMPJ6",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 39.43,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 32.86,
+        "level": 33.12,
+        "spanne": {
+          "hoch": 33.8,
+          "tief": 33.12
+        },
+        "richtung": "short"
+      },
+      "stop": 33.46,
+      "ziel": 31.66,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 32.86,
+        "kurs": 6.5864,
+        "stueck": 151,
+        "kurswert": 994.55
+      }
+    },
+    {
+      "id": "2026-10-30-scan-austria-technologie-syst",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "AUSTRIA TECHNOLOGIE & SYSTEM",
+      "isin": "AT0000969985",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 159.36,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 132.2,
+        "level": 133.2,
+        "spanne": {
+          "hoch": 138,
+          "tief": 133.2
+        },
+        "richtung": "short"
+      },
+      "stop": 135.6,
+      "ziel": 127.2,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 132.8,
+        "kurs": 2.6626,
+        "stueck": 375,
+        "kurswert": 998.48
+      }
+    },
+    {
+      "id": "2026-10-30-scan-deutsche-bank-ag-registe",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE BANK AG-REGISTERED",
+      "isin": "DE0005140008",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 36.61,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 30.565,
+        "level": 30.575,
+        "spanne": {
+          "hoch": 30.915,
+          "tief": 30.575
+        },
+        "richtung": "short"
+      },
+      "stop": 30.75,
+      "ziel": 30.04,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 30.51,
+        "kurs": 6.1153,
+        "stueck": 163,
+        "kurswert": 996.79
+      }
+    },
+    {
+      "id": "2026-10-30-scan-puma-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "PUMA SE",
+      "isin": "DE0006969603",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 26.63,
+        "level": 26.49,
+        "spanne": {
+          "hoch": 26.49,
+          "tief": 26.13
+        },
+        "richtung": "long"
+      },
+      "stop": 26.31,
+      "ziel": 27.48,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 26.7,
+        "kurs": 26.72,
+        "stueck": 37,
+        "kurswert": 988.64
+      }
+    },
+    {
+      "id": "2026-10-30-scan-stellantis-nv",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "STELLANTIS NV",
+      "isin": "NL00150001Q9",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 4.8906,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 4.077,
+        "level": 4.098,
+        "spanne": {
+          "hoch": 4.13,
+          "tief": 4.098
+        },
+        "richtung": "short"
+      },
+      "stop": 4.114,
+      "ziel": 3.9985,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 4.0755,
+        "kurs": 0.8171,
+        "stueck": 1223,
+        "kurswert": 999.31
+      }
+    },
+    {
+      "id": "2026-10-30-scan-thyssenkrupp-ag",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "THYSSENKRUPP AG",
+      "isin": "DE0007500001",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 14.35,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 11.955,
+        "level": 12.01,
+        "spanne": {
+          "hoch": 12.515,
+          "tief": 12.01
+        },
+        "richtung": "short"
+      },
+      "stop": 12.26,
+      "ziel": 11.36,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 11.96,
+        "kurs": 2.396,
+        "stueck": 417,
+        "kurswert": 999.13
+      }
+    },
+    {
+      "id": "2026-10-30-scan-xrp",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 1.12002,
+        "level": 1.1194,
+        "spanne": {
+          "hoch": 1.11935,
+          "tief": 1.11376
+        },
+        "richtung": "long"
+      },
+      "stop": 1.1166,
+      "ziel": 1.1255,
+      "zielR": 2,
+      "flatBis": "2026-10-30T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 1.11952,
+        "kurs": 1.1223,
+        "stueck": 891.027354,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-10-30-scan-deutz-ag",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTZ AG",
+      "isin": "DE0006305006",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 11.754,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:25:00.000Z",
+        "kurs": 9.79,
+        "level": 9.83,
+        "spanne": {
+          "hoch": 9.96,
+          "tief": 9.83
+        },
+        "richtung": "short"
+      },
+      "stop": 9.895,
+      "ziel": 9.595,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:25:00.000Z",
+        "basisKurs": 9.795,
+        "kurs": 1.9639,
+        "stueck": 509,
+        "kurswert": 999.63
+      }
+    },
+    {
+      "id": "2026-10-30-scan-ohb-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "OHB SE",
+      "isin": "DE0005936124",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 272.4,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "kurs": 228,
+        "level": 231,
+        "spanne": {
+          "hoch": 243,
+          "tief": 231
+        },
+        "richtung": "short"
+      },
+      "stop": 237,
+      "ziel": 207,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "basisKurs": 227,
+        "kurs": 4.5514,
+        "stueck": 219,
+        "kurswert": 996.76
+      }
+    },
+    {
+      "id": "2026-10-30-scan-vonovia-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "VONOVIA SE",
+      "isin": "DE000A1ML7J1",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "kurs": 16.105,
+        "level": 16.1,
+        "spanne": {
+          "hoch": 16.1,
+          "tief": 16.015
+        },
+        "richtung": "long"
+      },
+      "stop": 16.06,
+      "ziel": 16.26,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "basisKurs": 16.125,
+        "kurs": 16.137,
+        "stueck": 61,
+        "kurswert": 984.36
+      }
+    },
+    {
+      "id": "2026-10-30-scan-gerresheimer-ag",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "GERRESHEIMER AG",
+      "isin": "DE000A0LD6E6",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "kurs": 33.84,
+        "level": 33.72,
+        "spanne": {
+          "hoch": 33.72,
+          "tief": 32.02
+        },
+        "richtung": "long"
+      },
+      "stop": 32.87,
+      "ziel": 34.76,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 33.5,
+        "kurs": 33.525,
+        "stueck": 29,
+        "kurswert": 972.23
+      }
+    },
+    {
+      "id": "2026-10-30-scan-muenchener-rueckver-ag-r",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "MUENCHENER RUECKVER AG-REG",
+      "isin": "DE0008430026",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "kurs": 564.8,
+        "level": 564.4,
+        "spanne": {
+          "hoch": 564.4,
+          "tief": 562.4
+        },
+        "richtung": "long"
+      },
+      "stop": 563.4,
+      "ziel": 565.8,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 564.2,
+        "kurs": 564.623,
+        "stueck": 1,
+        "kurswert": 564.62
+      }
+    },
+    {
+      "id": "2026-10-30-scan-siemens-ag-reg",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SIEMENS AG-REG",
+      "isin": "DE0007236101",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "kurs": 270.2,
+        "level": 270,
+        "spanne": {
+          "hoch": 270,
+          "tief": 268.3
+        },
+        "richtung": "long"
+      },
+      "stop": 269.15,
+      "ziel": 272.9,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 270.4,
+        "kurs": 270.603,
+        "stueck": 3,
+        "kurswert": 811.81
+      }
+    },
+    {
+      "id": "2026-10-30-scan-suss-microtec-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SUSS MICROTEC SE",
+      "isin": "DE000A1K0235",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "kurs": 52.6,
+        "level": 52.45,
+        "spanne": {
+          "hoch": 52.45,
+          "tief": 51.75
+        },
+        "richtung": "long"
+      },
+      "stop": 52.1,
+      "ziel": 53.3,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 52.5,
+        "kurs": 52.539,
+        "stueck": 19,
+        "kurswert": 998.24
+      }
+    },
+    {
+      "id": "2026-10-30-scan-sap-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SAP SE",
+      "isin": "DE0007164600",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:40:00.000Z",
+        "kurs": 213.1,
+        "level": 212.6,
+        "spanne": {
+          "hoch": 212.6,
+          "tief": 210.1
+        },
+        "richtung": "long"
+      },
+      "stop": 211.35,
+      "ziel": 217.05,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:40:00.000Z",
+        "basisKurs": 213.25,
+        "kurs": 213.41,
+        "stueck": 4,
+        "kurswert": 853.64
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-10-30-scan-aixtron-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "AIXTRON SE",
+      "isin": "DE000A0WMPJ6",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 39.43,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 32.86,
+        "level": 33.12,
+        "spanne": {
+          "hoch": 33.8,
+          "tief": 33.12
+        },
+        "richtung": "short"
+      },
+      "stop": 33.46,
+      "ziel": 31.66,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 32.86,
+        "kurs": 6.5864,
+        "stueck": 151,
+        "kurswert": 994.55
+      }
+    },
+    {
+      "id": "2026-10-30-scan-austria-technologie-syst",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "AUSTRIA TECHNOLOGIE & SYSTEM",
+      "isin": "AT0000969985",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 159.36,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 132.2,
+        "level": 133.2,
+        "spanne": {
+          "hoch": 138,
+          "tief": 133.2
+        },
+        "richtung": "short"
+      },
+      "stop": 135.6,
+      "ziel": 127.2,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 132.8,
+        "kurs": 2.6626,
+        "stueck": 375,
+        "kurswert": 998.48
+      }
+    },
+    {
+      "id": "2026-10-30-scan-deutsche-bank-ag-registe",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE BANK AG-REGISTERED",
+      "isin": "DE0005140008",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 36.61,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 30.565,
+        "level": 30.575,
+        "spanne": {
+          "hoch": 30.915,
+          "tief": 30.575
+        },
+        "richtung": "short"
+      },
+      "stop": 30.75,
+      "ziel": 30.04,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 30.51,
+        "kurs": 6.1153,
+        "stueck": 163,
+        "kurswert": 996.79
+      }
+    },
+    {
+      "id": "2026-10-30-scan-puma-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "PUMA SE",
+      "isin": "DE0006969603",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 26.63,
+        "level": 26.49,
+        "spanne": {
+          "hoch": 26.49,
+          "tief": 26.13
+        },
+        "richtung": "long"
+      },
+      "stop": 26.31,
+      "ziel": 27.48,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 26.7,
+        "kurs": 26.72,
+        "stueck": 37,
+        "kurswert": 988.64
+      }
+    },
+    {
+      "id": "2026-10-30-scan-stellantis-nv",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "STELLANTIS NV",
+      "isin": "NL00150001Q9",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 4.8906,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 4.077,
+        "level": 4.098,
+        "spanne": {
+          "hoch": 4.13,
+          "tief": 4.098
+        },
+        "richtung": "short"
+      },
+      "stop": 4.114,
+      "ziel": 3.9985,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 4.0755,
+        "kurs": 0.8171,
+        "stueck": 1223,
+        "kurswert": 999.31
+      }
+    },
+    {
+      "id": "2026-10-30-scan-thyssenkrupp-ag",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "THYSSENKRUPP AG",
+      "isin": "DE0007500001",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 14.35,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 11.955,
+        "level": 12.01,
+        "spanne": {
+          "hoch": 12.515,
+          "tief": 12.01
+        },
+        "richtung": "short"
+      },
+      "stop": 12.26,
+      "ziel": 11.36,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 11.96,
+        "kurs": 2.396,
+        "stueck": 417,
+        "kurswert": 999.13
+      }
+    },
+    {
+      "id": "2026-10-30-scan-xrp",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 1.12002,
+        "level": 1.1194,
+        "spanne": {
+          "hoch": 1.11935,
+          "tief": 1.11376
+        },
+        "richtung": "long"
+      },
+      "stop": 1.1166,
+      "ziel": 1.1255,
+      "zielR": 2,
+      "flatBis": "2026-10-30T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 1.11952,
+        "kurs": 1.1223,
+        "stueck": 891.027354,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-10-30-scan-deutz-ag",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTZ AG",
+      "isin": "DE0006305006",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 11.754,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:25:00.000Z",
+        "kurs": 9.79,
+        "level": 9.83,
+        "spanne": {
+          "hoch": 9.96,
+          "tief": 9.83
+        },
+        "richtung": "short"
+      },
+      "stop": 9.895,
+      "ziel": 9.595,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:25:00.000Z",
+        "basisKurs": 9.795,
+        "kurs": 1.9639,
+        "stueck": 509,
+        "kurswert": 999.63
+      }
+    },
+    {
+      "id": "2026-10-30-scan-ohb-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "OHB SE",
+      "isin": "DE0005936124",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 272.4,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "kurs": 228,
+        "level": 231,
+        "spanne": {
+          "hoch": 243,
+          "tief": 231
+        },
+        "richtung": "short"
+      },
+      "stop": 237,
+      "ziel": 207,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "basisKurs": 227,
+        "kurs": 4.5514,
+        "stueck": 219,
+        "kurswert": 996.76
+      }
+    },
+    {
+      "id": "2026-10-30-scan-vonovia-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "VONOVIA SE",
+      "isin": "DE000A1ML7J1",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "kurs": 16.105,
+        "level": 16.1,
+        "spanne": {
+          "hoch": 16.1,
+          "tief": 16.015
+        },
+        "richtung": "long"
+      },
+      "stop": 16.06,
+      "ziel": 16.26,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "basisKurs": 16.125,
+        "kurs": 16.137,
+        "stueck": 61,
+        "kurswert": 984.36
+      }
+    },
+    {
+      "id": "2026-10-30-scan-gerresheimer-ag",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "GERRESHEIMER AG",
+      "isin": "DE000A0LD6E6",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "kurs": 33.84,
+        "level": 33.72,
+        "spanne": {
+          "hoch": 33.72,
+          "tief": 32.02
+        },
+        "richtung": "long"
+      },
+      "stop": 32.87,
+      "ziel": 34.76,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 33.5,
+        "kurs": 33.525,
+        "stueck": 29,
+        "kurswert": 972.23
+      }
+    },
+    {
+      "id": "2026-10-30-scan-muenchener-rueckver-ag-r",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "MUENCHENER RUECKVER AG-REG",
+      "isin": "DE0008430026",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "kurs": 564.8,
+        "level": 564.4,
+        "spanne": {
+          "hoch": 564.4,
+          "tief": 562.4
+        },
+        "richtung": "long"
+      },
+      "stop": 563.4,
+      "ziel": 565.8,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 564.2,
+        "kurs": 564.623,
+        "stueck": 1,
+        "kurswert": 564.62
+      }
+    },
+    {
+      "id": "2026-10-30-scan-siemens-ag-reg",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SIEMENS AG-REG",
+      "isin": "DE0007236101",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "kurs": 270.2,
+        "level": 270,
+        "spanne": {
+          "hoch": 270,
+          "tief": 268.3
+        },
+        "richtung": "long"
+      },
+      "stop": 269.15,
+      "ziel": 272.9,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 270.4,
+        "kurs": 270.603,
+        "stueck": 3,
+        "kurswert": 811.81
+      }
+    },
+    {
+      "id": "2026-10-30-scan-suss-microtec-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SUSS MICROTEC SE",
+      "isin": "DE000A1K0235",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "kurs": 52.6,
+        "level": 52.45,
+        "spanne": {
+          "hoch": 52.45,
+          "tief": 51.75
+        },
+        "richtung": "long"
+      },
+      "stop": 52.1,
+      "ziel": 53.3,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 52.5,
+        "kurs": 52.539,
+        "stueck": 19,
+        "kurswert": 998.24
+      }
+    },
+    {
+      "id": "2026-10-30-scan-sap-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SAP SE",
+      "isin": "DE0007164600",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:40:00.000Z",
+        "kurs": 213.1,
+        "level": 212.6,
+        "spanne": {
+          "hoch": 212.6,
+          "tief": 210.1
+        },
+        "richtung": "long"
+      },
+      "stop": 211.35,
+      "ziel": 217.05,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:40:00.000Z",
+        "basisKurs": 213.25,
+        "kurs": 213.41,
+        "stueck": 4,
+        "kurswert": 853.64
+      }
+    },
+    {
+      "id": "2026-10-30-scan-sol",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 86.89,
+        "level": 86.88,
+        "spanne": {
+          "hoch": 86.88,
+          "tief": 86.48
+        },
+        "richtung": "long"
+      },
+      "stop": 86.68,
+      "ziel": 87.28,
+      "zielR": 2,
+      "flatBis": "2026-10-30T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 86.88,
+        "kurs": 87.097,
+        "stueck": 11.481451,
+        "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T08:40:00.000Z",
+        "basisKurs": 86.68,
+        "kurs": 86.463,
+        "kurswert": 992.72,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -7.28,
+        "bruttoProzent": -0.73,
+        "netto": -9.28,
+        "nettoProzent": -0.93,
+        "nettoTR": -9.28,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-10-30-scan-astrazeneca-plc",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ASTRAZENECA PLC",
+      "isin": "GB0009895292",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "kurs": 161.75,
+        "level": 161.3,
+        "spanne": {
+          "hoch": 161.3,
+          "tief": 160.3
+        },
+        "richtung": "long"
+      },
+      "stop": 160.8,
+      "ziel": 163.2,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:20:00.000Z",
+        "basisKurs": 161.6,
+        "kurs": 162.408,
+        "stueck": 6,
+        "kurswert": 974.45
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 160.1,
+        "kurs": 159.3,
+        "kurswert": 955.8,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -18.65,
+        "bruttoProzent": -1.91,
+        "netto": -18.65,
+        "nettoProzent": -1.91,
+        "nettoTR": -20.65,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.88
+      }
+    },
     {
       "id": "2026-10-29-scan-fortinet-inc",
       "datum": "2026-10-29",
@@ -4718,7 +5927,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 0,
+    "code_scan": 40,
     "claude": 5,
     "autopilot": 0
   },
