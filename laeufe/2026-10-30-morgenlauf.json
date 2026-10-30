@@ -1,0 +1,31 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-10-30",
+  "erstellt": "2026-10-30T06:55:00Z",
+  "briefing": [
+    "Heute keine neue Order: kein Kandidat mit belegtem Vorteil nach Gebühren (Statistik Ø −0,9 %, Lektionen 2, 5, 8)",
+    "Vor US-Start Zahlen von XOM, CVX, ABBV, CL, LYB – Daytrading-Watchlist. Letzter Handelstag des Monats",
+    "Krypto: Meldung über Binance-Hack (unbestätigt), Fear & Greed 30, BTC-Funding +32 % p. a. SpaceX knapp über Stop"
+  ],
+  "orders": [],
+  "prognose": [
+    {"name": "Alphabet", "ticker": "GOOGL", "markt": "us", "richtung": "runter", "chance": 55, "grund": "Nach −12,6 % auf Zahlenfehlschlag und Capex-Sorgen oft weitere Drift, aber Erholung möglich"},
+    {"name": "BURU", "ticker": "BURU", "markt": "us", "richtung": "runter", "chance": 65, "grund": "Penny-Rakete +118 % ohne belegten Grund, solche Sprünge verpuffen oft am Folgetag"},
+    {"name": "PCLA", "ticker": "PCLA", "markt": "us", "richtung": "runter", "chance": 60, "grund": "+89 % an einem Tag, Gewinnmitnahme wahrscheinlicher als Fortsetzung"},
+    {"name": "NCPL", "ticker": "NCPL", "markt": "us", "richtung": "runter", "chance": 60, "grund": "+62 % Kursrakete bei Kleinstwert"},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 55, "grund": "Hack-Meldung um Binance, hohes Funding (+32 % p. a.) = viele gehebelte Käufer"},
+    {"name": "Ethereum", "ticker": "ETH", "markt": "krypto", "richtung": "runter", "chance": 55, "grund": "Fear & Greed fiel von 51 auf 30, 89 % der Liquidationen Longs"},
+    {"name": "Intel", "ticker": "INTC", "markt": "us", "richtung": "hoch", "chance": 50, "grund": "EPS +30 % über Erwartung, nachbörslich um 70,9 $ – Richtung nach Kursrutsch offen"},
+    {"name": "Ford", "ticker": "F", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "EPS +19 % über Erwartung, Kurs +3,4 % bestätigt"},
+    {"name": "Fannie Mae", "ticker": "FMCC", "markt": "us", "richtung": "runter", "chance": 55, "grund": "Gewinn fast null statt 0,97 $ erwartet, Kurs −6,9 %"},
+    {"name": "D.R. Horton", "ticker": "DHI", "markt": "us", "richtung": "runter", "chance": 53, "grund": "EPS 13 % unter Erwartung"}
+  ],
+  "daytrading": [
+    {"name": "Exxon Mobil", "markt": "us", "isin": "US30231G1022", "setup": "orb", "richtung": "beide", "instrument": "aktie", "chance": 38, "these": "Quartalszahlen vor US-Börsenstart; Ausbruch aus der Eröffnungsspanne zeigt die Richtung der Reaktion."},
+    {"name": "Chevron", "markt": "us", "isin": "US1667641005", "setup": "orb", "richtung": "beide", "instrument": "aktie", "chance": 38, "these": "Quartalszahlen vor US-Börsenstart, erhöhtes Volumen erwartet."},
+    {"name": "AbbVie", "markt": "us", "isin": "US00287Y1091", "setup": "orb", "richtung": "beide", "instrument": "aktie", "chance": 38, "these": "Zahlen vor US-Start; Pharmawerte reagieren oft kräftig auf Ausblick."},
+    {"name": "Intel", "markt": "us", "isin": "US4581401001", "setup": "orb", "richtung": "beide", "instrument": "aktie", "chance": 40, "these": "Nach Zahlen sehr hohes Volumen und Reddit-Interesse (Rang 5); kräftige Tagesbewegung wahrscheinlich, Richtung offen."},
+    {"name": "Alphabet", "markt": "us", "isin": "US02079K3059", "setup": "orb", "richtung": "beide", "instrument": "aktie", "chance": 36, "these": "Zweiter Tag nach −12,6 %: Kampf zwischen Schnäppchenjägern und weiteren Verkäufern, hohes Volumen."}
+  ],
+  "notiz": "Keine Order. Websuchen fanden zu Binance-Hack, Intel- und Lilly-Zahlen keine aktuellen Berichte (Fakten nicht bestätigt, Lektion 4). GOOGL-Short: Großwert, Überraschung nach −12,6 % weitgehend eingepreist (Lektion 8); FMP: GOOGL Schluss 283,82 $. Gewinnüberraschung im Schattenbuch Ø −0,5 % (n=71), Insider-Signale Ø −2 % → kein Vorteil. Positionen: SpaceX (−7,1 %, Stop 127,64 €) – Meldungen zu Tesla-Fusion/Anthropic-Umsatzanteil ohne klare Richtung, Stop dem Wächter überlassen; Stewart (+4,6 %, Stop auf Einstand) intakt. Quellen: https://www.faz.net/aktuell/finanzen/finanzmarkt/google-mutterkonzern-alphabet-aktie-bricht-um-mehr-als-12-prozent-ein-201634518.html"
+}
