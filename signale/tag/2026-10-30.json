@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T18:45:07.997Z",
-  "anzahl": 282,
+  "stand": "2026-10-30T19:45:17.250Z",
+  "anzahl": 284,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -3650,10 +3650,11 @@
       "t": "BTC",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.41,
+      "st": 0.51,
       "q": [
         "BTC-ECHO",
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-10-30T05:00:00.000Z"
     },
@@ -3747,6 +3748,32 @@
         "SEC EDGAR"
       ],
       "z": "2026-10-30T18:42:42.000Z"
+    },
+    {
+      "id": "handelsstopp:SGRX:2026-10-30",
+      "s": "T:SGRX",
+      "n": "SANGRIX INC. Cl A Ord Sh",
+      "t": "SGRX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:NIPG:2026-10-30",
+      "s": "T:NIPG",
+      "n": "NIP Group Inc. American Dep Sh",
+      "t": "NIPG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
     }
   ]
 }
