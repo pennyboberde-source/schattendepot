@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T13:58:18.236Z",
-  "anzahl": 259,
+  "stand": "2026-10-30T14:54:32.016Z",
+  "anzahl": 266,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -3083,7 +3083,8 @@
       "st": 0.41,
       "q": [
         "CNBC Top News",
-        "MarketWatch"
+        "MarketWatch",
+        "Handelsblatt Finanzen"
       ],
       "z": "2026-10-30T09:16:27.000Z"
     },
@@ -3305,7 +3306,7 @@
       "t": "ONEG",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3441,6 +3442,98 @@
         "Upbit"
       ],
       "z": "2026-10-30T13:58:18.236Z"
+    },
+    {
+      "id": "handelsstopp:CHOW:2026-10-30",
+      "s": "T:CHOW",
+      "n": "ChowChow Cloud International Holdings Limited Ordinary Share",
+      "t": "CHOW",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BTCK:2026-10-30",
+      "s": "T:BTCK",
+      "n": "7RCC Spot Bitcoin and Carbon Credit Futures ETF",
+      "t": "BTCK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RFAI:2026-10-30",
+      "s": "T:RFAI",
+      "n": "RF Acq Cp II Ord",
+      "t": "RFAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CHWM:2026-10-30",
+      "s": "T:CHWM",
+      "n": "Chilwa Minerals Limited ADS",
+      "t": "CHWM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:XPOF:2026-10-30",
+      "s": "T:XPOF",
+      "n": "Xponential Fitness, Inc. Class A Common Stock",
+      "t": "XPOF",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:SOL:2026-10-30",
+      "s": "T:SOL",
+      "n": "Solana",
+      "t": "SOL",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-10-30T13:00:00.000Z"
+    },
+    {
+      "id": "nachricht:VOW3:2026-10-30",
+      "s": "T:VOW3",
+      "n": "Volkswagen",
+      "t": "VOW3.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-10-30T13:51:43.000Z"
     }
   ]
 }
