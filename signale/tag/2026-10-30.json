@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T15:50:00.519Z",
-  "anzahl": 272,
+  "stand": "2026-10-30T16:46:44.818Z",
+  "anzahl": 275,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -3614,6 +3614,46 @@
         "Upbit"
       ],
       "z": "2026-10-30T15:50:00.519Z"
+    },
+    {
+      "id": "handelsstopp:PMN:2026-10-30",
+      "s": "T:PMN",
+      "n": "ProMIS Neurosciences Inc. Os",
+      "t": "PMN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GBC:2026-10-30",
+      "s": "T:GBC",
+      "n": "Georgia Banking Company Cmn",
+      "t": "GBC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-10-30",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "BTC-ECHO",
+        "CNBC Top News"
+      ],
+      "z": "2026-10-30T05:00:00.000Z"
     }
   ]
 }
