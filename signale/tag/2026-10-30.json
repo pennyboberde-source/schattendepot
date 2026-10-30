@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T04:44:39.050Z",
-  "anzahl": 227,
+  "stand": "2026-10-30T07:59:03.785Z",
+  "anzahl": 229,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -767,10 +767,11 @@
       "t": "AMZN",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.41,
+      "st": 0.51,
       "q": [
         "CNBC Top News",
-        "MarketWatch"
+        "MarketWatch",
+        "Handelsblatt Finanzen"
       ],
       "z": "2026-10-29T21:59:31.000Z"
     },
@@ -2705,7 +2706,7 @@
       "m": "krypto",
       "typ": "upbit_warnung",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Upbit"
       ],
@@ -3015,6 +3016,34 @@
         "Finnhub Kurs"
       ],
       "z": "2026-10-30T04:44:39.050Z"
+    },
+    {
+      "id": "kursrakete:MPLX:2026-10-30",
+      "s": "T:MPLX",
+      "n": "Metaplex",
+      "t": "MPLX",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.41,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-30T07:59:03.785Z"
+    },
+    {
+      "id": "kursrakete:BEAM:2026-10-30",
+      "s": "T:BEAM",
+      "n": "Beam",
+      "t": "BEAM",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.57,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-30T07:59:03.785Z"
     }
   ]
 }
