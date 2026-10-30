@@ -1,21 +1,21 @@
 {
-  "stand": "2026-10-30T06:50:26.198Z",
+  "stand": "2026-10-30T07:58:16.649Z",
   "gesamt": {
-    "anzahl": 7,
+    "anzahl": 8,
     "treffer": 4,
-    "quote": 57.1,
-    "oeNetto": -0.94,
-    "oeNachSteuern": -0.94,
-    "summeNetto": -52.54
+    "quote": 50,
+    "oeNetto": -2.07,
+    "oeNachSteuern": -2.06,
+    "summeNetto": -149.41
   },
   "nachStrategie": {
     "nachzahlen_drift": {
-      "anzahl": 5,
+      "anzahl": 6,
       "treffer": 3,
-      "quote": 60,
-      "oeNetto": -0.38,
-      "oeNachSteuern": -0.38,
-      "summeNetto": -7.95
+      "quote": 50,
+      "oeNetto": -1.98,
+      "oeNachSteuern": -1.98,
+      "summeNetto": -104.82
     },
     "insider_kauf": {
       "anzahl": 2,
@@ -28,20 +28,20 @@
   },
   "nachSignalTyp": {
     "gewinn_ueberraschung": {
+      "anzahl": 6,
+      "treffer": 3,
+      "quote": 50,
+      "oeNetto": -1.98,
+      "oeNachSteuern": -1.98,
+      "summeNetto": -104.82
+    },
+    "nachzahlen_drift": {
       "anzahl": 5,
       "treffer": 3,
       "quote": 60,
-      "oeNetto": -0.38,
-      "oeNachSteuern": -0.38,
-      "summeNetto": -7.95
-    },
-    "nachzahlen_drift": {
-      "anzahl": 4,
-      "treffer": 3,
-      "quote": 75,
-      "oeNetto": 0.57,
-      "oeNachSteuern": 0.57,
-      "summeNetto": 32.69
+      "oeNetto": -1.54,
+      "oeNachSteuern": -1.54,
+      "summeNetto": -64.18
     },
     "insider_cluster_kauf": {
       "anzahl": 2,
@@ -58,6 +58,14 @@
       "oeNetto": -2.36,
       "oeNachSteuern": -2.33,
       "summeNetto": -44.59
+    },
+    "volumen_ungewoehnlich": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -9.97,
+      "oeNachSteuern": -9.97,
+      "summeNetto": -96.87
     },
     "analysten_hochstufung": {
       "anzahl": 1,
@@ -76,6 +84,30 @@
       "oeNetto": 1.25,
       "oeNachSteuern": 1.25,
       "summeNetto": 11.34
+    },
+    "TradingView NASDAQ:SPCX (ISIN)": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -9.97,
+      "oeNachSteuern": -9.97,
+      "summeNetto": -96.87
+    },
+    "BusinessDay: SpaceX- und Tesla-Zahlen nähren Fusionsspekulation": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -9.97,
+      "oeNachSteuern": -9.97,
+      "summeNetto": -96.87
+    },
+    "tagesschau: Tesla und SpaceX prüfen Zusammenschluss": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -9.97,
+      "oeNachSteuern": -9.97,
+      "summeNetto": -96.87
     },
     "Elevance Q3-2026-Ergebnis (SEC 8-K)": {
       "anzahl": 1,
@@ -176,22 +208,22 @@
   },
   "nachAnlageklasse": {
     "aktie": {
-      "anzahl": 7,
+      "anzahl": 8,
       "treffer": 4,
-      "quote": 57.1,
-      "oeNetto": -0.94,
-      "oeNachSteuern": -0.94,
-      "summeNetto": -52.54
+      "quote": 50,
+      "oeNetto": -2.07,
+      "oeNachSteuern": -2.06,
+      "summeNetto": -149.41
     }
   },
   "nachRisikoklasse": {
     "normal": {
-      "anzahl": 6,
+      "anzahl": 7,
       "treffer": 4,
-      "quote": 66.7,
-      "oeNetto": 1.23,
-      "oeNachSteuern": 0.82,
-      "summeNetto": 84.58
+      "quote": 57.1,
+      "oeNetto": -0.37,
+      "oeNachSteuern": -0.72,
+      "summeNetto": -12.29
     },
     "spekulativ": {
       "anzahl": 1,
@@ -204,12 +236,12 @@
   },
   "nachVerkaufsgrund": {
     "stop": {
-      "anzahl": 3,
+      "anzahl": 4,
       "treffer": 0,
       "quote": 0,
-      "oeNetto": -8.11,
-      "oeNachSteuern": -7.28,
-      "summeNetto": -227.12
+      "oeNetto": -8.58,
+      "oeNachSteuern": -7.95,
+      "summeNetto": -323.99
     },
     "zeit": {
       "anzahl": 2,
@@ -253,6 +285,14 @@
       "oeNachSteuern": -2.91,
       "summeNetto": -109.34
     },
+    "> 1 Woche": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "oeNetto": -9.97,
+      "oeNachSteuern": -9.97,
+      "summeNetto": -96.87
+    },
     "< 1 Tag": {
       "anzahl": 1,
       "treffer": 1,
@@ -264,20 +304,20 @@
   },
   "nachKonfidenz": {
     "40–59 %": {
-      "anzahl": 7,
+      "anzahl": 8,
       "treffer": 4,
-      "quote": 57.1,
-      "oeNetto": -0.94,
-      "oeNachSteuern": -0.94,
-      "summeNetto": -52.54
+      "quote": 50,
+      "oeNetto": -2.07,
+      "oeNachSteuern": -2.06,
+      "summeNetto": -149.41
     }
   },
   "kalibrierung": [
     {
       "stufe": "40–59 %",
-      "erwartet": 43.6,
-      "tatsaechlich": 57.1,
-      "anzahl": 7
+      "erwartet": 44.4,
+      "tatsaechlich": 50,
+      "anzahl": 8
     }
   ],
   "pflicht": {
@@ -289,22 +329,22 @@
     "summeNetto": 0
   },
   "ueberzeugung": {
-    "anzahl": 7,
+    "anzahl": 8,
     "treffer": 4,
-    "quote": 57.1,
-    "oeNetto": -0.94,
-    "oeNachSteuern": -0.94,
-    "summeNetto": -52.54
+    "quote": 50,
+    "oeNetto": -2.07,
+    "oeNachSteuern": -2.06,
+    "summeNetto": -149.41
   },
   "erwartetVsTatsaechlich": {
-    "erwartet": 0.64,
-    "tatsaechlich": -0.94,
-    "anzahl": 7
+    "erwartet": 0.75,
+    "tatsaechlich": -2.07,
+    "anzahl": 8
   },
   "etf": {
-    "depotNetto": -52.54,
-    "etfNetto": 51.14,
-    "anzahlMitVergleich": 7
+    "depotNetto": -149.41,
+    "etfNetto": 51.62,
+    "anzahlMitVergleich": 8
   },
   "kandidaten": {
     "gesamt": {
@@ -1070,12 +1110,12 @@
   },
   "nachPhase": {
     "unbekannt": {
-      "anzahl": 7,
+      "anzahl": 8,
       "treffer": 4,
-      "quote": 57.1,
-      "oeNetto": -0.94,
-      "oeNachSteuern": -0.94,
-      "summeNetto": -52.54
+      "quote": 50,
+      "oeNetto": -2.07,
+      "oeNachSteuern": -2.06,
+      "summeNetto": -149.41
     }
   },
   "prognose": {
@@ -1095,15 +1135,15 @@
   },
   "nachHerkunft": {
     "claude": {
-      "anzahl": 7,
+      "anzahl": 8,
       "treffer": 4,
-      "quote": 57.1,
-      "oeNetto": -0.94,
-      "oeNachSteuern": -0.94,
-      "summeNetto": -52.54
+      "quote": 50,
+      "oeNetto": -2.07,
+      "oeNachSteuern": -2.06,
+      "summeNetto": -149.41
     }
   },
-  "zusammenfassung": "Gesamt: 7 Orders, Trefferquote 57.1 %, Ø -0.94 % nach Gebühren (erwartet waren Ø 0.64 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 6 Orders, Ø 1.23 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 57.1 % (n=7).\nStrategien (n≥3): nachzahlen_drift 60 %/Ø -0.38 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -0.5 % (n=71); insider_cluster_kauf -2.22 % (n=34); insider_kauf -2.05 % (n=32); nachzahlen_drift -0.72 % (n=17); nachricht 3.72 % (n=15); volumen_ungewoehnlich 4.66 % (n=7).\nVs. MSCI World (gleiche Zeiträume): Depot -52.54 € vs. ETF 51.14 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_kauf 11.1 % (Lift 1.35, n=36); gewinn_ueberraschung 8.1 % (Lift 0.98, n=37).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -0,9 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +3,7 % nach 1 Woche (n=15).\n- Schwächstes Signal: insider_cluster_kauf Ø -2,2 % nach 1 Woche (n=34) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 8 Orders, Trefferquote 50 %, Ø -2.07 % nach Gebühren (erwartet waren Ø 0.75 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 7 Orders, Ø -0.37 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=8).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -0.5 % (n=71); insider_cluster_kauf -2.22 % (n=34); insider_kauf -2.05 % (n=32); nachzahlen_drift -0.72 % (n=17); nachricht 3.72 % (n=15); volumen_ungewoehnlich 4.66 % (n=7).\nVs. MSCI World (gleiche Zeiträume): Depot -149.41 € vs. ETF 51.62 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_kauf 11.1 % (Lift 1.35, n=36); gewinn_ueberraschung 8.1 % (Lift 0.98, n=37).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +3,7 % nach 1 Woche (n=15).\n- Schwächstes Signal: insider_cluster_kauf Ø -2,2 % nach 1 Woche (n=34) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "tagesgewinner",
@@ -1383,7 +1423,7 @@
     }
   ],
   "lernhinweise": [
-    "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -0,9 % → realistischer planen oder Ziele näher setzen.",
+    "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.",
     "Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +3,7 % nach 1 Woche (n=15).",
     "Schwächstes Signal: insider_cluster_kauf Ø -2,2 % nach 1 Woche (n=34) → nicht darauf verlassen."
   ],

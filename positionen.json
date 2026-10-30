@@ -1,97 +1,6 @@
 {
-  "stand": "2026-10-30T06:50:26.198Z",
+  "stand": "2026-10-30T07:58:16.649Z",
   "offen": [
-    {
-      "id": "2026-10-22-space-exploration-technologies",
-      "status": "offen",
-      "vorgemerktUm": "2026-10-22T05:42:31.040Z",
-      "vorgemerktVon": "morgenlauf",
-      "plan": {
-        "wertpapier": {
-          "name": "Space Exploration Technologies Corp. (SpaceX)",
-          "isin": "US84615Q1031",
-          "ticker": "SPCX",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_large",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "SPCX",
-            "waehrung": "USD"
-          }
-        },
-        "strategie": "nachzahlen_drift",
-        "these": "SpaceX hat am 20.10. mit EPS 0,35 $ die Erwartung (0,14 $) deutlich übertroffen; der Markt bestätigte das mit +7,8 % bei sehr hohem Volumen (220 Mio. Stück). Drift nach starken Überraschungen hält oft einige Tage bis Wochen. Dazu Fantasie rund um einen möglichen Zusammenschluss mit Tesla vor Teslas Hauptversammlung am 6.12.",
-        "ausloeser": "Gewinnüberraschung +157 % mit positiver Kursreaktion und Rekordvolumen (Lagebild)",
-        "signalIds": [
-          "gewinn_ueberraschung:SPCX:2026-10-22",
-          "volumen_ungewoehnlich:SPCX:2026-10-22",
-          "nachzahlen_drift:SPCX:2026-10-22"
-        ],
-        "quellen": [
-          {
-            "name": "TradingView NASDAQ:SPCX (ISIN)",
-            "link": "https://in.tradingview.com/symbols/NASDAQ-SPCX/"
-          },
-          {
-            "name": "BusinessDay: SpaceX- und Tesla-Zahlen nähren Fusionsspekulation",
-            "link": "https://www.businessday.co.za/world/international-companies/2026-10-19-spacex-and-tesla-earnings-stoke-merger-speculation/"
-          },
-          {
-            "name": "tagesschau: Tesla und SpaceX prüfen Zusammenschluss",
-            "link": "https://www.tagesschau.de/wirtschaft/unternehmen/tesla-spacex-zusammenschluss-moeglich-100.html"
-          }
-        ],
-        "konfidenz": 50,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 1.5,
-        "zielNettoProzent": 6,
-        "stopProzent": -8,
-        "verkaufstermin": "2026-11-05T15:00:00.000Z",
-        "risiken": [
-          "Junge Aktie (IPO Juni 2026), hohe Schwankung; Gewinnmitnahmen nach +7,8 %",
-          "Fusion mit Tesla: als Käufer könnte SpaceX unter Verwässerung leiden",
-          "Quellen widersprechen sich zum Berichtstermin – Datenlage nicht ganz sauber",
-          "Nahost-Eskalation (Iran) kann Risikoappetit drücken"
-        ],
-        "einflussLektionen": "Noch keine Lektionen/Statistik (0 Orders). Wahl folgt dem höchsten Score im Lagebild; Konfidenz bewusst bei 50, da Kalibrierung fehlt.",
-        "risikoklasse": "normal"
-      },
-      "verkaufstermin": "2026-11-05T15:00:00.000Z",
-      "anpassungen": [],
-      "kauf": {
-        "zeit": "2026-10-22T06:20:01.446Z",
-        "stueck": 7,
-        "kurs": 138.744,
-        "kurswert": 971.21,
-        "entgelt": {
-          "provision": 0,
-          "handelsplatz": 0,
-          "gesamt": 0
-        },
-        "betrag": 971.21,
-        "kursquelle": "gettex (verzögert, MiFIR) (2026-10-22T06:14:45.816Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 150.28,
-      "stopkurs": 127.64,
-      "etfKauf": {
-        "wert": 130.085,
-        "zeit": "2026-10-22T06:14:27.451Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 6,
-        "hinweis": "letztes Geschäft 2026-10-22"
-      },
-      "letzterKurs": {
-        "wert": 125.54,
-        "zeit": "2026-10-30T06:43:56.113Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 7,
-        "hinweis": "letztes Geschäft 2026-10-30",
-        "vortag": 128.96
-      }
-    },
     {
       "id": "2026-10-28-stewart-information-services-c",
       "status": "offen",
@@ -196,13 +105,13 @@
         }
       ],
       "letzterKurs": {
-        "wert": 40.688,
-        "vortag": 39.632,
+        "wert": 40.653,
+        "vortag": 39.598,
         "zeit": "2026-10-29T20:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 650,
+        "verzoegertMin": 718,
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11778 USD/EUR"
+        "hinweis": "umgerechnet zu 1.11875 USD/EUR"
       }
     }
   ],
