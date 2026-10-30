@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T12:50:47.941Z",
-  "anzahl": 241,
+  "stand": "2026-10-30T13:58:18.236Z",
+  "anzahl": 259,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -311,7 +311,8 @@
       "st": 0.41,
       "q": [
         "BTC-ECHO",
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-10-29T06:46:21.000Z"
     },
@@ -3026,7 +3027,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.47,
+      "st": 0.5,
       "q": [
         "Upbit"
       ],
@@ -3040,7 +3041,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.8,
+      "st": 1,
       "q": [
         "Upbit"
       ],
@@ -3205,6 +3206,241 @@
         "SEC EDGAR"
       ],
       "z": "2026-10-30T12:45:36.000Z"
+    },
+    {
+      "id": "handelsstopp:PRPL:2026-10-30",
+      "s": "T:PRPL",
+      "n": "Purple Innovation, Inc.",
+      "t": "PRPL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BFAM:2026-10-30",
+      "s": "T:BFAM",
+      "n": "Bright Horizons Family Solutions Inc. Common Stock",
+      "t": "BFAM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RDDC:2026-10-30",
+      "s": "T:RDDC",
+      "n": "Corgi RDDT 2x Daily ETF",
+      "t": "RDDC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MSTC:2026-10-30",
+      "s": "T:MSTC",
+      "n": "Corgi MSTR 2x Daily ETF",
+      "t": "MSTC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ZNB:2026-10-30",
+      "s": "T:ZNB",
+      "n": "Zeta Network Group Class A Ord",
+      "t": "ZNB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BUUU:2026-10-30",
+      "s": "T:BUUU",
+      "n": "BUUU Group Limited Cl A Ord Sh",
+      "t": "BUUU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AIOK:2026-10-30",
+      "s": "T:AIOK",
+      "n": "AI OKTO CP Cmn",
+      "t": "AIOK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ONEG:2026-10-30",
+      "s": "T:ONEG",
+      "n": "OneConstruction Group Ltd Shs",
+      "t": "ONEG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AGMB:2026-10-30",
+      "s": "T:AGMB",
+      "n": "AgomAb Therapeutics NV ADS",
+      "t": "AGMB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PTHS:2026-10-30",
+      "s": "T:PTHS",
+      "n": "Pelthos Therapeutics Inc. Common Stock",
+      "t": "PTHS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MACI:2026-10-30",
+      "s": "T:MACI",
+      "n": "Melar Acquisition Cp I Ord A",
+      "t": "MACI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ITOC:2026-10-30",
+      "s": "T:ITOC",
+      "n": "iTonic Holdings Ltd Cl A Ord",
+      "t": "ITOC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BTSGU:2026-10-30",
+      "s": "T:BTSGU",
+      "n": "BrightSpring Hlth Srs Tnglb Ut",
+      "t": "BTSGU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PSOX:2026-10-30",
+      "s": "T:PSOX",
+      "n": "Tema MLCC &amp; PowerSemi ETF",
+      "t": "PSOX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CUVL:2026-10-30",
+      "s": "T:CUVL",
+      "n": "Clinuvel Pharmaceutical ADS",
+      "t": "CUVL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:ALV:2026-10-30",
+      "s": "T:ALV",
+      "n": "Allianz",
+      "t": "ALV.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-10-30T05:46:43.000Z"
+    },
+    {
+      "id": "nachricht:AMD:2026-10-30",
+      "s": "T:AMD",
+      "n": "AMD",
+      "t": "AMD",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-10-30T13:49:00.000Z"
+    },
+    {
+      "id": "upbit_warnung:BEAM:2026-10-30",
+      "s": "T:BEAM",
+      "n": "Beam",
+      "t": "BEAM",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-30T13:58:18.236Z"
     }
   ]
 }
