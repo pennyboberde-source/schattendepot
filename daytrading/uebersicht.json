@@ -1,28 +1,28 @@
 {
-  "stand": "2026-10-30T09:49:33.105Z",
+  "stand": "2026-10-30T10:44:46.335Z",
   "heute": {
     "datum": "2026-10-30",
     "gruppe": {
-      "anzahl": 13,
+      "anzahl": 16,
       "treffer": 1,
-      "quote": 7.7,
-      "netto": -380.65,
-      "brutto": -376.65,
-      "nettoTR": -402.65,
-      "oeNettoProzent": -2.96,
-      "oeR": -0.65
+      "quote": 6.3,
+      "netto": -412.29,
+      "brutto": -408.29,
+      "nettoTR": -440.29,
+      "oeNettoProzent": -2.6,
+      "oeR": -0.73
     },
-    "offen": 15
+    "offen": 14
   },
   "gesamt": {
-    "anzahl": 93,
+    "anzahl": 96,
     "treffer": 23,
-    "quote": 24.7,
-    "netto": -1183.22,
-    "brutto": -1149.22,
-    "nettoTR": -1335.22,
-    "oeNettoProzent": -1.31,
-    "oeR": -0.21
+    "quote": 24,
+    "netto": -1214.86,
+    "brutto": -1180.86,
+    "nettoTR": -1372.86,
+    "oeNettoProzent": -1.3,
+    "oeR": -0.24
   },
   "kurve": [
     {
@@ -39,21 +39,21 @@
     },
     {
       "datum": "2026-10-30",
-      "netto": -1183.22,
-      "brutto": -1149.22,
-      "nettoTR": -1335.22
+      "netto": -1214.86,
+      "brutto": -1180.86,
+      "nettoTR": -1372.86
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 92,
+      "anzahl": 95,
       "treffer": 23,
-      "quote": 25,
-      "netto": -1173.89,
-      "brutto": -1139.89,
-      "nettoTR": -1323.89,
-      "oeNettoProzent": -1.31,
-      "oeR": -0.2
+      "quote": 24.2,
+      "netto": -1205.53,
+      "brutto": -1171.53,
+      "nettoTR": -1361.53,
+      "oeNettoProzent": -1.3,
+      "oeR": -0.23
     },
     "claude": {
       "anzahl": 1,
@@ -68,14 +68,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 57,
+      "anzahl": 60,
       "treffer": 19,
-      "quote": 33.3,
-      "netto": -555.62,
-      "brutto": -555.62,
-      "nettoTR": -669.62,
+      "quote": 31.7,
+      "netto": -587.26,
+      "brutto": -587.26,
+      "nettoTR": -707.26,
       "oeNettoProzent": -1,
-      "oeR": -0.11
+      "oeR": -0.16
     },
     "us": {
       "anzahl": 19,
@@ -100,14 +100,14 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 53,
+      "anzahl": 56,
       "treffer": 15,
-      "quote": 28.3,
-      "netto": -316.2,
-      "brutto": -292.2,
-      "nettoTR": -398.2,
-      "oeNettoProzent": -0.65,
-      "oeR": -0.04
+      "quote": 26.8,
+      "netto": -347.84,
+      "brutto": -323.84,
+      "nettoTR": -435.84,
+      "oeNettoProzent": -0.68,
+      "oeR": -0.1
     },
     "orb_short": {
       "anzahl": 35,
@@ -132,14 +132,14 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 41,
+      "anzahl": 44,
       "treffer": 14,
-      "quote": 34.1,
-      "netto": -225.4,
-      "brutto": -225.4,
-      "nettoTR": -307.4,
-      "oeNettoProzent": -0.63,
-      "oeR": -0.07
+      "quote": 31.8,
+      "netto": -257.04,
+      "brutto": -257.04,
+      "nettoTR": -345.04,
+      "oeNettoProzent": -0.66,
+      "oeR": -0.14
     },
     "turbo": {
       "anzahl": 35,
@@ -164,35 +164,35 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 56,
+      "anzahl": 58,
       "treffer": 16,
-      "quote": 28.6,
-      "netto": -750.29,
-      "brutto": -738.29,
-      "nettoTR": -850.29,
-      "oeNettoProzent": -1.39,
-      "oeR": -0.17
+      "quote": 27.6,
+      "netto": -768.83,
+      "brutto": -756.83,
+      "nettoTR": -872.83,
+      "oeNettoProzent": -1.37,
+      "oeR": -0.2
     },
     "spekulativ": {
-      "anzahl": 37,
+      "anzahl": 38,
       "treffer": 7,
-      "quote": 18.9,
-      "netto": -432.93,
-      "brutto": -410.93,
-      "nettoTR": -484.93,
+      "quote": 18.4,
+      "netto": -446.03,
+      "brutto": -424.03,
+      "nettoTR": -500.03,
       "oeNettoProzent": -1.19,
-      "oeR": -0.27
+      "oeR": -0.29
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 56,
+      "anzahl": 59,
       "treffer": 0,
       "quote": 0,
-      "netto": -1618.71,
-      "brutto": -1598.71,
-      "nettoTR": -1710.71,
-      "oeNettoProzent": -2.96,
+      "netto": -1650.35,
+      "brutto": -1630.35,
+      "nettoTR": -1748.35,
+      "oeNettoProzent": -2.86,
       "oeR": -1.07
     },
     "schluss": {
@@ -218,14 +218,14 @@
   },
   "nachPhase": {
     "aufwaerts_ruhig": {
-      "anzahl": 51,
+      "anzahl": 54,
       "treffer": 17,
-      "quote": 33.3,
-      "netto": -599.94,
-      "brutto": -589.94,
-      "nettoTR": -691.94,
-      "oeNettoProzent": -1.23,
-      "oeR": -0.12
+      "quote": 31.5,
+      "netto": -631.58,
+      "brutto": -621.58,
+      "nettoTR": -729.58,
+      "oeNettoProzent": -1.22,
+      "oeR": -0.17
     },
     "unbekannt": {
       "anzahl": 40,
@@ -523,39 +523,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-suss-microtec-se",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SUSS MICROTEC SE",
-      "isin": "DE000A1K0235",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:35:00.000Z",
-        "kurs": 52.6,
-        "level": 52.45,
-        "spanne": {
-          "hoch": 52.45,
-          "tief": 51.75
-        },
-        "richtung": "long"
-      },
-      "stop": 52.1,
-      "ziel": 53.3,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:35:00.000Z",
-        "basisKurs": 52.5,
-        "kurs": 52.539,
-        "stueck": 19,
-        "kurswert": 998.24
-      }
-    },
-    {
       "id": "2026-10-30-scan-sap-se",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -586,72 +553,6 @@
         "kurs": 213.41,
         "stueck": 4,
         "kurswert": 853.64
-      }
-    },
-    {
-      "id": "2026-10-30-scan-airbus-se",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "AIRBUS SE",
-      "isin": "NL0000235190",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:45:00.000Z",
-        "kurs": 194.82,
-        "level": 194.58,
-        "spanne": {
-          "hoch": 194.58,
-          "tief": 193
-        },
-        "richtung": "long"
-      },
-      "stop": 193.79,
-      "ziel": 195.74,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:45:00.000Z",
-        "basisKurs": 194.44,
-        "kurs": 195.412,
-        "stueck": 5,
-        "kurswert": 977.06
-      }
-    },
-    {
-      "id": "2026-10-30-scan-infineon-technologies-ag",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "INFINEON TECHNOLOGIES AG",
-      "isin": "DE0006231004",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:50:00.000Z",
-        "kurs": 52.08,
-        "level": 52,
-        "spanne": {
-          "hoch": 52,
-          "tief": 51.39
-        },
-        "richtung": "long"
-      },
-      "stop": 51.7,
-      "ziel": 52.82,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:50:00.000Z",
-        "basisKurs": 52.07,
-        "kurs": 52.109,
-        "stueck": 19,
-        "kurswert": 990.07
       }
     },
     {
@@ -805,6 +706,72 @@
         "kurs": 14.236,
         "stueck": 70,
         "kurswert": 996.52
+      }
+    },
+    {
+      "id": "2026-10-30-scan-novo-nordisk-a-s-b",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "NOVO NORDISK A/S-B",
+      "isin": "DK0062498333",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T10:15:00.000Z",
+        "kurs": 35.505,
+        "level": 35.485,
+        "spanne": {
+          "hoch": 35.485,
+          "tief": 35.165
+        },
+        "richtung": "long"
+      },
+      "stop": 35.33,
+      "ziel": 35.85,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T10:15:00.000Z",
+        "basisKurs": 35.5,
+        "kurs": 35.527,
+        "stueck": 28,
+        "kurswert": 994.76
+      }
+    },
+    {
+      "id": "2026-10-30-scan-ada",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T10:25:00.000Z",
+        "kurs": 0.172338,
+        "level": 0.1722,
+        "spanne": {
+          "hoch": 0.172163,
+          "tief": 0.171621
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1719,
+      "ziel": 0.1731,
+      "zielR": 2,
+      "flatBis": "2026-10-30T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T10:25:00.000Z",
+        "basisKurs": 0.172308,
+        "kurs": 0.1727,
+        "stueck": 5790.387955,
+        "kurswert": 1000
       }
     }
   ],
@@ -1069,39 +1036,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-suss-microtec-se",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SUSS MICROTEC SE",
-      "isin": "DE000A1K0235",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:35:00.000Z",
-        "kurs": 52.6,
-        "level": 52.45,
-        "spanne": {
-          "hoch": 52.45,
-          "tief": 51.75
-        },
-        "richtung": "long"
-      },
-      "stop": 52.1,
-      "ziel": 53.3,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:35:00.000Z",
-        "basisKurs": 52.5,
-        "kurs": 52.539,
-        "stueck": 19,
-        "kurswert": 998.24
-      }
-    },
-    {
       "id": "2026-10-30-scan-sap-se",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -1132,72 +1066,6 @@
         "kurs": 213.41,
         "stueck": 4,
         "kurswert": 853.64
-      }
-    },
-    {
-      "id": "2026-10-30-scan-airbus-se",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "AIRBUS SE",
-      "isin": "NL0000235190",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:45:00.000Z",
-        "kurs": 194.82,
-        "level": 194.58,
-        "spanne": {
-          "hoch": 194.58,
-          "tief": 193
-        },
-        "richtung": "long"
-      },
-      "stop": 193.79,
-      "ziel": 195.74,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:45:00.000Z",
-        "basisKurs": 194.44,
-        "kurs": 195.412,
-        "stueck": 5,
-        "kurswert": 977.06
-      }
-    },
-    {
-      "id": "2026-10-30-scan-infineon-technologies-ag",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "INFINEON TECHNOLOGIES AG",
-      "isin": "DE0006231004",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:50:00.000Z",
-        "kurs": 52.08,
-        "level": 52,
-        "spanne": {
-          "hoch": 52,
-          "tief": 51.39
-        },
-        "richtung": "long"
-      },
-      "stop": 51.7,
-      "ziel": 52.82,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:50:00.000Z",
-        "basisKurs": 52.07,
-        "kurs": 52.109,
-        "stueck": 19,
-        "kurswert": 990.07
       }
     },
     {
@@ -1351,6 +1219,228 @@
         "kurs": 14.236,
         "stueck": 70,
         "kurswert": 996.52
+      }
+    },
+    {
+      "id": "2026-10-30-scan-novo-nordisk-a-s-b",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "NOVO NORDISK A/S-B",
+      "isin": "DK0062498333",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T10:15:00.000Z",
+        "kurs": 35.505,
+        "level": 35.485,
+        "spanne": {
+          "hoch": 35.485,
+          "tief": 35.165
+        },
+        "richtung": "long"
+      },
+      "stop": 35.33,
+      "ziel": 35.85,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T10:15:00.000Z",
+        "basisKurs": 35.5,
+        "kurs": 35.527,
+        "stueck": 28,
+        "kurswert": 994.76
+      }
+    },
+    {
+      "id": "2026-10-30-scan-ada",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T10:25:00.000Z",
+        "kurs": 0.172338,
+        "level": 0.1722,
+        "spanne": {
+          "hoch": 0.172163,
+          "tief": 0.171621
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1719,
+      "ziel": 0.1731,
+      "zielR": 2,
+      "flatBis": "2026-10-30T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T10:25:00.000Z",
+        "basisKurs": 0.172308,
+        "kurs": 0.1727,
+        "stueck": 5790.387955,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-10-30-scan-suss-microtec-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SUSS MICROTEC SE",
+      "isin": "DE000A1K0235",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "kurs": 52.6,
+        "level": 52.45,
+        "spanne": {
+          "hoch": 52.45,
+          "tief": 51.75
+        },
+        "richtung": "long"
+      },
+      "stop": 52.1,
+      "ziel": 53.3,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:35:00.000Z",
+        "basisKurs": 52.5,
+        "kurs": 52.539,
+        "stueck": 19,
+        "kurswert": 998.24
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T10:05:00.000Z",
+        "basisKurs": 52.05,
+        "kurs": 52.011,
+        "kurswert": 988.21,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -10.03,
+        "bruttoProzent": -1,
+        "netto": -10.03,
+        "nettoProzent": -1,
+        "nettoTR": -12.03,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.13
+      }
+    },
+    {
+      "id": "2026-10-30-scan-airbus-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AIRBUS SE",
+      "isin": "NL0000235190",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:45:00.000Z",
+        "kurs": 194.82,
+        "level": 194.58,
+        "spanne": {
+          "hoch": 194.58,
+          "tief": 193
+        },
+        "richtung": "long"
+      },
+      "stop": 193.79,
+      "ziel": 195.74,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:45:00.000Z",
+        "basisKurs": 194.44,
+        "kurs": 195.412,
+        "stueck": 5,
+        "kurswert": 977.06
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T10:05:00.000Z",
+        "basisKurs": 193.76,
+        "kurs": 192.791,
+        "kurswert": 963.96,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -13.1,
+        "bruttoProzent": -1.34,
+        "netto": -13.1,
+        "nettoProzent": -1.34,
+        "nettoTR": -15.1,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.05
+      }
+    },
+    {
+      "id": "2026-10-30-scan-infineon-technologies-ag",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "INFINEON TECHNOLOGIES AG",
+      "isin": "DE0006231004",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:50:00.000Z",
+        "kurs": 52.08,
+        "level": 52,
+        "spanne": {
+          "hoch": 52,
+          "tief": 51.39
+        },
+        "richtung": "long"
+      },
+      "stop": 51.7,
+      "ziel": 52.82,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:50:00.000Z",
+        "basisKurs": 52.07,
+        "kurs": 52.109,
+        "stueck": 19,
+        "kurswert": 990.07
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T10:05:00.000Z",
+        "basisKurs": 51.7,
+        "kurs": 51.661,
+        "kurswert": 981.56,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -8.51,
+        "bruttoProzent": -0.86,
+        "netto": -8.51,
+        "nettoProzent": -0.86,
+        "nettoTR": -10.51,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -6485,10 +6575,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 16,
-        "chance": 31.3,
-        "oeNetto": -0.45,
-        "wertung": -1.49
+        "faelle": 23,
+        "chance": 26.1,
+        "oeNetto": -1.26,
+        "wertung": -2.11
       }
     },
     "krypto:level_long": {
@@ -6507,10 +6597,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 31,
-        "chance": 45.2,
-        "oeNetto": -0.12,
-        "wertung": -0.43
+        "faelle": 34,
+        "chance": 41.2,
+        "oeNetto": -0.16,
+        "wertung": -0.44
       }
     },
     "krypto:orb_long": {
@@ -6518,10 +6608,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 11,
-        "chance": 27.3,
-        "oeNetto": -0.26,
-        "wertung": -0.39
+        "faelle": 12,
+        "chance": 33.3,
+        "oeNetto": -0.21,
+        "wertung": -0.34
       }
     },
     "us:orb_short": {
