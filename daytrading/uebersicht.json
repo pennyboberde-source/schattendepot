@@ -1,27 +1,27 @@
 {
-  "stand": "2026-10-30T11:20:42.578Z",
+  "stand": "2026-10-30T12:12:09.830Z",
   "heute": {
     "datum": "2026-10-30",
     "gruppe": {
-      "anzahl": 19,
-      "treffer": 1,
-      "quote": 5.3,
-      "netto": -443.18,
-      "brutto": -437.18,
-      "nettoTR": -475.18,
-      "oeNettoProzent": -2.37,
-      "oeR": -0.62
+      "anzahl": 22,
+      "treffer": 2,
+      "quote": 9.1,
+      "netto": -468.56,
+      "brutto": -460.56,
+      "nettoTR": -504.56,
+      "oeNettoProzent": -2.16,
+      "oeR": -0.54
     },
-    "offen": 13
+    "offen": 10
   },
   "gesamt": {
-    "anzahl": 99,
-    "treffer": 23,
-    "quote": 23.2,
-    "netto": -1245.75,
-    "brutto": -1209.75,
-    "nettoTR": -1407.75,
-    "oeNettoProzent": -1.29,
+    "anzahl": 102,
+    "treffer": 24,
+    "quote": 23.5,
+    "netto": -1271.13,
+    "brutto": -1233.13,
+    "nettoTR": -1437.13,
+    "oeNettoProzent": -1.28,
     "oeR": -0.23
   },
   "kurve": [
@@ -39,21 +39,21 @@
     },
     {
       "datum": "2026-10-30",
-      "netto": -1245.75,
-      "brutto": -1209.75,
-      "nettoTR": -1407.75
+      "netto": -1271.13,
+      "brutto": -1233.13,
+      "nettoTR": -1437.13
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 98,
-      "treffer": 23,
-      "quote": 23.5,
-      "netto": -1236.42,
-      "brutto": -1200.42,
-      "nettoTR": -1396.42,
-      "oeNettoProzent": -1.29,
-      "oeR": -0.23
+      "anzahl": 101,
+      "treffer": 24,
+      "quote": 23.8,
+      "netto": -1261.8,
+      "brutto": -1223.8,
+      "nettoTR": -1425.8,
+      "oeNettoProzent": -1.28,
+      "oeR": -0.22
     },
     "claude": {
       "anzahl": 1,
@@ -68,14 +68,24 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 62,
-      "treffer": 19,
-      "quote": 30.6,
-      "netto": -616.15,
-      "brutto": -616.15,
-      "nettoTR": -740.15,
+      "anzahl": 64,
+      "treffer": 20,
+      "quote": 31.3,
+      "netto": -629.66,
+      "brutto": -629.66,
+      "nettoTR": -757.66,
+      "oeNettoProzent": -1.01,
+      "oeR": -0.17
+    },
+    "krypto": {
+      "anzahl": 19,
+      "treffer": 1,
+      "quote": 5.3,
+      "netto": -192.91,
+      "brutto": -154.91,
+      "nettoTR": -192.91,
       "oeNettoProzent": -1.02,
-      "oeR": -0.19
+      "oeR": -0.06
     },
     "us": {
       "anzahl": 19,
@@ -86,38 +96,28 @@
       "nettoTR": -486.56,
       "oeNettoProzent": -2.47,
       "oeR": -0.6
-    },
-    "krypto": {
-      "anzahl": 18,
-      "treffer": 1,
-      "quote": 5.6,
-      "netto": -181.04,
-      "brutto": -145.04,
-      "nettoTR": -181.04,
-      "oeNettoProzent": -1.01,
-      "oeR": -0.01
     }
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 59,
-      "treffer": 15,
-      "quote": 25.4,
-      "netto": -378.73,
-      "brutto": -352.73,
-      "nettoTR": -470.73,
-      "oeNettoProzent": -0.7,
-      "oeR": -0.09
+      "anzahl": 61,
+      "treffer": 16,
+      "quote": 26.2,
+      "netto": -383.83,
+      "brutto": -355.83,
+      "nettoTR": -477.83,
+      "oeNettoProzent": -0.68,
+      "oeR": -0.07
     },
     "orb_short": {
-      "anzahl": 35,
+      "anzahl": 36,
       "treffer": 8,
-      "quote": 22.9,
-      "netto": -778.78,
-      "brutto": -778.78,
-      "nettoTR": -848.78,
+      "quote": 22.2,
+      "netto": -799.06,
+      "brutto": -799.06,
+      "nettoTR": -871.06,
       "oeNettoProzent": -2.23,
-      "oeR": -0.43
+      "oeR": -0.45
     },
     "level_long": {
       "anzahl": 5,
@@ -132,46 +132,46 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 46,
-      "treffer": 14,
-      "quote": 30.4,
-      "netto": -285.93,
-      "brutto": -285.93,
-      "nettoTR": -377.93,
-      "oeNettoProzent": -0.69,
-      "oeR": -0.18
+      "anzahl": 47,
+      "treffer": 15,
+      "quote": 31.9,
+      "netto": -279.16,
+      "brutto": -279.16,
+      "nettoTR": -373.16,
+      "oeNettoProzent": -0.66,
+      "oeR": -0.13
     },
     "turbo": {
-      "anzahl": 35,
+      "anzahl": 36,
       "treffer": 8,
-      "quote": 22.9,
-      "netto": -778.78,
-      "brutto": -778.78,
-      "nettoTR": -848.78,
+      "quote": 22.2,
+      "netto": -799.06,
+      "brutto": -799.06,
+      "nettoTR": -871.06,
       "oeNettoProzent": -2.23,
-      "oeR": -0.43
+      "oeR": -0.45
     },
     "krypto": {
-      "anzahl": 18,
+      "anzahl": 19,
       "treffer": 1,
-      "quote": 5.6,
-      "netto": -181.04,
-      "brutto": -145.04,
-      "nettoTR": -181.04,
-      "oeNettoProzent": -1.01,
-      "oeR": -0.01
+      "quote": 5.3,
+      "netto": -192.91,
+      "brutto": -154.91,
+      "nettoTR": -192.91,
+      "oeNettoProzent": -1.02,
+      "oeR": -0.06
     }
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 60,
-      "treffer": 16,
-      "quote": 26.7,
-      "netto": -797.72,
-      "brutto": -785.72,
-      "nettoTR": -905.72,
-      "oeNettoProzent": -1.38,
-      "oeR": -0.23
+      "anzahl": 63,
+      "treffer": 17,
+      "quote": 27,
+      "netto": -823.1,
+      "brutto": -809.1,
+      "nettoTR": -935.1,
+      "oeNettoProzent": -1.35,
+      "oeR": -0.22
     },
     "spekulativ": {
       "anzahl": 39,
@@ -186,23 +186,23 @@
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 61,
+      "anzahl": 63,
       "treffer": 0,
       "quote": 0,
-      "netto": -1679.24,
-      "brutto": -1659.24,
-      "nettoTR": -1781.24,
-      "oeNettoProzent": -2.82,
+      "netto": -1711.39,
+      "brutto": -1689.39,
+      "nettoTR": -1815.39,
+      "oeNettoProzent": -2.78,
       "oeR": -1.07
     },
     "ziel": {
-      "anzahl": 19,
-      "treffer": 14,
-      "quote": 73.7,
-      "netto": 531.13,
-      "brutto": 541.13,
-      "nettoTR": 503.13,
-      "oeNettoProzent": 2.8,
+      "anzahl": 20,
+      "treffer": 15,
+      "quote": 75,
+      "netto": 537.9,
+      "brutto": 547.9,
+      "nettoTR": 507.9,
+      "oeNettoProzent": 2.69,
       "oeR": 2.04
     },
     "schluss": {
@@ -218,14 +218,14 @@
   },
   "nachPhase": {
     "aufwaerts_ruhig": {
-      "anzahl": 56,
-      "treffer": 17,
-      "quote": 30.4,
-      "netto": -660.47,
-      "brutto": -650.47,
-      "nettoTR": -762.47,
-      "oeNettoProzent": -1.23,
-      "oeR": -0.2
+      "anzahl": 58,
+      "treffer": 18,
+      "quote": 31,
+      "netto": -673.98,
+      "brutto": -663.98,
+      "nettoTR": -779.98,
+      "oeNettoProzent": -1.21,
+      "oeR": -0.18
     },
     "unbekannt": {
       "anzahl": 40,
@@ -238,14 +238,14 @@
       "oeR": -0.37
     },
     "seitwaerts_ruhig": {
-      "anzahl": 3,
+      "anzahl": 4,
       "treffer": 0,
       "quote": 0,
-      "netto": -12.92,
-      "brutto": -6.92,
-      "nettoTR": -12.92,
-      "oeNettoProzent": -0.43,
-      "oeR": 1
+      "netto": -24.79,
+      "brutto": -16.79,
+      "nettoTR": -24.79,
+      "oeNettoProzent": -0.62,
+      "oeR": 0.5
     }
   },
   "zeitmaschine": [
@@ -457,39 +457,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-vonovia-se",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "VONOVIA SE",
-      "isin": "DE000A1ML7J1",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:30:00.000Z",
-        "kurs": 16.105,
-        "level": 16.1,
-        "spanne": {
-          "hoch": 16.1,
-          "tief": 16.015
-        },
-        "richtung": "long"
-      },
-      "stop": 16.06,
-      "ziel": 16.26,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:30:00.000Z",
-        "basisKurs": 16.125,
-        "kurs": 16.137,
-        "stueck": 61,
-        "kurswert": 984.36
-      }
-    },
-    {
       "id": "2026-10-30-scan-siemens-energy-ag",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -563,46 +530,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-deutsche-telekom-ag-reg",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE TELEKOM AG-REG",
-      "isin": "DE0005557508",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 31.01,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T09:35:00.000Z",
-        "kurs": 25.83,
-        "level": 25.85,
-        "spanne": {
-          "hoch": 25.97,
-          "tief": 25.85
-        },
-        "richtung": "short"
-      },
-      "stop": 25.91,
-      "ziel": 25.7,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T09:35:00.000Z",
-        "basisKurs": 25.84,
-        "kurs": 5.1829,
-        "stueck": 192,
-        "kurswert": 995.12
-      }
-    },
-    {
       "id": "2026-10-30-scan-redcare-pharmacy-nv",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -673,39 +600,6 @@
         "kurs": 35.527,
         "stueck": 28,
         "kurswert": 994.76
-      }
-    },
-    {
-      "id": "2026-10-30-scan-eth",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "ETH",
-      "symbol": "ETH",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T10:40:00.000Z",
-        "kurs": 2001.94,
-        "level": 1998.12,
-        "spanne": {
-          "hoch": 1998.12,
-          "tief": 1985.93
-        },
-        "richtung": "long"
-      },
-      "stop": 1992.03,
-      "ziel": 2021.53,
-      "zielR": 2,
-      "flatBis": "2026-10-30T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T10:40:00.000Z",
-        "basisKurs": 2001.86,
-        "kurs": 2006.865,
-        "stueck": 0.498289,
-        "kurswert": 1000
       }
     },
     {
@@ -937,39 +831,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-vonovia-se",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "VONOVIA SE",
-      "isin": "DE000A1ML7J1",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T08:30:00.000Z",
-        "kurs": 16.105,
-        "level": 16.1,
-        "spanne": {
-          "hoch": 16.1,
-          "tief": 16.015
-        },
-        "richtung": "long"
-      },
-      "stop": 16.06,
-      "ziel": 16.26,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T08:30:00.000Z",
-        "basisKurs": 16.125,
-        "kurs": 16.137,
-        "stueck": 61,
-        "kurswert": 984.36
-      }
-    },
-    {
       "id": "2026-10-30-scan-siemens-energy-ag",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -1040,46 +901,6 @@
         "kurs": 169.477,
         "stueck": 5,
         "kurswert": 847.39
-      }
-    },
-    {
-      "id": "2026-10-30-scan-deutsche-telekom-ag-reg",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE TELEKOM AG-REG",
-      "isin": "DE0005557508",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 31.01,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T09:35:00.000Z",
-        "kurs": 25.83,
-        "level": 25.85,
-        "spanne": {
-          "hoch": 25.97,
-          "tief": 25.85
-        },
-        "richtung": "short"
-      },
-      "stop": 25.91,
-      "ziel": 25.7,
-      "zielR": 2,
-      "flatBis": "2026-10-30T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T09:35:00.000Z",
-        "basisKurs": 25.84,
-        "kurs": 5.1829,
-        "stueck": 192,
-        "kurswert": 995.12
       }
     },
     {
@@ -1156,39 +977,6 @@
       }
     },
     {
-      "id": "2026-10-30-scan-eth",
-      "datum": "2026-10-30",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "ETH",
-      "symbol": "ETH",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-10-30T10:40:00.000Z",
-        "kurs": 2001.94,
-        "level": 1998.12,
-        "spanne": {
-          "hoch": 1998.12,
-          "tief": 1985.93
-        },
-        "richtung": "long"
-      },
-      "stop": 1992.03,
-      "ziel": 2021.53,
-      "zielR": 2,
-      "flatBis": "2026-10-30T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-10-30T10:40:00.000Z",
-        "basisKurs": 2001.86,
-        "kurs": 2006.865,
-        "stueck": 0.498289,
-        "kurswert": 1000
-      }
-    },
-    {
       "id": "2026-10-30-scan-lvmh-moet-hennessy-louis",
       "datum": "2026-10-30",
       "herkunft": "code_scan",
@@ -1219,6 +1007,169 @@
         "kurs": 387.691,
         "stueck": 2,
         "kurswert": 775.38
+      }
+    },
+    {
+      "id": "2026-10-30-scan-eth",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T10:40:00.000Z",
+        "kurs": 2001.94,
+        "level": 1998.12,
+        "spanne": {
+          "hoch": 1998.12,
+          "tief": 1985.93
+        },
+        "richtung": "long"
+      },
+      "stop": 1992.03,
+      "ziel": 2021.53,
+      "zielR": 2,
+      "flatBis": "2026-10-30T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T10:40:00.000Z",
+        "basisKurs": 2001.86,
+        "kurs": 2006.865,
+        "stueck": 0.498289,
+        "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T12:00:00.000Z",
+        "basisKurs": 1992.03,
+        "kurs": 1987.05,
+        "kurswert": 990.13,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -9.87,
+        "bruttoProzent": -0.99,
+        "netto": -11.87,
+        "nettoProzent": -1.19,
+        "nettoTR": -11.87,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-10-30-scan-deutsche-telekom-ag-reg",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 31.01,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T09:35:00.000Z",
+        "kurs": 25.83,
+        "level": 25.85,
+        "spanne": {
+          "hoch": 25.97,
+          "tief": 25.85
+        },
+        "richtung": "short"
+      },
+      "stop": 25.91,
+      "ziel": 25.7,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T09:35:00.000Z",
+        "basisKurs": 25.84,
+        "kurs": 5.1829,
+        "stueck": 192,
+        "kurswert": 995.12
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T11:40:00.000Z",
+        "basisKurs": 25.92,
+        "kurs": 5.0773,
+        "kurswert": 974.84,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -20.28,
+        "bruttoProzent": -2.04,
+        "netto": -20.28,
+        "nettoProzent": -2.04,
+        "nettoTR": -22.28,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.14
+      }
+    },
+    {
+      "id": "2026-10-30-scan-vonovia-se",
+      "datum": "2026-10-30",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "VONOVIA SE",
+      "isin": "DE000A1ML7J1",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "kurs": 16.105,
+        "level": 16.1,
+        "spanne": {
+          "hoch": 16.1,
+          "tief": 16.015
+        },
+        "richtung": "long"
+      },
+      "stop": 16.06,
+      "ziel": 16.26,
+      "zielR": 2,
+      "flatBis": "2026-10-30T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-30T08:30:00.000Z",
+        "basisKurs": 16.125,
+        "kurs": 16.137,
+        "stueck": 61,
+        "kurswert": 984.36
+      },
+      "ausstieg": {
+        "zeit": "2026-10-30T11:30:00.000Z",
+        "basisKurs": 16.26,
+        "kurs": 16.248,
+        "kurswert": 991.13,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 6.77,
+        "bruttoProzent": 0.69,
+        "netto": 6.77,
+        "nettoProzent": 0.69,
+        "nettoTR": 4.77,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.08
       }
     },
     {
@@ -6687,10 +6638,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 37,
-        "chance": 37.8,
-        "oeNetto": -0.21,
-        "wertung": -0.47
+        "faelle": 39,
+        "chance": 35.9,
+        "oeNetto": -0.28,
+        "wertung": -0.53
       }
     },
     "krypto:orb_long": {
@@ -6698,10 +6649,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 12,
-        "chance": 33.3,
-        "oeNetto": -0.21,
-        "wertung": -0.34
+        "faelle": 13,
+        "chance": 38.5,
+        "oeNetto": -0.17,
+        "wertung": -0.3
       }
     },
     "us:orb_short": {
