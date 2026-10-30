@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T14:54:32.016Z",
-  "anzahl": 266,
+  "stand": "2026-10-30T15:50:00.519Z",
+  "anzahl": 272,
   "signale": [
     {
       "id": "verwaesserung:XXII:2026-10-28",
@@ -3080,7 +3080,7 @@
       "t": "INTC",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.41,
+      "st": 0.51,
       "q": [
         "CNBC Top News",
         "MarketWatch",
@@ -3176,9 +3176,10 @@
       "t": "CBK.DE",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "FAZ Finanzen"
+        "FAZ Finanzen",
+        "Handelsblatt Finanzen"
       ],
       "z": "2026-10-30T11:41:52.000Z"
     },
@@ -3450,7 +3451,7 @@
       "t": "CHOW",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3534,6 +3535,85 @@
         "tagesschau Wirtschaft"
       ],
       "z": "2026-10-30T13:51:43.000Z"
+    },
+    {
+      "id": "handelsstopp:SFWL:2026-10-30",
+      "s": "T:SFWL",
+      "n": "Shengfeng Development Os",
+      "t": "SFWL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MDBH:2026-10-30",
+      "s": "T:MDBH",
+      "n": "MDB Capital Holdings Cl A Cm",
+      "t": "MDBH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:XLO:2026-10-30",
+      "s": "T:XLO",
+      "n": "Xilio Therapeutics, Inc. Cm",
+      "t": "XLO",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-10-30T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:DBK:2026-10-30",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-30T13:01:27.000Z"
+    },
+    {
+      "id": "verwaesserung:OPNW:2026-10-30",
+      "s": "T:OPNW",
+      "n": "OpenWorld, Inc.",
+      "t": "OPNW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-30T15:46:24.000Z"
+    },
+    {
+      "id": "kursrakete:BIRB:2026-10-30",
+      "s": "T:BIRB",
+      "n": "Moonbirds",
+      "t": "BIRB",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.88,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-30T15:50:00.519Z"
     }
   ]
 }
