@@ -1,28 +1,28 @@
 {
-  "stand": "2026-10-31T07:53:00.464Z",
+  "stand": "2026-10-31T08:44:28.649Z",
   "heute": {
     "datum": "2026-10-31",
     "gruppe": {
-      "anzahl": 0,
+      "anzahl": 4,
       "treffer": 0,
       "quote": 0,
-      "netto": 0,
-      "brutto": 0,
-      "nettoTR": 0,
-      "oeNettoProzent": 0,
-      "oeR": 0
+      "netto": -34.46,
+      "brutto": -26.46,
+      "nettoTR": -34.46,
+      "oeNettoProzent": -0.86,
+      "oeR": -1
     },
     "offen": 0
   },
   "gesamt": {
-    "anzahl": 120,
+    "anzahl": 124,
     "treffer": 30,
-    "quote": 25,
-    "netto": -1399.08,
-    "brutto": -1361.08,
-    "nettoTR": -1601.08,
-    "oeNettoProzent": -1.2,
-    "oeR": -0.21
+    "quote": 24.2,
+    "netto": -1433.54,
+    "brutto": -1387.54,
+    "nettoTR": -1635.54,
+    "oeNettoProzent": -1.19,
+    "oeR": -0.24
   },
   "kurve": [
     {
@@ -42,18 +42,24 @@
       "netto": -1399.08,
       "brutto": -1361.08,
       "nettoTR": -1601.08
+    },
+    {
+      "datum": "2026-10-31",
+      "netto": -1433.54,
+      "brutto": -1387.54,
+      "nettoTR": -1635.54
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 118,
+      "anzahl": 122,
       "treffer": 30,
-      "quote": 25.4,
-      "netto": -1254.39,
-      "brutto": -1216.39,
-      "nettoTR": -1452.39,
-      "oeNettoProzent": -1.09,
-      "oeR": -0.2
+      "quote": 24.6,
+      "netto": -1288.85,
+      "brutto": -1242.85,
+      "nettoTR": -1486.85,
+      "oeNettoProzent": -1.08,
+      "oeR": -0.23
     },
     "claude": {
       "anzahl": 2,
@@ -88,26 +94,26 @@
       "oeR": -0.61
     },
     "krypto": {
-      "anzahl": 19,
+      "anzahl": 23,
       "treffer": 1,
-      "quote": 5.3,
-      "netto": -192.91,
-      "brutto": -154.91,
-      "nettoTR": -192.91,
-      "oeNettoProzent": -1.02,
-      "oeR": -0.06
+      "quote": 4.3,
+      "netto": -227.37,
+      "brutto": -181.37,
+      "nettoTR": -227.37,
+      "oeNettoProzent": -0.99,
+      "oeR": -0.22
     }
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 70,
+      "anzahl": 74,
       "treffer": 18,
-      "quote": 25.7,
-      "netto": -442.56,
-      "brutto": -414.56,
-      "nettoTR": -554.56,
-      "oeNettoProzent": -0.68,
-      "oeR": -0.09
+      "quote": 24.3,
+      "netto": -477.02,
+      "brutto": -441.02,
+      "nettoTR": -589.02,
+      "oeNettoProzent": -0.69,
+      "oeR": -0.13
     },
     "orb_short": {
       "anzahl": 45,
@@ -152,47 +158,47 @@
       "oeR": -0.38
     },
     "krypto": {
-      "anzahl": 19,
+      "anzahl": 23,
       "treffer": 1,
-      "quote": 5.3,
-      "netto": -192.91,
-      "brutto": -154.91,
-      "nettoTR": -192.91,
-      "oeNettoProzent": -1.02,
-      "oeR": -0.06
+      "quote": 4.3,
+      "netto": -227.37,
+      "brutto": -181.37,
+      "nettoTR": -227.37,
+      "oeNettoProzent": -0.99,
+      "oeR": -0.22
     }
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 77,
+      "anzahl": 79,
       "treffer": 22,
-      "quote": 28.6,
-      "netto": -954.52,
-      "brutto": -940.52,
-      "nettoTR": -1094.52,
-      "oeNettoProzent": -1.28,
-      "oeR": -0.19
+      "quote": 27.8,
+      "netto": -971.49,
+      "brutto": -953.49,
+      "nettoTR": -1111.49,
+      "oeNettoProzent": -1.27,
+      "oeR": -0.21
     },
     "spekulativ": {
-      "anzahl": 43,
+      "anzahl": 45,
       "treffer": 8,
-      "quote": 18.6,
-      "netto": -444.56,
-      "brutto": -420.56,
-      "nettoTR": -506.56,
+      "quote": 17.8,
+      "netto": -462.05,
+      "brutto": -434.05,
+      "nettoTR": -524.05,
       "oeNettoProzent": -1.05,
-      "oeR": -0.26
+      "oeR": -0.29
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 72,
+      "anzahl": 76,
       "treffer": 0,
       "quote": 0,
-      "netto": -2200.3,
-      "brutto": -2178.3,
-      "nettoTR": -2322.3,
-      "oeNettoProzent": -3.12,
+      "netto": -2234.76,
+      "brutto": -2204.76,
+      "nettoTR": -2356.76,
+      "oeNettoProzent": -3,
       "oeR": -1.07
     },
     "schluss": {
@@ -238,14 +244,14 @@
       "oeR": -0.37
     },
     "seitwaerts_ruhig": {
-      "anzahl": 4,
+      "anzahl": 8,
       "treffer": 0,
       "quote": 0,
-      "netto": -24.79,
-      "brutto": -16.79,
-      "nettoTR": -24.79,
-      "oeNettoProzent": -0.62,
-      "oeR": 0.5
+      "netto": -59.25,
+      "brutto": -43.25,
+      "nettoTR": -59.25,
+      "oeNettoProzent": -0.74,
+      "oeR": -0.25
     }
   },
   "zeitmaschine": [
@@ -264,6 +270,214 @@
   ],
   "offen": [],
   "trades": [
+    {
+      "id": "2026-10-31-scan-btc",
+      "datum": "2026-10-31",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-31T08:20:00.000Z",
+        "kurs": 69397.2,
+        "level": 69314.2,
+        "spanne": {
+          "hoch": 69314.2,
+          "tief": 69178.6
+        },
+        "richtung": "long"
+      },
+      "stop": 69246.4,
+      "ziel": 69664.6,
+      "zielR": 2,
+      "flatBis": "2026-10-31T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-31T08:20:00.000Z",
+        "basisKurs": 69385.8,
+        "kurs": 69559.265,
+        "stueck": 0.014376,
+        "kurswert": 999.98
+      },
+      "ausstieg": {
+        "zeit": "2026-10-31T08:35:00.000Z",
+        "basisKurs": 69246.4,
+        "kurs": 69073.284,
+        "kurswert": 993,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -6.98,
+        "bruttoProzent": -0.7,
+        "netto": -8.98,
+        "nettoProzent": -0.9,
+        "nettoTR": -8.98,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-10-31-scan-xrp",
+      "datum": "2026-10-31",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-31T08:20:00.000Z",
+        "kurs": 1.11678,
+        "level": 1.1162,
+        "spanne": {
+          "hoch": 1.11616,
+          "tief": 1.11381
+        },
+        "richtung": "long"
+      },
+      "stop": 1.115,
+      "ziel": 1.1214,
+      "zielR": 2,
+      "flatBis": "2026-10-31T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-31T08:20:00.000Z",
+        "basisKurs": 1.11712,
+        "kurs": 1.1199,
+        "stueck": 892.936869,
+        "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-10-31T08:35:00.000Z",
+        "basisKurs": 1.11499,
+        "kurs": 1.1122,
+        "kurswert": 993.12,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -6.88,
+        "bruttoProzent": -0.69,
+        "netto": -8.88,
+        "nettoProzent": -0.89,
+        "nettoTR": -8.88,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-10-31-scan-eth",
+      "datum": "2026-10-31",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-10-31T08:20:00.000Z",
+        "kurs": 2011.24,
+        "level": 2011.16,
+        "spanne": {
+          "hoch": 2011.16,
+          "tief": 2007.73
+        },
+        "richtung": "long"
+      },
+      "stop": 2009.45,
+      "ziel": 2015.55,
+      "zielR": 2,
+      "flatBis": "2026-10-31T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-31T08:20:00.000Z",
+        "basisKurs": 2011.48,
+        "kurs": 2016.509,
+        "stueck": 0.495906,
+        "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-10-31T08:25:00.000Z",
+        "basisKurs": 2009.45,
+        "kurs": 2004.426,
+        "kurswert": 994.01,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -5.99,
+        "bruttoProzent": -0.6,
+        "netto": -7.99,
+        "nettoProzent": -0.8,
+        "nettoTR": -7.99,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-10-31-scan-sol",
+      "datum": "2026-10-31",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-31T08:20:00.000Z",
+        "kurs": 85.76,
+        "level": 85.74,
+        "spanne": {
+          "hoch": 85.74,
+          "tief": 85.5
+        },
+        "richtung": "long"
+      },
+      "stop": 85.62,
+      "ziel": 86.04,
+      "zielR": 2,
+      "flatBis": "2026-10-31T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-31T08:20:00.000Z",
+        "basisKurs": 85.76,
+        "kurs": 85.974,
+        "stueck": 11.631423,
+        "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-10-31T08:25:00.000Z",
+        "basisKurs": 85.62,
+        "kurs": 85.406,
+        "kurswert": 993.39,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -6.61,
+        "bruttoProzent": -0.66,
+        "netto": -8.61,
+        "nettoProzent": -0.86,
+        "nettoTR": -8.61,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
     {
       "id": "2026-10-30-scan-microsoft-corp",
       "datum": "2026-10-30",
@@ -6986,7 +7200,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 0,
+    "code_scan": 10,
     "claude": 0,
     "autopilot": 0
   },
