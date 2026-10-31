@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-30T21:19:37.215Z",
+  "stand": "2026-10-31T08:03:53.844Z",
   "gesamt": {
     "anzahl": 8,
     "treffer": 4,
@@ -348,7 +348,7 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 155,
+      "anzahl": 189,
       "n1T": 103,
       "n3T": 41,
       "n1W": 23,
@@ -408,6 +408,36 @@
         "quote3T": 66.7,
         "quote1W": 66.7
       },
+      "nachricht": {
+        "anzahl": 25,
+        "n1T": 9,
+        "n3T": 4,
+        "n1W": 4,
+        "oe1h": 0,
+        "oe1T": 0.89,
+        "oe3T": 2.69,
+        "oe1W": 3.72,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 33.3,
+        "quote3T": 50,
+        "quote1W": 100
+      },
+      "upbit_warnung": {
+        "anzahl": 19,
+        "n1T": 0,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": null,
+        "oe1T": null,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": null,
+        "quote3T": null,
+        "quote1W": null
+      },
       "nachzahlen_drift": {
         "anzahl": 17,
         "n1T": 14,
@@ -437,21 +467,6 @@
         "quote1T": 43.8,
         "quote3T": 80,
         "quote1W": null
-      },
-      "nachricht": {
-        "anzahl": 15,
-        "n1T": 9,
-        "n3T": 4,
-        "n1W": 4,
-        "oe1h": 0,
-        "oe1T": 0.89,
-        "oe3T": 2.69,
-        "oe1W": 3.72,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 33.3,
-        "quote3T": 50,
-        "quote1W": 100
       },
       "gewinn_enttaeuschung": {
         "anzahl": 12,
@@ -496,6 +511,36 @@
         "oe1M": null,
         "quote1T": 57.1,
         "quote3T": 80,
+        "quote1W": null
+      },
+      "krypto_einnahmen": {
+        "anzahl": 6,
+        "n1T": 0,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": null,
+        "oe1T": null,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": null,
+        "quote3T": null,
+        "quote1W": null
+      },
+      "funding_extrem": {
+        "anzahl": 5,
+        "n1T": 0,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": null,
+        "oe1T": null,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": null,
+        "quote3T": null,
         "quote1W": null
       },
       "analysten_hochstufung": {
@@ -558,21 +603,6 @@
         "quote3T": 0,
         "quote1W": 0
       },
-      "funding_extrem": {
-        "anzahl": 2,
-        "n1T": 0,
-        "n3T": 0,
-        "n1W": 0,
-        "oe1h": null,
-        "oe1T": null,
-        "oe3T": null,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": null,
-        "quote3T": null,
-        "quote1W": null
-      },
       "tagesverlierer": {
         "anzahl": 1,
         "n1T": 1,
@@ -633,7 +663,7 @@
         "quote3T": null,
         "quote1W": null
       },
-      "krypto_einnahmen": {
+      "cot_extrem": {
         "anzahl": 1,
         "n1T": 0,
         "n3T": 0,
@@ -695,6 +725,21 @@
         "quote3T": 61.5,
         "quote1W": 57.1
       },
+      "Upbit": {
+        "anzahl": 21,
+        "n1T": 1,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": 5.48,
+        "oe1T": -9.05,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 0,
+        "quote3T": null,
+        "quote1W": null
+      },
       "Alpha Vantage": {
         "anzahl": 17,
         "n1T": 14,
@@ -726,7 +771,7 @@
         "quote1W": 50
       },
       "CNBC Top News": {
-        "anzahl": 9,
+        "anzahl": 12,
         "n1T": 5,
         "n3T": 3,
         "n1W": 3,
@@ -741,7 +786,7 @@
         "quote1W": 100
       },
       "MarketWatch": {
-        "anzahl": 6,
+        "anzahl": 9,
         "n1T": 4,
         "n3T": 1,
         "n1W": 1,
@@ -756,7 +801,7 @@
         "quote1W": 100
       },
       "Handelsblatt Finanzen": {
-        "anzahl": 5,
+        "anzahl": 9,
         "n1T": 3,
         "n3T": 0,
         "n1W": 0,
@@ -767,6 +812,21 @@
         "oe10T": null,
         "oe1M": null,
         "quote1T": 100,
+        "quote3T": null,
+        "quote1W": null
+      },
+      "DefiLlama": {
+        "anzahl": 6,
+        "n1T": 0,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": null,
+        "oe1T": null,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": null,
         "quote3T": null,
         "quote1W": null
       },
@@ -785,6 +845,21 @@
         "quote3T": null,
         "quote1W": null
       },
+      "Kraken Futures": {
+        "anzahl": 5,
+        "n1T": 0,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": null,
+        "oe1T": null,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": null,
+        "quote3T": null,
+        "quote1W": null
+      },
       "Finnhub Analysten": {
         "anzahl": 4,
         "n1T": 4,
@@ -799,6 +874,36 @@
         "quote1T": 75,
         "quote3T": 33.3,
         "quote1W": 0
+      },
+      "tagesschau Wirtschaft": {
+        "anzahl": 4,
+        "n1T": 3,
+        "n3T": 3,
+        "n1W": 3,
+        "oe1h": null,
+        "oe1T": -1.39,
+        "oe3T": 0.5,
+        "oe1W": 1.5,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 0,
+        "quote3T": 33.3,
+        "quote1W": 66.7
+      },
+      "FAZ Finanzen": {
+        "anzahl": 4,
+        "n1T": 1,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": 0,
+        "oe1T": 3.78,
+        "oe3T": null,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 100,
+        "quote3T": null,
+        "quote1W": null
       },
       "Nasdaq Trader": {
         "anzahl": 4,
@@ -815,20 +920,20 @@
         "quote3T": null,
         "quote1W": null
       },
-      "tagesschau Wirtschaft": {
+      "BTC-ECHO": {
         "anzahl": 3,
-        "n1T": 3,
-        "n3T": 3,
-        "n1W": 3,
-        "oe1h": null,
-        "oe1T": -1.39,
-        "oe3T": 0.5,
-        "oe1W": 1.5,
+        "n1T": 1,
+        "n3T": 0,
+        "n1W": 0,
+        "oe1h": 0,
+        "oe1T": 12.64,
+        "oe3T": null,
+        "oe1W": null,
         "oe10T": null,
         "oe1M": null,
-        "quote1T": 0,
-        "quote3T": 33.3,
-        "quote1W": 66.7
+        "quote1T": 100,
+        "quote3T": null,
+        "quote1W": null
       },
       "ApeWisdom": {
         "anzahl": 3,
@@ -847,66 +952,6 @@
       },
       "Finnhub News": {
         "anzahl": 2,
-        "n1T": 1,
-        "n3T": 0,
-        "n1W": 0,
-        "oe1h": 0,
-        "oe1T": 12.64,
-        "oe3T": null,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 100,
-        "quote3T": null,
-        "quote1W": null
-      },
-      "FAZ Finanzen": {
-        "anzahl": 2,
-        "n1T": 1,
-        "n3T": 0,
-        "n1W": 0,
-        "oe1h": 0,
-        "oe1T": 3.78,
-        "oe3T": null,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 100,
-        "quote3T": null,
-        "quote1W": null
-      },
-      "Upbit": {
-        "anzahl": 2,
-        "n1T": 1,
-        "n3T": 0,
-        "n1W": 0,
-        "oe1h": 5.48,
-        "oe1T": -9.05,
-        "oe3T": null,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 0,
-        "quote3T": null,
-        "quote1W": null
-      },
-      "Kraken Futures": {
-        "anzahl": 2,
-        "n1T": 0,
-        "n3T": 0,
-        "n1W": 0,
-        "oe1h": null,
-        "oe1T": null,
-        "oe3T": null,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": null,
-        "quote3T": null,
-        "quote1W": null
-      },
-      "BTC-ECHO": {
-        "anzahl": 1,
         "n1T": 1,
         "n3T": 0,
         "n1W": 0,
@@ -965,7 +1010,7 @@
         "quote3T": null,
         "quote1W": null
       },
-      "DefiLlama": {
+      "CFTC COT": {
         "anzahl": 1,
         "n1T": 0,
         "n3T": 0,
@@ -983,7 +1028,7 @@
     },
     "nachRisiko": {
       "normal": {
-        "anzahl": 148,
+        "anzahl": 171,
         "n1T": 99,
         "n3T": 41,
         "n1W": 23,
@@ -998,7 +1043,7 @@
         "quote1W": 47.8
       },
       "pump_verdacht": {
-        "anzahl": 7,
+        "anzahl": 18,
         "n1T": 4,
         "n3T": 0,
         "n1W": 0,
@@ -1015,7 +1060,7 @@
     },
     "nachMarkt": {
       "us": {
-        "anzahl": 146,
+        "anzahl": 151,
         "n1T": 98,
         "n3T": 39,
         "n1W": 21,
@@ -1029,23 +1074,8 @@
         "quote3T": 46.2,
         "quote1W": 47.6
       },
-      "eu": {
-        "anzahl": 5,
-        "n1T": 4,
-        "n3T": 2,
-        "n1W": 2,
-        "oe1h": 0,
-        "oe1T": 1.67,
-        "oe3T": -1.24,
-        "oe1W": -0.04,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 50,
-        "quote3T": 0,
-        "quote1W": 50
-      },
       "krypto": {
-        "anzahl": 4,
+        "anzahl": 29,
         "n1T": 1,
         "n3T": 0,
         "n1W": 0,
@@ -1058,6 +1088,21 @@
         "quote1T": 0,
         "quote3T": null,
         "quote1W": null
+      },
+      "eu": {
+        "anzahl": 9,
+        "n1T": 4,
+        "n3T": 2,
+        "n1W": 2,
+        "oe1h": 0,
+        "oe1T": 1.67,
+        "oe3T": -1.24,
+        "oe1W": -0.04,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 50,
+        "quote3T": 0,
+        "quote1W": 50
       }
     },
     "nachPhase": {
@@ -1092,7 +1137,7 @@
         "quote1W": 47.8
       },
       "seitwaerts_ruhig": {
-        "anzahl": 3,
+        "anzahl": 37,
         "n1T": 0,
         "n3T": 0,
         "n1W": 0,
@@ -1143,7 +1188,7 @@
       "summeNetto": -149.41
     }
   },
-  "zusammenfassung": "Gesamt: 8 Orders, Trefferquote 50 %, Ø -2.07 % nach Gebühren (erwartet waren Ø 0.75 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 7 Orders, Ø -0.37 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=8).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -0.5 % (n=71); insider_cluster_kauf -2.22 % (n=34); insider_kauf -2.05 % (n=32); nachzahlen_drift -0.72 % (n=17); nachricht 3.72 % (n=15); volumen_ungewoehnlich 4.66 % (n=7).\nClaudes Tagesprognose: 70 % Richtung richtig nach 1 Tag (n=10), Ø 3.95 %.\nVs. MSCI World (gleiche Zeiträume): Depot -149.41 € vs. ETF 51.62 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_kauf 11.1 % (Lift 1.35, n=36); gewinn_ueberraschung 8.1 % (Lift 0.98, n=37).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +3,7 % nach 1 Woche (n=15).\n- Schwächstes Signal: insider_cluster_kauf Ø -2,2 % nach 1 Woche (n=34) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 8 Orders, Trefferquote 50 %, Ø -2.07 % nach Gebühren (erwartet waren Ø 0.75 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 7 Orders, Ø -0.37 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=8).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -0.5 % (n=71); insider_cluster_kauf -2.22 % (n=34); insider_kauf -2.05 % (n=32); nachricht 3.72 % (n=25); nachzahlen_drift -0.72 % (n=17); volumen_ungewoehnlich 4.66 % (n=7).\nClaudes Tagesprognose: 70 % Richtung richtig nach 1 Tag (n=10), Ø 3.95 %.\nVs. MSCI World (gleiche Zeiträume): Depot -149.41 € vs. ETF 51.62 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_kauf 11.1 % (Lift 1.24, n=36); gewinn_ueberraschung 8.1 % (Lift 0.9, n=37).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +3,7 % nach 1 Woche (n=25).\n- Schwächstes Signal: insider_cluster_kauf Ø -2,2 % nach 1 Woche (n=34) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "tagesgewinner",
@@ -1424,7 +1469,7 @@
   ],
   "lernhinweise": [
     "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.",
-    "Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +3,7 % nach 1 Woche (n=15).",
+    "Stärkstes Signal (auch ohne Kauf gemessen): nachricht Ø +3,7 % nach 1 Woche (n=25).",
     "Schwächstes Signal: insider_cluster_kauf Ø -2,2 % nach 1 Woche (n=34) → nicht darauf verlassen."
   ],
   "risikoBudget": {
@@ -1439,13 +1484,13 @@
     {
       "typ": "insider_kauf",
       "quote": 11.1,
-      "lift": 1.35,
+      "lift": 1.24,
       "signale": 36
     },
     {
       "typ": "gewinn_ueberraschung",
       "quote": 8.1,
-      "lift": 0.98,
+      "lift": 0.9,
       "signale": 37
     }
   ]

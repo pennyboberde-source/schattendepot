@@ -2,7 +2,8 @@
   "tage": [
     "2026-10-22",
     "2026-10-21",
-    "2026-10-23"
+    "2026-10-23",
+    "2026-10-24"
   ],
   "jeTyp": {
     "gewinn_ueberraschung": {
@@ -30,8 +31,8 @@
       "vorRakete": 4
     },
     "nachricht": {
-      "signale": 5,
-      "vorRakete": 0
+      "signale": 9,
+      "vorRakete": 1
     },
     "prognose_erhoehung": {
       "signale": 2,
@@ -72,11 +73,11 @@
       "vorRakete": 0
     },
     "tagesschau Wirtschaft": {
-      "signale": 6,
-      "vorRakete": 0
+      "signale": 7,
+      "vorRakete": 1
     },
     "CNBC Top News": {
-      "signale": 5,
+      "signale": 7,
       "vorRakete": 0
     },
     "MarketWatch": {
@@ -94,11 +95,15 @@
     "FAZ Finanzen": {
       "signale": 1,
       "vorRakete": 0
+    },
+    "Handelsblatt Finanzen": {
+      "signale": 1,
+      "vorRakete": 0
     }
   },
   "gesamt": {
-    "signale": 85,
-    "vorRakete": 7
+    "signale": 89,
+    "vorRakete": 8
   },
   "verlauf": [
     {
@@ -110,6 +115,11 @@
       "datum": "2026-10-30",
       "mover": 35,
       "abdeckung": 5.7
+    },
+    {
+      "datum": "2026-10-31",
+      "mover": 20,
+      "abdeckung": 20
     }
   ]
 }

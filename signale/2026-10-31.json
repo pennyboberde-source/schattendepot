@@ -1,0 +1,478 @@
+{
+  "stand": "2026-10-31T08:03:53.844Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:CRV",
+      "name": "Curve",
+      "ticker": "CRV",
+      "markt": "krypto",
+      "score": 1.4,
+      "typen": [
+        "upbit_warnung",
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "Upbit",
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:UNI",
+      "name": "UNI",
+      "ticker": "UNI",
+      "markt": "krypto",
+      "score": 1.24,
+      "typen": [
+        "funding_extrem",
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "Kraken Futures",
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:AERO",
+      "name": "Aero Slipstream",
+      "ticker": "AERO",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:JUP",
+      "name": "Jupiter Perpetual Exchange",
+      "ticker": "JUP",
+      "markt": "krypto",
+      "score": 1.19,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:SYRUP",
+      "name": "Maple",
+      "ticker": "SYRUP",
+      "markt": "krypto",
+      "score": 1.09,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:BTC",
+      "name": "Bitcoin",
+      "ticker": "BTC",
+      "markt": "krypto",
+      "score": 0.74,
+      "typen": [
+        "nachricht",
+        "upbit_warnung",
+        "cot_extrem"
+      ],
+      "quellen": [
+        "BTC-ECHO",
+        "CNBC Top News",
+        "Upbit",
+        "CFTC COT"
+      ]
+    },
+    {
+      "schluessel": "T:NATGAS",
+      "name": "Erdgas (Rohstoff)",
+      "ticker": "NATGAS",
+      "markt": "rohstoff",
+      "score": 0.49,
+      "typen": [
+        "cot_extrem"
+      ],
+      "quellen": [
+        "CFTC COT"
+      ]
+    },
+    {
+      "schluessel": "T:XAG",
+      "name": "Silber (Rohstoff)",
+      "ticker": "XAG",
+      "markt": "rohstoff",
+      "score": 0.43,
+      "typen": [
+        "cot_extrem"
+      ],
+      "quellen": [
+        "CFTC COT"
+      ]
+    },
+    {
+      "schluessel": "T:BEAM",
+      "name": "Beam",
+      "ticker": "BEAM",
+      "markt": "krypto",
+      "score": 0.28,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:EGLD",
+      "name": "MultiversX",
+      "ticker": "EGLD",
+      "markt": "krypto",
+      "score": 0.28,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:MANTRA",
+      "name": "MANTRA",
+      "ticker": "MANTRA",
+      "markt": "krypto",
+      "score": 0.28,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:BLUR",
+      "name": "Blur",
+      "ticker": "BLUR",
+      "markt": "krypto",
+      "score": 0.28,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:RSR",
+      "name": "Reserve Rights",
+      "ticker": "RSR",
+      "markt": "krypto",
+      "score": 0.28,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:SOPH",
+      "name": "Sophon",
+      "ticker": "SOPH",
+      "markt": "krypto",
+      "score": 0.28,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:ZIL",
+      "name": "Zilliqa",
+      "ticker": "ZIL",
+      "markt": "krypto",
+      "score": 0.28,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:TRX",
+      "name": "TRX",
+      "ticker": "TRX",
+      "markt": "krypto",
+      "score": 0.27,
+      "typen": [
+        "funding_extrem"
+      ],
+      "quellen": [
+        "Kraken Futures"
+      ]
+    },
+    {
+      "schluessel": "T:ATOM",
+      "name": "ATOM",
+      "ticker": "ATOM",
+      "markt": "krypto",
+      "score": 0.24,
+      "typen": [
+        "funding_extrem"
+      ],
+      "quellen": [
+        "Kraken Futures"
+      ]
+    },
+    {
+      "schluessel": "T:CARV",
+      "name": "CARV",
+      "ticker": "CARV",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:PUNDIX",
+      "name": "Pundi X",
+      "ticker": "PUNDIX",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:DOGE",
+      "name": "Dogecoin",
+      "ticker": "DOGE",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:ETH",
+      "name": "Ethereum",
+      "ticker": "ETH",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:IMX",
+      "name": "Immutable X",
+      "ticker": "IMX",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:SAFE",
+      "name": "Safe",
+      "ticker": "SAFE",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:KERNEL",
+      "name": "KernelDAO",
+      "ticker": "KERNEL",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:GTC",
+      "name": "Gitcoin",
+      "ticker": "GTC",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:RED",
+      "name": "RedStone",
+      "ticker": "RED",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:ELF",
+      "name": "aelf",
+      "ticker": "ELF",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:INTC",
+      "name": "Intel",
+      "ticker": "INTC",
+      "score": 0.15,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "FAZ Finanzen",
+        "Handelsblatt Finanzen",
+        "MarketWatch",
+        "CNBC Top News"
+      ]
+    },
+    {
+      "schluessel": "T:CBK",
+      "name": "Commerzbank",
+      "ticker": "CBK.DE",
+      "score": 0.1,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "FAZ Finanzen",
+        "Handelsblatt Finanzen"
+      ]
+    },
+    {
+      "schluessel": "T:DTE",
+      "name": "Deutsche Telekom",
+      "ticker": "DTE.DE",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "Handelsblatt Finanzen"
+      ]
+    },
+    {
+      "schluessel": "T:DBK",
+      "name": "Deutsche Bank",
+      "ticker": "DBK.DE",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "Handelsblatt Finanzen"
+      ]
+    },
+    {
+      "schluessel": "T:VOW3",
+      "name": "Volkswagen",
+      "ticker": "VOW3.DE",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "tagesschau Wirtschaft"
+      ]
+    },
+    {
+      "schluessel": "T:XOM",
+      "name": "Exxon Mobil",
+      "ticker": "XOM",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "CNBC Top News"
+      ]
+    },
+    {
+      "schluessel": "T:AMD",
+      "name": "AMD",
+      "ticker": "AMD",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "MarketWatch"
+      ]
+    },
+    {
+      "schluessel": "T:MSFT",
+      "name": "Microsoft",
+      "ticker": "MSFT",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "MarketWatch"
+      ]
+    },
+    {
+      "schluessel": "T:COIN",
+      "name": "Coinbase",
+      "ticker": "COIN",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "BTC-ECHO"
+      ]
+    }
+  ],
+  "anzahlSignale": 40
+}

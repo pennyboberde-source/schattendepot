@@ -1,15 +1,61 @@
 {
-  "datum": "2026-10-30",
-  "stand": "2026-10-30T04:44:39.050Z",
-  "anzahl": 35,
-  "abdeckung": 5.7,
+  "datum": "2026-10-31",
+  "stand": "2026-10-31T08:03:53.844Z",
+  "anzahl": 20,
+  "abdeckung": 20,
   "mover": [
     {
-      "s": "T:ROMA",
-      "n": "Roma Green Finance Limited Ordinary Shares",
-      "t": "ROMA",
-      "typ": "tagesgewinner",
+      "s": "T:AXG",
+      "n": "Solowin Holdings Ordinary Share",
+      "t": "AXG",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "leerverkauf_aenderung",
+          "tageVorher": 2,
+          "q": [
+            "FINRA Short Interest"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:MPLX",
+      "n": "Metaplex",
+      "t": "MPLX",
+      "typ": "kursrakete",
       "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 2,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 3,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:GBC",
+      "n": "Georgia Banking Co. Inc.",
+      "t": "GBC",
+      "typ": "tagesverlierer",
+      "r": -1,
       "vorzeichen": [
         {
           "typ": "handelsstopp",
@@ -21,17 +67,17 @@
       ]
     },
     {
-      "s": "T:MPLX",
-      "n": "Metaplex",
-      "t": "MPLX",
-      "typ": "kursrakete",
+      "s": "T:AIOK",
+      "n": "AI OKTO Corp.",
+      "t": "AIOK",
+      "typ": "tagesverlierer",
       "r": -1,
       "vorzeichen": [
         {
-          "typ": "upbit_warnung",
+          "typ": "insider_kauf",
           "tageVorher": 2,
           "q": [
-            "Upbit"
+            "OpenInsider"
           ]
         }
       ]
@@ -85,33 +131,9 @@
       "vorzeichen": []
     },
     {
-      "s": "T:GBC",
-      "n": "Georgia Banking Co. Inc.",
-      "t": "GBC",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
       "s": "T:IOVA",
       "n": "Iovance Biotherapeutics, Inc.",
       "t": "IOVA",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:AXG",
-      "n": "Solowin Holdings Ordinary Share",
-      "t": "AXG",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:AIOK",
-      "n": "AI OKTO Corp.",
-      "t": "AIOK",
       "typ": "tagesverlierer",
       "r": -1,
       "vorzeichen": []
@@ -141,155 +163,46 @@
       "vorzeichen": []
     },
     {
-      "s": "T:ULBI",
-      "n": "Ultralife Corporation",
-      "t": "ULBI",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:FTFT",
-      "n": "Future FinTech Group Inc.",
-      "t": "FTFT",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:BOOM",
-      "n": "DMC Global Inc.",
-      "t": "BOOM",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:PDC",
-      "n": "Perpetuals.com Ltd",
-      "t": "PDC",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:ADIL",
-      "n": "Adial Pharmaceuticals, Inc.",
-      "t": "ADIL",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:PODC",
-      "n": "PodcastOne, Inc.",
-      "t": "PODC",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:BCAX",
-      "n": "Bicara Therapeutics Inc. Common Stock",
-      "t": "BCAX",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:MF",
-      "n": "MindForge Inc",
-      "t": "MF",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:KPTI",
-      "n": "KPTI",
-      "t": "KPTI",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:AXIS",
-      "n": "Axis Robotics",
-      "t": "AXIS",
-      "typ": "kursrakete",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:QUID",
-      "n": "Squid",
-      "t": "QUID",
+      "s": "T:BEAM",
+      "n": "Beam",
+      "t": "BEAM",
       "typ": "kursrakete",
       "r": 1,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF0ETX9",
-      "n": "DE000HF0ETX9",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0ET02",
+      "s": "I:DE000HF1UMM1",
       "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000GN6L2W5",
-      "n": "GOLDMAN SACHS EUROPE SE",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:HBGRF",
-      "n": "HEIDELBERGER DRUCKMASCHINEN",
-      "t": "HBGRF",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000GW3FWZ9",
-      "n": "DE000GW3FWZ9",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0DDN6",
-      "n": "HSBC TRINKAUS+BURKHARDT",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0EUL2",
-      "n": "DE000HF0EUL2",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:LSK",
-      "n": "Lisk",
-      "t": "LSK",
+      "s": "T:PUNDIX",
+      "n": "Pundi X",
+      "t": "PUNDIX",
       "typ": "kursrakete",
       "r": 1,
       "vorzeichen": []
     },
     {
-      "s": "T:INTC",
-      "n": "INTEL CORP",
-      "t": "INTC",
+      "s": "T:BIRB",
+      "n": "Moonbirds",
+      "t": "BIRB",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0GCH3",
+      "n": "DE000HF0GCH3",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HM8PYP5",
+      "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []

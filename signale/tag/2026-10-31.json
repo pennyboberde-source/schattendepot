@@ -1,0 +1,561 @@
+{
+  "stand": "2026-10-31T08:03:53.844Z",
+  "anzahl": 40,
+  "signale": [
+    {
+      "id": "nachricht:BTC:2026-10-30",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "BTC-ECHO",
+        "CNBC Top News"
+      ],
+      "z": "2026-10-30T10:00:00.000Z"
+    },
+    {
+      "id": "nachricht:CBK:2026-10-30",
+      "s": "T:CBK",
+      "n": "Commerzbank",
+      "t": "CBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "FAZ Finanzen",
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-30T11:41:52.000Z"
+    },
+    {
+      "id": "nachricht:DTE:2026-10-30",
+      "s": "T:DTE",
+      "n": "Deutsche Telekom",
+      "t": "DTE.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-30T11:55:42.000Z"
+    },
+    {
+      "id": "nachricht:DBK:2026-10-30",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-10-30T13:01:27.000Z"
+    },
+    {
+      "id": "nachricht:VOW3:2026-10-30",
+      "s": "T:VOW3",
+      "n": "Volkswagen",
+      "t": "VOW3.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-10-30T13:51:43.000Z"
+    },
+    {
+      "id": "nachricht:XOM:2026-10-30",
+      "s": "T:XOM",
+      "n": "Exxon Mobil",
+      "t": "XOM",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-10-30T16:44:31.000Z"
+    },
+    {
+      "id": "nachricht:INTC:2026-10-30",
+      "s": "T:INTC",
+      "n": "Intel",
+      "t": "INTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.62,
+      "q": [
+        "FAZ Finanzen",
+        "Handelsblatt Finanzen",
+        "MarketWatch",
+        "CNBC Top News"
+      ],
+      "z": "2026-10-30T17:49:35.000Z"
+    },
+    {
+      "id": "nachricht:AMD:2026-10-30",
+      "s": "T:AMD",
+      "n": "AMD",
+      "t": "AMD",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-10-30T20:28:00.000Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-10-30",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-10-30T20:29:00.000Z"
+    },
+    {
+      "id": "nachricht:COIN:2026-10-31",
+      "s": "T:COIN",
+      "n": "Coinbase",
+      "t": "COIN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-10-31T08:00:00.000Z"
+    },
+    {
+      "id": "upbit_warnung:CARV:2026-10-31",
+      "s": "T:CARV",
+      "n": "CARV",
+      "t": "CARV",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:PUNDIX:2026-10-31",
+      "s": "T:PUNDIX",
+      "n": "Pundi X",
+      "t": "PUNDIX",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:BEAM:2026-10-31",
+      "s": "T:BEAM",
+      "n": "Beam",
+      "t": "BEAM",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:DOGE:2026-10-31",
+      "s": "T:DOGE",
+      "n": "Dogecoin",
+      "t": "DOGE",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:CRV:2026-10-31",
+      "s": "T:CRV",
+      "n": "Curve",
+      "t": "CRV",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:EGLD:2026-10-31",
+      "s": "T:EGLD",
+      "n": "MultiversX",
+      "t": "EGLD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:ETH:2026-10-31",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:MANTRA:2026-10-31",
+      "s": "T:MANTRA",
+      "n": "MANTRA",
+      "t": "MANTRA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:BLUR:2026-10-31",
+      "s": "T:BLUR",
+      "n": "Blur",
+      "t": "BLUR",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:RSR:2026-10-31",
+      "s": "T:RSR",
+      "n": "Reserve Rights",
+      "t": "RSR",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:IMX:2026-10-31",
+      "s": "T:IMX",
+      "n": "Immutable X",
+      "t": "IMX",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:SAFE:2026-10-31",
+      "s": "T:SAFE",
+      "n": "Safe",
+      "t": "SAFE",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:KERNEL:2026-10-31",
+      "s": "T:KERNEL",
+      "n": "KernelDAO",
+      "t": "KERNEL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:GTC:2026-10-31",
+      "s": "T:GTC",
+      "n": "Gitcoin",
+      "t": "GTC",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:RED:2026-10-31",
+      "s": "T:RED",
+      "n": "RedStone",
+      "t": "RED",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:ELF:2026-10-31",
+      "s": "T:ELF",
+      "n": "aelf",
+      "t": "ELF",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:SOPH:2026-10-31",
+      "s": "T:SOPH",
+      "n": "Sophon",
+      "t": "SOPH",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:ZIL:2026-10-31",
+      "s": "T:ZIL",
+      "n": "Zilliqa",
+      "t": "ZIL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "upbit_warnung:BTC:2026-10-31",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "funding_extrem:UNI:2026-10-31",
+      "s": "T:UNI",
+      "n": "UNI",
+      "t": "UNI",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.34,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "funding_extrem:TRX:2026-10-31",
+      "s": "T:TRX",
+      "n": "TRX",
+      "t": "TRX",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.55,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "funding_extrem:ATOM:2026-10-31",
+      "s": "T:ATOM",
+      "n": "ATOM",
+      "t": "ATOM",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.48,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "krypto_einnahmen:CRV:2026-10-31",
+      "s": "T:CRV",
+      "n": "Curve DEX",
+      "t": "CRV",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "krypto_einnahmen:AERO:2026-10-31",
+      "s": "T:AERO",
+      "n": "Aero Slipstream",
+      "t": "AERO",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "krypto_einnahmen:JUP:2026-10-31",
+      "s": "T:JUP",
+      "n": "Jupiter Perpetual Exchange",
+      "t": "JUP",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.99,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "krypto_einnahmen:SYRUP:2026-10-31",
+      "s": "T:SYRUP",
+      "n": "Maple",
+      "t": "SYRUP",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.91,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "krypto_einnahmen:UNI:2026-10-31",
+      "s": "T:UNI",
+      "n": "Uniswap V3",
+      "t": "UNI",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.89,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "cot_extrem:BTC:2026-10-31",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "cot_extrem",
+      "r": 0,
+      "st": 0.88,
+      "q": [
+        "CFTC COT"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "cot_extrem:NATGAS:2026-10-31",
+      "s": "T:NATGAS",
+      "n": "Erdgas (Rohstoff)",
+      "t": "NATGAS",
+      "m": "rohstoff",
+      "typ": "cot_extrem",
+      "r": 0,
+      "st": 0.98,
+      "q": [
+        "CFTC COT"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    },
+    {
+      "id": "cot_extrem:XAG:2026-10-31",
+      "s": "T:XAG",
+      "n": "Silber (Rohstoff)",
+      "t": "XAG",
+      "m": "rohstoff",
+      "typ": "cot_extrem",
+      "r": 0,
+      "st": 0.86,
+      "q": [
+        "CFTC COT"
+      ],
+      "z": "2026-10-31T08:03:53.844Z"
+    }
+  ]
+}

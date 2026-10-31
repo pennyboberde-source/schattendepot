@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-30T20:38:14.721Z",
+  "stand": "2026-10-31T08:03:53.844Z",
   "quellen": [
     {
       "id": "alphavantage",
@@ -24,61 +24,62 @@
       "id": "appstore",
       "name": "Apple App Store (Broker-/Krypto-Apps)",
       "zuletztOk": "2026-10-30T04:44:39.050Z",
-      "signale": 0
+      "signale": 0,
+      "letzterFehler": "2026-10-31T08:03:53.844Z: Zeitlimit 45 s"
     },
     {
       "id": "asiancentury",
       "name": "Asian Century Stocks",
-      "zuletztOk": "2026-10-30T04:44:39.050Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 0
     },
     {
       "id": "btcecho",
       "name": "BTC-ECHO",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
-      "signale": 4,
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
+      "signale": 5,
       "letzterFehler": "2026-10-30T13:58:18.236Z: The operation was aborted due to timeout"
     },
     {
       "id": "cftccot",
       "name": "CFTC Commitments of Traders (wöchentlich)",
-      "zuletztOk": "2026-10-30T04:44:39.050Z",
-      "signale": 0
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
+      "signale": 3
     },
     {
       "id": "cnbc",
       "name": "CNBC Top News",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 3
     },
     {
       "id": "coinalyze",
       "name": "Coinalyze (Liquidationen, Funding)",
       "letzterFehler": "2026-10-28T18:45:56.603Z: Schlüssel COINALYZE_API_KEY fehlt",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 0
     },
     {
       "id": "defillama",
       "name": "DefiLlama (Gebühren, Stablecoins)",
-      "zuletztOk": "2026-10-30T04:44:39.050Z",
-      "signale": 4
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
+      "signale": 5
     },
     {
       "id": "emskeptic",
       "name": "Emerging Market Skeptic",
-      "letzterFehler": "2026-10-30T04:44:39.050Z: HTTP 403 bei emergingmarketskeptic.substack.com"
+      "letzterFehler": "2026-10-31T08:03:53.844Z: HTTP 403 bei emergingmarketskeptic.substack.com"
     },
     {
       "id": "faz",
       "name": "FAZ Finanzen",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 2
     },
     {
       "id": "kryptostimmung",
       "name": "Fear & Greed (alternative.me) + DVOL (Deribit)",
-      "zuletztOk": "2026-10-30T04:44:39.050Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 0
     },
     {
@@ -121,7 +122,7 @@
       "id": "fred",
       "name": "FRED (St. Louis Fed)",
       "letzterFehler": "2026-10-22T04:31:41.017Z: FRED liefert keine CSV (Wartung?)",
-      "zuletztOk": "2026-10-30T04:44:39.050Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 0
     },
     {
@@ -140,25 +141,25 @@
     {
       "id": "handelsblatt",
       "name": "Handelsblatt Finanzen",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 4
     },
     {
       "id": "kraken",
       "name": "Kraken (Krypto)",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 0
     },
     {
       "id": "krakenfutures",
       "name": "Kraken Futures (Funding, Open Interest)",
-      "zuletztOk": "2026-10-30T04:44:39.050Z",
-      "signale": 14
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
+      "signale": 3
     },
     {
       "id": "marketwatch",
       "name": "MarketWatch",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 4
     },
     {
@@ -176,7 +177,7 @@
     {
       "id": "polymarket",
       "name": "Polymarket (Prognosemarkt)",
-      "zuletztOk": "2026-10-30T04:44:39.050Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 0
     },
     {
@@ -196,26 +197,26 @@
     {
       "id": "shortseller",
       "name": "Short-Seller-Berichte (Grizzly, Fuzzy Panda, Bear Cave)",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 0
     },
     {
       "id": "tagesschau",
       "name": "tagesschau Wirtschaft",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
-      "signale": 2
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
+      "signale": 1
     },
     {
       "id": "mikrokap",
       "name": "The Mikro Kap",
-      "zuletztOk": "2026-10-30T04:44:39.050Z",
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
       "signale": 0
     },
     {
       "id": "upbit",
       "name": "Upbit (Korea, Krypto)",
-      "zuletztOk": "2026-10-30T20:38:14.721Z",
-      "signale": 31
+      "zuletztOk": "2026-10-31T08:03:53.844Z",
+      "signale": 19
     },
     {
       "id": "wikipedia",
