@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-31T15:10:12.979Z",
+  "stand": "2026-10-31T16:08:51.617Z",
   "heute": {
     "datum": "2026-10-31",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -0.86,
       "oeR": -1
     },
-    "offen": 0
+    "offen": 1
   },
   "gesamt": {
     "anzahl": 124,
@@ -268,8 +268,75 @@
       "oeR": -1
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-10-31-scan-ada",
+      "datum": "2026-10-31",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-31T15:35:00.000Z",
+        "kurs": 0.173237,
+        "level": 0.1732,
+        "spanne": {
+          "hoch": 0.173175,
+          "tief": 0.173038
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1731,
+      "ziel": 0.174,
+      "zielR": 2,
+      "flatBis": "2026-10-31T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-31T15:35:00.000Z",
+        "basisKurs": 0.173415,
+        "kurs": 0.1738,
+        "stueck": 5753.73993,
+        "kurswert": 1000
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-10-31-scan-ada",
+      "datum": "2026-10-31",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-10-31T15:35:00.000Z",
+        "kurs": 0.173237,
+        "level": 0.1732,
+        "spanne": {
+          "hoch": 0.173175,
+          "tief": 0.173038
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1731,
+      "ziel": 0.174,
+      "zielR": 2,
+      "flatBis": "2026-10-31T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-10-31T15:35:00.000Z",
+        "basisKurs": 0.173415,
+        "kurs": 0.1738,
+        "stueck": 5753.73993,
+        "kurswert": 1000
+      }
+    },
     {
       "id": "2026-10-31-scan-btc",
       "datum": "2026-10-31",
