@@ -2,9 +2,288 @@
   "datum": "2026-11-01",
   "dateien": [],
   "universum": {},
-  "beobachtungen": [],
-  "kryptoLetzte": {},
+  "beobachtungen": [
+    {
+      "basis": "BTC",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-11-01T08:40:00.000Z",
+        "spanne": {
+          "hoch": 69807,
+          "tief": 69740,
+          "volumen": 0.87219711,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-01T08:35:00.000Z",
+          "kurs": 69886.8,
+          "level": 69807,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "BTC",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "level": 69617.7,
+        "letzteKerze": "2026-11-01T08:40:00.000Z",
+        "ausloeser": {
+          "zeit": "2026-11-01T08:20:00.000Z",
+          "kurs": 69736.6,
+          "level": 69617.7,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "ETH",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-11-01T08:40:00.000Z",
+        "spanne": {
+          "hoch": 2032.99,
+          "tief": 2030.69,
+          "volumen": 9.882837539999999,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-01T08:35:00.000Z",
+          "kurs": 2035.45,
+          "level": 2032.99,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "ETH",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "level": 2030.33,
+        "letzteKerze": "2026-11-01T08:40:00.000Z",
+        "ausloeser": {
+          "zeit": "2026-11-01T08:20:00.000Z",
+          "kurs": 2030.38,
+          "level": 2030.33,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "SOL",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-11-01T08:40:00.000Z",
+        "spanne": {
+          "hoch": 85.58,
+          "tief": 85.37,
+          "volumen": 119.37754522,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-01T08:35:00.000Z",
+          "kurs": 85.63,
+          "level": 85.58,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "SOL",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 86.86,
+        "letzteKerze": "2026-11-01T08:40:00.000Z"
+      }
+    },
+    {
+      "basis": "XRP",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-11-01T08:40:00.000Z",
+        "spanne": {
+          "hoch": 1.1233,
+          "tief": 1.12099,
+          "volumen": 29023.39507114,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-01T08:35:00.000Z",
+          "kurs": 1.12336,
+          "level": 1.1233,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "XRP",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 1.12939,
+        "letzteKerze": "2026-11-01T08:40:00.000Z"
+      }
+    },
+    {
+      "basis": "ADA",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-11-01T08:40:00.000Z",
+        "spanne": {
+          "hoch": 0.17346,
+          "tief": 0.173013,
+          "volumen": 6802.13976039,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "ADA",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 0.176118,
+        "letzteKerze": "2026-11-01T08:40:00.000Z"
+      }
+    }
+  ],
+  "kryptoLetzte": {
+    "BTC": "2026-11-01T08:40:00.000Z",
+    "ETH": "2026-11-01T08:40:00.000Z",
+    "SOL": "2026-11-01T08:40:00.000Z",
+    "XRP": "2026-11-01T08:40:00.000Z",
+    "ADA": "2026-11-01T08:40:00.000Z"
+  },
   "watchlist": false,
   "autopilotGenutzt": [],
-  "letzteKurse": {}
+  "letzteKurse": {
+    "BTC": {
+      "zeit": "2026-11-01T08:40:00.000Z",
+      "kurs": 69968.3
+    },
+    "ETH": {
+      "zeit": "2026-11-01T08:40:00.000Z",
+      "kurs": 2035.25
+    },
+    "SOL": {
+      "zeit": "2026-11-01T08:40:00.000Z",
+      "kurs": 85.68
+    },
+    "XRP": {
+      "zeit": "2026-11-01T08:40:00.000Z",
+      "kurs": 1.12244
+    },
+    "ADA": {
+      "zeit": "2026-11-01T08:40:00.000Z",
+      "kurs": 0.173178
+    }
+  }
 }

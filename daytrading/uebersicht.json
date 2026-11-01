@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-01T07:58:44.215Z",
+  "stand": "2026-11-01T08:49:26.840Z",
   "heute": {
     "datum": "2026-11-01",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": 0,
       "oeR": 0
     },
-    "offen": 0
+    "offen": 6
   },
   "gesamt": {
     "anzahl": 125,
@@ -268,8 +268,389 @@
       "oeR": -1
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-11-01-scan-btc",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "level",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:20:00.000Z",
+        "kurs": 69736.6,
+        "level": 69617.7,
+        "richtung": "long"
+      },
+      "stop": 68347.85,
+      "ziel": 72532.41,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:20:00.000Z",
+        "basisKurs": 69742.7,
+        "kurs": 69917.057,
+        "stueck": 0.014302,
+        "kurswert": 999.95
+      }
+    },
+    {
+      "id": "2026-11-01-scan-eth",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "level",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:20:00.000Z",
+        "kurs": 2030.38,
+        "level": 2030.33,
+        "richtung": "long"
+      },
+      "stop": 1990.12,
+      "ziel": 2111.96,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:20:00.000Z",
+        "basisKurs": 2030.73,
+        "kurs": 2035.807,
+        "stueck": 0.491205,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-01-scan-btc-2",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "kurs": 69886.8,
+        "level": 69807,
+        "spanne": {
+          "hoch": 69807,
+          "tief": 69740
+        },
+        "richtung": "long"
+      },
+      "stop": 69773.5,
+      "ziel": 70132.3,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "basisKurs": 69893.1,
+        "kurs": 70067.833,
+        "stueck": 0.014271,
+        "kurswert": 999.94
+      }
+    },
+    {
+      "id": "2026-11-01-scan-eth-2",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "kurs": 2035.45,
+        "level": 2032.99,
+        "spanne": {
+          "hoch": 2032.99,
+          "tief": 2030.69
+        },
+        "richtung": "long"
+      },
+      "stop": 2031.84,
+      "ziel": 2041.53,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "basisKurs": 2035.07,
+        "kurs": 2040.158,
+        "stueck": 0.490158,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-01-scan-sol",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "kurs": 85.63,
+        "level": 85.58,
+        "spanne": {
+          "hoch": 85.58,
+          "tief": 85.37
+        },
+        "richtung": "long"
+      },
+      "stop": 85.48,
+      "ziel": 85.91,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "basisKurs": 85.62,
+        "kurs": 85.834,
+        "stueck": 11.650394,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-01-scan-xrp",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "kurs": 1.12336,
+        "level": 1.1233,
+        "spanne": {
+          "hoch": 1.1233,
+          "tief": 1.12099
+        },
+        "richtung": "long"
+      },
+      "stop": 1.1221,
+      "ziel": 1.1253,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "basisKurs": 1.1232,
+        "kurs": 1.126,
+        "stueck": 888.099467,
+        "kurswert": 1000
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-11-01-scan-btc",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "level",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:20:00.000Z",
+        "kurs": 69736.6,
+        "level": 69617.7,
+        "richtung": "long"
+      },
+      "stop": 68347.85,
+      "ziel": 72532.41,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:20:00.000Z",
+        "basisKurs": 69742.7,
+        "kurs": 69917.057,
+        "stueck": 0.014302,
+        "kurswert": 999.95
+      }
+    },
+    {
+      "id": "2026-11-01-scan-eth",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "level",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:20:00.000Z",
+        "kurs": 2030.38,
+        "level": 2030.33,
+        "richtung": "long"
+      },
+      "stop": 1990.12,
+      "ziel": 2111.96,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:20:00.000Z",
+        "basisKurs": 2030.73,
+        "kurs": 2035.807,
+        "stueck": 0.491205,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-01-scan-btc-2",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "kurs": 69886.8,
+        "level": 69807,
+        "spanne": {
+          "hoch": 69807,
+          "tief": 69740
+        },
+        "richtung": "long"
+      },
+      "stop": 69773.5,
+      "ziel": 70132.3,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "basisKurs": 69893.1,
+        "kurs": 70067.833,
+        "stueck": 0.014271,
+        "kurswert": 999.94
+      }
+    },
+    {
+      "id": "2026-11-01-scan-eth-2",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "kurs": 2035.45,
+        "level": 2032.99,
+        "spanne": {
+          "hoch": 2032.99,
+          "tief": 2030.69
+        },
+        "richtung": "long"
+      },
+      "stop": 2031.84,
+      "ziel": 2041.53,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "basisKurs": 2035.07,
+        "kurs": 2040.158,
+        "stueck": 0.490158,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-01-scan-sol",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "kurs": 85.63,
+        "level": 85.58,
+        "spanne": {
+          "hoch": 85.58,
+          "tief": 85.37
+        },
+        "richtung": "long"
+      },
+      "stop": 85.48,
+      "ziel": 85.91,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "basisKurs": 85.62,
+        "kurs": 85.834,
+        "stueck": 11.650394,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-01-scan-xrp",
+      "datum": "2026-11-01",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "kurs": 1.12336,
+        "level": 1.1233,
+        "spanne": {
+          "hoch": 1.1233,
+          "tief": 1.12099
+        },
+        "richtung": "long"
+      },
+      "stop": 1.1221,
+      "ziel": 1.1253,
+      "zielR": 2,
+      "flatBis": "2026-11-01T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-01T08:35:00.000Z",
+        "basisKurs": 1.1232,
+        "kurs": 1.126,
+        "stueck": 888.099467,
+        "kurswert": 1000
+      }
+    },
     {
       "id": "2026-10-31-scan-ada",
       "datum": "2026-10-31",
@@ -7252,7 +7633,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 0,
+    "code_scan": 10,
     "claude": 0,
     "autopilot": 0
   },
