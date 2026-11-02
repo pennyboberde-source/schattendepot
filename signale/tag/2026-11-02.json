@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-02T17:56:04.519Z",
-  "anzahl": 196,
+  "stand": "2026-11-02T18:54:15.159Z",
+  "anzahl": 201,
   "signale": [
     {
       "id": "verwaesserung:BFLY:2026-10-29",
@@ -688,7 +688,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "MarketWatch"
+        "MarketWatch",
+        "CNBC Top News"
       ],
       "z": "2026-11-02T00:21:00.000Z"
     },
@@ -2558,7 +2559,7 @@
       "t": "VCIG",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2589,6 +2590,73 @@
         "CNBC Top News"
       ],
       "z": "2026-11-02T17:04:34.000Z"
+    },
+    {
+      "id": "handelsstopp:AUC:2026-11-02",
+      "s": "T:AUC",
+      "n": "ATIF Holdings Ltd Ord Shs",
+      "t": "AUC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MLEC:2026-11-02",
+      "s": "T:MLEC",
+      "n": "Moolec Science SA Ord Shs",
+      "t": "MLEC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:SOL:2026-11-02",
+      "s": "T:SOL",
+      "n": "Solana",
+      "t": "SOL",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-02T17:00:00.000Z"
+    },
+    {
+      "id": "nachricht:PLTR:2026-11-02",
+      "s": "T:PLTR",
+      "n": "Palantir",
+      "t": "PLTR",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-02T18:16:02.000Z"
+    },
+    {
+      "id": "kursrakete:CMPS:2026-11-02",
+      "s": "T:CMPS",
+      "n": "COMPASS PATHWAYS PLC",
+      "t": "CMPS",
+      "i": "US20451W1018",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.46,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-02T18:44:19.813Z"
     }
   ]
 }
