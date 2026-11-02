@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-02T18:53:43.882Z",
+  "stand": "2026-11-02T19:51:30.326Z",
   "gesamt": {
     "anzahl": 8,
     "treffer": 4,
@@ -348,7 +348,7 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 231,
+      "anzahl": 232,
       "n1T": 156,
       "n3T": 54,
       "n1W": 32,
@@ -424,7 +424,7 @@
         "quote1W": 100
       },
       "kursrakete": {
-        "anzahl": 20,
+        "anzahl": 21,
         "n1T": 17,
         "n3T": 7,
         "n1W": 4,
@@ -891,7 +891,7 @@
         "quote1W": null
       },
       "gettex-Scanner": {
-        "anzahl": 6,
+        "anzahl": 7,
         "n1T": 5,
         "n3T": 2,
         "n1W": 0,
@@ -1073,7 +1073,7 @@
     },
     "nachRisiko": {
       "normal": {
-        "anzahl": 211,
+        "anzahl": 212,
         "n1T": 139,
         "n3T": 54,
         "n1W": 32,
@@ -1105,7 +1105,7 @@
     },
     "nachMarkt": {
       "us": {
-        "anzahl": 188,
+        "anzahl": 189,
         "n1T": 128,
         "n3T": 51,
         "n1W": 30,
@@ -1167,7 +1167,7 @@
         "quote1W": null
       },
       "seitwaerts_ruhig": {
-        "anzahl": 79,
+        "anzahl": 80,
         "n1T": 28,
         "n3T": 0,
         "n1W": 0,
@@ -1233,7 +1233,7 @@
       "summeNetto": -149.41
     }
   },
-  "zusammenfassung": "Gesamt: 8 Orders, Trefferquote 50 %, Ø -2.07 % nach Gebühren (erwartet waren Ø 0.75 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 7 Orders, Ø -0.37 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=8).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -0.5 % (n=71); insider_cluster_kauf -2.81 % (n=37); insider_kauf -0.15 % (n=36); nachricht 3.72 % (n=25); kursrakete 24.78 % (n=20); nachzahlen_drift -0.72 % (n=17); tagesgewinner 24.78 % (n=13); volumen_ungewoehnlich 4.66 % (n=8).\nClaudes Tagesprognose: 60 % Richtung richtig nach 1 Tag (n=20), Ø 3.05 %.\nVs. MSCI World (gleiche Zeiträume): Depot -149.41 € vs. ETF 51.62 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_cluster_kauf 25 % (Lift 2.48, n=12); insider_kauf 15.6 % (Lift 1.54, n=45); gewinn_ueberraschung 8.1 % (Lift 0.8, n=37); leerverkauf_quote 0 % (Lift 0, n=10).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): kursrakete Ø +24,8 % nach 1 Woche (n=20).\n- Schwächstes Signal: insider_cluster_kauf Ø -2,8 % nach 1 Woche (n=37) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 8 Orders, Trefferquote 50 %, Ø -2.07 % nach Gebühren (erwartet waren Ø 0.75 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 7 Orders, Ø -0.37 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=8).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -0.5 % (n=71); insider_cluster_kauf -2.81 % (n=37); insider_kauf -0.15 % (n=36); nachricht 3.72 % (n=25); kursrakete 24.78 % (n=21); nachzahlen_drift -0.72 % (n=17); tagesgewinner 24.78 % (n=13); volumen_ungewoehnlich 4.66 % (n=8).\nClaudes Tagesprognose: 60 % Richtung richtig nach 1 Tag (n=20), Ø 3.05 %.\nVs. MSCI World (gleiche Zeiträume): Depot -149.41 € vs. ETF 51.62 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_cluster_kauf 25 % (Lift 2.48, n=12); insider_kauf 15.6 % (Lift 1.54, n=45); gewinn_ueberraschung 8.1 % (Lift 0.8, n=37); leerverkauf_quote 0 % (Lift 0, n=10).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): kursrakete Ø +24,8 % nach 1 Woche (n=21).\n- Schwächstes Signal: insider_cluster_kauf Ø -2,8 % nach 1 Woche (n=37) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "tagesgewinner",
@@ -1547,7 +1547,7 @@
   ],
   "lernhinweise": [
     "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.",
-    "Stärkstes Signal (auch ohne Kauf gemessen): kursrakete Ø +24,8 % nach 1 Woche (n=20).",
+    "Stärkstes Signal (auch ohne Kauf gemessen): kursrakete Ø +24,8 % nach 1 Woche (n=21).",
     "Schwächstes Signal: insider_cluster_kauf Ø -2,8 % nach 1 Woche (n=37) → nicht darauf verlassen."
   ],
   "risikoBudget": {
