@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-02T18:54:15.159Z",
-  "anzahl": 201,
+  "stand": "2026-11-02T19:52:39.463Z",
+  "anzahl": 205,
   "signale": [
     {
       "id": "verwaesserung:BFLY:2026-10-29",
@@ -2559,7 +2559,7 @@
       "t": "VCIG",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2657,6 +2657,58 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-02T18:44:19.813Z"
+    },
+    {
+      "id": "handelsstopp:AXTC:2026-11-02",
+      "s": "T:AXTC",
+      "n": "Corgi AXTI 2x Daily ETF",
+      "t": "AXTC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ASTT:2026-11-02",
+      "s": "T:ASTT",
+      "n": "Corgi ASTS 2x Daily ETF",
+      "t": "ASTT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000UR1PGE9:2026-11-02",
+      "s": "I:DE000UR1PGE9",
+      "n": "UNICREDIT BANK GMBH",
+      "i": "DE000UR1PGE9",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.63,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-02T19:37:26.874Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0GBE2:2026-11-02",
+      "s": "I:DE000HF0GBE2",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF0GBE2",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.57,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-02T19:37:41.774Z"
     }
   ]
 }
