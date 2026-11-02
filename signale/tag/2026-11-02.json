@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-02T17:00:16.925Z",
-  "anzahl": 191,
+  "stand": "2026-11-02T17:56:04.519Z",
+  "anzahl": 196,
   "signale": [
     {
       "id": "verwaesserung:BFLY:2026-10-29",
@@ -2524,6 +2524,71 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-02T16:43:34.930Z"
+    },
+    {
+      "id": "handelsstopp:SEGG:2026-11-02",
+      "s": "T:SEGG",
+      "n": "Sports Entrtnmt Gmg Glb Cm",
+      "t": "SEGG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CHOW:2026-11-02",
+      "s": "T:CHOW",
+      "n": "ChowChow Cloud International Holdings Limited Ordinary Share",
+      "t": "CHOW",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:VCIG:2026-11-02",
+      "s": "T:VCIG",
+      "n": "VCI Global Ltd Ord",
+      "t": "VCIG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:FEDU:2026-11-02",
+      "s": "T:FEDU",
+      "n": "Four Seasons Education (Cayman) Inc. American Depositary Sha",
+      "t": "FEDU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "analysten_hochstufung:AAPL:2026-11-02",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "analysten_hochstufung",
+      "r": 1,
+      "st": 0.7,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-02T17:04:34.000Z"
     }
   ]
 }
