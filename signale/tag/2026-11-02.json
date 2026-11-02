@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-02T04:57:18.689Z",
-  "anzahl": 145,
+  "stand": "2026-11-02T07:20:54.243Z",
+  "anzahl": 147,
   "signale": [
     {
       "id": "verwaesserung:BFLY:2026-10-29",
@@ -1747,7 +1747,7 @@
       "m": "krypto",
       "typ": "upbit_warnung",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Upbit"
       ],
@@ -1920,6 +1920,34 @@
         "DefiLlama"
       ],
       "z": "2026-11-02T04:57:18.689Z"
+    },
+    {
+      "id": "kursrakete:AOMFF:2026-11-02",
+      "s": "T:AOMFF",
+      "n": "ALSTOM",
+      "t": "AOMFF",
+      "i": "FR0010220475",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.48,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-02T07:02:52.831Z"
+    },
+    {
+      "id": "kursrakete:SOPH:2026-11-02",
+      "s": "T:SOPH",
+      "n": "Sophon",
+      "t": "SOPH",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.67,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-02T07:20:54.243Z"
     }
   ]
 }
