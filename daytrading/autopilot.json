@@ -1,7 +1,16 @@
 {
-  "stand": "2026-11-02T19:51:37.094Z",
+  "stand": "2026-11-02T20:43:04.204Z",
   "horizont": "r1h",
   "beweise": [
+    {
+      "typ": "kursrakete",
+      "gruppe": "aktie",
+      "faelle": 7,
+      "chance": 14.3,
+      "oeNetto": 1.43,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
     {
       "typ": "gewinn_ueberraschung",
       "gruppe": "aktie",
@@ -42,15 +51,6 @@
       "typ": "insider_kauf",
       "gruppe": "aktie",
       "faelle": 17,
-      "chance": 0,
-      "oeNetto": -0.15,
-      "huerde": 0.15,
-      "bewiesen": false
-    },
-    {
-      "typ": "kursrakete",
-      "gruppe": "aktie",
-      "faelle": 6,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
