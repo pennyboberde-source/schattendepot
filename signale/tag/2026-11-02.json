@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-02T13:00:20.682Z",
-  "anzahl": 164,
+  "stand": "2026-11-02T14:15:13.421Z",
+  "anzahl": 166,
   "signale": [
     {
       "id": "verwaesserung:BFLY:2026-10-29",
@@ -2153,7 +2153,7 @@
       "t": "ORCL-PD",
       "typ": "verwaesserung",
       "r": -1,
-      "st": 0.3,
+      "st": 0.6,
       "q": [
         "SEC EDGAR"
       ],
@@ -2172,6 +2172,33 @@
         "Upbit"
       ],
       "z": "2026-11-02T13:00:20.682Z"
+    },
+    {
+      "id": "handelsstopp:RBNE:2026-11-02",
+      "s": "T:RBNE",
+      "n": "Robin Energy Ltd Cmn",
+      "t": "RBNE",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-02T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:ORCL:2026-11-02",
+      "s": "T:ORCL",
+      "n": "Oracle",
+      "t": "ORCL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "MarketWatch",
+        "CNBC Top News"
+      ],
+      "z": "2026-11-02T14:03:00.000Z"
     }
   ]
 }
