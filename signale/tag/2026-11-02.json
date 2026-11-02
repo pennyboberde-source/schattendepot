@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-02T10:57:58.436Z",
-  "anzahl": 151,
+  "stand": "2026-11-02T11:52:46.227Z",
+  "anzahl": 154,
   "signale": [
     {
       "id": "verwaesserung:BFLY:2026-10-29",
@@ -1943,7 +1943,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.67,
+      "st": 0.72,
       "q": [
         "Upbit"
       ],
@@ -2002,6 +2002,45 @@
         "BTC-ECHO"
       ],
       "z": "2026-11-02T10:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:BNGO:2026-10-30",
+      "s": "T:BNGO",
+      "n": "Bionano Genomics, Inc.",
+      "t": "BNGO",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-30T22:22:39.000Z"
+    },
+    {
+      "id": "verwaesserung:GOOGM:2026-11-02",
+      "s": "T:GOOGM",
+      "n": "Alphabet Inc.",
+      "t": "GOOGM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T11:04:43.000Z"
+    },
+    {
+      "id": "nachricht:GS:2026-11-02",
+      "s": "T:GS",
+      "n": "Goldman Sachs",
+      "t": "GS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-02T11:14:00.000Z"
     }
   ]
 }
