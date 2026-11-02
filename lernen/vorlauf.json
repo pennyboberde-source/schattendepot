@@ -3,7 +3,8 @@
     "2026-10-22",
     "2026-10-21",
     "2026-10-23",
-    "2026-10-24"
+    "2026-10-24",
+    "2026-10-26"
   ],
   "jeTyp": {
     "gewinn_ueberraschung": {
@@ -19,16 +20,16 @@
       "vorRakete": 1
     },
     "insider_cluster_kauf": {
-      "signale": 8,
-      "vorRakete": 2
+      "signale": 12,
+      "vorRakete": 3
     },
     "analysten_hochstufung": {
       "signale": 2,
       "vorRakete": 0
     },
     "insider_kauf": {
-      "signale": 36,
-      "vorRakete": 4
+      "signale": 45,
+      "vorRakete": 7
     },
     "nachricht": {
       "signale": 9,
@@ -49,6 +50,10 @@
     "gewinn_enttaeuschung": {
       "signale": 2,
       "vorRakete": 0
+    },
+    "leerverkauf_quote": {
+      "signale": 10,
+      "vorRakete": 0
     }
   },
   "jeQuelle": {
@@ -65,8 +70,8 @@
       "vorRakete": 1
     },
     "OpenInsider": {
-      "signale": 41,
-      "vorRakete": 4
+      "signale": 51,
+      "vorRakete": 7
     },
     "Finnhub Analysten": {
       "signale": 2,
@@ -99,11 +104,15 @@
     "Handelsblatt Finanzen": {
       "signale": 1,
       "vorRakete": 0
+    },
+    "FINRA": {
+      "signale": 10,
+      "vorRakete": 0
     }
   },
   "gesamt": {
-    "signale": 89,
-    "vorRakete": 8
+    "signale": 109,
+    "vorRakete": 11
   },
   "verlauf": [
     {
@@ -120,6 +129,11 @@
       "datum": "2026-10-31",
       "mover": 20,
       "abdeckung": 20
+    },
+    {
+      "datum": "2026-11-02",
+      "mover": 16,
+      "abdeckung": 37.5
     }
   ]
 }
