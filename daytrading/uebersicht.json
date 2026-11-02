@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-02T17:54:35.918Z",
+  "stand": "2026-11-02T18:53:51.008Z",
   "heute": {
     "datum": "2026-11-02",
     "gruppe": {
-      "anzahl": 32,
+      "anzahl": 34,
       "treffer": 5,
-      "quote": 15.6,
-      "netto": -1250.39,
-      "brutto": -1242.39,
-      "nettoTR": -1306.39,
-      "oeNettoProzent": -3.97,
-      "oeR": -0.56
+      "quote": 14.7,
+      "netto": -1298.07,
+      "brutto": -1290.07,
+      "nettoTR": -1358.07,
+      "oeNettoProzent": -3.88,
+      "oeR": -0.59
     },
-    "offen": 8
+    "offen": 6
   },
   "gesamt": {
-    "anzahl": 164,
+    "anzahl": 166,
     "treffer": 35,
-    "quote": 21.3,
-    "netto": -2747.73,
-    "brutto": -2677.73,
-    "nettoTR": -3005.73,
-    "oeNettoProzent": -1.71,
-    "oeR": -0.33
+    "quote": 21.1,
+    "netto": -2795.41,
+    "brutto": -2725.41,
+    "nettoTR": -3057.41,
+    "oeNettoProzent": -1.72,
+    "oeR": -0.34
   },
   "kurve": [
     {
@@ -57,21 +57,21 @@
     },
     {
       "datum": "2026-11-02",
-      "netto": -2747.73,
-      "brutto": -2677.73,
-      "nettoTR": -3005.73
+      "netto": -2795.41,
+      "brutto": -2725.41,
+      "nettoTR": -3057.41
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 162,
+      "anzahl": 164,
       "treffer": 35,
-      "quote": 21.6,
-      "netto": -2603.04,
-      "brutto": -2533.04,
-      "nettoTR": -2857.04,
-      "oeNettoProzent": -1.64,
-      "oeR": -0.32
+      "quote": 21.3,
+      "netto": -2650.72,
+      "brutto": -2580.72,
+      "nettoTR": -2908.72,
+      "oeNettoProzent": -1.65,
+      "oeR": -0.33
     },
     "claude": {
       "anzahl": 2,
@@ -96,14 +96,14 @@
       "oeR": -0.13
     },
     "us": {
-      "anzahl": 39,
+      "anzahl": 41,
       "treffer": 5,
-      "quote": 12.8,
-      "netto": -1377.02,
-      "brutto": -1377.02,
-      "nettoTR": -1455.02,
-      "oeNettoProzent": -3.63,
-      "oeR": -0.68
+      "quote": 12.2,
+      "netto": -1424.7,
+      "brutto": -1424.7,
+      "nettoTR": -1506.7,
+      "oeNettoProzent": -3.58,
+      "oeR": -0.69
     },
     "krypto": {
       "anzahl": 35,
@@ -118,14 +118,14 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 96,
+      "anzahl": 98,
       "treffer": 22,
-      "quote": 22.9,
-      "netto": -596.85,
-      "brutto": -540.85,
-      "nettoTR": -732.85,
-      "oeNettoProzent": -0.67,
-      "oeR": -0.2
+      "quote": 22.4,
+      "netto": -644.53,
+      "brutto": -588.53,
+      "nettoTR": -784.53,
+      "oeNettoProzent": -0.71,
+      "oeR": -0.22
     },
     "orb_short": {
       "anzahl": 61,
@@ -150,14 +150,14 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 68,
+      "anzahl": 70,
       "treffer": 21,
-      "quote": 30.9,
-      "netto": -368.14,
-      "brutto": -368.14,
-      "nettoTR": -504.14,
-      "oeNettoProzent": -0.62,
-      "oeR": -0.09
+      "quote": 30,
+      "netto": -415.82,
+      "brutto": -415.82,
+      "nettoTR": -555.82,
+      "oeNettoProzent": -0.67,
+      "oeR": -0.12
     },
     "turbo": {
       "anzahl": 61,
@@ -182,35 +182,35 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 100,
+      "anzahl": 101,
       "treffer": 25,
-      "quote": 25,
-      "netto": -1395.72,
-      "brutto": -1367.72,
-      "nettoTR": -1567.72,
-      "oeNettoProzent": -1.43,
-      "oeR": -0.28
+      "quote": 24.8,
+      "netto": -1410.76,
+      "brutto": -1382.76,
+      "nettoTR": -1584.76,
+      "oeNettoProzent": -1.44,
+      "oeR": -0.29
     },
     "spekulativ": {
-      "anzahl": 64,
+      "anzahl": 65,
       "treffer": 10,
-      "quote": 15.6,
-      "netto": -1352.01,
-      "brutto": -1310.01,
-      "nettoTR": -1438.01,
-      "oeNettoProzent": -2.14,
-      "oeR": -0.4
+      "quote": 15.4,
+      "netto": -1384.65,
+      "brutto": -1342.65,
+      "nettoTR": -1472.65,
+      "oeNettoProzent": -2.16,
+      "oeR": -0.41
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 107,
+      "anzahl": 109,
       "treffer": 0,
       "quote": 0,
-      "netto": -3566.66,
-      "brutto": -3516.66,
-      "nettoTR": -3730.66,
-      "oeNettoProzent": -3.39,
+      "netto": -3614.34,
+      "brutto": -3564.34,
+      "nettoTR": -3782.34,
+      "oeNettoProzent": -3.38,
       "oeR": -1.06
     },
     "schluss": {
@@ -246,14 +246,14 @@
       "oeR": -0.17
     },
     "seitwaerts_ruhig": {
-      "anzahl": 48,
+      "anzahl": 50,
       "treffer": 5,
-      "quote": 10.4,
-      "netto": -1373.44,
-      "brutto": -1333.44,
-      "nettoTR": -1429.44,
-      "oeNettoProzent": -2.9,
-      "oeR": -0.54
+      "quote": 10,
+      "netto": -1421.12,
+      "brutto": -1381.12,
+      "nettoTR": -1481.12,
+      "oeNettoProzent": -2.89,
+      "oeR": -0.56
     },
     "unbekannt": {
       "anzahl": 40,
@@ -516,72 +516,6 @@
         "kurs": 372.479,
         "stueck": 2,
         "kurswert": 744.96
-      }
-    },
-    {
-      "id": "2026-11-02-scan-strategy-inc",
-      "datum": "2026-11-02",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "STRATEGY INC",
-      "isin": "US5949724083",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-02T15:10:00.000Z",
-        "kurs": 121,
-        "level": 120.46,
-        "spanne": {
-          "hoch": 120.46,
-          "tief": 116.88
-        },
-        "richtung": "long"
-      },
-      "stop": 118.67,
-      "ziel": 126.8,
-      "zielR": 2,
-      "flatBis": "2026-11-02T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-02T15:10:00.000Z",
-        "basisKurs": 121.38,
-        "kurs": 121.987,
-        "stueck": 8,
-        "kurswert": 975.9
-      }
-    },
-    {
-      "id": "2026-11-02-scan-palantir-technologies-in",
-      "datum": "2026-11-02",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "PALANTIR TECHNOLOGIES INC-A",
-      "isin": "US69608A1088",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-02T15:25:00.000Z",
-        "kurs": 166.1,
-        "level": 165.98,
-        "spanne": {
-          "hoch": 165.98,
-          "tief": 161.96
-        },
-        "richtung": "long"
-      },
-      "stop": 163.97,
-      "ziel": 172.22,
-      "zielR": 2,
-      "flatBis": "2026-11-02T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-02T15:25:00.000Z",
-        "basisKurs": 166.72,
-        "kurs": 166.845,
-        "stueck": 5,
-        "kurswert": 834.23
       }
     }
   ],
@@ -854,6 +788,25 @@
         "kurs": 121.987,
         "stueck": 8,
         "kurswert": 975.9
+      },
+      "ausstieg": {
+        "zeit": "2026-11-02T17:50:00.000Z",
+        "basisKurs": 118.5,
+        "kurs": 117.908,
+        "kurswert": 943.26,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -32.64,
+        "bruttoProzent": -3.34,
+        "netto": -32.64,
+        "nettoProzent": -3.34,
+        "nettoTR": -34.64,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.06
       }
     },
     {
@@ -887,6 +840,25 @@
         "kurs": 166.845,
         "stueck": 5,
         "kurswert": 834.23
+      },
+      "ausstieg": {
+        "zeit": "2026-11-02T17:50:00.000Z",
+        "basisKurs": 163.96,
+        "kurs": 163.837,
+        "kurswert": 819.19,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -15.04,
+        "bruttoProzent": -1.8,
+        "netto": -15.04,
+        "nettoProzent": -1.8,
+        "nettoTR": -17.04,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10012,10 +9984,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 16,
-        "chance": 18.8,
-        "oeNetto": -0.8,
-        "wertung": -1.12
+        "faelle": 17,
+        "chance": 17.6,
+        "oeNetto": -0.89,
+        "wertung": -1.2
       }
     }
   },
@@ -10024,5 +9996,8 @@
     "claude": 2,
     "autopilot": 0
   },
-  "hinweise": []
+  "hinweise": [
+    "DELL TECHNOLOGIES -C: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "COREWEAVE INC-CL A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
+  ]
 }
