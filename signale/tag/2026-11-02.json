@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-02T19:52:39.463Z",
-  "anzahl": 205,
+  "stand": "2026-11-02T20:43:31.529Z",
+  "anzahl": 206,
   "signale": [
     {
       "id": "verwaesserung:BFLY:2026-10-29",
@@ -2559,7 +2559,7 @@
       "t": "VCIG",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.8,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2709,6 +2709,19 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-02T19:37:41.774Z"
+    },
+    {
+      "id": "nachricht:INTC:2026-11-02",
+      "s": "T:INTC",
+      "n": "Intel",
+      "t": "INTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-02T20:20:34.000Z"
     }
   ]
 }
