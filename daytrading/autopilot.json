@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-02T07:18:39.054Z",
+  "stand": "2026-11-02T08:35:30.382Z",
   "horizont": "r1h",
   "beweise": [
     {
@@ -32,7 +32,7 @@
     {
       "typ": "insider_cluster_kauf",
       "gruppe": "aktie",
-      "faelle": 14,
+      "faelle": 16,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
@@ -41,7 +41,7 @@
     {
       "typ": "insider_kauf",
       "gruppe": "aktie",
-      "faelle": 14,
+      "faelle": 17,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
@@ -54,6 +54,15 @@
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "krypto_einnahmen",
+      "gruppe": "krypto",
+      "faelle": 5,
+      "chance": 0,
+      "oeNetto": -2.12,
+      "huerde": 0.7,
       "bewiesen": false
     }
   ]
