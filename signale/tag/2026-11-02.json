@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-02T08:59:57.419Z",
-  "anzahl": 148,
+  "stand": "2026-11-02T10:00:22.836Z",
+  "anzahl": 150,
   "signale": [
     {
       "id": "verwaesserung:BFLY:2026-10-29",
@@ -1957,11 +1957,38 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.43,
+      "st": 0.44,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-02T08:59:57.419Z"
+    },
+    {
+      "id": "nachricht:DBK:2026-11-02",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-02T09:47:00.000Z"
+    },
+    {
+      "id": "upbit_warnung:ELF:2026-11-02",
+      "s": "T:ELF",
+      "n": "aelf",
+      "t": "ELF",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-02T10:00:22.836Z"
     }
   ]
 }
