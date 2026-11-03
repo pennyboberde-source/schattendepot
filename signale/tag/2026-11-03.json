@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-03T17:49:12.987Z",
-  "anzahl": 247,
+  "stand": "2026-11-03T18:49:34.197Z",
+  "anzahl": 249,
   "signale": [
     {
       "id": "verwaesserung:RAPP:2026-10-30",
@@ -3236,7 +3236,7 @@
       "t": "CRIS",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3254,6 +3254,32 @@
         "Nasdaq Trader"
       ],
       "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ZNB:2026-11-03",
+      "s": "T:ZNB",
+      "n": "Zeta Network Group Class A Ord",
+      "t": "ZNB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:YOUL:2026-11-03",
+      "s": "T:YOUL",
+      "n": "Youlife Group Inc.",
+      "t": "YOUL",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T18:44:26.000Z"
     }
   ]
 }
