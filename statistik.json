@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-03T12:00:44.154Z",
+  "stand": "2026-11-03T12:58:41.928Z",
   "gesamt": {
     "anzahl": 8,
     "treffer": 4,
@@ -348,7 +348,7 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 273,
+      "anzahl": 275,
       "n1T": 169,
       "n3T": 103,
       "n1W": 41,
@@ -439,7 +439,7 @@
         "quote1W": 100
       },
       "kursrakete": {
-        "anzahl": 23,
+        "anzahl": 25,
         "n1T": 19,
         "n3T": 16,
         "n1W": 5,
@@ -785,6 +785,21 @@
         "quote3T": null,
         "quote1W": null
       },
+      "Upbit": {
+        "anzahl": 22,
+        "n1T": 17,
+        "n3T": 1,
+        "n1W": 0,
+        "oe1h": 5.48,
+        "oe1T": 0.67,
+        "oe3T": -13.45,
+        "oe1W": null,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 52.9,
+        "quote3T": 0,
+        "quote1W": null
+      },
       "Alpha Vantage": {
         "anzahl": 21,
         "n1T": 15,
@@ -799,21 +814,6 @@
         "quote1T": 60,
         "quote3T": 64.3,
         "quote1W": 75
-      },
-      "Upbit": {
-        "anzahl": 21,
-        "n1T": 17,
-        "n3T": 1,
-        "n1W": 0,
-        "oe1h": 5.48,
-        "oe1T": 0.67,
-        "oe3T": -13.45,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 52.9,
-        "quote3T": 0,
-        "quote1W": null
       },
       "Finnhub Kurs": {
         "anzahl": 17,
@@ -891,7 +891,7 @@
         "quote1W": null
       },
       "gettex-Scanner": {
-        "anzahl": 7,
+        "anzahl": 8,
         "n1T": 7,
         "n3T": 5,
         "n1W": 0,
@@ -1073,7 +1073,7 @@
     },
     "nachRisiko": {
       "normal": {
-        "anzahl": 250,
+        "anzahl": 251,
         "n1T": 151,
         "n3T": 99,
         "n1W": 41,
@@ -1088,7 +1088,7 @@
         "quote1W": 53.7
       },
       "pump_verdacht": {
-        "anzahl": 23,
+        "anzahl": 24,
         "n1T": 18,
         "n3T": 4,
         "n1W": 0,
@@ -1105,7 +1105,7 @@
     },
     "nachMarkt": {
       "us": {
-        "anzahl": 224,
+        "anzahl": 225,
         "n1T": 136,
         "n3T": 98,
         "n1W": 39,
@@ -1120,7 +1120,7 @@
         "quote1W": 53.8
       },
       "krypto": {
-        "anzahl": 40,
+        "anzahl": 41,
         "n1T": 28,
         "n3T": 1,
         "n1W": 0,
@@ -1152,7 +1152,7 @@
     },
     "nachPhase": {
       "seitwaerts_ruhig": {
-        "anzahl": 121,
+        "anzahl": 123,
         "n1T": 41,
         "n3T": 0,
         "n1W": 0,
@@ -1233,7 +1233,7 @@
       "summeNetto": -149.41
     }
   },
-  "zusammenfassung": "Gesamt: 8 Orders, Trefferquote 50 %, Ø -2.07 % nach Gebühren (erwartet waren Ø 0.75 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 7 Orders, Ø -0.37 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=8).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -0.49 % (n=74); insider_kauf 1.77 % (n=42); insider_cluster_kauf -1.06 % (n=41); nachricht 3.72 % (n=27); kursrakete 22.56 % (n=23); nachzahlen_drift -0.72 % (n=17); tagesgewinner 22.56 % (n=15); volumen_ungewoehnlich 6.64 % (n=8); tagesverlierer 10.6 % (n=7); analysten_hochstufung 1.6 % (n=5).\nClaudes Tagesprognose: 46.7 % Richtung richtig nach 1 Tag (n=30), Ø 1.66 %.\nVs. MSCI World (gleiche Zeiträume): Depot -149.41 € vs. ETF 51.62 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_cluster_kauf 23.5 % (Lift 2.24, n=17); insider_kauf 14 % (Lift 1.34, n=57); gewinn_ueberraschung 7.9 % (Lift 0.75, n=38); leerverkauf_quote 0 % (Lift 0, n=10).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): kursrakete Ø +22,6 % nach 1 Woche (n=23).\n- Schwächstes Signal: insider_cluster_kauf Ø -1,1 % nach 1 Woche (n=41) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 8 Orders, Trefferquote 50 %, Ø -2.07 % nach Gebühren (erwartet waren Ø 0.75 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 7 Orders, Ø -0.37 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=8).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung -0.49 % (n=74); insider_kauf 1.77 % (n=42); insider_cluster_kauf -1.06 % (n=41); nachricht 3.72 % (n=27); kursrakete 22.56 % (n=25); nachzahlen_drift -0.72 % (n=17); tagesgewinner 22.56 % (n=15); volumen_ungewoehnlich 6.64 % (n=8); tagesverlierer 10.6 % (n=7); analysten_hochstufung 1.6 % (n=5).\nClaudes Tagesprognose: 46.7 % Richtung richtig nach 1 Tag (n=30), Ø 1.66 %.\nVs. MSCI World (gleiche Zeiträume): Depot -149.41 € vs. ETF 51.62 €.\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): insider_cluster_kauf 23.5 % (Lift 2.24, n=17); insider_kauf 14 % (Lift 1.34, n=57); gewinn_ueberraschung 7.9 % (Lift 0.75, n=38); leerverkauf_quote 0 % (Lift 0, n=10).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): kursrakete Ø +22,6 % nach 1 Woche (n=25).\n- Schwächstes Signal: insider_cluster_kauf Ø -1,1 % nach 1 Woche (n=41) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "tagesgewinner",
@@ -1586,7 +1586,7 @@
   ],
   "lernhinweise": [
     "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,8 %, erreicht Ø -2,1 % → realistischer planen oder Ziele näher setzen.",
-    "Stärkstes Signal (auch ohne Kauf gemessen): kursrakete Ø +22,6 % nach 1 Woche (n=23).",
+    "Stärkstes Signal (auch ohne Kauf gemessen): kursrakete Ø +22,6 % nach 1 Woche (n=25).",
     "Schwächstes Signal: insider_cluster_kauf Ø -1,1 % nach 1 Woche (n=41) → nicht darauf verlassen."
   ],
   "risikoBudget": {
