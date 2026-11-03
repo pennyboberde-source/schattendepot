@@ -1,0 +1,641 @@
+{
+  "stand": "2026-11-03T04:51:35.487Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:BWEN",
+      "name": "BROADWIND, INC.",
+      "ticker": "BWEN",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SGST",
+      "name": "Strategic Storage Trust VI, Inc.",
+      "ticker": "SGST",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PLTR",
+      "name": "Palantir",
+      "ticker": "PLTR",
+      "score": 2.24,
+      "typen": [
+        "nachricht",
+        "stimmung_social",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub News",
+        "MarketWatch",
+        "CNBC Top News",
+        "ApeWisdom",
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:RAPP",
+      "name": "Rapport Therapeutics, Inc.",
+      "ticker": "RAPP",
+      "score": 2.22,
+      "typen": [
+        "verwaesserung",
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "SEC EDGAR",
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TBBB",
+      "name": "TBBB",
+      "ticker": "TBBB",
+      "score": 2.2,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:VCIG",
+      "name": "VCI Global Ltd Ord",
+      "ticker": "VCIG",
+      "pump": true,
+      "score": 1.99,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 1.91,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ISBA",
+      "name": "ISABELLA BANK CORP",
+      "ticker": "ISBA",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:RAMP",
+      "name": "LiveRamp Holdings, Inc.",
+      "ticker": "RAMP",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:WTTR",
+      "name": "Select Water Solutions, Inc.",
+      "ticker": "WTTR",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:AAPL",
+      "name": "Apple",
+      "ticker": "AAPL",
+      "score": 1.37,
+      "typen": [
+        "analysten_hochstufung",
+        "nachricht",
+        "stimmung_social"
+      ],
+      "quellen": [
+        "Finnhub News",
+        "MarketWatch",
+        "ApeWisdom"
+      ]
+    },
+    {
+      "schluessel": "T:BLX",
+      "name": "Bladex, Inc.",
+      "ticker": "BLX",
+      "score": 1.33,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CLRO",
+      "name": "ClearOne, Inc.",
+      "ticker": "CLRO",
+      "pump": true,
+      "score": 1.27,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:VOR",
+      "name": "Vor Biopharma Inc.",
+      "ticker": "VOR",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:OPNW",
+      "name": "OpenWorld, Inc.",
+      "ticker": "OPNW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:HBCYF",
+      "name": "HSBC HOLDINGS PLC",
+      "ticker": "HBCYF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PLDGP",
+      "name": "Prologis, Inc.",
+      "ticker": "PLDGP",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PRCH",
+      "name": "Porch Group, Inc.",
+      "ticker": "PRCH",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ALLR",
+      "name": "Allarity Therapeutics, Inc.",
+      "ticker": "ALLR",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PSA-PF",
+      "name": "Public Storage",
+      "ticker": "PSA-PF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:XELLL",
+      "name": "XCEL ENERGY INC",
+      "ticker": "XELLL",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:APVO",
+      "name": "Aptevo Therapeutics Inc.",
+      "ticker": "APVO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GOOGM",
+      "name": "Alphabet Inc.",
+      "ticker": "GOOGM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ORCL-PD",
+      "name": "ORACLE CORP",
+      "ticker": "ORCL-PD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:STRD",
+      "name": "Strategy Inc",
+      "ticker": "STRD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:HTO",
+      "name": "H2O AMERICA",
+      "ticker": "HTO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GMM",
+      "name": "Global Mofy AI Ltd",
+      "ticker": "GMM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BIAFW",
+      "name": "bioAffinity Technologies, Inc.",
+      "ticker": "BIAFW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CRV",
+      "name": "Curve DEX",
+      "ticker": "CRV",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:SYRUP",
+      "name": "Maple",
+      "ticker": "SYRUP",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:UNI",
+      "name": "Uniswap V2",
+      "ticker": "UNI",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:MET",
+      "name": "Meteora DAMM V2",
+      "ticker": "MET",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:ROL",
+      "name": "ROL",
+      "ticker": "ROL",
+      "score": 1.17,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:OCFC",
+      "name": "Oceanfirst Financial Corp",
+      "ticker": "OCFC",
+      "score": 1.16,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MAR",
+      "name": "MAR",
+      "ticker": "MAR",
+      "score": 1.11,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:ASPE",
+      "name": "ASPE",
+      "ticker": "ASPE",
+      "score": 1.05,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:JUP",
+      "name": "Jupiter Perpetual Exchange",
+      "ticker": "JUP",
+      "markt": "krypto",
+      "score": 0.96,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:CRBG",
+      "name": "CRBG",
+      "ticker": "CRBG",
+      "score": 0.94,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:AERO",
+      "name": "Aero Slipstream",
+      "ticker": "AERO",
+      "markt": "krypto",
+      "score": 0.94,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:LXP-PC",
+      "name": "LXP Industrial Trust",
+      "ticker": "LXP-PC",
+      "score": 0.9,
+      "typen": [
+        "uebernahmeangebot",
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BBTX",
+      "name": "BBTX",
+      "ticker": "BBTX",
+      "score": 0.89,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DRUG",
+      "name": "Bright Minds Biosciences Inc.",
+      "ticker": "DRUG",
+      "score": -0.89,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:AIOK",
+      "name": "AI OKTO Corp.",
+      "ticker": "AIOK",
+      "score": -0.89,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:SVRN",
+      "name": "SVRN, Inc.",
+      "ticker": "SVRN",
+      "score": -0.89,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:INO",
+      "name": "INO",
+      "ticker": "INO",
+      "pump": true,
+      "score": 0.84,
+      "typen": [
+        "kursrakete",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:LDO",
+      "name": "Lido",
+      "ticker": "LDO",
+      "markt": "krypto",
+      "score": 0.81,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:GCDT",
+      "name": "Green Circle Decarbonize Technology Limited",
+      "ticker": "GCDT",
+      "score": -0.8,
+      "typen": [
+        "handelsstopp"
+      ],
+      "quellen": [
+        "Nasdaq Trader"
+      ]
+    },
+    {
+      "schluessel": "T:CNTM",
+      "name": "ConnectM Technology Solutions, Inc.",
+      "ticker": "CNTM",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:UGI",
+      "name": "UGI CORP /PA/",
+      "ticker": "UGI",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CPS",
+      "name": "Cooper-Standard Holdings Inc.",
+      "ticker": "CPS",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    }
+  ],
+  "anzahlSignale": 195
+}

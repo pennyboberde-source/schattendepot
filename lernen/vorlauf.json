@@ -4,15 +4,16 @@
     "2026-10-21",
     "2026-10-23",
     "2026-10-24",
-    "2026-10-26"
+    "2026-10-26",
+    "2026-10-27"
   ],
   "jeTyp": {
     "gewinn_ueberraschung": {
-      "signale": 37,
+      "signale": 38,
       "vorRakete": 3
     },
     "volumen_ungewoehnlich": {
-      "signale": 3,
+      "signale": 4,
       "vorRakete": 2
     },
     "nachzahlen_drift": {
@@ -20,16 +21,16 @@
       "vorRakete": 1
     },
     "insider_cluster_kauf": {
-      "signale": 12,
-      "vorRakete": 3
+      "signale": 17,
+      "vorRakete": 4
     },
     "analysten_hochstufung": {
-      "signale": 2,
+      "signale": 3,
       "vorRakete": 0
     },
     "insider_kauf": {
-      "signale": 45,
-      "vorRakete": 7
+      "signale": 57,
+      "vorRakete": 8
     },
     "nachricht": {
       "signale": 9,
@@ -58,11 +59,11 @@
   },
   "jeQuelle": {
     "Finnhub": {
-      "signale": 37,
+      "signale": 38,
       "vorRakete": 2
     },
     "Alpha Vantage": {
-      "signale": 3,
+      "signale": 4,
       "vorRakete": 2
     },
     "Finnhub Kurs": {
@@ -70,11 +71,11 @@
       "vorRakete": 1
     },
     "OpenInsider": {
-      "signale": 51,
-      "vorRakete": 7
+      "signale": 64,
+      "vorRakete": 9
     },
     "Finnhub Analysten": {
-      "signale": 2,
+      "signale": 3,
       "vorRakete": 0
     },
     "tagesschau Wirtschaft": {
@@ -90,7 +91,7 @@
       "vorRakete": 0
     },
     "FMP": {
-      "signale": 10,
+      "signale": 11,
       "vorRakete": 2
     },
     "ApeWisdom": {
@@ -111,8 +112,8 @@
     }
   },
   "gesamt": {
-    "signale": 109,
-    "vorRakete": 11
+    "signale": 124,
+    "vorRakete": 13
   },
   "verlauf": [
     {
@@ -134,6 +135,11 @@
       "datum": "2026-11-02",
       "mover": 16,
       "abdeckung": 37.5
+    },
+    {
+      "datum": "2026-11-03",
+      "mover": 35,
+      "abdeckung": 28.6
     }
   ]
 }
