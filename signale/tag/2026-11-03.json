@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-03T18:49:34.197Z",
-  "anzahl": 249,
+  "stand": "2026-11-03T19:51:52.362Z",
+  "anzahl": 250,
   "signale": [
     {
       "id": "verwaesserung:RAPP:2026-10-30",
@@ -3001,7 +3001,7 @@
       "t": "CENN",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3280,6 +3280,19 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-03T18:44:26.000Z"
+    },
+    {
+      "id": "handelsstopp:CHSN:2026-11-03",
+      "s": "T:CHSN",
+      "n": "Chanson Intl Hldg Cl A Ords",
+      "t": "CHSN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
     }
   ]
 }
