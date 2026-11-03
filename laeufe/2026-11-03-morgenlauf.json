@@ -1,0 +1,29 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-03",
+  "erstellt": "2026-11-03T06:55:00Z",
+  "briefing": [
+    "Keine neue Order: kein Kandidat mit belastbarem Vorteil nach Gebühren (Insider-Cluster allein und Nachzahlen-Drift tragen nicht).",
+    "Zahlen heute: PFE, ETN, ADM vor US-Start; AMD, AMGN, SMCI, BKNG nach Schluss. Palantir-Zahlen von gestern Abend im Blick.",
+    "Stewart (+4,8 %) läuft, nichts Neues. Krypto: Angst-Index 26, Binance-Hack belastet; US-Midterms als Risiko."
+  ],
+  "orders": [],
+  "anpassungen": [],
+  "prognose": [
+    {"name": "Inovio Pharmaceuticals", "ticker": "INO", "markt": "us", "richtung": "runter", "chance": 62, "grund": "+214 % ohne gefundene Nachricht, Pump-Verdacht; solche Sprünge laufen oft am Folgetag zurück."},
+    {"name": "VCI Global", "ticker": "VCIG", "markt": "us", "richtung": "runter", "chance": 58, "grund": "+168 % mit 10 Volatilitätspausen, nur Stimmung/Rakete."},
+    {"name": "ClearOne", "ticker": "CLRO", "markt": "us", "richtung": "runter", "chance": 56, "grund": "+66 % ohne handfeste Meldung; Gewinnmitnahmen wahrscheinlich."},
+    {"name": "EVgo", "ticker": "EVGO", "markt": "us", "richtung": "runter", "chance": 54, "grund": "+47 % an einem Tag, Teilrücklauf üblich."},
+    {"name": "Rapport Therapeutics", "ticker": "RAPP", "markt": "us", "richtung": "runter", "chance": 53, "grund": "Aktienplatzierung (424B5) drückt, Insider-Kauf war Teil der Platzierung."},
+    {"name": "Palantir", "ticker": "PLTR", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "EPS-Überraschung +5 %, hohe Erwartungen bremsen; leicht positiv."},
+    {"name": "Apple", "ticker": "AAPL", "markt": "us", "richtung": "hoch", "chance": 51, "grund": "Reddit-Rang 1, Hochstufungs-Meldung; ruhiger Markt."},
+    {"name": "Pfizer", "ticker": "PFE", "markt": "us", "richtung": "hoch", "chance": 50, "grund": "Zahlen vor Börsenstart; niedrige Erwartung, Ausgang offen."},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 53, "grund": "Fear 26, unter 50-Tage-Linie, Funding hoch positiv (Long-Überhang), Binance-Hack."},
+    {"name": "Ethereum", "ticker": "ETH", "markt": "krypto", "richtung": "runter", "chance": 53, "grund": "Wie BTC; Long-Liquidationen dominieren, Stimmung kippt Richtung Angst."}
+  ],
+  "daytrading": [
+    {"name": "Pfizer", "markt": "us", "isin": "US7170811035", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 35, "these": "Quartalszahlen vor US-Eröffnung bringen Umsatz; nur Long-Ausbruch als Aktie (ORB short/Turbos verlieren laut Statistik)."},
+    {"name": "Palantir", "markt": "us", "isin": "US69608A1088", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 35, "these": "Erster Handelstag nach Quartalszahlen (EPS +5 % über Erwartung), hohes Interesse; Long-Ausbruch als Aktie."}
+  ],
+  "notiz": "Morgenlauf 03.11.: bewusst keine Order. Geprüft: PLTR (Reaktion auf Zahlen noch nicht belegbar), INO (+214 %, keine Nachricht gefunden → Pump-Verdacht, Lektion 11), ATEC (Insider-Cluster, ohne Hochstufung – Lektion 1). Übernahme-8-Ks (RAMP, WTTR, ISBA, BWEN) sind abgeschlossene Transaktionen, kein Kursauslöser. Stewart: These intakt, keine Anpassung. Daytrading nur long/Aktie wegen Lektion 15. Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung."
+}
