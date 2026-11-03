@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-03T14:11:17.895Z",
-  "anzahl": 218,
+  "stand": "2026-11-03T15:49:46.595Z",
+  "anzahl": 237,
   "signale": [
     {
       "id": "verwaesserung:RAPP:2026-10-30",
@@ -607,9 +607,10 @@
       "t": "BTC",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "BTC-ECHO"
+        "BTC-ECHO",
+        "Handelsblatt Finanzen"
       ],
       "z": "2026-11-02T06:41:44.000Z"
     },
@@ -2648,7 +2649,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "MarketWatch"
+        "MarketWatch",
+        "CNBC Top News"
       ],
       "z": "2026-11-03T10:36:00.000Z"
     },
@@ -2874,6 +2876,253 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-03T14:07:39.000Z"
+    },
+    {
+      "id": "handelsstopp:ABTS:2026-11-03",
+      "s": "T:ABTS",
+      "n": "Abits Group Inc Ord Shs",
+      "t": "ABTS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PARA:2026-11-03",
+      "s": "T:PARA",
+      "n": "Parabolic Technologies CL A CS",
+      "t": "PARA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:DTST:2026-11-03",
+      "s": "T:DTST",
+      "n": "Data Storage Corporation Cm St",
+      "t": "DTST",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:VCIG:2026-11-03",
+      "s": "T:VCIG",
+      "n": "VCI Global Ltd Ord",
+      "t": "VCIG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:UFG:2026-11-03",
+      "s": "T:UFG",
+      "n": "Uni-Fuels Hldgs Ord A",
+      "t": "UFG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CNSY:2026-11-03",
+      "s": "T:CNSY",
+      "n": "Cerenome, Inc. Common Stock",
+      "t": "CNSY",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:EEE:2026-11-03",
+      "s": "T:EEE",
+      "n": "CYBER HORNET S&amp;P 500 and Ethereum 75/25 Strategy ETF",
+      "t": "EEE",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RNTZ:2026-11-03",
+      "s": "T:RNTZ",
+      "n": "Rantizo Cl A Ord",
+      "t": "RNTZ",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BKHAU:2026-11-03",
+      "s": "T:BKHAU",
+      "n": "Black Hawk Acquisition Corpora",
+      "t": "BKHAU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CENN:2026-11-03",
+      "s": "T:CENN",
+      "n": "Cenntro Inc. CS",
+      "t": "CENN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:WXM:2026-11-03",
+      "s": "T:WXM",
+      "n": "WF Intl Ltd Ord",
+      "t": "WXM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CCXIU:2026-11-03",
+      "s": "T:CCXIU",
+      "n": "Churchill Capital Corp XI Ut",
+      "t": "CCXIU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:OFSSO:2026-11-03",
+      "s": "T:OFSSO",
+      "n": "OFS Cap 7.50% Notes due 2028",
+      "t": "OFSSO",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ELTK:2026-11-03",
+      "s": "T:ELTK",
+      "n": "Eltek Ltd.",
+      "t": "ELTK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MSAI:2026-11-03",
+      "s": "T:MSAI",
+      "n": "MultiSensor AI Holdings Cmn",
+      "t": "MSAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:EBS:2026-11-03",
+      "s": "T:EBS",
+      "n": "Emergent BioSolutions Inc. Common Stock",
+      "t": "EBS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RDACU:2026-11-03",
+      "s": "T:RDACU",
+      "n": "Rising Dragon Acq Ut",
+      "t": "RDACU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:BAS:2026-11-03",
+      "s": "T:BAS",
+      "n": "BASF",
+      "t": "BAS.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-03T14:59:40.000Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-11-03",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-03T15:04:00.000Z"
     }
   ]
 }
