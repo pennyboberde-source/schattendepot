@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-03T12:57:33.918Z",
-  "anzahl": 211,
+  "stand": "2026-11-03T14:11:17.895Z",
+  "anzahl": 218,
   "signale": [
     {
       "id": "verwaesserung:RAPP:2026-10-30",
@@ -2783,6 +2783,97 @@
         "Upbit"
       ],
       "z": "2026-11-03T12:57:33.918Z"
+    },
+    {
+      "id": "handelsstopp:OGI:2026-11-03",
+      "s": "T:OGI",
+      "n": "Organigram Global Inc. Cm Sh",
+      "t": "OGI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ACB:2026-11-03",
+      "s": "T:ACB",
+      "n": "Aurora Cannabis Inc Common Shs",
+      "t": "ACB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:METAM:2026-11-03",
+      "s": "T:METAM",
+      "n": "Meta Platforms, Inc.",
+      "t": "METAM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T13:29:28.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF1Y0S1:2026-11-03",
+      "s": "I:DE000HF1Y0S1",
+      "n": "DE000HF1Y0S1",
+      "i": "DE000HF1Y0S1",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-03T13:41:10.647Z"
+    },
+    {
+      "id": "kursrakete:DE000UR1PG35:2026-11-03",
+      "s": "I:DE000UR1PG35",
+      "n": "UNICREDIT BANK GMBH",
+      "i": "DE000UR1PG35",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.52,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-03T13:52:42.278Z"
+    },
+    {
+      "id": "kursrakete:DE000HF1Y1E9:2026-11-03",
+      "s": "I:DE000HF1Y1E9",
+      "n": "DE000HF1Y1E9",
+      "i": "DE000HF1Y1E9",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-03T13:58:15.202Z"
+    },
+    {
+      "id": "verwaesserung:AKR:2026-11-03",
+      "s": "T:AKR",
+      "n": "ACADIA REALTY TRUST",
+      "t": "AKR",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T14:07:39.000Z"
     }
   ]
 }
