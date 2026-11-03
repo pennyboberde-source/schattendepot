@@ -16,7 +16,15 @@
     "posttrade.20261103.06.45.munc.csv.gz",
     "posttrade.20261103.06.45.mund.csv.gz",
     "posttrade.20261103.07.00.munc.csv.gz",
-    "posttrade.20261103.07.00.mund.csv.gz"
+    "posttrade.20261103.07.00.mund.csv.gz",
+    "posttrade.20261103.07.15.munc.csv.gz",
+    "posttrade.20261103.07.15.mund.csv.gz",
+    "posttrade.20261103.07.30.munc.csv.gz",
+    "posttrade.20261103.07.30.mund.csv.gz",
+    "posttrade.20261103.07.45.munc.csv.gz",
+    "posttrade.20261103.07.45.mund.csv.gz",
+    "posttrade.20261103.08.00.munc.csv.gz",
+    "posttrade.20261103.08.00.mund.csv.gz"
   ],
   "universum": {},
   "beobachtungen": [
@@ -37,7 +45,7 @@
           "long"
         ],
         "status": "spanne",
-        "letzteKerze": "2026-11-03T06:50:00.000Z"
+        "letzteKerze": "2026-11-03T07:55:00.000Z"
       }
     },
     {
@@ -57,21 +65,262 @@
           "long"
         ],
         "status": "spanne",
-        "letzteKerze": "2026-11-03T06:55:00.000Z"
+        "letzteKerze": "2026-11-03T07:55:00.000Z"
+      }
+    },
+    {
+      "basis": "BTC",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-03T08:10:00.000Z",
+        "spanne": {
+          "hoch": 68498.6,
+          "tief": 68338.6,
+          "volumen": 1.02321167,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "BTC",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 70513.7,
+        "letzteKerze": "2026-11-03T08:10:00.000Z"
+      }
+    },
+    {
+      "basis": "ETH",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-03T08:10:00.000Z",
+        "spanne": {
+          "hoch": 2013.39,
+          "tief": 2009.45,
+          "volumen": 37.91006016,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "ETH",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 2073.06,
+        "letzteKerze": "2026-11-03T08:10:00.000Z"
+      }
+    },
+    {
+      "basis": "SOL",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-03T08:10:00.000Z",
+        "spanne": {
+          "hoch": 82.15,
+          "tief": 81.89,
+          "volumen": 194.39550373999998,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "SOL",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 85.77,
+        "letzteKerze": "2026-11-03T08:10:00.000Z"
+      }
+    },
+    {
+      "basis": "XRP",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-03T08:10:00.000Z",
+        "spanne": {
+          "hoch": 1.11755,
+          "tief": 1.1163,
+          "volumen": 6875.27203444,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "XRP",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 1.13078,
+        "letzteKerze": "2026-11-03T08:10:00.000Z"
+      }
+    },
+    {
+      "basis": "ADA",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-03T08:10:00.000Z",
+        "spanne": {
+          "hoch": 0.167211,
+          "tief": 0.166582,
+          "volumen": 16013.646978340003,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "ADA",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 0.175,
+        "letzteKerze": "2026-11-03T08:10:00.000Z"
       }
     }
   ],
-  "kryptoLetzte": {},
+  "kryptoLetzte": {
+    "BTC": "2026-11-03T08:10:00.000Z",
+    "ETH": "2026-11-03T08:10:00.000Z",
+    "SOL": "2026-11-03T08:10:00.000Z",
+    "XRP": "2026-11-03T08:10:00.000Z",
+    "ADA": "2026-11-03T08:10:00.000Z"
+  },
   "watchlist": true,
   "autopilotGenutzt": [],
   "letzteKurse": {
     "US7170811035": {
-      "zeit": "2026-11-03T06:50:00.000Z",
-      "kurs": 27.515
+      "zeit": "2026-11-03T07:55:00.000Z",
+      "kurs": 27.465
     },
     "US69608A1088": {
-      "zeit": "2026-11-03T06:55:00.000Z",
-      "kurs": 152.14
+      "zeit": "2026-11-03T07:55:00.000Z",
+      "kurs": 152.34
+    },
+    "BTC": {
+      "zeit": "2026-11-03T08:10:00.000Z",
+      "kurs": 68445.5
+    },
+    "ETH": {
+      "zeit": "2026-11-03T08:10:00.000Z",
+      "kurs": 2013.25
+    },
+    "SOL": {
+      "zeit": "2026-11-03T08:10:00.000Z",
+      "kurs": 82.07
+    },
+    "XRP": {
+      "zeit": "2026-11-03T08:10:00.000Z",
+      "kurs": 1.11697
+    },
+    "ADA": {
+      "zeit": "2026-11-03T08:10:00.000Z",
+      "kurs": 0.166791
     }
   }
 }
