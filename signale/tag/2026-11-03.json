@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-03T04:51:35.487Z",
-  "anzahl": 195,
+  "stand": "2026-11-03T07:04:12.908Z",
+  "anzahl": 199,
   "signale": [
     {
       "id": "verwaesserung:RAPP:2026-10-30",
@@ -714,7 +714,8 @@
       "r": 1,
       "st": 0.7,
       "q": [
-        "Finnhub News"
+        "Finnhub News",
+        "CNBC Top News"
       ],
       "z": "2026-11-02T17:04:34.000Z"
     },
@@ -2567,6 +2568,60 @@
         "DefiLlama"
       ],
       "z": "2026-11-03T04:51:35.487Z"
+    },
+    {
+      "id": "verwaesserung:PSA-PL:2026-10-30",
+      "s": "T:PSA-PL",
+      "n": "Public Storage",
+      "t": "PSA-PL",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-10-30T20:29:07.000Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-11-03",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-03T00:52:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:ETH:2026-11-03",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-03T06:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:MPLX:2026-11-03",
+      "s": "T:MPLX",
+      "n": "Metaplex",
+      "t": "MPLX",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.45,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-03T07:04:12.908Z"
     }
   ]
 }
