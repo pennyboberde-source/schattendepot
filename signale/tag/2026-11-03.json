@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-03T15:49:46.595Z",
-  "anzahl": 237,
+  "stand": "2026-11-03T16:54:58.861Z",
+  "anzahl": 245,
   "signale": [
     {
       "id": "verwaesserung:RAPP:2026-10-30",
@@ -2897,7 +2897,7 @@
       "t": "PARA",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2910,7 +2910,7 @@
       "t": "DTST",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2949,7 +2949,7 @@
       "t": "CNSY",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3123,6 +3123,111 @@
         "MarketWatch"
       ],
       "z": "2026-11-03T15:04:00.000Z"
+    },
+    {
+      "id": "handelsstopp:HCTI:2026-11-03",
+      "s": "T:HCTI",
+      "n": "Healthcare Triangle, Inc Cm St",
+      "t": "HCTI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BIVI:2026-11-03",
+      "s": "T:BIVI",
+      "n": "BioVie Inc Class A Common Stk",
+      "t": "BIVI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BNAI:2026-11-03",
+      "s": "T:BNAI",
+      "n": "Brand Engagement Cmn Stk",
+      "t": "BNAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MNTS:2026-11-03",
+      "s": "T:MNTS",
+      "n": "Momentus Inc Cl A Cmn",
+      "t": "MNTS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SRTS:2026-11-03",
+      "s": "T:SRTS",
+      "n": "Sensus Healthcare, Inc. CS",
+      "t": "SRTS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:XTND:2026-11-03",
+      "s": "T:XTND",
+      "n": "Xtend AI Robotics, Inc. Common Stock",
+      "t": "XTND",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BKHA:2026-11-03",
+      "s": "T:BKHA",
+      "n": "Black Hawk Acquisition Cl A OS",
+      "t": "BKHA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-11-03",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "BTC-ECHO",
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-03T03:00:00.000Z"
     }
   ]
 }
