@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-04T12:59:00.339Z",
-  "anzahl": 214,
+  "stand": "2026-11-04T14:14:15.783Z",
+  "anzahl": 217,
   "signale": [
     {
       "id": "verwaesserung:GOOGM:2026-11-02",
@@ -992,9 +992,10 @@
       "t": "UBER",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "BTC-ECHO"
+        "BTC-ECHO",
+        "CNBC Top News"
       ],
       "z": "2026-11-04T03:30:00.000Z"
     },
@@ -2712,7 +2713,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-11-04T10:31:32.000Z"
     },
@@ -2820,6 +2822,46 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-04T12:50:26.000Z"
+    },
+    {
+      "id": "verwaesserung:BBVXF:2026-11-04",
+      "s": "T:BBVXF",
+      "n": "BANCO BILBAO VIZCAYA ARGENTARIA, S.A.",
+      "t": "BBVXF",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-04T13:31:46.000Z"
+    },
+    {
+      "id": "kursrakete:DE000UR4GD77:2026-11-04",
+      "s": "I:DE000UR4GD77",
+      "n": "UNICREDIT BANK GMBH",
+      "i": "DE000UR4GD77",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-04T13:55:31.839Z"
+    },
+    {
+      "id": "kursrakete:CAP:2026-11-04",
+      "s": "T:CAP",
+      "n": "Cap",
+      "t": "CAP",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.48,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T14:14:15.783Z"
     }
   ]
 }
