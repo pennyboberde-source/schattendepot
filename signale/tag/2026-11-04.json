@@ -1,0 +1,2629 @@
+{
+  "stand": "2026-11-04T04:53:57.715Z",
+  "anzahl": 199,
+  "signale": [
+    {
+      "id": "verwaesserung:GOOGM:2026-11-02",
+      "s": "T:GOOGM",
+      "n": "Alphabet Inc.",
+      "t": "GOOGM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T11:04:43.000Z"
+    },
+    {
+      "id": "verwaesserung:ORCL-PD:2026-11-02",
+      "s": "T:ORCL-PD",
+      "n": "ORACLE CORP",
+      "t": "ORCL-PD",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T12:30:08.000Z"
+    },
+    {
+      "id": "verwaesserung:STRD:2026-11-02",
+      "s": "T:STRD",
+      "n": "Strategy Inc",
+      "t": "STRD",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T14:21:55.000Z"
+    },
+    {
+      "id": "verwaesserung:LEU:2026-11-02",
+      "s": "T:LEU",
+      "n": "CENTRUS ENERGY CORP",
+      "t": "LEU",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T21:06:38.000Z"
+    },
+    {
+      "id": "verwaesserung:HTO:2026-11-02",
+      "s": "T:HTO",
+      "n": "H2O AMERICA",
+      "t": "HTO",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T21:09:47.000Z"
+    },
+    {
+      "id": "verwaesserung:ENVX:2026-11-02",
+      "s": "T:ENVX",
+      "n": "Enovix Corp",
+      "t": "ENVX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T21:12:54.000Z"
+    },
+    {
+      "id": "verwaesserung:GMM:2026-11-02",
+      "s": "T:GMM",
+      "n": "Global Mofy AI Ltd",
+      "t": "GMM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T21:30:30.000Z"
+    },
+    {
+      "id": "verwaesserung:VVX:2026-11-02",
+      "s": "T:VVX",
+      "n": "V2X, Inc.",
+      "t": "VVX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T21:46:09.000Z"
+    },
+    {
+      "id": "verwaesserung:BIAFW:2026-11-02",
+      "s": "T:BIAFW",
+      "n": "bioAffinity Technologies, Inc.",
+      "t": "BIAFW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T21:52:31.000Z"
+    },
+    {
+      "id": "verwaesserung:LXP-PC:2026-11-02",
+      "s": "T:LXP-PC",
+      "n": "LXP Industrial Trust",
+      "t": "LXP-PC",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T22:01:24.000Z"
+    },
+    {
+      "id": "verwaesserung:WRB-PH:2026-11-02",
+      "s": "T:WRB-PH",
+      "n": "BERKLEY W R CORP",
+      "t": "WRB-PH",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T22:05:56.000Z"
+    },
+    {
+      "id": "verwaesserung:CERS:2026-11-02",
+      "s": "T:CERS",
+      "n": "CERUS CORP",
+      "t": "CERS",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T22:06:10.000Z"
+    },
+    {
+      "id": "verwaesserung:PFS:2026-11-02",
+      "s": "T:PFS",
+      "n": "PROVIDENT FINANCIAL SERVICES INC",
+      "t": "PFS",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-02T22:28:09.000Z"
+    },
+    {
+      "id": "handelsstopp:CRIS:2026-11-03",
+      "s": "T:CRIS",
+      "n": "Curis Inc.",
+      "t": "CRIS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:DTST:2026-11-03",
+      "s": "T:DTST",
+      "n": "Data Storage Corporation Cm St",
+      "t": "DTST",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ABTS:2026-11-03",
+      "s": "T:ABTS",
+      "n": "Abits Group Inc Ord Shs",
+      "t": "ABTS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PARA:2026-11-03",
+      "s": "T:PARA",
+      "n": "Parabolic Technologies CL A CS",
+      "t": "PARA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:HCTI:2026-11-03",
+      "s": "T:HCTI",
+      "n": "Healthcare Triangle, Inc Cm St",
+      "t": "HCTI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CNSY:2026-11-03",
+      "s": "T:CNSY",
+      "n": "Cerenome, Inc. Common Stock",
+      "t": "CNSY",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CENN:2026-11-03",
+      "s": "T:CENN",
+      "n": "Cenntro Inc. CS",
+      "t": "CENN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:VCIG:2026-11-03",
+      "s": "T:VCIG",
+      "n": "VCI Global Ltd Ord",
+      "t": "VCIG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CHSN:2026-11-03",
+      "s": "T:CHSN",
+      "n": "Chanson Intl Hldg Cl A Ords",
+      "t": "CHSN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ZNB:2026-11-03",
+      "s": "T:ZNB",
+      "n": "Zeta Network Group Class A Ord",
+      "t": "ZNB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BIVI:2026-11-03",
+      "s": "T:BIVI",
+      "n": "BioVie Inc Class A Common Stk",
+      "t": "BIVI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:UFG:2026-11-03",
+      "s": "T:UFG",
+      "n": "Uni-Fuels Hldgs Ord A",
+      "t": "UFG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:EEE:2026-11-03",
+      "s": "T:EEE",
+      "n": "CYBER HORNET S&amp;P 500 and Ethereum 75/25 Strategy ETF",
+      "t": "EEE",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:DOX:2026-11-03",
+      "s": "T:DOX",
+      "n": "Amdocs Limited",
+      "t": "DOX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:EBON:2026-11-03",
+      "s": "T:EBON",
+      "n": "Ebang Intl Hld Cl A Ord Shs",
+      "t": "EBON",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BNAI:2026-11-03",
+      "s": "T:BNAI",
+      "n": "Brand Engagement Cmn Stk",
+      "t": "BNAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MNTS:2026-11-03",
+      "s": "T:MNTS",
+      "n": "Momentus Inc Cl A Cmn",
+      "t": "MNTS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SRTS:2026-11-03",
+      "s": "T:SRTS",
+      "n": "Sensus Healthcare, Inc. CS",
+      "t": "SRTS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:XTND:2026-11-03",
+      "s": "T:XTND",
+      "n": "Xtend AI Robotics, Inc. Common Stock",
+      "t": "XTND",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BKHA:2026-11-03",
+      "s": "T:BKHA",
+      "n": "Black Hawk Acquisition Cl A OS",
+      "t": "BKHA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RNTZ:2026-11-03",
+      "s": "T:RNTZ",
+      "n": "Rantizo Cl A Ord",
+      "t": "RNTZ",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BKHAU:2026-11-03",
+      "s": "T:BKHAU",
+      "n": "Black Hawk Acquisition Corpora",
+      "t": "BKHAU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:WXM:2026-11-03",
+      "s": "T:WXM",
+      "n": "WF Intl Ltd Ord",
+      "t": "WXM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CCXIU:2026-11-03",
+      "s": "T:CCXIU",
+      "n": "Churchill Capital Corp XI Ut",
+      "t": "CCXIU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:OFSSO:2026-11-03",
+      "s": "T:OFSSO",
+      "n": "OFS Cap 7.50% Notes due 2028",
+      "t": "OFSSO",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ELTK:2026-11-03",
+      "s": "T:ELTK",
+      "n": "Eltek Ltd.",
+      "t": "ELTK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MSAI:2026-11-03",
+      "s": "T:MSAI",
+      "n": "MultiSensor AI Holdings Cmn",
+      "t": "MSAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:EBS:2026-11-03",
+      "s": "T:EBS",
+      "n": "Emergent BioSolutions Inc. Common Stock",
+      "t": "EBS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RDACU:2026-11-03",
+      "s": "T:RDACU",
+      "n": "Rising Dragon Acq Ut",
+      "t": "RDACU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ACB:2026-11-03",
+      "s": "T:ACB",
+      "n": "Aurora Cannabis Inc Common Shs",
+      "t": "ACB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:LHA:2026-11-03",
+      "s": "T:LHA",
+      "n": "Lufthansa",
+      "t": "LHA.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub News"
+      ],
+      "z": "2026-11-03T06:08:00.000Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-11-03",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "BTC-ECHO",
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-03T06:49:07.000Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-11-03",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "tagesschau Wirtschaft",
+        "CNBC Top News",
+        "MarketWatch"
+      ],
+      "z": "2026-11-03T08:13:13.000Z"
+    },
+    {
+      "id": "nachricht:KO:2026-11-03",
+      "s": "T:KO",
+      "n": "Coca-Cola",
+      "t": "KO",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub News"
+      ],
+      "z": "2026-11-03T08:15:20.000Z"
+    },
+    {
+      "id": "verwaesserung:METAM:2026-11-03",
+      "s": "T:METAM",
+      "n": "Meta Platforms, Inc.",
+      "t": "METAM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T13:29:28.000Z"
+    },
+    {
+      "id": "verwaesserung:AKR:2026-11-03",
+      "s": "T:AKR",
+      "n": "ACADIA REALTY TRUST",
+      "t": "AKR",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T14:07:39.000Z"
+    },
+    {
+      "id": "nachricht:BAS:2026-11-03",
+      "s": "T:BAS",
+      "n": "BASF",
+      "t": "BAS.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-03T14:59:40.000Z"
+    },
+    {
+      "id": "nachricht:DIS:2026-11-03",
+      "s": "T:DIS",
+      "n": "Disney",
+      "t": "DIS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "CNBC Top News",
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-03T17:05:29.000Z"
+    },
+    {
+      "id": "verwaesserung:YOUL:2026-11-03",
+      "s": "T:YOUL",
+      "n": "Youlife Group Inc.",
+      "t": "YOUL",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T18:44:26.000Z"
+    },
+    {
+      "id": "verwaesserung:JAGX:2026-11-03",
+      "s": "T:JAGX",
+      "n": "Jaguar Health, Inc.",
+      "t": "JAGX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T19:55:12.000Z"
+    },
+    {
+      "id": "nachricht:AMD:2026-11-03",
+      "s": "T:AMD",
+      "n": "AMD",
+      "t": "AMD",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "CNBC Top News",
+        "MarketWatch"
+      ],
+      "z": "2026-11-03T20:40:51.000Z"
+    },
+    {
+      "id": "verwaesserung:SURG:2026-11-03",
+      "s": "T:SURG",
+      "n": "SurgePays, Inc.",
+      "t": "SURG",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:01:57.000Z"
+    },
+    {
+      "id": "grossauftrag:COBA:2026-11-03",
+      "s": "T:COBA",
+      "n": "Chilean Cobalt Corp.",
+      "t": "COBA",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:27:32.000Z"
+    },
+    {
+      "id": "grossauftrag:LVS:2026-11-03",
+      "s": "T:LVS",
+      "n": "LAS VEGAS SANDS CORP",
+      "t": "LVS",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:27:34.000Z"
+    },
+    {
+      "id": "verwaesserung:OCSAW:2026-11-03",
+      "s": "T:OCSAW",
+      "n": "Oculis Holding AG",
+      "t": "OCSAW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:30:31.000Z"
+    },
+    {
+      "id": "grossauftrag:BACCU:2026-11-03",
+      "s": "T:BACCU",
+      "n": "Blue Acquisition Corp/Cayman",
+      "t": "BACCU",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:30:57.000Z"
+    },
+    {
+      "id": "grossauftrag:WYFI:2026-11-03",
+      "s": "T:WYFI",
+      "n": "WhiteFiber, Inc.",
+      "t": "WYFI",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:31:02.000Z"
+    },
+    {
+      "id": "uebernahmeangebot:WYFI:2026-11-03",
+      "s": "T:WYFI",
+      "n": "WhiteFiber, Inc.",
+      "t": "WYFI",
+      "typ": "uebernahmeangebot",
+      "r": 1,
+      "st": 0.5,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:31:02.000Z"
+    },
+    {
+      "id": "grossauftrag:HTO:2026-11-03",
+      "s": "T:HTO",
+      "n": "H2O AMERICA",
+      "t": "HTO",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:32:10.000Z"
+    },
+    {
+      "id": "verwaesserung:ARVN:2026-11-03",
+      "s": "T:ARVN",
+      "n": "ARVINAS, INC.",
+      "t": "ARVN",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:37:24.000Z"
+    },
+    {
+      "id": "verwaesserung:MDWD:2026-11-03",
+      "s": "T:MDWD",
+      "n": "MediWound Ltd.",
+      "t": "MDWD",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:39:14.000Z"
+    },
+    {
+      "id": "prognose_senkung:PMHS:2026-11-03",
+      "s": "T:PMHS",
+      "n": "Polomar Health Services, Inc.",
+      "t": "PMHS",
+      "typ": "prognose_senkung",
+      "r": -1,
+      "st": 0.7,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:41:43.000Z"
+    },
+    {
+      "id": "verwaesserung:IMSRW:2026-11-03",
+      "s": "T:IMSRW",
+      "n": "Terrestrial Energy Inc. /DE/",
+      "t": "IMSRW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:49:26.000Z"
+    },
+    {
+      "id": "grossauftrag:RMTI:2026-11-03",
+      "s": "T:RMTI",
+      "n": "ROCKWELL MEDICAL, INC.",
+      "t": "RMTI",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T21:49:45.000Z"
+    },
+    {
+      "id": "grossauftrag:AHRT-PA:2026-11-03",
+      "s": "T:AHRT-PA",
+      "n": "AH Realty Trust, Inc.",
+      "t": "AHRT-PA",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T22:02:10.000Z"
+    },
+    {
+      "id": "grossauftrag:RWTQ:2026-11-03",
+      "s": "T:RWTQ",
+      "n": "REDWOOD TRUST INC",
+      "t": "RWTQ",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T22:15:01.000Z"
+    },
+    {
+      "id": "grossauftrag:EROK:2026-11-03",
+      "s": "T:EROK",
+      "n": "EagleRock Land, LLC",
+      "t": "EROK",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T22:21:35.000Z"
+    },
+    {
+      "id": "grossauftrag:SWRD:2026-11-03",
+      "s": "T:SWRD",
+      "n": "Stewards, Inc.",
+      "t": "SWRD",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-03T22:27:55.000Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-11-04",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-04T01:07:01.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:BTC:2026-11-04",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-04T03:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:ETH:2026-11-04",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-04T03:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:SOL:2026-11-04",
+      "s": "T:SOL",
+      "n": "Solana",
+      "t": "SOL",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-04T03:00:00.000Z"
+    },
+    {
+      "id": "nachricht:UBER:2026-11-04",
+      "s": "T:UBER",
+      "n": "Uber",
+      "t": "UBER",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-04T03:30:00.000Z"
+    },
+    {
+      "id": "insider_cluster_kauf:ENPH:2026-11-04",
+      "s": "T:ENPH",
+      "n": "Enphase Energy, Inc.",
+      "t": "ENPH",
+      "typ": "insider_cluster_kauf",
+      "r": 1,
+      "st": 0.5,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_cluster_kauf:STRZ:2026-11-04",
+      "s": "T:STRZ",
+      "n": "Starz Entertainment Corp /Cn/",
+      "t": "STRZ",
+      "typ": "insider_cluster_kauf",
+      "r": 1,
+      "st": 0.59,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_cluster_kauf:ATEC:2026-11-04",
+      "s": "T:ATEC",
+      "n": "Alphatec Holdings, Inc.",
+      "t": "ATEC",
+      "typ": "insider_cluster_kauf",
+      "r": 1,
+      "st": 0.58,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_cluster_kauf:OCFC:2026-11-04",
+      "s": "T:OCFC",
+      "n": "Oceanfirst Financial Corp",
+      "t": "OCFC",
+      "typ": "insider_cluster_kauf",
+      "r": 1,
+      "st": 0.49,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_cluster_kauf:BLX:2026-11-04",
+      "s": "T:BLX",
+      "n": "Bladex, Inc.",
+      "t": "BLX",
+      "typ": "insider_cluster_kauf",
+      "r": 1,
+      "st": 0.56,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:SIRI:2026-11-04",
+      "s": "T:SIRI",
+      "n": "SIRI",
+      "t": "SIRI",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.91,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:LRN:2026-11-04",
+      "s": "T:LRN",
+      "n": "LRN",
+      "t": "LRN",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.86,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:BA:2026-11-04",
+      "s": "T:BA",
+      "n": "BA",
+      "t": "BA",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.55,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:SITE:2026-11-04",
+      "s": "T:SITE",
+      "n": "SITE",
+      "t": "SITE",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.55,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:BBTX:2026-11-04",
+      "s": "T:BBTX",
+      "n": "BBTX",
+      "t": "BBTX",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.97,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:PLBY:2026-11-04",
+      "s": "T:PLBY",
+      "n": "PLBY",
+      "t": "PLBY",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.73,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:CRBG:2026-11-04",
+      "s": "T:CRBG",
+      "n": "CRBG",
+      "t": "CRBG",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.78,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:MGM:2026-11-04",
+      "s": "T:MGM",
+      "n": "MGM",
+      "t": "MGM",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.98,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:LKQ:2026-11-04",
+      "s": "T:LKQ",
+      "n": "LKQ",
+      "t": "LKQ",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.45,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:CAT:2026-11-04",
+      "s": "T:CAT",
+      "n": "CAT",
+      "t": "CAT",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.5,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:TRTX:2026-11-04",
+      "s": "T:TRTX",
+      "n": "TRTX",
+      "t": "TRTX",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:ASPE:2026-11-04",
+      "s": "T:ASPE",
+      "n": "ASPE",
+      "t": "ASPE",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.88,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:JOF:2026-11-04",
+      "s": "T:JOF",
+      "n": "JOF",
+      "t": "JOF",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.51,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:ROL:2026-11-04",
+      "s": "T:ROL",
+      "n": "ROL",
+      "t": "ROL",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.98,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:MXF:2026-11-04",
+      "s": "T:MXF",
+      "n": "MXF",
+      "t": "MXF",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.53,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "insider_kauf:JBLU:2026-11-04",
+      "s": "T:JBLU",
+      "n": "JBLU",
+      "t": "JBLU",
+      "typ": "insider_kauf",
+      "r": 1,
+      "st": 0.42,
+      "q": [
+        "OpenInsider"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "stimmung_social:AMD:2026-11-04",
+      "s": "T:AMD",
+      "n": "AMD",
+      "t": "AMD",
+      "typ": "stimmung_social",
+      "r": 0,
+      "st": 0.53,
+      "q": [
+        "ApeWisdom"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "stimmung_social:SMCI:2026-11-04",
+      "s": "T:SMCI",
+      "n": "Supermicro",
+      "t": "SMCI",
+      "typ": "stimmung_social",
+      "r": 0,
+      "st": 0.72,
+      "q": [
+        "ApeWisdom"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:ALL:2026-11-04",
+      "s": "T:ALL",
+      "n": "ALL",
+      "t": "ALL",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:AMCR:2026-11-04",
+      "s": "T:AMCR",
+      "n": "AMCR",
+      "t": "AMCR",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:AVT:2026-11-04",
+      "s": "T:AVT",
+      "n": "AVT",
+      "t": "AVT",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:CDW:2026-11-04",
+      "s": "T:CDW",
+      "n": "CDW",
+      "t": "CDW",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:COR:2026-11-04",
+      "s": "T:COR",
+      "n": "COR",
+      "t": "COR",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:CVS:2026-11-04",
+      "s": "T:CVS",
+      "n": "CVS",
+      "t": "CVS",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:EMR:2026-11-04",
+      "s": "T:EMR",
+      "n": "EMR",
+      "t": "EMR",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:GWW:2026-11-04",
+      "s": "T:GWW",
+      "n": "GWW",
+      "t": "GWW",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:KHC:2026-11-04",
+      "s": "T:KHC",
+      "n": "KHC",
+      "t": "KHC",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:MCD:2026-11-04",
+      "s": "T:MCD",
+      "n": "MCD",
+      "t": "MCD",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:MCK:2026-11-04",
+      "s": "T:MCK",
+      "n": "MCK",
+      "t": "MCK",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:MDLN:2026-11-04",
+      "s": "T:MDLN",
+      "n": "MDLN",
+      "t": "MDLN",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:MELI:2026-11-04",
+      "s": "T:MELI",
+      "n": "MELI",
+      "t": "MELI",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:MET:2026-11-04",
+      "s": "T:MET",
+      "n": "MET",
+      "t": "MET",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:PAYP:2026-11-04",
+      "s": "T:PAYP",
+      "n": "PAYP",
+      "t": "PAYP",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:PFGC:2026-11-04",
+      "s": "T:PFGC",
+      "n": "PFGC",
+      "t": "PFGC",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:QCOM:2026-11-04",
+      "s": "T:QCOM",
+      "n": "QCOM",
+      "t": "QCOM",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:UBER:2026-11-04",
+      "s": "T:UBER",
+      "n": "UBER",
+      "t": "UBER",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.54,
+      "q": [
+        "Finnhub",
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "quartalstermin:WBD:2026-11-04",
+      "s": "T:WBD",
+      "n": "WBD",
+      "t": "WBD",
+      "typ": "quartalstermin",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:AIG:2026-11-04",
+      "s": "T:AIG",
+      "n": "AIG",
+      "t": "AIG",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.56,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:AMD:2026-11-04",
+      "s": "T:AMD",
+      "n": "AMD",
+      "t": "AMD",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.73,
+      "q": [
+        "Finnhub",
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:AMGN:2026-11-04",
+      "s": "T:AMGN",
+      "n": "AMGN",
+      "t": "AMGN",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.58,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_enttaeuschung:CPNG:2026-11-04",
+      "s": "T:CPNG",
+      "n": "CPNG",
+      "t": "CPNG",
+      "typ": "gewinn_enttaeuschung",
+      "r": -1,
+      "st": 1,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_enttaeuschung:ET:2026-11-04",
+      "s": "T:ET",
+      "n": "ET",
+      "t": "ET",
+      "typ": "gewinn_enttaeuschung",
+      "r": -1,
+      "st": 0.81,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:KDP:2026-11-04",
+      "s": "T:KDP",
+      "n": "KDP",
+      "t": "KDP",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.51,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:MPC:2026-11-04",
+      "s": "T:MPC",
+      "n": "MPC",
+      "t": "MPC",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.58,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:PFE:2026-11-04",
+      "s": "T:PFE",
+      "n": "PFE",
+      "t": "PFE",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "Finnhub",
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:PRU:2026-11-04",
+      "s": "T:PRU",
+      "n": "PRU",
+      "t": "PRU",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.62,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:SMCI:2026-11-04",
+      "s": "T:SMCI",
+      "n": "SMCI",
+      "t": "SMCI",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:SUN:2026-11-04",
+      "s": "T:SUN",
+      "n": "SUN",
+      "t": "SUN",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.73,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_enttaeuschung:SUNC:2026-11-04",
+      "s": "T:SUNC",
+      "n": "SUNC",
+      "t": "SUNC",
+      "typ": "gewinn_enttaeuschung",
+      "r": -1,
+      "st": 0.59,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:XYZ:2026-11-04",
+      "s": "T:XYZ",
+      "n": "XYZ",
+      "t": "XYZ",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.58,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:MAR:2026-11-04",
+      "s": "T:MAR",
+      "n": "MAR",
+      "t": "MAR",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.5,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:PLTR:2026-11-04",
+      "s": "T:PLTR",
+      "n": "PLTR",
+      "t": "PLTR",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 0.77,
+      "q": [
+        "Finnhub",
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "gewinn_ueberraschung:TBBB:2026-11-04",
+      "s": "T:TBBB",
+      "n": "TBBB",
+      "t": "TBBB",
+      "typ": "gewinn_ueberraschung",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "tagesgewinner:CHSN:2026-11-04",
+      "s": "T:CHSN",
+      "n": "Chanson International Holding",
+      "t": "CHSN",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "tagesgewinner:RDAC:2026-11-04",
+      "s": "T:RDAC",
+      "n": "Rising Dragon Acquisition Corp.",
+      "t": "RDAC",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "tagesgewinner:PARA:2026-11-04",
+      "s": "T:PARA",
+      "n": "Parabolic Technologies, Inc. Class A",
+      "t": "PARA",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "tagesgewinner:RIOX:2026-11-04",
+      "s": "T:RIOX",
+      "n": "Daily Target 2X Long RIOT ETF",
+      "t": "RIOX",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "tagesverlierer:RZAI:2026-11-04",
+      "s": "T:RZAI",
+      "n": "Roze AI Inc.",
+      "t": "RZAI",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "st": 1,
+      "q": [
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "tagesverlierer:VCIG:2026-11-04",
+      "s": "T:VCIG",
+      "n": "VCI Global Limited",
+      "t": "VCIG",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "st": 1,
+      "q": [
+        "FMP"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "kursrakete:CHSN:2026-11-04",
+      "s": "T:CHSN",
+      "n": "CHSN",
+      "t": "CHSN",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "kursrakete:RDAC:2026-11-04",
+      "s": "T:RDAC",
+      "n": "RDAC",
+      "t": "RDAC",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.91,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "kursrakete:MERC:2026-11-04",
+      "s": "T:MERC",
+      "n": "MERC",
+      "t": "MERC",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.64,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "kursrakete:PARA:2026-11-04",
+      "s": "T:PARA",
+      "n": "PARA",
+      "t": "PARA",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.61,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "kursrakete:AEHG:2026-11-04",
+      "s": "T:AEHG",
+      "n": "AEHG",
+      "t": "AEHG",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.56,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "kursrakete:KTTA:2026-11-04",
+      "s": "T:KTTA",
+      "n": "KTTA",
+      "t": "KTTA",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.52,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:MERC:2026-11-04",
+      "s": "T:MERC",
+      "n": "MERC",
+      "t": "MERC",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:HUBC:2026-11-04",
+      "s": "T:HUBC",
+      "n": "HUBC",
+      "t": "HUBC",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:GRAB:2026-11-04",
+      "s": "T:GRAB",
+      "n": "GRAB",
+      "t": "GRAB",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:INTC:2026-11-04",
+      "s": "T:INTC",
+      "n": "INTC",
+      "t": "INTC",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:NVD:2026-11-04",
+      "s": "T:NVD",
+      "n": "NVD",
+      "t": "NVD",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:SOXL:2026-11-04",
+      "s": "T:SOXL",
+      "n": "SOXL",
+      "t": "SOXL",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:PARA:2026-11-04",
+      "s": "T:PARA",
+      "n": "PARA",
+      "t": "PARA",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:INLF:2026-11-04",
+      "s": "T:INLF",
+      "n": "INLF",
+      "t": "INLF",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:NU:2026-11-04",
+      "s": "T:NU",
+      "n": "NU",
+      "t": "NU",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "volumen_ungewoehnlich:NVDA:2026-11-04",
+      "s": "T:NVDA",
+      "n": "NVDA",
+      "t": "NVDA",
+      "typ": "volumen_ungewoehnlich",
+      "r": 0,
+      "st": 0.4,
+      "q": [
+        "Alpha Vantage"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:AFIF:2026-11-04",
+      "s": "T:AFIF",
+      "n": "AFIF",
+      "t": "AFIF",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.96,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:BKAG:2026-11-04",
+      "s": "T:BKAG",
+      "n": "BKAG",
+      "t": "BKAG",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.94,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:SRTS:2026-11-04",
+      "s": "T:SRTS",
+      "n": "SRTS",
+      "t": "SRTS",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.84,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:MMIT:2026-11-04",
+      "s": "T:MMIT",
+      "n": "MMIT",
+      "t": "MMIT",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.82,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:CGGR:2026-11-04",
+      "s": "T:CGGR",
+      "n": "CGGR",
+      "t": "CGGR",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.81,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:NEAR:2026-11-04",
+      "s": "T:NEAR",
+      "n": "NEAR",
+      "t": "NEAR",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.79,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:HFXI:2026-11-04",
+      "s": "T:HFXI",
+      "n": "HFXI",
+      "t": "HFXI",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.79,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:MFSB:2026-11-04",
+      "s": "T:MFSB",
+      "n": "MFSB",
+      "t": "MFSB",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.79,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:CADL:2026-11-04",
+      "s": "T:CADL",
+      "n": "CADL",
+      "t": "CADL",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.78,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:PICK:2026-11-04",
+      "s": "T:PICK",
+      "n": "PICK",
+      "t": "PICK",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.78,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:EELV:2026-11-04",
+      "s": "T:EELV",
+      "n": "EELV",
+      "t": "EELV",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.77,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:CHSN:2026-11-04",
+      "s": "T:CHSN",
+      "n": "CHSN",
+      "t": "CHSN",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.76,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:DOLE:2026-11-04",
+      "s": "T:DOLE",
+      "n": "DOLE",
+      "t": "DOLE",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.75,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:JQUA:2026-11-04",
+      "s": "T:JQUA",
+      "n": "JQUA",
+      "t": "JQUA",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.75,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "leerverkauf_quote:EHGO:2026-11-04",
+      "s": "T:EHGO",
+      "n": "EHGO",
+      "t": "EHGO",
+      "typ": "leerverkauf_quote",
+      "r": 0,
+      "st": 0.75,
+      "q": [
+        "FINRA"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:META2:2026-11-04",
+      "s": "T:META2",
+      "n": "MetaDAO",
+      "t": "META2",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:WLD:2026-11-04",
+      "s": "T:WLD",
+      "n": "Worldcoin",
+      "t": "WLD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:PIEVERSE:2026-11-04",
+      "s": "T:PIEVERSE",
+      "n": "Pieverse",
+      "t": "PIEVERSE",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:EGLD:2026-11-04",
+      "s": "T:EGLD",
+      "n": "MultiversX",
+      "t": "EGLD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:ERA:2026-11-04",
+      "s": "T:ERA",
+      "n": "Caldera",
+      "t": "ERA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:CT:2026-11-04",
+      "s": "T:CT",
+      "n": "Concrete",
+      "t": "CT",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:MANTRA:2026-11-04",
+      "s": "T:MANTRA",
+      "n": "MANTRA",
+      "t": "MANTRA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:BLUR:2026-11-04",
+      "s": "T:BLUR",
+      "n": "Blur",
+      "t": "BLUR",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:PUFFER:2026-11-04",
+      "s": "T:PUFFER",
+      "n": "Puffer",
+      "t": "PUFFER",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:XLM:2026-11-04",
+      "s": "T:XLM",
+      "n": "Lumen",
+      "t": "XLM",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:ELF:2026-11-04",
+      "s": "T:ELF",
+      "n": "aelf",
+      "t": "ELF",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:SOPH:2026-11-04",
+      "s": "T:SOPH",
+      "n": "Sophon",
+      "t": "SOPH",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:BMT:2026-11-04",
+      "s": "T:BMT",
+      "n": "Bubblemaps",
+      "t": "BMT",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "upbit_warnung:ZIL:2026-11-04",
+      "s": "T:ZIL",
+      "n": "Zilliqa",
+      "t": "ZIL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "funding_extrem:CRV:2026-11-04",
+      "s": "T:CRV",
+      "n": "CRV",
+      "t": "CRV",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.35,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:CRV:2026-11-04",
+      "s": "T:CRV",
+      "n": "Curve DEX",
+      "t": "CRV",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:SYRUP:2026-11-04",
+      "s": "T:SYRUP",
+      "n": "Maple",
+      "t": "SYRUP",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:FLIP:2026-11-04",
+      "s": "T:FLIP",
+      "n": "Chainflip AMM",
+      "t": "FLIP",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.96,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:JUP:2026-11-04",
+      "s": "T:JUP",
+      "n": "Jupiter Perpetual Exchange",
+      "t": "JUP",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.91,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:UNI:2026-11-04",
+      "s": "T:UNI",
+      "n": "Uniswap V3",
+      "t": "UNI",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.9,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:MET:2026-11-04",
+      "s": "T:MET",
+      "n": "Meteora DAMM V2",
+      "t": "MET",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.88,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:LDO:2026-11-04",
+      "s": "T:LDO",
+      "n": "Lido",
+      "t": "LDO",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.67,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:AERO:2026-11-04",
+      "s": "T:AERO",
+      "n": "Aero Slipstream",
+      "t": "AERO",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.61,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "krypto_einnahmen:RAY:2026-11-04",
+      "s": "T:RAY",
+      "n": "LaunchLab",
+      "t": "RAY",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.52,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "nachzahlen_drift:SMCI:2026-11-04",
+      "s": "T:SMCI",
+      "n": "Supermicro",
+      "t": "SMCI",
+      "typ": "nachzahlen_drift",
+      "r": 1,
+      "st": 0.61,
+      "q": [
+        "Finnhub Kurs"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "nachzahlen_drift:TBBB:2026-11-04",
+      "s": "T:TBBB",
+      "n": "TBBB",
+      "t": "TBBB",
+      "typ": "nachzahlen_drift",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "Finnhub Kurs"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "nachzahlen_drift:AMD:2026-11-04",
+      "s": "T:AMD",
+      "n": "AMD",
+      "t": "AMD",
+      "typ": "nachzahlen_drift",
+      "r": 1,
+      "st": 0.64,
+      "q": [
+        "Finnhub Kurs"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    },
+    {
+      "id": "nachzahlen_drift:ET:2026-11-04",
+      "s": "T:ET",
+      "n": "ET",
+      "t": "ET",
+      "typ": "nachzahlen_drift",
+      "r": -1,
+      "st": 0.58,
+      "q": [
+        "Finnhub Kurs"
+      ],
+      "z": "2026-11-04T04:53:57.715Z"
+    }
+  ]
+}

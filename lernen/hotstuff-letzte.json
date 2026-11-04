@@ -1,46 +1,9 @@
 {
-  "datum": "2026-11-03",
-  "stand": "2026-11-03T04:51:35.487Z",
-  "anzahl": 35,
-  "abdeckung": 28.6,
+  "datum": "2026-11-04",
+  "stand": "2026-11-04T04:53:57.715Z",
+  "anzahl": 24,
+  "abdeckung": 37.5,
   "mover": [
-    {
-      "s": "T:SOPH",
-      "n": "Sophon",
-      "t": "SOPH",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 3,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 4,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 5,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 6,
-          "q": [
-            "Upbit"
-          ]
-        }
-      ]
-    },
     {
       "s": "T:AIOK",
       "n": "AI OKTO Corp.",
@@ -50,14 +13,14 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 4,
+          "tageVorher": 5,
           "q": [
             "Nasdaq Trader"
           ]
         },
         {
           "typ": "insider_kauf",
-          "tageVorher": 5,
+          "tageVorher": 6,
           "q": [
             "OpenInsider"
           ]
@@ -73,16 +36,80 @@
       "vorzeichen": [
         {
           "typ": "upbit_warnung",
-          "tageVorher": 5,
+          "tageVorher": 6,
           "q": [
             "Upbit"
           ]
         },
         {
           "typ": "upbit_warnung",
-          "tageVorher": 6,
+          "tageVorher": 7,
           "q": [
             "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:CHSN",
+      "n": "Chanson International Holding",
+      "t": "CHSN",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 7,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:PARA",
+      "n": "Parabolic Technologies, Inc. Class A",
+      "t": "PARA",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 6,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:VCIG",
+      "n": "VCI Global Limited",
+      "t": "VCIG",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:DRUG",
+      "n": "Bright Minds Biosciences Inc.",
+      "t": "DRUG",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
           ]
         }
       ]
@@ -96,7 +123,7 @@
       "vorzeichen": [
         {
           "typ": "volumen_ungewoehnlich",
-          "tageVorher": 4,
+          "tageVorher": 5,
           "q": [
             "Alpha Vantage"
           ]
@@ -104,47 +131,15 @@
       ]
     },
     {
-      "s": "T:PMN",
-      "n": "ProMIS Neurosciences, Inc.",
-      "t": "PMN",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 4,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:PTHS",
-      "n": "Pelthos Therapeutics Inc.",
-      "t": "PTHS",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 4,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:ONEG",
-      "n": "ONEG",
-      "t": "ONEG",
+      "s": "T:SEGG",
+      "n": "SEGG",
+      "t": "SEGG",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 4,
+          "tageVorher": 2,
           "q": [
             "Nasdaq Trader"
           ]
@@ -152,47 +147,15 @@
       ]
     },
     {
-      "s": "T:CHOW",
-      "n": "CHOW",
-      "t": "CHOW",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 4,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:SGRX",
-      "n": "SGRX",
-      "t": "SGRX",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 4,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:POD",
-      "n": "Dolphin",
-      "t": "POD",
+      "s": "T:BMT",
+      "n": "Bubblemaps",
+      "t": "BMT",
       "typ": "kursrakete",
       "r": 1,
       "vorzeichen": [
         {
           "typ": "upbit_warnung",
-          "tageVorher": 6,
+          "tageVorher": 2,
           "q": [
             "Upbit"
           ]
@@ -200,11 +163,51 @@
       ]
     },
     {
-      "s": "T:VCIG",
-      "n": "VCI Global Limited",
-      "t": "VCIG",
+      "s": "T:RDAC",
+      "n": "Rising Dragon Acquisition Corp.",
+      "t": "RDAC",
       "typ": "tagesgewinner",
       "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:RIOX",
+      "n": "Daily Target 2X Long RIOT ETF",
+      "t": "RIOX",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:RZAI",
+      "n": "Roze AI Inc.",
+      "t": "RZAI",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MERC",
+      "n": "MERC",
+      "t": "MERC",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:AEHG",
+      "n": "AEHG",
+      "t": "AEHG",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:KTTA",
+      "n": "KTTA",
+      "t": "KTTA",
+      "typ": "kursrakete",
+      "r": 0,
       "vorzeichen": []
     },
     {
@@ -213,14 +216,6 @@
       "t": "CLRO",
       "typ": "tagesgewinner",
       "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:DRUG",
-      "n": "Bright Minds Biosciences Inc.",
-      "t": "DRUG",
-      "typ": "tagesverlierer",
-      "r": -1,
       "vorzeichen": []
     },
     {
@@ -256,140 +251,30 @@
       "vorzeichen": []
     },
     {
-      "s": "T:SEGG",
-      "n": "SEGG",
-      "t": "SEGG",
+      "s": "T:SHOP",
+      "n": "SHOPIFY INC - CLASS A",
+      "t": "SHOP",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:GDYN",
-      "n": "Grid Dynamics Holdings, Inc.",
-      "t": "GDYN",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:FMC",
-      "n": "FMC Corporation",
-      "t": "FMC",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:ASUR",
-      "n": "Asure Software, Inc.",
-      "t": "ASUR",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:NFE",
-      "n": "New Fortress Energy Inc.",
-      "t": "NFE",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:ULH",
-      "n": "Universal Logistics Holdings, Inc.",
-      "t": "ULH",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:ARI",
-      "n": "Apollo Commercial Real Estate Finance, Inc.",
-      "t": "ARI",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:RDTL",
-      "n": "GraniteShares 2x Long RDDT Daily ETF",
-      "t": "RDTL",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:LINT",
-      "n": "Direxion Daily INTC Bull 2X ETF",
-      "t": "LINT",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:ATEC",
-      "n": "Alphatec Holdings, Inc.",
-      "t": "ATEC",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:SLGB",
-      "n": "SLGB",
-      "t": "SLGB",
+      "s": "I:DE000HF1Y0S1",
+      "n": "DE000HF1Y0S1",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:AOMFF",
-      "n": "ALSTOM",
-      "t": "AOMFF",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0J602",
-      "n": "DE000HF0J602",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0J5W2",
-      "n": "DE000HF0J5W2",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000UR3QLK0",
+      "s": "I:DE000UR1PG35",
       "n": "UNICREDIT BANK GMBH",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:CMPS",
-      "n": "COMPASS PATHWAYS PLC",
-      "t": "CMPS",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000UR1PGE9",
-      "n": "UNICREDIT BANK GMBH",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0GBE2",
-      "n": "HSBC TRINKAUS+BURKHARDT",
+      "s": "I:DE000HF1Y1E9",
+      "n": "DE000HF1Y1E9",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []

@@ -1,0 +1,652 @@
+{
+  "stand": "2026-11-04T04:53:57.715Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:TBBB",
+      "name": "TBBB",
+      "ticker": "TBBB",
+      "score": 4.06,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:SMCI",
+      "name": "Supermicro",
+      "ticker": "SMCI",
+      "score": 3.51,
+      "typen": [
+        "stimmung_social",
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "ApeWisdom",
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:AMD",
+      "name": "AMD",
+      "ticker": "AMD",
+      "score": 3.28,
+      "typen": [
+        "nachricht",
+        "stimmung_social",
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "CNBC Top News",
+        "MarketWatch",
+        "ApeWisdom",
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:ET",
+      "name": "ET",
+      "ticker": "ET",
+      "score": -2.91,
+      "typen": [
+        "gewinn_enttaeuschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:PFE",
+      "name": "PFE",
+      "ticker": "PFE",
+      "score": 2.46,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:WYFI",
+      "name": "WhiteFiber, Inc.",
+      "ticker": "WYFI",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CPNG",
+      "name": "CPNG",
+      "ticker": "CPNG",
+      "score": -2.26,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:PMHS",
+      "name": "Polomar Health Services, Inc.",
+      "ticker": "PMHS",
+      "score": -2.1,
+      "typen": [
+        "prognose_senkung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CHSN",
+      "name": "Chanson Intl Hldg Cl A Ords",
+      "ticker": "CHSN",
+      "score": 2.09,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner",
+        "kursrakete",
+        "leerverkauf_quote"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP",
+        "Alpha Vantage",
+        "FINRA"
+      ]
+    },
+    {
+      "schluessel": "T:PARA",
+      "name": "Parabolic Technologies CL A CS",
+      "ticker": "PARA",
+      "pump": true,
+      "score": 1.9,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner",
+        "kursrakete",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:PLTR",
+      "name": "PLTR",
+      "ticker": "PLTR",
+      "score": 1.88,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:SUN",
+      "name": "SUN",
+      "ticker": "SUN",
+      "score": 1.61,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:RDAC",
+      "name": "Rising Dragon Acquisition Corp.",
+      "ticker": "RDAC",
+      "pump": true,
+      "score": 1.44,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:STRZ",
+      "name": "Starz Entertainment Corp /Cn/",
+      "ticker": "STRZ",
+      "score": 1.39,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CRV",
+      "name": "CRV",
+      "ticker": "CRV",
+      "markt": "krypto",
+      "score": 1.38,
+      "typen": [
+        "funding_extrem",
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "Kraken Futures",
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 1.37,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:PRU",
+      "name": "PRU",
+      "ticker": "PRU",
+      "score": 1.36,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:BLX",
+      "name": "Bladex, Inc.",
+      "ticker": "BLX",
+      "score": 1.33,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SUNC",
+      "name": "SUNC",
+      "ticker": "SUNC",
+      "score": -1.33,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AMGN",
+      "name": "AMGN",
+      "ticker": "AMGN",
+      "score": 1.28,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:XYZ",
+      "name": "XYZ",
+      "ticker": "XYZ",
+      "score": 1.28,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MPC",
+      "name": "MPC",
+      "ticker": "MPC",
+      "score": 1.27,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:VCIG",
+      "name": "VCI Global Ltd Ord",
+      "ticker": "VCIG",
+      "score": -1.24,
+      "typen": [
+        "handelsstopp",
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:AIG",
+      "name": "AIG",
+      "ticker": "AIG",
+      "score": 1.24,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:GOOGM",
+      "name": "Alphabet Inc.",
+      "ticker": "GOOGM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ORCL-PD",
+      "name": "ORACLE CORP",
+      "ticker": "ORCL-PD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:STRD",
+      "name": "Strategy Inc",
+      "ticker": "STRD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GMM",
+      "name": "Global Mofy AI Ltd",
+      "ticker": "GMM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BIAFW",
+      "name": "bioAffinity Technologies, Inc.",
+      "ticker": "BIAFW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:METAM",
+      "name": "Meta Platforms, Inc.",
+      "ticker": "METAM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:AKR",
+      "name": "ACADIA REALTY TRUST",
+      "ticker": "AKR",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:YOUL",
+      "name": "Youlife Group Inc.",
+      "ticker": "YOUL",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:OCSAW",
+      "name": "Oculis Holding AG",
+      "ticker": "OCSAW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MDWD",
+      "name": "MediWound Ltd.",
+      "ticker": "MDWD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MET",
+      "name": "MET",
+      "ticker": "MET",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "quartalstermin",
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "Finnhub",
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:SYRUP",
+      "name": "Maple",
+      "ticker": "SYRUP",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:ENPH",
+      "name": "Enphase Energy, Inc.",
+      "ticker": "ENPH",
+      "score": 1.18,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MGM",
+      "name": "MGM",
+      "ticker": "MGM",
+      "score": 1.17,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ROL",
+      "name": "ROL",
+      "ticker": "ROL",
+      "score": 1.17,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:OCFC",
+      "name": "Oceanfirst Financial Corp",
+      "ticker": "OCFC",
+      "score": 1.16,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BBTX",
+      "name": "BBTX",
+      "ticker": "BBTX",
+      "score": 1.16,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FLIP",
+      "name": "Chainflip AMM",
+      "ticker": "FLIP",
+      "markt": "krypto",
+      "score": 1.16,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:KDP",
+      "name": "KDP",
+      "ticker": "KDP",
+      "score": 1.13,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MAR",
+      "name": "MAR",
+      "ticker": "MAR",
+      "score": 1.11,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:JUP",
+      "name": "Jupiter Perpetual Exchange",
+      "ticker": "JUP",
+      "markt": "krypto",
+      "score": 1.1,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:SIRI",
+      "name": "SIRI",
+      "ticker": "SIRI",
+      "score": 1.09,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:UNI",
+      "name": "Uniswap V3",
+      "ticker": "UNI",
+      "markt": "krypto",
+      "score": 1.08,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:ASPE",
+      "name": "ASPE",
+      "ticker": "ASPE",
+      "score": 1.05,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LRN",
+      "name": "LRN",
+      "ticker": "LRN",
+      "score": 1.03,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CRBG",
+      "name": "CRBG",
+      "ticker": "CRBG",
+      "score": 0.93,
+      "typen": [
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    }
+  ],
+  "anzahlSignale": 199
+}
