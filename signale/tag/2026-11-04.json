@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-04T17:53:16.551Z",
-  "anzahl": 254,
+  "stand": "2026-11-04T18:55:33.848Z",
+  "anzahl": 256,
   "signale": [
     {
       "id": "verwaesserung:GOOGM:2026-11-02",
@@ -2871,7 +2871,7 @@
       "t": "CHSN",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3290,7 +3290,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.44,
+      "st": 0.51,
       "q": [
         "Upbit"
       ],
@@ -3303,7 +3303,7 @@
       "t": "WXM",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3348,6 +3348,32 @@
         "Upbit"
       ],
       "z": "2026-11-04T17:53:16.551Z"
+    },
+    {
+      "id": "handelsstopp:PASW:2026-11-04",
+      "s": "T:PASW",
+      "n": "Ping An Biomedical Co Cl A Ord",
+      "t": "PASW",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:UWMC:2026-11-04",
+      "s": "T:UWMC",
+      "n": "UWM Holdings Corp",
+      "t": "UWMC",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-04T18:31:22.000Z"
     }
   ]
 }
