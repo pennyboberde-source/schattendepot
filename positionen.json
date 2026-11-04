@@ -1,10 +1,9 @@
 {
-  "stand": "2026-11-04T14:54:51.281Z",
-  "offen": [],
-  "vorgemerkt": [
+  "stand": "2026-11-04T14:56:42.507Z",
+  "offen": [
     {
       "id": "2026-11-04-auto-supermicro",
-      "status": "vorgemerkt",
+      "status": "offen",
       "vorgemerktUm": "2026-11-04T04:53:57.715Z",
       "vorgemerktVon": "autopilot",
       "plan": {
@@ -59,11 +58,35 @@
         "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (20 Fälle)"
       },
       "verkaufstermin": "2026-11-09T04:53:57.715Z",
-      "anpassungen": []
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-04T14:56:42.507Z",
+        "stueck": 34,
+        "kurs": 28.603,
+        "kurswert": 972.5,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 972.5,
+        "kursquelle": "Finnhub (2026-11-04T14:56:19.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 34.16,
+      "stopkurs": 27.74,
+      "etfKauf": {
+        "wert": 130.49,
+        "zeit": "2026-11-04T14:44:34.266Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 12,
+        "hinweis": "letztes Geschäft 2026-11-04",
+        "vortag": 128.925
+      }
     },
     {
       "id": "2026-11-04-auto-tbbb",
-      "status": "vorgemerkt",
+      "status": "offen",
       "vorgemerktUm": "2026-11-04T04:53:57.715Z",
       "vorgemerktVon": "autopilot",
       "plan": {
@@ -113,7 +136,32 @@
         "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (20 Fälle)"
       },
       "verkaufstermin": "2026-11-09T04:53:57.715Z",
-      "anpassungen": []
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-04T14:56:42.507Z",
+        "stueck": 17,
+        "kurs": 56.554,
+        "kurswert": 961.42,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 961.42,
+        "kursquelle": "Finnhub (2026-11-04T14:55:42.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 67.53,
+      "stopkurs": 54.86,
+      "etfKauf": {
+        "wert": 130.49,
+        "zeit": "2026-11-04T14:44:34.266Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 12,
+        "hinweis": "letztes Geschäft 2026-11-04",
+        "vortag": 128.925
+      }
     }
-  ]
+  ],
+  "vorgemerkt": []
 }
