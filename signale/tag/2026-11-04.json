@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-04T15:55:06.405Z",
-  "anzahl": 245,
+  "stand": "2026-11-04T16:55:18.448Z",
+  "anzahl": 250,
   "signale": [
     {
       "id": "verwaesserung:GOOGM:2026-11-02",
@@ -2922,7 +2922,7 @@
       "t": "OMH",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3209,7 +3209,7 @@
       "t": "ETH",
       "typ": "ueberreaktion",
       "r": 0,
-      "st": 0.42,
+      "st": 0.49,
       "q": [
         "Kraken"
       ],
@@ -3228,6 +3228,72 @@
         "Upbit"
       ],
       "z": "2026-11-04T15:55:06.405Z"
+    },
+    {
+      "id": "handelsstopp:TPLX:2026-11-04",
+      "s": "T:TPLX",
+      "n": "Corgi TPL 2x Daily ETF",
+      "t": "TPLX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:FVNNU:2026-11-04",
+      "s": "T:FVNNU",
+      "n": "Future Vision II Acq Cp Units",
+      "t": "FVNNU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ENTL:2026-11-04",
+      "s": "T:ENTL",
+      "n": "Leverage Shares 2X Long ENTG Daily ETF",
+      "t": "ENTL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AXTC:2026-11-04",
+      "s": "T:AXTC",
+      "n": "Corgi AXTI 2x Daily ETF",
+      "t": "AXTC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:ELSA:2026-11-04",
+      "s": "T:ELSA",
+      "n": "HeyElsa",
+      "t": "ELSA",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.42,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T16:55:18.448Z"
     }
   ]
 }
