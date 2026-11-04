@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-04T18:55:33.848Z",
-  "anzahl": 256,
+  "stand": "2026-11-04T19:56:40.436Z",
+  "anzahl": 257,
   "signale": [
     {
       "id": "verwaesserung:GOOGM:2026-11-02",
@@ -3290,7 +3290,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.51,
+      "st": 0.73,
       "q": [
         "Upbit"
       ],
@@ -3356,7 +3356,7 @@
       "t": "PASW",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3374,6 +3374,19 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-04T18:31:22.000Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-11-04",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-04T19:37:43.000Z"
     }
   ]
 }
