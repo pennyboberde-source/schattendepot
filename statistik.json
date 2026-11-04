@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-04T12:34:22.003Z",
+  "stand": "2026-11-04T13:53:59.862Z",
   "gesamt": {
     "anzahl": 9,
     "treffer": 5,
@@ -364,7 +364,7 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 315,
+      "anzahl": 316,
       "n1T": 175,
       "n3T": 156,
       "n1W": 54,
@@ -439,6 +439,21 @@
         "quote3T": null,
         "quote1W": null
       },
+      "kursrakete": {
+        "anzahl": 29,
+        "n1T": 22,
+        "n3T": 17,
+        "n1W": 7,
+        "oe1h": 1.42,
+        "oe1T": -0.3,
+        "oe3T": -4.09,
+        "oe1W": 8.44,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 45.5,
+        "quote3T": 41.2,
+        "quote1W": 57.1
+      },
       "nachricht": {
         "anzahl": 28,
         "n1T": 18,
@@ -453,21 +468,6 @@
         "quote1T": 27.8,
         "quote3T": 38.9,
         "quote1W": 80
-      },
-      "kursrakete": {
-        "anzahl": 28,
-        "n1T": 22,
-        "n3T": 17,
-        "n1W": 7,
-        "oe1h": 1.42,
-        "oe1T": -0.3,
-        "oe3T": -4.09,
-        "oe1W": 8.44,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 45.5,
-        "quote3T": 41.2,
-        "quote1W": 57.1
       },
       "nachzahlen_drift": {
         "anzahl": 21,
@@ -937,7 +937,7 @@
         "quote1W": 50
       },
       "gettex-Scanner": {
-        "anzahl": 8,
+        "anzahl": 9,
         "n1T": 8,
         "n3T": 5,
         "n1W": 2,
@@ -1104,7 +1104,7 @@
     },
     "nachRisiko": {
       "normal": {
-        "anzahl": 289,
+        "anzahl": 290,
         "n1T": 154,
         "n3T": 139,
         "n1W": 54,
@@ -1136,7 +1136,7 @@
     },
     "nachMarkt": {
       "us": {
-        "anzahl": 262,
+        "anzahl": 263,
         "n1T": 141,
         "n3T": 128,
         "n1W": 51,
@@ -1183,7 +1183,7 @@
     },
     "nachPhase": {
       "seitwaerts_ruhig": {
-        "anzahl": 163,
+        "anzahl": 164,
         "n1T": 47,
         "n3T": 28,
         "n1W": 0,
@@ -1264,7 +1264,7 @@
       "summeNetto": -121.9
     }
   },
-  "zusammenfassung": "Gesamt: 9 Orders, Trefferquote 55.6 %, Ø -1.53 % nach Gebühren (erwartet waren Ø 0.64 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 8 Orders, Ø 0.03 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 55.6 % (n=9).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %; insider_kauf 66.7 %/Ø -0.63 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung 0.05 % (n=85); insider_cluster_kauf -1.28 % (n=46); insider_kauf 0.61 % (n=45); nachricht 2.36 % (n=28); kursrakete 8.44 % (n=28); nachzahlen_drift -0.64 % (n=21); tagesgewinner 22.56 % (n=18); gewinn_enttaeuschung -3.05 % (n=15); volumen_ungewoehnlich 6.64 % (n=9); tagesverlierer 10.6 % (n=8); analysten_hochstufung 0.01 % (n=5).\nClaudes Tagesprognose: 45 % Richtung richtig nach 1 Tag (n=40), Ø 2.16 %.\nVs. MSCI World (gleiche Zeiträume): Depot -121.9 € vs. ETF 30.09 €.\nAutopilot – bewiesene Signaltypen (kauft sie selbst): gewinn_ueberraschung/aktie 47.3 %, Ø 0.05 % (n=55).\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): upbit_warnung 61.5 % (Lift 4.24, n=13); nachricht 28 % (Lift 1.93, n=25); insider_cluster_kauf 23.5 % (Lift 1.62, n=17); insider_kauf 14 % (Lift 0.97, n=57).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -1,5 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): tagesgewinner Ø +22,6 % nach 1 Woche (n=18).\n- Schwächstes Signal: gewinn_enttaeuschung Ø -3,0 % nach 1 Woche (n=15) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 9 Orders, Trefferquote 55.6 %, Ø -1.53 % nach Gebühren (erwartet waren Ø 0.64 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 8 Orders, Ø 0.03 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 55.6 % (n=9).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %; insider_kauf 66.7 %/Ø -0.63 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung 0.05 % (n=85); insider_cluster_kauf -1.28 % (n=46); insider_kauf 0.61 % (n=45); kursrakete 8.44 % (n=29); nachricht 2.36 % (n=28); nachzahlen_drift -0.64 % (n=21); tagesgewinner 22.56 % (n=18); gewinn_enttaeuschung -3.05 % (n=15); volumen_ungewoehnlich 6.64 % (n=9); tagesverlierer 10.6 % (n=8); analysten_hochstufung 0.01 % (n=5).\nClaudes Tagesprognose: 45 % Richtung richtig nach 1 Tag (n=40), Ø 2.16 %.\nVs. MSCI World (gleiche Zeiträume): Depot -121.9 € vs. ETF 30.09 €.\nAutopilot – bewiesene Signaltypen (kauft sie selbst): gewinn_ueberraschung/aktie 47.3 %, Ø 0.05 % (n=55).\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): upbit_warnung 61.5 % (Lift 4.24, n=13); nachricht 28 % (Lift 1.93, n=25); insider_cluster_kauf 23.5 % (Lift 1.62, n=17); insider_kauf 14 % (Lift 0.97, n=57).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -1,5 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): tagesgewinner Ø +22,6 % nach 1 Woche (n=18).\n- Schwächstes Signal: gewinn_enttaeuschung Ø -3,0 % nach 1 Woche (n=15) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "gewinn_ueberraschung",

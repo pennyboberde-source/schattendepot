@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-04T12:34:25.467Z",
+  "stand": "2026-11-04T13:54:25.472Z",
   "heute": {
     "datum": "2026-11-04",
     "gruppe": {
-      "anzahl": 16,
-      "treffer": 5,
-      "quote": 31.3,
-      "netto": -139.44,
-      "brutto": -129.44,
-      "nettoTR": -161.44,
-      "oeNettoProzent": -0.89,
-      "oeR": -0.07
+      "anzahl": 23,
+      "treffer": 10,
+      "quote": 43.5,
+      "netto": -219.54,
+      "brutto": -209.54,
+      "nettoTR": -255.54,
+      "oeNettoProzent": -0.93,
+      "oeR": 0.31
     },
-    "offen": 17
+    "offen": 10
   },
   "gesamt": {
-    "anzahl": 228,
-    "treffer": 58,
-    "quote": 25.4,
-    "netto": -3059.27,
-    "brutto": -2967.27,
-    "nettoTR": -3423.27,
-    "oeNettoProzent": -1.37,
-    "oeR": -0.16
+    "anzahl": 235,
+    "treffer": 63,
+    "quote": 26.8,
+    "netto": -3139.37,
+    "brutto": -3047.37,
+    "nettoTR": -3517.37,
+    "oeNettoProzent": -1.36,
+    "oeR": -0.12
   },
   "kurve": [
     {
@@ -69,21 +69,21 @@
     },
     {
       "datum": "2026-11-04",
-      "netto": -3059.27,
-      "brutto": -2967.27,
-      "nettoTR": -3423.27
+      "netto": -3139.37,
+      "brutto": -3047.37,
+      "nettoTR": -3517.37
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 225,
-      "treffer": 58,
-      "quote": 25.8,
-      "netto": -2912.06,
-      "brutto": -2820.06,
-      "nettoTR": -3270.06,
-      "oeNettoProzent": -1.32,
-      "oeR": -0.16
+      "anzahl": 232,
+      "treffer": 63,
+      "quote": 27.2,
+      "netto": -2992.16,
+      "brutto": -2900.16,
+      "nettoTR": -3364.16,
+      "oeNettoProzent": -1.31,
+      "oeR": -0.12
     },
     "claude": {
       "anzahl": 3,
@@ -98,14 +98,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 121,
-      "treffer": 44,
-      "quote": 36.4,
-      "netto": -1156.92,
-      "brutto": -1156.92,
-      "nettoTR": -1398.92,
-      "oeNettoProzent": -0.97,
-      "oeR": 0
+      "anzahl": 128,
+      "treffer": 49,
+      "quote": 38.3,
+      "netto": -1237.02,
+      "brutto": -1237.02,
+      "nettoTR": -1493.02,
+      "oeNettoProzent": -0.98,
+      "oeR": 0.06
     },
     "us": {
       "anzahl": 61,
@@ -130,24 +130,24 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 135,
-      "treffer": 39,
-      "quote": 28.9,
-      "netto": -553.43,
-      "brutto": -479.43,
-      "nettoTR": -749.43,
-      "oeNettoProzent": -0.45,
-      "oeR": 0.04
+      "anzahl": 141,
+      "treffer": 44,
+      "quote": 31.2,
+      "netto": -529.06,
+      "brutto": -455.06,
+      "nettoTR": -737.06,
+      "oeNettoProzent": -0.41,
+      "oeR": 0.11
     },
     "orb_short": {
-      "anzahl": 84,
+      "anzahl": 85,
       "treffer": 19,
-      "quote": 22.6,
-      "netto": -2369.2,
-      "brutto": -2369.2,
-      "nettoTR": -2537.2,
-      "oeNettoProzent": -2.83,
-      "oeR": -0.47
+      "quote": 22.4,
+      "netto": -2473.67,
+      "brutto": -2473.67,
+      "nettoTR": -2643.67,
+      "oeNettoProzent": -2.92,
+      "oeR": -0.48
     },
     "level_long": {
       "anzahl": 9,
@@ -162,24 +162,24 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 98,
-      "treffer": 38,
-      "quote": 38.8,
-      "netto": -259.88,
-      "brutto": -259.88,
-      "nettoTR": -455.88,
-      "oeNettoProzent": -0.32,
-      "oeR": 0.16
+      "anzahl": 104,
+      "treffer": 43,
+      "quote": 41.3,
+      "netto": -235.51,
+      "brutto": -235.51,
+      "nettoTR": -443.51,
+      "oeNettoProzent": -0.27,
+      "oeR": 0.24
     },
     "turbo": {
-      "anzahl": 84,
+      "anzahl": 85,
       "treffer": 19,
-      "quote": 22.6,
-      "netto": -2369.2,
-      "brutto": -2369.2,
-      "nettoTR": -2537.2,
-      "oeNettoProzent": -2.83,
-      "oeR": -0.47
+      "quote": 22.4,
+      "netto": -2473.67,
+      "brutto": -2473.67,
+      "nettoTR": -2643.67,
+      "oeNettoProzent": -2.92,
+      "oeR": -0.48
     },
     "krypto": {
       "anzahl": 46,
@@ -194,45 +194,45 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 133,
-      "treffer": 38,
-      "quote": 28.6,
-      "netto": -1445.07,
-      "brutto": -1409.07,
-      "nettoTR": -1675.07,
-      "oeNettoProzent": -1.11,
-      "oeR": -0.16
+      "anzahl": 138,
+      "treffer": 42,
+      "quote": 30.4,
+      "netto": -1484,
+      "brutto": -1448,
+      "nettoTR": -1724,
+      "oeNettoProzent": -1.1,
+      "oeR": -0.1
     },
     "spekulativ": {
-      "anzahl": 95,
-      "treffer": 20,
-      "quote": 21.1,
-      "netto": -1614.2,
-      "brutto": -1558.2,
-      "nettoTR": -1748.2,
-      "oeNettoProzent": -1.72,
-      "oeR": -0.17
+      "anzahl": 97,
+      "treffer": 21,
+      "quote": 21.6,
+      "netto": -1655.37,
+      "brutto": -1599.37,
+      "nettoTR": -1793.37,
+      "oeNettoProzent": -1.73,
+      "oeR": -0.16
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 138,
+      "anzahl": 140,
       "treffer": 0,
       "quote": 0,
-      "netto": -4768.72,
-      "brutto": -4706.72,
-      "nettoTR": -4982.72,
-      "oeNettoProzent": -3.51,
+      "netto": -4918.16,
+      "brutto": -4856.16,
+      "nettoTR": -5136.16,
+      "oeNettoProzent": -3.57,
       "oeR": -1.05
     },
     "ziel": {
-      "anzahl": 48,
-      "treffer": 38,
-      "quote": 79.2,
-      "netto": 1070.67,
-      "brutto": 1088.67,
-      "nettoTR": 992.67,
-      "oeNettoProzent": 2.27,
+      "anzahl": 53,
+      "treffer": 43,
+      "quote": 81.1,
+      "netto": 1140.01,
+      "brutto": 1158.01,
+      "nettoTR": 1052.01,
+      "oeNettoProzent": 2.2,
       "oeR": 2.02
     },
     "schluss": {
@@ -248,14 +248,14 @@
   },
   "nachPhase": {
     "seitwaerts_ruhig": {
-      "anzahl": 112,
-      "treffer": 28,
-      "quote": 25,
-      "netto": -1684.98,
-      "brutto": -1622.98,
-      "nettoTR": -1846.98,
-      "oeNettoProzent": -1.52,
-      "oeR": -0.08
+      "anzahl": 119,
+      "treffer": 33,
+      "quote": 27.7,
+      "netto": -1765.08,
+      "brutto": -1703.08,
+      "nettoTR": -1941.08,
+      "oeNettoProzent": -1.5,
+      "oeR": -0.01
     },
     "aufwaerts_ruhig": {
       "anzahl": 76,
@@ -385,39 +385,6 @@
       }
     },
     {
-      "id": "2026-11-04-scan-heidelberg-materials-ag",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "HEIDELBERG MATERIALS AG",
-      "isin": "DE0006047004",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T08:20:00.000Z",
-        "kurs": 168,
-        "level": 167.65,
-        "spanne": {
-          "hoch": 167.65,
-          "tief": 165.25
-        },
-        "richtung": "long"
-      },
-      "stop": 166.45,
-      "ziel": 171.55,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T08:20:00.000Z",
-        "basisKurs": 168.15,
-        "kurs": 168.276,
-        "stueck": 5,
-        "kurswert": 841.38
-      }
-    },
-    {
       "id": "2026-11-04-scan-nordex-se",
       "datum": "2026-11-04",
       "herkunft": "code_scan",
@@ -484,46 +451,6 @@
       }
     },
     {
-      "id": "2026-11-04-scan-novo-nordisk-a-s-b",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NOVO NORDISK A/S-B",
-      "isin": "DK0062498333",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 44.78,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T08:25:00.000Z",
-        "kurs": 37.38,
-        "level": 37.625,
-        "spanne": {
-          "hoch": 38.51,
-          "tief": 37.625
-        },
-        "richtung": "short"
-      },
-      "stop": 38.07,
-      "ziel": 35.83,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T08:25:00.000Z",
-        "basisKurs": 37.32,
-        "kurs": 7.4787,
-        "stueck": 133,
-        "kurswert": 994.67
-      }
-    },
-    {
       "id": "2026-11-04-scan-commerzbank-ag",
       "datum": "2026-11-04",
       "herkunft": "code_scan",
@@ -554,105 +481,6 @@
         "kurs": 39.199,
         "stueck": 25,
         "kurswert": 979.98
-      }
-    },
-    {
-      "id": "2026-11-04-scan-bayerische-motoren-werke",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "BAYERISCHE MOTOREN WERKE AG",
-      "isin": "DE0005190003",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T08:50:00.000Z",
-        "kurs": 58.64,
-        "level": 58.26,
-        "spanne": {
-          "hoch": 58.26,
-          "tief": 57.5
-        },
-        "richtung": "long"
-      },
-      "stop": 57.88,
-      "ziel": 59.38,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T08:50:00.000Z",
-        "basisKurs": 58.38,
-        "kurs": 58.424,
-        "stueck": 17,
-        "kurswert": 993.21
-      }
-    },
-    {
-      "id": "2026-11-04-scan-fresenius-se-co-kgaa",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "FRESENIUS SE & CO KGAA",
-      "isin": "DE000FRE5EN2",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-04T09:05:00.000Z",
-        "kurs": 49.16,
-        "level": 49.15,
-        "spanne": {
-          "hoch": 49.15,
-          "tief": 48.46
-        },
-        "richtung": "long"
-      },
-      "stop": 48.81,
-      "ziel": 49.83,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T09:05:00.000Z",
-        "basisKurs": 49.145,
-        "kurs": 49.391,
-        "stueck": 20,
-        "kurswert": 987.82
-      }
-    },
-    {
-      "id": "2026-11-04-scan-auto1-group-se",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "AUTO1 GROUP SE",
-      "isin": "DE000A2LQ884",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-04T09:10:00.000Z",
-        "kurs": 17.59,
-        "level": 17.43,
-        "spanne": {
-          "hoch": 17.43,
-          "tief": 16.5
-        },
-        "richtung": "long"
-      },
-      "stop": 16.97,
-      "ziel": 18.87,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T09:10:00.000Z",
-        "basisKurs": 17.6,
-        "kurs": 17.688,
-        "stueck": 56,
-        "kurswert": 990.53
       }
     },
     {
@@ -762,39 +590,6 @@
       }
     },
     {
-      "id": "2026-11-04-scan-zalando-se",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ZALANDO SE",
-      "isin": "DE000ZAL1111",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T09:20:00.000Z",
-        "kurs": 25.99,
-        "level": 25.93,
-        "spanne": {
-          "hoch": 25.93,
-          "tief": 25.26
-        },
-        "richtung": "long"
-      },
-      "stop": 25.6,
-      "ziel": 26.75,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T09:25:00.000Z",
-        "basisKurs": 25.98,
-        "kurs": 25.999,
-        "stueck": 38,
-        "kurswert": 987.96
-      }
-    },
-    {
       "id": "2026-11-04-scan-xrp-2",
       "datum": "2026-11-04",
       "herkunft": "code_scan",
@@ -821,39 +616,6 @@
         "kurs": 1.1542,
         "stueck": 866.40097,
         "kurswert": 1000
-      }
-    },
-    {
-      "id": "2026-11-04-scan-muenchener-rueckver-ag-r",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "MUENCHENER RUECKVER AG-REG",
-      "isin": "DE0008430026",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T11:10:00.000Z",
-        "kurs": 572.4,
-        "level": 572.2,
-        "spanne": {
-          "hoch": 572.2,
-          "tief": 565.6
-        },
-        "richtung": "long"
-      },
-      "stop": 568.9,
-      "ziel": 580,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T11:10:00.000Z",
-        "basisKurs": 572.6,
-        "kurs": 573.029,
-        "stueck": 1,
-        "kurswert": 573.03
       }
     }
   ],
@@ -950,39 +712,6 @@
       }
     },
     {
-      "id": "2026-11-04-scan-heidelberg-materials-ag",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "HEIDELBERG MATERIALS AG",
-      "isin": "DE0006047004",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T08:20:00.000Z",
-        "kurs": 168,
-        "level": 167.65,
-        "spanne": {
-          "hoch": 167.65,
-          "tief": 165.25
-        },
-        "richtung": "long"
-      },
-      "stop": 166.45,
-      "ziel": 171.55,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T08:20:00.000Z",
-        "basisKurs": 168.15,
-        "kurs": 168.276,
-        "stueck": 5,
-        "kurswert": 841.38
-      }
-    },
-    {
       "id": "2026-11-04-scan-nordex-se",
       "datum": "2026-11-04",
       "herkunft": "code_scan",
@@ -1049,46 +778,6 @@
       }
     },
     {
-      "id": "2026-11-04-scan-novo-nordisk-a-s-b",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NOVO NORDISK A/S-B",
-      "isin": "DK0062498333",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 44.78,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T08:25:00.000Z",
-        "kurs": 37.38,
-        "level": 37.625,
-        "spanne": {
-          "hoch": 38.51,
-          "tief": 37.625
-        },
-        "richtung": "short"
-      },
-      "stop": 38.07,
-      "ziel": 35.83,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T08:25:00.000Z",
-        "basisKurs": 37.32,
-        "kurs": 7.4787,
-        "stueck": 133,
-        "kurswert": 994.67
-      }
-    },
-    {
       "id": "2026-11-04-scan-commerzbank-ag",
       "datum": "2026-11-04",
       "herkunft": "code_scan",
@@ -1119,105 +808,6 @@
         "kurs": 39.199,
         "stueck": 25,
         "kurswert": 979.98
-      }
-    },
-    {
-      "id": "2026-11-04-scan-bayerische-motoren-werke",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "BAYERISCHE MOTOREN WERKE AG",
-      "isin": "DE0005190003",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T08:50:00.000Z",
-        "kurs": 58.64,
-        "level": 58.26,
-        "spanne": {
-          "hoch": 58.26,
-          "tief": 57.5
-        },
-        "richtung": "long"
-      },
-      "stop": 57.88,
-      "ziel": 59.38,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T08:50:00.000Z",
-        "basisKurs": 58.38,
-        "kurs": 58.424,
-        "stueck": 17,
-        "kurswert": 993.21
-      }
-    },
-    {
-      "id": "2026-11-04-scan-fresenius-se-co-kgaa",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "FRESENIUS SE & CO KGAA",
-      "isin": "DE000FRE5EN2",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-04T09:05:00.000Z",
-        "kurs": 49.16,
-        "level": 49.15,
-        "spanne": {
-          "hoch": 49.15,
-          "tief": 48.46
-        },
-        "richtung": "long"
-      },
-      "stop": 48.81,
-      "ziel": 49.83,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T09:05:00.000Z",
-        "basisKurs": 49.145,
-        "kurs": 49.391,
-        "stueck": 20,
-        "kurswert": 987.82
-      }
-    },
-    {
-      "id": "2026-11-04-scan-auto1-group-se",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "AUTO1 GROUP SE",
-      "isin": "DE000A2LQ884",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-04T09:10:00.000Z",
-        "kurs": 17.59,
-        "level": 17.43,
-        "spanne": {
-          "hoch": 17.43,
-          "tief": 16.5
-        },
-        "richtung": "long"
-      },
-      "stop": 16.97,
-      "ziel": 18.87,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T09:10:00.000Z",
-        "basisKurs": 17.6,
-        "kurs": 17.688,
-        "stueck": 56,
-        "kurswert": 990.53
       }
     },
     {
@@ -1327,39 +917,6 @@
       }
     },
     {
-      "id": "2026-11-04-scan-zalando-se",
-      "datum": "2026-11-04",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ZALANDO SE",
-      "isin": "DE000ZAL1111",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-04T09:20:00.000Z",
-        "kurs": 25.99,
-        "level": 25.93,
-        "spanne": {
-          "hoch": 25.93,
-          "tief": 25.26
-        },
-        "richtung": "long"
-      },
-      "stop": 25.6,
-      "ziel": 26.75,
-      "zielR": 2,
-      "flatBis": "2026-11-04T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-04T09:25:00.000Z",
-        "basisKurs": 25.98,
-        "kurs": 25.999,
-        "stueck": 38,
-        "kurswert": 987.96
-      }
-    },
-    {
       "id": "2026-11-04-scan-xrp-2",
       "datum": "2026-11-04",
       "herkunft": "code_scan",
@@ -1419,6 +976,344 @@
         "kurs": 573.029,
         "stueck": 1,
         "kurswert": 573.03
+      },
+      "ausstieg": {
+        "zeit": "2026-11-04T13:45:00.000Z",
+        "basisKurs": 580,
+        "kurs": 579.565,
+        "kurswert": 579.57,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 6.54,
+        "bruttoProzent": 1.14,
+        "netto": 6.54,
+        "nettoProzent": 1.14,
+        "nettoTR": 4.54,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
+      }
+    },
+    {
+      "id": "2026-11-04-scan-heidelberg-materials-ag",
+      "datum": "2026-11-04",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "HEIDELBERG MATERIALS AG",
+      "isin": "DE0006047004",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-04T08:20:00.000Z",
+        "kurs": 168,
+        "level": 167.65,
+        "spanne": {
+          "hoch": 167.65,
+          "tief": 165.25
+        },
+        "richtung": "long"
+      },
+      "stop": 166.45,
+      "ziel": 171.55,
+      "zielR": 2,
+      "flatBis": "2026-11-04T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-04T08:20:00.000Z",
+        "basisKurs": 168.15,
+        "kurs": 168.276,
+        "stueck": 5,
+        "kurswert": 841.38
+      },
+      "ausstieg": {
+        "zeit": "2026-11-04T13:40:00.000Z",
+        "basisKurs": 171.55,
+        "kurs": 171.421,
+        "kurswert": 857.11,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 15.73,
+        "bruttoProzent": 1.87,
+        "netto": 15.73,
+        "nettoProzent": 1.87,
+        "nettoTR": 13.73,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
+      }
+    },
+    {
+      "id": "2026-11-04-scan-bayerische-motoren-werke",
+      "datum": "2026-11-04",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "BAYERISCHE MOTOREN WERKE AG",
+      "isin": "DE0005190003",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-04T08:50:00.000Z",
+        "kurs": 58.64,
+        "level": 58.26,
+        "spanne": {
+          "hoch": 58.26,
+          "tief": 57.5
+        },
+        "richtung": "long"
+      },
+      "stop": 57.88,
+      "ziel": 59.38,
+      "zielR": 2,
+      "flatBis": "2026-11-04T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-04T08:50:00.000Z",
+        "basisKurs": 58.38,
+        "kurs": 58.424,
+        "stueck": 17,
+        "kurswert": 993.21
+      },
+      "ausstieg": {
+        "zeit": "2026-11-04T13:25:00.000Z",
+        "basisKurs": 59.38,
+        "kurs": 59.335,
+        "kurswert": 1008.7,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 15.49,
+        "bruttoProzent": 1.56,
+        "netto": 15.49,
+        "nettoProzent": 1.56,
+        "nettoTR": 13.49,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
+      }
+    },
+    {
+      "id": "2026-11-04-scan-zalando-se",
+      "datum": "2026-11-04",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ZALANDO SE",
+      "isin": "DE000ZAL1111",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-04T09:20:00.000Z",
+        "kurs": 25.99,
+        "level": 25.93,
+        "spanne": {
+          "hoch": 25.93,
+          "tief": 25.26
+        },
+        "richtung": "long"
+      },
+      "stop": 25.6,
+      "ziel": 26.75,
+      "zielR": 2,
+      "flatBis": "2026-11-04T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-04T09:25:00.000Z",
+        "basisKurs": 25.98,
+        "kurs": 25.999,
+        "stueck": 38,
+        "kurswert": 987.96
+      },
+      "ausstieg": {
+        "zeit": "2026-11-04T13:25:00.000Z",
+        "basisKurs": 26.75,
+        "kurs": 26.73,
+        "kurswert": 1015.74,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 27.78,
+        "bruttoProzent": 2.81,
+        "netto": 27.78,
+        "nettoProzent": 2.81,
+        "nettoTR": 25.78,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.03
+      }
+    },
+    {
+      "id": "2026-11-04-scan-fresenius-se-co-kgaa",
+      "datum": "2026-11-04",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "FRESENIUS SE & CO KGAA",
+      "isin": "DE000FRE5EN2",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-04T09:05:00.000Z",
+        "kurs": 49.16,
+        "level": 49.15,
+        "spanne": {
+          "hoch": 49.15,
+          "tief": 48.46
+        },
+        "richtung": "long"
+      },
+      "stop": 48.81,
+      "ziel": 49.83,
+      "zielR": 2,
+      "flatBis": "2026-11-04T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-04T09:05:00.000Z",
+        "basisKurs": 49.145,
+        "kurs": 49.391,
+        "stueck": 20,
+        "kurswert": 987.82
+      },
+      "ausstieg": {
+        "zeit": "2026-11-04T13:05:00.000Z",
+        "basisKurs": 49.83,
+        "kurs": 49.581,
+        "kurswert": 991.62,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 3.8,
+        "bruttoProzent": 0.38,
+        "netto": 3.8,
+        "nettoProzent": 0.38,
+        "nettoTR": 1.8,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.04
+      }
+    },
+    {
+      "id": "2026-11-04-scan-auto1-group-se",
+      "datum": "2026-11-04",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AUTO1 GROUP SE",
+      "isin": "DE000A2LQ884",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-04T09:10:00.000Z",
+        "kurs": 17.59,
+        "level": 17.43,
+        "spanne": {
+          "hoch": 17.43,
+          "tief": 16.5
+        },
+        "richtung": "long"
+      },
+      "stop": 16.97,
+      "ziel": 18.87,
+      "zielR": 2,
+      "flatBis": "2026-11-04T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-04T09:10:00.000Z",
+        "basisKurs": 17.6,
+        "kurs": 17.688,
+        "stueck": 56,
+        "kurswert": 990.53
+      },
+      "ausstieg": {
+        "zeit": "2026-11-04T13:05:00.000Z",
+        "basisKurs": 16.97,
+        "kurs": 16.885,
+        "kurswert": 945.56,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -44.97,
+        "bruttoProzent": -4.54,
+        "netto": -44.97,
+        "nettoProzent": -4.54,
+        "nettoTR": -46.97,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-04-scan-novo-nordisk-a-s-b",
+      "datum": "2026-11-04",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NOVO NORDISK A/S-B",
+      "isin": "DK0062498333",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 44.78,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-04T08:25:00.000Z",
+        "kurs": 37.38,
+        "level": 37.625,
+        "spanne": {
+          "hoch": 38.51,
+          "tief": 37.625
+        },
+        "richtung": "short"
+      },
+      "stop": 38.07,
+      "ziel": 35.83,
+      "zielR": 2,
+      "flatBis": "2026-11-04T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-04T08:25:00.000Z",
+        "basisKurs": 37.32,
+        "kurs": 7.4787,
+        "stueck": 133,
+        "kurswert": 994.67
+      },
+      "ausstieg": {
+        "zeit": "2026-11-04T12:40:00.000Z",
+        "basisKurs": 38.07,
+        "kurs": 6.6932,
+        "kurswert": 890.2,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -104.47,
+        "bruttoProzent": -10.5,
+        "netto": -104.47,
+        "nettoProzent": -10.5,
+        "nettoTR": -106.47,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10708,10 +10603,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 54,
-        "chance": 24.1,
-        "oeNetto": -1.61,
-        "wertung": -2.36
+        "faelle": 55,
+        "chance": 25.5,
+        "oeNetto": -1.38,
+        "wertung": -2.15
       }
     },
     "krypto:level_long": {
@@ -10730,10 +10625,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 65,
-        "chance": 46.2,
-        "oeNetto": 0.12,
-        "wertung": -0.09
+        "faelle": 66,
+        "chance": 47,
+        "oeNetto": 0.14,
+        "wertung": -0.07
       }
     },
     "krypto:orb_long": {
@@ -10741,10 +10636,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 36,
-        "chance": 25,
-        "oeNetto": -0.23,
-        "wertung": -0.29
+        "faelle": 37,
+        "chance": 24.3,
+        "oeNetto": -0.25,
+        "wertung": -0.31
       }
     },
     "us:orb_short": {
