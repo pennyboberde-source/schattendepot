@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-04T10:00:03.558Z",
-  "anzahl": 202,
+  "stand": "2026-11-04T11:10:49.593Z",
+  "anzahl": 208,
   "signale": [
     {
       "id": "verwaesserung:GOOGM:2026-11-02",
@@ -2663,6 +2663,84 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-04T09:44:36.646Z"
+    },
+    {
+      "id": "nachricht:SMCI:2026-11-04",
+      "s": "T:SMCI",
+      "n": "Supermicro",
+      "t": "SMCI",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-04T09:51:38.000Z"
+    },
+    {
+      "id": "nachricht:ETH:2026-11-04",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-04T10:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000GN36MD8:2026-11-04",
+      "s": "I:DE000GN36MD8",
+      "n": "GOLDMAN SACHS EUROPE SE",
+      "i": "DE000GN36MD8",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.87,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-04T10:21:59.918Z"
+    },
+    {
+      "id": "nachricht:TSLA:2026-11-04",
+      "s": "T:TSLA",
+      "n": "Tesla",
+      "t": "TSLA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-04T10:31:32.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0KWR2:2026-11-04",
+      "s": "I:DE000HF0KWR2",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF0KWR2",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.49,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-04T10:54:40.721Z"
+    },
+    {
+      "id": "kursrakete:DE000GN0WPK7:2026-11-04",
+      "s": "I:DE000GN0WPK7",
+      "n": "GOLDMAN SACHS EUROPE SE",
+      "i": "DE000GN0WPK7",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.76,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-04T10:55:03.759Z"
     }
   ]
 }
