@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-04T17:51:56.089Z",
+  "stand": "2026-11-04T18:53:53.397Z",
   "gesamt": {
     "anzahl": 10,
     "treffer": 5,
@@ -404,7 +404,7 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 316,
+      "anzahl": 317,
       "n1T": 175,
       "n3T": 156,
       "n1W": 54,
@@ -480,7 +480,7 @@
         "quote1W": null
       },
       "kursrakete": {
-        "anzahl": 29,
+        "anzahl": 30,
         "n1T": 22,
         "n3T": 17,
         "n1W": 7,
@@ -872,7 +872,7 @@
         "quote1W": 75
       },
       "Upbit": {
-        "anzahl": 22,
+        "anzahl": 23,
         "n1T": 18,
         "n3T": 17,
         "n1W": 0,
@@ -1144,7 +1144,7 @@
     },
     "nachRisiko": {
       "normal": {
-        "anzahl": 290,
+        "anzahl": 291,
         "n1T": 154,
         "n3T": 139,
         "n1W": 54,
@@ -1191,7 +1191,7 @@
         "quote1W": 49
       },
       "krypto": {
-        "anzahl": 44,
+        "anzahl": 45,
         "n1T": 29,
         "n3T": 23,
         "n1W": 0,
@@ -1223,7 +1223,7 @@
     },
     "nachPhase": {
       "seitwaerts_ruhig": {
-        "anzahl": 164,
+        "anzahl": 165,
         "n1T": 47,
         "n3T": 28,
         "n1W": 0,
@@ -1320,7 +1320,7 @@
       "summeNetto": -51.95
     }
   },
-  "zusammenfassung": "Gesamt: 10 Orders, Trefferquote 50 %, Ø -1.91 % nach Gebühren (erwartet waren Ø 0.59 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 9 Orders, Ø -0.57 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=10).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %; insider_kauf 66.7 %/Ø -0.63 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung 0.05 % (n=85); insider_cluster_kauf -1.28 % (n=46); insider_kauf 0.61 % (n=45); kursrakete 8.44 % (n=29); nachricht 2.36 % (n=28); nachzahlen_drift -0.64 % (n=21); tagesgewinner 22.56 % (n=18); gewinn_enttaeuschung -3.05 % (n=15); volumen_ungewoehnlich 6.64 % (n=9); tagesverlierer 10.6 % (n=8); analysten_hochstufung 0.01 % (n=5).\nAutopilot: 1 Orders, Quote 0 %, Ø -5.34 % · Claude: 9 Orders, Ø -1.53 %.\nClaudes Tagesprognose: 45 % Richtung richtig nach 1 Tag (n=40), Ø 2.16 %.\nVs. MSCI World (gleiche Zeiträume): Depot -173.85 € vs. ETF 28.92 €.\nAutopilot – bewiesene Signaltypen (kauft sie selbst): gewinn_ueberraschung/aktie 47.3 %, Ø 0.05 % (n=55).\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): upbit_warnung 61.5 % (Lift 4.24, n=13); nachricht 28 % (Lift 1.93, n=25); insider_cluster_kauf 23.5 % (Lift 1.62, n=17); insider_kauf 14 % (Lift 0.97, n=57).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -1,9 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): tagesgewinner Ø +22,6 % nach 1 Woche (n=18).\n- Schwächstes Signal: gewinn_enttaeuschung Ø -3,0 % nach 1 Woche (n=15) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 10 Orders, Trefferquote 50 %, Ø -1.91 % nach Gebühren (erwartet waren Ø 0.59 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 9 Orders, Ø -0.57 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=10).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %; insider_kauf 66.7 %/Ø -0.63 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung 0.05 % (n=85); insider_cluster_kauf -1.28 % (n=46); insider_kauf 0.61 % (n=45); kursrakete 8.44 % (n=30); nachricht 2.36 % (n=28); nachzahlen_drift -0.64 % (n=21); tagesgewinner 22.56 % (n=18); gewinn_enttaeuschung -3.05 % (n=15); volumen_ungewoehnlich 6.64 % (n=9); tagesverlierer 10.6 % (n=8); analysten_hochstufung 0.01 % (n=5).\nAutopilot: 1 Orders, Quote 0 %, Ø -5.34 % · Claude: 9 Orders, Ø -1.53 %.\nClaudes Tagesprognose: 45 % Richtung richtig nach 1 Tag (n=40), Ø 2.16 %.\nVs. MSCI World (gleiche Zeiträume): Depot -173.85 € vs. ETF 28.92 €.\nAutopilot – bewiesene Signaltypen (kauft sie selbst): gewinn_ueberraschung/aktie 47.3 %, Ø 0.05 % (n=55).\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): upbit_warnung 61.5 % (Lift 4.24, n=13); nachricht 28 % (Lift 1.93, n=25); insider_cluster_kauf 23.5 % (Lift 1.62, n=17); insider_kauf 14 % (Lift 0.97, n=57).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -1,9 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): tagesgewinner Ø +22,6 % nach 1 Woche (n=18).\n- Schwächstes Signal: gewinn_enttaeuschung Ø -3,0 % nach 1 Woche (n=15) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "gewinn_ueberraschung",
