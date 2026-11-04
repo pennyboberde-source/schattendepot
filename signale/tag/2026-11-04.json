@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-04T11:10:49.593Z",
-  "anzahl": 208,
+  "stand": "2026-11-04T12:59:00.339Z",
+  "anzahl": 214,
   "signale": [
     {
       "id": "verwaesserung:GOOGM:2026-11-02",
@@ -2741,6 +2741,85 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-04T10:55:03.759Z"
+    },
+    {
+      "id": "handelsstopp:ARRY:2026-11-04",
+      "s": "T:ARRY",
+      "n": "Array Technologies, Inc.",
+      "t": "ARRY",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SHLS:2026-11-04",
+      "s": "T:SHLS",
+      "n": "Shoals Technologies Cl A CM",
+      "t": "SHLS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:AMD:2026-11-04",
+      "s": "T:AMD",
+      "n": "AMD",
+      "t": "AMD",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-04T09:30:00.000Z"
+    },
+    {
+      "id": "nachricht:GS:2026-11-04",
+      "s": "T:GS",
+      "n": "Goldman Sachs",
+      "t": "GS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-04T11:10:00.000Z"
+    },
+    {
+      "id": "kursrakete:DDOG:2026-11-04",
+      "s": "T:DDOG",
+      "n": "DATADOG INC - CLASS A",
+      "t": "DDOG",
+      "i": "US23804L1035",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-04T12:43:43.712Z"
+    },
+    {
+      "id": "verwaesserung:BIVIW:2026-11-04",
+      "s": "T:BIVIW",
+      "n": "BIOVIE INC.",
+      "t": "BIVIW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-04T12:50:26.000Z"
     }
   ]
 }
