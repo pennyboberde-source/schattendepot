@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-04T19:56:40.436Z",
-  "anzahl": 257,
+  "stand": "2026-11-04T20:51:38.462Z",
+  "anzahl": 261,
   "signale": [
     {
       "id": "verwaesserung:GOOGM:2026-11-02",
@@ -2923,7 +2923,7 @@
       "t": "OMH",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3290,7 +3290,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.73,
+      "st": 0.87,
       "q": [
         "Upbit"
       ],
@@ -3356,7 +3356,7 @@
       "t": "PASW",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3387,6 +3387,58 @@
         "CNBC Top News"
       ],
       "z": "2026-11-04T19:37:43.000Z"
+    },
+    {
+      "id": "handelsstopp:BUUU:2026-11-04",
+      "s": "T:BUUU",
+      "n": "BUUU Group Limited Cl A Ord Sh",
+      "t": "BUUU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-11-04",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-04T20:04:00.000Z"
+    },
+    {
+      "id": "nachricht:AMZN:2026-11-04",
+      "s": "T:AMZN",
+      "n": "Amazon",
+      "t": "AMZN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-04T20:04:00.000Z"
+    },
+    {
+      "id": "nachricht:INTC:2026-11-04",
+      "s": "T:INTC",
+      "n": "Intel",
+      "t": "INTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-04T20:05:55.000Z"
     }
   ]
 }
