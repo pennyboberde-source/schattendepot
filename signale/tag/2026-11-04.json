@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-04T16:55:18.448Z",
-  "anzahl": 250,
+  "stand": "2026-11-04T17:53:16.551Z",
+  "anzahl": 254,
   "signale": [
     {
       "id": "verwaesserung:GOOGM:2026-11-02",
@@ -937,9 +937,10 @@
       "t": "GOOGL",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-11-04T01:07:01.000Z"
     },
@@ -2922,7 +2923,7 @@
       "t": "OMH",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3289,11 +3290,64 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.42,
+      "st": 0.44,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-04T16:55:18.448Z"
+    },
+    {
+      "id": "handelsstopp:WXM:2026-11-04",
+      "s": "T:WXM",
+      "n": "WF Intl Ltd Ord",
+      "t": "WXM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:UPSC:2026-11-04",
+      "s": "T:UPSC",
+      "n": "Corgi UPST 2x Daily ETF",
+      "t": "UPSC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-04T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:DIS:2026-11-04",
+      "s": "T:DIS",
+      "n": "Disney",
+      "t": "DIS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-04T03:30:00.000Z"
+    },
+    {
+      "id": "kursrakete:TRUMP:2026-11-04",
+      "s": "T:TRUMP",
+      "n": "Official Trump",
+      "t": "TRUMP",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": -1,
+      "st": 0.46,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-04T17:53:16.551Z"
     }
   ]
 }
