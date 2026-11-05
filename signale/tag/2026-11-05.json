@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T11:00:25.305Z",
-  "anzahl": 217,
+  "stand": "2026-11-05T11:55:35.083Z",
+  "anzahl": 219,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2854,6 +2854,32 @@
         "Upbit"
       ],
       "z": "2026-11-05T11:00:25.305Z"
+    },
+    {
+      "id": "verwaesserung:HYFM:2026-11-05",
+      "s": "T:HYFM",
+      "n": "HYDROFARM HOLDINGS GROUP, INC.",
+      "t": "HYFM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-05T01:28:08.000Z"
+    },
+    {
+      "id": "nachricht:V:2026-11-05",
+      "s": "T:V",
+      "n": "Visa",
+      "t": "V",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-05T11:00:01.000Z"
     }
   ]
 }
