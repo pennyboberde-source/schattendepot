@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T17:10:41.208Z",
-  "anzahl": 284,
+  "stand": "2026-11-05T18:53:05.125Z",
+  "anzahl": 290,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -3049,7 +3049,7 @@
       "t": "AEHL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.8,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3733,6 +3733,84 @@
         "Handelsblatt Finanzen"
       ],
       "z": "2026-11-05T16:58:02.000Z"
+    },
+    {
+      "id": "handelsstopp:ELPW:2026-11-05",
+      "s": "T:ELPW",
+      "n": "Elg Pwr Hldg Ltd Ord A",
+      "t": "ELPW",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:POAS:2026-11-05",
+      "s": "T:POAS",
+      "n": "Phaos Technology Holdings (Cayman) Limited Class A Ordinary ",
+      "t": "POAS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BGSF:2026-11-05",
+      "s": "T:BGSF",
+      "n": "BGSF, Inc. Common Stock",
+      "t": "BGSF",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MCHU:2026-11-05",
+      "s": "T:MCHU",
+      "n": "Tradr 2X Long MCHP Daily ETF",
+      "t": "MCHU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MCHG:2026-11-05",
+      "s": "T:MCHG",
+      "n": "Leverage Shares 2X Long MCHP Daily ETF",
+      "t": "MCHG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF1NUE6:2026-11-05",
+      "s": "I:DE000HF1NUE6",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF1NUE6",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T18:37:59.737Z"
     }
   ]
 }
