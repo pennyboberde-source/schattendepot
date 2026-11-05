@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-05T07:11:37.323Z",
+  "stand": "2026-11-05T08:29:14.627Z",
   "heute": {
     "datum": "2026-11-05",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": 0,
       "oeR": 0
     },
-    "offen": 0
+    "offen": 4
   },
   "gesamt": {
     "anzahl": 252,
@@ -292,8 +292,273 @@
       "oeR": -0.41
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-11-05-scan-ada",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 0.176191,
+        "level": 0.1756,
+        "spanne": {
+          "hoch": 0.175586,
+          "tief": 0.175267
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1754,
+      "ziel": 0.1778,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 0.176205,
+        "kurs": 0.1766,
+        "stueck": 5662.514156,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-05-scan-eth",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 2155.21,
+        "level": 2154.25,
+        "spanne": {
+          "hoch": 2154.25,
+          "tief": 2147.67
+        },
+        "richtung": "long"
+      },
+      "stop": 2150.96,
+      "ziel": 2165.75,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 2155.89,
+        "kurs": 2161.28,
+        "stueck": 0.462688,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-05-scan-sol",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 85.68,
+        "level": 85.4,
+        "spanne": {
+          "hoch": 85.4,
+          "tief": 85.16
+        },
+        "richtung": "long"
+      },
+      "stop": 85.28,
+      "ziel": 86.51,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 85.69,
+        "kurs": 85.904,
+        "stueck": 11.640901,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-05-scan-xrp",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 1.17421,
+        "level": 1.1706,
+        "spanne": {
+          "hoch": 1.17059,
+          "tief": 1.16771
+        },
+        "richtung": "long"
+      },
+      "stop": 1.1692,
+      "ziel": 1.1856,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 1.17463,
+        "kurs": 1.1776,
+        "stueck": 849.184782,
+        "kurswert": 1000
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-11-05-scan-ada",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 0.176191,
+        "level": 0.1756,
+        "spanne": {
+          "hoch": 0.175586,
+          "tief": 0.175267
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1754,
+      "ziel": 0.1778,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 0.176205,
+        "kurs": 0.1766,
+        "stueck": 5662.514156,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-05-scan-eth",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 2155.21,
+        "level": 2154.25,
+        "spanne": {
+          "hoch": 2154.25,
+          "tief": 2147.67
+        },
+        "richtung": "long"
+      },
+      "stop": 2150.96,
+      "ziel": 2165.75,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 2155.89,
+        "kurs": 2161.28,
+        "stueck": 0.462688,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-05-scan-sol",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 85.68,
+        "level": 85.4,
+        "spanne": {
+          "hoch": 85.4,
+          "tief": 85.16
+        },
+        "richtung": "long"
+      },
+      "stop": 85.28,
+      "ziel": 86.51,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 85.69,
+        "kurs": 85.904,
+        "stueck": 11.640901,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-05-scan-xrp",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 1.17421,
+        "level": 1.1706,
+        "spanne": {
+          "hoch": 1.17059,
+          "tief": 1.16771
+        },
+        "richtung": "long"
+      },
+      "stop": 1.1692,
+      "ziel": 1.1856,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 1.17463,
+        "kurs": 1.1776,
+        "stueck": 849.184782,
+        "kurswert": 1000
+      }
+    },
     {
       "id": "2026-11-04-scan-xrp-2",
       "datum": "2026-11-04",
@@ -8727,7 +8992,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 0,
+    "code_scan": 40,
     "claude": 3,
     "autopilot": 0
   },
