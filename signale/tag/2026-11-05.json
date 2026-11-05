@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T07:14:45.617Z",
-  "anzahl": 211,
+  "stand": "2026-11-05T08:58:03.019Z",
+  "anzahl": 214,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2466,7 +2466,7 @@
       "m": "krypto",
       "typ": "upbit_warnung",
       "r": 0,
-      "st": 0.7,
+      "st": 0.9,
       "q": [
         "Upbit"
       ],
@@ -2522,7 +2522,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.6,
+      "st": 0.73,
       "q": [
         "Upbit"
       ],
@@ -2773,6 +2773,46 @@
         "Upbit"
       ],
       "z": "2026-11-05T07:14:45.617Z"
+    },
+    {
+      "id": "gewinn_enttaeuschung:CBK:2026-11-05",
+      "s": "T:CBK",
+      "n": "Commerzbank",
+      "t": "CBK.DE",
+      "typ": "gewinn_enttaeuschung",
+      "r": -1,
+      "st": 0.7,
+      "q": [
+        "FAZ Finanzen"
+      ],
+      "z": "2026-11-05T07:22:40.000Z"
+    },
+    {
+      "id": "nachricht:RHM:2026-11-05",
+      "s": "T:RHM",
+      "n": "Rheinmetall",
+      "t": "RHM.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-05T08:10:55.000Z"
+    },
+    {
+      "id": "kursrakete:LNXSF:2026-11-05",
+      "s": "T:LNXSF",
+      "n": "LANXESS AG",
+      "t": "LNXSF",
+      "i": "DE0005470405",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.46,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T08:44:59.192Z"
     }
   ]
 }
