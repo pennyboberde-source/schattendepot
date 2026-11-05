@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-05T15:57:17.286Z",
+  "stand": "2026-11-05T17:08:11.194Z",
   "heute": {
     "datum": "2026-11-05",
     "gruppe": {
-      "anzahl": 32,
-      "treffer": 9,
-      "quote": 28.1,
-      "netto": -569.23,
-      "brutto": -559.23,
-      "nettoTR": -623.23,
-      "oeNettoProzent": -1.79,
-      "oeR": -0.17
+      "anzahl": 38,
+      "treffer": 15,
+      "quote": 39.5,
+      "netto": 101.08,
+      "brutto": 111.08,
+      "nettoTR": 35.08,
+      "oeNettoProzent": 0.27,
+      "oeR": 0.04
     },
-    "offen": 8
+    "offen": 2
   },
   "gesamt": {
-    "anzahl": 284,
-    "treffer": 80,
-    "quote": 28.2,
-    "netto": -3493.5,
-    "brutto": -3381.5,
-    "nettoTR": -3949.5,
-    "oeNettoProzent": -1.25,
-    "oeR": -0.08
+    "anzahl": 290,
+    "treffer": 86,
+    "quote": 29.7,
+    "netto": -2823.19,
+    "brutto": -2711.19,
+    "nettoTR": -3291.19,
+    "oeNettoProzent": -0.99,
+    "oeR": -0.06
   },
   "kurve": [
     {
@@ -75,21 +75,21 @@
     },
     {
       "datum": "2026-11-05",
-      "netto": -3493.5,
-      "brutto": -3381.5,
-      "nettoTR": -3949.5
+      "netto": -2823.19,
+      "brutto": -2711.19,
+      "nettoTR": -3291.19
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 281,
-      "treffer": 80,
-      "quote": 28.5,
-      "netto": -3346.29,
-      "brutto": -3234.29,
-      "nettoTR": -3796.29,
-      "oeNettoProzent": -1.2,
-      "oeR": -0.08
+      "anzahl": 287,
+      "treffer": 86,
+      "quote": 30,
+      "netto": -2675.98,
+      "brutto": -2563.98,
+      "nettoTR": -3137.98,
+      "oeNettoProzent": -0.94,
+      "oeR": -0.05
     },
     "claude": {
       "anzahl": 3,
@@ -104,24 +104,24 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 162,
-      "treffer": 61,
-      "quote": 37.7,
-      "netto": -1720.17,
-      "brutto": -1720.17,
-      "nettoTR": -2044.17,
-      "oeNettoProzent": -1.07,
-      "oeR": 0.07
+      "anzahl": 166,
+      "treffer": 65,
+      "quote": 39.2,
+      "netto": -1534.42,
+      "brutto": -1534.42,
+      "nettoTR": -1866.42,
+      "oeNettoProzent": -0.93,
+      "oeR": 0.08
     },
     "us": {
-      "anzahl": 66,
-      "treffer": 16,
-      "quote": 24.2,
-      "netto": -1339.8,
-      "brutto": -1339.8,
-      "nettoTR": -1471.8,
-      "oeNettoProzent": -2.08,
-      "oeR": -0.31
+      "anzahl": 68,
+      "treffer": 18,
+      "quote": 26.5,
+      "netto": -855.24,
+      "brutto": -855.24,
+      "nettoTR": -991.24,
+      "oeNettoProzent": -1.31,
+      "oeR": -0.24
     },
     "krypto": {
       "anzahl": 56,
@@ -136,24 +136,24 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 177,
-      "treffer": 54,
-      "quote": 30.5,
-      "netto": -1110.26,
-      "brutto": -1026.26,
-      "nettoTR": -1380.26,
-      "oeNettoProzent": -0.65,
-      "oeR": 0.05
+      "anzahl": 179,
+      "treffer": 56,
+      "quote": 31.3,
+      "netto": -997.19,
+      "brutto": -913.19,
+      "nettoTR": -1271.19,
+      "oeNettoProzent": -0.58,
+      "oeR": 0.06
     },
     "orb_short": {
-      "anzahl": 93,
-      "treffer": 24,
-      "quote": 25.8,
-      "netto": -2295.85,
-      "brutto": -2295.85,
-      "nettoTR": -2481.85,
-      "oeNettoProzent": -2.48,
-      "oeR": -0.36
+      "anzahl": 97,
+      "treffer": 28,
+      "quote": 28.9,
+      "netto": -1738.61,
+      "brutto": -1738.61,
+      "nettoTR": -1932.61,
+      "oeNettoProzent": -1.8,
+      "oeR": -0.29
     },
     "level_long": {
       "anzahl": 14,
@@ -167,6 +167,16 @@
     }
   },
   "nachInstrument": {
+    "turbo": {
+      "anzahl": 119,
+      "treffer": 35,
+      "quote": 29.4,
+      "netto": -2174.82,
+      "brutto": -2174.82,
+      "nettoTR": -2412.82,
+      "oeNettoProzent": -1.83,
+      "oeR": -0.27
+    },
     "aktie": {
       "anzahl": 115,
       "treffer": 48,
@@ -176,16 +186,6 @@
       "nettoTR": -444.84,
       "oeNettoProzent": -0.22,
       "oeR": 0.26
-    },
-    "turbo": {
-      "anzahl": 113,
-      "treffer": 29,
-      "quote": 25.7,
-      "netto": -2845.13,
-      "brutto": -2845.13,
-      "nettoTR": -3071.13,
-      "oeNettoProzent": -2.53,
-      "oeR": -0.34
     },
     "krypto": {
       "anzahl": 56,
@@ -200,14 +200,14 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 178,
-      "treffer": 59,
-      "quote": 33.1,
-      "netto": -1757.23,
-      "brutto": -1713.23,
-      "nettoTR": -2069.23,
-      "oeNettoProzent": -1,
-      "oeR": -0.03
+      "anzahl": 184,
+      "treffer": 65,
+      "quote": 35.3,
+      "netto": -1086.92,
+      "brutto": -1042.92,
+      "nettoTR": -1410.92,
+      "oeNettoProzent": -0.6,
+      "oeR": 0.01
     },
     "spekulativ": {
       "anzahl": 106,
@@ -232,36 +232,36 @@
       "oeR": -1.05
     },
     "ziel": {
-      "anzahl": 67,
-      "treffer": 57,
-      "quote": 85.1,
-      "netto": 1825.93,
-      "brutto": 1847.93,
-      "nettoTR": 1713.93,
-      "oeNettoProzent": 2.78,
-      "oeR": 2.03
+      "anzahl": 69,
+      "treffer": 59,
+      "quote": 85.5,
+      "netto": 2310.49,
+      "brutto": 2332.49,
+      "nettoTR": 2194.49,
+      "oeNettoProzent": 3.4,
+      "oeR": 2.02
     },
     "schluss": {
-      "anzahl": 53,
-      "treffer": 23,
-      "quote": 43.4,
-      "netto": 618.72,
-      "brutto": 636.72,
-      "nettoTR": 530.72,
-      "oeNettoProzent": 1.17,
-      "oeR": 0.24
+      "anzahl": 57,
+      "treffer": 27,
+      "quote": 47.4,
+      "netto": 804.47,
+      "brutto": 822.47,
+      "nettoTR": 708.47,
+      "oeNettoProzent": 1.42,
+      "oeR": 0.27
     }
   },
   "nachPhase": {
     "seitwaerts_ruhig": {
-      "anzahl": 168,
-      "treffer": 50,
-      "quote": 29.8,
-      "netto": -2119.21,
-      "brutto": -2037.21,
-      "nettoTR": -2373.21,
-      "oeNettoProzent": -1.27,
-      "oeR": 0.03
+      "anzahl": 174,
+      "treffer": 56,
+      "quote": 32.2,
+      "netto": -1448.9,
+      "brutto": -1366.9,
+      "nettoTR": -1714.9,
+      "oeNettoProzent": -0.84,
+      "oeR": 0.06
     },
     "aufwaerts_ruhig": {
       "anzahl": 76,
@@ -287,9 +287,9 @@
   "zeitmaschine": [
     {
       "stufe": "0–29 %",
-      "anzahl": 18,
-      "quote": 22.2,
-      "oeR": -0.27
+      "anzahl": 20,
+      "quote": 30,
+      "oeR": -0.04
     },
     {
       "stufe": "30–44 %",
@@ -299,280 +299,6 @@
     }
   ],
   "offen": [
-    {
-      "id": "2026-11-05-scan-zalando-se",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "turbo",
-      "name": "ZALANDO SE",
-      "isin": "DE000ZAL1111",
-      "turbo": {
-        "richtung": "long",
-        "hebel": 3,
-        "basispreis": 18.97,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T08:20:00.000Z",
-        "kurs": 28.42,
-        "level": 28.4,
-        "spanne": {
-          "hoch": 28.4,
-          "tief": 27.5
-        },
-        "richtung": "long"
-      },
-      "stop": 27.95,
-      "ziel": 29.48,
-      "zielR": 2,
-      "flatBis": "2026-11-05T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T08:20:00.000Z",
-        "basisKurs": 28.46,
-        "kurs": 9.5137,
-        "stueck": 105,
-        "kurswert": 998.94
-      }
-    },
-    {
-      "id": "2026-11-05-scan-hensoldt-ag",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "turbo",
-      "name": "HENSOLDT AG",
-      "isin": "DE000HAG0005",
-      "turbo": {
-        "richtung": "long",
-        "hebel": 3,
-        "basispreis": 52.6,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T08:35:00.000Z",
-        "kurs": 78.42,
-        "level": 77.66,
-        "spanne": {
-          "hoch": 77.66,
-          "tief": 74.78
-        },
-        "richtung": "long"
-      },
-      "stop": 76.22,
-      "ziel": 84.26,
-      "zielR": 2,
-      "flatBis": "2026-11-05T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T08:35:00.000Z",
-        "basisKurs": 78.9,
-        "kurs": 26.366,
-        "stueck": 37,
-        "kurswert": 975.54
-      }
-    },
-    {
-      "id": "2026-11-05-scan-bayerische-motoren-werke",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "BAYERISCHE MOTOREN WERKE AG",
-      "isin": "DE0005190003",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 74.09,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T09:20:00.000Z",
-        "kurs": 61.68,
-        "level": 61.82,
-        "spanne": {
-          "hoch": 62.9,
-          "tief": 61.82
-        },
-        "richtung": "short"
-      },
-      "stop": 62.36,
-      "ziel": 60.5,
-      "zielR": 2,
-      "flatBis": "2026-11-05T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T09:20:00.000Z",
-        "basisKurs": 61.74,
-        "kurs": 12.381,
-        "stueck": 80,
-        "kurswert": 990.48
-      }
-    },
-    {
-      "id": "2026-11-05-scan-tui-ag",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "TUI AG",
-      "isin": "DE000TUAG505",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 9.0552,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T14:40:00.000Z",
-        "kurs": 7.55,
-        "level": 7.564,
-        "spanne": {
-          "hoch": 7.7,
-          "tief": 7.564
-        },
-        "richtung": "short"
-      },
-      "stop": 7.632,
-      "ziel": 7.374,
-      "zielR": 2,
-      "flatBis": "2026-11-05T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T14:40:00.000Z",
-        "basisKurs": 7.546,
-        "kurs": 1.513,
-        "stueck": 660,
-        "kurswert": 998.58
-      }
-    },
-    {
-      "id": "2026-11-05-scan-d-wave-quantum-inc",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "D-WAVE QUANTUM INC",
-      "isin": "US26740W1099",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 10.0752,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T14:50:00.000Z",
-        "kurs": 8.396,
-        "level": 8.526,
-        "spanne": {
-          "hoch": 8.956,
-          "tief": 8.526
-        },
-        "richtung": "short"
-      },
-      "stop": 8.741,
-      "ziel": 7.706,
-      "zielR": 2,
-      "flatBis": "2026-11-05T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T14:50:00.000Z",
-        "basisKurs": 8.396,
-        "kurs": 1.6834,
-        "stueck": 594,
-        "kurswert": 999.94
-      },
-      "timeMachine": {
-        "zielZuerst": 0.4,
-        "stopZuerst": 12.6,
-        "keins": 87.1,
-        "gruen": 56.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 36,
-          "ziel": 9,
-          "stop": 18,
-          "oeR": 0.07
-        }
-      }
-    },
-    {
-      "id": "2026-11-05-scan-microsoft-corp",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MICROSOFT CORP",
-      "isin": "US5949181045",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 586.2,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T14:50:00.000Z",
-        "kurs": 487.5,
-        "level": 488.7,
-        "spanne": {
-          "hoch": 496.25,
-          "tief": 488.7
-        },
-        "richtung": "short"
-      },
-      "stop": 492.48,
-      "ziel": 480.55,
-      "zielR": 2,
-      "flatBis": "2026-11-05T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T14:50:00.000Z",
-        "basisKurs": 488.5,
-        "kurs": 9.7944,
-        "stueck": 102,
-        "kurswert": 999.03
-      },
-      "timeMachine": {
-        "zielZuerst": 11.3,
-        "stopZuerst": 44.2,
-        "keins": 44.6,
-        "gruen": 43.7,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 27,
-          "ziel": 3,
-          "stop": 10,
-          "oeR": 0.01
-        }
-      }
-    },
     {
       "id": "2026-11-05-scan-mercadolibre-inc",
       "datum": "2026-11-05",
@@ -673,280 +399,6 @@
   ],
   "trades": [
     {
-      "id": "2026-11-05-scan-zalando-se",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "turbo",
-      "name": "ZALANDO SE",
-      "isin": "DE000ZAL1111",
-      "turbo": {
-        "richtung": "long",
-        "hebel": 3,
-        "basispreis": 18.97,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T08:20:00.000Z",
-        "kurs": 28.42,
-        "level": 28.4,
-        "spanne": {
-          "hoch": 28.4,
-          "tief": 27.5
-        },
-        "richtung": "long"
-      },
-      "stop": 27.95,
-      "ziel": 29.48,
-      "zielR": 2,
-      "flatBis": "2026-11-05T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T08:20:00.000Z",
-        "basisKurs": 28.46,
-        "kurs": 9.5137,
-        "stueck": 105,
-        "kurswert": 998.94
-      }
-    },
-    {
-      "id": "2026-11-05-scan-hensoldt-ag",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "turbo",
-      "name": "HENSOLDT AG",
-      "isin": "DE000HAG0005",
-      "turbo": {
-        "richtung": "long",
-        "hebel": 3,
-        "basispreis": 52.6,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T08:35:00.000Z",
-        "kurs": 78.42,
-        "level": 77.66,
-        "spanne": {
-          "hoch": 77.66,
-          "tief": 74.78
-        },
-        "richtung": "long"
-      },
-      "stop": 76.22,
-      "ziel": 84.26,
-      "zielR": 2,
-      "flatBis": "2026-11-05T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T08:35:00.000Z",
-        "basisKurs": 78.9,
-        "kurs": 26.366,
-        "stueck": 37,
-        "kurswert": 975.54
-      }
-    },
-    {
-      "id": "2026-11-05-scan-bayerische-motoren-werke",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "BAYERISCHE MOTOREN WERKE AG",
-      "isin": "DE0005190003",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 74.09,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T09:20:00.000Z",
-        "kurs": 61.68,
-        "level": 61.82,
-        "spanne": {
-          "hoch": 62.9,
-          "tief": 61.82
-        },
-        "richtung": "short"
-      },
-      "stop": 62.36,
-      "ziel": 60.5,
-      "zielR": 2,
-      "flatBis": "2026-11-05T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T09:20:00.000Z",
-        "basisKurs": 61.74,
-        "kurs": 12.381,
-        "stueck": 80,
-        "kurswert": 990.48
-      }
-    },
-    {
-      "id": "2026-11-05-scan-tui-ag",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "TUI AG",
-      "isin": "DE000TUAG505",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 9.0552,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T14:40:00.000Z",
-        "kurs": 7.55,
-        "level": 7.564,
-        "spanne": {
-          "hoch": 7.7,
-          "tief": 7.564
-        },
-        "richtung": "short"
-      },
-      "stop": 7.632,
-      "ziel": 7.374,
-      "zielR": 2,
-      "flatBis": "2026-11-05T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T14:40:00.000Z",
-        "basisKurs": 7.546,
-        "kurs": 1.513,
-        "stueck": 660,
-        "kurswert": 998.58
-      }
-    },
-    {
-      "id": "2026-11-05-scan-d-wave-quantum-inc",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "D-WAVE QUANTUM INC",
-      "isin": "US26740W1099",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 10.0752,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T14:50:00.000Z",
-        "kurs": 8.396,
-        "level": 8.526,
-        "spanne": {
-          "hoch": 8.956,
-          "tief": 8.526
-        },
-        "richtung": "short"
-      },
-      "stop": 8.741,
-      "ziel": 7.706,
-      "zielR": 2,
-      "flatBis": "2026-11-05T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T14:50:00.000Z",
-        "basisKurs": 8.396,
-        "kurs": 1.6834,
-        "stueck": 594,
-        "kurswert": 999.94
-      },
-      "timeMachine": {
-        "zielZuerst": 0.4,
-        "stopZuerst": 12.6,
-        "keins": 87.1,
-        "gruen": 56.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 36,
-          "ziel": 9,
-          "stop": 18,
-          "oeR": 0.07
-        }
-      }
-    },
-    {
-      "id": "2026-11-05-scan-microsoft-corp",
-      "datum": "2026-11-05",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MICROSOFT CORP",
-      "isin": "US5949181045",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 586.2,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-05T14:50:00.000Z",
-        "kurs": 487.5,
-        "level": 488.7,
-        "spanne": {
-          "hoch": 496.25,
-          "tief": 488.7
-        },
-        "richtung": "short"
-      },
-      "stop": 492.48,
-      "ziel": 480.55,
-      "zielR": 2,
-      "flatBis": "2026-11-05T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-05T14:50:00.000Z",
-        "basisKurs": 488.5,
-        "kurs": 9.7944,
-        "stueck": 102,
-        "kurswert": 999.03
-      },
-      "timeMachine": {
-        "zielZuerst": 11.3,
-        "stopZuerst": 44.2,
-        "keins": 44.6,
-        "gruen": 43.7,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 27,
-          "ziel": 3,
-          "stop": 10,
-          "oeR": 0.01
-        }
-      }
-    },
-    {
       "id": "2026-11-05-scan-mercadolibre-inc",
       "datum": "2026-11-05",
       "herkunft": "code_scan",
@@ -1041,6 +493,394 @@
         "kurs": 14.326,
         "stueck": 69,
         "kurswert": 988.49
+      }
+    },
+    {
+      "id": "2026-11-05-scan-zalando-se",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "turbo",
+      "name": "ZALANDO SE",
+      "isin": "DE000ZAL1111",
+      "turbo": {
+        "richtung": "long",
+        "hebel": 3,
+        "basispreis": 18.97,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "kurs": 28.42,
+        "level": 28.4,
+        "spanne": {
+          "hoch": 28.4,
+          "tief": 27.5
+        },
+        "richtung": "long"
+      },
+      "stop": 27.95,
+      "ziel": 29.48,
+      "zielR": 2,
+      "flatBis": "2026-11-05T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:20:00.000Z",
+        "basisKurs": 28.46,
+        "kurs": 9.5137,
+        "stueck": 105,
+        "kurswert": 998.94
+      },
+      "ausstieg": {
+        "zeit": "2026-11-05T16:25:00.000Z",
+        "basisKurs": 28.64,
+        "kurs": 9.6458,
+        "kurswert": 1012.81,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 13.87,
+        "bruttoProzent": 1.39,
+        "netto": 13.87,
+        "nettoProzent": 1.39,
+        "nettoTR": 11.87,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 0.35
+      }
+    },
+    {
+      "id": "2026-11-05-scan-hensoldt-ag",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "turbo",
+      "name": "HENSOLDT AG",
+      "isin": "DE000HAG0005",
+      "turbo": {
+        "richtung": "long",
+        "hebel": 3,
+        "basispreis": 52.6,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-05T08:35:00.000Z",
+        "kurs": 78.42,
+        "level": 77.66,
+        "spanne": {
+          "hoch": 77.66,
+          "tief": 74.78
+        },
+        "richtung": "long"
+      },
+      "stop": 76.22,
+      "ziel": 84.26,
+      "zielR": 2,
+      "flatBis": "2026-11-05T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T08:35:00.000Z",
+        "basisKurs": 78.9,
+        "kurs": 26.366,
+        "stueck": 37,
+        "kurswert": 975.54
+      },
+      "ausstieg": {
+        "zeit": "2026-11-05T16:25:00.000Z",
+        "basisKurs": 81.72,
+        "kurs": 29.047,
+        "kurswert": 1074.74,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 99.2,
+        "bruttoProzent": 10.17,
+        "netto": 99.2,
+        "nettoProzent": 10.17,
+        "nettoTR": 97.2,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.05
+      }
+    },
+    {
+      "id": "2026-11-05-scan-bayerische-motoren-werke",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "BAYERISCHE MOTOREN WERKE AG",
+      "isin": "DE0005190003",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 74.09,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-05T09:20:00.000Z",
+        "kurs": 61.68,
+        "level": 61.82,
+        "spanne": {
+          "hoch": 62.9,
+          "tief": 61.82
+        },
+        "richtung": "short"
+      },
+      "stop": 62.36,
+      "ziel": 60.5,
+      "zielR": 2,
+      "flatBis": "2026-11-05T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T09:20:00.000Z",
+        "basisKurs": 61.74,
+        "kurs": 12.381,
+        "stueck": 80,
+        "kurswert": 990.48
+      },
+      "ausstieg": {
+        "zeit": "2026-11-05T16:25:00.000Z",
+        "basisKurs": 61.2,
+        "kurs": 12.858,
+        "kurswert": 1028.64,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 38.16,
+        "bruttoProzent": 3.85,
+        "netto": 38.16,
+        "nettoProzent": 3.85,
+        "nettoTR": 36.16,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 0.87
+      }
+    },
+    {
+      "id": "2026-11-05-scan-tui-ag",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "TUI AG",
+      "isin": "DE000TUAG505",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 9.0552,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-05T14:40:00.000Z",
+        "kurs": 7.55,
+        "level": 7.564,
+        "spanne": {
+          "hoch": 7.7,
+          "tief": 7.564
+        },
+        "richtung": "short"
+      },
+      "stop": 7.632,
+      "ziel": 7.374,
+      "zielR": 2,
+      "flatBis": "2026-11-05T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T14:40:00.000Z",
+        "basisKurs": 7.546,
+        "kurs": 1.513,
+        "stueck": 660,
+        "kurswert": 998.58
+      },
+      "ausstieg": {
+        "zeit": "2026-11-05T16:25:00.000Z",
+        "basisKurs": 7.486,
+        "kurs": 1.5653,
+        "kurswert": 1033.1,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 34.52,
+        "bruttoProzent": 3.46,
+        "netto": 34.52,
+        "nettoProzent": 3.46,
+        "nettoTR": 32.52,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 0.7
+      }
+    },
+    {
+      "id": "2026-11-05-scan-d-wave-quantum-inc",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "D-WAVE QUANTUM INC",
+      "isin": "US26740W1099",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 10.0752,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-05T14:50:00.000Z",
+        "kurs": 8.396,
+        "level": 8.526,
+        "spanne": {
+          "hoch": 8.956,
+          "tief": 8.526
+        },
+        "richtung": "short"
+      },
+      "stop": 8.741,
+      "ziel": 7.706,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T14:50:00.000Z",
+        "basisKurs": 8.396,
+        "kurs": 1.6834,
+        "stueck": 594,
+        "kurswert": 999.94
+      },
+      "timeMachine": {
+        "zielZuerst": 0.4,
+        "stopZuerst": 12.6,
+        "keins": 87.1,
+        "gruen": 56.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 9,
+          "stop": 18,
+          "oeR": 0.07
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-05T15:55:00.000Z",
+        "basisKurs": 7.698,
+        "kurs": 2.3713,
+        "kurswert": 1408.55,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 408.61,
+        "bruttoProzent": 40.86,
+        "netto": 408.61,
+        "nettoProzent": 40.86,
+        "nettoTR": 406.61,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.02
+      }
+    },
+    {
+      "id": "2026-11-05-scan-microsoft-corp",
+      "datum": "2026-11-05",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MICROSOFT CORP",
+      "isin": "US5949181045",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 586.2,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-05T14:50:00.000Z",
+        "kurs": 487.5,
+        "level": 488.7,
+        "spanne": {
+          "hoch": 496.25,
+          "tief": 488.7
+        },
+        "richtung": "short"
+      },
+      "stop": 492.48,
+      "ziel": 480.55,
+      "zielR": 2,
+      "flatBis": "2026-11-05T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-05T14:50:00.000Z",
+        "basisKurs": 488.5,
+        "kurs": 9.7944,
+        "stueck": 102,
+        "kurswert": 999.03
+      },
+      "timeMachine": {
+        "zielZuerst": 11.3,
+        "stopZuerst": 44.2,
+        "keins": 44.6,
+        "gruen": 43.7,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 27,
+          "ziel": 3,
+          "stop": 10,
+          "oeR": 0.01
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-05T15:50:00.000Z",
+        "basisKurs": 480.55,
+        "kurs": 10.539,
+        "kurswert": 1074.98,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 75.95,
+        "bruttoProzent": 7.6,
+        "netto": 75.95,
+        "nettoProzent": 7.6,
+        "nettoTR": 73.95,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -11259,10 +11099,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 62,
-        "chance": 27.4,
-        "oeNetto": -1.33,
-        "wertung": -2.06
+        "faelle": 63,
+        "chance": 28.6,
+        "oeNetto": -1.27,
+        "wertung": -1.99
       }
     },
     "krypto:level_long": {
@@ -11281,10 +11121,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 97,
-        "chance": 47.4,
-        "oeNetto": 0.06,
-        "wertung": -0.11
+        "faelle": 99,
+        "chance": 46.5,
+        "oeNetto": -0.01,
+        "wertung": -0.18
       }
     },
     "krypto:orb_long": {
@@ -11303,10 +11143,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 28,
-        "chance": 14.3,
-        "oeNetto": -2.72,
-        "wertung": -3.41
+        "faelle": 29,
+        "chance": 17.2,
+        "oeNetto": -2.38,
+        "wertung": -3.13
       }
     },
     "us:orb_long": {
@@ -11327,25 +11167,6 @@
     "autopilot": 0
   },
   "hinweise": [
-    "TESLA INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "INTEL CORP: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "MICRON TECHNOLOGY INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "STRATEGY INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "SERVICENOW INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "MODERNA INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "SK HYNIX INC-GDS REG S: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "ORACLE CORP: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "AppLovin: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "APPLOVIN CORP-CLASS A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "TAIWAN SEMICONDUCTOR-SP ADR: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "META PLATFORMS INC-CLASS A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "VERTIV HOLDINGS CO-A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "SAMSUNG ELECTRO-REGS GDR PFD: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "SUPER MICRO COMPUTER INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "ALPHABET INC-CL C: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "NETFLIX INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "Cigna: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "CROWDSTRIKE HOLDINGS INC - A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
-    "ConocoPhillips: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
+    "ZSCALER INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
   ]
 }
