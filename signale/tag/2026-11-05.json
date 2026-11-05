@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T11:55:35.083Z",
-  "anzahl": 219,
+  "stand": "2026-11-05T13:05:00.710Z",
+  "anzahl": 225,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2835,7 +2835,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.5,
+      "st": 0.59,
       "q": [
         "Upbit"
       ],
@@ -2880,6 +2880,87 @@
         "CNBC Top News"
       ],
       "z": "2026-11-05T11:00:01.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:BTC:2026-11-05",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-05T12:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:ETH:2026-11-05",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-05T12:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:SOL:2026-11-05",
+      "s": "T:SOL",
+      "n": "Solana",
+      "t": "SOL",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-05T12:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:DDD:2026-11-05",
+      "s": "T:DDD",
+      "n": "3D SYSTEMS CORP",
+      "t": "DDD",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-05T12:19:15.000Z"
+    },
+    {
+      "id": "verwaesserung:CLYM:2026-11-05",
+      "s": "T:CLYM",
+      "n": "Climb Bio, Inc.",
+      "t": "CLYM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-05T12:50:08.000Z"
+    },
+    {
+      "id": "verwaesserung:AVTX:2026-11-05",
+      "s": "T:AVTX",
+      "n": "Avalo Therapeutics, Inc.",
+      "t": "AVTX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-05T12:51:15.000Z"
     }
   ]
 }
