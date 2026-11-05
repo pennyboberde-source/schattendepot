@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T18:53:05.125Z",
-  "anzahl": 290,
+  "stand": "2026-11-05T19:52:28.726Z",
+  "anzahl": 294,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2997,9 +2997,10 @@
       "t": "NVDA",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-11-05T13:34:14.000Z"
     },
@@ -3811,6 +3812,59 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-05T18:37:59.737Z"
+    },
+    {
+      "id": "handelsstopp:MFI:2026-11-05",
+      "s": "T:MFI",
+      "n": "mF Intl Ltd Cl A Ord",
+      "t": "MFI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:TSLA:2026-11-05",
+      "s": "T:TSLA",
+      "n": "Tesla",
+      "t": "TSLA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-05T19:29:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF2B5V0:2026-11-05",
+      "s": "I:DE000HF2B5V0",
+      "n": "DE000HF2B5V0",
+      "i": "DE000HF2B5V0",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.49,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T19:42:03.009Z"
+    },
+    {
+      "id": "upbit_warnung:EDGE:2026-11-05",
+      "s": "T:EDGE",
+      "n": "Definitive",
+      "t": "EDGE",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-05T19:52:28.726Z"
     }
   ]
 }
