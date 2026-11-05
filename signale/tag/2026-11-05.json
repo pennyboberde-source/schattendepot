@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T14:23:05.382Z",
-  "anzahl": 230,
+  "stand": "2026-11-05T15:58:34.345Z",
+  "anzahl": 272,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2754,9 +2754,10 @@
       "t": "CBK.DE",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "FAZ Finanzen"
       ],
       "z": "2026-11-05T06:39:52.000Z"
     },
@@ -3026,6 +3027,555 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-05T14:03:09.000Z"
+    },
+    {
+      "id": "handelsstopp:OMH:2026-11-05",
+      "s": "T:OMH",
+      "n": "Ohmyhome Ltd Ords A",
+      "t": "OMH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AEHL:2026-11-05",
+      "s": "T:AEHL",
+      "n": "Antelope Entprs Hld Cl A Ord",
+      "t": "AEHL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SNWV:2026-11-05",
+      "s": "T:SNWV",
+      "n": "SANUWAVE Health, Inc. CS",
+      "t": "SNWV",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MHX:2026-11-05",
+      "s": "T:MHX",
+      "n": "Corgi MARA 2x Daily ETF",
+      "t": "MHX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RMBC:2026-11-05",
+      "s": "T:RMBC",
+      "n": "Corgi RMBS 2x Daily ETF",
+      "t": "RMBC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RGTC:2026-11-05",
+      "s": "T:RGTC",
+      "n": "Corgi RGTI 2x Daily ETF",
+      "t": "RGTC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:QUA:2026-11-05",
+      "s": "T:QUA",
+      "n": "Corgi QBTS 2x Daily ETF",
+      "t": "QUA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:INM:2026-11-05",
+      "s": "T:INM",
+      "n": "InMed Pharmaceuticals Cm Sh",
+      "t": "INM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PSOX:2026-11-05",
+      "s": "T:PSOX",
+      "n": "Tema MLCC &amp; PowerSemi ETF",
+      "t": "PSOX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:VRC:2026-11-05",
+      "s": "T:VRC",
+      "n": "Corgi VRT 2x Daily ETF",
+      "t": "VRC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TPEI:2026-11-05",
+      "s": "T:TPEI",
+      "n": "MicroSectors -3x Short Taiwan ETNs",
+      "t": "TPEI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TWSC:2026-11-05",
+      "s": "T:TWSC",
+      "n": "Corgi TSM 2x Daily ETF",
+      "t": "TWSC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BCOR:2026-11-05",
+      "s": "T:BCOR",
+      "n": "Grayscale Bitcoin Adopters ETF",
+      "t": "BCOR",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:WUGI:2026-11-05",
+      "s": "T:WUGI",
+      "n": "AXS Esoterica NextG Economy ETF",
+      "t": "WUGI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CAMC:2026-11-05",
+      "s": "T:CAMC",
+      "n": "Corgi CAMT 2x Daily ETF",
+      "t": "CAMC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:HUMM:2026-11-05",
+      "s": "T:HUMM",
+      "n": "800VDC AI Datacenter Ecosystem ETF",
+      "t": "HUMM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:XWNG:2026-11-05",
+      "s": "T:XWNG",
+      "n": "Amplify Top 10 Space ETF",
+      "t": "XWNG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:COIX:2026-11-05",
+      "s": "T:COIX",
+      "n": "Corgi COIN 2x Daily ETF",
+      "t": "COIX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SMRX:2026-11-05",
+      "s": "T:SMRX",
+      "n": "Corgi SMR 2x Daily ETF",
+      "t": "SMRX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CGPT:2026-11-05",
+      "s": "T:CGPT",
+      "n": "VegaShares AI Inference ETF",
+      "t": "CGPT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BLCK:2026-11-05",
+      "s": "T:BLCK",
+      "n": "Corgi Crypto Infrastructure ETF",
+      "t": "BLCK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TESC:2026-11-05",
+      "s": "T:TESC",
+      "n": "Corgi TSLA 2x Daily ETF",
+      "t": "TESC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MSTC:2026-11-05",
+      "s": "T:MSTC",
+      "n": "Corgi MSTR 2x Daily ETF",
+      "t": "MSTC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:FEMG:2026-11-05",
+      "s": "T:FEMG",
+      "n": "Fidelity Enhanced Mid Cap Growth ETF",
+      "t": "FEMG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BNMC:2026-11-05",
+      "s": "T:BNMC",
+      "n": "Corgi BMNR 2x Daily ETF",
+      "t": "BNMC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:LATR:2026-11-05",
+      "s": "T:LATR",
+      "n": "Corgi Buy Now Pay Later ETF",
+      "t": "LATR",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SFHG:2026-11-05",
+      "s": "T:SFHG",
+      "n": "Samfine Creation Hldgs A",
+      "t": "SFHG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TEMC:2026-11-05",
+      "s": "T:TEMC",
+      "n": "Corgi TEM 2x Daily ETF",
+      "t": "TEMC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:HOOC:2026-11-05",
+      "s": "T:HOOC",
+      "n": "Corgi HOOD 2x Daily ETF",
+      "t": "HOOC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SLBT:2026-11-05",
+      "s": "T:SLBT",
+      "n": "SL Science Holding Ord Shs",
+      "t": "SLBT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:XRP:2026-11-05",
+      "s": "T:XRP",
+      "n": "XRP",
+      "t": "XRP",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-05T14:00:00.000Z"
+    },
+    {
+      "id": "nachricht:JPM:2026-11-05",
+      "s": "T:JPM",
+      "n": "JPMorgan",
+      "t": "JPM",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-05T14:58:26.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0ZS24:2026-11-05",
+      "s": "I:DE000HF0ZS24",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF0ZS24",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.67,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T15:05:55.910Z"
+    },
+    {
+      "id": "kursrakete:DE000HF29KU5:2026-11-05",
+      "s": "I:DE000HF29KU5",
+      "n": "DE000HF29KU5",
+      "i": "DE000HF29KU5",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.63,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T15:19:25.352Z"
+    },
+    {
+      "id": "kursrakete:DE000GV1Y204:2026-11-05",
+      "s": "I:DE000GV1Y204",
+      "n": "GOLDMAN SACHS & CO OHG",
+      "i": "DE000GV1Y204",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.52,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T15:28:21.294Z"
+    },
+    {
+      "id": "kursrakete:DE000HF2B1X5:2026-11-05",
+      "s": "I:DE000HF2B1X5",
+      "n": "DE000HF2B1X5",
+      "i": "DE000HF2B1X5",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.91,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T15:39:26.510Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0MLB5:2026-11-05",
+      "s": "I:DE000HF0MLB5",
+      "n": "DE000HF0MLB5",
+      "i": "DE000HF0MLB5",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T15:43:59.354Z"
+    },
+    {
+      "id": "kursrakete:DE000HM5DC78:2026-11-05",
+      "s": "I:DE000HM5DC78",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HM5DC78",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T15:44:24.104Z"
+    },
+    {
+      "id": "ueberreaktion:ETH:2026-11-05",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "typ": "ueberreaktion",
+      "r": 0,
+      "st": 0.47,
+      "q": [
+        "Kraken"
+      ],
+      "z": "2026-11-05T15:58:34.345Z"
+    },
+    {
+      "id": "ueberreaktion:BTC:2026-11-05",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "ueberreaktion",
+      "r": 0,
+      "st": 0.37,
+      "q": [
+        "Kraken"
+      ],
+      "z": "2026-11-05T15:58:34.345Z"
+    },
+    {
+      "id": "kursrakete:ELSA:2026-11-05",
+      "s": "T:ELSA",
+      "n": "HeyElsa",
+      "t": "ELSA",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": -1,
+      "st": 0.44,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-05T15:58:34.345Z"
+    },
+    {
+      "id": "kursrakete:SOPH:2026-11-05",
+      "s": "T:SOPH",
+      "n": "Sophon",
+      "t": "SOPH",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.52,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-05T15:58:34.345Z"
     }
   ]
 }
