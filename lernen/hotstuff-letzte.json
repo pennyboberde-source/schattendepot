@@ -1,55 +1,9 @@
 {
-  "datum": "2026-11-04",
-  "stand": "2026-11-04T04:53:57.715Z",
-  "anzahl": 24,
-  "abdeckung": 37.5,
+  "datum": "2026-11-05",
+  "stand": "2026-11-05T04:56:21.404Z",
+  "anzahl": 35,
+  "abdeckung": 17.1,
   "mover": [
-    {
-      "s": "T:AIOK",
-      "n": "AI OKTO Corp.",
-      "t": "AIOK",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 5,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "insider_kauf",
-          "tageVorher": 6,
-          "q": [
-            "OpenInsider"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:MPLX",
-      "n": "Metaplex",
-      "t": "MPLX",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 6,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 7,
-          "q": [
-            "Upbit"
-          ]
-        }
-      ]
-    },
     {
       "s": "T:CHSN",
       "n": "Chanson International Holding",
@@ -59,7 +13,14 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 7,
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 8,
           "q": [
             "Nasdaq Trader"
           ]
@@ -75,7 +36,14 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 6,
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 7,
           "q": [
             "Nasdaq Trader"
           ]
@@ -95,19 +63,10 @@
           "q": [
             "Nasdaq Trader"
           ]
-        }
-      ]
-    },
-    {
-      "s": "T:DRUG",
-      "n": "Bright Minds Biosciences Inc.",
-      "t": "DRUG",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
+        },
         {
           "typ": "handelsstopp",
-          "tageVorher": 2,
+          "tageVorher": 3,
           "q": [
             "Nasdaq Trader"
           ]
@@ -115,25 +74,9 @@
       ]
     },
     {
-      "s": "T:INLF",
-      "n": "INLF",
-      "t": "INLF",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "volumen_ungewoehnlich",
-          "tageVorher": 5,
-          "q": [
-            "Alpha Vantage"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:SEGG",
-      "n": "SEGG",
-      "t": "SEGG",
+      "s": "T:CRIS",
+      "n": "CRIS",
+      "t": "CRIS",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": [
@@ -147,20 +90,132 @@
       ]
     },
     {
-      "s": "T:BMT",
-      "n": "Bubblemaps",
-      "t": "BMT",
+      "s": "T:CAP",
+      "n": "Cap",
+      "t": "CAP",
       "typ": "kursrakete",
       "r": 1,
       "vorzeichen": [
         {
           "typ": "upbit_warnung",
-          "tageVorher": 2,
+          "tageVorher": 7,
           "q": [
             "Upbit"
           ]
         }
       ]
+    },
+    {
+      "s": "T:TRUMP",
+      "n": "Official Trump",
+      "t": "TRUMP",
+      "typ": "kursrakete",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 3,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:APP",
+      "n": "APPLOVIN CORP-CLASS A",
+      "t": "APP",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:OMH",
+      "n": "Ohmyhome Limited",
+      "t": "OMH",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:DUOG",
+      "n": "Leverage Shares 2x Long DUOL Daily ETF",
+      "t": "DUOG",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CRCT",
+      "n": "Cricut, Inc.",
+      "t": "CRCT",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:LYEL",
+      "n": "Lyell Immunopharma, Inc.",
+      "t": "LYEL",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:DKI",
+      "n": "DarkIris Inc. Class A Ordinary Shares",
+      "t": "DKI",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:HUTG",
+      "n": "Themes ETF Trust - Leverage Shares 2X Long HUT Daily ETF",
+      "t": "HUTG",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:NRIX",
+      "n": "Nurix Therapeutics, Inc.",
+      "t": "NRIX",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:RZAI",
+      "n": "Roze AI Inc.",
+      "t": "RZAI",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CMTG",
+      "n": "CMTG",
+      "t": "CMTG",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:PMAX",
+      "n": "PMAX",
+      "t": "PMAX",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:EDGE",
+      "n": "Definitive",
+      "t": "EDGE",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
     },
     {
       "s": "T:RDAC",
@@ -176,14 +231,6 @@
       "t": "RIOX",
       "typ": "tagesgewinner",
       "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:RZAI",
-      "n": "Roze AI Inc.",
-      "t": "RZAI",
-      "typ": "tagesverlierer",
-      "r": -1,
       "vorzeichen": []
     },
     {
@@ -211,72 +258,90 @@
       "vorzeichen": []
     },
     {
-      "s": "T:CLRO",
-      "n": "ClearOne, Inc.",
-      "t": "CLRO",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:SVRN",
-      "n": "SVRN, Inc.",
-      "t": "SVRN",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:INO",
-      "n": "INO",
-      "t": "INO",
+      "s": "I:DE000UR2FZU4",
+      "n": "BAYER H-PW26 DAX INDEX",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:FGIIW",
-      "n": "FGIIW",
-      "t": "FGIIW",
+      "s": "I:DE000GN36MD8",
+      "n": "GOLDMAN SACHS EUROPE SE",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:EVGO",
-      "n": "EVGO",
-      "t": "EVGO",
+      "s": "I:DE000HF0KWR2",
+      "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:SHOP",
-      "n": "SHOPIFY INC - CLASS A",
-      "t": "SHOP",
+      "s": "I:DE000GN0WPK7",
+      "n": "GOLDMAN SACHS EUROPE SE",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF1Y0S1",
-      "n": "DE000HF1Y0S1",
+      "s": "T:DDOG",
+      "n": "DATADOG INC - CLASS A",
+      "t": "DDOG",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000UR1PG35",
+      "s": "I:DE000UR4GD77",
       "n": "UNICREDIT BANK GMBH",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF1Y1E9",
-      "n": "DE000HF1Y1E9",
+      "s": "I:DE000HF20058",
+      "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000GN0WS07",
+      "n": "GOLDMAN SACHS EUROPE SE",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF1ZFV5",
+      "n": "DE000HF1ZFV5",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0KZP9",
+      "n": "DE000HF0KZP9",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:ARX",
+      "n": "Arcium",
+      "t": "ARX",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:ELSA",
+      "n": "HeyElsa",
+      "t": "ELSA",
+      "typ": "kursrakete",
+      "r": 1,
       "vorzeichen": []
     }
   ]

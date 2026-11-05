@@ -1,0 +1,909 @@
+{
+  "datum": "2026-11-05",
+  "erstellt": "2026-11-05T04:56:21.404Z",
+  "makro": [
+    "Marktphase: Aktien (S&P 500) Seitwärts, ruhig · Krypto (Bitcoin) Seitwärts, ruhig",
+    "Ethereum: 2.153 € (-0,1 % seit 00:00 UTC)",
+    "Bitcoin: 71.475 € (-0,2 % seit 00:00 UTC)",
+    "Kimchi-Prämie (BTC in Korea gegen USD-Markt): +0,49 % (vorher +0,61 %). Steigend = Kaufdruck koreanischer Privatanleger.",
+    "Funding p. a. (Kraken Futures): BTC +23,1 %, ETH +21,0 %, SOL +4,5 %. Hoch positiv = gehebelte Käufer dominieren.",
+    "Stablecoin-Menge 295,3 Mrd $ (7 Tage -1,60 %). Wachsend = frisches Geld für Krypto.",
+    "Nasdaq-Handelsstopps (2 Tage): 64, davon Volatilitätspausen 59, Nachrichten 3",
+    "US-App-Store Gesamt-Top-100: Kalshi #6 (vorher #6), Cash App #49 (vorher #47) – je höher, desto mehr Andrang von Privatanlegern",
+    "Krypto Fear & Greed: 50 (Neutral), gestern 34 – Quelle: alternative.me",
+    "BTC-Volatilität DVOL (Deribit): 38 (Vortag 38,1, vor 7 Tagen 42)",
+    "ETH-Volatilität DVOL (Deribit): 51,5 (Vortag 51,9, vor 7 Tagen 58,2)",
+    "Polymarket „Fed Decision in December?“ – 25 bps increase: 78 %, No change: 22 %",
+    "Polymarket „Strait of Hormuz traffic returns to normal by December 31?“ – 11 %",
+    "Polymarket „Bank of England decision in November?“ – 25 bps increase: 99 %",
+    "Polymarket „Largest Company end of December 2026?“ – Apple: 57 %, NVIDIA: 42 %",
+    "Polymarket „Bank of Mexico Decision in November?“ – No change: 77 %, 25 bps decrease: 24 %",
+    "COT 2026-10-27 – Spekulanten netto in % des Open Interest, P = Perzentil über 3 Jahre: Bitcoin +13 % (Vorw. +11, P94); Erdgas -15 % (Vorw. -14, P1); Rohöl WTI +4 % (Vorw. +5, P11); Ethereum +6 % (Vorw. +7, P67); Silber +17 % (Vorw. +17, P7); Kupfer +14 % (Vorw. +18, P48); Gold +47 % (Vorw. +50, P47); S&P 500 -7 % (Vorw. -7, P35)",
+    "Coinalyze BTC: Liquidationen 24 h 102.2 Mio. $ (Longs 6 %)",
+    "Coinalyze ETH: Liquidationen 24 h 53.4 Mio. $ (Longs 12 %)"
+  ],
+  "termine": [
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "ARW Quartalszahlen (Erwartung EPS 5.0146)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "BDX Quartalszahlen (Erwartung EPS 4.1088)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "CAH Quartalszahlen (Erwartung EPS 2.9688)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "CI Quartalszahlen (Erwartung EPS 7.7255)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "CMI Quartalszahlen (Erwartung EPS 8.2782)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "COP Quartalszahlen (Erwartung EPS 2.9914)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "DUK Quartalszahlen (Erwartung EPS 1.8836)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "DVN Quartalszahlen (Erwartung EPS 1.3418)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "EOG Quartalszahlen (Erwartung EPS 4.4996)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "LNC Quartalszahlen (Erwartung EPS 1.9765)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "LYV Quartalszahlen (Erwartung EPS 1.5581)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "PH Quartalszahlen (Erwartung EPS 8.4333)"
+    },
+    {
+      "zeit": "nach US-Schluss",
+      "text": "RGA Quartalszahlen (Erwartung EPS 6.9822)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "SO Quartalszahlen (Erwartung EPS 1.7621)"
+    },
+    {
+      "zeit": "vor US-Eröffnung",
+      "text": "USFD Quartalszahlen (Erwartung EPS 1.2666)"
+    },
+    {
+      "zeit": "heute",
+      "text": "SONY Quartalszahlen (Erwartung EPS 0.38)"
+    },
+    {
+      "zeit": "13:00",
+      "text": "UK: BOE Monetary Policy Report (wichtig)"
+    },
+    {
+      "zeit": "13:00",
+      "text": "UK: Monetary Policy Summary (wichtig)"
+    },
+    {
+      "zeit": "13:00",
+      "text": "UK: MPC Official Bank Rate Votes (wichtig) – Prognose 7-0-2, zuvor 3-0-6"
+    },
+    {
+      "zeit": "13:00",
+      "text": "UK: Official Bank Rate (wichtig) – Prognose 4.00%, zuvor 3.75%"
+    },
+    {
+      "zeit": "13:30",
+      "text": "UK: BOE Gov Bailey Speaks (wichtig)"
+    },
+    {
+      "zeit": "14:30",
+      "text": "USA: Unemployment Claims – Prognose 197K, zuvor 194K"
+    },
+    {
+      "zeit": "19:00",
+      "text": "Eurozone: ECB President Lagarde Speaks"
+    }
+  ],
+  "meldungen": [
+    {
+      "titel": "Nikkei, Yen, Hang Seng: Börsen in Asien nach US-Zwischenwahlen uneinheitlich - Technologiewerte brechen ein",
+      "quelle": "Handelsblatt Finanzen",
+      "link": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/nikkei-yen-hang-seng-boersen-in-asien-nach-us-zwischenwahlen-uneinheitlich-technologiewerte-brechen-ein/100267457.html",
+      "zeit": "2026-11-05T04:38:20.000Z"
+    },
+    {
+      "titel": "Inside the chip talent war: Trade secrets and rising Chinese rivals",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/05/semiconductor-china-korea-talents-rivalry.html",
+      "zeit": "2026-11-05T03:53:18.000Z"
+    },
+    {
+      "titel": "Krypto auf eigener Wallet? Frankreich will ab 100.000 Euro genauer hinsehen",
+      "quelle": "BTC-ECHO",
+      "link": "https://www.btc-echo.de/news/krypto-auf-eigener-wallet-frankreich-will-ab-100-000-euro-genauer-hinsehen-240412/",
+      "zeit": "2026-11-05T03:30:00.000Z"
+    },
+    {
+      "titel": "LIV Golf faces liquidation after BC Partners scraps rescue plan",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/05/liv-golf-liquidation-bc-partners.html",
+      "zeit": "2026-11-05T03:11:58.000Z"
+    },
+    {
+      "titel": "Immobilien: Kaufpreise für Wohnungen sinken erstmals seit mehr als zwei Jahren",
+      "quelle": "Handelsblatt Finanzen",
+      "link": "https://www.handelsblatt.com/finanzen/immobilien/immobilien-kaufpreise-fuer-wohnungen-sinken-erstmals-seit-mehr-als-zwei-jahren/100267271.html",
+      "zeit": "2026-11-05T03:09:15.000Z"
+    },
+    {
+      "titel": "Photos show Americans reacting in real-time to midterm results - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPbW1ldDZNRklJd0FRTHk3Qm5pc0U2QkpKT2l6MU9CSmRHSmQwSUJDcWkwYzd3ZWRVRndLSlNSUngzYUFBOWJFM3J0c0FCX2ZOSHlyZVFHOVhFNlpTTnBuc2hLMzMzakhGdDF3T1owSVJ4dExIaUl4V0UzZ0g0RWdIN3R0TENyUG9YekVLdWQtTDU2cnJKQ19MWHo4QjFXbW56SzBr?oc=5",
+      "zeit": "2026-11-05T03:06:15.000Z"
+    },
+    {
+      "titel": "Gerd Kommer: Warum der einstige Krypto-Kritiker jetzt selbst Bitcoin kauft",
+      "quelle": "BTC-ECHO",
+      "link": "https://www.btc-echo.de/news/gerd-kommer-warum-der-krypto-kritiker-jetzt-selbst-bitcoin-kauft-240368/",
+      "zeit": "2026-11-05T03:00:00.000Z",
+      "wertpapier": "Bitcoin"
+    },
+    {
+      "titel": "Indian benchmarks open near three-month highs as oil slides after US Democratic win - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNVmJaMVVmaUE0cUtPUW9iRklDNUNCV2k4c1NXYzllRGYzeUdXOFJkeGVEOUNsdkhwc0pfc3pkSVdvb3Nwc3FMSE0xTVBnbEtiQ29Gd2NzbmFtMU9rVXNoNXF3MkRrMEtHczdSX0VGUExrTDkyNHAxYWI0SGFWbVRSZWhDaGlvNkhLdUtiZGdDaWVQaFJ0NkRkckJvQ0ZzSnM2dmFUd2tZXzdQaWZBaFN4Y3BNYXo0UkVZRGpQTkdTUQ?oc=5",
+      "zeit": "2026-11-05T02:37:00.000Z"
+    },
+    {
+      "titel": "Oil falls for a fourth day on expectations for lower risk of Iran war escalation - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdzM2c3YzcktwU285aS1QaVVzTk51WFR0UnpxMXlnaFdEd2RtZWYzMm81TDZQUTJZS0ZlLXFVV3ZhcGFibkdLZm9Remo3YjlhNHJTd1lxSXNMUFNzejhIMkt0TlFRXy1RZl9TdTkxbDhfdjQxUEIzcUhaYlpOMjZJSVViNmVPV0dRV0RmaTJ3dDJ3QUs4TTFleFlnZnNyUHhVYlQ5NldaZVRZRFd5dU5nVnRKVUQ0UFE?oc=5",
+      "zeit": "2026-11-05T02:20:00.000Z"
+    },
+    {
+      "titel": "Rupee to rally after US midterm fallout sinks oil on Iran war-exit hopes - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQME9GZlNzY1R1djlUYWZnQ2lQRXE3ZHoxQ1VhOEZhaVRyVTY3TWZIRXhNMDNaemNtb0NFNzJZeTZtYlRCX0FtbFlYenA4Z0gtSkZBZVFRQThHZkRtcHhsR09wWXVhdl9CLUQ2Z19JNWpFWlI0N013RFR4VDFrSTFoZzVQS3F5Y216eWdlMTlZbWxldWY4TXh0M09TLTBuX3lUZ1ZWRzVaRHhxSENxT3E4Qlpwd0E?oc=5",
+      "zeit": "2026-11-05T02:19:00.000Z"
+    },
+    {
+      "titel": "South Korea to expand anti-piracy unit operations closer to Strait of Hormuz - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNWmlVV005TWpIcUdLT2ZZaUpORmNMc09CYnNzQnFBRUhJeF8yTklGM20tcHlpZkI3bGpCa2VXQlJfOGd2MEdOTWtpN1BpMnNmUVUyYzF1R2U5SjN4bl90X2xGRDZ2MzY2aGU1WTVYM3otVlRhTjRXR2JMUWp5cGZsZFV1MFUtWG83QW1tMG44aXY3dmg4Zl9GbGFjMEZ5bWhUbGliempaM2dRaE9pZHlHUldkUndDZEtLTkdTUlQ1RQ?oc=5",
+      "zeit": "2026-11-05T01:54:00.000Z"
+    },
+    {
+      "titel": "White House panel delays hearing on Fed's Lisa Cook to Dec. 14",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/04/trump-federal-reserve-lisa-cook-hearing.html",
+      "zeit": "2026-11-05T01:11:26.000Z"
+    },
+    {
+      "titel": "Qualcomm&#x2019;s stock falls as twin forces pressure sales",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/qualcomms-stock-falls-as-twin-forces-pressure-sales-fa161159?mod=mw_rss_topstories",
+      "zeit": "2026-11-05T01:06:00.000Z"
+    },
+    {
+      "titel": "This year&#x2019;s worst-performing S&P 500 stock is finally seeing some major relief",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/this-years-worst-performing-s-p-500-stock-is-finally-seeing-some-major-relief-fff3fa85?mod=mw_rss_topstories",
+      "zeit": "2026-11-05T01:05:00.000Z"
+    },
+    {
+      "titel": "Figma&#x2019;s stock dips as investors worry that AI momentum is coming at a high price",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/figmas-stock-falls-as-investors-worry-that-ai-momentum-is-coming-at-a-high-price-1aa2134d?mod=mw_rss_topstories",
+      "zeit": "2026-11-05T01:03:00.000Z"
+    }
+  ],
+  "insider": [
+    {
+      "wertpapier": "Hilton Grand Vacations Inc. (HGV)",
+      "text": "2 Insider kauften für 0.60 Mio. $ (Handel 2026-11-03, gemeldet 2026-11-04)",
+      "link": "http://openinsider.com/HGV"
+    },
+    {
+      "wertpapier": "Proto Labs Inc (PRLB)",
+      "text": "2 Insider kauften für 0.10 Mio. $ (Handel 2026-11-02, gemeldet 2026-11-04)",
+      "link": "http://openinsider.com/PRLB"
+    },
+    {
+      "wertpapier": "Upbound Group, Inc. (UPBD)",
+      "text": "6 Insider kauften für 1.29 Mio. $ (Handel 2026-11-02, gemeldet 2026-11-04)",
+      "link": "http://openinsider.com/UPBD"
+    },
+    {
+      "wertpapier": "Autonation, Inc. (AN)",
+      "text": "3 Insider kauften für 1.43 Mio. $ (Handel 2026-11-03, gemeldet 2026-11-04)",
+      "link": "http://openinsider.com/AN"
+    },
+    {
+      "wertpapier": "Enphase Energy, Inc. (ENPH)",
+      "text": "2 Insider kauften für 0.30 Mio. $ (Handel 2026-11-02, gemeldet 2026-11-03)",
+      "link": "http://openinsider.com/ENPH"
+    },
+    {
+      "wertpapier": "Starz Entertainment Corp /Cn/ (STRZ)",
+      "text": "3 Insider kauften für 0.44 Mio. $ (Handel 2026-08-10, gemeldet 2026-11-03)",
+      "link": "http://openinsider.com/STRZ"
+    },
+    {
+      "wertpapier": "Alphatec Holdings, Inc. (ATEC)",
+      "text": "2 Insider kauften für 1.42 Mio. $ (Handel 2026-10-30, gemeldet 2026-11-02)",
+      "link": "http://openinsider.com/ATEC"
+    },
+    {
+      "wertpapier": "Oceanfirst Financial Corp (OCFC)",
+      "text": "2 Insider kauften für 0.27 Mio. $ (Handel 2026-10-30, gemeldet 2026-11-02)",
+      "link": "http://openinsider.com/OCFC"
+    },
+    {
+      "wertpapier": "Bladex, Inc. (BLX)",
+      "text": "3 Insider kauften für 0.27 Mio. $ (Handel 2026-10-30, gemeldet 2026-11-02)",
+      "link": "http://openinsider.com/BLX"
+    }
+  ],
+  "positionen": [
+    {
+      "id": "2026-11-04-auto-tbbb",
+      "name": "TBBB",
+      "meldungen": [
+        {
+          "titel": "TBBB: BBB Foods Same-Store Sales Jump 20.5%: Rapid Earnings Reaction",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=4239bea548f3b4b696748e165f36e22b3bd622f5d0d90a77c36e19242512c282",
+          "zeit": "2026-11-04T18:55:53.000Z",
+          "wertpapier": "TBBB"
+        },
+        {
+          "titel": "TBBB: What BBB Foods (TBBB) Said on Its Q3 Earnings Call",
+          "quelle": "Finnhub",
+          "link": "https://finnhub.io/api/news?id=948cece98dce0f0fcafae643ee1f2a5018f302bfb0a2c6035e4a7d80ea1b16ac",
+          "zeit": "2026-11-04T10:14:14.000Z",
+          "wertpapier": "TBBB"
+        }
+      ]
+    }
+  ],
+  "kandidaten": [
+    {
+      "name": "MDLN",
+      "ticker": "MDLN",
+      "score": 3.79,
+      "hinweis": "In 10 ähnlichen Fällen 5 im Plus, Ø -0,4 % nach 1 Woche",
+      "fakten": [
+        "EPS 0.44 vs. erwartet 0.3551 (+24 %) am 2026-11-04",
+        "Kursreaktion +18.4 % bestätigt die positive Überraschung (EPS 0.44 vs. erwartet 0.3551 (+24 %) am 2026-11-04)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "PFE",
+      "ticker": "PFE",
+      "score": 3.53,
+      "hinweis": "In 10 ähnlichen Fällen 5 im Plus, Ø -0,4 % nach 1 Woche",
+      "fakten": [
+        "EPS 0.87 vs. erwartet 0.7326 (+19 %) am 2026-11-03",
+        "Kursreaktion +2.6 % bestätigt die positive Überraschung (EPS 0.87 vs. erwartet 0.7326 (+19 %) am 2026-11-03)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "ALL",
+      "ticker": "ALL",
+      "score": 3.3,
+      "hinweis": "In 10 ähnlichen Fällen 5 im Plus, Ø -0,4 % nach 1 Woche",
+      "fakten": [
+        "EPS 9.76 vs. erwartet 6.9653 (+40 %) am 2026-11-04",
+        "Kursreaktion +2.9 % bestätigt die positive Überraschung (EPS 9.76 vs. erwartet 6.9653 (+40 %) am 2026-11-04)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "KHC",
+      "ticker": "KHC",
+      "score": 3.13,
+      "hinweis": "In 10 ähnlichen Fällen 5 im Plus, Ø -0,4 % nach 1 Woche",
+      "fakten": [
+        "EPS 0.53 vs. erwartet 0.4282 (+24 %) am 2026-11-04",
+        "Kursreaktion +3.8 % bestätigt die positive Überraschung (EPS 0.53 vs. erwartet 0.4282 (+24 %) am 2026-11-04)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Upbound Group, Inc.",
+      "ticker": "UPBD",
+      "score": 2.56,
+      "hinweis": "In 11 ähnlichen Fällen 5 im Plus, Ø -0,17 % nach 1 Woche",
+      "fakten": [
+        "6 Insider kauften für 1.29 Mio. $ (Handel 2026-11-02, gemeldet 2026-11-04)",
+        "Khouri Halim (EVP, CFO) kaufte für 0.25 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/UPBD"
+        }
+      ]
+    },
+    {
+      "name": "UBER",
+      "ticker": "UBER",
+      "score": -2.26,
+      "fakten": [
+        "EPS 0.25 vs. erwartet 0.9838 (-75 %) am 2026-11-04"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "CPNG",
+      "ticker": "CPNG",
+      "score": -2.26,
+      "fakten": [
+        "EPS -0.18 vs. erwartet -0.0306 (-488 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Autonation, Inc.",
+      "ticker": "AN",
+      "score": 2.2,
+      "hinweis": "In 11 ähnlichen Fällen 5 im Plus, Ø -0,17 % nach 1 Woche",
+      "fakten": [
+        "3 Insider kauften für 1.43 Mio. $ (Handel 2026-11-03, gemeldet 2026-11-04)",
+        "Szlosek Thomas A (EVP, CFO) kaufte für 0.30 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/AN"
+        }
+      ]
+    },
+    {
+      "name": "SMCI",
+      "ticker": "SMCI",
+      "score": 2.2,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 1.81 vs. erwartet 1.2587 (+44 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "AVT",
+      "ticker": "AVT",
+      "score": 2.01,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 3.63 vs. erwartet 2.8911 (+26 %) am 2026-11-04"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "CVS",
+      "ticker": "CVS",
+      "score": 2,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 2.09 vs. erwartet 1.667 (+25 %) am 2026-11-04"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Ohmyhome Ltd Ords A",
+      "ticker": "OMH",
+      "score": 1.99,
+      "hinweis": "In 5 ähnlichen Fällen 4 im Plus, Ø +22,56 % nach 1 Woche · ⚠ Pump-Verdacht: nur Stimmung/Rakete, nichts Handfestes",
+      "fakten": [
+        "Volatilitätspause (Limit Up/Down), 7 Stopps am 2026-11-04",
+        "+432.5 % am Vortag (US)",
+        "Tagesgewinner +433 % bei 15.55 $ (Volumen 89 Mio.) – spekulativ"
+      ],
+      "quellen": [
+        {
+          "name": "Nasdaq Trader",
+          "link": "https://www.nasdaqtrader.com/trader.aspx?id=TradeHalts"
+        }
+      ]
+    },
+    {
+      "name": "Hilton Grand Vacations Inc.",
+      "ticker": "HGV",
+      "score": 1.83,
+      "hinweis": "In 11 ähnlichen Fällen 5 im Plus, Ø -0,17 % nach 1 Woche",
+      "fakten": [
+        "2 Insider kauften für 0.60 Mio. $ (Handel 2026-11-03, gemeldet 2026-11-04)",
+        "Wang Mark D (See Remarks) kaufte für 0.50 Mio. $"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/HGV"
+        }
+      ]
+    },
+    {
+      "name": "ET",
+      "ticker": "ET",
+      "score": -1.83,
+      "fakten": [
+        "EPS 0.33 vs. erwartet 0.4151 (-21 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "AMD",
+      "ticker": "AMD",
+      "score": 1.81,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 2.09 vs. erwartet 1.969 (+6 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "SUN",
+      "ticker": "SUN",
+      "score": 1.61,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 2.07 vs. erwartet 1.7751 (+17 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "cbdMD, Inc.",
+      "ticker": "YCBD",
+      "score": 1.5,
+      "fakten": [
+        "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1644903/000143774926034991/0001437749-26-034991-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "DDC Enterprise Ltd",
+      "ticker": "DDC",
+      "score": -1.49,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)",
+        "Leerverkaufsquote 60 % (+42 Pkt. ggü. Vortag), Volumen 1 Mio. (2026-11-04)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1808110/000121390026116010/0001213900-26-116010-index.htm"
+        },
+        {
+          "name": "FINRA",
+          "link": "https://www.finra.org/finra-data/browse-catalog/short-sale-volume-data"
+        }
+      ]
+    },
+    {
+      "name": "Starz Entertainment Corp /Cn/",
+      "ticker": "STRZ",
+      "score": 1.39,
+      "hinweis": "In 17 ähnlichen Fällen 7 im Plus, Ø -1,28 % nach 1 Woche",
+      "fakten": [
+        "3 Insider kauften für 0.44 Mio. $ (Handel 2026-08-10, gemeldet 2026-11-03)"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/STRZ"
+        }
+      ]
+    },
+    {
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 1.37,
+      "hinweis": "In 17 ähnlichen Fällen 7 im Plus, Ø -1,28 % nach 1 Woche",
+      "fakten": [
+        "2 Insider kauften für 1.42 Mio. $ (Handel 2026-10-30, gemeldet 2026-11-02)"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/ATEC"
+        }
+      ]
+    },
+    {
+      "name": "PRU",
+      "ticker": "PRU",
+      "score": 1.36,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 3.77 vs. erwartet 3.3985 (+11 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Bladex, Inc.",
+      "ticker": "BLX",
+      "score": 1.33,
+      "hinweis": "In 17 ähnlichen Fällen 7 im Plus, Ø -1,28 % nach 1 Woche",
+      "fakten": [
+        "3 Insider kauften für 0.27 Mio. $ (Handel 2026-10-30, gemeldet 2026-11-02)"
+      ],
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/BLX"
+        }
+      ]
+    },
+    {
+      "name": "SUNC",
+      "ticker": "SUNC",
+      "score": -1.33,
+      "fakten": [
+        "EPS 1.55 vs. erwartet 1.71 (-9 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "ADM",
+      "ticker": "ADM",
+      "score": 1.29,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 1.77 vs. erwartet 1.6194 (+9 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Intel",
+      "ticker": "INTC",
+      "score": 1.28,
+      "fakten": [
+        "Why we're kicking CVS out of our Bullpen watchlist. Plus, Intel's CEO makes a stand",
+        "Tan Lip Bu (CEO) kaufte für 9.71 Mio. $",
+        "meistgehandelt am Vortag (-3.7655%, Volumen 187.559.635)"
+      ],
+      "quellen": [
+        {
+          "name": "Finnhub News",
+          "link": "https://www.cnbc.com/investingclub/2026/11/04/why-were-kicking-cvs-out-of-our-bullpen-watchlist-plus-intels-ceo-makes-a-stand.html"
+        },
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/INTC"
+        }
+      ]
+    },
+    {
+      "name": "AMGN",
+      "ticker": "AMGN",
+      "score": 1.28,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 6.45 vs. erwartet 5.9089 (+9 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "XYZ",
+      "ticker": "XYZ",
+      "score": 1.28,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 1.13 vs. erwartet 1.0354 (+9 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "MPC",
+      "ticker": "MPC",
+      "score": 1.27,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 26.93 vs. erwartet 24.7151 (+9 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "CDW",
+      "ticker": "CDW",
+      "score": 1.25,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 3.26 vs. erwartet 3.0092 (+8 %) am 2026-11-04"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "AMCR",
+      "ticker": "AMCR",
+      "score": -1.24,
+      "fakten": [
+        "EPS 0.95 vs. erwartet 1.0265 (-7 %) am 2026-11-04"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "MCK",
+      "ticker": "MCK",
+      "score": 1.24,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 11.68 vs. erwartet 10.8105 (+8 %) am 2026-11-04"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "MELI",
+      "ticker": "MELI",
+      "score": -1.24,
+      "fakten": [
+        "EPS 8.83 vs. erwartet 9.5488 (-8 %) am 2026-11-04"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "AIG",
+      "ticker": "AIG",
+      "score": 1.24,
+      "hinweis": "In 20 ähnlichen Fällen 9 im Plus, Ø +0,05 % nach 1 Woche",
+      "fakten": [
+        "EPS 2.06 vs. erwartet 1.9048 (+8 %) am 2026-11-03"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Cricut, Inc.",
+      "ticker": "CRCT",
+      "score": 1.22,
+      "hinweis": "In 5 ähnlichen Fällen 4 im Plus, Ø +22,56 % nach 1 Woche · ⚠ Pump-Verdacht: nur Stimmung/Rakete, nichts Handfestes",
+      "fakten": [
+        "+48.7 % am Vortag (US)",
+        "Tagesgewinner +49 % bei 8.88 $ (Volumen 8 Mio.) – spekulativ"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Meta Platforms, Inc.",
+      "ticker": "METAM",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526444440/0001193125-26-444440-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "ACADIA REALTY TRUST",
+      "ticker": "AKR",
+      "score": -1.2,
+      "fakten": [
+        "Shelf-Registrierung S-3: künftige Kapitalerhöhung möglich"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/899629/000119312526444495/0001193125-26-444495-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Youlife Group Inc.",
+      "ticker": "YOUL",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/2028177/000121390026115379/0001213900-26-115379-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Oculis Holding AG",
+      "ticker": "OCSAW",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1953530/000119312526445455/0001193125-26-445455-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "bioAffinity Technologies, Inc.",
+      "ticker": "BIAFW",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1712762/000149315226049806/0001493152-26-049806-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "MediWound Ltd.",
+      "ticker": "MDWD",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1593984/000117891326004989/0001178913-26-004989-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "ORACLE CORP",
+      "ticker": "ORCL-PD",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526445847/0001193125-26-445847-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "BIOVIE INC.",
+      "ticker": "BIVIW",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1580149/000152013826000450/0001520138-26-000450-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "BANCO BILBAO VIZCAYA ARGENTARIA, S.A.",
+      "ticker": "BBVXF",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/842180/000110465926122402/0001104659-26-122402-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Live Oak Bancshares, Inc.",
+      "ticker": "LOB-PA",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1462120/000119312526446370/0001193125-26-446370-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "UWM Holdings Corp",
+      "ticker": "UWMC",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1783398/000178339826000136/0001783398-26-000136-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Arcutis Biotherapeutics, Inc.",
+      "ticker": "ARQT",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1787306/000162828026070167/0001628280-26-070167-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Design Therapeutics, Inc.",
+      "ticker": "DSGN",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1807120/000119312526447373/0001193125-26-447373-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Annovis Bio, Inc.",
+      "ticker": "ANVS",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1477845/000110465926122761/0001104659-26-122761-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Curve DEX",
+      "ticker": "CRV",
+      "score": 1.2,
+      "fakten": [
+        "Curve DEX (CRV): Gebühren 7 Tage 2,3 Mio $, +236,1 % gegenüber der Vorwoche"
+      ],
+      "quellen": [
+        {
+          "name": "DefiLlama",
+          "link": "https://defillama.com/protocol/curve-dex"
+        }
+      ]
+    },
+    {
+      "name": "PancakeSwap AMM",
+      "ticker": "CAKE",
+      "score": 1.2,
+      "fakten": [
+        "PancakeSwap AMM (CAKE): Gebühren 7 Tage 1,1 Mio $, +164,5 % gegenüber der Vorwoche"
+      ],
+      "quellen": [
+        {
+          "name": "DefiLlama",
+          "link": "https://defillama.com/protocol/pancakeswap-amm"
+        }
+      ]
+    }
+  ]
+}

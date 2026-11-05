@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT1H
 X-PUBLISHED-TTL:PT1H
 BEGIN:VEVENT
 UID:2026-11-04-auto-tbbb@schattendepot
-DTSTAMP:20261104T211847Z
+DTSTAMP:20261105T045621Z
 SEQUENCE:0
 DTSTART:20261109T045357Z
 DTEND:20261109T050857Z
@@ -19,5 +19,31 @@ DESCRIPTION:Simulation – keine Anlageberatung.\nZiel 67\,53 €\nStop 54
  ot/#/order/2026-11-04-auto-tbbb
 URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-11-04-
  auto-tbbb
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-05-auto-mdln@schattendepot
+DTSTAMP:20261105T045621Z
+SEQUENCE:0
+DTSTART:20261110T045621Z
+DTEND:20261110T051121Z
+SUMMARY:Verkauf geplant: MDLN
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +19\,4 % netto\nSto
+ p −5\,0 %\nChance ~47 %\nhttps://pennyboberde-source.github.io/schatten
+ depot/#/order/2026-11-05-auto-mdln
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-11-05-
+ auto-mdln
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-05-auto-pfe@schattendepot
+DTSTAMP:20261105T045621Z
+SEQUENCE:0
+DTSTART:20261110T045621Z
+DTEND:20261110T051121Z
+SUMMARY:Verkauf geplant: PFE
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +19\,4 % netto\nSto
+ p −5\,0 %\nChance ~47 %\nhttps://pennyboberde-source.github.io/schatten
+ depot/#/order/2026-11-05-auto-pfe
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-11-05-
+ auto-pfe
 END:VEVENT
 END:VCALENDAR

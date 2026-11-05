@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-04T21:18:47.769Z",
+  "stand": "2026-11-05T04:56:21.404Z",
   "gesamt": {
     "anzahl": 10,
     "treffer": 5,
@@ -404,68 +404,68 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 317,
+      "anzahl": 357,
       "n1T": 175,
-      "n3T": 156,
-      "n1W": 54,
+      "n3T": 160,
+      "n1W": 97,
       "oe1h": 0.2,
       "oe1T": -0.25,
-      "oe3T": -41.69,
-      "oe1W": 1.21,
-      "oe10T": null,
+      "oe3T": -41,
+      "oe1W": -61.48,
+      "oe10T": 0.9,
       "oe1M": null,
       "quote1T": 50.9,
-      "quote3T": 40.4,
-      "quote1W": 50
+      "quote3T": 40.6,
+      "quote1W": 50.5
     },
     "nachSignalTyp": {
       "gewinn_ueberraschung": {
-        "anzahl": 85,
+        "anzahl": 102,
         "n1T": 55,
         "n3T": 55,
-        "n1W": 20,
+        "n1W": 41,
         "oe1h": 0.19,
         "oe1T": 0.8,
         "oe3T": 0.65,
-        "oe1W": 0.05,
-        "oe10T": null,
+        "oe1W": 1.15,
+        "oe10T": -0.95,
         "oe1M": null,
         "quote1T": 61.8,
         "quote3T": 50.9,
-        "quote1W": 45
+        "quote1W": 51.2
       },
       "insider_cluster_kauf": {
-        "anzahl": 46,
+        "anzahl": 52,
         "n1T": 34,
-        "n3T": 31,
-        "n1W": 17,
+        "n3T": 32,
+        "n1W": 24,
         "oe1h": 0,
         "oe1T": 0.67,
-        "oe3T": -1.55,
-        "oe1W": -1.28,
-        "oe10T": null,
+        "oe3T": -1.43,
+        "oe1W": -1.56,
+        "oe10T": 2.94,
         "oe1M": null,
         "quote1T": 55.9,
-        "quote3T": 38.7,
-        "quote1W": 41.2
+        "quote3T": 40.6,
+        "quote1W": 41.7
       },
       "insider_kauf": {
-        "anzahl": 45,
+        "anzahl": 49,
         "n1T": 34,
-        "n3T": 29,
-        "n1W": 15,
+        "n3T": 31,
+        "n1W": 26,
         "oe1h": 0,
         "oe1T": 0.41,
-        "oe3T": -1.79,
-        "oe1W": 0.61,
-        "oe10T": null,
+        "oe3T": -1.83,
+        "oe1W": -1.87,
+        "oe10T": 2.11,
         "oe1M": null,
         "quote1T": 67.6,
-        "quote3T": 48.3,
-        "quote1W": 53.3
+        "quote3T": 48.4,
+        "quote1W": 50
       },
       "verwaesserung": {
-        "anzahl": 38,
+        "anzahl": 45,
         "n1T": 2,
         "n3T": 0,
         "n1W": 0,
@@ -480,49 +480,79 @@
         "quote1W": null
       },
       "kursrakete": {
-        "anzahl": 30,
+        "anzahl": 32,
         "n1T": 22,
         "n3T": 17,
-        "n1W": 7,
+        "n1W": 12,
         "oe1h": 0.84,
         "oe1T": -0.3,
         "oe3T": -4.09,
-        "oe1W": 8.44,
+        "oe1W": -4.97,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 45.5,
         "quote3T": 41.2,
-        "quote1W": 57.1
+        "quote1W": 58.3
       },
       "nachricht": {
-        "anzahl": 28,
+        "anzahl": 29,
         "n1T": 18,
         "n3T": 18,
-        "n1W": 5,
+        "n1W": 9,
         "oe1h": 0,
         "oe1T": 0.48,
         "oe3T": -1.19,
-        "oe1W": 2.36,
-        "oe10T": null,
+        "oe1W": -0.21,
+        "oe10T": -0.33,
         "oe1M": null,
         "quote1T": 27.8,
         "quote3T": 38.9,
-        "quote1W": 80
+        "quote1W": 66.7
       },
       "nachzahlen_drift": {
-        "anzahl": 21,
+        "anzahl": 25,
         "n1T": 16,
         "n3T": 16,
-        "n1W": 11,
+        "n1W": 14,
         "oe1h": 0,
         "oe1T": -0.43,
         "oe3T": -2.11,
-        "oe1W": -0.64,
-        "oe10T": null,
+        "oe1W": -1.75,
+        "oe10T": -5.06,
         "oe1M": null,
         "quote1T": 50,
         "quote3T": 37.5,
-        "quote1W": 45.5
+        "quote1W": 50
+      },
+      "gewinn_enttaeuschung": {
+        "anzahl": 21,
+        "n1T": 8,
+        "n3T": 8,
+        "n1W": 5,
+        "oe1h": 0,
+        "oe1T": -1.38,
+        "oe3T": -3.43,
+        "oe1W": -8.26,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 50,
+        "quote3T": 25,
+        "quote1W": 20
+      },
+      "tagesgewinner": {
+        "anzahl": 20,
+        "n1T": 9,
+        "n3T": 8,
+        "n1W": 7,
+        "oe1h": 0,
+        "oe1T": -5.73,
+        "oe3T": 10.73,
+        "oe1W": 7.53,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 44.4,
+        "quote3T": 62.5,
+        "quote1W": 71.4
       },
       "krypto_einnahmen": {
         "anzahl": 20,
@@ -554,53 +584,23 @@
         "quote3T": 20,
         "quote1W": null
       },
-      "tagesgewinner": {
-        "anzahl": 18,
-        "n1T": 9,
-        "n3T": 7,
-        "n1W": 5,
-        "oe1h": 0,
-        "oe1T": -5.73,
-        "oe3T": 19.92,
-        "oe1W": 22.56,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 44.4,
-        "quote3T": 71.4,
-        "quote1W": 80
-      },
-      "gewinn_enttaeuschung": {
-        "anzahl": 15,
-        "n1T": 8,
-        "n3T": 8,
-        "n1W": 1,
-        "oe1h": 0,
-        "oe1T": -1.38,
-        "oe3T": -3.43,
-        "oe1W": -3.05,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 50,
-        "quote3T": 25,
-        "quote1W": 0
-      },
       "handelsstopp": {
-        "anzahl": 10,
+        "anzahl": 11,
         "n1T": 5,
         "n3T": 3,
-        "n1W": 0,
+        "n1W": 1,
         "oe1h": 0,
         "oe1T": -7.94,
         "oe3T": -2102.82,
-        "oe1W": null,
+        "oe1W": -5921.13,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 20,
         "quote3T": 0,
-        "quote1W": null
+        "quote1W": 0
       },
       "uebernahmeangebot": {
-        "anzahl": 10,
+        "anzahl": 11,
         "n1T": 0,
         "n3T": 0,
         "n1W": 0,
@@ -615,33 +615,33 @@
         "quote1W": null
       },
       "volumen_ungewoehnlich": {
-        "anzahl": 9,
+        "anzahl": 10,
         "n1T": 5,
         "n3T": 5,
-        "n1W": 3,
+        "n1W": 4,
         "oe1h": 0,
         "oe1T": -1.4,
         "oe3T": 1.17,
-        "oe1W": 6.64,
-        "oe10T": null,
+        "oe1W": 3.38,
+        "oe10T": -14.68,
         "oe1M": null,
         "quote1T": 40,
         "quote3T": 60,
-        "quote1W": 66.7
+        "quote1W": 50
       },
       "grossauftrag": {
         "anzahl": 9,
         "n1T": 2,
-        "n3T": 0,
+        "n3T": 1,
         "n1W": 0,
         "oe1h": 0,
         "oe1T": -1.29,
-        "oe3T": null,
+        "oe3T": -9.07,
         "oe1W": null,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 50,
-        "quote3T": null,
+        "quote3T": 0,
         "quote1W": null
       },
       "tagesverlierer": {
@@ -663,16 +663,16 @@
         "anzahl": 7,
         "n1T": 1,
         "n3T": 1,
-        "n1W": 0,
+        "n1W": 1,
         "oe1h": 0,
         "oe1T": 12.64,
         "oe3T": 14.13,
-        "oe1W": null,
+        "oe1W": 11.07,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 100,
         "quote3T": 100,
-        "quote1W": null
+        "quote1W": 100
       },
       "funding_extrem": {
         "anzahl": 6,
@@ -698,14 +698,14 @@
         "oe1T": 3.36,
         "oe3T": 1.4,
         "oe1W": 0.01,
-        "oe10T": null,
+        "oe10T": 3.77,
         "oe1M": null,
         "quote1T": 75,
         "quote3T": 25,
         "quote1W": 25
       },
       "leerverkauf_quote": {
-        "anzahl": 3,
+        "anzahl": 4,
         "n1T": 1,
         "n3T": 1,
         "n1W": 0,
@@ -728,7 +728,7 @@
         "oe1T": 2.77,
         "oe3T": 3.74,
         "oe1W": -1.68,
-        "oe10T": null,
+        "oe10T": 9.7,
         "oe1M": null,
         "quote1T": 50,
         "quote3T": 50,
@@ -737,32 +737,32 @@
       "quartalstermin": {
         "anzahl": 2,
         "n1T": 1,
-        "n3T": 0,
+        "n3T": 1,
         "n1W": 0,
         "oe1h": 0,
         "oe1T": 0.66,
-        "oe3T": null,
+        "oe3T": 4.11,
         "oe1W": null,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 100,
-        "quote3T": null,
+        "quote3T": 100,
         "quote1W": null
       },
       "leerverkauf_aenderung": {
         "anzahl": 1,
         "n1T": 1,
         "n3T": 1,
-        "n1W": 0,
+        "n1W": 1,
         "oe1h": 0,
         "oe1T": -40.85,
         "oe3T": -6308.45,
-        "oe1W": null,
+        "oe1W": -5921.13,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
         "quote3T": 0,
-        "quote1W": null
+        "quote1W": 0
       },
       "cot_extrem": {
         "anzahl": 1,
@@ -797,79 +797,94 @@
     },
     "nachQuelle": {
       "Finnhub": {
-        "anzahl": 100,
+        "anzahl": 123,
         "n1T": 62,
-        "n3T": 61,
-        "n1W": 19,
+        "n3T": 62,
+        "n1W": 43,
         "oe1h": 0.16,
         "oe1T": 0.33,
-        "oe3T": -0.24,
-        "oe1W": -1.35,
-        "oe10T": null,
+        "oe3T": -0.17,
+        "oe1W": -0.61,
+        "oe10T": -0.95,
         "oe1M": null,
         "quote1T": 58.1,
-        "quote3T": 44.3,
-        "quote1W": 36.8
+        "quote3T": 45.2,
+        "quote1W": 44.2
       },
       "OpenInsider": {
-        "anzahl": 66,
+        "anzahl": 73,
         "n1T": 48,
-        "n3T": 42,
-        "n1W": 21,
+        "n3T": 45,
+        "n1W": 34,
         "oe1h": 0,
         "oe1T": 0.27,
-        "oe3T": -2.22,
-        "oe1W": -0.52,
-        "oe10T": null,
+        "oe3T": -2.13,
+        "oe1W": -2.01,
+        "oe10T": 2.94,
         "oe1M": null,
         "quote1T": 60.4,
-        "quote3T": 40.5,
-        "quote1W": 47.6
-      },
-      "FMP": {
-        "anzahl": 53,
-        "n1T": 29,
-        "n3T": 27,
-        "n1W": 16,
-        "oe1h": 0,
-        "oe1T": -1.21,
-        "oe3T": 6.85,
-        "oe1W": 8.94,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 58.6,
-        "quote3T": 66.7,
-        "quote1W": 68.8
+        "quote3T": 42.2,
+        "quote1W": 47.1
       },
       "SEC EDGAR": {
-        "anzahl": 52,
+        "anzahl": 60,
         "n1T": 3,
-        "n3T": 0,
+        "n3T": 1,
         "n1W": 0,
         "oe1h": 0,
         "oe1T": -0.45,
-        "oe3T": null,
+        "oe3T": -9.07,
         "oe1W": null,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 66.7,
-        "quote3T": null,
+        "quote3T": 0,
         "quote1W": null
       },
+      "FMP": {
+        "anzahl": 57,
+        "n1T": 29,
+        "n3T": 28,
+        "n1W": 24,
+        "oe1h": 0,
+        "oe1T": -1.21,
+        "oe3T": 4.69,
+        "oe1W": 4.96,
+        "oe10T": -0.35,
+        "oe1M": null,
+        "quote1T": 58.6,
+        "quote3T": 64.3,
+        "quote1W": 70.8
+      },
       "Alpha Vantage": {
-        "anzahl": 24,
+        "anzahl": 27,
         "n1T": 16,
         "n3T": 15,
-        "n1W": 8,
+        "n1W": 14,
         "oe1h": 0,
         "oe1T": 0.88,
         "oe3T": 6.14,
-        "oe1W": 16.59,
-        "oe10T": null,
+        "oe1W": 0.54,
+        "oe10T": -14.68,
         "oe1M": null,
         "quote1T": 56.3,
         "quote3T": 66.7,
-        "quote1W": 75
+        "quote1W": 64.3
+      },
+      "Finnhub Kurs": {
+        "anzahl": 25,
+        "n1T": 16,
+        "n3T": 16,
+        "n1W": 14,
+        "oe1h": 0,
+        "oe1T": -0.43,
+        "oe3T": -2.11,
+        "oe1W": -1.75,
+        "oe10T": -5.06,
+        "oe1M": null,
+        "quote1T": 50,
+        "quote3T": 37.5,
+        "quote1W": 50
       },
       "Upbit": {
         "anzahl": 23,
@@ -885,21 +900,6 @@
         "quote1T": 55.6,
         "quote3T": 17.6,
         "quote1W": null
-      },
-      "Finnhub Kurs": {
-        "anzahl": 21,
-        "n1T": 16,
-        "n3T": 16,
-        "n1W": 11,
-        "oe1h": 0,
-        "oe1T": -0.43,
-        "oe3T": -2.11,
-        "oe1W": -0.64,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 50,
-        "quote3T": 37.5,
-        "quote1W": 45.5
       },
       "DefiLlama": {
         "anzahl": 20,
@@ -920,61 +920,61 @@
         "anzahl": 14,
         "n1T": 9,
         "n3T": 9,
-        "n1W": 4,
+        "n1W": 5,
         "oe1h": 0,
         "oe1T": 1.44,
         "oe3T": 1.21,
-        "oe1W": 2.56,
-        "oe10T": null,
+        "oe1W": 4.26,
+        "oe10T": -0.33,
         "oe1M": null,
         "quote1T": 44.4,
         "quote3T": 44.4,
-        "quote1W": 75
+        "quote1W": 80
       },
       "MarketWatch": {
         "anzahl": 12,
         "n1T": 7,
         "n3T": 7,
-        "n1W": 2,
+        "n1W": 3,
         "oe1h": 0,
         "oe1T": 2.4,
         "oe3T": 1.91,
-        "oe1W": 0.77,
-        "oe10T": null,
+        "oe1W": 4.2,
+        "oe10T": -0.33,
         "oe1M": null,
         "quote1T": 42.9,
         "quote3T": 42.9,
-        "quote1W": 50
+        "quote1W": 66.7
       },
       "Nasdaq Trader": {
-        "anzahl": 10,
+        "anzahl": 11,
         "n1T": 5,
         "n3T": 3,
-        "n1W": 0,
+        "n1W": 1,
         "oe1h": 0,
         "oe1T": -7.94,
         "oe3T": -2102.82,
-        "oe1W": null,
+        "oe1W": -5921.13,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 20,
         "quote3T": 0,
-        "quote1W": null
+        "quote1W": 0
       },
       "Handelsblatt Finanzen": {
         "anzahl": 9,
         "n1T": 6,
         "n3T": 6,
-        "n1W": 2,
+        "n1W": 3,
         "oe1h": 0,
         "oe1T": 1.63,
         "oe3T": -0.33,
-        "oe1W": 1.22,
+        "oe1W": 3.63,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 66.7,
         "quote3T": 66.7,
-        "quote1W": 50
+        "quote1W": 66.7
       },
       "gettex-Scanner": {
         "anzahl": 9,
@@ -995,16 +995,16 @@
         "anzahl": 7,
         "n1T": 1,
         "n3T": 1,
-        "n1W": 0,
+        "n1W": 1,
         "oe1h": 0,
         "oe1T": 12.64,
         "oe3T": 14.13,
-        "oe1W": null,
+        "oe1W": 11.07,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 100,
         "quote3T": 100,
-        "quote1W": null
+        "quote1W": 100
       },
       "Kraken Futures": {
         "anzahl": 6,
@@ -1021,6 +1021,21 @@
         "quote3T": 33.3,
         "quote1W": null
       },
+      "Finnhub News": {
+        "anzahl": 5,
+        "n1T": 2,
+        "n3T": 2,
+        "n1W": 1,
+        "oe1h": 0,
+        "oe1T": 7.02,
+        "oe3T": 7.74,
+        "oe1W": 11.07,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 100,
+        "quote3T": 100,
+        "quote1W": 100
+      },
       "Finnhub Analysten": {
         "anzahl": 4,
         "n1T": 4,
@@ -1030,7 +1045,7 @@
         "oe1T": 3.36,
         "oe3T": 1.4,
         "oe1W": 0.01,
-        "oe10T": null,
+        "oe10T": 3.77,
         "oe1M": null,
         "quote1T": 75,
         "quote3T": 25,
@@ -1045,59 +1060,29 @@
         "oe1T": -1.39,
         "oe3T": 0.5,
         "oe1W": 1.5,
-        "oe10T": null,
+        "oe10T": 4.69,
         "oe1M": null,
         "quote1T": 0,
         "quote3T": 33.3,
         "quote1W": 66.7
       },
-      "Finnhub News": {
-        "anzahl": 4,
-        "n1T": 2,
-        "n3T": 2,
-        "n1W": 0,
-        "oe1h": 0,
-        "oe1T": 7.02,
-        "oe3T": 7.74,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 100,
-        "quote3T": 100,
-        "quote1W": null
-      },
       "FAZ Finanzen": {
         "anzahl": 4,
         "n1T": 4,
         "n3T": 4,
-        "n1W": 0,
+        "n1W": 1,
         "oe1h": 0,
         "oe1T": 1.3,
         "oe3T": -1.03,
-        "oe1W": null,
+        "oe1W": 8.44,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 50,
         "quote3T": 75,
-        "quote1W": null
-      },
-      "BTC-ECHO": {
-        "anzahl": 3,
-        "n1T": 3,
-        "n3T": 3,
-        "n1W": 0,
-        "oe1h": 0,
-        "oe1T": 4.66,
-        "oe3T": 4.95,
-        "oe1W": null,
-        "oe10T": null,
-        "oe1M": null,
-        "quote1T": 66.7,
-        "quote3T": 66.7,
-        "quote1W": null
+        "quote1W": 100
       },
       "FINRA": {
-        "anzahl": 3,
+        "anzahl": 4,
         "n1T": 1,
         "n3T": 1,
         "n1W": 0,
@@ -1111,20 +1096,35 @@
         "quote3T": 0,
         "quote1W": null
       },
+      "BTC-ECHO": {
+        "anzahl": 3,
+        "n1T": 3,
+        "n3T": 3,
+        "n1W": 1,
+        "oe1h": 0,
+        "oe1T": 4.66,
+        "oe3T": 4.95,
+        "oe1W": 11.07,
+        "oe10T": null,
+        "oe1M": null,
+        "quote1T": 66.7,
+        "quote3T": 66.7,
+        "quote1W": 100
+      },
       "FINRA Short Interest": {
         "anzahl": 1,
         "n1T": 1,
         "n3T": 1,
-        "n1W": 0,
+        "n1W": 1,
         "oe1h": 0,
         "oe1T": -40.85,
         "oe3T": -6308.45,
-        "oe1W": null,
+        "oe1W": -5921.13,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 0,
         "quote3T": 0,
-        "quote1W": null
+        "quote1W": 0
       },
       "CFTC COT": {
         "anzahl": 1,
@@ -1144,51 +1144,51 @@
     },
     "nachRisiko": {
       "normal": {
-        "anzahl": 291,
+        "anzahl": 329,
         "n1T": 154,
-        "n3T": 139,
-        "n1W": 54,
+        "n3T": 143,
+        "n1W": 95,
         "oe1h": 0.12,
         "oe1T": -0.48,
-        "oe3T": -45.46,
-        "oe1W": 1.21,
-        "oe10T": null,
+        "oe3T": -44.58,
+        "oe1W": -61.82,
+        "oe10T": 0.9,
         "oe1M": null,
         "quote1T": 51.3,
-        "quote3T": 43.9,
-        "quote1W": 50
+        "quote3T": 44.1,
+        "quote1W": 50.5
       },
       "pump_verdacht": {
-        "anzahl": 26,
+        "anzahl": 28,
         "n1T": 21,
         "n3T": 17,
-        "n1W": 0,
+        "n1W": 2,
         "oe1h": 0.99,
         "oe1T": 1.38,
         "oe3T": -10.84,
-        "oe1W": null,
+        "oe1W": -45.59,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 47.6,
         "quote3T": 11.8,
-        "quote1W": null
+        "quote1W": 50
       }
     },
     "nachMarkt": {
       "us": {
-        "anzahl": 263,
+        "anzahl": 303,
         "n1T": 141,
-        "n3T": 128,
-        "n1W": 51,
+        "n3T": 132,
+        "n1W": 93,
         "oe1h": 0.21,
         "oe1T": -0.38,
-        "oe3T": -49.9,
-        "oe1W": 1.18,
-        "oe10T": null,
+        "oe3T": -48.81,
+        "oe1W": -64.28,
+        "oe10T": -0.08,
         "oe1M": null,
         "quote1T": 52.5,
-        "quote3T": 43,
-        "quote1W": 49
+        "quote3T": 43.2,
+        "quote1W": 49.5
       },
       "krypto": {
         "anzahl": 45,
@@ -1209,48 +1209,48 @@
         "anzahl": 9,
         "n1T": 5,
         "n3T": 5,
-        "n1W": 3,
+        "n1W": 4,
         "oe1h": 0,
         "oe1T": 1.33,
         "oe3T": 0.83,
-        "oe1W": 1.8,
-        "oe10T": null,
+        "oe1W": 3.46,
+        "oe10T": 9.7,
         "oe1M": null,
         "quote1T": 40,
         "quote3T": 60,
-        "quote1W": 66.7
+        "quote1W": 75
       }
     },
     "nachPhase": {
       "seitwaerts_ruhig": {
-        "anzahl": 165,
+        "anzahl": 205,
         "n1T": 47,
-        "n3T": 28,
+        "n3T": 32,
         "n1W": 0,
         "oe1h": 0.3,
         "oe1T": -1.28,
-        "oe3T": -4.38,
+        "oe3T": -5.59,
         "oe1W": null,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 42.6,
-        "quote3T": 25,
+        "quote3T": 28.1,
         "quote1W": null
       },
       "aufwaerts_ruhig": {
         "anzahl": 95,
         "n1T": 74,
         "n3T": 74,
-        "n1W": 0,
+        "n1W": 43,
         "oe1h": 0.17,
         "oe1T": -0.69,
         "oe3T": -88.06,
-        "oe1W": null,
+        "oe1W": -140.21,
         "oe10T": null,
         "oe1M": null,
         "quote1T": 54.1,
         "quote3T": 43.2,
-        "quote1W": null
+        "quote1W": 51.2
       },
       "unbekannt": {
         "anzahl": 57,
@@ -1261,7 +1261,7 @@
         "oe1T": 1.23,
         "oe3T": 2.52,
         "oe1W": 1.21,
-        "oe10T": null,
+        "oe10T": 0.9,
         "oe1M": null,
         "quote1T": 53.7,
         "quote3T": 44.4,
@@ -1289,18 +1289,18 @@
   },
   "prognose": {
     "anzahl": 50,
-    "n1T": 40,
-    "n3T": 20,
-    "n1W": 0,
+    "n1T": 42,
+    "n3T": 22,
+    "n1W": 9,
     "oe1h": -0.04,
-    "oe1T": 2.16,
-    "oe3T": 9.54,
-    "oe1W": null,
+    "oe1T": 1.85,
+    "oe3T": 9.03,
+    "oe1W": 15.79,
     "oe10T": null,
     "oe1M": null,
-    "quote1T": 45,
-    "quote3T": 70,
-    "quote1W": null
+    "quote1T": 42.9,
+    "quote3T": 72.7,
+    "quote1W": 66.7
   },
   "nachHerkunft": {
     "claude": {
@@ -1320,7 +1320,7 @@
       "summeNetto": -51.95
     }
   },
-  "zusammenfassung": "Gesamt: 10 Orders, Trefferquote 50 %, Ø -1.91 % nach Gebühren (erwartet waren Ø 0.59 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 9 Orders, Ø -0.57 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=10).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %; insider_kauf 66.7 %/Ø -0.63 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung 0.05 % (n=85); insider_cluster_kauf -1.28 % (n=46); insider_kauf 0.61 % (n=45); kursrakete 8.44 % (n=30); nachricht 2.36 % (n=28); nachzahlen_drift -0.64 % (n=21); tagesgewinner 22.56 % (n=18); gewinn_enttaeuschung -3.05 % (n=15); volumen_ungewoehnlich 6.64 % (n=9); tagesverlierer 10.6 % (n=8); analysten_hochstufung 0.01 % (n=5).\nAutopilot: 1 Orders, Quote 0 %, Ø -5.34 % · Claude: 9 Orders, Ø -1.53 %.\nClaudes Tagesprognose: 45 % Richtung richtig nach 1 Tag (n=40), Ø 2.16 %.\nVs. MSCI World (gleiche Zeiträume): Depot -173.85 € vs. ETF 28.92 €.\nAutopilot – bewiesene Signaltypen (kauft sie selbst): gewinn_ueberraschung/aktie 47.3 %, Ø 0.05 % (n=55).\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): upbit_warnung 61.5 % (Lift 4.24, n=13); nachricht 28 % (Lift 1.93, n=25); insider_cluster_kauf 23.5 % (Lift 1.62, n=17); insider_kauf 14 % (Lift 0.97, n=57).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -1,9 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): tagesgewinner Ø +22,6 % nach 1 Woche (n=18).\n- Schwächstes Signal: gewinn_enttaeuschung Ø -3,0 % nach 1 Woche (n=15) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 10 Orders, Trefferquote 50 %, Ø -1.91 % nach Gebühren (erwartet waren Ø 0.59 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 9 Orders, Ø -0.57 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 50 % (n=10).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %; insider_kauf 66.7 %/Ø -0.63 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung 1.15 % (n=102); insider_cluster_kauf -1.56 % (n=52); insider_kauf -1.87 % (n=49); kursrakete -4.97 % (n=32); nachricht -0.21 % (n=29); nachzahlen_drift -1.75 % (n=25); gewinn_enttaeuschung -8.26 % (n=21); tagesgewinner 7.53 % (n=20); handelsstopp -5921.13 % (n=11); volumen_ungewoehnlich 3.38 % (n=10); tagesverlierer 10.6 % (n=8); stimmung_social 11.07 % (n=7); analysten_hochstufung 0.01 % (n=5).\nAutopilot: 1 Orders, Quote 0 %, Ø -5.34 % · Claude: 9 Orders, Ø -1.53 %.\nClaudes Tagesprognose: 42.9 % Richtung richtig nach 1 Tag (n=42), Ø 1.85 %.\nVs. MSCI World (gleiche Zeiträume): Depot -173.85 € vs. ETF 28.92 €.\nAutopilot – bewiesene Signaltypen (kauft sie selbst): gewinn_ueberraschung/aktie 47.3 %, Ø 0.05 % (n=55).\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): upbit_warnung 55.2 % (Lift 3.75, n=29); volumen_ungewoehnlich 35.7 % (Lift 2.43, n=14); nachricht 34.8 % (Lift 2.36, n=46); handelsstopp 17.8 % (Lift 1.21, n=45).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -1,9 % → realistischer planen oder Ziele näher setzen.\n- Stärkstes Signal (auch ohne Kauf gemessen): tagesgewinner Ø +7,5 % nach 1 Woche (n=20).\n- Schwächstes Signal: handelsstopp Ø -5921,1 % nach 1 Woche (n=11) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "gewinn_ueberraschung",
@@ -1334,9 +1334,9 @@
     {
       "typ": "tagesgewinner",
       "gruppe": "aktie",
-      "faelle": 6,
-      "chance": 50,
-      "oeNetto": 22.64,
+      "faelle": 7,
+      "chance": 42.9,
+      "oeNetto": 11.66,
       "huerde": 0.6,
       "bewiesen": false
     },
@@ -1370,18 +1370,18 @@
     {
       "typ": "insider_cluster_kauf",
       "gruppe": "aktie",
-      "faelle": 31,
-      "chance": 32.3,
-      "oeNetto": -2.15,
+      "faelle": 32,
+      "chance": 34.4,
+      "oeNetto": -2.03,
       "huerde": 0.6,
       "bewiesen": false
     },
     {
       "typ": "insider_kauf",
       "gruppe": "aktie",
-      "faelle": 29,
-      "chance": 41.4,
-      "oeNetto": -2.39,
+      "faelle": 31,
+      "chance": 41.9,
+      "oeNetto": -2.43,
       "huerde": 0.6,
       "bewiesen": false
     },
@@ -1433,43 +1433,53 @@
   ],
   "zielStop": [
     {
-      "typ": "insider_kauf",
-      "faelle": 15,
-      "zielBruttoProzent": 12,
-      "zielNettoProzent": 11.4,
+      "typ": "kursrakete",
+      "faelle": 12,
+      "zielBruttoProzent": 20,
+      "zielNettoProzent": 19.4,
       "stopProzent": -3,
-      "oeNetto": 0.97,
-      "ohneRegelOeNetto": 0.01,
-      "huerde": 0.6
-    },
-    {
-      "typ": "insider_cluster_kauf",
-      "faelle": 17,
-      "zielBruttoProzent": 8,
-      "zielNettoProzent": 7.4,
-      "stopProzent": -3,
-      "oeNetto": 0.39,
-      "ohneRegelOeNetto": -1.88,
-      "huerde": 0.6
-    },
-    {
-      "typ": "nachzahlen_drift",
-      "faelle": 11,
-      "zielBruttoProzent": 8,
-      "zielNettoProzent": 7.4,
-      "stopProzent": -5,
-      "oeNetto": 0.21,
-      "ohneRegelOeNetto": -1.24,
+      "oeNetto": 2.99,
+      "ohneRegelOeNetto": -5.57,
       "huerde": 0.6
     },
     {
       "typ": "gewinn_ueberraschung",
-      "faelle": 20,
+      "faelle": 41,
+      "zielBruttoProzent": 20,
+      "zielNettoProzent": 19.4,
+      "stopProzent": -5,
+      "oeNetto": 1.4,
+      "ohneRegelOeNetto": 0.55,
+      "huerde": 0.6
+    },
+    {
+      "typ": "insider_kauf",
+      "faelle": 26,
       "zielBruttoProzent": 20,
       "zielNettoProzent": 19.4,
       "stopProzent": -3,
-      "oeNetto": -0.07,
-      "ohneRegelOeNetto": -0.55,
+      "oeNetto": 0.95,
+      "ohneRegelOeNetto": -2.47,
+      "huerde": 0.6
+    },
+    {
+      "typ": "nachzahlen_drift",
+      "faelle": 14,
+      "zielBruttoProzent": 8,
+      "zielNettoProzent": 7.4,
+      "stopProzent": -5,
+      "oeNetto": 0.36,
+      "ohneRegelOeNetto": -2.35,
+      "huerde": 0.6
+    },
+    {
+      "typ": "insider_cluster_kauf",
+      "faelle": 24,
+      "zielBruttoProzent": 8,
+      "zielNettoProzent": 7.4,
+      "stopProzent": -3,
+      "oeNetto": 0.36,
+      "ohneRegelOeNetto": -2.16,
       "huerde": 0.6
     }
   ],
@@ -1490,7 +1500,7 @@
         "hebelGrenze": 0.1
       },
       "volltreffer": {
-        "anteil": 3.6,
+        "anteil": 7.3,
         "faelle": 55,
         "schwelle": 15
       }
@@ -1545,10 +1555,10 @@
         "richtung": "mit",
         "hebel": 1,
         "horizont": "r3T",
-        "faelle": 31,
-        "chance": 32.3,
-        "oeNetto": -2.15,
-        "wertung": -3.41,
+        "faelle": 32,
+        "chance": 34.4,
+        "oeNetto": -2.03,
+        "wertung": -3.25,
         "knockout": 0,
         "hebelGrenze": 1
       },
@@ -1587,15 +1597,15 @@
         "richtung": "mit",
         "hebel": 1,
         "horizont": "r3T",
-        "faelle": 29,
-        "chance": 41.4,
-        "oeNetto": -2.39,
-        "wertung": -4.67,
+        "faelle": 31,
+        "chance": 41.9,
+        "oeNetto": -2.43,
+        "wertung": -4.59,
         "knockout": 0,
         "hebelGrenze": 1
       },
       "volltreffer": {
-        "anteil": 0,
+        "anteil": 2.9,
         "faelle": 34,
         "schwelle": 15
       }
@@ -1629,12 +1639,12 @@
         "richtung": "mit",
         "hebel": 1,
         "horizont": "r3T",
-        "faelle": 6,
-        "chance": 50,
-        "oeNetto": 22.64,
-        "wertung": -5.16,
+        "faelle": 7,
+        "chance": 42.9,
+        "oeNetto": 11.66,
+        "wertung": -14.27,
         "knockout": 0,
-        "hebelGrenze": 0.2
+        "hebelGrenze": 0.1
       },
       "volltreffer": {
         "anteil": 28.6,
@@ -1658,7 +1668,7 @@
         "hebelGrenze": 0
       },
       "volltreffer": {
-        "anteil": 18.8,
+        "anteil": 25,
         "faelle": 16,
         "schwelle": 15
       }
@@ -1740,8 +1750,8 @@
   ],
   "lernhinweise": [
     "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,6 %, erreicht Ø -1,9 % → realistischer planen oder Ziele näher setzen.",
-    "Stärkstes Signal (auch ohne Kauf gemessen): tagesgewinner Ø +22,6 % nach 1 Woche (n=18).",
-    "Schwächstes Signal: gewinn_enttaeuschung Ø -3,0 % nach 1 Woche (n=15) → nicht darauf verlassen."
+    "Stärkstes Signal (auch ohne Kauf gemessen): tagesgewinner Ø +7,5 % nach 1 Woche (n=20).",
+    "Schwächstes Signal: handelsstopp Ø -5921,1 % nach 1 Woche (n=11) → nicht darauf verlassen."
   ],
   "risikoBudget": {
     "hinweis": "Spekulative Orders (Small Caps, Penny Stocks, Kursraketen, Altcoins, Short-Turbos) – begrenzt, damit das Depot nicht nur daraus besteht. Seit S2 (Plan Datenkrake, 28.10.2026): bis 4 je Lauf, 70 %. Die Lernregel steuert innerhalb 10–70 % / 1–4 je Lauf nach.",
@@ -1754,51 +1764,87 @@
   "vorlauf": [
     {
       "typ": "upbit_warnung",
-      "quote": 61.5,
-      "lift": 4.24,
-      "signale": 13
+      "quote": 55.2,
+      "lift": 3.75,
+      "signale": 29
+    },
+    {
+      "typ": "volumen_ungewoehnlich",
+      "quote": 35.7,
+      "lift": 2.43,
+      "signale": 14
     },
     {
       "typ": "nachricht",
-      "quote": 28,
-      "lift": 1.93,
-      "signale": 25
-    },
-    {
-      "typ": "insider_cluster_kauf",
-      "quote": 23.5,
-      "lift": 1.62,
-      "signale": 17
-    },
-    {
-      "typ": "insider_kauf",
-      "quote": 14,
-      "lift": 0.97,
-      "signale": 57
+      "quote": 34.8,
+      "lift": 2.36,
+      "signale": 46
     },
     {
       "typ": "handelsstopp",
-      "quote": 12.5,
-      "lift": 0.86,
-      "signale": 16
+      "quote": 17.8,
+      "lift": 1.21,
+      "signale": 45
+    },
+    {
+      "typ": "insider_cluster_kauf",
+      "quote": 16.7,
+      "lift": 1.13,
+      "signale": 24
+    },
+    {
+      "typ": "insider_kauf",
+      "quote": 14.7,
+      "lift": 1,
+      "signale": 75
+    },
+    {
+      "typ": "stimmung_social",
+      "quote": 10,
+      "lift": 0.68,
+      "signale": 10
+    },
+    {
+      "typ": "nachzahlen_drift",
+      "quote": 9.1,
+      "lift": 0.62,
+      "signale": 11
+    },
+    {
+      "typ": "grossauftrag",
+      "quote": 7.7,
+      "lift": 0.52,
+      "signale": 13
     },
     {
       "typ": "gewinn_ueberraschung",
-      "quote": 7.7,
-      "lift": 0.53,
-      "signale": 39
+      "quote": 6.7,
+      "lift": 0.45,
+      "signale": 60
+    },
+    {
+      "typ": "quartalstermin",
+      "quote": 5.9,
+      "lift": 0.4,
+      "signale": 34
+    },
+    {
+      "typ": "verwaesserung",
+      "quote": 5.3,
+      "lift": 0.36,
+      "signale": 57
+    },
+    {
+      "typ": "leerverkauf_aenderung",
+      "quote": 4.3,
+      "lift": 0.3,
+      "signale": 23
     },
     {
       "typ": "leerverkauf_quote",
       "quote": 0,
       "lift": 0,
-      "signale": 10
-    },
-    {
-      "typ": "verwaesserung",
-      "quote": 0,
-      "lift": 0,
-      "signale": 31
+      "signale": 27
     }
   ]
 }

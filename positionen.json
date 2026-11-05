@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-04T21:18:47.769Z",
+  "stand": "2026-11-05T04:56:21.404Z",
   "offen": [
     {
       "id": "2026-11-04-auto-tbbb",
@@ -88,5 +88,118 @@
       }
     }
   ],
-  "vorgemerkt": []
+  "vorgemerkt": [
+    {
+      "id": "2026-11-05-auto-mdln",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-05T04:56:21.404Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "MDLN",
+          "isin": "",
+          "ticker": "MDLN",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "MDLN",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:MDLN: gewinn_ueberraschung, nachzahlen_drift (Score 3.79)",
+        "signalIds": [
+          "gewinn_ueberraschung:MDLN:2026-11-05",
+          "nachzahlen_drift:MDLN:2026-11-05"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -5,
+        "verkaufstermin": "2026-11-10T04:56:21.404Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (41 Fälle)"
+      },
+      "verkaufstermin": "2026-11-10T04:56:21.404Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-05-auto-pfe",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-05T04:56:21.404Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "PFE",
+          "isin": "",
+          "ticker": "PFE",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "PFE",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:PFE: gewinn_ueberraschung, nachzahlen_drift (Score 3.53)",
+        "signalIds": [
+          "gewinn_ueberraschung:PFE:2026-11-05",
+          "nachzahlen_drift:PFE:2026-11-05"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "FMP",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -5,
+        "verkaufstermin": "2026-11-10T04:56:21.404Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (41 Fälle)"
+      },
+      "verkaufstermin": "2026-11-10T04:56:21.404Z",
+      "anpassungen": []
+    }
+  ]
 }

@@ -1,0 +1,635 @@
+{
+  "stand": "2026-11-05T04:56:21.404Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:MDLN",
+      "name": "MDLN",
+      "ticker": "MDLN",
+      "score": 3.79,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:PFE",
+      "name": "PFE",
+      "ticker": "PFE",
+      "score": 3.53,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:ALL",
+      "name": "ALL",
+      "ticker": "ALL",
+      "score": 3.3,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:KHC",
+      "name": "KHC",
+      "ticker": "KHC",
+      "score": 3.13,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:UPBD",
+      "name": "Upbound Group, Inc.",
+      "ticker": "UPBD",
+      "score": 2.56,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:UBER",
+      "name": "UBER",
+      "ticker": "UBER",
+      "score": -2.26,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CPNG",
+      "name": "CPNG",
+      "ticker": "CPNG",
+      "score": -2.26,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AN",
+      "name": "Autonation, Inc.",
+      "ticker": "AN",
+      "score": 2.2,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SMCI",
+      "name": "SMCI",
+      "ticker": "SMCI",
+      "score": 2.2,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AVT",
+      "name": "AVT",
+      "ticker": "AVT",
+      "score": 2.01,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CVS",
+      "name": "CVS",
+      "ticker": "CVS",
+      "score": 2,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:OMH",
+      "name": "Ohmyhome Ltd Ords A",
+      "ticker": "OMH",
+      "pump": true,
+      "score": 1.99,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:HGV",
+      "name": "Hilton Grand Vacations Inc.",
+      "ticker": "HGV",
+      "score": 1.83,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ET",
+      "name": "ET",
+      "ticker": "ET",
+      "score": -1.83,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AMD",
+      "name": "AMD",
+      "ticker": "AMD",
+      "score": 1.81,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:SUN",
+      "name": "SUN",
+      "ticker": "SUN",
+      "score": 1.61,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:YCBD",
+      "name": "cbdMD, Inc.",
+      "ticker": "YCBD",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:DDC",
+      "name": "DDC Enterprise Ltd",
+      "ticker": "DDC",
+      "score": -1.49,
+      "typen": [
+        "verwaesserung",
+        "leerverkauf_quote"
+      ],
+      "quellen": [
+        "SEC EDGAR",
+        "FINRA"
+      ]
+    },
+    {
+      "schluessel": "T:STRZ",
+      "name": "Starz Entertainment Corp /Cn/",
+      "ticker": "STRZ",
+      "score": 1.39,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 1.37,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:PRU",
+      "name": "PRU",
+      "ticker": "PRU",
+      "score": 1.36,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:BLX",
+      "name": "Bladex, Inc.",
+      "ticker": "BLX",
+      "score": 1.33,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SUNC",
+      "name": "SUNC",
+      "ticker": "SUNC",
+      "score": -1.33,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:ADM",
+      "name": "ADM",
+      "ticker": "ADM",
+      "score": 1.29,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:INTC",
+      "name": "Intel",
+      "ticker": "INTC",
+      "score": 1.28,
+      "typen": [
+        "nachricht",
+        "insider_kauf",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "Finnhub News",
+        "OpenInsider",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:AMGN",
+      "name": "AMGN",
+      "ticker": "AMGN",
+      "score": 1.28,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:XYZ",
+      "name": "XYZ",
+      "ticker": "XYZ",
+      "score": 1.28,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MPC",
+      "name": "MPC",
+      "ticker": "MPC",
+      "score": 1.27,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CDW",
+      "name": "CDW",
+      "ticker": "CDW",
+      "score": 1.25,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AMCR",
+      "name": "AMCR",
+      "ticker": "AMCR",
+      "score": -1.24,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MCK",
+      "name": "MCK",
+      "ticker": "MCK",
+      "score": 1.24,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MELI",
+      "name": "MELI",
+      "ticker": "MELI",
+      "score": -1.24,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AIG",
+      "name": "AIG",
+      "ticker": "AIG",
+      "score": 1.24,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CRCT",
+      "name": "Cricut, Inc.",
+      "ticker": "CRCT",
+      "pump": true,
+      "score": 1.22,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:METAM",
+      "name": "Meta Platforms, Inc.",
+      "ticker": "METAM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:AKR",
+      "name": "ACADIA REALTY TRUST",
+      "ticker": "AKR",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:YOUL",
+      "name": "Youlife Group Inc.",
+      "ticker": "YOUL",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:OCSAW",
+      "name": "Oculis Holding AG",
+      "ticker": "OCSAW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BIAFW",
+      "name": "bioAffinity Technologies, Inc.",
+      "ticker": "BIAFW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MDWD",
+      "name": "MediWound Ltd.",
+      "ticker": "MDWD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ORCL-PD",
+      "name": "ORACLE CORP",
+      "ticker": "ORCL-PD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BIVIW",
+      "name": "BIOVIE INC.",
+      "ticker": "BIVIW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BBVXF",
+      "name": "BANCO BILBAO VIZCAYA ARGENTARIA, S.A.",
+      "ticker": "BBVXF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LOB-PA",
+      "name": "Live Oak Bancshares, Inc.",
+      "ticker": "LOB-PA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:UWMC",
+      "name": "UWM Holdings Corp",
+      "ticker": "UWMC",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ARQT",
+      "name": "Arcutis Biotherapeutics, Inc.",
+      "ticker": "ARQT",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:DSGN",
+      "name": "Design Therapeutics, Inc.",
+      "ticker": "DSGN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ANVS",
+      "name": "Annovis Bio, Inc.",
+      "ticker": "ANVS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CRV",
+      "name": "Curve DEX",
+      "ticker": "CRV",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:CAKE",
+      "name": "PancakeSwap AMM",
+      "ticker": "CAKE",
+      "markt": "krypto",
+      "score": 1.2,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    }
+  ],
+  "anzahlSignale": 208
+}
