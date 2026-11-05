@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T19:52:28.726Z",
-  "anzahl": 294,
+  "stand": "2026-11-05T20:48:49.469Z",
+  "anzahl": 299,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -3865,6 +3865,72 @@
         "Upbit"
       ],
       "z": "2026-11-05T19:52:28.726Z"
+    },
+    {
+      "id": "handelsstopp:IGGY:2026-11-05",
+      "s": "T:IGGY",
+      "n": "AB International Growth ETF",
+      "t": "IGGY",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RFAI:2026-11-05",
+      "s": "T:RFAI",
+      "n": "RF Acq Cp II Ord",
+      "t": "RFAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0P849:2026-11-05",
+      "s": "I:DE000HF0P849",
+      "n": "DE000HF0P849",
+      "i": "DE000HF0P849",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.66,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T20:39:09.002Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0P7D0:2026-11-05",
+      "s": "I:DE000HF0P7D0",
+      "n": "DE000HF0P7D0",
+      "i": "DE000HF0P7D0",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T20:42:31.479Z"
+    },
+    {
+      "id": "upbit_warnung:POD:2026-11-05",
+      "s": "T:POD",
+      "n": "Dolphin",
+      "t": "POD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-05T20:48:49.469Z"
     }
   ]
 }
