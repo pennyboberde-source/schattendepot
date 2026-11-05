@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T08:58:03.019Z",
-  "anzahl": 214,
+  "stand": "2026-11-05T09:59:26.238Z",
+  "anzahl": 216,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2813,6 +2813,33 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-05T08:44:59.192Z"
+    },
+    {
+      "id": "nachricht:DB1:2026-11-05",
+      "s": "T:DB1",
+      "n": "Deutsche Börse",
+      "t": "DB1.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "FAZ Finanzen"
+      ],
+      "z": "2026-11-05T09:06:01.000Z"
+    },
+    {
+      "id": "kursrakete:CARDS:2026-11-05",
+      "s": "T:CARDS",
+      "n": "Collector Crypt",
+      "t": "CARDS",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-05T09:59:26.238Z"
     }
   ]
 }
