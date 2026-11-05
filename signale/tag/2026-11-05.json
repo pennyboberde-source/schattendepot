@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T13:05:00.710Z",
-  "anzahl": 225,
+  "stand": "2026-11-05T14:23:05.382Z",
+  "anzahl": 230,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2961,6 +2961,71 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-05T12:51:15.000Z"
+    },
+    {
+      "id": "nachricht:TBBB:2026-11-05",
+      "s": "T:TBBB",
+      "n": "TBBB",
+      "t": "TBBB",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-05T13:11:08.000Z"
+    },
+    {
+      "id": "verwaesserung:SCYX:2026-11-05",
+      "s": "T:SCYX",
+      "n": "SCYNEXIS INC",
+      "t": "SCYX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-05T13:30:23.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-05",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-05T13:34:14.000Z"
+    },
+    {
+      "id": "verwaesserung:ET-PI:2026-11-05",
+      "s": "T:ET-PI",
+      "n": "Energy Transfer LP",
+      "t": "ET-PI",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-05T13:52:46.000Z"
+    },
+    {
+      "id": "verwaesserung:NTRSO:2026-11-05",
+      "s": "T:NTRSO",
+      "n": "NORTHERN TRUST CORP",
+      "t": "NTRSO",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-05T14:03:09.000Z"
     }
   ]
 }
