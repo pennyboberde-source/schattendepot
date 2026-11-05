@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T04:56:21.404Z",
-  "anzahl": 208,
+  "stand": "2026-11-05T07:14:45.617Z",
+  "anzahl": 211,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2733,6 +2733,46 @@
         "Finnhub Kurs"
       ],
       "z": "2026-11-05T04:56:21.404Z"
+    },
+    {
+      "id": "nachricht:PFE:2026-11-05",
+      "s": "T:PFE",
+      "n": "PFE",
+      "t": "PFE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-05T05:20:04.000Z"
+    },
+    {
+      "id": "nachricht:CBK:2026-11-05",
+      "s": "T:CBK",
+      "n": "Commerzbank",
+      "t": "CBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-05T06:39:52.000Z"
+    },
+    {
+      "id": "neulistung:CARDS:2026-11-05",
+      "s": "T:CARDS",
+      "n": "Collector Crypt",
+      "t": "CARDS",
+      "m": "krypto",
+      "typ": "neulistung",
+      "r": 1,
+      "st": 0.6,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-05T07:14:45.617Z"
     }
   ]
 }
