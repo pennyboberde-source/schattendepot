@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-05T15:58:34.345Z",
-  "anzahl": 272,
+  "stand": "2026-11-05T17:10:41.208Z",
+  "anzahl": 284,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-03",
@@ -2797,7 +2797,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "Handelsblatt Finanzen"
       ],
       "z": "2026-11-05T08:10:55.000Z"
     },
@@ -3035,7 +3036,7 @@
       "t": "OMH",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3048,7 +3049,7 @@
       "t": "AEHL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3576,6 +3577,162 @@
         "Upbit"
       ],
       "z": "2026-11-05T15:58:34.345Z"
+    },
+    {
+      "id": "handelsstopp:NTCL:2026-11-05",
+      "s": "T:NTCL",
+      "n": "NETCLASS TECH INC Cl A Ord Shs",
+      "t": "NTCL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CHSN:2026-11-05",
+      "s": "T:CHSN",
+      "n": "Chanson Intl Hldg Cl A Ords",
+      "t": "CHSN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:HUHU:2026-11-05",
+      "s": "T:HUHU",
+      "n": "HUHUTECH Intl Gp Inc. Ord Shs",
+      "t": "HUHU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:XPON:2026-11-05",
+      "s": "T:XPON",
+      "n": "Expion Energy, Inc. CMN STK",
+      "t": "XPON",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TRIB:2026-11-05",
+      "s": "T:TRIB",
+      "n": "Trinity Biotech PLC ADR",
+      "t": "TRIB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:XTAI:2026-11-05",
+      "s": "T:XTAI",
+      "n": "Corgi Taiwan 2x Daily ETF",
+      "t": "XTAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-05T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-11-05",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-05T03:00:00.000Z"
+    },
+    {
+      "id": "nachricht:ETH:2026-11-05",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-05T16:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF1ZL61:2026-11-05",
+      "s": "I:DE000HF1ZL61",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF1ZL61",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.76,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T16:37:11.519Z"
+    },
+    {
+      "id": "kursrakete:DE000HF1ZLL4:2026-11-05",
+      "s": "I:DE000HF1ZLL4",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF1ZLL4",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-05T16:53:47.575Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-11-05",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-05T16:54:23.000Z"
+    },
+    {
+      "id": "nachricht:AMZN:2026-11-05",
+      "s": "T:AMZN",
+      "n": "Amazon",
+      "t": "AMZN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-05T16:58:02.000Z"
     }
   ]
 }
