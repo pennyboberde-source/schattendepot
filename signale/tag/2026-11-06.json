@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T11:51:17.645Z",
-  "anzahl": 306,
+  "stand": "2026-11-06T12:58:56.046Z",
+  "anzahl": 308,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -881,9 +881,10 @@
       "t": "GS",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "MarketWatch"
       ],
       "z": "2026-11-05T21:33:20.000Z"
     },
@@ -4027,6 +4028,32 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-06T00:55:06.000Z"
+    },
+    {
+      "id": "verwaesserung:METAM:2026-11-06",
+      "s": "T:METAM",
+      "n": "Meta Platforms, Inc.",
+      "t": "METAM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-06T12:35:49.000Z"
+    },
+    {
+      "id": "verwaesserung:AXG:2026-11-06",
+      "s": "T:AXG",
+      "n": "Solowin Holdings, Ltd.",
+      "t": "AXG",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-06T12:22:59.000Z"
     }
   ]
 }
