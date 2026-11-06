@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T10:59:40.098Z",
-  "anzahl": 305,
+  "stand": "2026-11-06T11:51:17.645Z",
+  "anzahl": 306,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -3332,7 +3332,7 @@
       "m": "krypto",
       "typ": "upbit_warnung",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Upbit"
       ],
@@ -3982,9 +3982,10 @@
       "t": "TSLA",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-11-06T03:20:43.000Z"
     },
@@ -4013,6 +4014,19 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-06T10:41:31.643Z"
+    },
+    {
+      "id": "verwaesserung:DTIL:2026-11-06",
+      "s": "T:DTIL",
+      "n": "PRECISION BIOSCIENCES INC",
+      "t": "DTIL",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-06T00:55:06.000Z"
     }
   ]
 }
