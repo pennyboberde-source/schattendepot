@@ -8,6 +8,8 @@ export interface Lagebild {
   erstellt: string;
   briefing?: string[];
   makro: string[];
+  /** Politik-Radar (seit 06.11.2026) */
+  politik?: string[];
   termine: { zeit: string; text: string }[];
   meldungen: { titel: string; quelle: string; link: string; wertpapier?: string }[];
   insider: { wertpapier: string; text: string; link: string }[];
@@ -52,6 +54,7 @@ export function BriefingView({ datum: gewaehlt }: { datum?: string }) {
                 <ol>{l.briefing.map((b) => <li key={b}>{b}</li>)}</ol>
               </Karte>
             )}
+            <PolitikKarte fallback={l.politik} />
             <div class="zwei-spalten">
               <Karte titel="Makro-Kurzlage">{l.makro.length ? <ul>{l.makro.map((m) => <li key={m}>{m}</li>)}</ul> : <Leer>–</Leer>}</Karte>
               <Karte titel="Termine heute">
@@ -159,5 +162,19 @@ export function BriefingView({ datum: gewaehlt }: { datum?: string }) {
         )}
       />
     </div>
+  );
+}
+
+/** Politik-Radar: stündlich aktualisierte Lage (zustand/politik.json), sonst die Zeilen aus dem Lagebild. */
+function PolitikKarte({ fallback }: { fallback?: string[] }) {
+  const pol = useDaten<{ lage?: { stand: string; zeilen: string[] } }>('zustand/politik.json');
+  const lage = pol.status === 'ok' ? pol.daten.lage : undefined;
+  const zeilen = lage?.zeilen ?? fallback ?? [];
+  if (!zeilen.length) return null;
+  const stand = lage?.stand;
+  return (
+    <Karte titel={`🏛️ Politik-Lage${stand ? ` (Stand ${new Date(stand).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin' })})` : ''}`}>
+      <ul>{zeilen.map((z) => <li key={z}>{z}</li>)}</ul>
+    </Karte>
   );
 }

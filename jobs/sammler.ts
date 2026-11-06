@@ -46,9 +46,10 @@ import { hotStuffAuswerten, quellenWaechter, tagesSignaleSpeichern } from './lib
 import { defiLlama, krakenFutures, upbit } from './quellen/kryptorand.ts';
 import { finraShortInterest, shortSeller } from './quellen/shortdaten.ts';
 import { appRaenge, cftcCot, handelsstopps, kryptoStimmung, polymarket } from './quellen/stimmungrand.ts';
+import { politikRadar } from './quellen/politik.ts';
 
 // Bestehende Quellen bleiben immer drin; neue werden nur hinten angehängt (Randquellen seit 28.10.2026).
-const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube, upbit, krakenFutures, defiLlama, finraShortInterest, shortSeller, handelsstopps, appRaenge, kryptoStimmung, polymarket, cftcCot, coinalyze, secVerwaesserung];
+const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube, upbit, krakenFutures, defiLlama, finraShortInterest, shortSeller, handelsstopps, appRaenge, kryptoStimmung, polymarket, cftcCot, coinalyze, secVerwaesserung, politikRadar];
 const STARK_NEGATIV = new Set(['prognose_senkung', 'gewinn_enttaeuschung', 'analysten_abstufung', 'shortreport']);
 const STARK = new Set([...STARK_NEGATIV, 'uebernahmeangebot', 'prognose_erhoehung']);
 
@@ -168,6 +169,8 @@ const pushes: PushNachricht[] = [];
   const qw = quellenWaechter([...status.values()], jetzt, system as { quellenWarnung?: string }, b.datum);
   if (qw) pushes.push(qw);
 }
+// Politik-Radar u. a.: Quellen dürfen bei großen Ereignissen selbst pushen (je Thema max. 1/Tag, siehe config/politik-themen.json)
+pushes.push(...ergebnisse.flatMap(([, r]) => r?.pushes ?? []));
 
 if (laufart === 'haupt' || laufart === 'samstag') {
   // S4: Marktphase des Tages (vor Lagebild und Statistik)
@@ -191,6 +194,7 @@ if (laufart === 'haupt' || laufart === 'samstag') {
     termine: ergebnisse.flatMap(([, r]) => r?.termine ?? []),
     meldungen: meldungen.filter((m) => !offen.some((o) => o.name === m.wertpapier)).sort((x, y) => (y.zeit ?? '').localeCompare(x.zeit ?? '')),
     insider: ergebnisse.flatMap(([, r]) => r?.insider ?? []),
+    politik: ergebnisse.flatMap(([, r]) => r?.politik ?? []),
     positionen: offen.map((o) => ({ id: o.id, name: o.name, meldungen: meldungen.filter((m) => m.wertpapier === o.name).slice(0, 3) })),
     kandidaten: top,
     quellen: ergebnisse.map(([q, r]) => ({ id: q.id, name: q.name, ok: !!r, signale: r?.signale.length ?? 0 })),

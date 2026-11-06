@@ -213,6 +213,8 @@ describe('Ausfallsicherung', () => {
     expect(lauf([], '2026-10-21T07:59:00Z', {}, { vorgemerkt: false }).ereignisse).toEqual([]);
     expect(lauf([], '2026-10-21T08:15:00Z', {}, { vorgemerkt: false, ausfallWarnung: true }).ereignisse).toEqual([]);
     expect(lauf([], '2026-10-24T08:00:00Z', {}, { vorgemerkt: false }).ereignisse).toEqual([]); // Samstag
+    // Morgenlauf lief bewusst ohne Order → keine Ausfall-Warnung
+    expect(lauf([], '2026-10-21T08:00:00Z', {}, { vorgemerkt: false, morgenlaufGelaufen: true }).ereignisse).toEqual([]);
   });
 });
 

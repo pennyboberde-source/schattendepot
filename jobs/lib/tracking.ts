@@ -5,7 +5,7 @@ import { berlin, handelstageZwischen } from '../../core/kalender.ts';
 import { pumpVerdacht, type KompaktSignal } from '../../core/datenkrake.ts';
 import { runde } from '../../core/geld.ts';
 import { kursbasisAusTicker } from '../../core/autopilot.ts';
-import type { TrackingEintrag } from '../../core/statistik.ts';
+import { plausibilitaetPruefen, type TrackingEintrag } from '../../core/statistik.ts';
 import { holeKurs, type Abrufprotokoll } from '../kurse/anbieter.ts';
 import { ladeConfig, leseJson, schreibeJson } from './dateien.ts';
 
@@ -59,7 +59,7 @@ export async function trackingAktualisieren(jetzt: Date, protokoll: Abrufprotoko
 
   // 1. Reaktionszeit: ~1 Stunde nach dem Start (50 Min. bis 6 Std.)
   for (const t of liste) {
-    if (!t.ticker || !t.start || !t.startZeit || typeof t.r1h === 'number') continue;
+    if (!t.ticker || !t.start || !t.startZeit || t.unplausibel || typeof t.r1h === 'number') continue;
     const min = (jetzt.getTime() - Date.parse(t.startZeit)) / 60000;
     if (min < 50 || min > 360) continue;
     const w = await kurs(t.ticker, t.markt);
@@ -68,7 +68,7 @@ export async function trackingAktualisieren(jetzt: Date, protokoll: Abrufprotoko
 
   // 2. Fällige Messungen nachtragen (älteste zuerst)
   for (const t of liste) {
-    if (!t.ticker || !t.start) continue;
+    if (!t.ticker || !t.start || t.unplausibel) continue;
     for (const [feld, tage] of FAELLIG) {
       if (typeof t[feld] === 'number' || handelstageZwischen(t.datum, heute) < tage) continue;
       const w = await kurs(t.ticker, t.markt);
@@ -109,6 +109,9 @@ export async function trackingAktualisieren(jetzt: Date, protokoll: Abrufprotoko
       });
     }
   }
+
+  // 3b. Unplausible Messungen verwerfen (Aktienzusammenlegung/Kursfehler, Fix 06.11.2026)
+  for (const t of liste) plausibilitaetPruefen(t);
 
   // 4. Aufräumen: ein Jahr behalten
   const grenze = new Date(jetzt.getTime() - 366 * 86400000).toISOString().slice(0, 10);

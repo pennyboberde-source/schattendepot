@@ -17,6 +17,7 @@ export type Strategie =
   | 'stimmungswelle'
   | 'uebernahme'
   | 'nachzahlen_drift'
+  | 'politik_ereignis'
   | 'spekulation'
   | 'sonstige';
 

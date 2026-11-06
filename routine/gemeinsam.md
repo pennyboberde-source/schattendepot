@@ -37,7 +37,7 @@ Du bist nur das Urteil. Kurse, Gebühren, Steuern, Ausführung, Statistik und Ge
   - Knock-out/Turbo: reales Produkt mit echter ISIN/WKN und Emittent; `hebel.basiswert.kursbasis` wie oben (**keine Indizes als Basiswert** – dafür gibt es keinen Gratis-Kurs; Aktien oder BTC/ETH nehmen). `basispreis`/`koSchwelle` in der Währung des Basiswerts, `bezugsverhaeltnis` (z. B. 0.1).
 - `steuertopf`: `aktien` für Aktien, sonst `sonstige`. Aktien-ETFs: `teilfreistellung: 0.3`.
 - `spreadKlasse`: `aktie_dax` (DAX/Large Caps DE), `aktie_large` (große EU/US), `aktie_neben`, `etf`, `hebel`, `krypto_etn`, `krypto`.
-- `strategie` aus: quartalszahlen_momentum, insider_kauf, analysten_hochstufung, ueberreaktion_rebound, sektor_rotation, makro_termin, chart_ausbruch, stimmungswelle, uebernahme, sonstige.
+- `strategie` aus: quartalszahlen_momentum, insider_kauf, analysten_hochstufung, ueberreaktion_rebound, sektor_rotation, makro_termin, chart_ausbruch, stimmungswelle, uebernahme, politik_ereignis, sonstige.
 - `signalIds`: IDs aus dem Lagebild (in eckigen Klammern), sonst leer. `quellen`: echte Links.
 - **Gegenprüfung (Pflicht bei jeder neuen Order):** `gegenpruefung: {"einwand": "woran könnte es scheitern (1 Satz)", "risiko": <% Wahrscheinlichkeit, dass genau das eintritt>}`. Ehrlich und konkret (z. B. „Zahlen schon eingepreist, Kurs lief +12 % vorab“). Wird gemessen: Orders mit starkem Einwand vs. schwachem; im Abschlussbericht sagst du, ob der Einwand eingetreten ist.
 - **Ziel/Stop:** Der Kontext zeigt je Signaltyp einen Vorschlag aus dem Schattenbuch („Ziel/Stop-Vorschlag“). Nutze ihn als Ausgangspunkt, wenn deine Order auf diesem Signaltyp beruht.
@@ -71,6 +71,13 @@ Das Depot ist fiktiv – kalkulierte Risiken sind ausdrücklich erwünscht, um d
 - Krypto: `upbit_warnung` (Warnhinweise der größten koreanischen Börse), `neulistung` (Upbit-Sprünge verpuffen oft binnen Stunden), `funding_extrem`/`open_interest_sprung` (Kraken Futures, Hebel im Markt), `krypto_einnahmen` (DefiLlama: echte Protokoll-Gebühren wachsen). Makro: Kimchi-Prämie, Stablecoin-Menge, Funding p. a.
 - `handelsstopp` (Nasdaq: Volatilitätspause/Nachrichtenstopp, T12/H10 = Warnzeichen), `app_ranking` (Coinbase/Robinhood-App steigt = Andrang von Privatanlegern), `stimmung_extrem` (Fear & Greed ≤ 15/≥ 85), `volatilitaet_sprung` (Deribit DVOL), `cot_extrem` (Spekulanten extrem positioniert, dreht oft). Makro zusätzlich: Polymarket-Wahrscheinlichkeiten, COT-Zeile.
 - Krypto nur über in Deutschland handelbare ETNs (ISIN prüfen), Rohstoffe über ETCs. Upbit-/Funding-/App-Signale sind Stimmung, kein Fakt.
+
+## Politik-Radar (seit 06.11.2026, Wunsch Nutzer)
+- Lagebild-Abschnitt **„Politik-Lage“** und Kontext-Zeile „Politik“: Risiko-Index 0–100, Themen (Zölle, Rüstung, Ukraine/Russland, Nahost/Öl, Chips/Rechenzentren, Krypto-Regulierung, Arzneimittelpreise, Wahlen/Haushalt, Sanktionen/China, Notenbanken) mit Meldungen und möglicher Wirkung (↑/↓), dazu Prognosemarkt-Sprünge (Polymarket ≥ 10 Pkt.). Quellen: Federal Register (US-Präsidenten-Dokumente), tagesschau, CNBC, Polymarket – stündlich vom Code.
+- **Pflicht bei jeder Order:** prüfe, ob ein Politik-Thema den Wert betrifft (Zölle → Autos/Apple, Rüstung/Waffenruhe → Rheinmetall/Hensoldt/Renk, Iran/Öl → Exxon/Lufthansa, Exportkontrollen/Rechenzentren → Chips). Wenn ja: in `risiken` oder `these` nennen. Bei Politik-Risiko „hoch“: kleinere Hebel, engere Termine, keine Käufe gegen die Politik-Richtung ohne starken Grund.
+- Signaltypen `politik_massnahme` und `politik_wahrscheinlichkeit` laufen ins Schattenbuch; erst wenn sie sich dort bewähren, kauft der Autopilot sie. Eine Order, die vor allem auf Politik beruht, bekommt `strategie: "politik_ereignis"` – so wird getrennt gemessen, ob Politik-Trades tragen.
+- **Abendlauf:** im Bericht/„Heute gelernt“ kurz festhalten, was Politik heute bewegt hat und ob das Radar es rechtzeitig gesehen hat (Beispiel 04./05.11.2026: US-Midterms → Dow +3 %, Chips −3 bis −8 % wegen Rechenzentren-Moratorien, Öl −8 % wegen erwarteter Iran-Lösung; Rheinmetall −20 % nach Gewinnwarnung und befürchteter Verschiebung des Boxer-Auftrags).
+- Websuche (höchstens die üblichen 5 im Morgenlauf) gezielt nutzen, wenn das Radar ein großes Thema meldet, das eine Position oder einen Top-Kandidaten betrifft.
 
 ## Ergebnis abliefern (immer gleich)
 1. Datei unter dem Namen schreiben, den `kontext.mjs` oben nennt (Format: `schema/entscheidung.schema.json`).

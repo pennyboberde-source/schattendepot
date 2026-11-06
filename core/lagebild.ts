@@ -8,6 +8,8 @@ export interface LagebildDaten {
   termine: { zeit: string; text: string }[];
   meldungen: { titel: string; quelle: string; link: string; wertpapier?: string; zeit?: string }[];
   insider: { wertpapier: string; text: string; link: string }[];
+  /** Politik-Radar (seit 06.11.2026): Risiko-Index, Themen, Prognosemarkt-Sprünge */
+  politik?: string[];
   positionen: { id: string; name: string; meldungen: { titel: string; quelle: string; link: string }[] }[];
   kandidaten: Kandidat[];
   quellen: { id: string; name: string; ok: boolean; signale: number }[];
@@ -22,6 +24,7 @@ export function lagebildJson(l: LagebildDaten, briefing?: string[]) {
     erstellt: l.erstellt,
     briefing,
     makro: l.makro,
+    politik: l.politik ?? [],
     termine: l.termine,
     meldungen: l.meldungen.slice(0, 15),
     insider: l.insider.slice(0, 10),
@@ -50,6 +53,7 @@ export function lagebildMarkdown(l: LagebildDaten, typNamen: Record<string, stri
   const z: string[] = [];
   z.push(`# Lagebild ${l.datum} (erstellt ${l.erstellt.slice(11, 16)} UTC)`, '', 'Simulation – keine Anlageberatung. Signal-IDs in [eckigen Klammern] in `signalIds` übernehmen.', '');
   z.push('## Makro-Kurzlage', ...(l.makro.length ? l.makro.slice(0, 22).map((m) => `- ${m}`) : ['- (keine Daten)']), '');
+  z.push('## Politik-Lage (Politik-Radar)', ...(l.politik?.length ? l.politik.slice(0, 12).map((m) => `- ${m}`) : ['- (keine Daten)']), '');
   z.push('## Termine heute', ...(l.termine.length ? l.termine.slice(0, 15).map((t) => `- ${t.zeit}: ${t.text}`) : ['- (keine)']), '');
   z.push('## Nachrichten zu offenen Positionen');
   if (!l.positionen.length) z.push('- (keine offenen Positionen)');

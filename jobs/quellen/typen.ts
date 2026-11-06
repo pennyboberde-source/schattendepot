@@ -1,5 +1,6 @@
 import type { Signal } from '../../core/signale.ts';
 import type { UniversumWert } from '../../core/texterkennung.ts';
+import type { PushNachricht } from '../../core/push.ts';
 
 export interface Meldung {
   titel: string;
@@ -15,6 +16,10 @@ export interface QuellenErgebnis {
   termine?: { zeit: string; text: string }[];
   meldungen?: Meldung[];
   insider?: { wertpapier: string; text: string; link: string }[];
+  /** Politik-Radar: Zeilen für den Lagebild-Abschnitt „Politik-Lage“ */
+  politik?: string[];
+  /** Pushes, die eine Quelle selbst auslöst (z. B. großes politisches Ereignis) */
+  pushes?: PushNachricht[];
   /** Anzahl HTTP-Abfragen (für Kontingent und Quellenstatus) */
   abfragen: number;
 }

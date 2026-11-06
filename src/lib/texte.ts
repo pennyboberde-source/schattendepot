@@ -11,6 +11,7 @@ export const STRATEGIE_TEXT: Record<Strategie, string> = {
   stimmungswelle: 'Stimmungswelle',
   uebernahme: 'Übernahme',
   nachzahlen_drift: 'Drift nach Quartalszahlen',
+  politik_ereignis: 'Politisches Ereignis',
   spekulation: 'Spekulation',
   sonstige: 'Sonstige',
 };

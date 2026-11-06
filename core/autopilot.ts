@@ -118,6 +118,8 @@ const STRATEGIE_JE_TYP: Record<string, Strategie> = {
   kursrakete: 'stimmungswelle',
   tagesgewinner: 'stimmungswelle',
   stimmung_social: 'stimmungswelle',
+  politik_massnahme: 'politik_ereignis',
+  politik_wahrscheinlichkeit: 'politik_ereignis',
 };
 
 function slug(s: string): string {

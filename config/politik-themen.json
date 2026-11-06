@@ -1,0 +1,541 @@
+{
+  "hinweis": "Politik-Radar (Wunsch Nutzer 05./06.11.2026): Thema → Stichwörter → betroffene Werte. Eine Schlagzeile zählt für ein Thema, wenn ein Stichwort vorkommt (klein geschrieben, Teilwort). Richtung je Schlagzeile: +1 bei Wort aus 'positiv', −1 bei Wort aus 'negativ', sonst 'standard' (0 = keine Richtung → nur Risiko-Index). 'richtung' beim Wert: +1 = profitiert von positiver Nachricht, −1 = leidet darunter. 'schwere' 1–3 fließt in den Politik-Risiko-Index. Alles misst das Schattenbuch (Signaltypen politik_massnahme, politik_wahrscheinlichkeit) – Autopilot erst nach Beweis.",
+  "maxAlterStd": 18,
+  "pushAbSchwere": 2,
+  "pushAbQuellen": 2,
+  "maxPushesJeTag": 3,
+  "polymarketSprungPkt": 10,
+  "risikoHochAb": 45,
+  "themen": [
+    {
+      "id": "zoelle_handel",
+      "name": "Zölle/Handelskonflikte",
+      "schwere": 3,
+      "stichwoerter": [
+        "zoll",
+        "zölle",
+        "zoelle",
+        "tariff",
+        "handelskrieg",
+        "trade war",
+        "section 232",
+        "section 301",
+        "strafzoll",
+        "adjusting imports",
+        "reciprocal",
+        "handelsabkommen",
+        "trade deal",
+        "einfuhr",
+        "zollstreit",
+        "zollpolitik",
+        "zollpaket",
+        "tariffs"
+      ],
+      "positiv": [
+        "einigung",
+        "abkommen",
+        "deal",
+        "aufgehoben",
+        "ausgesetzt",
+        "senkt",
+        "senkung",
+        "lockerung",
+        "ausnahme",
+        "pause",
+        "lifts",
+        "lifted",
+        "exemption",
+        "suspend",
+        "agreement",
+        "cuts tariff",
+        "truce"
+      ],
+      "negativ": [
+        "verhängt",
+        "erhöht",
+        "droht",
+        "neue zölle",
+        "verschärft",
+        "imposes",
+        "raises",
+        "hikes",
+        "threatens",
+        "escalat",
+        "retaliat",
+        "vergeltung",
+        "gegenzölle"
+      ],
+      "standard": -1,
+      "werte": [
+        {
+          "name": "Volkswagen",
+          "ticker": "VOW3.DE",
+          "markt": "eu",
+          "richtung": 1
+        },
+        {
+          "name": "BMW",
+          "ticker": "BMW.DE",
+          "markt": "eu",
+          "richtung": 1
+        },
+        {
+          "name": "Mercedes-Benz",
+          "ticker": "MBG.DE",
+          "markt": "eu",
+          "richtung": 1
+        },
+        {
+          "name": "Porsche",
+          "ticker": "P911.DE",
+          "markt": "eu",
+          "richtung": 1
+        },
+        {
+          "name": "Apple",
+          "ticker": "AAPL",
+          "markt": "us",
+          "richtung": 1
+        }
+      ]
+    },
+    {
+      "id": "ruestung",
+      "name": "Rüstung/Verteidigungsbudgets",
+      "schwere": 2,
+      "stichwoerter": [
+        "rüstung",
+        "ruestung",
+        "verteidigungshaushalt",
+        "verteidigungsetat",
+        "verteidigungsausgaben",
+        "bundeswehr",
+        "sondervermögen",
+        "nato",
+        "defense budget",
+        "defence spending",
+        "defense spending",
+        "aufrüstung",
+        "waffenlieferung",
+        "beschaffung",
+        "boxer",
+        "pentagon"
+      ],
+      "positiv": [
+        "erhöht",
+        "aufstock",
+        "bestellt",
+        "auftrag",
+        "milliarden für",
+        "beschlossen",
+        "boost",
+        "increase",
+        "order",
+        "approves"
+      ],
+      "negativ": [
+        "waffenstillstand",
+        "waffenruhe",
+        "ceasefire",
+        "frieden",
+        "peace",
+        "verschoben",
+        "verschiebt",
+        "verzögert",
+        "delay",
+        "kürzt",
+        "kürzung",
+        "gestoppt",
+        "cut"
+      ],
+      "standard": 1,
+      "werte": [
+        {
+          "name": "Rheinmetall",
+          "ticker": "RHM.DE",
+          "markt": "eu",
+          "richtung": 1
+        },
+        {
+          "name": "Hensoldt",
+          "ticker": "HAG.DE",
+          "markt": "eu",
+          "richtung": 1
+        },
+        {
+          "name": "Renk",
+          "ticker": "R3NK.DE",
+          "markt": "eu",
+          "richtung": 1
+        }
+      ]
+    },
+    {
+      "id": "ukraine_russland",
+      "name": "Ukraine/Russland (Krieg, Waffenruhe)",
+      "schwere": 3,
+      "stichwoerter": [
+        "ukraine",
+        "russland",
+        "russia",
+        "kreml",
+        "kremlin",
+        "selenskyj",
+        "zelensky",
+        "putin"
+      ],
+      "positiv": [
+        "waffenstillstand",
+        "waffenruhe",
+        "ceasefire",
+        "friedens",
+        "peace",
+        "verhandlung",
+        "talks",
+        "einigung",
+        "abkommen"
+      ],
+      "negativ": [
+        "angriff",
+        "offensive",
+        "eskal",
+        "attack",
+        "escalat",
+        "mobilmachung",
+        "drohne",
+        "rakete"
+      ],
+      "standard": 0,
+      "werte": [
+        {
+          "name": "Rheinmetall",
+          "ticker": "RHM.DE",
+          "markt": "eu",
+          "richtung": -1
+        },
+        {
+          "name": "Hensoldt",
+          "ticker": "HAG.DE",
+          "markt": "eu",
+          "richtung": -1
+        },
+        {
+          "name": "Renk",
+          "ticker": "R3NK.DE",
+          "markt": "eu",
+          "richtung": -1
+        }
+      ]
+    },
+    {
+      "id": "nahost_oel",
+      "name": "Nahost/Iran/Öl",
+      "schwere": 3,
+      "stichwoerter": [
+        "iran",
+        "hormus",
+        "hormuz",
+        "opec",
+        "israel",
+        "gaza",
+        "saudi",
+        "ölpreis",
+        "oil price",
+        "crude",
+        "rohöl"
+      ],
+      "positiv": [
+        "angriff",
+        "eskal",
+        "blockade",
+        "sanktion",
+        "attack",
+        "escalat",
+        "strike",
+        "förderkürzung",
+        "production cut"
+      ],
+      "negativ": [
+        "waffenruhe",
+        "waffenstillstand",
+        "ceasefire",
+        "einigung",
+        "deal",
+        "talks",
+        "verhandlung",
+        "kriegsende",
+        "end the war",
+        "förderung erhöht",
+        "output increase"
+      ],
+      "standard": 0,
+      "werte": [
+        {
+          "name": "Exxon Mobil",
+          "ticker": "XOM",
+          "markt": "us",
+          "richtung": 1
+        },
+        {
+          "name": "Lufthansa",
+          "ticker": "LHA.DE",
+          "markt": "eu",
+          "richtung": -1
+        }
+      ]
+    },
+    {
+      "id": "chips_rechenzentren",
+      "name": "Chips/Exportkontrollen/Rechenzentren",
+      "schwere": 2,
+      "stichwoerter": [
+        "export control",
+        "exportkontroll",
+        "exportverbot",
+        "chip ban",
+        "chipexport",
+        "entity list",
+        "rechenzentr",
+        "data center",
+        "datacenter",
+        "chips act",
+        "halbleiter",
+        "semiconductor",
+        "chips"
+      ],
+      "positiv": [
+        "lockert",
+        "genehmigt",
+        "erlaubt",
+        "lifts",
+        "eases",
+        "approves",
+        "subsid",
+        "förder"
+      ],
+      "negativ": [
+        "moratorium",
+        "verbot",
+        "verschärft",
+        "ban",
+        "restrict",
+        "beschränk",
+        "stopp",
+        "halt",
+        "blocks"
+      ],
+      "standard": 0,
+      "werte": [
+        {
+          "name": "Nvidia",
+          "ticker": "NVDA",
+          "markt": "us",
+          "richtung": 1
+        },
+        {
+          "name": "AMD",
+          "ticker": "AMD",
+          "markt": "us",
+          "richtung": 1
+        },
+        {
+          "name": "Broadcom",
+          "ticker": "AVGO",
+          "markt": "us",
+          "richtung": 1
+        },
+        {
+          "name": "Infineon",
+          "ticker": "IFX.DE",
+          "markt": "eu",
+          "richtung": 1
+        }
+      ]
+    },
+    {
+      "id": "krypto_regulierung",
+      "name": "Krypto-Regulierung",
+      "schwere": 1,
+      "stichwoerter": [
+        "stablecoin",
+        "krypto-regul",
+        "crypto bill",
+        "crypto regulation",
+        "clarity act",
+        "mica",
+        "bitcoin reserve",
+        "bitcoin-reserve",
+        "sec crypto",
+        "krypto-gesetz"
+      ],
+      "positiv": [
+        "genehmigt",
+        "verabschiedet",
+        "approve",
+        "passes",
+        "signed",
+        "reserve",
+        "erlaubt"
+      ],
+      "negativ": [
+        "verbot",
+        "ban",
+        "crackdown",
+        "klage",
+        "lawsuit",
+        "sues",
+        "scheitert",
+        "fails"
+      ],
+      "standard": 0,
+      "werte": [
+        {
+          "name": "Bitcoin",
+          "ticker": "BTC",
+          "markt": "krypto",
+          "richtung": 1
+        },
+        {
+          "name": "Coinbase",
+          "ticker": "COIN",
+          "markt": "us",
+          "richtung": 1
+        }
+      ]
+    },
+    {
+      "id": "pharma_preise",
+      "name": "Arzneimittelpreise/Pharma-Zölle",
+      "schwere": 1,
+      "stichwoerter": [
+        "drug pric",
+        "medikamentenpreis",
+        "arzneimittelpreis",
+        "most favored nation",
+        "pharma tariff",
+        "pharmazölle",
+        "pharma-zölle"
+      ],
+      "positiv": [
+        "einigung",
+        "deal",
+        "ausnahme",
+        "exemption",
+        "agreement"
+      ],
+      "negativ": [
+        "senkt",
+        "cuts",
+        "verhängt",
+        "imposes",
+        "zwingt",
+        "forces"
+      ],
+      "standard": -1,
+      "werte": [
+        {
+          "name": "Pfizer",
+          "ticker": "PFE",
+          "markt": "us",
+          "richtung": 1
+        },
+        {
+          "name": "Eli Lilly",
+          "ticker": "LLY",
+          "markt": "us",
+          "richtung": 1
+        },
+        {
+          "name": "Novo Nordisk",
+          "ticker": "NVO",
+          "markt": "us",
+          "richtung": 1
+        }
+      ]
+    },
+    {
+      "id": "wahlen_regierung",
+      "name": "Wahlen/Regierung/Haushalt",
+      "schwere": 2,
+      "stichwoerter": [
+        "wahl",
+        "election",
+        "midterm",
+        "shutdown",
+        "haushaltssperre",
+        "regierungskrise",
+        "misstrauen",
+        "koalition",
+        "impeachment",
+        "schuldenbremse",
+        "debt ceiling",
+        "schuldenobergrenze",
+        "congress",
+        "kongress",
+        "wahlen",
+        "wahlkampf",
+        "bundestagswahl",
+        "landtagswahl",
+        "präsidentschaftswahl",
+        "wahlergebnis"
+      ],
+      "positiv": [],
+      "negativ": [],
+      "standard": 0,
+      "werte": []
+    },
+    {
+      "id": "sanktionen_geopolitik",
+      "name": "Sanktionen/China/Taiwan",
+      "schwere": 2,
+      "stichwoerter": [
+        "sanktion",
+        "sanction",
+        "ofac",
+        "taiwan",
+        "südchinesisch",
+        "south china sea",
+        "seltene erden",
+        "rare earth",
+        "embargo"
+      ],
+      "positiv": [
+        "aufgehoben",
+        "lockert",
+        "lifted",
+        "eases",
+        "einigung",
+        "deal"
+      ],
+      "negativ": [
+        "verhängt",
+        "neue sanktion",
+        "imposes",
+        "blockade",
+        "manöver",
+        "drill",
+        "exportstopp"
+      ],
+      "standard": 0,
+      "werte": []
+    },
+    {
+      "id": "notenbank_politik",
+      "name": "Notenbanken (Politikdruck)",
+      "schwere": 1,
+      "stichwoerter": [
+        "fed-chef",
+        "fed chair",
+        "powell",
+        "notenbankchef",
+        "lagarde",
+        "unabhängigkeit der fed",
+        "fed independence"
+      ],
+      "positiv": [],
+      "negativ": [],
+      "standard": 0,
+      "werte": []
+    }
+  ]
+}

@@ -101,3 +101,16 @@ describe('Gewichtsanpassung in Grenzen', () => {
     expect(r.gewichte.quellen!.FAZ).toBe(0.9); // nur die datengetriebene Anpassung (−2 % → ×0,9)
   });
 });
+
+describe('Schattenbuch: unplausible Messungen (Fix 06.11.2026)', () => {
+  it('verwirft Kurssprünge > 10× und unmögliche Verluste', async () => {
+    const { unplausibel, plausibilitaetPruefen } = await import('./statistik.ts');
+    expect(unplausibel({ score: -1.26, r1T: -40.85, r3T: -6308.45 })).toBe(true);
+    expect(unplausibel({ score: 1, r1T: -120 })).toBe(true);
+    expect(unplausibel({ score: 1, r1T: -85, r1W: 300 })).toBe(false);
+    const t = { datum: '2026-10-29', schluessel: 'T:AXG', name: 'AXG', score: -1.26, typen: ['handelsstopp'], quellen: [], art: 'kandidat', start: 0.0284, r1T: -40.85, r3T: -6308.45 } as never as Parameters<typeof plausibilitaetPruefen>[0];
+    expect(plausibilitaetPruefen(t)).toBe(true);
+    expect(t).toMatchObject({ unplausibel: true });
+    expect(t.r1T).toBeUndefined();
+  });
+});

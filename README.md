@@ -75,6 +75,7 @@ Sa     Datensammler (Gewichte anpassen) → Wochenrückblick 📊
 | YouTube Data API v3 | `YOUTUBE_API_KEY` (optional) | 10.000 Einheiten/Tag, ohne Zahlungsdaten | 4 Suchen/Tag (400 Einheiten) | Viel gesehene Börsenvideos → erwähnte Werte (nur Stimmung, geringes Gewicht) |
 | SEC EDGAR 8-K | `SEC_KONTAKT` (optional) | 10 Abfragen/Sek. mit Kontaktangabe | stündlich | Pflichtmeldungen US-Firmen |
 | Kalender-Effekte | – | reiner Code | jeder Lauf | Verfallstage, Monats-/Quartalswechsel, Tag vor Feiertag |
+| Politik-Radar (seit 06.11.2026): Federal Register API, tagesschau Ausland/Inland, CNBC Politics/World, Polymarket Politik | – | frei (amtliche API, RSS, öffentliche Gamma-API) | jeder Sammler-Lauf (stündlich), ~8 Abfragen | Zölle, Rüstung, Kriege, Wahlen, Sanktionen, Regulierung → Signale, Politik-Risiko-Index, Push 🏛️ |
 
 Bewusst **nicht** genutzt: BaFin-Datenbank und Bundesanzeiger-Leerverkäufe (robots.txt verbietet automatisierten Abruf), Yahoo Finance (Nutzungsbedingungen verbieten automatisierten Abruf), Google-News-RSS (per robots.txt gesperrt), Tradegate-JSON (per robots.txt gesperrt), EQS (sperrt KI-Bots), Presse-Verteiler PR Newswire/GlobeNewswire/Business Wire (sperren Bots), Instagram/Facebook/TikTok/X (Nutzungsbedingungen verbieten automatisiertes Auslesen; offizielle Schnittstellen nur für eigene Konten). Vorschläge für später: USAspending (US-Staatsaufträge), openFDA (Zulassungen), CoinGecko.
 

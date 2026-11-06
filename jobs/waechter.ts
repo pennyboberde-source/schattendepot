@@ -148,6 +148,8 @@ const r = waechterLauf({
     ereignislaufOrders: heuteLaeufe,
     ausfallWarnung: system.ausfallWarnung === b.datum,
     vorgemerkt: ereignisse.some((e) => e.typ === 'vorgemerkt' && berlin(new Date(e.zeit)).datum === b.datum),
+    // Fix 06.11.2026: Morgenlauf ohne Order ist kein Ausfall (falsche Warnungen 29.10.–03.11.)
+    morgenlaufGelaufen: ereignisse.some((e) => e.typ === 'lauf' && (e.daten as { typ?: string } | undefined)?.typ === 'morgenlauf' && berlin(new Date(e.zeit)).datum === b.datum),
   },
 });
 

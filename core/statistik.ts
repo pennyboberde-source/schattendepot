@@ -36,6 +36,8 @@ export interface TrackingEintrag {
   markt?: 'krypto' | 'us' | 'eu' | 'rohstoff';
   /** Pump-&-Dump-Verdacht (nur Stimmung/Rakete, nichts Handfestes) */
   pump?: boolean;
+  /** Messung verworfen (Kurssprung > 10×, z. B. Aktienzusammenlegung) – wird nicht mehr gemessen */
+  unplausibel?: boolean;
   /** schnell = tagsüber aufgenommenes Ereignis-Signal (Reaktionszeit), prognose = Claudes Tagesprognose (ohne Geld), sonst Kandidat des Hauptlaufs */
   art?: 'kandidat' | 'schnell' | 'prognose';
 }
@@ -138,6 +140,28 @@ function gruppiert(orders: Order[], schluessel: (o: Order) => string[]): Record<
 function haltedauer(o: Order): string {
   const tage = (new Date(o.verkauf!.zeit).getTime() - new Date(o.kauf!.zeit).getTime()) / 86400000;
   return tage < 1 ? '< 1 Tag' : tage < 3 ? '1–3 Tage' : tage < 7 ? '3–7 Tage' : '> 1 Woche';
+}
+
+const R_FELDER = ['r1h', 'r1T', 'r3T', 'r1W', 'r10T', 'r1M'] as const;
+
+/**
+ * Unplausible Schattenbuch-Messung (Fix 06.11.2026, z. B. handelsstopp Ø −2960 %): Kurs hat sich mehr als verzehnfacht
+ * oder eine ungehebelte Long-Idee verliert mehr als 100 % → Aktienzusammenlegung, Einheitenwechsel oder Kursfehler.
+ */
+export function unplausibel(t: Pick<TrackingEintrag, 'score' | (typeof R_FELDER)[number]>): boolean {
+  return R_FELDER.some((f) => {
+    const r = t[f];
+    if (typeof r !== 'number') return false;
+    return Math.abs(r) > 900 || (t.score > 0 && r < -100) || (t.score < 0 && r > 100);
+  });
+}
+
+/** Messwerte unplausibler Einträge entfernen (Eintrag bleibt mit Markierung, zählt aber nirgends mit). */
+export function plausibilitaetPruefen(t: TrackingEintrag): boolean {
+  if (!unplausibel(t)) return false;
+  for (const f of R_FELDER) delete t[f];
+  t.unplausibel = true;
+  return true;
 }
 
 /** Signal-Typ aus Signal-ID ("insider_kauf:ACME:2026-10-21" → "insider_kauf"). */

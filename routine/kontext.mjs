@@ -95,6 +95,14 @@ const pt = (x) => (x ? `${x.trend}/${x.unruhe} (Schluss ${x.schluss}, 50-T-Linie
 if (mp) p(`Marktphase heute: Aktien ${pt(mp.aktien)} · Krypto ${pt(mp.krypto)}`);
 const jePhase = Object.entries(statistik?.kandidaten?.nachPhase ?? {}).filter(([, v]) => (v.n1T ?? v.anzahl) >= 5);
 if (jePhase.length) p(`Schattenbuch je Marktphase (1 Tag): ${jePhase.map(([k, v]) => `${k} ${v.quote1T ?? '–'} % im Plus, Ø ${v.oe1T ?? '–'} % (n=${v.n1T ?? v.anzahl})`).join('; ')}`);
+// Politik-Radar (06.11.2026): aktuelle Lage aus dem stündlichen Sammler
+const pol = await json('zustand/politik.json', null);
+if (pol?.lage) {
+  p(`Politik (Stand ${String(pol.lage.stand).slice(11, 16)} UTC): Risiko ${pol.lage.index}/100 (${pol.lage.stufe})`);
+  for (const zl of (pol.lage.zeilen ?? []).slice(1, 7)) p(`- ${zl}`);
+}
+const polSt = ['politik_massnahme', 'politik_wahrscheinlichkeit'].map((t) => [t, statistik?.kandidaten?.nachSignalTyp?.[t]]).filter(([, v]) => v);
+if (polSt.length) p(`Politik-Signale im Schattenbuch: ${polSt.map(([t, v]) => `${t} n=${v.n1T ?? v.anzahl}, ${v.quote1T ?? '–'} % im Plus, Ø ${v.oe1T ?? '–'} % nach 1 Tag`).join('; ')}`);
 // S2: Autopilot, Ziel/Stop-Vorschläge, Tagesprognose, Gegenprüfung
 const ap = statistik?.autopilot ?? [];
 const apBew = ap.filter((b) => b.bewiesen);

@@ -73,7 +73,7 @@ export interface WaechterKontext {
   /** Kurs des Vergleichs-ETFs in Euro (für „Schattendepot vs. ETF“) */
   etfKurs?: Kurs;
   cfg: { gebuehren: GebuehrenConfig; spreads: SpreadConfig; einstellungen: WaechterEinstellungen };
-  heute: { ereignisLaeufe: number; ereignislaufOrders: string[]; ausfallWarnung: boolean; vorgemerkt: boolean };
+  heute: { ereignisLaeufe: number; ereignislaufOrders: string[]; ausfallWarnung: boolean; vorgemerkt: boolean; /** Morgenlauf hat heute geliefert (auch bewusst ohne Order) → keine Ausfall-Warnung */ morgenlaufGelaufen?: boolean };
   /** starke Gegensignale je Order-ID (vom Sammler) */
   gegensignale?: Record<string, Gegensignal>;
   /** außerhalb der Börsenzeiten (nachts/Wochenende): nur Krypto direkt handeln */
@@ -364,6 +364,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
     istHandelstag(b.datum) &&
     b.minuten >= uhrzeitMinuten(cfg.einstellungen.ausfallWarnungUhrzeit) &&
     !ctx.heute.vorgemerkt &&
+    !ctx.heute.morgenlaufGelaufen &&
     !ctx.heute.ausfallWarnung
   ) {
     ereignisse.push(ev('warnung', undefined, { art: 'ausfall', text: 'Morgenlauf ausgefallen – heute noch keine Order' }));
