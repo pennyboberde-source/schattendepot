@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T09:59:49.671Z",
-  "anzahl": 302,
+  "stand": "2026-11-06T10:59:40.098Z",
+  "anzahl": 305,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -3956,7 +3956,7 @@
       "i": "DE000HF0KX99",
       "typ": "kursrakete",
       "r": 0,
-      "st": 0.72,
+      "st": 1,
       "q": [
         "gettex-Scanner"
       ],
@@ -3974,6 +3974,45 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-06T09:43:23.144Z"
+    },
+    {
+      "id": "nachricht:TSLA:2026-11-06",
+      "s": "T:TSLA",
+      "n": "Tesla",
+      "t": "TSLA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-06T03:20:43.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF21B83:2026-11-06",
+      "s": "I:DE000HF21B83",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF21B83",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.53,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-06T10:40:24.332Z"
+    },
+    {
+      "id": "kursrakete:DE000UR4A1D4:2026-11-06",
+      "s": "I:DE000UR4A1D4",
+      "n": "BAYER H-CW26 DAX INDEX",
+      "i": "DE000UR4A1D4",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.55,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-06T10:41:31.643Z"
     }
   ]
 }
