@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T18:50:26.346Z",
-  "anzahl": 352,
+  "stand": "2026-11-06T19:52:01.173Z",
+  "anzahl": 357,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -4470,7 +4470,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.4,
+      "st": 0.6,
       "q": [
         "tagesschau Ausland"
       ],
@@ -4484,7 +4484,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.4,
+      "st": 0.6,
       "q": [
         "tagesschau Ausland"
       ],
@@ -4498,7 +4498,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.4,
+      "st": 0.6,
       "q": [
         "tagesschau Ausland"
       ],
@@ -4633,6 +4633,71 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-06T18:41:07.000Z"
+    },
+    {
+      "id": "handelsstopp:BAK:2026-11-06",
+      "s": "T:BAK",
+      "n": "Braskem SA ADR",
+      "t": "BAK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BKHA:2026-11-06",
+      "s": "T:BKHA",
+      "n": "Black Hawk Acquisition Cl A OS",
+      "t": "BKHA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AHT-G:2026-11-06",
+      "s": "T:AHT-G",
+      "n": "AHT-G",
+      "t": "AHT-G",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MFI:2026-11-06",
+      "s": "T:MFI",
+      "n": "mF Intl Ltd Cl A Ord",
+      "t": "MFI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-06",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-06T18:00:00.000Z"
     }
   ]
 }
