@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T08:54:57.946Z",
-  "anzahl": 298,
+  "stand": "2026-11-06T09:59:49.671Z",
+  "anzahl": 302,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -3917,11 +3917,63 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.49,
+      "st": 0.57,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-06T08:54:57.946Z"
+    },
+    {
+      "id": "nachricht:DTG:2026-11-06",
+      "s": "T:DTG",
+      "n": "Daimler Truck",
+      "t": "DTG.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-06T09:13:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF21CW5:2026-11-06",
+      "s": "I:DE000HF21CW5",
+      "n": "DE000HF21CW5",
+      "i": "DE000HF21CW5",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.73,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-06T09:34:47.443Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0KX99:2026-11-06",
+      "s": "I:DE000HF0KX99",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF0KX99",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.72,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-06T09:41:32.590Z"
+    },
+    {
+      "id": "kursrakete:DE000HF21D32:2026-11-06",
+      "s": "I:DE000HF21D32",
+      "n": "DE000HF21D32",
+      "i": "DE000HF21D32",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-06T09:43:23.144Z"
     }
   ]
 }
