@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T19:52:01.173Z",
-  "anzahl": 357,
+  "stand": "2026-11-06T20:45:47.140Z",
+  "anzahl": 361,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -4537,7 +4537,7 @@
       "t": "RIBB",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -4698,6 +4698,58 @@
         "MarketWatch"
       ],
       "z": "2026-11-06T18:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:JL:2026-11-06",
+      "s": "T:JL",
+      "n": "J-Long Group Ltd Cl A Ord Shs",
+      "t": "JL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:NVTC:2026-11-06",
+      "s": "T:NVTC",
+      "n": "Corgi NVTS 2x Daily ETF",
+      "t": "NVTC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AHT-D:2026-11-06",
+      "s": "T:AHT-D",
+      "n": "AHT-D",
+      "t": "AHT-D",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:NTCL:2026-11-06",
+      "s": "T:NTCL",
+      "n": "NetClass Technology Inc",
+      "t": "NTCL",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-06T20:09:20.000Z"
     }
   ]
 }
