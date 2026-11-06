@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-06T13:43:29.768Z",
+  "stand": "2026-11-06T14:38:17.723Z",
   "offen": [
     {
       "id": "2026-11-04-auto-tbbb",
@@ -79,13 +79,12 @@
         "vortag": 128.925
       },
       "letzterKurs": {
-        "wert": 57.602,
-        "vortag": 58.374,
-        "zeit": "2026-11-05T21:00:00.000Z",
+        "wert": 57.991,
+        "vortag": 57.614,
+        "zeit": "2026-11-06T14:37:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 1003,
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11471 USD/EUR"
+        "hinweis": "umgerechnet zu 1.11449 USD/EUR"
       }
     },
     {
@@ -166,111 +165,17 @@
         "vortag": 130.75
       },
       "letzterKurs": {
-        "wert": 35.668,
-        "vortag": 36.198,
-        "zeit": "2026-11-05T21:00:00.000Z",
+        "wert": 34.751,
+        "vortag": 35.676,
+        "zeit": "2026-11-06T14:37:54.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 1003,
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11471 USD/EUR"
+        "hinweis": "umgerechnet zu 1.11449 USD/EUR"
       }
     },
     {
-      "id": "2026-11-05-auto-pfe",
-      "status": "offen",
-      "vorgemerktUm": "2026-11-05T04:56:21.404Z",
-      "vorgemerktVon": "autopilot",
-      "plan": {
-        "wertpapier": {
-          "name": "PFE",
-          "isin": "",
-          "ticker": "PFE",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_neben",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "PFE",
-            "waehrung": "USD"
-          }
-        },
-        "risikoklasse": "normal",
-        "herkunft": "autopilot",
-        "strategie": "quartalszahlen_momentum",
-        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
-        "ausloeser": "Autopilot-Kandidat T:PFE: gewinn_ueberraschung, nachzahlen_drift (Score 3.53)",
-        "signalIds": [
-          "gewinn_ueberraschung:PFE:2026-11-05",
-          "nachzahlen_drift:PFE:2026-11-05"
-        ],
-        "quellen": [
-          {
-            "name": "Finnhub",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          },
-          {
-            "name": "FMP",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          },
-          {
-            "name": "Finnhub Kurs",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          }
-        ],
-        "konfidenz": 47,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 0.05,
-        "zielNettoProzent": 19.4,
-        "stopProzent": -5,
-        "verkaufstermin": "2026-11-10T04:56:21.404Z",
-        "risiken": [
-          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
-          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
-        ],
-        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (41 Fälle)"
-      },
-      "verkaufstermin": "2026-11-10T04:56:21.404Z",
-      "anpassungen": [],
-      "kauf": {
-        "zeit": "2026-11-05T14:55:21.935Z",
-        "stueck": 35,
-        "kurs": 27.967,
-        "kurswert": 978.85,
-        "entgelt": {
-          "provision": 0,
-          "handelsplatz": 0,
-          "gesamt": 0
-        },
-        "betrag": 978.85,
-        "kursquelle": "Finnhub (2026-11-05T14:54:57.000Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 33.4,
-      "stopkurs": 26.57,
-      "etfKauf": {
-        "wert": 129.495,
-        "zeit": "2026-11-05T14:44:28.846Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 11,
-        "hinweis": "letztes Geschäft 2026-11-05",
-        "vortag": 130.75
-      },
-      "letzterKurs": {
-        "wert": 26.805,
-        "vortag": 27.622,
-        "zeit": "2026-11-05T21:00:00.000Z",
-        "quelle": "Finnhub",
-        "verzoegertMin": 1003,
-        "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11471 USD/EUR"
-      }
-    }
-  ],
-  "vorgemerkt": [
-    {
       "id": "2026-11-06-auto-allstate",
-      "status": "vorgemerkt",
+      "status": "offen",
       "vorgemerktUm": "2026-11-06T04:54:59.347Z",
       "vorgemerktVon": "autopilot",
       "plan": {
@@ -320,11 +225,35 @@
         "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
       },
       "verkaufstermin": "2026-11-11T04:54:59.347Z",
-      "anpassungen": []
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-06T14:38:17.723Z",
+        "stueck": 4,
+        "kurs": 235.457,
+        "kurswert": 941.83,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 941.83,
+        "kursquelle": "Finnhub (2026-11-06T14:37:32.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 281.14,
+      "stopkurs": 228.39,
+      "etfKauf": {
+        "wert": 126.515,
+        "zeit": "2026-11-06T14:29:35.521Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-06",
+        "vortag": 126.005
+      }
     },
     {
       "id": "2026-11-06-auto-sony",
-      "status": "vorgemerkt",
+      "status": "offen",
       "vorgemerktUm": "2026-11-06T04:54:59.347Z",
       "vorgemerktVon": "autopilot",
       "plan": {
@@ -374,7 +303,32 @@
         "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
       },
       "verkaufstermin": "2026-11-11T04:54:59.347Z",
-      "anpassungen": []
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-06T14:38:17.723Z",
+        "stueck": 41,
+        "kurs": 24.047,
+        "kurswert": 985.93,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 985.93,
+        "kursquelle": "Finnhub (2026-11-06T14:37:52.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 28.72,
+      "stopkurs": 23.33,
+      "etfKauf": {
+        "wert": 126.515,
+        "zeit": "2026-11-06T14:29:35.521Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-06",
+        "vortag": 126.005
+      }
     }
-  ]
+  ],
+  "vorgemerkt": []
 }
