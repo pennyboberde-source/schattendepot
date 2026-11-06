@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-06T20:59:38.511Z",
+  "stand": "2026-11-06T21:19:40.153Z",
   "orders": [
     {
       "id": "2026-11-05-auto-pfe",
@@ -110,7 +110,9 @@
         "gebuehren": 0,
         "steuer": 0,
         "nachSteuern": -74.62
-      }
+      },
+      "bericht": "🤖 Autopilot-Order Pfizer (PFE) nach Gewinnüberraschung mit Nachzahlen-Drift-Signal: Kauf am 05.11. um 14:55 UTC zu 27,97 €, Verkauf am 06.11. per Stop zu 25,84 € – −7,62 % bzw. −74,62 € nach Gebühren, deutlich schlechter als der MSCI World im gleichen Zeitraum (−21,94 €). Der Kurs lag schon am Kauftag rund 4 % im Minus; der Stop griff am Folgetag mit einer Lücke weit unter der eigentlichen Stop-Marke, deshalb fiel der Verlust mehr als doppelt so groß aus wie geplant. Die These war rein statistisch (gewinn_ueberraschung, 47,3 % im Plus, Ø +0,05 %, n=55) – also ein Nullsignal ohne echten Vorteil. Getragen hat kein Signal: Die Überraschung war bei einem großen, liquiden Pharmawert sofort eingepreist, der Markt reagierte auf etwas anderes (vermutlich Ausblick bzw. Branchenthemen; die genaue Ursache wurde nicht recherchiert). Vorher wissen konnte man: Lektion 8 (Large Caps preisen Überraschungen schnell ein), Lektion 5 (Nachzahlen-Drift trägt nicht) und der schwache Kauftag selbst. Auch die Marktphase (Aktien seitwärts/nervös, Schwankung 20 % statt üblich 12 %) sprach gegen einen Drift-Kauf.\n\nLearnings:\n1. Autopilot-Signal gewinn_ueberraschung ist mit Ø +0,05 % kein bewiesener Vorteil; echte Autopilot-Orders 0/2 im Plus, Ø −6,5 % – Schwelle für ‚bewiesen‘ zu niedrig.\n2. In nervöser Marktphase (Schwankung deutlich über üblich) reißen Stops mit Lücken; der geplante Stop von ca. −3 % wurde zu −7,6 %.\n3. Gewinnüberraschung bei Large-Cap-Pharma ohne Prognoseanhebung trägt keine Drift.",
+      "berichtZeit": "2026-11-06T21:19:40.153Z"
     },
     {
       "id": "2026-11-04-auto-supermicro",
