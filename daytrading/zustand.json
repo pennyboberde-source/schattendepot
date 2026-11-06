@@ -16,9 +16,21 @@
     "posttrade.20261106.06.45.munc.csv.gz",
     "posttrade.20261106.06.45.mund.csv.gz",
     "posttrade.20261106.07.00.munc.csv.gz",
-    "posttrade.20261106.07.00.mund.csv.gz"
+    "posttrade.20261106.07.00.mund.csv.gz",
+    "posttrade.20261106.07.15.munc.csv.gz",
+    "posttrade.20261106.07.15.mund.csv.gz",
+    "posttrade.20261106.07.30.munc.csv.gz",
+    "posttrade.20261106.07.30.mund.csv.gz",
+    "posttrade.20261106.07.45.munc.csv.gz",
+    "posttrade.20261106.07.45.mund.csv.gz",
+    "posttrade.20261106.08.00.munc.csv.gz",
+    "posttrade.20261106.08.00.mund.csv.gz",
+    "posttrade.20261106.08.15.munc.csv.gz",
+    "posttrade.20261106.08.15.mund.csv.gz"
   ],
-  "universum": {},
+  "universum": {
+    "eu": true
+  },
   "beobachtungen": [
     {
       "basis": "US67066G1040",
@@ -37,7 +49,7 @@
           "long"
         ],
         "status": "spanne",
-        "letzteKerze": "2026-11-06T06:55:00.000Z"
+        "letzteKerze": "2026-11-06T08:10:00.000Z"
       }
     },
     {
@@ -57,7 +69,7 @@
           "long"
         ],
         "status": "spanne",
-        "letzteKerze": "2026-11-06T06:55:00.000Z"
+        "letzteKerze": "2026-11-06T08:10:00.000Z"
       }
     },
     {
@@ -77,25 +89,1015 @@
           "long"
         ],
         "status": "spanne",
-        "letzteKerze": "2026-11-06T06:50:00.000Z"
+        "letzteKerze": "2026-11-06T08:10:00.000Z"
+      }
+    },
+    {
+      "basis": "DE0007030009",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "RHEINMETALL AG",
+      "isin": "DE0007030009",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 831.8,
+          "tief": 815.5,
+          "volumen": 1684,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000ENER6Y0",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "SIEMENS ENERGY AG",
+      "isin": "DE000ENER6Y0",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 113.92,
+          "tief": 112.24,
+          "volumen": 6391,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0006231004",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "INFINEON TECHNOLOGIES AG",
+      "isin": "DE0006231004",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 46.135,
+          "tief": 45.505,
+          "volumen": 12721,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000A1ML7J1",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "VONOVIA SE",
+      "isin": "DE000A1ML7J1",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 16.995,
+          "tief": 16.845,
+          "volumen": 31960,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "FR0000121014",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "LVMH MOET HENNESSY LOUIS VUI",
+      "isin": "FR0000121014",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 413.05,
+          "tief": 409.4,
+          "volumen": 991,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000BAY0017",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "BAYER AG-REG",
+      "isin": "DE000BAY0017",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 55.18,
+          "tief": 54.62,
+          "volumen": 6500,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000CBK1001",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "COMMERZBANK AG",
+      "isin": "DE000CBK1001",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 38.59,
+          "tief": 37.91,
+          "volumen": 8456,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0008404005",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "ALLIANZ SE-REG",
+      "isin": "DE0008404005",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 457.9,
+          "tief": 455.3,
+          "volumen": 616,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0007164600",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "SAP SE",
+      "isin": "DE0007164600",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 214.1,
+          "tief": 212.45,
+          "volumen": 1256,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0006047004",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "HEIDELBERG MATERIALS AG",
+      "isin": "DE0006047004",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 173.15,
+          "tief": 171.2,
+          "volumen": 1416,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000DTR0CK8",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "DAIMLER TRUCK HOLDING AG",
+      "isin": "DE000DTR0CK8",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 39.4,
+          "tief": 38.41,
+          "volumen": 6170,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0005557508",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 26.11,
+          "tief": 25.89,
+          "volumen": 5849,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0007236101",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "SIEMENS AG-REG",
+      "isin": "DE0007236101",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 269.6,
+          "tief": 267,
+          "volumen": 531,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000A1EWWW0",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "ADIDAS AG",
+      "isin": "DE000A1EWWW0",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 175.6,
+          "tief": 174.3,
+          "volumen": 788,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0005140008",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "DEUTSCHE BANK AG-REGISTERED",
+      "isin": "DE0005140008",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 32.225,
+          "tief": 31.845,
+          "volumen": 4165,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "NL0010273215",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "ASML HOLDING NV",
+      "isin": "NL0010273215",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 1250.4,
+          "tief": 1234.2,
+          "volumen": 100,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0006305006",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "DEUTZ AG",
+      "isin": "DE0006305006",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 9.54,
+          "tief": 9.11,
+          "volumen": 12859,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0008232125",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "DEUTSCHE LUFTHANSA-REG",
+      "isin": "DE0008232125",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 8.254,
+          "tief": 8.164,
+          "volumen": 14281,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000BASF111",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "BASF SE",
+      "isin": "DE000BASF111",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 55.31,
+          "tief": 54.48,
+          "volumen": 2015,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0005552004",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "DHL AG",
+      "isin": "DE0005552004",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 58.92,
+          "tief": 57.94,
+          "volumen": 1779,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "FR0000121972",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "SCHNEIDER ELECTRIC SE",
+      "isin": "FR0000121972",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 227.2,
+          "tief": 225.25,
+          "volumen": 291,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE0008430026",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "MUENCHENER RUECKVER AG-REG",
+      "isin": "DE0008430026",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 585,
+          "tief": 580.4,
+          "volumen": 111,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000A0WMPJ6",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "AIXTRON SE",
+      "isin": "DE000A0WMPJ6",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 29.5,
+          "tief": 28.55,
+          "volumen": 1734,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "DE000A0Z2ZZ5",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "FREENET AG",
+      "isin": "DE000A0Z2ZZ5",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 23.6,
+          "tief": 23.18,
+          "volumen": 1671,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "IT0004176001",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "name": "PRYSMIAN SPA",
+      "isin": "IT0004176001",
+      "instrumentLong": "aktie",
+      "hebel": 5,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long",
+          "short"
+        ],
+        "status": "spanne",
+        "letzteKerze": "2026-11-06T08:10:00.000Z",
+        "spanne": {
+          "hoch": 99.76,
+          "tief": 98.72,
+          "volumen": 326,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "BTC",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-11-06T08:20:00.000Z",
+        "spanne": {
+          "hoch": 67596.8,
+          "tief": 67410,
+          "volumen": 3.98803949,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-06T08:20:00.000Z",
+          "kurs": 67613,
+          "level": 67596.8,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "BTC",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 71852.4,
+        "letzteKerze": "2026-11-06T08:20:00.000Z"
+      }
+    },
+    {
+      "basis": "ETH",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "letzteKerze": "2026-11-06T08:20:00.000Z",
+        "spanne": {
+          "hoch": 1992.55,
+          "tief": 1985.17,
+          "volumen": 73.19317502,
+          "kerzen": 3
+        }
+      }
+    },
+    {
+      "basis": "ETH",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": false,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 2162.64,
+        "letzteKerze": "2026-11-06T08:20:00.000Z"
+      }
+    },
+    {
+      "basis": "SOL",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-11-06T08:20:00.000Z",
+        "spanne": {
+          "hoch": 80.19,
+          "tief": 79.95,
+          "volumen": 166.85802489,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-06T08:20:00.000Z",
+          "kurs": 80.26,
+          "level": 80.19,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "SOL",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 86.31,
+        "letzteKerze": "2026-11-06T08:20:00.000Z"
+      }
+    },
+    {
+      "basis": "XRP",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-11-06T08:20:00.000Z",
+        "spanne": {
+          "hoch": 1.06275,
+          "tief": 1.05806,
+          "volumen": 104079.60013799,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-06T08:20:00.000Z",
+          "kurs": 1.0636,
+          "level": 1.06275,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "XRP",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 1.17963,
+        "letzteKerze": "2026-11-06T08:20:00.000Z"
+      }
+    },
+    {
+      "basis": "ADA",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "orb",
+        "richtungen": [
+          "long"
+        ],
+        "status": "fertig",
+        "letzteKerze": "2026-11-06T08:20:00.000Z",
+        "spanne": {
+          "hoch": 0.164048,
+          "tief": 0.163637,
+          "volumen": 19447.394382,
+          "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-06T08:20:00.000Z",
+          "kurs": 0.164083,
+          "level": 0.164048,
+          "richtung": "long"
+        }
+      }
+    },
+    {
+      "basis": "ADA",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "instrumentLong": "krypto",
+      "hebel": 1,
+      "spekulativ": true,
+      "zustand": {
+        "setup": "level",
+        "richtungen": [
+          "long"
+        ],
+        "status": "wartet",
+        "level": 0.177507,
+        "letzteKerze": "2026-11-06T08:20:00.000Z"
       }
     }
   ],
-  "kryptoLetzte": {},
+  "kryptoLetzte": {
+    "BTC": "2026-11-06T08:20:00.000Z",
+    "ETH": "2026-11-06T08:20:00.000Z",
+    "SOL": "2026-11-06T08:20:00.000Z",
+    "XRP": "2026-11-06T08:20:00.000Z",
+    "ADA": "2026-11-06T08:20:00.000Z"
+  },
   "watchlist": true,
   "autopilotGenutzt": [],
   "letzteKurse": {
     "US5951121038": {
-      "zeit": "2026-11-06T06:55:00.000Z",
-      "kurs": 614.7
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 615.8
     },
     "US67066G1040": {
-      "zeit": "2026-11-06T06:55:00.000Z",
-      "kurs": 165.94
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 166.42
     },
     "US92840M1027": {
-      "zeit": "2026-11-06T06:50:00.000Z",
+      "zeit": "2026-11-06T08:10:00.000Z",
       "kurs": 102.3
+    },
+    "DE0005557508": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 26.09
+    },
+    "DE0006047004": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 172.85
+    },
+    "DE0005140008": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 32.225
+    },
+    "DE0008404005": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 456.3
+    },
+    "DE000BASF111": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 54.61
+    },
+    "DE0005552004": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 58.1
+    },
+    "DE0008430026": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 580.4
+    },
+    "DE000BAY0017": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 54.7
+    },
+    "DE0007030009": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 818.1
+    },
+    "DE000A1ML7J1": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 16.99
+    },
+    "IT0004176001": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 98.72
+    },
+    "DE0006231004": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 46.005
+    },
+    "DE000A0Z2ZZ5": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 23.6
+    },
+    "DE000ENER6Y0": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 112.64
+    },
+    "FR0000121972": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 225.3
+    },
+    "FR0000121014": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 410.15
+    },
+    "DE0007164600": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 213.2
+    },
+    "DE000A0WMPJ6": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 29.5
+    },
+    "DE0008232125": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 8.254
+    },
+    "DE000CBK1001": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 38.57
+    },
+    "DE0007236101": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 268.15
+    },
+    "DE0006305006": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 9.155
+    },
+    "DE000A1EWWW0": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 174.85
+    },
+    "DE000DTR0CK8": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 39.4
+    },
+    "NL0010273215": {
+      "zeit": "2026-11-06T08:10:00.000Z",
+      "kurs": 1244.4
+    },
+    "BTC": {
+      "zeit": "2026-11-06T08:20:00.000Z",
+      "kurs": 67655.1
+    },
+    "ETH": {
+      "zeit": "2026-11-06T08:20:00.000Z",
+      "kurs": 1992.38
+    },
+    "SOL": {
+      "zeit": "2026-11-06T08:20:00.000Z",
+      "kurs": 80.28
+    },
+    "XRP": {
+      "zeit": "2026-11-06T08:20:00.000Z",
+      "kurs": 1.064
+    },
+    "ADA": {
+      "zeit": "2026-11-06T08:20:00.000Z",
+      "kurs": 0.164239
     }
   }
 }
