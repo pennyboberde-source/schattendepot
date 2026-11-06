@@ -1,0 +1,30 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-06",
+  "erstellt": "2026-11-06T06:55:00Z",
+  "briefing": [
+    "Keine neue Order: Nasdaq −5,5 %, Chipindex −12 % am Vortag (Korrektur), Asien folgt. Erst Lage nach US-Arbeitsmarkt abwarten.",
+    "14:30 US-Arbeitsmarktbericht (Prognose +65 Tsd.), 16:00 Uni Michigan; vor US-Start Zahlen von Vistra, Charter, Humana.",
+    "🤖 PFE −4,2 %, MDLN −2,3 % nur Marktsog, keine Gegenmeldung; TBBB +1,4 %. Autopilot hat Allstate und Sony vorgemerkt."
+  ],
+  "orders": [],
+  "anpassungen": [],
+  "prognose": [
+    {"name": "Antelope Enterprise", "ticker": "AEHL", "markt": "us", "richtung": "runter", "chance": 62, "grund": "+177 % mit Volatilitätspausen und Pump-Verdacht; solche Sprünge laufen meist zurück (Lektion 11)."},
+    {"name": "LABT", "ticker": "LABT", "markt": "us", "richtung": "runter", "chance": 60, "grund": "Penny-Rakete +213 % bei 0,60 $ und 699 Mio. Stück Volumen, typisches Pump-Muster."},
+    {"name": "Tradr 2X Long APP", "ticker": "APPX", "markt": "us", "richtung": "runter", "chance": 55, "grund": "Gehebelter ETF nach +62 %; im nervösen Markt eher Rücksetzer."},
+    {"name": "Direxion Semiconductor Bull 3X", "ticker": "SOXL", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "−38,7 % am Vortag; Tagesverlierer ist stärkstes Schattenbuch-Signal, aber Gegenbewegung unsicher."},
+    {"name": "NVIDIA", "ticker": "NVDA", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "−9 % im Chip-Ausverkauf ohne eigene schlechte Meldung; technische Erholung möglich."},
+    {"name": "Sony", "ticker": "SONY", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "EPS +26 % über Erwartung, Aktie stieg trotz Crashtag +6,1 %; relative Stärke."},
+    {"name": "Uber", "ticker": "UBER", "markt": "us", "richtung": "hoch", "chance": 51, "grund": "Gewinnverfehlung nur GAAP-Effekt (Beteiligungsbewertung), bereinigt 0,88 $ EPS (+35 %)."},
+    {"name": "SAP", "ticker": "SAP.DE", "markt": "eu", "richtung": "runter", "chance": 56, "grund": "Europa holt den späten US-Tech-Absturz nach; KI-Software unter Druck."},
+    {"name": "Commerzbank", "ticker": "CBK.DE", "markt": "eu", "richtung": "runter", "chance": 54, "grund": "Gewinnerwartung verfehlt, Druck durch Einlagenwettbewerb; Risikoabbau im Markt."},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 52, "grund": "Angst-Index von 50 auf 28, Liquidationen zu 92 % Longs, Risikoabbau an den Börsen."}
+  ],
+  "daytrading": [
+    {"name": "NVIDIA", "markt": "us", "isin": "US67066G1040", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 33, "these": "Höchstes Interesse nach −9 %; nur Long-Ausbruch als Aktie, falls Erholung nach dem Arbeitsmarktbericht einsetzt (Lektion 15)."},
+    {"name": "Micron", "markt": "us", "isin": "US5951121038", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 30, "these": "−17 % am Vortag, sehr hoher Umsatz; Long-Ausbruch als Aktie nur bei klarer Gegenbewegung."},
+    {"name": "Vistra", "markt": "us", "isin": "US92840M1027", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 31, "these": "Quartalszahlen vor US-Eröffnung, KI-Strom-Wert im Ausverkauf mitgefallen; Long-Ausbruch als Aktie."}
+  ],
+  "notiz": "Morgenlauf 06.11.: bewusst keine Order. Lage: Nasdaq am 05.11. −5,5 %, S&P 500 −4,4 %, Chipindex −12 % (NVDA −9 %, MU/AMD −17 %), Nasdaq in Korrektur, Asien-Chipwerte folgen; Marktphase seitwärts/nervös, Schwankung 20 % statt 12 % – mit dem US-Arbeitsmarktbericht um 14:30 droht weitere Kurslücke, Hebel jetzt ungeeignet. Geprüft: Uber (Verfehlung nur GAAP, bereinigt EPS 0,88 $ → Short-Signal unecht, wie gestern), Sony (keine bestätigte Meldung zur Prognose gefunden, ADR schon +6,1 %; Autopilot hat es ohnehin vorgemerkt), PFE (keine eigene Meldung, Rückgang = Marktsog → keine Anpassung), MDLN (Kursziele angehoben, These intakt), TBBB (+1,4 %, intakt). Tagesverlierer-Rebound (SOXL) hat zwar Ø +10,6 % nach 1 Woche (n=10), aber 0 % im Plus nach 1 Tag und gehebelter ETF bei Crash-Volatilität – nur als Prognose. Kursraketen AEHL/LABT/APPX mit Pump-Verdacht. Bilanz (Ø −1,9 % statt erwartet +0,6 %, Lektion 2) und Lektion 18 sprechen für Zurückhaltung. Lernstoff Hauptziel: beobachten, ob der Chip-Crash nach 5–10 Tagen eine große Gegenbewegung bringt (Kandidat für mittelfristigen Long-Hebel nach Beruhigung der Schwankung). Quellen: https://axios.com/2026/11/05/nasdaq-plummets-correction · https://www.sec.gov/Archives/edgar/data/0001543151/000154315126000039/uberq326earningspressrelea.htm. Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung."
+}
