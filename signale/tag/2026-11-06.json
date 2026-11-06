@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T17:48:05.060Z",
-  "anzahl": 349,
+  "stand": "2026-11-06T18:50:26.346Z",
+  "anzahl": 352,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -4169,7 +4169,7 @@
       "t": "OMH",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -4594,6 +4594,45 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-06T17:39:49.189Z"
+    },
+    {
+      "id": "handelsstopp:ONDC:2026-11-06",
+      "s": "T:ONDC",
+      "n": "Corgi ONDS 2x Daily ETF",
+      "t": "ONDC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-06T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-11-06",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-06T18:40:58.000Z"
+    },
+    {
+      "id": "verwaesserung:HBCYF:2026-11-06",
+      "s": "T:HBCYF",
+      "n": "HSBC HOLDINGS PLC",
+      "t": "HBCYF",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-06T18:41:07.000Z"
     }
   ]
 }
