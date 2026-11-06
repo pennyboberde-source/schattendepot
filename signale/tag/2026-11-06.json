@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T12:58:56.046Z",
-  "anzahl": 308,
+  "stand": "2026-11-06T14:13:35.415Z",
+  "anzahl": 309,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -3986,7 +3986,8 @@
       "st": 0.41,
       "q": [
         "CNBC Top News",
-        "MarketWatch"
+        "MarketWatch",
+        "tagesschau Wirtschaft"
       ],
       "z": "2026-11-06T03:20:43.000Z"
     },
@@ -4054,6 +4055,20 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-06T12:22:59.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:ETH:2026-11-06",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-06T13:00:00.000Z"
     }
   ]
 }
