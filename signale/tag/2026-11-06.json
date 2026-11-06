@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-06T07:11:56.291Z",
-  "anzahl": 295,
+  "stand": "2026-11-06T08:54:57.946Z",
+  "anzahl": 298,
   "signale": [
     {
       "id": "verwaesserung:METAM:2026-11-04",
@@ -3881,6 +3881,47 @@
         "Finnhub"
       ],
       "z": "2026-11-06T05:38:27.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:XRP:2026-11-06",
+      "s": "T:XRP",
+      "n": "XRP",
+      "t": "XRP",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-06T07:00:00.000Z"
+    },
+    {
+      "id": "nachricht:RHM:2026-11-06",
+      "s": "T:RHM",
+      "n": "Rheinmetall",
+      "t": "RHM.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-06T07:26:02.000Z"
+    },
+    {
+      "id": "kursrakete:BIRB:2026-11-06",
+      "s": "T:BIRB",
+      "n": "Moonbirds",
+      "t": "BIRB",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.49,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-06T08:54:57.946Z"
     }
   ]
 }
