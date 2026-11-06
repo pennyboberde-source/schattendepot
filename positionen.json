@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-05T21:19:38.475Z",
+  "stand": "2026-11-06T04:54:59.347Z",
   "offen": [
     {
       "id": "2026-11-04-auto-tbbb",
@@ -264,5 +264,114 @@
       }
     }
   ],
-  "vorgemerkt": []
+  "vorgemerkt": [
+    {
+      "id": "2026-11-06-auto-allstate",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-06T04:54:59.347Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Allstate",
+          "isin": "",
+          "ticker": "ALL",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "ALL",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:ALL: stimmung_social, gewinn_ueberraschung (Score 2.38)",
+        "signalIds": [
+          "stimmung_social:ALL:2026-11-06",
+          "gewinn_ueberraschung:ALL:2026-11-06"
+        ],
+        "quellen": [
+          {
+            "name": "ApeWisdom",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-11T04:54:59.347Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-11T04:54:59.347Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-06-auto-sony",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-06T04:54:59.347Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "SONY",
+          "isin": "",
+          "ticker": "SONY",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "SONY",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:SONY: gewinn_ueberraschung, nachzahlen_drift (Score 4.02)",
+        "signalIds": [
+          "gewinn_ueberraschung:SONY:2026-11-06",
+          "nachzahlen_drift:SONY:2026-11-06"
+        ],
+        "quellen": [
+          {
+            "name": "FMP",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-11T04:54:59.347Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-11T04:54:59.347Z",
+      "anpassungen": []
+    }
+  ]
 }

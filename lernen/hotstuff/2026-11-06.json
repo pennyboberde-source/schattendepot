@@ -1,0 +1,462 @@
+{
+  "datum": "2026-11-06",
+  "stand": "2026-11-06T04:54:59.347Z",
+  "anzahl": 46,
+  "abdeckung": 15.2,
+  "mover": [
+    {
+      "s": "T:SOPH",
+      "n": "Sophon",
+      "t": "SOPH",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 2,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 3,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 4,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 6,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 7,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 8,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 9,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:SOXL",
+      "n": "Direxion Daily Semiconductor Bull 3X ETF",
+      "t": "SOXL",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 2,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 3,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 4,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 7,
+          "q": [
+            "Alpha Vantage"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:ZNB",
+      "n": "ZNB",
+      "t": "ZNB",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 7,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:CRIS",
+      "n": "CRIS",
+      "t": "CRIS",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:SNWV",
+      "n": "SANUWAVE Health Inc.",
+      "t": "SNWV",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "grossauftrag",
+          "tageVorher": 8,
+          "q": [
+            "SEC EDGAR"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:BDMD",
+      "n": "BDMD",
+      "t": "BDMD",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 3,
+          "q": [
+            "Alpha Vantage"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:OMH",
+      "n": "Ohmyhome Limited",
+      "t": "OMH",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:NET",
+      "n": "CLOUDFLARE INC - CLASS A",
+      "t": "NET",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:AEHL",
+      "n": "Antelope Enterprise Holdings Limited",
+      "t": "AEHL",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:APPX",
+      "n": "Tradr 2X Long APP Daily ETF",
+      "t": "APPX",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:SOXS",
+      "n": "Direxion Daily Semiconductor Bear 3X ETF",
+      "t": "SOXS",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:DAMD",
+      "n": "Tidal Trust II - Defiance Daily Target 2X Short AMD ETF",
+      "t": "DAMD",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MUZ",
+      "n": "Defiance Daily Target 2X Short MU ETF",
+      "t": "MUZ",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CDLR",
+      "n": "Cadeler A/S",
+      "t": "CDLR",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MNTN",
+      "n": "MNTN, Inc Class A",
+      "t": "MNTN",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:VCYT",
+      "n": "Veracyte, Inc.",
+      "t": "VCYT",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:KORU",
+      "n": "Direxion Daily MSCI South Korea Bull 3X ETF",
+      "t": "KORU",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:LABT",
+      "n": "LABT",
+      "t": "LABT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:UVIX",
+      "n": "UVIX",
+      "t": "UVIX",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:APP",
+      "n": "APPLOVIN CORP-CLASS A",
+      "t": "APP",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:DUOG",
+      "n": "Leverage Shares 2x Long DUOL Daily ETF",
+      "t": "DUOG",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CRCT",
+      "n": "Cricut, Inc.",
+      "t": "CRCT",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:LYEL",
+      "n": "Lyell Immunopharma, Inc.",
+      "t": "LYEL",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:DKI",
+      "n": "DarkIris Inc. Class A Ordinary Shares",
+      "t": "DKI",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:HUTG",
+      "n": "Themes ETF Trust - Leverage Shares 2X Long HUT Daily ETF",
+      "t": "HUTG",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:NRIX",
+      "n": "Nurix Therapeutics, Inc.",
+      "t": "NRIX",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:RZAI",
+      "n": "Roze AI Inc.",
+      "t": "RZAI",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CMTG",
+      "n": "CMTG",
+      "t": "CMTG",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:PMAX",
+      "n": "PMAX",
+      "t": "PMAX",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:EDGE",
+      "n": "Definitive",
+      "t": "EDGE",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:LNXSF",
+      "n": "LANXESS AG",
+      "t": "LNXSF",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CARDS",
+      "n": "Collector Crypt",
+      "t": "CARDS",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:UP2",
+      "n": "Superform",
+      "t": "UP2",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0ZS24",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF29KU5",
+      "n": "DE000HF29KU5",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000GV1Y204",
+      "n": "GOLDMAN SACHS & CO OHG",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF2B1X5",
+      "n": "DE000HF2B1X5",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0MLB5",
+      "n": "DE000HF0MLB5",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HM5DC78",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:ELSA",
+      "n": "HeyElsa",
+      "t": "ELSA",
+      "typ": "kursrakete",
+      "r": -1,
+      "vorzeichen": []
+    }
+  ]
+}

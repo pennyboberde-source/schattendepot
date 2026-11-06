@@ -1,61 +1,110 @@
 {
-  "datum": "2026-11-05",
-  "stand": "2026-11-05T04:56:21.404Z",
-  "anzahl": 35,
-  "abdeckung": 17.1,
+  "datum": "2026-11-06",
+  "stand": "2026-11-06T04:54:59.347Z",
+  "anzahl": 46,
+  "abdeckung": 15.2,
   "mover": [
     {
-      "s": "T:CHSN",
-      "n": "Chanson International Holding",
-      "t": "CHSN",
-      "typ": "tagesgewinner",
+      "s": "T:SOPH",
+      "n": "Sophon",
+      "t": "SOPH",
+      "typ": "kursrakete",
       "r": 1,
       "vorzeichen": [
         {
-          "typ": "handelsstopp",
+          "typ": "upbit_warnung",
           "tageVorher": 2,
           "q": [
-            "Nasdaq Trader"
+            "Upbit"
           ]
         },
         {
-          "typ": "handelsstopp",
-          "tageVorher": 8,
+          "typ": "upbit_warnung",
+          "tageVorher": 3,
           "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:PARA",
-      "n": "Parabolic Technologies, Inc. Class A",
-      "t": "PARA",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
+            "Upbit"
           ]
         },
         {
-          "typ": "handelsstopp",
+          "typ": "upbit_warnung",
+          "tageVorher": 4,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 6,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
           "tageVorher": 7,
           "q": [
-            "Nasdaq Trader"
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 8,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 9,
+          "q": [
+            "Upbit"
           ]
         }
       ]
     },
     {
-      "s": "T:VCIG",
-      "n": "VCI Global Limited",
-      "t": "VCIG",
+      "s": "T:SOXL",
+      "n": "Direxion Daily Semiconductor Bull 3X ETF",
+      "t": "SOXL",
       "typ": "tagesverlierer",
       "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 2,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 3,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 4,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 7,
+          "q": [
+            "Alpha Vantage"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:ZNB",
+      "n": "ZNB",
+      "t": "ZNB",
+      "typ": "kursrakete",
+      "r": 0,
       "vorzeichen": [
         {
           "typ": "handelsstopp",
@@ -67,6 +116,13 @@
         {
           "typ": "handelsstopp",
           "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 7,
           "q": [
             "Nasdaq Trader"
           ]
@@ -86,48 +142,47 @@
           "q": [
             "Nasdaq Trader"
           ]
-        }
-      ]
-    },
-    {
-      "s": "T:CAP",
-      "n": "Cap",
-      "t": "CAP",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": [
+        },
         {
-          "typ": "upbit_warnung",
-          "tageVorher": 7,
+          "typ": "handelsstopp",
+          "tageVorher": 3,
           "q": [
-            "Upbit"
+            "Nasdaq Trader"
           ]
         }
       ]
     },
     {
-      "s": "T:TRUMP",
-      "n": "Official Trump",
-      "t": "TRUMP",
-      "typ": "kursrakete",
+      "s": "T:SNWV",
+      "n": "SANUWAVE Health Inc.",
+      "t": "SNWV",
+      "typ": "tagesverlierer",
       "r": -1,
       "vorzeichen": [
         {
-          "typ": "upbit_warnung",
-          "tageVorher": 3,
+          "typ": "grossauftrag",
+          "tageVorher": 8,
           "q": [
-            "Upbit"
+            "SEC EDGAR"
           ]
         }
       ]
     },
     {
-      "s": "T:APP",
-      "n": "APPLOVIN CORP-CLASS A",
-      "t": "APP",
+      "s": "T:BDMD",
+      "n": "BDMD",
+      "t": "BDMD",
       "typ": "kursrakete",
       "r": 0,
-      "vorzeichen": []
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 3,
+          "q": [
+            "Alpha Vantage"
+          ]
+        }
+      ]
     },
     {
       "s": "T:OMH",
@@ -135,6 +190,118 @@
       "t": "OMH",
       "typ": "tagesgewinner",
       "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:NET",
+      "n": "CLOUDFLARE INC - CLASS A",
+      "t": "NET",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:AEHL",
+      "n": "Antelope Enterprise Holdings Limited",
+      "t": "AEHL",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:APPX",
+      "n": "Tradr 2X Long APP Daily ETF",
+      "t": "APPX",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:SOXS",
+      "n": "Direxion Daily Semiconductor Bear 3X ETF",
+      "t": "SOXS",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:DAMD",
+      "n": "Tidal Trust II - Defiance Daily Target 2X Short AMD ETF",
+      "t": "DAMD",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MUZ",
+      "n": "Defiance Daily Target 2X Short MU ETF",
+      "t": "MUZ",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CDLR",
+      "n": "Cadeler A/S",
+      "t": "CDLR",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MNTN",
+      "n": "MNTN, Inc Class A",
+      "t": "MNTN",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:VCYT",
+      "n": "Veracyte, Inc.",
+      "t": "VCYT",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:KORU",
+      "n": "Direxion Daily MSCI South Korea Bull 3X ETF",
+      "t": "KORU",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:LABT",
+      "n": "LABT",
+      "t": "LABT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:UVIX",
+      "n": "UVIX",
+      "t": "UVIX",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:APP",
+      "n": "APPLOVIN CORP-CLASS A",
+      "t": "APP",
+      "typ": "kursrakete",
+      "r": 0,
       "vorzeichen": []
     },
     {
@@ -218,122 +385,69 @@
       "vorzeichen": []
     },
     {
-      "s": "T:RDAC",
-      "n": "Rising Dragon Acquisition Corp.",
-      "t": "RDAC",
-      "typ": "tagesgewinner",
+      "s": "T:LNXSF",
+      "n": "LANXESS AG",
+      "t": "LNXSF",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CARDS",
+      "n": "Collector Crypt",
+      "t": "CARDS",
+      "typ": "kursrakete",
       "r": 1,
       "vorzeichen": []
     },
     {
-      "s": "T:RIOX",
-      "n": "Daily Target 2X Long RIOT ETF",
-      "t": "RIOX",
-      "typ": "tagesgewinner",
+      "s": "T:UP2",
+      "n": "Superform",
+      "t": "UP2",
+      "typ": "kursrakete",
       "r": 1,
       "vorzeichen": []
     },
     {
-      "s": "T:MERC",
-      "n": "MERC",
-      "t": "MERC",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:AEHG",
-      "n": "AEHG",
-      "t": "AEHG",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:KTTA",
-      "n": "KTTA",
-      "t": "KTTA",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000UR2FZU4",
-      "n": "BAYER H-PW26 DAX INDEX",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000GN36MD8",
-      "n": "GOLDMAN SACHS EUROPE SE",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0KWR2",
+      "s": "I:DE000HF0ZS24",
       "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000GN0WPK7",
-      "n": "GOLDMAN SACHS EUROPE SE",
+      "s": "I:DE000HF29KU5",
+      "n": "DE000HF29KU5",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:DDOG",
-      "n": "DATADOG INC - CLASS A",
-      "t": "DDOG",
+      "s": "I:DE000GV1Y204",
+      "n": "GOLDMAN SACHS & CO OHG",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000UR4GD77",
-      "n": "UNICREDIT BANK GMBH",
+      "s": "I:DE000HF2B1X5",
+      "n": "DE000HF2B1X5",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF20058",
+      "s": "I:DE000HF0MLB5",
+      "n": "DE000HF0MLB5",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HM5DC78",
       "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000GN0WS07",
-      "n": "GOLDMAN SACHS EUROPE SE",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF1ZFV5",
-      "n": "DE000HF1ZFV5",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0KZP9",
-      "n": "DE000HF0KZP9",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:ARX",
-      "n": "Arcium",
-      "t": "ARX",
-      "typ": "kursrakete",
-      "r": 1,
       "vorzeichen": []
     },
     {
@@ -341,7 +455,7 @@
       "n": "HeyElsa",
       "t": "ELSA",
       "typ": "kursrakete",
-      "r": 1,
+      "r": -1,
       "vorzeichen": []
     }
   ]

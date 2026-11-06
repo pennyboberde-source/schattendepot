@@ -1,0 +1,638 @@
+{
+  "stand": "2026-11-06T04:54:59.347Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:SONY",
+      "name": "SONY",
+      "ticker": "SONY",
+      "score": 4.02,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:PAM",
+      "name": "Pampa Energy Inc.",
+      "ticker": "PAM",
+      "score": 2.77,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:GLXY",
+      "name": "Galaxy Digital Inc.",
+      "ticker": "GLXY",
+      "score": 2.74,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ALL",
+      "name": "Allstate",
+      "ticker": "ALL",
+      "score": 2.38,
+      "typen": [
+        "stimmung_social",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "ApeWisdom",
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:TLSSD",
+      "name": "Transportation & Logistics Systems, Inc.",
+      "ticker": "TLSSD",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SUNS",
+      "name": "Sunrise Realty Trust, Inc.",
+      "ticker": "SUNS",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ISPC",
+      "name": "iSpecimen Inc.",
+      "ticker": "ISPC",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:UBER",
+      "name": "UBER",
+      "ticker": "UBER",
+      "score": -2.26,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:TTMI",
+      "name": "Ttm Technologies Inc",
+      "ticker": "TTMI",
+      "score": 2.25,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LBTY",
+      "name": "Liberty Global Ltd.",
+      "ticker": "LBTY",
+      "score": 2.21,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:UPBD",
+      "name": "Upbound Group, Inc.",
+      "ticker": "UPBD",
+      "score": 2.2,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MDLN",
+      "name": "MDLN",
+      "ticker": "MDLN",
+      "score": 2.01,
+      "typen": [
+        "nachricht",
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:BXMT",
+      "name": "Blackstone Mortgage Trust, Inc.",
+      "ticker": "BXMT",
+      "score": 2.01,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:AVT",
+      "name": "AVT",
+      "ticker": "AVT",
+      "score": 2.01,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CVS",
+      "name": "CVS",
+      "ticker": "CVS",
+      "score": 2,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AEHL",
+      "name": "Antelope Entprs Hld Cl A Ord",
+      "ticker": "AEHL",
+      "pump": true,
+      "score": 1.99,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:FBRT",
+      "name": "Franklin Bsp Realty Trust, Inc.",
+      "ticker": "FBRT",
+      "score": 1.99,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LBRT",
+      "name": "Liberty Energy Inc.",
+      "ticker": "LBRT",
+      "score": 1.97,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ARW",
+      "name": "ARW",
+      "ticker": "ARW",
+      "score": 1.94,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:KHC",
+      "name": "KHC",
+      "ticker": "KHC",
+      "score": 1.93,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CBK",
+      "name": "Commerzbank",
+      "ticker": "CBK.DE",
+      "score": -1.87,
+      "typen": [
+        "gewinn_enttaeuschung",
+        "nachricht"
+      ],
+      "quellen": [
+        "FAZ Finanzen",
+        "Handelsblatt Finanzen"
+      ]
+    },
+    {
+      "schluessel": "T:RGA",
+      "name": "RGA",
+      "ticker": "RGA",
+      "score": 1.83,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AN",
+      "name": "Autonation, Inc.",
+      "ticker": "AN",
+      "score": 1.54,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:XRN-PB",
+      "name": "Chiron Real Estate Inc.",
+      "ticker": "XRN-PB",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LNC",
+      "name": "LNC",
+      "ticker": "LNC",
+      "score": -1.49,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:STRZ",
+      "name": "Starz Entertainment Corp /Cn/",
+      "ticker": "STRZ",
+      "score": 1.39,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 1.37,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MTDR",
+      "name": "Matador Resources Co",
+      "ticker": "MTDR",
+      "score": 1.35,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BLX",
+      "name": "Bladex, Inc.",
+      "ticker": "BLX",
+      "score": 1.33,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SOXL",
+      "name": "Direxion Shares ETF Trust - Direxion Daily Semiconductor Bull 3X Share",
+      "ticker": "SOXL",
+      "pump": true,
+      "score": -1.33,
+      "typen": [
+        "stimmung_social",
+        "tagesverlierer",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "ApeWisdom",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:SO",
+      "name": "SO",
+      "ticker": "SO",
+      "score": 1.33,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CAH",
+      "name": "CAH",
+      "ticker": "CAH",
+      "score": 1.31,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:COP",
+      "name": "COP",
+      "ticker": "COP",
+      "score": 1.29,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:HGV",
+      "name": "Hilton Grand Vacations Inc.",
+      "ticker": "HGV",
+      "score": 1.27,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:APPX",
+      "name": "Tradr 2X Long APP Daily ETF",
+      "ticker": "APPX",
+      "pump": true,
+      "score": 1.26,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:LYV",
+      "name": "LYV",
+      "ticker": "LYV",
+      "score": 1.25,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CDW",
+      "name": "CDW",
+      "ticker": "CDW",
+      "score": 1.25,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:SNWV",
+      "name": "SANUWAVE Health, Inc. CS",
+      "ticker": "SNWV",
+      "score": -1.24,
+      "typen": [
+        "handelsstopp",
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:EOG",
+      "name": "EOG",
+      "ticker": "EOG",
+      "score": 1.24,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:AMCR",
+      "name": "AMCR",
+      "ticker": "AMCR",
+      "score": -1.24,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MCK",
+      "name": "MCK",
+      "ticker": "MCK",
+      "score": 1.24,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MELI",
+      "name": "MELI",
+      "ticker": "MELI",
+      "score": -1.24,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CMI",
+      "name": "CMI",
+      "ticker": "CMI",
+      "score": -1.21,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:METAM",
+      "name": "Meta Platforms, Inc.",
+      "ticker": "METAM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BIVIW",
+      "name": "BIOVIE INC.",
+      "ticker": "BIVIW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BBVXF",
+      "name": "BANCO BILBAO VIZCAYA ARGENTARIA, S.A.",
+      "ticker": "BBVXF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LOB-PA",
+      "name": "Live Oak Bancshares, Inc.",
+      "ticker": "LOB-PA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:UWMC",
+      "name": "UWM Holdings Corp",
+      "ticker": "UWMC",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ARQT",
+      "name": "Arcutis Biotherapeutics, Inc.",
+      "ticker": "ARQT",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:DSGN",
+      "name": "Design Therapeutics, Inc.",
+      "ticker": "DSGN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    }
+  ],
+  "anzahlSignale": 294
+}
