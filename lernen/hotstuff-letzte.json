@@ -1,67 +1,9 @@
 {
-  "datum": "2026-11-06",
-  "stand": "2026-11-06T04:54:59.347Z",
-  "anzahl": 46,
-  "abdeckung": 15.2,
+  "datum": "2026-11-07",
+  "stand": "2026-11-07T08:14:53.382Z",
+  "anzahl": 29,
+  "abdeckung": 20.7,
   "mover": [
-    {
-      "s": "T:SOPH",
-      "n": "Sophon",
-      "t": "SOPH",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 2,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 3,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 4,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 6,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 7,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 8,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 9,
-          "q": [
-            "Upbit"
-          ]
-        }
-      ]
-    },
     {
       "s": "T:SOXL",
       "n": "Direxion Daily Semiconductor Bull 3X ETF",
@@ -92,7 +34,14 @@
         },
         {
           "typ": "volumen_ungewoehnlich",
-          "tageVorher": 7,
+          "tageVorher": 5,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 8,
           "q": [
             "Alpha Vantage"
           ]
@@ -108,13 +57,6 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
           "tageVorher": 3,
           "q": [
             "Nasdaq Trader"
@@ -122,30 +64,14 @@
         },
         {
           "typ": "handelsstopp",
-          "tageVorher": 7,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:CRIS",
-      "n": "CRIS",
-      "t": "CRIS",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
+          "tageVorher": 4,
           "q": [
             "Nasdaq Trader"
           ]
         },
         {
           "typ": "handelsstopp",
-          "tageVorher": 3,
+          "tageVorher": 8,
           "q": [
             "Nasdaq Trader"
           ]
@@ -160,8 +86,15 @@
       "r": -1,
       "vorzeichen": [
         {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
           "typ": "grossauftrag",
-          "tageVorher": 8,
+          "tageVorher": 9,
           "q": [
             "SEC EDGAR"
           ]
@@ -169,25 +102,9 @@
       ]
     },
     {
-      "s": "T:BDMD",
-      "n": "BDMD",
-      "t": "BDMD",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "volumen_ungewoehnlich",
-          "tageVorher": 3,
-          "q": [
-            "Alpha Vantage"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:OMH",
-      "n": "Ohmyhome Limited",
-      "t": "OMH",
+      "s": "T:AEHL",
+      "n": "Antelope Enterprise Holdings Limited",
+      "t": "AEHL",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": [
@@ -201,6 +118,38 @@
       ]
     },
     {
+      "s": "T:SOXS",
+      "n": "Direxion Daily Semiconductor Bear 3X ETF",
+      "t": "SOXS",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 2,
+          "q": [
+            "Alpha Vantage"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:BDMD",
+      "n": "BDMD",
+      "t": "BDMD",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 4,
+          "q": [
+            "Alpha Vantage"
+          ]
+        }
+      ]
+    },
+    {
       "s": "T:NET",
       "n": "CLOUDFLARE INC - CLASS A",
       "t": "NET",
@@ -209,25 +158,9 @@
       "vorzeichen": []
     },
     {
-      "s": "T:AEHL",
-      "n": "Antelope Enterprise Holdings Limited",
-      "t": "AEHL",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
       "s": "T:APPX",
       "n": "Tradr 2X Long APP Daily ETF",
       "t": "APPX",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:SOXS",
-      "n": "Direxion Daily Semiconductor Bear 3X ETF",
-      "t": "SOXS",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": []
@@ -297,165 +230,95 @@
       "vorzeichen": []
     },
     {
-      "s": "T:APP",
-      "n": "APPLOVIN CORP-CLASS A",
-      "t": "APP",
+      "s": "T:BIRB",
+      "n": "Moonbirds",
+      "t": "BIRB",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF21CW5",
+      "n": "DE000HF21CW5",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:DUOG",
-      "n": "Leverage Shares 2x Long DUOL Daily ETF",
-      "t": "DUOG",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:CRCT",
-      "n": "Cricut, Inc.",
-      "t": "CRCT",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:LYEL",
-      "n": "Lyell Immunopharma, Inc.",
-      "t": "LYEL",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:DKI",
-      "n": "DarkIris Inc. Class A Ordinary Shares",
-      "t": "DKI",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:HUTG",
-      "n": "Themes ETF Trust - Leverage Shares 2X Long HUT Daily ETF",
-      "t": "HUTG",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:NRIX",
-      "n": "Nurix Therapeutics, Inc.",
-      "t": "NRIX",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:RZAI",
-      "n": "Roze AI Inc.",
-      "t": "RZAI",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:CMTG",
-      "n": "CMTG",
-      "t": "CMTG",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:PMAX",
-      "n": "PMAX",
-      "t": "PMAX",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:EDGE",
-      "n": "Definitive",
-      "t": "EDGE",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:LNXSF",
-      "n": "LANXESS AG",
-      "t": "LNXSF",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:CARDS",
-      "n": "Collector Crypt",
-      "t": "CARDS",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:UP2",
-      "n": "Superform",
-      "t": "UP2",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0ZS24",
+      "s": "I:DE000HF0KX99",
       "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF29KU5",
-      "n": "DE000HF29KU5",
+      "s": "I:DE000HF21D32",
+      "n": "DE000HF21D32",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000GV1Y204",
-      "n": "GOLDMAN SACHS & CO OHG",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF2B1X5",
-      "n": "DE000HF2B1X5",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0MLB5",
-      "n": "DE000HF0MLB5",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HM5DC78",
+      "s": "I:DE000HF21B83",
       "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:ELSA",
-      "n": "HeyElsa",
-      "t": "ELSA",
+      "s": "I:DE000UR4A1D4",
+      "n": "BAYER H-CW26 DAX INDEX",
       "typ": "kursrakete",
-      "r": -1,
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF2B6T2",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF29LG2",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0QRD9",
+      "n": "DE000HF0QRD9",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000GN57D89",
+      "n": "DE000GN57D89",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0QTU9",
+      "n": "DE000HF0QTU9",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000GN6YMA8",
+      "n": "DE000GN6YMA8",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0SJR2",
+      "n": "DE000HF0SJR2",
+      "typ": "kursrakete",
+      "r": 0,
       "vorzeichen": []
     }
   ]
