@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-07T08:00:04.568Z",
+  "stand": "2026-11-07T08:53:07.265Z",
   "heute": {
     "datum": "2026-11-07",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": 0,
       "oeR": 0
     },
-    "offen": 0
+    "offen": 2
   },
   "gesamt": {
     "anzahl": 332,
@@ -314,8 +314,141 @@
       "oeR": -0.41
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-11-07-scan-xrp",
+      "datum": "2026-11-07",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-07T08:20:00.000Z",
+        "kurs": 1.05715,
+        "level": 1.057,
+        "spanne": {
+          "hoch": 1.05704,
+          "tief": 1.05391
+        },
+        "richtung": "long"
+      },
+      "stop": 1.0555,
+      "ziel": 1.06,
+      "zielR": 2,
+      "flatBis": "2026-11-07T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-07T08:20:00.000Z",
+        "basisKurs": 1.05699,
+        "kurs": 1.0596,
+        "stueck": 943.752359,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-07-scan-sol",
+      "datum": "2026-11-07",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-07T08:40:00.000Z",
+        "kurs": 80.98,
+        "level": 80.97,
+        "spanne": {
+          "hoch": 80.97,
+          "tief": 80.83
+        },
+        "richtung": "long"
+      },
+      "stop": 80.9,
+      "ziel": 81.14,
+      "zielR": 2,
+      "flatBis": "2026-11-07T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-07T08:40:00.000Z",
+        "basisKurs": 80.98,
+        "kurs": 81.182,
+        "stueck": 12.318001,
+        "kurswert": 1000
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-11-07-scan-xrp",
+      "datum": "2026-11-07",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-07T08:20:00.000Z",
+        "kurs": 1.05715,
+        "level": 1.057,
+        "spanne": {
+          "hoch": 1.05704,
+          "tief": 1.05391
+        },
+        "richtung": "long"
+      },
+      "stop": 1.0555,
+      "ziel": 1.06,
+      "zielR": 2,
+      "flatBis": "2026-11-07T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-07T08:20:00.000Z",
+        "basisKurs": 1.05699,
+        "kurs": 1.0596,
+        "stueck": 943.752359,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-07-scan-sol",
+      "datum": "2026-11-07",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-07T08:40:00.000Z",
+        "kurs": 80.98,
+        "level": 80.97,
+        "spanne": {
+          "hoch": 80.97,
+          "tief": 80.83
+        },
+        "richtung": "long"
+      },
+      "stop": 80.9,
+      "ziel": 81.14,
+      "zielR": 2,
+      "flatBis": "2026-11-07T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-07T08:40:00.000Z",
+        "basisKurs": 80.98,
+        "kurs": 81.182,
+        "stueck": 12.318001,
+        "kurswert": 1000
+      }
+    },
     {
       "id": "2026-11-06-scan-palantir-technologies-in",
       "datum": "2026-11-06",
@@ -8847,5 +8980,8 @@
     "claude": 0,
     "autopilot": 0
   },
-  "hinweise": []
+  "hinweise": [
+    "BTC: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)",
+    "ETH: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)"
+  ]
 }
