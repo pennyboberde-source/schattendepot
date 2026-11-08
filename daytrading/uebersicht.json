@@ -1,16 +1,16 @@
 {
-  "stand": "2026-11-07T21:38:31.119Z",
+  "stand": "2026-11-08T08:01:41.989Z",
   "heute": {
-    "datum": "2026-11-07",
+    "datum": "2026-11-08",
     "gruppe": {
-      "anzahl": 3,
+      "anzahl": 0,
       "treffer": 0,
       "quote": 0,
-      "netto": -30.58,
-      "brutto": -24.58,
-      "nettoTR": -30.58,
-      "oeNettoProzent": -1.02,
-      "oeR": -0.79
+      "netto": 0,
+      "brutto": 0,
+      "nettoTR": 0,
+      "oeNettoProzent": 0,
+      "oeR": 0
     },
     "offen": 0
   },
@@ -8767,169 +8767,6 @@
         },
         "r": -1.04
       }
-    },
-    {
-      "id": "2026-11-03-scan-sol",
-      "datum": "2026-11-03",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "SOL",
-      "symbol": "SOL",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-03T09:10:00.000Z",
-        "kurs": 82.22,
-        "level": 82.15,
-        "spanne": {
-          "hoch": 82.15,
-          "tief": 81.89
-        },
-        "richtung": "long"
-      },
-      "stop": 82.02,
-      "ziel": 82.59,
-      "zielR": 2,
-      "flatBis": "2026-11-03T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-03T09:10:00.000Z",
-        "basisKurs": 82.21,
-        "kurs": 82.416,
-        "stueck": 12.133566,
-        "kurswert": 1000
-      },
-      "ausstieg": {
-        "zeit": "2026-11-03T11:00:00.000Z",
-        "basisKurs": 82.59,
-        "kurs": 82.384,
-        "kurswert": 999.61,
-        "grund": "ziel"
-      },
-      "ergebnis": {
-        "brutto": -0.39,
-        "bruttoProzent": -0.04,
-        "netto": -2.39,
-        "nettoProzent": -0.24,
-        "nettoTR": -2.39,
-        "gebuehren": {
-          "haupt": 2,
-          "tr": 2
-        },
-        "r": 2
-      }
-    },
-    {
-      "id": "2026-11-03-scan-schaeffler-ag",
-      "datum": "2026-11-03",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SCHAEFFLER AG",
-      "isin": "DE000SHA0100",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 6.972,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-03T08:45:00.000Z",
-        "kurs": 5.79,
-        "level": 5.8,
-        "spanne": {
-          "hoch": 5.92,
-          "tief": 5.8
-        },
-        "richtung": "short"
-      },
-      "stop": 5.86,
-      "ziel": 5.71,
-      "zielR": 2,
-      "flatBis": "2026-11-03T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-03T08:50:00.000Z",
-        "basisKurs": 5.81,
-        "kurs": 1.1649,
-        "stueck": 858,
-        "kurswert": 999.48
-      },
-      "ausstieg": {
-        "zeit": "2026-11-03T10:45:00.000Z",
-        "basisKurs": 5.86,
-        "kurs": 1.1092,
-        "kurswert": 951.69,
-        "grund": "stop"
-      },
-      "ergebnis": {
-        "brutto": -47.79,
-        "bruttoProzent": -4.78,
-        "netto": -47.79,
-        "nettoProzent": -4.78,
-        "nettoTR": -49.79,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": -1
-      }
-    },
-    {
-      "id": "2026-11-03-scan-ada",
-      "datum": "2026-11-03",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "ADA",
-      "symbol": "ADA",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-03T09:15:00.000Z",
-        "kurs": 0.167284,
-        "level": 0.1672,
-        "spanne": {
-          "hoch": 0.167211,
-          "tief": 0.166582
-        },
-        "richtung": "long"
-      },
-      "stop": 0.1669,
-      "ziel": 0.1681,
-      "zielR": 2,
-      "flatBis": "2026-11-03T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-03T09:15:00.000Z",
-        "basisKurs": 0.167284,
-        "kurs": 0.1677,
-        "stueck": 5963.029218,
-        "kurswert": 1000
-      },
-      "ausstieg": {
-        "zeit": "2026-11-03T10:10:00.000Z",
-        "basisKurs": 0.1681,
-        "kurs": 0.1677,
-        "kurswert": 1000,
-        "grund": "ziel"
-      },
-      "ergebnis": {
-        "brutto": 0,
-        "bruttoProzent": 0,
-        "netto": -2,
-        "nettoProzent": -0.2,
-        "nettoTR": -2,
-        "gebuehren": {
-          "haupt": 2,
-          "tr": 2
-        },
-        "r": 2.13
-      }
     }
   ],
   "varianten": {
@@ -8949,10 +8786,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 14,
-        "chance": 21.4,
-        "oeNetto": -0.07,
-        "wertung": -0.57
+        "faelle": 15,
+        "chance": 20,
+        "oeNetto": -0.13,
+        "wertung": -0.59
       }
     },
     "eu:orb_long": {
