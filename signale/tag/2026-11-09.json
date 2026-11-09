@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T11:56:05.470Z",
-  "anzahl": 202,
+  "stand": "2026-11-09T13:08:13.978Z",
+  "anzahl": 204,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -2541,9 +2541,10 @@
       "t": "CBK.DE",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "tagesschau Wirtschaft"
       ],
       "z": "2026-11-09T06:48:26.000Z"
     },
@@ -2663,11 +2664,37 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.46,
+      "st": 0.51,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-09T11:56:05.470Z"
+    },
+    {
+      "id": "verwaesserung:TTRX:2026-11-09",
+      "s": "T:TTRX",
+      "n": "Turn Therapeutics Inc.",
+      "t": "TTRX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:00:55.000Z"
+    },
+    {
+      "id": "verwaesserung:FWDI:2026-11-09",
+      "s": "T:FWDI",
+      "n": "Forward Industries, Inc.",
+      "t": "FWDI",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:07:32.000Z"
     }
   ]
 }
