@@ -1,6 +1,22 @@
 [
   {
     "art": "signal",
+    "name": "grossauftrag",
+    "faktor": 0.6,
+    "begruendung": "Schwächstes Signal im Schattenbuch: Ø −9,0 % nach 1 Woche (n=16).",
+    "datum": "2026-11-09",
+    "status": "offen"
+  },
+  {
+    "art": "signal",
+    "name": "gewinn_ueberraschung",
+    "faktor": 0.8,
+    "begruendung": "Gewicht 2,45 passt nicht zu Ø +0,07 % nach 1 Woche (n=116) und echten Autopilot-Orders 1/4 im Plus, Ø −3,2 %.",
+    "datum": "2026-11-09",
+    "status": "offen"
+  },
+  {
+    "art": "signal",
     "name": "gewinn_ueberraschung",
     "faktor": 0.7,
     "begruendung": "Schattenbuch Ø +0,07 % nach 1 Woche (n=116), Autopilot-Orders 0/2 im Plus (Ø −6,5 %); Gewicht 2,4 ist zu hoch für ein Nullsignal.",
