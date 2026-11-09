@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T10:56:58.591Z",
-  "anzahl": 197,
+  "stand": "2026-11-09T11:56:05.470Z",
+  "anzahl": 202,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -2602,6 +2602,72 @@
         "MarketWatch"
       ],
       "z": "2026-11-09T10:48:00.000Z"
+    },
+    {
+      "id": "verwaesserung:INTT:2026-11-06",
+      "s": "T:INTT",
+      "n": "INTEST CORP",
+      "t": "INTT",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-06T23:39:16.000Z"
+    },
+    {
+      "id": "nachricht:ETH:2026-11-09",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-09T08:31:56.000Z"
+    },
+    {
+      "id": "verwaesserung:BRK-A:2026-11-09",
+      "s": "T:BRK-A",
+      "n": "BERKSHIRE HATHAWAY INC",
+      "t": "BRK-A",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T11:40:01.000Z"
+    },
+    {
+      "id": "kursrakete:DE000GN6YR26:2026-11-09",
+      "s": "I:DE000GN6YR26",
+      "n": "DE000GN6YR26",
+      "i": "DE000GN6YR26",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.46,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-09T11:44:14.631Z"
+    },
+    {
+      "id": "kursrakete:PIEVERSE:2026-11-09",
+      "s": "T:PIEVERSE",
+      "n": "Pieverse",
+      "t": "PIEVERSE",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.46,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-09T11:56:05.470Z"
     }
   ]
 }
