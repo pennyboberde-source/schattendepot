@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T05:00:19.745Z",
-  "anzahl": 189,
+  "stand": "2026-11-09T07:24:23.344Z",
+  "anzahl": 194,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -919,11 +919,12 @@
       "t": "NVDA",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.51,
+      "st": 0.62,
       "q": [
         "CNBC Top News",
         "MarketWatch",
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "tagesschau Wirtschaft"
       ],
       "z": "2026-11-08T22:53:57.000Z"
     },
@@ -2331,7 +2332,7 @@
       "m": "us",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.65,
+      "st": 0.7,
       "q": [
         "CNBC Politics"
       ],
@@ -2345,7 +2346,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.65,
+      "st": 0.7,
       "q": [
         "CNBC Politics"
       ],
@@ -2490,6 +2491,74 @@
         "Polymarket (Politik)"
       ],
       "z": "2026-11-09T05:00:19.745Z"
+    },
+    {
+      "id": "liquidationen_spitze:BTC:2026-11-09",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-09T06:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:ETH:2026-11-09",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-09T06:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:XRP:2026-11-09",
+      "s": "T:XRP",
+      "n": "XRP",
+      "t": "XRP",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-09T06:00:00.000Z"
+    },
+    {
+      "id": "nachricht:CBK:2026-11-09",
+      "s": "T:CBK",
+      "n": "Commerzbank",
+      "t": "CBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-09T06:48:26.000Z"
+    },
+    {
+      "id": "nachricht:HNR1:2026-11-09",
+      "s": "T:HNR1",
+      "n": "Hannover Rück",
+      "t": "HNR1.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-09T07:06:38.000Z"
     }
   ]
 }
