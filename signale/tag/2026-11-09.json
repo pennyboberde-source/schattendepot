@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T17:05:36.469Z",
-  "anzahl": 231,
+  "stand": "2026-11-09T17:58:20.918Z",
+  "anzahl": 235,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -2363,7 +2363,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.4,
+      "st": 0.55,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2377,7 +2377,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.4,
+      "st": 0.55,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2391,7 +2391,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.4,
+      "st": 0.55,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2667,7 +2667,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.86,
+      "st": 0.92,
       "q": [
         "Upbit"
       ],
@@ -3049,6 +3049,60 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-09T16:37:53.176Z"
+    },
+    {
+      "id": "nachricht:COIN:2026-11-09",
+      "s": "T:COIN",
+      "n": "Coinbase",
+      "t": "COIN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-09T17:30:00.000Z"
+    },
+    {
+      "id": "nachricht:BA:2026-11-09",
+      "s": "T:BA",
+      "n": "Boeing",
+      "t": "BA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-09T17:57:58.000Z"
+    },
+    {
+      "id": "politik_wahrscheinlichkeit:XOM:2026-11-09:6908163",
+      "s": "T:XOM",
+      "n": "Exxon Mobil",
+      "t": "XOM",
+      "m": "us",
+      "typ": "politik_wahrscheinlichkeit",
+      "r": -1,
+      "st": 1,
+      "q": [
+        "Polymarket (Politik)"
+      ],
+      "z": "2026-11-09T17:58:20.918Z"
+    },
+    {
+      "id": "politik_wahrscheinlichkeit:LHA:2026-11-09:6908163",
+      "s": "T:LHA",
+      "n": "Lufthansa",
+      "t": "LHA.DE",
+      "m": "eu",
+      "typ": "politik_wahrscheinlichkeit",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "Polymarket (Politik)"
+      ],
+      "z": "2026-11-09T17:58:20.918Z"
     }
   ]
 }
