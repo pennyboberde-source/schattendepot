@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T14:54:23.609Z",
-  "anzahl": 223,
+  "stand": "2026-11-09T15:59:21.630Z",
+  "anzahl": 229,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -2665,7 +2665,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.58,
+      "st": 0.77,
       "q": [
         "Upbit"
       ],
@@ -2717,7 +2717,7 @@
       "t": "SMX",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2730,7 +2730,7 @@
       "t": "OMH",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2743,7 +2743,7 @@
       "t": "ONCO",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2808,7 +2808,7 @@
       "t": "MFI",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2943,6 +2943,84 @@
         "CNBC Top News"
       ],
       "z": "2026-11-09T14:30:01.000Z"
+    },
+    {
+      "id": "handelsstopp:MF:2026-11-09",
+      "s": "T:MF",
+      "n": "MindForge Inc Ord A",
+      "t": "MF",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:NWGL:2026-11-09",
+      "s": "T:NWGL",
+      "n": "CL Workshop Group Limited ADS",
+      "t": "NWGL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RIBB:2026-11-09",
+      "s": "T:RIBB",
+      "n": "Ribbon Acq Cp Ord A",
+      "t": "RIBB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF29T77:2026-11-09",
+      "s": "I:DE000HF29T77",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF29T77",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.98,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-09T15:20:21.994Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0P8X6:2026-11-09",
+      "s": "I:DE000HF0P8X6",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF0P8X6",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.48,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-09T15:38:39.030Z"
+    },
+    {
+      "id": "kursrakete:DE000HT60QS2:2026-11-09",
+      "s": "I:DE000HT60QS2",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HT60QS2",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.54,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-09T15:40:27.180Z"
     }
   ]
 }
