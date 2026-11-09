@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T18:54:00.523Z",
-  "anzahl": 237,
+  "stand": "2026-11-09T19:55:27.357Z",
+  "anzahl": 241,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -2810,7 +2810,7 @@
       "t": "MFI",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2954,7 +2954,7 @@
       "t": "MF",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2967,7 +2967,7 @@
       "t": "NWGL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3131,6 +3131,58 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-09T18:23:28.000Z"
+    },
+    {
+      "id": "handelsstopp:MTRI:2026-11-09",
+      "s": "T:MTRI",
+      "n": "Mentari Therapeutics, Inc. Cmn",
+      "t": "MTRI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:WCT:2026-11-09",
+      "s": "T:WCT",
+      "n": "Wellchange Holdings Cl A Ord",
+      "t": "WCT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PCTTU:2026-11-09",
+      "s": "T:PCTTU",
+      "n": "PureCycle Technologies, Inc Ut",
+      "t": "PCTTU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BMHL:2026-11-09",
+      "s": "T:BMHL",
+      "n": "Bluemount Holdings Lim Cl B OS",
+      "t": "BMHL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
     }
   ]
 }
