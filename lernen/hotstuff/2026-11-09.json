@@ -1,0 +1,165 @@
+{
+  "datum": "2026-11-09",
+  "stand": "2026-11-09T05:00:19.745Z",
+  "anzahl": 14,
+  "abdeckung": 21.4,
+  "mover": [
+    {
+      "s": "T:OMH",
+      "n": "Ohmyhome Limited",
+      "t": "OMH",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 4,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 5,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:CDT",
+      "n": "CDT",
+      "t": "CDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 6,
+          "q": [
+            "Alpha Vantage"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:VIVK",
+      "n": "VIVK",
+      "t": "VIVK",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:STAK",
+      "n": "STAK Inc. Ordinary Shares",
+      "t": "STAK",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:GOGO",
+      "n": "Gogo Inc.",
+      "t": "GOGO",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CIIT",
+      "n": "Tianci International, Inc.",
+      "t": "CIIT",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:VSA",
+      "n": "VisionSys AI Inc.",
+      "t": "VSA",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:SKIN",
+      "n": "SkinHealth Systems Inc.",
+      "t": "SKIN",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:IONL",
+      "n": "GraniteShares 2x Long IONQ Daily ETF",
+      "t": "IONL",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:IONX",
+      "n": "Defiance Daily Target 2X Long IONQ ETF",
+      "t": "IONX",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:BDSX",
+      "n": "Biodesix, Inc.",
+      "t": "BDSX",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:IONZ",
+      "n": "Defiance Daily Target 2x Short IONQ ETF",
+      "t": "IONZ",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:STLN",
+      "n": "Starling Oncology, Inc.",
+      "t": "STLN",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:SDA",
+      "n": "SDA",
+      "t": "SDA",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    }
+  ]
+}

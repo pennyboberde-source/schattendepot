@@ -1,0 +1,632 @@
+{
+  "stand": "2026-11-09T05:00:19.745Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:GOGO",
+      "name": "Gogo Inc.",
+      "ticker": "GOGO",
+      "score": 2.41,
+      "typen": [
+        "grossauftrag",
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "SEC EDGAR",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:CCXIW",
+      "name": "Churchill Capital Corp XI",
+      "ticker": "CCXIW",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:FOX",
+      "name": "Fox Corp",
+      "ticker": "FOX",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:DFNSW",
+      "name": "T3 Defense Inc.",
+      "ticker": "DFNSW",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SIDU",
+      "name": "Sidus Space Inc.",
+      "ticker": "SIDU",
+      "score": -2.1,
+      "typen": [
+        "prognose_senkung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CIIT",
+      "name": "Tianci International, Inc.",
+      "ticker": "CIIT",
+      "score": 1.9,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete",
+        "leerverkauf_quote"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage",
+        "FINRA"
+      ]
+    },
+    {
+      "schluessel": "T:VSA",
+      "name": "VisionSys AI Inc.",
+      "ticker": "VSA",
+      "score": 1.9,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete",
+        "leerverkauf_quote"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage",
+        "FINRA"
+      ]
+    },
+    {
+      "schluessel": "T:UPBD",
+      "name": "Upbound Group, Inc.",
+      "ticker": "UPBD",
+      "score": 1.63,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:STAK",
+      "name": "STAK Inc. Ordinary Shares",
+      "ticker": "STAK",
+      "pump": true,
+      "score": 1.63,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:ROKU",
+      "name": "ROKU, INC",
+      "ticker": "ROKU",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:KTB",
+      "name": "Kontoor Brands, Inc.",
+      "ticker": "KTB",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BXMT",
+      "name": "Blackstone Mortgage Trust, Inc.",
+      "ticker": "BXMT",
+      "score": 1.47,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:PAM",
+      "name": "Pampa Energy Inc.",
+      "ticker": "PAM",
+      "score": 1.47,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:KYN",
+      "name": "Kayne Anderson Energy Infrastructure Fund, Inc.",
+      "ticker": "KYN",
+      "score": 1.4,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:GLXY",
+      "name": "Galaxy Digital Inc.",
+      "ticker": "GLXY",
+      "score": 1.32,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SKIN",
+      "name": "SkinHealth Systems Inc.",
+      "ticker": "SKIN",
+      "score": 1.28,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:IONL",
+      "name": "GraniteShares 2x Long IONQ Daily ETF",
+      "ticker": "IONL",
+      "score": 1.28,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:IONX",
+      "name": "Defiance Daily Target 2X Long IONQ ETF",
+      "ticker": "IONX",
+      "score": 1.28,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:BDSX",
+      "name": "Biodesix, Inc.",
+      "ticker": "BDSX",
+      "score": -1.28,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:IONZ",
+      "name": "Defiance Daily Target 2x Short IONQ ETF",
+      "ticker": "IONZ",
+      "score": -1.28,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:STLN",
+      "name": "Starling Oncology, Inc.",
+      "ticker": "STLN",
+      "score": -1.28,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:OMH",
+      "name": "Ohmyhome Limited",
+      "ticker": "OMH",
+      "score": -1.28,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:TTMI",
+      "name": "Ttm Technologies Inc",
+      "ticker": "TTMI",
+      "score": 1.22,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DDD",
+      "name": "3D SYSTEMS CORP",
+      "ticker": "DDD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:AVTX",
+      "name": "Avalo Therapeutics, Inc.",
+      "ticker": "AVTX",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NTRSO",
+      "name": "NORTHERN TRUST CORP",
+      "ticker": "NTRSO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MDWD",
+      "name": "MediWound Ltd.",
+      "ticker": "MDWD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:OBIO",
+      "name": "Orchestra BioMed Holdings, Inc.",
+      "ticker": "OBIO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:INO",
+      "name": "INOVIO PHARMACEUTICALS, INC.",
+      "ticker": "INO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LOB-PA",
+      "name": "Live Oak Bancshares, Inc.",
+      "ticker": "LOB-PA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:FATE",
+      "name": "FATE THERAPEUTICS INC",
+      "ticker": "FATE",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:IRON",
+      "name": "Disc Medicine, Inc.",
+      "ticker": "IRON",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:DDC",
+      "name": "DDC Enterprise Ltd",
+      "ticker": "DDC",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:DTIL",
+      "name": "PRECISION BIOSCIENCES INC",
+      "ticker": "DTIL",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:AXG",
+      "name": "Solowin Holdings, Ltd.",
+      "ticker": "AXG",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:METAM",
+      "name": "Meta Platforms, Inc.",
+      "ticker": "METAM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BBVXF",
+      "name": "BANCO BILBAO VIZCAYA ARGENTARIA, S.A.",
+      "ticker": "BBVXF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:HBCYF",
+      "name": "HSBC HOLDINGS PLC",
+      "ticker": "HBCYF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NTCL",
+      "name": "NetClass Technology Inc",
+      "ticker": "NTCL",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ATYR",
+      "name": "aTYR PHARMA INC",
+      "ticker": "ATYR",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ZBIO",
+      "name": "Zenas BioPharma, Inc.",
+      "ticker": "ZBIO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GNL-PD",
+      "name": "Global Net Lease, Inc.",
+      "ticker": "GNL-PD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:USGO",
+      "name": "U.S. GoldMining Inc.",
+      "ticker": "USGO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GPUS-PD",
+      "name": "Hyperscale Data, Inc.",
+      "ticker": "GPUS-PD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MTDR",
+      "name": "Matador Resources Co",
+      "ticker": "MTDR",
+      "score": 1.15,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:XOM",
+      "name": "Exxon Mobil",
+      "ticker": "XOM",
+      "markt": "us",
+      "score": -1.15,
+      "typen": [
+        "politik_massnahme",
+        "politik_wahrscheinlichkeit"
+      ],
+      "quellen": [
+        "CNBC Politics",
+        "Polymarket (Politik)"
+      ]
+    },
+    {
+      "schluessel": "T:LHA",
+      "name": "Lufthansa",
+      "ticker": "LHA.DE",
+      "markt": "eu",
+      "score": 1.15,
+      "typen": [
+        "politik_massnahme",
+        "politik_wahrscheinlichkeit"
+      ],
+      "quellen": [
+        "CNBC Politics",
+        "Polymarket (Politik)"
+      ]
+    },
+    {
+      "schluessel": "T:LBTY",
+      "name": "Liberty Global Ltd.",
+      "ticker": "LBTY",
+      "score": 1.09,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LBRT",
+      "name": "Liberty Energy Inc.",
+      "ticker": "LBRT",
+      "score": 1.07,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:AGMB",
+      "name": "Agomab Therapeutics Nv",
+      "ticker": "AGMB",
+      "score": 1.04,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    }
+  ],
+  "anzahlSignale": 189
+}
