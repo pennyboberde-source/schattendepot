@@ -1,6 +1,220 @@
 {
-  "stand": "2026-11-09T06:42:48.698Z",
+  "stand": "2026-11-09T07:22:46.183Z",
   "orders": [
+    {
+      "id": "2026-11-06-auto-allstate",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-06T04:54:59.347Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Allstate",
+          "isin": "",
+          "ticker": "ALL",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "ALL",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:ALL: stimmung_social, gewinn_ueberraschung (Score 2.38)",
+        "signalIds": [
+          "stimmung_social:ALL:2026-11-06",
+          "gewinn_ueberraschung:ALL:2026-11-06"
+        ],
+        "quellen": [
+          {
+            "name": "ApeWisdom",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-11T04:54:59.347Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-11T04:54:59.347Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-06T14:38:17.723Z",
+        "stueck": 4,
+        "kurs": 235.457,
+        "kurswert": 941.83,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 941.83,
+        "kursquelle": "Finnhub (2026-11-06T14:37:32.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 281.14,
+      "stopkurs": 228.39,
+      "etfKauf": {
+        "wert": 126.515,
+        "zeit": "2026-11-06T14:29:35.521Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-06",
+        "vortag": 126.005
+      },
+      "etfVergleich": {
+        "netto": 2.5,
+        "nettoProzent": 0.28,
+        "etfKauf": 126.515,
+        "etfVerkauf": 127.025
+      },
+      "verkauf": {
+        "zeit": "2026-11-09T07:22:46.183Z",
+        "stueck": 4,
+        "kurs": 227.506,
+        "kurswert": 910.02,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 910.02,
+        "kursquelle": "Finnhub (2026-11-06T21:00:00.000Z)",
+        "synthetisch": true,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "kursProzent": -3.38,
+        "netto": -31.81,
+        "nettoProzent": -3.38,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": -31.81
+      }
+    },
+    {
+      "id": "2026-11-04-auto-tbbb",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-04T04:53:57.715Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "TBBB",
+          "isin": "",
+          "ticker": "TBBB",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "TBBB",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:TBBB: gewinn_ueberraschung, nachzahlen_drift (Score 4.06)",
+        "signalIds": [
+          "gewinn_ueberraschung:TBBB:2026-11-04",
+          "nachzahlen_drift:TBBB:2026-11-04"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-09T04:53:57.715Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (20 Fälle)"
+      },
+      "verkaufstermin": "2026-11-09T04:53:57.715Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-04T14:56:42.507Z",
+        "stueck": 17,
+        "kurs": 56.554,
+        "kurswert": 961.42,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 961.42,
+        "kursquelle": "Finnhub (2026-11-04T14:55:42.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 67.53,
+      "stopkurs": 54.86,
+      "etfKauf": {
+        "wert": 130.49,
+        "zeit": "2026-11-04T14:44:34.266Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 12,
+        "hinweis": "letztes Geschäft 2026-11-04",
+        "vortag": 128.925
+      },
+      "etfVergleich": {
+        "netto": -25.34,
+        "nettoProzent": -2.77,
+        "etfKauf": 130.49,
+        "etfVerkauf": 127.025
+      },
+      "verkauf": {
+        "zeit": "2026-11-09T07:22:46.183Z",
+        "stueck": 17,
+        "kurs": 58.589,
+        "kurswert": 996.01,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 996.01,
+        "kursquelle": "Finnhub (2026-11-06T21:00:00.000Z)",
+        "synthetisch": true,
+        "grund": "termin"
+      },
+      "ergebnis": {
+        "kursProzent": 3.6,
+        "netto": 34.59,
+        "nettoProzent": 3.6,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": 34.59
+      }
+    },
     {
       "id": "2026-11-05-auto-pfe",
       "status": "geschlossen",

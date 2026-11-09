@@ -1,289 +1,103 @@
 {
-  "datum": "2026-11-08",
-  "dateien": [],
+  "datum": "2026-11-09",
+  "dateien": [
+    "posttrade.20261109.05.15.munc.csv.gz",
+    "posttrade.20261109.05.15.mund.csv.gz",
+    "posttrade.20261109.05.30.munc.csv.gz",
+    "posttrade.20261109.05.30.mund.csv.gz",
+    "posttrade.20261109.05.45.munc.csv.gz",
+    "posttrade.20261109.05.45.mund.csv.gz",
+    "posttrade.20261109.06.00.munc.csv.gz",
+    "posttrade.20261109.06.00.mund.csv.gz",
+    "posttrade.20261109.06.15.munc.csv.gz",
+    "posttrade.20261109.06.15.mund.csv.gz",
+    "posttrade.20261109.06.30.munc.csv.gz",
+    "posttrade.20261109.06.30.mund.csv.gz",
+    "posttrade.20261109.06.45.munc.csv.gz",
+    "posttrade.20261109.06.45.mund.csv.gz",
+    "posttrade.20261109.07.00.munc.csv.gz",
+    "posttrade.20261109.07.00.mund.csv.gz",
+    "posttrade.20261109.07.15.munc.csv.gz",
+    "posttrade.20261109.07.15.mund.csv.gz"
+  ],
   "universum": {},
   "beobachtungen": [
     {
-      "basis": "BTC",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "BTC",
-      "symbol": "BTC",
-      "instrumentLong": "krypto",
-      "hebel": 1,
+      "basis": "US21037T1097",
+      "herkunft": "claude",
+      "markt": "us",
+      "name": "Constellation Energy",
+      "isin": "US21037T1097",
+      "instrumentLong": "aktie",
+      "hebel": 5,
       "spekulativ": false,
+      "chance": 32,
+      "these": "Quartalszahlen vor US-Eröffnung, KI-Strom-Wert mit hohem Interesse; nur Long-Ausbruch als Aktie (Lektion 15).",
       "zustand": {
         "setup": "orb",
         "richtungen": [
           "long"
         ],
-        "status": "fertig",
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "spanne": {
-          "hoch": 68129.8,
-          "tief": 68084.5,
-          "volumen": 1.19908116,
-          "kerzen": 3
-        },
-        "ausloeser": {
-          "zeit": "2026-11-08T11:20:00.000Z",
-          "kurs": 68131.7,
-          "level": 68129.8,
-          "richtung": "long"
-        }
+        "status": "spanne",
+        "letzteKerze": "2026-11-09T07:00:00.000Z"
       }
     },
     {
-      "basis": "BTC",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "BTC",
-      "symbol": "BTC",
-      "instrumentLong": "krypto",
-      "hebel": 1,
+      "basis": "US6293775085",
+      "herkunft": "claude",
+      "markt": "us",
+      "name": "NRG Energy",
+      "isin": "US6293775085",
+      "instrumentLong": "aktie",
+      "hebel": 5,
       "spekulativ": false,
+      "chance": 31,
+      "these": "Zahlen vor US-Start, Stromversorger im KI-Thema; Long-Ausbruch als Aktie nur bei klarer Reaktion.",
       "zustand": {
-        "setup": "level",
+        "setup": "orb",
         "richtungen": [
           "long"
         ],
-        "status": "fertig",
-        "level": 68359.9,
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "grund": "Einstiegsfenster vorbei"
+        "status": "spanne",
+        "letzteKerze": "2026-11-09T06:30:00.000Z"
       }
     },
     {
-      "basis": "ETH",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "ETH",
-      "symbol": "ETH",
-      "instrumentLong": "krypto",
-      "hebel": 1,
+      "basis": "DE0008232125",
+      "herkunft": "claude",
+      "markt": "eu",
+      "name": "Lufthansa",
+      "isin": "DE0008232125",
+      "instrumentLong": "aktie",
+      "hebel": 5,
       "spekulativ": false,
+      "chance": 30,
+      "these": "Politik-Radar: Entspannung Iran/Öl stützt Airlines; Long-Ausbruch aus der 09:00-Spanne als Aktie.",
       "zustand": {
         "setup": "orb",
         "richtungen": [
           "long"
         ],
-        "status": "fertig",
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "spanne": {
-          "hoch": 2009.8,
-          "tief": 2007.72,
-          "volumen": 51.83333588,
-          "kerzen": 3
-        },
-        "ausloeser": {
-          "zeit": "2026-11-08T11:25:00.000Z",
-          "kurs": 2009.82,
-          "level": 2009.8,
-          "richtung": "long"
-        }
-      }
-    },
-    {
-      "basis": "ETH",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "ETH",
-      "symbol": "ETH",
-      "instrumentLong": "krypto",
-      "hebel": 1,
-      "spekulativ": false,
-      "zustand": {
-        "setup": "level",
-        "richtungen": [
-          "long"
-        ],
-        "status": "fertig",
-        "level": 2018.93,
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "grund": "Einstiegsfenster vorbei"
-      }
-    },
-    {
-      "basis": "SOL",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "SOL",
-      "symbol": "SOL",
-      "instrumentLong": "krypto",
-      "hebel": 1,
-      "spekulativ": true,
-      "zustand": {
-        "setup": "orb",
-        "richtungen": [
-          "long"
-        ],
-        "status": "fertig",
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "spanne": {
-          "hoch": 80.13,
-          "tief": 79.95,
-          "volumen": 354.32206013,
-          "kerzen": 3
-        },
-        "ausloeser": {
-          "zeit": "2026-11-08T11:20:00.000Z",
-          "kurs": 80.21,
-          "level": 80.13,
-          "richtung": "long"
-        }
-      }
-    },
-    {
-      "basis": "SOL",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "SOL",
-      "symbol": "SOL",
-      "instrumentLong": "krypto",
-      "hebel": 1,
-      "spekulativ": true,
-      "zustand": {
-        "setup": "level",
-        "richtungen": [
-          "long"
-        ],
-        "status": "fertig",
-        "level": 81.28,
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "grund": "Einstiegsfenster vorbei"
-      }
-    },
-    {
-      "basis": "XRP",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "XRP",
-      "symbol": "XRP",
-      "instrumentLong": "krypto",
-      "hebel": 1,
-      "spekulativ": true,
-      "zustand": {
-        "setup": "orb",
-        "richtungen": [
-          "long"
-        ],
-        "status": "fertig",
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "spanne": {
-          "hoch": 1.04471,
-          "tief": 1.04213,
-          "volumen": 60214.43184756,
-          "kerzen": 3
-        },
-        "ausloeser": {
-          "zeit": "2026-11-08T11:25:00.000Z",
-          "kurs": 1.04588,
-          "level": 1.04471,
-          "richtung": "long"
-        }
-      }
-    },
-    {
-      "basis": "XRP",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "XRP",
-      "symbol": "XRP",
-      "instrumentLong": "krypto",
-      "hebel": 1,
-      "spekulativ": true,
-      "zustand": {
-        "setup": "level",
-        "richtungen": [
-          "long"
-        ],
-        "status": "fertig",
-        "level": 1.05967,
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "grund": "Einstiegsfenster vorbei"
-      }
-    },
-    {
-      "basis": "ADA",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "ADA",
-      "symbol": "ADA",
-      "instrumentLong": "krypto",
-      "hebel": 1,
-      "spekulativ": true,
-      "zustand": {
-        "setup": "orb",
-        "richtungen": [
-          "long"
-        ],
-        "status": "fertig",
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "spanne": {
-          "hoch": 0.161797,
-          "tief": 0.161748,
-          "volumen": 2882.8296446699997,
-          "kerzen": 3
-        },
-        "ausloeser": {
-          "zeit": "2026-11-08T08:45:00.000Z",
-          "kurs": 0.161807,
-          "level": 0.161797,
-          "richtung": "long"
-        }
-      }
-    },
-    {
-      "basis": "ADA",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "name": "ADA",
-      "symbol": "ADA",
-      "instrumentLong": "krypto",
-      "hebel": 1,
-      "spekulativ": true,
-      "zustand": {
-        "setup": "level",
-        "richtungen": [
-          "long"
-        ],
-        "status": "fertig",
-        "level": 0.166482,
-        "letzteKerze": "2026-11-08T21:30:00.000Z",
-        "grund": "Einstiegsfenster vorbei"
+        "status": "spanne",
+        "letzteKerze": "2026-11-09T07:05:00.000Z"
       }
     }
   ],
-  "kryptoLetzte": {
-    "BTC": "2026-11-08T21:30:00.000Z",
-    "ETH": "2026-11-08T21:30:00.000Z",
-    "SOL": "2026-11-08T21:30:00.000Z",
-    "XRP": "2026-11-08T21:30:00.000Z",
-    "ADA": "2026-11-08T21:30:00.000Z"
-  },
-  "watchlist": false,
+  "kryptoLetzte": {},
+  "watchlist": true,
   "autopilotGenutzt": [],
   "letzteKurse": {
-    "BTC": {
-      "zeit": "2026-11-08T21:30:00.000Z",
-      "kurs": 67877.3
+    "US6293775085": {
+      "zeit": "2026-11-09T06:30:00.000Z",
+      "kurs": 79.66
     },
-    "ETH": {
-      "zeit": "2026-11-08T21:30:00.000Z",
-      "kurs": 1995
+    "DE0008232125": {
+      "zeit": "2026-11-09T07:05:00.000Z",
+      "kurs": 8.368
     },
-    "SOL": {
-      "zeit": "2026-11-08T21:30:00.000Z",
-      "kurs": 79.93
-    },
-    "XRP": {
-      "zeit": "2026-11-08T21:30:00.000Z",
-      "kurs": 1.0282
-    },
-    "ADA": {
-      "zeit": "2026-11-08T21:30:00.000Z",
-      "kurs": 0.161508
+    "US21037T1097": {
+      "zeit": "2026-11-09T07:00:00.000Z",
+      "kurs": 225.9
     }
-  },
-  "abendbilanz": "2026-11-08"
+  }
 }

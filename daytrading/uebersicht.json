@@ -1,16 +1,16 @@
 {
-  "stand": "2026-11-08T21:38:44.372Z",
+  "stand": "2026-11-09T07:22:50.866Z",
   "heute": {
-    "datum": "2026-11-08",
+    "datum": "2026-11-09",
     "gruppe": {
-      "anzahl": 2,
+      "anzahl": 0,
       "treffer": 0,
       "quote": 0,
-      "netto": -11.91,
-      "brutto": -7.91,
-      "nettoTR": -11.91,
-      "oeNettoProzent": -0.6,
-      "oeR": 0.5
+      "netto": 0,
+      "brutto": 0,
+      "nettoTR": 0,
+      "oeNettoProzent": 0,
+      "oeR": 0
     },
     "offen": 0
   },
@@ -8766,117 +8766,6 @@
         },
         "r": -1.07
       }
-    },
-    {
-      "id": "2026-11-03-scan-siemens-energy-ag",
-      "datum": "2026-11-03",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SIEMENS ENERGY AG",
-      "isin": "DE000ENER6Y0",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-03T08:20:00.000Z",
-        "kurs": 127.94,
-        "level": 127.46,
-        "spanne": {
-          "hoch": 127.46,
-          "tief": 126.28
-        },
-        "richtung": "long"
-      },
-      "stop": 126.87,
-      "ziel": 129.78,
-      "zielR": 2,
-      "flatBis": "2026-11-03T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-03T08:20:00.000Z",
-        "basisKurs": 127.84,
-        "kurs": 127.936,
-        "stueck": 7,
-        "kurswert": 895.55
-      },
-      "ausstieg": {
-        "zeit": "2026-11-03T12:55:00.000Z",
-        "basisKurs": 129.78,
-        "kurs": 129.683,
-        "kurswert": 907.78,
-        "grund": "ziel"
-      },
-      "ergebnis": {
-        "brutto": 12.23,
-        "bruttoProzent": 1.37,
-        "netto": 12.23,
-        "nettoProzent": 1.37,
-        "nettoTR": 10.23,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": 2
-      }
-    },
-    {
-      "id": "2026-11-03-scan-alstom",
-      "datum": "2026-11-03",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ALSTOM",
-      "isin": "FR0010220475",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 13.03,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-03T08:25:00.000Z",
-        "kurs": 10.88,
-        "level": 10.905,
-        "spanne": {
-          "hoch": 11.375,
-          "tief": 10.905
-        },
-        "richtung": "short"
-      },
-      "stop": 11.14,
-      "ziel": 10.3,
-      "zielR": 2,
-      "flatBis": "2026-11-03T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-03T08:25:00.000Z",
-        "basisKurs": 10.86,
-        "kurs": 2.1754,
-        "stueck": 459,
-        "kurswert": 998.51
-      },
-      "ausstieg": {
-        "zeit": "2026-11-03T12:30:00.000Z",
-        "basisKurs": 11.15,
-        "kurs": 1.8753,
-        "kurswert": 860.76,
-        "grund": "stop"
-      },
-      "ergebnis": {
-        "brutto": -137.75,
-        "bruttoProzent": -13.8,
-        "netto": -137.75,
-        "nettoProzent": -13.8,
-        "nettoTR": -139.75,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": -1.04
-      }
     }
   ],
   "varianten": {
@@ -8948,8 +8837,8 @@
     }
   },
   "beobachtet": {
-    "code_scan": 10,
-    "claude": 0,
+    "code_scan": 0,
+    "claude": 3,
     "autopilot": 0
   },
   "hinweise": []
