@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T09:08:52.884Z",
-  "anzahl": 195,
+  "stand": "2026-11-09T10:56:58.591Z",
+  "anzahl": 197,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -2572,6 +2572,36 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-05T11:04:57.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-09",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.72,
+      "q": [
+        "tagesschau Wirtschaft",
+        "Handelsblatt Finanzen",
+        "MarketWatch",
+        "CNBC Top News",
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-09T03:32:51.000Z"
+    },
+    {
+      "id": "aktienrueckkauf:BRK-B:2026-11-09",
+      "s": "T:BRK-B",
+      "n": "Berkshire Hathaway",
+      "t": "BRK-B",
+      "typ": "aktienrueckkauf",
+      "r": 1,
+      "st": 0.7,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-09T10:48:00.000Z"
     }
   ]
 }
