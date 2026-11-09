@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-09T12:43:37.235Z",
+  "stand": "2026-11-09T13:58:41.931Z",
   "heute": {
     "datum": "2026-11-09",
     "gruppe": {
-      "anzahl": 14,
+      "anzahl": 16,
       "treffer": 7,
-      "quote": 50,
-      "netto": -0.72,
-      "brutto": 7.28,
-      "nettoTR": -20.72,
-      "oeNettoProzent": 0.01,
-      "oeR": 0.74
+      "quote": 43.8,
+      "netto": -32.39,
+      "brutto": -24.39,
+      "nettoTR": -56.39,
+      "oeNettoProzent": -0.19,
+      "oeR": 0.52
     },
-    "offen": 9
+    "offen": 7
   },
   "gesamt": {
-    "anzahl": 351,
+    "anzahl": 353,
     "treffer": 108,
-    "quote": 30.8,
-    "netto": -2905.75,
-    "brutto": -2765.75,
-    "nettoTR": -3467.75,
+    "quote": 30.6,
+    "netto": -2937.42,
+    "brutto": -2797.42,
+    "nettoTR": -3503.42,
     "oeNettoProzent": -0.85,
-    "oeR": -0.01
+    "oeR": -0.02
   },
   "kurve": [
     {
@@ -99,21 +99,21 @@
     },
     {
       "datum": "2026-11-09",
-      "netto": -2905.75,
-      "brutto": -2765.75,
-      "nettoTR": -3467.75
+      "netto": -2937.42,
+      "brutto": -2797.42,
+      "nettoTR": -3503.42
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 347,
+      "anzahl": 349,
       "treffer": 108,
-      "quote": 31.1,
-      "netto": -2747.19,
-      "brutto": -2607.19,
-      "nettoTR": -3301.19,
-      "oeNettoProzent": -0.81,
-      "oeR": 0
+      "quote": 30.9,
+      "netto": -2778.86,
+      "brutto": -2638.86,
+      "nettoTR": -3336.86,
+      "oeNettoProzent": -0.82,
+      "oeR": -0.01
     },
     "claude": {
       "anzahl": 4,
@@ -128,14 +128,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 199,
+      "anzahl": 201,
       "treffer": 79,
-      "quote": 39.7,
-      "netto": -1479.13,
-      "brutto": -1479.13,
-      "nettoTR": -1877.13,
-      "oeNettoProzent": -0.75,
-      "oeR": 0.1
+      "quote": 39.3,
+      "netto": -1510.8,
+      "brutto": -1510.8,
+      "nettoTR": -1912.8,
+      "oeNettoProzent": -0.76,
+      "oeR": 0.09
     },
     "us": {
       "anzahl": 82,
@@ -160,14 +160,14 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 228,
+      "anzahl": 230,
       "treffer": 73,
-      "quote": 32,
-      "netto": -1123.56,
-      "brutto": -1013.56,
-      "nettoTR": -1469.56,
-      "oeNettoProzent": -0.52,
-      "oeR": 0.1
+      "quote": 31.7,
+      "netto": -1155.23,
+      "brutto": -1045.23,
+      "nettoTR": -1505.23,
+      "oeNettoProzent": -0.53,
+      "oeR": 0.09
     },
     "orb_short": {
       "anzahl": 108,
@@ -192,14 +192,14 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 151,
+      "anzahl": 153,
       "treffer": 61,
-      "quote": 40.4,
-      "netto": -306.51,
-      "brutto": -306.51,
-      "nettoTR": -608.51,
-      "oeNettoProzent": -0.25,
-      "oeR": 0.21
+      "quote": 39.9,
+      "netto": -338.18,
+      "brutto": -338.18,
+      "nettoTR": -644.18,
+      "oeNettoProzent": -0.27,
+      "oeR": 0.19
     },
     "turbo": {
       "anzahl": 130,
@@ -224,35 +224,35 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 225,
+      "anzahl": 226,
       "treffer": 78,
-      "quote": 34.7,
-      "netto": -1227,
-      "brutto": -1173,
-      "nettoTR": -1623,
+      "quote": 34.5,
+      "netto": -1233.84,
+      "brutto": -1179.84,
+      "nettoTR": -1631.84,
       "oeNettoProzent": -0.57,
-      "oeR": 0
+      "oeR": -0.01
     },
     "spekulativ": {
-      "anzahl": 126,
+      "anzahl": 127,
       "treffer": 30,
-      "quote": 23.8,
-      "netto": -1678.75,
-      "brutto": -1592.75,
-      "nettoTR": -1844.75,
-      "oeNettoProzent": -1.35,
+      "quote": 23.6,
+      "netto": -1703.58,
+      "brutto": -1617.58,
+      "nettoTR": -1871.58,
+      "oeNettoProzent": -1.36,
       "oeR": -0.03
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 194,
+      "anzahl": 196,
       "treffer": 0,
       "quote": 0,
-      "netto": -6408.73,
-      "brutto": -6326.73,
-      "nettoTR": -6714.73,
-      "oeNettoProzent": -3.37,
+      "netto": -6440.4,
+      "brutto": -6358.4,
+      "nettoTR": -6750.4,
+      "oeNettoProzent": -3.35,
       "oeR": -1.04
     },
     "ziel": {
@@ -298,14 +298,14 @@
       "oeR": -0.17
     },
     "seitwaerts_nervoes": {
-      "anzahl": 45,
+      "anzahl": 47,
       "treffer": 17,
-      "quote": 37.8,
-      "netto": -68.54,
-      "brutto": -68.54,
-      "nettoTR": -158.54,
-      "oeNettoProzent": -0.23,
-      "oeR": 0.06
+      "quote": 36.2,
+      "netto": -100.21,
+      "brutto": -100.21,
+      "nettoTR": -194.21,
+      "oeNettoProzent": -0.29,
+      "oeR": 0.01
     },
     "unbekannt": {
       "anzahl": 40,
@@ -367,39 +367,6 @@
       }
     },
     {
-      "id": "2026-11-09-scan-fresenius-se-co-kgaa",
-      "datum": "2026-11-09",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "FRESENIUS SE & CO KGAA",
-      "isin": "DE000FRE5EN2",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-09T08:20:00.000Z",
-        "kurs": 53.01,
-        "level": 52.92,
-        "spanne": {
-          "hoch": 52.92,
-          "tief": 52.47
-        },
-        "richtung": "long"
-      },
-      "stop": 52.7,
-      "ziel": 53.61,
-      "zielR": 2,
-      "flatBis": "2026-11-09T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-09T08:20:00.000Z",
-        "basisKurs": 53,
-        "kurs": 53.04,
-        "stueck": 18,
-        "kurswert": 954.72
-      }
-    },
-    {
       "id": "2026-11-09-scan-sol",
       "datum": "2026-11-09",
       "herkunft": "code_scan",
@@ -597,39 +564,6 @@
         "kurs": 45.205,
         "stueck": 22,
         "kurswert": 994.51
-      }
-    },
-    {
-      "id": "2026-11-09-scan-evotec-se",
-      "datum": "2026-11-09",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "EVOTEC SE",
-      "isin": "DE0005664809",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-09T10:20:00.000Z",
-        "kurs": 3.256,
-        "level": 3.24,
-        "spanne": {
-          "hoch": 3.24,
-          "tief": 3.182
-        },
-        "richtung": "long"
-      },
-      "stop": 3.211,
-      "ziel": 3.358,
-      "zielR": 2,
-      "flatBis": "2026-11-09T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-09T10:25:00.000Z",
-        "basisKurs": 3.26,
-        "kurs": 3.2763,
-        "stueck": 305,
-        "kurswert": 999.27
       }
     }
   ],
@@ -668,39 +602,6 @@
       }
     },
     {
-      "id": "2026-11-09-scan-fresenius-se-co-kgaa",
-      "datum": "2026-11-09",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "FRESENIUS SE & CO KGAA",
-      "isin": "DE000FRE5EN2",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-09T08:20:00.000Z",
-        "kurs": 53.01,
-        "level": 52.92,
-        "spanne": {
-          "hoch": 52.92,
-          "tief": 52.47
-        },
-        "richtung": "long"
-      },
-      "stop": 52.7,
-      "ziel": 53.61,
-      "zielR": 2,
-      "flatBis": "2026-11-09T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-09T08:20:00.000Z",
-        "basisKurs": 53,
-        "kurs": 53.04,
-        "stueck": 18,
-        "kurswert": 954.72
-      }
-    },
-    {
       "id": "2026-11-09-scan-sol",
       "datum": "2026-11-09",
       "herkunft": "code_scan",
@@ -931,6 +832,77 @@
         "kurs": 3.2763,
         "stueck": 305,
         "kurswert": 999.27
+      },
+      "ausstieg": {
+        "zeit": "2026-11-09T13:15:00.000Z",
+        "basisKurs": 3.211,
+        "kurs": 3.1949,
+        "kurswert": 974.44,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -24.83,
+        "bruttoProzent": -2.48,
+        "netto": -24.83,
+        "nettoProzent": -2.48,
+        "nettoTR": -26.83,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-09-scan-fresenius-se-co-kgaa",
+      "datum": "2026-11-09",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "FRESENIUS SE & CO KGAA",
+      "isin": "DE000FRE5EN2",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-09T08:20:00.000Z",
+        "kurs": 53.01,
+        "level": 52.92,
+        "spanne": {
+          "hoch": 52.92,
+          "tief": 52.47
+        },
+        "richtung": "long"
+      },
+      "stop": 52.7,
+      "ziel": 53.61,
+      "zielR": 2,
+      "flatBis": "2026-11-09T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-09T08:20:00.000Z",
+        "basisKurs": 53,
+        "kurs": 53.04,
+        "stueck": 18,
+        "kurswert": 954.72
+      },
+      "ausstieg": {
+        "zeit": "2026-11-09T12:55:00.000Z",
+        "basisKurs": 52.7,
+        "kurs": 52.66,
+        "kurswert": 947.88,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -6.84,
+        "bruttoProzent": -0.72,
+        "netto": -6.84,
+        "nettoProzent": -0.72,
+        "nettoTR": -8.84,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10154,10 +10126,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 54,
-        "chance": 27.8,
-        "oeNetto": -0.19,
-        "wertung": -0.24
+        "faelle": 55,
+        "chance": 29.1,
+        "oeNetto": -0.15,
+        "wertung": -0.21
       }
     },
     "us:orb_short": {
