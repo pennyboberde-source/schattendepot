@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T19:55:27.357Z",
-  "anzahl": 241,
+  "stand": "2026-11-09T20:52:39.558Z",
+  "anzahl": 242,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -3165,7 +3165,7 @@
       "t": "PCTTU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3176,6 +3176,19 @@
       "s": "T:BMHL",
       "n": "Bluemount Holdings Lim Cl B OS",
       "t": "BMHL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:COOL:2026-11-09",
+      "s": "T:COOL",
+      "n": "VegaShares AI Thermal, Cooling &amp; Power Management ETF",
+      "t": "COOL",
       "typ": "handelsstopp",
       "r": 0,
       "st": 0.5,
