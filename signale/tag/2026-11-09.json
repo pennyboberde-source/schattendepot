@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T15:59:21.630Z",
-  "anzahl": 229,
+  "stand": "2026-11-09T17:05:36.469Z",
+  "anzahl": 231,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -2335,7 +2335,8 @@
       "r": -1,
       "st": 0.9,
       "q": [
-        "CNBC Politics"
+        "CNBC Politics",
+        "tagesschau Ausland"
       ],
       "z": "2026-11-09T05:00:19.745Z"
     },
@@ -2349,7 +2350,8 @@
       "r": 1,
       "st": 0.9,
       "q": [
-        "CNBC Politics"
+        "CNBC Politics",
+        "tagesschau Ausland"
       ],
       "z": "2026-11-09T05:00:19.745Z"
     },
@@ -2665,7 +2667,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.77,
+      "st": 0.86,
       "q": [
         "Upbit"
       ],
@@ -3021,6 +3023,32 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-09T15:40:27.180Z"
+    },
+    {
+      "id": "handelsstopp:TKC:2026-11-09",
+      "s": "T:TKC",
+      "n": "Turkcell Iletisim Hizmetleri AS Common Stock",
+      "t": "TKC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF29PZ3:2026-11-09",
+      "s": "I:DE000HF29PZ3",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF29PZ3",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.56,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-09T16:37:53.176Z"
     }
   ]
 }
