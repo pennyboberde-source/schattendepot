@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T17:58:20.918Z",
-  "anzahl": 235,
+  "stand": "2026-11-09T18:54:00.523Z",
+  "anzahl": 237,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -2667,7 +2667,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.92,
+      "st": 1,
       "q": [
         "Upbit"
       ],
@@ -2916,7 +2916,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "MarketWatch"
+        "MarketWatch",
+        "CNBC Top News"
       ],
       "z": "2026-11-09T14:16:00.000Z"
     },
@@ -2966,7 +2967,7 @@
       "t": "NWGL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3103,6 +3104,33 @@
         "Polymarket (Politik)"
       ],
       "z": "2026-11-09T17:58:20.918Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-11-09",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "BTC-ECHO",
+        "FAZ Finanzen"
+      ],
+      "z": "2026-11-09T03:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:FUSEW:2026-11-09",
+      "s": "T:FUSEW",
+      "n": "Fusemachines Inc.",
+      "t": "FUSEW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T18:23:28.000Z"
     }
   ]
 }
