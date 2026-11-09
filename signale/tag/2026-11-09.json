@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-09T13:08:13.978Z",
-  "anzahl": 204,
+  "stand": "2026-11-09T14:54:23.609Z",
+  "anzahl": 223,
   "signale": [
     {
       "id": "verwaesserung:DDD:2026-11-05",
@@ -867,9 +867,10 @@
       "t": "BTC",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "BTC-ECHO"
+        "BTC-ECHO",
+        "FAZ Finanzen"
       ],
       "z": "2026-11-08T07:00:00.000Z"
     },
@@ -2664,7 +2665,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.51,
+      "st": 0.58,
       "q": [
         "Upbit"
       ],
@@ -2695,6 +2696,253 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-09T13:07:32.000Z"
+    },
+    {
+      "id": "verwaesserung:USGO:2026-11-09",
+      "s": "T:USGO",
+      "n": "U.S. GoldMining Inc.",
+      "t": "USGO",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T14:08:23.000Z"
+    },
+    {
+      "id": "handelsstopp:SMX:2026-11-09",
+      "s": "T:SMX",
+      "n": "SMX Sc Mtr PLC Ord",
+      "t": "SMX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:OMH:2026-11-09",
+      "s": "T:OMH",
+      "n": "Ohmyhome Ltd Ords A",
+      "t": "OMH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ONCO:2026-11-09",
+      "s": "T:ONCO",
+      "n": "Onconetix, Inc. Common Stock",
+      "t": "ONCO",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:VRM:2026-11-09",
+      "s": "T:VRM",
+      "n": "Vroom, Inc.",
+      "t": "VRM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BKHAU:2026-11-09",
+      "s": "T:BKHAU",
+      "n": "Black Hawk Acquisition Corpora",
+      "t": "BKHAU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ONMD:2026-11-09",
+      "s": "T:ONMD",
+      "n": "OneMedNet Corp Class A Cmn",
+      "t": "ONMD",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SENEB:2026-11-09",
+      "s": "T:SENEB",
+      "n": "Seneca Foods Corp",
+      "t": "SENEB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MFI:2026-11-09",
+      "s": "T:MFI",
+      "n": "mF Intl Ltd Cl A Ord",
+      "t": "MFI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-09T00:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:NVSEF:2026-11-09",
+      "s": "T:NVSEF",
+      "n": "NOVARTIS AG",
+      "t": "NVSEF",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:17:44.000Z"
+    },
+    {
+      "id": "verwaesserung:ENBNF:2026-11-09",
+      "s": "T:ENBNF",
+      "n": "ENBRIDGE INC",
+      "t": "ENBNF",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:18:05.000Z"
+    },
+    {
+      "id": "verwaesserung:IIPR-PA:2026-11-09",
+      "s": "T:IIPR-PA",
+      "n": "INNOVATIVE INDUSTRIAL PROPERTIES INC",
+      "t": "IIPR-PA",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:24:01.000Z"
+    },
+    {
+      "id": "verwaesserung:JAGX:2026-11-09",
+      "s": "T:JAGX",
+      "n": "Jaguar Health, Inc.",
+      "t": "JAGX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:37:17.000Z"
+    },
+    {
+      "id": "verwaesserung:NVST:2026-11-09",
+      "s": "T:NVST",
+      "n": "Envista Holdings Corp",
+      "t": "NVST",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:53:09.000Z"
+    },
+    {
+      "id": "verwaesserung:APOS:2026-11-09",
+      "s": "T:APOS",
+      "n": "Apollo Global Management, Inc.",
+      "t": "APOS",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:53:32.000Z"
+    },
+    {
+      "id": "verwaesserung:SCHW-PJ:2026-11-09",
+      "s": "T:SCHW-PJ",
+      "n": "SCHWAB CHARLES CORP",
+      "t": "SCHW-PJ",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T14:05:48.000Z"
+    },
+    {
+      "id": "nachricht:GS:2026-11-09",
+      "s": "T:GS",
+      "n": "Goldman Sachs",
+      "t": "GS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-09T14:16:00.000Z"
+    },
+    {
+      "id": "nachricht:AMZN:2026-11-09",
+      "s": "T:AMZN",
+      "n": "Amazon",
+      "t": "AMZN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-09T14:24:34.000Z"
+    },
+    {
+      "id": "nachricht:LLY:2026-11-09",
+      "s": "T:LLY",
+      "n": "Eli Lilly",
+      "t": "LLY",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-09T14:30:01.000Z"
     }
   ]
 }
