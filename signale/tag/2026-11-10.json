@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-10T16:51:19.270Z",
-  "anzahl": 250,
+  "stand": "2026-11-10T17:47:27.118Z",
+  "anzahl": 256,
   "signale": [
     {
       "id": "verwaesserung:AXG:2026-11-06",
@@ -3191,7 +3191,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.44,
+      "st": 0.45,
       "q": [
         "Upbit"
       ],
@@ -3230,7 +3230,7 @@
       "t": "NXXT",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3243,7 +3243,7 @@
       "t": "TWG",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3283,7 +3283,7 @@
       "i": "DE000HF0WCX7",
       "typ": "kursrakete",
       "r": 0,
-      "st": 0.5,
+      "st": 0.55,
       "q": [
         "gettex-Scanner"
       ],
@@ -3301,6 +3301,84 @@
         "CNBC Top News"
       ],
       "z": "2026-11-10T16:44:13.000Z"
+    },
+    {
+      "id": "handelsstopp:ATCH:2026-11-10",
+      "s": "T:ATCH",
+      "n": "AtlasClear Holdings, Inc. Common Stock",
+      "t": "ATCH",
+      "typ": "handelsstopp",
+      "r": -1,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ITP:2026-11-10",
+      "s": "T:ITP",
+      "n": "IT Tech Packaging, Inc. Common Stock",
+      "t": "ITP",
+      "typ": "handelsstopp",
+      "r": -1,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:KNRX:2026-11-10",
+      "s": "T:KNRX",
+      "n": "KNOREX LTD. Class A Ordinary Shares",
+      "t": "KNRX",
+      "typ": "handelsstopp",
+      "r": -1,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:STAK:2026-11-10",
+      "s": "T:STAK",
+      "n": "STAK Inc Ord A",
+      "t": "STAK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-11-10",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-10T16:30:01.000Z"
+    },
+    {
+      "id": "verwaesserung:JDZG:2026-11-10",
+      "s": "T:JDZG",
+      "n": "JIADE Ltd",
+      "t": "JDZG",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-10T17:01:41.000Z"
     }
   ]
 }
