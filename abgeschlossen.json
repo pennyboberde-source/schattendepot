@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-10T20:29:10.672Z",
+  "stand": "2026-11-10T21:19:13.427Z",
   "orders": [
     {
       "id": "2026-11-05-auto-mdln",
@@ -106,7 +106,9 @@
         "gebuehren": 0,
         "steuer": 0,
         "nachSteuern": -4.97
-      }
+      },
+      "bericht": "Der Autopilot kaufte MDLN am 05.11. um 14:55 zu 36,33 € auf Basis von Gewinnüberraschung plus Nachzahlen-Drift (Score 3,79). Die Position bewegte sich fünf Tage praktisch nicht: weder Ziel noch Stop wurden erreicht, verkauft wurde per Termin am 10.11. um 08:01 zu 36,14 € – Kurs −0,51 %, netto −4,97 €, der ETF hätte im selben Zeitraum −2,98 € gebracht. Die These (bewiesener Signaltyp gewinn_ueberraschung mit Ø +0,05 % nach 3 Tagen) hat sich genau so erfüllt, wie die Statistik es vorhersagt: ein Nullsignal, das um Null schwankt. Getragen hat das Signal nicht; es gab keine Drift, aber auch keinen Einbruch. Vorher wissen konnte man, dass der erwartete Ertrag (+0,05 %) kaum über dem Spread liegt und die Order damit im Schnitt nur Kosten und Marktrisiko trägt. Hinzu kam die nervöse Seitwärtsphase am Gesamtmarkt, in der das Schattenbuch nur 18 % Treffer zeigt. Fazit: Ein Autopilot mit Ø +0,05 % Erwartung ist kein Vorteil, sondern Zufall – fünf echte Autopilot-Orders stehen bei 1/5 im Plus und Ø −2,65 %.\n\nLearnings:\n1. Autopilot gewinn_ueberraschung (Ø +0,05 %) bringt in echten Orders 1/5 im Plus, Ø −2,65 % – Erwartung kaum über Spread, Freigabeschwelle prüfen.\n2. Kein Ziel, kein Stop, Verkauf per Termin bei −0,5 %: das Signal erzeugte keine Bewegung, also keinen Vorteil.",
+      "berichtZeit": "2026-11-10T21:19:13.427Z"
     },
     {
       "id": "2026-11-06-auto-allstate",
