@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-10T17:47:27.118Z",
-  "anzahl": 256,
+  "stand": "2026-11-10T18:49:52.427Z",
+  "anzahl": 259,
   "signale": [
     {
       "id": "verwaesserung:AXG:2026-11-06",
@@ -3191,7 +3191,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.45,
+      "st": 0.46,
       "q": [
         "Upbit"
       ],
@@ -3348,7 +3348,7 @@
       "t": "STAK",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3379,6 +3379,47 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-10T17:01:41.000Z"
+    },
+    {
+      "id": "handelsstopp:BMGL:2026-11-10",
+      "s": "T:BMGL",
+      "n": "Basel Medical Group Ltd Ord Sh",
+      "t": "BMGL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-10",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "CNBC Top News",
+        "Handelsblatt Finanzen",
+        "MarketWatch"
+      ],
+      "z": "2026-11-10T13:19:13.000Z"
+    },
+    {
+      "id": "kursrakete:DE000A1681X5:2026-11-10",
+      "s": "I:DE000A1681X5",
+      "n": "SINGULUS TECHNOLOGIES-BR",
+      "i": "DE000A1681X5",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.45,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-10T18:44:19.207Z"
     }
   ]
 }
