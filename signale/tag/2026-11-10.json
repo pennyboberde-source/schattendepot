@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-10T08:17:33.908Z",
-  "anzahl": 204,
+  "stand": "2026-11-10T09:55:06.717Z",
+  "anzahl": 207,
   "signale": [
     {
       "id": "verwaesserung:AXG:2026-11-06",
@@ -2493,7 +2493,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.88,
+      "st": 0.96,
       "q": [
         "Upbit"
       ],
@@ -2690,6 +2690,46 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-10T08:14:53.277Z"
+    },
+    {
+      "id": "nachricht:INTC:2026-11-10",
+      "s": "T:INTC",
+      "n": "Intel",
+      "t": "INTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-10T09:01:37.000Z"
+    },
+    {
+      "id": "kursrakete:DE000UR3ADS4:2026-11-10",
+      "s": "I:DE000UR3ADS4",
+      "n": "UNICREDIT BANK GMBH",
+      "i": "DE000UR3ADS4",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.58,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-10T09:44:38.007Z"
+    },
+    {
+      "id": "upbit_warnung:NCT:2026-11-10",
+      "s": "T:NCT",
+      "n": "Polyswarm",
+      "t": "NCT",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-10T09:55:06.717Z"
     }
   ]
 }
