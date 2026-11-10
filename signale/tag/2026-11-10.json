@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-10T15:48:12.777Z",
-  "anzahl": 242,
+  "stand": "2026-11-10T16:51:19.270Z",
+  "anzahl": 250,
   "signale": [
     {
       "id": "verwaesserung:AXG:2026-11-06",
@@ -2968,7 +2968,7 @@
       "t": "SMX",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2994,7 +2994,7 @@
       "t": "TANH",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3196,6 +3196,111 @@
         "Upbit"
       ],
       "z": "2026-11-10T15:48:12.777Z"
+    },
+    {
+      "id": "handelsstopp:TOPP:2026-11-10",
+      "s": "T:TOPP",
+      "n": "Toppoint Holdings Inc. Common Stock",
+      "t": "TOPP",
+      "typ": "handelsstopp",
+      "r": -1,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GNS:2026-11-10",
+      "s": "T:GNS",
+      "n": "Genius Group Limited Ordinary Shares",
+      "t": "GNS",
+      "typ": "handelsstopp",
+      "r": -1,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:NXXT:2026-11-10",
+      "s": "T:NXXT",
+      "n": "NextNRG, Inc. Common Stk",
+      "t": "NXXT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TWG:2026-11-10",
+      "s": "T:TWG",
+      "n": "Top Wlth Grp Hldg Ord A",
+      "t": "TWG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BTLN:2026-11-10",
+      "s": "T:BTLN",
+      "n": "Brightline Interactive Cmn Stk",
+      "t": "BTLN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:DOGE:2026-11-10",
+      "s": "T:DOGE",
+      "n": "Dogecoin",
+      "t": "DOGE",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-10T15:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0WCX7:2026-11-10",
+      "s": "I:DE000HF0WCX7",
+      "n": "DE000HF0WCX7",
+      "i": "DE000HF0WCX7",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-10T16:40:03.883Z"
+    },
+    {
+      "id": "analysten_abstufung:NVDA:2026-11-10",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "analysten_abstufung",
+      "r": -1,
+      "st": 0.7,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-10T16:44:13.000Z"
     }
   ]
 }
