@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-10T11:06:15.933Z",
+  "stand": "2026-11-10T12:04:10.476Z",
   "heute": {
     "datum": "2026-11-10",
     "gruppe": {
-      "anzahl": 11,
+      "anzahl": 13,
       "treffer": 3,
-      "quote": 27.3,
-      "netto": -123.44,
-      "brutto": -123.44,
-      "nettoTR": -145.44,
-      "oeNettoProzent": -1.16,
-      "oeR": 0.08
+      "quote": 23.1,
+      "netto": -185.45,
+      "brutto": -185.45,
+      "nettoTR": -211.45,
+      "oeNettoProzent": -1.46,
+      "oeR": -0.09
     },
-    "offen": 18
+    "offen": 16
   },
   "gesamt": {
-    "anzahl": 388,
+    "anzahl": 390,
     "treffer": 130,
-    "quote": 33.5,
-    "netto": -2934.16,
-    "brutto": -2792.16,
-    "nettoTR": -3568.16,
-    "oeNettoProzent": -0.77,
-    "oeR": 0.04
+    "quote": 33.3,
+    "netto": -2996.17,
+    "brutto": -2854.17,
+    "nettoTR": -3634.17,
+    "oeNettoProzent": -0.78,
+    "oeR": 0.03
   },
   "kurve": [
     {
@@ -105,21 +105,21 @@
     },
     {
       "datum": "2026-11-10",
-      "netto": -2934.16,
-      "brutto": -2792.16,
-      "nettoTR": -3568.16
+      "netto": -2996.17,
+      "brutto": -2854.17,
+      "nettoTR": -3634.17
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 382,
+      "anzahl": 384,
       "treffer": 128,
-      "quote": 33.5,
-      "netto": -2846,
-      "brutto": -2704,
-      "nettoTR": -3468,
-      "oeNettoProzent": -0.76,
-      "oeR": 0.04
+      "quote": 33.3,
+      "netto": -2908.01,
+      "brutto": -2766.01,
+      "nettoTR": -3534.01,
+      "oeNettoProzent": -0.77,
+      "oeR": 0.03
     },
     "claude": {
       "anzahl": 6,
@@ -134,14 +134,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 218,
+      "anzahl": 220,
       "treffer": 87,
-      "quote": 39.9,
-      "netto": -1594.77,
-      "brutto": -1594.77,
-      "nettoTR": -2030.77,
-      "oeNettoProzent": -0.74,
-      "oeR": 0.12
+      "quote": 39.5,
+      "netto": -1656.78,
+      "brutto": -1656.78,
+      "nettoTR": -2096.78,
+      "oeNettoProzent": -0.76,
+      "oeR": 0.11
     },
     "us": {
       "anzahl": 99,
@@ -166,24 +166,24 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 258,
+      "anzahl": 259,
       "treffer": 93,
-      "quote": 36,
-      "netto": -953.16,
-      "brutto": -841.16,
-      "nettoTR": -1357.16,
+      "quote": 35.9,
+      "netto": -958.77,
+      "brutto": -846.77,
+      "nettoTR": -1364.77,
       "oeNettoProzent": -0.39,
-      "oeR": 0.17
+      "oeR": 0.16
     },
     "orb_short": {
-      "anzahl": 115,
+      "anzahl": 116,
       "treffer": 35,
-      "quote": 30.4,
-      "netto": -1879.31,
-      "brutto": -1879.31,
-      "nettoTR": -2109.31,
-      "oeNettoProzent": -1.64,
-      "oeR": -0.24
+      "quote": 30.2,
+      "netto": -1935.71,
+      "brutto": -1935.71,
+      "nettoTR": -2167.71,
+      "oeNettoProzent": -1.68,
+      "oeR": -0.25
     },
     "level_long": {
       "anzahl": 15,
@@ -198,24 +198,24 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 180,
+      "anzahl": 181,
       "treffer": 80,
-      "quote": 44.4,
-      "netto": -141.25,
-      "brutto": -141.25,
-      "nettoTR": -501.25,
+      "quote": 44.2,
+      "netto": -146.86,
+      "brutto": -146.86,
+      "nettoTR": -508.86,
       "oeNettoProzent": -0.11,
-      "oeR": 0.27
+      "oeR": 0.26
     },
     "turbo": {
-      "anzahl": 137,
+      "anzahl": 138,
       "treffer": 42,
-      "quote": 30.7,
-      "netto": -2315.52,
-      "brutto": -2315.52,
-      "nettoTR": -2589.52,
-      "oeNettoProzent": -1.7,
-      "oeR": -0.23
+      "quote": 30.4,
+      "netto": -2371.92,
+      "brutto": -2371.92,
+      "nettoTR": -2647.92,
+      "oeNettoProzent": -1.73,
+      "oeR": -0.24
     },
     "krypto": {
       "anzahl": 71,
@@ -230,34 +230,34 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 249,
+      "anzahl": 250,
       "treffer": 95,
-      "quote": 38.2,
-      "netto": -1031.56,
-      "brutto": -977.56,
-      "nettoTR": -1475.56,
+      "quote": 38,
+      "netto": -1037.17,
+      "brutto": -983.17,
+      "nettoTR": -1483.17,
       "oeNettoProzent": -0.43,
       "oeR": 0.06
     },
     "spekulativ": {
-      "anzahl": 139,
+      "anzahl": 140,
       "treffer": 35,
-      "quote": 25.2,
-      "netto": -1902.6,
-      "brutto": -1814.6,
-      "nettoTR": -2092.6,
-      "oeNettoProzent": -1.39,
-      "oeR": 0
+      "quote": 25,
+      "netto": -1959,
+      "brutto": -1871,
+      "nettoTR": -2151,
+      "oeNettoProzent": -1.42,
+      "oeR": -0.01
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 205,
+      "anzahl": 207,
       "treffer": 0,
       "quote": 0,
-      "netto": -6737.25,
-      "brutto": -6655.25,
-      "nettoTR": -7065.25,
+      "netto": -6799.26,
+      "brutto": -6717.26,
+      "nettoTR": -7131.26,
       "oeNettoProzent": -3.35,
       "oeR": -1.04
     },
@@ -294,14 +294,14 @@
       "oeR": 0.12
     },
     "seitwaerts_nervoes": {
-      "anzahl": 81,
+      "anzahl": 83,
       "treffer": 38,
-      "quote": 46.9,
-      "netto": -102.09,
-      "brutto": -102.09,
-      "nettoTR": -264.09,
-      "oeNettoProzent": -0.14,
-      "oeR": 0.24
+      "quote": 45.8,
+      "netto": -164.1,
+      "brutto": -164.1,
+      "nettoTR": -330.1,
+      "oeNettoProzent": -0.22,
+      "oeR": 0.21
     },
     "aufwaerts_ruhig": {
       "anzahl": 76,
@@ -540,39 +540,6 @@
       }
     },
     {
-      "id": "2026-11-10-scan-adidas-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ADIDAS AG",
-      "isin": "DE000A1EWWW0",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "kurs": 181.6,
-        "level": 181.45,
-        "spanne": {
-          "hoch": 181.45,
-          "tief": 180.25
-        },
-        "richtung": "long"
-      },
-      "stop": 180.85,
-      "ziel": 183.4,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "basisKurs": 181.7,
-        "kurs": 181.836,
-        "stueck": 5,
-        "kurswert": 909.18
-      }
-    },
-    {
       "id": "2026-11-10-scan-deutz-ag",
       "datum": "2026-11-10",
       "herkunft": "code_scan",
@@ -676,46 +643,6 @@
         "kurs": 0.7894,
         "stueck": 1266,
         "kurswert": 999.38
-      }
-    },
-    {
-      "id": "2026-11-10-scan-deutsche-telekom-ag-reg",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE TELEKOM AG-REG",
-      "isin": "DE0005557508",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 31.22,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:45:00.000Z",
-        "kurs": 26.08,
-        "level": 26.16,
-        "spanne": {
-          "hoch": 26.41,
-          "tief": 26.16
-        },
-        "richtung": "short"
-      },
-      "stop": 26.29,
-      "ziel": 25.49,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:45:00.000Z",
-        "basisKurs": 26.02,
-        "kurs": 5.213,
-        "stueck": 191,
-        "kurswert": 995.68
       }
     },
     {
@@ -1213,39 +1140,6 @@
       }
     },
     {
-      "id": "2026-11-10-scan-adidas-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ADIDAS AG",
-      "isin": "DE000A1EWWW0",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "kurs": 181.6,
-        "level": 181.45,
-        "spanne": {
-          "hoch": 181.45,
-          "tief": 180.25
-        },
-        "richtung": "long"
-      },
-      "stop": 180.85,
-      "ziel": 183.4,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "basisKurs": 181.7,
-        "kurs": 181.836,
-        "stueck": 5,
-        "kurswert": 909.18
-      }
-    },
-    {
       "id": "2026-11-10-scan-deutz-ag",
       "datum": "2026-11-10",
       "herkunft": "code_scan",
@@ -1349,46 +1243,6 @@
         "kurs": 0.7894,
         "stueck": 1266,
         "kurswert": 999.38
-      }
-    },
-    {
-      "id": "2026-11-10-scan-deutsche-telekom-ag-reg",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE TELEKOM AG-REG",
-      "isin": "DE0005557508",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 31.22,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:45:00.000Z",
-        "kurs": 26.08,
-        "level": 26.16,
-        "spanne": {
-          "hoch": 26.41,
-          "tief": 26.16
-        },
-        "richtung": "short"
-      },
-      "stop": 26.29,
-      "ziel": 25.49,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:45:00.000Z",
-        "basisKurs": 26.02,
-        "kurs": 5.213,
-        "stueck": 191,
-        "kurswert": 995.68
       }
     },
     {
@@ -1681,6 +1535,117 @@
         "kurs": 2.3418,
         "stueck": 427,
         "kurswert": 999.95
+      }
+    },
+    {
+      "id": "2026-11-10-scan-deutsche-telekom-ag-reg",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 31.22,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-10T08:45:00.000Z",
+        "kurs": 26.08,
+        "level": 26.16,
+        "spanne": {
+          "hoch": 26.41,
+          "tief": 26.16
+        },
+        "richtung": "short"
+      },
+      "stop": 26.29,
+      "ziel": 25.49,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T08:45:00.000Z",
+        "basisKurs": 26.02,
+        "kurs": 5.213,
+        "stueck": 191,
+        "kurswert": 995.68
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T11:50:00.000Z",
+        "basisKurs": 26.29,
+        "kurs": 4.9177,
+        "kurswert": 939.28,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -56.4,
+        "bruttoProzent": -5.66,
+        "netto": -56.4,
+        "nettoProzent": -5.66,
+        "nettoTR": -58.4,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-10-scan-adidas-ag",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ADIDAS AG",
+      "isin": "DE000A1EWWW0",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-10T08:35:00.000Z",
+        "kurs": 181.6,
+        "level": 181.45,
+        "spanne": {
+          "hoch": 181.45,
+          "tief": 180.25
+        },
+        "richtung": "long"
+      },
+      "stop": 180.85,
+      "ziel": 183.4,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T08:35:00.000Z",
+        "basisKurs": 181.7,
+        "kurs": 181.836,
+        "stueck": 5,
+        "kurswert": 909.18
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T11:30:00.000Z",
+        "basisKurs": 180.85,
+        "kurs": 180.714,
+        "kurswert": 903.57,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -5.61,
+        "bruttoProzent": -0.62,
+        "netto": -5.61,
+        "nettoProzent": -0.62,
+        "nettoTR": -7.61,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10641,10 +10606,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 136,
-        "chance": 47.8,
-        "oeNetto": 0.09,
-        "wertung": -0.05
+        "faelle": 138,
+        "chance": 47.1,
+        "oeNetto": 0.07,
+        "wertung": -0.07
       }
     },
     "krypto:orb_long": {
