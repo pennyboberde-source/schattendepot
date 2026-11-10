@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-09T21:19:21.537Z",
+  "stand": "2026-11-10T04:50:12.542Z",
   "offen": [
     {
       "id": "2026-11-05-auto-mdln",
@@ -174,5 +174,114 @@
       }
     }
   ],
-  "vorgemerkt": []
+  "vorgemerkt": [
+    {
+      "id": "2026-11-10-auto-ceg",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-10T04:50:12.542Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "CEG",
+          "isin": "",
+          "ticker": "CEG",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "CEG",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:CEG: gewinn_ueberraschung, nachzahlen_drift (Score 3.69)",
+        "signalIds": [
+          "gewinn_ueberraschung:CEG:2026-11-10",
+          "nachzahlen_drift:CEG:2026-11-10"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-15T04:50:12.542Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-15T04:50:12.542Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-10-auto-nrg",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-10T04:50:12.542Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "NRG",
+          "isin": "",
+          "ticker": "NRG",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "NRG",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:NRG: gewinn_ueberraschung, nachzahlen_drift (Score 3.69)",
+        "signalIds": [
+          "gewinn_ueberraschung:NRG:2026-11-10",
+          "nachzahlen_drift:NRG:2026-11-10"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-15T04:50:12.542Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-15T04:50:12.542Z",
+      "anpassungen": []
+    }
+  ]
 }

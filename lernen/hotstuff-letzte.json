@@ -1,23 +1,16 @@
 {
-  "datum": "2026-11-09",
-  "stand": "2026-11-09T05:00:19.745Z",
-  "anzahl": 14,
-  "abdeckung": 21.4,
+  "datum": "2026-11-10",
+  "stand": "2026-11-10T04:50:12.542Z",
+  "anzahl": 32,
+  "abdeckung": 21.9,
   "mover": [
     {
       "s": "T:OMH",
       "n": "Ohmyhome Limited",
       "t": "OMH",
-      "typ": "tagesverlierer",
-      "r": -1,
+      "typ": "tagesgewinner",
+      "r": 1,
       "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 3,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
         {
           "typ": "handelsstopp",
           "tageVorher": 4,
@@ -31,6 +24,36 @@
           "q": [
             "Nasdaq Trader"
           ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 6,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:FISN",
+      "n": "Deep Fission, Inc.",
+      "t": "FISN",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "verwaesserung",
+          "tageVorher": 4,
+          "q": [
+            "SEC EDGAR"
+          ]
+        },
+        {
+          "typ": "verwaesserung",
+          "tageVorher": 5,
+          "q": [
+            "SEC EDGAR"
+          ]
         }
       ]
     },
@@ -43,16 +66,48 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 3,
+          "tageVorher": 4,
           "q": [
             "Nasdaq Trader"
           ]
         },
         {
           "typ": "volumen_ungewoehnlich",
-          "tageVorher": 6,
+          "tageVorher": 7,
           "q": [
             "Alpha Vantage"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:ZETA",
+      "n": "ZETA GLOBAL HOLDINGS CORP-A",
+      "t": "ZETA",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 4,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:ONCO",
+      "n": "Onconetix, Inc.",
+      "t": "ONCO",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 4,
+          "q": [
+            "Nasdaq Trader"
           ]
         }
       ]
@@ -66,12 +121,100 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 3,
+          "tageVorher": 4,
           "q": [
             "Nasdaq Trader"
           ]
         }
       ]
+    },
+    {
+      "s": "T:PIEVERSE",
+      "n": "Pieverse",
+      "t": "PIEVERSE",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 6,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:TTD",
+      "n": "TRADE DESK INC/THE -CLASS A",
+      "t": "TTD",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:WCT",
+      "n": "Wellchange Holdings Company Limited",
+      "t": "WCT",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:SMX",
+      "n": "SMX (Security Matters) Public Limited Company",
+      "t": "SMX",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:TANH",
+      "n": "Tantech Holdings Ltd",
+      "t": "TANH",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CKX",
+      "n": "CKX Lands, Inc.",
+      "t": "CKX",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:TLS",
+      "n": "Telos Corporation",
+      "t": "TLS",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:FTH",
+      "n": "Faeth Therapeutics, Inc.",
+      "t": "FTH",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:ABEO",
+      "n": "Abeona Therapeutics Inc.",
+      "t": "ABEO",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:NCT",
+      "n": "Polyswarm",
+      "t": "NCT",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
     },
     {
       "s": "T:STAK",
@@ -157,6 +300,41 @@
       "s": "T:SDA",
       "n": "SDA",
       "t": "SDA",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000GN6YR26",
+      "n": "DE000GN6YR26",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF29T77",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0P8X6",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HT60QS2",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF29PZ3",
+      "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []

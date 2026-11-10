@@ -1,250 +1,129 @@
 {
-  "datum": "2026-11-09",
+  "datum": "2026-11-10",
   "liste": [
     {
-      "id": "uebernahmeangebot:ROKU:2026-11-06",
-      "zeit": "2026-11-06T21:18:24.000Z",
+      "id": "uebernahmeangebot:NANOW:2026-11-09",
+      "zeit": "2026-11-09T21:42:05.000Z",
       "typ": "uebernahmeangebot",
       "wertpapier": {
-        "name": "ROKU, INC",
-        "ticker": "ROKU"
+        "name": "Forge Nano Holdings, Inc.",
+        "ticker": "NANOW"
       },
       "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
-      "link": "https://www.sec.gov/Archives/edgar/data/1428439/000119312526451874/0001193125-26-451874-index.htm",
+      "link": "https://www.sec.gov/Archives/edgar/data/2101833/000110465926124550/0001104659-26-124550-index.htm",
       "quellen": [
         "SEC EDGAR"
       ]
     },
     {
-      "id": "uebernahmeangebot:CCXIW:2026-11-06",
-      "zeit": "2026-11-06T21:18:25.000Z",
-      "typ": "uebernahmeangebot",
-      "wertpapier": {
-        "name": "Churchill Capital Corp XI",
-        "ticker": "CCXIW"
-      },
-      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
-      "link": "https://www.sec.gov/Archives/edgar/data/2074973/000121390026116898/0001213900-26-116898-index.htm",
-      "quellen": [
-        "SEC EDGAR"
-      ]
-    },
-    {
-      "id": "uebernahmeangebot:FOX:2026-11-06",
-      "zeit": "2026-11-06T21:21:54.000Z",
-      "typ": "uebernahmeangebot",
-      "wertpapier": {
-        "name": "Fox Corp",
-        "ticker": "FOX"
-      },
-      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
-      "link": "https://www.sec.gov/Archives/edgar/data/1754301/000119312526451888/0001193125-26-451888-index.htm",
-      "quellen": [
-        "SEC EDGAR"
-      ]
-    },
-    {
-      "id": "uebernahmeangebot:KTB:2026-11-06",
-      "zeit": "2026-11-06T22:09:47.000Z",
-      "typ": "uebernahmeangebot",
-      "wertpapier": {
-        "name": "Kontoor Brands, Inc.",
-        "ticker": "KTB"
-      },
-      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
-      "link": "https://www.sec.gov/Archives/edgar/data/1760965/000176096526000082/0001760965-26-000082-index.htm",
-      "quellen": [
-        "SEC EDGAR"
-      ]
-    },
-    {
-      "id": "uebernahmeangebot:DFNSW:2026-11-06",
-      "zeit": "2026-11-06T22:25:17.000Z",
-      "typ": "uebernahmeangebot",
-      "wertpapier": {
-        "name": "T3 Defense Inc.",
-        "ticker": "DFNSW"
-      },
-      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
-      "link": "https://www.sec.gov/Archives/edgar/data/1787518/000118518526005246/0001185185-26-005246-index.htm",
-      "quellen": [
-        "SEC EDGAR"
-      ]
-    },
-    {
-      "id": "kursrakete:SDA:2026-11-09",
-      "zeit": "2026-11-09T05:00:19.745Z",
+      "id": "kursrakete:TTD:2026-11-09",
+      "zeit": "2026-11-09T21:57:54.613Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "SDA",
-        "ticker": "SDA"
+        "name": "TRADE DESK INC/THE -CLASS A",
+        "isin": "US88339J1051",
+        "ticker": "TTD"
       },
-      "fakt": "Tagesgewinner +145 % bei 0.3765 $ (Volumen 548 Mio.) – spekulativ",
-      "quellen": [
-        "Alpha Vantage"
-      ]
-    },
-    {
-      "id": "kursrakete:VIVK:2026-11-09",
-      "zeit": "2026-11-09T05:00:19.745Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "VIVK",
-        "ticker": "VIVK"
-      },
-      "fakt": "Tagesgewinner +123 % bei 0.8243 $ (Volumen 249 Mio.) – spekulativ",
-      "quellen": [
-        "Alpha Vantage"
-      ]
-    },
-    {
-      "id": "kursrakete:STAK:2026-11-09",
-      "zeit": "2026-11-09T05:00:19.745Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "STAK",
-        "ticker": "STAK"
-      },
-      "fakt": "Tagesgewinner +82 % bei 3.26 $ (Volumen 31 Mio.) – spekulativ",
-      "quellen": [
-        "Alpha Vantage"
-      ]
-    },
-    {
-      "id": "kursrakete:GOGO:2026-11-09",
-      "zeit": "2026-11-09T05:00:19.745Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "GOGO",
-        "ticker": "GOGO"
-      },
-      "fakt": "Tagesgewinner +72 % bei 3.885 $ (Volumen 28 Mio.) – spekulativ",
-      "quellen": [
-        "Alpha Vantage"
-      ]
-    },
-    {
-      "id": "kursrakete:CIIT:2026-11-09",
-      "zeit": "2026-11-09T05:00:19.745Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "CIIT",
-        "ticker": "CIIT"
-      },
-      "fakt": "Tagesgewinner +58 % bei 2.4 $ (Volumen 41 Mio.) – spekulativ",
-      "quellen": [
-        "Alpha Vantage"
-      ]
-    },
-    {
-      "id": "kursrakete:CDT:2026-11-09",
-      "zeit": "2026-11-09T05:00:19.745Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "CDT",
-        "ticker": "CDT"
-      },
-      "fakt": "Tagesgewinner +55 % bei 1.31 $ (Volumen 26 Mio.) – spekulativ",
-      "quellen": [
-        "Alpha Vantage"
-      ]
-    },
-    {
-      "id": "kursrakete:VSA:2026-11-09",
-      "zeit": "2026-11-09T05:00:19.745Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "VSA",
-        "ticker": "VSA"
-      },
-      "fakt": "Tagesgewinner +53 % bei 2.35 $ (Volumen 29 Mio.) – spekulativ",
-      "quellen": [
-        "Alpha Vantage"
-      ]
-    },
-    {
-      "id": "kursrakete:DE000GN6YR26:2026-11-09",
-      "zeit": "2026-11-09T11:44:14.631Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "DE000GN6YR26",
-        "isin": "DE000GN6YR26"
-      },
-      "fakt": "-16 % in der letzten Stunde auf 2.03 € (23 Geschäfte, Umsatz 24 T€, gettex) – spekulativ",
-      "link": "https://www.gettex.de/suche/?q=DE000GN6YR26",
+      "fakt": "+20 % in der letzten Stunde auf 16.01 € (221 Geschäfte, Umsatz 417 T€, gettex) – spekulativ",
+      "link": "https://www.gettex.de/suche/?q=US88339J1051",
       "quellen": [
         "gettex-Scanner"
       ]
     },
     {
-      "id": "kursrakete:PIEVERSE:2026-11-09",
-      "zeit": "2026-11-09T11:56:05.470Z",
+      "id": "kursrakete:ZETA:2026-11-09",
+      "zeit": "2026-11-09T21:59:52.612Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "Pieverse",
-        "ticker": "PIEVERSE",
+        "name": "ZETA GLOBAL HOLDINGS CORP-A",
+        "isin": "US98956A1051",
+        "ticker": "ZETA"
+      },
+      "fakt": "-19 % in der letzten Stunde auf 24.50 € (59 Geschäfte, Umsatz 140 T€, gettex) – spekulativ",
+      "link": "https://www.gettex.de/suche/?q=US98956A1051",
+      "quellen": [
+        "gettex-Scanner"
+      ]
+    },
+    {
+      "id": "uebernahmeangebot:EZRA:2026-11-09",
+      "zeit": "2026-11-09T22:27:23.000Z",
+      "typ": "uebernahmeangebot",
+      "wertpapier": {
+        "name": "Reliance Global Group, Inc.",
+        "ticker": "EZRA"
+      },
+      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
+      "link": "https://www.sec.gov/Archives/edgar/data/1812727/000149315226050810/0001493152-26-050810-index.htm",
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "id": "kursrakete:OMH:2026-11-10",
+      "zeit": "2026-11-10T04:50:12.542Z",
+      "typ": "kursrakete",
+      "wertpapier": {
+        "name": "OMH",
+        "ticker": "OMH"
+      },
+      "fakt": "Tagesgewinner +251 % bei 25.84 $ (Volumen 30 Mio.) – spekulativ",
+      "quellen": [
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "id": "kursrakete:WCT:2026-11-10",
+      "zeit": "2026-11-10T04:50:12.542Z",
+      "typ": "kursrakete",
+      "wertpapier": {
+        "name": "WCT",
+        "ticker": "WCT"
+      },
+      "fakt": "Tagesgewinner +92 % bei 4.47 $ (Volumen 18 Mio.) – spekulativ",
+      "quellen": [
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "id": "kursrakete:SMX:2026-11-10",
+      "zeit": "2026-11-10T04:50:12.542Z",
+      "typ": "kursrakete",
+      "wertpapier": {
+        "name": "SMX",
+        "ticker": "SMX"
+      },
+      "fakt": "Tagesgewinner +90 % bei 9.35 $ (Volumen 6 Mio.) – spekulativ",
+      "quellen": [
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "id": "kursrakete:CKX:2026-11-10",
+      "zeit": "2026-11-10T04:50:12.542Z",
+      "typ": "kursrakete",
+      "wertpapier": {
+        "name": "CKX",
+        "ticker": "CKX"
+      },
+      "fakt": "Tagesgewinner +63 % bei 16.91 $ (Volumen 12 Mio.) – spekulativ",
+      "quellen": [
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "id": "kursrakete:NCT:2026-11-10",
+      "zeit": "2026-11-10T04:50:12.542Z",
+      "typ": "kursrakete",
+      "wertpapier": {
+        "name": "Polyswarm",
+        "ticker": "NCT",
         "markt": "krypto"
       },
-      "fakt": "Pieverse +22,8 % an Upbit seit Tagesbeginn (Korea)",
-      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-PIEVERSE",
+      "fakt": "Polyswarm +35,1 % an Upbit seit Tagesbeginn (Korea)",
+      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-NCT",
       "quellen": [
         "Upbit"
-      ]
-    },
-    {
-      "id": "kursrakete:DE000HF29T77:2026-11-09",
-      "zeit": "2026-11-09T15:20:21.994Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "HSBC TRINKAUS+BURKHARDT",
-        "isin": "DE000HF29T77"
-      },
-      "fakt": "-68 % in der letzten Stunde auf 0.5400 € (44 Geschäfte, Umsatz 269 T€, gettex) – spekulativ",
-      "link": "https://www.gettex.de/suche/?q=DE000HF29T77",
-      "quellen": [
-        "gettex-Scanner"
-      ]
-    },
-    {
-      "id": "kursrakete:DE000HF0P8X6:2026-11-09",
-      "zeit": "2026-11-09T15:38:39.030Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "HSBC TRINKAUS+BURKHARDT",
-        "isin": "DE000HF0P8X6"
-      },
-      "fakt": "-18 % in der letzten Stunde auf 1.50 € (23 Geschäfte, Umsatz 23 T€, gettex) – spekulativ",
-      "link": "https://www.gettex.de/suche/?q=DE000HF0P8X6",
-      "quellen": [
-        "gettex-Scanner"
-      ]
-    },
-    {
-      "id": "kursrakete:DE000HT60QS2:2026-11-09",
-      "zeit": "2026-11-09T15:40:27.180Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "HSBC TRINKAUS+BURKHARDT",
-        "isin": "DE000HT60QS2"
-      },
-      "fakt": "+24 % in der letzten Stunde auf 0.9300 € (28 Geschäfte, Umsatz 37 T€, gettex) – spekulativ",
-      "link": "https://www.gettex.de/suche/?q=DE000HT60QS2",
-      "quellen": [
-        "gettex-Scanner"
-      ]
-    },
-    {
-      "id": "kursrakete:DE000HF29PZ3:2026-11-09",
-      "zeit": "2026-11-09T16:37:53.176Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "HSBC TRINKAUS+BURKHARDT",
-        "isin": "DE000HF29PZ3"
-      },
-      "fakt": "+26 % in der letzten Stunde auf 1.97 € (21 Geschäfte, Umsatz 149 T€, gettex) – spekulativ",
-      "link": "https://www.gettex.de/suche/?q=DE000HF29PZ3",
-      "quellen": [
-        "gettex-Scanner"
       ]
     }
   ]

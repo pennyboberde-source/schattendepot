@@ -9,7 +9,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT1H
 X-PUBLISHED-TTL:PT1H
 BEGIN:VEVENT
 UID:2026-11-05-auto-mdln@schattendepot
-DTSTAMP:20261109T211921Z
+DTSTAMP:20261110T045012Z
 SEQUENCE:0
 DTSTART:20261110T045621Z
 DTEND:20261110T051121Z
@@ -22,7 +22,7 @@ URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-11-05-
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-06-auto-sony@schattendepot
-DTSTAMP:20261109T211921Z
+DTSTAMP:20261110T045012Z
 SEQUENCE:0
 DTSTART:20261111T045459Z
 DTEND:20261111T050959Z
@@ -32,5 +32,31 @@ DESCRIPTION:Simulation – keine Anlageberatung.\nZiel 28\,72 €\nStop 23
  ot/#/order/2026-11-06-auto-sony
 URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-11-06-
  auto-sony
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-10-auto-ceg@schattendepot
+DTSTAMP:20261110T045012Z
+SEQUENCE:0
+DTSTART:20261115T045012Z
+DTEND:20261115T050512Z
+SUMMARY:Verkauf geplant: CEG
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +19\,4 % netto\nSto
+ p −3\,0 %\nChance ~47 %\nhttps://pennyboberde-source.github.io/schatten
+ depot/#/order/2026-11-10-auto-ceg
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-11-10-
+ auto-ceg
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-10-auto-nrg@schattendepot
+DTSTAMP:20261110T045012Z
+SEQUENCE:0
+DTSTART:20261115T045012Z
+DTEND:20261115T050512Z
+SUMMARY:Verkauf geplant: NRG
+DESCRIPTION:Simulation – keine Anlageberatung.\nZiel +19\,4 % netto\nSto
+ p −3\,0 %\nChance ~47 %\nhttps://pennyboberde-source.github.io/schatten
+ depot/#/order/2026-11-10-auto-nrg
+URL:https://pennyboberde-source.github.io/schattendepot/#/order/2026-11-10-
+ auto-nrg
 END:VEVENT
 END:VCALENDAR

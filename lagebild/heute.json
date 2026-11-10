@@ -1,257 +1,215 @@
 {
-  "datum": "2026-11-09",
-  "erstellt": "2026-11-09T05:00:19.745Z",
+  "datum": "2026-11-10",
+  "erstellt": "2026-11-10T04:50:12.542Z",
   "makro": [
     "Marktphase: Aktien (S&P 500) Seitwärts, nervös · Krypto (Bitcoin) Seitwärts, ruhig",
-    "Ethereum: 1.914 € (+0,4 % seit 00:00 UTC)",
-    "Bitcoin: 66.971 € (-0,2 % seit 00:00 UTC)",
-    "Kimchi-Prämie (BTC in Korea gegen USD-Markt): +0,32 % (vorher +0,45 %). Steigend = Kaufdruck koreanischer Privatanleger.",
-    "Funding p. a. (Kraken Futures): BTC +13,7 %, ETH -9,5 %, SOL -18,4 %. Hoch positiv = gehebelte Käufer dominieren.",
-    "Stablecoin-Menge 294,8 Mrd $ (7 Tage -1,34 %). Wachsend = frisches Geld für Krypto.",
-    "Krypto Fear & Greed: 29 (Fear), gestern 28 – Quelle: alternative.me",
-    "BTC-Volatilität DVOL (Deribit): 40,1 (Vortag 41, vor 7 Tagen 39,3)",
-    "ETH-Volatilität DVOL (Deribit): 57,4 (Vortag 58, vor 7 Tagen 52,8)",
-    "Polymarket „Fed Decision in December?“ – 25 bps increase: 77 %, No change: 23 %",
-    "Polymarket „Strait of Hormuz traffic returns to normal by December 31?“ – 7 %",
-    "Polymarket „How many Fed rate cuts in 2026?“ – 0 (0 bps): 98 %",
-    "Polymarket „Fed Decision in January?“ – No change: 78 %, 25 bps increase: 19 %",
-    "Polymarket „Largest Company end of December 2026?“ – Apple: 69 %, NVIDIA: 28 %",
+    "Ethereum: 1.887 € (-0,7 % seit 00:00 UTC)",
+    "Bitcoin: 66.490 € (-0,9 % seit 00:00 UTC)",
+    "Kimchi-Prämie (BTC in Korea gegen USD-Markt): +0,81 % (vorher +0,76 %). Steigend = Kaufdruck koreanischer Privatanleger.",
+    "Funding p. a. (Kraken Futures): BTC +14,9 %, ETH +9,7 %, SOL -3,6 %. Hoch positiv = gehebelte Käufer dominieren.",
+    "Stablecoin-Menge 293,7 Mrd $ (7 Tage -1,32 %). Wachsend = frisches Geld für Krypto.",
+    "Nasdaq-Handelsstopps (2 Tage): 89, davon Volatilitätspausen 84, Nachrichten 2",
+    "US-App-Store Gesamt-Top-100: Kalshi #8 (vorher #10), Cash App #53 (vorher #41) – je höher, desto mehr Andrang von Privatanlegern",
+    "Krypto Fear & Greed: 32 (Fear), gestern 29 – Quelle: alternative.me",
+    "BTC-Volatilität DVOL (Deribit): 39,4 (Vortag 39,9, vor 7 Tagen 39,7)",
+    "ETH-Volatilität DVOL (Deribit): 55,7 (Vortag 56,4, vor 7 Tagen 52,2)",
+    "Polymarket „Fed Decision in December?“ – 25 bps increase: 80 %, No change: 19 %",
+    "Polymarket „Strait of Hormuz traffic returns to normal by December 31?“ – 10 %",
+    "Polymarket „Largest Company end of December 2026?“ – Apple: 75 %, NVIDIA: 23 %",
+    "Polymarket „Another Fed rate hike in 2026?“ – 83 %",
+    "Polymarket „Largest Company end of November 2026?“ – Apple: 89 %, Other: 50 %",
     "COT 2026-11-03 – Spekulanten netto in % des Open Interest, P = Perzentil über 3 Jahre: Bitcoin +13 % (Vorw. +13, P93); Erdgas -15 % (Vorw. -15, P1); Rohöl WTI +4 % (Vorw. +4, P13); Ethereum +5 % (Vorw. +6, P60); Silber +18 % (Vorw. +17, P10); Kupfer +12 % (Vorw. +14, P38); Gold +45 % (Vorw. +47, P38); S&P 500 -7 % (Vorw. -7, P37)",
-    "Coinalyze BTC: Liquidationen 24 h 99.8 Mio. $ (Longs 94 %)",
-    "Coinalyze ETH: Liquidationen 24 h 200.4 Mio. $ (Longs 92 %)"
+    "Coinalyze BTC: Liquidationen 24 h 22.6 Mio. $ (Longs 65 %)",
+    "Coinalyze ETH: Liquidationen 24 h 28.7 Mio. $ (Longs 78 %)"
   ],
   "politik": [
-    "Politik-Risiko: 90/100 (hoch)",
-    "Nahost/Iran/Öl (4 Meldungen, 2 Quellen) → Exxon Mobil ↓, Lufthansa ↑: „Amsterdam: Zehntausende demonstrieren gegen Israels Gaza-Politik“ – tagesschau Ausland",
-    "Ukraine/Russland (Krieg, Waffenruhe) (2 Meldungen, 1 Quelle) → Rheinmetall ↑, Hensoldt ↑, Renk ↑: „Ukraine-Gespräche in Abu Dhabi: Europäer sind laut Frankreich \"gut vertreten\"“ – tagesschau Ausland",
-    "Wahlen/Regierung/Haushalt (3 Meldungen, 2 Quellen): „Bundespräsidenten-Wahl: Merz bricht sein Schweigen und schlägt Aigner vor“ – tagesschau Inland",
-    "Zölle/Handelskonflikte (1 Meldung, 1 Quelle) → Volkswagen ↓, BMW ↓, Mercedes-Benz ↓, Porsche ↓, Apple ↓: „How Democrats will try to end Trump's tariffs“ – CNBC Politics",
-    "Prognosemarkt „Israel x Iran ceasefire continues through...? – December 31“: 56 % (+11 Pkt.)",
-    "Prognosemarkt „Israel x Iran ceasefire continues through...? – November 30“: 76 % (+13 Pkt.)",
-    "Prognosemarkt „Israel x Iran ceasefire continues through...? – November 15“: 91 % (+10 Pkt.)",
-    "Prognosemarkt „Israel x Iran ceasefire continues through...? – December 15“: 64 % (+14 Pkt.)"
+    "Politik-Risiko: 100/100 (hoch)",
+    "Ukraine/Russland (Krieg, Waffenruhe) (6 Meldungen, 2 Quellen) → Rheinmetall ↓, Hensoldt ↓, Renk ↓: „Gespräche in Abu Dhabi: Gedämpfte Erwartungen der Ukraine“ – tagesschau Ausland",
+    "Nahost/Iran/Öl (3 Meldungen, 2 Quellen) → Exxon Mobil ↑, Lufthansa ↓: „Frankreich macht Iran für Cyberangriffe auf Supermarkt-Kühltruhen verantwortlich“ – tagesschau Ausland",
+    "Wahlen/Regierung/Haushalt (4 Meldungen, 2 Quellen): „Hegseth impeachment articles introduced by Rep. Massie“ – CNBC Politics",
+    "Prognosemarkt „US announces end of Iranian blockade by...? – December 15“: 27 % (-12 Pkt.)",
+    "Prognosemarkt „Elon Musk # tweets November 3 - November 10, 2026? – 280-299“: 63 % (+11 Pkt.)",
+    "Prognosemarkt „US announces end of Iranian blockade by...? – December 15“: 27 % (-12 Pkt.)"
   ],
   "termine": [
     {
-      "zeit": "nach US-Schluss",
-      "text": "BAP Quartalszahlen (Erwartung EPS 25.5872)"
-    },
-    {
       "zeit": "vor US-Eröffnung",
-      "text": "CEG Quartalszahlen (Erwartung EPS 3.8857)"
+      "text": "SE Quartalszahlen (Erwartung EPS 0.8158)"
     },
     {
-      "zeit": "vor US-Eröffnung",
-      "text": "FERG Quartalszahlen (Erwartung EPS 3.3704)"
+      "zeit": "10:00",
+      "text": "USA: FOMC Member Waller Speaks"
     },
     {
-      "zeit": "nach US-Schluss",
-      "text": "JBS Quartalszahlen (Erwartung EPS 0.258)"
+      "zeit": "14:30",
+      "text": "USA: Core CPI m/m (wichtig) – Prognose 0.2%, zuvor 0.3%"
     },
     {
-      "zeit": "vor US-Eröffnung",
-      "text": "KSPI Quartalszahlen (Erwartung EPS 1520.4198)"
-    },
-    {
-      "zeit": "vor US-Eröffnung",
-      "text": "NRG Quartalszahlen (Erwartung EPS 3.3634)"
-    },
-    {
-      "zeit": "nach US-Schluss",
-      "text": "OXY Quartalszahlen (Erwartung EPS 1.4767)"
-    },
-    {
-      "zeit": "nach US-Schluss",
-      "text": "SKYD Quartalszahlen (Erwartung EPS -0.0527)"
+      "zeit": "14:30",
+      "text": "USA: CPI m/m (wichtig) – Prognose 0.3%, zuvor 0.6%"
     }
   ],
   "meldungen": [
     {
-      "titel": "“Verkauft jetzt”: Platzt die Bitcoin-Blase?",
-      "quelle": "BTC-ECHO",
-      "link": "https://www.btc-echo.de/news/verkauft-jetzt-platzt-die-bitcoin-blase-240592/",
-      "zeit": "2026-11-09T04:30:00.000Z",
-      "wertpapier": "Bitcoin"
+      "titel": "China’s monthly imports grow at fastest pace in five years as surplus crosses $1 trillion in 2026",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/10/china-trade-october-exports-imports-surplus-.html",
+      "zeit": "2026-11-10T04:49:22.000Z"
     },
     {
-      "titel": "Märkte Asien: Zweifel an Zukunft von Nvidia-Chef Huang bremsen Südkoreas Börse",
+      "titel": "Vermögensaufbau: Welche Rendite hat ein Eigenheim?",
+      "quelle": "FAZ Finanzen",
+      "link": "https://www.faz.net/premium/meine-finanzen/eigenheim-kaufen-oder-mieten-was-lohnt-sich-wirklich-accg-201665525.html",
+      "zeit": "2026-11-10T04:37:46.000Z"
+    },
+    {
+      "titel": "Nikkei, Kopsi, Topix: Asiatische Börsen auf Erholungskurs – KI-Werte treiben Nikkei an",
       "quelle": "Handelsblatt Finanzen",
-      "link": "https://www.handelsblatt.com/finanzen/maerkte/zweifel-an-zukunft-von-nvidia-chef-huang-bremsen-suedkoreas-boerse/100268306.html",
-      "zeit": "2026-11-09T04:06:11.000Z",
+      "link": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/nikkei-kopsi-topix-asiatische-boersen-auf-erholungskurs-ki-werte-treiben-nikkei-an/100268587.html",
+      "zeit": "2026-11-10T04:21:03.000Z"
+    },
+    {
+      "titel": "SoftBank Group shares surge 13% as Asian tech stocks track Wall Street rebound",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/10/ai-softbank-sk-hynix-samsung-wall-street-tech-stocks.html",
+      "zeit": "2026-11-10T03:58:46.000Z"
+    },
+    {
+      "titel": "&#x2018;We had the worst fight&#x2019;: I want my husband to retire at 65, but I don&#x2019;t want to lose his $280,000 salary. Is that unreasonable?",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/we-had-the-worst-fight-weve-ever-had-i-want-my-husband-to-retire-at-65-but-i-dont-want-to-lose-his-280-000-salary-48511469?mod=mw_rss_topstories",
+      "zeit": "2026-11-10T03:38:00.000Z"
+    },
+    {
+      "titel": "Bitmine steht kurz vor dem Ende seiner Kaufserie",
+      "quelle": "BTC-ECHO",
+      "link": "https://www.btc-echo.de/news/bitmine-steht-kurz-vor-dem-ende-seiner-kaufserie-240641/",
+      "zeit": "2026-11-10T03:30:00.000Z"
+    },
+    {
+      "titel": "Krypto-Handel bei Sparkasse und Volksbank boomt: Was Anleger jetzt wissen müssen",
+      "quelle": "BTC-ECHO",
+      "link": "https://www.btc-echo.de/news/krypto-handel-bei-sparkasse-und-volksbank-boomt-was-anleger-jetzt-wissen-muessen-240611/",
+      "zeit": "2026-11-10T03:00:00.000Z"
+    },
+    {
+      "titel": "Asian stocks climb as sliding oil prices buoy sentiment - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9CVDNSVXJpWURQMkF1dUt1amw1WkxILXhVSjZyZkQxdGlBdWZvT0tqclhabXRKZC1xNlRIRmJSdkhINDVsYXlRdk9paVRCa085WWVKRTJFcm9CZWo2VzNaYU5lQ2RXbDdqb3QxdkY4SDFRb2JMVE8yemVJMA?oc=5",
+      "zeit": "2026-11-10T02:23:00.000Z"
+    },
+    {
+      "titel": "Disclaimer",
+      "quelle": "Asian Century Stocks",
+      "link": "https://www.asiancenturystocks.com/p/disclaimer",
+      "zeit": "2026-11-10T02:15:48.000Z"
+    },
+    {
+      "titel": "Saudi-led coalition says it intercepts two Houthi missiles fired towards Riyadh - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPeEFMZHZXSnB4Q1RWMGxYRGJrYUFLdXBsc2ZGcmowbDhlNGVjMWxtOWt6bno5WWZnd2F2NVNncnJKdFM1bm1QU2RGQmNNOFBXampZcHpYLU1mdGxIRFJ4Z0drcHcyNHYtTmhVWEVlY0FldWp1d3ZoWlpoZXljR2w1b1lvb2pSR3owY2tnbUF2MDFYQXZlNUxsUUM1TGdaQ1lJZ3ZSUzl6cVp2czBFeTA3akRSS19vMTR3LW1qcGZGUExhbEJQTlpzSFdfNGc2dw?oc=5",
+      "zeit": "2026-11-10T01:53:00.000Z"
+    },
+    {
+      "titel": "Trump says Jensen Huang told him Monday he didn't know paramour 'was a spy'",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/09/trump-jensen-huang-nvidia-chinese-spy.html",
+      "zeit": "2026-11-10T01:43:47.000Z"
+    },
+    {
+      "titel": "Oil falls as Trump downplays prospect of escalation with Iran - Reuters",
+      "quelle": "Finnhub News",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQYWIxdHFYZXdDLUkyNjhxSklldE1kTVJUMXBHOENVUUF0YWVXRmhpbGhvSDdJSUtSUG9ZUk5FVGxZdExQa0c0WmJFZDd2QXFNUnJUV0ZuZ0x3eHZCTFBiVXY3b0lVMVA0RkVaVllFRHJHSjJaUmlpSjNOQThxOGhoN05LelBtdjE4Qk5PbnRoTThFVWc3NE91WlE2WHJKbG5kWEVkeF9SS20wSGs?oc=5",
+      "zeit": "2026-11-10T01:43:00.000Z"
+    },
+    {
+      "titel": "Gespräche in Abu Dhabi: Gedämpfte Erwartungen der Ukraine",
+      "quelle": "tagesschau Ausland",
+      "link": "https://www.tagesschau.de/ausland/europa/ukraine-erwartungen-gespraeche-100.html",
+      "zeit": "2026-11-10T01:13:48.000Z"
+    },
+    {
+      "titel": "The short seller who saw signs of Nvidia&#x2019;s China scandal months ago claims Megaspeed isn&#x2019;t the only company helping China access chips",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/the-short-seller-who-saw-signs-of-nvidias-china-scandal-months-ago-claims-megaspeed-isnt-the-ony-company-helping-china-access-chips-9877f544?mod=mw_rss_topstories",
+      "zeit": "2026-11-10T00:48:00.000Z",
       "wertpapier": "Nvidia"
     },
     {
-      "titel": "Bundespräsidenten-Wahl: Merz bricht sein Schweigen und schlägt Aigner vor",
-      "quelle": "tagesschau Inland",
-      "link": "https://www.tagesschau.de/inland/innenpolitik/aigner-bundespraesidentin-100.html",
-      "zeit": "2026-11-09T03:34:40.000Z"
-    },
-    {
-      "titel": "Gold gains more than 1% as softer oil prices ease inflation worries - Reuters",
-      "quelle": "Finnhub News",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNbEdIVXlJc2RaUEw2RmFrR2FZcXYzYlBKUG9Cdl9WUVFfalVxT0hGcGFCdW1DS3JMT2daanhDYktBeXVGNGt5TGlsOGZJVWVSMFpnT3ZVa2RBUjZYakRlVlQ3SXd1ZkpTQVNXVkpoNUZoemdycWY0MG02dVk0cWRuWG4taG5VMm9kbEluSHctTVZVMXJwWXNWSWdVcmxQeWtRSW1EWDQ2dTJ6QVV2TzhoeQ?oc=5",
-      "zeit": "2026-11-09T03:01:00.000Z"
-    },
-    {
-      "titel": "Was wird für Bitcoin und Krypto diese Woche wichtig?",
-      "quelle": "BTC-ECHO",
-      "link": "https://www.btc-echo.de/news/was-wird-fuer-bitcoin-und-krypto-diese-woche-wichtig-68-240511/",
-      "zeit": "2026-11-09T03:00:00.000Z",
-      "wertpapier": "Bitcoin"
-    },
-    {
-      "titel": "China wholesale inflation hits highest in more than four years as consumer measure slows",
+      "titel": "Nvidia’s Trump ties draw scrutiny after reports Huang was targeted by Chinese intelligence",
       "quelle": "CNBC Top News",
-      "link": "https://www.cnbc.com/2026/11/09/china-wholesale-inflation-rises-consumer.html",
-      "zeit": "2026-11-09T02:50:22.000Z"
-    },
-    {
-      "titel": "Asian stocks steady as AI, Mideast jitters recede; dollar firm on Fed bets - Reuters",
-      "quelle": "Finnhub News",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNV0oxRGlDMkl5NWVMcTZ3NjVxWU5RakhWT3BnZG1vc254T1RSXzg0SE5MelBYSTNsakduTFo5R0pJMkNWNXZKVW9SZEFOLWZfbWQwdG94bkpoeGw5V0I5bmtlRktsWmpqTGhwVzFNSkgyaDdEVUprbDNsMkI1WThjZ1cwQmpIRjN5VVFOVw?oc=5",
-      "zeit": "2026-11-09T01:46:00.000Z"
-    },
-    {
-      "titel": "Trump to meet Qatar's prime minister as Iran diplomacy faces hurdles - Reuters",
-      "quelle": "Finnhub News",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPdS16MHhHTm9BaFNxQWlxTTl4Mm1YbHktbTZ3Yi0yY1MtdkJSQ0Q0RWI0eko3cVhDVHlybTBMTU05cDhwdG5oQzhVSS1ndXhfOWV6eEQ1M2J0cFI0SzFXenhSMWF1YzcyNkVzQ3lDVVRVVWhGbVA2cHdPV3BHc3B2UG82eUxHcHFCbHJ5c2xCU05nU01uYlJjU1pMZU5XWUFHdFFlaV9ma0RPOGFwYmVsY3dtTTcxQQ?oc=5",
-      "zeit": "2026-11-09T01:42:00.000Z"
-    },
-    {
-      "titel": "&#x2018;My life could be cut short&#x2019;: I&#x2019;m 55, married and have a brain tumor. Should I splash out on a $210,000 Porsche?",
-      "quelle": "MarketWatch",
-      "link": "https://www.marketwatch.com/story/my-life-could-be-cut-short-im-55-married-with-4-3-million-and-have-a-brain-tumor-should-i-buy-a-210-000-custom-porsche-ed825ada?mod=mw_rss_topstories",
-      "zeit": "2026-11-09T01:21:00.000Z"
-    },
-    {
-      "titel": "Trump thinks he will meet Xi and Putin at China APEC summit - Reuters",
-      "quelle": "Finnhub News",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNY0h5RWRYOHBsak5MVm5FQy1UV09NSk1odWFia1BUV1VJeVE5Z01CU0NqLVc1ckZ0V1FGSndBMUVMSlRyOVpnNktxVmNoZm13Y1FwTUw3QWxGYk5YR0VHX0k5VFlFZDJXWTJBYi03dWJ6c1MxLXZQdDVCWVBDOUJDOW5rLUdFYkZjaVZzRkNzTVd1YnpvV0tHV0p1YlNQbTRzVUE?oc=5",
-      "zeit": "2026-11-09T00:50:00.000Z"
-    },
-    {
-      "titel": "The S&P 500 could be dangerously exposed to AI. Here are some simple alternatives.",
-      "quelle": "MarketWatch",
-      "link": "https://www.marketwatch.com/story/the-s-p-500-has-become-a-big-ai-bet-here-are-some-simple-alternatives-3c7574a4?mod=mw_rss_topstories",
-      "zeit": "2026-11-09T00:40:00.000Z"
-    },
-    {
-      "titel": "I&#x2019;m second-guessing my adviser: Is an annuity the right move in this market?",
-      "quelle": "MarketWatch",
-      "link": "https://www.marketwatch.com/story/my-adviser-recommended-an-annuity-is-it-the-right-move-in-this-market-environment-00edbbf6?mod=mw_rss_topstories",
-      "zeit": "2026-11-09T00:30:00.000Z"
-    },
-    {
-      "titel": "&#x2018;It feels like he&#x2019;s quietly building a separate life&#x2019;: My husband inherited $500,000, but he refuses to spend it on our home",
-      "quelle": "MarketWatch",
-      "link": "https://www.marketwatch.com/story/it-feels-like-hes-quietly-building-a-separate-life-my-husband-inherited-500-000-but-he-refuses-to-spend-it-on-our-home-06535cff?mod=mw_rss_topstories",
-      "zeit": "2026-11-09T00:02:00.000Z"
-    },
-    {
-      "titel": "Funeral homes are finding new life hosting weddings and golf outings, as the traditional burial business dies out",
-      "quelle": "MarketWatch",
-      "link": "https://www.marketwatch.com/story/funeral-homes-are-finding-new-life-hosting-weddings-and-golf-outings-as-the-traditional-burial-business-dies-out-15831d13?mod=mw_rss_topstories",
-      "zeit": "2026-11-09T00:00:00.000Z"
-    },
-    {
-      "titel": "How much in Roth conversions can you do in 2027 with the new tax brackets?",
-      "quelle": "MarketWatch",
-      "link": "https://www.marketwatch.com/story/how-much-roth-conversion-can-you-do-in-2027-with-the-new-tax-brackets-a2f940c8?mod=mw_rss_topstories",
-      "zeit": "2026-11-08T23:50:00.000Z"
+      "link": "https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-china-spy-trump-lobbying.html",
+      "zeit": "2026-11-09T23:54:21.000Z",
+      "wertpapier": "Nvidia"
     }
   ],
   "insider": [
     {
-      "wertpapier": "Transcat Inc (TRNS)",
-      "text": "2 Insider kauften für 0.33 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-06)",
-      "link": "http://openinsider.com/TRNS"
+      "wertpapier": "Nexpoint Residential Trust, Inc. (NXRT)",
+      "text": "2 Insider kauften für 0.50 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/NXRT"
     },
     {
-      "wertpapier": "Kayne Anderson Energy Infrastructure Fund, Inc. (KYN)",
-      "text": "3 Insider kauften für 0.43 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-06)",
-      "link": "http://openinsider.com/KYN"
+      "wertpapier": "Adtran Holdings, Inc. (ADTN)",
+      "text": "2 Insider kauften für 0.68 Mio. $ (Handel 2026-11-06, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/ADTN"
     },
     {
-      "wertpapier": "Kennametal Inc (KMT)",
-      "text": "2 Insider kauften für 0.52 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-06)",
-      "link": "http://openinsider.com/KMT"
-    },
-    {
-      "wertpapier": "Promis Neurosciences Inc. (PMN)",
-      "text": "2 Insider kauften für 0.13 Mio. $ (Handel 2026-11-04, gemeldet 2026-11-06)",
-      "link": "http://openinsider.com/PMN"
+      "wertpapier": "Lucky Strike Entertainment Corp (LUCK)",
+      "text": "3 Insider kauften für 0.93 Mio. $ (Handel 2026-11-06, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/LUCK"
     },
     {
       "wertpapier": "Matador Resources Co (MTDR)",
-      "text": "4 Insider kauften für 0.41 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-06)",
+      "text": "6 Insider kauften für 0.49 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)",
       "link": "http://openinsider.com/MTDR"
     },
     {
-      "wertpapier": "Agomab Therapeutics Nv (AGMB)",
-      "text": "3 Insider kauften für 0.50 Mio. $ (Handel 2026-10-05, gemeldet 2026-11-06)",
-      "link": "http://openinsider.com/AGMB"
+      "wertpapier": "Wesco International Inc (WCC)",
+      "text": "2 Insider kauften für 0.60 Mio. $ (Handel 2026-11-06, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/WCC"
     },
     {
-      "wertpapier": "Blackstone Mortgage Trust, Inc. (BXMT)",
-      "text": "2 Insider kauften für 1.15 Mio. $ (Handel 2026-11-04, gemeldet 2026-11-05)",
-      "link": "http://openinsider.com/BXMT"
+      "wertpapier": "Six Flags Entertainment Corporation/New (FUN)",
+      "text": "2 Insider kauften für 0.29 Mio. $ (Handel 2026-11-06, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/FUN"
     },
     {
-      "wertpapier": "Liberty Energy Inc. (LBRT)",
-      "text": "3 Insider kauften für 0.65 Mio. $ (Handel 2026-11-03, gemeldet 2026-11-05)",
-      "link": "http://openinsider.com/LBRT"
+      "wertpapier": "Orchestra Biomed Holdings, Inc. (OBIO)",
+      "text": "3 Insider kauften für 0.25 Mio. $ (Handel 2026-11-09, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/OBIO"
     },
     {
-      "wertpapier": "Galaxy Digital Inc. (GLXY)",
-      "text": "3 Insider kauften für 10.22 Mio. $ (Handel 2026-08-10, gemeldet 2026-11-05)",
-      "link": "http://openinsider.com/GLXY"
+      "wertpapier": "Upbound Group, Inc. (UPBD)",
+      "text": "7 Insider kauften für 1.69 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/UPBD"
     },
     {
-      "wertpapier": "Franklin Bsp Realty Trust, Inc. (FBRT)",
-      "text": "2 Insider kauften für 1.02 Mio. $ (Handel 2026-11-03, gemeldet 2026-11-05)",
-      "link": "http://openinsider.com/FBRT"
+      "wertpapier": "Lumen Technologies, Inc. (LUMN)",
+      "text": "2 Insider kauften für 0.49 Mio. $ (Handel 2026-11-06, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/LUMN"
+    },
+    {
+      "wertpapier": "Autonation, Inc. (AN)",
+      "text": "4 Insider kauften für 1.73 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)",
+      "link": "http://openinsider.com/AN"
     }
   ],
   "positionen": [
-    {
-      "id": "2026-11-04-auto-tbbb",
-      "name": "TBBB",
-      "meldungen": []
-    },
     {
       "id": "2026-11-05-auto-mdln",
       "name": "MDLN",
       "meldungen": []
     },
     {
-      "id": "2026-11-06-auto-allstate",
-      "name": "Allstate",
-      "meldungen": [
-        {
-          "titel": "Allstate: 5 insightful analyst questions from Allstate’s Q3 2026 earnings call",
-          "quelle": "Finnhub",
-          "link": "https://finnhub.io/api/news?id=e74959d6c9b2a5111b91afabf6b0c69c7dff4249c8c339734562ecc07f56ac13",
-          "zeit": "2026-11-08T23:57:36.000Z",
-          "wertpapier": "Allstate"
-        },
-        {
-          "titel": "Allstate: 3 Insurance Dividend Stocks Built to Keep Paying Through Tough Times",
-          "quelle": "Finnhub",
-          "link": "https://finnhub.io/api/news?id=4da2a6d819e4c1f5aa7875fc5b077b8b6a2f0f28410cc6b7dc27ab86f0c71de9",
-          "zeit": "2026-11-08T15:07:11.000Z",
-          "wertpapier": "Allstate"
-        }
-      ]
-    },
-    {
       "id": "2026-11-06-auto-sony",
       "name": "SONY",
       "meldungen": [
         {
-          "titel": "SONY: What Sony (SONY) Said on Its Q2 Earnings Call",
+          "titel": "SONY: Lionsgate Studios Library Is A Cash Machine",
           "quelle": "Finnhub",
-          "link": "https://finnhub.io/api/news?id=206bc5c086efa3b2b06890b45494f986545eea6dad5db1d805583c45a4740a56",
-          "zeit": "2026-11-08T23:14:16.000Z",
+          "link": "https://finnhub.io/api/news?id=5b8fd178b9d118101b013cb2205536f5f247196310b64da0e51da64ae64c4f10",
+          "zeit": "2026-11-09T16:05:29.000Z",
           "wertpapier": "SONY"
         }
       ]
@@ -259,70 +217,126 @@
   ],
   "kandidaten": [
     {
-      "name": "Gogo Inc.",
-      "ticker": "GOGO",
-      "score": 2.41,
+      "name": "CEG",
+      "ticker": "CEG",
+      "score": 3.69,
+      "hinweis": "In 14 ähnlichen Fällen 8 im Plus, Ø -1,43 % nach 1 Woche",
+      "fakten": [
+        "EPS 5.06 vs. erwartet 3.8857 (+30 %) am 2026-11-09",
+        "Kursreaktion +10.5 % bestätigt die positive Überraschung (EPS 5.06 vs. erwartet 3.8857 (+30 %) am 2026-11-09)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "NRG",
+      "ticker": "NRG",
+      "score": 3.69,
+      "hinweis": "In 14 ähnlichen Fällen 8 im Plus, Ø -1,43 % nach 1 Woche",
+      "fakten": [
+        "EPS 4.68 vs. erwartet 3.3634 (+39 %) am 2026-11-09",
+        "Kursreaktion +10.3 % bestätigt die positive Überraschung (EPS 4.68 vs. erwartet 3.3634 (+39 %) am 2026-11-09)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "SKYD",
+      "ticker": "SKYD",
+      "score": 3.64,
+      "hinweis": "In 14 ähnlichen Fällen 8 im Plus, Ø -1,43 % nach 1 Woche",
+      "fakten": [
+        "EPS 0.45 vs. erwartet -0.0527 (+954 %) am 2026-11-09",
+        "Kursreaktion +8.6 % bestätigt die positive Überraschung (EPS 0.45 vs. erwartet -0.0527 (+954 %) am 2026-11-09)"
+      ],
+      "quellen": []
+    },
+    {
+      "name": "Forge Nano Holdings, Inc.",
+      "ticker": "NANOW",
+      "score": 2.3,
+      "fakten": [
+        "8-K Item 1.01: wesentlicher Vertrag",
+        "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/2101833/000110465926124550/0001104659-26-124550-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Reliance Global Group, Inc.",
+      "ticker": "EZRA",
+      "score": 2.3,
+      "fakten": [
+        "8-K Item 1.01: wesentlicher Vertrag",
+        "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1812727/000149315226050810/0001493152-26-050810-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Ohmyhome Ltd Ords A",
+      "ticker": "OMH",
+      "score": 2.28,
+      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche · ⚠ Pump-Verdacht: nur Stimmung/Rakete, nichts Handfestes",
+      "fakten": [
+        "Volatilitätspause (Limit Up/Down), 36 Stopps am 2026-11-09",
+        "+251.1 % am Vortag (US)",
+        "Tagesgewinner +251 % bei 25.84 $ (Volumen 30 Mio.) – spekulativ"
+      ],
+      "quellen": [
+        {
+          "name": "Nasdaq Trader",
+          "link": "https://www.nasdaqtrader.com/trader.aspx?id=TradeHalts"
+        }
+      ]
+    },
+    {
+      "name": "Wellchange Holdings Cl A Ord",
+      "ticker": "WCT",
+      "score": 2.27,
       "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche",
       "fakten": [
-        "8-K Item 1.01: wesentlicher Vertrag",
-        "+71.5 % am Vortag (US)",
-        "Tagesgewinner +72 % bei 3.885 $ (Volumen 28 Mio.) – spekulativ"
+        "Volatilitätspause (Limit Up/Down), 3 Stopps am 2026-11-09",
+        "+92.2 % am Vortag (US)",
+        "Tagesgewinner +92 % bei 4.47 $ (Volumen 18 Mio.) – spekulativ"
       ],
       "quellen": [
         {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1537054/000119312526451967/0001193125-26-451967-index.htm"
+          "name": "Nasdaq Trader",
+          "link": "https://www.nasdaqtrader.com/trader.aspx?id=TradeHalts"
+        },
+        {
+          "name": "FINRA",
+          "link": "https://www.finra.org/finra-data/browse-catalog/short-sale-volume-data"
         }
       ]
     },
     {
-      "name": "Churchill Capital Corp XI",
-      "ticker": "CCXIW",
-      "score": 2.3,
+      "name": "SMX Sc Mtr PLC Ord",
+      "ticker": "SMX",
+      "score": 2.15,
+      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche · ⚠ Pump-Verdacht: nur Stimmung/Rakete, nichts Handfestes",
       "fakten": [
-        "8-K Item 1.01: wesentlicher Vertrag",
-        "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen"
+        "Volatilitätspause (Limit Up/Down), 9 Stopps am 2026-11-09",
+        "+89.7 % am Vortag (US)",
+        "Tagesgewinner +90 % bei 9.35 $ (Volumen 6 Mio.) – spekulativ"
       ],
       "quellen": [
         {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/2074973/000121390026116898/0001213900-26-116898-index.htm"
+          "name": "Nasdaq Trader",
+          "link": "https://www.nasdaqtrader.com/trader.aspx?id=TradeHalts"
         }
       ]
     },
     {
-      "name": "Fox Corp",
-      "ticker": "FOX",
-      "score": 2.3,
-      "fakten": [
-        "8-K Item 1.01: wesentlicher Vertrag",
-        "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen"
-      ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1754301/000119312526451888/0001193125-26-451888-index.htm"
-        }
-      ]
-    },
-    {
-      "name": "T3 Defense Inc.",
-      "ticker": "DFNSW",
-      "score": 2.3,
-      "fakten": [
-        "8-K Item 1.01: wesentlicher Vertrag",
-        "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen"
-      ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1787518/000118518526005246/0001185185-26-005246-index.htm"
-        }
-      ]
-    },
-    {
-      "name": "Sidus Space Inc.",
-      "ticker": "SIDU",
+      "name": "Gores Holdings X, Inc. / CI",
+      "ticker": "GTENU",
       "score": -2.1,
       "fakten": [
         "8-K Item 4.02: frühere Abschlüsse nicht mehr verlässlich"
@@ -330,51 +344,28 @@
       "quellen": [
         {
           "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1879726/000149315226050537/0001493152-26-050537-index.htm"
+          "link": "https://www.sec.gov/Archives/edgar/data/1986817/000119312526453778/0001193125-26-453778-index.htm"
         }
       ]
     },
     {
-      "name": "Tianci International, Inc.",
-      "ticker": "CIIT",
-      "score": 1.9,
-      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche",
+      "name": "OXY",
+      "ticker": "OXY",
+      "score": 2.05,
+      "hinweis": "In 55 ähnlichen Fällen 27 im Plus, Ø +0,07 % nach 1 Woche",
       "fakten": [
-        "+54.8 % am Vortag (US)",
-        "Tagesgewinner +58 % bei 2.4 $ (Volumen 41 Mio.) – spekulativ",
-        "Leerverkaufsquote 60 % (+51 Pkt. ggü. Vortag), Volumen 8 Mio. (2026-11-06)"
+        "EPS 1.91 vs. erwartet 1.4767 (+29 %) am 2026-11-09"
       ],
-      "quellen": [
-        {
-          "name": "FINRA",
-          "link": "https://www.finra.org/finra-data/browse-catalog/short-sale-volume-data"
-        }
-      ]
-    },
-    {
-      "name": "VisionSys AI Inc.",
-      "ticker": "VSA",
-      "score": 1.9,
-      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche",
-      "fakten": [
-        "+52.6 % am Vortag (US)",
-        "Tagesgewinner +53 % bei 2.35 $ (Volumen 29 Mio.) – spekulativ",
-        "Leerverkaufsquote 57 % (+55 Pkt. ggü. Vortag), Volumen 5 Mio. (2026-11-06)"
-      ],
-      "quellen": [
-        {
-          "name": "FINRA",
-          "link": "https://www.finra.org/finra-data/browse-catalog/short-sale-volume-data"
-        }
-      ]
+      "quellen": []
     },
     {
       "name": "Upbound Group, Inc.",
       "ticker": "UPBD",
-      "score": 1.63,
-      "hinweis": "In 31 ähnlichen Fällen 12 im Plus, Ø -2,6 % nach 1 Woche",
+      "score": 2,
+      "hinweis": "In 19 ähnlichen Fällen 7 im Plus, Ø -2,77 % nach 1 Woche",
       "fakten": [
-        "7 Insider kauften für 1.39 Mio. $ (Handel 2026-11-03, gemeldet 2026-11-05)"
+        "7 Insider kauften für 1.69 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)",
+        "Karam Fahmi (CEO) kaufte für 0.30 Mio. $"
       ],
       "quellen": [
         {
@@ -384,57 +375,68 @@
       ]
     },
     {
-      "name": "STAK Inc. Ordinary Shares",
-      "ticker": "STAK",
-      "score": 1.63,
-      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche · ⚠ Pump-Verdacht: nur Stimmung/Rakete, nichts Handfestes",
+      "name": "CKX Lands, Inc.",
+      "ticker": "CKX",
+      "score": 1.88,
+      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche",
       "fakten": [
-        "+82.1 % am Vortag (US)",
-        "Tagesgewinner +82 % bei 3.26 $ (Volumen 31 Mio.) – spekulativ"
+        "+58.1 % am Vortag (US)",
+        "Tagesgewinner +63 % bei 16.91 $ (Volumen 12 Mio.) – spekulativ",
+        "Leerverkaufsquote 55 % (+42 Pkt. ggü. Vortag), Volumen 5 Mio. (2026-11-09)"
+      ],
+      "quellen": [
+        {
+          "name": "FINRA",
+          "link": "https://www.finra.org/finra-data/browse-catalog/short-sale-volume-data"
+        }
+      ]
+    },
+    {
+      "name": "JBS",
+      "ticker": "JBS",
+      "score": -1.7,
+      "hinweis": "In 8 ähnlichen Fällen 2 im Plus, Ø -6,38 % nach 1 Woche",
+      "fakten": [
+        "EPS 0.16 vs. erwartet 0.258 (-38 %) am 2026-11-09"
       ],
       "quellen": []
     },
     {
-      "name": "ROKU, INC",
-      "ticker": "ROKU",
-      "score": 1.5,
+      "name": "U.S. GoldMining Inc.",
+      "ticker": "USGO",
+      "score": -1.6,
       "fakten": [
-        "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen"
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)",
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)",
+        "8-K Item 1.01: wesentlicher Vertrag"
       ],
       "quellen": [
         {
           "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1428439/000119312526451874/0001193125-26-451874-index.htm"
-        }
-      ]
-    },
-    {
-      "name": "Kontoor Brands, Inc.",
-      "ticker": "KTB",
-      "score": 1.5,
-      "fakten": [
-        "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen"
-      ],
-      "quellen": [
+          "link": "https://www.sec.gov/Archives/edgar/data/1947244/000149315226050486/0001493152-26-050486-index.htm"
+        },
         {
           "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1760965/000176096526000082/0001760965-26-000082-index.htm"
+          "link": "https://www.sec.gov/Archives/edgar/data/1947244/000149315226050656/0001493152-26-050656-index.htm"
+        },
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1947244/000149315226050792/0001493152-26-050792-index.htm"
         }
       ]
     },
     {
-      "name": "Blackstone Mortgage Trust, Inc.",
-      "ticker": "BXMT",
-      "score": 1.47,
-      "hinweis": "In 18 ähnlichen Fällen 7 im Plus, Ø -2,79 % nach 1 Woche",
+      "name": "Onconetix, Inc. Common Stock",
+      "ticker": "ONCO",
+      "score": -1.58,
       "fakten": [
-        "2 Insider kauften für 1.15 Mio. $ (Handel 2026-11-04, gemeldet 2026-11-05)",
-        "Johnson Timothy Steven (CEO) kaufte für 1.04 Mio. $"
+        "Volatilitätspause (Limit Up/Down), 2 Stopps am 2026-11-09",
+        "-48.5 % am Vortag (US)"
       ],
       "quellen": [
         {
-          "name": "OpenInsider",
-          "link": "http://openinsider.com/BXMT"
+          "name": "Nasdaq Trader",
+          "link": "https://www.nasdaqtrader.com/trader.aspx?id=TradeHalts"
         }
       ]
     },
@@ -442,9 +444,9 @@
       "name": "Pampa Energy Inc.",
       "ticker": "PAM",
       "score": 1.47,
-      "hinweis": "In 31 ähnlichen Fällen 12 im Plus, Ø -2,6 % nach 1 Woche",
+      "hinweis": "In 33 ähnlichen Fällen 12 im Plus, Ø -2,53 % nach 1 Woche",
       "fakten": [
-        "3 Insider kauften für 54.13 Mio. $ (Handel 2026-09-25, gemeldet 2026-11-05)"
+        "3 Insider kauften für 55.41 Mio. $ (Handel 2026-09-25, gemeldet 2026-11-09)"
       ],
       "quellen": [
         {
@@ -454,109 +456,59 @@
       ]
     },
     {
-      "name": "Kayne Anderson Energy Infrastructure Fund, Inc.",
-      "ticker": "KYN",
-      "score": 1.4,
-      "hinweis": "In 18 ähnlichen Fällen 7 im Plus, Ø -2,79 % nach 1 Woche",
+      "name": "Matador Resources Co",
+      "ticker": "MTDR",
+      "score": 1.41,
+      "hinweis": "In 33 ähnlichen Fällen 12 im Plus, Ø -2,53 % nach 1 Woche",
       "fakten": [
-        "3 Insider kauften für 0.43 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-06)",
-        "Baker James C (Pres) kaufte für 0.33 Mio. $"
+        "6 Insider kauften für 0.49 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)"
       ],
       "quellen": [
         {
           "name": "OpenInsider",
-          "link": "http://openinsider.com/KYN"
+          "link": "http://openinsider.com/MTDR"
         }
       ]
     },
     {
-      "name": "Galaxy Digital Inc.",
-      "ticker": "GLXY",
-      "score": 1.32,
-      "hinweis": "In 31 ähnlichen Fällen 12 im Plus, Ø -2,6 % nach 1 Woche",
+      "name": "Adtran Holdings, Inc.",
+      "ticker": "ADTN",
+      "score": 1.37,
+      "hinweis": "In 19 ähnlichen Fällen 7 im Plus, Ø -2,77 % nach 1 Woche",
       "fakten": [
-        "3 Insider kauften für 10.22 Mio. $ (Handel 2026-08-10, gemeldet 2026-11-05)"
+        "2 Insider kauften für 0.68 Mio. $ (Handel 2026-11-06, gemeldet 2026-11-09)",
+        "Stanton Thomas R (COB, CEO) kaufte für 0.60 Mio. $"
       ],
       "quellen": [
         {
           "name": "OpenInsider",
-          "link": "http://openinsider.com/GLXY"
+          "link": "http://openinsider.com/ADTN"
         }
       ]
     },
     {
-      "name": "SkinHealth Systems Inc.",
-      "ticker": "SKIN",
-      "score": 1.28,
-      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche",
+      "name": "Columbus McKinnon Corp",
+      "ticker": "CMCO",
+      "score": 1.35,
+      "hinweis": "In 19 ähnlichen Fällen 7 im Plus, Ø -2,77 % nach 1 Woche",
       "fakten": [
-        "+51.8 % am Vortag (US)"
+        "2 Insider kauften für 0.60 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)",
+        "Wilson David J. (Pres, CEO) kaufte für 0.55 Mio. $"
       ],
-      "quellen": []
-    },
-    {
-      "name": "GraniteShares 2x Long IONQ Daily ETF",
-      "ticker": "IONL",
-      "score": 1.28,
-      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche",
-      "fakten": [
-        "+45.2 % am Vortag (US)"
-      ],
-      "quellen": []
-    },
-    {
-      "name": "Defiance Daily Target 2X Long IONQ ETF",
-      "ticker": "IONX",
-      "score": 1.28,
-      "hinweis": "In 7 ähnlichen Fällen 5 im Plus, Ø +7,53 % nach 1 Woche",
-      "fakten": [
-        "+44.7 % am Vortag (US)"
-      ],
-      "quellen": []
-    },
-    {
-      "name": "Biodesix, Inc.",
-      "ticker": "BDSX",
-      "score": -1.28,
-      "fakten": [
-        "-57.0 % am Vortag (US)"
-      ],
-      "quellen": []
-    },
-    {
-      "name": "Defiance Daily Target 2x Short IONQ ETF",
-      "ticker": "IONZ",
-      "score": -1.28,
-      "fakten": [
-        "-46.5 % am Vortag (US)"
-      ],
-      "quellen": []
-    },
-    {
-      "name": "Starling Oncology, Inc.",
-      "ticker": "STLN",
-      "score": -1.28,
-      "fakten": [
-        "-46.0 % am Vortag (US)"
-      ],
-      "quellen": []
-    },
-    {
-      "name": "Ohmyhome Limited",
-      "ticker": "OMH",
-      "score": -1.28,
-      "fakten": [
-        "-44.9 % am Vortag (US)"
-      ],
-      "quellen": []
+      "quellen": [
+        {
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/CMCO"
+        }
+      ]
     },
     {
       "name": "Ttm Technologies Inc",
       "ticker": "TTMI",
-      "score": 1.22,
-      "hinweis": "In 31 ähnlichen Fällen 12 im Plus, Ø -2,6 % nach 1 Woche",
+      "score": 1.35,
+      "hinweis": "In 33 ähnlichen Fällen 12 im Plus, Ø -2,53 % nach 1 Woche",
       "fakten": [
-        "3 Insider kauften für 3.62 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-05)"
+        "4 Insider kauften für 3.93 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)"
       ],
       "quellen": [
         {
@@ -566,158 +518,99 @@
       ]
     },
     {
-      "name": "3D SYSTEMS CORP",
-      "ticker": "DDD",
-      "score": -1.2,
+      "name": "Wesco International Inc",
+      "ticker": "WCC",
+      "score": 1.34,
+      "hinweis": "In 19 ähnlichen Fällen 7 im Plus, Ø -2,77 % nach 1 Woche",
       "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+        "2 Insider kauften für 0.60 Mio. $ (Handel 2026-11-06, gemeldet 2026-11-09)",
+        "Dev Indraneel (EVP, CFO) kaufte für 0.50 Mio. $"
       ],
       "quellen": [
         {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/910638/000119312526448578/0001193125-26-448578-index.htm"
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/WCC"
         }
       ]
     },
     {
-      "name": "Avalo Therapeutics, Inc.",
-      "ticker": "AVTX",
-      "score": -1.2,
+      "name": "Lumen Technologies, Inc.",
+      "ticker": "LUMN",
+      "score": 1.3,
+      "hinweis": "In 19 ähnlichen Fällen 7 im Plus, Ø -2,77 % nach 1 Woche",
       "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+        "2 Insider kauften für 0.49 Mio. $ (Handel 2026-11-06, gemeldet 2026-11-09)",
+        "Johnson Kathleen E (CEO) kaufte für 0.40 Mio. $"
       ],
       "quellen": [
         {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1534120/000110465926123069/0001104659-26-123069-index.htm"
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/LUMN"
         }
       ]
     },
     {
-      "name": "NORTHERN TRUST CORP",
-      "ticker": "NTRSO",
-      "score": -1.2,
+      "name": "Autonation, Inc.",
+      "ticker": "AN",
+      "score": 1.28,
+      "hinweis": "In 33 ähnlichen Fällen 12 im Plus, Ø -2,53 % nach 1 Woche",
       "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+        "4 Insider kauften für 1.73 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-09)"
       ],
       "quellen": [
         {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/73124/000119312526448777/0001193125-26-448777-index.htm"
+          "name": "OpenInsider",
+          "link": "http://openinsider.com/AN"
         }
       ]
     },
     {
-      "name": "MediWound Ltd.",
-      "ticker": "MDWD",
-      "score": -1.2,
+      "name": "Tantech Holdings Ltd",
+      "ticker": "TANH",
+      "score": 1.28,
+      "hinweis": "In 8 ähnlichen Fällen 5 im Plus, Ø -0,69 % nach 1 Woche",
       "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+        "+65.7 % am Vortag (US)"
       ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1593984/000117891326005042/0001178913-26-005042-index.htm"
-        }
-      ]
+      "quellen": []
     },
     {
-      "name": "Orchestra BioMed Holdings, Inc.",
-      "ticker": "OBIO",
-      "score": -1.2,
+      "name": "Deep Fission, Inc.",
+      "ticker": "FISN",
+      "score": 1.28,
+      "hinweis": "In 8 ähnlichen Fällen 5 im Plus, Ø -0,69 % nach 1 Woche",
       "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+        "+53.0 % am Vortag (US)"
       ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1814114/000110465926123304/0001104659-26-123304-index.htm"
-        }
-      ]
+      "quellen": []
     },
     {
-      "name": "INOVIO PHARMACEUTICALS, INC.",
-      "ticker": "INO",
-      "score": -1.2,
+      "name": "Telos Corporation",
+      "ticker": "TLS",
+      "score": 1.28,
+      "hinweis": "In 8 ähnlichen Fällen 5 im Plus, Ø -0,69 % nach 1 Woche",
       "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+        "+48.8 % am Vortag (US)"
       ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1055726/000119312526449837/0001193125-26-449837-index.htm"
-        }
-      ]
+      "quellen": []
     },
     {
-      "name": "Live Oak Bancshares, Inc.",
-      "ticker": "LOB-PA",
-      "score": -1.2,
+      "name": "Faeth Therapeutics, Inc.",
+      "ticker": "FTH",
+      "score": -1.28,
       "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+        "-42.5 % am Vortag (US)"
       ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1462120/000119312526449852/0001193125-26-449852-index.htm"
-        }
-      ]
+      "quellen": []
     },
     {
-      "name": "FATE THERAPEUTICS INC",
-      "ticker": "FATE",
-      "score": -1.2,
+      "name": "Abeona Therapeutics Inc.",
+      "ticker": "ABEO",
+      "score": -1.28,
       "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+        "-39.1 % am Vortag (US)"
       ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1434316/000119312526450013/0001193125-26-450013-index.htm"
-        }
-      ]
-    },
-    {
-      "name": "Disc Medicine, Inc.",
-      "ticker": "IRON",
-      "score": -1.2,
-      "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
-      ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1816736/000119312526450184/0001193125-26-450184-index.htm"
-        }
-      ]
-    },
-    {
-      "name": "DDC Enterprise Ltd",
-      "ticker": "DDC",
-      "score": -1.2,
-      "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
-      ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1808110/000121390026116477/0001213900-26-116477-index.htm"
-        }
-      ]
-    },
-    {
-      "name": "PRECISION BIOSCIENCES INC",
-      "ticker": "DTIL",
-      "score": -1.2,
-      "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
-      ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1357874/000162828026071249/0001628280-26-071249-index.htm"
-        }
-      ]
+      "quellen": []
     },
     {
       "name": "Solowin Holdings, Ltd.",
@@ -818,6 +711,20 @@
       ]
     },
     {
+      "name": "INOVIO PHARMACEUTICALS, INC.",
+      "ticker": "INO",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1055726/000119312526451932/0001193125-26-451932-index.htm"
+        }
+      ]
+    },
+    {
       "name": "Global Net Lease, Inc.",
       "ticker": "GNL-PD",
       "score": -1.2,
@@ -828,20 +735,6 @@
         {
           "name": "SEC EDGAR",
           "link": "https://www.sec.gov/Archives/edgar/data/1526113/000110465926123909/0001104659-26-123909-index.htm"
-        }
-      ]
-    },
-    {
-      "name": "U.S. GoldMining Inc.",
-      "ticker": "USGO",
-      "score": -1.2,
-      "fakten": [
-        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
-      ],
-      "quellen": [
-        {
-          "name": "SEC EDGAR",
-          "link": "https://www.sec.gov/Archives/edgar/data/1947244/000149315226050486/0001493152-26-050486-index.htm"
         }
       ]
     },
@@ -860,107 +753,172 @@
       ]
     },
     {
-      "name": "Matador Resources Co",
-      "ticker": "MTDR",
-      "score": 1.15,
-      "hinweis": "In 31 ähnlichen Fällen 12 im Plus, Ø -2,6 % nach 1 Woche",
+      "name": "BERKSHIRE HATHAWAY INC",
+      "ticker": "BRK-A",
+      "score": -1.2,
       "fakten": [
-        "4 Insider kauften für 0.41 Mio. $ (Handel 2026-11-05, gemeldet 2026-11-06)"
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
       ],
       "quellen": [
         {
-          "name": "OpenInsider",
-          "link": "http://openinsider.com/MTDR"
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526452592/0001193125-26-452592-index.htm"
         }
       ]
     },
     {
-      "name": "Exxon Mobil",
-      "ticker": "XOM",
-      "score": -1.15,
+      "name": "Forward Industries, Inc.",
+      "ticker": "FWDI",
+      "score": -1.2,
       "fakten": [
-        "Nahost/Iran/Öl: Trump says renewed Iran strikes ‘highly unlikely’ if talks progress but warns he could still strike",
-        "Nahost/Iran/Öl: „Israel x Iran ceasefire continues through...? – December 31“ 45 → 56 %"
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
       ],
       "quellen": [
         {
-          "name": "CNBC Politics",
-          "link": "https://www.cnbc.com/2026/11/08/trump-iran-strikes-unlikely-talks-hormuz.html"
-        },
-        {
-          "name": "Polymarket (Politik)",
-          "link": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/38264/000168316826008408/0001683168-26-008408-index.htm"
         }
       ]
     },
     {
-      "name": "Lufthansa",
-      "ticker": "LHA.DE",
-      "score": 1.15,
+      "name": "NOVARTIS AG",
+      "ticker": "NVSEF",
+      "score": -1.2,
       "fakten": [
-        "Nahost/Iran/Öl: Trump says renewed Iran strikes ‘highly unlikely’ if talks progress but warns he could still strike",
-        "Nahost/Iran/Öl: „Israel x Iran ceasefire continues through...? – December 31“ 45 → 56 %"
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
       ],
       "quellen": [
         {
-          "name": "CNBC Politics",
-          "link": "https://www.cnbc.com/2026/11/08/trump-iran-strikes-unlikely-talks-hormuz.html"
-        },
-        {
-          "name": "Polymarket (Politik)",
-          "link": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1114448/000110465926124201/0001104659-26-124201-index.htm"
         }
       ]
     },
     {
-      "name": "Liberty Global Ltd.",
-      "ticker": "LBTY",
-      "score": 1.09,
-      "hinweis": "In 31 ähnlichen Fällen 12 im Plus, Ø -2,6 % nach 1 Woche",
+      "name": "ENBRIDGE INC",
+      "ticker": "ENBNF",
+      "score": -1.2,
       "fakten": [
-        "2 Insider kauften für 3.03 Mio. $ (Handel 2026-11-04, gemeldet 2026-11-05)"
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
       ],
       "quellen": [
         {
-          "name": "OpenInsider",
-          "link": "http://openinsider.com/LBTY"
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/895728/000110465926124202/0001104659-26-124202-index.htm"
         }
       ]
     },
     {
-      "name": "Liberty Energy Inc.",
-      "ticker": "LBRT",
-      "score": 1.07,
-      "hinweis": "In 31 ähnlichen Fällen 12 im Plus, Ø -2,6 % nach 1 Woche",
+      "name": "INNOVATIVE INDUSTRIAL PROPERTIES INC",
+      "ticker": "IIPR-PA",
+      "score": -1.2,
       "fakten": [
-        "3 Insider kauften für 0.65 Mio. $ (Handel 2026-11-03, gemeldet 2026-11-05)"
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
       ],
       "quellen": [
         {
-          "name": "OpenInsider",
-          "link": "http://openinsider.com/LBRT"
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1677576/000110465926124205/0001104659-26-124205-index.htm"
         }
       ]
     },
     {
-      "name": "Agomab Therapeutics Nv",
-      "ticker": "AGMB",
-      "score": 1.04,
-      "hinweis": "In 31 ähnlichen Fällen 12 im Plus, Ø -2,6 % nach 1 Woche",
+      "name": "Jaguar Health, Inc.",
+      "ticker": "JAGX",
+      "score": -1.2,
       "fakten": [
-        "3 Insider kauften für 0.50 Mio. $ (Handel 2026-10-05, gemeldet 2026-11-06)"
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
       ],
       "quellen": [
         {
-          "name": "OpenInsider",
-          "link": "http://openinsider.com/AGMB"
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1585608/000119312526452741/0001193125-26-452741-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "Apollo Global Management, Inc.",
+      "ticker": "APOS",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1858681/000119312526452762/0001193125-26-452762-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "SCHWAB CHARLES CORP",
+      "ticker": "SCHW-PJ",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/316709/000119312526452773/0001193125-26-452773-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "NORTHERN TRUST CORP",
+      "ticker": "NTRSO",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/73124/000119312526453567/0001193125-26-453567-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "SmartStop Self Storage REIT, Inc.",
+      "ticker": "SMA",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1585389/000119312526453632/0001193125-26-453632-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "TEN Holdings, Inc.",
+      "ticker": "XHLD",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/2030954/000149315226050730/0001493152-26-050730-index.htm"
+        }
+      ]
+    },
+    {
+      "name": "ENTERPRISE PRODUCTS PARTNERS L.P.",
+      "ticker": "EPDU",
+      "score": -1.2,
+      "fakten": [
+        "Prospekt 424B5: Aktienplatzierung (Verwässerung)"
+      ],
+      "quellen": [
+        {
+          "name": "SEC EDGAR",
+          "link": "https://www.sec.gov/Archives/edgar/data/1061219/000119312526453702/0001193125-26-453702-index.htm"
         }
       ]
     }
-  ],
-  "briefing": [
-    "Mittag: keine neue Order – nichts Überzeugendes mit Chance ≥ 40 % und positivem Erwartungswert.",
-    "Kursraketen SDA/VIVK/STAK/GOGO u. a. ohne belegten Auslöser – Lektionen 11/17/20: nicht nachkaufen.",
-    "🤖 MDLN und SONY bleiben: keine Meldung gegen die These, Stops und Termine laufen."
   ]
 }
