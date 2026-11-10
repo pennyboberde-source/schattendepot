@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-10T09:55:06.717Z",
-  "anzahl": 207,
+  "stand": "2026-11-10T10:52:45.147Z",
+  "anzahl": 210,
   "signale": [
     {
       "id": "verwaesserung:AXG:2026-11-06",
@@ -746,7 +746,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "Finnhub News"
+        "Finnhub News",
+        "CNBC Top News"
       ],
       "z": "2026-11-09T14:30:01.000Z"
     },
@@ -2730,6 +2731,47 @@
         "Upbit"
       ],
       "z": "2026-11-10T09:55:06.717Z"
+    },
+    {
+      "id": "nachricht:NRG:2026-11-10",
+      "s": "T:NRG",
+      "n": "NRG",
+      "t": "NRG",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-10T08:54:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:BTC:2026-11-10",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-10T09:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:ETH:2026-11-10",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-10T09:00:00.000Z"
     }
   ]
 }
