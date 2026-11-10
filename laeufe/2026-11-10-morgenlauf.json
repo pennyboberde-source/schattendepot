@@ -1,0 +1,29 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-10",
+  "erstellt": "2026-11-10T06:50:00Z",
+  "briefing": [
+    "Keine neue Claude-Order: Markt seitwärts/nervös, Politik-Risiko 100, US-Inflation 14:30 – Lektion 18 sagt kaum kaufen",
+    "Autopilot hat CEG und NRG vorgemerkt (Zahlen +30/+39 % über Erwartung, Kurs +10 %); MDLN-Termin ist fällig",
+    "Termine: Sea Ltd Zahlen vor US-Start, Fed-Waller 10:00, US-CPI 14:30 (Prognose 0,3 %) – Daytrading nur ORB long"
+  ],
+  "orders": [],
+  "notiz": "Bewusst 0 Orders. Gründe: Marktphase seitwaerts_nervoes (Schattenbuch 18 % im Plus nach 1 Tag, n=11; Lektion 18 stark), Politik-Risiko 100/100, US-CPI 14:30 als binäres Ereignis. Top-Kandidaten CEG/NRG (gewinn_ueberraschung + nachzahlen_drift) kauft der Autopilot bereits; nachzahlen_drift trägt laut Lektion 5 nicht, große liquide US-Werte preisen schnell ein (Lektion 8) – keine Doppelung. SKYD: Quellen zu Termin/Konsens widersprüchlich (Fusion mit Warner Bros. Discovery, hoch verschuldet) – Überraschung +954 % ist vermutlich ein Datenartefakt der Konsensschätzung, kein Kauf. Kursraketen OMH/WCT/SMX/CKX: kursrakete Ø −8,9 % nach 1 Woche, Pump-Verdacht → nein. Insider-Cluster (UPBD, MTDR, TTMI …) allein trägt nicht (Lektion 1). Autopilot-Positionen geprüft: SONY ohne Gegenmeldung, These plausibel → halten; MDLN Verkaufstermin 04:56 UTC bereits erreicht, der Wächter verkauft. Quellen: https://www.tikr.com/blog/constellation-energy-fell-9-on-the-midterm-sweep-mondays-report-has-to-defend-its-growth-estimates , https://www.nextearningsdate.com/skyd.html",
+  "prognose": [
+    {"name": "Constellation Energy", "ticker": "CEG", "markt": "us", "richtung": "hoch", "chance": 55, "grund": "EPS +30 % über Erwartung, Erholung nach Midterm-Abverkauf"},
+    {"name": "NRG Energy", "ticker": "NRG", "markt": "us", "richtung": "hoch", "chance": 54, "grund": "EPS +39 % über Erwartung, Strom-/Rechenzentrum-Nachfrage"},
+    {"name": "Occidental Petroleum", "ticker": "OXY", "markt": "us", "richtung": "runter", "chance": 55, "grund": "Ölpreis fällt, Trump dämpft Iran-Eskalation"},
+    {"name": "The Trade Desk", "ticker": "TTD", "markt": "us", "richtung": "runter", "chance": 55, "grund": "Nach +20 %-Sprung abends Gewinnmitnahmen wahrscheinlich (Lektion 11)"},
+    {"name": "Ohmyhome", "ticker": "OMH", "markt": "us", "richtung": "runter", "chance": 62, "grund": "+251 % ohne Nachricht, 36 Handelsstopps, Pump-Verdacht"},
+    {"name": "JBS", "ticker": "JBS", "markt": "us", "richtung": "runter", "chance": 56, "grund": "Gewinnenttäuschung −38 %, Signal Ø −6,4 % nach 1 Woche"},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 52, "grund": "Unter 50-Tage-Linie, Long-Liquidationen überwiegen, Funding positiv"},
+    {"name": "Ethereum", "ticker": "ETH", "markt": "krypto", "richtung": "runter", "chance": 53, "grund": "78 % Long-Liquidationen, schwächer als BTC"},
+    {"name": "SAP", "ticker": "SAP.DE", "markt": "eu", "richtung": "hoch", "chance": 52, "grund": "Asiatische Tech-Werte erholt, Software-Rückenwind"},
+    {"name": "Rheinmetall", "ticker": "RHM.DE", "markt": "eu", "richtung": "runter", "chance": 52, "grund": "Politik-Radar: Ukraine-Gespräche belasten Rüstung, Schwäche seit Gewinnwarnung"}
+  ],
+  "daytrading": [
+    {"name": "Sea Ltd (ADR)", "markt": "us", "isin": "US81141R1005", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 35, "these": "Quartalszahlen vor US-Start, hohes Interesse; nur ORB long mit Aktie (Lektion 15: Short/Turbo verlieren)"},
+    {"name": "Constellation Energy", "markt": "us", "isin": "US21037T1097", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 34, "these": "Tag 2 nach starken Zahlen (+10,5 %), Fortsetzung möglich; CPI 16:30 MEZ als Störfaktor"},
+    {"name": "NRG Energy", "markt": "us", "isin": "US6293775085", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 33, "these": "Tag 2 nach EPS +39 % und +10 %; Ausbruch aus Eröffnungsspanne als Bestätigung"}
+  ]
+}
