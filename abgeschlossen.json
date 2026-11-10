@@ -1,6 +1,113 @@
 {
-  "stand": "2026-11-10T06:42:48.827Z",
+  "stand": "2026-11-10T07:01:58.258Z",
   "orders": [
+    {
+      "id": "2026-11-05-auto-mdln",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-05T04:56:21.404Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "MDLN",
+          "isin": "",
+          "ticker": "MDLN",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "MDLN",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:MDLN: gewinn_ueberraschung, nachzahlen_drift (Score 3.79)",
+        "signalIds": [
+          "gewinn_ueberraschung:MDLN:2026-11-05",
+          "nachzahlen_drift:MDLN:2026-11-05"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -5,
+        "verkaufstermin": "2026-11-10T04:56:21.404Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (41 Fälle)"
+      },
+      "verkaufstermin": "2026-11-10T04:56:21.404Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-05T14:55:21.935Z",
+        "stueck": 27,
+        "kurs": 36.327,
+        "kurswert": 980.83,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 980.83,
+        "kursquelle": "Finnhub (2026-11-05T14:54:56.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 43.38,
+      "stopkurs": 34.51,
+      "etfKauf": {
+        "wert": 129.495,
+        "zeit": "2026-11-05T14:44:28.846Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 11,
+        "hinweis": "letztes Geschäft 2026-11-05",
+        "vortag": 130.75
+      },
+      "etfVergleich": {
+        "netto": -2.98,
+        "nettoProzent": -0.33,
+        "etfKauf": 129.495,
+        "etfVerkauf": 129.225
+      },
+      "verkauf": {
+        "zeit": "2026-11-10T07:01:58.258Z",
+        "stueck": 27,
+        "kurs": 36.143,
+        "kurswert": 975.86,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 975.86,
+        "kursquelle": "Finnhub (2026-11-09T21:00:00.000Z)",
+        "synthetisch": true,
+        "grund": "termin"
+      },
+      "ergebnis": {
+        "kursProzent": -0.51,
+        "netto": -4.97,
+        "nettoProzent": -0.51,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": -4.97
+      }
+    },
     {
       "id": "2026-11-06-auto-allstate",
       "status": "geschlossen",
