@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-10T10:52:45.147Z",
-  "anzahl": 210,
+  "stand": "2026-11-10T11:50:15.538Z",
+  "anzahl": 213,
   "signale": [
     {
       "id": "verwaesserung:AXG:2026-11-06",
@@ -2312,7 +2312,7 @@
       "m": "krypto",
       "typ": "upbit_warnung",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Upbit"
       ],
@@ -2606,7 +2606,7 @@
       "m": "us",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.85,
+      "st": 0.9,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2620,7 +2620,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.85,
+      "st": 0.9,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2772,6 +2772,46 @@
         "Coinalyze"
       ],
       "z": "2026-11-10T09:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:ADCT:2026-11-09",
+      "s": "T:ADCT",
+      "n": "ADC Therapeutics SA",
+      "t": "ADCT",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T23:39:44.000Z"
+    },
+    {
+      "id": "verwaesserung:TMQ:2026-11-10",
+      "s": "T:TMQ",
+      "n": "Trilogy Metals Inc.",
+      "t": "TMQ",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-10T02:31:15.000Z"
+    },
+    {
+      "id": "kursrakete:CYBER:2026-11-10",
+      "s": "T:CYBER",
+      "n": "Cyber",
+      "t": "CYBER",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.52,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-10T11:50:15.538Z"
     }
   ]
 }
