@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-10T19:52:13.418Z",
-  "anzahl": 264,
+  "stand": "2026-11-10T20:44:27.082Z",
+  "anzahl": 271,
   "signale": [
     {
       "id": "verwaesserung:AXG:2026-11-06",
@@ -3387,7 +3387,7 @@
       "t": "BMGL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.8,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3480,11 +3480,107 @@
       "i": "DE000HF0U5V9",
       "typ": "kursrakete",
       "r": 0,
-      "st": 0.53,
+      "st": 0.57,
       "q": [
         "gettex-Scanner"
       ],
       "z": "2026-11-10T19:41:48.410Z"
+    },
+    {
+      "id": "verwaesserung:SOJE:2026-11-10",
+      "s": "T:SOJE",
+      "n": "SOUTHERN CO",
+      "t": "SOJE",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-10T20:04:12.000Z"
+    },
+    {
+      "id": "verwaesserung:BRW:2026-11-10",
+      "s": "T:BRW",
+      "n": "Saba Capital Income & Opportunities Fund",
+      "t": "BRW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-10T20:11:40.000Z"
+    },
+    {
+      "id": "politik_massnahme:VOW3:2026-11-10:zoelle_handel",
+      "s": "T:VOW3",
+      "n": "Volkswagen",
+      "t": "VOW3.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-10T20:44:27.082Z"
+    },
+    {
+      "id": "politik_massnahme:BMW:2026-11-10:zoelle_handel",
+      "s": "T:BMW",
+      "n": "BMW",
+      "t": "BMW.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-10T20:44:27.082Z"
+    },
+    {
+      "id": "politik_massnahme:MBG:2026-11-10:zoelle_handel",
+      "s": "T:MBG",
+      "n": "Mercedes-Benz",
+      "t": "MBG.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-10T20:44:27.082Z"
+    },
+    {
+      "id": "politik_massnahme:P911:2026-11-10:zoelle_handel",
+      "s": "T:P911",
+      "n": "Porsche",
+      "t": "P911.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-10T20:44:27.082Z"
+    },
+    {
+      "id": "politik_massnahme:AAPL:2026-11-10:zoelle_handel",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-10T20:44:27.082Z"
     }
   ]
 }
