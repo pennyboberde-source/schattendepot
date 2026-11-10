@@ -1,26 +1,26 @@
 {
-  "stand": "2026-11-10T10:10:50.663Z",
+  "stand": "2026-11-10T11:06:15.933Z",
   "heute": {
     "datum": "2026-11-10",
     "gruppe": {
-      "anzahl": 9,
+      "anzahl": 11,
       "treffer": 3,
-      "quote": 33.3,
-      "netto": -92.06,
-      "brutto": -92.06,
-      "nettoTR": -110.06,
-      "oeNettoProzent": -1.04,
-      "oeR": 0.32
+      "quote": 27.3,
+      "netto": -123.44,
+      "brutto": -123.44,
+      "nettoTR": -145.44,
+      "oeNettoProzent": -1.16,
+      "oeR": 0.08
     },
     "offen": 18
   },
   "gesamt": {
-    "anzahl": 386,
+    "anzahl": 388,
     "treffer": 130,
-    "quote": 33.7,
-    "netto": -2902.78,
-    "brutto": -2760.78,
-    "nettoTR": -3532.78,
+    "quote": 33.5,
+    "netto": -2934.16,
+    "brutto": -2792.16,
+    "nettoTR": -3568.16,
     "oeNettoProzent": -0.77,
     "oeR": 0.04
   },
@@ -105,20 +105,20 @@
     },
     {
       "datum": "2026-11-10",
-      "netto": -2902.78,
-      "brutto": -2760.78,
-      "nettoTR": -3532.78
+      "netto": -2934.16,
+      "brutto": -2792.16,
+      "nettoTR": -3568.16
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 380,
+      "anzahl": 382,
       "treffer": 128,
-      "quote": 33.7,
-      "netto": -2814.62,
-      "brutto": -2672.62,
-      "nettoTR": -3432.62,
-      "oeNettoProzent": -0.75,
+      "quote": 33.5,
+      "netto": -2846,
+      "brutto": -2704,
+      "nettoTR": -3468,
+      "oeNettoProzent": -0.76,
       "oeR": 0.04
     },
     "claude": {
@@ -134,14 +134,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 216,
+      "anzahl": 218,
       "treffer": 87,
-      "quote": 40.3,
-      "netto": -1563.39,
-      "brutto": -1563.39,
-      "nettoTR": -1995.39,
-      "oeNettoProzent": -0.73,
-      "oeR": 0.13
+      "quote": 39.9,
+      "netto": -1594.77,
+      "brutto": -1594.77,
+      "nettoTR": -2030.77,
+      "oeNettoProzent": -0.74,
+      "oeR": 0.12
     },
     "us": {
       "anzahl": 99,
@@ -166,14 +166,14 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 256,
+      "anzahl": 258,
       "treffer": 93,
-      "quote": 36.3,
-      "netto": -921.78,
-      "brutto": -809.78,
-      "nettoTR": -1321.78,
-      "oeNettoProzent": -0.38,
-      "oeR": 0.18
+      "quote": 36,
+      "netto": -953.16,
+      "brutto": -841.16,
+      "nettoTR": -1357.16,
+      "oeNettoProzent": -0.39,
+      "oeR": 0.17
     },
     "orb_short": {
       "anzahl": 115,
@@ -198,14 +198,14 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 178,
+      "anzahl": 180,
       "treffer": 80,
-      "quote": 44.9,
-      "netto": -109.87,
-      "brutto": -109.87,
-      "nettoTR": -465.87,
-      "oeNettoProzent": -0.09,
-      "oeR": 0.29
+      "quote": 44.4,
+      "netto": -141.25,
+      "brutto": -141.25,
+      "nettoTR": -501.25,
+      "oeNettoProzent": -0.11,
+      "oeR": 0.27
     },
     "turbo": {
       "anzahl": 137,
@@ -230,35 +230,35 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 248,
+      "anzahl": 249,
       "treffer": 95,
-      "quote": 38.3,
-      "netto": -1015.85,
-      "brutto": -961.85,
-      "nettoTR": -1457.85,
-      "oeNettoProzent": -0.42,
+      "quote": 38.2,
+      "netto": -1031.56,
+      "brutto": -977.56,
+      "nettoTR": -1475.56,
+      "oeNettoProzent": -0.43,
       "oeR": 0.06
     },
     "spekulativ": {
-      "anzahl": 138,
+      "anzahl": 139,
       "treffer": 35,
-      "quote": 25.4,
-      "netto": -1886.93,
-      "brutto": -1798.93,
-      "nettoTR": -2074.93,
+      "quote": 25.2,
+      "netto": -1902.6,
+      "brutto": -1814.6,
+      "nettoTR": -2092.6,
       "oeNettoProzent": -1.39,
-      "oeR": 0.01
+      "oeR": 0
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 203,
+      "anzahl": 205,
       "treffer": 0,
       "quote": 0,
-      "netto": -6705.87,
-      "brutto": -6623.87,
-      "nettoTR": -7029.87,
-      "oeNettoProzent": -3.37,
+      "netto": -6737.25,
+      "brutto": -6655.25,
+      "nettoTR": -7065.25,
+      "oeNettoProzent": -3.35,
       "oeR": -1.04
     },
     "ziel": {
@@ -294,14 +294,14 @@
       "oeR": 0.12
     },
     "seitwaerts_nervoes": {
-      "anzahl": 79,
+      "anzahl": 81,
       "treffer": 38,
-      "quote": 48.1,
-      "netto": -70.71,
-      "brutto": -70.71,
-      "nettoTR": -228.71,
-      "oeNettoProzent": -0.11,
-      "oeR": 0.27
+      "quote": 46.9,
+      "netto": -102.09,
+      "brutto": -102.09,
+      "nettoTR": -264.09,
+      "oeNettoProzent": -0.14,
+      "oeR": 0.24
     },
     "aufwaerts_ruhig": {
       "anzahl": 76,
@@ -460,39 +460,6 @@
       }
     },
     {
-      "id": "2026-11-10-scan-rheinmetall-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "RHEINMETALL AG",
-      "isin": "DE0007030009",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:25:00.000Z",
-        "kurs": 879.8,
-        "level": 877.2,
-        "spanne": {
-          "hoch": 877.2,
-          "tief": 856.4
-        },
-        "richtung": "long"
-      },
-      "stop": 866.8,
-      "ziel": 910,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:25:00.000Z",
-        "basisKurs": 881.2,
-        "kurs": 881.861,
-        "stueck": 1,
-        "kurswert": 881.86
-      }
-    },
-    {
       "id": "2026-11-10-scan-deutsche-lufthansa-reg",
       "datum": "2026-11-10",
       "herkunft": "code_scan",
@@ -636,39 +603,6 @@
         "kurs": 10.251,
         "stueck": 97,
         "kurswert": 994.35
-      }
-    },
-    {
-      "id": "2026-11-10-scan-tui-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "TUI AG",
-      "isin": "DE000TUAG505",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "kurs": 7.872,
-        "level": 7.862,
-        "spanne": {
-          "hoch": 7.862,
-          "tief": 7.786
-        },
-        "richtung": "long"
-      },
-      "stop": 7.824,
-      "ziel": 7.956,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "basisKurs": 7.868,
-        "kurs": 7.9073,
-        "stueck": 126,
-        "kurswert": 996.32
       }
     },
     {
@@ -1001,6 +935,79 @@
         "kurs": 276.707,
         "stueck": 3,
         "kurswert": 830.12
+      }
+    },
+    {
+      "id": "2026-11-10-scan-airbus-se",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AIRBUS SE",
+      "isin": "NL0000235190",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-10T10:25:00.000Z",
+        "kurs": 210,
+        "level": 209.8,
+        "spanne": {
+          "hoch": 209.8,
+          "tief": 207.6
+        },
+        "richtung": "long"
+      },
+      "stop": 208.7,
+      "ziel": 212.45,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T10:25:00.000Z",
+        "basisKurs": 209.95,
+        "kurs": 210.107,
+        "stueck": 4,
+        "kurswert": 840.43
+      }
+    },
+    {
+      "id": "2026-11-10-scan-elmos-semiconductor-se",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ELMOS SEMICONDUCTOR SE",
+      "isin": "DE0005677108",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 140.16,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-10T10:45:00.000Z",
+        "kurs": 116.8,
+        "level": 118,
+        "spanne": {
+          "hoch": 124.6,
+          "tief": 118
+        },
+        "richtung": "short"
+      },
+      "stop": 121.3,
+      "ziel": 107.8,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T10:45:00.000Z",
+        "basisKurs": 116.8,
+        "kurs": 2.3418,
+        "stueck": 427,
+        "kurswert": 999.95
       }
     }
   ],
@@ -1126,39 +1133,6 @@
       }
     },
     {
-      "id": "2026-11-10-scan-rheinmetall-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "RHEINMETALL AG",
-      "isin": "DE0007030009",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:25:00.000Z",
-        "kurs": 879.8,
-        "level": 877.2,
-        "spanne": {
-          "hoch": 877.2,
-          "tief": 856.4
-        },
-        "richtung": "long"
-      },
-      "stop": 866.8,
-      "ziel": 910,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:25:00.000Z",
-        "basisKurs": 881.2,
-        "kurs": 881.861,
-        "stueck": 1,
-        "kurswert": 881.86
-      }
-    },
-    {
       "id": "2026-11-10-scan-deutsche-lufthansa-reg",
       "datum": "2026-11-10",
       "herkunft": "code_scan",
@@ -1302,39 +1276,6 @@
         "kurs": 10.251,
         "stueck": 97,
         "kurswert": 994.35
-      }
-    },
-    {
-      "id": "2026-11-10-scan-tui-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "TUI AG",
-      "isin": "DE000TUAG505",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "kurs": 7.872,
-        "level": 7.862,
-        "spanne": {
-          "hoch": 7.862,
-          "tief": 7.786
-        },
-        "richtung": "long"
-      },
-      "stop": 7.824,
-      "ziel": 7.956,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "basisKurs": 7.868,
-        "kurs": 7.9073,
-        "stueck": 126,
-        "kurswert": 996.32
       }
     },
     {
@@ -1667,6 +1608,183 @@
         "kurs": 276.707,
         "stueck": 3,
         "kurswert": 830.12
+      }
+    },
+    {
+      "id": "2026-11-10-scan-airbus-se",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AIRBUS SE",
+      "isin": "NL0000235190",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-10T10:25:00.000Z",
+        "kurs": 210,
+        "level": 209.8,
+        "spanne": {
+          "hoch": 209.8,
+          "tief": 207.6
+        },
+        "richtung": "long"
+      },
+      "stop": 208.7,
+      "ziel": 212.45,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T10:25:00.000Z",
+        "basisKurs": 209.95,
+        "kurs": 210.107,
+        "stueck": 4,
+        "kurswert": 840.43
+      }
+    },
+    {
+      "id": "2026-11-10-scan-elmos-semiconductor-se",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ELMOS SEMICONDUCTOR SE",
+      "isin": "DE0005677108",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 140.16,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-10T10:45:00.000Z",
+        "kurs": 116.8,
+        "level": 118,
+        "spanne": {
+          "hoch": 124.6,
+          "tief": 118
+        },
+        "richtung": "short"
+      },
+      "stop": 121.3,
+      "ziel": 107.8,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T10:45:00.000Z",
+        "basisKurs": 116.8,
+        "kurs": 2.3418,
+        "stueck": 427,
+        "kurswert": 999.95
+      }
+    },
+    {
+      "id": "2026-11-10-scan-tui-ag",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "TUI AG",
+      "isin": "DE000TUAG505",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-10T08:35:00.000Z",
+        "kurs": 7.872,
+        "level": 7.862,
+        "spanne": {
+          "hoch": 7.862,
+          "tief": 7.786
+        },
+        "richtung": "long"
+      },
+      "stop": 7.824,
+      "ziel": 7.956,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T08:35:00.000Z",
+        "basisKurs": 7.868,
+        "kurs": 7.9073,
+        "stueck": 126,
+        "kurswert": 996.32
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T10:40:00.000Z",
+        "basisKurs": 7.822,
+        "kurs": 7.7829,
+        "kurswert": 980.65,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -15.67,
+        "bruttoProzent": -1.57,
+        "netto": -15.67,
+        "nettoProzent": -1.57,
+        "nettoTR": -17.67,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.05
+      }
+    },
+    {
+      "id": "2026-11-10-scan-rheinmetall-ag",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "RHEINMETALL AG",
+      "isin": "DE0007030009",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-10T08:25:00.000Z",
+        "kurs": 879.8,
+        "level": 877.2,
+        "spanne": {
+          "hoch": 877.2,
+          "tief": 856.4
+        },
+        "richtung": "long"
+      },
+      "stop": 866.8,
+      "ziel": 910,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T08:25:00.000Z",
+        "basisKurs": 881.2,
+        "kurs": 881.861,
+        "stueck": 1,
+        "kurswert": 881.86
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T10:35:00.000Z",
+        "basisKurs": 866.8,
+        "kurs": 866.15,
+        "kurswert": 866.15,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -15.71,
+        "bruttoProzent": -1.78,
+        "netto": -15.71,
+        "nettoProzent": -1.78,
+        "nettoTR": -17.71,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10501,10 +10619,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 75,
-        "chance": 32,
-        "oeNetto": -1.04,
-        "wertung": -1.65
+        "faelle": 79,
+        "chance": 32.9,
+        "oeNetto": -1.02,
+        "wertung": -1.61
       }
     },
     "krypto:level_long": {
@@ -10523,10 +10641,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 132,
-        "chance": 47.7,
-        "oeNetto": 0.11,
-        "wertung": -0.04
+        "faelle": 136,
+        "chance": 47.8,
+        "oeNetto": 0.09,
+        "wertung": -0.05
       }
     },
     "krypto:orb_long": {
