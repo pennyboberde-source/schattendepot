@@ -1,22 +1,22 @@
 {
-  "stand": "2026-11-10T07:02:01.267Z",
+  "stand": "2026-11-10T08:17:05.964Z",
   "horizont": "r1h",
   "beweise": [
     {
       "typ": "kursrakete",
       "gruppe": "aktie",
-      "faelle": 10,
-      "chance": 10,
-      "oeNetto": 0.96,
+      "faelle": 12,
+      "chance": 8.3,
+      "oeNetto": 0.77,
       "huerde": 0.15,
       "bewiesen": false
     },
     {
       "typ": "gewinn_ueberraschung",
       "gruppe": "aktie",
-      "faelle": 36,
-      "chance": 2.8,
-      "oeNetto": 0.04,
+      "faelle": 40,
+      "chance": 2.5,
+      "oeNetto": 0.02,
       "huerde": 0.15,
       "bewiesen": false
     },
@@ -32,7 +32,7 @@
     {
       "typ": "nachzahlen_drift",
       "gruppe": "aktie",
-      "faelle": 4,
+      "faelle": 7,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
@@ -41,7 +41,7 @@
     {
       "typ": "insider_cluster_kauf",
       "gruppe": "aktie",
-      "faelle": 19,
+      "faelle": 22,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
@@ -50,7 +50,34 @@
     {
       "typ": "insider_kauf",
       "gruppe": "aktie",
-      "faelle": 20,
+      "faelle": 21,
+      "chance": 0,
+      "oeNetto": -0.15,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "tagesgewinner",
+      "gruppe": "aktie",
+      "faelle": 4,
+      "chance": 0,
+      "oeNetto": -0.15,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "leerverkauf_quote",
+      "gruppe": "aktie",
+      "faelle": 3,
+      "chance": 0,
+      "oeNetto": -0.15,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
+      "typ": "grossauftrag",
+      "gruppe": "aktie",
+      "faelle": 4,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
