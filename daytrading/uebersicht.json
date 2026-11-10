@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-10T12:04:10.476Z",
+  "stand": "2026-11-10T13:02:20.506Z",
   "heute": {
     "datum": "2026-11-10",
     "gruppe": {
-      "anzahl": 13,
+      "anzahl": 18,
       "treffer": 3,
-      "quote": 23.1,
-      "netto": -185.45,
-      "brutto": -185.45,
-      "nettoTR": -211.45,
-      "oeNettoProzent": -1.46,
-      "oeR": -0.09
+      "quote": 16.7,
+      "netto": -288.99,
+      "brutto": -288.99,
+      "nettoTR": -324.99,
+      "oeNettoProzent": -1.64,
+      "oeR": -0.35
     },
-    "offen": 16
+    "offen": 11
   },
   "gesamt": {
-    "anzahl": 390,
+    "anzahl": 395,
     "treffer": 130,
-    "quote": 33.3,
-    "netto": -2996.17,
-    "brutto": -2854.17,
-    "nettoTR": -3634.17,
-    "oeNettoProzent": -0.78,
-    "oeR": 0.03
+    "quote": 32.9,
+    "netto": -3099.71,
+    "brutto": -2957.71,
+    "nettoTR": -3747.71,
+    "oeNettoProzent": -0.8,
+    "oeR": 0.02
   },
   "kurve": [
     {
@@ -105,21 +105,21 @@
     },
     {
       "datum": "2026-11-10",
-      "netto": -2996.17,
-      "brutto": -2854.17,
-      "nettoTR": -3634.17
+      "netto": -3099.71,
+      "brutto": -2957.71,
+      "nettoTR": -3747.71
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 384,
+      "anzahl": 389,
       "treffer": 128,
-      "quote": 33.3,
-      "netto": -2908.01,
-      "brutto": -2766.01,
-      "nettoTR": -3534.01,
-      "oeNettoProzent": -0.77,
-      "oeR": 0.03
+      "quote": 32.9,
+      "netto": -3011.55,
+      "brutto": -2869.55,
+      "nettoTR": -3647.55,
+      "oeNettoProzent": -0.79,
+      "oeR": 0.02
     },
     "claude": {
       "anzahl": 6,
@@ -134,14 +134,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 220,
+      "anzahl": 225,
       "treffer": 87,
-      "quote": 39.5,
-      "netto": -1656.78,
-      "brutto": -1656.78,
-      "nettoTR": -2096.78,
-      "oeNettoProzent": -0.76,
-      "oeR": 0.11
+      "quote": 38.7,
+      "netto": -1760.32,
+      "brutto": -1760.32,
+      "nettoTR": -2210.32,
+      "oeNettoProzent": -0.79,
+      "oeR": 0.08
     },
     "us": {
       "anzahl": 99,
@@ -166,24 +166,24 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 259,
+      "anzahl": 263,
       "treffer": 93,
-      "quote": 35.9,
-      "netto": -958.77,
-      "brutto": -846.77,
-      "nettoTR": -1364.77,
-      "oeNettoProzent": -0.39,
-      "oeR": 0.16
+      "quote": 35.4,
+      "netto": -1021.71,
+      "brutto": -909.71,
+      "nettoTR": -1435.71,
+      "oeNettoProzent": -0.41,
+      "oeR": 0.14
     },
     "orb_short": {
-      "anzahl": 116,
+      "anzahl": 117,
       "treffer": 35,
-      "quote": 30.2,
-      "netto": -1935.71,
-      "brutto": -1935.71,
-      "nettoTR": -2167.71,
-      "oeNettoProzent": -1.68,
-      "oeR": -0.25
+      "quote": 29.9,
+      "netto": -1976.31,
+      "brutto": -1976.31,
+      "nettoTR": -2210.31,
+      "oeNettoProzent": -1.7,
+      "oeR": -0.26
     },
     "level_long": {
       "anzahl": 15,
@@ -198,23 +198,23 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 181,
+      "anzahl": 185,
       "treffer": 80,
-      "quote": 44.2,
-      "netto": -146.86,
-      "brutto": -146.86,
-      "nettoTR": -508.86,
-      "oeNettoProzent": -0.11,
-      "oeR": 0.26
+      "quote": 43.2,
+      "netto": -209.8,
+      "brutto": -209.8,
+      "nettoTR": -579.8,
+      "oeNettoProzent": -0.14,
+      "oeR": 0.24
     },
     "turbo": {
-      "anzahl": 138,
+      "anzahl": 139,
       "treffer": 42,
-      "quote": 30.4,
-      "netto": -2371.92,
-      "brutto": -2371.92,
-      "nettoTR": -2647.92,
-      "oeNettoProzent": -1.73,
+      "quote": 30.2,
+      "netto": -2412.52,
+      "brutto": -2412.52,
+      "nettoTR": -2690.52,
+      "oeNettoProzent": -1.74,
       "oeR": -0.24
     },
     "krypto": {
@@ -230,35 +230,35 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 250,
+      "anzahl": 252,
       "treffer": 95,
-      "quote": 38,
-      "netto": -1037.17,
-      "brutto": -983.17,
-      "nettoTR": -1483.17,
+      "quote": 37.7,
+      "netto": -1057.16,
+      "brutto": -1003.16,
+      "nettoTR": -1507.16,
       "oeNettoProzent": -0.43,
-      "oeR": 0.06
+      "oeR": 0.05
     },
     "spekulativ": {
-      "anzahl": 140,
+      "anzahl": 143,
       "treffer": 35,
-      "quote": 25,
-      "netto": -1959,
-      "brutto": -1871,
-      "nettoTR": -2151,
-      "oeNettoProzent": -1.42,
-      "oeR": -0.01
+      "quote": 24.5,
+      "netto": -2042.55,
+      "brutto": -1954.55,
+      "nettoTR": -2240.55,
+      "oeNettoProzent": -1.45,
+      "oeR": -0.03
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 207,
+      "anzahl": 212,
       "treffer": 0,
       "quote": 0,
-      "netto": -6799.26,
-      "brutto": -6717.26,
-      "nettoTR": -7131.26,
-      "oeNettoProzent": -3.35,
+      "netto": -6902.8,
+      "brutto": -6820.8,
+      "nettoTR": -7244.8,
+      "oeNettoProzent": -3.32,
       "oeR": -1.04
     },
     "ziel": {
@@ -294,14 +294,14 @@
       "oeR": 0.12
     },
     "seitwaerts_nervoes": {
-      "anzahl": 83,
+      "anzahl": 88,
       "treffer": 38,
-      "quote": 45.8,
-      "netto": -164.1,
-      "brutto": -164.1,
-      "nettoTR": -330.1,
-      "oeNettoProzent": -0.22,
-      "oeR": 0.21
+      "quote": 43.2,
+      "netto": -267.64,
+      "brutto": -267.64,
+      "nettoTR": -443.64,
+      "oeNettoProzent": -0.32,
+      "oeR": 0.14
     },
     "aufwaerts_ruhig": {
       "anzahl": 76,
@@ -420,46 +420,6 @@
       }
     },
     {
-      "id": "2026-11-10-scan-fresenius-se-co-kgaa",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "FRESENIUS SE & CO KGAA",
-      "isin": "DE000FRE5EN2",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 63.52,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:25:00.000Z",
-        "kurs": 53,
-        "level": 53.11,
-        "spanne": {
-          "hoch": 53.5,
-          "tief": 53.11
-        },
-        "richtung": "short"
-      },
-      "stop": 53.31,
-      "ziel": 52.18,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:25:00.000Z",
-        "basisKurs": 52.93,
-        "kurs": 10.616,
-        "stueck": 94,
-        "kurswert": 997.9
-      }
-    },
-    {
       "id": "2026-11-10-scan-deutsche-lufthansa-reg",
       "datum": "2026-11-10",
       "herkunft": "code_scan",
@@ -537,72 +497,6 @@
         "kurs": 8.3408,
         "stueck": 119,
         "kurswert": 992.56
-      }
-    },
-    {
-      "id": "2026-11-10-scan-deutz-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "DEUTZ AG",
-      "isin": "DE0006305006",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "kurs": 10.21,
-        "level": 10.19,
-        "spanne": {
-          "hoch": 10.19,
-          "tief": 9.925
-        },
-        "richtung": "long"
-      },
-      "stop": 10.06,
-      "ziel": 10.49,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "basisKurs": 10.2,
-        "kurs": 10.251,
-        "stueck": 97,
-        "kurswert": 994.35
-      }
-    },
-    {
-      "id": "2026-11-10-scan-infineon-technologies-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "INFINEON TECHNOLOGIES AG",
-      "isin": "DE0006231004",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:40:00.000Z",
-        "kurs": 51.3,
-        "level": 51.24,
-        "spanne": {
-          "hoch": 51.24,
-          "tief": 49.725
-        },
-        "richtung": "long"
-      },
-      "stop": 50.48,
-      "ziel": 52.73,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:40:00.000Z",
-        "basisKurs": 51.23,
-        "kurs": 51.268,
-        "stueck": 19,
-        "kurswert": 974.09
       }
     },
     {
@@ -759,39 +653,6 @@
       }
     },
     {
-      "id": "2026-11-10-scan-thyssenkrupp-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "THYSSENKRUPP AG",
-      "isin": "DE0007500001",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T09:00:00.000Z",
-        "kurs": 12.76,
-        "level": 12.74,
-        "spanne": {
-          "hoch": 12.74,
-          "tief": 12.435
-        },
-        "richtung": "long"
-      },
-      "stop": 12.59,
-      "ziel": 12.9,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T09:10:00.000Z",
-        "basisKurs": 12.69,
-        "kurs": 12.753,
-        "stueck": 78,
-        "kurswert": 994.73
-      }
-    },
-    {
       "id": "2026-11-10-scan-continental-ag",
       "datum": "2026-11-10",
       "herkunft": "code_scan",
@@ -829,39 +690,6 @@
         "kurs": 14.747,
         "stueck": 67,
         "kurswert": 988.05
-      }
-    },
-    {
-      "id": "2026-11-10-scan-siemens-ag-reg",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SIEMENS AG-REG",
-      "isin": "DE0007236101",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T09:35:00.000Z",
-        "kurs": 276.7,
-        "level": 276.65,
-        "spanne": {
-          "hoch": 276.65,
-          "tief": 274.3
-        },
-        "richtung": "long"
-      },
-      "stop": 275.48,
-      "ziel": 278.55,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T09:35:00.000Z",
-        "basisKurs": 276.5,
-        "kurs": 276.707,
-        "stueck": 3,
-        "kurswert": 830.12
       }
     },
     {
@@ -1020,46 +848,6 @@
       }
     },
     {
-      "id": "2026-11-10-scan-fresenius-se-co-kgaa",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "FRESENIUS SE & CO KGAA",
-      "isin": "DE000FRE5EN2",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 63.52,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:25:00.000Z",
-        "kurs": 53,
-        "level": 53.11,
-        "spanne": {
-          "hoch": 53.5,
-          "tief": 53.11
-        },
-        "richtung": "short"
-      },
-      "stop": 53.31,
-      "ziel": 52.18,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:25:00.000Z",
-        "basisKurs": 52.93,
-        "kurs": 10.616,
-        "stueck": 94,
-        "kurswert": 997.9
-      }
-    },
-    {
       "id": "2026-11-10-scan-deutsche-lufthansa-reg",
       "datum": "2026-11-10",
       "herkunft": "code_scan",
@@ -1137,72 +925,6 @@
         "kurs": 8.3408,
         "stueck": 119,
         "kurswert": 992.56
-      }
-    },
-    {
-      "id": "2026-11-10-scan-deutz-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "DEUTZ AG",
-      "isin": "DE0006305006",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "kurs": 10.21,
-        "level": 10.19,
-        "spanne": {
-          "hoch": 10.19,
-          "tief": 9.925
-        },
-        "richtung": "long"
-      },
-      "stop": 10.06,
-      "ziel": 10.49,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:35:00.000Z",
-        "basisKurs": 10.2,
-        "kurs": 10.251,
-        "stueck": 97,
-        "kurswert": 994.35
-      }
-    },
-    {
-      "id": "2026-11-10-scan-infineon-technologies-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "INFINEON TECHNOLOGIES AG",
-      "isin": "DE0006231004",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:40:00.000Z",
-        "kurs": 51.3,
-        "level": 51.24,
-        "spanne": {
-          "hoch": 51.24,
-          "tief": 49.725
-        },
-        "richtung": "long"
-      },
-      "stop": 50.48,
-      "ziel": 52.73,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:40:00.000Z",
-        "basisKurs": 51.23,
-        "kurs": 51.268,
-        "stueck": 19,
-        "kurswert": 974.09
       }
     },
     {
@@ -1359,39 +1081,6 @@
       }
     },
     {
-      "id": "2026-11-10-scan-thyssenkrupp-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "THYSSENKRUPP AG",
-      "isin": "DE0007500001",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T09:00:00.000Z",
-        "kurs": 12.76,
-        "level": 12.74,
-        "spanne": {
-          "hoch": 12.74,
-          "tief": 12.435
-        },
-        "richtung": "long"
-      },
-      "stop": 12.59,
-      "ziel": 12.9,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T09:10:00.000Z",
-        "basisKurs": 12.69,
-        "kurs": 12.753,
-        "stueck": 78,
-        "kurswert": 994.73
-      }
-    },
-    {
       "id": "2026-11-10-scan-continental-ag",
       "datum": "2026-11-10",
       "herkunft": "code_scan",
@@ -1429,39 +1118,6 @@
         "kurs": 14.747,
         "stueck": 67,
         "kurswert": 988.05
-      }
-    },
-    {
-      "id": "2026-11-10-scan-siemens-ag-reg",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SIEMENS AG-REG",
-      "isin": "DE0007236101",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T09:35:00.000Z",
-        "kurs": 276.7,
-        "level": 276.65,
-        "spanne": {
-          "hoch": 276.65,
-          "tief": 274.3
-        },
-        "richtung": "long"
-      },
-      "stop": 275.48,
-      "ziel": 278.55,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T09:35:00.000Z",
-        "basisKurs": 276.5,
-        "kurs": 276.707,
-        "stueck": 3,
-        "kurswert": 830.12
       }
     },
     {
@@ -1535,6 +1191,273 @@
         "kurs": 2.3418,
         "stueck": 427,
         "kurswert": 999.95
+      }
+    },
+    {
+      "id": "2026-11-10-scan-siemens-ag-reg",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SIEMENS AG-REG",
+      "isin": "DE0007236101",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-10T09:35:00.000Z",
+        "kurs": 276.7,
+        "level": 276.65,
+        "spanne": {
+          "hoch": 276.65,
+          "tief": 274.3
+        },
+        "richtung": "long"
+      },
+      "stop": 275.48,
+      "ziel": 278.55,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T09:35:00.000Z",
+        "basisKurs": 276.5,
+        "kurs": 276.707,
+        "stueck": 3,
+        "kurswert": 830.12
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T12:45:00.000Z",
+        "basisKurs": 275.48,
+        "kurs": 275.273,
+        "kurswert": 825.82,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -4.3,
+        "bruttoProzent": -0.52,
+        "netto": -4.3,
+        "nettoProzent": -0.52,
+        "nettoTR": -6.3,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-10-scan-deutz-ag",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "DEUTZ AG",
+      "isin": "DE0006305006",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-10T08:35:00.000Z",
+        "kurs": 10.21,
+        "level": 10.19,
+        "spanne": {
+          "hoch": 10.19,
+          "tief": 9.925
+        },
+        "richtung": "long"
+      },
+      "stop": 10.06,
+      "ziel": 10.49,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T08:35:00.000Z",
+        "basisKurs": 10.2,
+        "kurs": 10.251,
+        "stueck": 97,
+        "kurswert": 994.35
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T12:35:00.000Z",
+        "basisKurs": 10.06,
+        "kurs": 10.01,
+        "kurswert": 970.97,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -23.38,
+        "bruttoProzent": -2.35,
+        "netto": -23.38,
+        "nettoProzent": -2.35,
+        "nettoTR": -25.38,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-10-scan-thyssenkrupp-ag",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "THYSSENKRUPP AG",
+      "isin": "DE0007500001",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-10T09:00:00.000Z",
+        "kurs": 12.76,
+        "level": 12.74,
+        "spanne": {
+          "hoch": 12.74,
+          "tief": 12.435
+        },
+        "richtung": "long"
+      },
+      "stop": 12.59,
+      "ziel": 12.9,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T09:10:00.000Z",
+        "basisKurs": 12.69,
+        "kurs": 12.753,
+        "stueck": 78,
+        "kurswert": 994.73
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T12:30:00.000Z",
+        "basisKurs": 12.565,
+        "kurs": 12.502,
+        "kurswert": 975.16,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -19.57,
+        "bruttoProzent": -1.97,
+        "netto": -19.57,
+        "nettoProzent": -1.97,
+        "nettoTR": -21.57,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.25
+      }
+    },
+    {
+      "id": "2026-11-10-scan-fresenius-se-co-kgaa",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "FRESENIUS SE & CO KGAA",
+      "isin": "DE000FRE5EN2",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 63.52,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-10T08:25:00.000Z",
+        "kurs": 53,
+        "level": 53.11,
+        "spanne": {
+          "hoch": 53.5,
+          "tief": 53.11
+        },
+        "richtung": "short"
+      },
+      "stop": 53.31,
+      "ziel": 52.18,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T08:25:00.000Z",
+        "basisKurs": 52.93,
+        "kurs": 10.616,
+        "stueck": 94,
+        "kurswert": 997.9
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T12:20:00.000Z",
+        "basisKurs": 53.31,
+        "kurs": 10.184,
+        "kurswert": 957.3,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -40.6,
+        "bruttoProzent": -4.07,
+        "netto": -40.6,
+        "nettoProzent": -4.07,
+        "nettoTR": -42.6,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-10-scan-infineon-technologies-ag",
+      "datum": "2026-11-10",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "INFINEON TECHNOLOGIES AG",
+      "isin": "DE0006231004",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-10T08:40:00.000Z",
+        "kurs": 51.3,
+        "level": 51.24,
+        "spanne": {
+          "hoch": 51.24,
+          "tief": 49.725
+        },
+        "richtung": "long"
+      },
+      "stop": 50.48,
+      "ziel": 52.73,
+      "zielR": 2,
+      "flatBis": "2026-11-10T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-10T08:40:00.000Z",
+        "basisKurs": 51.23,
+        "kurs": 51.268,
+        "stueck": 19,
+        "kurswert": 974.09
+      },
+      "ausstieg": {
+        "zeit": "2026-11-10T12:20:00.000Z",
+        "basisKurs": 50.48,
+        "kurs": 50.442,
+        "kurswert": 958.4,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -15.69,
+        "bruttoProzent": -1.61,
+        "netto": -15.69,
+        "nettoProzent": -1.61,
+        "nettoTR": -17.69,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10584,10 +10507,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 79,
-        "chance": 32.9,
-        "oeNetto": -1.02,
-        "wertung": -1.61
+        "faelle": 80,
+        "chance": 32.5,
+        "oeNetto": -1.06,
+        "wertung": -1.63
       }
     },
     "krypto:level_long": {
@@ -10606,8 +10529,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 138,
-        "chance": 47.1,
+        "faelle": 139,
+        "chance": 46.8,
         "oeNetto": 0.07,
         "wertung": -0.07
       }
