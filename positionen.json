@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-10T14:54:24.703Z",
+  "stand": "2026-11-10T15:06:53.810Z",
   "offen": [
     {
       "id": "2026-11-06-auto-sony",
@@ -79,20 +79,17 @@
         "vortag": 126.005
       },
       "letzterKurs": {
-        "wert": 24.188,
-        "vortag": 24.135,
-        "zeit": "2026-11-09T21:00:00.000Z",
+        "wert": 23.735,
+        "vortag": 24.2,
+        "zeit": "2026-11-10T15:06:31.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 1033,
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.11873 USD/EUR"
+        "hinweis": "umgerechnet zu 1.11816 USD/EUR"
       }
-    }
-  ],
-  "vorgemerkt": [
+    },
     {
       "id": "2026-11-10-auto-ceg",
-      "status": "vorgemerkt",
+      "status": "offen",
       "vorgemerktUm": "2026-11-10T04:50:12.542Z",
       "vorgemerktVon": "autopilot",
       "plan": {
@@ -142,11 +139,35 @@
         "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
       },
       "verkaufstermin": "2026-11-15T04:50:12.542Z",
-      "anpassungen": []
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-10T15:06:53.810Z",
+        "stueck": 4,
+        "kurs": 243.251,
+        "kurswert": 973,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 973,
+        "kursquelle": "Finnhub (2026-11-10T15:06:25.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 290.45,
+      "stopkurs": 235.95,
+      "etfKauf": {
+        "wert": 128.92,
+        "zeit": "2026-11-10T14:59:42.312Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 7,
+        "hinweis": "letztes Geschäft 2026-11-10",
+        "vortag": 129.11
+      }
     },
     {
       "id": "2026-11-10-auto-nrg",
-      "status": "vorgemerkt",
+      "status": "offen",
       "vorgemerktUm": "2026-11-10T04:50:12.542Z",
       "vorgemerktVon": "autopilot",
       "plan": {
@@ -196,7 +217,32 @@
         "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
       },
       "verkaufstermin": "2026-11-15T04:50:12.542Z",
-      "anpassungen": []
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-10T15:06:53.810Z",
+        "stueck": 11,
+        "kurs": 87.225,
+        "kurswert": 959.48,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 959.48,
+        "kursquelle": "Finnhub (2026-11-10T15:06:25.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 104.15,
+      "stopkurs": 84.61,
+      "etfKauf": {
+        "wert": 128.92,
+        "zeit": "2026-11-10T14:59:42.312Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 7,
+        "hinweis": "letztes Geschäft 2026-11-10",
+        "vortag": 129.11
+      }
     }
-  ]
+  ],
+  "vorgemerkt": []
 }
