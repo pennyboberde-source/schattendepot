@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-10T11:50:15.538Z",
-  "anzahl": 213,
+  "stand": "2026-11-10T12:58:43.731Z",
+  "anzahl": 215,
   "signale": [
     {
       "id": "verwaesserung:AXG:2026-11-06",
@@ -2608,7 +2608,8 @@
       "r": 1,
       "st": 0.9,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "CNBC Politics"
       ],
       "z": "2026-11-10T04:50:12.542Z"
     },
@@ -2622,7 +2623,8 @@
       "r": -1,
       "st": 0.9,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "CNBC Politics"
       ],
       "z": "2026-11-10T04:50:12.542Z"
     },
@@ -2812,6 +2814,32 @@
         "Upbit"
       ],
       "z": "2026-11-10T11:50:15.538Z"
+    },
+    {
+      "id": "handelsstopp:PEPG:2026-11-10",
+      "s": "T:PEPG",
+      "n": "PepGen Inc.",
+      "t": "PEPG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-10T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:CEG:2026-11-10",
+      "s": "T:CEG",
+      "n": "CEG",
+      "t": "CEG",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-10T11:13:02.000Z"
     }
   ]
 }
