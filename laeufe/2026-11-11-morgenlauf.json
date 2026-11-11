@@ -1,0 +1,28 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-11",
+  "erstellt": "2026-11-11T06:50:00Z",
+  "briefing": [
+    "Keine neue Claude-Order: Markt seitwärts/nervös (Schattenbuch 15 % im Plus), Politik-Risiko 100/100.",
+    "Autopilot kauft OXY und SKYD; SONY läuft heute per Termin aus, CEG nahe am Stop.",
+    "Termine: NIO-Zahlen vor US-Start, 10:45 Lagarde; Öl erholt sich wegen Angriffen in Hormus."
+  ],
+  "orders": [],
+  "prognose": [
+    {"name": "Occidental Petroleum", "ticker": "OXY", "markt": "us", "richtung": "hoch", "chance": 55, "grund": "Öl erholt sich vom Zwei-Monats-Tief (Hormus-Angriffe), dazu Zahlen +29 % über Erwartung"},
+    {"name": "Exxon Mobil", "ticker": "XOM", "markt": "us", "richtung": "hoch", "chance": 53, "grund": "Politik-Radar Nahost/Öl ↑, Ölpreis steigt"},
+    {"name": "Lufthansa", "ticker": "LHA.DE", "markt": "eu", "richtung": "runter", "chance": 52, "grund": "Höherer Ölpreis belastet Airlines"},
+    {"name": "Rheinmetall", "ticker": "RHM.DE", "markt": "eu", "richtung": "runter", "chance": 52, "grund": "Ukraine-Gespräche laufen, Radar Rüstung ↓, Nachwirkung Gewinnwarnung"},
+    {"name": "SMX", "ticker": "SMX", "markt": "us", "richtung": "runter", "chance": 62, "grund": "Nach +106 % am Vortag; kursrakete im Schattenbuch Ø −8,6 % nach 1 Woche"},
+    {"name": "PEPG", "ticker": "PEPG", "markt": "us", "richtung": "runter", "chance": 60, "grund": "Nach +93 % ohne belegte Nachricht, Raketen verpuffen meist"},
+    {"name": "NIO", "ticker": "NIO", "markt": "us", "richtung": "runter", "chance": 50, "grund": "Zahlen heute, erwarteter Verlust, nervöser Markt und Zollthema"},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 52, "grund": "Unter 50-Tage-Linie, Fear & Greed 29, Longs liquidiert, Funding noch hoch"},
+    {"name": "JBS", "ticker": "JBS", "markt": "us", "richtung": "hoch", "chance": 51, "grund": "Gewinnenttäuschung schon −5,5 % verarbeitet; Signal lief im Schattenbuch eher zurück"},
+    {"name": "Sony", "ticker": "SONY", "markt": "us", "richtung": "runter", "chance": 52, "grund": "Gab nach Take-Two-Meldung 2 % ab, keine eigene Stütze"}
+  ],
+  "daytrading": [
+    {"name": "Occidental Petroleum", "markt": "us", "isin": "US6745991058", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 36, "these": "Ölpreis erholt sich, Zahlen über Erwartung; ORB long mit Aktie ist bisher das einzige leicht positive Setup."},
+    {"name": "NIO", "markt": "us", "isin": "US62914V1061", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 33, "these": "Quartalszahlen vor US-Start sorgen für hohes Interesse und Tagesbewegung; nur Ausbruch nach oben handeln."}
+  ],
+  "notiz": "Bewusst keine Order: Marktphase seitwärts/nervös (Schattenbuch 15,4 % im Plus nach 1 Tag, Lektion 18), Politik-Risiko hoch. Top-Kandidaten sind Gewinnüberraschungen (Nullsignal, Lektion 6, Autopilot kauft OXY/SKYD ohnehin), Insider-Cluster ohne Hochstufung (Lektion 1) und Kursraketen mit Pump-Verdacht (Lektion 11/17). JBS-Short verworfen: gewinn_enttaeuschung lief im Schattenbuch Ø −6,4 % gegen die Signalrichtung. Autopilot-Positionen geprüft: SONY Verkaufstermin bereits erreicht (Code verkauft), CEG/NRG ohne Meldung gegen die These, Stops gesetzt – keine Anpassung. Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung."
+}
