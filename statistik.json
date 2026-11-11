@@ -1,14 +1,22 @@
 {
-  "stand": "2026-11-11T16:28:30.105Z",
+  "stand": "2026-11-11T17:29:57.343Z",
   "gesamt": {
-    "anzahl": 15,
+    "anzahl": 16,
     "treffer": 6,
-    "quote": 40,
-    "oeNetto": -1.85,
-    "oeNachSteuern": -1.85,
-    "summeNetto": -258.08
+    "quote": 37.5,
+    "oeNetto": -1.92,
+    "oeNachSteuern": -1.92,
+    "summeNetto": -288.29
   },
   "nachStrategie": {
+    "quartalszahlen_momentum": {
+      "anzahl": 7,
+      "treffer": 1,
+      "quote": 14.3,
+      "oeNetto": -2.43,
+      "oeNachSteuern": -2.43,
+      "summeNetto": -166.39
+    },
     "nachzahlen_drift": {
       "anzahl": 6,
       "treffer": 3,
@@ -16,14 +24,6 @@
       "oeNetto": -1.98,
       "oeNachSteuern": -1.98,
       "summeNetto": -104.82
-    },
-    "quartalszahlen_momentum": {
-      "anzahl": 6,
-      "treffer": 1,
-      "quote": 16.7,
-      "oeNetto": -2.33,
-      "oeNachSteuern": -2.33,
-      "summeNetto": -136.18
     },
     "insider_kauf": {
       "anzahl": 3,
@@ -36,12 +36,12 @@
   },
   "nachSignalTyp": {
     "gewinn_ueberraschung": {
-      "anzahl": 12,
+      "anzahl": 13,
       "treffer": 4,
-      "quote": 33.3,
-      "oeNetto": -2.15,
-      "oeNachSteuern": -2.15,
-      "summeNetto": -241
+      "quote": 30.8,
+      "oeNetto": -2.22,
+      "oeNachSteuern": -2.22,
+      "summeNetto": -271.21
     },
     "nachzahlen_drift": {
       "anzahl": 10,
@@ -94,12 +94,12 @@
   },
   "nachQuelle": {
     "Finnhub": {
-      "anzahl": 5,
+      "anzahl": 6,
       "treffer": 1,
-      "quote": 20,
-      "oeNetto": -2.65,
-      "oeNachSteuern": -2.65,
-      "summeNetto": -128.76
+      "quote": 16.7,
+      "oeNetto": -2.72,
+      "oeNachSteuern": -2.71,
+      "summeNetto": -158.97
     },
     "Finnhub Kurs": {
       "anzahl": 5,
@@ -272,22 +272,22 @@
   },
   "nachAnlageklasse": {
     "aktie": {
-      "anzahl": 15,
+      "anzahl": 16,
       "treffer": 6,
-      "quote": 40,
-      "oeNetto": -1.85,
-      "oeNachSteuern": -1.85,
-      "summeNetto": -258.08
+      "quote": 37.5,
+      "oeNetto": -1.92,
+      "oeNachSteuern": -1.92,
+      "summeNetto": -288.29
     }
   },
   "nachRisikoklasse": {
     "normal": {
-      "anzahl": 14,
+      "anzahl": 15,
       "treffer": 6,
-      "quote": 42.9,
-      "oeNetto": -0.98,
-      "oeNachSteuern": -1.16,
-      "summeNetto": -120.96
+      "quote": 40,
+      "oeNetto": -1.12,
+      "oeNachSteuern": -1.28,
+      "summeNetto": -151.17
     },
     "spekulativ": {
       "anzahl": 1,
@@ -300,12 +300,12 @@
   },
   "nachVerkaufsgrund": {
     "stop": {
-      "anzahl": 7,
+      "anzahl": 8,
       "treffer": 0,
       "quote": 0,
-      "oeNetto": -7.23,
-      "oeNachSteuern": -6.88,
-      "summeNetto": -482.37
+      "oeNetto": -6.71,
+      "oeNachSteuern": -6.4,
+      "summeNetto": -512.58
     },
     "zeit": {
       "anzahl": 3,
@@ -358,12 +358,12 @@
       "summeNetto": -141.15
     },
     "< 1 Tag": {
-      "anzahl": 3,
+      "anzahl": 4,
       "treffer": 1,
-      "quote": 33.3,
-      "oeNetto": -1.23,
-      "oeNachSteuern": -2.05,
-      "summeNetto": -34.04
+      "quote": 25,
+      "oeNetto": -1.68,
+      "oeNachSteuern": -2.29,
+      "summeNetto": -64.25
     },
     "> 1 Woche": {
       "anzahl": 1,
@@ -376,20 +376,20 @@
   },
   "nachKonfidenz": {
     "40–59 %": {
-      "anzahl": 15,
+      "anzahl": 16,
       "treffer": 6,
-      "quote": 40,
-      "oeNetto": -1.85,
-      "oeNachSteuern": -1.85,
-      "summeNetto": -258.08
+      "quote": 37.5,
+      "oeNetto": -1.92,
+      "oeNachSteuern": -1.92,
+      "summeNetto": -288.29
     }
   },
   "kalibrierung": [
     {
       "stufe": "40–59 %",
-      "erwartet": 45.7,
-      "tatsaechlich": 40,
-      "anzahl": 15
+      "erwartet": 45.8,
+      "tatsaechlich": 37.5,
+      "anzahl": 16
     }
   ],
   "pflicht": {
@@ -401,22 +401,22 @@
     "summeNetto": 0
   },
   "ueberzeugung": {
-    "anzahl": 15,
+    "anzahl": 16,
     "treffer": 6,
-    "quote": 40,
-    "oeNetto": -1.85,
-    "oeNachSteuern": -1.85,
-    "summeNetto": -258.08
+    "quote": 37.5,
+    "oeNetto": -1.92,
+    "oeNachSteuern": -1.92,
+    "summeNetto": -288.29
   },
   "erwartetVsTatsaechlich": {
-    "erwartet": 0.41,
-    "tatsaechlich": -1.85,
-    "anzahl": 15
+    "erwartet": 0.38,
+    "tatsaechlich": -1.92,
+    "anzahl": 16
   },
   "etf": {
-    "depotNetto": -258.08,
-    "etfNetto": 3.07,
-    "anzahlMitVergleich": 15
+    "depotNetto": -288.29,
+    "etfNetto": 6.14,
+    "anzahlMitVergleich": 16
   },
   "kandidaten": {
     "gesamt": {
@@ -1378,12 +1378,12 @@
       "summeNetto": -96.95
     },
     "seitwaerts_nervoes": {
-      "anzahl": 2,
+      "anzahl": 3,
       "treffer": 0,
       "quote": 0,
-      "oeNetto": -2.07,
-      "oeNachSteuern": -2.07,
-      "summeNetto": -39.23
+      "oeNetto": -2.39,
+      "oeNachSteuern": -2.39,
+      "summeNetto": -69.44
     }
   },
   "prognose": {
@@ -1411,15 +1411,15 @@
       "summeNetto": -121.9
     },
     "autopilot": {
-      "anzahl": 6,
+      "anzahl": 7,
       "treffer": 1,
-      "quote": 16.7,
-      "oeNetto": -2.33,
-      "oeNachSteuern": -2.33,
-      "summeNetto": -136.18
+      "quote": 14.3,
+      "oeNetto": -2.43,
+      "oeNachSteuern": -2.43,
+      "summeNetto": -166.39
     }
   },
-  "zusammenfassung": "Gesamt: 15 Orders, Trefferquote 40 %, Ø -1.85 % nach Gebühren (erwartet waren Ø 0.41 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 14 Orders, Ø -0.98 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 40 % (n=15).\nStrategien (n≥3): nachzahlen_drift 50 %/Ø -1.98 %; quartalszahlen_momentum 16.7 %/Ø -2.33 %; insider_kauf 66.7 %/Ø -0.63 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung 0.07 % (n=125); verwaesserung 0.65 % (n=92); insider_cluster_kauf -2.34 % (n=91); insider_kauf -3.17 % (n=64); kursrakete -8.63 % (n=49); nachricht -2.65 % (n=40); tagesgewinner -2.68 % (n=40); handelsstopp 47.11 % (n=32); nachzahlen_drift -1.41 % (n=31); upbit_warnung -5.81 % (n=31); gewinn_enttaeuschung -6.38 % (n=28); krypto_einnahmen -7.16 % (n=25); grossauftrag -8.97 % (n=20); tagesverlierer 10.6 % (n=17); volumen_ungewoehnlich 2.79 % (n=11); stimmung_social 11.07 % (n=9); leerverkauf_quote -8 % (n=8); funding_extrem -3.19 % (n=7); analysten_hochstufung 0.01 % (n=6).\nAutopilot: 6 Orders, Quote 16.7 %, Ø -2.33 % · Claude: 9 Orders, Ø -1.53 %.\nClaudes Tagesprognose: 53.4 % Richtung richtig nach 1 Tag (n=88), Ø 3.7 %.\nVs. MSCI World (gleiche Zeiträume): Depot -258.08 € vs. ETF 3.07 €.\nAutopilot – bewiesene Signaltypen (kauft sie selbst): gewinn_ueberraschung/aktie 47.3 %, Ø 0.05 % (n=55).\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): liquidationen_spitze 66.7 % (Lift 3.98, n=15); stimmung_social 54.5 % (Lift 3.26, n=33); volumen_ungewoehnlich 50 % (Lift 2.99, n=54); upbit_warnung 46.1 % (Lift 2.75, n=128).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,4 %, erreicht Ø -1,9 % → realistischer planen oder Ziele näher setzen.\n- Strategie mit schlechtestem Ergebnis: quartalszahlen_momentum (Ø -2,3 %, n=6) → meiden oder Vorgehen ändern.\n- Stärkstes Signal (auch ohne Kauf gemessen): handelsstopp Ø +47,1 % nach 1 Woche (n=32).\n- Schwächstes Signal: grossauftrag Ø -9,0 % nach 1 Woche (n=20) → nicht darauf verlassen.",
+  "zusammenfassung": "Gesamt: 16 Orders, Trefferquote 37.5 %, Ø -1.92 % nach Gebühren (erwartet waren Ø 0.38 %).\nSpekulativ: 1 Orders, Quote 0 %, Ø -13.98 % · normal: 15 Orders, Ø -1.12 %.\nKalibrierung (Konfidenz → tatsächliche Quote): 40–59 %: 37.5 % (n=16).\nStrategien (n≥3): quartalszahlen_momentum 14.3 %/Ø -2.43 %; nachzahlen_drift 50 %/Ø -1.98 %; insider_kauf 66.7 %/Ø -0.63 %.\nMitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: gewinn_ueberraschung 0.07 % (n=125); verwaesserung 0.65 % (n=92); insider_cluster_kauf -2.34 % (n=91); insider_kauf -3.17 % (n=64); kursrakete -8.63 % (n=49); nachricht -2.65 % (n=40); tagesgewinner -2.68 % (n=40); handelsstopp 47.11 % (n=32); nachzahlen_drift -1.41 % (n=31); upbit_warnung -5.81 % (n=31); gewinn_enttaeuschung -6.38 % (n=28); krypto_einnahmen -7.16 % (n=25); grossauftrag -8.97 % (n=20); tagesverlierer 10.6 % (n=17); volumen_ungewoehnlich 2.79 % (n=11); stimmung_social 11.07 % (n=9); leerverkauf_quote -8 % (n=8); funding_extrem -3.19 % (n=7); analysten_hochstufung 0.01 % (n=6).\nAutopilot: 7 Orders, Quote 14.3 %, Ø -2.43 % · Claude: 9 Orders, Ø -1.53 %.\nClaudes Tagesprognose: 53.4 % Richtung richtig nach 1 Tag (n=88), Ø 3.7 %.\nVs. MSCI World (gleiche Zeiträume): Depot -288.29 € vs. ETF 6.14 €.\nAutopilot – bewiesene Signaltypen (kauft sie selbst): gewinn_ueberraschung/aktie 47.3 %, Ø 0.05 % (n=55).\nVorlauf vor Kursraketen (Hot Stuff, Lift > 1 = kündigt Raketen besser an als Zufall): liquidationen_spitze 66.7 % (Lift 3.98, n=15); stimmung_social 54.5 % (Lift 3.26, n=33); volumen_ungewoehnlich 50 % (Lift 2.99, n=54); upbit_warnung 46.1 % (Lift 2.75, n=128).\nLern-Hinweise (vom Code abgeleitet):\n- Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,4 %, erreicht Ø -1,9 % → realistischer planen oder Ziele näher setzen.\n- Strategie mit schlechtestem Ergebnis: quartalszahlen_momentum (Ø -2,4 %, n=7) → meiden oder Vorgehen ändern.\n- Stärkstes Signal (auch ohne Kauf gemessen): handelsstopp Ø +47,1 % nach 1 Woche (n=32).\n- Schwächstes Signal: grossauftrag Ø -9,0 % nach 1 Woche (n=20) → nicht darauf verlassen.",
   "autopilot": [
     {
       "typ": "gewinn_ueberraschung",
@@ -1923,7 +1923,7 @@
   ],
   "lernhinweise": [
     "Erwartete Renditen zu hoch angesetzt: erwartet Ø +0,4 %, erreicht Ø -1,9 % → realistischer planen oder Ziele näher setzen.",
-    "Strategie mit schlechtestem Ergebnis: quartalszahlen_momentum (Ø -2,3 %, n=6) → meiden oder Vorgehen ändern.",
+    "Strategie mit schlechtestem Ergebnis: quartalszahlen_momentum (Ø -2,4 %, n=7) → meiden oder Vorgehen ändern.",
     "Stärkstes Signal (auch ohne Kauf gemessen): handelsstopp Ø +47,1 % nach 1 Woche (n=32).",
     "Schwächstes Signal: grossauftrag Ø -9,0 % nach 1 Woche (n=20) → nicht darauf verlassen."
   ],

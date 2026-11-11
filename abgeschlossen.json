@@ -1,6 +1,108 @@
 {
-  "stand": "2026-11-11T16:28:30.105Z",
+  "stand": "2026-11-11T17:29:57.343Z",
   "orders": [
+    {
+      "id": "2026-11-11-auto-skyd",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-11T04:56:21.152Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "SKYD",
+          "isin": "",
+          "ticker": "SKYD",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "SKYD",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:SKYD: gewinn_ueberraschung (Score 2.08)",
+        "signalIds": [
+          "gewinn_ueberraschung:SKYD:2026-11-11"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-16T04:56:21.152Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-16T04:56:21.152Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-11T14:38:28.943Z",
+        "stueck": 136,
+        "kurs": 7.3143,
+        "kurswert": 994.74,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 994.74,
+        "kursquelle": "Finnhub (2026-11-11T14:38:09.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 8.7332,
+      "stopkurs": 7.0949,
+      "etfKauf": {
+        "wert": 130.665,
+        "zeit": "2026-11-11T14:29:43.311Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-11",
+        "vortag": 128.73
+      },
+      "etfVergleich": {
+        "netto": 3.07,
+        "nettoProzent": 0.34,
+        "etfKauf": 130.665,
+        "etfVerkauf": 131.26
+      },
+      "verkauf": {
+        "zeit": "2026-11-11T17:29:57.343Z",
+        "stueck": 136,
+        "kurs": 7.0921,
+        "kurswert": 964.53,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 964.53,
+        "kursquelle": "Finnhub (2026-11-11T17:29:22.000Z)",
+        "synthetisch": true,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "kursProzent": -3.04,
+        "netto": -30.21,
+        "nettoProzent": -3.04,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": -30.21
+      }
+    },
     {
       "id": "2026-11-06-auto-sony",
       "status": "geschlossen",

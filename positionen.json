@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-11T16:28:30.105Z",
+  "stand": "2026-11-11T17:29:57.343Z",
   "offen": [
     {
       "id": "2026-11-10-auto-ceg",
@@ -79,12 +79,12 @@
         "vortag": 129.11
       },
       "letzterKurs": {
-        "wert": 247.13,
-        "vortag": 241.299,
-        "zeit": "2026-11-11T16:28:28.000Z",
+        "wert": 248.535,
+        "vortag": 241.404,
+        "zeit": "2026-11-11T17:29:25.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10966 USD/EUR"
+        "hinweis": "umgerechnet zu 1.10918 USD/EUR"
       }
     },
     {
@@ -165,12 +165,12 @@
         "vortag": 129.11
       },
       "letzterKurs": {
-        "wert": 88.658,
-        "vortag": 87.513,
-        "zeit": "2026-11-11T16:28:27.000Z",
+        "wert": 89.778,
+        "vortag": 87.551,
+        "zeit": "2026-11-11T17:29:27.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10966 USD/EUR"
+        "hinweis": "umgerechnet zu 1.10918 USD/EUR"
       }
     },
     {
@@ -251,93 +251,12 @@
         "vortag": 128.73
       },
       "letzterKurs": {
-        "wert": 51.412,
-        "vortag": 51.277,
-        "zeit": "2026-11-11T16:28:26.000Z",
+        "wert": 51.308,
+        "vortag": 51.299,
+        "zeit": "2026-11-11T17:29:29.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10966 USD/EUR"
-      }
-    },
-    {
-      "id": "2026-11-11-auto-skyd",
-      "status": "offen",
-      "vorgemerktUm": "2026-11-11T04:56:21.152Z",
-      "vorgemerktVon": "autopilot",
-      "plan": {
-        "wertpapier": {
-          "name": "SKYD",
-          "isin": "",
-          "ticker": "SKYD",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_neben",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "SKYD",
-            "waehrung": "USD"
-          }
-        },
-        "risikoklasse": "normal",
-        "herkunft": "autopilot",
-        "strategie": "quartalszahlen_momentum",
-        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
-        "ausloeser": "Autopilot-Kandidat T:SKYD: gewinn_ueberraschung (Score 2.08)",
-        "signalIds": [
-          "gewinn_ueberraschung:SKYD:2026-11-11"
-        ],
-        "quellen": [
-          {
-            "name": "Finnhub",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          }
-        ],
-        "konfidenz": 47,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 0.05,
-        "zielNettoProzent": 19.4,
-        "stopProzent": -3,
-        "verkaufstermin": "2026-11-16T04:56:21.152Z",
-        "risiken": [
-          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
-          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
-        ],
-        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
-      },
-      "verkaufstermin": "2026-11-16T04:56:21.152Z",
-      "anpassungen": [],
-      "kauf": {
-        "zeit": "2026-11-11T14:38:28.943Z",
-        "stueck": 136,
-        "kurs": 7.3143,
-        "kurswert": 994.74,
-        "entgelt": {
-          "provision": 0,
-          "handelsplatz": 0,
-          "gesamt": 0
-        },
-        "betrag": 994.74,
-        "kursquelle": "Finnhub (2026-11-11T14:38:09.000Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 8.7332,
-      "stopkurs": 7.0949,
-      "etfKauf": {
-        "wert": 130.665,
-        "zeit": "2026-11-11T14:29:43.311Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 9,
-        "hinweis": "letztes Geschäft 2026-11-11",
-        "vortag": 128.73
-      },
-      "letzterKurs": {
-        "wert": 7.1193,
-        "vortag": 7.2455,
-        "zeit": "2026-11-11T16:28:24.000Z",
-        "quelle": "Finnhub",
-        "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10966 USD/EUR"
+        "hinweis": "umgerechnet zu 1.10918 USD/EUR"
       }
     }
   ],
