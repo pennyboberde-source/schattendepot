@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T18:54:55.908Z",
-  "anzahl": 305,
+  "stand": "2026-11-11T19:57:49.936Z",
+  "anzahl": 308,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3111,7 +3111,8 @@
       "st": 0.88,
       "q": [
         "tagesschau Ausland",
-        "tagesschau Inland"
+        "tagesschau Inland",
+        "CNBC Politics"
       ],
       "z": "2026-11-11T04:56:21.152Z"
     },
@@ -3126,7 +3127,8 @@
       "st": 0.88,
       "q": [
         "tagesschau Ausland",
-        "tagesschau Inland"
+        "tagesschau Inland",
+        "CNBC Politics"
       ],
       "z": "2026-11-11T04:56:21.152Z"
     },
@@ -3141,7 +3143,8 @@
       "st": 0.88,
       "q": [
         "tagesschau Ausland",
-        "tagesschau Inland"
+        "tagesschau Inland",
+        "CNBC Politics"
       ],
       "z": "2026-11-11T04:56:21.152Z"
     },
@@ -3969,7 +3972,7 @@
       "t": "WHLR",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.8,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -4028,6 +4031,45 @@
         "MarketWatch"
       ],
       "z": "2026-11-11T18:13:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ELOG:2026-11-11",
+      "s": "T:ELOG",
+      "n": "Eastern International Ord Sh",
+      "t": "ELOG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-11-11",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-11T18:53:03.000Z"
+    },
+    {
+      "id": "nachricht:ALV:2026-11-11",
+      "s": "T:ALV",
+      "n": "Allianz",
+      "t": "ALV.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-11T18:58:28.000Z"
     }
   ]
 }
