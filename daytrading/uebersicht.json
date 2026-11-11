@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-11T13:45:53.911Z",
+  "stand": "2026-11-11T14:38:35.340Z",
   "heute": {
     "datum": "2026-11-11",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -1.77,
       "oeR": -0.59
     },
-    "offen": 4
+    "offen": 5
   },
   "gesamt": {
     "anzahl": 431,
@@ -497,6 +497,35 @@
         "stueck": 180,
         "kurswert": 997.16
       }
+    },
+    {
+      "id": "2026-11-11-scan-ada-2",
+      "datum": "2026-11-11",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "level",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-11T14:05:00.000Z",
+        "kurs": 0.160225,
+        "level": 0.16,
+        "richtung": "long"
+      },
+      "stop": 0.1569,
+      "ziel": 0.1665,
+      "zielR": 2,
+      "flatBis": "2026-11-11T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-11T14:05:00.000Z",
+        "basisKurs": 0.160127,
+        "kurs": 0.1605,
+        "stueck": 6230.529595,
+        "kurswert": 1000
+      }
     }
   ],
   "trades": [
@@ -651,6 +680,35 @@
         "kurs": 5.5398,
         "stueck": 180,
         "kurswert": 997.16
+      }
+    },
+    {
+      "id": "2026-11-11-scan-ada-2",
+      "datum": "2026-11-11",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "level",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-11T14:05:00.000Z",
+        "kurs": 0.160225,
+        "level": 0.16,
+        "richtung": "long"
+      },
+      "stop": 0.1569,
+      "ziel": 0.1665,
+      "zielR": 2,
+      "flatBis": "2026-11-11T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-11T14:05:00.000Z",
+        "basisKurs": 0.160127,
+        "kurs": 0.1605,
+        "stueck": 6230.529595,
+        "kurswert": 1000
       }
     },
     {
@@ -9807,10 +9865,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 96,
-        "chance": 35.4,
-        "oeNetto": -0.92,
-        "wertung": -1.44
+        "faelle": 97,
+        "chance": 35.1,
+        "oeNetto": -0.95,
+        "wertung": -1.46
       }
     },
     "krypto:level_long": {
