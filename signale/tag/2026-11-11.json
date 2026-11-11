@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T11:54:56.814Z",
-  "anzahl": 266,
+  "stand": "2026-11-11T13:04:14.420Z",
+  "anzahl": 267,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3108,7 +3108,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.74,
+      "st": 0.81,
       "q": [
         "tagesschau Ausland",
         "tagesschau Inland"
@@ -3123,7 +3123,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.74,
+      "st": 0.81,
       "q": [
         "tagesschau Ausland",
         "tagesschau Inland"
@@ -3138,7 +3138,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.74,
+      "st": 0.81,
       "q": [
         "tagesschau Ausland",
         "tagesschau Inland"
@@ -3155,7 +3155,8 @@
       "r": 1,
       "st": 0.75,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "tagesschau Wirtschaft"
       ],
       "z": "2026-11-11T04:56:21.152Z"
     },
@@ -3169,7 +3170,8 @@
       "r": -1,
       "st": 0.75,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "tagesschau Wirtschaft"
       ],
       "z": "2026-11-11T04:56:21.152Z"
     },
@@ -3513,6 +3515,20 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-11T11:44:27.325Z"
+    },
+    {
+      "id": "kursrakete:ORBS:2026-11-11",
+      "s": "T:ORBS",
+      "n": "Orbs",
+      "t": "ORBS",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.41,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-11T13:04:14.420Z"
     }
   ]
 }
