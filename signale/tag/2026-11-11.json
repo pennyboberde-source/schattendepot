@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T07:09:54.548Z",
-  "anzahl": 250,
+  "stand": "2026-11-11T08:54:54.163Z",
+  "anzahl": 260,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3293,6 +3293,140 @@
         "Upbit"
       ],
       "z": "2026-11-11T07:09:54.548Z"
+    },
+    {
+      "id": "nachricht:OXY:2026-11-11",
+      "s": "T:OXY",
+      "n": "OXY",
+      "t": "OXY",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-11T07:06:18.000Z"
+    },
+    {
+      "id": "nachricht:ENR:2026-11-11",
+      "s": "T:ENR",
+      "n": "Siemens Energy",
+      "t": "ENR.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-11T08:23:39.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF24LT6:2026-11-11",
+      "s": "I:DE000HF24LT6",
+      "n": "DE000HF24LT6",
+      "i": "DE000HF24LT6",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-11T08:44:01.005Z"
+    },
+    {
+      "id": "kursrakete:DE000A1681X5:2026-11-11",
+      "s": "I:DE000A1681X5",
+      "n": "SINGULUS TECHNOLOGIES-BR",
+      "i": "DE000A1681X5",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-11T08:44:20.412Z"
+    },
+    {
+      "id": "kursrakete:DE000HM949X8:2026-11-11",
+      "s": "I:DE000HM949X8",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HM949X8",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.69,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-11T08:44:23.565Z"
+    },
+    {
+      "id": "nachricht:DBK:2026-11-11",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-11T08:46:25.000Z"
+    },
+    {
+      "id": "upbit_warnung:DKA:2026-11-11",
+      "s": "T:DKA",
+      "n": "dKargo",
+      "t": "DKA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-11T08:54:54.163Z"
+    },
+    {
+      "id": "politik_massnahme:RHM:2026-11-11:ruestung",
+      "s": "T:RHM",
+      "n": "Rheinmetall",
+      "t": "RHM.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.55,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-11T08:54:54.163Z"
+    },
+    {
+      "id": "politik_massnahme:HAG:2026-11-11:ruestung",
+      "s": "T:HAG",
+      "n": "Hensoldt",
+      "t": "HAG.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.55,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-11T08:54:54.163Z"
+    },
+    {
+      "id": "politik_massnahme:R3NK:2026-11-11:ruestung",
+      "s": "T:R3NK",
+      "n": "Renk",
+      "t": "R3NK.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.55,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-11T08:54:54.163Z"
     }
   ]
 }
