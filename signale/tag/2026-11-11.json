@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T10:58:31.832Z",
-  "anzahl": 264,
+  "stand": "2026-11-11T11:54:56.814Z",
+  "anzahl": 266,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3108,9 +3108,10 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.6,
+      "st": 0.74,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "tagesschau Inland"
       ],
       "z": "2026-11-11T04:56:21.152Z"
     },
@@ -3122,9 +3123,10 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.6,
+      "st": 0.74,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "tagesschau Inland"
       ],
       "z": "2026-11-11T04:56:21.152Z"
     },
@@ -3136,9 +3138,10 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.6,
+      "st": 0.74,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "tagesschau Inland"
       ],
       "z": "2026-11-11T04:56:21.152Z"
     },
@@ -3484,6 +3487,32 @@
         "Upbit"
       ],
       "z": "2026-11-11T10:58:31.832Z"
+    },
+    {
+      "id": "nachricht:DB1:2026-11-11",
+      "s": "T:DB1",
+      "n": "Deutsche Börse",
+      "t": "DB1.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-11T11:32:42.000Z"
+    },
+    {
+      "id": "kursrakete:DE0005760029:2026-11-11",
+      "s": "I:DE0005760029",
+      "n": "ABO ENERGY GMBH & CO. KGAA",
+      "i": "DE0005760029",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-11T11:44:27.325Z"
     }
   ]
 }
