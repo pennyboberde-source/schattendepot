@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T17:54:33.890Z",
-  "anzahl": 300,
+  "stand": "2026-11-11T18:54:55.908Z",
+  "anzahl": 305,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3785,7 +3785,7 @@
       "t": "SFWL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3961,6 +3961,73 @@
         "CNBC Top News"
       ],
       "z": "2026-11-11T16:59:10.000Z"
+    },
+    {
+      "id": "handelsstopp:WHLR:2026-11-11",
+      "s": "T:WHLR",
+      "n": "Wheeler Real Estate Investment",
+      "t": "WHLR",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CENN:2026-11-11",
+      "s": "T:CENN",
+      "n": "Cenntro Inc. CS",
+      "t": "CENN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:COOL:2026-11-11",
+      "s": "T:COOL",
+      "n": "VegaShares AI Thermal, Cooling &amp; Power Management ETF",
+      "t": "COOL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-11",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "CNBC Top News",
+        "MarketWatch",
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-11T13:46:59.000Z"
+    },
+    {
+      "id": "nachricht:ORCL:2026-11-11",
+      "s": "T:ORCL",
+      "n": "Oracle",
+      "t": "ORCL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-11T18:13:00.000Z"
     }
   ]
 }
