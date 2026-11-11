@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T16:55:20.158Z",
-  "anzahl": 298,
+  "stand": "2026-11-11T17:54:33.890Z",
+  "anzahl": 300,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3590,7 +3590,7 @@
       "t": "BUUU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.8,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3785,7 +3785,7 @@
       "t": "SFWL",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3850,7 +3850,7 @@
       "t": "YMT",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3935,6 +3935,32 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-11T16:41:38.576Z"
+    },
+    {
+      "id": "handelsstopp:KUST:2026-11-11",
+      "s": "T:KUST",
+      "n": "Kustom Entertainment Cmn",
+      "t": "KUST",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:INTC:2026-11-11",
+      "s": "T:INTC",
+      "n": "Intel",
+      "t": "INTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-11T16:59:10.000Z"
     }
   ]
 }
