@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T08:54:54.163Z",
-  "anzahl": 260,
+  "stand": "2026-11-11T09:57:52.157Z",
+  "anzahl": 262,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3366,9 +3366,10 @@
       "t": "DBK.DE",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "BTC-ECHO"
+        "BTC-ECHO",
+        "Handelsblatt Finanzen"
       ],
       "z": "2026-11-11T08:46:25.000Z"
     },
@@ -3396,7 +3397,8 @@
       "r": 1,
       "st": 0.55,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "tagesschau Inland"
       ],
       "z": "2026-11-11T08:54:54.163Z"
     },
@@ -3410,7 +3412,8 @@
       "r": 1,
       "st": 0.55,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "tagesschau Inland"
       ],
       "z": "2026-11-11T08:54:54.163Z"
     },
@@ -3424,9 +3427,36 @@
       "r": 1,
       "st": 0.55,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "tagesschau Inland"
       ],
       "z": "2026-11-11T08:54:54.163Z"
+    },
+    {
+      "id": "nachricht:CBK:2026-11-11",
+      "s": "T:CBK",
+      "n": "Commerzbank",
+      "t": "CBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-11T09:18:05.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF21B42:2026-11-11",
+      "s": "I:DE000HF21B42",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF21B42",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-11T09:39:04.155Z"
     }
   ]
 }
