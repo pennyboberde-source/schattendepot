@@ -11,83 +11,84 @@
     "2026-10-30",
     "2026-10-31",
     "2026-11-02",
-    "2026-11-03"
+    "2026-11-03",
+    "2026-11-04"
   ],
   "jeTyp": {
     "gewinn_ueberraschung": {
-      "signale": 96,
-      "vorRakete": 7
+      "signale": 109,
+      "vorRakete": 8
     },
     "volumen_ungewoehnlich": {
-      "signale": 44,
-      "vorRakete": 22
+      "signale": 54,
+      "vorRakete": 27
     },
     "nachzahlen_drift": {
-      "signale": 14,
-      "vorRakete": 2
+      "signale": 18,
+      "vorRakete": 3
     },
     "insider_cluster_kauf": {
-      "signale": 39,
-      "vorRakete": 5
+      "signale": 44,
+      "vorRakete": 6
     },
     "analysten_hochstufung": {
       "signale": 5,
       "vorRakete": 2
     },
     "insider_kauf": {
-      "signale": 110,
-      "vorRakete": 13
+      "signale": 126,
+      "vorRakete": 14
     },
     "nachricht": {
-      "signale": 100,
-      "vorRakete": 44
+      "signale": 118,
+      "vorRakete": 53
     },
     "prognose_erhoehung": {
       "signale": 3,
       "vorRakete": 0
     },
     "stimmung_social": {
-      "signale": 31,
-      "vorRakete": 17
+      "signale": 33,
+      "vorRakete": 18
     },
     "quartalstermin": {
-      "signale": 67,
+      "signale": 86,
       "vorRakete": 6
     },
     "gewinn_enttaeuschung": {
-      "signale": 14,
+      "signale": 17,
       "vorRakete": 3
     },
     "leerverkauf_quote": {
-      "signale": 72,
+      "signale": 87,
       "vorRakete": 0
     },
     "handelsstopp": {
-      "signale": 178,
-      "vorRakete": 32
+      "signale": 231,
+      "vorRakete": 36
     },
     "upbit_warnung": {
-      "signale": 114,
-      "vorRakete": 51
+      "signale": 128,
+      "vorRakete": 59
     },
     "verwaesserung": {
-      "signale": 161,
-      "vorRakete": 8
-    },
-    "liquidationen_spitze": {
-      "signale": 11,
+      "signale": 187,
       "vorRakete": 9
     },
+    "liquidationen_spitze": {
+      "signale": 15,
+      "vorRakete": 10
+    },
     "grossauftrag": {
-      "signale": 56,
+      "signale": 66,
       "vorRakete": 2
     },
     "funding_extrem": {
-      "signale": 22,
+      "signale": 23,
       "vorRakete": 6
     },
     "krypto_einnahmen": {
-      "signale": 24,
+      "signale": 33,
       "vorRakete": 3
     },
     "leerverkauf_aenderung": {
@@ -99,97 +100,105 @@
       "vorRakete": 2
     },
     "uebernahmeangebot": {
-      "signale": 9,
+      "signale": 10,
       "vorRakete": 0
     },
     "open_interest_sprung": {
+      "signale": 1,
+      "vorRakete": 0
+    },
+    "prognose_senkung": {
+      "signale": 1,
+      "vorRakete": 0
+    },
+    "ueberreaktion": {
       "signale": 1,
       "vorRakete": 0
     }
   },
   "jeQuelle": {
     "Finnhub": {
-      "signale": 178,
-      "vorRakete": 16
+      "signale": 213,
+      "vorRakete": 17
     },
     "Alpha Vantage": {
-      "signale": 44,
-      "vorRakete": 22
+      "signale": 54,
+      "vorRakete": 27
     },
     "Finnhub Kurs": {
-      "signale": 14,
-      "vorRakete": 2
+      "signale": 18,
+      "vorRakete": 3
     },
     "OpenInsider": {
-      "signale": 127,
-      "vorRakete": 14
+      "signale": 148,
+      "vorRakete": 16
     },
     "Finnhub Analysten": {
       "signale": 3,
       "vorRakete": 0
     },
     "tagesschau Wirtschaft": {
-      "signale": 16,
-      "vorRakete": 2
+      "signale": 19,
+      "vorRakete": 4
     },
     "CNBC Top News": {
-      "signale": 48,
-      "vorRakete": 23
+      "signale": 55,
+      "vorRakete": 27
     },
     "MarketWatch": {
-      "signale": 22,
-      "vorRakete": 9
+      "signale": 29,
+      "vorRakete": 14
     },
     "FMP": {
-      "signale": 38,
-      "vorRakete": 11
+      "signale": 42,
+      "vorRakete": 12
     },
     "ApeWisdom": {
-      "signale": 31,
-      "vorRakete": 17
+      "signale": 33,
+      "vorRakete": 18
     },
     "FAZ Finanzen": {
       "signale": 9,
       "vorRakete": 4
     },
     "Handelsblatt Finanzen": {
-      "signale": 18,
-      "vorRakete": 6
+      "signale": 20,
+      "vorRakete": 7
     },
     "FINRA": {
-      "signale": 70,
+      "signale": 85,
       "vorRakete": 0
     },
     "BTC-ECHO": {
-      "signale": 20,
-      "vorRakete": 13
+      "signale": 24,
+      "vorRakete": 14
     },
     "Nasdaq Trader": {
-      "signale": 178,
-      "vorRakete": 32
+      "signale": 231,
+      "vorRakete": 36
     },
     "Upbit": {
-      "signale": 114,
-      "vorRakete": 51
+      "signale": 128,
+      "vorRakete": 59
     },
     "SEC EDGAR": {
-      "signale": 215,
-      "vorRakete": 10
+      "signale": 251,
+      "vorRakete": 11
     },
     "Coinalyze": {
-      "signale": 11,
-      "vorRakete": 9
+      "signale": 15,
+      "vorRakete": 10
     },
     "Finnhub News": {
-      "signale": 7,
-      "vorRakete": 4
+      "signale": 9,
+      "vorRakete": 5
     },
     "Kraken Futures": {
-      "signale": 23,
+      "signale": 24,
       "vorRakete": 6
     },
     "DefiLlama": {
-      "signale": 24,
+      "signale": 33,
       "vorRakete": 3
     },
     "FINRA Short Interest": {
@@ -199,11 +208,15 @@
     "CFTC COT": {
       "signale": 5,
       "vorRakete": 2
+    },
+    "Kraken": {
+      "signale": 1,
+      "vorRakete": 0
     }
   },
   "gesamt": {
-    "signale": 1062,
-    "vorRakete": 184
+    "signale": 1267,
+    "vorRakete": 212
   },
   "verlauf": [
     {
@@ -260,6 +273,11 @@
       "datum": "2026-11-10",
       "mover": 32,
       "abdeckung": 21.9
+    },
+    {
+      "datum": "2026-11-11",
+      "mover": 32,
+      "abdeckung": 31.3
     }
   ]
 }

@@ -1,9 +1,67 @@
 {
-  "datum": "2026-11-10",
-  "stand": "2026-11-10T04:50:12.542Z",
+  "datum": "2026-11-11",
+  "stand": "2026-11-11T04:56:21.152Z",
   "anzahl": 32,
-  "abdeckung": 21.9,
+  "abdeckung": 31.3,
   "mover": [
+    {
+      "s": "T:ELF",
+      "n": "aelf",
+      "t": "ELF",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 2,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 4,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 5,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 6,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 7,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 8,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 9,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
     {
       "s": "T:OMH",
       "n": "Ohmyhome Limited",
@@ -13,7 +71,7 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 4,
+          "tageVorher": 2,
           "q": [
             "Nasdaq Trader"
           ]
@@ -30,6 +88,36 @@
           "tageVorher": 6,
           "q": [
             "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 7,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:INLF",
+      "n": "INLF",
+      "t": "INLF",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 7,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 8,
+          "q": [
+            "Alpha Vantage"
           ]
         }
       ]
@@ -43,55 +131,16 @@
       "vorzeichen": [
         {
           "typ": "verwaesserung",
-          "tageVorher": 4,
+          "tageVorher": 5,
           "q": [
             "SEC EDGAR"
           ]
         },
         {
           "typ": "verwaesserung",
-          "tageVorher": 5,
+          "tageVorher": 6,
           "q": [
             "SEC EDGAR"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:CDT",
-      "n": "CDT",
-      "t": "CDT",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 4,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "volumen_ungewoehnlich",
-          "tageVorher": 7,
-          "q": [
-            "Alpha Vantage"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:ZETA",
-      "n": "ZETA GLOBAL HOLDINGS CORP-A",
-      "t": "ZETA",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 4,
-          "q": [
-            "Upbit"
           ]
         }
       ]
@@ -105,23 +154,14 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 4,
+          "tageVorher": 2,
           "q": [
             "Nasdaq Trader"
           ]
-        }
-      ]
-    },
-    {
-      "s": "T:VIVK",
-      "n": "VIVK",
-      "t": "VIVK",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
+        },
         {
           "typ": "handelsstopp",
-          "tageVorher": 4,
+          "tageVorher": 5,
           "q": [
             "Nasdaq Trader"
           ]
@@ -129,15 +169,22 @@
       ]
     },
     {
-      "s": "T:PIEVERSE",
-      "n": "Pieverse",
-      "t": "PIEVERSE",
+      "s": "T:CYBER",
+      "n": "Cyber",
+      "t": "CYBER",
       "typ": "kursrakete",
       "r": 1,
       "vorzeichen": [
         {
           "typ": "upbit_warnung",
-          "tageVorher": 6,
+          "tageVorher": 4,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 5,
           "q": [
             "Upbit"
           ]
@@ -145,12 +192,36 @@
       ]
     },
     {
-      "s": "T:TTD",
-      "n": "TRADE DESK INC/THE -CLASS A",
-      "t": "TTD",
+      "s": "T:SMX",
+      "n": "SMX (Security Matters) Public Limited Company",
+      "t": "SMX",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:ZETA",
+      "n": "ZETA GLOBAL HOLDINGS CORP-A",
+      "t": "ZETA",
       "typ": "kursrakete",
       "r": 0,
-      "vorzeichen": []
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 5,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
     },
     {
       "s": "T:WCT",
@@ -158,12 +229,44 @@
       "t": "WCT",
       "typ": "tagesgewinner",
       "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:WAVES",
+      "n": "Waves",
+      "t": "WAVES",
+      "typ": "kursrakete",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 8,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:PEPG",
+      "n": "PepGen Inc.",
+      "t": "PEPG",
+      "typ": "tagesgewinner",
+      "r": 1,
       "vorzeichen": []
     },
     {
-      "s": "T:SMX",
-      "n": "SMX (Security Matters) Public Limited Company",
-      "t": "SMX",
+      "s": "T:TTEC",
+      "n": "TTEC Holdings, Inc.",
+      "t": "TTEC",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": []
@@ -174,6 +277,54 @@
       "t": "TANH",
       "typ": "tagesgewinner",
       "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:ZIP",
+      "n": "ZipRecruiter, Inc.",
+      "t": "ZIP",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:OPENZ",
+      "n": "OPENZ",
+      "t": "OPENZ",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MI",
+      "n": "MI",
+      "t": "MI",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:NNOX",
+      "n": "NNOX",
+      "t": "NNOX",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:AACG",
+      "n": "AACG",
+      "t": "AACG",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:TTD",
+      "n": "TRADE DESK INC/THE -CLASS A",
+      "t": "TTD",
+      "typ": "kursrakete",
+      "r": 0,
       "vorzeichen": []
     },
     {
@@ -217,123 +368,57 @@
       "vorzeichen": []
     },
     {
-      "s": "T:STAK",
-      "n": "STAK Inc. Ordinary Shares",
-      "t": "STAK",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:GOGO",
-      "n": "Gogo Inc.",
-      "t": "GOGO",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:CIIT",
-      "n": "Tianci International, Inc.",
-      "t": "CIIT",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:VSA",
-      "n": "VisionSys AI Inc.",
-      "t": "VSA",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:SKIN",
-      "n": "SkinHealth Systems Inc.",
-      "t": "SKIN",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:IONL",
-      "n": "GraniteShares 2x Long IONQ Daily ETF",
-      "t": "IONL",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:IONX",
-      "n": "Defiance Daily Target 2X Long IONQ ETF",
-      "t": "IONX",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:BDSX",
-      "n": "Biodesix, Inc.",
-      "t": "BDSX",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:IONZ",
-      "n": "Defiance Daily Target 2x Short IONQ ETF",
-      "t": "IONZ",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:STLN",
-      "n": "Starling Oncology, Inc.",
-      "t": "STLN",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:SDA",
-      "n": "SDA",
-      "t": "SDA",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000GN6YR26",
-      "n": "DE000GN6YR26",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF29T77",
+      "s": "I:DE000HM949X8",
       "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF0P8X6",
-      "n": "HSBC TRINKAUS+BURKHARDT",
+      "s": "I:DE000UR3ADS4",
+      "n": "UNICREDIT BANK GMBH",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HT60QS2",
-      "n": "HSBC TRINKAUS+BURKHARDT",
+      "s": "T:PXLW",
+      "n": "PIXELWORKS INC",
+      "t": "PXLW",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF29PZ3",
+      "s": "I:DE000HF2BH80",
+      "n": "DE000HF2BH80",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000GV88WY7",
+      "n": "GOLDMAN SACHS EUROPE SE",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0WCX7",
+      "n": "DE000HF0WCX7",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000A1681X5",
+      "n": "SINGULUS TECHNOLOGIES-BR",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0U5V9",
       "n": "HSBC TRINKAUS+BURKHARDT",
       "typ": "kursrakete",
       "r": 0,
