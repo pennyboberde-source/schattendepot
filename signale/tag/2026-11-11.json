@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T09:57:52.157Z",
-  "anzahl": 262,
+  "stand": "2026-11-11T10:58:31.832Z",
+  "anzahl": 264,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3457,6 +3457,33 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-11T09:39:04.155Z"
+    },
+    {
+      "id": "nachricht:GS:2026-11-11",
+      "s": "T:GS",
+      "n": "Goldman Sachs",
+      "t": "GS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-11T10:37:00.000Z"
+    },
+    {
+      "id": "kursrakete:MPLX:2026-11-11",
+      "s": "T:MPLX",
+      "n": "Metaplex",
+      "t": "MPLX",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.41,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-11T10:58:31.832Z"
     }
   ]
 }
