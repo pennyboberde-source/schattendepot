@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-11T15:51:46.458Z",
-  "anzahl": 289,
+  "stand": "2026-11-11T16:55:20.158Z",
+  "anzahl": 298,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3564,7 +3564,7 @@
       "t": "SMX",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3603,7 +3603,7 @@
       "t": "ENGS",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3694,7 +3694,7 @@
       "t": "AINF",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3816,6 +3816,125 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-11T15:42:00.702Z"
+    },
+    {
+      "id": "handelsstopp:SMTK:2026-11-11",
+      "s": "T:SMTK",
+      "n": "SmartKem, Inc. Common Stock",
+      "t": "SMTK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RDIB:2026-11-11",
+      "s": "T:RDIB",
+      "n": "Reading Intl Cl B Cmn",
+      "t": "RDIB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:YMT:2026-11-11",
+      "s": "T:YMT",
+      "n": "Yimutian Inc. ADS",
+      "t": "YMT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TLIH:2026-11-11",
+      "s": "T:TLIH",
+      "n": "Ten-League Intl Hld Ltd Ord",
+      "t": "TLIH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GIBO:2026-11-11",
+      "s": "T:GIBO",
+      "n": "GIBO Holdings Limited Cl A OS",
+      "t": "GIBO",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-11-11",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-11T03:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:BTC:2026-11-11",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-11T15:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:ETH:2026-11-11",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-11T15:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF0Y1W2:2026-11-11",
+      "s": "I:DE000HF0Y1W2",
+      "n": "DE000HF0Y1W2",
+      "i": "DE000HF0Y1W2",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.74,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-11T16:41:38.576Z"
     }
   ]
 }
