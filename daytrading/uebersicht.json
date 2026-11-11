@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-11T07:07:48.792Z",
+  "stand": "2026-11-11T08:26:19.982Z",
   "heute": {
     "datum": "2026-11-11",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": 0,
       "oeR": 0
     },
-    "offen": 0
+    "offen": 2
   },
   "gesamt": {
     "anzahl": 417,
@@ -338,8 +338,141 @@
       "oeR": -0.41
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-11-11-scan-ada",
+      "datum": "2026-11-11",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-11T08:20:00.000Z",
+        "kurs": 0.157404,
+        "level": 0.1572,
+        "spanne": {
+          "hoch": 0.157155,
+          "tief": 0.156661
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1569,
+      "ziel": 0.1577,
+      "zielR": 2,
+      "flatBis": "2026-11-11T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-11T08:20:00.000Z",
+        "basisKurs": 0.157156,
+        "kurs": 0.1575,
+        "stueck": 6349.206349,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-11-scan-sol",
+      "datum": "2026-11-11",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-11T08:20:00.000Z",
+        "kurs": 74.73,
+        "level": 74.69,
+        "spanne": {
+          "hoch": 74.69,
+          "tief": 74.47
+        },
+        "richtung": "long"
+      },
+      "stop": 74.58,
+      "ziel": 74.82,
+      "zielR": 2,
+      "flatBis": "2026-11-11T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-11T08:20:00.000Z",
+        "basisKurs": 74.66,
+        "kurs": 74.847,
+        "stueck": 13.360588,
+        "kurswert": 1000
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-11-11-scan-ada",
+      "datum": "2026-11-11",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-11T08:20:00.000Z",
+        "kurs": 0.157404,
+        "level": 0.1572,
+        "spanne": {
+          "hoch": 0.157155,
+          "tief": 0.156661
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1569,
+      "ziel": 0.1577,
+      "zielR": 2,
+      "flatBis": "2026-11-11T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-11T08:20:00.000Z",
+        "basisKurs": 0.157156,
+        "kurs": 0.1575,
+        "stueck": 6349.206349,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-11-scan-sol",
+      "datum": "2026-11-11",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-11T08:20:00.000Z",
+        "kurs": 74.73,
+        "level": 74.69,
+        "spanne": {
+          "hoch": 74.69,
+          "tief": 74.47
+        },
+        "richtung": "long"
+      },
+      "stop": 74.58,
+      "ziel": 74.82,
+      "zielR": 2,
+      "flatBis": "2026-11-11T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-11T08:20:00.000Z",
+        "basisKurs": 74.66,
+        "kurs": 74.847,
+        "stueck": 13.360588,
+        "kurswert": 1000
+      }
+    },
     {
       "id": "2026-11-10-scan-broadcom-inc",
       "datum": "2026-11-10",
@@ -8780,7 +8913,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 0,
+    "code_scan": 27,
     "claude": 2,
     "autopilot": 0
   },
