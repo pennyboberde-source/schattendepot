@@ -1,0 +1,629 @@
+{
+  "stand": "2026-11-12T04:57:06.186Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:INM",
+      "name": "InMed Pharmaceuticals Inc.",
+      "ticker": "INM",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:FUN",
+      "name": "Six Flags Entertainment Corporation/New",
+      "ticker": "FUN",
+      "score": 2.07,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:OMH",
+      "name": "Ohmyhome Ltd Ords A",
+      "ticker": "OMH",
+      "score": -1.78,
+      "typen": [
+        "handelsstopp",
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:SMX",
+      "name": "SMX Sc Mtr PLC Ord",
+      "ticker": "SMX",
+      "score": -1.78,
+      "typen": [
+        "handelsstopp",
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:UPBD",
+      "name": "Upbound Group, Inc.",
+      "ticker": "UPBD",
+      "score": 1.76,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SFWL",
+      "name": "Shengfeng Development Os",
+      "ticker": "SFWL",
+      "pump": true,
+      "score": 1.68,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:RETO",
+      "name": "ReTo Eco-Solutions, Inc.",
+      "ticker": "RETO",
+      "pump": true,
+      "score": 1.59,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:GIBO",
+      "name": "GIBO Holdings Limited Cl A OS",
+      "ticker": "GIBO",
+      "score": -1.58,
+      "typen": [
+        "handelsstopp",
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:BHLL",
+      "name": "Bunker Hill Mining Corp.",
+      "ticker": "BHLL",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PAM",
+      "name": "Pampa Energy Inc.",
+      "ticker": "PAM",
+      "score": 1.47,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SE",
+      "name": "SE",
+      "ticker": "SE",
+      "score": 1.46,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MTDR",
+      "name": "Matador Resources Co",
+      "ticker": "MTDR",
+      "score": 1.4,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TTMI",
+      "name": "Ttm Technologies Inc",
+      "ticker": "TTMI",
+      "score": 1.35,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:AN",
+      "name": "Autonation, Inc.",
+      "ticker": "AN",
+      "score": 1.28,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CRWG",
+      "name": "Leverage Shares 2x Long CRWV Daily ETF",
+      "ticker": "CRWG",
+      "score": 1.28,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:LBTY",
+      "name": "Liberty Global Ltd.",
+      "ticker": "LBTY",
+      "score": 1.24,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BRK-A",
+      "name": "BERKSHIRE HATHAWAY INC",
+      "ticker": "BRK-A",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NVSEF",
+      "name": "NOVARTIS AG",
+      "ticker": "NVSEF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ENBNF",
+      "name": "ENBRIDGE INC",
+      "ticker": "ENBNF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:IIPR-PA",
+      "name": "INNOVATIVE INDUSTRIAL PROPERTIES INC",
+      "ticker": "IIPR-PA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:JAGX",
+      "name": "Jaguar Health, Inc.",
+      "ticker": "JAGX",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:APOS",
+      "name": "Apollo Global Management, Inc.",
+      "ticker": "APOS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SCHW-PJ",
+      "name": "SCHWAB CHARLES CORP",
+      "ticker": "SCHW-PJ",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:USGO",
+      "name": "U.S. GoldMining Inc.",
+      "ticker": "USGO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NTRSO",
+      "name": "NORTHERN TRUST CORP",
+      "ticker": "NTRSO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SMA",
+      "name": "SmartStop Self Storage REIT, Inc.",
+      "ticker": "SMA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:XHLD",
+      "name": "TEN Holdings, Inc.",
+      "ticker": "XHLD",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:EPDU",
+      "name": "ENTERPRISE PRODUCTS PARTNERS L.P.",
+      "ticker": "EPDU",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:JDZG",
+      "name": "JIADE Ltd",
+      "ticker": "JDZG",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BRW",
+      "name": "Saba Capital Income & Opportunities Fund",
+      "ticker": "BRW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PACB",
+      "name": "PACIFIC BIOSCIENCES OF CALIFORNIA, INC.",
+      "ticker": "PACB",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PRME",
+      "name": "Prime Medicine, Inc.",
+      "ticker": "PRME",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:STIM",
+      "name": "Neuronetics, Inc.",
+      "ticker": "STIM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PEPG",
+      "name": "PepGen Inc.",
+      "ticker": "PEPG",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:HL-PB",
+      "name": "HECLA MINING CO/DE/",
+      "ticker": "HL-PB",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LICN",
+      "name": "Lichen International Ltd",
+      "ticker": "LICN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GLXY",
+      "name": "Galaxy Digital Inc.",
+      "ticker": "GLXY",
+      "score": 1.2,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 1.15,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LUCK",
+      "name": "Lucky Strike Entertainment Corp",
+      "ticker": "LUCK",
+      "score": 1.1,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SOPH",
+      "name": "Sophia Genetics Sa",
+      "ticker": "SOPH",
+      "markt": "krypto",
+      "score": 1.05,
+      "typen": [
+        "insider_cluster_kauf",
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "OpenInsider",
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:KMT",
+      "name": "Kennametal Inc",
+      "ticker": "KMT",
+      "score": 1.05,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ENOV",
+      "name": "Enovis Corp",
+      "ticker": "ENOV",
+      "score": 1.04,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:NXXT",
+      "name": "NextNRG, Inc. Common Stk",
+      "ticker": "NXXT",
+      "pump": true,
+      "score": 0.99,
+      "typen": [
+        "handelsstopp",
+        "kursrakete"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:WW",
+      "name": "Ww International, Inc.",
+      "ticker": "WW",
+      "score": 0.99,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:WHLR",
+      "name": "Wheeler Real Estate Investment",
+      "ticker": "WHLR",
+      "pump": true,
+      "score": 0.98,
+      "typen": [
+        "handelsstopp",
+        "kursrakete"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:OBIO",
+      "name": "Orchestra Biomed Holdings, Inc.",
+      "ticker": "OBIO",
+      "score": 0.98,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FLOC",
+      "name": "Flowco Holdings Inc.",
+      "ticker": "FLOC",
+      "score": 0.95,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ADTN",
+      "name": "Adtran Holdings, Inc.",
+      "ticker": "ADTN",
+      "score": 0.95,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:WCC",
+      "name": "Wesco International Inc",
+      "ticker": "WCC",
+      "score": 0.94,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CMCO",
+      "name": "Columbus McKinnon Corp",
+      "ticker": "CMCO",
+      "score": 0.94,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    }
+  ],
+  "anzahlSignale": 223
+}

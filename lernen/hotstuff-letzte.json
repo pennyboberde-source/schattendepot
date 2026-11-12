@@ -1,8 +1,8 @@
 {
-  "datum": "2026-11-11",
-  "stand": "2026-11-11T04:56:21.152Z",
-  "anzahl": 32,
-  "abdeckung": 31.3,
+  "datum": "2026-11-12",
+  "stand": "2026-11-12T04:57:06.186Z",
+  "anzahl": 33,
+  "abdeckung": 33.3,
   "mover": [
     {
       "s": "T:ELF",
@@ -20,7 +20,7 @@
         },
         {
           "typ": "upbit_warnung",
-          "tageVorher": 4,
+          "tageVorher": 3,
           "q": [
             "Upbit"
           ]
@@ -59,6 +59,13 @@
           "q": [
             "Upbit"
           ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 10,
+          "q": [
+            "Upbit"
+          ]
         }
       ]
     },
@@ -66,8 +73,8 @@
       "s": "T:OMH",
       "n": "Ohmyhome Limited",
       "t": "OMH",
-      "typ": "tagesgewinner",
-      "r": 1,
+      "typ": "tagesverlierer",
+      "r": -1,
       "vorzeichen": [
         {
           "typ": "handelsstopp",
@@ -78,7 +85,7 @@
         },
         {
           "typ": "handelsstopp",
-          "tageVorher": 5,
+          "tageVorher": 3,
           "q": [
             "Nasdaq Trader"
           ]
@@ -95,6 +102,59 @@
           "tageVorher": 7,
           "q": [
             "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 8,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:SMX",
+      "n": "SMX (Security Matters) Public Limited Company",
+      "t": "SMX",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:SHFS",
+      "n": "SHFS",
+      "t": "SHFS",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 2,
+          "q": [
+            "Alpha Vantage"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 3,
+          "q": [
+            "Alpha Vantage"
           ]
         }
       ]
@@ -108,133 +168,16 @@
       "vorzeichen": [
         {
           "typ": "volumen_ungewoehnlich",
-          "tageVorher": 7,
+          "tageVorher": 8,
           "q": [
             "Alpha Vantage"
           ]
         },
         {
           "typ": "volumen_ungewoehnlich",
-          "tageVorher": 8,
+          "tageVorher": 9,
           "q": [
             "Alpha Vantage"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:FISN",
-      "n": "Deep Fission, Inc.",
-      "t": "FISN",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "verwaesserung",
-          "tageVorher": 5,
-          "q": [
-            "SEC EDGAR"
-          ]
-        },
-        {
-          "typ": "verwaesserung",
-          "tageVorher": 6,
-          "q": [
-            "SEC EDGAR"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:ONCO",
-      "n": "Onconetix, Inc.",
-      "t": "ONCO",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 5,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:CYBER",
-      "n": "Cyber",
-      "t": "CYBER",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 4,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 5,
-          "q": [
-            "Upbit"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:SMX",
-      "n": "SMX (Security Matters) Public Limited Company",
-      "t": "SMX",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:ZETA",
-      "n": "ZETA GLOBAL HOLDINGS CORP-A",
-      "t": "ZETA",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 5,
-          "q": [
-            "Upbit"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:WCT",
-      "n": "Wellchange Holdings Company Limited",
-      "t": "WCT",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
           ]
         }
       ]
@@ -244,11 +187,66 @@
       "n": "Waves",
       "t": "WAVES",
       "typ": "kursrakete",
-      "r": -1,
+      "r": 1,
       "vorzeichen": [
         {
           "typ": "upbit_warnung",
-          "tageVorher": 8,
+          "tageVorher": 2,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 9,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:GIBO",
+      "n": "GIBO Holdings Limited",
+      "t": "GIBO",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 6,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:NXXT",
+      "n": "NXXT",
+      "t": "NXXT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:NCT",
+      "n": "NCT",
+      "t": "NCT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 2,
           "q": [
             "Upbit"
           ]
@@ -261,20 +259,92 @@
       "t": "PEPG",
       "typ": "tagesgewinner",
       "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:TANH",
+      "n": "Tantech Holdings Ltd",
+      "t": "TANH",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:RETO",
+      "n": "ReTo Eco-Solutions, Inc.",
+      "t": "RETO",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CRWG",
+      "n": "Leverage Shares 2x Long CRWV Daily ETF",
+      "t": "CRWG",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:SFWL",
+      "n": "Shengfeng Development Limited",
+      "t": "SFWL",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:WHLR",
+      "n": "WHLR",
+      "t": "WHLR",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:SCKT",
+      "n": "SCKT",
+      "t": "SCKT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:ELOG",
+      "n": "ELOG",
+      "t": "ELOG",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:PRL",
+      "n": "Perle",
+      "t": "PRL",
+      "typ": "kursrakete",
+      "r": 1,
       "vorzeichen": []
     },
     {
       "s": "T:TTEC",
       "n": "TTEC Holdings, Inc.",
       "t": "TTEC",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:TANH",
-      "n": "Tantech Holdings Ltd",
-      "t": "TANH",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": []
@@ -320,92 +390,8 @@
       "vorzeichen": []
     },
     {
-      "s": "T:TTD",
-      "n": "TRADE DESK INC/THE -CLASS A",
-      "t": "TTD",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:CKX",
-      "n": "CKX Lands, Inc.",
-      "t": "CKX",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:TLS",
-      "n": "Telos Corporation",
-      "t": "TLS",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:FTH",
-      "n": "Faeth Therapeutics, Inc.",
-      "t": "FTH",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:ABEO",
-      "n": "Abeona Therapeutics Inc.",
-      "t": "ABEO",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:NCT",
-      "n": "Polyswarm",
-      "t": "NCT",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HM949X8",
-      "n": "HSBC TRINKAUS+BURKHARDT",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000UR3ADS4",
-      "n": "UNICREDIT BANK GMBH",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:PXLW",
-      "n": "PIXELWORKS INC",
-      "t": "PXLW",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF2BH80",
-      "n": "DE000HF2BH80",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000GV88WY7",
-      "n": "GOLDMAN SACHS EUROPE SE",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0WCX7",
-      "n": "DE000HF0WCX7",
+      "s": "I:DE000HF24LT6",
+      "n": "DE000HF24LT6",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
@@ -418,8 +404,52 @@
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF0U5V9",
+      "s": "I:DE000HM949X8",
       "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF21B42",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MPLX",
+      "n": "Metaplex",
+      "t": "MPLX",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE0005760029",
+      "n": "ABO ENERGY GMBH & CO. KGAA",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:ORBS",
+      "n": "Orbs",
+      "t": "ORBS",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000UR23B15",
+      "n": "UNICREDIT BANK GMBH",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF0Y1W2",
+      "n": "DE000HF0Y1W2",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []

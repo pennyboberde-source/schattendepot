@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-11T21:19:50.207Z",
+  "stand": "2026-11-12T04:57:06.186Z",
   "offen": [
     {
       "id": "2026-11-10-auto-ceg",
@@ -260,5 +260,105 @@
       }
     }
   ],
-  "vorgemerkt": []
+  "vorgemerkt": [
+    {
+      "id": "2026-11-12-auto-six-flags-entertainment-corpor",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-12T04:57:06.186Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Six Flags Entertainment Corporation/New",
+          "isin": "",
+          "ticker": "FUN",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "FUN",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "insider_kauf",
+        "these": "Autopilot: beste gemessene Spielart für „insider_cluster_kauf“ – direkt kaufen, 1 Tage: Ø 0.84 % nach Kosten, 48.8 % im Plus (41 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:FUN: insider_cluster_kauf, insider_kauf (Score 2.07)",
+        "signalIds": [
+          "insider_cluster_kauf:FUN:2026-11-12",
+          "insider_kauf:FUN:2026-11-12"
+        ],
+        "quellen": [
+          {
+            "name": "OpenInsider",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 49,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.84,
+        "zielNettoProzent": 7.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-14T04:57:06.186Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (34 Fälle)"
+      },
+      "verkaufstermin": "2026-11-14T04:57:06.186Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-12-auto-upbound-group-inc",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-12T04:57:06.186Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Upbound Group, Inc.",
+          "isin": "",
+          "ticker": "UPBD",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "UPBD",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "insider_kauf",
+        "these": "Autopilot: beste gemessene Spielart für „insider_cluster_kauf“ – direkt kaufen, 1 Tage: Ø 0.84 % nach Kosten, 48.8 % im Plus (41 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:UPBD: insider_cluster_kauf (Score 1.76)",
+        "signalIds": [
+          "insider_cluster_kauf:UPBD:2026-11-12"
+        ],
+        "quellen": [
+          {
+            "name": "OpenInsider",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 49,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.84,
+        "zielNettoProzent": 7.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-14T04:57:06.186Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (34 Fälle)"
+      },
+      "verkaufstermin": "2026-11-14T04:57:06.186Z",
+      "anpassungen": []
+    }
+  ]
 }
