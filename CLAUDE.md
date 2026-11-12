@@ -29,6 +29,7 @@ Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, d
 - `main`: nur Code, Konfiguration und Routinen-Anweisungen (`routine/*.md`). Schreiben: Nutzer/Claude lokal.
 - `daten`: alle Laufzeitdaten (Ereignisprotokoll, Positionen, Signale, Lagebilder, Statistik, Lektionen, `termine.ics`). Schreiben: **nur** GitHub Actions (gemeinsame Concurrency-Gruppe `daten-schreiben`).
 - `claude/lauf-<datum>-<typ>`: Ausgabe je Routinen-Lauf. Eine Action prüft gegen JSON-Schema, übernimmt nach `daten`, sendet Pushes, deployt, löscht den Branch.
+- `bau/<thema>`: Bau-Branch für den Probelauf vor dem Live-Gang (löst keinen Workflow aus). Nach bestandenem Probelauf per Fast-Forward nach `main`, danach löschen.
 - Routinen und Actions schreiben nie auf denselben Branch.
 
 ## Daten-Regeln
@@ -43,6 +44,8 @@ Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, d
 - Seit S2: Teilverkäufe sind ein eigenes Ereignis `teilverkauft` (`verkauft` enthält dann nur den Rest, `ergebnis` alles); Krypto direkt = `anlageklasse: krypto`, Handelsplatz `TRK`, ohne ISIN, Bruchstücke; Verkaufsregeln/Autopilot/Claude-Order-Grenzen stehen in `config/einstellungen.json`.
 - Seit S3: Daytrading ist ein eigener Bereich mit eigenem Protokoll `daytrading/ereignisse.jsonl` (nur anhängen) und eigener Config `config/daytrading.json`; Kennzahlen nie mit dem Depot mischen. Job `jobs/daytrading.ts` läuft als eigener Schritt im Kurswächter-Workflow. gettex-Dateinamen nennen das ENDE des 15-Minuten-Fensters.
 - Seit S4: App hat 4 Bereiche (Heute · Depot · Daytrading · Lernen) + Einstellungen; alte Routen bleiben gültig. Marktphasen in `lernen/marktphasen.json`, Wochenzeugnis samstags vom Code, Monatsprüfung im Wochenrückblick am ersten Samstag, „Heute gelernt“ aus dem Abendlauf.
+- Seit V0 (12.11.2026, Plan Volltreffer): Schattenbuch-Ablauf in `core/schattenbuch.ts` (Startkurse neuer Kandidaten zuerst und mit eigenem Kontingent, Nachholen nur am selben Tag, Messung nur im Fenster ihres Messpunkts, `r1h` nur bei offenem Markt). **Fallzahlen überall ehrlich:** n = Zahl der Messungen des Messpunkts, ein Wert zählt je Episode einmal (`core/episoden.ts`, 10 Handelstage), neben dem Ø steht der Median. Daytrading: Turbo, Short und Krypto laufen nur virtuell (`config/daytrading.json › virtuell`, Kennzeichen `virtuell` am Einstiegs-Ereignis) und zählen nicht in sichtbare Kennzahlen, Abendbilanz, Wochenzeugnis und Mitteilungen; ältere Trades bleiben in der Bilanz. Autopilot-Beweisschwelle: 30 Fälle, 55 % im Plus, Ø +1 % nach Gebühren (`config/einstellungen.json › autopilot`), auch für die beste Spielart.
+- Probeläufe nie auf Live-Daten: `node jobs/probelauf.ts [schattenbuch|jobs|alles]` arbeitet auf einer Kopie; mit echten Kursen über den Workflow `probelauf.yml` (auch auf einem Bau-Branch: `gh workflow run probelauf.yml --ref <branch>`), bevor der Code nach `main` geht.
 - Bestehende Datenquellen nie entfernen; neue nur zusätzlich einbauen.
 - Seit 06.11.2026: Politik-Radar (`core/politik.ts`, `jobs/quellen/politik.ts`, Themen in `config/politik-themen.json`, Lage in `zustand/politik.json`). Quellen dürfen über `QuellenErgebnis.pushes` selbst pushen.
 

@@ -1,6 +1,6 @@
 # STAND – Schattendepot
 
-_Zuletzt aktualisiert: 12.11.2026 abends (Plan „Volltreffer“ übernommen, Befunde geprüft, Freigaben F1–F3 angefordert, V0 in Arbeit; vorher: Politik-Radar 06.11., Plan „Datenkrake“ S1–S4 fertig und live)_
+_Zuletzt aktualisiert: 12.11.2026 spätabends (Plan „Volltreffer“ übernommen, Befunde geprüft, Freigaben F1–F3 angefordert, **V0 Aufräumen fertig und live**; als Nächstes VS; vorher: Politik-Radar 06.11., Plan „Datenkrake“ S1–S4 fertig und live)_
 
 ## 🎯 GÜLTIGER PLAN „Volltreffer“ (Nutzer 11.11.2026, Ergänzung Selbstverbesserung 12.11.) – geht allem darunter vor
 **Der vollständige Bauauftrag steht in `KONZEPT-VOLLTREFFER.md` (Abschnitte 0–8).** Neue Sitzung: „Lies STAND.md und mach weiter“ → hier beim nächsten offenen Meilenstein weitermachen, Details im Konzept nachlesen (nur den Abschnitt des Meilensteins).
@@ -8,8 +8,8 @@ _Zuletzt aktualisiert: 12.11.2026 abends (Plan „Volltreffer“ übernommen, Be
 **Arbeitsweise:** nach jedem Meilenstein Halt (Tests grün, Probelauf auf Datenkopie, STAND.md, kurzer Bericht), dann auf „weiter“ warten. „durchlaufen“ = ohne Halt bis zur nächsten nötigen Freigabe.
 
 **Meilensteine**
-- ⏳ **V0 Aufräumen** (in Arbeit seit 12.11.): Schattenbuch entstopfen, `r1h` nur bei offenem Markt, ehrliche Fallzahlen + Median + Episoden, Verlustbringer virtuell, Autopilot-Beweisschwelle 30/55 %/+1 %, BRK-A-Filter.
-- ⬜ **VS Selbstverbesserung** (direkt nach V0, keine Freigabe): Verbesserungsbuch, wöchentlicher Verbesserungslauf, Leitplanken `config/verbesserung.json`, automatische Übernahme mit Rückgängig-Link.
+- ✅ **V0 Aufräumen** (12.11.2026, Details im Abschnitt „V0 erledigt“ direkt darunter).
+- ⬜ **VS Selbstverbesserung** (als Nächstes, nach „weiter“; keine Freigabe): Verbesserungsbuch, wöchentlicher Verbesserungslauf, Leitplanken `config/verbesserung.json`, automatische Übernahme mit Rückgängig-Link.
 - ⬜ **V1 Fundament** (braucht F1 + F2): Sammelkurse gettex/US/Krypto, privates Archiv, Stammdaten, Handelbarkeits-Karte, Vergleichsgruppe.
 - ⬜ **V2 Zensus** · ⬜ **V3 Rückblick und Musterprüfung** · ⬜ **V4 Bereich Volltreffer (virtuell)** · ⬜ **V5 Claudes Teil** · ⬜ **V6 Beförderung** (braucht F4 je Muster).
 
@@ -27,7 +27,36 @@ _Zuletzt aktualisiert: 12.11.2026 abends (Plan „Volltreffer“ übernommen, Be
 - B8: beste Depot-Order +92,53 €; Daytrading 494 Trades, −3.625,51 € nach Gebühren.
 - B9: 99 von 3.240 Signalen mit ISIN. B2, B3, B7 am Code bestätigt (`holeKurs` einzeln, nur Messpunkte, Hot Stuff ohne Sprunggröße).
 
-**➡️ Nächster Schritt:** V0 fertig bauen (siehe oben), danach Halt und Bericht.
+**➡️ Nächster Schritt:** Halt nach V0, auf „weiter“ (oder „durchlaufen“) warten. Dann **VS Selbstverbesserung** bauen (Konzept Abschnitt 4 › VS). Zu Beginn der nächsten Sitzung zuerst den ersten echten Lauf mit V0 prüfen: Sammler-Hauptlauf Fr 13.11. (`gh run list --workflow sammler.yml`, Logzeile „Schattenbuch: … heute x von 40 Kandidaten mit Startkurs“), `statistik.json › zusammenfassung` (n = Messungen), `daytrading/uebersicht.json › virtuell` und die Abendbilanz.
+
+### ✅ V0 erledigt (12.11.2026 abends)
+**Gebaut**
+- **Schattenbuch entstopft** – neuer, getesteter Kern `core/schattenbuch.ts` (`jobs/lib/tracking.ts` ist nur noch Hülle für Dateien, Kursabruf und Tempo). Reihenfolge je Lauf: (1) Hauptlauf nimmt die Tageskandidaten auf und holt den Startkurs sofort, aus einem **eigenen Kontingent** (`tracking.maxStartAbrufeProLauf` 60), vor allen Nachmessungen · (2) heutige Einträge ohne Startkurs werden in jedem Lauf **am selben Tag** nachgeholt (höchstens 3 Fehlversuche, `startVersuche`), nie später · (3) schnelle Signale · (4) `r1h` · (5) fällige Messungen, pünktliche zuerst. Ursache des Staus laut Log vom 12.11.: Der Hauptlauf verbrauchte alle 60 Abrufe für Nachmessungen, nur 2 von 40 neuen Kandidaten bekamen einen Startkurs.
+- **Nachrücker:** Hat ein Kandidat bei keiner Kursquelle einen Kurs (OTC-Werte, Vorzüge, unbekannte Coins), rückt der nächste der Rangliste nach (Rangliste hat 50, aufgenommen werden 40). Liefert die Kursquelle fast nichts (≥ 8 Versuche, < 25 % Erfolg), gilt sie als gestört: Dann kommen die Kandidaten ohne Startkurs ins Buch und werden in den Stundenläufen nachgeholt.
+- **Messfenster:** Ein Messpunkt wird nur in seinem Fenster gemessen (`r1T` Handelstag 1–2, `r3T` 3–4, `r1W` 5–9, `r10T` 10–20, `r1M` 21–26). Verpasste Messpunkte bleiben leer, statt einen späteren Kurs unter falschem Etikett zu tragen.
+- **`r1h` nur bei offenem Markt** (`core/kalender.ts › marktOffen`: US 09:30–16:00 New York ohne NYSE-Feiertage, Xetra 09:00–17:30, Krypto immer) bei Start UND Messung. Alte Werte mit Startkurs bei geschlossenem Markt wandern nach `r1hGeschlossen` (bleiben erhalten, zählen nicht).
+- **Ehrliche Fallzahlen:** `core/episoden.ts` – derselbe Schlüssel zählt binnen 10 Handelstagen einmal (je Gruppe, Vertreter = erster Eintrag mit Startkurs; Claudes Tagesprognosen werden nicht zusammengefasst). `TrackingGruppe` hat jetzt `n1h/n1T/n3T/n1W/n10T/n1M` (Messungen je Messpunkt), `med1T/med3T/med1W/med10T` (Median), `anzahl` = Episoden, `eintraege` = Rohzahl. Umgestellt: `statistik.zusammenfassung` (zusätzlich Zeile „Noch zu wenige 1-Wochen-Messungen“), Lernhinweise, `routine/kontext.mjs`, App › Lernen (n in Klammern je Zahl, Median-Spalte, unter 5 Messungen grau, Ampel nach dem Messpunkt mit ≥ 5 Messungen), Gewichte (Anpassung erst ab `mindestFaelle` echten 1-Wochen-Messungen), Ähnliche-Fälle-Check, Ziel/Stop, Varianten-Schattenbuch, Autopilot-Beweise, Wochenzeugnis.
+- **Verlustbringer virtuell (Daytrading):** `config/daytrading.json › virtuell` (aktiv, ab 13.11.2026, Instrument Turbo, Richtung short, Markt Krypto). Neue Einstiegs-Ereignisse tragen `trade.virtuell: true`. Solche Trades laufen weiter und stehen getrennt in `daytrading/uebersicht.json › virtuell` (gesamt, heute, Gruppen Turbo/Short/Krypto) und in der App-Karte „Nur virtuell mitgeführt“; sie zählen nicht in Kennzahlen, Kurve, Gruppen, Abendbilanz, Wochenzeugnis, und Claude-Trades dieser Art lösen keine Mitteilung aus. Eigene Tages- und Positionsgrenze (virtuelle nehmen sichtbaren keinen Platz weg). Neu: `uebersicht.seitUmstellung` (sichtbare Trades ab dem Stichtag).
+- **Autopilot-Beweisschwelle** (`config/einstellungen.json › autopilot`): `mindestFaelle` 30, `mindestChance` 55, `mindestOeNetto` 1. Gilt auch für die „beste Spielart“ aus dem Varianten-Schattenbuch – darüber hatte der Autopilot am 12.11. noch gekauft (Six Flags, 48,8 %/Ø +0,84 %).
+- **Großkonzern-Filter:** `jobs/quellen/sec.ts › cikKarte` – je Firma zählt der erste Eintrag der SEC-Liste (Hauptgattung, bester Rang). Vorher überschrieb „BRK-A“ (weit hinten) „BRK-B“ (weit vorn).
+- **Probelauf-Werkzeug:** `jobs/probelauf.ts` + Workflow `probelauf.yml` (nur von Hand, liest nur). Verfahren für alle weiteren Meilensteine: Code auf Bau-Branch `bau/…` pushen → `gh workflow run probelauf.yml --ref <branch> -f art=schattenbuch|jobs` → erst danach nach `main`.
+
+**Gemessen (Probelauf 12.11. ~21:27 Uhr, echte Kurse, Datenkopie)**
+- Startkurs-Quote: **40 von 40 Tageskandidaten = 100 %** (live am selben Tag: 2 von 40). 44 Kürzel abgefragt, 4 ohne Kurs ersetzt (LBTY, EPDU, HL-PB, SOPH).
+- Fallzahlen: alt „handelsstopp 47,11 % (n=36)“ → neu steht handelsstopp unter „zu wenige Messungen (n=2)“. Gesamt 606 Einträge = 365 Werte, 147 Messungen nach 1 Tag, 109 nach 1 Woche; Ø 1 Woche −1,52 %, Median −1,79 %.
+- `r1h`: von 240 Messungen bleiben 42 gültig, 196 herausgenommen.
+- Autopilot: kein Signaltyp bewiesen (`gewinn_ueberraschung` 33 Fälle, 45,5 %, Ø +0,51 %).
+- Daytrading: sichtbare Bilanz bleibt bei 494 Trades/−3.625,51 € (alte Trades unverändert). Zum Vergleich, dieselbe Regel rückwirkend: sichtbar wären 230 Trades/−345,64 €, virtuell 264 Trades/−3.279,87 € (Turbo −2.746,11 €, Short −2.309,90 €, Krypto −533,76 €; Gruppen überschneiden sich).
+- Tests: 246 Unit, 36 E2E grün; `tsc` sauber.
+
+**Entscheidungen von Claude, die der Nutzer kippen kann**
+- Daytrading-Bilanz: Alte Turbo-/Short-/Krypto-Trades bleiben in der sichtbaren Bilanz (Regel „nichts nachträglich schönen“). Wer sie auch ausblenden will: `config/daytrading.json › virtuell.rueckwirkend: true` (ein Wort genügt).
+- Der Daytrading-Autopilot (`config/daytrading.json › autopilot`, 1-Stunden-Horizont) behält seine alte Schwelle; dort ist ohnehin nichts bewiesen.
+
+**Offen / bekannt**
+- Der Startkurs ist im Hauptlauf weiter der Vortagesschluss (Lauf vor Börsenbeginn). „Erster handelbarer Kurs nach dem Signal“ kommt mit den Sammelkursen in V1.
+- EU-Werte: Kursquelle nur Alpha Vantage (8 Abrufe am Tag) – bleibt bis V1 dünn.
+- Lokal liegen unversioniert `KONZEPT-VOLLTREFFER alt 11.11.md` und `politik-radar.patch` (nicht committet, nicht anfassen ohne Auftrag).
 
 ## ✅ PLAN „Datenkrake“ (vom Nutzer entschieden am 28.10.2026 abends) – gebaut, gilt weiter unter dem Plan „Volltreffer“
 **Ziel:** ein Programm auf dem iPad, das so gut wie möglich Aktien, ETFs, ETNs, Krypto und Hebel kauft und verkauft (Depot) und Daytrading betreibt. Es sammelt alles (Datenkrake), lernt daraus laufend und wird jeden Tag messbar besser. Dazu: wenig Nutzungslimit, schöne Oberfläche, Pushes, zeigt was klappt und was nicht.
