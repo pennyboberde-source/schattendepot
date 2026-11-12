@@ -1,0 +1,42 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-12",
+  "erstellt": "2026-11-12T06:50:00Z",
+  "briefing": [
+    "Nvidia −8 % nachbörslich: Board berät über CEO Huang, Entscheidung offen – binäres Risiko, kein Hebel.",
+    "Keine neue Order: Seitwärts/nervös, Insider-Cluster allein trägt nicht (Ø −2,3 %); Stops bei CEG/NRG enger.",
+    "Termine: US-Arbeitslosenanträge 14:30, Lagarde 20:30, nach US-Schluss Cisco, Applied Materials, Nu."
+  ],
+  "orders": [],
+  "anpassungen": [
+    {
+      "orderId": "2026-11-10-auto-ceg",
+      "feld": "stop",
+      "neu": 241.0,
+      "begruendung": "Nvidia-CEO-Krise belastet KI-Rechenzentrumsthemen (Stromversorger); Gewinn +2 % absichern, Stop knapp unter Einstand statt −3 %."
+    },
+    {
+      "orderId": "2026-11-10-auto-nrg",
+      "feld": "stop",
+      "neu": 86.4,
+      "begruendung": "Gleiches KI-Strom-Thema wie CEG; Nasdaq-Futures schwach. Stop knapp unter Einstand, Signal ist laut Lektion 6 nur Münzwurf."
+    }
+  ],
+  "prognose": [
+    {"name": "NVIDIA", "ticker": "NVDA", "markt": "us", "richtung": "runter", "chance": 78, "grund": "Nachbörslich −8 % auf Bericht, Board erwäge Absetzung von CEO Huang; Entscheidung offen."},
+    {"name": "AMD", "ticker": "AMD", "markt": "us", "richtung": "runter", "chance": 60, "grund": "Mitzieheffekt der Nvidia-Schwäche, Nasdaq-Futures im Minus."},
+    {"name": "Broadcom", "ticker": "AVGO", "markt": "us", "richtung": "runter", "chance": 58, "grund": "KI-Chip-Stimmung leidet unter Nvidia-Führungskrise."},
+    {"name": "TSMC", "ticker": "TSM", "markt": "us", "richtung": "runter", "chance": 58, "grund": "Größter Nvidia-Fertiger, Sympathieverkäufe wahrscheinlich."},
+    {"name": "Vistra", "ticker": "VST", "markt": "us", "richtung": "runter", "chance": 55, "grund": "KI-Strom-Thema hängt an Rechenzentrums-Stimmung."},
+    {"name": "Constellation Energy", "ticker": "CEG", "markt": "us", "richtung": "runter", "chance": 54, "grund": "Wie Vistra; offene Position, Stop enger gesetzt."},
+    {"name": "Apple", "ticker": "AAPL", "markt": "us", "richtung": "hoch", "chance": 54, "grund": "Umschichtung aus KI-Chips in Mega-Caps; Polymarket sieht Apple klar als größtes Unternehmen."},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 54, "grund": "Risikoscheu an der Nasdaq, Fear & Greed 28, Funding +17 % = gehebelte Käufer anfällig."},
+    {"name": "Ethereum", "ticker": "ETH", "markt": "krypto", "richtung": "runter", "chance": 53, "grund": "Folgt BTC bei Risikoscheu; 61 % der ETH-Liquidationen trafen Longs."},
+    {"name": "Rheinmetall", "ticker": "RHM.DE", "markt": "eu", "richtung": "runter", "chance": 52, "grund": "Politik-Radar: US übernimmt Russlands Forderungen – Waffenruhe-Fantasie belastet Rüstung."}
+  ],
+  "daytrading": [
+    {"name": "NVIDIA", "markt": "us", "isin": "US67066G1040", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 35, "these": "Riesenumsatz nach Kurslücke; Board-Entscheidung kann intraday kommen. Nur Aktie long (ORB long ist laut Statistik der einzige leicht positive Ansatz), kein Turbo."},
+    {"name": "AMD", "markt": "us", "isin": "US0079031078", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 33, "these": "Mitzieher der Nvidia-Lücke; Erholung nach Eröffnung möglich, wenn die Spanne nach oben bricht."}
+  ],
+  "notiz": "Morgenlauf 12.11.: bewusst keine neue Order. Gründe: Marktphase seitwärts/nervös (Lektion 18), Kalibrierung 37,5 % bei Konfidenz 40–59 %, Top-Kandidaten sind Insider-Cluster ohne Hochstufung (Ø −2,3 %, Lektion 1), Großauftrag/Übernahme-8-K (schwächstes Signal, Lektion 24) und Pump-verdächtige Raketen (Lektion 11/17). Nvidia: WSJ/NYT-Berichte, Board berate am 11.11. abends über Absetzung von CEO Huang; nachbörslich −8 bis −9 % (ca. 159 $ nach 173,73 $). Keine Entscheidung bekannt – binäres Ereignis mit Kurslücken-Gefahr, daher kein Hebel in keine Richtung. Lernstoff: Wie weit läuft die Bewegung nach einer CEO-Krise beim größten KI-Wert, und zieht sie KI-Strom (CEG/NRG/VST) mit? Quellen: https://www.cnbc.com/2026/11/08/nvidia-jensen-huang-email-board-of-directors-statement.html, https://www.cbsnews.com/news/nvidia-stock-dives-report-board-prepares-oust-jensen-huang/, https://www.aljazeera.com/economy/2026/11/12/nvidia-shares-plunge-amid-reports-board-to-discuss-ceo-huangs-future. Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung."
+}
