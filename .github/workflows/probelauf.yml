@@ -1,0 +1,39 @@
+name: Probelauf auf Datenkopie
+
+# Plan Volltreffer (Abschnitt 5): Probeläufe mit echten Kursen in einer Kopie der Daten.
+# Nichts wird committet, keine Mitteilungen, kein Ereignislauf. Läuft nur von Hand – auch auf einem Bau-Branch,
+# bevor dessen Code nach main geht (gh workflow run probelauf.yml --ref <branch>).
+on:
+  workflow_dispatch:
+    inputs:
+      art:
+        description: 'schattenbuch | jobs | alles'
+        default: schattenbuch
+
+permissions:
+  contents: read
+
+jobs:
+  probelauf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Probelauf
+        env:
+          ART: ${{ github.event.inputs.art || 'schattenbuch' }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+          OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
+        run: node jobs/probelauf.ts "$ART"
