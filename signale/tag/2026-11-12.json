@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-12T09:58:44.190Z",
-  "anzahl": 231,
+  "stand": "2026-11-12T11:00:03.665Z",
+  "anzahl": 233,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -1312,13 +1312,14 @@
       "t": "NVDA",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.62,
+      "st": 0.72,
       "q": [
         "Handelsblatt Finanzen",
         "CNBC Top News",
         "Finnhub News",
         "MarketWatch",
-        "BTC-ECHO"
+        "BTC-ECHO",
+        "tagesschau Wirtschaft"
       ],
       "z": "2026-11-11T18:11:23.000Z"
     },
@@ -3007,7 +3008,7 @@
       "i": "DE000HF01GK3",
       "typ": "kursrakete",
       "r": 0,
-      "st": 0.83,
+      "st": 1,
       "q": [
         "gettex-Scanner"
       ],
@@ -3052,6 +3053,32 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-12T09:43:11.738Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-11-12",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-12T03:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000UN8RSH2:2026-11-12",
+      "s": "I:DE000UN8RSH2",
+      "n": "UNICREDIT BANK GMBH",
+      "i": "DE000UN8RSH2",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.46,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-12T10:38:16.665Z"
     }
   ]
 }
