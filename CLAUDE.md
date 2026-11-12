@@ -2,6 +2,7 @@
 
 Lernende Börsen-**Simulation** mit fiktivem Geld. Keine Anlageberatung, keine echten Orders, kein echtes Depot.
 Der vollständige Auftrag steht in `schattendepot-prompt.md` (Abschnitte 0–9). Den aktuellen Stand und den nächsten Schritt gibt es in `STAND.md`.
+Gültiger Plan seit 11.11.2026: `KONZEPT-VOLLTREFFER.md` (dritter Bereich „Volltreffer“, Meilensteine V0, VS, V1–V6, Freigaben F1–F4); der Stand der Meilensteine steht in STAND.md ganz oben.
 
 ## Arbeitsweise mit dem Nutzer
 - Sitzungsstart: „Lies STAND.md und mach weiter“ → STAND.md lesen, beim „Nächsten Schritt“ weitermachen.

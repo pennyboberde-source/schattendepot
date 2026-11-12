@@ -1,8 +1,35 @@
 # STAND – Schattendepot
 
-_Zuletzt aktualisiert: 06.11.2026 abends (Politik-Radar P1+P2+Lagebild/Routinen/App-Karte gebaut; Fehlalarm „Morgenlauf ausgefallen“ und Schattenbuch-Ausreißer behoben; vorher: Plan „Datenkrake“ S1–S4 fertig und live)_
+_Zuletzt aktualisiert: 12.11.2026 abends (Plan „Volltreffer“ übernommen, Befunde geprüft, Freigaben F1–F3 angefordert, V0 in Arbeit; vorher: Politik-Radar 06.11., Plan „Datenkrake“ S1–S4 fertig und live)_
 
-## ✅ GÜLTIGER PLAN „Datenkrake“ (vom Nutzer entschieden am 28.10.2026 abends) – geht allem darunter vor
+## 🎯 GÜLTIGER PLAN „Volltreffer“ (Nutzer 11.11.2026, Ergänzung Selbstverbesserung 12.11.) – geht allem darunter vor
+**Der vollständige Bauauftrag steht in `KONZEPT-VOLLTREFFER.md` (Abschnitte 0–8).** Neue Sitzung: „Lies STAND.md und mach weiter“ → hier beim nächsten offenen Meilenstein weitermachen, Details im Konzept nachlesen (nur den Abschnitt des Meilensteins).
+**Ziel:** Signale erkennen, die einem großen, handelbaren Kurssprung vorausgehen. Volltreffer = mindestens 400 € netto aus einer 1.000-€-Order. Eigener dritter Bereich „Volltreffer“ neben Depot und Daytrading, zuerst rein virtuell. Der Plan „Datenkrake“ darunter gilt weiter, soweit „Volltreffer“ nichts anderes sagt.
+**Arbeitsweise:** nach jedem Meilenstein Halt (Tests grün, Probelauf auf Datenkopie, STAND.md, kurzer Bericht), dann auf „weiter“ warten. „durchlaufen“ = ohne Halt bis zur nächsten nötigen Freigabe.
+
+**Meilensteine**
+- ⏳ **V0 Aufräumen** (in Arbeit seit 12.11.): Schattenbuch entstopfen, `r1h` nur bei offenem Markt, ehrliche Fallzahlen + Median + Episoden, Verlustbringer virtuell, Autopilot-Beweisschwelle 30/55 %/+1 %, BRK-A-Filter.
+- ⬜ **VS Selbstverbesserung** (direkt nach V0, keine Freigabe): Verbesserungsbuch, wöchentlicher Verbesserungslauf, Leitplanken `config/verbesserung.json`, automatische Übernahme mit Rückgängig-Link.
+- ⬜ **V1 Fundament** (braucht F1 + F2): Sammelkurse gettex/US/Krypto, privates Archiv, Stammdaten, Handelbarkeits-Karte, Vergleichsgruppe.
+- ⬜ **V2 Zensus** · ⬜ **V3 Rückblick und Musterprüfung** · ⬜ **V4 Bereich Volltreffer (virtuell)** · ⬜ **V5 Claudes Teil** · ⬜ **V6 Beförderung** (braucht F4 je Muster).
+
+**Freigaben (angefordert 12.11.2026 abends, 🔴❗ + Push)**
+- ⬜ F1 Massive-Konto (Tarif Basic, gratis) + Secret `MASSIVE_API_KEY` – nötig vor V1. Verlangt die Anmeldung Zahlungsdaten: abbrechen, dann Alpaca-Papierkonto.
+- ⬜ F2 privates Repo `schattendepot-archiv` + Zugriffstoken nur für dieses Repo (Inhalte: Lesen und Schreiben) als Secret `ARCHIV_TOKEN` – nötig vor V1.
+- ⬜ F3 optional: `COINGECKO_API_KEY` (Demo-Tarif), `OPENFIGI_API_KEY`.
+- ⬜ F4 bei V6: Ja des Nutzers je Muster.
+
+**Befund-Prüfung 12.11.2026 (Datenzweig c2476a9, 20:54 Uhr) – alle Befunde aus Abschnitt 2 bestätigt, keine Abweichung in der Sache, nur die Zahlen sind einen Tag weiter:**
+- B1: 362 von 559 Tageskandidaten ohne `start` (11.11.: 324 von 519); 03.–12.11. je Tag meist 0–3 von 40 mit Startkurs.
+- B4: 277 von 301 Startkursen vor 10 Uhr gezogen, 203 von 240 `r1h`-Werten exakt 0.
+- B5: „handelsstopp 47,11 % (n=36)“ beruht auf 4 Wochen-Messungen; 337 Einträge mit Messung, 217 verschiedene Werte.
+- B6: INTC am 30.10. als `markt: krypto`, `verwaesserung:BRK-A` am 10./11./12.11. im Buch.
+- B8: beste Depot-Order +92,53 €; Daytrading 494 Trades, −3.625,51 € nach Gebühren.
+- B9: 99 von 3.240 Signalen mit ISIN. B2, B3, B7 am Code bestätigt (`holeKurs` einzeln, nur Messpunkte, Hot Stuff ohne Sprunggröße).
+
+**➡️ Nächster Schritt:** V0 fertig bauen (siehe oben), danach Halt und Bericht.
+
+## ✅ PLAN „Datenkrake“ (vom Nutzer entschieden am 28.10.2026 abends) – gebaut, gilt weiter unter dem Plan „Volltreffer“
 **Ziel:** ein Programm auf dem iPad, das so gut wie möglich Aktien, ETFs, ETNs, Krypto und Hebel kauft und verkauft (Depot) und Daytrading betreibt. Es sammelt alles (Datenkrake), lernt daraus laufend und wird jeden Tag messbar besser. Dazu: wenig Nutzungslimit, schöne Oberfläche, Pushes, zeigt was klappt und was nicht.
 
 **Zwei Ebenen**
