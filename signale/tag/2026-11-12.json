@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-12T19:53:55.804Z",
-  "anzahl": 293,
+  "stand": "2026-11-12T20:49:01.623Z",
+  "anzahl": 299,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3570,7 +3570,7 @@
       "t": "AERT",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3878,6 +3878,84 @@
         "Nasdaq Trader"
       ],
       "z": "2026-11-12T00:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:IIPR:2026-11-09",
+      "s": "T:IIPR",
+      "n": "INNOVATIVE INDUSTRIAL PROPERTIES INC",
+      "t": "IIPR",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T13:24:01.000Z"
+    },
+    {
+      "id": "verwaesserung:FUSE:2026-11-09",
+      "s": "T:FUSE",
+      "n": "Fusemachines Inc.",
+      "t": "FUSE",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-09T18:23:28.000Z"
+    },
+    {
+      "id": "verwaesserung:ATLC:2026-11-10",
+      "s": "T:ATLC",
+      "n": "Atlanticus Holdings Corp",
+      "t": "ATLC",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-10T22:25:02.000Z"
+    },
+    {
+      "id": "verwaesserung:XRX:2026-11-10",
+      "s": "T:XRX",
+      "n": "Xerox Holdings Corp",
+      "t": "XRX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-10T22:28:43.000Z"
+    },
+    {
+      "id": "verwaesserung:ABVC:2026-11-10",
+      "s": "T:ABVC",
+      "n": "ABVC BIOPHARMA, INC.",
+      "t": "ABVC",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-10T23:20:15.000Z"
+    },
+    {
+      "id": "verwaesserung:RUM:2026-11-12",
+      "s": "T:RUM",
+      "n": "RUM Group Inc.",
+      "t": "RUM",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-12T13:00:27.000Z"
     }
   ]
 }
