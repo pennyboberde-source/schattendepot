@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-12T17:52:34.522Z",
-  "anzahl": 288,
+  "stand": "2026-11-12T18:53:44.877Z",
+  "anzahl": 292,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3753,7 +3753,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.97,
+      "st": 1,
       "q": [
         "Upbit"
       ],
@@ -3812,6 +3812,59 @@
         "Polymarket (Politik)"
       ],
       "z": "2026-11-12T17:52:34.522Z"
+    },
+    {
+      "id": "handelsstopp:TVGN:2026-11-12",
+      "s": "T:TVGN",
+      "n": "Tevogen Inc Cmn Stk",
+      "t": "TVGN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-12T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SENEB:2026-11-12",
+      "s": "T:SENEB",
+      "n": "Seneca Foods Corp",
+      "t": "SENEB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-12T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:MBG:2026-11-12",
+      "s": "T:MBG",
+      "n": "Mercedes-Benz",
+      "t": "MBG.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-12T18:44:38.000Z"
+    },
+    {
+      "id": "upbit_warnung:BARD:2026-11-12",
+      "s": "T:BARD",
+      "n": "Lombard",
+      "t": "BARD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-12T18:53:44.877Z"
     }
   ]
 }
