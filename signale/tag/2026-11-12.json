@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-12T07:14:21.913Z",
-  "anzahl": 224,
+  "stand": "2026-11-12T08:58:19.949Z",
+  "anzahl": 229,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -1284,10 +1284,11 @@
       "t": "DB1.DE",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.41,
+      "st": 0.51,
       "q": [
         "Handelsblatt Finanzen",
-        "BTC-ECHO"
+        "BTC-ECHO",
+        "FAZ Finanzen"
       ],
       "z": "2026-11-11T11:32:42.000Z"
     },
@@ -2957,6 +2958,72 @@
         "Handelsblatt Finanzen"
       ],
       "z": "2026-11-12T06:49:14.000Z"
+    },
+    {
+      "id": "nachricht:DBK:2026-11-12",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-12T06:27:27.000Z"
+    },
+    {
+      "id": "nachricht:MUV2:2026-11-12",
+      "s": "T:MUV2",
+      "n": "Münchener Rück",
+      "t": "MUV2.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-12T07:18:08.000Z"
+    },
+    {
+      "id": "prognose_erhoehung:ALV:2026-11-12",
+      "s": "T:ALV",
+      "n": "Allianz",
+      "t": "ALV.DE",
+      "typ": "prognose_erhoehung",
+      "r": 1,
+      "st": 0.7,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-12T08:20:49.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF01GK3:2026-11-12",
+      "s": "I:DE000HF01GK3",
+      "n": "HSBC TRINKAUS+BURKHARDT",
+      "i": "DE000HF01GK3",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.69,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-12T08:43:39.479Z"
+    },
+    {
+      "id": "kursrakete:OBCKF:2026-11-12",
+      "s": "T:OBCKF",
+      "n": "OTTOBOCK SE & CO KGAA",
+      "t": "OBCKF",
+      "i": "DE000BCK2223",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.45,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-12T08:44:59.577Z"
     }
   ]
 }
