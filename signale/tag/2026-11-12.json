@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-12T17:00:10.651Z",
-  "anzahl": 284,
+  "stand": "2026-11-12T17:52:34.522Z",
+  "anzahl": 288,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3505,7 +3505,7 @@
       "t": "SMX",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.8,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3753,11 +3753,65 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.73,
+      "st": 0.97,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-12T17:00:10.651Z"
+    },
+    {
+      "id": "handelsstopp:GDEV:2026-11-12",
+      "s": "T:GDEV",
+      "n": "GDEV Inc. Ord",
+      "t": "GDEV",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-12T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GPN:2026-11-12",
+      "s": "T:GPN",
+      "n": "Global Payments Inc. Common Stock",
+      "t": "GPN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-12T00:00:00.000Z"
+    },
+    {
+      "id": "politik_wahrscheinlichkeit:XOM:2026-11-12:6831493",
+      "s": "T:XOM",
+      "n": "Exxon Mobil",
+      "t": "XOM",
+      "m": "us",
+      "typ": "politik_wahrscheinlichkeit",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Polymarket (Politik)"
+      ],
+      "z": "2026-11-12T17:52:34.522Z"
+    },
+    {
+      "id": "politik_wahrscheinlichkeit:LHA:2026-11-12:6831493",
+      "s": "T:LHA",
+      "n": "Lufthansa",
+      "t": "LHA.DE",
+      "m": "eu",
+      "typ": "politik_wahrscheinlichkeit",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Polymarket (Politik)"
+      ],
+      "z": "2026-11-12T17:52:34.522Z"
     }
   ]
 }
