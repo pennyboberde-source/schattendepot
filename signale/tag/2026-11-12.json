@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-12T08:58:19.949Z",
-  "anzahl": 229,
+  "stand": "2026-11-12T09:58:44.190Z",
+  "anzahl": 231,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -2928,7 +2928,8 @@
       "r": 1,
       "st": 0.55,
       "q": [
-        "tagesschau Wirtschaft"
+        "tagesschau Wirtschaft",
+        "tagesschau Ausland"
       ],
       "z": "2026-11-12T04:57:06.186Z"
     },
@@ -2942,7 +2943,8 @@
       "r": -1,
       "st": 0.55,
       "q": [
-        "tagesschau Wirtschaft"
+        "tagesschau Wirtschaft",
+        "tagesschau Ausland"
       ],
       "z": "2026-11-12T04:57:06.186Z"
     },
@@ -3005,7 +3007,7 @@
       "i": "DE000HF01GK3",
       "typ": "kursrakete",
       "r": 0,
-      "st": 0.69,
+      "st": 0.83,
       "q": [
         "gettex-Scanner"
       ],
@@ -3024,6 +3026,32 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-12T08:44:59.577Z"
+    },
+    {
+      "id": "nachricht:CEG:2026-11-12",
+      "s": "T:CEG",
+      "n": "CEG",
+      "t": "CEG",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-12T09:01:06.000Z"
+    },
+    {
+      "id": "kursrakete:DE000GG0X9X4:2026-11-12",
+      "s": "I:DE000GG0X9X4",
+      "n": "GOLDMAN SACHS & CO OHG",
+      "i": "DE000GG0X9X4",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-12T09:43:11.738Z"
     }
   ]
 }
