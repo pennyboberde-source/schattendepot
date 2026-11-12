@@ -1,6 +1,108 @@
 {
-  "stand": "2026-11-12T15:40:36.888Z",
+  "stand": "2026-11-12T16:44:13.088Z",
   "orders": [
+    {
+      "id": "2026-11-12-auto-upbound-group-inc",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-12T04:57:06.186Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Upbound Group, Inc.",
+          "isin": "",
+          "ticker": "UPBD",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "UPBD",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "insider_kauf",
+        "these": "Autopilot: beste gemessene Spielart für „insider_cluster_kauf“ – direkt kaufen, 1 Tage: Ø 0.84 % nach Kosten, 48.8 % im Plus (41 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:UPBD: insider_cluster_kauf (Score 1.76)",
+        "signalIds": [
+          "insider_cluster_kauf:UPBD:2026-11-12"
+        ],
+        "quellen": [
+          {
+            "name": "OpenInsider",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 49,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.84,
+        "zielNettoProzent": 7.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-14T04:57:06.186Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (34 Fälle)"
+      },
+      "verkaufstermin": "2026-11-14T04:57:06.186Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-12T14:39:47.212Z",
+        "stueck": 43,
+        "kurs": 22.868,
+        "kurswert": 983.32,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 983.32,
+        "kursquelle": "Finnhub (2026-11-12T14:38:57.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 24.57,
+      "stopkurs": 22.18,
+      "etfKauf": {
+        "wert": 130.34,
+        "zeit": "2026-11-12T14:28:31.073Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 11,
+        "hinweis": "letztes Geschäft 2026-11-12",
+        "vortag": 131.14
+      },
+      "etfVergleich": {
+        "netto": 8.77,
+        "nettoProzent": 0.96,
+        "etfKauf": 130.34,
+        "etfVerkauf": 131.75
+      },
+      "verkauf": {
+        "zeit": "2026-11-12T16:44:13.088Z",
+        "stueck": 43,
+        "kurs": 21.914,
+        "kurswert": 942.3,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 942.3,
+        "kursquelle": "Finnhub (2026-11-12T16:43:27.000Z)",
+        "synthetisch": true,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "kursProzent": -4.17,
+        "netto": -41.02,
+        "nettoProzent": -4.17,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": -41.02
+      }
+    },
     {
       "id": "2026-11-11-auto-skyd",
       "status": "geschlossen",

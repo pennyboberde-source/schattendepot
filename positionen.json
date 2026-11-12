@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-12T15:40:36.888Z",
+  "stand": "2026-11-12T16:44:13.088Z",
   "offen": [
     {
       "id": "2026-11-12-auto-six-flags-entertainment-corpor",
@@ -75,93 +75,12 @@
         "vortag": 131.14
       },
       "letzterKurs": {
-        "wert": 10.056,
-        "vortag": 10.038,
-        "zeit": "2026-11-12T15:40:15.000Z",
+        "wert": 10.013,
+        "vortag": 10.04,
+        "zeit": "2026-11-12T16:43:13.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10577 USD/EUR"
-      }
-    },
-    {
-      "id": "2026-11-12-auto-upbound-group-inc",
-      "status": "offen",
-      "vorgemerktUm": "2026-11-12T04:57:06.186Z",
-      "vorgemerktVon": "autopilot",
-      "plan": {
-        "wertpapier": {
-          "name": "Upbound Group, Inc.",
-          "isin": "",
-          "ticker": "UPBD",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_neben",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "UPBD",
-            "waehrung": "USD"
-          }
-        },
-        "risikoklasse": "normal",
-        "herkunft": "autopilot",
-        "strategie": "insider_kauf",
-        "these": "Autopilot: beste gemessene Spielart für „insider_cluster_kauf“ – direkt kaufen, 1 Tage: Ø 0.84 % nach Kosten, 48.8 % im Plus (41 Fälle, vorsichtig bewertet).",
-        "ausloeser": "Autopilot-Kandidat T:UPBD: insider_cluster_kauf (Score 1.76)",
-        "signalIds": [
-          "insider_cluster_kauf:UPBD:2026-11-12"
-        ],
-        "quellen": [
-          {
-            "name": "OpenInsider",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          }
-        ],
-        "konfidenz": 49,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 0.84,
-        "zielNettoProzent": 7.4,
-        "stopProzent": -3,
-        "verkaufstermin": "2026-11-14T04:57:06.186Z",
-        "risiken": [
-          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
-          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
-        ],
-        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (34 Fälle)"
-      },
-      "verkaufstermin": "2026-11-14T04:57:06.186Z",
-      "anpassungen": [],
-      "kauf": {
-        "zeit": "2026-11-12T14:39:47.212Z",
-        "stueck": 43,
-        "kurs": 22.868,
-        "kurswert": 983.32,
-        "entgelt": {
-          "provision": 0,
-          "handelsplatz": 0,
-          "gesamt": 0
-        },
-        "betrag": 983.32,
-        "kursquelle": "Finnhub (2026-11-12T14:38:57.000Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 24.57,
-      "stopkurs": 22.18,
-      "etfKauf": {
-        "wert": 130.34,
-        "zeit": "2026-11-12T14:28:31.073Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 11,
-        "hinweis": "letztes Geschäft 2026-11-12",
-        "vortag": 131.14
-      },
-      "letzterKurs": {
-        "wert": 22.365,
-        "vortag": 22.853,
-        "zeit": "2026-11-12T15:40:14.000Z",
-        "quelle": "Finnhub",
-        "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10577 USD/EUR"
+        "hinweis": "umgerechnet zu 1.10556 USD/EUR"
       }
     },
     {
@@ -251,12 +170,12 @@
         "vortag": 129.11
       },
       "letzterKurs": {
-        "wert": 250.631,
-        "vortag": 248.451,
-        "zeit": "2026-11-12T15:40:15.000Z",
+        "wert": 251.094,
+        "vortag": 248.498,
+        "zeit": "2026-11-12T16:43:50.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10577 USD/EUR"
+        "hinweis": "umgerechnet zu 1.10556 USD/EUR"
       }
     },
     {
@@ -346,12 +265,12 @@
         "vortag": 129.11
       },
       "letzterKurs": {
-        "wert": 88.843,
-        "vortag": 88.174,
-        "zeit": "2026-11-12T15:40:18.000Z",
+        "wert": 89.186,
+        "vortag": 88.191,
+        "zeit": "2026-11-12T16:43:59.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10577 USD/EUR"
+        "hinweis": "umgerechnet zu 1.10556 USD/EUR"
       }
     },
     {
@@ -432,12 +351,12 @@
         "vortag": 128.73
       },
       "letzterKurs": {
-        "wert": 52.443,
-        "vortag": 51.765,
-        "zeit": "2026-11-12T15:40:14.000Z",
+        "wert": 52.833,
+        "vortag": 51.775,
+        "zeit": "2026-11-12T16:43:56.000Z",
         "quelle": "Finnhub",
         "synthetisch": true,
-        "hinweis": "umgerechnet zu 1.10577 USD/EUR"
+        "hinweis": "umgerechnet zu 1.10556 USD/EUR"
       }
     }
   ],
