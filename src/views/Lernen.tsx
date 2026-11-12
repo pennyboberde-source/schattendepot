@@ -7,7 +7,7 @@ import { STRATEGIE_TEXT } from '../lib/texte';
 import { datumKurz } from '../lib/zeit';
 import { Geladen, Karte, Leer } from '../ui';
 import type { VorlaufStatistik } from '../../core/datenkrake.ts';
-import { DatenkrakeKarten, type HotStuffBericht } from './LernenDatenkrake';
+import { DatenkrakeKarten, MitN, urteilsWert, type HotStuffBericht } from './LernenDatenkrake';
 
 const TYP_NAME = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name])) as Record<string, string>;
 const p = (x: number | null) => (x === null ? '–' : prozent(x));
@@ -193,17 +193,17 @@ function GruppenTabelle({ titel, daten, name = (k) => k }: { titel: string; date
 }
 
 function TrackingTabelle({ daten, gewichte, grund, name = (k) => k }: { daten: Record<string, TrackingGruppe>; gewichte: Record<string, number>; grund: (k: string) => number | undefined; name?: (k: string) => string }) {
-  const zeilen = Object.entries(daten).sort((a, b) => (b[1].oe1W ?? -99) - (a[1].oe1W ?? -99));
+  const zeilen = Object.entries(daten).sort((a, b) => (urteilsWert(b[1]) ?? -99) - (urteilsWert(a[1]) ?? -99));
   if (zeilen.length === 0) return <Leer>Noch keine mitverfolgten Kandidaten.</Leer>;
   return (
     <table class="tabelle">
       <thead>
         <tr>
           <th></th>
-          <th>n</th>
-          <th>1 Tag</th>
-          <th>1 Woche</th>
-          <th>1 Monat</th>
+          <th>1 Tag (n)</th>
+          <th>1 Woche (n)</th>
+          <th>Median 1 W</th>
+          <th>1 Monat (n)</th>
           <th>Gewicht</th>
         </tr>
       </thead>
@@ -211,10 +211,16 @@ function TrackingTabelle({ daten, gewichte, grund, name = (k) => k }: { daten: R
         {zeilen.map(([k, t]) => (
           <tr key={k}>
             <td>{name(k)}</td>
-            <td>{t.anzahl}</td>
-            <td>{p(t.oe1T)}</td>
-            <td class={(t.oe1W ?? 0) >= 0 ? 'plus' : 'minus'}>{p(t.oe1W)}</td>
-            <td>{p(t.oe1M)}</td>
+            <td>
+              <MitN wert={t.oe1T} n={t.n1T} />
+            </td>
+            <td class={(t.oe1W ?? 0) >= 0 ? 'plus' : 'minus'}>
+              <MitN wert={t.oe1W} n={t.n1W} />
+            </td>
+            <td>{p(t.med1W ?? null)}</td>
+            <td>
+              <MitN wert={t.oe1M} n={t.n1M} />
+            </td>
             <td>{(gewichte[k] ?? grund(k) ?? 1).toLocaleString('de-DE')}</td>
           </tr>
         ))}

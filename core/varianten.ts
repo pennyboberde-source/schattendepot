@@ -6,6 +6,7 @@
 import { runde } from './geld.ts';
 import type { TrackingEintrag } from './statistik.ts';
 import type { MarktGruppe } from './autopilot.ts';
+import { episodenVertreter } from './episoden.ts';
 
 export type Horizont = 'r1T' | 'r3T' | 'r1W' | 'r10T';
 export const HORIZONT_TAGE: Record<Horizont, number> = { r1T: 1, r3T: 3, r1W: 5, r10T: 10 };
@@ -110,7 +111,9 @@ export function variantenSchattenbuch(
     }
   }
   const out: VariantenErgebnis[] = [];
-  for (const { typ, gruppe, faelle } of je.values()) {
+  for (const { typ, gruppe, faelle: alleFaelle } of je.values()) {
+    // ein Wert zählt je Episode einmal (gleicher Schlüssel binnen 10 Handelstagen)
+    const faelle = episodenVertreter(alleFaelle);
     const krypto = gruppe === 'krypto';
     const alle: Variante[] = [];
     for (const horizont of HORIZONTE) {

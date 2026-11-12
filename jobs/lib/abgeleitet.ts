@@ -38,7 +38,7 @@ export function abgeleitetSchreiben(jetzt: Date) {
   // S2: Autopilot-Beweise und Ziel/Stop-Vorschläge aus dem Schattenbuch
   const huerden = huerdenAusConfig(cfg);
   const ap = cfg.einstellungen.autopilot;
-  if (ap) statistik.autopilot = signalBeweise(tracking, { horizont: ap.horizont, mindestFaelle: ap.mindestFaelle, mindestChance: cfg.einstellungen.mindestChance ?? 40 }, huerden).slice(0, 30);
+  if (ap) statistik.autopilot = signalBeweise(tracking, { horizont: ap.horizont, mindestFaelle: ap.mindestFaelle, mindestChance: ap.mindestChance ?? cfg.einstellungen.mindestChance ?? 40, mindestOeNetto: ap.mindestOeNetto }, huerden).slice(0, 30);
   if (cfg.einstellungen.zielStop) statistik.zielStop = zielStopVorschlaege(tracking, (t) => huerden[marktGruppe(t) ?? 'aktie'], cfg.einstellungen.zielStop);
   statistik.varianten = variantenSchattenbuch(tracking, marktGruppe, variantenKosten(cfg), { mindestFaelle: cfg.einstellungen.varianten?.mindestFaelle ?? 25, mindestChance: cfg.einstellungen.mindestChance ?? 40, volltrefferProzent: cfg.einstellungen.varianten?.volltrefferProzent ?? 15, kellyAnteil: cfg.einstellungen.varianten?.kellyAnteil ?? 0.5, hebelMax: cfg.einstellungen.varianten?.hebelMax ?? 50 }).slice(0, 40);
   const vTop = statistik.varianten.filter((v) => v.beste).slice(0, 6);

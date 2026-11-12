@@ -45,8 +45,13 @@
     }
   },
   "tracking": {
+    "hinweis": "Schattenbuch (Plan Volltreffer V0): Startkurse neuer Kandidaten haben ein eigenes Kontingent und kommen vor den Nachmessungen. Fehlt ein Startkurs, wird er am selben Tag nachgeholt (höchstens maxStartVersuche Fehlversuche), nie später. Ab abrufPauseAb Abrufen je Lauf wird gebremst (Finnhub erlaubt 60 je Minute).",
     "kandidatenProTag": 40,
-    "maxAbrufeProLauf": 60
+    "maxAbrufeProLauf": 60,
+    "maxStartAbrufeProLauf": 60,
+    "maxStartVersuche": 3,
+    "abrufPauseAb": 45,
+    "abrufPauseMs": 1200
   },
   "zeitzone": "Europe/Berlin",
   "risikoBudget": {
@@ -74,7 +79,10 @@
   "autopilot": {
     "hinweis": "Code kauft zwischen den Claude-Läufen selbst ins Depot (1.000 € je Order), aber nur Signaltypen, die sich im Schattenbuch bewiesen haben: Mindestfallzahl (nur Long-Fälle, gemessen nach 'horizont'), Chance nach Gebühren ≥ mindestChance und positiver Erwartungswert nach Gebühren. Claude prüft im nächsten Lauf.",
     "aktiv": true,
-    "mindestFaelle": 20,
+    "mindestFaelle": 30,
+    "mindestChance": 55,
+    "mindestOeNetto": 1,
+    "beweisHinweis": "Beweisschwelle seit 12.11.2026 (Monatsprüfung 2026-11, Vorschlag 1; Plan Volltreffer V0): mindestens 30 Fälle (ein Wert je Episode einmal), mindestens 55 % im Plus und Ø nach Gebühren mindestens +1 %. Gilt auch für die beste Spielart aus dem Varianten-Schattenbuch.",
     "horizont": "r3T",
     "maxJeLauf": 2,
     "maxJeTag": 4,

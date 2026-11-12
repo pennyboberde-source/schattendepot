@@ -149,3 +149,22 @@ export function inRuhezeit(jetzt: Date, ruhe: { von: string; bis: string }): boo
   const bis = uhrzeitMinuten(ruhe.bis);
   return von <= bis ? m >= von && m < bis : m >= von || m < bis;
 }
+
+// ---------- Marktzeiten je Markt (Plan Volltreffer V0: r1h nur messen, wenn der Markt des Werts offen ist) ----------
+const nyFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', weekday: 'short', hourCycle: 'h23' });
+
+/**
+ * Ist der reguläre Handel des Markts zu diesem Zeitpunkt offen?
+ * us: NYSE/Nasdaq 09:30–16:00 New Yorker Zeit, Mo–Fr ohne NYSE-Feiertage (Liste aus config/daytrading.json) ·
+ * eu: Xetra 09:00–17:30 Berlin an deutschen Handelstagen · krypto: immer.
+ */
+export function marktOffen(markt: 'us' | 'eu' | 'krypto', zeit: Date, opt: { nyseFeiertage?: string[] } = {}): boolean {
+  if (markt === 'krypto') return true;
+  if (markt === 'eu') return inHandelszeit(zeit, { von: '09:00', bis: '17:30' });
+  const t: Record<string, string> = {};
+  for (const p of nyFmt.formatToParts(zeit)) t[p.type] = p.value;
+  const wt = WOCHENTAG[t.weekday];
+  if (wt > 5 || (opt.nyseFeiertage ?? []).includes(`${t.year}-${t.month}-${t.day}`)) return false;
+  const minuten = Number(t.hour) * 60 + Number(t.minute);
+  return minuten >= 9 * 60 + 30 && minuten < 16 * 60;
+}

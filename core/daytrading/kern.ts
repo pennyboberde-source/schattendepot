@@ -78,6 +78,34 @@ export interface DtTrade {
   timeMachine?: ZeitmaschinenErgebnis;
   ausstieg?: { zeit: string; basisKurs: number; kurs: number; kurswert: number; grund: DtAusstiegGrund };
   ergebnis?: DtErgebnis;
+  /**
+   * Läuft nur virtuell mit (Plan Volltreffer V0, belegte Verlustbringer Turbo/Short/Krypto): wird weiter simuliert und
+   * getrennt ausgewertet, zählt aber nicht in sichtbare Kennzahlen, Abendbilanz, Wochenzeugnis und Mitteilungen.
+   */
+  virtuell?: boolean;
+}
+
+/** Schalter in config/daytrading.json › virtuell */
+export interface VirtuellRegel {
+  aktiv: boolean;
+  instrumente?: DtInstrument[];
+  richtungen?: DtRichtung[];
+  maerkte?: DtMarkt[];
+  /** erster Tag mit der Regel (für die Kennzahl „sichtbar seit der Umstellung“) */
+  ab?: string;
+  /** true: auch ältere Trades ohne Kennzeichen zählen nach der Regel als virtuell (Standard: nein – nichts wird nachträglich geschönt) */
+  rueckwirkend?: boolean;
+}
+
+/** Würde ein Trade dieser Spielart nach der Regel nur virtuell laufen? */
+export function virtuellNachRegel(t: Pick<DtTrade, 'instrument' | 'richtung' | 'markt'>, r?: VirtuellRegel): boolean {
+  if (!r?.aktiv) return false;
+  return (r.instrumente ?? []).includes(t.instrument) || (r.richtungen ?? []).includes(t.richtung) || (r.maerkte ?? []).includes(t.markt);
+}
+
+/** Zählt der Trade als virtuell? Maßgeblich ist das Kennzeichen am Einstiegs-Ereignis. */
+export function istVirtuell(t: DtTrade, r?: VirtuellRegel): boolean {
+  return t.virtuell === true || (!!r?.rueckwirkend && virtuellNachRegel(t, r));
 }
 
 export interface ZeitmaschinenErgebnis {

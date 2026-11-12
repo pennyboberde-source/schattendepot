@@ -58,6 +58,9 @@ test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
   await expect(page.getByText('Kalibrierung – hält die Konfidenz, was sie verspricht?')).toBeVisible();
   // Datenkrake oben: Was klappt (mit Ampel), Hot Stuff, Vorlauf
   await expect(page.getByText('Was klappt – Signale im Schattenbuch')).toBeVisible();
+  // ehrliche Fallzahlen: n je Messpunkt und Median
+  await expect(page.getByRole('columnheader', { name: 'Median 1 W' }).first()).toBeVisible();
+  await expect(page.getByRole('columnheader', { name: 'Ø 1 Woche (n)' }).first()).toBeVisible();
   await expect(page.getByText('🔥 Hot Stuff – hätte man es erkennen können?')).toBeVisible();
   await expect(page.getByRole('cell', { name: 'Insider-Cluster-Kauf' }).first()).toBeVisible();
   await expect(page.getByText('3 → 3,3')).toBeVisible();
@@ -74,6 +77,11 @@ test('Daytrading: eigener Bereich mit Kennzahlen, Herkunft und Trades', async ({
   await expect(page.getByText(/Consorsbank/)).toHaveCount(0);
   await expect(page.getByRole('cell', { name: '🧠 Claude' })).toBeVisible();
   await expect(page.getByText('Demo Alpha AG').first()).toBeVisible();
+  // Plan Volltreffer V0: Turbo/Short/Krypto laufen nur virtuell mit und stehen getrennt
+  await expect(page.getByText('Nur virtuell mitgeführt – zählt nicht mit')).toBeVisible();
+  await expect(page.getByTestId('dt-virtuell')).toContainText('nur noch virtuell');
+  await expect(page.getByText(/nur virtuell \(zählt nicht mit\)/).first()).toBeVisible();
+  await expect(page.getByRole('cell', { name: 'Short (fallende Kurse)' })).toBeVisible();
 });
 
 test('Einstellungen: Push-Hinweis außerhalb der Home-Bildschirm-App', async ({ page }) => {

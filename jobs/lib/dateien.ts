@@ -66,7 +66,7 @@ export interface Einstellungen {
   ruhezeit: { von: string; bis: string };
   pushTypen: Record<string, boolean>;
   vergleichsEtf: { name: string; isin: string; kursbasis: Kursbasis; ersatz: Kursbasis };
-  tracking: { kandidatenProTag: number; maxAbrufeProLauf: number };
+  tracking: { kandidatenProTag: number; maxAbrufeProLauf: number; maxStartAbrufeProLauf?: number; maxStartVersuche?: number; abrufPauseAb?: number; abrufPauseMs?: number };
   /** Mindest-Chance in % für jeden Kauf (Plan Datenkrake) */
   mindestChance?: number;
   risikoBudget: { maxSpekulativJeLauf: number; maxAnteilSpekulativ: number; stopMinProzent: number; mindestKursEuro: number };

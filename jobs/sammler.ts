@@ -16,7 +16,7 @@ import { abgeleitetSchreiben } from './lib/abgeleitet.ts';
 import { pushen } from './lib/pushen.ts';
 import { ereignisBehandeln } from './lib/routine.ts';
 import { schwaerzen } from './lib/schwaerzen.ts';
-import { trackingAktualisieren } from './lib/tracking.ts';
+import { trackingAktualisieren, trackingText } from './lib/tracking.ts';
 import { autopilotLauf } from './lib/autopilot.ts';
 import { marktphaseAktualisieren } from './lib/marktphase.ts';
 import { wochenzeugnisErstellen } from './lib/wochenzeugnis.ts';
@@ -218,11 +218,11 @@ if (laufart === 'haupt' || laufart === 'samstag') {
   console.log(`Lagebild ${b.datum}: ${zusammen.length} Signale, ${top.length} Kandidaten, Länge ${lagebildMarkdown(daten, typNamen).length} Zeichen.`);
 
   // Lernschleife: Kandidaten mitverfolgen (Nicht-Käufe), Statistik neu rechnen
-  const abrufe = await trackingAktualisieren(jetzt, {}, { modus: 'haupt', schnelle: verdichten(zusammen) });
+  const tracking = await trackingAktualisieren(jetzt, {}, { modus: 'haupt', schnelle: verdichten(zusammen) });
   // Hot-Stuff-Rückblick: Raketen und ihre Vorzeichen, Vorlauf-Statistik (vor der Statistik, damit sie mit einfließt)
   const hs = hotStuffAuswerten(b.datum, verdichten(zusammen), jetzt);
   const { statistik } = abgeleitetSchreiben(jetzt);
-  console.log(`Tracking: ${abrufe} Kursabrufe. Hot Stuff: ${hs.anzahl} Raketen, ${hs.abdeckung ?? '–'} % mit Vorzeichen.`);
+  console.log(`Schattenbuch: ${trackingText(tracking)}. Hot Stuff: ${hs.anzahl} Raketen, ${hs.abdeckung ?? '–'} % mit Vorzeichen.`);
 
   // Samstags: Wochenzeugnis (Code vergibt eine Note, Push) und Gewichte anpassen
   if (laufart === 'samstag') {
@@ -252,7 +252,7 @@ if (laufart === 'haupt' || laufart === 'samstag') {
 tagesSignaleSpeichern(b.datum, zusammen, jetzt);
 if (laufart === 'stuendlich') {
   const n = await trackingAktualisieren(jetzt, {}, { modus: 'stuendlich', schnelle: verdichten(zusammen) });
-  console.log(`Schattenbuch (stündlich): ${n} Kursabrufe.`);
+  console.log(`Schattenbuch (stündlich): ${trackingText(n)}.`);
 }
 
 // S2: starke Gegensignale zu offenen Positionen merken → der Kurswächter verkauft sofort (Kurs nach dem Erkennen)

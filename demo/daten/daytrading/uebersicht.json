@@ -3,47 +3,37 @@
   "heute": {
     "datum": "2026-10-21",
     "gruppe": {
-      "anzahl": 2,
+      "anzahl": 1,
       "treffer": 1,
-      "quote": 50,
-      "netto": -59.96,
-      "brutto": -59.96,
-      "nettoTR": -63.96,
-      "oeNettoProzent": -2.9,
-      "oeR": 0.5
+      "quote": 100,
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoTR": 23.6,
+      "oeNettoProzent": 2.79,
+      "oeR": 2
     },
     "offen": 0
   },
   "gesamt": {
-    "anzahl": 2,
+    "anzahl": 1,
     "treffer": 1,
-    "quote": 50,
-    "netto": -59.96,
-    "brutto": -59.96,
-    "nettoTR": -63.96,
-    "oeNettoProzent": -2.9,
-    "oeR": 0.5
+    "quote": 100,
+    "netto": 25.6,
+    "brutto": 25.6,
+    "nettoTR": 23.6,
+    "oeNettoProzent": 2.79,
+    "oeR": 2
   },
   "kurve": [
     {
       "datum": "2026-10-21",
-      "netto": -59.96,
-      "brutto": -59.96,
-      "nettoTR": -63.96
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoTR": 23.6
     }
   ],
   "nachHerkunft": {
     "claude": {
-      "anzahl": 1,
-      "treffer": 0,
-      "quote": 0,
-      "netto": -85.56,
-      "brutto": -85.56,
-      "nettoTR": -87.56,
-      "oeNettoProzent": -8.59,
-      "oeR": -1
-    },
-    "code_scan": {
       "anzahl": 1,
       "treffer": 1,
       "quote": 100,
@@ -56,27 +46,17 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 2,
+      "anzahl": 1,
       "treffer": 1,
-      "quote": 50,
-      "netto": -59.96,
-      "brutto": -59.96,
-      "nettoTR": -63.96,
-      "oeNettoProzent": -2.9,
-      "oeR": 0.5
+      "quote": 100,
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoTR": 23.6,
+      "oeNettoProzent": 2.79,
+      "oeR": 2
     }
   },
   "nachSetup": {
-    "orb_short": {
-      "anzahl": 1,
-      "treffer": 0,
-      "quote": 0,
-      "netto": -85.56,
-      "brutto": -85.56,
-      "nettoTR": -87.56,
-      "oeNettoProzent": -8.59,
-      "oeR": -1
-    },
     "orb_long": {
       "anzahl": 1,
       "treffer": 1,
@@ -89,16 +69,6 @@
     }
   },
   "nachInstrument": {
-    "turbo": {
-      "anzahl": 1,
-      "treffer": 0,
-      "quote": 0,
-      "netto": -85.56,
-      "brutto": -85.56,
-      "nettoTR": -87.56,
-      "oeNettoProzent": -8.59,
-      "oeR": -1
-    },
     "aktie": {
       "anzahl": 1,
       "treffer": 1,
@@ -112,27 +82,17 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 2,
+      "anzahl": 1,
       "treffer": 1,
-      "quote": 50,
-      "netto": -59.96,
-      "brutto": -59.96,
-      "nettoTR": -63.96,
-      "oeNettoProzent": -2.9,
-      "oeR": 0.5
+      "quote": 100,
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoTR": 23.6,
+      "oeNettoProzent": 2.79,
+      "oeR": 2
     }
   },
   "nachAusstieg": {
-    "stop": {
-      "anzahl": 1,
-      "treffer": 0,
-      "quote": 0,
-      "netto": -85.56,
-      "brutto": -85.56,
-      "nettoTR": -87.56,
-      "oeNettoProzent": -8.59,
-      "oeR": -1
-    },
     "ziel": {
       "anzahl": 1,
       "treffer": 1,
@@ -148,9 +108,9 @@
   "offen": [],
   "trades": [
     {
-      "id": "2026-10-21-claude-demo-beta-ag",
+      "id": "2026-10-21-scan-demo-beta-ag",
       "datum": "2026-10-21",
-      "herkunft": "claude",
+      "herkunft": "code_scan",
       "markt": "eu",
       "setup": "orb",
       "richtung": "short",
@@ -181,6 +141,7 @@
       "flatBis": "2026-10-21T15:25:00.000Z",
       "chance": 55,
       "these": "DEMO",
+      "virtuell": true,
       "einstieg": {
         "zeit": "2026-10-21T07:20:00.000Z",
         "basisKurs": 49.2,
@@ -209,9 +170,9 @@
       }
     },
     {
-      "id": "2026-10-21-scan-demo-alpha-ag",
+      "id": "2026-10-21-claude-demo-alpha-ag",
       "datum": "2026-10-21",
-      "herkunft": "code_scan",
+      "herkunft": "claude",
       "markt": "eu",
       "setup": "orb",
       "richtung": "long",
@@ -261,6 +222,75 @@
       }
     }
   ],
+  "virtuell": {
+    "ab": "2026-10-21",
+    "gesamt": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -85.56,
+      "brutto": -85.56,
+      "nettoTR": -87.56,
+      "oeNettoProzent": -8.59,
+      "oeR": -1
+    },
+    "heute": {
+      "anzahl": 1,
+      "treffer": 0,
+      "quote": 0,
+      "netto": -85.56,
+      "brutto": -85.56,
+      "nettoTR": -87.56,
+      "oeNettoProzent": -8.59,
+      "oeR": -1
+    },
+    "offen": 0,
+    "gruppen": {
+      "turbo": {
+        "anzahl": 1,
+        "treffer": 0,
+        "quote": 0,
+        "netto": -85.56,
+        "brutto": -85.56,
+        "nettoTR": -87.56,
+        "oeNettoProzent": -8.59,
+        "oeR": -1
+      },
+      "short": {
+        "anzahl": 1,
+        "treffer": 0,
+        "quote": 0,
+        "netto": -85.56,
+        "brutto": -85.56,
+        "nettoTR": -87.56,
+        "oeNettoProzent": -8.59,
+        "oeR": -1
+      },
+      "krypto": {
+        "anzahl": 0,
+        "treffer": 0,
+        "quote": 0,
+        "netto": 0,
+        "brutto": 0,
+        "nettoTR": 0,
+        "oeNettoProzent": 0,
+        "oeR": 0
+      }
+    }
+  },
+  "seitUmstellung": {
+    "ab": "2026-10-21",
+    "gruppe": {
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "netto": 25.6,
+      "brutto": 25.6,
+      "nettoTR": 23.6,
+      "oeNettoProzent": 2.79,
+      "oeR": 2
+    }
+  },
   "beobachtet": {
     "code_scan": 21,
     "claude": 1,

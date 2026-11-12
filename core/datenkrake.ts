@@ -4,6 +4,7 @@
 import { runde } from './geld.ts';
 import { wertpapierSchluessel, type Signal } from './signale.ts';
 import type { TrackingEintrag } from './statistik.ts';
+import { episodenVertreter } from './episoden.ts';
 
 // ---------- Verdichtete Signal-Historie ----------
 /** Ein Signal in knapper Form für die Tagesdatei signale/tag/<datum>.json. */
@@ -158,7 +159,8 @@ export function aehnlicheFaelle(
   const eigene = typen.filter((t) => !ALLGEMEIN.has(t));
   if (!eigene.length) return null;
   const noetig = Math.min(2, eigene.length);
-  const passend = tracking.filter((t) => typeof t[feld] === 'number' && Math.sign(t.score) === richtung && t.typen.filter((x) => eigene.includes(x)).length >= noetig);
+  // ein Wert zählt je Episode einmal (gleicher Schlüssel binnen 10 Handelstagen), Claudes Prognosen sind keine Fälle
+  const passend = episodenVertreter(tracking.filter((t) => t.art !== 'prognose' && typeof t[feld] === 'number' && Math.sign(t.score) === richtung && t.typen.filter((x) => eigene.includes(x)).length >= noetig));
   if (passend.length < minFaelle) return null;
   const w = passend.map((t) => t[feld] as number);
   const treffer = w.filter((x) => x > 0).length;

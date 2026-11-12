@@ -34,5 +34,14 @@
   "timeMachine": { "aktiv": true, "maxJeLauf": 3, "wiederholungen": 10000, "seed": 19, "minSitzungen": 20 },
   "autopilot": { "aktiv": true, "horizont": "r1h", "mindestFaelle": 20, "maxJeTag": 6, "maxSignalAlterMin": 90 },
   "claude": { "maxWatchlist": 5, "hebelMin": 2, "hebelMax": 100 },
-  "abendbilanzAb": "22:10"
+  "abendbilanzAb": "22:10",
+  "virtuell": {
+    "hinweis": "Plan Volltreffer V0 (Nutzer 11.11.2026): belegte Verlustbringer laufen nur noch virtuell mit – Trades mit Instrument Turbo, Richtung short oder im Markt Krypto. Sie werden weiter simuliert und getrennt ausgewertet (uebersicht.virtuell), zählen aber nicht in sichtbare Kennzahlen, Abendbilanz, Wochenzeugnis und Mitteilungen. Das Einstiegs-Ereignis trägt das Kennzeichen virtuell: true. Ältere Trades bleiben in der Bilanz, wie sie waren (nichts wird nachträglich geschönt); rueckwirkend: true würde auch sie nach der Regel ausblenden.",
+    "aktiv": true,
+    "ab": "2026-11-13",
+    "instrumente": ["turbo"],
+    "richtungen": ["short"],
+    "maerkte": ["krypto"],
+    "rueckwirkend": false
+  }
 }

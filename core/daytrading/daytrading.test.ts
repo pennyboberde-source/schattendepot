@@ -185,3 +185,76 @@ describe('Verständliche Trade-Beschreibung (Nutzerfrage 28.10.: „wieso Einsti
     expect(b.ausstieg!.replace(/ /g, ' ')).toBe('Ausstieg 14:35 (Stop): SAP SE bei 211,58 € → Turbo zu je 4,06 € · Ergebnis −37,62 €');
   });
 });
+
+describe('Verlustbringer nur noch virtuell (Plan Volltreffer V0)', () => {
+  const REGEL = { aktiv: true, ab: DATUM, instrumente: ['turbo' as const], richtungen: ['short' as const], maerkte: ['krypto' as const] };
+  const mitRegel = (): DtLaufCfg => ({ ...cfg(), virtuell: REGEL });
+  const bShort = () => beobachtung({ basis: 'X', herkunft: 'claude', markt: 'eu', name: 'Xetra AG', isin: 'X', instrumentLong: 'aktie', hebel: 5, spekulativ: false }, 'orb', ['long', 'short']);
+  const kShort = () => [k('09:00', 50, 50.5, 49.5, 50), k('09:05', 50, 50.2, 49.8, 50), k('09:10', 50, 50.1, 49.9, 50), k('09:15', 49.9, 50, 49.2, 49.3), k('09:20', 49.2, 49.3, 49, 49.1), k('17:25', 49.4, 49.5, 49.3, 49.4)];
+  const bLong = () => beobachtung({ basis: 'DE1', herkunft: 'claude', markt: 'eu', name: 'Eins', isin: 'DE1', instrumentLong: 'aktie', hebel: 5, spekulativ: false }, 'orb', ['long']);
+  const kLong = () => [k('09:00', 100, 101, 99.5, 100.5), k('09:05', 100.5, 101.5, 100, 101), k('09:10', 101, 101.2, 100.2, 100.8), k('09:20', 101.4, 102, 101.3, 101.9), k('09:25', 102, 102.5, 101.9, 102.4), k('09:30', 102.4, 105.1, 102.3, 105)];
+  const lauf = (c: DtLaufCfg, z = { heuteEroeffnet: 0, vergeben: new Set<string>() } as { heuteEroeffnet: number; vergeben: Set<string>; heuteVirtuell?: number }) => ({
+    r: kerzenVerarbeiten(new Map([['X', kShort()], ['DE1', kLong()]]), [bShort(), bLong()], [], c, z),
+    z,
+  });
+
+  it('Turbo short trägt das Kennzeichen am Einstiegs-Ereignis, die Aktie long bleibt sichtbar', () => {
+    const { r, z } = lauf(mitRegel());
+    const trades = tradesAusEreignissen(r.ereignisse);
+    const short = trades.find((t) => t.richtung === 'short')!;
+    const long = trades.find((t) => t.richtung === 'long')!;
+    expect(short).toMatchObject({ instrument: 'turbo', virtuell: true });
+    expect(long.virtuell).toBeUndefined();
+    const einstieg = r.ereignisse.find((e) => e.typ === 'einstieg' && e.trade.id === short.id);
+    expect(einstieg && einstieg.typ === 'einstieg' && einstieg.trade.virtuell).toBe(true);
+    expect(z).toMatchObject({ heuteEroeffnet: 1, heuteVirtuell: 1 });
+
+    // sichtbare Bilanz ohne die virtuelle Gruppe, getrennte Auswertung daneben
+    const u = uebersichtBerechnen(trades, DATUM, 'x', {}, REGEL);
+    expect(u.gesamt).toMatchObject({ anzahl: 1, netto: long.ergebnis!.netto });
+    expect(u.heute.gruppe.anzahl).toBe(1);
+    expect(Object.keys(u.nachInstrument)).toEqual(['aktie']);
+    expect(u.kurve.at(-1)!.netto).toBe(long.ergebnis!.netto);
+    expect(u.virtuell).toMatchObject({ ab: DATUM, gesamt: { anzahl: 1, netto: short.ergebnis!.netto }, gruppen: { turbo: { anzahl: 1 }, short: { anzahl: 1 }, krypto: { anzahl: 0 } } });
+    expect(u.seitUmstellung).toMatchObject({ ab: DATUM, gruppe: { anzahl: 1 } });
+    expect(u.trades).toHaveLength(2);
+
+    // Abendbilanz nennt nur den sichtbaren Trade
+    const a = abendbilanzText(u, trades);
+    expect(a.text).toMatch(/^1 Trades/);
+    expect(a.titel).toMatch(/^📊 Daytrading heute: \+/);
+  });
+
+  it('ohne Schalter bleibt alles sichtbar; ältere Trades ohne Kennzeichen bleiben in der Bilanz (nichts wird geschönt)', () => {
+    const trades = tradesAusEreignissen(lauf(cfg()).r.ereignisse);
+    expect(trades.some((t) => t.virtuell)).toBe(false);
+    expect(uebersichtBerechnen(trades, DATUM, 'x').virtuell).toBeUndefined();
+    const mitNeuerRegel = uebersichtBerechnen(trades, DATUM, 'x', {}, REGEL);
+    expect(mitNeuerRegel.gesamt.anzahl).toBe(2);
+    expect(mitNeuerRegel.virtuell!.gesamt.anzahl).toBe(0);
+    // nur mit dem ausdrücklichen Schalter „rueckwirkend“ zählen auch alte Trades nach der Regel als virtuell
+    const rueck = uebersichtBerechnen(trades, DATUM, 'x', {}, { ...REGEL, rueckwirkend: true });
+    expect(rueck.gesamt.anzahl).toBe(1);
+    expect(rueck.virtuell!.gesamt.anzahl).toBe(1);
+    expect(rueck.trades.filter((t) => t.virtuell)).toHaveLength(1);
+  });
+
+  it('eigene Tagesgrenze: virtuelle Trades nehmen den sichtbaren keinen Platz weg', () => {
+    const { r } = lauf({ ...mitRegel(), maxTradesJeTag: 1 }, { heuteEroeffnet: 0, heuteVirtuell: 1, vergeben: new Set<string>() });
+    const trades = tradesAusEreignissen(r.ereignisse);
+    expect(trades.map((t) => t.richtung)).toEqual(['long']);
+    expect(r.hinweise.join(' ')).toMatch(/Xetra AG: Auslöser ohne Einstieg/);
+  });
+
+  it('Krypto-Daytrading läuft nur noch virtuell mit', () => {
+    const c = { ...mitRegel(), sitzungen: { krypto: sitzung(DATUM, { aktiv: true, zeitzone: 'Europe/Berlin', eroeffnung: '09:00', keineEinstiegeNach: '21:00', flatBis: '21:55' }, 15) } };
+    const b = beobachtung({ basis: 'BTC', herkunft: 'code_scan', markt: 'krypto', name: 'Bitcoin', symbol: 'BTC', instrumentLong: 'krypto', hebel: 5, spekulativ: false }, 'level', ['long'], { level: 61000 });
+    const r = kerzenVerarbeiten(new Map([['BTC', [k('09:15', 60800, 61100, 60700, 61050), k('09:20', 61060, 61100, 61000, 61080), k('21:55', 61500, 61600, 61400, 61500)]]]), [b], [], c, { heuteEroeffnet: 0, vergeben: new Set() });
+    const [t] = tradesAusEreignissen(r.ereignisse);
+    expect(t.virtuell).toBe(true);
+    const u = uebersichtBerechnen([t], DATUM, 'x', {}, REGEL);
+    expect(u.gesamt.anzahl).toBe(0);
+    expect(u.virtuell!.gruppen.krypto.anzahl).toBe(1);
+    expect(abendbilanzText(u, [t]).text).toMatch(/Keine abgeschlossenen Trades/);
+  });
+});

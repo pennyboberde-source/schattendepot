@@ -2,6 +2,7 @@
 import { runde } from './geld.ts';
 import type { Order } from './typen.ts';
 import { phaseAm, type PhasenVerlauf } from './marktphase.ts';
+import { episodenVertreter, median } from './episoden.ts';
 
 export interface Gruppe {
   anzahl: number;
@@ -38,12 +39,19 @@ export interface TrackingEintrag {
   pump?: boolean;
   /** Messung verworfen (Kurssprung > 10×, z. B. Aktienzusammenlegung) – wird nicht mehr gemessen */
   unplausibel?: boolean;
+  /** Fehlversuche beim Startkurs am Tag der Aufnahme (höchstens 3, danach bleibt der Eintrag ohne Messung) */
+  startVersuche?: number;
+  /** frühere 1-Stunden-Messung, deren Startkurs bei geschlossenem Markt gezogen wurde – zählt nicht (V0, 12.11.2026) */
+  r1hGeschlossen?: number;
   /** schnell = tagsüber aufgenommenes Ereignis-Signal (Reaktionszeit), prognose = Claudes Tagesprognose (ohne Geld), sonst Kandidat des Hauptlaufs */
   art?: 'kandidat' | 'schnell' | 'prognose';
 }
 
 export interface TrackingGruppe {
+  /** Zahl der Episoden: derselbe Wert zählt binnen 10 Handelstagen nur einmal (auch ungemessene) */
   anzahl: number;
+  /** alle Einträge im Buch, mit Wiederholungen und Ungemessenen */
+  eintraege?: number;
   oe1h?: number | null;
   oe1T: number | null;
   oe3T?: number | null;
@@ -55,11 +63,22 @@ export interface TrackingGruppe {
   /** Anteil mit gerichteter 1-Wochen-Rendite > 0 in % */
   quote1W: number | null;
   quote3T?: number | null;
-  /** Anzahl gemessener Fälle je Messpunkt */
+  /** Median der gerichteten Rendite je Messpunkt (robuster als der Durchschnitt bei Ausreißern) */
+  med1T?: number | null;
+  med3T?: number | null;
+  med1W?: number | null;
+  med10T?: number | null;
+  /** Zahl der Messungen je Messpunkt (ein Wert je Episode einmal) – das ehrliche n zu jeder Kennzahl */
+  n1h?: number;
   n1T?: number;
   n3T?: number;
   n1W?: number;
+  n10T?: number;
+  n1M?: number;
 }
+
+/** Zahl der 1-Wochen-Messungen einer Gruppe (alte Statistik-Dateien ohne n1W: 0). */
+export const messungen1W = (g: TrackingGruppe | undefined) => g?.n1W ?? 0;
 
 export interface Statistik {
   stand: string;
@@ -167,30 +186,43 @@ export function plausibilitaetPruefen(t: TrackingEintrag): boolean {
 /** Signal-Typ aus Signal-ID ("insider_kauf:ACME:2026-10-21" → "insider_kauf"). */
 export const signalTyp = (id: string) => id.split(':')[0];
 
-function trackingGruppe(l: TrackingEintrag[]): TrackingGruppe {
-  const mittel = (f: (t: TrackingEintrag) => number | undefined) => {
-    const w = l.map(f).filter((x): x is number => typeof x === 'number');
-    return w.length ? runde(w.reduce((a, b) => a + b, 0) / w.length, 2) : null;
+/**
+ * Kennzahlen einer Gruppe des Schattenbuchs. Ehrliche Fallzahlen (Plan Volltreffer V0): Je Messpunkt zählt ein Wert
+ * je Episode einmal (gleicher Schlüssel binnen 10 Handelstagen), n ist die Zahl der Messungen dieses Messpunkts.
+ * `episoden = false` für Claudes Tagesprognosen (jede Prognose ist ein eigenes Urteil).
+ */
+export function trackingGruppe(alle: TrackingEintrag[], episoden = true): TrackingGruppe {
+  const einmal = (l: TrackingEintrag[]) => (episoden ? episodenVertreter(l) : l);
+  const werte = (feld: (typeof R_FELDER)[number]) => einmal(alle.filter((t) => typeof t[feld] === 'number')).map((t) => t[feld] as number);
+  const mittel = (w: number[]) => (w.length ? runde(w.reduce((a, b) => a + b, 0) / w.length, 2) : null);
+  const quote = (w: number[]) => (w.length ? runde((w.filter((x) => x > 0).length / w.length) * 100, 1) : null);
+  const med = (w: number[]) => {
+    const m = median(w);
+    return m === null ? null : runde(m, 2);
   };
-  const quote = (f: (t: TrackingEintrag) => number | undefined) => {
-    const w = l.map(f).filter((x): x is number => typeof x === 'number');
-    return w.length ? runde((w.filter((x) => x > 0).length / w.length) * 100, 1) : null;
-  };
-  const n = (f: (t: TrackingEintrag) => number | undefined) => l.filter((t) => typeof f(t) === 'number').length;
+  const w = { r1h: werte('r1h'), r1T: werte('r1T'), r3T: werte('r3T'), r1W: werte('r1W'), r10T: werte('r10T'), r1M: werte('r1M') };
   return {
-    anzahl: l.length,
-    n1T: n((t) => t.r1T),
-    n3T: n((t) => t.r3T),
-    n1W: n((t) => t.r1W),
-    oe1h: mittel((t) => t.r1h),
-    oe1T: mittel((t) => t.r1T),
-    oe3T: mittel((t) => t.r3T),
-    oe1W: mittel((t) => t.r1W),
-    oe10T: mittel((t) => t.r10T),
-    oe1M: mittel((t) => t.r1M),
-    quote1T: quote((t) => t.r1T),
-    quote3T: quote((t) => t.r3T),
-    quote1W: quote((t) => t.r1W),
+    anzahl: einmal(alle).length,
+    eintraege: alle.length,
+    n1h: w.r1h.length,
+    n1T: w.r1T.length,
+    n3T: w.r3T.length,
+    n1W: w.r1W.length,
+    n10T: w.r10T.length,
+    n1M: w.r1M.length,
+    oe1h: mittel(w.r1h),
+    oe1T: mittel(w.r1T),
+    oe3T: mittel(w.r3T),
+    oe1W: mittel(w.r1W),
+    oe10T: mittel(w.r10T),
+    oe1M: mittel(w.r1M),
+    med1T: med(w.r1T),
+    med3T: med(w.r3T),
+    med1W: med(w.r1W),
+    med10T: med(w.r10T),
+    quote1T: quote(w.r1T),
+    quote3T: quote(w.r3T),
+    quote1W: quote(w.r1W),
   };
 }
 
@@ -245,7 +277,7 @@ export function statistikBerechnen(alle: Order[], trackingAlle: TrackingEintrag[
     ...(Object.keys(phasen).length
       ? { nachPhase: gruppiert(g, (o) => [phaseAm(phasen, o.kauf!.zeit.slice(0, 10), o.plan.wertpapier.anlageklasse === 'krypto' || o.plan.wertpapier.anlageklasse === 'krypto_etn' ? 'krypto' : 'aktien') ?? 'unbekannt']) }
       : {}),
-    ...(prognosen.length ? { prognose: trackingGruppe(prognosen) } : {}),
+    ...(prognosen.length ? { prognose: trackingGruppe(prognosen, false) } : {}),
     nachHerkunft: gruppiert(g, (o) => [o.plan.herkunft ?? 'claude']),
     ...(mitEinwand.length
       ? {
@@ -274,8 +306,11 @@ function zusammenfassung(s: Statistik): string {
   if (s.kalibrierung.length) z.push(`Kalibrierung (Konfidenz → tatsächliche Quote): ${s.kalibrierung.map((k) => `${k.stufe}: ${k.tatsaechlich} % (n=${k.anzahl})`).join('; ')}.`);
   const beste = Object.entries(s.nachStrategie).filter(([, v]) => v.anzahl >= 3);
   if (beste.length) z.push(`Strategien (n≥3): ${beste.map(([k, v]) => `${k} ${v.quote} %/Ø ${v.oeNetto} %`).join('; ')}.`);
-  const sig = Object.entries(s.kandidaten.nachSignalTyp).filter(([, v]) => (v.anzahl ?? 0) >= 5 && v.oe1W !== null);
-  if (sig.length) z.push(`Mitverfolgte Kandidaten – Ø gerichtete 1-Wochen-Rendite je Signal-Typ: ${sig.map(([k, v]) => `${k} ${v.oe1W} % (n=${v.anzahl})`).join('; ')}.`);
+  // n = Zahl der 1-Wochen-Messungen (ein Wert je Episode einmal), nicht die Zahl der Einträge im Buch
+  const sig = Object.entries(s.kandidaten.nachSignalTyp).filter(([, v]) => messungen1W(v) >= 5 && v.oe1W !== null);
+  if (sig.length) z.push(`Mitverfolgte Kandidaten – gerichtete 1-Wochen-Rendite je Signal-Typ (Ø / Median, n = Messungen): ${sig.map(([k, v]) => `${k} Ø ${v.oe1W} % / Median ${v.med1W ?? '–'} % (n=${v.n1W})`).join('; ')}.`);
+  const duenn = Object.entries(s.kandidaten.nachSignalTyp).filter(([, v]) => messungen1W(v) > 0 && messungen1W(v) < 5);
+  if (duenn.length) z.push(`Noch zu wenige 1-Wochen-Messungen für eine Aussage (n < 5): ${duenn.map(([k, v]) => `${k} (n=${v.n1W})`).join(', ')}.`);
   const au = s.nachHerkunft?.autopilot;
   if (au) z.push(`Autopilot: ${au.anzahl} Orders, Quote ${au.quote} %, Ø ${au.oeNetto} % · Claude: ${s.nachHerkunft?.claude?.anzahl ?? 0} Orders, Ø ${s.nachHerkunft?.claude?.oeNetto ?? 0} %.`);
   if (s.prognose && (s.prognose.n1T ?? 0) > 0) z.push(`Claudes Tagesprognose: ${s.prognose.quote1T} % Richtung richtig nach 1 Tag (n=${s.prognose.n1T}), Ø ${s.prognose.oe1T} %.`);

@@ -2,7 +2,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { gebuehrenUmrechnen, ordersAusEreignissen } from '../../core/ableiten.ts';
-import { tradesAusEreignissen, type DtEreignis } from '../../core/daytrading/kern.ts';
+import { istVirtuell, tradesAusEreignissen, type DtEreignis, type VirtuellRegel } from '../../core/daytrading/kern.ts';
+import { episodenVertreter } from '../../core/episoden.ts';
 import { berlin } from '../../core/kalender.ts';
 import type { PushNachricht } from '../../core/push.ts';
 import type { TrackingEintrag } from '../../core/statistik.ts';
@@ -27,11 +28,14 @@ export function wochenzeugnisErstellen(jetzt: Date): { zeugnis: Wochenzeugnis; p
   const zu = gebuehrenUmrechnen(ordersAusEreignissen(leseEreignisse()), cfg.gebuehren, { spreads: cfg.spreads, orderBetrag: cfg.einstellungen.orderBetrag }).filter((o) => o.status === 'geschlossen' && o.verkauf && inWoche(berlin(new Date(o.verkauf.zeit)).datum));
   const pfad = join(DATEN_DIR, 'daytrading/ereignisse.jsonl');
   const dtEv = existsSync(pfad) ? readFileSync(pfad, 'utf8').split('\n').filter((z) => z.trim()).map((z) => JSON.parse(z) as DtEreignis) : [];
-  const dt = tradesAusEreignissen(dtEv).filter((t) => t.ergebnis && inWoche(t.datum));
+  // nur sichtbare Daytrades zählen ins Zeugnis – virtuell mitgeführte (Turbo, Short, Krypto) nicht (Plan Volltreffer V0)
+  const regel = (JSON.parse(readFileSync(join(process.cwd(), 'config', 'daytrading.json'), 'utf8')) as { virtuell?: VirtuellRegel }).virtuell;
+  const dt = tradesAusEreignissen(dtEv).filter((t) => t.ergebnis && inWoche(t.datum) && !istVirtuell(t, regel));
   const tracking = leseJson<TrackingEintrag[]>('kandidaten-tracking.json', []).filter((t) => inWoche(t.datum) && typeof t.r1T === 'number');
   const quote = (l: TrackingEintrag[]) => (l.length ? Math.round((l.filter((t) => t.r1T! > 0).length / l.length) * 1000) / 10 : 0);
   const prog = tracking.filter((t) => t.art === 'prognose');
-  const sb = tracking.filter((t) => t.art !== 'prognose');
+  // ein Wert zählt je Episode einmal (gleicher Schlüssel binnen 10 Handelstagen)
+  const sb = episodenVertreter(tracking.filter((t) => t.art !== 'prognose'));
   const zeugnis = wochenzeugnis(
     {
       depot: {

@@ -168,10 +168,12 @@ schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal
     maxOffen: 30,
     emittent: 'UniCredit (synthetisch)',
     gebuehren: { smartbroker: lese('gebuehren-smartbroker.json'), traderepublic: lese('gebuehren-traderepublic.json'), krypto: cfg },
+    // Plan Volltreffer V0: Turbo/Short/Krypto laufen nur virtuell mit
+    virtuell: { aktiv: true, ab: d, instrumente: ['turbo' as const], richtungen: ['short' as const], maerkte: ['krypto' as const] },
   };
   const beob = [
-    beobachtung({ basis: 'DE000DEMO0001', herkunft: 'code_scan', markt: 'eu', name: 'Demo Alpha AG', isin: 'DE000DEMO0001', instrumentLong: 'aktie', hebel: 5, spekulativ: false }, 'orb', ['long', 'short']),
-    beobachtung({ basis: 'DE000DEMO0002', herkunft: 'claude', markt: 'eu', name: 'Demo Beta AG', isin: 'DE000DEMO0002', instrumentLong: 'aktie', hebel: 5, spekulativ: false, chance: 55, these: 'DEMO' }, 'orb', ['long', 'short']),
+    beobachtung({ basis: 'DE000DEMO0001', herkunft: 'claude', markt: 'eu', name: 'Demo Alpha AG', isin: 'DE000DEMO0001', instrumentLong: 'aktie', hebel: 5, spekulativ: false }, 'orb', ['long', 'short']),
+    beobachtung({ basis: 'DE000DEMO0002', herkunft: 'code_scan', markt: 'eu', name: 'Demo Beta AG', isin: 'DE000DEMO0002', instrumentLong: 'aktie', hebel: 5, spekulativ: false, chance: 55, these: 'DEMO' }, 'orb', ['long', 'short']),
   ];
   const r = kerzenVerarbeiten(
     new Map([
@@ -183,7 +185,7 @@ schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal
     lauf,
     { heuteEroeffnet: 0, vergeben: new Set<string>() },
   );
-  schreibe('daytrading/uebersicht.json', { ...uebersichtBerechnen(tradesAusEreignissen(r.ereignisse), d, stand), beobachtet: { code_scan: 21, claude: 1, autopilot: 0 } });
+  schreibe('daytrading/uebersicht.json', { ...uebersichtBerechnen(tradesAusEreignissen(r.ereignisse), d, stand, {}, lauf.virtuell), beobachtet: { code_scan: 21, claude: 1, autopilot: 0 } });
   schreibe('daytrading/autopilot.json', { stand, horizont: 'r1h', beweise: [] });
 }
 // S4 (DEMO): Heute gelernt, Marktphase, Wochenzeugnis, Marktphasen-Verlauf

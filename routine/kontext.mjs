@@ -75,16 +75,19 @@ if (statistik?.risikoBudget) p(`Risiko-Budget jetzt: max. ${statistik.risikoBudg
 else p('(noch keine ausführliche Statistik)');
 const gewichte = await json('gewichte.json', null);
 if (gewichte?.signale) p(`Gewichte Signal-Typen: ${Object.entries(gewichte.signale).map(([k, v]) => `${k} ${v}`).join(', ')}`);
-// Datenkrake: Was klappt im Schattenbuch (Signaltypen mit ≥ 5 gemessenen Fällen), knapp
-const nachTyp = Object.entries(statistik?.kandidaten?.nachSignalTyp ?? {}).filter(([, v]) => v.anzahl >= 5 && v.quote1T != null);
+// Datenkrake: Was klappt im Schattenbuch (Signaltypen mit ≥ 5 Messungen nach 1 Tag), knapp.
+// Ehrliche Fallzahlen (Plan Volltreffer V0): n ist die Zahl der Messungen des genannten Messpunkts, ein Wert zählt je
+// Episode (10 Handelstage) einmal; die 1-Wochen-Zahl entscheidet die Reihenfolge erst ab 5 Messungen.
+const nachTyp = Object.entries(statistik?.kandidaten?.nachSignalTyp ?? {}).filter(([, v]) => (v.n1T ?? 0) >= 5 && v.quote1T != null);
 if (nachTyp.length) {
-  const sortiert = nachTyp.sort((a, b) => (b[1].oe1W ?? b[1].oe1T ?? 0) - (a[1].oe1W ?? a[1].oe1T ?? 0));
-  const zeile = ([k, v]) => `${k} ${v.quote1T} % (1 T), Ø ${v.oe1W ?? '–'} % (1 W), n=${v.anzahl}`;
+  const wert = (v) => ((v.n1W ?? 0) >= 5 && v.oe1W != null ? v.oe1W : (v.oe1T ?? 0));
+  const sortiert = nachTyp.sort((a, b) => wert(b[1]) - wert(a[1]));
+  const zeile = ([k, v]) => `${k} ${v.quote1T} % im Plus nach 1 T (n=${v.n1T}), 1 W Ø ${v.oe1W ?? '–'} %/Median ${v.med1W ?? '–'} % (n=${v.n1W ?? 0})`;
   p(`Schattenbuch – klappt am besten: ${sortiert.slice(0, 4).map(zeile).join('; ')}`);
   if (sortiert.length > 4) p(`Schattenbuch – klappt am schlechtesten: ${sortiert.slice(-3).map(zeile).join('; ')}`);
 }
 const pumpGr = statistik?.kandidaten?.nachRisiko?.pump_verdacht;
-if (pumpGr?.anzahl >= 5) p(`Pump-Verdacht im Schattenbuch: n=${pumpGr.anzahl}, Ø ${pumpGr.oe1T ?? '–'} % nach 1 Tag, ${pumpGr.oe1W ?? '–'} % nach 1 Woche`);
+if (pumpGr?.n1T >= 5) p(`Pump-Verdacht im Schattenbuch: Ø ${pumpGr.oe1T ?? '–'} % nach 1 Tag (n=${pumpGr.n1T}), ${pumpGr.oe1W ?? '–'} % nach 1 Woche (n=${pumpGr.n1W ?? 0})`);
 // Hebel vs. ohne (Depot): lohnt sich der Hebel?
 const hb = statistik?.nachAnlageklasse?.hebel;
 const ak = statistik?.nachAnlageklasse?.aktie;
@@ -93,8 +96,8 @@ if (hb) p(`Hebel im Depot: ${hb.anzahl} Orders, Quote ${hb.quote} %, Ø ${hb.oeN
 const mp = await json('lernen/marktphase.json', null);
 const pt = (x) => (x ? `${x.trend}/${x.unruhe} (Schluss ${x.schluss}, 50-T-Linie ${x.sma50}, Schwankung ${x.vol20} % vs. üblich ${x.volMedian} %)` : '–');
 if (mp) p(`Marktphase heute: Aktien ${pt(mp.aktien)} · Krypto ${pt(mp.krypto)}`);
-const jePhase = Object.entries(statistik?.kandidaten?.nachPhase ?? {}).filter(([, v]) => (v.n1T ?? v.anzahl) >= 5);
-if (jePhase.length) p(`Schattenbuch je Marktphase (1 Tag): ${jePhase.map(([k, v]) => `${k} ${v.quote1T ?? '–'} % im Plus, Ø ${v.oe1T ?? '–'} % (n=${v.n1T ?? v.anzahl})`).join('; ')}`);
+const jePhase = Object.entries(statistik?.kandidaten?.nachPhase ?? {}).filter(([, v]) => (v.n1T ?? 0) >= 5);
+if (jePhase.length) p(`Schattenbuch je Marktphase (1 Tag): ${jePhase.map(([k, v]) => `${k} ${v.quote1T ?? '–'} % im Plus, Ø ${v.oe1T ?? '–'} % (n=${v.n1T ?? 0})`).join('; ')}`);
 // Politik-Radar (06.11.2026): aktuelle Lage aus dem stündlichen Sammler
 const pol = await json('zustand/politik.json', null);
 if (pol?.lage) {
@@ -102,7 +105,7 @@ if (pol?.lage) {
   for (const zl of (pol.lage.zeilen ?? []).slice(1, 7)) p(`- ${zl}`);
 }
 const polSt = ['politik_massnahme', 'politik_wahrscheinlichkeit'].map((t) => [t, statistik?.kandidaten?.nachSignalTyp?.[t]]).filter(([, v]) => v);
-if (polSt.length) p(`Politik-Signale im Schattenbuch: ${polSt.map(([t, v]) => `${t} n=${v.n1T ?? v.anzahl}, ${v.quote1T ?? '–'} % im Plus, Ø ${v.oe1T ?? '–'} % nach 1 Tag`).join('; ')}`);
+if (polSt.length) p(`Politik-Signale im Schattenbuch: ${polSt.map(([t, v]) => `${t} n=${v.n1T ?? 0}, ${v.quote1T ?? '–'} % im Plus, Ø ${v.oe1T ?? '–'} % nach 1 Tag`).join('; ')}`);
 // S2: Autopilot, Ziel/Stop-Vorschläge, Tagesprognose, Gegenprüfung
 const ap = statistik?.autopilot ?? [];
 const apBew = ap.filter((b) => b.bewiesen);
@@ -121,6 +124,13 @@ if (typ === 'morgenlauf' || typ === 'abendlauf' || typ === 'wochenrueckblick') {
   if (dtU?.gesamt?.anzahl) {
     const gz = (n, g) => `${n} ${g.anzahl} Trades, Quote ${g.quote} %, netto ${g.netto} € (vor Gebühren ${g.brutto} €, Trade Republic ${g.nettoTR} €), Ø ${g.oeR} R`;
     p('## Daytrading (eigener Bereich, Smartbroker+)', gz('Gesamt:', dtU.gesamt), gz(`Zuletzt (${dtU.heute.datum}):`, dtU.heute.gruppe));
+    // Plan Volltreffer V0: belegte Verlustbringer laufen nur virtuell mit und zählen oben nicht
+    if (dtU.virtuell) {
+      const vg = dtU.virtuell.gruppen ?? {};
+      const kurz = (n, g) => `${n} ${g?.anzahl ?? 0} Trades/${g?.netto ?? 0} €`;
+      p(`Nur virtuell mitgeführt${dtU.virtuell.ab ? ` seit ${dtU.virtuell.ab}` : ''} (Turbo, Short, Krypto – zählt nicht in Bilanz, Abendbilanz, Wochenzeugnis, keine Mitteilung): gesamt ${dtU.virtuell.gesamt.anzahl} Trades, ${dtU.virtuell.gesamt.netto} €; ${kurz('Turbo', vg.turbo)}; ${kurz('Short', vg.short)}; ${kurz('Krypto', vg.krypto)}`);
+      if (dtU.seitUmstellung?.gruppe?.anzahl) p(gz(`Sichtbar seit der Umstellung (${dtU.seitUmstellung.ab}):`, dtU.seitUmstellung.gruppe));
+    }
     if (dtU.nachInstrument) p(`Nach Instrument: ${Object.entries(dtU.nachInstrument).map(([k, v]) => `${k} ${v.anzahl}/${v.netto} €/Ø ${v.oeR} R`).join('; ')}`);
     const dv = Object.entries(dtU.varianten ?? {}).filter(([, v]) => v.beste);
     if (dv.length) p(`Beste Spielart je Setup: ${dv.map(([k, v]) => `${k} → ${v.beste.richtung === 'mit' ? 'mit' : 'gegen'} dem Auslöser, ${v.beste.hebel === 1 ? 'ohne Hebel' : `Turbo Hebel ${v.beste.hebel}`}: Ø ${v.beste.oeNetto} % (n=${v.beste.faelle})`).join('; ')}`);
@@ -207,7 +217,7 @@ if (typ === 'wochenrueckblick' && Number(teile.day) <= 7) {
     if (e.length) p(`${name}: ${e.map(([k, v]) => `${k} ${f(v)}`).join('; ')}`);
   };
   const ord = (v) => (v.anzahl >= 3 ? `${v.quote} %/Ø ${v.oeNetto} % (n=${v.anzahl})` : null);
-  const tr = (v) => ((v.n1T ?? v.anzahl) >= 5 ? `1T ${v.quote1T ?? '–'} %/Ø ${v.oe1T ?? '–'} %, 1W Ø ${v.oe1W ?? '–'} % (n=${v.anzahl})` : null);
+  const tr = (v) => ((v.n1T ?? 0) >= 5 ? `1T ${v.quote1T ?? '–'} %/Ø ${v.oe1T ?? '–'} % (n=${v.n1T}), 1W Ø ${v.oe1W ?? '–'} %/Median ${v.med1W ?? '–'} % (n=${v.n1W ?? 0})` : null);
   zeile('Depot je Strategie', statistik?.nachStrategie, ord);
   zeile('Depot je Signaltyp', statistik?.nachSignalTyp, ord);
   zeile('Depot je Quelle', statistik?.nachQuelle, ord);

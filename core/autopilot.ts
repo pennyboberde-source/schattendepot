@@ -8,11 +8,16 @@ import type { TrackingEintrag } from './statistik.ts';
 import type { ZielStopVorschlag } from './zielstop.ts';
 import { HORIZONT_TAGE as V_TAGE, type Variante, type VariantenErgebnis } from './varianten.ts';
 import type { Ereignis, Kursbasis, Order, OrderPlan, Strategie } from './typen.ts';
+import { episodenVertreter } from './episoden.ts';
 
 export interface AutopilotEinstellungen {
   aktiv: boolean;
-  /** Mindestzahl gemessener Long-Fälle je Signaltyp und Marktgruppe */
+  /** Mindestzahl gemessener Long-Fälle je Signaltyp und Marktgruppe (ein Wert je Episode einmal) */
   mindestFaelle: number;
+  /** Beweisschwelle (Monatsprüfung 2026-11, Vorschlag 1): Mindestanteil im Plus nach Gebühren in %; ohne Angabe gilt die allgemeine Mindest-Chance */
+  mindestChance?: number;
+  /** Beweisschwelle: Ø Ergebnis nach Gebühren mindestens so viele %; ohne Angabe genügt „über 0“ */
+  mindestOeNetto?: number;
   /** Messpunkt des Schattenbuchs, an dem gemessen wird (r1T = 1, r3T = 3, r1W = 5 Handelstage) */
   horizont: 'r1h' | 'r1T' | 'r3T' | 'r1W';
   maxJeLauf: number;
@@ -80,28 +85,30 @@ export function kostenHuerdeProzent(betrag: number, gebuehren: GebuehrenConfig, 
 /** Wie gut hat sich jeder Signaltyp im Schattenbuch bewährt (nur Long-Fälle, je Marktgruppe, nach Gebühren)? */
 export function signalBeweise(
   tracking: TrackingEintrag[],
-  e: { horizont: AutopilotEinstellungen['horizont']; mindestFaelle: number; mindestChance: number },
+  e: { horizont: AutopilotEinstellungen['horizont']; mindestFaelle: number; mindestChance: number; mindestOeNetto?: number },
   huerden: Record<MarktGruppe, number>,
 ): SignalBeweis[] {
-  const werte = new Map<string, { typ: string; gruppe: MarktGruppe; r: number[] }>();
+  const werte = new Map<string, { typ: string; gruppe: MarktGruppe; faelle: TrackingEintrag[] }>();
   for (const t of tracking) {
-    const r = t[e.horizont];
-    if (t.art === 'prognose' || t.pump || !(t.score > 0) || typeof r !== 'number') continue;
+    if (t.art === 'prognose' || t.pump || !(t.score > 0) || typeof t[e.horizont] !== 'number') continue;
     const gruppe = marktGruppe(t);
     if (!gruppe) continue;
     for (const typ of new Set(t.typen)) {
       const k = `${typ}|${gruppe}`;
-      if (!werte.has(k)) werte.set(k, { typ, gruppe, r: [] });
-      werte.get(k)!.r.push(r);
+      if (!werte.has(k)) werte.set(k, { typ, gruppe, faelle: [] });
+      werte.get(k)!.faelle.push(t);
     }
   }
   const out: SignalBeweis[] = [];
-  for (const { typ, gruppe, r } of werte.values()) {
+  for (const { typ, gruppe, faelle } of werte.values()) {
+    // ehrliche Fallzahl: ein Wert zählt je Episode einmal (gleicher Schlüssel binnen 10 Handelstagen)
+    const r = episodenVertreter(faelle).map((t) => t[e.horizont] as number);
     if (r.length < 3) continue;
     const h = huerden[gruppe];
     const chance = runde((r.filter((x) => x > h).length / r.length) * 100, 1);
     const oeNetto = runde(r.reduce((a, b) => a + b, 0) / r.length - h, 2);
-    out.push({ typ, gruppe, faelle: r.length, chance, oeNetto, huerde: h, bewiesen: r.length >= e.mindestFaelle && chance >= e.mindestChance && oeNetto > 0 });
+    const ertragReicht = e.mindestOeNetto === undefined ? oeNetto > 0 : oeNetto >= e.mindestOeNetto;
+    out.push({ typ, gruppe, faelle: r.length, chance, oeNetto, huerde: h, bewiesen: r.length >= e.mindestFaelle && chance >= e.mindestChance && ertragReicht });
   }
   return out.sort((a, b) => Number(b.bewiesen) - Number(a.bewiesen) || b.oeNetto - a.oeNetto);
 }
@@ -162,7 +169,10 @@ export function autopilotOrders(
   const heuteSchluessel = new Set(auto.filter((o) => berlin(new Date(o.vorgemerktUm)).datum === heute).map((o) => o.plan.ausloeser));
   const vergeben = new Set(orders.map((o) => o.id));
   const bewiesen = beweise.filter((b) => b.bewiesen);
-  const mitVariante = (opt.varianten ?? []).filter((v) => v.beste);
+  // Die Beweisschwelle gilt auch für die „beste Spielart“ aus dem Varianten-Schattenbuch – sonst liefe sie ins Leere
+  const mitVariante = (opt.varianten ?? []).filter(
+    (v) => v.beste && v.beste.faelle >= e.mindestFaelle && (e.mindestChance === undefined || v.beste.chance >= e.mindestChance) && (e.mindestOeNetto === undefined || v.beste.oeNetto >= e.mindestOeNetto),
+  );
   if (!bewiesen.length && !mitVariante.length) return { ereignisse, hinweise: ['Autopilot: noch kein Signaltyp im Schattenbuch bewiesen'] };
 
   for (const k of kandidaten) {

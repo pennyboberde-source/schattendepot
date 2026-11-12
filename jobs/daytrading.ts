@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { signalBeweise } from '../core/autopilot.ts';
 import { beobachtung, kerzenVerarbeiten, spreadFuer, type DtBeobachtung, type DtLaufCfg } from '../core/daytrading/ablauf.ts';
 import { abendbilanzText, setupVarianten, tradeBeschreibung, uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
-import { kerzenAusGeschaeften, krakenKerzen, sitzung, tradesAusEreignissen, tradeSchritt, ausstiegAusfuehren, ergebnisRechnen, type DtEreignis, type DtMarkt, type DtTrade, type Kerze, type MarktConfig, type Sitzung } from '../core/daytrading/kern.ts';
+import { istVirtuell, kerzenAusGeschaeften, krakenKerzen, sitzung, tradesAusEreignissen, tradeSchritt, ausstiegAusfuehren, ergebnisRechnen, type VirtuellRegel, type DtEreignis, type DtMarkt, type DtTrade, type Kerze, type MarktConfig, type Sitzung } from '../core/daytrading/kern.ts';
 import { historie, monteCarlo, volleSitzungen } from '../core/daytrading/zeitmaschine.ts';
 import { euro } from '../core/geld.ts';
 import type { GebuehrenConfig } from '../core/gebuehren.ts';
@@ -49,6 +49,8 @@ interface DtConfig {
   autopilot: { aktiv: boolean; horizont: 'r1h' | 'r1T'; mindestFaelle: number; maxJeTag: number; maxSignalAlterMin: number };
   claude: { maxWatchlist: number; hebelMin: number; hebelMax: number };
   abendbilanzAb: string;
+  /** belegte Verlustbringer (Turbo, Short, Krypto) laufen nur virtuell mit (Plan Volltreffer V0) */
+  virtuell?: VirtuellRegel;
 }
 
 interface DtZustand {
@@ -145,6 +147,7 @@ const laufCfg: DtLaufCfg = {
   maxOffen: dt.maxOffen,
   emittent: dt.turbo.emittent,
   gebuehren,
+  virtuell: dt.virtuell,
 };
 
 // Spielart je Setup (Nutzer 28.10.: „herausfiltern, wo Hebel und Co. passen“): erst ab genug Trades, vorsichtig bewertet
@@ -162,7 +165,11 @@ function wahlFuer(markt: DtMarkt, setup: string): DtBeobachtung['wahl'] {
 const neueEreignisse: DtEreignis[] = [];
 const neueTrades: DtTrade[] = [];
 const hinweise: string[] = [];
-const zaehler = { heuteEroeffnet: trades.filter((t) => t.datum === datum).length, vergeben: new Set(trades.map((t) => t.id)) };
+const zaehler = {
+  heuteEroeffnet: trades.filter((t) => t.datum === datum && !t.virtuell).length,
+  heuteVirtuell: trades.filter((t) => t.datum === datum && t.virtuell).length,
+  vergeben: new Set(trades.map((t) => t.id)),
+};
 
 // --- Tageswechsel: liegengebliebene Trades zum letzten bekannten Kurs schließen (Daytrading hält nie über Nacht) ---
 let z = leseJson<DtZustand | null>('daytrading/zustand.json', null);
@@ -389,7 +396,7 @@ if (dt.timeMachine.aktiv && tdKey) {
 // --- Schreiben ---
 const geschrieben = anhaengen(alleEreignisse, neueEreignisse);
 const nachher = tradesAusEreignissen([...alleEreignisse, ...geschrieben]);
-const uebersicht = uebersichtBerechnen(nachher, datum, jetzt.toISOString(), leseJson('lernen/marktphasen.json', {}));
+const uebersicht = uebersichtBerechnen(nachher, datum, jetzt.toISOString(), leseJson('lernen/marktphasen.json', {}), dt.virtuell);
 schreibeJson('daytrading/uebersicht.json', {
   ...uebersicht,
   varianten,
@@ -402,8 +409,10 @@ schreibeJson('daytrading/zustand.json', zustand);
 // --- Pushes: Claude-Trades einzeln (je Lauf gebündelt), Code-Scan/Autopilot nur in der Abendbilanz ---
 let pushes: PushNachricht[] = [];
 const iso = jetzt.toISOString();
-const claudeEin = geschrieben.filter((e) => e.typ === 'einstieg' && e.trade.herkunft === 'claude') as Extract<DtEreignis, { typ: 'einstieg' }>[];
-const claudeAus = geschrieben.filter((e) => e.typ === 'ausstieg' && nachher.find((t) => t.id === e.tradeId)?.herkunft === 'claude') as Extract<DtEreignis, { typ: 'ausstieg' }>[];
+// nur virtuell mitgeführte Trades (Turbo, Short, Krypto) lösen keine Mitteilung aus
+const virtuell = (t: DtTrade | undefined) => !!t && istVirtuell(t, dt.virtuell);
+const claudeEin = geschrieben.filter((e) => e.typ === 'einstieg' && e.trade.herkunft === 'claude' && !virtuell(e.trade)) as Extract<DtEreignis, { typ: 'einstieg' }>[];
+const claudeAus = geschrieben.filter((e) => e.typ === 'ausstieg' && nachher.find((t) => t.id === e.tradeId)?.herkunft === 'claude' && !virtuell(nachher.find((t) => t.id === e.tradeId))) as Extract<DtEreignis, { typ: 'ausstieg' }>[];
 for (const e of claudeEin) {
   const b = tradeBeschreibung(e.trade);
   pushes.push({ typ: 'gekauft', titel: `⚡ Daytrade: ${b.was}`, text: `${b.einstieg} · ${b.plan}`, ziel: '#/daytrading', tag: `dt-${e.trade.id}`, erstellt: iso });
@@ -416,7 +425,7 @@ if (pushes.length > 4) pushes = [{ typ: 'gekauft', titel: `⚡ ${pushes.length} 
 // Abendbilanz: werktags ab 22:10 (US-Daten kommen verzögert); am Wochenende nur Krypto (Kraken in Echtzeit) → kurz nach „flat bis“
 const bilanzAb = handelstag ? uhrzeitMinuten(dt.abendbilanzAb) : uhrzeitMinuten(dt.maerkte.krypto.flatBis) + 5;
 if ((handelstag || kryptoTaeglich) && b.minuten >= bilanzAb && zustand.abendbilanz !== datum) {
-  const heute = nachher.filter((t) => t.datum === datum);
+  const heute = nachher.filter((t) => t.datum === datum && !virtuell(t));
   if (heute.length) {
     const a = abendbilanzText(uebersicht, heute);
     pushes.push({ typ: 'bericht', titel: a.titel, text: a.text, ziel: '#/daytrading', tag: `dt-bilanz-${datum}`, erstellt: iso });

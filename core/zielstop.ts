@@ -3,6 +3,7 @@
 // Grob, aber ehrlich: zwischen zwei Messpunkten ist der Verlauf unbekannt (Ziel/Stop gelten am Messpunkt).
 import { runde } from './geld.ts';
 import type { TrackingEintrag } from './statistik.ts';
+import { episodenVertreter } from './episoden.ts';
 
 export interface ZielStopEinstellungen {
   mindestFaelle: number;
@@ -45,7 +46,9 @@ export function zielStopVorschlaege(tracking: TrackingEintrag[], huerde: (t: Tra
     for (const typ of new Set(t.typen)) nachTyp.set(typ, [...(nachTyp.get(typ) ?? []), t]);
   }
   const out: ZielStopVorschlag[] = [];
-  for (const [typ, faelle] of nachTyp) {
+  for (const [typ, alle] of nachTyp) {
+    // ein Wert zählt je Episode einmal (gleicher Schlüssel binnen 10 Handelstagen)
+    const faelle = episodenVertreter(alle);
     if (faelle.length < e.mindestFaelle) continue;
     const h = faelle.map(huerde);
     const oeHuerde = h.reduce((a, b) => a + b, 0) / h.length;

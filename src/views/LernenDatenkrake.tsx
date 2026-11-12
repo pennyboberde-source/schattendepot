@@ -11,6 +11,32 @@ import { MonatspruefungKarte, PhasenKarte, SpielartKarte } from './LernenS4';
 
 const TYP_NAME = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name])) as Record<string, string>;
 const p = (x: number | null | undefined) => (x === null || x === undefined ? '–' : prozent(x));
+
+/**
+ * Kennzahl mit ihrer echten Fallzahl: „+1,2 % (12)“. n ist die Zahl der Messungen dieses Messpunkts; derselbe Wert
+ * zählt binnen 10 Handelstagen nur einmal (Plan Volltreffer V0, ehrliche Fallzahlen).
+ */
+export function MitN({ wert, n }: { wert: number | null | undefined; n?: number }) {
+  // unter 5 Messungen ist die Zahl keine Aussage → klein und ohne Farbe
+  if ((n ?? 0) < 5)
+    return (
+      <span class="klein">
+        {p(wert)} ({n ?? 0})
+      </span>
+    );
+  return (
+    <>
+      {p(wert)} <span class="klein">({n})</span>
+    </>
+  );
+}
+
+/** Die Zahl, nach der ein Signal beurteilt wird: 1 Woche ab 5 Messungen, sonst 1 Tag ab 5 Messungen, sonst nichts. */
+export function urteilsWert(t: TrackingGruppe): number | null {
+  if ((t.n1W ?? 0) >= 5 && t.oe1W != null) return t.oe1W;
+  if ((t.n1T ?? 0) >= 5 && t.oe1T != null) return t.oe1T;
+  return null;
+}
 const MARKT: Record<string, string> = {
   us: 'USA',
   eu: 'Europa',
@@ -25,10 +51,10 @@ export interface HotStuffBericht {
   mover: HotStuffEintrag[];
 }
 
-/** Ampel: grün = klappt, rot = verliert, gelb = unklar, grau = zu wenig Fälle (unter 5). */
+/** Ampel: grün = klappt, rot = verliert, gelb = unklar, grau = zu wenig Messungen (unter 5 am Messpunkt). */
 export function ampel(t: TrackingGruppe): { klasse: string; text: string } {
-  const r = t.oe1W ?? t.oe1T;
-  if (t.anzahl < 5 || r === null || r === undefined) return { klasse: 'grau', text: 'zu wenig Fälle' };
+  const r = urteilsWert(t);
+  if (r === null) return { klasse: 'grau', text: 'zu wenig Fälle' };
   if (r > 0.5 && (t.quote1T ?? 50) >= 50) return { klasse: 'gruen', text: 'klappt' };
   if (r < -0.5) return { klasse: 'rot', text: 'verliert' };
   return { klasse: 'gelb', text: 'unklar' };
@@ -59,20 +85,21 @@ export function DatenkrakeKarten({ s, gewichte, hotstuff, vorlauf }: { s: Statis
 
 function WasKlappt({ s, gewichte }: { s: Statistik; gewichte: Record<string, number> }) {
   const g = s.kandidaten.gesamt;
-  const zeilen = Object.entries(s.kandidaten.nachSignalTyp).sort((a, b) => (b[1].oe1W ?? b[1].oe1T ?? -99) - (a[1].oe1W ?? a[1].oe1T ?? -99));
+  // Signale ohne genug Messungen stehen unten – ein Ø aus 4 Fällen führt die Liste nicht mehr an
+  const zeilen = Object.entries(s.kandidaten.nachSignalTyp).sort((a, b) => (urteilsWert(b[1]) ?? -99) - (urteilsWert(a[1]) ?? -99));
   return (
     <Karte titel="Was klappt – Signale im Schattenbuch">
       <div class="raster-kennzahlen">
         <div class="kennzahl">
           <span class="kennzahl-label">Mitverfolgt</span>
           <strong>{g.anzahl}</strong>
-          <span class="klein">Kandidaten und schnelle Signale</span>
+          <span class="klein">Werte (binnen 10 Handelstagen einmal gezählt){g.eintraege ? ` · ${g.eintraege} Einträge` : ''}</span>
         </div>
         <div class="kennzahl">
           <span class="kennzahl-label">Im Plus nach 1 Tag</span>
           <strong>{g.quote1T == null ? '–' : prozent(g.quote1T, { vorzeichen: false, stellen: 0 })}</strong>
           <span class="klein">
-            Ø {p(g.oe1T)} · nach 1 Woche Ø {p(g.oe1W)}
+            Ø {p(g.oe1T)} ({g.n1T ?? 0} Messungen) · nach 1 Woche Ø {p(g.oe1W)}, Median {p(g.med1W)} ({g.n1W ?? 0})
           </span>
         </div>
       </div>
@@ -84,10 +111,10 @@ function WasKlappt({ s, gewichte }: { s: Statistik; gewichte: Record<string, num
             <tr>
               <th>Signal</th>
               <th>Ampel</th>
-              <th>n</th>
               <th>im Plus 1 T</th>
-              <th>Ø 1 Tag</th>
-              <th>Ø 1 Woche</th>
+              <th>Ø 1 Tag (n)</th>
+              <th>Ø 1 Woche (n)</th>
+              <th>Median 1 W</th>
               <th>Gewicht</th>
             </tr>
           </thead>
@@ -101,10 +128,14 @@ function WasKlappt({ s, gewichte }: { s: Statistik; gewichte: Record<string, num
                     <span class={`ampel ${a.klasse}`} aria-hidden="true" />
                     <span class="klein">{a.text}</span>
                   </td>
-                  <td>{t.anzahl}</td>
                   <td>{t.quote1T == null ? '–' : prozent(t.quote1T, { vorzeichen: false, stellen: 0 })}</td>
-                  <td class={(t.oe1T ?? 0) >= 0 ? 'plus' : 'minus'}>{p(t.oe1T)}</td>
-                  <td class={(t.oe1W ?? 0) >= 0 ? 'plus' : 'minus'}>{p(t.oe1W)}</td>
+                  <td class={(t.oe1T ?? 0) >= 0 ? 'plus' : 'minus'}>
+                    <MitN wert={t.oe1T} n={t.n1T} />
+                  </td>
+                  <td class={(t.oe1W ?? 0) >= 0 ? 'plus' : 'minus'}>
+                    <MitN wert={t.oe1W} n={t.n1W} />
+                  </td>
+                  <td>{p(t.med1W)}</td>
                   <td>{(gewichte[k] ?? signalCfg.typen[k as keyof typeof signalCfg.typen]?.gewicht ?? 1).toLocaleString('de-DE')}</td>
                 </tr>
               );
@@ -112,7 +143,10 @@ function WasKlappt({ s, gewichte }: { s: Statistik; gewichte: Record<string, num
           </tbody>
         </table>
       )}
-      <p class="klein">Gerichtete Rendite (Long: Anstieg, Short: Rückgang), vor Gebühren. Ampel erst ab 5 Fällen – kleine Zahlen sind Zufall.</p>
+      <p class="klein">
+        Gerichtete Rendite (Long: Anstieg, Short: Rückgang), vor Gebühren. Die Zahl in Klammern ist n, die Zahl der Messungen an diesem Messpunkt; derselbe Wert zählt binnen 10 Handelstagen nur einmal. Weichen Ø und Median stark ab, trägt ein
+        Ausreißer den Durchschnitt. Ampel erst ab 5 Messungen – kleine Zahlen sind Zufall.
+      </p>
     </Karte>
   );
 }
@@ -209,24 +243,29 @@ function ReaktionKarte({ s }: { s: Statistik }) {
           <thead>
             <tr>
               <th>Signal</th>
-              <th>n</th>
-              <th>Ø 1 Std.</th>
-              <th>Ø 1 Tag</th>
+              <th>Ø 1 Std. (n)</th>
+              <th>Ø 1 Tag (n)</th>
             </tr>
           </thead>
           <tbody>
             {l.map(([k, t]) => (
               <tr key={k}>
                 <td>{TYP_NAME[k] ?? k}</td>
-                <td>{t.anzahl}</td>
-                <td>{p(t.oe1h)}</td>
-                <td>{p(t.oe1T)}</td>
+                <td>
+                  <MitN wert={t.oe1h} n={t.n1h} />
+                </td>
+                <td>
+                  <MitN wert={t.oe1T} n={t.n1T} />
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
-      <p class="klein">Ist die Bewegung nach 1 Stunde schon fast vorbei, ist das Signal mit 15 Minuten Verzögerung kaum handelbar.</p>
+      <p class="klein">
+        Ist die Bewegung nach 1 Stunde schon fast vorbei, ist das Signal mit 15 Minuten Verzögerung kaum handelbar. Seit 12.11.2026 zählt die 1-Stunden-Messung nur, wenn der Markt des Werts bei Start und Messung offen war – ältere Messungen
+        außerhalb der Handelszeit (meist genau 0 %) sind herausgenommen.
+      </p>
     </Karte>
   );
 }
@@ -239,18 +278,22 @@ function KleineTabelle({ daten, name }: { daten: Record<string, TrackingGruppe>;
       <thead>
         <tr>
           <th></th>
-          <th>n</th>
-          <th>Ø 1 Tag</th>
-          <th>Ø 1 Woche</th>
+          <th>Ø 1 Tag (n)</th>
+          <th>Ø 1 Woche (n)</th>
+          <th>Median 1 W</th>
         </tr>
       </thead>
       <tbody>
         {zeilen.map(([k, t]) => (
           <tr key={k}>
             <td>{name(k)}</td>
-            <td>{t.anzahl}</td>
-            <td class={(t.oe1T ?? 0) >= 0 ? 'plus' : 'minus'}>{p(t.oe1T)}</td>
-            <td class={(t.oe1W ?? 0) >= 0 ? 'plus' : 'minus'}>{p(t.oe1W)}</td>
+            <td class={(t.oe1T ?? 0) >= 0 ? 'plus' : 'minus'}>
+              <MitN wert={t.oe1T} n={t.n1T} />
+            </td>
+            <td class={(t.oe1W ?? 0) >= 0 ? 'plus' : 'minus'}>
+              <MitN wert={t.oe1W} n={t.n1W} />
+            </td>
+            <td>{p(t.med1W)}</td>
           </tr>
         ))}
       </tbody>

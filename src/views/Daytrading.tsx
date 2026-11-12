@@ -16,6 +16,7 @@ const SETUP: Record<string, string> = { orb_long: 'Spanne ▲', orb_short: 'Span
 const GRUND: Record<string, string> = { ziel: 'Ziel', stop: 'Stop', schluss: 'Schluss', knockout: 'Knock-out' };
 const INSTR: Record<string, string> = { aktie: 'Aktie', turbo: 'Turbo', krypto: 'Krypto' };
 const RISIKO: Record<string, string> = { skill_filter: 'im Skill-Filter', spekulativ: 'spekulativ (Penny/Small Cap)' };
+const VIRTUELL: Record<string, string> = { turbo: 'Turbo', short: 'Short (fallende Kurse)', krypto: 'Krypto' };
 
 export function DaytradingView() {
   const u = useDaten<Daten>('daytrading/uebersicht.json');
@@ -34,6 +35,8 @@ function Inhalt({ d }: { d: Daten }) {
   const h = d.heute.gruppe;
   const g = d.gesamt;
   const heute = d.trades.filter((t) => t.datum === d.heute.datum);
+  const heuteZu = heute.filter((t) => t.ausstieg);
+  const heuteVirtuell = heuteZu.filter((t) => t.virtuell).length;
   return (
     <>
       <div class="raster-kennzahlen" data-testid="daytrading-kennzahlen">
@@ -68,8 +71,8 @@ function Inhalt({ d }: { d: Daten }) {
           <TradeListe trades={d.offen} />
         </Karte>
       )}
-      <Karte titel={`Heute (${heute.filter((t) => t.ausstieg).length} abgeschlossen)`}>
-        {heute.length ? <TradeListe trades={heute.filter((t) => t.ausstieg)} /> : <p class="leer">Heute noch kein Trade.</p>}
+      <Karte titel={`Heute (${heuteZu.length - heuteVirtuell} abgeschlossen${heuteVirtuell ? `, ${heuteVirtuell} nur virtuell` : ''})`}>
+        {heute.length ? <TradeListe trades={heuteZu} /> : <p class="leer">Heute noch kein Trade.</p>}
         {d.beobachtet && (
           <p class="klein">
             Beobachtet: {Object.entries(d.beobachtet).map(([k, v]) => `${HERKUNFT[k] ?? k} ${v}`).join(' · ')}
@@ -95,6 +98,40 @@ function Inhalt({ d }: { d: Daten }) {
             : 'noch keine – bis dahin gilt die Grundregel (long Aktie, short Turbo Hebel 5).'}
         </p>
       </Karte>
+
+      {d.virtuell && (
+        <Karte titel="Nur virtuell mitgeführt – zählt nicht mit">
+          <p class="klein" data-testid="dt-virtuell">
+            Turbos, Short-Trades und Krypto haben im Daytrading bisher verloren. {d.virtuell.ab ? `Seit ${datumKurz(d.virtuell.ab)} ` : 'Sie '}
+            laufen {d.virtuell.ab ? 'sie ' : ''}nur noch virtuell mit: Der Code spielt sie weiter durch und wertet sie hier getrennt aus, sie zählen aber nicht mehr in die Kennzahlen oben, die Abendbilanz, das Wochenzeugnis und die Mitteilungen.
+            Frühere Trades bleiben in der Bilanz, wie sie waren.
+          </p>
+          <div class="raster-kennzahlen">
+            <div class="kennzahl">
+              <span class="kennzahl-label">Virtuell gesamt</span>
+              <Betrag wert={d.virtuell.gesamt.netto} />
+              <span class="klein">
+                {d.virtuell.gesamt.anzahl} Trades · {prozent(d.virtuell.gesamt.quote, { vorzeichen: false })} Treffer{d.virtuell.offen ? ` · ${d.virtuell.offen} offen` : ''}
+              </span>
+            </div>
+            {d.seitUmstellung && (
+              <div class="kennzahl">
+                <span class="kennzahl-label">Sichtbar seit {datumKurz(d.seitUmstellung.ab)}</span>
+                <Betrag wert={d.seitUmstellung.gruppe.netto} />
+                <span class="klein">
+                  {d.seitUmstellung.gruppe.anzahl} Trades · {prozent(d.seitUmstellung.gruppe.quote, { vorzeichen: false })} Treffer
+                </span>
+              </div>
+            )}
+          </div>
+          {d.virtuell.gesamt.anzahl > 0 ? (
+            <GruppenTabelle titel="Virtuelle Gruppe" daten={d.virtuell.gruppen} name={(k) => VIRTUELL[k] ?? k} />
+          ) : (
+            <p class="leer">Noch kein virtuell mitgeführter Trade abgeschlossen.</p>
+          )}
+          <p class="klein">Die Gruppen überschneiden sich: Ein Turbo short steht in beiden Zeilen.</p>
+        </Karte>
+      )}
 
       <Karte titel="Time Machine – hätte der Filter geholfen?">
         {d.zeitmaschine.length ? (
@@ -153,6 +190,7 @@ function TradeListe({ trades }: { trades: DtTrade[] }) {
                 <div class="klein">
                   {HERKUNFT[t.herkunft]} · {MARKT[t.markt]} · {SETUP[`${t.setup}_${t.ausloeser.richtung ?? t.richtung}`] ?? t.setup}
                   {t.spekulativ ? ' · spekulativ' : ''}
+                  {t.virtuell ? ' · nur virtuell (zählt nicht mit)' : ''}
                 </div>
                 <div class="klein">{b.einstieg}</div>
                 <div class="klein">{b.plan}</div>

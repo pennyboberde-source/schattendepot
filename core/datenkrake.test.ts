@@ -48,13 +48,18 @@ describe('Hot Stuff', () => {
 });
 
 describe('Ähnliche Fälle', () => {
-  const t = (typen: string[], r1W: number, score = 2): TrackingEintrag => ({ datum: 'd', schluessel: 'x', name: 'x', score, typen, quellen: [], r1W });
+  let nr = 0;
+  const t = (typen: string[], r1W: number, score = 2, schluessel = `T:W${++nr}`): TrackingEintrag => ({ datum: '2026-11-02', schluessel, name: 'x', score, typen, quellen: [], r1W });
   it('gleiche Richtung, gemeinsame Typen, mindestens 3 Fälle', () => {
     const tr = [t(['insider_kauf', 'analysten_hochstufung'], 4), t(['insider_kauf', 'analysten_hochstufung', 'nachricht'], -2), t(['analysten_hochstufung', 'insider_kauf'], 7), t(['insider_kauf'], 9), t(['insider_kauf', 'analysten_hochstufung'], 5, -1)];
     const a = aehnlicheFaelle(['insider_kauf', 'analysten_hochstufung', 'nachricht'], 1, tr);
     expect(a).toEqual({ anzahl: 3, treffer: 2, quote: 66.7, oe: 3, feld: 'r1W' });
     expect(aehnlichText(a)).toBe('In 3 ähnlichen Fällen 2 im Plus, Ø +3 % nach 1 Woche');
     expect(aehnlicheFaelle(['nachricht'], 1, tr)).toBeNull();
+  });
+  it('derselbe Wert zählt binnen 10 Handelstagen nur einmal', () => {
+    const tr = [t(['insider_kauf'], 4, 2, 'T:AAA'), { ...t(['insider_kauf'], 6, 2, 'T:AAA'), datum: '2026-11-03' }, { ...t(['insider_kauf'], 8, 2, 'T:AAA'), datum: '2026-11-04' }, t(['insider_kauf'], -2, 2, 'T:BBB'), t(['insider_kauf'], 1, 2, 'T:CCC')];
+    expect(aehnlicheFaelle(['insider_kauf'], 1, tr)).toEqual({ anzahl: 3, treffer: 2, quote: 66.7, oe: 1, feld: 'r1W' });
   });
 });
 

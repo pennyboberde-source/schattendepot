@@ -64,20 +64,26 @@ describe('Statistik', () => {
       { datum: 'd', schluessel: 'T:B', name: 'B', score: 2, typen: ['insider_kauf', 'nachricht'], quellen: ['FAZ'], r1W: -1 },
     ];
     const st = statistikBerechnen([], t, 'jetzt');
-    expect(st.kandidaten.nachSignalTyp.insider_kauf).toEqual({ anzahl: 2, oe1h: null, oe1T: null, oe3T: null, oe1W: 0.5, oe10T: null, oe1M: null, quote1T: null, quote3T: null, quote1W: 50, n1T: 0, n3T: 0, n1W: 2 });
+    expect(st.kandidaten.nachSignalTyp.insider_kauf).toEqual({ anzahl: 2, eintraege: 2, oe1h: null, oe1T: null, oe3T: null, oe1W: 0.5, oe10T: null, oe1M: null, med1T: null, med3T: null, med1W: 0.5, med10T: null, quote1T: null, quote3T: null, quote1W: 50, n1h: 0, n1T: 0, n3T: 0, n1W: 2, n10T: 0, n1M: 0 });
     expect(st.kandidaten.nachRisiko?.normal?.anzahl).toBe(2);
   });
 });
 
 describe('Gewichtsanpassung in Grenzen', () => {
   const cfg = signalCfg as unknown as SignalConfig & { grenzen: Grenzen };
-  const tg = (anzahl: number, oe1W: number) => ({ anzahl, oe1T: null, oe1W, oe1M: null, quote1W: null });
+  const tg = (anzahl: number, oe1W: number, n1W = anzahl) => ({ anzahl, n1W, oe1T: null, oe1W, oe1M: null, quote1W: null });
 
   it('höchstens ±20 % pro Woche, erst ab 8 Fällen', () => {
     const r = gewichteAnpassen({}, cfg, { insider_kauf: tg(10, 10), nachricht: tg(3, 10), stimmung_social: tg(9, -1) }, {}, [], '2026-10-24');
     expect(r.gewichte.signale!.insider_kauf).toBe(1.8); // 1,5 × 1,2
     expect(r.gewichte.signale!.nachricht).toBeUndefined();
     expect(r.gewichte.signale!.stimmung_social).toBe(0.475); // 0,5 × 0,95
+  });
+
+  it('ehrliche Fallzahl: 36 Einträge mit nur 4 Wochen-Messungen ändern kein Gewicht (Befund handelsstopp)', () => {
+    const r = gewichteAnpassen({}, cfg, { handelsstopp: tg(36, 47.11, 4) }, {}, [], '2026-11-14');
+    expect(r.gewichte.signale!.handelsstopp).toBeUndefined();
+    expect(r.aenderungen).toHaveLength(0);
   });
 
   it('absolute Grenzen min/max', () => {

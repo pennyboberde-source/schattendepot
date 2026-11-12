@@ -20,18 +20,20 @@ export function PhasenKarte({ s }: { s: Statistik }) {
           <thead>
             <tr>
               <th>Phase</th>
-              <th>Signale</th>
+              <th>Messungen 1 T</th>
               <th>1 Tag im Plus</th>
-              <th>Ø 1 Woche</th>
+              <th>Ø 1 Woche (n)</th>
             </tr>
           </thead>
           <tbody>
             {sb.map(([k, v]) => (
               <tr key={k}>
                 <td>{name(k)}</td>
-                <td>{v.anzahl}</td>
+                <td>{v.n1T ?? 0}</td>
                 <td>{p(v.quote1T)}</td>
-                <td>{p(v.oe1W)}</td>
+                <td>
+                  {p(v.oe1W)} <span class="klein">({v.n1W ?? 0})</span>
+                </td>
               </tr>
             ))}
           </tbody>

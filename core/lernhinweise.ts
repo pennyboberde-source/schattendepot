@@ -51,13 +51,14 @@ export function lernhinweise(s: Statistik): string[] {
   if (s.pflicht.anzahl >= MIN.gruppe && s.ueberzeugung.anzahl >= MIN.gruppe && s.pflicht.oeNetto > s.ueberzeugung.oeNetto)
     h.push(`Pflicht-Orders schneiden besser ab als Überzeugungs-Orders (Ø ${p(s.pflicht.oeNetto)} vs. ${p(s.ueberzeugung.oeNetto)}) → eigene Überzeugung kritisch prüfen.`);
 
-  const sig = Object.entries(s.kandidaten.nachSignalTyp).filter(([, v]) => v.anzahl >= MIN.tracking && v.oe1W !== null);
+  // n = Zahl der 1-Wochen-Messungen (ein Wert je Episode einmal), nicht die Zahl der Einträge im Buch
+  const sig = Object.entries(s.kandidaten.nachSignalTyp).filter(([, v]) => (v.n1W ?? 0) >= MIN.tracking && v.oe1W !== null);
   if (sig.length >= 2) {
     sig.sort((a, b) => b[1].oe1W! - a[1].oe1W!);
     const [bn, bv] = sig[0];
     const [sn, sv] = sig[sig.length - 1];
-    if (bv.oe1W! > 0) h.push(`Stärkstes Signal (auch ohne Kauf gemessen): ${bn} Ø ${p(bv.oe1W!)} nach 1 Woche (n=${bv.anzahl}).`);
-    if (sv.oe1W! < 0) h.push(`Schwächstes Signal: ${sn} Ø ${p(sv.oe1W!)} nach 1 Woche (n=${sv.anzahl}) → nicht darauf verlassen.`);
+    if (bv.oe1W! > 0) h.push(`Stärkstes Signal (auch ohne Kauf gemessen): ${bn} Ø ${p(bv.oe1W!)} nach 1 Woche${typeof bv.med1W === 'number' ? `, Median ${p(bv.med1W)}` : ''} (n=${bv.n1W}).`);
+    if (sv.oe1W! < 0) h.push(`Schwächstes Signal: ${sn} Ø ${p(sv.oe1W!)} nach 1 Woche${typeof sv.med1W === 'number' ? `, Median ${p(sv.med1W)}` : ''} (n=${sv.n1W}) → nicht darauf verlassen.`);
   }
   return h;
 }

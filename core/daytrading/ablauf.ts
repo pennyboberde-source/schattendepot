@@ -9,6 +9,8 @@ import {
   setupSchritt,
   tradeSchritt,
   turboAnlegen,
+  virtuellNachRegel,
+  type VirtuellRegel,
   type DtEreignis,
   type DtGebuehren,
   type DtHerkunft,
@@ -54,6 +56,15 @@ export interface DtLaufCfg {
   maxOffen: number;
   emittent: string;
   gebuehren: DtGebuehren;
+  /** belegte Verlustbringer laufen nur virtuell mit (Plan Volltreffer V0); eigene Tages- und Positionsgrenze */
+  virtuell?: VirtuellRegel;
+}
+
+/** Wie wird ein Auslöser gehandelt (Richtung, Instrument, Hebel)? Standard: long als Aktie/Krypto, short als Turbo. */
+function spielart(b: DtBeobachtung, ausloeserRichtung: DtRichtung): { richtung: DtRichtung; instrument: DtInstrument; hebel: number } {
+  const w = b.wahl?.[ausloeserRichtung];
+  const richtung: DtRichtung = w?.richtung ?? ausloeserRichtung;
+  return { richtung, instrument: w?.instrument ?? (richtung === 'short' ? 'turbo' : b.instrumentLong), hebel: w?.hebel ?? b.hebel };
 }
 
 function slug(s: string): string {
@@ -90,7 +101,7 @@ export function kerzenVerarbeiten(
   beobachtungen: DtBeobachtung[],
   offen: DtTrade[],
   cfg: DtLaufCfg,
-  zaehler: { heuteEroeffnet: number; vergeben: Set<string> },
+  zaehler: { heuteEroeffnet: number; vergeben: Set<string>; /** heutige Einstiege, die nur virtuell laufen (eigene Tagesgrenze) */ heuteVirtuell?: number },
 ): DtLaufErgebnis {
   const ereignisse: DtEreignis[] = [];
   const hinweise: string[] = [];
@@ -114,7 +125,11 @@ export function kerzenVerarbeiten(
         if (!s) continue;
         const a = setupSchritt(b.zustand, k, s, cfg.regeln);
         if (!a || a.typ !== 'einstieg') continue;
-        if (zaehler.heuteEroeffnet >= cfg.maxTradesJeTag || offen.length >= cfg.maxOffen) {
+        // Sichtbare und nur virtuell mitlaufende Trades haben getrennte Grenzen – keiner nimmt dem anderen den Platz
+        const sp = spielart(b, a.richtung);
+        const virt = virtuellNachRegel({ ...sp, markt: b.markt }, cfg.virtuell);
+        const heuteGleiche = virt ? (zaehler.heuteVirtuell ?? 0) : zaehler.heuteEroeffnet;
+        if (heuteGleiche >= cfg.maxTradesJeTag || offen.filter((t) => !!t.virtuell === virt).length >= cfg.maxOffen) {
           hinweise.push(`${b.name}: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)`);
           continue;
         }
@@ -123,7 +138,8 @@ export function kerzenVerarbeiten(
           hinweise.push(`${b.name}: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)`);
           continue;
         }
-        zaehler.heuteEroeffnet++;
+        if (virt) zaehler.heuteVirtuell = (zaehler.heuteVirtuell ?? 0) + 1;
+        else zaehler.heuteEroeffnet++;
         offen.push(tr);
         neu.push(tr);
         ereignisse.push({ id: `${tr.einstieg.zeit}-einstieg-${tr.id}`, typ: 'einstieg', zeit: tr.einstieg.zeit, trade: tr });
@@ -136,11 +152,8 @@ export function kerzenVerarbeiten(
 }
 
 function tradeAnlegen(b: DtBeobachtung, ausloeserRichtung: DtRichtung, k: Kerze, s: Sitzung, cfg: DtLaufCfg, vergeben: Set<string>): DtTrade | null {
-  const w = b.wahl?.[ausloeserRichtung];
-  const richtung: DtRichtung = w?.richtung ?? ausloeserRichtung;
+  const { richtung, instrument, hebel } = spielart(b, ausloeserRichtung);
   if (richtung === 'short' && b.markt === 'krypto') return null;
-  const instrument: DtInstrument = w?.instrument ?? (richtung === 'short' ? 'turbo' : b.instrumentLong);
-  const hebel = w?.hebel ?? b.hebel;
   const plan = ausstiegsPlan(k.o, richtung, b.zustand.setup === 'orb' ? b.zustand : {}, cfg.plan);
   if (!plan) return null;
   let id = `${cfg.datum}-${b.herkunft === 'code_scan' ? 'scan' : b.herkunft}-${slug(b.name)}`;
@@ -171,6 +184,7 @@ function tradeAnlegen(b: DtBeobachtung, ausloeserRichtung: DtRichtung, k: Kerze,
     flatBis: s.flatBis.toISOString(),
     ...(b.chance !== undefined ? { chance: b.chance } : {}),
     ...(b.these ? { these: b.these } : {}),
+    ...(virtuellNachRegel({ richtung, instrument, markt: b.markt }, cfg.virtuell) ? { virtuell: true } : {}),
   };
   const einstieg = einstiegAusfuehren(ohneEinstieg, k, spreadFuer(ohneEinstieg, cfg.spreads), cfg.orderBetrag);
   if (!einstieg) return null;

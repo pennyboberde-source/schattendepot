@@ -165,4 +165,16 @@ describe('SEC Verwässerung (S4, gleiches Atom-Format wie 8-K)', async () => {
     karte.set(123456, { ticker: 'TINY', name: 'Tiny Bio Inc', rang: 4000 });
     expect(verwaesserungAuswerten(atom, '424B5', karte, new Date())).toHaveLength(1);
   });
+
+  it('Großkonzern mit mehreren Aktiengattungen (BRK-B vorn, BRK-A hinten) gilt nicht als Kleinwert', async () => {
+    const { cikKarte } = await import('./sec.ts');
+    const fuell = (n: number, ab: number) => [...Array(n)].map((_, i) => ({ cik_str: 5000000 + ab + i, ticker: `F${ab + i}`, title: 'Füller' }));
+    const liste = [{ cik_str: 320193, ticker: 'AAPL', title: 'Apple Inc.' }, { cik_str: 1067983, ticker: 'BRK-B', title: 'BERKSHIRE HATHAWAY INC' }, ...fuell(2000, 0), { cik_str: 1067983, ticker: 'BRK-A', title: 'BERKSHIRE HATHAWAY INC' }, { cik_str: 123456, ticker: 'TINY', title: 'Tiny Bio Inc' }];
+    const karte = cikKarte(liste);
+    expect(karte.get(1067983)).toEqual({ ticker: 'BRK-B', name: 'BERKSHIRE HATHAWAY INC', rang: 1 });
+    const atom = `<feed><entry><title>424B5 - BERKSHIRE HATHAWAY INC (0001067983) (Filer)</title><link rel="alternate" href="https://www.sec.gov/b"/><summary>x</summary><updated>2026-11-12T08:05:00-05:00</updated></entry>
+      <entry><title>424B5 - TINY BIO INC (0000123456) (Filer)</title><link rel="alternate" href="https://www.sec.gov/x"/><summary>x</summary><updated>2026-11-12T08:05:00-05:00</updated></entry></feed>`;
+    const s = verwaesserungAuswerten(atom, '424B5', karte, new Date('2026-11-12T14:00:00Z'));
+    expect(s.map((x) => x.wertpapier.ticker)).toEqual(['TINY']);
+  });
 });

@@ -2,7 +2,7 @@
 // Datengrundlage: gerichtete 1-Wochen-Rendite der mitverfolgten Kandidaten (Käufe und Nicht-Käufe).
 import { runde } from './geld.ts';
 import type { Gewichte, SignalConfig } from './signale.ts';
-import type { TrackingGruppe } from './statistik.ts';
+import { messungen1W, type TrackingGruppe } from './statistik.ts';
 
 export interface Grenzen {
   min: number;
@@ -59,19 +59,19 @@ export function gewichteAnpassen(
   };
 
   for (const [name, t] of Object.entries(nachSignalTyp)) {
-    if (t.anzahl < g.mindestFaelle || t.oe1W === null) continue;
-    anwenden('signal', name, faktorAusRendite(t.oe1W, g.maxAenderungProWoche), `Ø 1-Wochen-Rendite ${t.oe1W} % (n=${t.anzahl})`);
+    if (messungen1W(t) < g.mindestFaelle || t.oe1W === null) continue;
+    anwenden('signal', name, faktorAusRendite(t.oe1W, g.maxAenderungProWoche), `Ø 1-Wochen-Rendite ${t.oe1W} % (n=${t.n1W})`);
   }
   for (const [name, t] of Object.entries(nachQuelle)) {
-    if (t.anzahl < g.mindestFaelle || t.oe1W === null) continue;
-    anwenden('quelle', name, faktorAusRendite(t.oe1W, g.maxAenderungProWoche), `Ø 1-Wochen-Rendite ${t.oe1W} % (n=${t.anzahl})`);
+    if (messungen1W(t) < g.mindestFaelle || t.oe1W === null) continue;
+    anwenden('quelle', name, faktorAusRendite(t.oe1W, g.maxAenderungProWoche), `Ø 1-Wochen-Rendite ${t.oe1W} % (n=${t.n1W})`);
   }
 
   // Claude-Vorschläge nur, wenn genug Fälle vorliegen und die Daten nicht widersprechen (Richtung muss passen).
   const erledigt: Vorschlag[] = [];
   for (const v of vorschlaege.filter((x) => (x.status ?? 'offen') === 'offen')) {
     const t = (v.art === 'signal' ? nachSignalTyp : nachQuelle)[v.name];
-    const genug = t && t.anzahl >= g.mindestFaelle && t.oe1W !== null;
+    const genug = t && messungen1W(t) >= g.mindestFaelle && t.oe1W !== null;
     const passt = genug && Math.sign(v.faktor - 1) === Math.sign(t.oe1W!) ;
     if (passt && !aenderungen.some((a) => a.art === v.art && a.name === v.name)) anwenden(v.art, v.name, v.faktor, `Vorschlag Abendlauf: ${v.begruendung}`);
     erledigt.push({ ...v, status: passt ? 'übernommen' : genug ? 'abgelehnt (Daten widersprechen)' : 'abgelehnt (zu wenige Fälle)' });

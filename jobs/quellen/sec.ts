@@ -72,6 +72,22 @@ export function verwaesserungAuswerten(atom: string, form: '424B5' | 'S-3', cikZ
   return out;
 }
 
+/**
+ * Firma je CIK aus company_tickers.json. Die Liste ist nach Börsenwert sortiert (Platz 0 = größte Firma) – der Rang
+ * wird nur genutzt, wenn das sichtbar stimmt. Eine Firma steht mit jeder Aktiengattung in der Liste (BRK-B weit vorn,
+ * BRK-A, Vorzüge und Optionsscheine weit hinten): Es zählt der ERSTE Eintrag je CIK, also die Hauptgattung mit dem
+ * besten Rang. Vorher überschrieb der letzte Eintrag den ersten – Berkshire galt über „BRK-A“ als Kleinwert
+ * (Plan Volltreffer V0, Befund 6).
+ */
+export function cikKarte(liste: { cik_str: number; ticker: string; title: string }[]): Map<number, { ticker: string; name: string; rang?: number }> {
+  const sortiert = liste.slice(0, 10).some((t) => ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META'].includes(t.ticker));
+  const karte = new Map<number, { ticker: string; name: string; rang?: number }>();
+  liste.forEach((t, i) => {
+    if (!karte.has(t.cik_str)) karte.set(t.cik_str, { ticker: t.ticker, name: t.title, ...(sortiert ? { rang: i } : {}) });
+  });
+  return karte;
+}
+
 export const secVerwaesserung: Quelle = {
   id: 'sec-verwaesserung',
   name: 'SEC EDGAR (Verwässerung 424B5/S-3)',
@@ -81,10 +97,7 @@ export const secVerwaesserung: Quelle = {
   async abrufen(ctx) {
     const header = { 'User-Agent': secUa(), Accept: 'application/json, application/atom+xml' };
     const tickers = await holeJson<Record<string, { cik_str: number; ticker: string; title: string }>>('https://www.sec.gov/files/company_tickers.json', { header });
-    // company_tickers.json ist nach Börsenwert sortiert (Platz 0 = größte Firma) – Rang nur nutzen, wenn das sichtbar stimmt
-    const liste = Object.values(tickers);
-    const sortiert = liste.slice(0, 10).some((t) => ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META'].includes(t.ticker));
-    const karte = new Map(liste.map((t, i) => [t.cik_str, { ticker: t.ticker, name: t.title, ...(sortiert ? { rang: i } : {}) }]));
+    const karte = cikKarte(Object.values(tickers));
     const signale: Signal[] = [];
     for (const form of ['424B5', 'S-3'] as const) {
       const atom = await holeText(`https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=${form}&company=&dateb=&owner=include&count=100&output=atom`, { header });

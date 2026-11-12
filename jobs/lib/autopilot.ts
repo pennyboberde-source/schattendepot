@@ -12,7 +12,7 @@ export function autopilotLauf(jetzt: Date, kandidaten: AutopilotKandidat[]): { n
   const e = cfg.einstellungen.autopilot;
   if (!e?.aktiv) return { neu: 0, hinweise: ['Autopilot aus'] };
   const tracking = leseJson<TrackingEintrag[]>('kandidaten-tracking.json', []);
-  const beweise = signalBeweise(tracking, { horizont: e.horizont, mindestFaelle: e.mindestFaelle, mindestChance: cfg.einstellungen.mindestChance ?? 40 }, huerdenAusConfig(cfg));
+  const beweise = signalBeweise(tracking, { horizont: e.horizont, mindestFaelle: e.mindestFaelle, mindestChance: e.mindestChance ?? cfg.einstellungen.mindestChance ?? 40, mindestOeNetto: e.mindestOeNetto }, huerdenAusConfig(cfg));
   const st = leseJson<Partial<Statistik>>('statistik.json', {});
   const varianten = variantenSchattenbuch(tracking, marktGruppe, variantenKosten(cfg), { mindestFaelle: cfg.einstellungen.varianten?.mindestFaelle ?? 25, mindestChance: cfg.einstellungen.mindestChance ?? 40, kellyAnteil: cfg.einstellungen.varianten?.kellyAnteil ?? 0.5, hebelMax: cfg.einstellungen.varianten?.hebelMax ?? 50 });
   const r = autopilotOrders(kandidaten, beweise, ordersAusEreignissen(leseEreignisse()), jetzt, e, { zielStop: st.zielStop, appUrl: APP_URL, varianten });

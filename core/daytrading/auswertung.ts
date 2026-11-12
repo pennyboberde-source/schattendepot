@@ -1,7 +1,7 @@
 // Auswertung des Daytrading-Bereichs (nie mit dem Depot vermischt): Kennzahlen heute/gesamt, Kurve je Tag,
 // Gruppen nach Herkunft, Markt, Setup, Instrument und Risiko, Time-Machine-Kalibrierung, Abendbilanz-Text.
 import { euro, prozent, runde } from '../geld.ts';
-import type { DtTrade } from './kern.ts';
+import { istVirtuell, type DtTrade, type VirtuellRegel } from './kern.ts';
 import { phaseAm, type PhasenVerlauf } from '../marktphase.ts';
 
 export interface DtGruppe {
@@ -33,6 +33,13 @@ export interface DtUebersicht {
   offen: DtTrade[];
   /** heutige und die letzten abgeschlossenen Trades (neueste zuerst) */
   trades: DtTrade[];
+  /**
+   * Nur virtuell mitgeführte Trades (Plan Volltreffer V0: belegte Verlustbringer Turbo, Short, Krypto) – getrennt
+   * ausgewertet; sie zählen in allen Kennzahlen oben NICHT mit. `gruppen` überschneiden sich (ein Turbo short zählt in beiden).
+   */
+  virtuell?: { ab?: string; gesamt: DtGruppe; heute: DtGruppe; offen: number; gruppen: Record<string, DtGruppe> };
+  /** sichtbare Trades seit der Umstellung – zeigt, was der sichtbare Rest allein bringt */
+  seitUmstellung?: { ab: string; gruppe: DtGruppe };
 }
 
 export function dtGruppe(l: DtTrade[]): DtGruppe {
@@ -119,8 +126,16 @@ const STUFEN: [string, number, number][] = [
   ['60–100 %', 60, 100],
 ];
 
-export function uebersichtBerechnen(alle: DtTrade[], heute: string, stand: string, phasen: PhasenVerlauf = {}): DtUebersicht {
-  const zu = alle.filter((t) => t.ergebnis).sort((a, b) => b.ausstieg!.zeit.localeCompare(a.ausstieg!.zeit));
+export function uebersichtBerechnen(alleTrades: DtTrade[], heute: string, stand: string, phasen: PhasenVerlauf = {}, regel?: VirtuellRegel): DtUebersicht {
+  // Sichtbare Kennzahlen ohne die nur virtuell mitgeführten Trades; die Listen zeigen beide (mit Kennzeichen)
+  const virt = (t: DtTrade) => istVirtuell(t, regel);
+  const markiert = (t: DtTrade): DtTrade => (virt(t) && !t.virtuell ? { ...t, virtuell: true } : t);
+  const neuesteZuerst = (l: DtTrade[]) => l.filter((t) => t.ergebnis).sort((a, b) => b.ausstieg!.zeit.localeCompare(a.ausstieg!.zeit));
+  const alle = alleTrades.filter((t) => !virt(t));
+  const virtuelle = alleTrades.filter(virt);
+  const zu = neuesteZuerst(alle);
+  const zuAlle = neuesteZuerst(alleTrades);
+  const vZu = neuesteZuerst(virtuelle);
   const tage = new Map<string, DtTrade[]>();
   for (const t of [...zu].reverse()) tage.set(t.datum, [...(tage.get(t.datum) ?? []), t]);
   let summe = { netto: 0, brutto: 0, nettoTR: 0 };
@@ -147,19 +162,35 @@ export function uebersichtBerechnen(alle: DtTrade[], heute: string, stand: strin
       const g = dtGruppe(l);
       return { stufe, anzahl: g.anzahl, quote: g.quote, oeR: g.oeR };
     }).filter((x) => x.anzahl > 0),
-    offen: alle.filter((t) => !t.ausstieg),
-    trades: [...alle.filter((t) => !t.ausstieg), ...zu.filter((t) => t.datum === heute), ...zu.filter((t) => t.datum !== heute).slice(0, 150)],
+    offen: alleTrades.filter((t) => !t.ausstieg).map(markiert),
+    trades: [...alleTrades.filter((t) => !t.ausstieg), ...zuAlle.filter((t) => t.datum === heute), ...zuAlle.filter((t) => t.datum !== heute).slice(0, 150)].map(markiert),
+    ...(regel?.aktiv || virtuelle.length
+      ? {
+          virtuell: {
+            ...(regel?.ab ? { ab: regel.ab } : {}),
+            gesamt: dtGruppe(vZu),
+            heute: dtGruppe(vZu.filter((t) => t.datum === heute)),
+            offen: virtuelle.filter((t) => !t.ausstieg).length,
+            gruppen: {
+              turbo: dtGruppe(vZu.filter((t) => t.instrument === 'turbo')),
+              short: dtGruppe(vZu.filter((t) => t.richtung === 'short')),
+              krypto: dtGruppe(vZu.filter((t) => t.markt === 'krypto')),
+            },
+          },
+        }
+      : {}),
+    ...(regel?.aktiv && regel.ab ? { seitUmstellung: { ab: regel.ab, gruppe: dtGruppe(zu.filter((t) => t.datum >= regel.ab!)) } } : {}),
   };
 }
 
 const HERKUNFT_TEXT: Record<string, string> = { code_scan: 'Code-Scan', claude: 'Claude', autopilot: 'Autopilot' };
 
-/** Abendbilanz-Push (~22:15): Ergebnis des Tages nach Gebühren, vor Gebühren und je Herkunft. */
+/** Abendbilanz-Push (~22:15): Ergebnis des Tages nach Gebühren, vor Gebühren und je Herkunft – nur sichtbare Trades (ohne virtuell mitgeführte). */
 export function abendbilanzText(u: DtUebersicht, heuteTrades: DtTrade[]): { titel: string; text: string } {
   const g = u.heute.gruppe;
   if (!g.anzahl) return { titel: '📊 Daytrading heute', text: `Keine abgeschlossenen Trades${u.heute.offen ? ` (${u.heute.offen} noch offen)` : ''}.` };
   const je = Object.entries(
-    heuteTrades.filter((t) => t.ergebnis).reduce<Record<string, number>>((m, t) => ({ ...m, [t.herkunft]: (m[t.herkunft] ?? 0) + t.ergebnis!.netto }), {}),
+    heuteTrades.filter((t) => t.ergebnis && !t.virtuell).reduce<Record<string, number>>((m, t) => ({ ...m, [t.herkunft]: (m[t.herkunft] ?? 0) + t.ergebnis!.netto }), {}),
   ).map(([k, v]) => `${HERKUNFT_TEXT[k] ?? k} ${euro(v, { vorzeichen: true })}`);
   return {
     titel: `📊 Daytrading heute: ${euro(g.netto, { vorzeichen: true })}`,
