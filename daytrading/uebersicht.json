@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-12T07:12:20.194Z",
+  "stand": "2026-11-12T08:29:24.425Z",
   "heute": {
     "datum": "2026-11-12",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": 0,
       "oeR": 0
     },
-    "offen": 0
+    "offen": 1
   },
   "gesamt": {
     "anzahl": 457,
@@ -344,8 +344,75 @@
       "oeR": 0.1
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-11-12-scan-ada",
+      "datum": "2026-11-12",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-12T08:20:00.000Z",
+        "kurs": 0.155946,
+        "level": 0.1559,
+        "spanne": {
+          "hoch": 0.155927,
+          "tief": 0.155715
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1558,
+      "ziel": 0.1562,
+      "zielR": 2,
+      "flatBis": "2026-11-12T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-12T08:20:00.000Z",
+        "basisKurs": 0.155946,
+        "kurs": 0.1563,
+        "stueck": 6397.952655,
+        "kurswert": 1000
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-11-12-scan-ada",
+      "datum": "2026-11-12",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-12T08:20:00.000Z",
+        "kurs": 0.155946,
+        "level": 0.1559,
+        "spanne": {
+          "hoch": 0.155927,
+          "tief": 0.155715
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1558,
+      "ziel": 0.1562,
+      "zielR": 2,
+      "flatBis": "2026-11-12T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-12T08:20:00.000Z",
+        "basisKurs": 0.155946,
+        "kurs": 0.1563,
+        "stueck": 6397.952655,
+        "kurswert": 1000
+      }
+    },
     {
       "id": "2026-11-11-scan-ada-2",
       "datum": "2026-11-11",
@@ -8747,7 +8814,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 0,
+    "code_scan": 40,
     "claude": 2,
     "autopilot": 0
   },
