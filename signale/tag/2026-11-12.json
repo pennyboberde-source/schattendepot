@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-12T15:58:48.108Z",
-  "anzahl": 280,
+  "stand": "2026-11-12T17:00:10.651Z",
+  "anzahl": 284,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3479,7 +3479,7 @@
       "t": "GP",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3518,7 +3518,7 @@
       "t": "GIBO",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3705,6 +3705,59 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-12T15:44:01.477Z"
+    },
+    {
+      "id": "handelsstopp:BTLN:2026-11-12",
+      "s": "T:BTLN",
+      "n": "Brightline Interactive Cmn Stk",
+      "t": "BTLN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-12T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:LTGRU:2026-11-12",
+      "s": "T:LTGRU",
+      "n": "Long Table Growth Corp. Units",
+      "t": "LTGRU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-12T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF11MM6:2026-11-12",
+      "s": "I:DE000HF11MM6",
+      "n": "DE000HF11MM6",
+      "i": "DE000HF11MM6",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.48,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-12T16:44:48.073Z"
+    },
+    {
+      "id": "kursrakete:BARD:2026-11-12",
+      "s": "T:BARD",
+      "n": "Lombard",
+      "t": "BARD",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.73,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-12T17:00:10.651Z"
     }
   ]
 }
