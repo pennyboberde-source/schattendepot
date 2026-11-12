@@ -26,7 +26,15 @@
     "posttrade.20261112.08.00.munc.csv.gz",
     "posttrade.20261112.08.00.mund.csv.gz",
     "posttrade.20261112.08.15.munc.csv.gz",
-    "posttrade.20261112.08.15.mund.csv.gz"
+    "posttrade.20261112.08.15.mund.csv.gz",
+    "posttrade.20261112.08.30.munc.csv.gz",
+    "posttrade.20261112.08.30.mund.csv.gz",
+    "posttrade.20261112.08.45.munc.csv.gz",
+    "posttrade.20261112.08.45.mund.csv.gz",
+    "posttrade.20261112.09.00.munc.csv.gz",
+    "posttrade.20261112.09.00.mund.csv.gz",
+    "posttrade.20261112.09.15.munc.csv.gz",
+    "posttrade.20261112.09.15.mund.csv.gz"
   ],
   "universum": {
     "eu": true
@@ -49,7 +57,7 @@
           "long"
         ],
         "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z"
+        "letzteKerze": "2026-11-12T09:10:00.000Z"
       }
     },
     {
@@ -69,7 +77,7 @@
           "long"
         ],
         "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z"
+        "letzteKerze": "2026-11-12T09:10:00.000Z"
       }
     },
     {
@@ -87,13 +95,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 131.98,
           "tief": 129.7,
           "volumen": 10999,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:20:00.000Z",
+          "kurs": 132.42,
+          "level": 131.98,
+          "richtung": "long"
         }
       }
     },
@@ -112,13 +126,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 51,
           "tief": 49.925,
           "volumen": 23614,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:45:00.000Z",
+          "kurs": 51.14,
+          "level": 51,
+          "richtung": "long"
         }
       }
     },
@@ -137,13 +157,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 212.9,
           "tief": 211.9,
           "volumen": 4329,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:45:00.000Z",
+          "kurs": 210.9,
+          "level": 211.9,
+          "richtung": "short"
         }
       }
     },
@@ -162,13 +188,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 472.4,
           "tief": 468.9,
           "volumen": 1534,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:20:00.000Z",
+          "kurs": 472.9,
+          "level": 472.4,
+          "richtung": "long"
         }
       }
     },
@@ -187,13 +219,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 290.65,
           "tief": 287.3,
           "volumen": 1226,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:50:00.000Z",
+          "kurs": 287.2,
+          "level": 287.3,
+          "richtung": "short"
         }
       }
     },
@@ -212,8 +250,8 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "wartet",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 1374,
           "tief": 1354.6,
@@ -237,13 +275,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 811.7,
           "tief": 795.5,
           "volumen": 381,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:45:00.000Z",
+          "kurs": 794.1,
+          "level": 795.5,
+          "richtung": "short"
         }
       }
     },
@@ -262,13 +306,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 57.8,
           "tief": 57.54,
           "volumen": 5175,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:35:00.000Z",
+          "kurs": 57.52,
+          "level": 57.54,
+          "richtung": "short"
         }
       }
     },
@@ -287,13 +337,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 58.74,
           "tief": 58.5,
           "volumen": 5086,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:25:00.000Z",
+          "kurs": 58.44,
+          "level": 58.5,
+          "richtung": "short"
         }
       }
     },
@@ -312,13 +368,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 33.79,
           "tief": 33.41,
           "volumen": 8122,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:30:00.000Z",
+          "kurs": 33.36,
+          "level": 33.41,
+          "richtung": "short"
         }
       }
     },
@@ -337,13 +399,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 583,
           "tief": 578.4,
           "volumen": 350,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:35:00.000Z",
+          "kurs": 576.4,
+          "level": 578.4,
+          "richtung": "short"
         }
       }
     },
@@ -362,13 +430,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 26.45,
           "tief": 26.32,
           "volumen": 6882,
           "kerzen": 2
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:25:00.000Z",
+          "kurs": 26.53,
+          "level": 26.45,
+          "richtung": "long"
         }
       }
     },
@@ -387,13 +461,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 212.5,
           "tief": 211.75,
           "volumen": 742,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:20:00.000Z",
+          "kurs": 211.4,
+          "level": 211.75,
+          "richtung": "short"
         }
       }
     },
@@ -412,8 +492,8 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "wartet",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 155.9,
           "tief": 152.45,
@@ -437,13 +517,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 7.52,
           "tief": 7.27,
           "volumen": 17415,
           "kerzen": 2
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:20:00.000Z",
+          "kurs": 7.56,
+          "level": 7.52,
+          "richtung": "long"
         }
       }
     },
@@ -462,13 +548,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 27.1,
           "tief": 25,
           "volumen": 4467,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:25:00.000Z",
+          "kurs": 23.5,
+          "level": 25,
+          "richtung": "short"
         }
       }
     },
@@ -487,13 +579,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 214,
           "tief": 201.5,
           "volumen": 490,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T09:10:00.000Z",
+          "kurs": 198.4,
+          "level": 201.5,
+          "richtung": "short"
         }
       }
     },
@@ -512,13 +610,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 46,
           "tief": 43,
           "volumen": 2235,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:25:00.000Z",
+          "kurs": 42.7,
+          "level": 43,
+          "richtung": "short"
         }
       }
     },
@@ -537,13 +641,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 42.115,
           "tief": 41.77,
           "volumen": 2099,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:20:00.000Z",
+          "kurs": 41.715,
+          "level": 41.77,
+          "richtung": "short"
         }
       }
     },
@@ -562,8 +672,8 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "wartet",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 8.938,
           "tief": 8.884,
@@ -587,13 +697,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 55.05,
           "tief": 54.83,
           "volumen": 1578,
           "kerzen": 2
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:45:00.000Z",
+          "kurs": 55.07,
+          "level": 55.05,
+          "richtung": "long"
         }
       }
     },
@@ -612,8 +728,8 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "wartet",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 225,
           "tief": 203,
@@ -637,13 +753,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 126.2,
           "tief": 123.6,
           "volumen": 617,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T09:10:00.000Z",
+          "kurs": 128.4,
+          "level": 126.2,
+          "richtung": "long"
         }
       }
     },
@@ -662,13 +784,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 17.27,
           "tief": 17.175,
           "volumen": 4335,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:55:00.000Z",
+          "kurs": 17.29,
+          "level": 17.27,
+          "richtung": "long"
         }
       }
     },
@@ -687,13 +815,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 9.705,
           "tief": 9.62,
           "volumen": 6758,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T09:00:00.000Z",
+          "kurs": 9.74,
+          "level": 9.705,
+          "richtung": "long"
         }
       }
     },
@@ -712,13 +846,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "ausgeloest",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 60.5,
           "tief": 60.32,
           "volumen": 942,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T09:15:00.000Z",
+          "kurs": 60.52,
+          "level": 60.5,
+          "richtung": "long"
         }
       }
     },
@@ -737,13 +877,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 28.75,
           "tief": 28.39,
           "volumen": 1819,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:30:00.000Z",
+          "kurs": 28.77,
+          "level": 28.75,
+          "richtung": "long"
         }
       }
     },
@@ -762,13 +908,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 137.4,
           "tief": 135.94,
           "volumen": 326,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:40:00.000Z",
+          "kurs": 135.32,
+          "level": 135.94,
+          "richtung": "short"
         }
       }
     },
@@ -787,8 +939,8 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "wartet",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 49.82,
           "tief": 47.28,
@@ -812,13 +964,19 @@
           "long",
           "short"
         ],
-        "status": "spanne",
-        "letzteKerze": "2026-11-12T08:10:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:10:00.000Z",
         "spanne": {
           "hoch": 26.78,
           "tief": 25.92,
           "volumen": 1610,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T08:50:00.000Z",
+          "kurs": 25.84,
+          "level": 25.92,
+          "richtung": "short"
         }
       }
     },
@@ -837,7 +995,7 @@
           "long"
         ],
         "status": "wartet",
-        "letzteKerze": "2026-11-12T08:20:00.000Z",
+        "letzteKerze": "2026-11-12T09:25:00.000Z",
         "spanne": {
           "hoch": 66389.6,
           "tief": 66331.6,
@@ -862,7 +1020,7 @@
         ],
         "status": "wartet",
         "level": 67400,
-        "letzteKerze": "2026-11-12T08:20:00.000Z"
+        "letzteKerze": "2026-11-12T09:25:00.000Z"
       }
     },
     {
@@ -880,7 +1038,7 @@
           "long"
         ],
         "status": "wartet",
-        "letzteKerze": "2026-11-12T08:20:00.000Z",
+        "letzteKerze": "2026-11-12T09:25:00.000Z",
         "spanne": {
           "hoch": 1849.57,
           "tief": 1846.79,
@@ -905,7 +1063,7 @@
         ],
         "status": "wartet",
         "level": 1895.04,
-        "letzteKerze": "2026-11-12T08:20:00.000Z"
+        "letzteKerze": "2026-11-12T09:25:00.000Z"
       }
     },
     {
@@ -923,7 +1081,7 @@
           "long"
         ],
         "status": "wartet",
-        "letzteKerze": "2026-11-12T08:20:00.000Z",
+        "letzteKerze": "2026-11-12T09:25:00.000Z",
         "spanne": {
           "hoch": 74.84,
           "tief": 74.71,
@@ -948,7 +1106,7 @@
         ],
         "status": "wartet",
         "level": 77.33,
-        "letzteKerze": "2026-11-12T08:20:00.000Z"
+        "letzteKerze": "2026-11-12T09:25:00.000Z"
       }
     },
     {
@@ -965,13 +1123,19 @@
         "richtungen": [
           "long"
         ],
-        "status": "wartet",
-        "letzteKerze": "2026-11-12T08:20:00.000Z",
+        "status": "fertig",
+        "letzteKerze": "2026-11-12T09:25:00.000Z",
         "spanne": {
           "hoch": 0.94207,
           "tief": 0.94019,
           "volumen": 4069.8123895199997,
           "kerzen": 3
+        },
+        "ausloeser": {
+          "zeit": "2026-11-12T09:20:00.000Z",
+          "kurs": 0.94264,
+          "level": 0.94207,
+          "richtung": "long"
         }
       }
     },
@@ -991,7 +1155,7 @@
         ],
         "status": "wartet",
         "level": 0.97364,
-        "letzteKerze": "2026-11-12T08:20:00.000Z"
+        "letzteKerze": "2026-11-12T09:25:00.000Z"
       }
     },
     {
@@ -1009,7 +1173,7 @@
           "long"
         ],
         "status": "fertig",
-        "letzteKerze": "2026-11-12T08:20:00.000Z",
+        "letzteKerze": "2026-11-12T09:25:00.000Z",
         "spanne": {
           "hoch": 0.155927,
           "tief": 0.155715,
@@ -1040,167 +1204,167 @@
         ],
         "status": "wartet",
         "level": 0.16286,
-        "letzteKerze": "2026-11-12T08:20:00.000Z"
+        "letzteKerze": "2026-11-12T09:25:00.000Z"
       }
     }
   ],
   "kryptoLetzte": {
-    "BTC": "2026-11-12T08:20:00.000Z",
-    "ETH": "2026-11-12T08:20:00.000Z",
-    "SOL": "2026-11-12T08:20:00.000Z",
-    "XRP": "2026-11-12T08:20:00.000Z",
-    "ADA": "2026-11-12T08:20:00.000Z"
+    "BTC": "2026-11-12T09:25:00.000Z",
+    "ETH": "2026-11-12T09:25:00.000Z",
+    "SOL": "2026-11-12T09:25:00.000Z",
+    "XRP": "2026-11-12T09:25:00.000Z",
+    "ADA": "2026-11-12T09:25:00.000Z"
   },
   "watchlist": true,
   "autopilotGenutzt": [],
   "letzteKurse": {
     "US0079031078": {
-      "zeit": "2026-11-12T08:10:00.000Z",
+      "zeit": "2026-11-12T09:10:00.000Z",
       "kurs": 514.9
     },
     "US67066G1040": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 146.24
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 145.98
     },
     "DE0005190003": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 58.54
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 58.3
     },
     "DE000BASF111": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 54.88
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 54.77
     },
     "DE0005140008": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 33.47
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 33.45
     },
     "DE0008404005": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 471.7
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 470
     },
     "DE0008430026": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 581
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 579
     },
     "DE0005552004": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 60.46
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 60.52
     },
     "DE0007030009": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 799.2
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 787.3
     },
     "DE000BAY0017": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 57.66
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 57.56
     },
     "DE0005557508": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 26.32
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 26.53
     },
     "NL0009805522": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 137
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 136.72
     },
     "DE0007164600": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 212.2
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 211.3
     },
     "NL0010273215": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 1360.8
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 1365
     },
     "DE0008232125": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 8.896
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 8.928
     },
     "DE0006599905": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 155.5
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 155
     },
     "DE0006231004": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 50.2
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 51.18
     },
     "NL0000235190": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 211.75
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 212.25
     },
     "DE0007100000": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 41.785
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 41.68
     },
     "AT0000969985": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 125.2
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 128.6
     },
     "DE000A0JL9W6": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 26.16
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 25.64
     },
     "DE000A1ML7J1": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 17.235
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 17.2
     },
     "DE000ZAL1111": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 28.59
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 28.67
     },
     "DE000ENER6Y0": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 131.76
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 133.16
     },
     "DE000A1681X5": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 25.5
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 27.7
     },
     "DE0006305006": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 9.68
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 9.735
     },
     "DE0005936124": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 203.5
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 197.2
     },
     "DE0007236101": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 290.5
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 289.85
     },
     "DE000BCK2223": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 43
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 43.2
     },
     "DE000A0DJ6J9": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 48.2
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 47.76
     },
     "DE0007276503": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 207
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 218.5
     },
     "DE000PAT1AG3": {
-      "zeit": "2026-11-12T08:10:00.000Z",
-      "kurs": 7.51
+      "zeit": "2026-11-12T09:10:00.000Z",
+      "kurs": 7.63
     },
     "BTC": {
-      "zeit": "2026-11-12T08:20:00.000Z",
-      "kurs": 66276
+      "zeit": "2026-11-12T09:25:00.000Z",
+      "kurs": 66125.8
     },
     "ETH": {
-      "zeit": "2026-11-12T08:20:00.000Z",
-      "kurs": 1846.2
+      "zeit": "2026-11-12T09:25:00.000Z",
+      "kurs": 1842.27
     },
     "SOL": {
-      "zeit": "2026-11-12T08:20:00.000Z",
-      "kurs": 74.71
+      "zeit": "2026-11-12T09:25:00.000Z",
+      "kurs": 74.73
     },
     "XRP": {
-      "zeit": "2026-11-12T08:20:00.000Z",
-      "kurs": 0.94003
+      "zeit": "2026-11-12T09:25:00.000Z",
+      "kurs": 0.94259
     },
     "ADA": {
-      "zeit": "2026-11-12T08:20:00.000Z",
-      "kurs": 0.155946
+      "zeit": "2026-11-12T09:25:00.000Z",
+      "kurs": 0.155979
     }
   }
 }
