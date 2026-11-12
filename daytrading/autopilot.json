@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-12T19:39:51.822Z",
+  "stand": "2026-11-12T20:33:52.818Z",
   "horizont": "r1h",
   "beweise": [
     {
@@ -8,15 +8,6 @@
       "faelle": 13,
       "chance": 15.4,
       "oeNetto": 2.09,
-      "huerde": 0.15,
-      "bewiesen": false
-    },
-    {
-      "typ": "gewinn_ueberraschung",
-      "gruppe": "aktie",
-      "faelle": 41,
-      "chance": 2.4,
-      "oeNetto": 0.02,
       "huerde": 0.15,
       "bewiesen": false
     },
@@ -32,7 +23,7 @@
     {
       "typ": "nachzahlen_drift",
       "gruppe": "aktie",
-      "faelle": 7,
+      "faelle": 6,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
@@ -41,7 +32,7 @@
     {
       "typ": "insider_cluster_kauf",
       "gruppe": "aktie",
-      "faelle": 26,
+      "faelle": 11,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
@@ -50,7 +41,7 @@
     {
       "typ": "insider_kauf",
       "gruppe": "aktie",
-      "faelle": 21,
+      "faelle": 14,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
@@ -59,7 +50,7 @@
     {
       "typ": "tagesgewinner",
       "gruppe": "aktie",
-      "faelle": 4,
+      "faelle": 3,
       "chance": 0,
       "oeNetto": -0.15,
       "huerde": 0.15,
@@ -84,11 +75,20 @@
       "bewiesen": false
     },
     {
+      "typ": "gewinn_ueberraschung",
+      "gruppe": "aktie",
+      "faelle": 25,
+      "chance": 0,
+      "oeNetto": -0.28,
+      "huerde": 0.15,
+      "bewiesen": false
+    },
+    {
       "typ": "krypto_einnahmen",
       "gruppe": "krypto",
-      "faelle": 7,
-      "chance": 28.6,
-      "oeNetto": -0.78,
+      "faelle": 5,
+      "chance": 0,
+      "oeNetto": -2.12,
       "huerde": 0.7,
       "bewiesen": false
     }
