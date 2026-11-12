@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-12T11:57:11.014Z",
-  "anzahl": 235,
+  "stand": "2026-11-12T13:06:35.380Z",
+  "anzahl": 240,
   "signale": [
     {
       "id": "verwaesserung:BRK-A:2026-11-09",
@@ -3105,6 +3105,72 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-10T23:20:15.000Z"
+    },
+    {
+      "id": "handelsstopp:TRMK:2026-11-12",
+      "s": "T:TRMK",
+      "n": "Trustmark Corporation",
+      "t": "TRMK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-12T00:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:SOL:2026-11-12",
+      "s": "T:SOL",
+      "n": "Solana",
+      "t": "SOL",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-12T12:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:GMHS:2026-11-12",
+      "s": "T:GMHS",
+      "n": "Gamehaus Holdings Inc.",
+      "t": "GMHS",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-12T12:10:19.000Z"
+    },
+    {
+      "id": "nachricht:ETH:2026-11-12",
+      "s": "T:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-12T12:29:45.000Z"
+    },
+    {
+      "id": "verwaesserung:RUMBW:2026-11-12",
+      "s": "T:RUMBW",
+      "n": "RUM Group Inc.",
+      "t": "RUMBW",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-12T13:00:27.000Z"
     }
   ]
 }
