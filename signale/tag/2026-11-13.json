@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-13T04:56:15.081Z",
-  "anzahl": 225,
+  "stand": "2026-11-13T07:11:48.850Z",
+  "anzahl": 229,
   "signale": [
     {
       "id": "verwaesserung:WEST:2026-11-10",
@@ -2969,6 +2969,62 @@
         "Finnhub Kurs"
       ],
       "z": "2026-11-13T04:56:15.081Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-11-13",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "CNBC Top News",
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-13T02:43:26.000Z"
+    },
+    {
+      "id": "kursrakete:SANC:2026-11-13",
+      "s": "T:SANC",
+      "n": "Sanctum",
+      "t": "SANC",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": -1,
+      "st": 0.42,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-13T07:11:48.850Z"
+    },
+    {
+      "id": "politik_massnahme:XOM:2026-11-13:nahost_oel",
+      "s": "T:XOM",
+      "n": "Exxon Mobil",
+      "t": "XOM",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.55,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-13T07:11:48.850Z"
+    },
+    {
+      "id": "politik_massnahme:LHA:2026-11-13:nahost_oel",
+      "s": "T:LHA",
+      "n": "Lufthansa",
+      "t": "LHA.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.55,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-13T07:11:48.850Z"
     }
   ]
 }
