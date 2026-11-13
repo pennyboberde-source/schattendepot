@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-13T09:58:10.883Z",
-  "anzahl": 230,
+  "stand": "2026-11-13T10:58:16.096Z",
+  "anzahl": 233,
   "signale": [
     {
       "id": "verwaesserung:WEST:2026-11-10",
@@ -863,7 +863,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "Finnhub News"
+        "Finnhub News",
+        "CNBC Top News"
       ],
       "z": "2026-11-12T14:00:01.000Z"
     },
@@ -2993,7 +2994,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.54,
+      "st": 0.59,
       "q": [
         "Upbit"
       ],
@@ -3035,11 +3036,50 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.46,
+      "st": 0.52,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-13T08:56:09.804Z"
+    },
+    {
+      "id": "nachricht:CEG:2026-11-13",
+      "s": "T:CEG",
+      "n": "CEG",
+      "t": "CEG",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-13T09:06:00.000Z"
+    },
+    {
+      "id": "nachricht:GS:2026-11-13",
+      "s": "T:GS",
+      "n": "Goldman Sachs",
+      "t": "GS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-13T10:14:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF266F3:2026-11-13",
+      "s": "I:DE000HF266F3",
+      "n": "DE000HF266F3",
+      "i": "DE000HF266F3",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.76,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-13T10:42:04.529Z"
     }
   ]
 }
