@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-13T19:29:48.708Z",
+  "stand": "2026-11-13T20:27:00.709Z",
   "heute": {
     "datum": "2026-11-13",
     "gruppe": {
@@ -794,47 +794,6 @@
       }
     },
     {
-      "id": "2026-11-13-scan-super-micro-computer-inc",
-      "datum": "2026-11-13",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SUPER MICRO COMPUTER INC",
-      "isin": "US86800U3023",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 28.55,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-13T14:50:00.000Z",
-        "kurs": 23.9,
-        "level": 24.135,
-        "spanne": {
-          "hoch": 24.605,
-          "tief": 24.135
-        },
-        "richtung": "short"
-      },
-      "stop": 24.37,
-      "ziel": 22.65,
-      "zielR": 2,
-      "flatBis": "2026-11-13T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-13T14:50:00.000Z",
-        "basisKurs": 23.795,
-        "kurs": 4.7669,
-        "stueck": 209,
-        "kurswert": 996.28
-      }
-    },
-    {
       "id": "2026-11-13-scan-almonty-industries-inc",
       "datum": "2026-11-13",
       "herkunft": "code_scan",
@@ -1552,47 +1511,6 @@
       }
     },
     {
-      "id": "2026-11-13-scan-super-micro-computer-inc",
-      "datum": "2026-11-13",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SUPER MICRO COMPUTER INC",
-      "isin": "US86800U3023",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 28.55,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-13T14:50:00.000Z",
-        "kurs": 23.9,
-        "level": 24.135,
-        "spanne": {
-          "hoch": 24.605,
-          "tief": 24.135
-        },
-        "richtung": "short"
-      },
-      "stop": 24.37,
-      "ziel": 22.65,
-      "zielR": 2,
-      "flatBis": "2026-11-13T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-13T14:50:00.000Z",
-        "basisKurs": 23.795,
-        "kurs": 4.7669,
-        "stueck": 209,
-        "kurswert": 996.28
-      }
-    },
-    {
       "id": "2026-11-13-scan-almonty-industries-inc",
       "datum": "2026-11-13",
       "herkunft": "code_scan",
@@ -1869,6 +1787,66 @@
         "kurs": 10.947,
         "stueck": 91,
         "kurswert": 996.18
+      }
+    },
+    {
+      "id": "2026-11-13-scan-super-micro-computer-inc",
+      "datum": "2026-11-13",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SUPER MICRO COMPUTER INC",
+      "isin": "US86800U3023",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 28.55,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-13T14:50:00.000Z",
+        "kurs": 23.9,
+        "level": 24.135,
+        "spanne": {
+          "hoch": 24.605,
+          "tief": 24.135
+        },
+        "richtung": "short"
+      },
+      "stop": 24.37,
+      "ziel": 22.65,
+      "zielR": 2,
+      "flatBis": "2026-11-13T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-13T14:50:00.000Z",
+        "basisKurs": 23.795,
+        "kurs": 4.7669,
+        "stueck": 209,
+        "kurswert": 996.28
+      },
+      "ausstieg": {
+        "zeit": "2026-11-13T19:20:00.000Z",
+        "basisKurs": 24.375,
+        "kurs": 4.1646,
+        "kurswert": 870.4,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -125.88,
+        "bruttoProzent": -12.64,
+        "netto": -125.88,
+        "nettoProzent": -12.64,
+        "nettoTR": -127.88,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.01
       }
     },
     {
@@ -12475,46 +12453,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 24,
+      "anzahl": 25,
       "treffer": 9,
-      "quote": 37.5,
-      "netto": -211.56,
-      "brutto": -201.56,
-      "nettoTR": -249.56,
-      "oeNettoProzent": -0.89,
-      "oeR": 0.2
+      "quote": 36,
+      "netto": -337.44,
+      "brutto": -327.44,
+      "nettoTR": -377.44,
+      "oeNettoProzent": -1.36,
+      "oeR": 0.15
     },
     "heute": {
-      "anzahl": 24,
+      "anzahl": 25,
       "treffer": 9,
-      "quote": 37.5,
-      "netto": -211.56,
-      "brutto": -201.56,
-      "nettoTR": -249.56,
-      "oeNettoProzent": -0.89,
-      "oeR": 0.2
+      "quote": 36,
+      "netto": -337.44,
+      "brutto": -327.44,
+      "nettoTR": -377.44,
+      "oeNettoProzent": -1.36,
+      "oeR": 0.15
     },
-    "offen": 16,
+    "offen": 15,
     "gruppen": {
       "turbo": {
-        "anzahl": 19,
+        "anzahl": 20,
         "treffer": 7,
-        "quote": 36.8,
-        "netto": -191.26,
-        "brutto": -191.26,
-        "nettoTR": -229.26,
-        "oeNettoProzent": -1.02,
-        "oeR": 0.03
+        "quote": 35,
+        "netto": -317.14,
+        "brutto": -317.14,
+        "nettoTR": -357.14,
+        "oeNettoProzent": -1.6,
+        "oeR": -0.02
       },
       "short": {
-        "anzahl": 19,
+        "anzahl": 20,
         "treffer": 7,
-        "quote": 36.8,
-        "netto": -191.26,
-        "brutto": -191.26,
-        "nettoTR": -229.26,
-        "oeNettoProzent": -1.02,
-        "oeR": 0.03
+        "quote": 35,
+        "netto": -317.14,
+        "brutto": -317.14,
+        "nettoTR": -357.14,
+        "oeNettoProzent": -1.6,
+        "oeR": -0.02
       },
       "krypto": {
         "anzahl": 5,
