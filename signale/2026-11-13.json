@@ -1,0 +1,639 @@
+{
+  "stand": "2026-11-13T04:56:15.081Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:OXY",
+      "name": "OXY",
+      "ticker": "OXY",
+      "score": 2.38,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachricht",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:ADXN",
+      "name": "Addex Therapeutics Ltd ADS",
+      "ticker": "ADXN",
+      "score": 2.2,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner",
+        "kursrakete",
+        "leerverkauf_quote"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP",
+        "Alpha Vantage",
+        "FINRA"
+      ]
+    },
+    {
+      "schluessel": "T:SIDU",
+      "name": "Sidus Space Inc.",
+      "ticker": "SIDU",
+      "score": -2.1,
+      "typen": [
+        "prognose_senkung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:POAS",
+      "name": "Phaos Technology Holdings (Caym",
+      "ticker": "POAS",
+      "pump": true,
+      "score": 1.78,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:CTEV",
+      "name": "Claritev Corp",
+      "ticker": "CTEV",
+      "score": 1.76,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:UPBD",
+      "name": "Upbound Group, Inc.",
+      "ticker": "UPBD",
+      "score": 1.76,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:SMX",
+      "name": "SMX Sc Mtr PLC Ord",
+      "ticker": "SMX",
+      "score": -1.73,
+      "typen": [
+        "handelsstopp",
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:XLAB",
+      "name": "Exascale Labs Holdings Inc.",
+      "ticker": "XLAB",
+      "pump": true,
+      "score": 1.72,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:RETO",
+      "name": "ReTo Eco-Solutions Cl A Shs",
+      "ticker": "RETO",
+      "score": -1.7,
+      "typen": [
+        "handelsstopp",
+        "verwaesserung"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:OMH",
+      "name": "Ohmyhome Ltd Ords A",
+      "ticker": "OMH",
+      "score": -1.68,
+      "typen": [
+        "handelsstopp",
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:CSCO",
+      "name": "CSCO",
+      "ticker": "CSCO",
+      "score": 1.65,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:PAM",
+      "name": "Pampa Energy Inc.",
+      "ticker": "PAM",
+      "score": 1.48,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FUN",
+      "name": "Six Flags Entertainment Corporation/New",
+      "ticker": "FUN",
+      "score": 1.42,
+      "typen": [
+        "nachricht",
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "Finnhub",
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:HPP",
+      "name": "Hudson Pacific Properties, Inc.",
+      "ticker": "HPP",
+      "score": 1.4,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:OBIO",
+      "name": "Orchestra Biomed Holdings, Inc.",
+      "ticker": "OBIO",
+      "score": 1.4,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FLG",
+      "name": "Flagstar Bank, National Association",
+      "ticker": "FLG",
+      "score": 1.34,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BGIN",
+      "name": "Bgin Blockchain Limited",
+      "ticker": "BGIN",
+      "score": 1.28,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:ADVB",
+      "name": "Advanced Biomed Inc. Common Stock",
+      "ticker": "ADVB",
+      "score": 1.28,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:CDNL",
+      "name": "Cardinal Infrastructure Group Inc.",
+      "ticker": "CDNL",
+      "score": -1.28,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:ADIG",
+      "name": "ADI Global Distribution Inc.",
+      "ticker": "ADIG",
+      "score": -1.28,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:PSFE",
+      "name": "Paysafe Limited",
+      "ticker": "PSFE",
+      "score": -1.28,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:LBTY",
+      "name": "Liberty Global Ltd.",
+      "ticker": "LBTY",
+      "score": 1.24,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MP",
+      "name": "Mp Materials Corp. / De",
+      "ticker": "MP",
+      "score": 1.22,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:JDZG",
+      "name": "JIADE Ltd",
+      "ticker": "JDZG",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BRW",
+      "name": "Saba Capital Income & Opportunities Fund",
+      "ticker": "BRW",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PACB",
+      "name": "PACIFIC BIOSCIENCES OF CALIFORNIA, INC.",
+      "ticker": "PACB",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SMA",
+      "name": "SmartStop Self Storage REIT, Inc.",
+      "ticker": "SMA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PRME",
+      "name": "Prime Medicine, Inc.",
+      "ticker": "PRME",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NHP",
+      "name": "National Healthcare Properties, Inc.",
+      "ticker": "NHP",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:STIM",
+      "name": "Neuronetics, Inc.",
+      "ticker": "STIM",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SEV",
+      "name": "Aptera Motors Corp",
+      "ticker": "SEV",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LICN",
+      "name": "Lichen International Ltd",
+      "ticker": "LICN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GMHS",
+      "name": "Gamehaus Holdings Inc.",
+      "ticker": "GMHS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PROK",
+      "name": "PROKIDNEY CORP.",
+      "ticker": "PROK",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:VIR",
+      "name": "Vir Biotechnology, Inc.",
+      "ticker": "VIR",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CADL",
+      "name": "Candel Therapeutics, Inc.",
+      "ticker": "CADL",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SPCE",
+      "name": "Virgin Galactic Holdings, Inc",
+      "ticker": "SPCE",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:FATE",
+      "name": "FATE THERAPEUTICS INC",
+      "ticker": "FATE",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NSPR",
+      "name": "InspireMD, Inc.",
+      "ticker": "NSPR",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GLXY",
+      "name": "Galaxy Digital Inc.",
+      "ticker": "GLXY",
+      "score": 1.19,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ENOV",
+      "name": "Enovis Corp",
+      "ticker": "ENOV",
+      "score": 1.18,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 1.15,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:LUCK",
+      "name": "Lucky Strike Entertainment Corp",
+      "ticker": "LUCK",
+      "score": 1.1,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:COHR",
+      "name": "Coherent Corp.",
+      "ticker": "COHR",
+      "score": 1,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:GP",
+      "name": "GreenPower Motor Company Cm Sh",
+      "ticker": "GP",
+      "pump": true,
+      "score": 0.99,
+      "typen": [
+        "handelsstopp",
+        "kursrakete"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:NOMD",
+      "name": "Nomad Foods Ltd",
+      "ticker": "NOMD",
+      "score": 0.99,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:WW",
+      "name": "Ww International, Inc.",
+      "ticker": "WW",
+      "score": 0.99,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:PLCE",
+      "name": "Children's Place, Inc. (The)",
+      "ticker": "PLCE",
+      "pump": true,
+      "score": 0.98,
+      "typen": [
+        "handelsstopp",
+        "kursrakete",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:RWAY",
+      "name": "Runway Growth Finance Corp.",
+      "ticker": "RWAY",
+      "score": 0.97,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ADTN",
+      "name": "Adtran Holdings, Inc.",
+      "ticker": "ADTN",
+      "score": 0.97,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    }
+  ],
+  "anzahlSignale": 225
+}
