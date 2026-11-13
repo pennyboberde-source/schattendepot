@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-13T11:54:42.967Z",
-  "anzahl": 235,
+  "stand": "2026-11-13T13:03:27.200Z",
+  "anzahl": 240,
   "signale": [
     {
       "id": "verwaesserung:WEST:2026-11-10",
@@ -2855,7 +2855,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.6,
+      "st": 0.8,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2869,7 +2869,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.6,
+      "st": 0.8,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2883,7 +2883,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.6,
+      "st": 0.8,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2979,10 +2979,11 @@
       "t": "MSFT",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.41,
+      "st": 0.51,
       "q": [
         "CNBC Top News",
-        "tagesschau Wirtschaft"
+        "tagesschau Wirtschaft",
+        "MarketWatch"
       ],
       "z": "2026-11-13T02:43:26.000Z"
     },
@@ -3036,7 +3037,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.54,
+      "st": 0.6,
       "q": [
         "Upbit"
       ],
@@ -3106,6 +3107,74 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-13T11:15:29.000Z"
+    },
+    {
+      "id": "nachricht:DHL:2026-11-13",
+      "s": "T:DHL",
+      "n": "DHL Group",
+      "t": "DHL.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-13T12:20:30.000Z"
+    },
+    {
+      "id": "verwaesserung:NNOX:2026-11-13",
+      "s": "T:NNOX",
+      "n": "Nano-X Imaging Ltd.",
+      "t": "NNOX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-13T13:00:12.000Z"
+    },
+    {
+      "id": "politik_massnahme:PFE:2026-11-13:pharma_preise",
+      "s": "T:PFE",
+      "n": "Pfizer",
+      "t": "PFE",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.35,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-13T13:03:27.200Z"
+    },
+    {
+      "id": "politik_massnahme:LLY:2026-11-13:pharma_preise",
+      "s": "T:LLY",
+      "n": "Eli Lilly",
+      "t": "LLY",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.35,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-13T13:03:27.200Z"
+    },
+    {
+      "id": "politik_massnahme:NVO:2026-11-13:pharma_preise",
+      "s": "T:NVO",
+      "n": "Novo Nordisk",
+      "t": "NVO",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.35,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-13T13:03:27.200Z"
     }
   ]
 }
