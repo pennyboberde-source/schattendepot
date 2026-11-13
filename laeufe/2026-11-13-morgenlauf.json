@@ -1,0 +1,30 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-13",
+  "erstellt": "2026-11-13T07:50:00Z",
+  "briefing": [
+    "Keine neue Order: Seitwärts/nervös, Trefferquote 35 % bei Konfidenz 40–59 %, Kandidaten nur Insider-Cluster und Pump-Raketen.",
+    "US-Erzeugerpreise (PPI) 14:30 – nach 1,3 % im Vormonat heikel; Fed-Zinserhöhung im Dezember laut Polymarket 89 %.",
+    "Cisco nach Zahlen (EPS +5 % über Erwartung) im Blick; Nvidia-Zahlen am 17.11., CEO-Untersuchung läuft weiter."
+  ],
+  "orders": [],
+  "anpassungen": [],
+  "prognose": [
+    {"name": "Cisco", "ticker": "CSCO", "markt": "us", "richtung": "runter", "chance": 52, "grund": "EPS-Überraschung nur +5 %; im August fiel die Aktie trotz Beat wegen Margen – hohe Erwartungen."},
+    {"name": "NVIDIA", "ticker": "NVDA", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "Asien erholt sich nach dem Nvidia-Schock; Zahlen am 17.11. könnten Käufer vorab anlocken."},
+    {"name": "Occidental Petroleum", "ticker": "OXY", "markt": "us", "richtung": "hoch", "chance": 54, "grund": "Iran-Spannungen (Angriff auf US-Radar in Bahrain gemeldet) stützen den Ölpreis; offene Position."},
+    {"name": "Exxon Mobil", "ticker": "XOM", "markt": "us", "richtung": "hoch", "chance": 53, "grund": "Gleiches Öl-Thema wie OXY, Nahost-Risiko im Politik-Radar."},
+    {"name": "NRG Energy", "ticker": "NRG", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "Verkauf von sechs Gaskraftwerken für 4 Mrd. $ soll Rückkäufe finanzieren; offene Position."},
+    {"name": "Constellation Energy", "ticker": "CEG", "markt": "us", "richtung": "runter", "chance": 52, "grund": "Gegenwind für KI-Strom (GE Vernova, Vertiv −12 % in einer Woche); nach +5 % Gewinnmitnahmen möglich."},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 53, "grund": "−4 % seit Mitternacht, Fear & Greed 20, 98 % der Liquidationen trafen Longs – Abwärtstrend unter 50-T-Linie."},
+    {"name": "Ethereum", "ticker": "ETH", "markt": "krypto", "richtung": "runter", "chance": 53, "grund": "−4,7 % seit Mitternacht, folgt BTC; negatives Funding zeigt keine Kauflust."},
+    {"name": "Rheinmetall", "ticker": "RHM.DE", "markt": "eu", "richtung": "runter", "chance": 53, "grund": "Politik-Radar: Europa bei Ukraine-Verhandlungen beteiligt – Waffenruhe-Fantasie belastet Rüstung."},
+    {"name": "Volkswagen", "ticker": "VOW3.DE", "markt": "eu", "richtung": "runter", "chance": 52, "grund": "Zolldrohungen aus Washington (Greer) laut Politik-Radar belasten Autowerte."}
+  ],
+  "daytrading": [
+    {"name": "Cisco", "markt": "us", "isin": "US17275R1023", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 34, "these": "Zahlentag mit hohem Umsatz; nur Aktie long, wenn die Eröffnungsspanne nach oben bricht."},
+    {"name": "NVIDIA", "markt": "us", "isin": "US67066G1040", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 33, "these": "Asien erholt nach Nvidia-Schock, Zahlen am 17.11.; hohes Interesse, ORB long nur nach Bestätigung."},
+    {"name": "Occidental Petroleum", "markt": "us", "isin": "US6745991058", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 32, "these": "Öl-Fantasie durch Iran-Spannungen; ORB long bei Aktien ist der einzige leicht positive Ansatz."}
+  ],
+  "notiz": "Morgenlauf 13.11.: bewusst keine neue Order. Gründe: Marktphase Aktien seitwärts/nervös (Lektion 18), Kalibrierung 35,3 % bei Konfidenz 40–59 % (n=17), Depot −329 € vs. MSCI World +15 €. Top-Kandidaten sind Insider-Cluster ohne Hochstufung (Ø −2,1 %, Lektion 1), Pump-verdächtige Kursraketen (Lektion 11/17), OXY/CSCO-Gewinnüberraschung (Lektion 6: Nullsignal bei Large Caps). ADXN (Handelsstopp + Rakete + Leerverkaufsquote 56 %) ist nur Schwankungs-, kein Richtungssignal (Lektion 14). Autopilot-Positionen geprüft: FUN (Insider-Cluster, +2 %, Termin 14.11.) ohne Gegenmeldung; CEG +4,9 % – der Wächter zieht den Stop ab +4 % selbst nach, Gegenwind KI-Strom bleibt; NRG verkauft sechs Gaskraftwerke für 4 Mrd. $ an LS Power (stützt Rückkäufe, keine Gegenmeldung); OXY profitiert von Iran-Spannungen. Keine Anpassung nötig. Nvidia: Board-Untersuchung zu CEO Huang läuft, Huang bleibt im Amt, FBI soll ermitteln; Zahlen am 17.11. – binäres Ereignis, kein Hebel. PPI 14:30 ist das Makro-Risiko des Tages. Websuchen: 5 (Nvidia ×2, Cisco ×2, NRG). Quellen: https://www.aljazeera.com/economy/2026/11/9/nvidia-shares-slump-amid-investigation-into-ceo-jensen-huang, https://fool.com/investing/2026/11/10/why-nvidia-stock-fell-again-on-tuesday, https://www.financierworldwide.com/fw-news/2026/11/10/nrg-sells-power-generation-assets-for-4bn. Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung."
+}
