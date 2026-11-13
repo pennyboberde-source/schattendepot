@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-13T19:53:48.198Z",
-  "anzahl": 271,
+  "stand": "2026-11-13T20:53:00.167Z",
+  "anzahl": 272,
   "signale": [
     {
       "id": "verwaesserung:WEST:2026-11-10",
@@ -3230,7 +3230,7 @@
       "t": "AKAN",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.8,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3591,6 +3591,19 @@
         "Handelsblatt Finanzen"
       ],
       "z": "2026-11-13T03:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:FCDH:2026-11-13",
+      "s": "T:FCDH",
+      "n": "Forcendra Hldg Ltd Ord A",
+      "t": "FCDH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-13T00:00:00.000Z"
     }
   ]
 }
