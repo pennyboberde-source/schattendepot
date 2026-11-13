@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-13T17:50:16.875Z",
-  "anzahl": 268,
+  "stand": "2026-11-13T18:51:21.601Z",
+  "anzahl": 269,
   "signale": [
     {
       "id": "verwaesserung:WEST:2026-11-10",
@@ -2855,7 +2855,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.9,
+      "st": 0.95,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2869,7 +2869,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.9,
+      "st": 0.95,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2883,7 +2883,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.9,
+      "st": 0.95,
       "q": [
         "tagesschau Ausland"
       ],
@@ -3000,7 +3000,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.66,
+      "st": 0.71,
       "q": [
         "Upbit"
       ],
@@ -3268,7 +3268,7 @@
       "t": "BKHA",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3307,7 +3307,7 @@
       "t": "BKHAU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3540,6 +3540,19 @@
       "s": "T:MWHS",
       "n": "Skylar Electricity Futures ETF",
       "t": "MWHS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-13T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MACI:2026-11-13",
+      "s": "T:MACI",
+      "n": "Melar Acquisition Cp I Ord A",
+      "t": "MACI",
       "typ": "handelsstopp",
       "r": 0,
       "st": 0.5,
