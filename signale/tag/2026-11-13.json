@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-13T18:51:21.601Z",
-  "anzahl": 269,
+  "stand": "2026-11-13T19:53:48.198Z",
+  "anzahl": 271,
   "signale": [
     {
       "id": "verwaesserung:WEST:2026-11-10",
@@ -3072,7 +3072,8 @@
       "r": 0,
       "st": 0.3,
       "q": [
-        "MarketWatch"
+        "MarketWatch",
+        "CNBC Top News"
       ],
       "z": "2026-11-13T10:14:00.000Z"
     },
@@ -3560,6 +3561,36 @@
         "Nasdaq Trader"
       ],
       "z": "2026-11-13T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-13",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.62,
+      "q": [
+        "tagesschau Wirtschaft",
+        "CNBC Top News",
+        "Handelsblatt Finanzen",
+        "MarketWatch"
+      ],
+      "z": "2026-11-13T02:36:47.000Z"
+    },
+    {
+      "id": "nachricht:BTC:2026-11-13",
+      "s": "T:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "BTC-ECHO",
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-13T03:00:00.000Z"
     }
   ]
 }
