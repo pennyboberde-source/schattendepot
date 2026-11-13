@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-13T15:49:39.439Z",
-  "anzahl": 263,
+  "stand": "2026-11-13T16:53:28.087Z",
+  "anzahl": 266,
   "signale": [
     {
       "id": "verwaesserung:WEST:2026-11-10",
@@ -3000,7 +3000,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.6,
+      "st": 0.61,
       "q": [
         "Upbit"
       ],
@@ -3216,7 +3216,7 @@
       "t": "POAS",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3482,6 +3482,45 @@
         "Upbit"
       ],
       "z": "2026-11-13T15:49:39.439Z"
+    },
+    {
+      "id": "handelsstopp:BACC:2026-11-13",
+      "s": "T:BACC",
+      "n": "Blue Acquisition Corp. Cl A OS",
+      "t": "BACC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-13T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:OMH:2026-11-13",
+      "s": "T:OMH",
+      "n": "Ohmyhome Ltd Ords A",
+      "t": "OMH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-13T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:OXY:2026-11-13",
+      "s": "T:OXY",
+      "n": "OXY",
+      "t": "OXY",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Finnhub"
+      ],
+      "z": "2026-11-13T15:20:16.000Z"
     }
   ]
 }
