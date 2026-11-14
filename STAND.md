@@ -2,7 +2,7 @@
 
 _Zuletzt aktualisiert: 14.11.2026 abends (**V1 Teil a live**: Sammelkurse und privates Kursarchiv; Freigaben F1, F2, F5 erledigt; als Nächstes V1 Teil b; vorher am selben Tag: VS Selbstverbesserung fertig; V0 Aufräumen 12.11.)_
 
-## ▶️ ÜBERGABE AN EINE NEUE SITZUNG (15.11.2026) – zuerst lesen
+## ▶️ ÜBERGABE AN EINE NEUE SITZUNG (14.11.2026, 23:40 Uhr) – zuerst lesen
 **Startsatz des Nutzers:** „Lies STAND.md und mach weiter.“ Diese Notiz reicht zum Weiterbauen; den alten Chat braucht es nicht.
 **Wo wir stehen:** `main` ist live und unverändert bei `8f27380` (V0, VS, V1 Teil a und der Schlüssel mit Markt sind live). Die laufende Arbeit liegt **nur** auf dem Branch `bau/v1b-privat` (lokal ausgecheckt und auf GitHub gesichert). Dort: `tsc` sauber, 289 Unit-Tests grün – aber die neuen Teile sind noch ungetestet und nie gelaufen.
 **Erste Handgriffe:**
