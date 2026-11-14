@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-14T09:47:26.060Z",
+  "stand": "2026-11-14T10:43:50.044Z",
   "heute": {
     "datum": "2026-11-14",
     "gruppe": {
@@ -358,6 +358,59 @@
   ],
   "offen": [],
   "trades": [
+    {
+      "id": "2026-11-14-scan-btc",
+      "datum": "2026-11-14",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-14T09:50:00.000Z",
+        "kurs": 61201.5,
+        "level": 61077.6,
+        "spanne": {
+          "hoch": 61077.6,
+          "tief": 60937.2
+        },
+        "richtung": "long"
+      },
+      "stop": 61007.4,
+      "ziel": 61474.8,
+      "zielR": 2,
+      "flatBis": "2026-11-14T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-14T09:50:00.000Z",
+        "basisKurs": 61163.2,
+        "kurs": 61316.108,
+        "stueck": 0.016308,
+        "kurswert": 999.94
+      },
+      "ausstieg": {
+        "zeit": "2026-11-14T10:20:00.000Z",
+        "basisKurs": 61007.4,
+        "kurs": 60854.882,
+        "kurswert": 992.42,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -7.52,
+        "bruttoProzent": -0.75,
+        "netto": -9.52,
+        "nettoProzent": -0.95,
+        "nettoTR": -9.52,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
     {
       "id": "2026-11-14-scan-ada",
       "datum": "2026-11-14",
@@ -9162,23 +9215,23 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 44,
+      "anzahl": 45,
       "treffer": 12,
-      "quote": 27.3,
-      "netto": -1085.75,
-      "brutto": -1067.75,
-      "nettoTR": -1155.75,
-      "oeNettoProzent": -2.48,
-      "oeR": -0.13
+      "quote": 26.7,
+      "netto": -1095.27,
+      "brutto": -1075.27,
+      "nettoTR": -1165.27,
+      "oeNettoProzent": -2.45,
+      "oeR": -0.15
     },
     "heute": {
-      "anzahl": 4,
+      "anzahl": 5,
       "treffer": 0,
       "quote": 0,
-      "netto": -39.62,
-      "brutto": -31.62,
-      "nettoTR": -39.62,
-      "oeNettoProzent": -0.99,
+      "netto": -49.14,
+      "brutto": -39.14,
+      "nettoTR": -49.14,
+      "oeNettoProzent": -0.98,
       "oeR": -1
     },
     "offen": 0,
@@ -9204,14 +9257,14 @@
         "oeR": -0.17
       },
       "krypto": {
-        "anzahl": 9,
+        "anzahl": 10,
         "treffer": 2,
-        "quote": 22.2,
-        "netto": -59.92,
-        "brutto": -41.92,
-        "nettoTR": -59.92,
-        "oeNettoProzent": -0.66,
-        "oeR": 0.02
+        "quote": 20,
+        "netto": -69.44,
+        "brutto": -49.44,
+        "nettoTR": -69.44,
+        "oeNettoProzent": -0.69,
+        "oeR": -0.09
       }
     }
   },
