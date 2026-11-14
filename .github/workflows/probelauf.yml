@@ -7,8 +7,11 @@ on:
   workflow_dispatch:
     inputs:
       art:
-        description: 'schattenbuch | jobs | alles | tests (tsc, Unit-Tests, Build, E2E unter Linux – wie in der Übernahme-Action) | archiv (Sammelkurse in einen Wegwerf-Ordner)'
+        description: 'schattenbuch | jobs | umzug (Jobs zweimal: Umzug in den privaten Zustand) | alles | tests (tsc, Unit-Tests, Build, E2E unter Linux – wie in der Übernahme-Action) | archiv (Sammelkurse in einen Wegwerf-Ordner)'
         default: schattenbuch
+      privat:
+        description: 'mit | ohne (so tun, als sei der private Zustand nicht erreichbar)'
+        default: mit
 
 permissions:
   contents: read
@@ -58,9 +61,10 @@ jobs:
         if: github.event.inputs.art != 'tests' && github.event.inputs.art != 'archiv'
         env:
           ART: ${{ github.event.inputs.art || 'schattenbuch' }}
+          PRIVAT: ${{ github.event.inputs.privat == 'ohne' && 'ohne-privat' || '' }}
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
           ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
           OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
-        run: node jobs/probelauf.ts "$ART"
+        run: node jobs/probelauf.ts "$ART" $PRIVAT

@@ -24,6 +24,14 @@ test('Depot zeigt Kennzahlen, Positionen und den Pflichthinweis; alte Links funk
   await expect(page.locator('.hinweis-fuss')).toBeInViewport();
 });
 
+test('Position und Verlauf zeigen Prozent seit Kauf statt Kursen (Lösung B)', async ({ page }) => {
+  await page.goto('/#/depot');
+  await expect(page.getByText(/Seit Kauf \+1,3\s%\s· heute \+0,8\s%/)).toBeVisible();
+  await page.goto('/#/order/2026-10-21-demo-c');
+  await expect(page.getByText('Verlauf seit Kauf (in Prozent)')).toBeVisible();
+  await expect(page.getByTestId('verlauf-prozent')).toContainText(/zuletzt \+1,3\s%/);
+});
+
 test('Alle Tabs erreichbar, Touch-Ziele groß genug', async ({ page }) => {
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Hauptnavigation' });

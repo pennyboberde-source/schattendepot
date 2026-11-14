@@ -12,7 +12,7 @@ import { plausibilitaetPruefen } from '../../core/statistik.ts';
 import type { Kursbasis } from '../../core/typen.ts';
 import { holeKurs, type Abrufprotokoll } from '../kurse/anbieter.ts';
 import { ladeConfig, leseJson } from './dateien.ts';
-import { leseTracking, schreibeTracking, trackingErreichbar } from './privat.ts';
+import { leseTracking, privatDa, schreibeTracking } from './privat.ts';
 
 // Kursbasis aus dem Kürzel: liegt in core/autopilot.ts (auch der Autopilot braucht sie)
 export { kursbasisAusTicker, SCHNELLE_TYPEN };
@@ -27,8 +27,9 @@ export interface TrackingOptionen {
 const pause = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export async function trackingAktualisieren(jetzt: Date, protokoll: Abrufprotokoll, opt: TrackingOptionen = {}): Promise<SchrittErgebnis> {
-  // Das Schattenbuch liegt im privaten Zustand. Ist es nicht erreichbar, setzt der Lauf aus – ohne etwas zu verändern.
-  if (!trackingErreichbar()) return { startAbrufe: 0, messAbrufe: 0, aufgenommen: 0, ohneKurs: [], ausfall: false, nachgeholt: 0, gemessen: 0, heuteKandidaten: 0, heuteMitStart: 0, ausgesetzt: true };
+  // Das Schattenbuch liegt im privaten Zustand. Ist er nicht ausgecheckt, setzt der Lauf aus – ohne etwas zu verändern
+  // und ohne Kursabrufe (sie ließen sich nicht sichern). Gelesen wird beim ersten Lauf noch die alte öffentliche Datei.
+  if (!privatDa()) return { startAbrufe: 0, messAbrufe: 0, aufgenommen: 0, ohneKurs: [], ausfall: false, nachgeholt: 0, gemessen: 0, heuteKandidaten: 0, heuteMitStart: 0, ausgesetzt: true };
   const { einstellungen } = ladeConfig();
   const tr = einstellungen.tracking;
   const heute = berlin(jetzt).datum;
