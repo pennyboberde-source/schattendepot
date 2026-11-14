@@ -1,0 +1,75 @@
+name: Kursarchiv
+
+# Plan Volltreffer V1: Sammelkurse je Markt in das PRIVATE Repo schattendepot-archiv (Secret ARCHIV_TOKEN).
+# gettex gestattet die verzögerten Daten nur zur privaten Nutzung, Massive ebenso – ins öffentliche Repo geht
+# deshalb nur der Stand in Zählungen (archiv/stand.json im Datenzweig).
+# Zeiten in UTC. gettex hält seine Dateien nur rund 24 Stunden vor, darum drei Gelegenheiten je Handelstag:
+#   22:25 nach Handelsschluss (23:00 Berlin im Winter; im Sommer ist dann längst Schluss)
+#   00:10 Krypto-Tagesstand, gettex nachfassen
+#   05:10 US-Vortag (ab Mitternacht US-Ostküste abrufbar), gettex letzte Gelegenheit
+on:
+  schedule:
+    - cron: '25 22 * * 1-5'
+    - cron: '10 0 * * *'
+    - cron: '10 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archiv:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    concurrency:
+      group: archiv-schreiben
+      cancel-in-progress: false
+    outputs:
+      stand: ${{ steps.archiv.outputs.stand }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          repository: pennyboberde-source/schattendepot-archiv
+          token: ${{ secrets.ARCHIV_TOKEN }}
+          path: _archiv
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Sammelkurse holen und ablegen
+        id: archiv
+        env:
+          MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
+        run: node jobs/archiv.ts
+      - name: Archiv sichern
+        if: always()
+        run: bash scripts/archiv-sichern.sh "Kursarchiv $(date -u +%Y-%m-%dT%H:%MZ)"
+
+  stand:
+    needs: archiv
+    if: always() && needs.archiv.outputs.stand != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    concurrency:
+      group: daten-schreiben
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - name: Stand in Zählungen in den Datenzweig
+        env:
+          STAND: ${{ needs.archiv.outputs.stand }}
+        run: |
+          mkdir -p _daten/archiv
+          printf '%s\n' "$STAND" > _daten/archiv/stand.json
+      - name: Daten sichern
+        run: bash scripts/daten-sichern.sh "Kursarchiv-Stand $(date -u +%Y-%m-%dT%H:%MZ)"

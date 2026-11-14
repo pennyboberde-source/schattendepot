@@ -1,0 +1,24 @@
+{
+  "hinweis": "Privates Kursarchiv (Plan Volltreffer V1). Rohkurse und alles, was sich daraus zurückrechnen lässt, liegen im privaten Repo – die Anbieter gestatten die Daten nur zur privaten Nutzung ohne Weitergabe (gettex: verzögerte Daten; Massive: Individuals-Bedingungen und Market Data Terms, geprüft 14.11.2026: Speichern für den Eigengebrauch erlaubt, Veröffentlichen nicht). Ins öffentliche Repo gehen nur Zählungen (archiv/stand.json). Tagesdateien werden nur angehängt, nie überschrieben.",
+  "repo": "pennyboberde-source/schattendepot-archiv",
+  "gettex": {
+    "hinweis": "Tageskerzen je ISIN aus allen 15-Minuten-Dateien beider Segmente (nur Geschäfte mit Stückzahl). Dateinamen nennen das Fensterende in UTC; gettex hält sie nur rund 24 Stunden vor – deshalb drei Läufe je Handelstag (spätabends, nach Mitternacht, frühmorgens).",
+    "handelVon": "07:30",
+    "handelBis": "23:00",
+    "fertigNachMinuten": 20,
+    "parallel": 4
+  },
+  "us": {
+    "hinweis": "Massive (früher Polygon.io), Tarif Basic: Sammelabruf aller US-Aktien je Handelstag, nur Tagesschlussdaten, Vortag ab Mitternacht US-Ostküstenzeit, 5 Abrufe je Minute. Das laufende Archiv speichert unbereinigte Kurse (wie gehandelt); Splits werden als Ereignis geführt, nicht als Sprung gemessen.",
+    "host": "https://api.massive.com",
+    "ab": "2026-11-09",
+    "maxTageJeLauf": 5,
+    "pauseSekunden": 13,
+    "bereinigt": false,
+    "mitOtc": true
+  },
+  "krypto": {
+    "hinweis": "Kraken, ein Abruf für alle Paare (Stand und 24-Stunden-Werte), einmal je UTC-Tag, dazu die lesbaren Paarnamen. Binance wird gemieden (Fehler 451 aus gesperrten Regionen).",
+    "host": "https://api.kraken.com"
+  }
+}

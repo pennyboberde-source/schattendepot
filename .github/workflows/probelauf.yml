@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       art:
-        description: 'schattenbuch | jobs | alles | tests (tsc, Unit-Tests, Build, E2E unter Linux – wie in der Übernahme-Action)'
+        description: 'schattenbuch | jobs | alles | tests (tsc, Unit-Tests, Build, E2E unter Linux – wie in der Übernahme-Action) | archiv (Sammelkurse in einen Wegwerf-Ordner)'
         default: schattenbuch
 
 permissions:
@@ -36,8 +36,18 @@ jobs:
           npx playwright install --with-deps chromium webkit
           npm run build
           npm run e2e
+      - name: Archiv-Probe (Sammelkurse in einen Wegwerf-Ordner – nichts wird gesichert, das Log zeigt nur Zählungen)
+        if: github.event.inputs.art == 'archiv'
+        env:
+          MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
+          ARCHIV_DIR: ${{ runner.temp }}/archiv-probe
+        run: |
+          mkdir -p "$ARCHIV_DIR"
+          node jobs/archiv.ts
+          find "$ARCHIV_DIR" -type f -printf '%P %s Bytes\n'
+          cat "$ARCHIV_DIR/index.json"
       - name: Probelauf
-        if: github.event.inputs.art != 'tests'
+        if: github.event.inputs.art != 'tests' && github.event.inputs.art != 'archiv'
         env:
           ART: ${{ github.event.inputs.art || 'schattenbuch' }}
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
