@@ -1,0 +1,39 @@
+{
+  "datum": "2026-11-14",
+  "zusammenfassung": "Der gettex-Scanner meldet keine Turbos und Optionsscheine mehr, in Seitwärtsphasen gibt es höchstens 2 neue Depot-Orders je Lauf ohne Hebel ohne Beleg, und der Autopilot-Stop liegt bei −8 % statt −6 %.",
+  "aenderungen": [
+    {
+      "id": "gettex-scanner-ohne-hebelprodukte",
+      "titel": "gettex-Scanner sortiert Hebelprodukte (Turbos, Optionsscheine) aus und meldet nur Aktien/ADRs",
+      "bereich": "quellen",
+      "kandidat": "monatspruefung:2026-11:8",
+      "hypothese": "Sprünge von HSBC-/Goldman-Hebelprodukten sind Hebelmechanik, kein Signal: gettex-Scanner 1 T nur 10 % im Plus, 1 W Ø −26,33 % (n=10). Ohne sie fallen die schlimmsten Ausreißer aus dem Schattenbuch, der Median nach 1 Woche sollte steigen.",
+      "messkriterium": { "kennzahl": "schattenbuch.median1W", "richtung": "steigt", "ausgangswert": -2.04, "zielwert": -1.5, "text": "Median des Schattenbuchs nach 1 Woche steigt von −2,04 % auf über −1,5 %." },
+      "dateien": ["jobs/quellen/gettexscanner.ts", "jobs/quellen/gettexscanner.test.ts"]
+    },
+    {
+      "id": "seitwaerts-hoechstens-zwei-orders",
+      "titel": "Seitwärtsphase: höchstens 2 neue Depot-Orders je Lauf, kein Hebel ohne Volltreffer-Beleg",
+      "bereich": "routinen",
+      "kandidat": "monatspruefung:2026-11:7",
+      "hypothese": "Schattenbuch seitwärts/ruhig Ø −6,21 % nach 1 Woche (n=228) gegen aufwärts/ruhig −3,68 % (n=95). Weniger und vorsichtigere Orders in dieser Phase sollten die Trefferquote des Depots heben.",
+      "messkriterium": { "kennzahl": "depot.trefferquote", "richtung": "steigt", "ausgangswert": 35.3, "zielwert": 40, "text": "Trefferquote des Depots steigt von 35,3 % auf über 40 %." },
+      "dateien": ["routine/morgenlauf.md", "routine/mittagslauf.md", "routine/abendlauf.md"]
+    },
+    {
+      "id": "autopilot-stop-weiter",
+      "titel": "Autopilot-Stop von −6 % auf −8 % geweitet, damit normale Schwankung nicht ausstoppt",
+      "bereich": "depot",
+      "kandidat": "monatspruefung:2026-11:5",
+      "hypothese": "Stop-Verkäufe waren 0/6 im Plus (Ø −7,88 %, oft mit Kurslücke), Zeit-Ausstiege 3/3 im Plus (Ø +1,46 %); 53 % aller Verkäufe waren Stops. Ein etwas weiterer Stop lässt mehr Autopilot-Orders bis zum Zeit-Ausstieg laufen.",
+      "messkriterium": { "kennzahl": "autopilot.oeNetto", "richtung": "steigt", "ausgangswert": -2.65, "zielwert": -1, "text": "Ø Ergebnis je Autopilot-Order steigt von −2,65 % auf über −1 %." },
+      "dateien": ["config/einstellungen.json"]
+    }
+  ],
+  "nichtUmgesetzt": [
+    { "kandidat": "monatspruefung:2026-11:4", "grund": "Eine Quote für spekulative Daytrading-Trades bräuchte Code in core/daytrading/ablauf.ts oder jobs/daytrading.ts – beides für den Verbesserungslauf gesperrt; Bau-Sitzung." },
+    { "kandidat": "monatspruefung:2026-11:6", "grund": "Die gelernte Gewichtstabelle (gewichte.json) überschreibt die Config-Gewichte dieser Signale; eine Config-Änderung wirkt nicht. Die Wochenanpassung senkt sie bereits (kursrakete 0,64, upbit_warnung 0,51, krypto_einnahmen 0,77)." },
+    { "kandidat": "quelle:emskeptic:ausfall", "grund": "HTTP 403 vom Anbieter – Abruf wird verweigert; Quelle darf nicht entfernt werden, kein sauberer Ersatz in diesem Lauf." },
+    { "kandidat": "quelle:gdelt:ausfall", "grund": "„fetch failed“ seit 02.11. ohne Ursache aus den Daten; die Abrufschicht liegt teils außerhalb der Erlaubtliste." }
+  ]
+}
