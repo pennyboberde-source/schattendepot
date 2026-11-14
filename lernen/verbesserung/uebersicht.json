@@ -1,8 +1,39 @@
 {
-  "stand": "2026-11-14T14:18:21.257Z",
+  "stand": "2026-11-14T14:24:35.336Z",
   "aktiv": true,
   "rueckgaengigLink": "https://github.com/pennyboberde-source/schattendepot/actions/workflows/verbesserung-zurueck.yml",
-  "uebernahmen": [],
+  "uebernahmen": [
+    {
+      "datum": "2026-11-14",
+      "zeit": "2026-11-14T14:24:35.336Z",
+      "merge": "90285d99883cdec06b928e9de6ff4cebd2026eae",
+      "zusammenfassung": "Der gettex-Scanner meldet keine Turbos und Optionsscheine mehr, in Seitwärtsphasen gibt es höchstens 2 neue Depot-Orders je Lauf ohne Hebel ohne Beleg, und der Autopilot-Stop liegt bei −8 % statt −6 %.",
+      "status": "aktiv",
+      "aenderungen": [
+        {
+          "id": "gettex-scanner-ohne-hebelprodukte",
+          "titel": "gettex-Scanner sortiert Hebelprodukte (Turbos, Optionsscheine) aus und meldet nur Aktien/ADRs",
+          "bereich": "quellen",
+          "hypothese": "Sprünge von HSBC-/Goldman-Hebelprodukten sind Hebelmechanik, kein Signal: gettex-Scanner 1 T nur 10 % im Plus, 1 W Ø −26,33 % (n=10). Ohne sie fallen die schlimmsten Ausreißer aus dem Schattenbuch, der Median nach 1 Woche sollte steigen.",
+          "messkriterium": "Median des Schattenbuchs nach 1 Woche steigt von −2,04 % auf über −1,5 %."
+        },
+        {
+          "id": "seitwaerts-hoechstens-zwei-orders",
+          "titel": "Seitwärtsphase: höchstens 2 neue Depot-Orders je Lauf, kein Hebel ohne Volltreffer-Beleg",
+          "bereich": "routinen",
+          "hypothese": "Schattenbuch seitwärts/ruhig Ø −6,21 % nach 1 Woche (n=228) gegen aufwärts/ruhig −3,68 % (n=95). Weniger und vorsichtigere Orders in dieser Phase sollten die Trefferquote des Depots heben.",
+          "messkriterium": "Trefferquote des Depots steigt von 35,3 % auf über 40 %."
+        },
+        {
+          "id": "autopilot-stop-weiter",
+          "titel": "Autopilot-Stop von −6 % auf −8 % geweitet, damit normale Schwankung nicht ausstoppt",
+          "bereich": "depot",
+          "hypothese": "Stop-Verkäufe waren 0/6 im Plus (Ø −7,88 %, oft mit Kurslücke), Zeit-Ausstiege 3/3 im Plus (Ø +1,46 %); 53 % aller Verkäufe waren Stops. Ein etwas weiterer Stop lässt mehr Autopilot-Orders bis zum Zeit-Ausstieg laufen.",
+          "messkriterium": "Ø Ergebnis je Autopilot-Order steigt von −2,65 % auf über −1 %."
+        }
+      ]
+    }
+  ],
   "abgelehnt": [
     {
       "zeit": "2026-11-14T14:18:21.257Z",

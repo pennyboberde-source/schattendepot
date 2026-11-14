@@ -1,5 +1,14 @@
 [
   {
+    "typ": "bericht",
+    "titel": "🛠️ Verbesserung: 3 Änderungen übernommen",
+    "text": "gettex-Scanner sortiert Hebelprodukte (Turbos, Optionsscheine) aus und meldet nur Aktien/ADRs · Seitwärtsphase: höchstens 2 neue Depot-Orders je Lauf, kein Hebel ohne Volltreffer-Beleg · Autopilot-Stop von −6 % auf −8 % geweitet, damit normale Schwankung nicht ausstoppt · Rückgängig machen: in der App unter Lernen",
+    "ziel": "#/lernen",
+    "tag": "verbesserung-2026-11-14",
+    "erstellt": "2026-11-14T14:24:35.336Z",
+    "gesendet": true
+  },
+  {
     "typ": "warnung",
     "titel": "🛠️ Verbesserung nicht übernommen",
     "text": ".github/workflows/sammler.yml: gesperrt (Leitplanken › verbotenePfade) · core/gebuehren.ts: gesperrt (Leitplanken › verbotenePfade) · und 4 weitere · Details in der App unter Lernen",
@@ -888,15 +897,6 @@
     "ziel": "#/heute",
     "tag": "sammel-2026-10-30T06",
     "erstellt": "2026-10-30T06:43:21.311Z",
-    "gesendet": true
-  },
-  {
-    "typ": "verkauft",
-    "titel": "🔒 Gewinn gesichert: Galaxy Digital Inc.",
-    "text": "Kurs +6,9 % · nach Gebühren +6,9 % (+68,42 €) · erhofft waren +1,0 % · nachgezogener Stop · inkl. Teilverkauf",
-    "ziel": "#/order/2026-10-28-galaxy-digital-inc",
-    "tag": "2026-10-28-galaxy-digital-inc",
-    "erstellt": "2026-10-29T19:27:12.940Z",
     "gesendet": true
   }
 ]
