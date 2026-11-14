@@ -1,0 +1,783 @@
+{
+  "datum": "2026-11-14",
+  "erstellt": "2026-11-14T08:15:44.709Z",
+  "makro": [
+    "Marktphase: Aktien (S&P 500) Seitwärts, nervös · Krypto (Bitcoin) Seitwärts, ruhig",
+    "Ethereum: 1.726 € (-1,4 % seit 00:00 UTC)",
+    "Bitcoin: 61.029 € (-1,5 % seit 00:00 UTC)",
+    "Kimchi-Prämie (BTC in Korea gegen USD-Markt): +2,45 % (vorher +1,99 %). Steigend = Kaufdruck koreanischer Privatanleger.",
+    "Funding p. a. (Kraken Futures): BTC +1,5 %, ETH +2,1 %, SOL +11,6 %. Hoch positiv = gehebelte Käufer dominieren.",
+    "Stablecoin-Menge 287,6 Mrd $ (7 Tage -1,50 %). Wachsend = frisches Geld für Krypto.",
+    "US-App-Store Gesamt-Top-100: Kalshi #9 (vorher #11), Cash App #40 (vorher #42) – je höher, desto mehr Andrang von Privatanlegern",
+    "Krypto Fear & Greed: 13 (Extreme Fear), gestern 20 – Quelle: alternative.me",
+    "BTC-Volatilität DVOL (Deribit): 41,6 (Vortag 39,9, vor 7 Tagen 40,2)",
+    "ETH-Volatilität DVOL (Deribit): 54,3 (Vortag 55,6, vor 7 Tagen 56)",
+    "Polymarket „Fed Decision in December?“ – 25 bps increase: 89 %, 50+ bps increase: 8 %",
+    "Polymarket „Fed Decision in January?“ – 25 bps increase: 57 %, No change: 42 %",
+    "Polymarket „Strait of Hormuz traffic returns to normal by December 31?“ – 6 %",
+    "Polymarket „Largest Company end of December 2026?“ – Apple: 90 %, NVIDIA: 9 %",
+    "Polymarket „How many Fed rate cuts in 2026?“ – 0 (0 bps): 98 %",
+    "COT 2026-11-03 – Spekulanten netto in % des Open Interest, P = Perzentil über 3 Jahre: Erdgas -15 % (Vorw. -15, P1); Rohöl WTI +4 % (Vorw. +4, P14); Silber +18 % (Vorw. +17, P10); Bitcoin +13 % (Vorw. +13, P93); Kupfer +12 % (Vorw. +14, P37); Gold +45 % (Vorw. +47, P38); S&P 500 -7 % (Vorw. -7, P37); Ethereum +5 % (Vorw. +6, P59)",
+    "Coinalyze BTC: Liquidationen 24 h 61.6 Mio. $ (Longs 74 %)",
+    "Coinalyze ETH: Liquidationen 24 h 68.1 Mio. $ (Longs 53 %)"
+  ],
+  "politik": [
+    "Politik-Risiko: 65/100 (hoch)",
+    "Ukraine/Russland (Krieg, Waffenruhe) (4 Meldungen, 1 Quelle) → Rheinmetall ↓, Hensoldt ↓, Renk ↓: „Weißes Haus kündigt Dreiertreffen von Trump mit Putin und Xi an“ – tagesschau Ausland",
+    "Wahlen/Regierung/Haushalt (3 Meldungen, 2 Quellen): „Nach US-Zwischenwahlen: Neue Migranten-Karawane auf dem Weg Richtung USA“ – tagesschau Ausland",
+    "Zölle/Handelskonflikte (1 Meldung, 1 Quelle) → Volkswagen ↓, BMW ↓, Mercedes-Benz ↓, Porsche ↓, Apple ↓: „‘We will sue them’: Canada threatens Stellantis as Trump trade war reshapes Jeep production plans“ – CNBC World",
+    "Chips/Exportkontrollen/Rechenzentren (1 Meldung, 1 Quelle): „Why the data center slowdown concern is overblown. Two stocks to buy amid the fear“ – CNBC World",
+    "Prognosemarkt „Elon Musk # tweets November 12 - November 14, 2026? – 65-89“: 88 % (+34 Pkt.)"
+  ],
+  "termine": [],
+  "meldungen": [
+    {
+      "titel": "Microsoft apologizes for massive outage that took down Outlook and other 365 services",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html",
+      "zeit": "2026-11-14T08:11:28.000Z",
+      "wertpapier": "Microsoft"
+    },
+    {
+      "titel": "Rente: Mit der Aktie ins Alter: Die zwölf wichtigsten Antworten zum Vorsorgedepot",
+      "quelle": "Handelsblatt Finanzen",
+      "link": "https://www.handelsblatt.com/finanzen/vorsorge/altersvorsorge-sparen/rente-die-zwoelf-wichtigsten-antworten-zum-altersvorsorgedepot/100265976.html",
+      "zeit": "2026-11-14T08:04:00.000Z"
+    },
+    {
+      "titel": "Warum in Polen schneller gebaut wird als in Deutschland",
+      "quelle": "tagesschau Wirtschaft",
+      "link": "https://www.tagesschau.de/wirtschaft/weltwirtschaft/bauen-polen-100.html",
+      "zeit": "2026-11-14T07:24:30.000Z"
+    },
+    {
+      "titel": "Nach US-Zwischenwahlen: Neue Migranten-Karawane auf dem Weg Richtung USA",
+      "quelle": "tagesschau Ausland",
+      "link": "https://www.tagesschau.de/ausland/amerika/migranten-usa-mexiko-110.html",
+      "zeit": "2026-11-14T07:21:14.000Z"
+    },
+    {
+      "titel": "Analysis: Companies love a ‘rockstar’ CEO. Until they depend on one",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/14/nvidia-jensen-huang-ceo-succession-risk.html",
+      "zeit": "2026-11-14T07:08:45.000Z"
+    },
+    {
+      "titel": "Ecuador wants to monetize its biodiversity — while still drilling for oil",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/14/ecuador-biodiversity-green-finance-oil.html",
+      "zeit": "2026-11-14T06:00:01.000Z"
+    },
+    {
+      "titel": "FAA lifts ground stop after more than four hours, but flight cancellations will stretch into the weekend",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/13/faa-ground-stop.html",
+      "zeit": "2026-11-14T05:08:24.000Z"
+    },
+    {
+      "titel": "Keine Priorität für Klimaschutz in der Koalition",
+      "quelle": "tagesschau Inland",
+      "link": "https://www.tagesschau.de/inland/gesellschaft/klimaschutz-klimaziele-deutschland-100.html",
+      "zeit": "2026-11-14T04:40:44.000Z"
+    },
+    {
+      "titel": "Kraken verdient zwei Drittel weniger und sucht neue Geschäftsfelder",
+      "quelle": "BTC-ECHO",
+      "link": "https://www.btc-echo.de/news/kraken-verdient-zwei-drittel-weniger-und-sucht-neue-geschaeftsfelder-240960/",
+      "zeit": "2026-11-14T03:30:00.000Z"
+    },
+    {
+      "titel": "Weißes Haus kündigt Dreiertreffen von Trump mit Putin und Xi an",
+      "quelle": "tagesschau Ausland",
+      "link": "https://www.tagesschau.de/ausland/amerika/treffen-trump-putin-xi-100.html",
+      "zeit": "2026-11-14T03:18:01.000Z"
+    },
+    {
+      "titel": "“Bitcoin befindet sich in einem langfristigen Bärenmarkt”",
+      "quelle": "BTC-ECHO",
+      "link": "https://www.btc-echo.de/news/bitcoin-befindet-sich-in-einem-langfristigen-baerenmarkt-240917/",
+      "zeit": "2026-11-14T03:00:00.000Z",
+      "wertpapier": "Bitcoin"
+    },
+    {
+      "titel": "FAA lifts rare nationwide ground stop on flights; air travel may take days to recover",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/faa-declares-rare-widespread-ground-outage-bdc46393?mod=mw_rss_topstories",
+      "zeit": "2026-11-14T02:42:00.000Z"
+    },
+    {
+      "titel": "14 dividend stocks selected for long-term growth",
+      "quelle": "MarketWatch",
+      "link": "https://www.marketwatch.com/story/14-dividend-stocks-selected-for-long-term-growth-0a095c0d?mod=mw_rss_topstories",
+      "zeit": "2026-11-14T01:58:00.000Z"
+    },
+    {
+      "titel": "Trump doesn’t plan to raise Nvidia, spy issue during China trip: U.S. officials",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/13/trump-nvidia-huang-china.html",
+      "zeit": "2026-11-14T01:34:11.000Z",
+      "wertpapier": "Nvidia"
+    },
+    {
+      "titel": "SpaceX launches Starship in key test flight of massive rocket",
+      "quelle": "CNBC Top News",
+      "link": "https://www.cnbc.com/2026/11/13/spacex-launches-starship-in-key-test-flight-of-massive-rocket.html",
+      "zeit": "2026-11-14T01:18:51.000Z"
+    }
+  ],
+  "insider": [],
+  "positionen": [
+    {
+      "id": "2026-11-10-auto-ceg",
+      "name": "CEG",
+      "meldungen": []
+    },
+    {
+      "id": "2026-11-10-auto-nrg",
+      "name": "NRG",
+      "meldungen": []
+    },
+    {
+      "id": "2026-11-11-auto-oxy",
+      "name": "OXY",
+      "meldungen": []
+    },
+    {
+      "id": "2026-11-12-auto-six-flags-entertainment-corpor",
+      "name": "Six Flags Entertainment Corporation/New",
+      "meldungen": []
+    }
+  ],
+  "kandidaten": [
+    {
+      "name": "JustLend V1",
+      "ticker": "JST",
+      "score": 0.77,
+      "hinweis": "In 8 ähnlichen Fällen 0 im Plus, Ø -5,89 % nach 1 Woche",
+      "fakten": [
+        "JustLend V1 (JST): Gebühren 7 Tage 1,2 Mio $, +293,7 % gegenüber der Vorwoche"
+      ],
+      "quellen": [
+        {
+          "name": "DefiLlama",
+          "link": "https://defillama.com/protocol/justlend-v1"
+        }
+      ]
+    },
+    {
+      "name": "Maple Finance",
+      "ticker": "SYRUP",
+      "score": 0.62,
+      "fakten": [
+        "Upbit-Hinweis Maple Finance: Einzahlungen schießen hoch",
+        "Maple (SYRUP): Gebühren 7 Tage 1,8 Mio $, +67,0 % gegenüber der Vorwoche"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-SYRUP"
+        },
+        {
+          "name": "DefiLlama",
+          "link": "https://defillama.com/protocol/maple"
+        }
+      ]
+    },
+    {
+      "name": "Papertrade",
+      "ticker": "PAPER",
+      "score": 0.6,
+      "hinweis": "In 8 ähnlichen Fällen 0 im Plus, Ø -5,89 % nach 1 Woche",
+      "fakten": [
+        "Papertrade (PAPER): Gebühren 7 Tage 4,1 Mio $, +96,8 % gegenüber der Vorwoche"
+      ],
+      "quellen": [
+        {
+          "name": "DefiLlama",
+          "link": "https://defillama.com/protocol/papertrade"
+        }
+      ]
+    },
+    {
+      "name": "Bitcoin",
+      "ticker": "BTC",
+      "score": 0.54,
+      "fakten": [
+        "Kryptowährung: Bitcoin rutscht unter 70.000 Dollar – Inflationssorgen belasten",
+        "Krypto Fear & Greed 13 (Extreme Fear) – Extremwerte drehen oft"
+      ],
+      "quellen": [
+        {
+          "name": "Handelsblatt Finanzen",
+          "link": "https://www.handelsblatt.com/finanzen/maerkte/kryptowaehrung-bitcoin-rutscht-unter-70.000-dollar-inflationssorgen-belasten/100269634.html"
+        },
+        {
+          "name": "BTC-ECHO",
+          "link": "https://www.btc-echo.de/news/us-erzeugerpreise-auf-vierjahreshoch-was-das-fuer-bitcoin-bedeutet-240929/"
+        },
+        {
+          "name": "MarketWatch",
+          "link": "https://www.marketwatch.com/story/bitcoin-could-fall-even-further-if-investors-cash-out-to-buy-into-the-anthropic-ipo-5a14f46a?mod=mw_rss_topstories"
+        }
+      ]
+    },
+    {
+      "name": "NVDAX",
+      "ticker": "NVDAX",
+      "score": 0.5,
+      "hinweis": "In 5 ähnlichen Fällen 0 im Plus, Ø -4,05 % nach 1 Woche",
+      "fakten": [
+        "Funding +151,7 % p. a. (viele gehebelte Käufer, überhitzt?)"
+      ],
+      "quellen": [
+        {
+          "name": "Kraken Futures",
+          "link": "https://futures.kraken.com/trade/futures/PF_NVDAXUSD"
+        }
+      ]
+    },
+    {
+      "name": "Rheinmetall",
+      "ticker": "RHM.DE",
+      "score": -0.5,
+      "fakten": [
+        "Ukraine/Russland (Krieg, Waffenruhe): EU einigt sich auf europäisches Team für Ukraine-Verhandlungen"
+      ],
+      "quellen": [
+        {
+          "name": "tagesschau Ausland",
+          "link": "https://www.tagesschau.de/ausland/eu-vertreter-ukraine-gespraeche-100.html"
+        }
+      ]
+    },
+    {
+      "name": "Hensoldt",
+      "ticker": "HAG.DE",
+      "score": -0.5,
+      "fakten": [
+        "Ukraine/Russland (Krieg, Waffenruhe): EU einigt sich auf europäisches Team für Ukraine-Verhandlungen"
+      ],
+      "quellen": [
+        {
+          "name": "tagesschau Ausland",
+          "link": "https://www.tagesschau.de/ausland/eu-vertreter-ukraine-gespraeche-100.html"
+        }
+      ]
+    },
+    {
+      "name": "Renk",
+      "ticker": "R3NK.DE",
+      "score": -0.5,
+      "fakten": [
+        "Ukraine/Russland (Krieg, Waffenruhe): EU einigt sich auf europäisches Team für Ukraine-Verhandlungen"
+      ],
+      "quellen": [
+        {
+          "name": "tagesschau Ausland",
+          "link": "https://www.tagesschau.de/ausland/eu-vertreter-ukraine-gespraeche-100.html"
+        }
+      ]
+    },
+    {
+      "name": "Ethereum",
+      "ticker": "ETH",
+      "score": 0.48,
+      "fakten": [
+        "Ethereum-Treasury verkauft ETH mit Verlust – und feiert trotzdem Rekorde",
+        "1.3 Mio. $ Liquidationen in einer Stunde (3× üblich), überwiegend Longs"
+      ],
+      "quellen": [
+        {
+          "name": "BTC-ECHO",
+          "link": "https://www.btc-echo.de/news/ethereum-firma-verkauft-ether-durchbruch-trotz-verlust-240904/"
+        },
+        {
+          "name": "Coinalyze",
+          "link": "https://coinalyze.net/"
+        }
+      ]
+    },
+    {
+      "name": "Sophon",
+      "ticker": "SOPH",
+      "score": 0.45,
+      "hinweis": "⚠ Pump-Verdacht: nur Stimmung/Rakete, nichts Handfestes",
+      "fakten": [
+        "Upbit-Hinweis Sophon: Investment-Warnung der Börse, großer Preisunterschied zum Ausland",
+        "Sophon +21,2 % an Upbit seit Tagesbeginn (Korea)"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-SOPH"
+        }
+      ]
+    },
+    {
+      "name": "Morpho Blue",
+      "ticker": "MORPHO",
+      "score": 0.39,
+      "hinweis": "In 8 ähnlichen Fällen 0 im Plus, Ø -5,89 % nach 1 Woche",
+      "fakten": [
+        "Morpho Blue (MORPHO): Gebühren 7 Tage 9,3 Mio $, +41,4 % gegenüber der Vorwoche"
+      ],
+      "quellen": [
+        {
+          "name": "DefiLlama",
+          "link": "https://defillama.com/protocol/morpho-blue"
+        }
+      ]
+    },
+    {
+      "name": "Jupiter Perpetual Exchange",
+      "ticker": "JUP",
+      "score": 0.38,
+      "hinweis": "In 8 ähnlichen Fällen 0 im Plus, Ø -5,89 % nach 1 Woche",
+      "fakten": [
+        "Jupiter Perpetual Exchange (JUP): Gebühren 7 Tage 2,6 Mio $, +40,2 % gegenüber der Vorwoche"
+      ],
+      "quellen": [
+        {
+          "name": "DefiLlama",
+          "link": "https://defillama.com/protocol/jupiter-perpetual-exchange"
+        }
+      ]
+    },
+    {
+      "name": "Volkswagen",
+      "ticker": "VOW3.DE",
+      "score": -0.35,
+      "fakten": [
+        "Zölle/Handelskonflikte: ‘We will sue them’: Canada threatens Stellantis as Trump trade war reshapes Jeep production plans"
+      ],
+      "quellen": [
+        {
+          "name": "CNBC World",
+          "link": "https://www.cnbc.com/2026/11/13/canada-stellantis-auto-trump-tariffs-jeep.html"
+        }
+      ]
+    },
+    {
+      "name": "BMW",
+      "ticker": "BMW.DE",
+      "score": -0.35,
+      "fakten": [
+        "Zölle/Handelskonflikte: ‘We will sue them’: Canada threatens Stellantis as Trump trade war reshapes Jeep production plans"
+      ],
+      "quellen": [
+        {
+          "name": "CNBC World",
+          "link": "https://www.cnbc.com/2026/11/13/canada-stellantis-auto-trump-tariffs-jeep.html"
+        }
+      ]
+    },
+    {
+      "name": "Mercedes-Benz",
+      "ticker": "MBG.DE",
+      "score": -0.35,
+      "fakten": [
+        "Zölle/Handelskonflikte: ‘We will sue them’: Canada threatens Stellantis as Trump trade war reshapes Jeep production plans"
+      ],
+      "quellen": [
+        {
+          "name": "CNBC World",
+          "link": "https://www.cnbc.com/2026/11/13/canada-stellantis-auto-trump-tariffs-jeep.html"
+        }
+      ]
+    },
+    {
+      "name": "Porsche",
+      "ticker": "P911.DE",
+      "score": -0.35,
+      "fakten": [
+        "Zölle/Handelskonflikte: ‘We will sue them’: Canada threatens Stellantis as Trump trade war reshapes Jeep production plans"
+      ],
+      "quellen": [
+        {
+          "name": "CNBC World",
+          "link": "https://www.cnbc.com/2026/11/13/canada-stellantis-auto-trump-tariffs-jeep.html"
+        }
+      ]
+    },
+    {
+      "name": "Apple",
+      "ticker": "AAPL",
+      "score": -0.35,
+      "fakten": [
+        "Zölle/Handelskonflikte: ‘We will sue them’: Canada threatens Stellantis as Trump trade war reshapes Jeep production plans"
+      ],
+      "quellen": [
+        {
+          "name": "CNBC World",
+          "link": "https://www.cnbc.com/2026/11/13/canada-stellantis-auto-trump-tariffs-jeep.html"
+        }
+      ]
+    },
+    {
+      "name": "PUMP",
+      "ticker": "PUMP",
+      "score": 0.2,
+      "hinweis": "In 5 ähnlichen Fällen 0 im Plus, Ø -4,05 % nach 1 Woche",
+      "fakten": [
+        "Funding -61,3 % p. a. (viele gehebelte Leerverkäufer, Short-Squeeze möglich)"
+      ],
+      "quellen": [
+        {
+          "name": "Kraken Futures",
+          "link": "https://futures.kraken.com/trade/futures/PF_PUMPUSD"
+        }
+      ]
+    },
+    {
+      "name": "Arkham",
+      "ticker": "ARKM",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Arkham: Handelsvolumen schießt hoch, Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-ARKM"
+        }
+      ]
+    },
+    {
+      "name": "MultiversX",
+      "ticker": "EGLD",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis MultiversX: Investment-Warnung der Börse, großer Preisunterschied zum Ausland"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-EGLD"
+        }
+      ]
+    },
+    {
+      "name": "Falcon Finance",
+      "ticker": "FF",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Falcon Finance: Handelsvolumen schießt hoch, Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-FF"
+        }
+      ]
+    },
+    {
+      "name": "MANTRA",
+      "ticker": "MANTRA",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis MANTRA: Investment-Warnung der Börse, großer Preisunterschied zum Ausland"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-MANTRA"
+        }
+      ]
+    },
+    {
+      "name": "Blur",
+      "ticker": "BLUR",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Blur: Investment-Warnung der Börse, großer Preisunterschied zum Ausland"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BLUR"
+        }
+      ]
+    },
+    {
+      "name": "Immutable X",
+      "ticker": "IMX",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Immutable X: Handelsvolumen schießt hoch, Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-IMX"
+        }
+      ]
+    },
+    {
+      "name": "Pons",
+      "ticker": "PONS",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Pons: Handelsvolumen schießt hoch, Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-PONS"
+        }
+      ]
+    },
+    {
+      "name": "Lombard",
+      "ticker": "BARD",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Lombard: Handelsvolumen schießt hoch, Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BARD"
+        }
+      ]
+    },
+    {
+      "name": "Berachain",
+      "ticker": "BERA",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Berachain: Handelsvolumen schießt hoch, Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BERA"
+        }
+      ]
+    },
+    {
+      "name": "Bubblemaps",
+      "ticker": "BMT",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Bubblemaps: Handelsvolumen schießt hoch, Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BMT"
+        }
+      ]
+    },
+    {
+      "name": "Zilliqa",
+      "ticker": "ZIL",
+      "score": 0.18,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Zilliqa: Investment-Warnung der Börse, großer Preisunterschied zum Ausland"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-ZIL"
+        }
+      ]
+    },
+    {
+      "name": "Nvidia",
+      "ticker": "NVDA",
+      "score": 0.14,
+      "fakten": [
+        "Nikkei, Yen, Hang Seng: Erholung nach Nvidia-Schock – Japanische Börse legt zu"
+      ],
+      "quellen": [
+        {
+          "name": "Handelsblatt Finanzen",
+          "link": "https://www.handelsblatt.com/finanzen/maerkte/marktberichte/nikkei-yen-hang-seng-erholung-nach-nvidia-schock-japanische-boerse-legt-zu/100269580.html"
+        },
+        {
+          "name": "CNBC Top News",
+          "link": "https://www.cnbc.com/2026/11/13/jensen-huang-scandal-casts-doubt-on-nvidias-ai-dominance-how-we-got-here.html"
+        },
+        {
+          "name": "MarketWatch",
+          "link": "https://www.marketwatch.com/story/nvidias-stock-is-on-a-losing-streak-not-seen-in-14-years-what-comes-next-a07e801e?mod=mw_rss_topstories"
+        }
+      ]
+    },
+    {
+      "name": "SOL",
+      "ticker": "SOL",
+      "score": 0.14,
+      "fakten": [
+        "Open Interest +27,7 % seit gestern (24,1 Mio $, neues gehebeltes Geld)"
+      ],
+      "quellen": [
+        {
+          "name": "Kraken Futures",
+          "link": "https://futures.kraken.com/trade/futures/PF_SOLUSD"
+        }
+      ]
+    },
+    {
+      "name": "Waves",
+      "ticker": "WAVES",
+      "score": 0.13,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Waves: Investment-Warnung der Börse"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-WAVES"
+        }
+      ]
+    },
+    {
+      "name": "Caldera",
+      "ticker": "ERA",
+      "score": 0.13,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Caldera: Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-ERA"
+        }
+      ]
+    },
+    {
+      "name": "EURC",
+      "ticker": "EURC",
+      "score": 0.13,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis EURC: Handelsvolumen schießt hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-EURC"
+        }
+      ]
+    },
+    {
+      "name": "aelf",
+      "ticker": "ELF",
+      "score": 0.13,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis aelf: großer Preisunterschied zum Ausland"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-ELF"
+        }
+      ]
+    },
+    {
+      "name": "Solstice",
+      "ticker": "SLX",
+      "score": 0.13,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Solstice: Handelsvolumen schießt hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-SLX"
+        }
+      ]
+    },
+    {
+      "name": "Stacks",
+      "ticker": "STX",
+      "score": 0.13,
+      "hinweis": "In 19 ähnlichen Fällen 2 im Plus, Ø -7,34 % nach 1 Woche",
+      "fakten": [
+        "Upbit-Hinweis Stacks: Einzahlungen schießen hoch"
+      ],
+      "quellen": [
+        {
+          "name": "Upbit",
+          "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-STX"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "ticker": "MSFT",
+      "score": 0.11,
+      "fakten": [
+        "Microsoft-Ausfälle: \"Für viele Unternehmen digitaler Hirntod\""
+      ],
+      "quellen": [
+        {
+          "name": "tagesschau Wirtschaft",
+          "link": "https://www.tagesschau.de/wirtschaft/unternehmen/sicherheitsexperte-abhaengigkeit-microsoft-outlook-teams-risiken-100.html"
+        },
+        {
+          "name": "CNBC Top News",
+          "link": "https://www.cnbc.com/2026/11/12/microsoft-outage-outlook-aws-google.html"
+        }
+      ]
+    },
+    {
+      "name": "Goldman Sachs",
+      "ticker": "GS",
+      "score": 0.09,
+      "fakten": [
+        "Goldman Sachs looks to cash in on big IPOs twice. Anthropic’s historic deal is its next chance"
+      ],
+      "quellen": [
+        {
+          "name": "CNBC Top News",
+          "link": "https://www.cnbc.com/investingclub/2026/11/13/goldman-sachs-looks-to-cash-in-on-anthropics-ipo-twice-heres-how-and-who-else-wants-to.html"
+        }
+      ]
+    },
+    {
+      "name": "DHL Group",
+      "ticker": "DHL.DE",
+      "score": 0.08,
+      "fakten": [
+        "DHL erhöht Preise für Pakete und Päckchen für Privatkunden ab 2027"
+      ],
+      "quellen": [
+        {
+          "name": "tagesschau Wirtschaft",
+          "link": "https://www.tagesschau.de/wirtschaft/verbraucher/post-hebt-paketpreise-privatkunden-an-2027-100.html"
+        }
+      ]
+    },
+    {
+      "name": "AMD",
+      "ticker": "AMD",
+      "score": 0.08,
+      "fakten": [
+        "AMD and other chip stocks slide as Wall Street rethinks the AI trade without Jensen Huang"
+      ],
+      "quellen": [
+        {
+          "name": "MarketWatch",
+          "link": "https://www.marketwatch.com/story/amd-and-other-chip-stocks-slide-as-wall-street-rethinks-the-ai-trade-without-jensen-huang-2fb74547?mod=mw_rss_topstories"
+        }
+      ]
+    }
+  ]
+}

@@ -8687,7 +8687,8 @@
     "start": 812.7,
     "startZeit": "2026-11-07T08:14:53.382Z",
     "r1T": 0,
-    "r3T": -5
+    "r3T": -5,
+    "r1W": 5.81
   },
   {
     "datum": "2026-11-07",
@@ -12725,7 +12726,8 @@
     ],
     "art": "prognose",
     "start": 794.1,
-    "startZeit": "2026-11-12T07:14:21.913Z"
+    "startZeit": "2026-11-12T07:14:21.913Z",
+    "r1T": 3.6
   },
   {
     "datum": "2026-11-13",
@@ -13663,5 +13665,444 @@
     "start": 0.02235,
     "startZeit": "2026-11-13T15:49:39.439Z",
     "r1h": -2.46
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:JST",
+    "name": "JustLend V1",
+    "ticker": "JST",
+    "score": 0.77,
+    "typen": [
+      "krypto_einnahmen"
+    ],
+    "quellen": [
+      "DefiLlama"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 0.13166,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:SYRUP",
+    "name": "Maple Finance",
+    "ticker": "SYRUP",
+    "score": 0.62,
+    "typen": [
+      "upbit_warnung",
+      "krypto_einnahmen"
+    ],
+    "quellen": [
+      "Upbit",
+      "DefiLlama"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 0.09982,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:BTC",
+    "name": "Bitcoin",
+    "ticker": "BTC",
+    "score": 0.54,
+    "typen": [
+      "nachricht",
+      "stimmung_extrem"
+    ],
+    "quellen": [
+      "Handelsblatt Finanzen",
+      "BTC-ECHO",
+      "MarketWatch",
+      "alternative.me"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 61033.9,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:RHM",
+    "name": "Rheinmetall",
+    "ticker": "RHM.DE",
+    "score": -0.5,
+    "typen": [
+      "politik_massnahme"
+    ],
+    "quellen": [
+      "tagesschau Ausland"
+    ],
+    "markt": "eu",
+    "art": "kandidat",
+    "start": 765.5,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:ETH",
+    "name": "Ethereum",
+    "ticker": "ETH",
+    "score": 0.48,
+    "typen": [
+      "nachricht",
+      "liquidationen_spitze"
+    ],
+    "quellen": [
+      "BTC-ECHO",
+      "Coinalyze"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 1726.07,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:MORPHO",
+    "name": "Morpho Blue",
+    "ticker": "MORPHO",
+    "score": 0.39,
+    "typen": [
+      "krypto_einnahmen"
+    ],
+    "quellen": [
+      "DefiLlama"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 1.74343,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:JUP",
+    "name": "Jupiter Perpetual Exchange",
+    "ticker": "JUP",
+    "score": 0.38,
+    "typen": [
+      "krypto_einnahmen"
+    ],
+    "quellen": [
+      "DefiLlama"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 0.23225,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:AAPL",
+    "name": "Apple",
+    "ticker": "AAPL",
+    "score": -0.35,
+    "typen": [
+      "politik_massnahme"
+    ],
+    "quellen": [
+      "CNBC World"
+    ],
+    "markt": "us",
+    "art": "kandidat",
+    "start": 356.27,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:PUMP",
+    "name": "PUMP",
+    "ticker": "PUMP",
+    "score": 0.2,
+    "typen": [
+      "funding_extrem"
+    ],
+    "quellen": [
+      "Kraken Futures"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 0.003079,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:ARKM",
+    "name": "Arkham",
+    "ticker": "ARKM",
+    "score": 0.18,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "pump": true,
+    "art": "kandidat",
+    "start": 0.0836,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:EGLD",
+    "name": "MultiversX",
+    "ticker": "EGLD",
+    "score": 0.18,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 2.54,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:MANTRA",
+    "name": "MANTRA",
+    "ticker": "MANTRA",
+    "score": 0.18,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "pump": true,
+    "art": "kandidat",
+    "start": 0.002336,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:BLUR",
+    "name": "Blur",
+    "ticker": "BLUR",
+    "score": 0.18,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "pump": true,
+    "art": "kandidat",
+    "start": 0.00578,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:IMX",
+    "name": "Immutable X",
+    "ticker": "IMX",
+    "score": 0.18,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "pump": true,
+    "art": "kandidat",
+    "start": 0.0921,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:BERA",
+    "name": "Berachain",
+    "ticker": "BERA",
+    "score": 0.18,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "pump": true,
+    "art": "kandidat",
+    "start": 0.1031,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:BMT",
+    "name": "Bubblemaps",
+    "ticker": "BMT",
+    "score": 0.18,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "pump": true,
+    "art": "kandidat",
+    "start": 0.02036,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:NVDA",
+    "name": "Nvidia",
+    "ticker": "NVDA",
+    "score": 0.14,
+    "typen": [
+      "nachricht"
+    ],
+    "quellen": [
+      "Handelsblatt Finanzen",
+      "CNBC Top News",
+      "MarketWatch"
+    ],
+    "art": "kandidat",
+    "start": 162.85,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:SOL",
+    "name": "SOL",
+    "ticker": "SOL",
+    "score": 0.14,
+    "typen": [
+      "open_interest_sprung"
+    ],
+    "quellen": [
+      "Kraken Futures"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 68.42,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:EURC",
+    "name": "EURC",
+    "ticker": "EURC",
+    "score": 0.13,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "art": "kandidat",
+    "start": 1.0004,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:SLX",
+    "name": "Solstice",
+    "ticker": "SLX",
+    "score": 0.13,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "pump": true,
+    "art": "kandidat",
+    "start": 0.03326,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:STX",
+    "name": "Stacks",
+    "ticker": "STX",
+    "score": 0.13,
+    "typen": [
+      "upbit_warnung"
+    ],
+    "quellen": [
+      "Upbit"
+    ],
+    "markt": "krypto",
+    "pump": true,
+    "art": "kandidat",
+    "start": 0.2538,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:MSFT",
+    "name": "Microsoft",
+    "ticker": "MSFT",
+    "score": 0.11,
+    "typen": [
+      "nachricht"
+    ],
+    "quellen": [
+      "tagesschau Wirtschaft",
+      "CNBC Top News"
+    ],
+    "art": "kandidat",
+    "start": 523.88,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:GS",
+    "name": "Goldman Sachs",
+    "ticker": "GS",
+    "score": 0.09,
+    "typen": [
+      "nachricht"
+    ],
+    "quellen": [
+      "CNBC Top News"
+    ],
+    "art": "kandidat",
+    "start": 916.56,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:DHL",
+    "name": "DHL Group",
+    "ticker": "DHL.DE",
+    "score": 0.08,
+    "typen": [
+      "nachricht"
+    ],
+    "quellen": [
+      "tagesschau Wirtschaft"
+    ],
+    "art": "kandidat",
+    "start": 60.9,
+    "startZeit": "2026-11-14T08:15:44.709Z"
+  },
+  {
+    "datum": "2026-11-14",
+    "schluessel": "T:AMD",
+    "name": "AMD",
+    "ticker": "AMD",
+    "score": 0.08,
+    "typen": [
+      "nachricht"
+    ],
+    "quellen": [
+      "MarketWatch"
+    ],
+    "art": "kandidat",
+    "start": 534.06,
+    "startZeit": "2026-11-14T08:15:44.709Z"
   }
 ]

@@ -1,0 +1,547 @@
+{
+  "stand": "2026-11-14T08:15:44.709Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:JST",
+      "name": "JustLend V1",
+      "ticker": "JST",
+      "markt": "krypto",
+      "score": 0.77,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:SYRUP",
+      "name": "Maple Finance",
+      "ticker": "SYRUP",
+      "markt": "krypto",
+      "score": 0.62,
+      "typen": [
+        "upbit_warnung",
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "Upbit",
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:PAPER",
+      "name": "Papertrade",
+      "ticker": "PAPER",
+      "markt": "krypto",
+      "score": 0.6,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:BTC",
+      "name": "Bitcoin",
+      "ticker": "BTC",
+      "markt": "krypto",
+      "score": 0.54,
+      "typen": [
+        "nachricht",
+        "stimmung_extrem"
+      ],
+      "quellen": [
+        "Handelsblatt Finanzen",
+        "BTC-ECHO",
+        "MarketWatch",
+        "alternative.me"
+      ]
+    },
+    {
+      "schluessel": "T:NVDAX",
+      "name": "NVDAX",
+      "ticker": "NVDAX",
+      "markt": "krypto",
+      "score": 0.5,
+      "typen": [
+        "funding_extrem"
+      ],
+      "quellen": [
+        "Kraken Futures"
+      ]
+    },
+    {
+      "schluessel": "T:RHM",
+      "name": "Rheinmetall",
+      "ticker": "RHM.DE",
+      "markt": "eu",
+      "score": -0.5,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "tagesschau Ausland"
+      ]
+    },
+    {
+      "schluessel": "T:HAG",
+      "name": "Hensoldt",
+      "ticker": "HAG.DE",
+      "markt": "eu",
+      "score": -0.5,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "tagesschau Ausland"
+      ]
+    },
+    {
+      "schluessel": "T:R3NK",
+      "name": "Renk",
+      "ticker": "R3NK.DE",
+      "markt": "eu",
+      "score": -0.5,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "tagesschau Ausland"
+      ]
+    },
+    {
+      "schluessel": "T:ETH",
+      "name": "Ethereum",
+      "ticker": "ETH",
+      "markt": "krypto",
+      "score": 0.48,
+      "typen": [
+        "nachricht",
+        "liquidationen_spitze"
+      ],
+      "quellen": [
+        "BTC-ECHO",
+        "Coinalyze"
+      ]
+    },
+    {
+      "schluessel": "T:SOPH",
+      "name": "Sophon",
+      "ticker": "SOPH",
+      "markt": "krypto",
+      "pump": true,
+      "score": 0.45,
+      "typen": [
+        "upbit_warnung",
+        "kursrakete"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:MORPHO",
+      "name": "Morpho Blue",
+      "ticker": "MORPHO",
+      "markt": "krypto",
+      "score": 0.39,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:JUP",
+      "name": "Jupiter Perpetual Exchange",
+      "ticker": "JUP",
+      "markt": "krypto",
+      "score": 0.38,
+      "typen": [
+        "krypto_einnahmen"
+      ],
+      "quellen": [
+        "DefiLlama"
+      ]
+    },
+    {
+      "schluessel": "T:VOW3",
+      "name": "Volkswagen",
+      "ticker": "VOW3.DE",
+      "markt": "eu",
+      "score": -0.35,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "CNBC World"
+      ]
+    },
+    {
+      "schluessel": "T:BMW",
+      "name": "BMW",
+      "ticker": "BMW.DE",
+      "markt": "eu",
+      "score": -0.35,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "CNBC World"
+      ]
+    },
+    {
+      "schluessel": "T:MBG",
+      "name": "Mercedes-Benz",
+      "ticker": "MBG.DE",
+      "markt": "eu",
+      "score": -0.35,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "CNBC World"
+      ]
+    },
+    {
+      "schluessel": "T:P911",
+      "name": "Porsche",
+      "ticker": "P911.DE",
+      "markt": "eu",
+      "score": -0.35,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "CNBC World"
+      ]
+    },
+    {
+      "schluessel": "T:AAPL",
+      "name": "Apple",
+      "ticker": "AAPL",
+      "markt": "us",
+      "score": -0.35,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "CNBC World"
+      ]
+    },
+    {
+      "schluessel": "T:PUMP",
+      "name": "PUMP",
+      "ticker": "PUMP",
+      "markt": "krypto",
+      "score": 0.2,
+      "typen": [
+        "funding_extrem"
+      ],
+      "quellen": [
+        "Kraken Futures"
+      ]
+    },
+    {
+      "schluessel": "T:ARKM",
+      "name": "Arkham",
+      "ticker": "ARKM",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:EGLD",
+      "name": "MultiversX",
+      "ticker": "EGLD",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:FF",
+      "name": "Falcon Finance",
+      "ticker": "FF",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:MANTRA",
+      "name": "MANTRA",
+      "ticker": "MANTRA",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:BLUR",
+      "name": "Blur",
+      "ticker": "BLUR",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:IMX",
+      "name": "Immutable X",
+      "ticker": "IMX",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:PONS",
+      "name": "Pons",
+      "ticker": "PONS",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:BARD",
+      "name": "Lombard",
+      "ticker": "BARD",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:BERA",
+      "name": "Berachain",
+      "ticker": "BERA",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:BMT",
+      "name": "Bubblemaps",
+      "ticker": "BMT",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:ZIL",
+      "name": "Zilliqa",
+      "ticker": "ZIL",
+      "markt": "krypto",
+      "score": 0.18,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:NVDA",
+      "name": "Nvidia",
+      "ticker": "NVDA",
+      "score": 0.14,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "Handelsblatt Finanzen",
+        "CNBC Top News",
+        "MarketWatch"
+      ]
+    },
+    {
+      "schluessel": "T:SOL",
+      "name": "SOL",
+      "ticker": "SOL",
+      "markt": "krypto",
+      "score": 0.14,
+      "typen": [
+        "open_interest_sprung"
+      ],
+      "quellen": [
+        "Kraken Futures"
+      ]
+    },
+    {
+      "schluessel": "T:WAVES",
+      "name": "Waves",
+      "ticker": "WAVES",
+      "markt": "krypto",
+      "score": 0.13,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:ERA",
+      "name": "Caldera",
+      "ticker": "ERA",
+      "markt": "krypto",
+      "score": 0.13,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:EURC",
+      "name": "EURC",
+      "ticker": "EURC",
+      "markt": "krypto",
+      "score": 0.13,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:ELF",
+      "name": "aelf",
+      "ticker": "ELF",
+      "markt": "krypto",
+      "score": 0.13,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:SLX",
+      "name": "Solstice",
+      "ticker": "SLX",
+      "markt": "krypto",
+      "score": 0.13,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:STX",
+      "name": "Stacks",
+      "ticker": "STX",
+      "markt": "krypto",
+      "score": 0.13,
+      "typen": [
+        "upbit_warnung"
+      ],
+      "quellen": [
+        "Upbit"
+      ]
+    },
+    {
+      "schluessel": "T:MSFT",
+      "name": "Microsoft",
+      "ticker": "MSFT",
+      "score": 0.11,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "tagesschau Wirtschaft",
+        "CNBC Top News"
+      ]
+    },
+    {
+      "schluessel": "T:GS",
+      "name": "Goldman Sachs",
+      "ticker": "GS",
+      "score": 0.09,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "CNBC Top News"
+      ]
+    },
+    {
+      "schluessel": "T:DHL",
+      "name": "DHL Group",
+      "ticker": "DHL.DE",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "tagesschau Wirtschaft"
+      ]
+    },
+    {
+      "schluessel": "T:AMD",
+      "name": "AMD",
+      "ticker": "AMD",
+      "score": 0.08,
+      "typen": [
+        "nachricht"
+      ],
+      "quellen": [
+        "MarketWatch"
+      ]
+    }
+  ],
+  "anzahlSignale": 45
+}
