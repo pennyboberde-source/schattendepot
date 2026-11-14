@@ -9,6 +9,7 @@ import { steuernBerechnen, type SteuerConfig } from '../core/steuern.ts';
 import type { Order, OrderPlan } from '../core/typen.ts';
 import { beobachtung, kerzenVerarbeiten } from '../core/daytrading/ablauf.ts';
 import { uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
+import { uebersichtBauen } from '../core/verbesserung/uebersicht.ts';
 import { ortszeitZuUtc, sitzung, tradesAusEreignissen, type Kerze } from '../core/daytrading/kern.ts';
 
 const root = join(dirname(new URL(import.meta.url).pathname.replace(/^\/(\w:)/, '$1')), '..');
@@ -187,6 +188,21 @@ schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal
   );
   schreibe('daytrading/uebersicht.json', { ...uebersichtBerechnen(tradesAusEreignissen(r.ereignisse), d, stand, {}, lauf.virtuell), beobachtet: { code_scan: 21, claude: 1, autopilot: 0 } });
   schreibe('daytrading/autopilot.json', { stand, horizont: 'r1h', beweise: [] });
+  // Selbstverbesserung (DEMO): eine Übernahme mit Urteil, eine Ablehnung, ein Kandidat
+  schreibe(
+    'lernen/verbesserung/uebersicht.json',
+    uebersichtBauen(
+      [
+        { typ: 'uebernommen', zeit: '2026-10-17T11:30:00Z', datum: '2026-10-17', branch: 'claude/verbesserung-2026-10-17', sha: 'demo1', merge: 'demomerge1', zeilen: 12, tests: { unit: 250, e2e: 36 }, zusammenfassung: 'DEMO: Gewicht der Kursrakete gesenkt', aenderungen: [{ id: 'gewicht-kursrakete', titel: 'DEMO: Gewicht der Kursrakete gesenkt', bereich: 'datenkrake', hypothese: 'Kursraketen verlieren im Schattenbuch nach einer Woche.', messkriterium: { kennzahl: 'schattenbuch.quote1T', richtung: 'steigt', text: 'Anteil im Plus nach 1 Tag steigt von 48 % auf über 50 %.' }, dateien: ['config/signale.json'] }] },
+        { typ: 'bewertet', zeit: '2026-10-21T05:00:00Z', merge: 'demomerge1', aenderung: 'gewicht-kursrakete', kennzahl: 'schattenbuch.quote1T', urteil: 'besser', vorher: 48, nachher: 53, text: 'besser' },
+        { typ: 'abgelehnt', zeit: '2026-10-10T11:30:00Z', branch: 'claude/verbesserung-2026-10-10', sha: 'demo0', gruende: ['DEMO: .github/workflows/sammler.yml: gesperrt (Leitplanken › verbotenePfade)'] },
+      ],
+      [{ id: 'zeugnis:depot', bereich: 'depot', titel: 'DEMO: Schwaches Fach im Wochenzeugnis: Depot gegen MSCI World (Note 5)', beleg: 'KW 42', rang: 36, herkunft: 'wochenzeugnis', seit: '2026-10-17' }],
+      { aktiv: true },
+      stand,
+      'pennyboberde-source/schattendepot',
+    ),
+  );
 }
 // S4 (DEMO): Heute gelernt, Marktphase, Wochenzeugnis, Marktphasen-Verlauf
 schreibe('lernen/heute-gelernt.json', [{ datum: '2026-10-21', punkte: ['DEMO: Insider-Cluster tragen auch im Daytrading', 'DEMO: ORB short bei Nebenwerten schwach'] }]);

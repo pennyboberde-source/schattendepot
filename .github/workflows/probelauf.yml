@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       art:
-        description: 'schattenbuch | jobs | alles'
+        description: 'schattenbuch | jobs | alles | tests (tsc, Unit-Tests, Build, E2E unter Linux – wie in der Übernahme-Action)'
         default: schattenbuch
 
 permissions:
@@ -28,7 +28,16 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Tests unter Linux (tsc, Unit, Build, E2E)
+        if: github.event.inputs.art == 'tests'
+        run: |
+          npx tsc --noEmit
+          npx vitest run
+          npx playwright install --with-deps chromium webkit
+          npm run build
+          npm run e2e
       - name: Probelauf
+        if: github.event.inputs.art != 'tests'
         env:
           ART: ${{ github.event.inputs.art || 'schattenbuch' }}
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}

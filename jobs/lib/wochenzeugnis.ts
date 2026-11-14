@@ -4,6 +4,8 @@ import { join } from 'node:path';
 import { gebuehrenUmrechnen, ordersAusEreignissen } from '../../core/ableiten.ts';
 import { istVirtuell, tradesAusEreignissen, type DtEreignis, type VirtuellRegel } from '../../core/daytrading/kern.ts';
 import { episodenVertreter } from '../../core/episoden.ts';
+import { verbesserungenImZeitraum } from '../../core/verbesserung/uebersicht.ts';
+import { leseProtokoll } from './verbesserung.ts';
 import { berlin } from '../../core/kalender.ts';
 import type { PushNachricht } from '../../core/push.ts';
 import type { TrackingEintrag } from '../../core/statistik.ts';
@@ -53,6 +55,9 @@ export function wochenzeugnisErstellen(jetzt: Date): { zeugnis: Wochenzeugnis; p
     bis,
     cfg.einstellungen.orderBetrag,
   );
+  // Was sich verbessert hat: Übernahmen des Verbesserungslaufs seit dem Samstag davor
+  const verbessert = verbesserungenImZeitraum(leseProtokoll(), tag(von, -2), bis);
+  if (verbessert.length) zeugnis.verbesserungen = verbessert;
   schreibeJson(`wochen/zeugnis-${bis}.json`, zeugnis);
   schreibeJson('wochen/zeugnis-letztes.json', zeugnis);
   return {

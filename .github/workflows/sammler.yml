@@ -17,6 +17,7 @@ on:
 permissions:
   contents: write
   actions: write
+  issues: read # Verbesserungsbuch liest offene Fehler-Issues
 
 concurrency:
   group: daten-schreiben
@@ -53,6 +54,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ROUTINE_FIRE_URL: ${{ secrets.ROUTINE_FIRE_URL }}
           ROUTINE_FIRE_TOKEN: ${{ secrets.ROUTINE_FIRE_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: node jobs/sammler.ts "${{ github.event.inputs.laufart || 'auto' }}"
       - name: Daten sichern
         id: sichern

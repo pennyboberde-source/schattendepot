@@ -47,9 +47,11 @@ import { defiLlama, krakenFutures, upbit } from './quellen/kryptorand.ts';
 import { finraShortInterest, shortSeller } from './quellen/shortdaten.ts';
 import { appRaenge, cftcCot, handelsstopps, kryptoStimmung, polymarket } from './quellen/stimmungrand.ts';
 import { politikRadar } from './quellen/politik.ts';
+import { ZUSATZ_QUELLEN } from './quellen/zusatz.ts';
+import { verbesserungTaeglich } from './lib/verbesserung.ts';
 
 // Bestehende Quellen bleiben immer drin; neue werden nur hinten angehängt (Randquellen seit 28.10.2026).
-const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube, upbit, krakenFutures, defiLlama, finraShortInterest, shortSeller, handelsstopps, appRaenge, kryptoStimmung, polymarket, cftcCot, coinalyze, secVerwaesserung, politikRadar];
+const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube, upbit, krakenFutures, defiLlama, finraShortInterest, shortSeller, handelsstopps, appRaenge, kryptoStimmung, polymarket, cftcCot, coinalyze, secVerwaesserung, politikRadar, ...ZUSATZ_QUELLEN];
 const STARK_NEGATIV = new Set(['prognose_senkung', 'gewinn_enttaeuschung', 'analysten_abstufung', 'shortreport']);
 const STARK = new Set([...STARK_NEGATIV, 'uebernahmeangebot', 'prognose_erhoehung']);
 
@@ -250,6 +252,16 @@ if (laufart === 'haupt' || laufart === 'samstag') {
 
 // Datenkrake: alle Signale dieses Laufs in die Tagesdatei; tagsüber schnelle Signale ins Schattenbuch (Reaktionszeit)
 tagesSignaleSpeichern(b.datum, zusammen, jetzt);
+
+// Selbstverbesserung (Plan Volltreffer VS): Kennzahlen fortschreiben, Änderungen bewerten, Verbesserungsbuch füllen –
+// im Haupt- und Samstagslauf immer, im Stundenlauf nur, wenn heute noch nichts geschrieben wurde.
+// Ein Fehler hier darf den Sammler nie anhalten.
+try {
+  const vb = await verbesserungTaeglich(jetzt, { nurWennVeraltet: laufart === 'stuendlich' });
+  if (vb) console.log(`Verbesserungsbuch: ${vb.kandidaten} Kandidaten, ${vb.bewertet} Bewertung(en).`);
+} catch (e) {
+  console.error(schwaerzen(`Verbesserungsbuch fehlgeschlagen: ${(e as Error).message}`));
+}
 if (laufart === 'stuendlich') {
   const n = await trackingAktualisieren(jetzt, {}, { modus: 'stuendlich', schnelle: verdichten(zusammen) });
   console.log(`Schattenbuch (stündlich): ${trackingText(n)}.`);

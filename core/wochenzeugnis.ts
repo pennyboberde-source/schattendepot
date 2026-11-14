@@ -17,6 +17,8 @@ export interface Wochenzeugnis {
   note: number | null;
   notenText: string;
   faecher: ZeugnisFach[];
+  /** Was sich in der Woche verbessert hat (Selbstverbesserung, Plan Volltreffer VS) */
+  verbesserungen?: string[];
 }
 
 export interface ZeugnisDaten {

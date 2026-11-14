@@ -1,0 +1,61 @@
+name: Verbesserung rückgängig machen
+
+# Nimmt eine automatisch übernommene Verbesserung zurück (git revert auf main, nichts wird gelöscht).
+# Am iPad: diese Seite öffnen → „Run workflow“ → nichts ausfüllen → grüner Knopf „Run workflow“.
+# Leer gelassen (= letzte) wird die jüngste noch aktive Übernahme zurückgenommen.
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: 'Welche Übernahme? Leer lassen bzw. „letzte“ = die jüngste. Sonst der Merge-Commit aus der App.'
+        default: letzte
+      grund:
+        description: 'Grund (optional)'
+        default: vom Nutzer zurückgenommen
+      ausloeser:
+        description: 'nutzer | wache | bewertung (nicht ändern)'
+        default: nutzer
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: daten-schreiben
+  cancel-in-progress: false
+
+jobs:
+  zurueck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Zurücknehmen, Tests, protokollieren, melden
+        id: zurueck
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          COMMIT: ${{ github.event.inputs.commit || 'letzte' }}
+          AUSLOESER: ${{ github.event.inputs.ausloeser || 'nutzer' }}
+          GRUND: ${{ github.event.inputs.grund || 'vom Nutzer zurückgenommen' }}
+        run: node jobs/verbesserung.ts zurueck "$COMMIT" "$AUSLOESER" "$GRUND"
+      - name: Daten sichern
+        if: always()
+        run: bash scripts/daten-sichern.sh "Verbesserung zurückgenommen $(date -u +%Y-%m-%dT%H:%MZ)"
+      - name: Deploy anstoßen
+        if: steps.zurueck.outputs.zurueckgenommen == 'ja'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

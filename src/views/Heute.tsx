@@ -136,6 +136,7 @@ export function HeuteView() {
                   </li>
                 ))}
               </ul>
+              {zeugnis.daten.verbesserungen?.length ? <p class="klein">🛠️ Was sich verbessert hat: {zeugnis.daten.verbesserungen.join(' · ')}</p> : null}
             </>
           ) : (
             <p class="leer">Kommt samstags – der Code vergibt eine Note für die Woche.</p>

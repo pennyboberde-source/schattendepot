@@ -1,0 +1,46 @@
+{
+  "stand": "2026-10-21T12:45:00Z",
+  "aktiv": true,
+  "rueckgaengigLink": "https://github.com/pennyboberde-source/schattendepot/actions/workflows/verbesserung-zurueck.yml",
+  "uebernahmen": [
+    {
+      "datum": "2026-10-17",
+      "zeit": "2026-10-17T11:30:00Z",
+      "merge": "demomerge1",
+      "zusammenfassung": "DEMO: Gewicht der Kursrakete gesenkt",
+      "status": "aktiv",
+      "aenderungen": [
+        {
+          "id": "gewicht-kursrakete",
+          "titel": "DEMO: Gewicht der Kursrakete gesenkt",
+          "bereich": "datenkrake",
+          "hypothese": "Kursraketen verlieren im Schattenbuch nach einer Woche.",
+          "messkriterium": "Anteil im Plus nach 1 Tag steigt von 48 % auf über 50 %.",
+          "urteil": "besser",
+          "bewertung": "besser"
+        }
+      ]
+    }
+  ],
+  "abgelehnt": [
+    {
+      "zeit": "2026-10-10T11:30:00Z",
+      "branch": "claude/verbesserung-2026-10-10",
+      "gruende": [
+        "DEMO: .github/workflows/sammler.yml: gesperrt (Leitplanken › verbotenePfade)"
+      ]
+    }
+  ],
+  "freigaben": [],
+  "kandidaten": [
+    {
+      "id": "zeugnis:depot",
+      "bereich": "depot",
+      "titel": "DEMO: Schwaches Fach im Wochenzeugnis: Depot gegen MSCI World (Note 5)",
+      "beleg": "KW 42",
+      "rang": 36,
+      "herkunft": "wochenzeugnis",
+      "seit": "2026-10-17"
+    }
+  ]
+}

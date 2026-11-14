@@ -9,7 +9,7 @@ _Zuletzt aktualisiert: 12.11.2026 spätabends (Plan „Volltreffer“ übernomme
 
 **Meilensteine**
 - ✅ **V0 Aufräumen** (12.11.2026, Details im Abschnitt „V0 erledigt“ direkt darunter).
-- ⬜ **VS Selbstverbesserung** (als Nächstes, nach „weiter“; keine Freigabe): Verbesserungsbuch, wöchentlicher Verbesserungslauf, Leitplanken `config/verbesserung.json`, automatische Übernahme mit Rückgängig-Link.
+- ✅ **VS Selbstverbesserung** (14.11.2026, Details im Abschnitt „VS erledigt“ weiter unten): Verbesserungsbuch, wöchentlicher Verbesserungslauf, Leitplanken `config/verbesserung.json`, automatische Übernahme mit Rückgängig-Link.
 - ⬜ **V1 Fundament** (braucht F1 + F2): Sammelkurse gettex/US/Krypto, privates Archiv, Stammdaten, Handelbarkeits-Karte, Vergleichsgruppe.
 - ⬜ **V2 Zensus** · ⬜ **V3 Rückblick und Musterprüfung** · ⬜ **V4 Bereich Volltreffer (virtuell)** · ⬜ **V5 Claudes Teil** · ⬜ **V6 Beförderung** (braucht F4 je Muster).
 
@@ -18,6 +18,8 @@ _Zuletzt aktualisiert: 12.11.2026 spätabends (Plan „Volltreffer“ übernomme
 - ⬜ F2 privates Repo `schattendepot-archiv` + Zugriffstoken nur für dieses Repo (Inhalte: Lesen und Schreiben) als Secret `ARCHIV_TOKEN` – nötig vor V1.
 - ⬜ F3 optional: `COINGECKO_API_KEY` (Demo-Tarif), `OPENFIGI_API_KEY`.
 - ⬜ F4 bei V6: Ja des Nutzers je Muster.
+- ⬜ F5 optional (14.11.): GitHub-Einstellung „Allow GitHub Actions to create and approve pull requests“ (Repo › Settings › Actions › General › Workflow permissions). Ohne sie legt die Übernahme-Action bei einer Ablehnung ein Issue statt eines Pull Requests an – die Begründung kommt in beiden Fällen an.
+- Stand 14.11. 14:47 Uhr: F1–F3 noch nicht gesetzt (`gh secret list` zeigt weder `MASSIVE_API_KEY` noch `ARCHIV_TOKEN`, Repo `schattendepot-archiv` gibt es noch nicht).
 
 **Befund-Prüfung 12.11.2026 (Datenzweig c2476a9, 20:54 Uhr) – alle Befunde aus Abschnitt 2 bestätigt, keine Abweichung in der Sache, nur die Zahlen sind einen Tag weiter:**
 - B1: 362 von 559 Tageskandidaten ohne `start` (11.11.: 324 von 519); 03.–12.11. je Tag meist 0–3 von 40 mit Startkurs.

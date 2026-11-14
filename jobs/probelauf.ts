@@ -65,6 +65,13 @@ if (art === 'schattenbuch' || art === 'alles') {
   const trades = tradesAusEreignissen(existsSync(pfad) ? readFileSync(pfad, 'utf8').split('\n').filter((z) => z.trim()).map((z) => JSON.parse(z) as DtEreignis) : []);
   const u = uebersichtBerechnen(trades, heute, jetzt.toISOString(), {}, regel);
   const rueck = uebersichtBerechnen(trades, heute, jetzt.toISOString(), {}, regel ? { ...regel, rueckwirkend: true } : undefined);
+  // Selbstverbesserung: Buch, Kennzahlen und Übersicht auf der Kopie (ohne Issue-Abfrage)
+  const { verbesserungTaeglich } = await import('./lib/verbesserung.ts');
+  const vb = await verbesserungTaeglich(jetzt, { ohneNetz: true });
+  const buch = lese<{ kandidaten?: { rang: number; id: string; titel: string }[] }>('lernen/verbesserung/kandidaten.json', {}).kandidaten ?? [];
+  console.log(`\n== Verbesserungsbuch ==\n${vb?.kandidaten ?? 0} Kandidaten, ${vb?.bewertet ?? 0} Bewertung(en).`);
+  for (const k of buch.slice(0, 12)) console.log(`  [${k.rang}] ${k.id}: ${k.titel.slice(0, 110)}`);
+
   console.log(`\n== Daytrading ==\nSichtbare Bilanz (Kennzeichen am Ereignis, alte Trades bleiben): ${u.gesamt.anzahl} Trades, ${u.gesamt.netto} €; virtuell bisher ${u.virtuell?.gesamt.anzahl ?? 0} Trades.`);
   console.log(`Zum Vergleich – dieselbe Regel rückwirkend auf alle bisherigen Trades: sichtbar ${rueck.gesamt.anzahl} Trades, ${rueck.gesamt.netto} €; virtuell ${rueck.virtuell?.gesamt.anzahl ?? 0} Trades, ${rueck.virtuell?.gesamt.netto ?? 0} € (Turbo ${rueck.virtuell?.gruppen.turbo.netto} €, Short ${rueck.virtuell?.gruppen.short.netto} €, Krypto ${rueck.virtuell?.gruppen.krypto.netto} €).`);
 }

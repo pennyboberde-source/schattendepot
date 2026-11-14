@@ -1,0 +1,196 @@
+name: Selbstverbesserung
+
+# Plan Volltreffer, Meilenstein VS: übernimmt den Branch claude/verbesserung-<datum> des wöchentlichen
+# Verbesserungslaufs – aber nur innerhalb der Leitplanken (config/verbesserung.json).
+#
+# Sicherheit: Dieser Workflow startet NUR per Zeitplan oder von Hand, nie durch den Push des Branches. So laufen
+# Workflow und Prüfcode immer aus main; der Branch kann seine eigene Prüfung nicht verändern.
+#   finden      (nur lesen)   sucht einen neuen Branch und wacht über die letzte Übernahme
+#   pruefen     (nur lesen)   Leitplanken, tsc, Unit- und E2E-Tests, Probelauf auf einer Datenkopie – hier läuft Code
+#                             des Branches, deshalb ohne Schreibrechte und ohne Push-Geheimnisse
+#   uebernehmen (schreiben)   prüft die Leitplanken erneut, führt zusammen, protokolliert, meldet, stößt den Deploy an –
+#                             hier läuft nur Code von main
+#   ablehnen    (schreiben)   Pull Request (oder Issue) mit Begründung und Mitteilung
+on:
+  schedule:
+    - cron: '41 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  finden:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      branch: ${{ steps.finden.outputs.branch }}
+      sha: ${{ steps.finden.outputs.sha }}
+      zurueck: ${{ steps.finden.outputs.zurueck }}
+      grund: ${{ steps.finden.outputs.grund }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Neuen Branch suchen, Wache
+        id: finden
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node jobs/verbesserung.ts finden
+
+  pruefen:
+    needs: finden
+    if: needs.finden.outputs.branch != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: read
+    outputs:
+      ok: ${{ steps.pruefen.outputs.ok }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Browser für die E2E-Tests
+        run: npx playwright install --with-deps chromium webkit
+      - name: Leitplanken, Tests und Probelauf
+        id: pruefen
+        env:
+          BRANCH: ${{ needs.finden.outputs.branch }}
+          SHA: ${{ needs.finden.outputs.sha }}
+          ERGEBNIS: ${{ runner.temp }}/verbesserung-ergebnis.json
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+        run: node jobs/verbesserung.ts pruefen "$BRANCH" "$SHA"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verbesserung-ergebnis
+          path: ${{ runner.temp }}/verbesserung-ergebnis.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+  uebernehmen:
+    needs: [finden, pruefen]
+    if: needs.pruefen.outputs.ok == 'ja'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
+    concurrency:
+      group: daten-schreiben
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: verbesserung-ergebnis
+          path: ${{ runner.temp }}/ergebnis
+      - name: Leitplanken erneut prüfen, zusammenführen, protokollieren, melden
+        id: uebernehmen
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          ERGEBNIS: ${{ runner.temp }}/ergebnis/verbesserung-ergebnis.json
+        run: node jobs/verbesserung.ts uebernehmen "$ERGEBNIS"
+      - name: Daten sichern
+        run: bash scripts/daten-sichern.sh "Selbstverbesserung übernommen $(date -u +%Y-%m-%dT%H:%MZ)"
+      - name: Deploy anstoßen (Pushes mit dem Token der Action lösen keinen Deploy aus)
+        if: steps.uebernehmen.outputs.uebernommen == 'ja'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
+
+  ablehnen:
+    needs: [finden, pruefen]
+    if: always() && needs.pruefen.outputs.ok == 'nein'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: write
+      pull-requests: write
+      issues: write
+    concurrency:
+      group: daten-schreiben
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: verbesserung-ergebnis
+          path: ${{ runner.temp }}/ergebnis
+      - name: Begründung als Pull Request oder Issue, Mitteilung
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          ERGEBNIS: ${{ runner.temp }}/ergebnis/verbesserung-ergebnis.json
+        run: node jobs/verbesserung.ts ablehnen "$ERGEBNIS"
+      - name: Daten sichern
+        id: sichern
+        run: bash scripts/daten-sichern.sh "Selbstverbesserung abgelehnt $(date -u +%Y-%m-%dT%H:%MZ)"
+      - name: Deploy anstoßen
+        if: steps.sichern.outputs.geaendert == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main
+
+  wache:
+    needs: finden
+    if: needs.finden.outputs.zurueck != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Zwei Ausfälle in Folge nach der Übernahme → Änderung zurücknehmen
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MERGE: ${{ needs.finden.outputs.zurueck }}
+          GRUND: ${{ needs.finden.outputs.grund }}
+        run: gh workflow run verbesserung-zurueck.yml --repo "$GITHUB_REPOSITORY" --ref main -f commit="$MERGE" -f ausloeser=wache -f grund="$GRUND"

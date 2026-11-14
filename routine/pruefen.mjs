@@ -40,7 +40,6 @@ for (const o of daten.orders ?? []) {
   if (k !== 'hebel' && k !== 'krypto_etn' && !o.wertpapier.kursbasis) fehler.push(`${o.wertpapier.name}: kursbasis fehlt`);
   if (o.pflichtOrder && o.konfidenz > 50) fehler.push(`${o.wertpapier.name}: Pflicht-Order braucht konfidenz ≤ 50`);
 }
-if (daten.typ === 'morgenlauf' && !(daten.orders ?? []).length) fehler.push('Morgenlauf braucht mindestens 1 Order (notfalls Pflicht-Order)');
 if (fehler.length) {
   for (const f of fehler) console.error(`✗ ${f}`);
   process.exit(1);

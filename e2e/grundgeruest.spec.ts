@@ -58,6 +58,11 @@ test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
   await expect(page.getByText('Kalibrierung – hält die Konfidenz, was sie verspricht?')).toBeVisible();
   // Datenkrake oben: Was klappt (mit Ampel), Hot Stuff, Vorlauf
   await expect(page.getByText('Was klappt – Signale im Schattenbuch')).toBeVisible();
+  // Selbstverbesserung (Plan Volltreffer VS): Übernahme mit Urteil, Rückgängig-Link, Ablehnung
+  await expect(page.getByText('🛠️ Was sich verbessert hat')).toBeVisible();
+  await expect(page.getByTestId('verbesserung-karte')).toContainText('✅ wirkt');
+  await expect(page.getByRole('link', { name: 'Rückgängig machen' })).toHaveAttribute('href', /verbesserung-zurueck\.yml$/);
+  await expect(page.getByTestId('verbesserung-karte')).toContainText('Nicht übernommen');
   // ehrliche Fallzahlen: n je Messpunkt und Median
   await expect(page.getByRole('columnheader', { name: 'Median 1 W' }).first()).toBeVisible();
   await expect(page.getByRole('columnheader', { name: 'Ø 1 Woche (n)' }).first()).toBeVisible();
