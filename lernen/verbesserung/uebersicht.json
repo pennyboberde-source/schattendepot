@@ -1,0 +1,82 @@
+{
+  "stand": "2026-11-14T14:15:12.618Z",
+  "aktiv": true,
+  "rueckgaengigLink": "https://github.com/pennyboberde-source/schattendepot/actions/workflows/verbesserung-zurueck.yml",
+  "uebernahmen": [],
+  "abgelehnt": [],
+  "freigaben": [],
+  "kandidaten": [
+    {
+      "id": "monatspruefung:2026-11:4",
+      "bereich": "daytrading",
+      "titel": "Risikoklasse spekulativ im Daytrading auf höchstens 20 % der Trades begrenzen.",
+      "beleg": "spekulativ 22 % Quote, −1.681,14 € (n=118) gegen skill_filter 35 % (n=214).",
+      "rang": 54,
+      "herkunft": "monatspruefung",
+      "seit": "2026-11-14"
+    },
+    {
+      "id": "monatspruefung:2026-11:5",
+      "bereich": "depot",
+      "titel": "Mindest-Stopabstand an die Schwankung koppeln (z. B. ≥ 1,5 × durchschnittliche Tagesspanne der letzten 14 Tage).",
+      "beleg": "Stop-Verkäufe 0/6 im Plus, Ø −7,88 %; Zeit-Verkäufe 3/3 im Plus, Ø +1,46 %; 55 % aller Verkäufe waren Stops, mehrfach mit Kurslücke.",
+      "rang": 52,
+      "herkunft": "monatspruefung",
+      "seit": "2026-11-14"
+    },
+    {
+      "id": "monatspruefung:2026-11:6",
+      "bereich": "datenkrake",
+      "titel": "Gewichte senken: kursrakete, gewinn_enttaeuschung (2,0 trotz −6,38 %), upbit_warnung, krypto_einnahmen; nachzahlen_drift von 1,79 deutlich herunter.",
+      "beleg": "Schattenbuch 1 W: kursrakete −8,2 % (n=36), gewinn_enttaeuschung −6,38 % (n=26), krypto_einnahmen −6,11 %, nachzahlen_drift −1,41 % plus echte Orders Ø −1,98 %.",
+      "rang": 50,
+      "herkunft": "monatspruefung",
+      "seit": "2026-11-14"
+    },
+    {
+      "id": "monatspruefung:2026-11:7",
+      "bereich": "depot",
+      "titel": "In Marktphase seitwärts (ruhig/nervös) höchstens 2 neue Depot-Orders je Lauf und keine Hebel ohne Volltreffer-Beleg.",
+      "beleg": "Schattenbuch seitwärts/ruhig Ø −6,21 % nach 1 Woche (n=228) vs. aufwärts/ruhig −3,68 % (n=95); Politik-Risiko aktuell 90/100.",
+      "rang": 48,
+      "herkunft": "monatspruefung",
+      "seit": "2026-11-14"
+    },
+    {
+      "id": "monatspruefung:2026-11:8",
+      "bereich": "quellen",
+      "titel": "gettex-Scanner-Gelegenheiten (Hebelprodukte von HSBC/Goldman) aus dem Schattenbuch filtern oder als eigene Kategorie ‚Hebel-Mechanik‘ führen.",
+      "beleg": "Quelle gettex-Scanner 1 T 10 % im Plus, 1 W Ø −26,33 % (n=10); Sprünge sind Hebelmechanik, kein Signal (Lektion 21).",
+      "rang": 46,
+      "herkunft": "monatspruefung",
+      "seit": "2026-11-14"
+    },
+    {
+      "id": "quelle:emskeptic:ausfall",
+      "bereich": "quellen",
+      "titel": "Quelle Emerging Market Skeptic liefert nicht mehr",
+      "beleg": "Zuletzt in Ordnung: nie. Letzter Fehler: 2026-11-14T08:15:44.709Z: HTTP 403 bei emergingmarketskeptic.substack.com",
+      "rang": 45,
+      "herkunft": "quelle",
+      "seit": "2026-11-14"
+    },
+    {
+      "id": "quelle:gdelt:ausfall",
+      "bereich": "quellen",
+      "titel": "Quelle GDELT (Nachrichten zu Positionen) liefert nicht mehr",
+      "beleg": "Zuletzt in Ordnung: 2026-11-02. Letzter Fehler: 2026-11-14T14:15:12.618Z: fetch failed",
+      "rang": 45,
+      "herkunft": "quelle",
+      "seit": "2026-11-14"
+    },
+    {
+      "id": "zeugnis:depot-gegen-msci-world",
+      "bereich": "depot",
+      "titel": "Schwaches Fach im Wochenzeugnis: Depot gegen MSCI World (Note 5)",
+      "beleg": "KW 46: -1,48 % je Order (6 Orders)",
+      "rang": 36,
+      "herkunft": "wochenzeugnis",
+      "seit": "2026-11-14"
+    }
+  ]
+}
