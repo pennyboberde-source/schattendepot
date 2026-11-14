@@ -1,9 +1,23 @@
 {
-  "stand": "2026-11-14T14:15:12.618Z",
+  "stand": "2026-11-14T14:18:21.257Z",
   "aktiv": true,
   "rueckgaengigLink": "https://github.com/pennyboberde-source/schattendepot/actions/workflows/verbesserung-zurueck.yml",
   "uebernahmen": [],
-  "abgelehnt": [],
+  "abgelehnt": [
+    {
+      "zeit": "2026-11-14T14:18:21.257Z",
+      "branch": "claude/verbesserung-test-verboten",
+      "gruende": [
+        ".github/workflows/sammler.yml: gesperrt (Leitplanken › verbotenePfade)",
+        "core/gebuehren.ts: gesperrt (Leitplanken › verbotenePfade)",
+        "jobs/quellen/gdelt.ts: darf nicht gelöscht oder umbenannt werden (Quellen und Tests bleiben)",
+        "config/einstellungen.json › hebelMax: keine freigegebene Stellschraube",
+        "config/einstellungen.json › autopilot.mindestFaelle: 5 liegt außerhalb der Spanne 30 bis 100",
+        "Es muss genau ein neues Manifest verbesserung/aenderungen/<datum>.json geben"
+      ],
+      "link": "https://github.com/pennyboberde-source/schattendepot/issues/1"
+    }
+  ],
   "freigaben": [],
   "kandidaten": [
     {
