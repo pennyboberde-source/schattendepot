@@ -1,6 +1,6 @@
 # STAND – Schattendepot
 
-_Zuletzt aktualisiert: 12.11.2026 spätabends (Plan „Volltreffer“ übernommen, Befunde geprüft, Freigaben F1–F3 angefordert, **V0 Aufräumen fertig und live**; als Nächstes VS; vorher: Politik-Radar 06.11., Plan „Datenkrake“ S1–S4 fertig und live)_
+_Zuletzt aktualisiert: 14.11.2026 nachmittags (**VS Selbstverbesserung fertig und live**, erste echte Läufe mit V0 geprüft; als Nächstes V1, wartet auf die Freigaben F1 + F2; vorher: V0 Aufräumen 12.11., Politik-Radar 06.11., Plan „Datenkrake“ S1–S4)_
 
 ## 🎯 GÜLTIGER PLAN „Volltreffer“ (Nutzer 11.11.2026, Ergänzung Selbstverbesserung 12.11.) – geht allem darunter vor
 **Der vollständige Bauauftrag steht in `KONZEPT-VOLLTREFFER.md` (Abschnitte 0–8).** Neue Sitzung: „Lies STAND.md und mach weiter“ → hier beim nächsten offenen Meilenstein weitermachen, Details im Konzept nachlesen (nur den Abschnitt des Meilensteins).
@@ -29,7 +29,37 @@ _Zuletzt aktualisiert: 12.11.2026 spätabends (Plan „Volltreffer“ übernomme
 - B8: beste Depot-Order +92,53 €; Daytrading 494 Trades, −3.625,51 € nach Gebühren.
 - B9: 99 von 3.240 Signalen mit ISIN. B2, B3, B7 am Code bestätigt (`holeKurs` einzeln, nur Messpunkte, Hot Stuff ohne Sprunggröße).
 
-**➡️ Nächster Schritt:** Halt nach V0, auf „weiter“ (oder „durchlaufen“) warten. Dann **VS Selbstverbesserung** bauen (Konzept Abschnitt 4 › VS). Zu Beginn der nächsten Sitzung zuerst den ersten echten Lauf mit V0 prüfen: Sammler-Hauptlauf Fr 13.11. (`gh run list --workflow sammler.yml`, Logzeile „Schattenbuch: … heute x von 40 Kandidaten mit Startkurs“), `statistik.json › zusammenfassung` (n = Messungen), `daytrading/uebersicht.json › virtuell` und die Abendbilanz.
+**➡️ Nächster Schritt:** Halt nach VS, auf „weiter“ (oder „durchlaufen“) warten. Dann **V1 Fundament** – braucht zuerst die Freigaben F1 (Massive) und F2 (privates Archiv-Repo + `ARCHIV_TOKEN`); ohne sie geht nur der Teil ohne Schlüssel (gettex-Tageskerzen, Kraken, Stammdaten, Handelbarkeits-Karte), das Archiv nicht. Zu Beginn der nächsten Sitzung prüfen: (1) `gh secret list` (F1/F2 gesetzt?), (2) erster planmäßiger Verbesserungslauf Sa 21.11. 12:07 Uhr (`RemoteTrigger list_runs trig_01Hh7Km3UAkHJKBXASxZzGFF`, `gh run list --workflow verbesserung.yml`, `lernen/verbesserung/protokoll.jsonl`) und **dessen Verbrauch** (zweiter von zwei zu messenden Läufen, siehe „VS erledigt“), (3) `r1T`-Messungen der Kandidaten vom 13.11. (kommen am Mo 16.11.).
+
+**Erste echte Läufe mit V0 geprüft (14.11.):** Hauptlauf Fr 13.11.: 40 von 40 Tageskandidaten mit Startkurs (LBTY ersetzt), 110 Messwerte. Samstagslauf 14.11.: 25 von 25 (16 Kürzel ohne Kurs ersetzt, vor allem `.DE`-Werte und kleine Coins – der Pool reichte nur für 25). Daytrading: 45 virtuelle Trades/−1.095,27 € stehen getrennt; sichtbar seit 13.11.: 17 Trades/−98,00 €. Wochenzeugnis KW 46: 4,9. Autopilot: nichts bewiesen, kauft nicht.
+
+### ✅ VS erledigt (14.11.2026 nachmittags)
+**Gebaut**
+- **Leitplanken** `config/verbesserung.json` (der Lauf darf sie nie ändern): Hauptschalter `aktiv`, Wochenbudget 3 Änderungen/400 Zeilen, Erlaubtliste (Stellschrauben-Configs, `core/**`, `jobs/quellen/**`, `src/**`, `e2e/**`, `routine/*.md`, Manifest), Sperrliste (geht vor: Workflows, Leitplanken, Prüfcode, Abrechnung/Ausführung/Bewertung, Mitteilungen, `routine/gemeinsam.md`, `routine/verbesserung.md`), Löschverbot für Quellen und Tests, **Stellschrauben mit Spannen** je Config-Datei (alles andere in `config/` ist gesperrt, z. B. `hebelMax`, `orderBetrag`, `pushTypen`, `virtuell`; der Autopilot darf strenger, aber nicht lockerer werden als 30 Fälle/55 %/+1 %), Verbot neuer Mitteilungs-Bausteine, Bewertung (14–28 Tage, Schwelle 5 %), Wache (72 Std., 2 Ausfälle), Ideenliste für neue Quellen.
+- **Prüfkern** `core/verbesserung/pruefung.ts` (rein, getestet): Pfade, Umfang, Stellschrauben, Quellen-Register (`jobs/quellen/zusatz.ts`, nur anhängen), Mitteilungen, Manifest (Form, Kennzahl, jede geänderte Datei einer Änderung zugeordnet).
+- **Verbesserungsbuch** `core/verbesserung/buch.ts` → `lernen/verbesserung/kandidaten.json`, täglich im Sammler (im Stundenlauf nur, wenn heute noch nichts geschrieben wurde): Rücknahmen (Rang 100) › Fehler-Issues (80) › Vorschläge der Monatsprüfung (≤ 60) › ausgefallene Quellen (45) › schwache Zeugnis-Fächer › Lernhinweise (25) › Quellen ohne Signal seit 7 Tagen (12) › Quellen-Ideen (10). Von Bau-Sitzungen Erledigtes: `verbesserung/erledigt.json` (V0 hat die Vorschläge 1–3 der Monatsprüfung abgehakt); vom Lauf Umgesetztes ist 28 Tage gesperrt.
+- **Kennzahlen** `core/verbesserung/kennzahlen.ts` → `lernen/verbesserung/kennzahlen.json` (16 Tageswerte, 150 Tage): nur diese Schlüssel sind als Messkriterium erlaubt. `aenderungBewerten` vergleicht 14 Tage vor mit den Tagen nach der Übernahme (Stände: Mittel; Summen: Veränderung je Tag) → Protokoll-Eintrag `bewertet`; „schlechter“ wird Rücknahme-Kandidat Nr. 1.
+- **Action** `verbesserung.yml` + `jobs/verbesserung.ts`: startet **nur per Zeitplan (stündlich :41) oder von Hand, nie durch den Push** – so laufen Workflow und Prüfcode immer aus `main`. Jobs: `finden` (neuer Branch, Wache) → `pruefen` (ohne Schreibrechte: Probe-Merge auf main, Leitplanken, `tsc`, Unit-Tests, Build, E2E, Probelauf Sammler/Wächter/Daytrading auf Datenkopie; Tests dürfen nicht weniger werden) → `uebernehmen` (Leitplanken noch einmal mit Code von main, `git merge --no-ff`, Push, Protokoll, Mitteilung „🛠️ Verbesserung“, Branch löschen, Deploy ausdrücklich anstoßen) bzw. `ablehnen` (Pull Request, ersatzweise Issue, mit allen Gründen; Mitteilung; Branch bleibt liegen).
+- **Rückgängig** `verbesserung-zurueck.yml` (von Hand; Link in der App › Lernen und in der Karte jeder Übernahme): `git revert` der Übernahme, `tsc` + Unit-Tests, Push, Protokoll, Mitteilung „↩️“, Deploy. **Wache:** Fallen binnen 72 Std. nach einer Übernahme 2 Sammler- oder Wächterläufe in Folge aus, stößt `verbesserung.yml` die Rücknahme selbst an.
+- **Routine** „Schattendepot Verbesserungslauf“ (`routine/verbesserung.md`, Kontext `routine/verbesserung-kontext.mjs`, Selbsttest `node jobs/verbesserung.ts vorpruefen`), Manifest `verbesserung/aenderungen/<datum>.json` mit Hypothese und Messkriterium je Änderung, `freigaben` (🔴❗ in App und Mitteilung) und `nichtUmgesetzt`.
+- **App:** Lernen › Karte „🛠️ Was sich verbessert hat“ (Übernahmen mit Hypothese, Messkriterium, Urteil, Rückgängig-Link; Abgelehntes; nächste Kandidaten; offene Freigaben). Wochenzeugnis trägt `verbesserungen` (Heute-Karte zeigt sie).
+- Nebenbei: `routine/pruefen.mjs` verlangte im Morgenlauf noch mindestens eine Order (Rest der alten Pflicht-Order) – entfernt. `probelauf.yml` kann jetzt `tests` (tsc, Unit, Build, E2E unter Linux).
+
+**Abnahme (14.11., alles in der echten Umgebung)**
+- Probeläufe auf dem Bau-Branch: Tests unter Linux grün (270 Unit, 36 E2E), Jobs auf Datenkopie grün, Verbesserungsbuch 24 Kandidaten.
+- **Verbotener Pfad abgelehnt:** Test-Branch `claude/verbesserung-test-verboten` (Workflow, `core/gebuehren.ts`, Quelle gelöscht, `hebelMax` 200, Autopilot 5 Fälle, kein Manifest) → 6 Gründe, Begründung als Issue #1 (Pull Requests darf die Action noch nicht anlegen, siehe F5), Mitteilung gesendet. Branch gelöscht, Issue geschlossen; der Eintrag bleibt im Protokoll (nur anhängen) und steht in der App unter „Nicht übernommen“.
+- **Probelauf der Routine:** 2 Min. 48 Sek., Branch `claude/verbesserung-2026-11-14` mit 3 Änderungen (117 Zeilen): gettex-Scanner sortiert Hebelprodukte aus (Monatsprüfung 8; misst `schattenbuch.median1W`, heute −2,04 %), Seitwärtsphase höchstens 2 neue Depot-Orders je Lauf und kein Hebel ohne Volltreffer-Beleg (Monatsprüfung 7, Routinen-Texte; misst `depot.trefferquote`, heute 35,3 %), Autopilot-Stop −6 % → −8 % (Monatsprüfung 5; misst `autopilot.oeNetto`, heute −2,65 %). 4 Kandidaten begründet nicht umgesetzt. Action: Leitplanken ok, 273 Unit-Tests, 36 E2E-Tests, Probelauf ok → **übernommen als `90285d9`**, Mitteilung gesendet, Deploy angestoßen. Bewertung fällig ab 28.11.
+- Rückgängig-Workflow: Trockenprobe in Actions grün (ohne passende Übernahme tut er nichts); der ganze Ablauf Übernehmen → Zurücknehmen lief lokal gegen ein nachgestelltes Repo durch (alter Wert wiederhergestellt).
+
+**Verbrauch der ersten zwei Läufe (Auftrag aus dem Konzept)**
+- Lauf 1 (Probelauf Sa 14.11. 15:19 Uhr): 2 Min. 48 Sek. Laufzeit, rund 40 Ereignisse im Protokoll, 3 Änderungen. Die Schnittstelle nennt keine Token-Zahl; zum Vergleich: Der Wochenrückblick lief am selben Tag 1 Min.
+- Lauf 2: Sa 21.11. 12:07 Uhr – in der nächsten Sitzung nachtragen. Ist der Verbrauch hoch, im Routinen-Text weniger Kandidaten verlangen.
+
+**Grenzen / ehrlich**
+- Der `pruefen`-Job führt Code des Branches aus (Tests, Probelauf). Er hat deshalb keine Schreibrechte und keine Push-Geheimnisse, aber die Kurs-Schlüssel der Gratis-Tarife. Ein böswillig gebauter Branch könnte dort das Testergebnis fälschen – verbotene Pfade oder Spannen kämen trotzdem nicht durch, weil `uebernehmen` die Leitplanken mit Code von main erneut prüft.
+- „Keine neuen Mitteilungen“ und „kein Datenzweig“ sind über Pfad- und Textregeln abgesichert, nicht beweisbar vollständig.
+- Braucht eine neue Quelle einen Schlüssel, muss eine Bau-Sitzung das Secret zusätzlich in `sammler.yml` durchreichen (Workflows sind für den Lauf gesperrt).
+- Neue Kennzahlen als Messkriterium kann nur eine Bau-Sitzung ergänzen (`core/verbesserung/` ist gesperrt).
 
 ### ✅ V0 erledigt (12.11.2026 abends)
 **Gebaut**
@@ -180,7 +210,8 @@ Auftrag: Daytrader-Skill `Jakeschincariol/day-trader-skill` (MIT, Stand 3d0f4ef 
   - Morgenlauf `trig_01TAvkP41ZEYZE9azpzewhPq` – cron `40 5 * * 1-5` (UTC! = 07:40 Sommer / 06:40 Winter)
   - Mittagslauf `trig_01PkFLbMgdJxtZhLPmdexexL` – cron `52 14 * * 1-5` (= 16:52 Sommer / 15:52 Winter)
   - Abendlauf `trig_01H3UdvCwFfTDni3gumeM5wZ` – cron `17 21 * * 1-5` (= 23:17 Sommer / 22:17 Winter)
-  - Wochenrückblick `trig_01HJbMVApAyYKb9vzdo4rZdQ` – cron `7 8 * * 6` (= 10:07 Sommer / 09:07 Winter)
+  - Wochenrückblick `trig_01HJbMVApAyYKb9vzdo4rZdQ` – cron `7 8 * * 6` (= 10:07 Sommer / 09:07 Winter); seit Ende Oktober steht er auf `7 9 * * 6` (10:07 Winterzeit)
+  - **Verbesserungslauf** `trig_01Hh7Km3UAkHJKBXASxZzGFF` (angelegt 14.11.2026, Plan Volltreffer VS) – cron `7 11 * * 6` (= 12:07 Winterzeit, zwei Stunden nach dem Wochenrückblick; **Ende März auf `7 10 * * 6` stellen**, zusammen mit den anderen). Gleiche Umgebung, gleiches Modell, Konnektor nur Alpha Vantage. Auftrag: „Lies routine/verbesserung.md … und führe es aus.“
   - Kein Ereignislauf-Routine (API-Token nur im Web) → tokenfreier Ersatz über offene-ereignisse.json.
 - Trockenlauf Abendlauf am 21.10. erfolgreich: Routine → `claude/lauf-2026-10-21-abendlauf` → Übernahme (Schema ok) → Branch gelöscht.
 - `ausfallWarnungAktiv: true`.
