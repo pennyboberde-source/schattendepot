@@ -2,6 +2,21 @@
 
 _Zuletzt aktualisiert: 14.11.2026 abends (**V1 Teil a live**: Sammelkurse und privates Kursarchiv; Freigaben F1, F2, F5 erledigt; als Nächstes V1 Teil b; vorher am selben Tag: VS Selbstverbesserung fertig; V0 Aufräumen 12.11.)_
 
+## ▶️ ÜBERGABE AN EINE NEUE SITZUNG (15.11.2026) – zuerst lesen
+**Startsatz des Nutzers:** „Lies STAND.md und mach weiter.“ Diese Notiz reicht zum Weiterbauen; den alten Chat braucht es nicht.
+**Wo wir stehen:** `main` ist live und unverändert bei `8f27380` (V0, VS, V1 Teil a und der Schlüssel mit Markt sind live). Die laufende Arbeit liegt **nur** auf dem Branch `bau/v1b-privat` (lokal ausgecheckt und auf GitHub gesichert). Dort: `tsc` sauber, 289 Unit-Tests grün – aber die neuen Teile sind noch ungetestet und nie gelaufen.
+**Erste Handgriffe:**
+1. `git status` und `git branch --show-current` → muss `bau/v1b-privat` sein, Arbeitsordner sauber (nur zwei unversionierte lokale Dateien, die bleiben: `KONZEPT-VOLLTREFFER alt 11.11.md`, `politik-radar.patch`).
+2. Privaten Zustand lokal bereitstellen (steht in `.gitignore`, darf nie ins öffentliche Repo): `git clone -q -b zustand https://github.com/pennyboberde-source/schattendepot-archiv.git _privat` – der Zweig enthält bisher nur `LIES-MICH.md`. Datenkopie auffrischen: `git -C _daten fetch -q origin && git -C _daten merge -q --ff-only origin/daten`.
+3. Dann die Liste „Noch zu tun“ unten der Reihe nach abarbeiten (Punkt 1 ist halb begonnen: `jobs/probelauf.ts` liest das Schattenbuch noch über `lese('kandidaten-tracking.json')` aus der öffentlichen Kopie, Zeilen ~32–42).
+**Fallstricke aus der letzten Sitzung:**
+- Bash-Heredocs lösen Rückstriche einmal auf (`\\n` wird ein Zeilenumbruch) → Änderungsskripte mit dem Write-Werkzeug als `.cjs` in den Scratchpad schreiben und per `node` ausführen, oder einzelne Edit-Aufrufe.
+- Workflows lassen sich nur starten, wenn die Workflow-Datei auf `main` existiert; `probelauf.yml` ist dort schon und läuft mit `gh workflow run probelauf.yml --ref bau/v1b-privat -f art=tests|jobs|schattenbuch|archiv` mit dem Stand des Branches.
+- Der Probelauf-Workflow auf dem Branch checkt den privaten Zweig mit aus; `jobs/probelauf.ts` muss ihn als **Kopie** benutzen (nie in den echten Checkout schreiben).
+- Nach `main` nur per Fast-Forward und erst nach grünen Probeläufen; danach `bau/v1b-privat` löschen. Der erste echte Lauf mit dem Umbau ist kritisch für den **Kurswächter** (Stops!) – den privaten Checkout hat er mit `continue-on-error`, und ohne ihn muss er normal weiterarbeiten. Das ist ausdrücklich zu testen.
+- Montag 16.11. früh laufen Sammler (06:07 Uhr) und Wächter (ab 08:04 Uhr) wieder. Solange der Umbau nicht auf `main` ist, läuft dort alles wie bisher – es besteht kein Zeitdruck.
+**Für den Bericht an den Nutzer vormerken:** Prozent seit Kauf plus öffentlicher Kaufkurs lässt den Kurs einer eigenen Position weiter grob zurückrechnen – Lösung B verringert die Weitergabe, nur C schlösse sie aus. Außerdem zu prüfen und zu melden: Kursarchiv seit 14.11. (`archiv/stand.json`, `gh run list --workflow archiv.yml`), erster vollständiger gettex-Tag Mo 16.11.
+
 ## 🚧 IN ARBEIT, NICHT LIVE: Branch `bau/v1b-privat` (Stand 14.11.2026 spätabends, wegen Nutzungslimit unterbrochen)
 **Entscheidung des Nutzers (14.11.): Lösung B** – Kursreihen, Tagesstände und Schattenbuch-Einzelwerte raus aus dem öffentlichen Datenzweig; öffentlich bleiben Ausführungskurse der eigenen Orders und verdichtete Statistik; die Kurve je Order zeigt Prozent seit Kauf.
 **Auf dem Branch schon gebaut (kompiliert, `tsc` sauber, aber Tests und Probeläufe stehen noch aus):**
