@@ -1,6 +1,6 @@
 # STAND – Schattendepot
 
-_Zuletzt aktualisiert: 14.11.2026 nachmittags (**VS Selbstverbesserung fertig und live**, erste echte Läufe mit V0 geprüft; als Nächstes V1, wartet auf die Freigaben F1 + F2; vorher: V0 Aufräumen 12.11., Politik-Radar 06.11., Plan „Datenkrake“ S1–S4)_
+_Zuletzt aktualisiert: 14.11.2026 abends (**V1 Teil a live**: Sammelkurse und privates Kursarchiv; Freigaben F1, F2, F5 erledigt; als Nächstes V1 Teil b; vorher am selben Tag: VS Selbstverbesserung fertig; V0 Aufräumen 12.11.)_
 
 ## 🎯 GÜLTIGER PLAN „Volltreffer“ (Nutzer 11.11.2026, Ergänzung Selbstverbesserung 12.11.) – geht allem darunter vor
 **Der vollständige Bauauftrag steht in `KONZEPT-VOLLTREFFER.md` (Abschnitte 0–8).** Neue Sitzung: „Lies STAND.md und mach weiter“ → hier beim nächsten offenen Meilenstein weitermachen, Details im Konzept nachlesen (nur den Abschnitt des Meilensteins).
@@ -10,16 +10,15 @@ _Zuletzt aktualisiert: 14.11.2026 nachmittags (**VS Selbstverbesserung fertig un
 **Meilensteine**
 - ✅ **V0 Aufräumen** (12.11.2026, Details im Abschnitt „V0 erledigt“ direkt darunter).
 - ✅ **VS Selbstverbesserung** (14.11.2026, Details im Abschnitt „VS erledigt“ weiter unten): Verbesserungsbuch, wöchentlicher Verbesserungslauf, Leitplanken `config/verbesserung.json`, automatische Übernahme mit Rückgängig-Link.
-- ⬜ **V1 Fundament** (braucht F1 + F2): Sammelkurse gettex/US/Krypto, privates Archiv, Stammdaten, Handelbarkeits-Karte, Vergleichsgruppe.
+- ⏳ **V1 Fundament**: **Teil a live seit 14.11.** (Sammelkurse gettex/US/Krypto, privates Archiv, täglicher Workflow `archiv.yml`). **Teil b offen:** Schattenbuch auf Sammelkurse (Startkurs = erster handelbarer Kurs, Hoch/Tief seit Start), Stammdaten und neuer Wertpapier-Schlüssel (Test ZETA), Handelbarkeits-Karte, Vergleichsgruppe, Lösung für Kurse im öffentlichen Datenzweig. Abnahme erst, wenn drei Tage in Folge Archivdateien für alle drei Märkte vorliegen (frühestens Mi 18.11. abends).
 - ⬜ **V2 Zensus** · ⬜ **V3 Rückblick und Musterprüfung** · ⬜ **V4 Bereich Volltreffer (virtuell)** · ⬜ **V5 Claudes Teil** · ⬜ **V6 Beförderung** (braucht F4 je Muster).
 
 **Freigaben (angefordert 12.11.2026 abends, 🔴❗ + Push)**
-- ⬜ F1 Massive-Konto (Tarif Basic, gratis) + Secret `MASSIVE_API_KEY` – nötig vor V1. Verlangt die Anmeldung Zahlungsdaten: abbrechen, dann Alpaca-Papierkonto.
-- ⬜ F2 privates Repo `schattendepot-archiv` + Zugriffstoken nur für dieses Repo (Inhalte: Lesen und Schreiben) als Secret `ARCHIV_TOKEN` – nötig vor V1.
-- ⬜ F3 optional: `COINGECKO_API_KEY` (Demo-Tarif), `OPENFIGI_API_KEY`.
+- ✅ F1 `MASSIVE_API_KEY` gesetzt (14.11.). Tarif Basic: Tagesschlussdaten, 2 Jahre Historie, OTC-Werte sind enthalten.
+- ✅ F2 privates Repo `schattendepot-archiv` + Secret `ARCHIV_TOKEN` (14.11.). **Achtung:** Läuft das Token ab, scheitert der Workflow „Kursarchiv“ beim Checkout (401) – dann neues Token anlegen (Anleitung im Chat vom 14.11.: Token nur für dieses Repo, „Contents: Read and write“). Ablaufdatum hat der Nutzer gewählt, hier nicht bekannt.
+- ⬜ F3 optional: `COINGECKO_API_KEY` (Demo-Tarif), `OPENFIGI_API_KEY` – der Nutzer macht sie später (14.11.).
 - ⬜ F4 bei V6: Ja des Nutzers je Muster.
-- ⬜ F5 optional (14.11.): GitHub-Einstellung „Allow GitHub Actions to create and approve pull requests“ (Repo › Settings › Actions › General › Workflow permissions). Ohne sie legt die Übernahme-Action bei einer Ablehnung ein Issue statt eines Pull Requests an – die Begründung kommt in beiden Fällen an.
-- Stand 14.11. 14:47 Uhr: F1–F3 noch nicht gesetzt (`gh secret list` zeigt weder `MASSIVE_API_KEY` noch `ARCHIV_TOKEN`, Repo `schattendepot-archiv` gibt es noch nicht).
+- ✅ F5 Pull Requests durch Actions erlaubt (14.11.) – Ablehnungen der Selbstverbesserung kommen jetzt als Pull Request.
 
 **Befund-Prüfung 12.11.2026 (Datenzweig c2476a9, 20:54 Uhr) – alle Befunde aus Abschnitt 2 bestätigt, keine Abweichung in der Sache, nur die Zahlen sind einen Tag weiter:**
 - B1: 362 von 559 Tageskandidaten ohne `start` (11.11.: 324 von 519); 03.–12.11. je Tag meist 0–3 von 40 mit Startkurs.
@@ -29,7 +28,29 @@ _Zuletzt aktualisiert: 14.11.2026 nachmittags (**VS Selbstverbesserung fertig un
 - B8: beste Depot-Order +92,53 €; Daytrading 494 Trades, −3.625,51 € nach Gebühren.
 - B9: 99 von 3.240 Signalen mit ISIN. B2, B3, B7 am Code bestätigt (`holeKurs` einzeln, nur Messpunkte, Hot Stuff ohne Sprunggröße).
 
-**➡️ Nächster Schritt:** Halt nach VS, auf „weiter“ (oder „durchlaufen“) warten. Dann **V1 Fundament** – braucht zuerst die Freigaben F1 (Massive) und F2 (privates Archiv-Repo + `ARCHIV_TOKEN`); ohne sie geht nur der Teil ohne Schlüssel (gettex-Tageskerzen, Kraken, Stammdaten, Handelbarkeits-Karte), das Archiv nicht. Zu Beginn der nächsten Sitzung prüfen: (1) `gh secret list` (F1/F2 gesetzt?), (2) erster planmäßiger Verbesserungslauf Sa 21.11. 12:07 Uhr (`RemoteTrigger list_runs trig_01Hh7Km3UAkHJKBXASxZzGFF`, `gh run list --workflow verbesserung.yml`, `lernen/verbesserung/protokoll.jsonl`) und **dessen Verbrauch** (zweiter von zwei zu messenden Läufen, siehe „VS erledigt“), (3) `r1T`-Messungen der Kandidaten vom 13.11. (kommen am Mo 16.11.).
+**➡️ Nächster Schritt:** **V1 Teil b** (siehe Meilensteine und „V1 Teil a“ unten). Zu Beginn der nächsten Sitzung prüfen: (1) Kursarchiv: `gh run list --workflow archiv.yml`, `archiv/stand.json` im Datenzweig (`inFolge` je Markt, `fehler`, `gettexUnvollstaendig`) – der erste vollständige gettex-Tag ist Mo 16.11.; (2) Verbesserungslauf Sa 21.11. 12:07 Uhr samt Verbrauch (siehe „VS erledigt“); (3) `r1T`-Messungen der Kandidaten vom 13.11. (kommen Mo 16.11.); (4) hat der Nutzer zur Frage „Kurse im öffentlichen Datenzweig“ entschieden (siehe unten)?
+
+### ⏳ V1 Teil a erledigt (14.11.2026 abends): Sammelkurse und privates Archiv
+**Gebaut**
+- `core/sammelkurse.ts` (rein, getestet): gettex-Tageskerzen je ISIN (O/H/L/C, Stück, Umsatz, Zahl der Geschäfte, erste/letzte Zeit) aus allen 15-Minuten-Dateien; US-Sammelabruf Massive; Kraken-Stand aller Paare; Archivformate (CSV); `gettexTagStatus` (Vollständigkeit), `tageInFolge`.
+- `jobs/archiv.ts` + Workflow `archiv.yml` (22:25, 00:10, 05:10 UTC; eigene Concurrency-Gruppe `archiv-schreiben`): legt je Markt und Tag eine komprimierte Datei ins private Repo `schattendepot-archiv` (`gettex|us|krypto/JJJJ/JJJJ-MM-TT.csv.gz`, dazu `index.json`). **Nur anhängen:** Eine vorhandene Tagesdatei wird nie überschrieben. Zweiter Job schreibt den Stand in Zählungen nach `archiv/stand.json` im Datenzweig (Gruppe `daten-schreiben`). Config `config/archiv.json`. Sichern: `scripts/archiv-sichern.sh`.
+- `probelauf.yml` kann `archiv` (Sammelkurse in einen Wegwerf-Ordner, Log zeigt nur Zählungen).
+
+**Geprüft in der Doku und live (14.11.)**
+- **Massive:** Host `https://api.massive.com` (der alte `api.polygon.io` antwortet auch noch). Pfad `/v2/aggs/grouped/locale/us/market/stocks/{datum}`, Schlüssel als `Authorization: Bearer`. `adjusted` ist standardmäßig an; das laufende Archiv ruft mit `adjusted=false` ab (Kurse wie gehandelt, Splits später als Ereignis). `include_otc=true` funktioniert im Gratis-Tarif: rund 16.500 Werte je Tag, davon rund 4.000 OTC. Basic: Tagesschluss, 2 Jahre Historie.
+- **Massive-Bedingungen** (Individuals Terms und Market Data Terms, Stand 03.11.2026): Speichern für den eigenen, nicht geschäftlichen Gebrauch ist erlaubt (§ 1); Weitergeben und Veröffentlichen nicht (§ 5 c), auch nicht in abgeleiteter Form als Ersatz für die Daten. Nach Ende der Lizenz binnen 30 Tagen löschen (§ 8). → Archiv privat, öffentlich nur Zählungen und verdichtete Statistik.
+- **gettex:** Die Dateinamen nennen das Fensterende in **UTC**; gehandelt wird 07:30–23:00 Uhr Berlin (62 Fenster). Die Dateien sind nur rund **24 Stunden** abrufbar (rollend) – deshalb drei Läufe je Handelstag. Jede große Datei enthält neben echten Geschäften Hunderttausende Zeilen mit Stück 0 (Kursstellungen von Hebelprodukten, je ISIN einmal); die Tageskerzen zählen nur Zeilen mit Stückzahl. Ein voller Tag: grob 60–80 MB Abruf.
+- **Kraken:** `/0/public/Ticker` ohne Paar liefert alle Paare in einem Abruf (1.461, davon 531 gegen Euro; 1.366 mit Kurs), `/0/public/AssetPairs` die lesbaren Namen. Gespeichert wird einmal je UTC-Tag der Stand mit den 24-Stunden-Werten. Genaue UTC-Tageskerzen einzelner Coins (Kraken OHLC) holt erst Teil b bei Bedarf.
+
+**Gemessen**
+- Archiv-Probe auf dem Bau-Branch mit echtem Schlüssel: US 09.–13.11. je 16.482–16.904 Werte (je ~370 KB), Krypto 1.366 Paare (49 KB), gettex Fr 13.11. 4.170 ISINs/19.031 Geschäfte aus nur noch 20 von 62 Fenstern (97 KB, als unvollständig markiert, zählt nicht für die Folge).
+- Tests: 283 Unit (neu `core/sammelkurse.test.ts`), E2E unverändert 36.
+
+**Offene Frage an den Nutzer: Kurse im öffentlichen Datenzweig (Auftrag aus dem Konzept: „prüfe und schlage eine Lösung vor“)**
+Befund: Der öffentliche Datenzweig enthält heute schon einzelne Kurse aus Quellen, die nur private Nutzung gestatten – `kurse.json` und `schlusskurse.json` (offene Positionen), `verlauf/<order>.json` (Kursreihe je Order für die Kurve), Kauf-/Verkaufskurse in `ereignisse.jsonl`, `positionen.json`, `abgeschlossen.json`, `daytrading/ereignisse.jsonl`, Startkurse in `kandidaten-tracking.json`. Das sind Einzelwerte in kleiner Zahl, aber streng genommen eine Weitergabe.
+- **A (bleibt wie es ist):** Einzelne Ausführungskurse der eigenen Simulation bleiben öffentlich, neue Massendaten gehen nur ins Archiv. Kein Aufwand, kleines Restrisiko.
+- **B (Vorschlag Claude):** Kursreihen und Tagesstände, die nicht zur Order selbst gehören (`verlauf/`, `schlusskurse.json`, Startkurse und Einzelrenditen des Schattenbuchs), wandern ins private Archiv; öffentlich bleiben die Ausführungskurse der eigenen Orders und verdichtete Statistik. Die Kurve je Order zeigt dann Prozent seit Kauf statt Euro-Kursen. Mittlerer Aufwand, passt zu Teil b (Schattenbuch zieht ohnehin um).
+- **C (streng):** Alles Kurshaltige im Datenzweig verschlüsseln; die App entschlüsselt mit einem einmal am iPad eingegebenen Kennwort. Großer Umbau (App, Jobs, Routinen), 0 €.
 
 **Erste echte Läufe mit V0 geprüft (14.11.):** Hauptlauf Fr 13.11.: 40 von 40 Tageskandidaten mit Startkurs (LBTY ersetzt), 110 Messwerte. Samstagslauf 14.11.: 25 von 25 (16 Kürzel ohne Kurs ersetzt, vor allem `.DE`-Werte und kleine Coins – der Pool reichte nur für 25). Daytrading: 45 virtuelle Trades/−1.095,27 € stehen getrennt; sichtbar seit 13.11.: 17 Trades/−98,00 €. Wochenzeugnis KW 46: 4,9. Autopilot: nichts bewiesen, kauft nicht.
 
