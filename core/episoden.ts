@@ -3,12 +3,15 @@
 // Einträge mit gleichem Schlüssel gehören zur selben Episode, solange zwischen zwei Einträgen weniger als
 // `abstandTage` Handelstage liegen. Vertreter ist der erste Eintrag mit Startkurs (sonst der erste Eintrag).
 import { handelstageZwischen } from './kalender.ts';
+import { schluesselNormal } from './signale.ts';
 
 export interface EpisodenEintrag {
   schluessel: string;
   datum: string;
   start?: number;
   startZeit?: string;
+  /** Markt des Eintrags – macht alte Schlüssel (vor dem 14.11.2026) mit den neuen vergleichbar */
+  markt?: string;
 }
 
 export const EPISODEN_ABSTAND_TAGE = 10;
@@ -27,14 +30,15 @@ export function episodenVertreter<T extends EpisodenEintrag>(liste: T[], abstand
     }
   };
   for (const t of sortiert) {
-    const e = offen.get(t.schluessel);
+    const schluessel = schluesselNormal(t.schluessel, t.markt);
+    const e = offen.get(schluessel);
     if (e && abstand(e.letztes, t.datum) < abstandTage) {
       e.letztes = t.datum;
       // der erste Eintrag der Episode war nicht messbar → der erste mit Startkurs vertritt sie
       if (!out[e.index].start && t.start) out[e.index] = t;
       continue;
     }
-    offen.set(t.schluessel, { letztes: t.datum, index: out.length });
+    offen.set(schluessel, { letztes: t.datum, index: out.length });
     out.push(t);
   }
   return out;

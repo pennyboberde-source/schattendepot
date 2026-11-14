@@ -1,4 +1,4 @@
-import { wertpapierSchluessel, type Signal } from '../../core/signale.ts';
+import { idTeil, type Signal } from '../../core/signale.ts';
 import { erkenneSignalTyp, erwaehnteWerte, type UniversumWert } from '../../core/texterkennung.ts';
 import type { Meldung } from './typen.ts';
 
@@ -13,7 +13,7 @@ export function signal(
   link?: string,
 ): Signal {
   return {
-    id: `${typ}:${wertpapierSchluessel(wertpapier).slice(2)}:${zeit.slice(0, 10)}`,
+    id: `${typ}:${idTeil(wertpapier)}:${zeit.slice(0, 10)}`,
     wertpapier,
     typ,
     staerke: Math.max(0, Math.min(1, staerke)),
@@ -34,7 +34,7 @@ export function schlagzeilenAuswerten(eintraege: { titel: string; link: string; 
     meldungen.push({ titel: e.titel, quelle, link: e.link, zeit, wertpapier: werte[0]?.name });
     if (werte.length === 0 || werte.length > 2) continue; // Sammelartikel ohne klaren Bezug überspringen
     const { typ, richtung } = erkenneSignalTyp(e.titel);
-    for (const w of werte) signale.push(signal(typ, { name: w.name, ticker: w.ticker }, typ === 'nachricht' ? 0.3 : 0.7, richtung, zeit, quelle, e.titel, e.link));
+    for (const w of werte) signale.push(signal(typ, { name: w.name, ticker: w.ticker, ...(w.krypto ? { markt: 'krypto' as const } : {}) }, typ === 'nachricht' ? 0.3 : 0.7, richtung, zeit, quelle, e.titel, e.link));
   }
   return { meldungen, signale };
 }

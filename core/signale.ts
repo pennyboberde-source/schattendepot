@@ -34,11 +34,40 @@ export interface Gewichte {
   quellen?: Record<string, number>;
 }
 
-/** Schlüssel eines Wertpapiers: Ticker bevorzugt, sonst ISIN, sonst normalisierter Name. */
+/** Kürzel, die ohne Marktangabe als Coin gelten (wie beim Kursabruf in core/autopilot.ts). */
+export const KRYPTO_OHNE_MARKT = ['BTC', 'ETH', 'SOL', 'XRP', 'ADA', 'DOT'];
+
+/**
+ * Schlüssel eines Wertpapiers: Ticker bevorzugt, sonst ISIN, sonst normalisierter Name.
+ * Seit V1 (14.11.2026) trägt der Schlüssel den Markt: `T:` Aktie/ETF, `K:` Coin, `R:` Rohstoff. Vorher hießen alle
+ * `T:<Kürzel>` – die Aktie ZETA erbte so die Upbit-Warnungen des Coins ZETA, und INTC lief als Krypto-Wert.
+ */
 export function wertpapierSchluessel(w: Signal['wertpapier']): string {
-  if (w.ticker) return `T:${w.ticker.toUpperCase().replace(/\.(DE|US)$/, '')}`;
+  if (w.ticker) {
+    const t = w.ticker.toUpperCase().replace(/\.(DE|US)$/, '');
+    const art = w.markt === 'krypto' || (!w.markt && KRYPTO_OHNE_MARKT.includes(t)) ? 'K' : w.markt === 'rohstoff' ? 'R' : 'T';
+    return `${art}:${t}`;
+  }
   if (w.isin) return `I:${w.isin.toUpperCase()}`;
   return `N:${w.name.toLowerCase().replace(/\b(ag|se|inc|corp|co|ltd|plc|nv|sa|kgaa|group|holding)\b/g, '').replace(/[^a-z0-9]/g, '')}`;
+}
+
+/**
+ * Alte Schlüssel lesbar halten: Einträge von vor dem 14.11.2026 tragen `T:<Kürzel>` auch für Coins und Rohstoffe,
+ * aber mit Marktangabe daneben. Überall, wo Schlüssel aus alten und neuen Daten verglichen werden (Episoden,
+ * Hot Stuff, Vorlauf), wird über diese Abbildung verglichen – die gespeicherten Daten bleiben unverändert.
+ */
+export function schluesselNormal(schluessel: string, markt?: string): string {
+  if (!schluessel.startsWith('T:')) return schluessel;
+  const t = schluessel.slice(2);
+  if (markt === 'krypto' || (!markt && KRYPTO_OHNE_MARKT.includes(t))) return `K:${t}`;
+  return markt === 'rohstoff' ? `R:${t}` : schluessel;
+}
+
+/** Mittelteil einer Signal-ID: Coins und Rohstoffe tragen ihre Art mit (`K.ZETA`), damit sie nie mit der Aktie gleichen Kürzels zusammenfallen. */
+export function idTeil(w: Signal['wertpapier']): string {
+  const k = wertpapierSchluessel(w);
+  return k.startsWith('K:') || k.startsWith('R:') ? k.replace(':', '.') : k.slice(2);
 }
 
 /**

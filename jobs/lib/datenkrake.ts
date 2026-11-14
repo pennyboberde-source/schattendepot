@@ -1,6 +1,6 @@
 // Datenkrake im Job: alle Signale des Tages verdichtet speichern, Hot-Stuff-Rückblick, Vorlauf-Statistik, Quellen-Wächter.
 // Schreibt nur neue Dateien (signale/tag/, lernen/hotstuff/, lernen/vorlauf.json) – bestehende Formate bleiben unverändert.
-import { hotStuff, leereVorlaufStatistik, RAKETEN, verdichten, vorlaufFortschreiben, zusammenlegen, type HistorienTag, type KompaktSignal, type VorlaufStatistik } from '../../core/datenkrake.ts';
+import { hotStuff, leereVorlaufStatistik, RAKETEN, signalSchluessel, verdichten, vorlaufFortschreiben, zusammenlegen, type HistorienTag, type KompaktSignal, type VorlaufStatistik } from '../../core/datenkrake.ts';
 import { pushWarnung, type PushNachricht } from '../../core/push.ts';
 import type { Signal } from '../../core/signale.ts';
 import { leseJson, schreibeJson } from './dateien.ts';
@@ -22,11 +22,12 @@ export function historieLaden(bisDatum: string, tage: number): HistorienTag[] {
     const d = tagMinus(bisDatum, n);
     const tag = leseJson<{ signale?: KompaktSignal[] }>(`signale/tag/${d}.json`, {});
     if (tag.signale?.length) {
-      out.push({ datum: d, signale: tag.signale.map((x) => ({ s: x.s, typ: x.typ, q: x.q })) });
+      // den Markt mitnehmen: nur damit lassen sich alte Coin-Schlüssel (T:<Kürzel>) von Aktien unterscheiden
+      out.push({ datum: d, signale: tag.signale.map((x) => ({ s: x.s, typ: x.typ, q: x.q, ...(x.m ? { m: x.m } : {}) })) });
       continue;
     }
-    const k = leseJson<{ kandidaten?: { schluessel: string; typen: string[]; quellen: string[] }[] }>(`signale/${d}.json`, {});
-    if (k.kandidaten?.length) out.push({ datum: d, signale: k.kandidaten.flatMap((x) => x.typen.map((typ) => ({ s: x.schluessel, typ, q: x.quellen }))) });
+    const k = leseJson<{ kandidaten?: { schluessel: string; typen: string[]; quellen: string[]; markt?: string }[] }>(`signale/${d}.json`, {});
+    if (k.kandidaten?.length) out.push({ datum: d, signale: k.kandidaten.flatMap((x) => x.typen.map((typ) => ({ s: x.schluessel, typ, q: x.quellen, ...(x.markt ? { m: x.markt } : {}) }))) });
   }
   return out;
 }
@@ -49,8 +50,8 @@ export function hotStuffAuswerten(datum: string, heute: KompaktSignal[], jetzt: 
   let stat = leseJson<VorlaufStatistik>('lernen/vorlauf.json', leereVorlaufStatistik());
   const lang = historieLaden(datum, 30);
   const raketenAm = new Map<string, Set<string>>();
-  for (const h of lang) raketenAm.set(h.datum, new Set(h.signale.filter((x) => RAKETEN.has(x.typ)).map((x) => x.s)));
-  raketenAm.set(datum, new Set(raketen.map((x) => x.s)));
+  for (const h of lang) raketenAm.set(h.datum, new Set(h.signale.filter((x) => RAKETEN.has(x.typ)).map(signalSchluessel)));
+  raketenAm.set(datum, new Set(raketen.map(signalSchluessel)));
   for (const h of lang) {
     const alter = Math.round((Date.parse(datum) - Date.parse(h.datum)) / 86400000);
     if (alter < 7 || stat.tage.includes(h.datum)) continue;

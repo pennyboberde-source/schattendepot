@@ -2,7 +2,7 @@
 // Vorlauf-Trefferquote je Signaltyp, Ähnliche-Fälle-Check, Pump-&-Dump-Verdacht und Chancen-Korrektur.
 // Alles reine Funktionen – die Jobs liefern nur die Daten.
 import { runde } from './geld.ts';
-import { wertpapierSchluessel, type Signal } from './signale.ts';
+import { schluesselNormal, wertpapierSchluessel, type Signal } from './signale.ts';
 import type { TrackingEintrag } from './statistik.ts';
 import { episodenVertreter } from './episoden.ts';
 
@@ -55,7 +55,8 @@ export const RAKETEN = new Set(['kursrakete', 'tagesgewinner', 'tagesverlierer']
 
 export interface HistorienTag {
   datum: string;
-  signale: { s: string; typ: string; q: string[] }[];
+  /** m = Markt des Signals: nötig, damit alte Schlüssel (T:<Kürzel> für Coins) richtig gelesen werden */
+  signale: { s: string; typ: string; q: string[]; m?: string }[];
 }
 
 export interface HotStuffEintrag {
@@ -68,20 +69,24 @@ export interface HotStuffEintrag {
   vorzeichen: { typ: string; tageVorher: number; q: string[] }[];
 }
 
+/** Schlüssel eines verdichteten Signals – alte Tagesdateien (vor dem 14.11.2026) werden über die Abbildung gelesen */
+export const signalSchluessel = (x: Pick<KompaktSignal, 's' | 'm'>) => schluesselNormal(x.s, x.m);
+
 const tageZwischen = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 86400000);
 
 /** Raketen eines Tages und welche Signale ihnen in den `fenster` Kalendertagen davor vorausgingen. */
 export function hotStuff(heute: KompaktSignal[], historie: HistorienTag[], datum: string, fenster = 10): { mover: HotStuffEintrag[]; abdeckung: number | null } {
   const mover = new Map<string, HotStuffEintrag>();
   for (const x of heute) {
-    if (!RAKETEN.has(x.typ) || mover.has(x.s)) continue;
-    mover.set(x.s, { s: x.s, n: x.n, ...(x.t ? { t: x.t } : {}), typ: x.typ, r: x.r, vorzeichen: [] });
+    const s = signalSchluessel(x);
+    if (!RAKETEN.has(x.typ) || mover.has(s)) continue;
+    mover.set(s, { s, n: x.n, ...(x.t ? { t: x.t } : {}), typ: x.typ, r: x.r, vorzeichen: [] });
   }
   for (const tag of historie) {
     const d = tageZwischen(tag.datum, datum);
     if (d <= 0 || d > fenster) continue;
     for (const x of tag.signale) {
-      const e = mover.get(x.s);
+      const e = mover.get(signalSchluessel(x));
       if (!e || RAKETEN.has(x.typ) || e.vorzeichen.some((v) => v.typ === x.typ && v.tageVorher === d)) continue;
       e.vorzeichen.push({ typ: x.typ, tageVorher: d, q: x.q });
     }
@@ -119,14 +124,15 @@ export function vorlaufFortschreiben(stat: VorlaufStatistik, signalTag: Historie
   const gesehen = new Set<string>();
   for (const x of signalTag.signale) {
     if (RAKETEN.has(x.typ)) continue;
-    const treffer = raketenDanach.has(x.s);
-    if (!gesehen.has(`${x.s}|${x.typ}`)) {
-      gesehen.add(`${x.s}|${x.typ}`);
+    const s = signalSchluessel(x);
+    const treffer = raketenDanach.has(s);
+    if (!gesehen.has(`${s}|${x.typ}`)) {
+      gesehen.add(`${s}|${x.typ}`);
       add(neu.jeTyp, x.typ, treffer);
-      for (const q of new Set(x.q)) if (!gesehen.has(`${x.s}|q:${q}`)) (gesehen.add(`${x.s}|q:${q}`), add(neu.jeQuelle, q, treffer));
+      for (const q of new Set(x.q)) if (!gesehen.has(`${s}|q:${q}`)) (gesehen.add(`${s}|q:${q}`), add(neu.jeQuelle, q, treffer));
     }
-    if (!werte.has(x.s)) {
-      werte.add(x.s);
+    if (!werte.has(s)) {
+      werte.add(s);
       neu.gesamt = { signale: neu.gesamt.signale + 1, vorRakete: neu.gesamt.vorRakete + (treffer ? 1 : 0) };
     }
   }

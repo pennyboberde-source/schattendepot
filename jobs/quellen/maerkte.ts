@@ -97,7 +97,7 @@ export const krakenKrypto: Quelle = {
       const kurs = Number(t.c[0]);
       const auf = (kurs / Number(t.o) - 1) * 100;
       makro.push(`${name}: ${Math.round(kurs).toLocaleString('de-DE')} € (${auf >= 0 ? '+' : ''}${auf.toFixed(1).replace('.', ',')} % seit 00:00 UTC)`);
-      if (Math.abs(auf) >= 5) signale.push(signal('ueberreaktion', { name, ticker }, Math.min(1, Math.abs(auf) / 15), 0, ctx.jetzt.toISOString(), 'Kraken', `${name} ${auf.toFixed(1)} % seit 00:00 UTC (${berlin(ctx.jetzt).datum})`, 'https://www.kraken.com/prices'));
+      if (Math.abs(auf) >= 5) signale.push(signal('ueberreaktion', { name, ticker, markt: 'krypto' }, Math.min(1, Math.abs(auf) / 15), 0, ctx.jetzt.toISOString(), 'Kraken', `${name} ${auf.toFixed(1)} % seit 00:00 UTC (${berlin(ctx.jetzt).datum})`, 'https://www.kraken.com/prices'));
     }
     return { signale, makro, abfragen: 1 };
   },

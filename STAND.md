@@ -10,7 +10,7 @@ _Zuletzt aktualisiert: 14.11.2026 abends (**V1 Teil a live**: Sammelkurse und pr
 **Meilensteine**
 - ✅ **V0 Aufräumen** (12.11.2026, Details im Abschnitt „V0 erledigt“ direkt darunter).
 - ✅ **VS Selbstverbesserung** (14.11.2026, Details im Abschnitt „VS erledigt“ weiter unten): Verbesserungsbuch, wöchentlicher Verbesserungslauf, Leitplanken `config/verbesserung.json`, automatische Übernahme mit Rückgängig-Link.
-- ⏳ **V1 Fundament**: **Teil a live seit 14.11.** (Sammelkurse gettex/US/Krypto, privates Archiv, täglicher Workflow `archiv.yml`). **Teil b offen:** Schattenbuch auf Sammelkurse (Startkurs = erster handelbarer Kurs, Hoch/Tief seit Start), Stammdaten und neuer Wertpapier-Schlüssel (Test ZETA), Handelbarkeits-Karte, Vergleichsgruppe, Lösung für Kurse im öffentlichen Datenzweig. Abnahme erst, wenn drei Tage in Folge Archivdateien für alle drei Märkte vorliegen (frühestens Mi 18.11. abends).
+- ⏳ **V1 Fundament**: **Teil a live seit 14.11.** (Sammelkurse gettex/US/Krypto, privates Archiv, täglicher Workflow `archiv.yml`). **Aus Teil b schon live (14.11.):** Wertpapier-Schlüssel mit Markt (`T:` Aktie, `K:` Coin, `R:` Rohstoff), Test ZETA. **Teil b offen:** Schattenbuch auf Sammelkurse (Startkurs = erster handelbarer Kurs, Hoch/Tief seit Start), Stammdaten-Tabelle (ISIN, Kürzel, Markt, Art, Name; Splits als Ereignis), Handelbarkeits-Karte, Vergleichsgruppe, Lösung für Kurse im öffentlichen Datenzweig. Abnahme erst, wenn drei Tage in Folge Archivdateien für alle drei Märkte vorliegen (frühestens Mi 18.11. abends).
 - ⬜ **V2 Zensus** · ⬜ **V3 Rückblick und Musterprüfung** · ⬜ **V4 Bereich Volltreffer (virtuell)** · ⬜ **V5 Claudes Teil** · ⬜ **V6 Beförderung** (braucht F4 je Muster).
 
 **Freigaben (angefordert 12.11.2026 abends, 🔴❗ + Push)**
@@ -45,6 +45,16 @@ _Zuletzt aktualisiert: 14.11.2026 abends (**V1 Teil a live**: Sammelkurse und pr
 **Gemessen**
 - Archiv-Probe auf dem Bau-Branch mit echtem Schlüssel: US 09.–13.11. je 16.482–16.904 Werte (je ~370 KB), Krypto 1.366 Paare (49 KB), gettex Fr 13.11. 4.170 ISINs/19.031 Geschäfte aus nur noch 20 von 62 Fenstern (97 KB, als unvollständig markiert, zählt nicht für die Folge).
 - Tests: 283 Unit (neu `core/sammelkurse.test.ts`), E2E unverändert 36.
+
+**Erster echter Archivlauf (14.11. 18:17 Uhr):** im privaten Repo liegen US 09.–13.11. (je ~16.500 Werte), Krypto 14.11. (1.366 Paare) und gettex Fr 13.11. (3.935 ISINs aus 19 von 62 Fenstern, unvollständig). `archiv/stand.json`: US 5 Tage in Folge, Krypto 1, gettex 0 (der erste vollständige Tag wird Mo 16.11.).
+
+### ✅ Aus V1 Teil b: Wertpapier-Schlüssel mit Markt (14.11.2026 abends, Befund 6)
+- `core/signale.ts › wertpapierSchluessel`: Coins bekommen `K:<Kürzel>`, Rohstoffe `R:<Kürzel>`, Aktien/ETFs bleiben `T:<Kürzel>` (ihre Historie läuft nahtlos weiter). Große Coins (BTC, ETH, SOL, XRP, ADA, DOT) gelten auch ohne Marktangabe als Coin. Signal-IDs von Coins tragen `K.` im Mittelteil (`kursrakete:K.ZETA:2026-11-16`), damit sie nie mit der Aktie gleichen Kürzels zusammenfallen.
+- **Alte Schlüssel bleiben lesbar** über `schluesselNormal(schluessel, markt)` – gespeicherte Daten werden nicht umgeschrieben. Verglichen wird damit in den Episoden (`core/episoden.ts`), im Hot Stuff und im Vorlauf (`core/datenkrake.ts › signalSchluessel`). `jobs/lib/datenkrake.ts › historieLaden` reicht dafür jetzt die Marktangabe der alten Tagesdateien durch (vorher ging sie dort verloren).
+- Quellen: Coins aus dem Universum (`krypto: true`) und die Kraken-Überreaktion setzen jetzt `markt: krypto`.
+- Beleg aus den echten Daten: Der Coin SOPH hatte am 14.11. morgens 11 „Vorzeichen“, darunter drei Insider-Cluster-Käufe der **Aktie** SOPH. Probelauf des Hauptlaufs auf einer Datenkopie: 45 Aktien- und 5 Coin-Kandidaten, kein Aktien-Schlüssel mehr mit Markt Krypto, alle Signal-IDs eindeutig, Coins behalten ihre echten Vorzeichen (BARD 2, BMT 1).
+- Tests: `core/schluessel.test.ts` (ZETA, INTC, alte Schlüssel in Episoden, Hot Stuff, Vorlauf). Gesamt 289 Unit.
+- Am Umstellungstag stehen Coin-Signale einmalig doppelt in der Tagesdatei (alte und neue ID) – wirkt sich nur auf die Tageszahl der Signale aus.
 
 **Offene Frage an den Nutzer: Kurse im öffentlichen Datenzweig (Auftrag aus dem Konzept: „prüfe und schlage eine Lösung vor“)**
 Befund: Der öffentliche Datenzweig enthält heute schon einzelne Kurse aus Quellen, die nur private Nutzung gestatten – `kurse.json` und `schlusskurse.json` (offene Positionen), `verlauf/<order>.json` (Kursreihe je Order für die Kurve), Kauf-/Verkaufskurse in `ereignisse.jsonl`, `positionen.json`, `abgeschlossen.json`, `daytrading/ereignisse.jsonl`, Startkurse in `kandidaten-tracking.json`. Das sind Einzelwerte in kleiner Zahl, aber streng genommen eine Weitergabe.
