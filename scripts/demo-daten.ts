@@ -84,7 +84,7 @@ const offen: Order = {
   verkaufstermin: '2026-10-29T16:00:00Z',
   kauf: { zeit: '2026-10-21T06:00:00Z', stueck: 4, kurs: 238.1, kurswert: kOffen.kurswert, entgelt: kOffen.entgelt, betrag: kOffen.betrag, kursquelle: 'demo', synthetisch: true },
   anpassungen: [],
-  letzterKurs: { wert: 241.3, zeit: '2026-10-21T12:45:00Z', quelle: 'demo', verzoegertMin: 15, synthetisch: false },
+  stand: { prozent: 1.34, tagProzent: 0.8, zeit: '2026-10-21T12:45:00Z', quelle: 'demo', verzoegertMin: 15 },
 };
 const vorgemerkt: Order = {
   id: '2026-10-21-demo-d',
@@ -135,13 +135,16 @@ const tracking = [
   { datum: '2026-10-14', schluessel: 'T:ACME', name: 'Acme', ticker: 'ACME', score: 3, typen: ['insider_cluster_kauf'], quellen: ['OpenInsider'], start: 10, r1T: 1.2, r1W: 3.4 },
   { datum: '2026-10-14', schluessel: 'T:BETA', name: 'Beta', ticker: 'BETA', score: 1, typen: ['nachricht'], quellen: ['CNBC Top News'], start: 20, r1T: -0.5, r1W: -1.1 },
 ];
-schreibe('kandidaten-tracking.json', tracking);
-schreibe('verlauf/2026-10-21-demo-c.json', [
-  ['2026-10-21T06:00:00Z', 238.1],
-  ['2026-10-21T08:00:00Z', 239.4],
-  ['2026-10-21T10:00:00Z', 237.9],
-  ['2026-10-21T12:45:00Z', 241.3],
-]);
+// Verlauf seit Kauf in Prozent (keine Kursreihe in Euro im öffentlichen Datenzweig)
+schreibe('verlauf/2026-10-21-demo-c.json', {
+  einheit: 'prozent',
+  punkte: [
+    ['2026-10-21T06:00:00Z', 0],
+    ['2026-10-21T08:00:00Z', 0.5],
+    ['2026-10-21T10:00:00Z', -0.1],
+    ['2026-10-21T12:45:00Z', 1.3],
+  ],
+});
 schreibe('statistik.json', {
   ...statistikBerechnen([...abgeschlossen, offen], tracking, stand),
   // S2 (DEMO): Autopilot-Beweise und Ziel/Stop-Vorschläge aus dem Schattenbuch

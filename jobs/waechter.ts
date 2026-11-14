@@ -15,6 +15,8 @@ import { haengeEreignisseAn, ladeConfig, leseEreignisse, leseJson, schreibeJson 
 import { pushen } from './lib/pushen.ts';
 import { ereignisBehandeln } from './lib/routine.ts';
 import { uebernehmeAlle } from './lib/uebernahme.ts';
+import { lesePrivat, schreibePrivat } from './lib/privat.ts';
+import { verlaufInProzent, verlaufPunkt, type VerlaufAlt, type VerlaufProzent } from '../core/verlauf.ts';
 
 interface System {
   stand?: string;
@@ -62,14 +64,14 @@ if (aktiv.length) {
     protokoll.gettex = { ok: 0, fehler: 1, letzterFehler: schwaerzen(`${jetzt.toISOString()}: ${(e as Error).message}`) };
   }
   // Vortageskurs je ISIN merken (für die Tagesveränderung / Ereignislauf)
-  const schluss = leseJson<Record<string, { datum: string; kurs: number; vortag?: number }>>('schlusskurse.json', {});
+  const schluss = lesePrivat<Record<string, { datum: string; kurs: number; vortag?: number }>>('schlusskurse.json', {}).daten;
   for (const [isin, k] of gettex) {
     const tag = berlin(new Date(k.zeit)).datum;
     const alt = schluss[isin];
     schluss[isin] = alt?.datum === tag ? { ...alt, kurs: k.wert } : { datum: tag, kurs: k.wert, vortag: alt?.kurs };
     if (schluss[isin].vortag) k.vortag = schluss[isin].vortag;
   }
-  schreibeJson('schlusskurse.json', schluss);
+  schreibePrivat('schlusskurse.json', schluss);
   for (const o of aktiv) {
     const k = gettex.get(o.plan.wertpapier.isin);
     // nachgebildeter Turbo: der gettex-Kurs der ISIN ist der Basiswert (EUR), nicht das Produkt
@@ -154,19 +156,23 @@ const r = waechterLauf({
 });
 
 const neu = haengeEreignisseAn(r.ereignisse);
-const kurse = leseJson<Record<string, Kurs>>('kurse.json', {});
+// Tagesstände der Positionen: privater Zustand (Lösung B) – öffentlich steht nur die Veränderung in Prozent
+const kurse = lesePrivat<Record<string, Kurs>>('kurse.json', {}).daten;
 // nachts nur Krypto bewertet → Kurse der übrigen offenen Positionen behalten
 const offeneIds = new Set(orders.filter((o) => o.status === 'vorgemerkt' || o.status === 'offen').map((o) => o.id));
 for (const id of Object.keys(kurse)) if (!offeneIds.has(id)) delete kurse[id];
 Object.assign(kurse, r.kurse);
-schreibeJson('kurse.json', kurse);
-// Kursverlauf je Position (für das Order-Detail): ein Punkt pro Lauf, höchstens 2.500
-for (const [id, k] of Object.entries(r.kurse)) {
-  const verlauf = leseJson<[string, number][]>(`verlauf/${id}.json`, []);
-  if (verlauf.at(-1)?.[0] !== k.zeit) schreibeJson(`verlauf/${id}.json`, [...verlauf, [k.zeit, k.wert] as [string, number]].slice(-2500));
-}
+if (!schreibePrivat('kurse.json', kurse)) console.log('Privater Zustand nicht erreichbar – Tagesstände wurden nicht gesichert.');
 
-const a = abgeleitetSchreiben(jetzt);
+const a = abgeleitetSchreiben(jetzt, { kurse });
+// Verlauf je gekaufter Position (für das Order-Detail): Veränderung seit Kauf in Prozent, ein Punkt pro Lauf, höchstens 2.500
+for (const [id, k] of Object.entries(r.kurse)) {
+  const kaufkurs = a.orders.find((o) => o.id === id)?.kauf?.kurs;
+  if (!kaufkurs) continue;
+  const alt = verlaufInProzent(leseJson<VerlaufProzent | VerlaufAlt | null>(`verlauf/${id}.json`, null), kaufkurs);
+  const neuerVerlauf = verlaufPunkt(alt, k.zeit, k.wert, kaufkurs);
+  if (neuerVerlauf !== alt) schreibeJson(`verlauf/${id}.json`, neuerVerlauf);
+}
 
 if (neu.some((e) => e.typ === 'warnung')) system.ausfallWarnung = b.datum;
 const ereignisPushes = [];

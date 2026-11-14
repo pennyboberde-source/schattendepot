@@ -49,6 +49,8 @@ import { appRaenge, cftcCot, handelsstopps, kryptoStimmung, polymarket } from '.
 import { politikRadar } from './quellen/politik.ts';
 import { ZUSATZ_QUELLEN } from './quellen/zusatz.ts';
 import { verbesserungTaeglich } from './lib/verbesserung.ts';
+import { leseTracking, privatDa } from './lib/privat.ts';
+import { pushWarnung } from '../core/push.ts';
 
 // Bestehende Quellen bleiben immer drin; neue werden nur hinten angehängt (Randquellen seit 28.10.2026).
 const QUELLEN: Quelle[] = [...rssQuellen, openInsider, apeWisdom, fred, krakenKrypto, finnhub, fmp, alphaVantage, gdelt, wirtschaftskalender, sec8k, finra, gettexScanner, aufmerksamkeit, youtube, upbit, krakenFutures, defiLlama, finraShortInterest, shortSeller, handelsstopps, appRaenge, kryptoStimmung, polymarket, cftcCot, coinalyze, secVerwaesserung, politikRadar, ...ZUSATZ_QUELLEN];
@@ -171,6 +173,11 @@ const pushes: PushNachricht[] = [];
   const qw = quellenWaechter([...status.values()], jetzt, system as { quellenWarnung?: string }, b.datum);
   if (qw) pushes.push(qw);
 }
+// Privater Zustand nicht erreichbar (z. B. Zugriffstoken abgelaufen) → einmal am Tag warnen
+if (process.env.GITHUB_ACTIONS && !privatDa() && system.privatWarnung !== b.datum) {
+  system.privatWarnung = b.datum;
+  pushes.push(pushWarnung('Privater Zustand nicht erreichbar: Schattenbuch und Tagesstände werden nicht fortgeschrieben. Wahrscheinlich ist das Zugriffstoken ARCHIV_TOKEN abgelaufen – bitte ein neues anlegen.', jetzt.toISOString(), '#/einstellungen'));
+}
 // Politik-Radar u. a.: Quellen dürfen bei großen Ereignissen selbst pushen (je Thema max. 1/Tag, siehe config/politik-themen.json)
 pushes.push(...ergebnisse.flatMap(([, r]) => r?.pushes ?? []));
 
@@ -200,7 +207,7 @@ if (laufart === 'haupt' || laufart === 'samstag') {
     positionen: offen.map((o) => ({ id: o.id, name: o.name, meldungen: meldungen.filter((m) => m.wertpapier === o.name).slice(0, 3) })),
     kandidaten: top,
     quellen: ergebnisse.map(([q, r]) => ({ id: q.id, name: q.name, ok: !!r, signale: r?.signale.length ?? 0 })),
-    hinweise: kandidatenHinweise(top, leseJson<TrackingEintrag[]>('kandidaten-tracking.json', [])),
+    hinweise: kandidatenHinweise(top, leseTracking()),
   };
   const typNamen = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name]));
   schreibeText(`lagebild/${b.datum}.md`, lagebildMarkdown(daten, typNamen) + '\n');

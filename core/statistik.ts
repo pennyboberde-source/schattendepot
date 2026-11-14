@@ -234,7 +234,11 @@ function trackingGruppiert(l: TrackingEintrag[], f: (t: TrackingEintrag) => stri
 
 const istKryptoMarkt = (t: TrackingEintrag) => t.markt === 'krypto' || ['BTC', 'ETH', 'SOL', 'XRP', 'ADA', 'DOT'].includes(t.ticker ?? '');
 
-export function statistikBerechnen(alle: Order[], trackingAlle: TrackingEintrag[], stand: string, phasen: PhasenVerlauf = {}): Statistik {
+/**
+ * `schattenbuchAus`: Ist das Schattenbuch (privater Zustand) in einem Lauf nicht erreichbar, bleiben seine Kennzahlen
+ * aus der vorigen Statistik stehen, statt mit leeren Daten überschrieben zu werden.
+ */
+export function statistikBerechnen(alle: Order[], trackingAlle: TrackingEintrag[], stand: string, phasen: PhasenVerlauf = {}, opt: { schattenbuchAus?: Pick<Statistik, 'kandidaten' | 'prognose'> | null } = {}): Statistik {
   // Claudes Tagesprognosen getrennt messen – sie sind keine Kandidaten des Schattenbuchs
   const tracking = trackingAlle.filter((t) => t.art !== 'prognose');
   const prognosen = trackingAlle.filter((t) => t.art === 'prognose');
@@ -291,6 +295,11 @@ export function statistikBerechnen(alle: Order[], trackingAlle: TrackingEintrag[
       : {}),
     zusammenfassung: '',
   };
+  if (opt.schattenbuchAus?.kandidaten) {
+    s.kandidaten = opt.schattenbuchAus.kandidaten;
+    if (opt.schattenbuchAus.prognose) s.prognose = opt.schattenbuchAus.prognose;
+    else delete s.prognose;
+  }
   s.zusammenfassung = zusammenfassung(s);
   return s;
 }

@@ -2,6 +2,21 @@
 
 _Zuletzt aktualisiert: 14.11.2026 abends (**V1 Teil a live**: Sammelkurse und privates Kursarchiv; Freigaben F1, F2, F5 erledigt; als Nächstes V1 Teil b; vorher am selben Tag: VS Selbstverbesserung fertig; V0 Aufräumen 12.11.)_
 
+## 🚧 IN ARBEIT, NICHT LIVE: Branch `bau/v1b-privat` (Stand 14.11.2026 spätabends, wegen Nutzungslimit unterbrochen)
+**Entscheidung des Nutzers (14.11.): Lösung B** – Kursreihen, Tagesstände und Schattenbuch-Einzelwerte raus aus dem öffentlichen Datenzweig; öffentlich bleiben Ausführungskurse der eigenen Orders und verdichtete Statistik; die Kurve je Order zeigt Prozent seit Kauf.
+**Auf dem Branch schon gebaut (kompiliert, `tsc` sauber, aber Tests und Probeläufe stehen noch aus):**
+- Privater Zweig `zustand` im Repo `schattendepot-archiv` ist angelegt (nur `LIES-MICH.md`). `jobs/lib/privat.ts`: `lesePrivat`/`schreibePrivat`/`leseTracking`/`schreibeTracking` (Checkout unter `_privat`; fehlt er, wird nur gelesen – aus der alten öffentlichen Datei, solange es sie gibt – und nie öffentlich geschrieben; die öffentliche Kopie wird erst entfernt, wenn die private aus einem früheren Lauf vorliegt).
+- Schattenbuch: alle Lese-/Schreibstellen umgestellt (`tracking.ts`, `abgeleitet.ts`, `autopilot.ts`, `uebernahme.ts`, `verbesserung.ts`, `wochenzeugnis.ts`, `sammler.ts`, `daytrading.ts`). Nicht erreichbar → Lauf setzt aus, Statistik behält die alten Schattenbuch-Kennzahlen (`statistikBerechnen … schattenbuchAus`).
+- Tagesstände: `kurse.json`, `schlusskurse.json`, `daytrading/zustand.json` privat; `positionen.json` trägt `stand` (Prozent seit Kauf, heute) statt `letzterKurs` (`core/ableiten.ts › ohneTagesstand`); App-Positionskarte und `routine/kontext.mjs` angepasst.
+- Verlauf: `core/verlauf.ts` (Prozent seit Kauf, eine Nachkommastelle), Wächter schreibt Prozent, `verlaufUmstellen` stellt alte Dateien um, `src/views/Verlauf.tsx` zeigt Prozent.
+- Workflows `sammler.yml`, `waechter.yml`, `uebernahme.yml`, `probelauf.yml`: privater Checkout (`continue-on-error`) und `scripts/privat-sichern.sh`; `.gitignore` um `_privat/`, `_archiv/` ergänzt; Sammler warnt einmal am Tag, wenn der private Zustand fehlt.
+**Noch zu tun, bevor es nach `main` darf:**
+1. `jobs/probelauf.ts`: privaten Zustand als Kopie einbinden (`PRIVAT_DIR` auf Kopie setzen), Schattenbuch-Teil über `leseTracking`/`schreibeTracking` statt über die öffentliche Datei.
+2. Tests: `core/verlauf.ts`, `positionsStand`/`ohneTagesstand`, `schattenbuchAus`, `jobs/lib/privat.ts` (mit Temp-Ordnern); bestehende Tests und `npm run demo` + E2E anpassen (Demo-Position hat jetzt `stand`, Verlauf im neuen Format; neuer Kartentitel „Verlauf seit Kauf (in Prozent)“).
+3. Lokal mit einem Checkout des Zweigs `zustand` unter `_privat` prüfen; dann Probeläufe in Actions auf dem Bau-Branch (`tests`, `jobs`, `schattenbuch`) – dabei prüfen, dass der Umzug klappt (erster Lauf schreibt privat, zweiter entfernt die öffentliche Kopie) und dass ein Lauf OHNE privaten Checkout nichts kaputt macht.
+4. Erst dann per Fast-Forward nach `main`, ersten echten Sammler- und Wächterlauf prüfen (Mo 16.11. früh), STAND/CLAUDE.md nachziehen.
+5. Offen bleibt danach aus V1 Teil b: Schattenbuch auf Sammelkurse, Stammdaten, Handelbarkeits-Karte, Vergleichsgruppe. Hinweis für den Bericht: Prozent seit Kauf plus öffentlicher Kaufkurs lässt den Kurs einer eigenen Position weiter grob zurückrechnen – B verringert das, nur C schlösse es aus.
+
 ## 🎯 GÜLTIGER PLAN „Volltreffer“ (Nutzer 11.11.2026, Ergänzung Selbstverbesserung 12.11.) – geht allem darunter vor
 **Der vollständige Bauauftrag steht in `KONZEPT-VOLLTREFFER.md` (Abschnitte 0–8).** Neue Sitzung: „Lies STAND.md und mach weiter“ → hier beim nächsten offenen Meilenstein weitermachen, Details im Konzept nachlesen (nur den Abschnitt des Meilensteins).
 **Ziel:** Signale erkennen, die einem großen, handelbaren Kurssprung vorausgehen. Volltreffer = mindestens 400 € netto aus einer 1.000-€-Order. Eigener dritter Bereich „Volltreffer“ neben Depot und Daytrading, zuerst rein virtuell. Der Plan „Datenkrake“ darunter gilt weiter, soweit „Volltreffer“ nichts anderes sagt.

@@ -33,6 +33,14 @@ jobs:
         with:
           ref: daten
           path: _daten
+      - name: Privater Zustand (Schattenbuch, Tagesstände) – scheitert der Zugang, läuft der Job ohne ihn weiter
+        uses: actions/checkout@v5
+        continue-on-error: true
+        with:
+          repository: pennyboberde-source/schattendepot-archiv
+          ref: zustand
+          token: ${{ secrets.ARCHIV_TOKEN }}
+          path: _privat
       - uses: actions/setup-node@v5
         with:
           node-version: 24
@@ -59,6 +67,9 @@ jobs:
       - name: Daten sichern
         id: sichern
         run: bash scripts/daten-sichern.sh "Datensammler $(date -u +%Y-%m-%dT%H:%MZ)"
+      - name: Privaten Zustand sichern
+        if: always()
+        run: bash scripts/privat-sichern.sh "Datensammler $(date -u +%Y-%m-%dT%H:%MZ)"
       - name: Deploy anstoßen (neues Lagebild)
         if: steps.sichern.outputs.geaendert == 'true'
         env:

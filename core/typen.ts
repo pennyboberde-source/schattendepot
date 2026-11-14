@@ -91,6 +91,18 @@ export interface Kurs {
   hinweis?: string;
 }
 
+/** Stand einer offenen Position für den öffentlichen Datenzweig: nur Veränderungen, kein Kurs. */
+export interface PositionsStand {
+  /** Veränderung seit dem Kauf in % (vor Gebühren) */
+  prozent: number;
+  /** Veränderung gegenüber dem Vortagesschluss in % */
+  tagProzent?: number;
+  zeit: string;
+  quelle: string;
+  verzoegertMin?: number;
+  synthetisch?: boolean;
+}
+
 /** Was Claude im Morgen-/Ereignislauf vormerkt. Ausgeführt wird erst beim nächsten Kurscheck. */
 export interface OrderPlan {
   wertpapier: Wertpapier;
@@ -161,7 +173,10 @@ export interface Order {
   /** Teilverkäufe vor dem Schlussverkauf (z. B. Hälfte am 1. Ziel); `verkauf` enthält dann nur den Rest, `ergebnis` alles zusammen */
   teilverkaeufe?: (Ausfuehrung & { grund: Verkaufsgrund })[];
   anpassungen: Anpassung[];
+  /** Tagesstand in Euro – nur im Speicher der Jobs, wird nie in den öffentlichen Datenzweig geschrieben (Lösung B, 14.11.2026) */
   letzterKurs?: Kurs;
+  /** öffentlicher Stand der offenen Position: Veränderung in Prozent statt Kurs */
+  stand?: PositionsStand;
   ergebnis?: { kursProzent: number; netto: number; nettoProzent: number; gebuehren: number; steuer: number; nachSteuern: number };
   /** Kurs des Vergleichs-ETFs (EUR) zum Kaufzeitpunkt */
   etfKauf?: Kurs;

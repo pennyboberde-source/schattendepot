@@ -14,10 +14,10 @@ import { euro } from '../core/geld.ts';
 import type { GebuehrenConfig } from '../core/gebuehren.ts';
 import { berlin, istHandelstag, uhrzeitMinuten } from '../core/kalender.ts';
 import type { PushNachricht } from '../core/push.ts';
-import type { TrackingEintrag } from '../core/statistik.ts';
 import { geschaefteAusCsv, gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { symbolFuer } from './kurse/parser.ts';
 import { DATEN_DIR, ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
+import { lesePrivat, leseTracking, privatDa, schreibePrivat } from './lib/privat.ts';
 import { isinInfos, isinInfosLesen } from './lib/isininfo.ts';
 import { holeJson } from './lib/netz.ts';
 import { pushen } from './lib/pushen.ts';
@@ -172,7 +172,19 @@ const zaehler = {
 };
 
 // --- Tageswechsel: liegengebliebene Trades zum letzten bekannten Kurs schließen (Daytrading hält nie über Nacht) ---
-let z = leseJson<DtZustand | null>('daytrading/zustand.json', null);
+// Der Arbeitsstand (Kurse und Spannen der beobachteten Werte) liegt im privaten Zustand. Ist er nicht erreichbar und
+// gibt es keine alte öffentliche Kopie mehr, setzt das Daytrading aus – ohne Gedächtnis würde es Fenster doppelt handeln.
+const ZUSTAND = 'daytrading/zustand.json';
+const zustandGelesen = lesePrivat<DtZustand | null>(ZUSTAND, null);
+if (!privatDa() && zustandGelesen.quelle !== 'oeffentlich' && existsSync(join(DATEN_DIR, PROTOKOLL))) {
+  console.log('Daytrading setzt aus – privater Zustand nicht erreichbar.');
+  process.exit(0);
+}
+// privat sichern; nur solange die alte öffentliche Kopie noch existiert (vor dem Umzug, Probelauf auf alter Kopie), dorthin
+const zustandSichern = (zs: DtZustand) => {
+  if (!schreibePrivat(ZUSTAND, zs) && zustandGelesen.quelle === 'oeffentlich') schreibeJson(ZUSTAND, zs);
+};
+let z = zustandGelesen.daten;
 for (const t of offen.filter((x) => x.datum < datum)) {
   const k = z?.letzteKurse[t.isin ?? t.symbol ?? ''];
   const kurs = k?.kurs ?? t.einstieg.basisKurs;
@@ -232,7 +244,7 @@ if (wl && !zustand.watchlist) {
 
 // --- Autopilot: im Schattenbuch bewiesene schnelle Signale (Reaktion nach ~1 Stunde) ---
 if (dt.autopilot.aktiv && handelstag) {
-  const beweise = signalBeweise(leseJson<TrackingEintrag[]>('kandidaten-tracking.json', []), { horizont: dt.autopilot.horizont, mindestFaelle: dt.autopilot.mindestFaelle, mindestChance: cfg.einstellungen.mindestChance ?? 40 }, { aktie: dt.spreads.aktie, krypto: dt.spreads.krypto + 0.2 });
+  const beweise = signalBeweise(leseTracking(), { horizont: dt.autopilot.horizont, mindestFaelle: dt.autopilot.mindestFaelle, mindestChance: cfg.einstellungen.mindestChance ?? 40 }, { aktie: dt.spreads.aktie, krypto: dt.spreads.krypto + 0.2 });
   schreibeJson('daytrading/autopilot.json', { stand: jetzt.toISOString(), horizont: dt.autopilot.horizont, beweise: beweise.slice(0, 15) });
   const bewiesen = beweise.filter((x) => x.bewiesen && x.gruppe === 'aktie');
   const heuteAuto = trades.filter((t) => t.datum === datum && t.herkunft === 'autopilot').length + zustand.beobachtungen.filter((x) => x.herkunft === 'autopilot' && x.zustand.status !== 'fertig').length;
@@ -404,7 +416,7 @@ schreibeJson('daytrading/uebersicht.json', {
   hinweise: hinweise.slice(-20),
 });
 // Zustand ohne erledigte Beobachtungen der Vergangenheit; Dateiliste bleibt für den Tag
-schreibeJson('daytrading/zustand.json', zustand);
+zustandSichern(zustand);
 
 // --- Pushes: Claude-Trades einzeln (je Lauf gebündelt), Code-Scan/Autopilot nur in der Abendbilanz ---
 let pushes: PushNachricht[] = [];
@@ -431,7 +443,7 @@ if ((handelstag || kryptoTaeglich) && b.minuten >= bilanzAb && zustand.abendbila
     pushes.push({ typ: 'bericht', titel: a.titel, text: a.text, ziel: '#/daytrading', tag: `dt-bilanz-${datum}`, erstellt: iso });
   }
   zustand.abendbilanz = datum;
-  schreibeJson('daytrading/zustand.json', zustand);
+  zustandSichern(zustand);
 }
 const gesendet = pushes.length ? await pushen(pushes, jetzt) : 0;
 

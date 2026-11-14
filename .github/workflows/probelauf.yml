@@ -23,6 +23,14 @@ jobs:
         with:
           ref: daten
           path: _daten
+      - name: Privater Zustand (Schattenbuch, Tagesstände) – nur zum Lesen, der Probelauf arbeitet auf einer Kopie
+        uses: actions/checkout@v5
+        continue-on-error: true
+        with:
+          repository: pennyboberde-source/schattendepot-archiv
+          ref: zustand
+          token: ${{ secrets.ARCHIV_TOKEN }}
+          path: _privat
       - uses: actions/setup-node@v5
         with:
           node-version: 24

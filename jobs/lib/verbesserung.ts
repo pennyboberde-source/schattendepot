@@ -4,12 +4,13 @@ import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { berlin } from '../../core/kalender.ts';
 import type { DtUebersicht } from '../../core/daytrading/auswertung.ts';
-import type { Statistik, TrackingEintrag } from '../../core/statistik.ts';
+import type { Statistik } from '../../core/statistik.ts';
 import { verbesserungsbuch } from '../../core/verbesserung/buch.ts';
 import { faelligeBewertungen, kennzahlenHeute, zeitreiheFortschreiben, type Zeitreihe } from '../../core/verbesserung/kennzahlen.ts';
 import type { Kandidat, Leitplanken, ProtokollEintrag } from '../../core/verbesserung/typen.ts';
 import { uebersichtBauen } from '../../core/verbesserung/uebersicht.ts';
 import { DATEN_DIR, leseJson, leseText, schreibeJson } from './dateien.ts';
+import { leseTracking } from './privat.ts';
 
 export const REPO = process.env.GITHUB_REPOSITORY || 'pennyboberde-source/schattendepot';
 export const PROTOKOLL = 'lernen/verbesserung/protokoll.jsonl';
@@ -68,7 +69,7 @@ export async function verbesserungTaeglich(jetzt: Date, opt: { ohneNetz?: boolea
     const stand = leseJson<{ stand?: string }>(KANDIDATEN, {}).stand;
     if (stand && berlin(new Date(stand)).datum === heute) return null;
   }
-  const tracking = leseJson<TrackingEintrag[]>('kandidaten-tracking.json', []);
+  const tracking = leseTracking();
   const statistik = leseJson<Partial<Statistik> | null>('statistik.json', null);
   const quellen = leseJson<{ quellen?: { id: string; name: string; zuletztOk?: string; signale?: number; letzterFehler?: string }[] }>('quellenstatus.json', {}).quellen ?? [];
   const zeugnis = leseJson<{ kw: number; note: number | null; faecher: { fach: string; note: number; gewicht: number; wert: string }[] } | null>('wochen/zeugnis-letztes.json', null);

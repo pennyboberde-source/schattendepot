@@ -10,7 +10,8 @@ import { berlin } from '../../core/kalender.ts';
 import type { PushNachricht } from '../../core/push.ts';
 import type { TrackingEintrag } from '../../core/statistik.ts';
 import { wochenzeugnis, type Wochenzeugnis } from '../../core/wochenzeugnis.ts';
-import { DATEN_DIR, ladeConfig, leseEreignisse, leseJson, schreibeJson } from './dateien.ts';
+import { DATEN_DIR, ladeConfig, leseEreignisse, schreibeJson } from './dateien.ts';
+import { leseTracking } from './privat.ts';
 
 const tag = (d: string, plus: number) => new Date(Date.parse(`${d}T12:00:00Z`) + plus * 86400000).toISOString().slice(0, 10);
 
@@ -33,7 +34,7 @@ export function wochenzeugnisErstellen(jetzt: Date): { zeugnis: Wochenzeugnis; p
   // nur sichtbare Daytrades zählen ins Zeugnis – virtuell mitgeführte (Turbo, Short, Krypto) nicht (Plan Volltreffer V0)
   const regel = (JSON.parse(readFileSync(join(process.cwd(), 'config', 'daytrading.json'), 'utf8')) as { virtuell?: VirtuellRegel }).virtuell;
   const dt = tradesAusEreignissen(dtEv).filter((t) => t.ergebnis && inWoche(t.datum) && !istVirtuell(t, regel));
-  const tracking = leseJson<TrackingEintrag[]>('kandidaten-tracking.json', []).filter((t) => inWoche(t.datum) && typeof t.r1T === 'number');
+  const tracking = leseTracking().filter((t) => inWoche(t.datum) && typeof t.r1T === 'number');
   const quote = (l: TrackingEintrag[]) => (l.length ? Math.round((l.filter((t) => t.r1T! > 0).length / l.length) * 1000) / 10 : 0);
   const prog = tracking.filter((t) => t.art === 'prognose');
   // ein Wert zählt je Episode einmal (gleicher Schlüssel binnen 10 Handelstagen)

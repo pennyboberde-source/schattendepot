@@ -58,6 +58,8 @@ export interface SchrittErgebnis {
   /** heutige Tageskandidaten gesamt / davon mit Startkurs */
   heuteKandidaten: number;
   heuteMitStart: number;
+  /** der private Zustand war nicht erreichbar: nichts wurde gesichert */
+  ausgesetzt?: boolean;
 }
 
 /** Signaltypen, deren Wirkung schnell eintritt – tagsüber sofort ins Schattenbuch (Reaktionszeit messen). */

@@ -86,11 +86,13 @@ export function UebersichtView() {
 }
 
 function PositionKarte({ o }: { o: Order }) {
-  const kurs = o.letzterKurs?.wert ?? o.kauf?.kurs ?? 0;
+  // Öffentlich steht kein Kurs mehr, nur die Veränderung seit Kauf (Lösung B, 14.11.2026); ältere Daten tragen noch den letzten Kurs
+  const veraenderung = o.stand?.prozent ?? (o.letzterKurs && o.kauf ? (o.letzterKurs.wert / o.kauf.kurs - 1) * 100 : 0);
+  const stand = o.stand ?? o.letzterKurs;
+  const kurs = (o.kauf?.kurs ?? 0) * (1 + veraenderung / 100);
   const ziel = o.zielkurs ?? kurs;
   const stop = o.stopkurs ?? kurs;
   const anteil = ziel > stop ? ((kurs - stop) / (ziel - stop)) * 100 : 50;
-  const veraenderung = o.kauf ? (kurs / o.kauf.kurs - 1) * 100 : 0;
   return (
     <a class="position" href={`#/order/${o.id}`}>
       <div class="position-kopf">
@@ -111,13 +113,15 @@ function PositionKarte({ o }: { o: Order }) {
       </div>
       <div class="position-fuss klein">
         <span>
-          Kurs {euro(kurs)}
-          {o.letzterKurs && (
+          {stand ? (
             <>
-              {' '}· {relativ(o.letzterKurs.zeit)}
-              {o.letzterKurs.verzoegertMin ? ` · verzögert ${o.letzterKurs.verzoegertMin} Min.` : ''}
-              {o.letzterKurs.synthetisch ? ' · berechnet' : ''}
+              Seit Kauf {prozent(veraenderung)}
+              {o.stand?.tagProzent !== undefined ? ` · heute ${prozent(o.stand.tagProzent)}` : ''} · {relativ(stand.zeit)}
+              {stand.verzoegertMin ? ` · verzögert ${stand.verzoegertMin} Min.` : ''}
+              {stand.synthetisch ? ' · berechnet' : ''}
             </>
+          ) : (
+            'noch kein Kurs'
           )}
         </span>
         <span>Verkauf {datumKurz(o.verkaufstermin)} ({countdown(o.verkaufstermin)})</span>

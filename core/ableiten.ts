@@ -7,7 +7,7 @@ import { etfVergleich } from './etf.ts';
 import { ergebnis as ergebnisRechnen, summeSeiten, verkaufen, type Seite } from './rendite.ts';
 import { geldBrief, type SpreadConfig } from './spreads.ts';
 import { steuernBerechnen, type SteuerConfig } from './steuern.ts';
-import type { Anpassung, Ausfuehrung, Ereignis, Hebel, Kurs, Order, OrderPlan, Verkaufsgrund } from './typen.ts';
+import type { Anpassung, Ausfuehrung, Ereignis, Hebel, Kurs, Order, OrderPlan, PositionsStand, Verkaufsgrund } from './typen.ts';
 
 export interface EreignisDaten {
   vorgemerkt: { plan: OrderPlan; verkaufstermin: string };
@@ -148,6 +148,27 @@ export interface Abgeleitet {
   positionen: { stand: string; offen: Order[]; vorgemerkt: Order[] };
   abgeschlossen: { stand: string; orders: Order[] };
   kennzahlen: Kennzahlen;
+}
+
+/** Öffentlicher Stand einer offenen Position aus ihrem Tagesstand: Prozent seit Kauf und gegenüber dem Vortag. */
+export function positionsStand(o: Pick<Order, 'letzterKurs' | 'kauf'>): PositionsStand | undefined {
+  const k = o.letzterKurs;
+  if (!k || !o.kauf || !(o.kauf.kurs > 0) || !(k.wert > 0)) return undefined;
+  return {
+    prozent: runde((k.wert / o.kauf.kurs - 1) * 100, 2),
+    ...(k.vortag && k.vortag > 0 ? { tagProzent: runde((k.wert / k.vortag - 1) * 100, 2) } : {}),
+    zeit: k.zeit,
+    quelle: k.quelle,
+    ...(k.verzoegertMin ? { verzoegertMin: k.verzoegertMin } : {}),
+    ...(k.synthetisch ? { synthetisch: true } : {}),
+  };
+}
+
+/** Order für den öffentlichen Datenzweig: ohne Tagesstand in Euro, dafür mit dem Stand in Prozent. */
+export function ohneTagesstand(o: Order): Order {
+  const { letzterKurs: _kurs, ...rest } = o;
+  const stand = positionsStand(o);
+  return { ...rest, ...(stand ? { stand } : {}) };
 }
 
 export function ableiten(

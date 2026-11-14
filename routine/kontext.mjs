@@ -146,9 +146,11 @@ p((await lies('lernen/lektionen.md'))?.trim() || '(keine)', '');
 const pos = await json('positionen.json', { offen: [], vorgemerkt: [] });
 p(`## 3. Offene Positionen (${pos.offen.length})`);
 for (const o of pos.offen) {
-  const k = o.letzterKurs;
+  // Seit 14.11.2026 steht öffentlich kein Tagesstand in Euro mehr, nur die Veränderung (Kurs ≈ Kaufkurs × (1 + Prozent/100))
+  const st = o.stand ?? (o.letzterKurs ? { prozent: Math.round((o.letzterKurs.wert / o.kauf.kurs - 1) * 10000) / 100, zeit: o.letzterKurs.zeit, quelle: o.letzterKurs.quelle } : null);
+  const vz = (x) => `${x > 0 ? '+' : ''}${x} %`;
   p(
-    `- ${o.plan.herkunft === 'autopilot' ? '🤖 ' : ''}${o.id}: ${o.plan.wertpapier.name} (${o.plan.wertpapier.isin || o.plan.wertpapier.ticker || 'Krypto'}) · ${o.kauf.stueck} Stk.${o.teilverkaeufe?.length ? ` (davon ${o.teilverkaeufe.reduce((a, t) => a + t.stueck, 0)} schon verkauft)` : ''} Kauf ${o.kauf.kurs} € (${o.kauf.zeit.slice(0, 16)}) · jetzt ${k ? `${k.wert} € (${k.zeit.slice(11, 16)} UTC, ${k.quelle})` : '–'} = ${pct(k?.wert, o.kauf.kurs)} · Ziel ${o.zielkurs} € · Stop ${o.stopkurs} € · Verkauf ${o.verkaufstermin.slice(0, 16)} · Chance war ${o.plan.konfidenz} % · ${o.plan.strategie}`,
+    `- ${o.plan.herkunft === 'autopilot' ? '🤖 ' : ''}${o.id}: ${o.plan.wertpapier.name} (${o.plan.wertpapier.isin || o.plan.wertpapier.ticker || 'Krypto'}) · ${o.kauf.stueck} Stk.${o.teilverkaeufe?.length ? ` (davon ${o.teilverkaeufe.reduce((a, t) => a + t.stueck, 0)} schon verkauft)` : ''} Kauf ${o.kauf.kurs} € (${o.kauf.zeit.slice(0, 16)}) · seit Kauf ${st ? `${vz(st.prozent)}${st.tagProzent !== undefined ? `, heute ${vz(st.tagProzent)}` : ''} (${st.zeit.slice(11, 16)} UTC, ${st.quelle})` : '–'} · Ziel ${o.zielkurs} € · Stop ${o.stopkurs} € · Verkauf ${o.verkaufstermin.slice(0, 16)} · Chance war ${o.plan.konfidenz} % · ${o.plan.strategie}`,
     `  These: ${kurz(o.plan.these)}${o.plan.gegenpruefung ? ` · Einwand (${o.plan.gegenpruefung.risiko} %): ${kurz(o.plan.gegenpruefung.einwand, 120)}` : ''}`,
   );
 }

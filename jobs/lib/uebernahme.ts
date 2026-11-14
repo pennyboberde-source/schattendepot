@@ -11,8 +11,8 @@ import { daytradingFehler, entscheidungUebernehmen, type Entscheidung } from '..
 import type { KalibrierStufe } from '../../core/datenkrake.ts';
 import { pushAngepasst, pushBericht, pushBriefing, pushWarnung, type PushNachricht } from '../../core/push.ts';
 import type { Order } from '../../core/typen.ts';
-import type { TrackingEintrag } from '../../core/statistik.ts';
 import { DATEN_DIR, haengeEreignisseAn, ladeConfig, leseEreignisse, leseJson, schreibeJson, schreibeText } from './dateien.ts';
+import { leseTracking, schreibeTracking } from './privat.ts';
 
 const git = (...args: string[]) => execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
 
@@ -107,13 +107,13 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
       // Claudes Tagesprognose (ohne Geld): ins Schattenbuch, Startkurs setzt der nächste Sammler-Lauf
       if (e.typ === 'morgenlauf' && e.prognose?.length) {
         schreibeJson(`lernen/prognosen/${e.datum}.json`, { datum: e.datum, erstellt: e.erstellt, prognose: e.prognose });
-        const liste = leseJson<TrackingEintrag[]>('kandidaten-tracking.json', []);
+        const liste = leseTracking();
         for (const p of e.prognose.slice(0, 10)) {
           const schluessel = `prognose:${p.markt}:${p.ticker.toUpperCase()}`;
           if (liste.some((t) => t.datum === e.datum && t.schluessel === schluessel)) continue;
           liste.push({ datum: e.datum, schluessel, name: p.name, ticker: p.ticker.toUpperCase(), markt: p.markt, score: p.richtung === 'runter' ? -1 : 1, typen: ['claude_prognose'], quellen: ['Claude-Tagesprognose'], art: 'prognose' });
         }
-        schreibeJson('kandidaten-tracking.json', liste);
+        if (!schreibeTracking(liste)) console.error('Tagesprognose nicht ins Schattenbuch übernommen – privater Zustand nicht erreichbar.');
       }
       // Daytrading-Watchlist (S3): der Daytrading-Job handelt die Werte heute nach der Skill-Regel
       if (e.typ === 'morgenlauf' && e.daytrading?.length) {
