@@ -12,7 +12,7 @@ import { etikett, spielarten, spielartText, sprungEpisoden, type Ausgang, type E
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
-import { istUsAktie, kryptoPaar, median, splitBereinigen, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
+import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { schluesselNormal } from '../core/signale.ts';
 import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenwert.ts';
@@ -24,7 +24,7 @@ interface VtConfig {
     aktie: { mindestKurs: number; mindestUmsatzStichtag: number; turboAbUmsatz20: number; spread: { abUmsatz20: number; klasse: string }[]; handelsplatz: string };
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
-  pruefung: { mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
+  pruefung: { mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number };
 }
 
@@ -432,7 +432,7 @@ const gruppenText = (name: string) => {
     })
     .join(' und ')}`;
 };
-const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string; tage?: [number, number]; groessterTag?: [number, number] })[] = [];
+const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string; tage?: [number, number]; groessterTag?: [number, number]; splitVerdacht?: number })[] = [];
 for (const name of gruppen) {
   const g = gid.get(name)!;
   const markt = name.split('|')[0];
@@ -490,6 +490,9 @@ for (const name of gruppen) {
   const tagNr = new Map(alleTage.map((d, i) => [d, i]));
   const grenzeNr = alleTage.indexOf(grenze) >= 0 ? alleTage.indexOf(grenze) : alleTage.length;
   const klumpen = new TagesKlumpen(kand.length, alleTage.length);
+  // Split-Verdacht: Volltreffer, in deren Fenster eine Lücke genau wie ein kleiner Split (3:2, 2:1, 3:1, 4:1) aussieht
+  const trefferJe = new Int32Array(kand.length);
+  const verdachtJe = new Int32Array(kand.length);
   const sperre = vt.pruefung.sperreTage;
   for (const r of reihen) {
     const hyp = hypGruppen.filter((x) => x.markt === r.markt);
@@ -506,6 +509,10 @@ for (const name of gruppen) {
         const a = cache.get(c.s) ?? cache.set(c.s, etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20), F)).get(c.s)!;
         const au = a[c.fi];
         if (au) klumpen.add(j, tagNr.get(k[i].datum)!, au.netto);
+        if (au?.art === 'treffer') {
+          trefferJe[j]++;
+          if (r.markt === 'aktie' && splitVerdacht(k, i + 2, i + au.tag)) verdachtJe[j]++;
+        }
       }
     };
     if (regelIndex[r.markt].size)
@@ -535,6 +542,7 @@ for (const name of gruppen) {
   }
   let abweichend = 0;
   let gefallen = 0;
+  let splitGefallen = 0;
   const geprueft = new Map<Ergebnis, number>();
   kand.forEach((c, j) => geprueft.set(c.e, j));
   for (const e of ergebnisse) {
@@ -555,12 +563,16 @@ for (const name of gruppen) {
     e.wertung = Math.round(Math.min(e.zeitraeume[0].ev - A.se, e.zeitraeume[1].ev - B.se) * 10) / 10;
     e.tage = [A.tage, B.tage];
     e.groessterTag = [A.groessterTag, B.groessterTag];
+    e.splitVerdacht = trefferJe[j] ? Math.round((verdachtJe[j] / trefferJe[j]) * 1000) / 10 : 0;
     if (A.tage < vt.pruefung.mindestTage || B.tage < vt.pruefung.mindestTage) {
       e.bestanden = false;
       gefallen++;
+    } else if (e.splitVerdacht > vt.pruefung.splitVerdachtMax) {
+      e.bestanden = false;
+      splitGefallen++;
     }
   }
-  log(`Klumpen-Prüfung: ${kand.length} Kombinationen nachgezählt, ${gefallen} fallen durch (in einem Zeitraum weniger als ${vt.pruefung.mindestTage} verschiedene Stichtage)${abweichend ? `, ${abweichend} mit abweichender Fallzahl (Durchgang 2 ≠ 3)` : ', Fallzahlen stimmen mit Durchgang 2 überein'}.`);
+  log(`Klumpen-Prüfung: ${kand.length} Kombinationen nachgezählt, ${gefallen} fallen durch (in einem Zeitraum weniger als ${vt.pruefung.mindestTage} verschiedene Stichtage), ${splitGefallen} wegen Split-Verdacht (mehr als ${vt.pruefung.splitVerdachtMax} % der Volltreffer), Volltreffer mit Split-Verdacht insgesamt ${verdachtJe.reduce((a, x) => a + x, 0)} von ${trefferJe.reduce((a, x) => a + x, 0)}${abweichend ? `, ${abweichend} mit abweichender Fallzahl (Durchgang 2 ≠ 3)` : ', Fallzahlen stimmen mit Durchgang 2 überein'}.`);
 }
 // je Gruppe die beste Spielart/das beste Fenster (nach Wertung)
 const besteJeGruppe = new Map<string, (typeof ergebnisse)[number]>();
@@ -585,6 +597,8 @@ const kurz = (e: (typeof ergebnisse)[number]) => ({
   zeitraumA: { n: e.zeitraeume[0].n, quote: e.zeitraeume[0].quote, ev: e.zeitraeume[0].ev, se: e.zeitraeume[0].se, tage: e.tage?.[0] ?? null, groessterTag: e.groessterTag?.[0] ?? null },
   zeitraumB: { n: e.zeitraeume[1].n, quote: e.zeitraeume[1].quote, ev: e.zeitraeume[1].ev, se: e.zeitraeume[1].se, tage: e.tage?.[1] ?? null, groessterTag: e.groessterTag?.[1] ?? null },
   knockoutQuote: e.gesamt.n ? Math.round((e.gesamt.knockout / e.gesamt.n) * 1000) / 10 : 0,
+  /** Anteil der Volltreffer mit Split-Verdacht im Fenster, in % (nur geprüfte Kombinationen) */
+  splitVerdacht: e.splitVerdacht ?? null,
   vorteil: e.vorteil,
   vorteilA: e.vorteilA,
   vorteilB: e.vorteilB,
@@ -597,7 +611,7 @@ const n = vt.pruefung.rangliste;
 
 const rangliste = {
   stand: jetzt.toISOString(),
-  hinweis: 'Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise. Klumpen-Prüfung: Aktien desselben Tages bewegen sich gemeinsam – bestanden hat nur, was in beiden Zeiträumen Fälle an mindestens ' + vt.pruefung.mindestTage + ' verschiedenen Stichtagen hat; der Standardfehler rechnet den Tag als Einheit.',
+  hinweis: 'Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise. Klumpen-Prüfung: Aktien desselben Tages bewegen sich gemeinsam – bestanden hat nur, was in beiden Zeiträumen Fälle an mindestens ' + vt.pruefung.mindestTage + ' verschiedenen Stichtagen hat; der Standardfehler rechnet den Tag als Einheit. Muster, bei denen mehr als ' + vt.pruefung.splitVerdachtMax + ' % der Volltreffer eine Lücke wie ein kleiner Aktiensplit im Fenster haben, bestehen nicht.',
   zeitraum: { von: alleTage[0], bis: alleTage[alleTage.length - 1], grenze },
   umfang: { stichtage, reihen: reihen.length, episoden: episoden.length, aktien: reihen.filter((r) => r.markt === 'aktie').length, coins: reihen.filter((r) => r.markt === 'krypto').length },
   bestandenZahl: bestanden.length,

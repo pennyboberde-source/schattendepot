@@ -13,7 +13,7 @@ if (!r) {
 const z = (k) => `n ${k.n}, Quote ${k.quote} %, Ø ${k.ev} € ± ${k.se}, ${k.tage ?? '?'} Tage, größter Tag ${k.groessterTag ?? '?'} %`;
 console.log(`Bestanden: ${r.bestandenZahl}, davon mit Vorteil: ${r.mitVorteilZahl}. Zeitraum ${r.zeitraum.von} bis ${r.zeitraum.bis}, Grenze ${r.zeitraum.grenze}.`);
 for (const [i, e] of r.bestanden.slice(0, 25).entries()) {
-  console.log(`${i + 1}. ${e.gruppe} – ${e.spielart}, ${e.fenster} T – Wertung ${e.wertung}${e.vorteil ? ', Vorteil' : ''}`);
+  console.log(`${i + 1}. ${e.gruppe} – ${e.spielart}, ${e.fenster} T – Wertung ${e.wertung}${e.vorteil ? ', Vorteil' : ''}, Split-Verdacht ${e.splitVerdacht ?? '?'} %`);
   console.log(`   A: ${z(e.zeitraumA)} | B: ${z(e.zeitraumB)}`);
 }
 const buch = lies('lernen/muster/muster-buch.json');

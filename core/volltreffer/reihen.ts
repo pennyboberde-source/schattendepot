@@ -51,6 +51,22 @@ export function unbekannteSplitsTeilen(kerzen: Kerze[]): Kerze[][] {
   return teile.filter((t) => t.length > 0);
 }
 
+const KLEINE_SPLITS = [1.5, 2, 3, 4];
+
+/**
+ * Split-Verdacht für die Klumpen-Prüfung: Liegt zwischen den Kerzen `von` und `bis` eine Kurslücke über Nacht, die bis auf
+ * 1 % einem kleinen Split-Verhältnis (3:2, 2:1, 3:1, 4:1 oder umgekehrt) entspricht? Kleine Splits teilt
+ * `unbekannteSplitsTeilen` nicht – sie könnten einen Short- oder Long-Volltreffer vortäuschen, deshalb wird gezählt.
+ */
+export function splitVerdacht(kerzen: Kerze[], von: number, bis: number): boolean {
+  for (let j = Math.max(1, von); j <= Math.min(bis, kerzen.length - 1); j++) {
+    const v = kerzen[j - 1].c;
+    const q = v > 0 ? kerzen[j].o / v : 1;
+    if (KLEINE_SPLITS.some((r) => Math.abs(q * r - 1) <= 0.01 || Math.abs(q / r - 1) <= 0.01)) return true;
+  }
+  return false;
+}
+
 /** Kraken-Paarname „XBT/EUR“ → Basis und Notierung. */
 export function kryptoPaar(name: string): { basis: string; quote: string } | null {
   const [basis, quote] = name.split('/');

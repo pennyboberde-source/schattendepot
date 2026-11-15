@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Kerze } from './etikett.ts';
-import { istUsAktie, kryptoPaar, median, splitBereinigen, unbekannteSplitsTeilen } from './reihen.ts';
+import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen } from './reihen.ts';
 
 const k = (datum: string, c: number, v = 100): Kerze => ({ datum, o: c, h: c, l: c, c, v });
 
@@ -25,6 +25,16 @@ describe('Kursreihen', () => {
     const reihe = [k('a', 10), k('b', 10.5), k('c', 105.3), k('d', 106), k('e', 150)];
     expect(unbekannteSplitsTeilen(reihe).map((t) => t.length)).toEqual([2, 3]);
     expect(unbekannteSplitsTeilen([k('a', 10), k('b', 14), k('c', 30)]).length).toBe(1);
+  });
+
+  it('Split-Verdacht: Lücke von genau 2:1 (oder 1:3) im Fenster, echte Sprünge nicht', () => {
+    const r = [k('2026-01-05', 100), k('2026-01-06', 98), k('2026-01-07', 49.2), k('2026-01-08', 47), k('2026-01-09', 141.5)];
+    expect(splitVerdacht(r, 1, 2)).toBe(true); // 98 → 49,2: Halbierung
+    expect(splitVerdacht(r, 3, 3)).toBe(false); // −4,5 %
+    expect(splitVerdacht(r, 4, 4)).toBe(true); // 47 → 141,5: Verdreifachung
+    const echt = [k('2026-01-05', 100), k('2026-01-06', 55), k('2026-01-07', 140)];
+    expect(splitVerdacht(echt, 1, 2)).toBe(false); // −45 % und +155 %: kein Split-Verhältnis
+    expect(splitVerdacht(echt, 0, 9)).toBe(false); // Grenzen werden abgefangen
   });
 
   it('Krypto-Paar und Median', () => {
