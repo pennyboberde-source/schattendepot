@@ -16,7 +16,7 @@ import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekan
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { schluesselNormal } from '../core/signale.ts';
 import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenwert.ts';
-import { brancheAusSic, firmaJeTicker, zahlenAbstaende, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
+import { brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfasst, zahlenAbstaende, type MeldungArt, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
 
 type Markt = 'aktie' | 'krypto';
 interface VtConfig {
@@ -131,7 +131,8 @@ const firmen = new Map<string, ZahlenFirma>();
     for (const [t, f] of firmaJeTicker(a)) firmen.set(t, f);
   }
   const mit = new Set(reihen.filter((r) => r.markt === 'aktie' && firmen.has(r.schluessel.slice(2).split('#')[0])).map((r) => r.schluessel.split('#')[0]));
-  log(`Zahlen-Termine (SEC): ${firmen.size} Kürzel, ${mit.size} US-Reihen mit Zahlen und Branche, vollständig ab ${firmen.size ? zahlenAb : '–'}.`);
+  const mitArten = new Set(reihen.filter((r) => r.markt === 'aktie' && meldungenErfasst(firmen.get(r.schluessel.slice(2).split('#')[0]))).map((r) => r.schluessel.split('#')[0]));
+  log(`Zahlen-Termine (SEC): ${firmen.size} Kürzel, ${mit.size} US-Reihen mit Zahlen und Branche, ${mitArten.size} mit weiteren Meldungsarten, vollständig ab ${firmen.size ? zahlenAb : '–'}.`);
 }
 /** Abstand zum Zahlen-Reaktionstag je Stichtag der zuletzt gefragten Reihe (die Durchgänge gehen Reihe für Reihe vor) */
 let zahlenCache: { r: Reihe; je: Map<string, number | null> } | null = null;
@@ -146,6 +147,23 @@ const zahlenAm = (r: Reihe, datum: string): number | null => {
     zahlenCache = { r, je: new Map(daten.map((d, i) => [d, abst[i]])) };
   }
   return zahlenCache.je.get(datum) ?? null;
+};
+/** Abstand zur letzten Meldung je Art (Kapitalerhöhung, Großaktionär, 8-K-Punkte) – unbekannt, solange die Firma nicht mit den Meldungsarten erfasst ist */
+let meldungCache: { r: Reihe; je: Map<string, Map<string, number | null>> } | null = null;
+const meldungAm = (r: Reihe, datum: string, art: MeldungArt): number | null => {
+  if (r.markt !== 'aktie') return null;
+  const f = firmen.get(r.schluessel.slice(2).split('#')[0]);
+  if (!meldungenErfasst(f)) return null;
+  if (meldungCache?.r !== r) {
+    const daten = r.kerzen.map((k) => k.datum);
+    const je = new Map<string, Map<string, number | null>>();
+    for (const a of MELDUNG_ARTEN) {
+      const abst = zahlenAbstaende(daten, f!.meldungen?.[a] ?? [], zahlenAb);
+      je.set(a, new Map(daten.map((d, i) => [d, abst[i]])));
+    }
+    meldungCache = { r, je };
+  }
+  return meldungCache.je.get(art)?.get(datum) ?? null;
 };
 const brancheVon = (r: Reihe): number | null => (r.markt === 'aktie' ? brancheAusSic(firmen.get(r.schluessel.slice(2).split('#')[0])?.sic) : null);
 
@@ -225,13 +243,17 @@ const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
 const zw = new Zaehlwerk(gruppen.length, SP.length, F.length, 2);
 log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
-type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null };
+type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null } & Partial<Record<MeldungArt, number | null>>;
+const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', ...MELDUNG_ARTEN]);
 const merkmalWert = (e: Einteilung, m: Merkmale, kontext: Kontext): number | null =>
-  e.merkmal === 'marktR1' || e.merkmal === 'ueberrendite1' || e.merkmal === 'boersenwert' || e.merkmal === 'zahlen' || e.merkmal === 'branche' ? kontext[e.merkmal] : (m[e.merkmal as keyof Merkmale] as number | null);
+  KONTEXT_MERKMALE.has(e.merkmal) ? (kontext[e.merkmal as keyof Kontext] ?? null) : (m[e.merkmal as keyof Merkmale] as number | null);
+/** Meldungsarten, nach denen die Einteilungen fragen (nur die werden je Stichtag gerechnet) */
+const GEFRAGTE_ARTEN = MELDUNG_ARTEN.filter((a) => E.some((e) => e.merkmal === a));
 /** Klasse je Einteilung an einem Stichtag (Durchgang 2 und Klumpen-Prüfung rechnen genau gleich) */
 const klassenAm = (r: Reihe, x: Merkmale, datum: string) => {
   const mr = marktR1[r.markt].get(datum) ?? 0;
   const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r) };
+  for (const a of GEFRAGTE_ARTEN) kontext[a] = meldungAm(r, datum, a);
   return E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
 };
 
@@ -447,7 +469,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
@@ -799,7 +821,7 @@ log(`Fertig: ${bestanden.length} Gruppen bestanden, davon ${mitVorteil.length} m
   .join(' | ') || '–'}`);
 for (const h of hypothesen) log(`${h.gruppe}: ${h.spielart}, ${h.fenster} T – ${h.faelle} Fälle, Quote ${h.quote} %, Ø A ${h.zeitraumA.ev} € / B ${h.zeitraumB.ev} € → ${h.bestanden ? 'BESTANDEN' : 'nicht bestanden'}`);
 // Was bringen die Merkmale aus Zusatzquellen (Quartalszahlen, Branche)? Nur verdichtete Kennzahlen ins Log
-for (const merkmal of ['zahlen', 'branche']) {
+for (const merkmal of ['zahlen', 'branche', ...MELDUNG_ARTEN]) {
   const a = E.findIndex((e) => e.merkmal === merkmal);
   if (a < 0) continue;
   const mit = (e: (typeof bestanden)[number]) => e.schluessel.split('|')[1].split('&').some((t) => t.startsWith(`${a}=`));

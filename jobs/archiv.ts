@@ -32,7 +32,7 @@ import {
 } from '../core/sammelkurse.ts';
 import { figiEinordnen, handelbarkeitsKarte, type Wertpapier } from '../core/volltreffer/stamm.ts';
 import { boersenwertCsv, krakenZuSymbol, parseBoersenwertCsv, parseGeckoChart, parseGeckoMarkets, symbolZuId, type BoersenwertZeile } from '../core/volltreffer/boersenwert.ts';
-import { achtKAusTagesverzeichnis, parseSubmissions, secTickerKarte, zahlenAusSeite, zahlenVereinen, type ZahlenArchiv } from '../core/volltreffer/zahlen.ts';
+import { ciksAusTagesverzeichnis, MELDUNG_ARTEN, MELDUNGEN_STUFE, meldungenAusSeite, meldungenErfasst, meldungenVereinen, NACHFASS_FORMULARE, parseSubmissions, secTickerKarte, zahlenAusSeite, zahlenVereinen, type ZahlenArchiv } from '../core/volltreffer/zahlen.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -61,7 +61,7 @@ interface Index {
   /** Börsenwert der Coins (stamm/krypto-boersenwert.csv.gz) in Zählungen */
   boersenwert?: { coins: number; zeilen: number; verlaeufeOffen: number; geholt: string };
   /** Zahlen-Termine und Branchen aus EDGAR (stamm/us-zahlen.json.gz) in Zählungen */
-  usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string };
+  usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
 const ARCHIV = process.env.ARCHIV_DIR ?? '_archiv';
@@ -481,14 +481,15 @@ async function zahlen() {
     const q = Math.floor((Number(tag.slice(5, 7)) - 1) / 3) + 1;
     const r = await holen(`https://www.sec.gov/Archives/edgar/daily-index/${tag.slice(0, 4)}/QTR${q}/form.${tag.replace(/-/g, '')}.idx`);
     if (r.status === 200) {
-      for (const cik of achtKAusTagesverzeichnis(await r.text())) if (a.firmen[cik]?.geholt) nachholen.add(cik);
+      for (const cik of ciksAusTagesverzeichnis(await r.text(), NACHFASS_FORMULARE)) if (meldungenErfasst(a.firmen[cik])) nachholen.add(cik);
       a.tageBis = tag;
     } else if (r.status === 404 && tag < gestern) a.tageBis = tag; // Feiertag
     else break; // gestern noch nicht veröffentlicht → nächster Lauf
   }
 
-  // 3. Meldungen je Firma holen: erst die nachzufassenden, dann die noch nie abgerufenen
-  const liste = [...nachholen, ...Object.keys(a.firmen).filter((c) => !a.firmen[c].geholt)];
+  // 3. Meldungen je Firma holen: erst die nachzufassenden, dann die noch nie abgerufenen, dann die ohne die aktuellen
+  //    Meldungsarten (einmaliges Neuholen, wenn MELDUNGEN_STUFE steigt)
+  const liste = [...nachholen, ...Object.keys(a.firmen).filter((c) => !a.firmen[c].geholt), ...Object.keys(a.firmen).filter((c) => a.firmen[c].geholt && !meldungenErfasst(a.firmen[c]))];
   let fertig = 0;
   let ohneDaten = 0;
   let abbruch: Error | null = null;
@@ -497,6 +498,8 @@ async function zahlen() {
     while (!abbruch && pos < liste.length && anfragen < max) {
       const cik = liste[pos++];
       const f = a.firmen[cik];
+      // Nachfassen braucht nur die jüngsten Meldungen (erste Seite reicht weit über die Nachfass-Tage zurück)
+      const nurNeu = meldungenErfasst(f);
       try {
         const r = await holen(`https://data.sec.gov/submissions/CIK${cik.padStart(10, '0')}.json`);
         const p = r.status === 200 ? parseSubmissions(await r.json().catch(() => null), a.ab, zc.zeitzone) : null;
@@ -506,13 +509,27 @@ async function zahlen() {
           continue;
         }
         let z = p.zahlen;
-        for (const name of p.weitere) {
-          if (anfragen >= max) break;
+        let ml = meldungenVereinen({}, p.meldungen);
+        let vollstaendig = true;
+        for (const name of nurNeu ? [] : p.weitere) {
+          if (anfragen >= max) {
+            vollstaendig = false;
+            break;
+          }
           const rs = await holen(`https://data.sec.gov/submissions/${name}`);
-          if (rs.status === 200) z = zahlenVereinen(z, zahlenAusSeite(await rs.json().catch(() => null), a.ab, zc.zeitzone));
+          if (rs.status !== 200) {
+            vollstaendig = false;
+            continue;
+          }
+          const seite = await rs.json().catch(() => null);
+          z = zahlenVereinen(z, zahlenAusSeite(seite, a.ab, zc.zeitzone));
+          ml = meldungenVereinen(ml, meldungenAusSeite(seite, a.ab, zc.zeitzone));
         }
         f.sic = p.sic ?? f.sic;
         f.zahlen = zahlenVereinen(f.zahlen, z);
+        f.meldungen = meldungenVereinen(f.meldungen ?? {}, ml);
+        // nur als erfasst markieren, wenn alle Seiten da sind (sonst holt der nächste Lauf die Firma noch einmal ganz)
+        if (vollstaendig || nurNeu) f.stufe = MELDUNGEN_STUFE;
         f.geholt = heute;
         if (++fertig % zc.speichernAlle === 0) speichern();
       } catch (e) {
@@ -532,13 +549,15 @@ async function zahlen() {
     mitZahlen: geholt.filter((f) => f.zahlen.length).length,
     meldungen: geholt.reduce((s, f) => s + f.zahlen.length, 0),
     mitBranche: geholt.filter((f) => f.sic).length,
+    mitArten: firmen.filter(meldungenErfasst).length,
+    arten: Object.fromEntries(MELDUNG_ARTEN.map((art) => [art, firmen.reduce((s, f) => s + (f.meldungen?.[art]?.length ?? 0), 0)])),
     ab: a.ab,
     tageBis: a.tageBis ?? null,
     geholt: iso,
   };
   index.usZahlen = uz;
   console.log(
-    `Zahlen (SEC): ${fertig} Firmen abgerufen (${nachholen.size} nachgefasst, ${ohneDaten} ohne Daten), ${anfragen} Anfragen; Stand: ${geholt.length} von ${firmen.length} Firmen, ${uz.mitZahlen} mit Zahlen-Meldungen (${uz.meldungen} insgesamt), ${uz.mitBranche} mit Branche, ${uz.offen} offen, Tagesverzeichnis bis ${a.tageBis ?? '–'}.`,
+    `Zahlen (SEC): ${fertig} Firmen abgerufen (${nachholen.size} nachgefasst, ${ohneDaten} ohne Daten), ${anfragen} Anfragen; Stand: ${geholt.length} von ${firmen.length} Firmen, ${uz.mitZahlen} mit Zahlen-Meldungen (${uz.meldungen} insgesamt), ${uz.mitBranche} mit Branche, ${uz.offen} offen, Tagesverzeichnis bis ${a.tageBis ?? '–'}; Meldungsarten erfasst bei ${uz.mitArten} Firmen (${Object.entries(uz.arten ?? {}).map(([k, v]) => `${k} ${v}`).join(', ')}).`,
   );
   if (abbruch) throw abbruch;
 }

@@ -18,6 +18,41 @@ export interface ZahlenFirma {
   geholt?: string;
   /** Zahlen-Meldungen: [Tag, Uhrzeit US-Ostküste HH:MM] */
   zahlen: [string, string][];
+  /** Stand der Meldungsarten beim letzten Abruf (fehlt oder kleiner als MELDUNGEN_STUFE = Meldungsarten noch nicht erfasst) */
+  stufe?: number;
+  /** weitere Meldungen je Art (siehe MELDUNG_ARTEN): [Tag, Uhrzeit US-Ostküste] */
+  meldungen?: Record<string, [string, string][]>;
+}
+
+/**
+ * Weitere Meldungsarten aus denselben EDGAR-Antworten (seit 16.11.2026). Jede wird im Rückblick ein Merkmal „Handelstage
+ * seit der letzten Meldung dieser Art“. Kapitalerhöhungen verwässern (Kandidat für Short-Muster), Großaktionäre und
+ * Großverträge sind Kandidaten für Long-Muster, Warnungen (Insolvenz, Delisting-Hinweis, Bilanzkorrektur, Abschreibung)
+ * für beides. Berichtigungen (…/A) zählen nicht.
+ */
+export const MELDUNG_ARTEN = ['angebot', 'registrierung', 'grossaktionaer', 'vertrag', 'warnung', 'fuehrung', 'satzung'] as const;
+export type MeldungArt = (typeof MELDUNG_ARTEN)[number];
+/** Erhöhen, wenn sich die Arten ändern: dann holt der Archivlauf alle Firmen einmal neu */
+export const MELDUNGEN_STUFE = 1;
+const ANGEBOT = new Set(['424B1', '424B3', '424B4', '424B5', '424B7']);
+const REGISTRIERUNG = new Set(['S-1', 'S-3', 'F-1', 'F-3']);
+const GROSSAKTIONAER = new Set(['SC 13D', 'SCHEDULE 13D']);
+/** Formulare, die im EDGAR-Tagesverzeichnis ein Nachfassen auslösen */
+export const NACHFASS_FORMULARE = new Set(['8-K', ...ANGEBOT, ...REGISTRIERUNG, ...GROSSAKTIONAER]);
+
+/** Meldungsarten eines Formulars (8-K nach Punkten) */
+export function meldungsArten(form: string, items: string): MeldungArt[] {
+  if (ANGEBOT.has(form)) return ['angebot'];
+  if (REGISTRIERUNG.has(form)) return ['registrierung'];
+  if (GROSSAKTIONAER.has(form)) return ['grossaktionaer'];
+  if (form !== '8-K') return [];
+  const p = new Set(items.split(',').map((x) => x.trim()));
+  const aus: MeldungArt[] = [];
+  if (p.has('1.01')) aus.push('vertrag');
+  if (p.has('1.03') || p.has('2.06') || p.has('3.01') || p.has('4.02')) aus.push('warnung');
+  if (p.has('5.02')) aus.push('fuehrung');
+  if (p.has('5.03')) aus.push('satzung');
+  return aus;
 }
 
 /** company_tickers.json der SEC → Kürzel (Schreibweise wie bei Massive: BRK.B) je CIK */
@@ -74,8 +109,28 @@ export function zahlenAusSpalten(s: Spalten, ab: string, zone: 'ET' | 'UTC'): [s
   return aus;
 }
 
-/** Antwort von data.sec.gov/submissions/CIK##########.json: Branchen-Code, Zahlen-Meldungen, ältere Seiten (falls nötig) */
-export function parseSubmissions(json: unknown, ab: string, zone: 'ET' | 'UTC'): { sic: number | null; zahlen: [string, string][]; weitere: string[] } | null {
+/** Weitere Meldungen je Art (MELDUNG_ARTEN) aus den Spalten einer EDGAR-Antwort, ab einem Tag */
+export function meldungenAusSpalten(s: Spalten, ab: string, zone: 'ET' | 'UTC'): Partial<Record<MeldungArt, [string, string][]>> {
+  const aus: Partial<Record<MeldungArt, [string, string][]>> = {};
+  const n = s.form?.length ?? 0;
+  for (let i = 0; i < n; i++) {
+    const datum = s.filingDate?.[i];
+    if (!datum || datum < ab) continue;
+    const arten = meldungsArten(s.form![i], s.items?.[i] ?? '');
+    if (!arten.length) continue;
+    const z = ostkuestenZeitpunkt(s.acceptanceDateTime?.[i] ?? '', zone);
+    const eintrag: [string, string] = z ? [z.datum, z.zeit] : [datum, '08:00'];
+    for (const a of arten) (aus[a] ??= []).push(eintrag);
+  }
+  return aus;
+}
+
+/** Antwort von data.sec.gov/submissions/CIK##########.json: Branchen-Code, Zahlen- und weitere Meldungen, ältere Seiten (falls nötig) */
+export function parseSubmissions(
+  json: unknown,
+  ab: string,
+  zone: 'ET' | 'UTC',
+): { sic: number | null; zahlen: [string, string][]; meldungen: Partial<Record<MeldungArt, [string, string][]>>; weitere: string[] } | null {
   if (!json || typeof json !== 'object') return null;
   const j = json as { sic?: string | number; filings?: { recent?: Spalten; files?: { name?: string; filingFrom?: string; filingTo?: string }[] } };
   if (!j.filings?.recent) return null;
@@ -83,28 +138,40 @@ export function parseSubmissions(json: unknown, ab: string, zone: 'ET' | 'UTC'):
   return {
     sic: Number.isFinite(sicZahl) && sicZahl > 0 ? sicZahl : null,
     zahlen: zahlenAusSpalten(j.filings.recent, ab, zone),
+    meldungen: meldungenAusSpalten(j.filings.recent, ab, zone),
     weitere: (j.filings.files ?? []).filter((f) => f.name && (f.filingTo ?? '9999') >= ab).map((f) => f.name!),
   };
 }
 
 /** Ältere Seite (CIK##########-submissions-001.json): dieselben Spalten auf oberster Ebene */
 export const zahlenAusSeite = (json: unknown, ab: string, zone: 'ET' | 'UTC') => (json && typeof json === 'object' ? zahlenAusSpalten(json as Spalten, ab, zone) : []);
+export const meldungenAusSeite = (json: unknown, ab: string, zone: 'ET' | 'UTC') => (json && typeof json === 'object' ? meldungenAusSpalten(json as Spalten, ab, zone) : {});
 
-/** EDGAR-Tagesverzeichnis form.JJJJMMTT.idx → CIKs mit einem 8-K an diesem Tag */
-export function achtKAusTagesverzeichnis(text: string): string[] {
+/** EDGAR-Tagesverzeichnis form.JJJJMMTT.idx → CIKs mit einem der Formulare an diesem Tag (Standard: nur 8-K) */
+export function ciksAusTagesverzeichnis(text: string, formulare: Set<string> = new Set(['8-K'])): string[] {
   const ciks = new Set<string>();
   for (const z of text.split('\n')) {
-    const m = /^8-K\s+.+?\s+(\d{1,10})\s+(\d{8}|\d{4}-\d{2}-\d{2})\s+\S+\s*$/.exec(z);
-    if (m) ciks.add(String(Number(m[1])));
+    // Formular-Spalte: die ersten 12 Zeichen (kann Leerzeichen enthalten, „SC 13D“); längere Namen laufen über – dann
+    // kann eine Berichtigung mitgezählt werden, das kostet nur einen Abruf (genau gelesen wird die Firmen-Antwort)
+    const m = /\s(\d{1,10})\s+(\d{8}|\d{4}-\d{2}-\d{2})\s+\S+\s*$/.exec(z);
+    if (m && formulare.has(z.slice(0, 12).trim())) ciks.add(String(Number(m[1])));
   }
   return [...ciks];
 }
+export const achtKAusTagesverzeichnis = (text: string) => ciksAusTagesverzeichnis(text);
 
 /** Meldungen zusammenführen (nur wachsen, sortiert, ohne Doppel) */
 export function zahlenVereinen(alt: [string, string][], neu: [string, string][]): [string, string][] {
   const m = new Map(alt.map((z) => [z[0], z]));
   for (const z of neu) if (!m.has(z[0]) || m.get(z[0])![1] > z[1]) m.set(z[0], z);
   return [...m.values()].sort((a, b) => a[0].localeCompare(b[0]));
+}
+
+/** Meldungen je Art zusammenführen (je Art wie zahlenVereinen) */
+export function meldungenVereinen(alt: Record<string, [string, string][]>, neu: Partial<Record<string, [string, string][]>>): Record<string, [string, string][]> {
+  const aus: Record<string, [string, string][]> = { ...alt };
+  for (const [art, liste] of Object.entries(neu)) if (liste?.length) aus[art] = zahlenVereinen(aus[art] ?? [], liste);
+  return aus;
 }
 
 /** Börsenschluss US-Ostküste: Meldungen bis 16:00 wirken am selben Handelstag, spätere am nächsten */
@@ -147,6 +214,9 @@ export function brancheAusSic(sic: number | null | undefined): number | null {
   if ((sic >= 1000 && sic <= 1499) || (sic >= 2900 && sic <= 2999)) return 5;
   return 6;
 }
+
+/** Meldungsarten dieser Firma vollständig erfasst? (sonst gilt das Merkmal als unbekannt, nicht als „keine Meldung“) */
+export const meldungenErfasst = (f: ZahlenFirma | undefined): boolean => !!f?.geholt && (f.stufe ?? 0) >= MELDUNGEN_STUFE;
 
 /** Kürzel → Firma (für den Rückblick) */
 export function firmaJeTicker(a: ZahlenArchiv): Map<string, ZahlenFirma> {

@@ -302,6 +302,118 @@
           "Energie/Rohstoffe",
           "Sonstige"
         ]
+      },
+      {
+        "merkmal": "angebot",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Kapitalerhöhung: Reaktion am Stichtag",
+          "Kapitalerhöhung: Reaktion am Vortag",
+          "Kapitalerhöhung vor 2 bis 5 Handelstagen",
+          "Kapitalerhöhung vor 6 bis 20 Handelstagen",
+          "ohne Kapitalerhöhung in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "registrierung",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Kapital-Registrierung: Reaktion am Stichtag",
+          "Kapital-Registrierung: Reaktion am Vortag",
+          "Kapital-Registrierung vor 2 bis 5 Handelstagen",
+          "Kapital-Registrierung vor 6 bis 20 Handelstagen",
+          "ohne Kapital-Registrierung in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "grossaktionaer",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "13D-Meldung: Reaktion am Stichtag",
+          "13D-Meldung: Reaktion am Vortag",
+          "13D-Meldung vor 2 bis 5 Handelstagen",
+          "13D-Meldung vor 6 bis 20 Handelstagen",
+          "ohne 13D-Meldung in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "vertrag",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Großvertrag: Reaktion am Stichtag",
+          "Großvertrag: Reaktion am Vortag",
+          "Großvertrag vor 2 bis 5 Handelstagen",
+          "Großvertrag vor 6 bis 20 Handelstagen",
+          "ohne Großvertrag in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "warnung",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Warnmeldung: Reaktion am Stichtag",
+          "Warnmeldung: Reaktion am Vortag",
+          "Warnmeldung vor 2 bis 5 Handelstagen",
+          "Warnmeldung vor 6 bis 20 Handelstagen",
+          "ohne Warnmeldung in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "fuehrung",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Chefwechsel: Reaktion am Stichtag",
+          "Chefwechsel: Reaktion am Vortag",
+          "Chefwechsel vor 2 bis 5 Handelstagen",
+          "Chefwechsel vor 6 bis 20 Handelstagen",
+          "ohne Chefwechsel in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "satzung",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Satzungsänderung: Reaktion am Stichtag",
+          "Satzungsänderung: Reaktion am Vortag",
+          "Satzungsänderung vor 2 bis 5 Handelstagen",
+          "Satzungsänderung vor 6 bis 20 Handelstagen",
+          "ohne Satzungsänderung in 20 Handelstagen"
+        ]
       }
     ]
   },

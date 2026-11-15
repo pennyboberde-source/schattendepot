@@ -1,6 +1,23 @@
 // Zahlen-Termine und Branchen aus EDGAR: aufgezeichnete Beispiel-Antworten (gekürzt), keine echten Abrufe.
 import { describe, expect, it } from 'vitest';
-import { achtKAusTagesverzeichnis, brancheAusSic, firmaJeTicker, ostkuestenZeitpunkt, parseSubmissions, secTickerKarte, zahlenAbstaende, zahlenAusSeite, zahlenVereinen } from './zahlen.ts';
+import {
+  achtKAusTagesverzeichnis,
+  brancheAusSic,
+  ciksAusTagesverzeichnis,
+  firmaJeTicker,
+  MELDUNGEN_STUFE,
+  meldungenAusSeite,
+  meldungenErfasst,
+  meldungenVereinen,
+  meldungsArten,
+  NACHFASS_FORMULARE,
+  ostkuestenZeitpunkt,
+  parseSubmissions,
+  secTickerKarte,
+  zahlenAbstaende,
+  zahlenAusSeite,
+  zahlenVereinen,
+} from './zahlen.ts';
 
 const SUBMISSIONS = {
   cik: '320193',
@@ -74,6 +91,68 @@ describe('EDGAR-Antworten lesen', () => {
         [['2026-10-30', '16:30'], ['2026-07-31', '08:00'], ['2026-04-30', '16:05']],
       ),
     ).toEqual([['2026-04-30', '16:05'], ['2026-07-31', '08:00'], ['2026-10-30', '16:30']]);
+  });
+});
+
+describe('Weitere Meldungsarten (Kapitalerhöhung, Großaktionär, 8-K-Punkte)', () => {
+  it('Formulare und 8-K-Punkte werden den Arten zugeordnet, Berichtigungen und Bank-Prospekte (424B2) nicht', () => {
+    expect(meldungsArten('424B5', '')).toEqual(['angebot']);
+    expect(meldungsArten('424B2', '')).toEqual([]);
+    expect(meldungsArten('S-3', '')).toEqual(['registrierung']);
+    expect(meldungsArten('S-3/A', '')).toEqual([]);
+    expect(meldungsArten('SC 13D', '')).toEqual(['grossaktionaer']);
+    expect(meldungsArten('SCHEDULE 13D', '')).toEqual(['grossaktionaer']);
+    expect(meldungsArten('SC 13D/A', '')).toEqual([]);
+    expect(meldungsArten('8-K', '1.01,2.03,5.02,9.01')).toEqual(['vertrag', 'fuehrung']);
+    expect(meldungsArten('8-K', '3.01')).toEqual(['warnung']);
+    expect(meldungsArten('8-K', '5.03,9.01')).toEqual(['satzung']);
+    expect(meldungsArten('8-K/A', '1.01')).toEqual([]);
+    expect(meldungsArten('8-K', '2.02,9.01')).toEqual([]);
+  });
+
+  it('aus der Firmen-Antwort: je Art mit Annahmezeit, ab dem Stichtag', () => {
+    const j = {
+      sic: '2834',
+      filings: {
+        recent: {
+          form: ['424B5', '8-K', 'SC 13D', '424B5', '4'],
+          filingDate: ['2026-11-10', '2026-11-03', '2026-10-01', '2024-01-02', '2026-11-11'],
+          acceptanceDateTime: ['2026-11-10T21:05:00.000Z', '2026-11-03T12:00:00.000Z', '2026-10-01T20:00:00.000Z', '2024-01-02T12:00:00.000Z', '2026-11-11T22:00:00.000Z'],
+          items: ['', '1.01,5.02', '', '', ''],
+        },
+      },
+    };
+    const p = parseSubmissions(j, '2024-11-01', 'UTC')!;
+    expect(p.meldungen).toEqual({
+      angebot: [['2026-11-10', '16:05']],
+      vertrag: [['2026-11-03', '07:00']],
+      fuehrung: [['2026-11-03', '07:00']],
+      grossaktionaer: [['2026-10-01', '16:00']],
+    });
+    expect(meldungenAusSeite({ form: ['S-1'], filingDate: ['2025-03-03'], acceptanceDateTime: ['2025-03-03T15:00:00.000Z'], items: [''] }, '2024-11-01', 'UTC')).toEqual({ registrierung: [['2025-03-03', '10:00']] });
+  });
+
+  it('Tagesverzeichnis: CIKs zu allen Nachfass-Formularen, ohne Berichtigungen', () => {
+    const idx = [
+      'Form Type   Company Name                                                  CIK         Date Filed  File Name',
+      '424B5       KAPITAL AG                                                    111         20261113    edgar/data/111/0000000111-26-000001.txt',
+      'SC 13D      ZIELFIRMA INC                                                 222         20261113    edgar/data/222/0000000222-26-000002.txt',
+      'SC 13D/A    NOCHMAL INC                                                   333         20261113    edgar/data/333/0000000333-26-000003.txt',
+      '424B2       BANK AG                                                       444         20261113    edgar/data/444/0000000444-26-000004.txt',
+      '8-K         BEISPIEL AG                                                   555         20261113    edgar/data/555/0000000555-26-000005.txt',
+    ].join('\n');
+    expect(ciksAusTagesverzeichnis(idx, NACHFASS_FORMULARE).sort()).toEqual(['111', '222', '555']);
+    expect(ciksAusTagesverzeichnis(idx)).toEqual(['555']);
+  });
+
+  it('zusammenführen je Art; erfasst erst ab der aktuellen Stufe', () => {
+    expect(meldungenVereinen({ angebot: [['2026-01-02', '08:00']] }, { angebot: [['2026-01-02', '08:00'], ['2026-02-03', '16:30']], warnung: [['2026-03-01', '09:00']] })).toEqual({
+      angebot: [['2026-01-02', '08:00'], ['2026-02-03', '16:30']],
+      warnung: [['2026-03-01', '09:00']],
+    });
+    expect(meldungenErfasst({ tickers: [], sic: null, zahlen: [], geholt: '2026-11-15' })).toBe(false);
+    expect(meldungenErfasst({ tickers: [], sic: null, zahlen: [], geholt: '2026-11-16', stufe: MELDUNGEN_STUFE })).toBe(true);
+    expect(meldungenErfasst(undefined)).toBe(false);
   });
 });
 
