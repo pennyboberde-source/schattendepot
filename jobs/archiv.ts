@@ -33,6 +33,7 @@ import {
 import { figiEinordnen, handelbarkeitsKarte, type Wertpapier } from '../core/volltreffer/stamm.ts';
 import { boersenwertCsv, krakenZuSymbol, parseBoersenwertCsv, parseGeckoChart, parseGeckoMarkets, symbolZuId, type BoersenwertZeile } from '../core/volltreffer/boersenwert.ts';
 import { ciksAusTagesverzeichnis, MELDUNG_ARTEN, MELDUNGEN_STUFE, meldungenAusSeite, meldungenErfasst, meldungenVereinen, NACHFASS_FORMULARE, parseSubmissions, secTickerKarte, zahlenAusSeite, zahlenVereinen, type ZahlenArchiv } from '../core/volltreffer/zahlen.ts';
+import { parseVixCsv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -61,6 +62,7 @@ interface Index {
   /** Börsenwert der Coins (stamm/krypto-boersenwert.csv.gz) in Zählungen */
   boersenwert?: { coins: number; zeilen: number; verlaeufeOffen: number; geholt: string };
   /** Zahlen-Termine und Branchen aus EDGAR (stamm/us-zahlen.json.gz) in Zählungen */
+  umfeld?: { vixTage: number; vixLetzterTag: string | null; geholt: string };
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -75,7 +77,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -615,6 +617,24 @@ async function gettex() {
   }
 }
 
+// ---------- Marktumfeld: VIX-Schlusskurse (CBOE, eine CSV mit der ganzen Geschichte) ----------
+async function umfeld() {
+  const uc = JSON.parse(readFileSync(join(process.cwd(), 'config', 'umfeld.json'), 'utf8')) as { vixUrl: string };
+  const r = await fetch(uc.vixUrl, { headers: { 'User-Agent': USER_AGENT, Accept: 'text/csv' }, signal: AbortSignal.timeout(60000) });
+  if (r.status !== 200) throw new Error(`VIX: HTTP ${r.status}`);
+  const vix = parseVixCsv(await r.text());
+  if (vix.length < 1000) throw new Error(`VIX: nur ${vix.length} Tage`);
+  const datei = join(ARCHIV, 'stamm', 'umfeld.json.gz');
+  const alt = existsSync(datei) ? (JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as UmfeldArchiv) : null;
+  if (JSON.stringify(alt?.vix) !== JSON.stringify(vix)) {
+    mkdirSync(dirname(datei), { recursive: true });
+    writeFileSync(datei, gzipSync(Buffer.from(JSON.stringify({ stand: iso, vix } satisfies UmfeldArchiv), 'utf8'), { level: 9 }));
+    neu.push('stamm/umfeld');
+  }
+  index.umfeld = { vixTage: vix.length, vixLetzterTag: vix[vix.length - 1]?.[0] ?? null, geholt: iso };
+  console.log(`Marktumfeld: VIX ${vix.length} Tage bis ${index.umfeld.vixLetzterTag}.`);
+}
+
 const TEILE = [
   ['krypto', 'Krypto', krypto],
   ['us', 'US', us],
@@ -624,6 +644,7 @@ const TEILE = [
   ['stamm', 'Stammdaten', stamm],
   ['boersenwert', 'Börsenwert', boersenwert],
   ['zahlen', 'Zahlen-Termine (SEC)', zahlen],
+  ['umfeld', 'Marktumfeld', umfeld],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -669,6 +690,7 @@ const stand = {
   stamm: index.stamm ?? null,
   boersenwert: index.boersenwert ?? null,
   zahlen: index.usZahlen ?? null,
+  umfeld: index.umfeld ?? null,
   neu: neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };

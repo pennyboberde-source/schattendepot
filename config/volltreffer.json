@@ -414,6 +414,88 @@
           "Satzungsänderung vor 6 bis 20 Handelstagen",
           "ohne Satzungsänderung in 20 Handelstagen"
         ]
+      },
+      {
+        "merkmal": "vix",
+        "grenzen": [
+          15,
+          20,
+          25,
+          30
+        ],
+        "namen": [
+          "VIX unter 15",
+          "VIX 15 bis 20",
+          "VIX 20 bis 25",
+          "VIX 25 bis 30",
+          "VIX über 30"
+        ]
+      },
+      {
+        "merkmal": "vix5",
+        "grenzen": [
+          -15,
+          -5,
+          5,
+          15
+        ],
+        "namen": [
+          "VIX fällt stark (5 Tage unter −15 %)",
+          "VIX fällt (−15 bis −5 %)",
+          "VIX ruhig (−5 bis +5 %)",
+          "VIX steigt (+5 bis +15 %)",
+          "VIX steigt stark (über +15 %)"
+        ]
+      },
+      {
+        "merkmal": "fed",
+        "grenzen": [
+          -3.5,
+          -0.5,
+          0.5,
+          3.5,
+          7.5
+        ],
+        "namen": [
+          "Fed-Entscheid vor 4 bis 7 Tagen",
+          "Fed-Entscheid vor 1 bis 3 Tagen",
+          "Fed-Entscheid am Stichtag",
+          "Fed-Entscheid in 1 bis 3 Tagen",
+          "Fed-Entscheid in 4 bis 7 Tagen",
+          "kein Fed-Entscheid ±7 Tage"
+        ]
+      },
+      {
+        "merkmal": "breite",
+        "grenzen": [
+          25,
+          40,
+          60,
+          75
+        ],
+        "namen": [
+          "unter 25 % der Werte im Plus",
+          "25 bis 40 % im Plus",
+          "40 bis 60 % im Plus",
+          "60 bis 75 % im Plus",
+          "über 75 % im Plus"
+        ]
+      },
+      {
+        "merkmal": "markt5",
+        "grenzen": [
+          -3,
+          -1,
+          1,
+          3
+        ],
+        "namen": [
+          "Markt 5 Tage unter −3 %",
+          "Markt 5 Tage −3 bis −1 %",
+          "Markt 5 Tage −1 bis +1 %",
+          "Markt 5 Tage +1 bis +3 %",
+          "Markt 5 Tage über +3 %"
+        ]
       }
     ]
   },
