@@ -12,6 +12,7 @@ import { etikett, spielarten, spielartText, sprungEpisoden, type Ausgang, type E
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
+import { pumpVerdacht } from '../core/datenkrake.ts';
 import { befoerderungPruefen, istBefoerdert, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
@@ -391,7 +392,12 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten): Ja
   const sp = spNachSchluessel.get(e.sp);
   if (!sp) return null;
   const k = r.kerzen;
-  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp) };
+  // V4: Pump-Verdacht (Hype-Signale ohne harte Fakten in den 3 Tagen bis zum Stichtag, Regel wie in der Datenkrake) –
+  // solche Fälle zählen für das Muster, werden aber weder gejagt noch sichtbar geordert
+  const von = new Date(Date.parse(`${k[i].datum}T12:00:00Z`) - 3 * 86400000).toISOString().slice(0, 10);
+  const typen = (signaleJe.get(r.schluessel.split('#')[0]) ?? []).filter((x) => x.datum >= von && x.datum <= k[i].datum).map((x) => x.typ);
+  const pump = pumpVerdacht(typen, { kurs: k[i].c });
+  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), ...(pump ? { pump: true } : {}) };
   if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
   const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));
   const fertig = res.find((a) => a && a.art !== 'zeit') ?? res[e.fenster - 1];
@@ -841,7 +847,8 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     const u = urteile.get(`${f.wert.toUpperCase()}|${f.stichtag}`);
     if (u) Object.assign(f, u);
   }
-  const { jagden, uebersprungen } = jagdenWaehlen(vorwaerts, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze });
+  const ohnePump = vorwaerts.filter((f) => !f.pump);
+  const { jagden, uebersprungen } = jagdenWaehlen(ohnePump, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze });
   // V6: Stufe 3 vor dem Fortschreiben – Stand je Muster (abgeschlossene Vorwärts-Fälle, Ø)
   const v6 = vt.v6;
   const zeitenVorher = stufe3Zeiten(musterBuch.eintraege);
@@ -871,11 +878,12 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
   });
   if (befoerdertHeute.length || zurueckHeute.length) schreibeJson('lernen/muster/muster-buch.json', musterBuch);
   const zeiten3 = stufe3Zeiten(musterBuch.eintraege);
-  const s3 = stufe3Waehlen(vorwaerts, zeiten3, v6, v6.ohneNein ?? false);
+  const s3 = stufe3Waehlen(ohnePump, zeiten3, v6, v6.ohneNein ?? false);
   const befoerdertJetzt = [...alleMuster.values(), ...musterBuch.eintraege]
     .filter((e, i, a) => a.findIndex((x) => x.schluessel === e.schluessel) === i && istBefoerdert(zeiten3, e.schluessel))
     .map((e) => ({ gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: zeiten3.get(e.schluessel)!.find((z) => z.bis === null)!.von, rueckblick: e.rueckblick }));
-  const lauerliste = vorwaerts.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung);
+  const lauerliste = ohnePump.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung);
+  const pumpZahl = vorwaerts.filter((x) => x.pump).length;
   const musterText = new Map([...alleMuster.values()].map((e) => [e.schluessel, e.gruppe]));
   const ohneMuster = (j: JagdFall) => ({ ...j, muster: musterText.get(j.muster) ?? j.muster });
   schreibeJson('volltreffer/uebersicht.json', {
@@ -889,6 +897,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     abgeschlossen: jagden.filter((j) => j.art !== 'offen').sort((a, b) => (b.ende ?? '').localeCompare(a.ende ?? '')).slice(0, 30).map(ohneMuster),
     lauerliste: lauerliste.slice(0, v4.lauerlisteMax).map(ohneMuster),
     lauerlisteZahl: lauerliste.length,
+    pumpVerdacht: pumpZahl,
     uebersprungen,
     muster: jeMuster.sort((a, b) => b.faelle - a.faelle),
     // V6: sichtbare Orders (Stufe 3) – bewährte Muster, simuliert mit 1.000 € je Order, mit Einzelmitteilungen
@@ -905,7 +914,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     },
   });
   log(`V6: ${befoerdertJetzt.length} Muster in Stufe 3 (heute ${befoerdertHeute.length} befördert, ${zurueckHeute.length} zurückgestuft), ${s3.kennzahlen.anzahl} sichtbare Orders abgeschlossen (Rendite ${s3.rendite} %), ${s3.offen.length} offen, ${s3.vorgemerkt.length} vorgemerkt.`);
-  log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu, ${beendet.length} beendet), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}.`);
+  log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu, ${beendet.length} beendet), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}, Pump-Verdacht ${pumpZahl} (nicht gejagt).`);
 }
 
 // privat: Zensus mit Werten und die vollständige Prüfung

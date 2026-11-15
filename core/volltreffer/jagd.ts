@@ -25,6 +25,8 @@ export interface JagdFall {
   tag: number | null;
   fenster: number;
   spielart: string;
+  /** V4: Pump-Verdacht (Hype-Signale ohne harte Fakten bis zum Stichtag) – wird nicht gejagt */
+  pump?: boolean;
   /** V5: Claudes Urteil im Morgenlauf (falls abgegeben) */
   urteil?: 'ja' | 'nein';
   grund?: string;

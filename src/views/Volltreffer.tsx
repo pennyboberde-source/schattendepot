@@ -18,6 +18,8 @@ interface Uebersicht {
   lauerliste: JagdFall[];
   lauerlisteZahl: number;
   uebersprungen: number;
+  /** V4: Fälle mit Pump-Verdacht (zählen für das Muster, werden nicht gejagt) */
+  pumpVerdacht?: number;
   muster: { gruppe: string; spielart: string; fenster: number; seit: string; faelle: number; treffer: number; ev: number; offen: number; rueckblick: { quote: number; ev: number; se: number; faelle: number }; stufe2: boolean; stufe3?: boolean; stufe3Grund?: string }[];
   sichtbar?: {
     regeln: { mindestFaelle: number; mindestQuote: number; mindestEv: number; maxOffen: number; einsatz: number };
@@ -201,6 +203,7 @@ export function JagdKarte() {
         ) : (
           <p class="leer">Heute erfüllt kein Wert ein Muster im Vorwärtstest.</p>
         )}
+        {(u.pumpVerdacht ?? 0) > 0 && <p class="klein">⚠️ {zahl(u.pumpVerdacht!)} Fälle mit Pump-Verdacht (Hype ohne harte Fakten) – sie zählen für das Muster, werden aber nicht gejagt.</p>}
         {u.abgeschlossen.length > 0 && (
           <>
             <h3>Zuletzt abgeschlossen</h3>
