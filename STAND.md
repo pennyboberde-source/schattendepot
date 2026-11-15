@@ -1,6 +1,6 @@
 # STAND – Schattendepot
 
-_Zuletzt aktualisiert: 15.11.2026 mittags (**Kursgeschichte und Rückblick gebaut** – V3 vorgezogen auf Wunsch des Nutzers; Download der Kursgeschichte läuft; davor 14.11. spätabends Lösung B live)_
+_Zuletzt aktualisiert: 15.11.2026 mittags (**Kursgeschichte, Rückblick, Stammdaten, Trefferbuch gebaut und live** – V3 vorgezogen auf Wunsch des Nutzers; Download der Kursgeschichte läuft; davor 14.11. spätabends Lösung B live)_
 
 ## 🎯 15.11.2026: Kursgeschichte und Rückblick (V3 vorgezogen, Nutzer: „maximale Effektivität, zügige Ergebnisse“)
 **Ziel (vom Nutzer bestätigt):** Die Datenkrake soll binnen Wochen Signale erkennen, die einem großen, handelbaren Kurssprung vorausgehen – Maßstab ist der Volltreffer, mindestens 400 € netto aus einer 1.000-€-Order.
@@ -14,6 +14,7 @@ _Zuletzt aktualisiert: 15.11.2026 mittags (**Kursgeschichte und Rückblick gebau
 - `jobs/rueckblick.ts` + Workflow `rueckblick.yml` (von Hand, wöchentlich So 05:40 UTC): öffentlich `lernen/muster/rangliste.json`, `grundraten.json`, `hypothesen.json` (Buch, nur anhängen); privat `auswertung/zensus-<datum>.csv.gz` (Sprung-Episoden mit Werten) und `pruefung-<datum>.json.gz`. Logs nur Zählungen.
 - App › Lernen: Karte „🎯 Volltreffer-Rückblick“ (bestandene Muster, sonst ehrlich die knappsten, Hypothesen mit ✅/❌).
 **Geprüft:** 340 Unit-Tests, 44 E2E. Archiv-Probe in Actions (Wegwerf-Ordner): 1.192 von 1.192 Kraken-Paaren, 720 Tage (25.11.2024–14.11.2026), 3.410 US-Splits, US neueste zuerst. Rückblick-Job lokal auf einem erfundenen Archiv (300 Tage, 400 Werte): läuft durch, rund 4.400 Stichtage je Sekunde → für die echten Daten grob 12–15 Minuten.
+**Nachgelegt (15.11. mittags, live):** Stammdaten und Handelbarkeits-Karte (V1): Teil `stamm` im täglichen Archivlauf – gettex-ISINs der letzten 20 Tage per OpenFIGI (Name, US-Kürzel, Art; ohne Schlüssel höchstens 120 Anfragen je Lauf), `stamm/wertpapiere.json` und `stamm/handelbar.json` privat (handelbar = Umsatz an 10 von 20 gettex-Tagen); der Rückblick nutzt die Karte, sobald sie auf 10 gettex-Tagen beruht (vorher Umsatz-Näherung). Lokal getestet: 1.200 ISINs im ersten Lauf (600 Aktien, 254 ETFs, 282 Anleihen). **Trefferbuch und Signal-Prüfung (V2):** `lernen/muster/trefferbuch.json` (Sprünge der letzten 30 Tage mit den Signalen der Datenkrake in den 14 Tagen davor) und `signale-volltreffer.json` (Quote je Signaltyp gegen die Grundrate derselben Tage); Zensus, Trefferbuch und Signal-Prüfung zählen nur Volltreffer bis Hebel 3 (echte Sprünge ab ~14 %), die Musterprüfung alle Spielarten. `rueckblick.yml` läuft jetzt **täglich 05:40 UTC**. App › Lernen: Karten „🎯 Volltreffer-Rückblick“ und „📖 Trefferbuch“. Tests: 344 Unit, 44 E2E (auch Linux).
 **Läuft / als Nächstes:** (1) `historie.yml` von Hand (US rund 500 Tage ≈ 2 Std.); (2) danach `rueckblick.yml` von Hand → erster echter Bericht an den Nutzer in einfachen Worten, auch wenn nichts besteht; (3) Kerzen-Hypothesen schärfen und Hypothesen-Buch erweitern; (4) V1 Rest; (5) V4 Bereich Volltreffer (virtuell) mit Lauerliste aus bestandenen Mustern.
 
 ## ✅ Lösung B live (14.11.2026 spätabends): Kurse raus aus dem öffentlichen Datenzweig
