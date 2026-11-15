@@ -74,7 +74,7 @@ export function merkmale(kerzen: Kerze[], i: number): Merkmale | null {
 
 /** Eine Einteilung: Name des Merkmals und Grenzen der Klassen (aufsteigend). */
 export interface Einteilung {
-  merkmal: keyof Merkmale | 'ueberrendite1' | 'marktR1';
+  merkmal: keyof Merkmale | 'ueberrendite1' | 'marktR1' | 'boersenwert';
   grenzen: number[];
   /** lesbare Namen der Klassen (eine mehr als Grenzen) */
   namen?: string[];

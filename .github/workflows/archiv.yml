@@ -20,7 +20,7 @@ permissions:
 jobs:
   archiv:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     concurrency:
       group: archiv-schreiben
       cancel-in-progress: false
@@ -43,6 +43,7 @@ jobs:
         env:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
           OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: node jobs/archiv.ts
       - name: Archiv sichern
         if: always()

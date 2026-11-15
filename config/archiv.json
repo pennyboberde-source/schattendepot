@@ -43,5 +43,12 @@
     "pauseMs": 2600,
     "fenster": 20,
     "mindestTage": 10
+  },
+  "boersenwert": {
+    "hinweis": "Börsenwert der Coins (CoinGecko Demo, Schlüssel COINGECKO_API_KEY): täglich der Stand der größten seiten×250 Coins, dazu je Coin einmalig der Verlauf über tage Tage (höchstens maxVerlaeufe je Lauf, Demo: 30 Abrufe je Minute, 10.000 je Monat). Privat: stamm/krypto-boersenwert.csv.gz.",
+    "seiten": 4,
+    "maxVerlaeufe": 150,
+    "pauseMs": 2500,
+    "tage": 365
   }
 }

@@ -30,6 +30,7 @@ import {
   type UsSplit,
 } from '../core/sammelkurse.ts';
 import { figiEinordnen, handelbarkeitsKarte, type Wertpapier } from '../core/volltreffer/stamm.ts';
+import { boersenwertCsv, krakenZuSymbol, parseBoersenwertCsv, parseGeckoChart, parseGeckoMarkets, symbolZuId, type BoersenwertZeile } from '../core/volltreffer/boersenwert.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -40,6 +41,7 @@ interface ArchivConfig {
   krypto: { host: string };
   kryptoKerzen?: { waehrungen: string[]; pauseMs: number; mindestAnteil: number; tageZurueck: number };
   stamm?: { maxAnfragen: number; pauseMs: number; fenster: number; mindestTage: number };
+  boersenwert?: { seiten: number; maxVerlaeufe: number; pauseMs: number; tage: number };
   usSplits?: { jahreZurueck: number; nachfassenTage: number };
 }
 interface Index {
@@ -53,6 +55,8 @@ interface Index {
   usSplits?: { eintraege: number; von: string; bis: string; geholt: string };
   /** Stammdaten (stamm/wertpapiere.json) und Handelbarkeits-Karte (stamm/handelbar.json) in Zählungen */
   stamm?: { wertpapiere: number; handelbar: number; handelbarUs: number; gettexTage: number; offen: number; geholt: string };
+  /** Börsenwert der Coins (stamm/krypto-boersenwert.csv.gz) in Zählungen */
+  boersenwert?: { coins: number; zeilen: number; verlaeufeOffen: number; geholt: string };
 }
 
 const ARCHIV = process.env.ARCHIV_DIR ?? '_archiv';
@@ -66,7 +70,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -297,6 +301,75 @@ async function stamm() {
   console.log(`Stammdaten: ${Object.keys(bekannt).length} ISINs bekannt (${anfragen} Anfragen, ${fehlen.length} noch offen); handelbar ${karte.size} ISINs aus ${tage.length} gettex-Tagen, davon ${handelbarUs} Aktien mit US-Kürzel.`);
 }
 
+// ---------- Börsenwert der Coins (CoinGecko Demo) – Merkmal für Rückblick und Zensus ----------
+// Täglich der Stand der größten Coins (/coins/markets), dazu einmalig je Coin der Verlauf über 365 Tage
+// (/coins/{id}/market_chart), damit der Rückblick den Börsenwert AM Stichtag kennt. Demo: 30 Abrufe je Minute,
+// 10.000 je Monat. Privat im Archiv (stamm/krypto-boersenwert.csv.gz); öffentlich nur Zählungen.
+async function boersenwert() {
+  const key = process.env.COINGECKO_API_KEY?.trim();
+  if (!key) {
+    console.log('Börsenwert: COINGECKO_API_KEY fehlt – übersprungen.');
+    return;
+  }
+  const bw = cfg.boersenwert ?? { seiten: 4, maxVerlaeufe: 150, pauseMs: 2500, tage: 365 };
+  const hole = async (weg: string): Promise<unknown> => {
+    const r = await fetch(`https://api.coingecko.com/api/v3${weg}`, { headers: { 'x-cg-demo-api-key': key, accept: 'application/json', 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(30000) });
+    if (r.status === 429) throw new Error('Kontingent');
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  };
+  const datei = join(ARCHIV, 'stamm', 'krypto-boersenwert.csv.gz');
+  const alt: BoersenwertZeile[] = existsSync(datei) ? parseBoersenwertCsv(gunzipSync(readFileSync(datei)).toString('utf8')) : [];
+  const neu: BoersenwertZeile[] = [];
+  const heute = iso.slice(0, 10);
+  // 1. heutiger Stand der größten Coins
+  const maerkte = [];
+  for (let s = 1; s <= bw.seiten; s++) {
+    if (s > 1) await pause(bw.pauseMs);
+    maerkte.push(...parseGeckoMarkets(await hole(`/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${s}`)));
+  }
+  if (maerkte.length < 100) throw new Error(`CoinGecko: nur ${maerkte.length} Coins`);
+  const ids = symbolZuId(maerkte);
+  for (const m of maerkte) if (ids.get(m.symbol) === m.id) neu.push({ datum: heute, symbol: m.symbol, cap: m.cap });
+  // 2. Verlauf für Coins, die an Kraken gehandelt werden und noch keinen Verlauf haben (älteste Zeile jünger als 300 Tage)
+  const aeltester = new Map<string, string>();
+  for (const z of alt) if (!aeltester.has(z.symbol) || z.datum < aeltester.get(z.symbol)!) aeltester.set(z.symbol, z.datum);
+  const grenze = new Date(Date.parse(heute) - 300 * 86400000).toISOString().slice(0, 10);
+  const kerzenOrdner = join(ARCHIV, 'krypto-kerzen');
+  const krakenSymbole = new Set<string>();
+  if (existsSync(kerzenOrdner)) {
+    const letzte = readdirSync(kerzenOrdner)
+      .filter((j) => /^\d{4}$/.test(j))
+      .flatMap((j) => readdirSync(join(kerzenOrdner, j)).map((d) => join(kerzenOrdner, j, d)))
+      .sort()
+      .pop();
+    if (letzte) for (const zeile of gunzipSync(readFileSync(letzte)).toString('utf8').split('\n').slice(1)) {
+      const name = zeile.split(',')[1] ?? '';
+      const basis = name.split('/')[0];
+      if (basis) krakenSymbole.add(krakenZuSymbol(basis));
+    }
+  }
+  const offen = [...krakenSymbole].filter((s) => ids.has(s) && !((aeltester.get(s) ?? '9999') <= grenze));
+  let verlaeufe = 0;
+  for (const s of offen.slice(0, bw.maxVerlaeufe)) {
+    await pause(bw.pauseMs);
+    try {
+      for (const p of parseGeckoChart(await hole(`/coins/${ids.get(s)}/market_chart?vs_currency=usd&days=${bw.tage}&interval=daily`))) if (p.datum < heute) neu.push({ datum: p.datum, symbol: s, cap: p.cap });
+      verlaeufe++;
+    } catch (e) {
+      if ((e as Error).message === 'Kontingent') {
+        console.log('Börsenwert: CoinGecko-Kontingent erreicht – Rest im nächsten Lauf.');
+        break;
+      }
+    }
+  }
+  const { csv, zeilen } = boersenwertCsv(alt, neu);
+  mkdirSync(dirname(datei), { recursive: true });
+  writeFileSync(datei, gzipSync(Buffer.from(csv, 'utf8'), { level: 9 }));
+  index.boersenwert = { coins: new Set([...alt, ...neu].map((z) => z.symbol)).size, zeilen, verlaeufeOffen: Math.max(0, offen.length - verlaeufe), geholt: iso };
+  console.log(`Börsenwert: ${maerkte.length} Coins heute, ${verlaeufe} Verläufe neu (${Math.max(0, offen.length - verlaeufe)} offen), ${zeilen} Zeilen gesamt.`);
+}
+
 // ---------- US-Aktiensplits (Massive): eine Liste, die nur wächst – Splits sind Ereignisse, keine Kurssprünge ----------
 async function usSplits() {
   const key = process.env.MASSIVE_API_KEY?.trim();
@@ -394,6 +467,7 @@ const TEILE = [
   ['kryptokerzen', 'Krypto-Tageskerzen', kryptoKerzen],
   ['ussplits', 'US-Splits', usSplits],
   ['stamm', 'Stammdaten', stamm],
+  ['boersenwert', 'Börsenwert', boersenwert],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -437,6 +511,7 @@ const stand = {
     usSplits: index.usSplits?.eintraege ?? 0,
   },
   stamm: index.stamm ?? null,
+  boersenwert: index.boersenwert ?? null,
   neu: neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };

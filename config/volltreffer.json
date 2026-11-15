@@ -239,6 +239,22 @@
           0.5,
           2
         ]
+      },
+      {
+        "merkmal": "boersenwert",
+        "grenzen": [
+          10000000,
+          100000000,
+          1000000000,
+          10000000000
+        ],
+        "namen": [
+          "unter 10 Mio. $",
+          "10 Mio. bis 100 Mio. $",
+          "100 Mio. bis 1 Mrd. $",
+          "1 Mrd. bis 10 Mrd. $",
+          "ab 10 Mrd. $"
+        ]
       }
     ]
   },

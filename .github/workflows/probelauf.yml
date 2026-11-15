@@ -60,6 +60,7 @@ jobs:
         env:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
           ARCHIV_DIR: ${{ runner.temp }}/archiv-probe
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
           ARCHIV_NUR: ${{ github.event.inputs.teile }}
           US_MAX_TAGE: 3
         run: |

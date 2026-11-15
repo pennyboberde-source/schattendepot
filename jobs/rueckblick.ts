@@ -15,6 +15,7 @@ import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffe
 import { istUsAktie, kryptoPaar, median, splitBereinigen, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { schluesselNormal } from '../core/signale.ts';
+import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenwert.ts';
 
 type Markt = 'aktie' | 'krypto';
 interface VtConfig {
@@ -109,6 +110,14 @@ if (!reihen.length) {
   process.exit(1);
 }
 
+// Börsenwert der Coins am Stichtag (CoinGecko, privat im Archiv) – nie der heutige Wert (Rückschaufehler)
+const boersenwerte = new Map<string, Map<string, number>>();
+{
+  const p = join(ARCHIV, 'stamm', 'krypto-boersenwert.csv.gz');
+  if (existsSync(p)) for (const z of parseBoersenwertCsv(gz(p))) (boersenwerte.get(z.symbol) ?? boersenwerte.set(z.symbol, new Map()).get(z.symbol)!).set(z.datum, z.cap);
+  log(`Börsenwert: ${boersenwerte.size} Coins mit Verlauf.`);
+}
+
 // ---------- 2. Kosten je Wertklasse ----------
 const spreadProzent = (klasseName: string) => (cfg.spreads.klassen as Record<string, { prozent: number }>)[klasseName]?.prozent ?? 3;
 const kosten = (markt: Markt, umsatz20: number | null): EtikettKosten => {
@@ -185,8 +194,8 @@ const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
 const zw = new Zaehlwerk(gruppen.length, SP.length, F.length, 2);
 log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
-const merkmalWert = (e: Einteilung, m: Merkmale, kontext: { marktR1: number; ueberrendite1: number }): number | null =>
-  e.merkmal === 'marktR1' ? kontext.marktR1 : e.merkmal === 'ueberrendite1' ? kontext.ueberrendite1 : (m[e.merkmal as keyof Merkmale] as number | null);
+const merkmalWert = (e: Einteilung, m: Merkmale, kontext: { marktR1: number; ueberrendite1: number; boersenwert: number | null }): number | null =>
+  e.merkmal === 'marktR1' ? kontext.marktR1 : e.merkmal === 'ueberrendite1' ? kontext.ueberrendite1 : e.merkmal === 'boersenwert' ? kontext.boersenwert : (m[e.merkmal as keyof Merkmale] as number | null);
 
 // ---------- 4b. Signale der Datenkrake (seit 28.10.2026) – was war vor einem Sprung bekannt? ----------
 interface Sig {
@@ -315,7 +324,7 @@ for (const r of reihen) {
     if (!x || !handelbar(r, x, k[i])) continue;
     stichtage++;
     const mr = marktR1[r.markt].get(k[i].datum) ?? 0;
-    const kontext = { marktR1: mr, ueberrendite1: x.r1 - mr };
+    const kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), k[i].datum) : null };
     const z = k[i].datum < grenze ? 0 : 1;
     const klassen = E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
     const gAlle = gid.get(`${r.markt}|alle`)!;
@@ -402,7 +411,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
