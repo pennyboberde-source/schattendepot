@@ -2,11 +2,32 @@
 // Tagesdatei ins PRIVATE Repo schattendepot-archiv (Checkout unter ARCHIV_DIR, Standard _archiv).
 // Aufruf: node jobs/archiv.ts   – der Lauf ist wiederholbar: Was schon da ist, wird nie überschrieben.
 // Ins öffentliche Repo geht nur der Stand in Zählungen (Ausgabe „stand“ → archiv/stand.json im Datenzweig).
+// Schalter (Umgebung): ARCHIV_NUR=krypto,us,gettex,kryptokerzen,ussplits (Standard: krypto,us,gettex – der tägliche Lauf).
+//   US_AB=JJJJ-MM-TT und US_MAX_TAGE=n für den Rückblick (Kursgeschichte rückwärts, fortsetzbar – Workflow historie.yml).
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { gzipSync } from 'node:zlib';
+import { gunzipSync, gzipSync } from 'node:zlib';
 import { berlin, berlinZuUtc, istHandelstag } from '../core/kalender.ts';
-import { gettexCsv, gettexTagStatus, gettexZeilen, kryptoCsv, parseKrakenAlle, parseMassive, tageInFolge, usCsv, type Tageskerze } from '../core/sammelkurse.ts';
+import {
+  gettexCsv,
+  gettexTagStatus,
+  gettexZeilen,
+  krakenKerzenPaare,
+  kryptoCsv,
+  kryptoKerzenCsv,
+  parseKrakenAlle,
+  parseKrakenOhlc,
+  parseMassive,
+  parseMassiveSplits,
+  parseUsSplitsArchiv,
+  splitsVereinen,
+  tageInFolge,
+  usCsv,
+  usSplitsCsv,
+  type KryptoKerze,
+  type Tageskerze,
+  type UsSplit,
+} from '../core/sammelkurse.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -15,12 +36,18 @@ interface ArchivConfig {
   gettex: { handelVon: string; handelBis: string; fertigNachMinuten: number; parallel: number };
   us: { host: string; ab: string; maxTageJeLauf: number; pauseSekunden: number; bereinigt: boolean; mitOtc: boolean };
   krypto: { host: string };
+  kryptoKerzen?: { waehrungen: string[]; pauseMs: number; mindestAnteil: number; tageZurueck: number };
+  usSplits?: { jahreZurueck: number; nachfassenTage: number };
 }
 interface Index {
   stand?: string;
   gettex: Record<string, { isins: number; geschaefte: number; umsatz: number; fenster: number; erwartet: number; vollstaendig: boolean; geholt: string }>;
-  us: Record<string, { werte?: number; otc?: number; bereinigt?: boolean; keinHandel?: boolean; geholt: string }>;
+  us: Record<string, { werte?: number; otc?: number; bereinigt?: boolean; keinHandel?: boolean; ausserhalbTarif?: boolean; geholt: string }>;
   krypto: Record<string, { paare: number; zeit: string }>;
+  /** Tageskerzen (UTC) aller Kraken-Paare gegen Euro und Dollar */
+  kryptoKerzen?: Record<string, { paare: number; geholt: string }>;
+  /** Splits-Liste (stamm/us-splits.csv.gz): Zahl der Einträge und letzter Abruf */
+  usSplits?: { eintraege: number; von: string; bis: string; geholt: string };
 }
 
 const ARCHIV = process.env.ARCHIV_DIR ?? '_archiv';
@@ -33,6 +60,11 @@ const tagPlus = (datum: string, tage: number) => new Date(Date.parse(`${datum}T1
 const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0, 4), `${datum}.csv.gz`);
 const fehler: string[] = [];
 const neu: string[] = [];
+// Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
+const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
+const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
 
 if (!existsSync(ARCHIV)) {
   console.error(`Archiv-Ordner ${ARCHIV} fehlt (Checkout des privaten Repos).`);
@@ -77,11 +109,14 @@ async function us() {
   }
   const nyHeute = new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/New_York' }).format(jetzt);
   const offen: string[] = [];
-  for (let d = cfg.us.ab; d < nyHeute; d = tagPlus(d, 1)) {
+  for (let d = usAb; d < nyHeute; d = tagPlus(d, 1)) {
     const wt = new Date(`${d}T12:00:00Z`).getUTCDay();
     if (wt === 0 || wt === 6 || nyseFeiertage.has(d) || index.us[d] || existsSync(pfad('us', d))) continue;
     offen.push(d);
   }
+  // Neueste Tage zuerst: Sie sind für Zensus und Schattenbuch am wertvollsten, und die Grenze der Tarif-Historie
+  // zeigt sich als erste Ablehnung (HTTP 403) nach erfolgreichen jüngeren Tagen.
+  offen.reverse();
   let abrufe = 0;
   const abruf = async (d: string, otc: boolean) => {
     if (abrufe++ > 0) await pause(cfg.us.pauseSekunden * 1000);
@@ -90,7 +125,9 @@ async function us() {
     return { status: r.status, json: (await r.json().catch(() => null)) as unknown };
   };
   let mitOtc = cfg.us.mitOtc;
-  for (const d of offen.slice(0, cfg.us.maxTageJeLauf)) {
+  const altGrenze = tagPlus(nyHeute, -10);
+  const erfolgreich = (d: string) => Object.keys(index.us).some((x) => x > d && index.us[x].werte);
+  for (const [i, d] of offen.slice(0, usMaxTage).entries()) {
     let a = await abruf(d, mitOtc);
     // Der Gratis-Tarif kann den Zusatz „mit OTC“ ablehnen → ohne wiederholen und für den Rest des Laufs merken
     if (mitOtc && (a.status === 400 || a.status === 403)) {
@@ -98,9 +135,20 @@ async function us() {
       if (ohne.status === 200) mitOtc = false;
       a = ohne;
     }
+    // Außerhalb des Tarifs antwortet Massive mit HTTP 403 oder mit Status NOT_AUTHORIZED – beides gleich behandeln
+    if (a.status === 200 && (a.json as { status?: string } | null)?.status === 'NOT_AUTHORIZED') a = { ...a, status: 403 };
     if (a.status === 403) {
-      console.log(`US ${d}: noch nicht abrufbar (HTTP 403) – nächster Lauf.`);
-      continue;
+      if (d >= altGrenze) {
+        console.log(`US ${d}: noch nicht abrufbar (HTTP 403) – nächster Lauf.`);
+        continue;
+      }
+      // Alter Tag abgelehnt, jüngere Tage gingen: Grenze der Tarif-Historie erreicht. Dieser und alle älteren offenen Tage
+      // werden gemerkt und nie wieder versucht. Ohne erfolgreichen jüngeren Tag (Schlüssel ungültig?) wird nichts gemerkt.
+      if (!erfolgreich(d)) throw new Error(`Massive ${d}: HTTP 403 ohne erfolgreichen jüngeren Tag – Schlüssel prüfen`);
+      const aelter = offen.slice(i);
+      for (const x of aelter) index.us[x] = { ausserhalbTarif: true, geholt: iso };
+      console.log(`US: Grenze der Tarif-Historie bei ${d} – ${aelter.length} ältere Tage außerhalb (werden nicht mehr versucht).`);
+      break;
     }
     if (a.status === 429) {
       console.log('US: Kontingent je Minute erreicht – nächster Lauf.');
@@ -117,7 +165,108 @@ async function us() {
     if (ablegen('us', d, usCsv(p.kerzen))) index.us[d] = { werte: p.kerzen.length, otc: p.kerzen.filter((k) => k.otc).length, bereinigt: p.bereinigt ?? cfg.us.bereinigt, geholt: iso };
     console.log(`US ${d}: ${p.kerzen.length} Werte (${index.us[d]?.otc ?? 0} OTC).`);
   }
-  if (offen.length > cfg.us.maxTageJeLauf) console.log(`US: ${offen.length - cfg.us.maxTageJeLauf} weitere Tage folgen im nächsten Lauf.`);
+  const rest = offen.filter((d) => !index.us[d] && !existsSync(pfad('us', d))).length;
+  if (rest && offen.length > usMaxTage) console.log(`US: ${rest} weitere Tage folgen im nächsten Lauf.`);
+}
+
+// ---------- Krypto-Tageskerzen (UTC) aller Kraken-Paare gegen Euro und Dollar – Kursgeschichte und täglicher Nachtrag ----------
+// Kraken liefert je Paar bis zu 720 Tageskerzen. Abgelegt wird je fertigem UTC-Tag eine Datei mit allen Paaren; fehlen
+// zu viele Paare (Abrufgrenze), wird nichts abgelegt – eine Tagesdatei lässt sich später nicht mehr ergänzen.
+async function kryptoKerzen() {
+  const kk = cfg.kryptoKerzen ?? { waehrungen: ['EUR', 'USD'], pauseMs: 1100, mindestAnteil: 0.97, tageZurueck: 720 };
+  const heute = iso.slice(0, 10);
+  const da = (index.kryptoKerzen ??= {});
+  const fehlend: string[] = [];
+  for (let d = tagPlus(heute, -kk.tageZurueck); d < heute; d = tagPlus(d, 1)) if (!da[d] && !existsSync(pfad('krypto-kerzen', d))) fehlend.push(d);
+  if (!fehlend.length) {
+    console.log('Krypto-Tageskerzen: alle Tage vorhanden.');
+    return;
+  }
+  const hole = async (weg: string): Promise<unknown> => {
+    for (let versuch = 0; ; versuch++) {
+      const r = await fetch(`${cfg.krypto.host}${weg}`, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(30000) }).catch(() => null);
+      const json = r?.ok ? ((await r.json().catch(() => null)) as { error?: string[] } | null) : null;
+      const zuViele = r?.status === 429 || !!json?.error?.some((e) => /Too many requests|Rate limit/i.test(e));
+      if (json && !zuViele) return json;
+      if (versuch >= 3) throw new Error(`Kraken ${weg.split('?')[0]}: ${r ? `HTTP ${r.status}` : 'keine Antwort'}`);
+      await pause((zuViele ? 15000 : 3000) * (versuch + 1));
+    }
+  };
+  const paare = krakenKerzenPaare(await hole('/0/public/AssetPairs'), kk.waehrungen);
+  if (paare.length < 100) throw new Error(`Kraken: nur ${paare.length} Paare`);
+  // nur so weit zurück fragen wie nötig (Kraken: Kerzen NACH dem Zeitpunkt)
+  const seit = Math.floor(Date.parse(`${fehlend[0]}T00:00:00Z`) / 1000) - 86400;
+  const jeTag = new Map<string, KryptoKerze[]>();
+  let geholt = 0;
+  const lade = async (liste: { paar: string; name: string }[]) => {
+    const gescheitert: { paar: string; name: string }[] = [];
+    for (const p of liste) {
+      await pause(kk.pauseMs);
+      try {
+        const r = parseKrakenOhlc(await hole(`/0/public/OHLC?pair=${encodeURIComponent(p.paar)}&interval=1440&since=${seit}`));
+        if (r.fehler) throw new Error(r.fehler);
+        for (const { datum, ...k } of r.tage) {
+          if (datum >= heute) continue;
+          const tag = jeTag.get(datum) ?? [];
+          tag.push({ paar: p.paar, name: p.name, ...k });
+          jeTag.set(datum, tag);
+        }
+        geholt++;
+      } catch {
+        gescheitert.push(p);
+      }
+    }
+    return gescheitert;
+  };
+  const offen = await lade(await lade(paare));
+  if (geholt / paare.length < kk.mindestAnteil) throw new Error(`Krypto-Tageskerzen: nur ${geholt} von ${paare.length} Paaren abrufbar – nichts abgelegt`);
+  let tage = 0;
+  for (const d of fehlend) {
+    const kerzen = jeTag.get(d);
+    if (!kerzen?.length) continue;
+    if (ablegen('krypto-kerzen', d, kryptoKerzenCsv(kerzen))) {
+      da[d] = { paare: kerzen.length, geholt: iso };
+      tage++;
+    }
+  }
+  console.log(`Krypto-Tageskerzen: ${geholt} von ${paare.length} Paaren, ${tage} Tage neu (${fehlend[0]} bis ${fehlend[fehlend.length - 1]})${offen.length ? `, ${offen.length} Paare nicht abrufbar` : ''}.`);
+}
+
+// ---------- US-Aktiensplits (Massive): eine Liste, die nur wächst – Splits sind Ereignisse, keine Kurssprünge ----------
+async function usSplits() {
+  const key = process.env.MASSIVE_API_KEY?.trim();
+  if (!key) {
+    console.log('US-Splits: MASSIVE_API_KEY fehlt – übersprungen.');
+    return;
+  }
+  const sp = cfg.usSplits ?? { jahreZurueck: 2, nachfassenTage: 30 };
+  const datei = join(ARCHIV, 'stamm', 'us-splits.csv.gz');
+  const alt: UsSplit[] = existsSync(datei) ? parseUsSplitsArchiv(gunzipSync(readFileSync(datei)).toString('utf8')) : [];
+  const heute = iso.slice(0, 10);
+  // erster Abruf: die ganze Historie des Tarifs; danach nur die letzten Wochen nachfassen
+  const ab = alt.length ? tagPlus(heute, -sp.nachfassenTage) : tagPlus(heute, -Math.round(sp.jahreZurueck * 365.25));
+  let url: string | undefined = `${cfg.us.host}/v3/reference/splits?execution_date.gte=${ab}&order=asc&sort=execution_date&limit=1000`;
+  const neue: UsSplit[] = [];
+  for (let seite = 0; url && seite < 40; seite++) {
+    if (seite > 0) await pause(cfg.us.pauseSekunden * 1000);
+    const r: Response = await fetch(url, { headers: { Authorization: `Bearer ${key}`, 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(60000) });
+    if (r.status === 403) {
+      console.log('US-Splits: im Tarif nicht abrufbar (HTTP 403) – übersprungen.');
+      return;
+    }
+    const p = parseMassiveSplits(await r.json().catch(() => null));
+    if (r.status !== 200 || p.fehler) throw new Error(`Massive Splits: HTTP ${r.status}${p.fehler ? ` – ${p.fehler}` : ''}`);
+    neue.push(...p.splits);
+    url = p.weiter;
+  }
+  const alle = splitsVereinen(alt, neue);
+  if (alle.length !== alt.length || neue.some((n) => !alt.some((a) => a.datum === n.datum && a.ticker === n.ticker && a.von === n.von && a.zu === n.zu))) {
+    mkdirSync(dirname(datei), { recursive: true });
+    writeFileSync(datei, gzipSync(Buffer.from(usSplitsCsv(alle), 'utf8'), { level: 9 }));
+    neu.push('stamm/us-splits');
+  }
+  if (alle.length) index.usSplits = { eintraege: alle.length, von: alle[0].datum, bis: alle[alle.length - 1].datum, geholt: iso };
+  console.log(`US-Splits: ${alle.length} Einträge (${alle.length - alt.length} neu, abgefragt ab ${ab}).`);
 }
 
 // ---------- gettex: Tageskerzen je ISIN aus allen 15-Minuten-Dateien ----------
@@ -173,7 +322,15 @@ async function gettex() {
   }
 }
 
-for (const [name, lauf] of [['Krypto', krypto], ['US', us], ['gettex', gettex]] as const) {
+const TEILE = [
+  ['krypto', 'Krypto', krypto],
+  ['us', 'US', us],
+  ['gettex', 'gettex', gettex],
+  ['kryptokerzen', 'Krypto-Tageskerzen', kryptoKerzen],
+  ['ussplits', 'US-Splits', usSplits],
+] as const;
+for (const [schalter, name, lauf] of TEILE) {
+  if (!NUR.has(schalter)) continue;
   try {
     await lauf();
   } catch (e) {
@@ -201,12 +358,22 @@ const stand = {
   hinweis: 'Stand des privaten Kursarchivs in Zählungen. Die Kurse selbst liegen nicht im öffentlichen Repo (nur private Nutzung gestattet).',
   gettex: markt(index.gettex, (e) => e.vollstaendig, istHandelstag),
   gettexUnvollstaendig: Object.keys(index.gettex).filter((d) => !index.gettex[d].vollstaendig).sort(),
-  us: markt(index.us, (e) => !e.keinHandel, usTag),
+  us: markt(index.us, (e) => !e.keinHandel && !e.ausserhalbTarif, usTag),
   krypto: markt(index.krypto, () => true, () => true),
-  neu,
+  // Kursgeschichte für Rückblick und Zensus (Zählungen)
+  historie: {
+    usTage: Object.values(index.us).filter((e) => !e.keinHandel && !e.ausserhalbTarif).length,
+    usAb: Object.keys(index.us).filter((d) => !index.us[d].keinHandel && !index.us[d].ausserhalbTarif).sort()[0] ?? null,
+    usAusserhalbTarif: Object.values(index.us).filter((e) => e.ausserhalbTarif).length,
+    kryptoKerzenTage: Object.keys(index.kryptoKerzen ?? {}).length,
+    kryptoKerzenAb: Object.keys(index.kryptoKerzen ?? {}).sort()[0] ?? null,
+    kryptoKerzenBis: Object.keys(index.kryptoKerzen ?? {}).sort().pop() ?? null,
+    usSplits: index.usSplits?.eintraege ?? 0,
+  },
+  neu: neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };
-console.log(`Archiv: neu ${neu.join(', ') || '–'} · in Folge: gettex ${stand.gettex.inFolge}, US ${stand.us.inFolge}, Krypto ${stand.krypto.inFolge}${fehler.length ? ` · ${fehler.length} Fehler` : ''}`);
+console.log(`Archiv: neu ${neu.length > 12 ? `${neu.length} Dateien` : neu.join(', ') || '–'} · in Folge: gettex ${stand.gettex.inFolge}, US ${stand.us.inFolge}, Krypto ${stand.krypto.inFolge} · Historie: US ${stand.historie.usTage} Tage ab ${stand.historie.usAb ?? '–'}, Krypto-Kerzen ${stand.historie.kryptoKerzenTage} Tage${fehler.length ? ` · ${fehler.length} Fehler` : ''}`);
 if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `stand=${JSON.stringify(stand)}\n`);
 if (process.env.ARCHIV_STAND_DATEI) writeFileSync(process.env.ARCHIV_STAND_DATEI, JSON.stringify(stand, null, 2) + '\n');
 // Rot nur, wenn etwas schiefging UND nichts Neues abgelegt wurde – sonst würde der Commit der anderen Märkte ausbleiben

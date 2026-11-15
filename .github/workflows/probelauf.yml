@@ -12,6 +12,9 @@ on:
       privat:
         description: 'mit | ohne (so tun, als sei der private Zustand nicht erreichbar)'
         default: mit
+      teile:
+        description: 'nur bei archiv: krypto,us,gettex,kryptokerzen,ussplits (leer = täglicher Lauf; us holt dann die 3 jüngsten Tage)'
+        default: ''
 
 permissions:
   contents: read
@@ -19,7 +22,7 @@ permissions:
 jobs:
   probelauf:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v5
       - uses: actions/checkout@v5
@@ -52,11 +55,14 @@ jobs:
         env:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
           ARCHIV_DIR: ${{ runner.temp }}/archiv-probe
+          ARCHIV_NUR: ${{ github.event.inputs.teile }}
+          US_MAX_TAGE: 3
         run: |
           mkdir -p "$ARCHIV_DIR"
+          [ -n "$ARCHIV_NUR" ] && export US_AB=$(date -u -d "2 years ago" +%F)
           node jobs/archiv.ts
           find "$ARCHIV_DIR" -type f -printf '%P %s Bytes\n'
-          cat "$ARCHIV_DIR/index.json"
+          node -e "const i=require(process.argv[1]);for(const k of Object.keys(i))console.log(k, typeof i[k]==='object'&&i[k]?Object.keys(i[k]).length+' Einträge':i[k])" "$ARCHIV_DIR/index.json"
       - name: Probelauf
         if: github.event.inputs.art != 'tests' && github.event.inputs.art != 'archiv'
         env:

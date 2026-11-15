@@ -1,0 +1,106 @@
+name: Kursgeschichte
+
+# Plan Volltreffer (V3 vorgezogen, Nutzer 15.11.2026): Kursgeschichte für Rückblick und Zensus ins PRIVATE Archiv.
+#   us            – Massive-Sammelabruf je Handelstag rückwärts ab heute bis zur Grenze des Tarifs (Basic: 2 Jahre),
+#                   4 Tage je Minute, in Runden mit Sicherung nach jeder Runde (fortsetzbar, nichts wird überschrieben)
+#   kryptokerzen  – Kraken-Tageskerzen (UTC) aller Paare gegen Euro und Dollar, bis zu 720 Tage
+#   ussplits      – Aktiensplits und Zusammenlegungen als Liste, die nur wächst
+# Wöchentlich (So 03:20 UTC) füllt derselbe Workflow die Krypto-Tageskerzen und Splits der letzten Woche nach.
+# Ins öffentliche Repo geht nur der Stand in Zählungen (archiv/stand.json). Die Logs zeigen nur Zählungen.
+on:
+  schedule:
+    - cron: '20 3 * * 0'
+  workflow_dispatch:
+    inputs:
+      teile:
+        description: 'us, kryptokerzen, ussplits (mit Komma)'
+        default: 'us,kryptokerzen,ussplits'
+      us_ab:
+        description: 'US ab diesem Tag (JJJJ-MM-TT; leer = vor 2 Jahren und 5 Tagen)'
+        default: ''
+      runden:
+        description: 'höchstens so viele US-Runden (je Runde 45 Tage, rund 10 Minuten)'
+        default: '14'
+
+permissions:
+  contents: read
+
+jobs:
+  historie:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    concurrency:
+      group: archiv-schreiben
+      cancel-in-progress: false
+    outputs:
+      stand: ${{ steps.historie.outputs.stand }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          repository: pennyboberde-source/schattendepot-archiv
+          token: ${{ secrets.ARCHIV_TOKEN }}
+          path: _archiv
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Kursgeschichte holen und in Runden sichern
+        id: historie
+        env:
+          MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
+          TEILE: ${{ github.event.inputs.teile || 'kryptokerzen,ussplits' }}
+          US_AB_EINGABE: ${{ github.event.inputs.us_ab }}
+          RUNDEN: ${{ github.event.inputs.runden || '14' }}
+          ARCHIV_STAND_DATEI: ${{ runner.temp }}/stand.json
+        run: |
+          set -uo pipefail
+          zeit() { date -u +%Y-%m-%dT%H:%MZ; }
+          # erst Krypto-Kerzen und Splits (je ein Durchgang), dann US in Runden
+          andere=$(echo "$TEILE" | tr ',' '\n' | grep -v '^us$' | paste -sd, -)
+          if [ -n "$andere" ]; then
+            ARCHIV_NUR="$andere" node jobs/archiv.ts || echo "::warning::$andere mit Fehler (siehe oben)"
+            bash scripts/archiv-sichern.sh "Kursgeschichte $andere $(zeit)"
+          fi
+          if echo "$TEILE" | tr ',' '\n' | grep -qx us; then
+            us_ab="${US_AB_EINGABE:-$(date -u -d '2 years ago 5 days ago' +%F)}"
+            for runde in $(seq 1 "$RUNDEN"); do
+              echo "== US-Runde $runde (ab $us_ab) =="
+              ausgabe=$(ARCHIV_NUR=us US_AB="$us_ab" US_MAX_TAGE=45 node jobs/archiv.ts 2>&1); code=$?
+              echo "$ausgabe" | grep -E '^(US|Archiv|FEHLER)' | grep -vE '^US [0-9-]+: [0-9]+ Werte' | tail -8
+              echo "$ausgabe" | grep -cE '^US [0-9-]+: [0-9]+ Werte' | sed 's/^/Tage in dieser Runde: /'
+              bash scripts/archiv-sichern.sh "Kursgeschichte US Runde $runde $(zeit)"
+              if [ $code -ne 0 ]; then echo "::warning::US-Runde $runde mit Fehler – Abbruch"; break; fi
+              echo "$ausgabe" | grep -q 'weitere Tage folgen' || { echo "US: Kursgeschichte vollständig."; break; }
+            done
+          fi
+          [ -f "$ARCHIV_STAND_DATEI" ] && echo "stand=$(jq -c . "$ARCHIV_STAND_DATEI")" >> "$GITHUB_OUTPUT"
+          exit 0
+
+  stand:
+    needs: historie
+    if: always() && needs.historie.outputs.stand != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    concurrency:
+      group: daten-schreiben
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - name: Stand in Zählungen in den Datenzweig
+        env:
+          STAND: ${{ needs.historie.outputs.stand }}
+        run: |
+          mkdir -p _daten/archiv
+          printf '%s\n' "$STAND" > _daten/archiv/stand.json
+      - name: Daten sichern
+        run: bash scripts/daten-sichern.sh "Kursgeschichte-Stand $(date -u +%Y-%m-%dT%H:%MZ)"

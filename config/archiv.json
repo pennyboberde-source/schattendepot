@@ -15,10 +15,26 @@
     "maxTageJeLauf": 5,
     "pauseSekunden": 13,
     "bereinigt": false,
-    "mitOtc": true
+    "mitOtc": true,
+    "historieHinweis": "Rückblick: Workflow historie.yml holt die Kursgeschichte rückwärts ab US_AB (Standard: zwei Jahre), 4 Tage je Minute, fortsetzbar. Tage außerhalb der Historie des Tarifs (HTTP 403) werden gemerkt und nicht erneut versucht."
   },
   "krypto": {
     "hinweis": "Kraken, ein Abruf für alle Paare (Stand und 24-Stunden-Werte), einmal je UTC-Tag, dazu die lesbaren Paarnamen. Binance wird gemieden (Fehler 451 aus gesperrten Regionen).",
     "host": "https://api.kraken.com"
+  },
+  "kryptoKerzen": {
+    "hinweis": "Tageskerzen (UTC) aller Kraken-Paare gegen Euro und Dollar über /0/public/OHLC (bis zu 720 Tage je Paar). Rückblick einmalig über den Workflow historie.yml, danach täglich im Lauf um 00:10 UTC der Vortag. Abgelegt wird nur, wenn mindestens mindestAnteil der Paare abrufbar war.",
+    "waehrungen": [
+      "EUR",
+      "USD"
+    ],
+    "pauseMs": 1100,
+    "mindestAnteil": 0.97,
+    "tageZurueck": 720
+  },
+  "usSplits": {
+    "hinweis": "Aktiensplits und Zusammenlegungen (Massive /v3/reference/splits) als Liste stamm/us-splits.csv.gz, die nur wächst. Erster Abruf: die ganze Historie des Tarifs, danach die letzten Wochen nachfassen.",
+    "jahreZurueck": 2,
+    "nachfassenTage": 30
   }
 }

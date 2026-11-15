@@ -1,7 +1,27 @@
 // Plan Volltreffer V1: Sammelkurse – gettex-Tageskerzen, US-Sammelabruf (Massive), Kraken-Stand aller Paare.
 // Nur aufgezeichnete Beispielantworten, keine echten Abrufe.
 import { describe, expect, it } from 'vitest';
-import { gettexCsv, gettexTagStatus, gettexZeilen, kryptoCsv, parseGettexArchiv, parseKrakenAlle, parseMassive, parseUsArchiv, tageInFolge, usCsv, type Tageskerze } from './sammelkurse.ts';
+import {
+  gettexCsv,
+  gettexTagStatus,
+  gettexZeilen,
+  krakenKerzenPaare,
+  kryptoCsv,
+  kryptoKerzenCsv,
+  parseGettexArchiv,
+  parseKrakenAlle,
+  parseKrakenOhlc,
+  parseKryptoKerzenArchiv,
+  parseMassive,
+  parseMassiveSplits,
+  parseUsArchiv,
+  parseUsSplitsArchiv,
+  splitsVereinen,
+  tageInFolge,
+  usCsv,
+  usSplitsCsv,
+  type Tageskerze,
+} from './sammelkurse.ts';
 import { istHandelstag } from './kalender.ts';
 
 describe('gettex: Tageskerzen je ISIN', () => {
@@ -118,5 +138,80 @@ describe('Archiv-Stand: Tage in Folge', () => {
     // Krypto: jeder Kalendertag zählt
     expect(tageInFolge(['2026-11-13', '2026-11-14', '2026-11-16'], () => true)).toBe(1);
     expect(tageInFolge([], istHandelstag)).toBe(0);
+  });
+});
+
+describe('Kursgeschichte: Kraken-Tageskerzen (OHLC)', () => {
+  // Form wie die echte Antwort vom 15.11.2026 (Werte erfunden)
+  const ANTWORT = {
+    error: [],
+    result: {
+      XXBTZEUR: [
+        [1794700800, '58000.1', '59100.0', '57500.5', '58800.0', '58400.2', '312.5', 41000],
+        [1794787200, '58800.0', '58800.0', '58800.0', '58800.0', '0', '0', 0],
+        [1794873600, '58800.0', '61000.0', '58700.0', '60500.0', '60100.0', '401.25', 52000],
+      ],
+      last: 1794873600,
+    },
+  };
+
+  it('liest Tageskerzen mit UTC-Datum, Tage ohne Geschäft entfallen', () => {
+    const r = parseKrakenOhlc(ANTWORT);
+    expect(r.fehler).toBeUndefined();
+    expect(r.tage.map((t) => t.datum)).toEqual([new Date(1794700800000).toISOString().slice(0, 10), new Date(1794873600000).toISOString().slice(0, 10)]);
+    expect(r.tage[0]).toMatchObject({ o: 58000.1, h: 59100, l: 57500.5, c: 58800, vwap: 58400.2, v: 312.5, n: 41000 });
+  });
+
+  it('Fehler und Abrufgrenze', () => {
+    expect(parseKrakenOhlc({ error: ['EGeneral:Too many requests'] }).fehler).toMatch(/Too many/);
+    expect(parseKrakenOhlc({ error: [], result: { last: 1 } }).fehler).toMatch(/keine Kerzen/);
+    expect(parseKrakenOhlc(null).fehler).toBe('keine JSON-Antwort');
+  });
+
+  it('nur Paare gegen Euro und Dollar', () => {
+    const paare = krakenKerzenPaare({ result: { XXBTZEUR: { wsname: 'XBT/EUR' }, XETHXXBT: { wsname: 'ETH/XBT' }, SOLUSD: { wsname: 'SOL/USD' }, ADAGBP: { wsname: 'ADA/GBP' } } });
+    expect(paare).toEqual([
+      { paar: 'SOLUSD', name: 'SOL/USD' },
+      { paar: 'XXBTZEUR', name: 'XBT/EUR' },
+    ]);
+  });
+
+  it('Archivformat hin und zurück', () => {
+    const tag = parseKrakenOhlc(ANTWORT).tage[1];
+    const { datum: _d, ...k } = tag;
+    const csv = kryptoKerzenCsv([{ paar: 'XXBTZEUR', name: 'XBT/EUR', ...k }]);
+    expect(csv.split('\n')[0]).toBe('paar,name,o,h,l,c,vwap,v,n');
+    expect(parseKryptoKerzenArchiv(csv).get('XXBTZEUR')).toEqual({ paar: 'XXBTZEUR', name: 'XBT/EUR', o: 58800, h: 61000, l: 58700, c: 60500, vwap: 60100, v: 401.25, n: 52000 });
+  });
+});
+
+describe('Kursgeschichte: US-Splits (Massive)', () => {
+  const SEITE = {
+    status: 'OK',
+    next_url: 'https://api.massive.com/v3/reference/splits?cursor=abc',
+    results: [
+      { execution_date: '2025-06-10', split_from: 1, split_to: 10, ticker: 'NVDA', id: 'x' },
+      { execution_date: '2025-07-01', split_from: 20, split_to: 1, ticker: 'PENNY' },
+      { execution_date: 'kaputt', split_from: 1, split_to: 2, ticker: 'X' },
+    ],
+  };
+
+  it('liest Splits und Zusammenlegungen, merkt die nächste Seite', () => {
+    const r = parseMassiveSplits(SEITE);
+    expect(r.splits).toEqual([
+      { ticker: 'NVDA', datum: '2025-06-10', von: 1, zu: 10 },
+      { ticker: 'PENNY', datum: '2025-07-01', von: 20, zu: 1 },
+    ]);
+    expect(r.weiter).toBe('https://api.massive.com/v3/reference/splits?cursor=abc');
+    expect(parseMassiveSplits({ status: 'OK', results: [] })).toEqual({ splits: [] });
+    expect(parseMassiveSplits({ status: 'NOT_AUTHORIZED', message: 'not entitled' }).fehler).toMatch(/not entitled/);
+  });
+
+  it('die Liste wächst nur: Bekanntes bleibt, Doppeltes zählt einmal', () => {
+    const alt = parseMassiveSplits(SEITE).splits;
+    const neu = [{ ticker: 'NVDA', datum: '2025-06-10', von: 1, zu: 10 }, { ticker: 'ABC', datum: '2026-11-02', von: 1, zu: 2 }];
+    const alle = splitsVereinen(alt, neu);
+    expect(alle.map((s) => s.ticker)).toEqual(['NVDA', 'PENNY', 'ABC']);
+    expect(parseUsSplitsArchiv(usSplitsCsv(alle))).toEqual(alle);
   });
 });
