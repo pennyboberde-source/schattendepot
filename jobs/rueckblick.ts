@@ -798,3 +798,19 @@ log(`Fertig: ${bestanden.length} Gruppen bestanden, davon ${mitVorteil.length} m
   .map((e) => `${e.gruppe} – ${e.spielart}, ${e.fenster} T: Quote ${e.gesamt.quote} %, Ø ${e.gesamt.ev} € (A ${e.zeitraeume[0].ev}, B ${e.zeitraeume[1].ev})`)
   .join(' | ') || '–'}`);
 for (const h of hypothesen) log(`${h.gruppe}: ${h.spielart}, ${h.fenster} T – ${h.faelle} Fälle, Quote ${h.quote} %, Ø A ${h.zeitraumA.ev} € / B ${h.zeitraumB.ev} € → ${h.bestanden ? 'BESTANDEN' : 'nicht bestanden'}`);
+// Was bringen die Merkmale aus Zusatzquellen (Quartalszahlen, Branche)? Nur verdichtete Kennzahlen ins Log
+for (const merkmal of ['zahlen', 'branche']) {
+  const a = E.findIndex((e) => e.merkmal === merkmal);
+  if (a < 0) continue;
+  const mit = (e: (typeof bestanden)[number]) => e.schluessel.split('|')[1].split('&').some((t) => t.startsWith(`${a}=`));
+  const b = bestanden.filter(mit);
+  const v = b.filter((e) => e.vorteil);
+  log(
+    `Merkmal ${MERKMAL_TEXT[merkmal]}: ${b.length} Gruppen bestanden, ${v.length} mit Vorteil. Beste: ${
+      v
+        .slice(0, 6)
+        .map((e) => `${e.gruppe} – ${e.spielart}, ${e.fenster} T: Quote ${e.gesamt.quote} %, Ø A ${e.zeitraeume[0].ev} ± ${e.zeitraeume[0].se} / B ${e.zeitraeume[1].ev} ± ${e.zeitraeume[1].se} €, Wertung ${e.wertung}`)
+        .join(' | ') || '–'
+    }`,
+  );
+}
