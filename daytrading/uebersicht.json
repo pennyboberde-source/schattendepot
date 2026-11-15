@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-14T21:38:48.370Z",
+  "stand": "2026-11-15T07:02:03.025Z",
   "heute": {
-    "datum": "2026-11-14",
+    "datum": "2026-11-15",
     "gruppe": {
       "anzahl": 0,
       "treffer": 0,
@@ -8922,294 +8922,6 @@
         },
         "r": 0.32
       }
-    },
-    {
-      "id": "2026-11-10-scan-stellantis-nv",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "STELLANTIS NV",
-      "isin": "NL00150001Q9",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 4.7244,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:20:00.000Z",
-        "kurs": 3.962,
-        "level": 3.9855,
-        "spanne": {
-          "hoch": 4.014,
-          "tief": 3.9855
-        },
-        "richtung": "short"
-      },
-      "stop": 3.9998,
-      "ziel": 3.8115,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:40:00.000Z",
-        "basisKurs": 3.937,
-        "kurs": 0.7894,
-        "stueck": 1266,
-        "kurswert": 999.38
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:25:00.000Z",
-        "basisKurs": 3.837,
-        "kurs": 0.8852,
-        "kurswert": 1120.66,
-        "grund": "schluss"
-      },
-      "ergebnis": {
-        "brutto": 121.28,
-        "bruttoProzent": 12.14,
-        "netto": 121.28,
-        "nettoProzent": 12.14,
-        "nettoTR": 119.28,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": 1.59
-      }
-    },
-    {
-      "id": "2026-11-10-scan-renk-group-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "RENK GROUP AG",
-      "isin": "DE000RENK730",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 43.6,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T09:10:00.000Z",
-        "kurs": 36.4,
-        "level": 36.495,
-        "spanne": {
-          "hoch": 37.51,
-          "tief": 36.495
-        },
-        "richtung": "short"
-      },
-      "stop": 37,
-      "ziel": 34.99,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T09:10:00.000Z",
-        "basisKurs": 36.33,
-        "kurs": 7.2882,
-        "stueck": 137,
-        "kurswert": 998.48
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:25:00.000Z",
-        "basisKurs": 36.01,
-        "kurs": 7.571,
-        "kurswert": 1037.23,
-        "grund": "schluss"
-      },
-      "ergebnis": {
-        "brutto": 38.75,
-        "bruttoProzent": 3.88,
-        "netto": 38.75,
-        "nettoProzent": 3.88,
-        "nettoTR": 36.75,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": 0.48
-      }
-    },
-    {
-      "id": "2026-11-10-scan-continental-ag",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "CONTINENTAL AG",
-      "isin": "DE0005439004",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 88.25,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T09:15:00.000Z",
-        "kurs": 73.58,
-        "level": 73.88,
-        "spanne": {
-          "hoch": 74.22,
-          "tief": 73.88
-        },
-        "richtung": "short"
-      },
-      "stop": 74.05,
-      "ziel": 72.52,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T09:20:00.000Z",
-        "basisKurs": 73.54,
-        "kurs": 14.747,
-        "stueck": 67,
-        "kurswert": 988.05
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:25:00.000Z",
-        "basisKurs": 73.34,
-        "kurs": 14.873,
-        "kurswert": 996.49,
-        "grund": "schluss"
-      },
-      "ergebnis": {
-        "brutto": 8.44,
-        "bruttoProzent": 0.85,
-        "netto": 8.44,
-        "nettoProzent": 0.85,
-        "nettoTR": 6.44,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": 0.39
-      }
-    },
-    {
-      "id": "2026-11-10-scan-airbus-se",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "AIRBUS SE",
-      "isin": "NL0000235190",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T10:25:00.000Z",
-        "kurs": 210,
-        "level": 209.8,
-        "spanne": {
-          "hoch": 209.8,
-          "tief": 207.6
-        },
-        "richtung": "long"
-      },
-      "stop": 208.7,
-      "ziel": 212.45,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T10:25:00.000Z",
-        "basisKurs": 209.95,
-        "kurs": 210.107,
-        "stueck": 4,
-        "kurswert": 840.43
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:25:00.000Z",
-        "basisKurs": 209.15,
-        "kurs": 208.993,
-        "kurswert": 835.97,
-        "grund": "schluss"
-      },
-      "ergebnis": {
-        "brutto": -4.46,
-        "bruttoProzent": -0.53,
-        "netto": -4.46,
-        "nettoProzent": -0.53,
-        "nettoTR": -6.46,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": -0.64
-      }
-    },
-    {
-      "id": "2026-11-10-scan-elmos-semiconductor-se",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ELMOS SEMICONDUCTOR SE",
-      "isin": "DE0005677108",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 140.16,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T10:45:00.000Z",
-        "kurs": 116.8,
-        "level": 118,
-        "spanne": {
-          "hoch": 124.6,
-          "tief": 118
-        },
-        "richtung": "short"
-      },
-      "stop": 121.3,
-      "ziel": 107.8,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T10:45:00.000Z",
-        "basisKurs": 116.8,
-        "kurs": 2.3418,
-        "stueck": 427,
-        "kurswert": 999.95
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:25:00.000Z",
-        "basisKurs": 113.8,
-        "kurs": 2.6294,
-        "kurswert": 1122.75,
-        "grund": "schluss"
-      },
-      "ergebnis": {
-        "brutto": 122.8,
-        "bruttoProzent": 12.28,
-        "netto": 122.8,
-        "nettoProzent": 12.28,
-        "nettoTR": 120.8,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": 0.67
-      }
     }
   ],
   "virtuell": {
@@ -9225,14 +8937,14 @@
       "oeR": -0.15
     },
     "heute": {
-      "anzahl": 5,
+      "anzahl": 0,
       "treffer": 0,
       "quote": 0,
-      "netto": -49.14,
-      "brutto": -39.14,
-      "nettoTR": -49.14,
-      "oeNettoProzent": -0.98,
-      "oeR": -1
+      "netto": 0,
+      "brutto": 0,
+      "nettoTR": 0,
+      "oeNettoProzent": 0,
+      "oeR": 0
     },
     "offen": 0,
     "gruppen": {
@@ -9350,7 +9062,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 10,
+    "code_scan": 0,
     "claude": 0,
     "autopilot": 0
   },
