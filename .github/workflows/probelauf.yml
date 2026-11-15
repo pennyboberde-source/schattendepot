@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       art:
-        description: 'schattenbuch | jobs | umzug (Jobs zweimal: Umzug in den privaten Zustand) | alles | tests (tsc, Unit-Tests, Build, E2E unter Linux – wie in der Übernahme-Action) | archiv (Sammelkurse in einen Wegwerf-Ordner)'
+        description: 'schluessel (optionale API-Schlüssel prüfen) | schattenbuch | jobs | umzug (Jobs zweimal: Umzug in den privaten Zustand) | alles | tests (tsc, Unit-Tests, Build, E2E unter Linux – wie in der Übernahme-Action) | archiv (Sammelkurse in einen Wegwerf-Ordner)'
         default: schattenbuch
       privat:
         description: 'mit | ohne (so tun, als sei der private Zustand nicht erreichbar)'
@@ -50,6 +50,11 @@ jobs:
           npx playwright install --with-deps chromium webkit
           npm run build
           npm run e2e
+      - name: Schlüssel prüfen (nur Status, keine Schlüssel und keine Kurse im Log)
+        if: github.event.inputs.art == 'schluessel'
+        env:
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+        run: node scripts/schluessel-pruefen.mjs
       - name: Archiv-Probe (Sammelkurse in einen Wegwerf-Ordner – nichts wird gesichert, das Log zeigt nur Zählungen)
         if: github.event.inputs.art == 'archiv'
         env:
@@ -64,7 +69,7 @@ jobs:
           find "$ARCHIV_DIR" -type f -printf '%P %s Bytes\n'
           node -e "const i=require(process.argv[1]);for(const k of Object.keys(i))console.log(k, typeof i[k]==='object'&&i[k]?Object.keys(i[k]).length+' Einträge':i[k])" "$ARCHIV_DIR/index.json"
       - name: Probelauf
-        if: github.event.inputs.art != 'tests' && github.event.inputs.art != 'archiv'
+        if: github.event.inputs.art != 'tests' && github.event.inputs.art != 'archiv' && github.event.inputs.art != 'schluessel'
         env:
           ART: ${{ github.event.inputs.art || 'schattenbuch' }}
           PRIVAT: ${{ github.event.inputs.privat == 'ohne' && 'ohne-privat' || '' }}
