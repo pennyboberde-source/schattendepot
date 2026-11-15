@@ -12,6 +12,7 @@ import { istVirtuell, kerzenAusGeschaeften, krakenKerzen, sitzung, tradesAusErei
 import { historie, monteCarlo, volleSitzungen } from '../core/daytrading/zeitmaschine.ts';
 import { euro } from '../core/geld.ts';
 import { jagdBilanz, type JagdUebersicht } from '../core/volltreffer/jagd.ts';
+import { stufe3Mitteilungen, type Stufe3Ergebnis } from '../core/volltreffer/befoerderung.ts';
 import type { GebuehrenConfig } from '../core/gebuehren.ts';
 import { berlin, istHandelstag, uhrzeitMinuten } from '../core/kalender.ts';
 import type { PushNachricht } from '../core/push.ts';
@@ -452,6 +453,16 @@ if ((handelstag || kryptoTaeglich) && b.minuten >= bilanzAb && zustand.abendbila
   }
   zustand.abendbilanz = datum;
   zustandSichern(zustand);
+}
+// Volltreffer Stufe 3 (V6): sichtbare Orders bewährter Muster als Einzelmitteilungen – vorgemerkt, läuft, beendet
+{
+  const vs = leseJson<{ sichtbar?: Pick<Stufe3Ergebnis, 'offen' | 'abgeschlossen' | 'vorgemerkt'> } | null>('volltreffer/uebersicht.json', null)?.sichtbar;
+  if (vs?.offen && vs.abgeschlossen && vs.vorgemerkt) {
+    const g = leseJson<{ schluessel: string[] }>('volltreffer/gemeldet-sichtbar.json', { schluessel: [] });
+    const m = stufe3Mitteilungen(vs, g.schluessel);
+    for (const x of m.neu) pushes.push({ typ: x.typ, titel: x.titel, text: x.text, ziel: '#/volltreffer', tag: x.tag, erstellt: iso });
+    if (m.neu.length) schreibeJson('volltreffer/gemeldet-sichtbar.json', { hinweis: 'Schon gemeldete sichtbare Volltreffer-Orders (Stufe 3: vorgemerkt/läuft, beendet), damit nichts doppelt kommt.', schluessel: m.gemeldet });
+  }
 }
 const gesendet = pushes.length ? await pushen(pushes, jetzt) : 0;
 

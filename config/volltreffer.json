@@ -507,5 +507,15 @@
     "lauerlisteMax": 40,
     "stufe2Faelle": 20,
     "mindestQuote": 10
+  },
+  "v6": {
+    "hinweis": "Stufe 3 (Plan V6, Nutzer 15.11.2026: „Bewährte Muster“ ohne Rückfrage, „Klasse vor Masse“): befördert wird, wer im Vorwärtstest mindestFaelle abgeschlossene Fälle hat, im Plus und im Band des Rückblicks liegt und im Rückblick mindestQuote % Volltreffer und mindestEv € Ø zeigt. Sichtbar höchstens maxOffen Orders gleichzeitig, je Wert eine. ohneNein: Fälle mit Claudes „nein“ weglassen – erst einschalten, wenn gemessen ist, dass „nein“ schlechter abschneidet.",
+    "mindestFaelle": 20,
+    "mindestQuote": 25,
+    "mindestEv": 30,
+    "maxOffen": 3,
+    "tagesVerlustGrenze": 300,
+    "einsatz": 1000,
+    "ohneNein": false
   }
 }

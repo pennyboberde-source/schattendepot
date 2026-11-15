@@ -1,5 +1,6 @@
-// Bereich „Volltreffer“ (Plan Volltreffer V4): rein virtuell. Lauerliste, laufende Jagden, Vorwärtstest der Muster,
-// dazu der Rückblick (welche Muster tragen) und das Trefferbuch (was war vor den Sprüngen bekannt).
+// Bereich „Volltreffer“: oben die sichtbaren Orders bewährter Muster (Plan V6, Stufe 3, simuliert), darunter die
+// virtuelle Jagd (V4: Lauerliste, laufende Jagden, Vorwärtstest der Muster), der Rückblick (welche Muster tragen) und
+// das Trefferbuch (was war vor den Sprüngen bekannt).
 import { euro } from '../../core/geld.ts';
 import type { JagdFall, JagdKennzahlen } from '../../core/volltreffer/jagd.ts';
 import { useDaten } from '../lib/daten';
@@ -17,7 +18,16 @@ interface Uebersicht {
   lauerliste: JagdFall[];
   lauerlisteZahl: number;
   uebersprungen: number;
-  muster: { gruppe: string; spielart: string; fenster: number; seit: string; faelle: number; treffer: number; ev: number; offen: number; rueckblick: { quote: number; ev: number; se: number; faelle: number }; stufe2: boolean }[];
+  muster: { gruppe: string; spielart: string; fenster: number; seit: string; faelle: number; treffer: number; ev: number; offen: number; rueckblick: { quote: number; ev: number; se: number; faelle: number }; stufe2: boolean; stufe3?: boolean; stufe3Grund?: string }[];
+  sichtbar?: {
+    regeln: { mindestFaelle: number; mindestQuote: number; mindestEv: number; maxOffen: number; einsatz: number };
+    kennzahlen: JagdKennzahlen;
+    rendite: number;
+    offen: JagdFall[];
+    abgeschlossen: JagdFall[];
+    vorgemerkt: JagdFall[];
+    befoerdert: { gruppe: string; spielart: string; fenster: number; seit: string; rueckblick: { quote: number; ev: number; se: number } }[];
+  };
 }
 
 const zahl = (x: number) => x.toLocaleString('de-DE');
@@ -44,6 +54,92 @@ function JagdZeile({ j }: { j: JagdFall }) {
   );
 }
 
+/** Stufe 3 (V6): sichtbare Orders bewährter Muster – simuliert, 1.000 € je Order, Klasse vor Masse */
+export function OrdersKarte() {
+  const z = useDaten<Uebersicht>('volltreffer/uebersicht.json');
+  const s = z.status === 'ok' ? z.daten.sichtbar : undefined;
+  if (!s) {
+    return (
+      <Karte titel="🎯 Volltreffer-Orders">
+        <p class="leer">Noch kein Muster hat sich bewährt. Ein Muster handelt hier erst, wenn es sich im Vorwärtstest mit neuen Kursen bestätigt hat – frühestens Anfang Dezember.</p>
+      </Karte>
+    );
+  }
+  const k = s.kennzahlen;
+  return (
+    <Karte titel="🎯 Volltreffer-Orders">
+      <div data-testid="volltreffer-orders">
+        <p class="klein">
+          Nur bewährte Muster handeln hier – simuliert mit {euro(s.regeln.einsatz)} je Order, ohne Rückfrage, aber Klasse vor Masse: mindestens {zahl(s.regeln.mindestFaelle)} Fälle im Vorwärtstest im Plus, im Rückblick mindestens {zahl(s.regeln.mindestQuote)} % Volltreffer und Ø {euro(s.regeln.mindestEv)}; höchstens {zahl(s.regeln.maxOffen)} Orders gleichzeitig. Jede Order kommt als Mitteilung.
+        </p>
+        <div class="raster-kennzahlen">
+          <div class="kennzahl">
+            <span class="kennzahl-label">Gewinn auf den Einsatz</span>
+            <strong class={s.rendite >= 0 ? 'plus' : 'minus'}>{k.anzahl ? `${s.rendite.toLocaleString('de-DE', { signDisplay: 'exceptZero' })} %` : '–'}</strong>
+            <span class="klein">Summe {euro(k.summe, { vorzeichen: true })}</span>
+          </div>
+          <div class="kennzahl">
+            <span class="kennzahl-label">Volltreffer</span>
+            <strong>{k.anzahl ? `${zahl(k.volltreffer)} von ${zahl(k.anzahl)}` : '–'}</strong>
+            <span class="klein">{k.anzahl ? `Quote ${k.quote.toLocaleString('de-DE')} %` : 'noch keine beendet'}</span>
+          </div>
+          <div class="kennzahl">
+            <span class="kennzahl-label">Bewährte Muster</span>
+            <strong>{zahl(s.befoerdert.length)}</strong>
+            <span class="klein">{zahl(s.offen.length)} Orders laufen</span>
+          </div>
+        </div>
+        {s.vorgemerkt.length > 0 && (
+          <>
+            <h3>Vorgemerkt – Einstieg zur nächsten Eröffnung</h3>
+            <ul class="muster-liste">
+              {s.vorgemerkt.map((j) => (
+                <JagdZeile key={j.wert + j.stichtag} j={j} />
+              ))}
+            </ul>
+          </>
+        )}
+        <h3>Laufende Orders</h3>
+        {s.offen.length ? (
+          <ul class="muster-liste">
+            {s.offen.map((j) => (
+              <JagdZeile key={j.wert + j.stichtag} j={j} />
+            ))}
+          </ul>
+        ) : (
+          <p class="leer">Gerade keine.</p>
+        )}
+        {s.abgeschlossen.length > 0 && (
+          <>
+            <h3>Beendet</h3>
+            <ul class="muster-liste">
+              {s.abgeschlossen.slice(0, 10).map((j) => (
+                <JagdZeile key={j.wert + j.stichtag} j={j} />
+              ))}
+            </ul>
+          </>
+        )}
+        <h3>Bewährte Muster ({zahl(s.befoerdert.length)})</h3>
+        {s.befoerdert.length ? (
+          <ul class="muster-liste">
+            {s.befoerdert.map((m) => (
+              <li key={m.gruppe + m.spielart + m.fenster} class="muster-zeile">
+                <strong>🏅 {m.gruppe}</strong>
+                <span class="klein">
+                  {m.spielart}, {m.fenster} T · bewährt seit {datumKurz(m.seit)} · Rückblick: Quote {m.rueckblick.quote.toLocaleString('de-DE')} %, Ø {euro(m.rueckblick.ev, { vorzeichen: true })}
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="leer">Noch keines – ein Muster braucht {zahl(s.regeln.mindestFaelle)} abgeschlossene Fälle im Vorwärtstest.</p>
+        )}
+        <p class="klein">Simuliert mit fiktivem Geld – keine Anlageberatung.</p>
+      </div>
+    </Karte>
+  );
+}
+
 export function JagdKarte() {
   const z = useDaten<Uebersicht>('volltreffer/uebersicht.json');
   if (z.status !== 'ok') {
@@ -59,7 +155,7 @@ export function JagdKarte() {
     <Karte titel="🏹 Virtuelle Jagd">
       <div data-testid="volltreffer-jagd">
         <p class="klein">
-          Muster, die im Rückblick bestanden haben, jagen hier virtuell weiter – nur mit Daten, die es beim Bestehen noch nicht gab. Je Jagd 1.000 €, höchstens {u.regeln.maxOffen} gleichzeitig. Ein Muster wird erst nach {u.regeln.stufe2Faelle} Fällen im Band des Rückblicks und deinem Ja sichtbar gehandelt.
+          Muster, die im Rückblick bestanden haben, jagen hier virtuell weiter – nur mit Daten, die es beim Bestehen noch nicht gab. Je Jagd 1.000 €, höchstens {u.regeln.maxOffen} gleichzeitig. Bewährt sich ein Muster (genug Fälle im Band des Rückblicks, Klasse vor Masse), handelt es oben unter „Volltreffer-Orders“ – automatisch.
         </p>
         <div class="raster-kennzahlen">
           <div class="kennzahl">
@@ -120,7 +216,7 @@ export function JagdKarte() {
           {u.muster.slice(0, 12).map((m) => (
             <li key={m.gruppe + m.spielart + m.fenster} class="muster-zeile">
               <strong>
-                {m.stufe2 ? '🥈 Stufe 2 · ' : ''}
+                {m.stufe3 ? '🏅 bewährt · ' : m.stufe2 ? '🥈 Stufe 2 · ' : ''}
                 {m.gruppe}
               </strong>
               <span class="klein">
@@ -139,7 +235,8 @@ export function VolltrefferView() {
   return (
     <div class="seite">
       <h1>Volltreffer</h1>
-      <p class="klein">Ziel: Signale finden, die einem großen, handelbaren Kurssprung vorausgehen – mindestens +400 € netto aus einer 1.000-€-Order. Alles hier ist virtuell.</p>
+      <p class="klein">Ziel: Signale finden, die einem großen, handelbaren Kurssprung vorausgehen – mindestens +400 € netto aus einer 1.000-€-Order. Alles hier ist simuliert.</p>
+      <OrdersKarte />
       <JagdKarte />
       <VolltrefferRueckblickKarte />
       <TrefferbuchKarte />

@@ -64,6 +64,12 @@ test('Order-Detail mit Gebührenaufstellung und Claude-Knopf', async ({ page }) 
 
 test('Bereich Volltreffer: Jagd, Rückblick mit bestandenen Mustern und Hypothesen, Trefferbuch', async ({ page }) => {
   await page.goto('/#/volltreffer');
+  const orders = page.getByTestId('volltreffer-orders');
+  await expect(orders).toBeVisible();
+  await expect(orders.getByText('+12,5 %')).toBeVisible();
+  await expect(orders.getByText(/DEMOY · 👀 lauert/)).toBeVisible();
+  await expect(orders.getByText(/DEMOW · 🎯 Volltreffer/)).toBeVisible();
+  await expect(orders.getByText('Bewährte Muster (1)')).toBeVisible();
   const jagd = page.getByTestId('volltreffer-jagd');
   await expect(jagd).toBeVisible();
   await expect(jagd.getByText(/DEMOJ · ⏳ läuft/)).toBeVisible();

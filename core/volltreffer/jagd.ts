@@ -33,6 +33,8 @@ export interface JagdFall {
 export interface JagdRegeln {
   maxOffen: number;
   tagesVerlustGrenze: number;
+  /** V6: höchstens eine offene Jagd je Wert (derselbe Wert aus zwei Mustern wird nicht doppelt gehandelt) */
+  einmalJeWert?: boolean;
 }
 
 /** Wählt aus allen Fällen die virtuellen Jagden (Reihenfolge: Einstieg, dann Wertung). */
@@ -55,7 +57,8 @@ export function jagdenWaehlen(faelle: JagdFall[], r: JagdRegeln): { jagden: Jagd
       if (!sperrtag.has(d)) sperrtag.set(d, tag);
       if (sperrtag.get(d) === tag) gesperrt = true;
     }
-    if (offen.length >= r.maxOffen || gesperrt) {
+    const doppelt = !!r.einmalJeWert && offen.some((o) => o.wert === f.wert && o.markt === f.markt);
+    if (offen.length >= r.maxOffen || gesperrt || doppelt) {
       uebersprungen++;
       continue;
     }

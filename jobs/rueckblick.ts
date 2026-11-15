@@ -12,6 +12,7 @@ import { etikett, spielarten, spielartText, sprungEpisoden, type Ausgang, type E
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
+import { befoerderungPruefen, istBefoerdert, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { schluesselNormal } from '../core/signale.ts';
@@ -28,6 +29,7 @@ interface VtConfig {
   };
   pruefung: { mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number };
+  v6: V6Regeln & { ohneNein?: boolean };
 }
 
 const t0 = Date.now();
@@ -798,14 +800,39 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     if (u) Object.assign(f, u);
   }
   const { jagden, uebersprungen } = jagdenWaehlen(vorwaerts, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze });
+  // V6: Stufe 3 vor dem Fortschreiben – Stand je Muster (abgeschlossene Vorwärts-Fälle, Ø)
+  const v6 = vt.v6;
+  const zeitenVorher = stufe3Zeiten(musterBuch.eintraege);
+  const befoerdertHeute: string[] = [];
+  const zurueckHeute: string[] = [];
+  const stufe3Grund = new Map<string, string>();
   const jeMuster = [...imTest.values()].map((e) => {
     const f = vorwaerts.filter((x) => x.muster === e.schluessel && x.art !== 'offen' && x.art !== 'lauert');
     const summe = f.reduce((a, x) => a + (x.netto ?? 0), 0);
     const ev = f.length ? Math.round((summe / f.length) * 10) / 10 : 0;
     // Stufe 2: mindestens 20 Fälle im Vorwärtstest und ein Ergebnis im Band des Rückblicks (Ø ≥ Rückblick − 2 Standardfehler und > 0)
     const stufe2 = f.length >= v4.stufe2Faelle && ev > 0 && ev >= e.rueckblick.ev - 2 * Math.max(e.rueckblick.se, 1);
-    return { gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: e.seit, faelle: f.length, treffer: f.filter((x) => x.art === 'treffer').length, ev, offen: vorwaerts.filter((x) => x.muster === e.schluessel && x.art === 'offen').length, rueckblick: e.rueckblick, stufe2 };
+    // Stufe 3 (V6): automatisch befördern bzw. zurückstufen – nur nach vorn, als Eintrag im Muster-Buch
+    const p6 = befoerderungPruefen({ faelle: f.length, ev, rueckblick: e.rueckblick }, v6);
+    const war = istBefoerdert(zeitenVorher, e.schluessel);
+    if (p6.ok && !war) {
+      musterBuch.eintraege.push({ ...e, status: 'befoerdert', am: heute, grund: p6.grund });
+      befoerdertHeute.push(e.gruppe);
+    } else if (!p6.ok && war && f.length >= v6.mindestFaelle) {
+      musterBuch.eintraege.push({ ...e, status: 'zurueckgestuft', am: heute, grund: p6.grund });
+      zurueckHeute.push(e.gruppe);
+    }
+    stufe3Grund.set(e.schluessel, p6.grund);
+    return {
+      stufe3: p6.ok,
+      stufe3Grund: p6.grund, gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: e.seit, faelle: f.length, treffer: f.filter((x) => x.art === 'treffer').length, ev, offen: vorwaerts.filter((x) => x.muster === e.schluessel && x.art === 'offen').length, rueckblick: e.rueckblick, stufe2 };
   });
+  if (befoerdertHeute.length || zurueckHeute.length) schreibeJson('lernen/muster/muster-buch.json', musterBuch);
+  const zeiten3 = stufe3Zeiten(musterBuch.eintraege);
+  const s3 = stufe3Waehlen(vorwaerts, zeiten3, v6, v6.ohneNein ?? false);
+  const befoerdertJetzt = [...alleMuster.values(), ...musterBuch.eintraege]
+    .filter((e, i, a) => a.findIndex((x) => x.schluessel === e.schluessel) === i && istBefoerdert(zeiten3, e.schluessel))
+    .map((e) => ({ gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: zeiten3.get(e.schluessel)!.find((z) => z.bis === null)!.von, rueckblick: e.rueckblick }));
   const lauerliste = vorwaerts.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung);
   const musterText = new Map([...alleMuster.values()].map((e) => [e.schluessel, e.gruppe]));
   const ohneMuster = (j: JagdFall) => ({ ...j, muster: musterText.get(j.muster) ?? j.muster });
@@ -822,7 +849,20 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     lauerlisteZahl: lauerliste.length,
     uebersprungen,
     muster: jeMuster.sort((a, b) => b.faelle - a.faelle),
+    // V6: sichtbare Orders (Stufe 3) – bewährte Muster, simuliert mit 1.000 € je Order, mit Einzelmitteilungen
+    sichtbar: {
+      hinweis: 'Stufe 3 (Plan V6): Muster mit mindestens ' + v6.mindestFaelle + ' abgeschlossenen Fällen im Vorwärtstest, Ø im Plus und im Band des Rückblicks, Volltreffer-Quote im Rückblick ab ' + v6.mindestQuote + ' % und Ø ab ' + v6.mindestEv + ' € handeln sichtbar – ohne Rückfrage, aber Klasse vor Masse: höchstens ' + v6.maxOffen + ' Orders gleichzeitig, je Wert eine. Nur Fälle ab dem Tag der Beförderung, nie rückwirkend. Simuliert, kein echtes Geld.',
+      regeln: { mindestFaelle: v6.mindestFaelle, mindestQuote: v6.mindestQuote, mindestEv: v6.mindestEv, maxOffen: v6.maxOffen, tagesVerlustGrenze: v6.tagesVerlustGrenze, einsatz: v6.einsatz },
+      kennzahlen: s3.kennzahlen,
+      rendite: s3.rendite,
+      offen: s3.offen.map(ohneMuster),
+      abgeschlossen: s3.abgeschlossen.slice(0, 30).map(ohneMuster),
+      vorgemerkt: s3.vorgemerkt.map(ohneMuster),
+      uebersprungen: s3.uebersprungen,
+      befoerdert: befoerdertJetzt,
+    },
   });
+  log(`V6: ${befoerdertJetzt.length} Muster in Stufe 3 (heute ${befoerdertHeute.length} befördert, ${zurueckHeute.length} zurückgestuft), ${s3.kennzahlen.anzahl} sichtbare Orders abgeschlossen (Rendite ${s3.rendite} %), ${s3.offen.length} offen, ${s3.vorgemerkt.length} vorgemerkt.`);
   log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu, ${beendet.length} beendet), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}.`);
 }
 
