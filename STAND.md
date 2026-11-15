@@ -4,6 +4,14 @@ _Zuletzt aktualisiert: 15.11.2026 nachts (**Tresor: alle Geheimnisse nur noch f�
 
 ## ⚠️ Erwartung des Nutzers (15.11.2026): Bereich Volltreffer binnen 14 Tagen (bis So 29.11.) überwiegend profitabel, simulierter Gewinn vor Steuer ≥ 25 %, mit Treffern, bei denen Claudes Einschätzung richtig lag. Claude hat ehrlich gesagt, dass das nicht zusagbar ist (wenige Jagden in 14 Tagen, bisher kein Muster mit Volltreffer-Vorteil), und zugesagt: maximale Suche, strenge Ehrlichkeit (Vorwärtstest nur mit neuen Daten, nichts schönrechnen), Bericht am 29.11. mit echten Zahlen. Daraus folgt die Reihenfolge: US-Rückblick auswerten → Spielarten mit Nachziehstop und mehr Merkmale (eigene Signale, Termine) prüfen → V5 (Claude bewertet die Lauerliste, Urteil wird gemessen).
 
+## 🌙 16.11.2026 nachts: „durchlaufen“ – Kontext-Daten und V6 gebaut (Nutzer: „Ja, durchlaufen. Alles, wofür du mich brauchst, schiebst du einfach auf.“)
+- **Live auf main (Tests 400 Unit, 44 E2E; Probeläufe bestanden):**
+  - SEC-Meldungsarten (2a): Probe 1.450 Firmen → angebot 2.761, registrierung 308, 13D 228, vertrag 3.137, warnung 272, Chefwechsel 5.001, Satzung 727. Vollabruf aller Firmen läuft (`historie.yml teile=zahlen`, Lauf 43772961680).
+  - Marktumfeld (2b): VIX 9.316 Tage ab 1990 (Probe), Fed-Termine 2024–2027, Marktbreite, Markt 5 Tage.
+  - FINRA-Leerverkauf (aus 3): Probe 15 Tage, ~104 KB je Tag privat.
+  - V6 (4): Beförderung, sichtbare Orders, Einzelmitteilungen, App-Karte „Volltreffer-Orders“ (leer, bis ein Muster bewährt ist).
+- Rückblick jetzt mit 31 Einteilungen (vorher 17) → deutlich längere Laufzeit; Probe vor dem offiziellen Lauf.
+
 ## ▶️ Nächster Schritt (Auftrag des Nutzers 15.11.2026 nachts: „Daten sammeln, Daten sammeln, Daten sammeln … selber darüber nachdenken, wie du die Daten verbessern kannst … mehr Beispiele, mehr Muster … offene Bereiche V0–V6 fertig bauen, sobald möglich“; oberste Priorität: Ziel Volltreffer-Bereich deutlich im Plus)
 1. **Mo 16.11. früh prüfen:** erste echte Läufe mit dem Tresor – Archiv 05:10, Rückblick 05:40 (40 Muster, Zahlen/Branche), Übernahme des Morgenlaufs 07:40 UTC per `workflow_run`; gettex (Archiv-Log zeigte „in Folge: gettex 0“), Stammdaten/Börsenwert. Geht etwas schief: Job um `environment: live` ergänzen bzw. Schutzregel prüfen.
 2. **Kontext-Daten, vom Nutzer freigegeben („Ja, genau das machst du“), in dieser Reihenfolge, je als Merkmal im Rückblick über zwei Jahre:**
