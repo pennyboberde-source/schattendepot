@@ -138,7 +138,8 @@ let zahlenCache: { r: Reihe; je: Map<string, number | null> } | null = null;
 const zahlenAm = (r: Reihe, datum: string): number | null => {
   if (r.markt !== 'aktie') return null;
   const f = firmen.get(r.schluessel.slice(2).split('#')[0]);
-  if (!f) return null;
+  // ohne eine einzige Zahlen-Meldung in zwei Jahren (ausländische Firmen melden per 6-K, Fonds gar nicht): unbekannt, nicht „keine Zahlen“
+  if (!f || !f.zahlen.length) return null;
   if (zahlenCache?.r !== r) {
     const daten = r.kerzen.map((k) => k.datum);
     const abst = zahlenAbstaende(daten, f.zahlen, zahlenAb);
