@@ -67,6 +67,8 @@ jobs:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
           ARCHIV_DIR: ${{ runner.temp }}/archiv-probe
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          SEC_KONTAKT: ${{ secrets.SEC_KONTAKT }}
+          ZAHLEN_MAX: 1500
           ARCHIV_NUR: ${{ github.event.inputs.teile }}
           US_MAX_TAGE: 3
         run: |
