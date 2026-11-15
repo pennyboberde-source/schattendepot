@@ -38,6 +38,7 @@ test('Alle Tabs erreichbar, Touch-Ziele groß genug', async ({ page }) => {
   for (const [tab, ueberschrift] of [
     ['Depot', 'Depot'],
     ['Daytrading', 'Daytrading'],
+    ['Volltreffer', 'Volltreffer'],
     ['Lernen', 'Lernen'],
     ['Einstellungen', 'Einstellungen'],
     ['Heute', 'Heute'],
@@ -61,8 +62,12 @@ test('Order-Detail mit Gebührenaufstellung und Claude-Knopf', async ({ page }) 
   await expect(claude).toHaveAttribute('href', /^https:\/\/claude\.ai\/new\?q=/);
 });
 
-test('Lernen zeigt den Volltreffer-Rückblick mit bestandenen Mustern und Hypothesen', async ({ page }) => {
-  await page.goto('/#/lernen');
+test('Bereich Volltreffer: Jagd, Rückblick mit bestandenen Mustern und Hypothesen, Trefferbuch', async ({ page }) => {
+  await page.goto('/#/volltreffer');
+  const jagd = page.getByTestId('volltreffer-jagd');
+  await expect(jagd).toBeVisible();
+  await expect(jagd.getByText(/DEMOJ · ⏳ läuft/)).toBeVisible();
+  await expect(jagd.getByText('Lauerliste – Einstieg zur nächsten Eröffnung (1)')).toBeVisible();
   const karte = page.getByTestId('volltreffer-rueckblick');
   await expect(karte).toBeVisible();
   await expect(karte.getByText(/Bestanden: 1 Muster/)).toBeVisible();

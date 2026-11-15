@@ -43,15 +43,15 @@ jobs:
           SIGNALE_DIR: _daten
         run: |
           mkdir -p "$DATEN_DIR/lernen/muster"
-          # das Hypothesen-Buch wird nur angehängt → bisherigen Stand mitnehmen
-          [ -f _daten/lernen/muster/hypothesen.json ] && cp _daten/lernen/muster/hypothesen.json "$DATEN_DIR/lernen/muster/"
+          # Hypothesen- und Muster-Buch werden nur angehängt → bisherigen Stand mitnehmen
+          for b in hypothesen.json muster-buch.json; do [ -f "_daten/lernen/muster/$b" ] && cp "_daten/lernen/muster/$b" "$DATEN_DIR/lernen/muster/"; done
           node jobs/rueckblick.ts
       - name: Zensus und Prüfung im privaten Archiv sichern
         run: bash scripts/archiv-sichern.sh "Rückblick $(date -u +%Y-%m-%dT%H:%MZ)"
       - uses: actions/upload-artifact@v4
         with:
           name: muster
-          path: ${{ runner.temp }}/muster/lernen/muster
+          path: ${{ runner.temp }}/muster
           retention-days: 3
 
   veroeffentlichen:
@@ -74,6 +74,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: muster
-          path: _daten/lernen/muster
+          path: _daten
       - name: Daten sichern
         run: bash scripts/daten-sichern.sh "Rückblick $(date -u +%Y-%m-%dT%H:%MZ)"

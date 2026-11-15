@@ -10,7 +10,8 @@ import { orderentgelt } from '../core/gebuehren.ts';
 import { parseKryptoKerzenArchiv, parseUsArchiv, parseUsSplitsArchiv } from '../core/sammelkurse.ts';
 import { etikett, spielarten, spielartText, sprungEpisoden, type EtikettKosten, type Kerze, type Spielart } from '../core/volltreffer/etikett.ts';
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
-import { HYPOTHESEN, hypothesenFaelle, pruefen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
+import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
+import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { schluesselNormal } from '../core/signale.ts';
@@ -23,6 +24,7 @@ interface VtConfig {
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
   pruefung: { mindestFaelle: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
+  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number };
 }
 
 const t0 = Date.now();
@@ -224,6 +226,44 @@ interface BuchEintrag {
 const trefferbuch: BuchEintrag[] = [];
 const buchAb = new Date(Date.parse(heute) - 30 * 86400000).toISOString().slice(0, 10);
 
+// ---------- 4c. Muster-Buch (V4): Muster im Vorwärtstest – gezählt wird nur, was NACH dem Eintrag geschah ----------
+interface BuchMuster {
+  schluessel: string;
+  gruppe: string;
+  gruppenSchluessel: string;
+  sp: string;
+  fenster: number;
+  seit: string;
+  wertung: number;
+  rueckblick: { quote: number; ev: number; se: number; faelle: number };
+  status: string;
+}
+const musterBuch = leseJson<{ eintraege: BuchMuster[] }>('lernen/muster/muster-buch.json', { eintraege: [] });
+const imTest = new Map<string, BuchMuster>();
+for (const e of musterBuch.eintraege) imTest.set(e.schluessel, e);
+for (const [key, e] of imTest) if (e.status === 'beendet') imTest.delete(key);
+const testJeGruppe = new Map<number, BuchMuster[]>();
+for (const e of imTest.values()) {
+  const g = gid.get(e.gruppenSchluessel);
+  if (g !== undefined) (testJeGruppe.get(g) ?? testJeGruppe.set(g, []).get(g)!).push(e);
+}
+const spNachSchluessel = new Map(SP.map((sp) => [spielartSchluessel(sp), sp]));
+const vorwaerts: JagdFall[] = [];
+const FENSTER_ALLE = (f: number) => Array.from({ length: f }, (_, n) => n + 1);
+/** Fall eines Musters im Vorwärtstest: Ausgang, laufend oder noch lauernd (kein Folgetag) */
+function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten): JagdFall | null {
+  const sp = spNachSchluessel.get(e.sp);
+  if (!sp) return null;
+  const k = r.kerzen;
+  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp) };
+  if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
+  const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));
+  const fertig = res.find((a) => a && a.art !== 'zeit') ?? res[e.fenster - 1];
+  if (fertig) return { ...basis, einstieg: k[i + 1].datum, ende: k[i + fertig.tag]?.datum ?? null, art: fertig.art, netto: fertig.netto, tag: fertig.tag };
+  const stand = [...res].reverse().find((a) => a);
+  return { ...basis, einstieg: k[i + 1].datum, ende: null, art: 'offen', netto: stand?.netto ?? 0, tag: stand?.tag ?? 1 };
+}
+
 // ---------- 5. Durchgang 2: Etiketten, Zensus, Hypothesen ----------
 interface Episode {
   datum: string;
@@ -251,7 +291,22 @@ for (const r of reihen) {
   const gezaehltAm = new Int32Array(gruppen.length).fill(-1e9);
   const sperre = vt.pruefung.sperreTage;
   const ausg = (i: number, sp: Spielart, x: Merkmale) => etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20), F);
-  for (let i = 1; i < k.length - 1; i++) {
+  const testZuletzt = new Map<string, number>();
+  const imVorwaerts = (gruppen: number[], i: number, x: Merkmale) => {
+    for (const g of gruppen) {
+      for (const e of testJeGruppe.get(g) ?? []) {
+        if (k[i].datum <= e.seit || i - (testZuletzt.get(e.schluessel) ?? -1e9) <= vt.pruefung.sperreTage) continue;
+        const sp = spNachSchluessel.get(e.sp);
+        if (!sp || (sp.hebel > 1 && !turboErlaubt(r, x))) continue;
+        const fall = jagdFall(r, i, e, kostenFuer(r.markt, x.umsatz20));
+        if (fall) {
+          vorwaerts.push(fall);
+          testZuletzt.set(e.schluessel, i);
+        }
+      }
+    }
+  };
+  for (let i = 1; i < k.length; i++) {
     const x = m[i];
     if (!x || !handelbar(r, x, k[i])) continue;
     stichtage++;
@@ -263,6 +318,7 @@ for (const r of reihen) {
     const gEinzel = klassen.map((c, a) => (c === null ? -1 : gid.get(`${r.markt}|${a}=${c}`)!));
     const gPaare: number[] = [];
     for (let a = 0; a < E.length; a++) for (let b = a + 1; b < E.length; b++) if (klassen[a] !== null && klassen[b] !== null) gPaare.push(gid.get(`${r.markt}|${a}=${klassen[a]}&${b}=${klassen[b]}`)!);
+    if (testJeGruppe.size) imVorwaerts([...gEinzel.filter((g) => g >= 0), ...gPaare], i, x);
     const frei = (g: number) => g >= 0 && i - gezaehltAm[g] > sperre;
     const alleFrei = frei(gAlle);
     const einzelFrei = gEinzel.filter(frei);
@@ -326,7 +382,9 @@ for (const r of reihen) {
     const g = gid.get(`${r.markt}|hyp=${h.nr}`)!;
     for (const i of hypothesenFaelle(h, k, m, vt.pruefung.sperreTage)) {
       const x = m[i];
-      if (!x || i >= k.length - 1 || !handelbar(r, x, k[i])) continue;
+      if (!x || !handelbar(r, x, k[i])) continue;
+      if (testJeGruppe.has(g)) imVorwaerts([g], i, x);
+      if (i >= k.length - 1) continue;
       hypFaelle[h.nr] = (hypFaelle[h.nr] ?? 0) + 1;
       const z = k[i].datum < grenze ? 0 : 1;
       const turbo = turboErlaubt(r, x);
@@ -357,7 +415,7 @@ const gruppenText = (name: string) => {
     })
     .join(' und ')}`;
 };
-const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number })[] = [];
+const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string })[] = [];
 for (const name of gruppen) {
   const g = gid.get(name)!;
   const markt = name.split('|')[0];
@@ -373,7 +431,7 @@ for (const name of gruppen) {
       const basisB = zw.werte(gA, s, fi, 1);
       const vorteilA = Math.round((p.zeitraeume[0].ev - basisA.ev) * 10) / 10;
       const vorteilB = Math.round((p.zeitraeume[1].ev - basisB.ev) * 10) / 10;
-      ergebnisse.push({ ...p, schluessel: name, art, vorteil: art !== 'alle' && vorteilA > 0 && vorteilB > 0, vorteilA, vorteilB });
+      ergebnisse.push({ ...p, schluessel: name, art, vorteil: art !== 'alle' && vorteilA > 0 && vorteilB > 0, vorteilA, vorteilB, spielartSchluessel: spielartSchluessel(sp) });
     });
   });
 }
@@ -470,6 +528,43 @@ for (const h of HYPOTHESEN) {
   if (top) buch.eintraege.push({ nr: h.nr, datum: heute, status: top.bestanden ? 'rueckblick_bestanden' : 'rueckblick_nicht_bestanden', spielart: top.spielart, fenster: top.fenster, faelle: top.faelle, quote: top.quote, evA: top.zeitraumA.ev, evB: top.zeitraumB.ev, wertung: top.wertung });
 }
 schreibeJson('lernen/muster/hypothesen.json', buch);
+
+// ---------- V4: Muster-Buch fortschreiben und virtuelle Jagden ----------
+{
+  const v4 = vt.v4;
+  // neue Muster: bestanden mit Vorteil gegen die Grundrate (beste Spielart je Gruppe), stärkste zuerst
+  const neu = mitVorteil.filter((e) => !imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)).slice(0, Math.max(0, v4.vorwaertsMax - imTest.size));
+  for (const e of neu) {
+    const eintrag: BuchMuster = { schluessel: `${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, gruppe: e.gruppe, gruppenSchluessel: e.schluessel, sp: e.spielartSchluessel, fenster: e.fenster, seit: heute, wertung: e.wertung, rueckblick: { quote: e.gesamt.quote, ev: e.gesamt.ev, se: e.gesamt.se, faelle: e.gesamt.n }, status: 'vorwaertstest' };
+    musterBuch.eintraege.push(eintrag);
+  }
+  schreibeJson('lernen/muster/muster-buch.json', musterBuch);
+  const { jagden, uebersprungen } = jagdenWaehlen(vorwaerts, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze });
+  const jeMuster = [...imTest.values()].map((e) => {
+    const f = vorwaerts.filter((x) => x.muster === e.schluessel && x.art !== 'offen' && x.art !== 'lauert');
+    const summe = f.reduce((a, x) => a + (x.netto ?? 0), 0);
+    const ev = f.length ? Math.round((summe / f.length) * 10) / 10 : 0;
+    // Stufe 2: mindestens 20 Fälle im Vorwärtstest und ein Ergebnis im Band des Rückblicks (Ø ≥ Rückblick − 2 Standardfehler und > 0)
+    const stufe2 = f.length >= v4.stufe2Faelle && ev > 0 && ev >= e.rueckblick.ev - 2 * Math.max(e.rueckblick.se, 1);
+    return { gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: e.seit, faelle: f.length, treffer: f.filter((x) => x.art === 'treffer').length, ev, offen: vorwaerts.filter((x) => x.muster === e.schluessel && x.art === 'offen').length, rueckblick: e.rueckblick, stufe2 };
+  });
+  const lauerliste = vorwaerts.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung);
+  const musterText = new Map([...imTest.values()].map((e) => [e.schluessel, e.gruppe]));
+  const ohneMuster = (j: JagdFall) => ({ ...j, muster: musterText.get(j.muster) ?? j.muster });
+  schreibeJson('volltreffer/uebersicht.json', {
+    stand: jetzt.toISOString(),
+    hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Keine Mitteilungen, kein echtes Geld.',
+    regeln: { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, stufe2Faelle: v4.stufe2Faelle },
+    kennzahlen: jagdKennzahlen(jagden),
+    offen: jagden.filter((j) => j.art === 'offen').map(ohneMuster),
+    abgeschlossen: jagden.filter((j) => j.art !== 'offen').sort((a, b) => (b.ende ?? '').localeCompare(a.ende ?? '')).slice(0, 30).map(ohneMuster),
+    lauerliste: lauerliste.slice(0, v4.lauerlisteMax).map(ohneMuster),
+    lauerlisteZahl: lauerliste.length,
+    uebersprungen,
+    muster: jeMuster.sort((a, b) => b.faelle - a.faelle),
+  });
+  log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}.`);
+}
 
 // privat: Zensus mit Werten und die vollständige Prüfung
 const aus = join(ARCHIV, 'auswertung');

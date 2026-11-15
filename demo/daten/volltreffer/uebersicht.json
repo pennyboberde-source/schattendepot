@@ -1,0 +1,100 @@
+{
+  "stand": "2026-10-21T12:45:00Z",
+  "regeln": {
+    "maxOffen": 5,
+    "tagesVerlustGrenze": 450,
+    "stufe2Faelle": 20
+  },
+  "kennzahlen": {
+    "anzahl": 2,
+    "volltreffer": 1,
+    "quote": 50,
+    "oeNiete": -150,
+    "ev": 125,
+    "summe": 250,
+    "offen": 1
+  },
+  "offen": [
+    {
+      "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "wertung": 12,
+      "wert": "DEMOJ",
+      "markt": "aktie",
+      "stichtag": "2026-10-20",
+      "einstieg": "2026-10-21",
+      "ende": null,
+      "art": "offen",
+      "netto": 85.5,
+      "tag": 2,
+      "fenster": 10,
+      "spielart": "Turbo long Hebel 5, Stop 150 €"
+    }
+  ],
+  "abgeschlossen": [
+    {
+      "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "wertung": 12,
+      "wert": "DEMOT",
+      "markt": "aktie",
+      "stichtag": "2026-10-20",
+      "einstieg": "2026-10-15",
+      "ende": "2026-10-21",
+      "art": "treffer",
+      "netto": 400,
+      "tag": 3,
+      "fenster": 10,
+      "spielart": "Turbo long Hebel 5, Stop 150 €"
+    },
+    {
+      "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "wertung": 12,
+      "wert": "DEMON",
+      "markt": "aktie",
+      "stichtag": "2026-10-20",
+      "einstieg": "2026-10-14",
+      "ende": "2026-10-21",
+      "art": "niete",
+      "netto": -150,
+      "tag": 1,
+      "fenster": 10,
+      "spielart": "Turbo long Hebel 5, Stop 150 €"
+    }
+  ],
+  "lauerliste": [
+    {
+      "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "wertung": 12,
+      "wert": "DEMOL",
+      "markt": "aktie",
+      "stichtag": "2026-10-20",
+      "einstieg": null,
+      "ende": null,
+      "art": "lauert",
+      "netto": null,
+      "tag": null,
+      "fenster": 10,
+      "spielart": "Turbo long Hebel 5, Stop 150 €"
+    }
+  ],
+  "lauerlisteZahl": 1,
+  "uebersprungen": 0,
+  "muster": [
+    {
+      "gruppe": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-10-10",
+      "faelle": 3,
+      "treffer": 1,
+      "ev": 125,
+      "offen": 1,
+      "rueckblick": {
+        "quote": 9.5,
+        "ev": 16.5,
+        "se": 5,
+        "faelle": 420
+      },
+      "stufe2": false
+    }
+  ]
+}

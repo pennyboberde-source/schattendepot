@@ -8,14 +8,16 @@ import { AbgeschlossenView } from './views/Abgeschlossen';
 import { DaytradingView } from './views/Daytrading';
 import { DepotNav, HeuteView } from './views/Heute';
 import { LernenView } from './views/Lernen';
+import { VolltrefferView } from './views/Volltreffer';
 import { QuellenView } from './views/Quellen';
 import { EinstellungenView } from './views/Einstellungen';
 
-// 4 Bereiche (Plan Datenkrake): Heute · Depot · Daytrading · Lernen, dazu Einstellungen.
+// 5 Bereiche: Heute · Depot · Daytrading · Volltreffer (Plan Volltreffer V4, virtuell) · Lernen, dazu Einstellungen.
 const TABS = [
   { route: 'heute', label: 'Heute', icon: 'briefing' },
   { route: 'depot', label: 'Depot', icon: 'uebersicht' },
   { route: 'daytrading', label: 'Daytrading', icon: 'daytrading' },
+  { route: 'volltreffer', label: 'Volltreffer', icon: 'volltreffer' },
   { route: 'lernen', label: 'Lernen', icon: 'lernen' },
   { route: 'einstellungen', label: 'Einstellungen', icon: 'einstellungen' },
 ] as const;
@@ -64,6 +66,7 @@ export function App() {
           </>
         )}
         {top === 'daytrading' && <DaytradingView />}
+        {top === 'volltreffer' && <VolltrefferView />}
         {top === 'lernen' && <LernenView />}
         {top === 'quellen' && <QuellenView />}
         {top === 'einstellungen' && <EinstellungenView />}

@@ -241,5 +241,13 @@
         ]
       }
     ]
+  },
+  "v4": {
+    "hinweis": "Bereich Volltreffer, virtuell (Konzept V4): höchstens maxOffen Jagden gleichzeitig, nach tagesVerlustGrenze € realisiertem Verlust am nächsten Einstiegstag keine neue Jagd; höchstens vorwaertsMax Muster gleichzeitig im Vorwärtstest; Stufe 2 ab stufe2Faelle Fällen mit Ø im Band des Rückblicks. Noch nicht umgesetzt (fehlende Daten): höchstens 2 Jagden je Thema, Pump-Verdacht, Nachziehstop ab +200 €.",
+    "maxOffen": 5,
+    "tagesVerlustGrenze": 450,
+    "vorwaertsMax": 30,
+    "lauerlisteMax": 40,
+    "stufe2Faelle": 20
   }
 }
