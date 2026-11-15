@@ -42,6 +42,7 @@ jobs:
         id: archiv
         env:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
+          OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
         run: node jobs/archiv.ts
       - name: Archiv sichern
         if: always()

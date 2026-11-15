@@ -2,6 +2,8 @@
 
 _Zuletzt aktualisiert: 15.11.2026 mittags (**Kursgeschichte, Rückblick, Stammdaten, Trefferbuch gebaut und live** – V3 vorgezogen auf Wunsch des Nutzers; Download der Kursgeschichte läuft; davor 14.11. spätabends Lösung B live)_
 
+## ⚠️ Erwartung des Nutzers (15.11.2026): Bereich Volltreffer binnen 14 Tagen (bis So 29.11.) überwiegend profitabel, simulierter Gewinn vor Steuer ≥ 25 %, mit Treffern, bei denen Claudes Einschätzung richtig lag. Claude hat ehrlich gesagt, dass das nicht zusagbar ist (wenige Jagden in 14 Tagen, bisher kein Muster mit Volltreffer-Vorteil), und zugesagt: maximale Suche, strenge Ehrlichkeit (Vorwärtstest nur mit neuen Daten, nichts schönrechnen), Bericht am 29.11. mit echten Zahlen. Daraus folgt die Reihenfolge: US-Rückblick auswerten → Spielarten mit Nachziehstop und mehr Merkmale (eigene Signale, Termine) prüfen → V5 (Claude bewertet die Lauerliste, Urteil wird gemessen).
+
 ## 🎯 15.11.2026: Kursgeschichte und Rückblick (V3 vorgezogen, Nutzer: „maximale Effektivität, zügige Ergebnisse“)
 **Ziel (vom Nutzer bestätigt):** Die Datenkrake soll binnen Wochen Signale erkennen, die einem großen, handelbaren Kurssprung vorausgehen – Maßstab ist der Volltreffer, mindestens 400 € netto aus einer 1.000-€-Order.
 **Reihenfolge geändert (Begründung: früher echte Ergebnisse):** Statt V1 Rest → V2 → V3 zuerst die Kursgeschichte (V3) und das Etikett (V2), damit der Rückblick über zwei Jahre sofort sagt, ob und welche Muster tragen. V1 Rest (Schattenbuch auf Sammelkurse, Stammdaten ISIN↔Kürzel, Handelbarkeits-Karte aus gettex) folgt danach.
@@ -50,7 +52,7 @@ _Zuletzt aktualisiert: 15.11.2026 mittags (**Kursgeschichte, Rückblick, Stammda
 **Freigaben (angefordert 12.11.2026 abends, 🔴❗ + Push)**
 - ✅ F1 `MASSIVE_API_KEY` gesetzt (14.11.). Tarif Basic: Tagesschlussdaten, 2 Jahre Historie, OTC-Werte sind enthalten.
 - ✅ F2 privates Repo `schattendepot-archiv` + Secret `ARCHIV_TOKEN` (14.11.). **Achtung:** Läuft das Token ab, scheitert der Workflow „Kursarchiv“ beim Checkout (401) – dann neues Token anlegen (Anleitung im Chat vom 14.11.: Token nur für dieses Repo, „Contents: Read and write“). Ablaufdatum hat der Nutzer gewählt, hier nicht bekannt.
-- ⬜ F3 optional: `COINGECKO_API_KEY` (Demo-Tarif), `OPENFIGI_API_KEY` – der Nutzer macht sie später (14.11.).
+- ⏳ F3: `OPENFIGI_API_KEY` und `COINGECKO_API_KEY` (Demo) – Nutzer am 15.11.: „wird auf jeden Fall gemacht“, Anleitung mit 🔴❗ + Push geschickt. OpenFIGI wirkt sofort in Stammdaten (`archiv.yml`, 100 ISINs je Anfrage), Sammler und Daytrading; CoinGecko ist in `sammler.yml` vorgesehen, wird aber noch von keiner Quelle genutzt → Börsenwert der Coins als Merkmal einbauen, sobald der Schlüssel da ist.
 - ⬜ F4 bei V6: Ja des Nutzers je Muster.
 - ✅ F5 Pull Requests durch Actions erlaubt (14.11.) – Ablehnungen der Selbstverbesserung kommen jetzt als Pull Request.
 
