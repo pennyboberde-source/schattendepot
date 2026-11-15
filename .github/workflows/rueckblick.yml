@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: '40 5 * * *'
   workflow_dispatch:
+    inputs:
+      probe:
+        description: 'Probe: Code des gewählten Branchs rechnen, nichts sichern, nichts veröffentlichen'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -18,12 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
-      group: archiv-schreiben
+      # die Probe schreibt nicht ins Archiv und stört dessen Warteschlange nicht
+      group: ${{ inputs.probe && 'rueckblick-probe' || 'archiv-schreiben' }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: main
+          ref: ${{ inputs.probe && github.ref || 'main' }}
       - uses: actions/checkout@v5
         with:
           ref: daten
@@ -46,9 +52,16 @@ jobs:
           # Hypothesen- und Muster-Buch werden nur angehängt → bisherigen Stand mitnehmen
           for b in hypothesen.json muster-buch.json; do [ -f "_daten/lernen/muster/$b" ] && cp "_daten/lernen/muster/$b" "$DATEN_DIR/lernen/muster/"; done
           node jobs/rueckblick.ts
+      - name: Probe – Rangliste zeigen
+        if: ${{ inputs.probe }}
+        env:
+          DATEN_DIR: ${{ runner.temp }}/muster
+        run: node scripts/rangliste-zeigen.mjs
       - name: Zensus und Prüfung im privaten Archiv sichern
+        if: ${{ !inputs.probe }}
         run: bash scripts/archiv-sichern.sh "Rückblick $(date -u +%Y-%m-%dT%H:%MZ)"
       - uses: actions/upload-artifact@v4
+        if: ${{ !inputs.probe }}
         with:
           name: muster
           path: ${{ runner.temp }}/muster
@@ -56,6 +69,7 @@ jobs:
 
   veroeffentlichen:
     needs: rechnen
+    if: ${{ !inputs.probe }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:

@@ -209,7 +209,7 @@ schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal
 }
 // S4 (DEMO): Heute gelernt, Marktphase, Wochenzeugnis, Marktphasen-Verlauf
 // Volltreffer-Rückblick (DEMO-Zahlen)
-const vtEintrag = (gruppe: string, spielart: string, fenster: number, bestanden: boolean, faelle: number, quote: number, evA: number, evB: number) => ({ gruppe, spielart, fenster, bestanden, wertung: Math.min(evA, evB) - 5, faelle, quote, lift: 2.4, erfassung: 3.1, evGesamt: (evA + evB) / 2, zeitraumA: { n: Math.round(faelle / 2), quote, ev: evA, se: 5 }, zeitraumB: { n: Math.round(faelle / 2), quote, ev: evB, se: 6 }, knockoutQuote: 0 });
+const vtEintrag = (gruppe: string, spielart: string, fenster: number, bestanden: boolean, faelle: number, quote: number, evA: number, evB: number) => ({ gruppe, spielart, fenster, bestanden, wertung: Math.min(evA, evB) - 5, faelle, quote, lift: 2.4, erfassung: 3.1, evGesamt: (evA + evB) / 2, zeitraumA: { n: Math.round(faelle / 2), quote, ev: evA, se: 5, tage: 84, groessterTag: 3.1 }, zeitraumB: { n: Math.round(faelle / 2), quote, ev: evB, se: 6, tage: 71, groessterTag: 4.2 }, knockoutQuote: 0 });
 schreibe('lernen/muster/rangliste.json', {
   stand: stand,
   zeitraum: { von: '2024-11-15', bis: '2026-11-13', grenze: '2025-11-14' },

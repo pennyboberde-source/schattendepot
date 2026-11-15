@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Ausgang, Kerze } from './etikett.ts';
 import { merkmale } from './merkmale.ts';
-import { HYPOTHESEN, hypothesenFaelle, pruefen, Zaehlwerk, type Kennzahl } from './pruefung.ts';
+import { HYPOTHESEN, hypothesenFaelle, pruefen, TagesKlumpen, Zaehlwerk, type Kennzahl } from './pruefung.ts';
 
 const a = (art: Ausgang['art'], netto: number, extra: Partial<Ausgang> = {}): Ausgang => ({ art, tag: 1, netto, bestNetto: netto, ...extra });
 const kz = (n: number, ev: number, se: number, treffer = 0): Kennzahl => ({ n, treffer, beinahe: 0, quote: n ? (treffer / n) * 100 : 0, ev, se, knockout: 0 });
@@ -18,6 +18,35 @@ describe('Zählwerk', () => {
     expect(k.se).toBeCloseTo(Math.sqrt(((300 ** 2 + 250 ** 2 + 50 ** 2) / 2) / 3), 0);
     expect(z.gesamt(1, 0, 0)).toMatchObject({ n: 4, knockout: 1, ev: -175 });
     expect(z.werte(0, 0, 0, 0).n).toBe(0);
+  });
+});
+
+describe('Klumpen-Prüfung je Stichtag', () => {
+  it('ein Crash-Tag mit vielen Fällen zählt als ein Ereignis: großer Standardfehler, wenige Tage', () => {
+    const k = new TagesKlumpen(2, 10);
+    // Muster 0: 100 Fälle an einem Tag mit +100 €, je 1 Fall an 4 anderen Tagen mit −50 €
+    for (let i = 0; i < 100; i++) k.add(0, 3, 100);
+    for (const d of [1, 5, 7, 8]) k.add(0, d, -50);
+    const w = k.werte(0, 0, 10);
+    expect(w).toMatchObject({ n: 104, tage: 5, groessterTag: 96.2 });
+    expect(w.ev).toBeCloseTo((10000 - 200) / 104, 1);
+    // Klumpen-Standardfehler (5 Tage als Einheiten): rund 6,9 € – gut doppelt so groß wie der gewöhnliche (rund 2,8 €)
+    const ev = 9800 / 104;
+    const q = (10000 - 100 * ev) ** 2 + 4 * (-50 - ev) ** 2;
+    expect(w.se).toBeCloseTo(Math.sqrt((5 / 4) * q) / 104, 1);
+    expect(w.se).toBeGreaterThan(6);
+    // Zeitraum [0, 3): nur Tag 1
+    expect(k.werte(0, 0, 3)).toMatchObject({ n: 1, tage: 1, se: 0 });
+  });
+
+  it('gleichmäßig verteilte Fälle: Klumpen-Standardfehler wie gewöhnlich', () => {
+    const k = new TagesKlumpen(1, 6);
+    [10, -10, 30, -30, 20, -20].forEach((x, d) => k.add(0, d, x));
+    const w = k.werte(0, 0, 6);
+    expect(w).toMatchObject({ n: 6, ev: 0, tage: 6 });
+    const gewoehnlich = Math.sqrt((2 * (100 + 900 + 400)) / 5 / 6);
+    expect(w.se).toBeCloseTo(gewoehnlich, 0);
+    expect(k.werte(0, 0, 0)).toMatchObject({ n: 0, tage: 0 });
   });
 });
 

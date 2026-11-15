@@ -74,6 +74,7 @@ test('Bereich Volltreffer: Jagd, Rückblick mit bestandenen Mustern und Hypothes
   await expect(karte).toBeVisible();
   await expect(karte.getByText(/Bestanden: 1 Muster/)).toBeVisible();
   await expect(karte.getByText(/C9k Rückprall nach Ausverkauf/)).toBeVisible();
+  await expect(karte.getByTestId('muster-tage').first()).toContainText('an 84 + 71 verschiedenen Tagen');
   const buch = page.getByTestId('trefferbuch');
   await expect(buch.getByText(/Vorzeichen: insider_cluster_kauf/)).toBeVisible();
   await expect(buch.getByText(/3 von 42 Fällen – noch zu wenige/)).toBeVisible();

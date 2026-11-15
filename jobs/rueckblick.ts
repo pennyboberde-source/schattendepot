@@ -8,9 +8,9 @@ import { join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { orderentgelt } from '../core/gebuehren.ts';
 import { parseKryptoKerzenArchiv, parseUsArchiv, parseUsSplitsArchiv } from '../core/sammelkurse.ts';
-import { etikett, spielarten, spielartText, sprungEpisoden, type EtikettKosten, type Kerze, type Spielart } from '../core/volltreffer/etikett.ts';
+import { etikett, spielarten, spielartText, sprungEpisoden, type Ausgang, type EtikettKosten, type Kerze, type Spielart } from '../core/volltreffer/etikett.ts';
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
-import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
+import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
@@ -24,7 +24,7 @@ interface VtConfig {
     aktie: { mindestKurs: number; mindestUmsatzStichtag: number; turboAbUmsatz20: number; spread: { abUmsatz20: number; klasse: string }[]; handelsplatz: string };
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
-  pruefung: { mindestFaelle: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
+  pruefung: { mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number };
 }
 
@@ -196,6 +196,12 @@ log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
 const merkmalWert = (e: Einteilung, m: Merkmale, kontext: { marktR1: number; ueberrendite1: number; boersenwert: number | null }): number | null =>
   e.merkmal === 'marktR1' ? kontext.marktR1 : e.merkmal === 'ueberrendite1' ? kontext.ueberrendite1 : e.merkmal === 'boersenwert' ? kontext.boersenwert : (m[e.merkmal as keyof Merkmale] as number | null);
+/** Klasse je Einteilung an einem Stichtag (Durchgang 2 und Klumpen-Prüfung rechnen genau gleich) */
+const klassenAm = (r: Reihe, x: Merkmale, datum: string) => {
+  const mr = marktR1[r.markt].get(datum) ?? 0;
+  const kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null };
+  return E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
+};
 
 // ---------- 4b. Signale der Datenkrake (seit 28.10.2026) – was war vor einem Sprung bekannt? ----------
 interface Sig {
@@ -323,10 +329,8 @@ for (const r of reihen) {
     const x = m[i];
     if (!x || !handelbar(r, x, k[i])) continue;
     stichtage++;
-    const mr = marktR1[r.markt].get(k[i].datum) ?? 0;
-    const kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), k[i].datum) : null };
     const z = k[i].datum < grenze ? 0 : 1;
-    const klassen = E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
+    const klassen = klassenAm(r, x, k[i].datum);
     const gAlle = gid.get(`${r.markt}|alle`)!;
     const gEinzel = klassen.map((c, a) => (c === null ? -1 : gid.get(`${r.markt}|${a}=${c}`)!));
     const gPaare: number[] = [];
@@ -428,7 +432,7 @@ const gruppenText = (name: string) => {
     })
     .join(' und ')}`;
 };
-const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string })[] = [];
+const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string; tage?: [number, number]; groessterTag?: [number, number] })[] = [];
 for (const name of gruppen) {
   const g = gid.get(name)!;
   const markt = name.split('|')[0];
@@ -447,6 +451,116 @@ for (const name of gruppen) {
       ergebnisse.push({ ...p, schluessel: name, art, vorteil: art !== 'alle' && vorteilA > 0 && vorteilB > 0, vorteilA, vorteilB, spielartSchluessel: spielartSchluessel(sp) });
     });
   });
+}
+
+// ---------- 6b. Klumpen-Prüfung: Fälle desselben Stichtags sind nicht unabhängig ----------
+// An einem Crash-Tag fallen Hunderte Aktien gemeinsam – das ist ein Ereignis, nicht Hunderte. Geprüft werden je Gruppe die
+// besten bestandenen Kombinationen und alles im Vorwärtstest (Durchgang 3, zählt genau wie Durchgang 2). Bestanden bleibt
+// nur, was in beiden Zeiträumen Fälle an mindestens `mindestTage` verschiedenen Stichtagen hat; der Rang rechnet mit dem
+// Klumpen-Standardfehler (Tag als Einheit). Nicht geprüfte Kombinationen gelten als nicht bestanden.
+{
+  type Ergebnis = (typeof ergebnisse)[number];
+  const kombi = (e: Ergebnis) => `${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`;
+  const gewaehlt = new Set<Ergebnis>();
+  const jeGruppe = new Map<string, Ergebnis[]>();
+  for (const e of ergebnisse) if (e.bestanden && e.art !== 'alle') (jeGruppe.get(e.schluessel) ?? jeGruppe.set(e.schluessel, []).get(e.schluessel)!).push(e);
+  for (const l of jeGruppe.values()) for (const e of l.sort((a, b) => b.wertung - a.wertung).slice(0, vt.pruefung.klumpenJeGruppe)) gewaehlt.add(e);
+  for (const e of ergebnisse) if (e.bestanden && e.art !== 'alle' && imTest.has(kombi(e))) gewaehlt.add(e);
+  const spIndex = new Map(SP.map((sp, s) => [spielartSchluessel(sp), s]));
+  const kand = [...gewaehlt].map((e) => ({ e, g: gid.get(e.schluessel)!, s: spIndex.get(e.spielartSchluessel)!, fi: F.indexOf(e.fenster) }));
+  const kandJeGruppe = new Map<number, number[]>();
+  kand.forEach((c, j) => (kandJeGruppe.get(c.g) ?? kandJeGruppe.set(c.g, []).get(c.g)!).push(j));
+  // Gruppen als Bedingungen [Einteilung, Klasse]; Index je Markt über die erste Bedingung
+  interface Regel {
+    g: number;
+    bed: [number, number][];
+  }
+  const regelIndex: Record<Markt, Map<number, Regel[]>> = { aktie: new Map(), krypto: new Map() };
+  const hypGruppen: { g: number; markt: Markt; h: (typeof HYPOTHESEN)[number] }[] = [];
+  for (const g of kandJeGruppe.keys()) {
+    const [markt, rest] = gruppen[g].split('|') as [Markt, string];
+    if (rest.startsWith('hyp=')) {
+      hypGruppen.push({ g, markt, h: HYPOTHESEN.find((x) => x.nr === rest.slice(4))! });
+      continue;
+    }
+    const bed = rest.split('&').map((t) => t.split('=').map(Number) as [number, number]);
+    const key = bed[0][0] * 1000 + bed[0][1];
+    (regelIndex[markt].get(key) ?? regelIndex[markt].set(key, []).get(key)!).push({ g, bed });
+  }
+  const tagNr = new Map(alleTage.map((d, i) => [d, i]));
+  const grenzeNr = alleTage.indexOf(grenze) >= 0 ? alleTage.indexOf(grenze) : alleTage.length;
+  const klumpen = new TagesKlumpen(kand.length, alleTage.length);
+  const sperre = vt.pruefung.sperreTage;
+  for (const r of reihen) {
+    const hyp = hypGruppen.filter((x) => x.markt === r.markt);
+    if (!regelIndex[r.markt].size && !hyp.length) continue;
+    const k = r.kerzen;
+    const m = k.map((_, i) => merkmale(k, i));
+    const gezaehltAm = new Map<number, number>();
+    const fallZaehlen = (i: number, g: number, x: Merkmale, cache: Map<number, (Ausgang | null)[]>) => {
+      const turbo = turboErlaubt(r, x);
+      for (const j of kandJeGruppe.get(g)!) {
+        const c = kand[j];
+        const sp = SP[c.s];
+        if (sp.hebel > 1 && !turbo) continue;
+        const a = cache.get(c.s) ?? cache.set(c.s, etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20), F)).get(c.s)!;
+        const au = a[c.fi];
+        if (au) klumpen.add(j, tagNr.get(k[i].datum)!, au.netto);
+      }
+    };
+    if (regelIndex[r.markt].size)
+      for (let i = 1; i < k.length; i++) {
+        const x = m[i];
+        if (!x || !handelbar(r, x, k[i])) continue;
+        const klassen = klassenAm(r, x, k[i].datum);
+        // wie Durchgang 2: gezählt ist ein Stichtag, sobald es einen Einstiegstag gibt
+        const gezaehlt = !!k[i + 1] && k[i + 1].o > 0;
+        const cache = new Map<number, (Ausgang | null)[]>();
+        for (let a = 0; a < klassen.length; a++) {
+          if (klassen[a] === null) continue;
+          for (const rg of regelIndex[r.markt].get(a * 1000 + klassen[a]!) ?? []) {
+            if (!rg.bed.every(([b, cb]) => klassen[b] === cb)) continue;
+            if (i - (gezaehltAm.get(rg.g) ?? -1e9) <= sperre) continue;
+            fallZaehlen(i, rg.g, x, cache);
+            if (gezaehlt) gezaehltAm.set(rg.g, i);
+          }
+        }
+      }
+    for (const { g, h } of hyp)
+      for (const i of hypothesenFaelle(h, k, m, sperre)) {
+        const x = m[i];
+        if (!x || !handelbar(r, x, k[i]) || i >= k.length - 1) continue;
+        fallZaehlen(i, g, x, new Map());
+      }
+  }
+  let abweichend = 0;
+  let gefallen = 0;
+  const geprueft = new Map<Ergebnis, number>();
+  kand.forEach((c, j) => geprueft.set(c.e, j));
+  for (const e of ergebnisse) {
+    if (!e.bestanden || e.art === 'alle') continue;
+    const j = geprueft.get(e);
+    if (j === undefined) {
+      e.bestanden = false;
+      continue;
+    }
+    const A = klumpen.werte(j, 0, grenzeNr);
+    const B = klumpen.werte(j, grenzeNr, alleTage.length);
+    if (A.n !== e.zeitraeume[0].n || B.n !== e.zeitraeume[1].n) abweichend++;
+    e.zeitraeume = [
+      { ...e.zeitraeume[0], se: A.se },
+      { ...e.zeitraeume[1], se: B.se },
+    ];
+    e.gesamt = { ...e.gesamt, se: Math.max(A.se, B.se) };
+    e.wertung = Math.round(Math.min(e.zeitraeume[0].ev - A.se, e.zeitraeume[1].ev - B.se) * 10) / 10;
+    e.tage = [A.tage, B.tage];
+    e.groessterTag = [A.groessterTag, B.groessterTag];
+    if (A.tage < vt.pruefung.mindestTage || B.tage < vt.pruefung.mindestTage) {
+      e.bestanden = false;
+      gefallen++;
+    }
+  }
+  log(`Klumpen-Prüfung: ${kand.length} Kombinationen nachgezählt, ${gefallen} fallen durch (in einem Zeitraum weniger als ${vt.pruefung.mindestTage} verschiedene Stichtage)${abweichend ? `, ${abweichend} mit abweichender Fallzahl (Durchgang 2 ≠ 3)` : ', Fallzahlen stimmen mit Durchgang 2 überein'}.`);
 }
 // je Gruppe die beste Spielart/das beste Fenster (nach Wertung)
 const besteJeGruppe = new Map<string, (typeof ergebnisse)[number]>();
@@ -468,8 +582,8 @@ const kurz = (e: (typeof ergebnisse)[number]) => ({
   lift: e.lift,
   erfassung: e.erfassung,
   evGesamt: e.gesamt.ev,
-  zeitraumA: { n: e.zeitraeume[0].n, quote: e.zeitraeume[0].quote, ev: e.zeitraeume[0].ev, se: e.zeitraeume[0].se },
-  zeitraumB: { n: e.zeitraeume[1].n, quote: e.zeitraeume[1].quote, ev: e.zeitraeume[1].ev, se: e.zeitraeume[1].se },
+  zeitraumA: { n: e.zeitraeume[0].n, quote: e.zeitraeume[0].quote, ev: e.zeitraeume[0].ev, se: e.zeitraeume[0].se, tage: e.tage?.[0] ?? null, groessterTag: e.groessterTag?.[0] ?? null },
+  zeitraumB: { n: e.zeitraeume[1].n, quote: e.zeitraeume[1].quote, ev: e.zeitraeume[1].ev, se: e.zeitraeume[1].se, tage: e.tage?.[1] ?? null, groessterTag: e.groessterTag?.[1] ?? null },
   knockoutQuote: e.gesamt.n ? Math.round((e.gesamt.knockout / e.gesamt.n) * 1000) / 10 : 0,
   vorteil: e.vorteil,
   vorteilA: e.vorteilA,
@@ -483,7 +597,7 @@ const n = vt.pruefung.rangliste;
 
 const rangliste = {
   stand: jetzt.toISOString(),
-  hinweis: 'Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise.',
+  hinweis: 'Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise. Klumpen-Prüfung: Aktien desselben Tages bewegen sich gemeinsam – bestanden hat nur, was in beiden Zeiträumen Fälle an mindestens ' + vt.pruefung.mindestTage + ' verschiedenen Stichtagen hat; der Standardfehler rechnet den Tag als Einheit.',
   zeitraum: { von: alleTage[0], bis: alleTage[alleTage.length - 1], grenze },
   umfang: { stichtage, reihen: reihen.length, episoden: episoden.length, aktien: reihen.filter((r) => r.markt === 'aktie').length, coins: reihen.filter((r) => r.markt === 'krypto').length },
   bestandenZahl: bestanden.length,

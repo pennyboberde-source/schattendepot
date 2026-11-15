@@ -16,8 +16,9 @@ interface Eintrag {
   lift: number | null;
   erfassung: number;
   evGesamt: number;
-  zeitraumA: { n: number; quote: number; ev: number; se: number };
-  zeitraumB: { n: number; quote: number; ev: number; se: number };
+  /** tage: verschiedene Stichtage mit Fällen (Klumpen-Prüfung), groessterTag: Anteil der Fälle am stärksten Tag in % */
+  zeitraumA: { n: number; quote: number; ev: number; se: number; tage?: number | null; groessterTag?: number | null };
+  zeitraumB: { n: number; quote: number; ev: number; se: number; tage?: number | null; groessterTag?: number | null };
   knockoutQuote: number;
   /** in beiden Zeiträumen besser als die Grundrate derselben Spielart */
   vorteil?: boolean;
@@ -50,6 +51,11 @@ function Zeile({ e }: { e: Eintrag }) {
         Ø je Order: <b class={e.zeitraumA.ev >= 0 ? 'plus' : 'minus'}>{euro(e.zeitraumA.ev)}</b> im ersten, <b class={e.zeitraumB.ev >= 0 ? 'plus' : 'minus'}>{euro(e.zeitraumB.ev)}</b> im zweiten Zeitraum
         {e.knockoutQuote ? ` · Knock-out ${quote(e.knockoutQuote)}` : ''}
       </span>
+      {e.zeitraumA.tage != null && e.zeitraumB.tage != null && (
+        <span class="klein" data-testid="muster-tage">
+          an {zahl(e.zeitraumA.tage)} + {zahl(e.zeitraumB.tage)} verschiedenen Tagen · Unsicherheit ± {euro(Math.max(e.zeitraumA.se, e.zeitraumB.se))} je Order
+        </span>
+      )}
       {e.vorteilA !== undefined && e.vorteilB !== undefined && (
         <span class="klein">
           {e.vorteil ? '✅ echter Vorteil' : '⚠️ kein Vorteil'} gegen die Grundrate derselben Spielart: {euro(e.vorteilA)} / {euro(e.vorteilB)} je Order{e.vorteil ? '' : ' – vor allem Markttrend'}
@@ -141,7 +147,7 @@ export function VolltrefferRueckblickKarte() {
     <Karte titel="🎯 Volltreffer-Rückblick">
       <div data-testid="volltreffer-rueckblick">
         <p class="klein">
-          Wäre eine 1.000-€-Order ein Volltreffer (mindestens +400 € netto) geworden? Gerechnet über {zahl(r.umfang.stichtage)} handelbare Stichtage von {zahl(r.umfang.aktien)} Aktien und {zahl(r.umfang.coins)} Coins, {datumKurz(r.zeitraum.von)} bis {datumKurz(r.zeitraum.bis)}. {zahl(r.umfang.episoden)} Sprünge gezählt. Ein Muster besteht nur, wenn es in beiden Zeiträumen (vor und ab {datumKurz(r.zeitraum.grenze)}) mindestens 100 Fälle und im Schnitt Gewinn nach Kosten zeigt.
+          Wäre eine 1.000-€-Order ein Volltreffer (mindestens +400 € netto) geworden? Gerechnet über {zahl(r.umfang.stichtage)} handelbare Stichtage von {zahl(r.umfang.aktien)} Aktien und {zahl(r.umfang.coins)} Coins, {datumKurz(r.zeitraum.von)} bis {datumKurz(r.zeitraum.bis)}. {zahl(r.umfang.episoden)} Sprünge gezählt. Ein Muster besteht nur, wenn es in beiden Zeiträumen (vor und ab {datumKurz(r.zeitraum.grenze)}) mindestens 100 Fälle an mindestens 30 verschiedenen Tagen und im Schnitt Gewinn nach Kosten zeigt. Fälle desselben Tages zählen gemeinsam (ein Crash-Tag ist ein Ereignis).
         </p>
         <h3>{r.bestandenZahl ? `Bestanden: ${zahl(r.bestandenZahl)} Muster${r.mitVorteilZahl !== undefined ? `, davon ${zahl(r.mitVorteilZahl)} mit echtem Vorteil` : ''} – die stärksten` : 'Noch kein Muster bestanden'}</h3>
         {r.bestandenZahl ? (

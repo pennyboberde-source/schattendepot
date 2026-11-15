@@ -84,6 +84,62 @@ function kennzahl(n: number, treffer: number, beinahe: number, summe: number, qu
   return { n, treffer, beinahe, quote: r2((treffer / n) * 100), ev: r1(ev), se: r1(Math.sqrt(varianz / n)), knockout };
 }
 
+// ---------- Klumpen-Prüfung je Stichtag ----------
+// Aktien desselben Tages bewegen sich gemeinsam: 500 Fälle an einem Crash-Tag sind ein Ereignis, nicht 500. Deshalb
+// zählt für den Standardfehler der Tag als Einheit (Klumpen-Standardfehler), und ein Muster braucht genug verschiedene Tage.
+export interface KlumpenKennzahl {
+  n: number;
+  ev: number;
+  /** Klumpen-Standardfehler (Tag als Einheit) in € */
+  se: number;
+  /** verschiedene Stichtage mit mindestens einem Fall */
+  tage: number;
+  /** Anteil der Fälle am Tag mit den meisten Fällen, in % */
+  groessterTag: number;
+}
+
+/** Summe und Zahl der Fälle je Muster und Tag (Tag als Index in der sortierten Tagesliste). */
+export class TagesKlumpen {
+  readonly summe: Float64Array;
+  readonly zahl: Int32Array;
+  readonly tage: number;
+  constructor(muster: number, tage: number) {
+    this.tage = tage;
+    this.summe = new Float64Array(muster * tage);
+    this.zahl = new Int32Array(muster * tage);
+  }
+  add(muster: number, tag: number, netto: number) {
+    const p = muster * this.tage + tag;
+    this.summe[p] += netto;
+    this.zahl[p]++;
+  }
+  /** Kennzahl über die Tage [von, bis) */
+  werte(muster: number, von: number, bis: number): KlumpenKennzahl {
+    const o = muster * this.tage;
+    let n = 0;
+    let su = 0;
+    let tage = 0;
+    let max = 0;
+    for (let d = von; d < bis; d++) {
+      const z = this.zahl[o + d];
+      if (!z) continue;
+      n += z;
+      su += this.summe[o + d];
+      tage++;
+      if (z > max) max = z;
+    }
+    if (!n) return { n: 0, ev: 0, se: 0, tage: 0, groessterTag: 0 };
+    const ev = su / n;
+    let q = 0;
+    for (let d = von; d < bis; d++) {
+      const z = this.zahl[o + d];
+      if (z) q += (this.summe[o + d] - z * ev) ** 2;
+    }
+    const se = tage > 1 ? Math.sqrt((tage / (tage - 1)) * q) / n : 0;
+    return { n, ev: r1(ev), se: r1(se), tage, groessterTag: r1((max / n) * 100) };
+  }
+}
+
 // ---------- Bewertung ----------
 export interface Pruefergebnis {
   gruppe: string;
