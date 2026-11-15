@@ -1,0 +1,60 @@
+{
+  "hinweis": "Plan Volltreffer (KONZEPT-VOLLTREFFER.md, Abschnitte 3 und 4). Etikett, Handelbarkeit (Näherung) und Musterprüfung. Kosten kommen aus config/spreads.json und config/gebuehren-smartbroker.json.",
+  "etikett": {
+    "einsatz": 1000,
+    "ziel": 400,
+    "beinahe": 200,
+    "hebel": [1, 2, 3, 5, 10],
+    "stops": [100, 150, 250],
+    "standardStop": 150,
+    "fenster": [1, 3, 5, 10, 21],
+    "episodeAbstand": 10,
+    "finanzierungProzentJahr": 5,
+    "turboSpreadKlasse": "hebel",
+    "turboEmittent": "UniCredit"
+  },
+  "handelbar": {
+    "hinweis": "Näherung, solange es keine Handelbarkeits-Karte aus gettex-Daten gibt: US-Aktien ohne OTC, Warrants, Units und Rechte, ab 1 $ und mit ausreichend Umsatz am Stichtag; Turbos nur auf Werte mit großem Umsatz; Krypto über Kraken (Euro bevorzugt), Turbos nur auf die großen Coins.",
+    "aktie": {
+      "mindestKurs": 1,
+      "mindestUmsatzStichtag": 500000,
+      "turboAbUmsatz20": 20000000,
+      "spread": [
+        { "abUmsatz20": 50000000, "klasse": "aktie_large" },
+        { "abUmsatz20": 5000000, "klasse": "aktie_neben" },
+        { "abUmsatz20": 0, "klasse": "spekulativ" }
+      ],
+      "handelsplatz": "GTX"
+    },
+    "krypto": {
+      "mindestUmsatzStichtag": 100000,
+      "turboBasiswerte": ["XBT", "BTC", "ETH", "SOL", "XRP"],
+      "ohneBasis": ["USDT", "USDC", "DAI", "EURC", "PYUSD", "USD1", "RLUSD", "TUSD", "USDG", "FDUSD", "EURQ", "EUROP", "EURCV", "USDQ", "USDR", "USDD", "AUSD", "EUR", "USD", "GBP", "AUD", "CAD", "CHF", "JPY", "AED"],
+      "mindestSchwankung20": 0.3,
+      "spreadKlasse": "krypto",
+      "handelsplatz": "TRK"
+    }
+  },
+  "pruefung": {
+    "mindestFaelle": 100,
+    "sperreTage": 10,
+    "paareFenster": [10],
+    "rangliste": 40,
+    "einteilungen": [
+      { "merkmal": "r1", "grenzen": [-25, -10, -3, 3, 10, 25] },
+      { "merkmal": "r5", "grenzen": [-30, -10, 0, 10, 30] },
+      { "merkmal": "r20", "grenzen": [-50, -20, 0, 20, 50] },
+      { "merkmal": "relVolumen", "grenzen": [0.5, 1, 2, 5, 10] },
+      { "merkmal": "relSpanne", "grenzen": [0.5, 1, 2, 4] },
+      { "merkmal": "abstandHoch20", "grenzen": [-30, -10, -3, -0.001], "namen": ["mehr als 30 % darunter", "10 bis 30 % darunter", "3 bis 10 % darunter", "bis 3 % darunter", "auf neuem Hoch"] },
+      { "merkmal": "abstandHoch250", "grenzen": [-80, -50, -20, -5] },
+      { "merkmal": "lageSchluss", "grenzen": [0.2, 0.5, 0.8, 0.95] },
+      { "merkmal": "luecke", "grenzen": [-10, -3, 3, 10] },
+      { "merkmal": "schwankung20", "grenzen": [1, 2, 4, 8] },
+      { "merkmal": "umsatz20", "grenzen": [1000000, 5000000, 20000000, 100000000] },
+      { "merkmal": "kurs", "grenzen": [1, 5, 20, 100] },
+      { "merkmal": "ueberrendite1", "grenzen": [-20, -5, 5, 20] },
+      { "merkmal": "marktR1", "grenzen": [-2, -0.5, 0.5, 2] }
+    ]
+  }
+}

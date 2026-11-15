@@ -1,0 +1,77 @@
+name: Rückblick und Musterprüfung
+
+# Plan Volltreffer V3 (mit Sprung-Zensus aus V2): rechnet über die ganze Kursgeschichte im PRIVATEN Archiv, ob eine
+# 1.000-€-Order ein Volltreffer geworden wäre, und prüft Merkmale, Kombinationen und Hypothesen in zwei Zeiträumen.
+# Öffentlich (Datenzweig lernen/muster/) gehen nur verdichtete Kennzahlen; der Zensus mit Werten bleibt im Archiv.
+# Wöchentlich So 05:40 UTC (nach dem Nachfüllen der Kursgeschichte) oder von Hand.
+on:
+  schedule:
+    - cron: '40 5 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rechnen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: archiv-schreiben
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/checkout@v5
+        with:
+          repository: pennyboberde-source/schattendepot-archiv
+          token: ${{ secrets.ARCHIV_TOKEN }}
+          path: _archiv
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Rückblick rechnen
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+          DATEN_DIR: ${{ runner.temp }}/muster
+        run: |
+          mkdir -p "$DATEN_DIR/lernen/muster"
+          # das Hypothesen-Buch wird nur angehängt → bisherigen Stand mitnehmen
+          [ -f _daten/lernen/muster/hypothesen.json ] && cp _daten/lernen/muster/hypothesen.json "$DATEN_DIR/lernen/muster/"
+          node jobs/rueckblick.ts
+      - name: Zensus und Prüfung im privaten Archiv sichern
+        run: bash scripts/archiv-sichern.sh "Rückblick $(date -u +%Y-%m-%dT%H:%MZ)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: muster
+          path: ${{ runner.temp }}/muster/lernen/muster
+          retention-days: 3
+
+  veroeffentlichen:
+    needs: rechnen
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    concurrency:
+      group: daten-schreiben
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/download-artifact@v4
+        with:
+          name: muster
+          path: _daten/lernen/muster
+      - name: Daten sichern
+        run: bash scripts/daten-sichern.sh "Rückblick $(date -u +%Y-%m-%dT%H:%MZ)"
