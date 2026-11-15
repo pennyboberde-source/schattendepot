@@ -4,12 +4,13 @@
 // Ins öffentliche Repo geht nur der Stand in Zählungen (Ausgabe „stand“ → archiv/stand.json im Datenzweig).
 // Schalter (Umgebung): ARCHIV_NUR=krypto,us,gettex,kryptokerzen,ussplits (Standard: krypto,us,gettex – der tägliche Lauf).
 //   US_AB=JJJJ-MM-TT und US_MAX_TAGE=n für den Rückblick (Kursgeschichte rückwärts, fortsetzbar – Workflow historie.yml).
-import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { berlin, berlinZuUtc, istHandelstag } from '../core/kalender.ts';
 import {
   gettexCsv,
+  parseGettexArchiv,
   gettexTagStatus,
   gettexZeilen,
   krakenKerzenPaare,
@@ -28,6 +29,7 @@ import {
   type Tageskerze,
   type UsSplit,
 } from '../core/sammelkurse.ts';
+import { figiEinordnen, handelbarkeitsKarte, type Wertpapier } from '../core/volltreffer/stamm.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -37,6 +39,7 @@ interface ArchivConfig {
   us: { host: string; ab: string; maxTageJeLauf: number; pauseSekunden: number; bereinigt: boolean; mitOtc: boolean };
   krypto: { host: string };
   kryptoKerzen?: { waehrungen: string[]; pauseMs: number; mindestAnteil: number; tageZurueck: number };
+  stamm?: { maxAnfragen: number; pauseMs: number; fenster: number; mindestTage: number };
   usSplits?: { jahreZurueck: number; nachfassenTage: number };
 }
 interface Index {
@@ -48,6 +51,8 @@ interface Index {
   kryptoKerzen?: Record<string, { paare: number; geholt: string }>;
   /** Splits-Liste (stamm/us-splits.csv.gz): Zahl der Einträge und letzter Abruf */
   usSplits?: { eintraege: number; von: string; bis: string; geholt: string };
+  /** Stammdaten (stamm/wertpapiere.json) und Handelbarkeits-Karte (stamm/handelbar.json) in Zählungen */
+  stamm?: { wertpapiere: number; handelbar: number; handelbarUs: number; gettexTage: number; offen: number; geholt: string };
 }
 
 const ARCHIV = process.env.ARCHIV_DIR ?? '_archiv';
@@ -61,7 +66,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -232,6 +237,66 @@ async function kryptoKerzen() {
   console.log(`Krypto-Tageskerzen: ${geholt} von ${paare.length} Paaren, ${tage} Tage neu (${fehlend[0]} bis ${fehlend[fehlend.length - 1]})${offen.length ? `, ${offen.length} Paare nicht abrufbar` : ''}.`);
 }
 
+// ---------- Stammdaten und Handelbarkeits-Karte (gettex-ISINs, OpenFIGI) ----------
+// Je an gettex gehandelter ISIN Name, US-Kürzel und Art (OpenFIGI, ohne Schlüssel 25 Anfragen/Min. à 10 ISINs);
+// handelbar ist, was an mindestens 10 der letzten 20 gettex-Tage Umsatz hatte. Beides bleibt privat (die Karte
+// beruht auf gettex-Umsätzen); öffentlich nur Zählungen.
+async function stamm() {
+  const st = cfg.stamm ?? { maxAnfragen: 120, pauseMs: 2600, fenster: 20, mindestTage: 10 };
+  const ordner = join(ARCHIV, 'gettex');
+  const dateien = existsSync(ordner)
+    ? readdirSync(ordner)
+        .filter((j) => /^\d{4}$/.test(j))
+        .flatMap((j) => readdirSync(join(ordner, j)).map((d) => join(ordner, j, d)))
+        .filter((d) => /\d{4}-\d{2}-\d{2}\.csv\.gz$/.test(d))
+        .sort()
+        .slice(-st.fenster)
+    : [];
+  if (!dateien.length) {
+    console.log('Stammdaten: noch keine gettex-Tage im Archiv.');
+    return;
+  }
+  const tage = dateien.map((d) => {
+    const kerzen = parseGettexArchiv(gunzipSync(readFileSync(d)).toString('utf8'));
+    return { datum: d.match(/(\d{4}-\d{2}-\d{2})\.csv\.gz$/)![1], umsatz: new Map([...kerzen].map(([isin, k]) => [isin, k.umsatz])) };
+  });
+  const stammPfad = join(ARCHIV, 'stamm', 'wertpapiere.json');
+  const bekannt: Record<string, Wertpapier> = existsSync(stammPfad) ? JSON.parse(readFileSync(stammPfad, 'utf8')) : {};
+  // fehlende ISINs nach Umsatz (wichtige zuerst)
+  const umsatzSumme = new Map<string, number>();
+  for (const t of tage) for (const [isin, u] of t.umsatz) umsatzSumme.set(isin, (umsatzSumme.get(isin) ?? 0) + u);
+  const fehlen = [...umsatzSumme].filter(([isin]) => !bekannt[isin]).sort((a, b) => b[1] - a[1]).map(([isin]) => isin);
+  const key = process.env.OPENFIGI_API_KEY?.trim();
+  const je = key ? 100 : 10;
+  let anfragen = 0;
+  while (fehlen.length && anfragen < st.maxAnfragen) {
+    const teil = fehlen.splice(0, je);
+    if (anfragen++ > 0) await pause(key ? 300 : st.pauseMs);
+    const r = await fetch('https://api.openfigi.com/v3/mapping', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'User-Agent': USER_AGENT, ...(key ? { 'X-OPENFIGI-APIKEY': key } : {}) },
+      body: JSON.stringify(teil.map((i) => ({ idType: 'ID_ISIN', idValue: i }))),
+      signal: AbortSignal.timeout(30000),
+    }).catch(() => null);
+    if (r?.status === 429) {
+      console.log('Stammdaten: OpenFIGI-Kontingent erreicht – nächster Lauf.');
+      fehlen.unshift(...teil);
+      break;
+    }
+    if (!r?.ok) throw new Error(`OpenFIGI: ${r ? `HTTP ${r.status}` : 'keine Antwort'}`);
+    Object.assign(bekannt, figiEinordnen(teil, (await r.json()) as Parameters<typeof figiEinordnen>[1], iso.slice(0, 10)));
+  }
+  mkdirSync(dirname(stammPfad), { recursive: true });
+  writeFileSync(stammPfad, JSON.stringify(bekannt) + '\n');
+  const karte = handelbarkeitsKarte(tage, st.fenster, st.mindestTage);
+  const handelbar: Record<string, { tage: number; umsatzMedian: number; art: string; usTicker?: string }> = {};
+  for (const [isin, k] of karte) handelbar[isin] = { ...k, art: bekannt[isin]?.art ?? 'unbekannt', ...(bekannt[isin]?.usTicker ? { usTicker: bekannt[isin].usTicker } : {}) };
+  writeFileSync(join(ARCHIV, 'stamm', 'handelbar.json'), JSON.stringify({ stand: iso, gettexTage: tage.length, von: tage[0].datum, bis: tage[tage.length - 1].datum, isins: handelbar }) + '\n');
+  const handelbarUs = Object.values(handelbar).filter((h) => h.usTicker && h.art === 'aktie').length;
+  index.stamm = { wertpapiere: Object.keys(bekannt).length, handelbar: karte.size, handelbarUs, gettexTage: tage.length, offen: fehlen.length, geholt: iso };
+  console.log(`Stammdaten: ${Object.keys(bekannt).length} ISINs bekannt (${anfragen} Anfragen, ${fehlen.length} noch offen); handelbar ${karte.size} ISINs aus ${tage.length} gettex-Tagen, davon ${handelbarUs} Aktien mit US-Kürzel.`);
+}
+
 // ---------- US-Aktiensplits (Massive): eine Liste, die nur wächst – Splits sind Ereignisse, keine Kurssprünge ----------
 async function usSplits() {
   const key = process.env.MASSIVE_API_KEY?.trim();
@@ -328,6 +393,7 @@ const TEILE = [
   ['gettex', 'gettex', gettex],
   ['kryptokerzen', 'Krypto-Tageskerzen', kryptoKerzen],
   ['ussplits', 'US-Splits', usSplits],
+  ['stamm', 'Stammdaten', stamm],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -370,6 +436,7 @@ const stand = {
     kryptoKerzenBis: Object.keys(index.kryptoKerzen ?? {}).sort().pop() ?? null,
     usSplits: index.usSplits?.eintraege ?? 0,
   },
+  stamm: index.stamm ?? null,
   neu: neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };

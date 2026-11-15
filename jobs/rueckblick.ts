@@ -121,9 +121,23 @@ const kostenFuer = (markt: Markt, umsatz20: number | null) => {
   return kostenCache.get(s) ?? kostenCache.set(s, kosten(markt, umsatz20)).get(s)!;
 };
 
-/** Gilt der Wert am Stichtag als handelbar (Näherung)? */
+// Handelbarkeits-Karte aus gettex (stamm/handelbar.json): sobald sie auf mindestens 10 gettex-Tagen beruht, zählen nur
+// US-Aktien, die an gettex gehandelt werden (heutige Karte auf die Vergangenheit angewandt – Näherung). Vorher: Umsatzregel.
+const gettexUs: Set<string> | null = (() => {
+  const p = join(ARCHIV, 'stamm', 'handelbar.json');
+  if (!existsSync(p)) return null;
+  const h = JSON.parse(readFileSync(p, 'utf8')) as { gettexTage: number; isins: Record<string, { art: string; usTicker?: string }> };
+  if (h.gettexTage < 10) return null;
+  return new Set(Object.values(h.isins).flatMap((x) => (x.art === 'aktie' && x.usTicker ? [x.usTicker] : [])));
+})();
+log(gettexUs ? `Handelbarkeit: gettex-Karte mit ${gettexUs.size} US-Aktien.` : 'Handelbarkeit: Näherung über Umsatz (gettex-Karte hat noch keine 10 Tage).');
+
+/** Gilt der Wert am Stichtag als handelbar? */
 function handelbar(r: Reihe, m: Merkmale, k: Kerze): boolean {
-  if (r.markt === 'aktie') return m.kurs >= vt.handelbar.aktie.mindestKurs && (k.v ?? 0) * k.c >= vt.handelbar.aktie.mindestUmsatzStichtag;
+  if (r.markt === 'aktie') {
+    if (gettexUs && !gettexUs.has(r.schluessel.slice(2).replace(/#\d+$/, ''))) return false;
+    return m.kurs >= vt.handelbar.aktie.mindestKurs && (k.v ?? 0) * k.c >= vt.handelbar.aktie.mindestUmsatzStichtag;
+  }
   return (k.v ?? 0) * k.c >= vt.handelbar.krypto.mindestUmsatzStichtag && (m.schwankung20 === null || m.schwankung20 >= vt.handelbar.krypto.mindestSchwankung20);
 }
 const turboErlaubt = (r: Reihe, m: Merkmale) => (r.markt === 'krypto' ? vt.handelbar.krypto.turboBasiswerte.includes(r.schluessel.slice(2)) : (m.umsatz20 ?? 0) >= vt.handelbar.aktie.turboAbUmsatz20);

@@ -36,5 +36,12 @@
     "hinweis": "Aktiensplits und Zusammenlegungen (Massive /v3/reference/splits) als Liste stamm/us-splits.csv.gz, die nur wächst. Erster Abruf: die ganze Historie des Tarifs, danach die letzten Wochen nachfassen.",
     "jahreZurueck": 2,
     "nachfassenTage": 30
+  },
+  "stamm": {
+    "hinweis": "Stammdaten (stamm/wertpapiere.json: ISIN → Name, US-Kürzel, Art über OpenFIGI) und Handelbarkeits-Karte (stamm/handelbar.json: Umsatz an mindestens mindestTage der letzten fenster gettex-Tage). Ohne OPENFIGI_API_KEY 25 Anfragen je Minute à 10 ISINs; je Lauf höchstens maxAnfragen. Beides privat (beruht auf gettex-Umsätzen).",
+    "maxAnfragen": 120,
+    "pauseMs": 2600,
+    "fenster": 20,
+    "mindestTage": 10
   }
 }
