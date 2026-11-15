@@ -13,10 +13,11 @@ import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '.
 import { HYPOTHESEN, hypothesenFaelle, pruefen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
+import { schluesselNormal } from '../core/signale.ts';
 
 type Markt = 'aktie' | 'krypto';
 interface VtConfig {
-  etikett: { einsatz: number; ziel: number; beinahe: number; hebel: number[]; stops: number[]; standardStop: number; fenster: number[]; episodeAbstand: number; finanzierungProzentJahr: number; turboSpreadKlasse: string; turboEmittent: string };
+  etikett: { einsatz: number; ziel: number; beinahe: number; zensusMaxHebel: number; hebel: number[]; stops: number[]; standardStop: number; fenster: number[]; episodeAbstand: number; finanzierungProzentJahr: number; turboSpreadKlasse: string; turboEmittent: string };
   handelbar: {
     aktie: { mindestKurs: number; mindestUmsatzStichtag: number; turboAbUmsatz20: number; spread: { abUmsatz20: number; klasse: string }[]; handelsplatz: string };
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
@@ -96,7 +97,8 @@ const reihen: Reihe[] = [];
   }
   for (const [basis, nachQuote] of je) {
     const kerzen = nachQuote.get('EUR') ?? nachQuote.get('USD');
-    if (kerzen?.length) reihen.push({ schluessel: `K:${basis}`, markt: 'krypto', kerzen });
+    const name = ({ XBT: 'BTC', XDG: 'DOGE' } as Record<string, string>)[basis] ?? basis;
+    if (kerzen?.length) reihen.push({ schluessel: `K:${name}`, markt: 'krypto', kerzen });
   }
   log(`Krypto: ${dateien.length} Tage, ${je.size} Coins.`);
 }
@@ -140,7 +142,7 @@ function handelbar(r: Reihe, m: Merkmale, k: Kerze): boolean {
   }
   return (k.v ?? 0) * k.c >= vt.handelbar.krypto.mindestUmsatzStichtag && (m.schwankung20 === null || m.schwankung20 >= vt.handelbar.krypto.mindestSchwankung20);
 }
-const turboErlaubt = (r: Reihe, m: Merkmale) => (r.markt === 'krypto' ? vt.handelbar.krypto.turboBasiswerte.includes(r.schluessel.slice(2)) : (m.umsatz20 ?? 0) >= vt.handelbar.aktie.turboAbUmsatz20);
+const turboErlaubt = (r: Reihe, m: Merkmale) => (r.markt === 'krypto' ? vt.handelbar.krypto.turboBasiswerte.includes(r.schluessel.slice(2)) || (r.schluessel === 'K:BTC' && vt.handelbar.krypto.turboBasiswerte.includes('XBT')) : (m.umsatz20 ?? 0) >= vt.handelbar.aktie.turboAbUmsatz20);
 
 // ---------- 3. Durchgang 1: Merkmale, Marktbewegung je Tag, Zeiträume ----------
 // Merkmale werden nicht vorgehalten (Speicher), sondern im zweiten Durchgang neu berechnet
@@ -184,6 +186,44 @@ log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 const merkmalWert = (e: Einteilung, m: Merkmale, kontext: { marktR1: number; ueberrendite1: number }): number | null =>
   e.merkmal === 'marktR1' ? kontext.marktR1 : e.merkmal === 'ueberrendite1' ? kontext.ueberrendite1 : (m[e.merkmal as keyof Merkmale] as number | null);
 
+// ---------- 4b. Signale der Datenkrake (seit 28.10.2026) – was war vor einem Sprung bekannt? ----------
+interface Sig {
+  datum: string;
+  typ: string;
+}
+const signaleJe = new Map<string, Sig[]>();
+{
+  const ordner = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'signale', 'tag');
+  let zahl = 0;
+  if (existsSync(ordner))
+    for (const f of readdirSync(ordner).filter((x) => /^\d{4}-\d{2}-\d{2}\.json$/.test(x))) {
+      const d = JSON.parse(readFileSync(join(ordner, f), 'utf8')) as { signale?: { s: string; m?: string; typ: string; z?: string }[] };
+      for (const x of d.signale ?? []) {
+        const sch = schluesselNormal(x.s, x.m);
+        (signaleJe.get(sch) ?? signaleJe.set(sch, []).get(sch)!).push({ datum: (x.z ?? f).slice(0, 10), typ: x.typ });
+        zahl++;
+      }
+    }
+  log(`Signale der Datenkrake: ${zahl} aus ${ordner} (${signaleJe.size} Werte).`);
+}
+// Signal-Prüfung: je Signaltyp Fälle (je Wert höchstens einmal in 10 Handelstagen) und Volltreffer ab dem Folgetag
+const sigStat = new Map<string, { n: number; treffer: number; markt: Markt }>();
+// Grundrate je Markt und Tag (fertige Etiketten)
+const tagStat = new Map<string, { n: number; treffer: number }>();
+interface BuchEintrag {
+  datum: string;
+  wert: string;
+  markt: Markt;
+  spielart: string;
+  netto: number;
+  tage: number;
+  r1: number;
+  relVolumen: number | null;
+  vorzeichen: { typ: string; datum: string }[];
+}
+const trefferbuch: BuchEintrag[] = [];
+const buchAb = new Date(Date.parse(heute) - 30 * 86400000).toISOString().slice(0, 10);
+
 // ---------- 5. Durchgang 2: Etiketten, Zensus, Hypothesen ----------
 interface Episode {
   datum: string;
@@ -205,6 +245,7 @@ for (const r of reihen) {
   const k = r.kerzen;
   const m = k.map((_, i) => merkmale(k, i));
   const treffer: boolean[] = new Array(k.length).fill(false);
+  const fertig: boolean[] = new Array(k.length).fill(false);
   const bester: (Episode | null)[] = new Array(k.length).fill(null);
   const ausg = (i: number, sp: Spielart, x: Merkmale) => etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20), F);
   for (let i = 1; i < k.length - 1; i++) {
@@ -225,12 +266,13 @@ for (const r of reihen) {
       const a = ausg(i, sp, x);
       a.forEach((au, f) => {
         if (!au) return;
+        if (F[f] === 10 || au.art === 'treffer') fertig[i] = true;
         zw.add(gAlle, s, f, z, au);
         if (!standard[s]) return;
         for (const g of gEinzel) if (g >= 0) zw.add(g, s, f, z, au);
         if (paarF[f]) for (const g of gPaare) zw.add(g, s, f, z, au);
-        // Zensus: Volltreffer mit Standard-Stop binnen 10 Handelstagen
-        if (au.art === 'treffer' && F[f] <= 10 && (!bester[i] || au.netto > bester[i]!.netto)) {
+        // Zensus: echter Sprung – Volltreffer mit Standard-Stop binnen 10 Handelstagen, höchstens Hebel zensusMaxHebel
+        if (au.art === 'treffer' && F[f] <= 10 && sp.hebel <= vt.etikett.zensusMaxHebel && (!bester[i] || au.netto > bester[i]!.netto)) {
           treffer[i] = true;
           bester[i] = { datum: k[i].datum, schluessel: r.schluessel.replace(/#\d+$/, ''), markt: r.markt, spielart: spielartText(sp), fenster: F[f], netto: au.netto, tag: au.tag, umsatz20: x.umsatz20, r1: Math.round(x.r1 * 10) / 10, relVolumen: x.relVolumen === null ? null : Math.round(x.relVolumen * 10) / 10 };
         }
@@ -238,6 +280,36 @@ for (const r of reihen) {
     });
   }
   for (const i of sprungEpisoden(treffer, vt.etikett.episodeAbstand)) if (bester[i]) episoden.push(bester[i]!);
+  // Grundrate je Tag und Markt
+  for (let i = 0; i < k.length; i++) {
+    if (!fertig[i]) continue;
+    const key = `${r.markt}|${k[i].datum}`;
+    const t = tagStat.get(key) ?? tagStat.set(key, { n: 0, treffer: 0 }).get(key)!;
+    t.n++;
+    if (treffer[i]) t.treffer++;
+  }
+  const schluessel = r.schluessel.replace(/#\d+$/, '');
+  const sigs = signaleJe.get(schluessel) ?? [];
+  // Signal-Prüfung: Stichtag = erster Handelstag am oder nach dem Signal
+  const zuletzt = new Map<string, number>();
+  for (const sg of [...sigs].sort((a, b) => a.datum.localeCompare(b.datum))) {
+    const i = k.findIndex((x) => x.datum >= sg.datum);
+    if (i < 1 || !fertig[i]) continue;
+    if (i - (zuletzt.get(sg.typ) ?? -Infinity) <= vt.pruefung.sperreTage) continue;
+    zuletzt.set(sg.typ, i);
+    const key = `${r.markt}|${sg.typ}`;
+    const st = sigStat.get(key) ?? sigStat.set(key, { n: 0, treffer: 0, markt: r.markt }).get(key)!;
+    st.n++;
+    if (treffer[i]) st.treffer++;
+  }
+  // Trefferbuch: Volltreffer der letzten 30 Tage mit den Vorzeichen der 14 Tage davor
+  for (const i of sprungEpisoden(treffer, vt.etikett.episodeAbstand)) {
+    const e = bester[i];
+    if (!e || e.datum < buchAb) continue;
+    const von = new Date(Date.parse(e.datum) - 14 * 86400000).toISOString().slice(0, 10);
+    const vorzeichen = sigs.filter((sg) => sg.datum >= von && sg.datum <= e.datum).map((sg) => ({ typ: sg.typ, datum: sg.datum }));
+    trefferbuch.push({ datum: e.datum, wert: schluessel.slice(2), markt: r.markt, spielart: e.spielart, netto: e.netto, tage: e.tag, r1: e.r1, relVolumen: e.relVolumen, vorzeichen: [...new Map(vorzeichen.map((v) => [v.typ + v.datum, v])).values()].slice(0, 8) });
+  }
   // Hypothesen: eigene Fälle (derselbe Wert erst nach der Sperre wieder)
   for (const h of HYPOTHESEN) {
     if (h.markt !== 'alle' && h.markt !== r.markt) continue;
@@ -329,6 +401,43 @@ const rangliste = {
   hypothesen,
 };
 schreibeJson('lernen/muster/rangliste.json', rangliste);
+{
+  // Signal-Prüfung: Quote je Signaltyp gegen die Grundrate derselben Tage
+  const sigTage = [...signaleJe.values()].flat().map((x) => x.datum).sort();
+  const grund = (markt: Markt) => {
+    let n = 0;
+    let t = 0;
+    for (const [key, v] of tagStat) {
+      const [m, d] = key.split('|');
+      if (m === markt && d >= (sigTage[0] ?? '9999') && d <= (sigTage[sigTage.length - 1] ?? '0000')) {
+        n += v.n;
+        t += v.treffer;
+      }
+    }
+    return n ? (t / n) * 100 : 0;
+  };
+  const grundrate = { aktie: grund('aktie'), krypto: grund('krypto') };
+  const typen = [...sigStat].map(([key, v]) => {
+    const quote = v.n ? (v.treffer / v.n) * 100 : 0;
+    return { typ: key.split('|')[1], markt: v.markt, faelle: v.n, treffer: v.treffer, quote: Math.round(quote * 10) / 10, grundrate: Math.round(grundrate[v.markt] * 10) / 10, lift: grundrate[v.markt] > 0 ? Math.round((quote / grundrate[v.markt]) * 100) / 100 : null };
+  });
+  schreibeJson('lernen/muster/signale-volltreffer.json', {
+    stand: jetzt.toISOString(),
+    hinweis: 'Wie oft folgte auf ein Signal der Datenkrake ein Volltreffer (Kauf zur Eröffnung des Folgetags, direkt oder Turbo bis Hebel 3 in beide Richtungen, Stop 150 €, binnen 10 Handelstagen)? Je Wert und Signaltyp höchstens ein Fall in 10 Handelstagen; Grundrate = alle handelbaren Stichtage derselben Tage. Kleine Fallzahlen sind Zufall – erst ab etwa 100 Fällen aussagekräftig.',
+    von: sigTage[0] ?? null,
+    bis: sigTage[sigTage.length - 1] ?? null,
+    grundrate,
+    typen: typen.sort((a, b) => b.faelle - a.faelle),
+  });
+  schreibeJson('lernen/muster/trefferbuch.json', {
+    stand: jetzt.toISOString(),
+    hinweis: 'Volltreffer der letzten 30 Tage (Beginn eines Sprungs, beste Spielart mit Stop 150 €) und die Signale der Datenkrake zu diesem Wert in den 14 Tagen davor. Rückwärts gelernt: Was war vorher bekannt?',
+    eintraege: trefferbuch.sort((a, b) => b.datum.localeCompare(a.datum) || b.netto - a.netto).slice(0, 80),
+    zahl: trefferbuch.length,
+    mitVorzeichen: trefferbuch.filter((e) => e.vorzeichen.length).length,
+  });
+  log(`Signal-Prüfung: ${typen.length} Typen, Grundrate Aktien ${grundrate.aktie.toFixed(1)} %, Krypto ${grundrate.krypto.toFixed(1)} %. Trefferbuch: ${trefferbuch.length} Volltreffer in 30 Tagen, ${trefferbuch.filter((e) => e.vorzeichen.length).length} mit Vorzeichen.`);
+}
 schreibeJson('lernen/muster/grundraten.json', { stand: jetzt.toISOString(), hinweis: 'Grundrate je Markt, Spielart und Fenster: alle handelbaren Stichtage.', grundraten });
 
 // Hypothesen-Buch: nur anhängen – neue Hypothesen als „Idee“, danach je Lauf das Ergebnis des Rückblicks

@@ -219,6 +219,8 @@ schreibe('lernen/muster/rangliste.json', {
   besteOhneBestehen: [],
   hypothesen: [vtEintrag('Aktien: C9k Rückprall nach Ausverkauf', 'direkt, Stop 150 €', 5, false, 830, 4.1, -12, 3)],
 });
+schreibe('lernen/muster/trefferbuch.json', { stand, zahl: 2, mitVorzeichen: 1, eintraege: [{ datum: '2026-10-20', wert: 'DEMO', markt: 'aktie', spielart: 'Turbo long Hebel 3, Stop 150 €', netto: 400, tage: 3, r1: 12.5, relVolumen: 6.2, vorzeichen: [{ typ: 'insider_cluster_kauf', datum: '2026-10-14' }] }, { datum: '2026-10-19', wert: 'BEISPIEL', markt: 'aktie', spielart: 'direkt, Stop 150 €', netto: 412.3, tage: 2, r1: 30.1, relVolumen: 11, vorzeichen: [] }] });
+schreibe('lernen/muster/signale-volltreffer.json', { stand, von: '2026-10-28', bis: '2026-11-13', grundrate: { aktie: 2.1, krypto: 3.4 }, typen: [{ typ: 'insider_cluster_kauf', markt: 'aktie', faelle: 42, treffer: 3, quote: 7.1, grundrate: 2.1, lift: 3.38 }] });
 schreibe('lernen/heute-gelernt.json', [{ datum: '2026-10-21', punkte: ['DEMO: Insider-Cluster tragen auch im Daytrading', 'DEMO: ORB short bei Nebenwerten schwach'] }]);
 schreibe('lernen/marktphase.json', {
   stand,

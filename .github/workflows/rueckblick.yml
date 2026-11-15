@@ -3,10 +3,11 @@ name: Rückblick und Musterprüfung
 # Plan Volltreffer V3 (mit Sprung-Zensus aus V2): rechnet über die ganze Kursgeschichte im PRIVATEN Archiv, ob eine
 # 1.000-€-Order ein Volltreffer geworden wäre, und prüft Merkmale, Kombinationen und Hypothesen in zwei Zeiträumen.
 # Öffentlich (Datenzweig lernen/muster/) gehen nur verdichtete Kennzahlen; der Zensus mit Werten bleibt im Archiv.
-# Wöchentlich So 05:40 UTC (nach dem Nachfüllen der Kursgeschichte) oder von Hand.
+# Täglich 05:40 UTC (nach dem Archivlauf 05:10: US-Vortag und gettex liegen vor) oder von Hand. Dazu Trefferbuch und
+# Signal-Prüfung: Welche Signale der Datenkrake (Datenzweig signale/tag/) gingen den Sprüngen voraus?
 on:
   schedule:
-    - cron: '40 5 * * 0'
+    - cron: '40 5 * * *'
   workflow_dispatch:
 
 permissions:
@@ -39,6 +40,7 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=8192
           DATEN_DIR: ${{ runner.temp }}/muster
+          SIGNALE_DIR: _daten
         run: |
           mkdir -p "$DATEN_DIR/lernen/muster"
           # das Hypothesen-Buch wird nur angehängt → bisherigen Stand mitnehmen

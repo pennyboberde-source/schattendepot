@@ -49,6 +49,74 @@ function Zeile({ e }: { e: Eintrag }) {
   );
 }
 
+interface Trefferbuch {
+  stand: string;
+  zahl: number;
+  mitVorzeichen: number;
+  eintraege: { datum: string; wert: string; markt: string; spielart: string; netto: number; tage: number; r1: number; relVolumen: number | null; vorzeichen: { typ: string; datum: string }[] }[];
+}
+interface SignalPruefung {
+  von: string | null;
+  bis: string | null;
+  grundrate: { aktie: number; krypto: number };
+  typen: { typ: string; markt: string; faelle: number; treffer: number; quote: number; grundrate: number; lift: number | null }[];
+}
+
+/** Trefferbuch (V2) und Signal-Prüfung: Was war vor den Sprüngen der letzten Wochen bekannt? */
+export function TrefferbuchKarte() {
+  const b = useDaten<Trefferbuch>('lernen/muster/trefferbuch.json');
+  const s = useDaten<SignalPruefung>('lernen/muster/signale-volltreffer.json');
+  if (b.status !== 'ok' && s.status !== 'ok') return null;
+  return (
+    <Karte titel="📖 Trefferbuch – was war vorher bekannt?">
+      <div data-testid="trefferbuch">
+        {b.status === 'ok' && (
+          <>
+            <p class="klein">
+              {zahl(b.daten.zahl)} Sprünge in den letzten 30 Tagen (Volltreffer direkt oder mit Hebel bis 3, Stop 150 €); bei {zahl(b.daten.mitVorzeichen)} hatte die Datenkrake vorher ein Signal zu dem Wert.
+            </p>
+            <ul class="muster-liste">
+              {b.daten.eintraege.slice(0, 12).map((e) => (
+                <li key={e.datum + e.wert} class="muster-zeile">
+                  <strong>
+                    {datumKurz(e.datum)} · {e.wert} {e.markt === 'krypto' ? '(Coin)' : ''} · {euro(e.netto)} in {e.tage} {e.tage === 1 ? 'Tag' : 'Tagen'}
+                  </strong>
+                  <span class="klein">
+                    {e.spielart} · am Stichtag {e.r1 >= 0 ? '+' : ''}
+                    {e.r1.toLocaleString('de-DE')} %{e.relVolumen !== null ? `, Umsatz ${e.relVolumen.toLocaleString('de-DE')}× Ø` : ''}
+                  </span>
+                  <span class="klein">Vorzeichen: {e.vorzeichen.length ? e.vorzeichen.map((v) => `${v.typ} (${datumKurz(v.datum)})`).join(', ') : 'keins der Datenkrake'}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {s.status === 'ok' && s.daten.typen.length > 0 && (
+          <>
+            <h3>Welche Signale kündigten Sprünge an?</h3>
+            <p class="klein">
+              Anteil der Signale, auf die ab dem Folgetag binnen 10 Handelstagen ein Volltreffer folgte – gegen die Grundrate aller handelbaren Werte derselben Tage (Aktien {quote(s.daten.grundrate.aktie)}, Krypto {quote(s.daten.grundrate.krypto)}). Unter etwa 100 Fällen ist das noch Zufall.
+            </p>
+            <ul class="muster-liste">
+              {s.daten.typen.slice(0, 15).map((t) => (
+                <li key={t.markt + t.typ} class="muster-zeile">
+                  <strong>
+                    {t.typ} {t.markt === 'krypto' ? '(Krypto)' : ''} · {quote(t.quote)}
+                    {t.lift !== null ? ` (${t.lift.toLocaleString('de-DE')}× Grundrate)` : ''}
+                  </strong>
+                  <span class="klein">
+                    {zahl(t.treffer)} von {zahl(t.faelle)} Fällen{t.faelle < 100 ? ' – noch zu wenige' : ''}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
+    </Karte>
+  );
+}
+
 export function VolltrefferRueckblickKarte() {
   const z = useDaten<Rangliste>('lernen/muster/rangliste.json');
   if (z.status !== 'ok') {

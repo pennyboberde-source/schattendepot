@@ -67,6 +67,9 @@ test('Lernen zeigt den Volltreffer-Rückblick mit bestandenen Mustern und Hypoth
   await expect(karte).toBeVisible();
   await expect(karte.getByText('Bestanden: 1 Muster – die stärksten')).toBeVisible();
   await expect(karte.getByText(/C9k Rückprall nach Ausverkauf/)).toBeVisible();
+  const buch = page.getByTestId('trefferbuch');
+  await expect(buch.getByText(/Vorzeichen: insider_cluster_kauf/)).toBeVisible();
+  await expect(buch.getByText(/3 von 42 Fällen – noch zu wenige/)).toBeVisible();
 });
 
 test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {

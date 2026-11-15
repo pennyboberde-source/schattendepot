@@ -1,0 +1,34 @@
+{
+  "stand": "2026-10-21T12:45:00Z",
+  "zahl": 2,
+  "mitVorzeichen": 1,
+  "eintraege": [
+    {
+      "datum": "2026-10-20",
+      "wert": "DEMO",
+      "markt": "aktie",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "netto": 400,
+      "tage": 3,
+      "r1": 12.5,
+      "relVolumen": 6.2,
+      "vorzeichen": [
+        {
+          "typ": "insider_cluster_kauf",
+          "datum": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "datum": "2026-10-19",
+      "wert": "BEISPIEL",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 412.3,
+      "tage": 2,
+      "r1": 30.1,
+      "relVolumen": 11,
+      "vorzeichen": []
+    }
+  ]
+}
