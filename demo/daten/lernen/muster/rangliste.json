@@ -1,0 +1,71 @@
+{
+  "stand": "2026-10-21T12:45:00Z",
+  "zeitraum": {
+    "von": "2024-11-15",
+    "bis": "2026-11-13",
+    "grenze": "2025-11-14"
+  },
+  "umfang": {
+    "stichtage": 2950000,
+    "reihen": 6400,
+    "episoden": 18500,
+    "aktien": 6100,
+    "coins": 300
+  },
+  "bestandenZahl": 1,
+  "bestanden": [
+    {
+      "gruppe": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10 und 20-Tage-Hoch: auf neuem Hoch",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 7,
+      "faelle": 420,
+      "quote": 9.5,
+      "lift": 2.4,
+      "erfassung": 3.1,
+      "evGesamt": 16.5,
+      "zeitraumA": {
+        "n": 210,
+        "quote": 9.5,
+        "ev": 21,
+        "se": 5
+      },
+      "zeitraumB": {
+        "n": 210,
+        "quote": 9.5,
+        "ev": 12,
+        "se": 6
+      },
+      "knockoutQuote": 0
+    }
+  ],
+  "besteOhneBestehen": [],
+  "hypothesen": [
+    {
+      "gruppe": "Aktien: C9k Rückprall nach Ausverkauf",
+      "spielart": "direkt, Stop 150 €",
+      "fenster": 5,
+      "bestanden": false,
+      "wertung": -17,
+      "faelle": 830,
+      "quote": 4.1,
+      "lift": 2.4,
+      "erfassung": 3.1,
+      "evGesamt": -4.5,
+      "zeitraumA": {
+        "n": 415,
+        "quote": 4.1,
+        "ev": -12,
+        "se": 5
+      },
+      "zeitraumB": {
+        "n": 415,
+        "quote": 4.1,
+        "ev": 3,
+        "se": 6
+      },
+      "knockoutQuote": 0
+    }
+  ]
+}

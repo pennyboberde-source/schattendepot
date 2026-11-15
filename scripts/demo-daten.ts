@@ -208,6 +208,17 @@ schreibe('lernen/gewichtsaenderungen.json', [{ datum: '2026-10-17', art: 'signal
   );
 }
 // S4 (DEMO): Heute gelernt, Marktphase, Wochenzeugnis, Marktphasen-Verlauf
+// Volltreffer-Rückblick (DEMO-Zahlen)
+const vtEintrag = (gruppe: string, spielart: string, fenster: number, bestanden: boolean, faelle: number, quote: number, evA: number, evB: number) => ({ gruppe, spielart, fenster, bestanden, wertung: Math.min(evA, evB) - 5, faelle, quote, lift: 2.4, erfassung: 3.1, evGesamt: (evA + evB) / 2, zeitraumA: { n: Math.round(faelle / 2), quote, ev: evA, se: 5 }, zeitraumB: { n: Math.round(faelle / 2), quote, ev: evB, se: 6 }, knockoutQuote: 0 });
+schreibe('lernen/muster/rangliste.json', {
+  stand: stand,
+  zeitraum: { von: '2024-11-15', bis: '2026-11-13', grenze: '2025-11-14' },
+  umfang: { stichtage: 2950000, reihen: 6400, episoden: 18500, aktien: 6100, coins: 300 },
+  bestandenZahl: 1,
+  bestanden: [vtEintrag('Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10 und 20-Tage-Hoch: auf neuem Hoch', 'Turbo long Hebel 5, Stop 150 €', 10, true, 420, 9.5, 21, 12)],
+  besteOhneBestehen: [],
+  hypothesen: [vtEintrag('Aktien: C9k Rückprall nach Ausverkauf', 'direkt, Stop 150 €', 5, false, 830, 4.1, -12, 3)],
+});
 schreibe('lernen/heute-gelernt.json', [{ datum: '2026-10-21', punkte: ['DEMO: Insider-Cluster tragen auch im Daytrading', 'DEMO: ORB short bei Nebenwerten schwach'] }]);
 schreibe('lernen/marktphase.json', {
   stand,

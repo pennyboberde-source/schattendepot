@@ -244,6 +244,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
@@ -256,7 +257,7 @@ const gruppenText = (name: string) => {
     .split('&')
     .map((t) => {
       const [a, c] = t.split('=').map(Number);
-      return `${E[a].merkmal} ${klassenName(E[a], c)}`;
+      return `${MERKMAL_TEXT[E[a].merkmal] ?? E[a].merkmal}: ${klassenName(E[a], c)}`;
     })
     .join(' und ')}`;
 };

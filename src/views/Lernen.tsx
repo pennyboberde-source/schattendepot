@@ -9,6 +9,7 @@ import { Geladen, Karte, Leer } from '../ui';
 import type { VorlaufStatistik } from '../../core/datenkrake.ts';
 import { DatenkrakeKarten, MitN, urteilsWert, type HotStuffBericht } from './LernenDatenkrake';
 import { VerbesserungKarte } from './LernenVerbesserung';
+import { VolltrefferRueckblickKarte } from './LernenVolltreffer';
 
 const TYP_NAME = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name])) as Record<string, string>;
 const p = (x: number | null) => (x === null ? '–' : prozent(x));
@@ -47,6 +48,7 @@ export function LernenView() {
         <a href="#/quellen">Quellenstatus ansehen</a>
       </p>
       <p class="klein">Die Datenkrake verfolgt jeden Tag bis zu 40 Kandidaten und tagsüber schnelle Signale virtuell mit – ohne Geld – und misst, was klappt. Daraus lernen Gewichte, Chancen und Claude.</p>
+      <VolltrefferRueckblickKarte />
       <VerbesserungKarte />
       <Geladen
         z={statistik}

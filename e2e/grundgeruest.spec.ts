@@ -61,6 +61,14 @@ test('Order-Detail mit Gebührenaufstellung und Claude-Knopf', async ({ page }) 
   await expect(claude).toHaveAttribute('href', /^https:\/\/claude\.ai\/new\?q=/);
 });
 
+test('Lernen zeigt den Volltreffer-Rückblick mit bestandenen Mustern und Hypothesen', async ({ page }) => {
+  await page.goto('/#/lernen');
+  const karte = page.getByTestId('volltreffer-rueckblick');
+  await expect(karte).toBeVisible();
+  await expect(karte.getByText('Bestanden: 1 Muster – die stärksten')).toBeVisible();
+  await expect(karte.getByText(/C9k Rückprall nach Ausverkauf/)).toBeVisible();
+});
+
 test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
   await page.goto('/#/lernen');
   await expect(page.getByText('Kalibrierung – hält die Konfidenz, was sie verspricht?')).toBeVisible();
