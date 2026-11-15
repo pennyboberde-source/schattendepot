@@ -52,7 +52,7 @@ _Zuletzt aktualisiert: 15.11.2026 mittags (**Kursgeschichte, Rückblick, Stammda
 **Freigaben (angefordert 12.11.2026 abends, 🔴❗ + Push)**
 - ✅ F1 `MASSIVE_API_KEY` gesetzt (14.11.). Tarif Basic: Tagesschlussdaten, 2 Jahre Historie, OTC-Werte sind enthalten.
 - ✅ F2 privates Repo `schattendepot-archiv` + Secret `ARCHIV_TOKEN` (14.11.). **Achtung:** Läuft das Token ab, scheitert der Workflow „Kursarchiv“ beim Checkout (401) – dann neues Token anlegen (Anleitung im Chat vom 14.11.: Token nur für dieses Repo, „Contents: Read and write“). Ablaufdatum hat der Nutzer gewählt, hier nicht bekannt.
-- ⏳ F3: `OPENFIGI_API_KEY` und `COINGECKO_API_KEY` (Demo) – Nutzer am 15.11.: „wird auf jeden Fall gemacht“, Anleitung mit 🔴❗ + Push geschickt. OpenFIGI wirkt sofort in Stammdaten (`archiv.yml`, 100 ISINs je Anfrage), Sammler und Daytrading; CoinGecko ist in `sammler.yml` vorgesehen, wird aber noch von keiner Quelle genutzt → Börsenwert der Coins als Merkmal einbauen, sobald der Schlüssel da ist.
+- ⏳ F3: `COINGECKO_API_KEY` (Demo) – Nutzer setzt ihn (15.11.). **`OPENFIGI_API_KEY` bewusst nicht** (Anmeldung bei Bloomberg verlangt Firma, Position, Telefon; Nutzen für das Ziel gering): stattdessen Kontingent ohne Schlüssel auf 300 Anfragen je Archivlauf (`config/archiv.json › stamm.maxAnfragen`, rund 9.000 ISINs am Tag). Ursprünglich: OpenFIGI wirkt sofort in Stammdaten (`archiv.yml`, 100 ISINs je Anfrage), Sammler und Daytrading; CoinGecko ist in `sammler.yml` vorgesehen, wird aber noch von keiner Quelle genutzt → Börsenwert der Coins als Merkmal einbauen, sobald der Schlüssel da ist.
 - ⬜ F4 bei V6: Ja des Nutzers je Muster.
 - ✅ F5 Pull Requests durch Actions erlaubt (14.11.) – Ablehnungen der Selbstverbesserung kommen jetzt als Pull Request.
 

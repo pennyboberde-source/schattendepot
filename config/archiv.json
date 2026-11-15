@@ -38,8 +38,8 @@
     "nachfassenTage": 30
   },
   "stamm": {
-    "hinweis": "Stammdaten (stamm/wertpapiere.json: ISIN → Name, US-Kürzel, Art über OpenFIGI) und Handelbarkeits-Karte (stamm/handelbar.json: Umsatz an mindestens mindestTage der letzten fenster gettex-Tage). Ohne OPENFIGI_API_KEY 25 Anfragen je Minute à 10 ISINs; je Lauf höchstens maxAnfragen. Beides privat (beruht auf gettex-Umsätzen).",
-    "maxAnfragen": 120,
+    "hinweis": "Stammdaten (stamm/wertpapiere.json: ISIN → Name, US-Kürzel, Art über OpenFIGI) und Handelbarkeits-Karte (stamm/handelbar.json: Umsatz an mindestens mindestTage der letzten fenster gettex-Tage). Ohne OPENFIGI_API_KEY 25 Anfragen je Minute à 10 ISINs; je Lauf höchstens maxAnfragen (300 ≈ 13 Minuten, passt in das Zeitlimit von 25 Minuten; Nutzer 15.11.: ohne OpenFIGI-Schlüssel, dafür höheres Kontingent). Beides privat (beruht auf gettex-Umsätzen).",
+    "maxAnfragen": 300,
     "pauseMs": 2600,
     "fenster": 20,
     "mindestTage": 10
