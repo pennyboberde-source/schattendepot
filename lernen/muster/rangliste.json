@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-15T13:41:42.945Z",
-  "hinweis": "Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise.",
+  "stand": "2026-11-15T14:07:14.933Z",
+  "hinweis": "Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise. Klumpen-Prüfung: Aktien desselben Tages bewegen sich gemeinsam – bestanden hat nur, was in beiden Zeiträumen Fälle an mindestens 30 verschiedenen Stichtagen hat; der Standardfehler rechnet den Tag als Einheit.",
   "zeitraum": {
     "von": "2024-11-18",
     "bis": "2026-11-14",
@@ -13,183 +13,15 @@
     "aktien": 14122,
     "coins": 643
   },
-  "bestandenZahl": 379,
-  "mitVorteilZahl": 350,
+  "bestandenZahl": 318,
+  "mitVorteilZahl": 287,
   "bestanden": [
-    {
-      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Markt am Stichtag %: unter -2",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 74.8,
-      "faelle": 1160,
-      "quote": 22.84,
-      "lift": 4.87,
-      "erfassung": 4.9,
-      "evGesamt": 92.6,
-      "zeitraumA": {
-        "n": 999,
-        "quote": 19.22,
-        "ev": 91.6,
-        "se": 7.2
-      },
-      "zeitraumB": {
-        "n": 161,
-        "quote": 45.34,
-        "ev": 99,
-        "se": 24.2
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 95.4,
-      "vorteilB": 100.2
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Markt am Stichtag %: unter -2",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 63.9,
-      "faelle": 939,
-      "quote": 29.61,
-      "lift": 6.31,
-      "erfassung": 5.1,
-      "evGesamt": 78.7,
-      "zeitraumA": {
-        "n": 738,
-        "quote": 25.88,
-        "ev": 76.8,
-        "se": 9
-      },
-      "zeitraumB": {
-        "n": 201,
-        "quote": 43.28,
-        "ev": 85.8,
-        "se": 21.9
-      },
-      "knockoutQuote": 0.1,
-      "vorteil": true,
-      "vorteilA": 80.6,
-      "vorteilB": 87
-    },
-    {
-      "gruppe": "Aktien: Schwankung je Tag %: 4 bis 8 und Markt am Stichtag %: unter -2",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 42.1,
-      "faelle": 1939,
-      "quote": 18.05,
-      "lift": 3.85,
-      "erfassung": 6.4,
-      "evGesamt": 51.2,
-      "zeitraumA": {
-        "n": 1685,
-        "quote": 14.42,
-        "ev": 47.8,
-        "se": 5.7
-      },
-      "zeitraumB": {
-        "n": 254,
-        "quote": 42.13,
-        "ev": 73.7,
-        "se": 19.7
-      },
-      "knockoutQuote": 0.1,
-      "vorteil": true,
-      "vorteilA": 51.6,
-      "vorteilB": 74.9
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Rendite %: unter -50 und Markt am Stichtag %: 0,5 bis 2",
-      "spielart": "Turbo short Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 37.4,
-      "faelle": 512,
-      "quote": 37.7,
-      "lift": 5.21,
-      "erfassung": 2.3,
-      "evGesamt": 62,
-      "zeitraumA": {
-        "n": 199,
-        "quote": 36.18,
-        "ev": 56.5,
-        "se": 19.1
-      },
-      "zeitraumB": {
-        "n": 313,
-        "quote": 38.66,
-        "ev": 65.5,
-        "se": 15.8
-      },
-      "knockoutQuote": 0.2,
-      "vorteil": true,
-      "vorteilA": 86.7,
-      "vorteilB": 91
-    },
-    {
-      "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,5 bis 0,8 und Markt am Stichtag %: unter -2",
-      "spielart": "Turbo long Hebel 5, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 35.8,
-      "faelle": 2430,
-      "quote": 27.2,
-      "lift": 1.64,
-      "erfassung": 3.4,
-      "evGesamt": 61.8,
-      "zeitraumA": {
-        "n": 2259,
-        "quote": 26.43,
-        "ev": 62.1,
-        "se": 5.4
-      },
-      "zeitraumB": {
-        "n": 171,
-        "quote": 37.43,
-        "ev": 57.8,
-        "se": 22
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 62.1,
-      "vorteilB": 53.1
-    },
-    {
-      "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Markt am Stichtag %: unter -2",
-      "spielart": "Turbo long Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 33.1,
-      "faelle": 2411,
-      "quote": 23.56,
-      "lift": 2.61,
-      "erfassung": 5.4,
-      "evGesamt": 43,
-      "zeitraumA": {
-        "n": 2079,
-        "quote": 20.73,
-        "ev": 38.3,
-        "se": 5.2
-      },
-      "zeitraumB": {
-        "n": 332,
-        "quote": 41.27,
-        "ev": 72.6,
-        "se": 15.6
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 40.4,
-      "vorteilB": 71.4
-    },
     {
       "gruppe": "Aktien: Tagesrendite %: -3 bis 3 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 30.5,
+      "wertung": 28.9,
       "faelle": 233,
       "quote": 33.91,
       "lift": 9.72,
@@ -199,13 +31,17 @@
         "n": 110,
         "quote": 32.73,
         "ev": 54.9,
-        "se": 24.4
+        "se": 24.7,
+        "tage": 49,
+        "groessterTag": 18.2
       },
       "zeitraumB": {
         "n": 123,
         "quote": 34.96,
         "ev": 62.5,
-        "se": 25.4
+        "se": 33.6,
+        "tage": 72,
+        "groessterTag": 8.1
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -213,39 +49,75 @@
       "vorteilB": 86
     },
     {
-      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 1 bis 2 und Kurslücke %: unter -10",
+      "gruppe": "Aktien: 20-Tage-Rendite %: unter -50 und Markt am Stichtag %: 0,5 bis 2",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 27.4,
-      "faelle": 864,
-      "quote": 35.65,
-      "lift": 4.92,
-      "erfassung": 3.7,
-      "evGesamt": 55,
+      "wertung": 19.5,
+      "faelle": 512,
+      "quote": 37.7,
+      "lift": 5.21,
+      "erfassung": 2.3,
+      "evGesamt": 62,
       "zeitraumA": {
-        "n": 334,
-        "quote": 39.22,
-        "ev": 79.5,
-        "se": 15.3
+        "n": 199,
+        "quote": 36.18,
+        "ev": 56.5,
+        "se": 19.4,
+        "tage": 43,
+        "groessterTag": 10.1
       },
       "zeitraumB": {
-        "n": 530,
-        "quote": 33.4,
-        "ev": 39.6,
-        "se": 12.2
+        "n": 313,
+        "quote": 38.66,
+        "ev": 65.5,
+        "se": 46,
+        "tage": 33,
+        "groessterTag": 10.9
+      },
+      "knockoutQuote": 0.2,
+      "vorteil": true,
+      "vorteilA": 86.7,
+      "vorteilB": 91
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 1 bis 2 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 19.4,
+      "faelle": 870,
+      "quote": 35.75,
+      "lift": 2.79,
+      "erfassung": 2.1,
+      "evGesamt": 48,
+      "zeitraumA": {
+        "n": 334,
+        "quote": 38.02,
+        "ev": 63.1,
+        "se": 28.7,
+        "tage": 121,
+        "groessterTag": 9.6
+      },
+      "zeitraumB": {
+        "n": 536,
+        "quote": 34.33,
+        "ev": 38.6,
+        "se": 19.2,
+        "tage": 156,
+        "groessterTag": 4.7
       },
       "knockoutQuote": 0,
       "vorteil": true,
-      "vorteilA": 109.7,
-      "vorteilB": 65.1
+      "vorteilA": 102.2,
+      "vorteilB": 66.5
     },
     {
       "gruppe": "Aktien: 5-Tage-Rendite %: -10 bis 0 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 21.3,
+      "wertung": 18.4,
       "faelle": 600,
       "quote": 27.5,
       "lift": 3.8,
@@ -255,13 +127,17 @@
         "n": 237,
         "quote": 24.47,
         "ev": 37,
-        "se": 15.7
+        "se": 18.6,
+        "tage": 107,
+        "groessterTag": 6.8
       },
       "zeitraumB": {
         "n": 363,
         "quote": 29.48,
         "ev": 46.4,
-        "se": 13.6
+        "se": 21.3,
+        "tage": 135,
+        "groessterTag": 5
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -269,319 +145,43 @@
       "vorteilB": 71.9
     },
     {
-      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Kurslücke %: 3 bis 10",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 19.7,
-      "faelle": 2241,
-      "quote": 25.75,
-      "lift": 5.49,
-      "erfassung": 10.6,
-      "evGesamt": 47.3,
-      "zeitraumA": {
-        "n": 1137,
-        "quote": 27,
-        "ev": 66.9,
-        "se": 7.5
-      },
-      "zeitraumB": {
-        "n": 1104,
-        "quote": 24.46,
-        "ev": 27.2,
-        "se": 7.5
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 70.7,
-      "vorteilB": 28.4
-    },
-    {
-      "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: -2 bis -0,5",
-      "spielart": "Turbo short Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 19.2,
-      "faelle": 865,
-      "quote": 31.68,
-      "lift": 4.38,
-      "erfassung": 3.3,
-      "evGesamt": 45,
-      "zeitraumA": {
-        "n": 418,
-        "quote": 33.25,
-        "ev": 59.2,
-        "se": 12.7
-      },
-      "zeitraumB": {
-        "n": 447,
-        "quote": 30.2,
-        "ev": 31.7,
-        "se": 12.5
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 89.4,
-      "vorteilB": 57.2
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Kurslücke %: unter -10",
-      "spielart": "Turbo short Hebel 5, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 18.6,
-      "faelle": 1064,
-      "quote": 32.61,
-      "lift": 2.54,
-      "erfassung": 2.3,
-      "evGesamt": 34.5,
-      "zeitraumA": {
-        "n": 429,
-        "quote": 34.27,
-        "ev": 42.2,
-        "se": 12.8
-      },
-      "zeitraumB": {
-        "n": 635,
-        "quote": 31.5,
-        "ev": 29.3,
-        "se": 10.7
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 81.3,
-      "vorteilB": 57.2
-    },
-    {
-      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 0,5 bis 1 und Kurslücke %: unter -10",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 18.2,
-      "faelle": 517,
-      "quote": 31.53,
-      "lift": 9.03,
-      "erfassung": 4,
-      "evGesamt": 35.7,
-      "zeitraumA": {
-        "n": 194,
-        "quote": 30.41,
-        "ev": 39.1,
-        "se": 20.9
-      },
-      "zeitraumB": {
-        "n": 323,
-        "quote": 32.2,
-        "ev": 33.6,
-        "se": 14.8
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 63.4,
-      "vorteilB": 57.1
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Hoch: 10 bis 30 % darunter und Markt am Stichtag %: unter -2",
-      "spielart": "Turbo long Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 17.7,
-      "faelle": 5345,
-      "quote": 12.87,
-      "lift": 1.43,
-      "erfassung": 6.6,
-      "evGesamt": 21.5,
-      "zeitraumA": {
-        "n": 4997,
-        "quote": 11.35,
-        "ev": 20.6,
-        "se": 2.9
-      },
-      "zeitraumB": {
-        "n": 348,
-        "quote": 34.77,
-        "ev": 34,
-        "se": 15.3
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 22.7,
-      "vorteilB": 32.8
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Hoch: 10 bis 30 % darunter und Markt am Stichtag %: ab 2",
-      "spielart": "direkt, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 16.7,
-      "faelle": 9011,
-      "quote": 2.94,
-      "lift": 1.78,
-      "erfassung": 4.4,
-      "evGesamt": 19,
-      "zeitraumA": {
-        "n": 4887,
-        "quote": 2.33,
-        "ev": 19,
-        "se": 1.8
-      },
-      "zeitraumB": {
-        "n": 4124,
-        "quote": 3.66,
-        "ev": 18.9,
-        "se": 2.2
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 33.9,
-      "vorteilB": 32.7
-    },
-    {
-      "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: 0,5 bis 2",
-      "spielart": "Turbo short Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 16.4,
-      "faelle": 606,
-      "quote": 27.89,
-      "lift": 3.85,
-      "erfassung": 2,
-      "evGesamt": 31.1,
-      "zeitraumA": {
-        "n": 273,
-        "quote": 26.74,
-        "ev": 31.9,
-        "se": 15.5
-      },
-      "zeitraumB": {
-        "n": 333,
-        "quote": 28.83,
-        "ev": 30.5,
-        "se": 13.9
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 62.1,
-      "vorteilB": 56
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Kurslücke %: unter -10",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 16.3,
-      "faelle": 541,
-      "quote": 33.64,
-      "lift": 9.64,
-      "erfassung": 4.5,
-      "evGesamt": 35.2,
-      "zeitraumA": {
-        "n": 260,
-        "quote": 33.46,
-        "ev": 37.8,
-        "se": 16.5
-      },
-      "zeitraumB": {
-        "n": 281,
-        "quote": 33.81,
-        "ev": 32.7,
-        "se": 16.4
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 62.1,
-      "vorteilB": 56.2
-    },
-    {
       "gruppe": "Aktien: Kurslücke %: unter -10 und Schwankung je Tag %: ab 8",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 16.2,
-      "faelle": 1545,
-      "quote": 30.49,
-      "lift": 8.74,
-      "erfassung": 11.7,
-      "evGesamt": 27.1,
+      "wertung": 11.4,
+      "faelle": 1553,
+      "quote": 32.39,
+      "lift": 4.47,
+      "erfassung": 6,
+      "evGesamt": 26.1,
       "zeitraumA": {
-        "n": 595,
-        "quote": 29.75,
-        "ev": 30.4,
-        "se": 11.2
+        "n": 596,
+        "quote": 31.88,
+        "ev": 25.1,
+        "se": 13.5,
+        "tage": 191,
+        "groessterTag": 2.9
       },
       "zeitraumB": {
-        "n": 950,
-        "quote": 30.95,
-        "ev": 25.1,
-        "se": 8.9
+        "n": 957,
+        "quote": 32.71,
+        "ev": 26.8,
+        "se": 15.4,
+        "tage": 224,
+        "groessterTag": 4.9
       },
       "knockoutQuote": 0.1,
       "vorteil": true,
-      "vorteilA": 54.7,
-      "vorteilB": 48.6
-    },
-    {
-      "gruppe": "Aktien: Ø Tagesumsatz: ab 100000000 und Markt am Stichtag %: ab 2",
-      "spielart": "direkt, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 15.5,
-      "faelle": 6151,
-      "quote": 0.81,
-      "lift": 0.49,
-      "erfassung": 0.8,
-      "evGesamt": 17.1,
-      "zeitraumA": {
-        "n": 3387,
-        "quote": 0.53,
-        "ev": 16.8,
-        "se": 1.3
-      },
-      "zeitraumB": {
-        "n": 2764,
-        "quote": 1.16,
-        "ev": 17.5,
-        "se": 1.8
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 31.7,
-      "vorteilB": 31.3
-    },
-    {
-      "gruppe": "Aktien: 5-Tage-Rendite %: -10 bis 0 und Markt am Stichtag %: ab 2",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 15.2,
-      "faelle": 5568,
-      "quote": 4.01,
-      "lift": 0.85,
-      "erfassung": 4.1,
-      "evGesamt": 22.5,
-      "zeitraumA": {
-        "n": 3108,
-        "quote": 2.73,
-        "ev": 25.5,
-        "se": 2.4
-      },
-      "zeitraumB": {
-        "n": 2460,
-        "quote": 5.61,
-        "ev": 18.7,
-        "se": 3.5
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 29.3,
-      "vorteilB": 19.9
+      "vorteilA": 55.3,
+      "vorteilB": 52.3
     },
     {
       "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): unter 0,5 und Tagesrendite über dem Markt %: -20 bis -5",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 14.6,
+      "wertung": 10.9,
       "faelle": 852,
       "quote": 30.28,
       "lift": 8.68,
@@ -591,13 +191,17 @@
         "n": 435,
         "quote": 28.97,
         "ev": 27.9,
-        "se": 13.3
+        "se": 17,
+        "tage": 172,
+        "groessterTag": 3
       },
       "zeitraumB": {
         "n": 417,
         "quote": 31.65,
         "ev": 38.8,
-        "se": 13.5
+        "se": 16.5,
+        "tage": 178,
+        "groessterTag": 3.1
       },
       "knockoutQuote": 0.5,
       "vorteil": true,
@@ -605,123 +209,75 @@
       "vorteilB": 62.3
     },
     {
-      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 2 bis 4 und Markt am Stichtag %: unter -2",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 13.9,
-      "faelle": 3940,
-      "quote": 6.57,
-      "lift": 1.4,
-      "erfassung": 4.8,
-      "evGesamt": 18.1,
-      "zeitraumA": {
-        "n": 3674,
-        "quote": 4.46,
-        "ev": 16.2,
-        "se": 2.3
-      },
-      "zeitraumB": {
-        "n": 266,
-        "quote": 35.71,
-        "ev": 44,
-        "se": 17.2
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 20,
-      "vorteilB": 45.2
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Kurslücke %: -10 bis -3",
+      "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 13.7,
-      "faelle": 1557,
-      "quote": 28,
-      "lift": 8.02,
-      "erfassung": 10.8,
-      "evGesamt": 24.6,
+      "wertung": 10.5,
+      "faelle": 541,
+      "quote": 33.64,
+      "lift": 9.64,
+      "erfassung": 4.5,
+      "evGesamt": 35.2,
       "zeitraumA": {
-        "n": 750,
-        "quote": 27.73,
-        "ev": 23.3,
-        "se": 9.6
+        "n": 260,
+        "quote": 33.46,
+        "ev": 37.8,
+        "se": 19.2,
+        "tage": 137,
+        "groessterTag": 3.1
       },
       "zeitraumB": {
-        "n": 807,
-        "quote": 28.25,
-        "ev": 25.8,
-        "se": 9
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 47.6,
-      "vorteilB": 49.3
-    },
-    {
-      "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,8 bis 0,95",
-      "spielart": "Turbo short Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 13.5,
-      "faelle": 312,
-      "quote": 30.77,
-      "lift": 4.25,
-      "erfassung": 1.1,
-      "evGesamt": 35.5,
-      "zeitraumA": {
-        "n": 108,
-        "quote": 32.41,
-        "ev": 40.8,
-        "se": 25.7
-      },
-      "zeitraumB": {
-        "n": 204,
-        "quote": 29.9,
+        "n": 281,
+        "quote": 33.81,
         "ev": 32.7,
-        "se": 19.2
+        "se": 22.2,
+        "tage": 137,
+        "groessterTag": 5.7
       },
       "knockoutQuote": 0,
       "vorteil": true,
-      "vorteilA": 71,
-      "vorteilB": 58.2
+      "vorteilA": 62.1,
+      "vorteilB": 56.2
     },
     {
-      "gruppe": "Aktien: Kurslücke %: unter -10 und Kurs: 20 bis 100",
-      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 0,5 bis 1 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 13.4,
-      "faelle": 1363,
-      "quote": 30.15,
-      "lift": 2.35,
-      "erfassung": 2.7,
-      "evGesamt": 24.2,
+      "wertung": 10.3,
+      "faelle": 517,
+      "quote": 31.53,
+      "lift": 9.03,
+      "erfassung": 4,
+      "evGesamt": 35.7,
       "zeitraumA": {
-        "n": 580,
-        "quote": 29.14,
-        "ev": 24.2,
-        "se": 10.8
+        "n": 194,
+        "quote": 30.41,
+        "ev": 39.1,
+        "se": 24.6,
+        "tage": 104,
+        "groessterTag": 7.7
       },
       "zeitraumB": {
-        "n": 783,
-        "quote": 30.91,
-        "ev": 24.2,
-        "se": 9.6
+        "n": 323,
+        "quote": 32.2,
+        "ev": 33.6,
+        "se": 23.3,
+        "tage": 131,
+        "groessterTag": 9
       },
-      "knockoutQuote": 0.1,
+      "knockoutQuote": 0,
       "vorteil": true,
-      "vorteilA": 63.3,
-      "vorteilB": 52.1
+      "vorteilA": 63.4,
+      "vorteilB": 57.1
     },
     {
       "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Umsatz (× Ø 20 Tage): unter 0,5",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 13.2,
+      "wertung": 9.5,
       "faelle": 2825,
       "quote": 22.05,
       "lift": 6.32,
@@ -731,13 +287,17 @@
         "n": 1238,
         "quote": 23.91,
         "ev": 23.4,
-        "se": 7.3
+        "se": 10.6,
+        "tage": 226,
+        "groessterTag": 3.2
       },
       "zeitraumB": {
         "n": 1587,
         "quote": 20.6,
         "ev": 19.1,
-        "se": 5.9
+        "se": 9.6,
+        "tage": 245,
+        "groessterTag": 2.4
       },
       "knockoutQuote": 0.1,
       "vorteil": true,
@@ -745,375 +305,75 @@
       "vorteilB": 42.6
     },
     {
-      "gruppe": "Aktien: 20-Tage-Hoch: 3 bis 10 % darunter und Markt am Stichtag %: ab 2",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 13.2,
-      "faelle": 5330,
-      "quote": 3.62,
-      "lift": 0.77,
-      "erfassung": 3.6,
-      "evGesamt": 25.9,
-      "zeitraumA": {
-        "n": 2735,
-        "quote": 2.34,
-        "ev": 15.7,
-        "se": 2.5
-      },
-      "zeitraumB": {
-        "n": 2595,
-        "quote": 4.97,
-        "ev": 36.6,
-        "se": 3
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 19.5,
-      "vorteilB": 37.8
-    },
-    {
-      "gruppe": "Aktien: Tagesrendite über dem Markt %: 5 bis 20 und Markt am Stichtag %: ab 2",
-      "spielart": "direkt, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 12.7,
-      "faelle": 4412,
-      "quote": 5.46,
-      "lift": 3.31,
-      "erfassung": 4,
-      "evGesamt": 18.9,
-      "zeitraumA": {
-        "n": 2393,
-        "quote": 4.18,
-        "ev": 16.2,
-        "se": 3.5
-      },
-      "zeitraumB": {
-        "n": 2019,
-        "quote": 6.98,
-        "ev": 22.1,
-        "se": 3.9
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 31.1,
-      "vorteilB": 35.9
-    },
-    {
-      "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): ab 0,95",
-      "spielart": "Turbo short Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 12,
-      "faelle": 1605,
-      "quote": 25.79,
-      "lift": 3.56,
-      "erfassung": 4.9,
-      "evGesamt": 23.7,
-      "zeitraumA": {
-        "n": 630,
-        "quote": 26.03,
-        "ev": 29,
-        "se": 10.1
-      },
-      "zeitraumB": {
-        "n": 975,
-        "quote": 25.64,
-        "ev": 20.2,
-        "se": 8.2
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 59.2,
-      "vorteilB": 45.7
-    },
-    {
-      "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Schwankung je Tag %: ab 8",
-      "spielart": "Turbo short Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 12,
-      "faelle": 3497,
-      "quote": 30.97,
-      "lift": 4.28,
-      "erfassung": 12.9,
-      "evGesamt": 23.1,
-      "zeitraumA": {
-        "n": 1472,
-        "quote": 29.89,
-        "ev": 19,
-        "se": 7
-      },
-      "zeitraumB": {
-        "n": 2025,
-        "quote": 31.75,
-        "ev": 26.1,
-        "se": 6.1
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 49.2,
-      "vorteilB": 51.6
-    },
-    {
-      "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Tagesspanne (× Ø 20 Tage): 0,5 bis 1",
-      "spielart": "Turbo short Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 11.9,
-      "faelle": 1558,
-      "quote": 31,
-      "lift": 4.28,
-      "erfassung": 5.7,
-      "evGesamt": 22.6,
-      "zeitraumA": {
-        "n": 630,
-        "quote": 30.48,
-        "ev": 23,
-        "se": 11.1
-      },
-      "zeitraumB": {
-        "n": 928,
-        "quote": 31.36,
-        "ev": 22.3,
-        "se": 8.9
-      },
-      "knockoutQuote": 0.1,
-      "vorteil": true,
-      "vorteilA": 53.2,
-      "vorteilB": 47.8
-    },
-    {
-      "gruppe": "Aktien: Kurslücke %: 3 bis 10 und Markt am Stichtag %: -2 bis -0,5",
-      "spielart": "Turbo long Hebel 3, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 11.9,
-      "faelle": 4783,
-      "quote": 31.59,
-      "lift": 3.51,
-      "erfassung": 14.4,
-      "evGesamt": 86.5,
-      "zeitraumA": {
-        "n": 2958,
-        "quote": 36.85,
-        "ev": 128.9,
-        "se": 4.8
-      },
-      "zeitraumB": {
-        "n": 1825,
-        "quote": 23.07,
-        "ev": 17.7,
-        "se": 5.8
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 131,
-      "vorteilB": 16.5
-    },
-    {
-      "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und Tagesspanne (× Ø 20 Tage): 2 bis 4",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 11.4,
-      "faelle": 580,
-      "quote": 31.21,
-      "lift": 6.65,
-      "erfassung": 3.3,
-      "evGesamt": 42.5,
-      "zeitraumA": {
-        "n": 211,
-        "quote": 36.02,
-        "ev": 73.4,
-        "se": 18.9
-      },
-      "zeitraumB": {
-        "n": 369,
-        "quote": 28.46,
-        "ev": 24.9,
-        "se": 13.5
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 77.2,
-      "vorteilB": 26.1
-    },
-    {
-      "gruppe": "Aktien: Markt am Stichtag %: -2 bis -0,5",
-      "spielart": "Turbo long Hebel 5, Stop 150 €",
-      "fenster": 3,
-      "bestanden": true,
-      "wertung": 11.2,
-      "faelle": 83306,
-      "quote": 7.18,
-      "lift": 1.1,
-      "erfassung": 77.2,
-      "evGesamt": 13.3,
-      "zeitraumA": {
-        "n": 37824,
-        "quote": 5.55,
-        "ev": 14.8,
-        "se": 0.8
-      },
-      "zeitraumB": {
-        "n": 45482,
-        "quote": 8.54,
-        "ev": 12.1,
-        "se": 0.9
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 6.4,
-      "vorteilB": 10.8
-    },
-    {
-      "gruppe": "Aktien: Kurslücke %: unter -10",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "fenster": 1,
-      "bestanden": true,
-      "wertung": 11.1,
-      "faelle": 3310,
-      "quote": 4.98,
-      "lift": 31.16,
-      "erfassung": 88.2,
-      "evGesamt": 14.8,
-      "zeitraumA": {
-        "n": 1399,
-        "quote": 5.08,
-        "ev": 15.3,
-        "se": 3.9
-      },
-      "zeitraumB": {
-        "n": 1911,
-        "quote": 4.92,
-        "ev": 14.5,
-        "se": 3.4
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 30.5,
-      "vorteilB": 28.3
-    },
-    {
-      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Kurslücke %: unter -10",
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Kurs: 20 bis 100",
       "spielart": "Turbo short Hebel 5, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 10.9,
-      "faelle": 705,
-      "quote": 31.63,
-      "lift": 2.47,
-      "erfassung": 1.5,
-      "evGesamt": 27.1,
+      "wertung": 9.3,
+      "faelle": 1363,
+      "quote": 30.15,
+      "lift": 2.35,
+      "erfassung": 2.7,
+      "evGesamt": 24.2,
       "zeitraumA": {
-        "n": 281,
-        "quote": 31.32,
-        "ev": 31.2,
-        "se": 15.5
+        "n": 580,
+        "quote": 29.14,
+        "ev": 24.2,
+        "se": 13.2,
+        "tage": 168,
+        "groessterTag": 6.9
       },
       "zeitraumB": {
-        "n": 424,
-        "quote": 31.84,
-        "ev": 24.4,
-        "se": 13.5
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 70.3,
-      "vorteilB": 52.3
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Markt am Stichtag %: 0,5 bis 2",
-      "spielart": "Turbo short Hebel 5, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 10.9,
-      "faelle": 4596,
-      "quote": 30.55,
-      "lift": 2.38,
-      "erfassung": 9.4,
-      "evGesamt": 16.7,
-      "zeitraumA": {
-        "n": 2173,
-        "quote": 30.6,
-        "ev": 17.1,
-        "se": 5.8
-      },
-      "zeitraumB": {
-        "n": 2423,
-        "quote": 30.5,
-        "ev": 16.3,
-        "se": 5.4
+        "n": 783,
+        "quote": 30.91,
+        "ev": 24.2,
+        "se": 14.9,
+        "tage": 192,
+        "groessterTag": 5.5
       },
       "knockoutQuote": 0.1,
       "vorteil": true,
-      "vorteilA": 56.2,
-      "vorteilB": 44.2
+      "vorteilA": 63.3,
+      "vorteilB": 52.1
     },
     {
-      "gruppe": "Aktien: Schwankung je Tag %: 2 bis 4 und Markt am Stichtag %: ab 2",
-      "spielart": "direkt, Stop 150 €",
+      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 10.9,
-      "faelle": 11694,
-      "quote": 0.7,
-      "lift": 0.42,
-      "erfassung": 1.4,
-      "evGesamt": 12.9,
+      "wertung": 9.2,
+      "faelle": 1064,
+      "quote": 32.61,
+      "lift": 2.54,
+      "erfassung": 2.3,
+      "evGesamt": 34.5,
       "zeitraumA": {
-        "n": 7226,
-        "quote": 0.5,
-        "ev": 11.8,
-        "se": 0.9
+        "n": 429,
+        "quote": 34.27,
+        "ev": 42.2,
+        "se": 14.9,
+        "tage": 128,
+        "groessterTag": 10.3
       },
       "zeitraumB": {
-        "n": 4468,
-        "quote": 1.03,
-        "ev": 14.8,
-        "se": 1.6
+        "n": 635,
+        "quote": 31.5,
+        "ev": 29.3,
+        "se": 20.1,
+        "tage": 194,
+        "groessterTag": 3.6
       },
       "knockoutQuote": 0,
       "vorteil": true,
-      "vorteilA": 26.7,
-      "vorteilB": 28.6
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Rendite %: -20 bis 0 und Markt am Stichtag %: ab 2",
-      "spielart": "direkt, Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 10.3,
-      "faelle": 16367,
-      "quote": 1.11,
-      "lift": 0.67,
-      "erfassung": 3,
-      "evGesamt": 14.3,
-      "zeitraumA": {
-        "n": 8417,
-        "quote": 0.78,
-        "ev": 11.3,
-        "se": 1
-      },
-      "zeitraumB": {
-        "n": 7950,
-        "quote": 1.46,
-        "ev": 17.4,
-        "se": 1.1
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 26.2,
-      "vorteilB": 31.2
+      "vorteilA": 81.3,
+      "vorteilB": 57.2
     },
     {
       "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und 20-Tage-Rendite %: ab 50",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
       "bestanden": true,
-      "wertung": 10.2,
+      "wertung": 7.8,
       "faelle": 338,
       "quote": 33.73,
       "lift": 9.66,
@@ -1123,18 +383,918 @@
         "n": 181,
         "quote": 33.15,
         "ev": 30.2,
-        "se": 20
+        "se": 22.4,
+        "tage": 105,
+        "groessterTag": 4.4
       },
       "zeitraumB": {
         "n": 157,
         "quote": 34.39,
         "ev": 40.8,
-        "se": 21.2
+        "se": 21.7,
+        "tage": 100,
+        "groessterTag": 4.5
       },
       "knockoutQuote": 0,
       "vorteil": true,
       "vorteilA": 54.5,
       "vorteilB": 64.3
+    },
+    {
+      "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Schwankung je Tag %: ab 8",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 7.8,
+      "faelle": 3497,
+      "quote": 30.97,
+      "lift": 4.28,
+      "erfassung": 12.9,
+      "evGesamt": 23.1,
+      "zeitraumA": {
+        "n": 1472,
+        "quote": 29.89,
+        "ev": 19,
+        "se": 11.2,
+        "tage": 227,
+        "groessterTag": 2.5
+      },
+      "zeitraumB": {
+        "n": 2025,
+        "quote": 31.75,
+        "ev": 26.1,
+        "se": 10.6,
+        "tage": 248,
+        "groessterTag": 2.5
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 49.2,
+      "vorteilB": 51.6
+    },
+    {
+      "gruppe": "Aktien: Schwankung je Tag %: ab 8 und Kurs: ab 100",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 7.6,
+      "faelle": 814,
+      "quote": 29.61,
+      "lift": 8.48,
+      "erfassung": 6,
+      "evGesamt": 34.9,
+      "zeitraumA": {
+        "n": 432,
+        "quote": 32.18,
+        "ev": 46.5,
+        "se": 15.2,
+        "tage": 192,
+        "groessterTag": 3
+      },
+      "zeitraumB": {
+        "n": 382,
+        "quote": 26.7,
+        "ev": 21.8,
+        "se": 14.2,
+        "tage": 180,
+        "groessterTag": 1.6
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 70.8,
+      "vorteilB": 45.3
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Kurslücke %: -10 bis -3",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 7.1,
+      "faelle": 1557,
+      "quote": 28,
+      "lift": 8.02,
+      "erfassung": 10.8,
+      "evGesamt": 24.6,
+      "zeitraumA": {
+        "n": 750,
+        "quote": 27.73,
+        "ev": 23.3,
+        "se": 13.8,
+        "tage": 194,
+        "groessterTag": 7.1
+      },
+      "zeitraumB": {
+        "n": 807,
+        "quote": 28.25,
+        "ev": 25.8,
+        "se": 18.7,
+        "tage": 203,
+        "groessterTag": 7.6
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 47.6,
+      "vorteilB": 49.3
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Tagesspanne (× Ø 20 Tage): 0,5 bis 1",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 6.6,
+      "faelle": 1556,
+      "quote": 29.5,
+      "lift": 8.45,
+      "erfassung": 11.4,
+      "evGesamt": 22.3,
+      "zeitraumA": {
+        "n": 630,
+        "quote": 28.89,
+        "ev": 20.4,
+        "se": 13.8,
+        "tage": 186,
+        "groessterTag": 4.8
+      },
+      "zeitraumB": {
+        "n": 926,
+        "quote": 29.91,
+        "ev": 23.6,
+        "se": 15,
+        "tage": 216,
+        "groessterTag": 4.1
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 44.7,
+      "vorteilB": 47.1
+    },
+    {
+      "gruppe": "Aktien: Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 1,
+      "bestanden": true,
+      "wertung": 6.4,
+      "faelle": 3310,
+      "quote": 4.98,
+      "lift": 31.16,
+      "erfassung": 88.2,
+      "evGesamt": 14.8,
+      "zeitraumA": {
+        "n": 1399,
+        "quote": 5.08,
+        "ev": 15.3,
+        "se": 7.5,
+        "tage": 220,
+        "groessterTag": 5.5
+      },
+      "zeitraumB": {
+        "n": 1911,
+        "quote": 4.92,
+        "ev": 14.5,
+        "se": 8.1,
+        "tage": 246,
+        "groessterTag": 3.2
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 30.5,
+      "vorteilB": 28.3
+    },
+    {
+      "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,8 bis 0,95",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 6.4,
+      "faelle": 312,
+      "quote": 30.77,
+      "lift": 4.25,
+      "erfassung": 1.1,
+      "evGesamt": 35.5,
+      "zeitraumA": {
+        "n": 108,
+        "quote": 32.41,
+        "ev": 40.8,
+        "se": 25.8,
+        "tage": 73,
+        "groessterTag": 9.3
+      },
+      "zeitraumB": {
+        "n": 204,
+        "quote": 29.9,
+        "ev": 32.7,
+        "se": 26.3,
+        "tage": 107,
+        "groessterTag": 3.9
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 71,
+      "vorteilB": 58.2
+    },
+    {
+      "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und Tagesspanne (× Ø 20 Tage): 2 bis 4",
+      "spielart": "Turbo long Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 5.4,
+      "faelle": 580,
+      "quote": 31.21,
+      "lift": 6.65,
+      "erfassung": 3.3,
+      "evGesamt": 42.5,
+      "zeitraumA": {
+        "n": 211,
+        "quote": 36.02,
+        "ev": 73.4,
+        "se": 45.9,
+        "tage": 95,
+        "groessterTag": 15.2
+      },
+      "zeitraumB": {
+        "n": 369,
+        "quote": 28.46,
+        "ev": 24.9,
+        "se": 19.5,
+        "tage": 129,
+        "groessterTag": 15.7
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 77.2,
+      "vorteilB": 26.1
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -3 bis 3 und 20-Tage-Rendite %: unter -50",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 5.1,
+      "faelle": 595,
+      "quote": 31.26,
+      "lift": 4.32,
+      "erfassung": 2.2,
+      "evGesamt": 26.2,
+      "zeitraumA": {
+        "n": 205,
+        "quote": 31.22,
+        "ev": 25.5,
+        "se": 20.4,
+        "tage": 118,
+        "groessterTag": 3.4
+      },
+      "zeitraumB": {
+        "n": 390,
+        "quote": 31.28,
+        "ev": 26.5,
+        "se": 18.9,
+        "tage": 165,
+        "groessterTag": 2.8
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 55.7,
+      "vorteilB": 52
+    },
+    {
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Ø Tagesumsatz: 20000000 bis 100000000",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 5.1,
+      "faelle": 2010,
+      "quote": 26.22,
+      "lift": 3.62,
+      "erfassung": 6.3,
+      "evGesamt": 19.2,
+      "zeitraumA": {
+        "n": 829,
+        "quote": 24.37,
+        "ev": 15.1,
+        "se": 10,
+        "tage": 206,
+        "groessterTag": 3.7
+      },
+      "zeitraumB": {
+        "n": 1181,
+        "quote": 27.52,
+        "ev": 22,
+        "se": 11.5,
+        "tage": 237,
+        "groessterTag": 2.7
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 45.3,
+      "vorteilB": 47.5
+    },
+    {
+      "gruppe": "Aktien: 5-Tage-Rendite %: -10 bis 0 und Schwankung je Tag %: ab 8",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 4.9,
+      "faelle": 3533,
+      "quote": 28.28,
+      "lift": 3.91,
+      "erfassung": 11.9,
+      "evGesamt": 14.4,
+      "zeitraumA": {
+        "n": 1529,
+        "quote": 28.52,
+        "ev": 16.1,
+        "se": 9.1,
+        "tage": 230,
+        "groessterTag": 1.6
+      },
+      "zeitraumB": {
+        "n": 2004,
+        "quote": 28.09,
+        "ev": 13.1,
+        "se": 8.2,
+        "tage": 246,
+        "groessterTag": 1.3
+      },
+      "knockoutQuote": 0.1,
+      "vorteil": true,
+      "vorteilA": 46.3,
+      "vorteilB": 38.6
+    },
+    {
+      "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und Tagesspanne (× Ø 20 Tage): 0,5 bis 1",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 4.6,
+      "faelle": 1219,
+      "quote": 30.19,
+      "lift": 4.17,
+      "erfassung": 4.4,
+      "evGesamt": 21,
+      "zeitraumA": {
+        "n": 505,
+        "quote": 30.5,
+        "ev": 24,
+        "se": 14.4,
+        "tage": 179,
+        "groessterTag": 3
+      },
+      "zeitraumB": {
+        "n": 714,
+        "quote": 29.97,
+        "ev": 18.9,
+        "se": 14.3,
+        "tage": 207,
+        "groessterTag": 2.2
+      },
+      "knockoutQuote": 0.2,
+      "vorteil": true,
+      "vorteilA": 54.2,
+      "vorteilB": 44.4
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Tagesrendite über dem Markt %: -20 bis -5",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 4,
+      "faelle": 2123,
+      "quote": 30.43,
+      "lift": 4.2,
+      "erfassung": 7.7,
+      "evGesamt": 24.5,
+      "zeitraumA": {
+        "n": 957,
+        "quote": 29.05,
+        "ev": 13.7,
+        "se": 9.7,
+        "tage": 215,
+        "groessterTag": 1.8
+      },
+      "zeitraumB": {
+        "n": 1166,
+        "quote": 31.56,
+        "ev": 33.3,
+        "se": 11.7,
+        "tage": 238,
+        "groessterTag": 2.7
+      },
+      "knockoutQuote": 0.2,
+      "vorteil": true,
+      "vorteilA": 43.9,
+      "vorteilB": 58.8
+    },
+    {
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Kurs: 5 bis 20",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 3.7,
+      "faelle": 1103,
+      "quote": 27.83,
+      "lift": 3.84,
+      "erfassung": 3.7,
+      "evGesamt": 25.4,
+      "zeitraumA": {
+        "n": 430,
+        "quote": 25.35,
+        "ev": 18.4,
+        "se": 14.7,
+        "tage": 168,
+        "groessterTag": 4.7
+      },
+      "zeitraumB": {
+        "n": 673,
+        "quote": 29.42,
+        "ev": 29.8,
+        "se": 16.8,
+        "tage": 204,
+        "groessterTag": 3
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 48.6,
+      "vorteilB": 55.3
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Markt am Stichtag %: 0,5 bis 2",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 3.5,
+      "faelle": 1103,
+      "quote": 22.76,
+      "lift": 6.52,
+      "erfassung": 6.2,
+      "evGesamt": 20.7,
+      "zeitraumA": {
+        "n": 510,
+        "quote": 20.39,
+        "ev": 17.9,
+        "se": 14.4,
+        "tage": 49,
+        "groessterTag": 4.5
+      },
+      "zeitraumB": {
+        "n": 593,
+        "quote": 24.79,
+        "ev": 23.2,
+        "se": 15.7,
+        "tage": 36,
+        "groessterTag": 17.2
+      },
+      "knockoutQuote": 0.2,
+      "vorteil": true,
+      "vorteilA": 42.2,
+      "vorteilB": 46.7
+    },
+    {
+      "gruppe": "Aktien: Schwankung je Tag %: ab 8 und Tagesrendite über dem Markt %: -5 bis 5",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 3.5,
+      "faelle": 5039,
+      "quote": 24.63,
+      "lift": 7.06,
+      "erfassung": 30.7,
+      "evGesamt": 13.4,
+      "zeitraumA": {
+        "n": 2242,
+        "quote": 25.11,
+        "ev": 17,
+        "se": 7.8,
+        "tage": 231,
+        "groessterTag": 2.5
+      },
+      "zeitraumB": {
+        "n": 2797,
+        "quote": 24.24,
+        "ev": 10.5,
+        "se": 7,
+        "tage": 248,
+        "groessterTag": 1.3
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 41.3,
+      "vorteilB": 34
+    },
+    {
+      "gruppe": "Aktien: Kurslücke %: 3 bis 10 und Markt am Stichtag %: -2 bis -0,5",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 2.8,
+      "faelle": 4783,
+      "quote": 31.59,
+      "lift": 3.51,
+      "erfassung": 14.4,
+      "evGesamt": 86.5,
+      "zeitraumA": {
+        "n": 2958,
+        "quote": 36.85,
+        "ev": 128.9,
+        "se": 79.4,
+        "tage": 41,
+        "groessterTag": 44.2
+      },
+      "zeitraumB": {
+        "n": 1825,
+        "quote": 23.07,
+        "ev": 17.7,
+        "se": 14.9,
+        "tage": 40,
+        "groessterTag": 14.2
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 131,
+      "vorteilB": 16.5
+    },
+    {
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: 0,5 bis 2",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 2.5,
+      "faelle": 606,
+      "quote": 27.89,
+      "lift": 3.85,
+      "erfassung": 2,
+      "evGesamt": 31.1,
+      "zeitraumA": {
+        "n": 273,
+        "quote": 26.74,
+        "ev": 31.9,
+        "se": 23.3,
+        "tage": 47,
+        "groessterTag": 8.4
+      },
+      "zeitraumB": {
+        "n": 333,
+        "quote": 28.83,
+        "ev": 30.5,
+        "se": 28,
+        "tage": 36,
+        "groessterTag": 10.5
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 62.1,
+      "vorteilB": 56
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 2 bis 5 und Tagesrendite über dem Markt %: unter -20",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 2.4,
+      "faelle": 523,
+      "quote": 32.12,
+      "lift": 2.5,
+      "erfassung": 1.1,
+      "evGesamt": 28,
+      "zeitraumA": {
+        "n": 191,
+        "quote": 34.03,
+        "ev": 39.4,
+        "se": 23.3,
+        "tage": 92,
+        "groessterTag": 12.6
+      },
+      "zeitraumB": {
+        "n": 332,
+        "quote": 31.02,
+        "ev": 21.5,
+        "se": 19.1,
+        "tage": 130,
+        "groessterTag": 6.3
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 78.5,
+      "vorteilB": 49.4
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 2.1,
+      "faelle": 705,
+      "quote": 31.63,
+      "lift": 2.47,
+      "erfassung": 1.5,
+      "evGesamt": 27.1,
+      "zeitraumA": {
+        "n": 281,
+        "quote": 31.32,
+        "ev": 31.2,
+        "se": 17.9,
+        "tage": 129,
+        "groessterTag": 4.3
+      },
+      "zeitraumB": {
+        "n": 424,
+        "quote": 31.84,
+        "ev": 24.4,
+        "se": 22.3,
+        "tage": 149,
+        "groessterTag": 7.8
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 70.3,
+      "vorteilB": 52.3
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und 20-Tage-Hoch: mehr als 30 % darunter",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 1.5,
+      "faelle": 1106,
+      "quote": 30.47,
+      "lift": 8.73,
+      "erfassung": 8.3,
+      "evGesamt": 22.7,
+      "zeitraumA": {
+        "n": 586,
+        "quote": 30.2,
+        "ev": 27.5,
+        "se": 12.6,
+        "tage": 189,
+        "groessterTag": 4.6
+      },
+      "zeitraumB": {
+        "n": 520,
+        "quote": 30.77,
+        "ev": 17.2,
+        "se": 15.7,
+        "tage": 200,
+        "groessterTag": 2.3
+      },
+      "knockoutQuote": 0.3,
+      "vorteil": true,
+      "vorteilA": 51.8,
+      "vorteilB": 40.7
+    },
+    {
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 0,5 bis 1 und Schwankung je Tag %: ab 8",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 1.5,
+      "faelle": 5136,
+      "quote": 24.28,
+      "lift": 6.96,
+      "erfassung": 30.9,
+      "evGesamt": 9.7,
+      "zeitraumA": {
+        "n": 2233,
+        "quote": 24.63,
+        "ev": 10.4,
+        "se": 8.9,
+        "tage": 229,
+        "groessterTag": 2.9
+      },
+      "zeitraumB": {
+        "n": 2903,
+        "quote": 24.01,
+        "ev": 9.2,
+        "se": 6.9,
+        "tage": 247,
+        "groessterTag": 1.4
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 34.7,
+      "vorteilB": 32.7
+    },
+    {
+      "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,5 bis 0,8 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 1.4,
+      "faelle": 1082,
+      "quote": 28.84,
+      "lift": 3.98,
+      "erfassung": 3.7,
+      "evGesamt": 27.4,
+      "zeitraumA": {
+        "n": 480,
+        "quote": 29.38,
+        "ev": 37.5,
+        "se": 21.8,
+        "tage": 162,
+        "groessterTag": 6.9
+      },
+      "zeitraumB": {
+        "n": 602,
+        "quote": 28.41,
+        "ev": 19.4,
+        "se": 18,
+        "tage": 189,
+        "groessterTag": 3.2
+      },
+      "knockoutQuote": 0.2,
+      "vorteil": true,
+      "vorteilA": 67.7,
+      "vorteilB": 44.9
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und 20-Tage-Hoch: mehr als 30 % darunter",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 1.2,
+      "faelle": 3153,
+      "quote": 23.22,
+      "lift": 6.65,
+      "erfassung": 18.1,
+      "evGesamt": 10.4,
+      "zeitraumA": {
+        "n": 1460,
+        "quote": 23.63,
+        "ev": 11.7,
+        "se": 9.7,
+        "tage": 226,
+        "groessterTag": 2.2
+      },
+      "zeitraumB": {
+        "n": 1693,
+        "quote": 22.86,
+        "ev": 9.2,
+        "se": 8,
+        "tage": 243,
+        "groessterTag": 3
+      },
+      "knockoutQuote": 0.2,
+      "vorteil": true,
+      "vorteilA": 36,
+      "vorteilB": 32.7
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Rendite %: unter -50 und Umsatz (× Ø 20 Tage): unter 0,5",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 1.1,
+      "faelle": 399,
+      "quote": 34.09,
+      "lift": 4.71,
+      "erfassung": 1.6,
+      "evGesamt": 37,
+      "zeitraumA": {
+        "n": 165,
+        "quote": 30.91,
+        "ev": 23.3,
+        "se": 22.2,
+        "tage": 111,
+        "groessterTag": 4.2
+      },
+      "zeitraumB": {
+        "n": 234,
+        "quote": 36.32,
+        "ev": 46.6,
+        "se": 24.7,
+        "tage": 141,
+        "groessterTag": 3
+      },
+      "knockoutQuote": 0.8,
+      "vorteil": true,
+      "vorteilA": 53.5,
+      "vorteilB": 72.1
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Schwankung je Tag %: ab 8",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 1.1,
+      "faelle": 3315,
+      "quote": 23.14,
+      "lift": 6.63,
+      "erfassung": 19,
+      "evGesamt": 8.4,
+      "zeitraumA": {
+        "n": 1555,
+        "quote": 23.86,
+        "ev": 9.6,
+        "se": 8.5,
+        "tage": 226,
+        "groessterTag": 1.9
+      },
+      "zeitraumB": {
+        "n": 1760,
+        "quote": 22.5,
+        "ev": 7.3,
+        "se": 6.2,
+        "tage": 248,
+        "groessterTag": 2.2
+      },
+      "knockoutQuote": 0.2,
+      "vorteil": true,
+      "vorteilA": 33.9,
+      "vorteilB": 30.8
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Kurslücke %: 3 bis 10",
+      "spielart": "Turbo long Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 1,
+      "faelle": 2241,
+      "quote": 25.75,
+      "lift": 5.49,
+      "erfassung": 10.6,
+      "evGesamt": 47.3,
+      "zeitraumA": {
+        "n": 1137,
+        "quote": 27,
+        "ev": 66.9,
+        "se": 65.9,
+        "tage": 181,
+        "groessterTag": 35.4
+      },
+      "zeitraumB": {
+        "n": 1104,
+        "quote": 24.46,
+        "ev": 27.2,
+        "se": 25.7,
+        "tage": 216,
+        "groessterTag": 13.2
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 70.7,
+      "vorteilB": 28.4
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 0.9,
+      "faelle": 1757,
+      "quote": 30.28,
+      "lift": 2.36,
+      "erfassung": 3.6,
+      "evGesamt": 16.9,
+      "zeitraumA": {
+        "n": 713,
+        "quote": 30.58,
+        "ev": 17.1,
+        "se": 11.4,
+        "tage": 195,
+        "groessterTag": 4.5
+      },
+      "zeitraumB": {
+        "n": 1044,
+        "quote": 30.08,
+        "ev": 16.7,
+        "se": 15.8,
+        "tage": 234,
+        "groessterTag": 4.2
+      },
+      "knockoutQuote": 0.1,
+      "vorteil": true,
+      "vorteilA": 56.2,
+      "vorteilB": 44.6
+    },
+    {
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 0,5 bis 1 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 0.3,
+      "faelle": 715,
+      "quote": 29.65,
+      "lift": 8.5,
+      "erfassung": 5.2,
+      "evGesamt": 28.2,
+      "zeitraumA": {
+        "n": 261,
+        "quote": 26.82,
+        "ev": 20.7,
+        "se": 20.4,
+        "tage": 118,
+        "groessterTag": 9.2
+      },
+      "zeitraumB": {
+        "n": 454,
+        "quote": 31.28,
+        "ev": 32.5,
+        "se": 19.9,
+        "tage": 154,
+        "groessterTag": 7.3
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 45,
+      "vorteilB": 56
     }
   ],
   "besteOhneBestehen": [
@@ -1153,13 +1313,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1,
         "quote": 100,
         "ev": 410.5,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1181,13 +1345,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1209,13 +1377,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 2,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1237,13 +1409,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 2,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1265,13 +1441,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1293,13 +1473,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1321,13 +1505,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1349,13 +1537,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1377,13 +1569,17 @@
         "n": 1,
         "quote": 0,
         "ev": 357.2,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1405,13 +1601,17 @@
         "n": 1,
         "quote": 0,
         "ev": 357.2,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1433,13 +1633,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 5,
         "quote": 20,
         "ev": 240.7,
-        "se": 60.5
+        "se": 60.5,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1461,13 +1665,17 @@
         "n": 1,
         "quote": 0,
         "ev": 233.1,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 3,
         "quote": 0,
         "ev": 212.7,
-        "se": 76.5
+        "se": 76.5,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1489,13 +1697,17 @@
         "n": 1,
         "quote": 0,
         "ev": 233.1,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 3,
         "quote": 33.33,
         "ev": 246.1,
-        "se": 110.5
+        "se": 110.5,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1517,13 +1729,17 @@
         "n": 1,
         "quote": 100,
         "ev": 400,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 4,
         "quote": 75,
         "ev": 262.5,
-        "se": 137.5
+        "se": 137.5,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1545,13 +1761,17 @@
         "n": 2,
         "quote": 0,
         "ev": 107.9,
-        "se": 1.8
+        "se": 1.8,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 4,
         "quote": 25,
         "ev": 195.7,
-        "se": 85.6
+        "se": 85.6,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1575,13 +1795,17 @@
         "n": 4,
         "quote": 0,
         "ev": 58.7,
-        "se": 38.9
+        "se": 38.9,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 6,
         "quote": 16.67,
         "ev": 103.6,
-        "se": 66.8
+        "se": 66.8,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1593,7 +1817,7 @@
       "spielart": "direkt, Stop 250 €",
       "fenster": 21,
       "bestanden": true,
-      "wertung": 0.9,
+      "wertung": -0.1,
       "faelle": 6053,
       "quote": 0.07,
       "lift": 0.02,
@@ -1603,46 +1827,22 @@
         "n": 3298,
         "quote": 0.03,
         "ev": 1.9,
-        "se": 1
+        "se": 2,
+        "tage": 211,
+        "groessterTag": 3.3
       },
       "zeitraumB": {
         "n": 2755,
         "quote": 0.11,
         "ev": 5.4,
-        "se": 1.2
+        "se": 2.7,
+        "tage": 215,
+        "groessterTag": 2.2
       },
       "knockoutQuote": 0,
       "vorteil": true,
       "vorteilA": 13.3,
       "vorteilB": 18.2
-    },
-    {
-      "gruppe": "Aktien: C9k Rückprall nach Ausverkauf",
-      "spielart": "Turbo short Hebel 2, Stop 250 €",
-      "fenster": 3,
-      "bestanden": true,
-      "wertung": -1.7,
-      "faelle": 984,
-      "quote": 19.82,
-      "lift": 20.22,
-      "erfassung": 16.9,
-      "evGesamt": 10.8,
-      "zeitraumA": {
-        "n": 410,
-        "quote": 16.59,
-        "ev": 10.6,
-        "se": 12.3
-      },
-      "zeitraumB": {
-        "n": 574,
-        "quote": 22.13,
-        "ev": 11,
-        "se": 11.1
-      },
-      "knockoutQuote": 0,
-      "vorteil": true,
-      "vorteilA": 29.1,
-      "vorteilB": 26.2
     },
     {
       "gruppe": "Aktien: C3k Squeeze-Aufstellung (Kerzen-Variante)",
@@ -1659,18 +1859,54 @@
         "n": 0,
         "quote": 0,
         "ev": 0,
-        "se": 0
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 136,
         "quote": 20.59,
         "ev": 17.6,
-        "se": 20.7
+        "se": 20.7,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
       "vorteilA": 15.2,
       "vorteilB": 31.6
+    },
+    {
+      "gruppe": "Aktien: C9k Rückprall nach Ausverkauf",
+      "spielart": "Turbo short Hebel 2, Stop 100 €",
+      "fenster": 3,
+      "bestanden": true,
+      "wertung": -5.5,
+      "faelle": 984,
+      "quote": 12.5,
+      "lift": 16.67,
+      "erfassung": 13.9,
+      "evGesamt": 7.4,
+      "zeitraumA": {
+        "n": 410,
+        "quote": 10.24,
+        "ev": 6.2,
+        "se": 10.8,
+        "tage": 172,
+        "groessterTag": 5.1
+      },
+      "zeitraumB": {
+        "n": 574,
+        "quote": 14.11,
+        "ev": 8.2,
+        "se": 13.7,
+        "tage": 193,
+        "groessterTag": 4.9
+      },
+      "knockoutQuote": 0,
+      "vorteil": true,
+      "vorteilA": 24.6,
+      "vorteilB": 22.3
     },
     {
       "gruppe": "Aktien: C10 Kontrollmuster: Tagesgewinner",
@@ -1687,13 +1923,17 @@
         "n": 1180,
         "quote": 4.92,
         "ev": 9.3,
-        "se": 4.1
+        "se": 4.1,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 1428,
         "quote": 4.34,
         "ev": -6,
-        "se": 3.6
+        "se": 3.6,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": true,
@@ -1715,13 +1955,17 @@
         "n": 355,
         "quote": 9.3,
         "ev": -13.5,
-        "se": 8.4
+        "se": 8.4,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 373,
         "quote": 11.26,
         "ev": -10.9,
-        "se": 9.1
+        "se": 9.1,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": false,
@@ -1743,13 +1987,17 @@
         "n": 320,
         "quote": 0.94,
         "ev": -14.8,
-        "se": 3.4
+        "se": 3.4,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 369,
         "quote": 0.81,
         "ev": -21.4,
-        "se": 3.6
+        "se": 3.6,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": false,
@@ -1771,13 +2019,17 @@
         "n": 627,
         "quote": 9.57,
         "ev": -16.4,
-        "se": 14.2
+        "se": 14.2,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 538,
         "quote": 11.15,
         "ev": -18.1,
-        "se": 10.4
+        "se": 10.4,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": false,
@@ -1799,13 +2051,17 @@
         "n": 49,
         "quote": 4.08,
         "ev": -27.3,
-        "se": 18.2
+        "se": 18.2,
+        "tage": null,
+        "groessterTag": null
       },
       "zeitraumB": {
         "n": 53,
         "quote": 15.09,
         "ev": -3.8,
-        "se": 25.2
+        "se": 25.2,
+        "tage": null,
+        "groessterTag": null
       },
       "knockoutQuote": 0,
       "vorteil": false,

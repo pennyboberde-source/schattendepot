@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-15T13:41:42.945Z",
+  "stand": "2026-11-15T14:07:14.933Z",
   "hinweis": "Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens 5 Jagden gleichzeitig, nach 450 € Tagesverlust am Folgetag keine neue. Keine Mitteilungen, kein echtes Geld.",
   "regeln": {
     "maxOffen": 5,
@@ -260,6 +260,176 @@
         "ev": 1.2,
         "se": 2.8,
         "faelle": 23429
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Rendite %: unter -50 und Markt am Stichtag %: 0,5 bis 2",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 37.7,
+        "ev": 62,
+        "se": 19.1,
+        "faelle": 512
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -3 bis 3 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 33.91,
+        "ev": 58.9,
+        "se": 25.4,
+        "faelle": 233
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 1 bis 2 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 35.65,
+        "ev": 55,
+        "se": 15.3,
+        "faelle": 864
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: 5-Tage-Rendite %: -10 bis 0 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 27.5,
+        "ev": 42.7,
+        "se": 15.7,
+        "faelle": 600
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Kurslücke %: 3 bis 10",
+      "spielart": "Turbo long Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 25.75,
+        "ev": 47.3,
+        "se": 7.5,
+        "faelle": 2241
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: -2 bis -0,5",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 31.68,
+        "ev": 45,
+        "se": 12.7,
+        "faelle": 865
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 32.61,
+        "ev": 34.5,
+        "se": 12.8,
+        "faelle": 1064
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 0,5 bis 1 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 31.53,
+        "ev": 35.7,
+        "se": 20.9,
+        "faelle": 517
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: 0,5 bis 2",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 27.89,
+        "ev": 31.1,
+        "se": 15.5,
+        "faelle": 606
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Kurslücke %: unter -10",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 33.64,
+        "ev": 35.2,
+        "se": 16.5,
+        "faelle": 541
       },
       "stufe2": false
     }
