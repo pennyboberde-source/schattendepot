@@ -68,6 +68,8 @@ test('Bereich Volltreffer: Jagd, Rückblick mit bestandenen Mustern und Hypothes
   await expect(jagd).toBeVisible();
   await expect(jagd.getByText(/DEMOJ · ⏳ läuft/)).toBeVisible();
   await expect(jagd.getByText('Lauerliste – Einstieg zur nächsten Eröffnung (1)')).toBeVisible();
+  await expect(jagd.getByTestId('claude-urteil')).toContainText('„ja“ 1 abgeschlossen');
+  await expect(jagd.getByText(/Claude: ja – DEMO: Prognoseanhebung/)).toBeVisible();
   const karte = page.getByTestId('volltreffer-rueckblick');
   await expect(karte).toBeVisible();
   await expect(karte.getByText(/Bestanden: 1 Muster/)).toBeVisible();

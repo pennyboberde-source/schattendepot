@@ -115,6 +115,10 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
         }
         if (!schreibeTracking(liste)) console.error('Tagesprognose nicht ins Schattenbuch übernommen – privater Zustand nicht erreichbar.');
       }
+      // V5: Claudes Urteil über die Volltreffer-Lauerliste – der Rückblick misst „ja“ gegen „nein“
+      if (e.typ === 'morgenlauf' && e.volltrefferUrteil?.length && !leseJson<unknown>(`volltreffer/urteile/${e.datum}.json`, null)) {
+        schreibeJson(`volltreffer/urteile/${e.datum}.json`, { datum: e.datum, erstellt: e.erstellt, urteile: e.volltrefferUrteil.slice(0, 10) });
+      }
       // Daytrading-Watchlist (S3): der Daytrading-Job handelt die Werte heute nach der Skill-Regel
       if (e.typ === 'morgenlauf' && e.daytrading?.length) {
         const gut = e.daytrading.filter((d) => {

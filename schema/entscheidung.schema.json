@@ -373,6 +373,62 @@
           }
         }
       }
+    },
+    "volltrefferUrteil": {
+      "type": "array",
+      "maxItems": 10,
+      "description": "V5: Claudes Urteil über die obersten Werte der Volltreffer-Lauerliste (nur Morgenlauf) – wird gespeichert und gemessen",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "wert",
+          "markt",
+          "stichtag",
+          "urteil",
+          "grund"
+        ],
+        "properties": {
+          "wert": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9.-]{1,15}$"
+          },
+          "markt": {
+            "enum": [
+              "aktie",
+              "krypto"
+            ]
+          },
+          "stichtag": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "anlass": {
+            "type": "boolean"
+          },
+          "richtung": {
+            "enum": [
+              "hoch",
+              "runter",
+              "unklar"
+            ]
+          },
+          "werbung": {
+            "type": "boolean"
+          },
+          "urteil": {
+            "enum": [
+              "ja",
+              "nein"
+            ]
+          },
+          "grund": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 240
+          }
+        }
+      }
     }
   },
   "definitions": {

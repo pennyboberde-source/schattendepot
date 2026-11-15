@@ -11,6 +11,7 @@ interface Uebersicht {
   stand: string;
   regeln: { maxOffen: number; tagesVerlustGrenze: number; stufe2Faelle: number };
   kennzahlen: JagdKennzahlen;
+  urteil?: { ja: JagdKennzahlen; nein: JagdKennzahlen; urteile: number };
   offen: JagdFall[];
   abgeschlossen: JagdFall[];
   lauerliste: JagdFall[];
@@ -34,6 +35,11 @@ function JagdZeile({ j }: { j: JagdFall }) {
         {j.einstieg ? `, Einstieg ${datumKurz(j.einstieg)}` : ', Einstieg zur nächsten Eröffnung'}
       </span>
       <span class="klein">Muster: {j.muster}</span>
+      {j.urteil && (
+        <span class="klein">
+          {j.urteil === 'ja' ? '✅ Claude: ja' : '❌ Claude: nein'} – {j.grund}
+        </span>
+      )}
     </li>
   );
 }
@@ -74,6 +80,11 @@ export function JagdKarte() {
             <span class="klein">{zahl(k.offen)} laufen gerade</span>
           </div>
         </div>
+        {u.urteil && u.urteil.urteile > 0 && (
+          <p class="klein" data-testid="claude-urteil">
+            Claudes Urteil im Morgenlauf: „ja“ {zahl(u.urteil.ja.anzahl)} abgeschlossen, Volltreffer {u.urteil.ja.anzahl ? `${u.urteil.ja.quote.toLocaleString('de-DE')} %` : '–'}, Ø {u.urteil.ja.anzahl ? euro(u.urteil.ja.ev, { vorzeichen: true }) : '–'} · „nein“ {zahl(u.urteil.nein.anzahl)}, Volltreffer {u.urteil.nein.anzahl ? `${u.urteil.nein.quote.toLocaleString('de-DE')} %` : '–'}, Ø {u.urteil.nein.anzahl ? euro(u.urteil.nein.ev, { vorzeichen: true }) : '–'}
+          </p>
+        )}
         <h3>Laufende Jagden</h3>
         {u.offen.length ? (
           <ul class="muster-liste">

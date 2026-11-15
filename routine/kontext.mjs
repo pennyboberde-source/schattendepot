@@ -118,6 +118,21 @@ if (vt.length) p(`Volltreffer-Quote (≥ 15 % binnen 2 Wochen in Signalrichtung 
 if (statistik?.prognose?.n1T) p(`Deine Tagesprognosen bisher: ${statistik.prognose.quote1T} % Richtung richtig (n=${statistik.prognose.n1T}), Ø ${statistik.prognose.oe1T} % gerichtet.`);
 p('');
 
+// V5 (Plan Volltreffer): Lauerliste des Bereichs Volltreffer – Claude urteilt, der Code misst
+if (typ === 'morgenlauf') {
+  const vu = await json('volltreffer/uebersicht.json', null);
+  const ll = vu?.lauerliste ?? [];
+  if (ll.length) {
+    p(`## 🎯 Volltreffer-Lauerliste (${vu.lauerlisteZahl} Werte, die obersten ${Math.min(10, ll.length)}) – Urteil in \`volltrefferUrteil\``);
+    for (const j of ll.slice(0, 10)) p(`- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage · Muster: ${j.muster}`);
+    const k = vu.kennzahlen;
+    if (k?.anzahl) p(`Virtuelle Jagden bisher: ${k.anzahl} abgeschlossen, Volltreffer ${k.quote} %, Ø ${k.ev} € je Jagd.`);
+    const u = vu.urteil;
+    if (u?.ja?.anzahl || u?.nein?.anzahl) p(`Dein Urteil bisher: „ja“ ${u.ja.anzahl} Fälle, Volltreffer ${u.ja.quote} %, Ø ${u.ja.ev} € · „nein“ ${u.nein.anzahl} Fälle, Volltreffer ${u.nein.quote} %, Ø ${u.nein.ev} €.`);
+    p('');
+  }
+}
+
 // S3: Daytrading (eigener Bereich) knapp – nur Morgen-/Abendlauf und Wochenrückblick
 if (typ === 'morgenlauf' || typ === 'abendlauf' || typ === 'wochenrueckblick') {
   const dtU = await json('daytrading/uebersicht.json', null);

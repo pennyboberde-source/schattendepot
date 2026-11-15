@@ -560,6 +560,17 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     musterBuch.eintraege.push(eintrag);
   }
   schreibeJson('lernen/muster/muster-buch.json', musterBuch);
+  // V5: Claudes Urteile aus den Morgenläufen den Fällen zuordnen (Wert + Stichtag)
+  const urteilOrdner = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'volltreffer', 'urteile');
+  const urteile = new Map<string, { urteil: 'ja' | 'nein'; grund: string }>();
+  if (existsSync(urteilOrdner))
+    for (const f of readdirSync(urteilOrdner).filter((x) => x.endsWith('.json')))
+      for (const u of (JSON.parse(readFileSync(join(urteilOrdner, f), 'utf8')) as { urteile?: { wert: string; stichtag: string; urteil: 'ja' | 'nein'; grund: string }[] }).urteile ?? [])
+        urteile.set(`${u.wert.toUpperCase()}|${u.stichtag}`, { urteil: u.urteil, grund: u.grund });
+  for (const f of vorwaerts) {
+    const u = urteile.get(`${f.wert.toUpperCase()}|${f.stichtag}`);
+    if (u) Object.assign(f, u);
+  }
   const { jagden, uebersprungen } = jagdenWaehlen(vorwaerts, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze });
   const jeMuster = [...imTest.values()].map((e) => {
     const f = vorwaerts.filter((x) => x.muster === e.schluessel && x.art !== 'offen' && x.art !== 'lauert');
@@ -577,6 +588,8 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Keine Mitteilungen, kein echtes Geld.',
     regeln: { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, stufe2Faelle: v4.stufe2Faelle },
     kennzahlen: jagdKennzahlen(jagden),
+    // V5: Wie gut ist Claudes Urteil? Alle Fälle im Vorwärtstest mit „ja“ gegen „nein“ (nicht nur die gewählten Jagden)
+    urteil: { ja: jagdKennzahlen(vorwaerts.filter((f) => f.urteil === 'ja')), nein: jagdKennzahlen(vorwaerts.filter((f) => f.urteil === 'nein')), urteile: urteile.size },
     offen: jagden.filter((j) => j.art === 'offen').map(ohneMuster),
     abgeschlossen: jagden.filter((j) => j.art !== 'offen').sort((a, b) => (b.ende ?? '').localeCompare(a.ende ?? '')).slice(0, 30).map(ohneMuster),
     lauerliste: lauerliste.slice(0, v4.lauerlisteMax).map(ohneMuster),

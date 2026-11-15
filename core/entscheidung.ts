@@ -13,6 +13,8 @@ export interface Entscheidung {
   berichte?: { orderId: string; text: string; learnings: string[]; einwandEingetreten?: boolean; ersetzt?: boolean }[];
   /** Claudes Tagesprognose (Morgenlauf): bis 10 Werte mit Richtung, ohne Geld – wird im Schattenbuch gemessen */
   prognose?: TagesPrognose[];
+  /** V5 (Plan Volltreffer): Claudes Urteil über die Lauerliste des Bereichs Volltreffer – wird gespeichert und gemessen */
+  volltrefferUrteil?: VolltrefferUrteil[];
   /** Daytrading-Watchlist (Morgenlauf, S3): bis 5 Werte für den eigenen Bereich Daytrading */
   daytrading?: DaytradingWunsch[];
   lektionen?: string;
@@ -46,6 +48,22 @@ export function daytradingFehler(d: DaytradingWunsch): string | null {
   if (d.setup === 'level' && !(d.level && d.level > 0)) return 'Level-Setup braucht einen Level-Kurs in Euro';
   if (d.markt === 'krypto' && d.richtung !== 'long') return 'Krypto nur long (kein Krypto-Turbo)';
   return null;
+}
+
+export interface VolltrefferUrteil {
+  /** Kürzel wie in der Lauerliste (Aktie: US-Kürzel, Coin: z. B. BTC) */
+  wert: string;
+  markt: 'aktie' | 'krypto';
+  /** Stichtag des Lauerlisten-Eintrags (JJJJ-MM-TT) */
+  stichtag: string;
+  /** gibt es einen harten Anlass (Zahlen, Prognose, Zulassung, Auftrag, Übernahme …)? */
+  anlass?: boolean;
+  richtung?: 'hoch' | 'runter' | 'unklar';
+  /** Verdacht auf Werbung/Pump */
+  werbung?: boolean;
+  /** würde Claude diese Jagd eingehen? */
+  urteil: 'ja' | 'nein';
+  grund: string;
 }
 
 export interface TagesPrognose {

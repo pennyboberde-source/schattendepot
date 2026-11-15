@@ -23,6 +23,9 @@ export interface JagdFall {
   tag: number | null;
   fenster: number;
   spielart: string;
+  /** V5: Claudes Urteil im Morgenlauf (falls abgegeben) */
+  urteil?: 'ja' | 'nein';
+  grund?: string;
 }
 
 export interface JagdRegeln {
