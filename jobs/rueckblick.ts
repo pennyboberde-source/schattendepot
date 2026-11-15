@@ -247,6 +247,9 @@ for (const r of reihen) {
   const treffer: boolean[] = new Array(k.length).fill(false);
   const fertig: boolean[] = new Array(k.length).fill(false);
   const bester: (Episode | null)[] = new Array(k.length).fill(null);
+  // Ehrliche Fallzahl: je Wert und Gruppe höchstens ein Fall in `sperreTage` Handelstagen (wie bei den Hypothesen)
+  const gezaehltAm = new Int32Array(gruppen.length).fill(-1e9);
+  const sperre = vt.pruefung.sperreTage;
   const ausg = (i: number, sp: Spielart, x: Merkmale) => etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20), F);
   for (let i = 1; i < k.length - 1; i++) {
     const x = m[i];
@@ -260,6 +263,11 @@ for (const r of reihen) {
     const gEinzel = klassen.map((c, a) => (c === null ? -1 : gid.get(`${r.markt}|${a}=${c}`)!));
     const gPaare: number[] = [];
     for (let a = 0; a < E.length; a++) for (let b = a + 1; b < E.length; b++) if (klassen[a] !== null && klassen[b] !== null) gPaare.push(gid.get(`${r.markt}|${a}=${klassen[a]}&${b}=${klassen[b]}`)!);
+    const frei = (g: number) => g >= 0 && i - gezaehltAm[g] > sperre;
+    const alleFrei = frei(gAlle);
+    const einzelFrei = gEinzel.filter(frei);
+    const paareFrei = gPaare.filter(frei);
+    let gezaehlt = false;
     const turbo = turboErlaubt(r, x);
     SP.forEach((sp, s) => {
       if (sp.hebel > 1 && !turbo) return;
@@ -267,10 +275,11 @@ for (const r of reihen) {
       a.forEach((au, f) => {
         if (!au) return;
         if (F[f] === 10 || au.art === 'treffer') fertig[i] = true;
-        zw.add(gAlle, s, f, z, au);
+        gezaehlt = true;
+        if (alleFrei) zw.add(gAlle, s, f, z, au);
         if (!standard[s]) return;
-        for (const g of gEinzel) if (g >= 0) zw.add(g, s, f, z, au);
-        if (paarF[f]) for (const g of gPaare) zw.add(g, s, f, z, au);
+        for (const g of einzelFrei) zw.add(g, s, f, z, au);
+        if (paarF[f]) for (const g of paareFrei) zw.add(g, s, f, z, au);
         // Zensus: echter Sprung – Volltreffer mit Standard-Stop binnen 10 Handelstagen, höchstens Hebel zensusMaxHebel
         if (au.art === 'treffer' && F[f] <= 10 && sp.hebel <= vt.etikett.zensusMaxHebel && (!bester[i] || au.netto > bester[i]!.netto)) {
           treffer[i] = true;
@@ -278,6 +287,7 @@ for (const r of reihen) {
         }
       });
     });
+    if (gezaehlt) for (const g of [alleFrei ? gAlle : -1, ...einzelFrei, ...paareFrei]) if (g >= 0) gezaehltAm[g] = i;
   }
   for (const i of sprungEpisoden(treffer, vt.etikett.episodeAbstand)) if (bester[i]) episoden.push(bester[i]!);
   // Grundrate je Tag und Markt
@@ -347,7 +357,7 @@ const gruppenText = (name: string) => {
     })
     .join(' und ')}`;
 };
-const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese' })[] = [];
+const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number })[] = [];
 for (const name of gruppen) {
   const g = gid.get(name)!;
   const markt = name.split('|')[0];
@@ -358,7 +368,12 @@ for (const name of gruppen) {
       const ges = zw.gesamt(g, s, fi);
       if (!ges.n) return;
       const p = pruefen(gruppenText(name), spielartText(sp), f, [zw.werte(g, s, fi, 0), zw.werte(g, s, fi, 1)], zw.gesamt(gA, s, fi), vt.pruefung.mindestFaelle);
-      ergebnisse.push({ ...p, schluessel: name, art });
+      // Vorteil gegen die Grundrate (dieselbe Spielart, jeden Stichtag): ohne ihn ist ein „Muster“ nur der Markttrend
+      const basisA = zw.werte(gA, s, fi, 0);
+      const basisB = zw.werte(gA, s, fi, 1);
+      const vorteilA = Math.round((p.zeitraeume[0].ev - basisA.ev) * 10) / 10;
+      const vorteilB = Math.round((p.zeitraeume[1].ev - basisB.ev) * 10) / 10;
+      ergebnisse.push({ ...p, schluessel: name, art, vorteil: art !== 'alle' && vorteilA > 0 && vorteilB > 0, vorteilA, vorteilB });
     });
   });
 }
@@ -366,10 +381,11 @@ for (const name of gruppen) {
 const besteJeGruppe = new Map<string, (typeof ergebnisse)[number]>();
 for (const e of ergebnisse) {
   const b = besteJeGruppe.get(e.schluessel);
-  if (!b || (e.bestanden && !b.bestanden) || (e.bestanden === b.bestanden && e.wertung > b.wertung)) besteJeGruppe.set(e.schluessel, e);
+  const rang = (x: typeof e) => (x.bestanden ? 2 : x.zeitraeume.every((k) => k.n >= vt.pruefung.mindestFaelle) ? 1 : 0);
+  if (!b || rang(e) > rang(b) || (rang(e) === rang(b) && e.wertung > b.wertung)) besteJeGruppe.set(e.schluessel, e);
 }
 const beste = [...besteJeGruppe.values()];
-const sortiert = (l: typeof beste) => [...l].sort((a, b) => b.wertung - a.wertung);
+const sortiert = (l: typeof beste) => [...l].sort((a, b) => Number(b.vorteil) - Number(a.vorteil) || b.wertung - a.wertung);
 const kurz = (e: (typeof ergebnisse)[number]) => ({
   gruppe: e.gruppe,
   spielart: e.spielart,
@@ -384,18 +400,23 @@ const kurz = (e: (typeof ergebnisse)[number]) => ({
   zeitraumA: { n: e.zeitraeume[0].n, quote: e.zeitraeume[0].quote, ev: e.zeitraeume[0].ev, se: e.zeitraeume[0].se },
   zeitraumB: { n: e.zeitraeume[1].n, quote: e.zeitraeume[1].quote, ev: e.zeitraeume[1].ev, se: e.zeitraeume[1].se },
   knockoutQuote: e.gesamt.n ? Math.round((e.gesamt.knockout / e.gesamt.n) * 1000) / 10 : 0,
+  vorteil: e.vorteil,
+  vorteilA: e.vorteilA,
+  vorteilB: e.vorteilB,
 });
-const bestanden = sortiert(beste.filter((e) => e.bestanden));
+const bestanden = sortiert(beste.filter((e) => e.bestanden && e.art !== 'alle'));
+const mitVorteil = bestanden.filter((e) => e.vorteil);
 const grundraten = ergebnisse.filter((e) => e.art === 'alle').map(kurz);
 const hypothesen = sortiert(beste.filter((e) => e.art === 'hypothese')).map(kurz);
 const n = vt.pruefung.rangliste;
 
 const rangliste = {
   stand: jetzt.toISOString(),
-  hinweis: 'Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. Handelbarkeit ist eine Näherung. Einzelmerkmale und Kombinationen zählen jeden Stichtag (überlappende Fälle – Standardfehler eher zu klein); Hypothesen zählen je Wert höchstens einmal in 10 Handelstagen.',
+  hinweis: 'Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise.',
   zeitraum: { von: alleTage[0], bis: alleTage[alleTage.length - 1], grenze },
   umfang: { stichtage, reihen: reihen.length, episoden: episoden.length, aktien: reihen.filter((r) => r.markt === 'aktie').length, coins: reihen.filter((r) => r.markt === 'krypto').length },
   bestandenZahl: bestanden.length,
+  mitVorteilZahl: mitVorteil.length,
   bestanden: bestanden.slice(0, n).map(kurz),
   besteOhneBestehen: sortiert(beste.filter((e) => !e.bestanden && e.art !== 'alle')).slice(0, 15).map(kurz),
   hypothesen,
@@ -458,7 +479,7 @@ writeFileSync(join(aus, `zensus-${heute}.csv.gz`), gzipSync(Buffer.from(zensusCs
 writeFileSync(join(aus, `pruefung-${heute}.json.gz`), gzipSync(Buffer.from(JSON.stringify(sortiert(beste).map(kurz)), 'utf8'), { level: 9 }));
 
 // Log: nur Zählungen und verdichtete Kennzahlen
-log(`Fertig: ${bestanden.length} Gruppen bestanden. Beste: ${bestanden
+log(`Fertig: ${bestanden.length} Gruppen bestanden, davon ${mitVorteil.length} mit Vorteil gegen die Grundrate. Beste: ${bestanden
   .slice(0, 5)
   .map((e) => `${e.gruppe} – ${e.spielart}, ${e.fenster} T: Quote ${e.gesamt.quote} %, Ø ${e.gesamt.ev} € (A ${e.zeitraeume[0].ev}, B ${e.zeitraeume[1].ev})`)
   .join(' | ') || '–'}`);

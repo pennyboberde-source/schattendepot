@@ -19,12 +19,17 @@ interface Eintrag {
   zeitraumA: { n: number; quote: number; ev: number; se: number };
   zeitraumB: { n: number; quote: number; ev: number; se: number };
   knockoutQuote: number;
+  /** in beiden Zeiträumen besser als die Grundrate derselben Spielart */
+  vorteil?: boolean;
+  vorteilA?: number;
+  vorteilB?: number;
 }
 export interface Rangliste {
   stand: string;
   zeitraum: { von: string; bis: string; grenze: string };
   umfang: { stichtage: number; reihen: number; episoden: number; aktien: number; coins: number };
   bestandenZahl: number;
+  mitVorteilZahl?: number;
   bestanden: Eintrag[];
   besteOhneBestehen: Eintrag[];
   hypothesen: Eintrag[];
@@ -45,6 +50,11 @@ function Zeile({ e }: { e: Eintrag }) {
         Ø je Order: <b class={e.zeitraumA.ev >= 0 ? 'plus' : 'minus'}>{euro(e.zeitraumA.ev)}</b> im ersten, <b class={e.zeitraumB.ev >= 0 ? 'plus' : 'minus'}>{euro(e.zeitraumB.ev)}</b> im zweiten Zeitraum
         {e.knockoutQuote ? ` · Knock-out ${quote(e.knockoutQuote)}` : ''}
       </span>
+      {e.vorteilA !== undefined && e.vorteilB !== undefined && (
+        <span class="klein">
+          {e.vorteil ? '✅ echter Vorteil' : '⚠️ kein Vorteil'} gegen die Grundrate derselben Spielart: {euro(e.vorteilA)} / {euro(e.vorteilB)} je Order{e.vorteil ? '' : ' – vor allem Markttrend'}
+        </span>
+      )}
     </li>
   );
 }
@@ -133,7 +143,7 @@ export function VolltrefferRueckblickKarte() {
         <p class="klein">
           Wäre eine 1.000-€-Order ein Volltreffer (mindestens +400 € netto) geworden? Gerechnet über {zahl(r.umfang.stichtage)} handelbare Stichtage von {zahl(r.umfang.aktien)} Aktien und {zahl(r.umfang.coins)} Coins, {datumKurz(r.zeitraum.von)} bis {datumKurz(r.zeitraum.bis)}. {zahl(r.umfang.episoden)} Sprünge gezählt. Ein Muster besteht nur, wenn es in beiden Zeiträumen (vor und ab {datumKurz(r.zeitraum.grenze)}) mindestens 100 Fälle und im Schnitt Gewinn nach Kosten zeigt.
         </p>
-        <h3>{r.bestandenZahl ? `Bestanden: ${zahl(r.bestandenZahl)} Muster – die stärksten` : 'Noch kein Muster bestanden'}</h3>
+        <h3>{r.bestandenZahl ? `Bestanden: ${zahl(r.bestandenZahl)} Muster${r.mitVorteilZahl !== undefined ? `, davon ${zahl(r.mitVorteilZahl)} mit echtem Vorteil` : ''} – die stärksten` : 'Noch kein Muster bestanden'}</h3>
         {r.bestandenZahl ? (
           <ul class="muster-liste">
             {r.bestanden.slice(0, 8).map((e) => (

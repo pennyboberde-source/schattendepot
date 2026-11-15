@@ -65,7 +65,7 @@ test('Lernen zeigt den Volltreffer-Rückblick mit bestandenen Mustern und Hypoth
   await page.goto('/#/lernen');
   const karte = page.getByTestId('volltreffer-rueckblick');
   await expect(karte).toBeVisible();
-  await expect(karte.getByText('Bestanden: 1 Muster – die stärksten')).toBeVisible();
+  await expect(karte.getByText(/Bestanden: 1 Muster/)).toBeVisible();
   await expect(karte.getByText(/C9k Rückprall nach Ausverkauf/)).toBeVisible();
   const buch = page.getByTestId('trefferbuch');
   await expect(buch.getByText(/Vorzeichen: insider_cluster_kauf/)).toBeVisible();
