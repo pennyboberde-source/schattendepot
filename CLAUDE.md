@@ -28,7 +28,7 @@ Jobs (Datensammler, Kurswächter, Übernahme) sind Node-Skripte in TypeScript, d
 ## Branches (wichtig)
 - `main`: nur Code, Konfiguration und Routinen-Anweisungen (`routine/*.md`). Schreiben: Nutzer/Claude lokal.
 - `daten`: alle Laufzeitdaten (Ereignisprotokoll, Positionen, Signale, Lagebilder, Statistik, Lektionen, `termine.ics`). Schreiben: **nur** GitHub Actions (gemeinsame Concurrency-Gruppe `daten-schreiben`).
-- `claude/lauf-<datum>-<typ>`: Ausgabe je Routinen-Lauf. Eine Action prüft gegen JSON-Schema, übernimmt nach `daten`, sendet Pushes, deployt, löscht den Branch.
+- `claude/lauf-<datum>-<typ>`: Ausgabe je Routinen-Lauf. `uebernahme.yml` prüft gegen JSON-Schema, übernimmt nach `daten`, sendet Pushes, deployt, löscht den Branch – **nur per Zeitplan aus main** (alle 5 Min., 05–23 UTC; nachts der Kurswächter), **nie durch den Push** (sonst liefe die Workflow-Datei des Branches mit den Geheimnissen). Kein Workflow darf auf Pushes anderer Branches als `main` reagieren.
 - `claude/verbesserung-<datum>`: Ergebnis des wöchentlichen Verbesserungslaufs (Code!). Nur der Workflow `verbesserung.yml` fasst ihn an – per Zeitplan aus `main`, nie durch den Push des Branches. Die Daten-Übernahme (`claude/lauf-*`) lässt ihn in Ruhe.
 - `bau/<thema>`: Bau-Branch für den Probelauf vor dem Live-Gang (löst keinen Workflow aus). Nach bestandenem Probelauf per Fast-Forward nach `main`, danach löschen.
 - Routinen und Actions schreiben nie auf denselben Branch.

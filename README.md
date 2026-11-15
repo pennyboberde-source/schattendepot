@@ -14,7 +14,7 @@ App: https://pennyboberde-source.github.io/schattendepot/ (auf dem iPad in Safar
 | Datensammler | GitHub Actions (`sammler.yml`), reiner Code | Quellen abfragen, Signale vereinheitlichen und bewerten, Lagebild bauen, Kandidaten mitverfolgen |
 | Gehirn | Claude-Code-Routinen (Pro-Abo, kein API-Schlüssel) | Morgenlauf (Orders vormerken, Briefing), Abendlauf (Berichte, Lektionen), Ereignislauf, Wochenrückblick |
 | Kurswächter | GitHub Actions (`waechter.yml`, alle 15 Min.), reiner Code | Vormerkungen ausführen, Ziel/Stop/Termin/Knock-out prüfen, Pushes, Kalender, Ereignislauf auslösen |
-| Übernahme | GitHub Actions (`uebernahme.yml`) | Claude-Ergebnisse gegen Schema prüfen und übernehmen |
+| Übernahme | GitHub Actions (`uebernahme.yml`, nur per Zeitplan aus `main`, alle 5 Min.) | Claude-Ergebnisse gegen Schema prüfen und übernehmen |
 | Daten | JSON im Branch `daten` | Ereignisprotokoll (nur anhängen), daraus abgeleitet: Positionen, Statistik, Lagebilder … |
 | Push | Web Push (VAPID) aus Actions | Mitteilungen aufs iPad |
 
@@ -38,7 +38,7 @@ Sa     Datensammler (Gewichte anpassen) → Wochenrückblick 📊
 
 - `main` – Code, Konfiguration (`config/`), Routinen-Anweisungen (`routine/`), Schema (`schema/`).
 - `daten` – Laufzeitdaten; schreiben nur die Actions (Concurrency-Gruppe `daten-schreiben`).
-- `claude/lauf-<datum>-<typ>` – Ergebnis eines Routinen-Laufs; die Übernahme-Action prüft, übernimmt und löscht den Branch.
+- `claude/lauf-<datum>-<typ>` – Ergebnis eines Routinen-Laufs; die Übernahme-Action (per Zeitplan aus `main`, nie durch den Push) prüft, übernimmt und löscht den Branch.
 
 ### Verzeichnisse
 

@@ -1,6 +1,6 @@
 // Übernimmt Entscheidungen der Claude-Routinen von Branches claude/lauf-* in den daten-Branch.
-// Läuft als eigene Action (Push auf claude/**) und zusätzlich zu Beginn jedes Kurswächter-Laufs (falls eine
-// Übernahme-Action wegen der Concurrency-Gruppe verworfen wurde). Idempotent: bereits übernommene Dateien werden übersprungen.
+// Läuft als eigene Action (uebernahme.yml, nur per Zeitplan aus main alle 5 Min. – nie durch den Push des Branches)
+// und zusätzlich zu Beginn jedes Kurswächter-Laufs. Idempotent: bereits übernommene Dateien werden übersprungen.
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { execFileSync } from 'node:child_process';

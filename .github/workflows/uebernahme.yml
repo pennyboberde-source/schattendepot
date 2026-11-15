@@ -3,23 +3,64 @@ name: Übernahme Claude-Lauf
 # Ein Routinen-Lauf pusht seine Entscheidung auf claude/lauf-<datum>-<typ> (Branch von main abgezweigt).
 # Diese Action prüft sie gegen schema/entscheidung.schema.json, übernimmt sie in den daten-Branch,
 # sendet die Pushes, deployt und löscht den Branch.
+#
+# Sicherheit (Härtung 15.11.2026): Sie startet NUR per Zeitplan oder von Hand aus main, nie durch den Push des
+# Branches. Bei einem Push-Auslöser nähme GitHub die Workflow-Datei aus dem Routinen-Branch – mit den Geheimnissen.
+#   suchen      (nur lesen, ohne Geheimnisse)  gibt es Routinen-Branches, und ist die Gruppe daten-schreiben frei?
+#   uebernahme  (schreiben)                    läuft nur dann – so verdrängt ein Zeitplan-Lauf nie einen wartenden
+#                                              Sammler oder Wächter aus der Warteschlange
+# Zusätzlich übernimmt jeder Kurswächter-Lauf liegengebliebene Branches gleich zu Beginn (jobs/lib/uebernahme.ts).
 on:
-  push:
-    branches: ['claude/lauf-*'] # nur Routinen-Ergebnisse; Code-Sitzungen (claude/…) bleiben unberührt
+  schedule:
+    # alle 5 Min. von 05 bis 23 Uhr UTC (krumme Minuten); nachts übernimmt der Kurswächter (alle 30 Min.)
+    - cron: '3,8,13,18,23,28,33,38,43,48,53,58 5-23 * * *'
   workflow_dispatch:
 
 permissions:
-  contents: write
-  actions: write
-
-concurrency:
-  group: daten-schreiben
-  cancel-in-progress: false
+  contents: read
 
 jobs:
+  suchen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      los: ${{ steps.suchen.outputs.los }}
+    steps:
+      - name: Routinen-Branches und freie Warteschlange
+        id: suchen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          branches=$(git ls-remote --heads "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" 'claude/lauf-*' | wc -l)
+          echo "Routinen-Branches: $branches"
+          if [ "$branches" -eq 0 ]; then echo "los=nein" >> "$GITHUB_OUTPUT"; exit 0; fi
+          # Läuft oder wartet ein anderer Daten-Workflow? Dann nicht anstellen (sonst würde ein wartender Lauf
+          # verdrängt) – der nächste Zeitplan-Lauf oder der Kurswächter übernimmt.
+          besetzt=0
+          for s in queued pending waiting requested in_progress; do
+            n=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?status=$s&per_page=50" \
+              --jq "[.workflow_runs[] | select(.id != $GITHUB_RUN_ID) | select(.path | (endswith(\"/deploy.yml\") or endswith(\"/probelauf.yml\") or endswith(\"/archiv.yml\") or endswith(\"/historie.yml\")) | not)] | length")
+            if [ $? -ne 0 ] || [ -z "$n" ]; then n=1; fi
+            besetzt=$((besetzt + n))
+          done
+          echo "Andere Daten-Läufe aktiv oder wartend: $besetzt"
+          if [ "$besetzt" -eq 0 ]; then echo "los=ja" >> "$GITHUB_OUTPUT"; else echo "los=nein" >> "$GITHUB_OUTPUT"; fi
+
   uebernahme:
+    needs: suchen
+    if: needs.suchen.outputs.los == 'ja' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: write
+    concurrency:
+      group: daten-schreiben
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
         with:
