@@ -60,7 +60,19 @@ async function zahlenFmp() {
   return `Zahlen FMP (je 7 Tage): ${teile.join(' | ')}`;
 }
 
-for (const pruefung of [coingecko, zahlenFinnhub, zahlenFmp]) {
+async function zahlenSec() {
+  const kontakt = process.env.SEC_KONTAKT?.trim();
+  if (!kontakt) return 'Zahlen SEC: SEC_KONTAKT nicht gesetzt';
+  const r = await fetch('https://data.sec.gov/submissions/CIK0000320193.json', { headers: { 'User-Agent': `Schattendepot-Forschung ${kontakt}` }, signal: AbortSignal.timeout(30000) });
+  const j = await r.json().catch(() => null);
+  const s = j?.filings?.recent ?? {};
+  const zeiten = [];
+  for (let i = 0; i < (s.form?.length ?? 0) && zeiten.length < 4; i++) if (s.form[i] === '8-K' && String(s.items?.[i] ?? '').split(',').includes('2.02')) zeiten.push(`${s.filingDate[i]} angenommen ${s.acceptanceDateTime[i]}`);
+  const ok = r.status === 200 && zeiten.length > 0;
+  return `Zahlen SEC: ${ok ? 'OK' : 'FEHLER'} (HTTP ${r.status}, Branche ${j?.sic ?? '–'}, ältere Seiten ${j?.filings?.files?.length ?? 0}; letzte Zahlen-8-K der Beispielfirma (meldet 16:30 Ostküstenzeit): ${zeiten.join(' | ') || '–'})`;
+}
+
+for (const pruefung of [coingecko, zahlenFinnhub, zahlenFmp, zahlenSec]) {
   try {
     ergebnis.push(await pruefung());
   } catch (e) {

@@ -2,7 +2,8 @@
 // Tagesdatei ins PRIVATE Repo schattendepot-archiv (Checkout unter ARCHIV_DIR, Standard _archiv).
 // Aufruf: node jobs/archiv.ts   – der Lauf ist wiederholbar: Was schon da ist, wird nie überschrieben.
 // Ins öffentliche Repo geht nur der Stand in Zählungen (Ausgabe „stand“ → archiv/stand.json im Datenzweig).
-// Schalter (Umgebung): ARCHIV_NUR=krypto,us,gettex,kryptokerzen,ussplits (Standard: krypto,us,gettex – der tägliche Lauf).
+// Schalter (Umgebung): ARCHIV_NUR=krypto,us,gettex,stamm,boersenwert,zahlen,kryptokerzen,ussplits (Standard: krypto,us,gettex,stamm,boersenwert,zahlen – der tägliche Lauf).
+//   ZAHLEN_MAX=n: höchstens so viele SEC-Abrufe in diesem Lauf (Standard aus config/archiv.json); SEC_KONTAKT: Kontaktadresse für den User-Agent.
 //   US_AB=JJJJ-MM-TT und US_MAX_TAGE=n für den Rückblick (Kursgeschichte rückwärts, fortsetzbar – Workflow historie.yml).
 import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -31,6 +32,7 @@ import {
 } from '../core/sammelkurse.ts';
 import { figiEinordnen, handelbarkeitsKarte, type Wertpapier } from '../core/volltreffer/stamm.ts';
 import { boersenwertCsv, krakenZuSymbol, parseBoersenwertCsv, parseGeckoChart, parseGeckoMarkets, symbolZuId, type BoersenwertZeile } from '../core/volltreffer/boersenwert.ts';
+import { achtKAusTagesverzeichnis, parseSubmissions, secTickerKarte, zahlenAusSeite, zahlenVereinen, type ZahlenArchiv } from '../core/volltreffer/zahlen.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -43,6 +45,7 @@ interface ArchivConfig {
   stamm?: { maxAnfragen: number; pauseMs: number; fenster: number; mindestTage: number };
   boersenwert?: { seiten: number; maxVerlaeufe: number; pauseMs: number; tage: number };
   usSplits?: { jahreZurueck: number; nachfassenTage: number };
+  zahlen?: { jahre: number; maxAnfragen: number; abstandMs: number; parallel: number; zeitzone: 'ET' | 'UTC'; nachfassenTage: number; speichernAlle: number };
 }
 interface Index {
   stand?: string;
@@ -57,6 +60,8 @@ interface Index {
   stamm?: { wertpapiere: number; handelbar: number; handelbarUs: number; gettexTage: number; offen: number; geholt: string };
   /** Börsenwert der Coins (stamm/krypto-boersenwert.csv.gz) in Zählungen */
   boersenwert?: { coins: number; zeilen: number; verlaeufeOffen: number; geholt: string };
+  /** Zahlen-Termine und Branchen aus EDGAR (stamm/us-zahlen.json.gz) in Zählungen */
+  usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string };
 }
 
 const ARCHIV = process.env.ARCHIV_DIR ?? '_archiv';
@@ -70,7 +75,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -412,6 +417,132 @@ async function usSplits() {
   console.log(`US-Splits: ${alle.length} Einträge (${alle.length - alt.length} neu, abgefragt ab ${ab}).`);
 }
 
+// ---------- Zahlen-Termine und Branchen (SEC EDGAR: frei, ohne Schlüssel; die SEC verlangt eine Kontaktadresse) ----------
+// Erster Abruf: je Firma die Meldungen der letzten zwei Jahre (fortsetzbar über mehrere Läufe, Budget je Lauf); danach
+// nur die Firmen, die laut EDGAR-Tagesverzeichnis seit dem letzten Lauf ein 8-K eingereicht haben.
+async function zahlen() {
+  const kontakt = process.env.SEC_KONTAKT?.trim();
+  if (!kontakt || !kontakt.includes('@')) {
+    console.log('Zahlen (SEC): SEC_KONTAKT fehlt – übersprungen (die SEC verlangt eine Kontaktadresse im User-Agent).');
+    return;
+  }
+  const zc = cfg.zahlen ?? { jahre: 2, maxAnfragen: 1500, abstandMs: 130, parallel: 4, zeitzone: 'ET' as const, nachfassenTage: 10, speichernAlle: 500 };
+  const max = Number(process.env.ZAHLEN_MAX) > 0 ? Math.floor(Number(process.env.ZAHLEN_MAX)) : zc.maxAnfragen;
+  const ua = `Schattendepot-Forschung ${kontakt}`;
+  const datei = join(ARCHIV, 'stamm', 'us-zahlen.json.gz');
+  const heute = iso.slice(0, 10);
+  const gestern = tagPlus(heute, -1);
+  const a: ZahlenArchiv = existsSync(datei)
+    ? (JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as ZahlenArchiv)
+    : { stand: iso, ab: tagPlus(heute, -Math.round(zc.jahre * 365.25) - 30), tageBis: gestern, firmen: {} };
+  // nur schreiben, wenn sich etwas geändert hat (das private Repo soll nicht mit gleichen Ständen wachsen)
+  const inhalt = () => JSON.stringify({ ...a, stand: '' });
+  const vorher = existsSync(datei) ? inhalt() : '';
+  const speichern = () => {
+    if (inhalt() === vorher) return false;
+    a.stand = iso;
+    mkdirSync(dirname(datei), { recursive: true });
+    writeFileSync(datei, gzipSync(Buffer.from(JSON.stringify(a), 'utf8'), { level: 9 }));
+    return true;
+  };
+  // höchstens 1000/abstandMs Abrufe je Sekunde über alle parallelen Abrufe (SEC: höchstens 10 je Sekunde)
+  let anfragen = 0;
+  let naechste = 0;
+  const holen = async (url: string) => {
+    const slot = Math.max(Date.now(), naechste);
+    naechste = slot + zc.abstandMs;
+    if (slot > Date.now()) await pause(slot - Date.now());
+    anfragen++;
+    const r = await fetch(url, { headers: { 'User-Agent': ua, Accept: 'application/json, text/plain' }, signal: AbortSignal.timeout(60000) });
+    if (r.status === 403 || r.status === 429) throw new Error(`SEC lehnt ab (HTTP ${r.status}) – Abrufe für heute beendet`);
+    return r;
+  };
+
+  // 1. Kürzel-Liste: welche Firmen gibt es, welche Kürzel tragen sie heute?
+  const tr = await holen('https://www.sec.gov/files/company_tickers.json');
+  if (tr.status !== 200) throw new Error(`SEC-Kürzelliste: HTTP ${tr.status}`);
+  const karte = secTickerKarte(await tr.json().catch(() => null));
+  if (karte.size < 1000) throw new Error(`SEC-Kürzelliste: nur ${karte.size} Firmen`);
+  for (const [cik, tickers] of karte) {
+    const f = a.firmen[cik];
+    if (!f) a.firmen[cik] = { tickers, sic: null, zahlen: [] };
+    else f.tickers = [...new Set([...tickers, ...f.tickers])];
+  }
+
+  // 2. Nachfassen: Firmen mit einem 8-K seit dem letzten Lauf (EDGAR-Tagesverzeichnis, ein Abruf je Tag)
+  const nachholen = new Set<string>();
+  let tag = tagPlus(a.tageBis ?? gestern, 1);
+  for (let n = 0; tag <= gestern && n < zc.nachfassenTage; n++, tag = tagPlus(tag, 1)) {
+    const wt = new Date(`${tag}T12:00:00Z`).getUTCDay();
+    if (wt === 0 || wt === 6) {
+      a.tageBis = tag;
+      continue;
+    }
+    const q = Math.floor((Number(tag.slice(5, 7)) - 1) / 3) + 1;
+    const r = await holen(`https://www.sec.gov/Archives/edgar/daily-index/${tag.slice(0, 4)}/QTR${q}/form.${tag.replace(/-/g, '')}.idx`);
+    if (r.status === 200) {
+      for (const cik of achtKAusTagesverzeichnis(await r.text())) if (a.firmen[cik]?.geholt) nachholen.add(cik);
+      a.tageBis = tag;
+    } else if (r.status === 404 && tag < gestern) a.tageBis = tag; // Feiertag
+    else break; // gestern noch nicht veröffentlicht → nächster Lauf
+  }
+
+  // 3. Meldungen je Firma holen: erst die nachzufassenden, dann die noch nie abgerufenen
+  const liste = [...nachholen, ...Object.keys(a.firmen).filter((c) => !a.firmen[c].geholt)];
+  let fertig = 0;
+  let ohneDaten = 0;
+  let abbruch: Error | null = null;
+  let pos = 0;
+  const arbeiter = async () => {
+    while (!abbruch && pos < liste.length && anfragen < max) {
+      const cik = liste[pos++];
+      const f = a.firmen[cik];
+      try {
+        const r = await holen(`https://data.sec.gov/submissions/CIK${cik.padStart(10, '0')}.json`);
+        const p = r.status === 200 ? parseSubmissions(await r.json().catch(() => null), a.ab, zc.zeitzone) : null;
+        if (!p) {
+          ohneDaten++;
+          f.geholt = heute;
+          continue;
+        }
+        let z = p.zahlen;
+        for (const name of p.weitere) {
+          if (anfragen >= max) break;
+          const rs = await holen(`https://data.sec.gov/submissions/${name}`);
+          if (rs.status === 200) z = zahlenVereinen(z, zahlenAusSeite(await rs.json().catch(() => null), a.ab, zc.zeitzone));
+        }
+        f.sic = p.sic ?? f.sic;
+        f.zahlen = zahlenVereinen(f.zahlen, z);
+        f.geholt = heute;
+        if (++fertig % zc.speichernAlle === 0) speichern();
+      } catch (e) {
+        if (/SEC lehnt ab/.test((e as Error).message)) abbruch = e as Error;
+        else ohneDaten++;
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: Math.max(1, zc.parallel) }, arbeiter));
+  if (speichern()) neu.push('stamm/us-zahlen');
+  const firmen = Object.values(a.firmen);
+  const geholt = firmen.filter((f) => f.geholt);
+  const uz = {
+    firmen: firmen.length,
+    abgerufen: geholt.length,
+    offen: firmen.length - geholt.length,
+    mitZahlen: geholt.filter((f) => f.zahlen.length).length,
+    meldungen: geholt.reduce((s, f) => s + f.zahlen.length, 0),
+    mitBranche: geholt.filter((f) => f.sic).length,
+    ab: a.ab,
+    tageBis: a.tageBis ?? null,
+    geholt: iso,
+  };
+  index.usZahlen = uz;
+  console.log(
+    `Zahlen (SEC): ${fertig} Firmen abgerufen (${nachholen.size} nachgefasst, ${ohneDaten} ohne Daten), ${anfragen} Anfragen; Stand: ${geholt.length} von ${firmen.length} Firmen, ${uz.mitZahlen} mit Zahlen-Meldungen (${uz.meldungen} insgesamt), ${uz.mitBranche} mit Branche, ${uz.offen} offen, Tagesverzeichnis bis ${a.tageBis ?? '–'}.`,
+  );
+  if (abbruch) throw abbruch;
+}
+
 // ---------- gettex: Tageskerzen je ISIN aus allen 15-Minuten-Dateien ----------
 async function gettex() {
   const b = berlin(jetzt);
@@ -473,6 +604,7 @@ const TEILE = [
   ['ussplits', 'US-Splits', usSplits],
   ['stamm', 'Stammdaten', stamm],
   ['boersenwert', 'Börsenwert', boersenwert],
+  ['zahlen', 'Zahlen-Termine (SEC)', zahlen],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -517,6 +649,7 @@ const stand = {
   },
   stamm: index.stamm ?? null,
   boersenwert: index.boersenwert ?? null,
+  zahlen: index.usZahlen ?? null,
   neu: neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };

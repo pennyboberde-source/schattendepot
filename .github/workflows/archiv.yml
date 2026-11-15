@@ -44,6 +44,7 @@ jobs:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
           OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          SEC_KONTAKT: ${{ secrets.SEC_KONTAKT }}
         run: node jobs/archiv.ts
       - name: Archiv sichern
         if: always()

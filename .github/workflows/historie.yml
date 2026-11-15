@@ -5,6 +5,7 @@ name: Kursgeschichte
 #                   4 Tage je Minute, in Runden mit Sicherung nach jeder Runde (fortsetzbar, nichts wird überschrieben)
 #   kryptokerzen  – Kraken-Tageskerzen (UTC) aller Paare gegen Euro und Dollar, bis zu 720 Tage
 #   ussplits      – Aktiensplits und Zusammenlegungen als Liste, die nur wächst
+#   zahlen        – Zahlen-Termine (8-K Punkt 2.02 mit Uhrzeit) und Branchen aller US-Firmen aus EDGAR (SEC), zwei Jahre
 # Wöchentlich (So 03:20 UTC) füllt derselbe Workflow die Krypto-Tageskerzen und Splits der letzten Woche nach.
 # Ins öffentliche Repo geht nur der Stand in Zählungen (archiv/stand.json). Die Logs zeigen nur Zählungen.
 on:
@@ -13,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       teile:
-        description: 'us, kryptokerzen, ussplits (mit Komma)'
+        description: 'us, kryptokerzen, ussplits, zahlen (mit Komma)'
         default: 'us,kryptokerzen,ussplits'
       us_ab:
         description: 'US ab diesem Tag (JJJJ-MM-TT; leer = vor 2 Jahren und 5 Tagen)'
@@ -50,6 +51,9 @@ jobs:
         id: historie
         env:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
+          SEC_KONTAKT: ${{ secrets.SEC_KONTAKT }}
+          # Zahlen-Termine: im Rückblick-Lauf alle Firmen auf einmal (rund 20–40 Minuten), im täglichen Archivlauf nur ein Teil
+          ZAHLEN_MAX: '30000'
           TEILE: ${{ github.event.inputs.teile || 'kryptokerzen,ussplits' }}
           US_AB_EINGABE: ${{ github.event.inputs.us_ab }}
           RUNDEN: ${{ github.event.inputs.runden || '14' }}

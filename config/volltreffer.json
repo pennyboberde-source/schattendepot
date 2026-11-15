@@ -266,14 +266,50 @@
           "1 Mrd. bis 10 Mrd. $",
           "ab 10 Mrd. $"
         ]
+      },
+      {
+        "merkmal": "zahlen",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Reaktion am Stichtag",
+          "Reaktion am Vortag",
+          "vor 2 bis 5 Handelstagen",
+          "vor 6 bis 20 Handelstagen",
+          "keine in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "branche",
+        "grenzen": [
+          0.5,
+          1.5,
+          2.5,
+          3.5,
+          4.5,
+          5.5
+        ],
+        "namen": [
+          "Pharma/Biotech",
+          "Medizintechnik/Gesundheit",
+          "Technologie",
+          "Finanzen/Immobilien",
+          "SPAC/Mantelgesellschaft",
+          "Energie/Rohstoffe",
+          "Sonstige"
+        ]
       }
     ]
   },
   "v4": {
-    "hinweis": "Bereich Volltreffer, virtuell (Konzept V4): höchstens maxOffen Jagden gleichzeitig, nach tagesVerlustGrenze € realisiertem Verlust am nächsten Einstiegstag keine neue Jagd; höchstens vorwaertsMax Muster gleichzeitig im Vorwärtstest; Stufe 2 ab stufe2Faelle Fällen mit Ø im Band des Rückblicks. Noch nicht umgesetzt (fehlende Daten): höchstens 2 Jagden je Thema, Pump-Verdacht, Nachziehstop ab +200 €.",
-    "maxOffen": 5,
-    "tagesVerlustGrenze": 450,
-    "vorwaertsMax": 30,
+    "hinweis": "Bereich Volltreffer, virtuell (Konzept V4): höchstens maxOffen Jagden gleichzeitig, nach tagesVerlustGrenze € realisiertem Verlust am nächsten Einstiegstag keine neue Jagd; höchstens vorwaertsMax Muster gleichzeitig im Vorwärtstest; Stufe 2 ab stufe2Faelle Fällen mit Ø im Band des Rückblicks. 15.11.2026 abends auf Wunsch des Nutzers („so viele Volltreffer wie möglich“): 10 statt 5 Jagden gleichzeitig, Tagesverlustgrenze im selben Verhältnis 900 statt 450 €, 40 statt 30 Muster im Vorwärtstest. Nachziehstop ab +200 € ist als Spielart gemessen (im Schnitt schlechter, nur wo besser gewählt). Nicht umgesetzt: höchstens 2 Jagden je Thema (würde Jagden kosten; Branche ist jetzt Merkmal im Rückblick), eigener Pump-Filter (Turbo-Handelbarkeit verlangt schon großen Umsatz).",
+    "maxOffen": 10,
+    "tagesVerlustGrenze": 900,
+    "vorwaertsMax": 40,
     "lauerlisteMax": 40,
     "stufe2Faelle": 20,
     "mindestQuote": 10

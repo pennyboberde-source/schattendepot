@@ -16,6 +16,7 @@ import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekan
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { schluesselNormal } from '../core/signale.ts';
 import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenwert.ts';
+import { brancheAusSic, firmaJeTicker, zahlenAbstaende, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
 
 type Markt = 'aktie' | 'krypto';
 interface VtConfig {
@@ -118,6 +119,35 @@ const boersenwerte = new Map<string, Map<string, number>>();
   log(`Börsenwert: ${boersenwerte.size} Coins mit Verlauf.`);
 }
 
+// Zahlen-Termine und Branchen (SEC EDGAR, privat im Archiv): Abstand zum letzten Reaktionstag auf Quartalszahlen – nur
+// Vergangenes, künftige Termine fließen nicht ein – und die Branche aus dem SIC-Code
+let zahlenAb = '9999-12-31';
+const firmen = new Map<string, ZahlenFirma>();
+{
+  const p = join(ARCHIV, 'stamm', 'us-zahlen.json.gz');
+  if (existsSync(p)) {
+    const a = JSON.parse(gz(p)) as ZahlenArchiv;
+    zahlenAb = a.ab;
+    for (const [t, f] of firmaJeTicker(a)) firmen.set(t, f);
+  }
+  const mit = new Set(reihen.filter((r) => r.markt === 'aktie' && firmen.has(r.schluessel.slice(2).split('#')[0])).map((r) => r.schluessel.split('#')[0]));
+  log(`Zahlen-Termine (SEC): ${firmen.size} Kürzel, ${mit.size} US-Reihen mit Zahlen und Branche, vollständig ab ${firmen.size ? zahlenAb : '–'}.`);
+}
+/** Abstand zum Zahlen-Reaktionstag je Stichtag der zuletzt gefragten Reihe (die Durchgänge gehen Reihe für Reihe vor) */
+let zahlenCache: { r: Reihe; je: Map<string, number | null> } | null = null;
+const zahlenAm = (r: Reihe, datum: string): number | null => {
+  if (r.markt !== 'aktie') return null;
+  const f = firmen.get(r.schluessel.slice(2).split('#')[0]);
+  if (!f) return null;
+  if (zahlenCache?.r !== r) {
+    const daten = r.kerzen.map((k) => k.datum);
+    const abst = zahlenAbstaende(daten, f.zahlen, zahlenAb);
+    zahlenCache = { r, je: new Map(daten.map((d, i) => [d, abst[i]])) };
+  }
+  return zahlenCache.je.get(datum) ?? null;
+};
+const brancheVon = (r: Reihe): number | null => (r.markt === 'aktie' ? brancheAusSic(firmen.get(r.schluessel.slice(2).split('#')[0])?.sic) : null);
+
 // ---------- 2. Kosten je Wertklasse ----------
 const spreadProzent = (klasseName: string) => (cfg.spreads.klassen as Record<string, { prozent: number }>)[klasseName]?.prozent ?? 3;
 const kosten = (markt: Markt, umsatz20: number | null): EtikettKosten => {
@@ -194,12 +224,13 @@ const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
 const zw = new Zaehlwerk(gruppen.length, SP.length, F.length, 2);
 log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
-const merkmalWert = (e: Einteilung, m: Merkmale, kontext: { marktR1: number; ueberrendite1: number; boersenwert: number | null }): number | null =>
-  e.merkmal === 'marktR1' ? kontext.marktR1 : e.merkmal === 'ueberrendite1' ? kontext.ueberrendite1 : e.merkmal === 'boersenwert' ? kontext.boersenwert : (m[e.merkmal as keyof Merkmale] as number | null);
+type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null };
+const merkmalWert = (e: Einteilung, m: Merkmale, kontext: Kontext): number | null =>
+  e.merkmal === 'marktR1' || e.merkmal === 'ueberrendite1' || e.merkmal === 'boersenwert' || e.merkmal === 'zahlen' || e.merkmal === 'branche' ? kontext[e.merkmal] : (m[e.merkmal as keyof Merkmale] as number | null);
 /** Klasse je Einteilung an einem Stichtag (Durchgang 2 und Klumpen-Prüfung rechnen genau gleich) */
 const klassenAm = (r: Reihe, x: Merkmale, datum: string) => {
   const mr = marktR1[r.markt].get(datum) ?? 0;
-  const kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null };
+  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r) };
   return E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
 };
 
@@ -415,7 +446,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
@@ -738,7 +769,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
   const ohneMuster = (j: JagdFall) => ({ ...j, muster: musterText.get(j.muster) ?? j.muster });
   schreibeJson('volltreffer/uebersicht.json', {
     stand: jetzt.toISOString(),
-    hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens ' + v4.mindestQuote + ' % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Keine Mitteilungen, kein echtes Geld.',
+    hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens ' + v4.mindestQuote + ' % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Mitteilungen nur gesammelt in der Abendbilanz, kein echtes Geld.',
     regeln: { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, stufe2Faelle: v4.stufe2Faelle },
     kennzahlen: jagdKennzahlen(jagden),
     // V5: Wie gut ist Claudes Urteil? Alle Fälle im Vorwärtstest mit „ja“ gegen „nein“ (nicht nur die gewählten Jagden)
