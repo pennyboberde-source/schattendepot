@@ -479,6 +479,584 @@
         "faelle": 11541
       },
       "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|1=1&13=1|5L150|10",
+      "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Markt am Stichtag %: -2 bis -0,5",
+      "gruppenSchluessel": "aktie|1=1&13=1",
+      "sp": "5L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 38.6,
+      "rueckblick": {
+        "quote": 32.99,
+        "ev": 43.1,
+        "se": 19.4,
+        "faelle": 5977
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|5=0&13=1|5L150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Markt am Stichtag %: -2 bis -0,5",
+      "gruppenSchluessel": "aktie|5=0&13=1",
+      "sp": "5L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 22.9,
+      "rueckblick": {
+        "quote": 32.02,
+        "ev": 31.5,
+        "se": 16.5,
+        "faelle": 3398
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|4=3&13=1|5L150|10",
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 2 bis 4 und Markt am Stichtag %: -2 bis -0,5",
+      "gruppenSchluessel": "aktie|4=3&13=1",
+      "sp": "5L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 19.3,
+      "rueckblick": {
+        "quote": 18.33,
+        "ev": 25.9,
+        "se": 18.7,
+        "faelle": 5608
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|0=2&9=1|10L150|10",
+      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Schwankung je Tag %: 1 bis 2",
+      "gruppenSchluessel": "aktie|0=2&9=1",
+      "sp": "10L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 10.8,
+      "rueckblick": {
+        "quote": 29.68,
+        "ev": 17.8,
+        "se": 18.9,
+        "faelle": 5518
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|5=1&13=1|5L150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: 10 bis 30 % darunter und Markt am Stichtag %: -2 bis -0,5",
+      "gruppenSchluessel": "aktie|5=1&13=1",
+      "sp": "5L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 5.4,
+      "rueckblick": {
+        "quote": 24.47,
+        "ev": 8.3,
+        "se": 8.1,
+        "faelle": 17157
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|1=2&13=1|10L150|10",
+      "gruppe": "Aktien: 5-Tage-Rendite %: -10 bis 0 und Markt am Stichtag %: -2 bis -0,5",
+      "gruppenSchluessel": "aktie|1=2&13=1",
+      "sp": "10L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 4.4,
+      "rueckblick": {
+        "quote": 25.05,
+        "ev": 7.1,
+        "se": 7.5,
+        "faelle": 30917
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|9=1&10=4|1L150|10",
+      "gruppe": "Aktien: Schwankung je Tag %: 1 bis 2 und Ø Tagesumsatz: ab 100000000",
+      "gruppenSchluessel": "aktie|9=1&10=4",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 3.2,
+      "rueckblick": {
+        "quote": 0.06,
+        "ev": 4.5,
+        "se": 2.4,
+        "faelle": 12652
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|3=0&13=1|3L150|10",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Markt am Stichtag %: -2 bis -0,5",
+      "gruppenSchluessel": "aktie|3=0&13=1",
+      "sp": "3L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 3.1,
+      "rueckblick": {
+        "quote": 12.34,
+        "ev": 7,
+        "se": 18.3,
+        "faelle": 4579
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|9=2&10=3|1L150|10",
+      "gruppe": "Aktien: Schwankung je Tag %: 2 bis 4 und Ø Tagesumsatz: 20000000 bis 100000000",
+      "gruppenSchluessel": "aktie|9=2&10=3",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 0.9,
+      "rueckblick": {
+        "quote": 0.85,
+        "ev": 3.2,
+        "se": 3.7,
+        "faelle": 15261
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|9=1&10=3|1L150|10",
+      "gruppe": "Aktien: Schwankung je Tag %: 1 bis 2 und Ø Tagesumsatz: 20000000 bis 100000000",
+      "gruppenSchluessel": "aktie|9=1&10=3",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 0.5,
+      "rueckblick": {
+        "quote": 0.1,
+        "ev": 1.8,
+        "se": 2.1,
+        "faelle": 13585
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|4=3&9=1|10L150|10",
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 2 bis 4 und Schwankung je Tag %: 1 bis 2",
+      "gruppenSchluessel": "aktie|4=3&9=1",
+      "sp": "10L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 0.4,
+      "rueckblick": {
+        "quote": 26.4,
+        "ev": 5,
+        "se": 22.7,
+        "faelle": 5588
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|9=0&10=4|1L150|10",
+      "gruppe": "Aktien: Schwankung je Tag %: unter 1 und Ø Tagesumsatz: ab 100000000",
+      "gruppenSchluessel": "aktie|9=0&10=4",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 0.4,
+      "rueckblick": {
+        "quote": 0,
+        "ev": 1.3,
+        "se": 1.4,
+        "faelle": 4937
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|4=3&12=2|5L150|10",
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 2 bis 4 und Tagesrendite über dem Markt %: -5 bis 5",
+      "gruppenSchluessel": "aktie|4=3&12=2",
+      "sp": "5L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 0.3,
+      "rueckblick": {
+        "quote": 15.22,
+        "ev": 3,
+        "se": 12.1,
+        "faelle": 11153
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|5=2&10=3|1L150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: 3 bis 10 % darunter und Ø Tagesumsatz: 20000000 bis 100000000",
+      "gruppenSchluessel": "aktie|5=2&10=3",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 0.3,
+      "rueckblick": {
+        "quote": 1.13,
+        "ev": 2.1,
+        "se": 2.5,
+        "faelle": 22653
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|3=0&10=4|1L150|10",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Ø Tagesumsatz: ab 100000000",
+      "gruppenSchluessel": "aktie|3=0&10=4",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 0.1,
+      "rueckblick": {
+        "quote": 1.16,
+        "ev": 1.7,
+        "se": 11.7,
+        "faelle": 7395
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|7=3&10=4|1L150|10",
+      "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,8 bis 0,95 und Ø Tagesumsatz: ab 100000000",
+      "gruppenSchluessel": "aktie|7=3&10=4",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": -0.1,
+      "rueckblick": {
+        "quote": 0.93,
+        "ev": 1,
+        "se": 4.3,
+        "faelle": 19574
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|9=1&11=4|1L150|10",
+      "gruppe": "Aktien: Schwankung je Tag %: 1 bis 2 und Kurs: ab 100",
+      "gruppenSchluessel": "aktie|9=1&11=4",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": -0.1,
+      "rueckblick": {
+        "quote": 0.05,
+        "ev": 1.2,
+        "se": 2.2,
+        "faelle": 11541
+      },
+      "status": "beendet",
+      "grund": "besteht im Rückblick nicht mehr mit Vorteil",
+      "am": "2026-11-15"
+    },
+    {
+      "schluessel": "aktie|2=1&13=0|2L150|10",
+      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Markt am Stichtag %: unter -2",
+      "gruppenSchluessel": "aktie|2=1&13=0",
+      "sp": "2L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 74.8,
+      "rueckblick": {
+        "quote": 22.84,
+        "ev": 92.6,
+        "se": 24.2,
+        "faelle": 1160
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|5=0&13=0|2L150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Markt am Stichtag %: unter -2",
+      "gruppenSchluessel": "aktie|5=0&13=0",
+      "sp": "2L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 63.9,
+      "rueckblick": {
+        "quote": 29.61,
+        "ev": 78.7,
+        "se": 21.9,
+        "faelle": 939
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|9=3&13=0|2L150|10",
+      "gruppe": "Aktien: Schwankung je Tag %: 4 bis 8 und Markt am Stichtag %: unter -2",
+      "gruppenSchluessel": "aktie|9=3&13=0",
+      "sp": "2L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 42.1,
+      "rueckblick": {
+        "quote": 18.05,
+        "ev": 51.2,
+        "se": 19.7,
+        "faelle": 1939
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|2=0&13=3|3S150|10",
+      "gruppe": "Aktien: 20-Tage-Rendite %: unter -50 und Markt am Stichtag %: 0,5 bis 2",
+      "gruppenSchluessel": "aktie|2=0&13=3",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 37.4,
+      "rueckblick": {
+        "quote": 37.7,
+        "ev": 62,
+        "se": 19.1,
+        "faelle": 512
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|7=2&13=0|5L150|10",
+      "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,5 bis 0,8 und Markt am Stichtag %: unter -2",
+      "gruppenSchluessel": "aktie|7=2&13=0",
+      "sp": "5L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 35.8,
+      "rueckblick": {
+        "quote": 27.2,
+        "ev": 61.8,
+        "se": 22,
+        "faelle": 2430
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|1=1&13=0|3L150|10",
+      "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Markt am Stichtag %: unter -2",
+      "gruppenSchluessel": "aktie|1=1&13=0",
+      "sp": "3L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 33.1,
+      "rueckblick": {
+        "quote": 23.56,
+        "ev": 43,
+        "se": 15.6,
+        "faelle": 2411
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|0=3&8=0|2S150|10",
+      "gruppe": "Aktien: Tagesrendite %: -3 bis 3 und Kurslücke %: unter -10",
+      "gruppenSchluessel": "aktie|0=3&8=0",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 30.5,
+      "rueckblick": {
+        "quote": 33.91,
+        "ev": 58.9,
+        "se": 25.4,
+        "faelle": 233
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|3=2&8=0|3S150|10",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 1 bis 2 und Kurslücke %: unter -10",
+      "gruppenSchluessel": "aktie|3=2&8=0",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 27.4,
+      "rueckblick": {
+        "quote": 35.65,
+        "ev": 55,
+        "se": 15.3,
+        "faelle": 864
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|1=2&8=0|3S150|10",
+      "gruppe": "Aktien: 5-Tage-Rendite %: -10 bis 0 und Kurslücke %: unter -10",
+      "gruppenSchluessel": "aktie|1=2&8=0",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 21.3,
+      "rueckblick": {
+        "quote": 27.5,
+        "ev": 42.7,
+        "se": 15.7,
+        "faelle": 600
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|0=2&8=3|2L150|10",
+      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Kurslücke %: 3 bis 10",
+      "gruppenSchluessel": "aktie|0=2&8=3",
+      "sp": "2L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 19.7,
+      "rueckblick": {
+        "quote": 25.75,
+        "ev": 47.3,
+        "se": 7.5,
+        "faelle": 2241
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|8=0&13=1|3S150|10",
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: -2 bis -0,5",
+      "gruppenSchluessel": "aktie|8=0&13=1",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 19.2,
+      "rueckblick": {
+        "quote": 31.68,
+        "ev": 45,
+        "se": 12.7,
+        "faelle": 865
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|2=1&8=0|5S150|10",
+      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Kurslücke %: unter -10",
+      "gruppenSchluessel": "aktie|2=1&8=0",
+      "sp": "5S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 18.6,
+      "rueckblick": {
+        "quote": 32.61,
+        "ev": 34.5,
+        "se": 12.8,
+        "faelle": 1064
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|3=1&8=0|2S150|10",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 0,5 bis 1 und Kurslücke %: unter -10",
+      "gruppenSchluessel": "aktie|3=1&8=0",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 18.2,
+      "rueckblick": {
+        "quote": 31.53,
+        "ev": 35.7,
+        "se": 20.9,
+        "faelle": 517
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|5=1&13=0|3L150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: 10 bis 30 % darunter und Markt am Stichtag %: unter -2",
+      "gruppenSchluessel": "aktie|5=1&13=0",
+      "sp": "3L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 17.7,
+      "rueckblick": {
+        "quote": 12.87,
+        "ev": 21.5,
+        "se": 15.3,
+        "faelle": 5345
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|5=1&13=4|1L150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: 10 bis 30 % darunter und Markt am Stichtag %: ab 2",
+      "gruppenSchluessel": "aktie|5=1&13=4",
+      "sp": "1L150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 16.7,
+      "rueckblick": {
+        "quote": 2.94,
+        "ev": 19,
+        "se": 2.2,
+        "faelle": 9011
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|8=0&13=3|3S150|10",
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: 0,5 bis 2",
+      "gruppenSchluessel": "aktie|8=0&13=3",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 16.4,
+      "rueckblick": {
+        "quote": 27.89,
+        "ev": 31.1,
+        "se": 15.5,
+        "faelle": 606
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|2=5&8=0|2S150|10",
+      "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Kurslücke %: unter -10",
+      "gruppenSchluessel": "aktie|2=5&8=0",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "wertung": 16.3,
+      "rueckblick": {
+        "quote": 33.64,
+        "ev": 35.2,
+        "se": 16.5,
+        "faelle": 541
+      },
+      "status": "vorwaertstest"
     }
   ]
 }

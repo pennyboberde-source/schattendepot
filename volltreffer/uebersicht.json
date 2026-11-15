@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-15T12:36:11.999Z",
+  "stand": "2026-11-15T13:41:42.945Z",
   "hinweis": "Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens 5 Jagden gleichzeitig, nach 450 € Tagesverlust am Folgetag keine neue. Keine Mitteilungen, kein echtes Geld.",
   "regeln": {
     "maxOffen": 5,
@@ -15,10 +15,253 @@
     "summe": 0,
     "offen": 0
   },
+  "urteil": {
+    "ja": {
+      "anzahl": 0,
+      "volltreffer": 0,
+      "quote": 0,
+      "oeNiete": 0,
+      "ev": 0,
+      "summe": 0,
+      "offen": 0
+    },
+    "nein": {
+      "anzahl": 0,
+      "volltreffer": 0,
+      "quote": 0,
+      "oeNiete": 0,
+      "ev": 0,
+      "summe": 0,
+      "offen": 0
+    },
+    "urteile": 0
+  },
   "offen": [],
   "abgeschlossen": [],
   "lauerliste": [],
   "lauerlisteZahl": 0,
   "uebersprungen": 0,
-  "muster": []
+  "muster": [
+    {
+      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Markt am Stichtag %: -2 bis -0,5",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 32.89,
+        "ev": 39.4,
+        "se": 16.4,
+        "faelle": 4114
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 2 bis 4 und Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): unter 0,2",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 19.39,
+        "ev": 14.4,
+        "se": 19.4,
+        "faelle": 7848
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): unter 0,2 und Markt am Stichtag %: -2 bis -0,5",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 17.86,
+        "ev": 9.1,
+        "se": 6.9,
+        "faelle": 25740
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 2 bis 4 und Ø Tagesumsatz: ab 100000000",
+      "spielart": "direkt, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 1.35,
+        "ev": 7.2,
+        "se": 6.1,
+        "faelle": 7622
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Markt am Stichtag %: -2 bis -0,5",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 25.45,
+        "ev": 11.1,
+        "se": 11.2,
+        "faelle": 14021
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Kurs: 5 bis 20 und Markt am Stichtag %: -2 bis -0,5",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 24.59,
+        "ev": 8.5,
+        "se": 12.7,
+        "faelle": 7268
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Schwankung je Tag %: 2 bis 4",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 18.69,
+        "ev": 8.3,
+        "se": 21.9,
+        "faelle": 2520
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 2 bis 5 und Ø Tagesumsatz: ab 100000000",
+      "spielart": "direkt, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 1.14,
+        "ev": 2.8,
+        "se": 8.4,
+        "faelle": 7695
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Hoch: bis 3 % darunter und Ø Tagesumsatz: ab 100000000",
+      "spielart": "direkt, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 0.6,
+        "ev": 1.8,
+        "se": 2.5,
+        "faelle": 15993
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Tagesspanne (× Ø 20 Tage): 2 bis 4",
+      "spielart": "Turbo long Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 7.33,
+        "ev": 4.8,
+        "se": 14.4,
+        "faelle": 6019
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: 20-Tage-Hoch: 3 bis 10 % darunter und Ø Tagesumsatz: ab 100000000",
+      "spielart": "direkt, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 0.61,
+        "ev": 1.9,
+        "se": 2.6,
+        "faelle": 19378
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: 5-Tage-Rendite %: 0 bis 10 und Ø Tagesumsatz: ab 100000000",
+      "spielart": "direkt, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 0.78,
+        "ev": 1.5,
+        "se": 2.7,
+        "faelle": 24109
+      },
+      "stufe2": false
+    },
+    {
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 1 bis 2 und Ø Tagesumsatz: ab 100000000",
+      "spielart": "direkt, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 0.9,
+        "ev": 1.2,
+        "se": 2.8,
+        "faelle": 23429
+      },
+      "stufe2": false
+    }
+  ]
 }
