@@ -25,7 +25,7 @@ main (Code)                       daten (nur Actions schreiben)          claude/
 **Datenfluss pro Tag (Mo–Fr):**
 1. 06:30 Datensammler (Code) → Signale, Bewertung, `lagebild/<datum>.md` (≤ ~6.000 Tokens).
 2. 07:30 Morgenlauf (Claude): liest Statistik → Lektionen → Lagebild, ≤ 5 Websuchen, schreibt `claude/lauf-<datum>-morgen` mit Order-Vormerkungen, Anpassungen und Briefing.
-3. Übernahme-Action (seit 15.11.2026 per Zeitplan aus `main` alle 5 Min., nie durch den Push): Schema-Prüfung → nach `daten` → Briefing-Push (~07:50) → Deploy → Branch löschen.
+3. Übernahme-Action (seit 15.11.2026 immer aus `main`, angestoßen über `routine-meldung.yml`): Schema-Prüfung → nach `daten` → Briefing-Push (~07:50) → Deploy → Branch löschen.
 4. 08:00–22:00 alle 15 Min. Kurswächter (Code): Vormerkungen zum Briefkurs ausführen, Ziel/Stop/Termin/Knock-out prüfen, Pushes, `termine.ics`, Warn-Push bis 10:00 ohne Order, bei ±5 % → Ereignislauf per `/fire` (max. 1/Tag).
 5. Stündlich Datensammler: Meldungen zu offenen Positionen; starke Meldung → Ereignislauf (gleiche Tagessperre).
 6. 22:15 Abendlauf (Claude): Abschlussberichte, Learnings, Lektionen, Gewichtsvorschläge → Übernahme-Action → Statistik und Gewichte rechnet der Code.

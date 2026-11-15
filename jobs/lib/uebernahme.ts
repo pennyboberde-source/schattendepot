@@ -1,5 +1,5 @@
 // Übernimmt Entscheidungen der Claude-Routinen von Branches claude/lauf-* in den daten-Branch.
-// Läuft als eigene Action (uebernahme.yml, nur per Zeitplan aus main alle 5 Min. – nie durch den Push des Branches)
+// Läuft als eigene Action (uebernahme.yml, immer aus main: per workflow_run nach routine-meldung.yml, Rückfall Zeitplan)
 // und zusätzlich zu Beginn jedes Kurswächter-Laufs. Idempotent: bereits übernommene Dateien werden übersprungen.
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';

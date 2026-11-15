@@ -1,0 +1,17 @@
+name: Routinen-Ergebnis gemeldet
+
+# Startet beim Push eines Routinen-Ergebnisses (claude/lauf-*) – ohne Geheimnisse, ohne Rechte, ohne Code aus dem Branch.
+# Er stößt über workflow_run nur die Übernahme an (uebernahme.yml); die läuft immer aus main, nur dort gibt es Geheimnisse.
+# So kommen die Ergebnisse sofort an, obwohl GitHub Zeitpläne oft stark verzögert oder auslässt.
+on:
+  push:
+    branches: ['claude/lauf-*']
+
+permissions: {}
+
+jobs:
+  melden:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - run: echo "Routinen-Ergebnis auf $GITHUB_REF_NAME – die Übernahme startet aus main."
