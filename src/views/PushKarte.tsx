@@ -78,7 +78,7 @@ export function PushKarte() {
       {code && (
         <div class="push-code">
           <p>
-            <strong>Letzter Schritt:</strong> Code kopieren und auf GitHub als Secret mit dem Namen <code>PUSH_SUBSCRIPTION</code> speichern.
+            <strong>Letzter Schritt:</strong> Code kopieren und auf GitHub im Tresor speichern: „live“ antippen, beim Secret <code>PUSH_SUBSCRIPTION</code> auf den Stift tippen, Code einsetzen, „Update secret“. Nur dort lesen ihn die Jobs.
           </p>
           <textarea readOnly rows={4} value={code} aria-label="Push-Code" onFocus={(e) => (e.target as HTMLTextAreaElement).select()} />
           <div class="knopfreihe">
@@ -86,12 +86,12 @@ export function PushKarte() {
               {kopiert ? 'Kopiert ✓' : 'Push-Code kopieren'}
             </button>
             {REPO && (
-              <a class="knopf zweitrangig" href={`https://github.com/${REPO}/settings/secrets/actions/new`} target="_blank" rel="noopener noreferrer">
-                Secret auf GitHub anlegen
+              <a class="knopf zweitrangig" href={`https://github.com/${REPO}/settings/environments`} target="_blank" rel="noopener noreferrer">
+                Tresor auf GitHub öffnen
               </a>
             )}
           </div>
-          <p class="klein">Zeigt GitHub „404“? Die Home-Bildschirm-App ist dort nicht angemeldet. Dann den Code kopieren, <strong>Safari</strong> öffnen, bei GitHub anmelden und <code>github.com/{REPO}/settings/secrets/actions/new</code> aufrufen.</p>
+          <p class="klein">Zeigt GitHub „404“? Die Home-Bildschirm-App ist dort nicht angemeldet. Dann den Code kopieren, <strong>Safari</strong> öffnen, bei GitHub anmelden und <code>github.com/{REPO}/settings/environments</code> aufrufen.</p>
           <p class="klein">Kurz danach kommt automatisch eine Test-Mitteilung „✅ Push verbunden“.</p>
         </div>
       )}
