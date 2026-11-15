@@ -25,7 +25,7 @@ interface VtConfig {
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
   pruefung: { mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
-  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number };
+  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number };
 }
 
 const t0 = Date.now();
@@ -675,14 +675,21 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
   const v4 = vt.v4;
   // Zurückstufen: Ein Muster im Vorwärtstest, das im heutigen Rückblick nicht mehr mit Vorteil besteht, wird beendet
   // (Eintrag „beendet“ – das Buch wird nur angehängt). Seine bisherigen Vorwärts-Fälle bleiben im Protokoll dieses Laufs.
-  const heuteGut = new Set(ergebnisse.filter((e) => e.bestanden && e.vorteil).map((e) => `${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`));
-  const beendet = [...imTest.values()].filter((e) => !heuteGut.has(e.schluessel));
+  // Maßstab ist der Volltreffer: Muster, die fast nie einen bringen (Quote unter v4.mindestQuote), belegen keinen Platz
+  const mitVorteilHeute = new Map(ergebnisse.filter((e) => e.bestanden && e.vorteil).map((e) => [`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, e]));
+  const beendet = [...imTest.values()].filter((e) => !mitVorteilHeute.has(e.schluessel) || mitVorteilHeute.get(e.schluessel)!.gesamt.quote < v4.mindestQuote);
   for (const e of beendet) {
-    musterBuch.eintraege.push({ ...e, status: 'beendet', grund: 'besteht im Rückblick nicht mehr mit Vorteil', am: heute } as BuchMuster);
+    const grund = mitVorteilHeute.has(e.schluessel) ? `Volltreffer-Quote unter ${v4.mindestQuote} %` : 'besteht im Rückblick nicht mehr mit Vorteil';
+    musterBuch.eintraege.push({ ...e, status: 'beendet', grund, am: heute } as BuchMuster);
     imTest.delete(e.schluessel);
   }
+  // Reihenfolge der Jagden nach der heutigen Wertung (mit Klumpen-Standardfehler), nicht nach der vom Eintragstag
+  for (const f of vorwaerts) {
+    const w = mitVorteilHeute.get(f.muster)?.wertung;
+    if (w !== undefined) f.wertung = w;
+  }
   // neue Muster: bestanden mit Vorteil gegen die Grundrate (beste Spielart je Gruppe), stärkste zuerst
-  const neu =mitVorteil.filter((e) => !imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)).slice(0, Math.max(0, v4.vorwaertsMax - imTest.size));
+  const neu = mitVorteil.filter((e) => e.gesamt.quote >= v4.mindestQuote && !imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)).slice(0, Math.max(0, v4.vorwaertsMax - imTest.size));
   for (const e of neu) {
     const eintrag: BuchMuster = { schluessel: `${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, gruppe: e.gruppe, gruppenSchluessel: e.schluessel, sp: e.spielartSchluessel, fenster: e.fenster, seit: heute, wertung: e.wertung, rueckblick: { quote: e.gesamt.quote, ev: e.gesamt.ev, se: e.gesamt.se, faelle: e.gesamt.n }, status: 'vorwaertstest' };
     musterBuch.eintraege.push(eintrag);
@@ -713,7 +720,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
   const ohneMuster = (j: JagdFall) => ({ ...j, muster: musterText.get(j.muster) ?? j.muster });
   schreibeJson('volltreffer/uebersicht.json', {
     stand: jetzt.toISOString(),
-    hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Keine Mitteilungen, kein echtes Geld.',
+    hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens ' + v4.mindestQuote + ' % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Keine Mitteilungen, kein echtes Geld.',
     regeln: { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, stufe2Faelle: v4.stufe2Faelle },
     kennzahlen: jagdKennzahlen(jagden),
     // V5: Wie gut ist Claudes Urteil? Alle Fälle im Vorwärtstest mit „ja“ gegen „nein“ (nicht nur die gewählten Jagden)
