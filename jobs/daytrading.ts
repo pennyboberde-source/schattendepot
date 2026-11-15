@@ -11,6 +11,7 @@ import { abendbilanzText, setupVarianten, tradeBeschreibung, uebersichtBerechnen
 import { istVirtuell, kerzenAusGeschaeften, krakenKerzen, sitzung, tradesAusEreignissen, tradeSchritt, ausstiegAusfuehren, ergebnisRechnen, type VirtuellRegel, type DtEreignis, type DtMarkt, type DtTrade, type Kerze, type MarktConfig, type Sitzung } from '../core/daytrading/kern.ts';
 import { historie, monteCarlo, volleSitzungen } from '../core/daytrading/zeitmaschine.ts';
 import { euro } from '../core/geld.ts';
+import { jagdBilanz, type JagdUebersicht } from '../core/volltreffer/jagd.ts';
 import type { GebuehrenConfig } from '../core/gebuehren.ts';
 import { berlin, istHandelstag, uhrzeitMinuten } from '../core/kalender.ts';
 import type { PushNachricht } from '../core/push.ts';
@@ -441,6 +442,13 @@ if ((handelstag || kryptoTaeglich) && b.minuten >= bilanzAb && zustand.abendbila
   if (heute.length) {
     const a = abendbilanzText(uebersicht, heute);
     pushes.push({ typ: 'bericht', titel: a.titel, text: a.text, ziel: '#/daytrading', tag: `dt-bilanz-${datum}`, erstellt: iso });
+  }
+  // Volltreffer (V4): virtuelle Jagden nur in der Abendbilanz – was seit der letzten Bilanz begonnen oder geendet hat
+  const vu = handelstag ? leseJson<JagdUebersicht | null>('volltreffer/uebersicht.json', null) : null;
+  const vb = vu?.offen && vu.abgeschlossen ? jagdBilanz(vu, leseJson<{ schluessel: string[] }>('volltreffer/gemeldet.json', { schluessel: [] }).schluessel) : null;
+  if (vb) {
+    pushes.push({ typ: 'bericht', titel: vb.titel, text: vb.text, ziel: '#/volltreffer', tag: `vt-bilanz-${datum}`, erstellt: iso });
+    schreibeJson('volltreffer/gemeldet.json', { hinweis: 'Schon in der Abendbilanz gemeldete Volltreffer-Jagden (Beginn/Ende), damit nichts doppelt kommt.', schluessel: vb.gemeldet });
   }
   zustand.abendbilanz = datum;
   zustandSichern(zustand);

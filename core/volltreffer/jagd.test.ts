@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from './jagd.ts';
+import { jagdBilanz, jagdenWaehlen, jagdKennzahlen, type JagdFall } from './jagd.ts';
 
 const fall = (wert: string, einstieg: string | null, ende: string | null, art: JagdFall['art'], netto: number | null, wertung = 10): JagdFall => ({ muster: 'm', wertung, wert, markt: 'aktie', stichtag: einstieg ?? '2026-12-31', einstieg, ende, art, netto, tag: 1, fenster: 10, spielart: 'direkt, Stop 150 €' });
 
@@ -29,5 +29,39 @@ describe('Virtuelle Jagden', () => {
   it('Ausstieg am Nachziehstop zählt als abgeschlossene Jagd (kein Volltreffer)', () => {
     const k = jagdKennzahlen([fall('A', 'x', 'y', 'gesichert', 150), fall('B', 'x', 'y', 'niete', -150)]);
     expect(k).toMatchObject({ anzahl: 2, volltreffer: 0, quote: 0, ev: 0, offen: 0 });
+  });
+});
+
+describe('Abendbilanz der Jagden', () => {
+  /** Euro-Beträge haben ein geschütztes Leerzeichen vor dem €-Zeichen */
+  const n = (s: string) => s.replace(/\u00a0/g, ' ');
+  const offen = fall('ABC', '2026-12-03', null, 'offen', 35);
+  const treffer = fall('XYZ', '2026-12-01', '2026-12-02', 'treffer', 400);
+  const stop = fall('QQQ', '2026-12-01', '2026-12-02', 'niete', -150);
+  const u = { kennzahlen: jagdKennzahlen([treffer, stop, offen]), offen: [offen], abgeschlossen: [treffer, stop] };
+
+  it('meldet Beendete und Neue mit Summe, Stand und „virtuell“', () => {
+    const b = jagdBilanz(u, [])!;
+    expect(n(b.titel)).toBe('🎯 Volltreffer-Jagden: 2 beendet, +250,00 €');
+    expect(n(b.text)).toContain('🎯 XYZ +400,00 €');
+    expect(n(b.text)).toContain('❌ QQQ −150,00 €');
+    expect(n(b.text)).toContain('▶️ ABC (direkt)');
+    expect(n(b.text)).toContain('bisher 2 beendet, 1 Volltreffer');
+    expect(n(b.text)).toMatch(/virtuell, Stand heute früh$/);
+  });
+
+  it('nichts doppelt: am nächsten Abend ohne Neues keine Bilanz', () => {
+    const b = jagdBilanz(u, [])!;
+    expect(jagdBilanz(u, b.gemeldet)).toBeNull();
+    // die laufende Jagd endet → nur sie wird gemeldet
+    const fertig = { ...offen, ende: '2026-12-05', art: 'gesichert' as const, netto: 120 };
+    const b2 = jagdBilanz({ ...u, offen: [], abgeschlossen: [fertig, treffer, stop] }, b.gemeldet)!;
+    expect(n(b2.titel)).toBe('🎯 Volltreffer-Jagden: 1 beendet, +120,00 €');
+    expect(n(b2.text)).toContain('🔒 ABC +120,00 €');
+    expect(n(b2.text)).not.toContain('XYZ');
+  });
+
+  it('ohne Jagden keine Bilanz', () => {
+    expect(jagdBilanz({ kennzahlen: jagdKennzahlen([]), offen: [], abgeschlossen: [] }, [])).toBeNull();
   });
 });

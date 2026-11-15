@@ -2,6 +2,7 @@
 // Jagden – höchstens `maxOffen` gleichzeitig, bei Gleichstand das Muster mit der besseren Wertung zuerst, und nach
 // einem Tag mit `tagesVerlustGrenze` € realisierten Verlusten am Folgetag keine neue Jagd. Alles wird aus den
 // Tageskerzen nachgerechnet; es gibt keinen Zustand, der sich nachträglich ändern ließe.
+import { euro } from '../geld.ts';
 
 export interface JagdFall {
   /** Schlüssel des Musters (Gruppe|Spielart|Fenster) */
@@ -93,4 +94,37 @@ export function jagdKennzahlen(jagden: JagdFall[]): JagdKennzahlen {
     summe: Math.round(summe * 100) / 100,
     offen: jagden.filter((j) => j.art === 'offen').length,
   };
+}
+
+/** Der Teil von volltreffer/uebersicht.json, den die Abendbilanz liest */
+export interface JagdUebersicht {
+  kennzahlen: JagdKennzahlen;
+  offen: JagdFall[];
+  abgeschlossen: JagdFall[];
+}
+
+const ZEICHEN: Record<string, string> = { treffer: '🎯', niete: '❌', zeit: '⏱️', gesichert: '🔒' };
+const jagdSchluessel = (j: JagdFall) => `${j.muster}|${j.wert}|${j.einstieg}`;
+
+/**
+ * Abendbilanz der virtuellen Jagden (Plan V4: Jagden erscheinen nur hier, nie als Einzelmitteilung). Meldet nur, was seit
+ * der letzten Bilanz neu ist – begonnene und beendete Jagden, erkannt an ihren Schlüsseln in `gemeldet`. Nichts Neues → null.
+ * Die Jagden rechnet der Rückblick früh aus den Tageskerzen bis zum Vortag; die Bilanz sagt deshalb „Stand heute früh“.
+ */
+export function jagdBilanz(u: JagdUebersicht, gemeldet: string[]): { titel: string; text: string; gemeldet: string[] } | null {
+  const schon = new Set(gemeldet);
+  const neuEnde = u.abgeschlossen.filter((j) => !schon.has(`${jagdSchluessel(j)}|ende`));
+  const neuStart = u.offen.filter((j) => !schon.has(`${jagdSchluessel(j)}|start`));
+  if (!neuEnde.length && !neuStart.length) return null;
+  const summe = neuEnde.reduce((s, j) => s + (j.netto ?? 0), 0);
+  const k = u.kennzahlen;
+  const teile = [
+    ...neuEnde.map((j) => `${ZEICHEN[j.art] ?? ''} ${j.wert} ${euro(j.netto ?? 0, { vorzeichen: true })}`.trim()),
+    ...neuStart.map((j) => `▶️ ${j.wert} (${j.spielart.split(',')[0]})`),
+    u.offen.length ? `${u.offen.length} laufen` : '',
+    k.anzahl ? `bisher ${k.anzahl} beendet, ${k.volltreffer} Volltreffer, Ø ${euro(k.ev, { vorzeichen: true })} je Jagd` : '',
+  ].filter(Boolean);
+  const titel = neuEnde.length ? `🎯 Volltreffer-Jagden: ${neuEnde.length} beendet, ${euro(summe, { vorzeichen: true })}` : `🎯 Volltreffer-Jagden: ${neuStart.length} neu`;
+  const neueSchluessel = [...neuEnde.flatMap((j) => [`${jagdSchluessel(j)}|ende`, `${jagdSchluessel(j)}|start`]), ...neuStart.map((j) => `${jagdSchluessel(j)}|start`)];
+  return { titel, text: `${teile.join(' · ')} – virtuell, Stand heute früh`, gemeldet: [...new Set([...gemeldet, ...neueSchluessel])].slice(-600) };
 }
