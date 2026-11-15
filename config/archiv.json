@@ -52,12 +52,12 @@
     "tage": 365
   },
   "zahlen": {
-    "hinweis": "Zahlen-Termine (8-K mit Punkt 2.02, mit Annahmezeit) und Branchen-Code (SIC) aus den amtlichen SEC-Meldungen (EDGAR): frei und ohne Schlüssel; die SEC verlangt eine Kontaktadresse im User-Agent (Secret SEC_KONTAKT) und höchstens 10 Abrufe je Sekunde. Erster Abruf je Firma über zwei Jahre (fortsetzbar, maxAnfragen je Lauf; im Workflow historie.yml mehr), danach nur Firmen mit einem 8-K laut Tagesverzeichnis. zeitzone: wie EDGAR die Annahmezeit angibt (ET = Ortszeit New York trotz „Z“).",
+    "hinweis": "Zahlen-Termine (8-K mit Punkt 2.02, mit Annahmezeit) und Branchen-Code (SIC) aus den amtlichen SEC-Meldungen (EDGAR): frei und ohne Schlüssel; die SEC verlangt eine Kontaktadresse im User-Agent (Secret SEC_KONTAKT) und höchstens 10 Abrufe je Sekunde. Erster Abruf je Firma über zwei Jahre (fortsetzbar, maxAnfragen je Lauf; im Workflow historie.yml mehr), danach nur Firmen mit einem 8-K laut Tagesverzeichnis. zeitzone: wie EDGAR die Annahmezeit angibt – geprüft 15.11.2026 (Probe art=schluessel): echte Weltzeit (Beispielfirma meldet 16:30 Ostküstenzeit, EDGAR zeigt 21:30Z im Winter, 20:30Z im Sommer) → UTC, wird auf die Ostküste umgerechnet.",
     "jahre": 2,
     "maxAnfragen": 1500,
     "abstandMs": 130,
     "parallel": 4,
-    "zeitzone": "ET",
+    "zeitzone": "UTC",
     "nachfassenTage": 10,
     "speichernAlle": 500
   }
