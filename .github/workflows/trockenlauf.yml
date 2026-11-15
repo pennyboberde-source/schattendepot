@@ -10,6 +10,9 @@ permissions:
 jobs:
   trockenlauf:
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5

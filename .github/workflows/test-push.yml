@@ -15,12 +15,16 @@ concurrency:
 jobs:
   test-push:
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     steps:
       - uses: actions/checkout@v5
       - uses: actions/checkout@v5
         with:
           ref: daten
           path: _daten
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
       - uses: actions/setup-node@v5
         with:
           node-version: 24

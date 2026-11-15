@@ -20,6 +20,9 @@ permissions:
 jobs:
   archiv:
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 40
     concurrency:
       group: archiv-schreiben
@@ -54,6 +57,9 @@ jobs:
     needs: archiv
     if: always() && needs.archiv.outputs.stand != ''
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 5
     permissions:
       contents: write
@@ -68,6 +74,7 @@ jobs:
         with:
           ref: daten
           path: _daten
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
       - name: Stand in Zählungen in den Datenzweig
         env:
           STAND: ${{ needs.archiv.outputs.stand }}

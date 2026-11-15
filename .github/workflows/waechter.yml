@@ -21,6 +21,9 @@ concurrency:
 jobs:
   waechter:
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
@@ -28,6 +31,7 @@ jobs:
         with:
           ref: daten
           path: _daten
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
       - name: Privater Zustand (Schattenbuch, Tagesstände) – scheitert der Zugang, läuft der Job ohne ihn weiter
         uses: actions/checkout@v5
         continue-on-error: true

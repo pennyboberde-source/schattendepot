@@ -22,6 +22,9 @@ permissions:
 jobs:
   probelauf:
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v5

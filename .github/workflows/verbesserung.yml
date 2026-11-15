@@ -48,6 +48,9 @@ jobs:
     needs: finden
     if: needs.finden.outputs.branch != ''
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 40
     permissions:
       contents: read
@@ -94,6 +97,9 @@ jobs:
     needs: [finden, pruefen]
     if: needs.pruefen.outputs.ok == 'ja'
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 15
     permissions:
       contents: write
@@ -106,10 +112,12 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
       - uses: actions/checkout@v5
         with:
           ref: daten
           path: _daten
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
       - uses: actions/setup-node@v5
         with:
           node-version: 24
@@ -138,6 +146,9 @@ jobs:
     needs: [finden, pruefen]
     if: always() && needs.pruefen.outputs.ok == 'nein'
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 10
     permissions:
       contents: write
@@ -155,6 +166,7 @@ jobs:
         with:
           ref: daten
           path: _daten
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
       - uses: actions/setup-node@v5
         with:
           node-version: 24

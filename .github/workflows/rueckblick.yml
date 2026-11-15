@@ -21,6 +21,9 @@ permissions:
 jobs:
   rechnen:
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 120
     concurrency:
       # die Probe schreibt nicht ins Archiv und stört dessen Warteschlange nicht
@@ -71,6 +74,9 @@ jobs:
     needs: rechnen
     if: ${{ !inputs.probe }}
     runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
     timeout-minutes: 5
     permissions:
       contents: write
@@ -85,6 +91,7 @@ jobs:
         with:
           ref: daten
           path: _daten
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
       - uses: actions/download-artifact@v4
         with:
           name: muster
