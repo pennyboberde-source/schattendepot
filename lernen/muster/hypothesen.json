@@ -1,0 +1,151 @@
+{
+  "eintraege": [
+    {
+      "nr": "C1k",
+      "datum": "2026-11-15",
+      "status": "idee",
+      "name": "Fortsetzung nach hartem Anlass (Kerzen-Variante)",
+      "regel": "Nebenwert (Ø Umsatz 20 Tage unter 50 Mio.) steigt an einem Tag um mindestens 10 % bei mindestens fünffachem Umsatz und schließt im obersten Fünftel der Tagesspanne; Auslöser: einer der 3 Folgetage schließt über dem Hoch dieses Tags.",
+      "markt": "aktie",
+      "richtung": "long"
+    },
+    {
+      "nr": "C1k",
+      "datum": "2026-11-15",
+      "status": "rueckblick_nicht_bestanden",
+      "spielart": "Turbo long Hebel 2, Stop 100 €",
+      "fenster": 21,
+      "faelle": 88,
+      "quote": 19.32,
+      "evA": 0,
+      "evB": 23.1,
+      "wertung": 0
+    },
+    {
+      "nr": "C2k",
+      "datum": "2026-11-15",
+      "status": "idee",
+      "name": "Ungewöhnlicher Umsatz ohne Kursbewegung (Kerzen-Variante von Mehrfach-Handelsstopp)",
+      "regel": "An mindestens 2 der letzten 3 Tage mindestens fünffacher Umsatz bei weniger als 3 % Kursbewegung; Auslöser: Schluss über dem höchsten Hoch dieser Tage.",
+      "markt": "aktie",
+      "richtung": "long"
+    },
+    {
+      "nr": "C2k",
+      "datum": "2026-11-15",
+      "status": "rueckblick_nicht_bestanden",
+      "spielart": "Turbo short Hebel 2, Stop 250 €",
+      "fenster": 1,
+      "faelle": 23,
+      "quote": 0,
+      "evA": 0,
+      "evB": 2.2,
+      "wertung": -7.9
+    },
+    {
+      "nr": "C3k",
+      "datum": "2026-11-15",
+      "status": "idee",
+      "name": "Squeeze-Aufstellung (Kerzen-Variante)",
+      "regel": "Wert liegt mindestens 60 % unter dem 250-Tage-Hoch und schwankt stark (über 5 % am Tag); Auslöser: Schluss auf neuem 20-Tage-Hoch bei mindestens dreifachem Umsatz.",
+      "markt": "aktie",
+      "richtung": "long"
+    },
+    {
+      "nr": "C3k",
+      "datum": "2026-11-15",
+      "status": "rueckblick_nicht_bestanden",
+      "spielart": "Turbo short Hebel 2, Stop 100 €",
+      "fenster": 3,
+      "faelle": 8,
+      "quote": 37.5,
+      "evA": 0,
+      "evB": 198.3,
+      "wertung": 0
+    },
+    {
+      "nr": "C6k",
+      "datum": "2026-11-15",
+      "status": "idee",
+      "name": "Hebel auf Standardwerte nach enger Schwankung",
+      "regel": "Großer Wert (Ø Umsatz 20 Tage ab 100 Mio.) mit enger Schwankung (unter 1,5 % am Tag); Auslöser: Schluss auf neuem 20-Tage-Hoch.",
+      "markt": "aktie",
+      "richtung": "long"
+    },
+    {
+      "nr": "C6k",
+      "datum": "2026-11-15",
+      "status": "rueckblick_nicht_bestanden",
+      "spielart": "Turbo short Hebel 10, Stop 250 €",
+      "fenster": 1,
+      "faelle": 3166,
+      "quote": 1.2,
+      "evA": 21.7,
+      "evB": -2.9,
+      "wertung": -4.9
+    },
+    {
+      "nr": "C7k",
+      "datum": "2026-11-15",
+      "status": "idee",
+      "name": "Krypto-Ausbruch aus mehrwöchiger Spanne",
+      "regel": "Coin lag 20 Tage in einer Spanne von höchstens 30 %; Auslöser: Schluss über dem 20-Tage-Hoch bei mindestens dreifachem Umsatz.",
+      "markt": "krypto",
+      "richtung": "long"
+    },
+    {
+      "nr": "C7k",
+      "datum": "2026-11-15",
+      "status": "rueckblick_nicht_bestanden",
+      "spielart": "Turbo long Hebel 3, Stop 250 €",
+      "fenster": 1,
+      "faelle": 10,
+      "quote": 10,
+      "evA": 58.7,
+      "evB": 103.6,
+      "wertung": 19.8
+    },
+    {
+      "nr": "C9k",
+      "datum": "2026-11-15",
+      "status": "idee",
+      "name": "Rückprall nach Ausverkauf",
+      "regel": "Tagesverlust ab 25 %; Auslöser: der erste der 3 Folgetage, der höher schließt als am Vortag (ohne Prüfung auf Verwässerung/Insolvenz – rückwirkend nicht möglich).",
+      "markt": "alle",
+      "richtung": "long"
+    },
+    {
+      "nr": "C9k",
+      "datum": "2026-11-15",
+      "status": "rueckblick_nicht_bestanden",
+      "spielart": "direkt, Stop 100 €",
+      "fenster": 1,
+      "faelle": 1984,
+      "quote": 1.21,
+      "evA": -33.5,
+      "evB": -13.8,
+      "wertung": -42.2
+    },
+    {
+      "nr": "C10",
+      "datum": "2026-11-15",
+      "status": "idee",
+      "name": "Kontrollmuster: Tagesgewinner",
+      "regel": "Tagesgewinn ab 20 %, ohne Auslöser-Regel (Vergleich: kaufen, was schon gestiegen ist).",
+      "markt": "alle",
+      "richtung": "long"
+    },
+    {
+      "nr": "C10",
+      "datum": "2026-11-15",
+      "status": "rueckblick_nicht_bestanden",
+      "spielart": "direkt, Stop 150 €",
+      "fenster": 1,
+      "faelle": 728,
+      "quote": 10.3,
+      "evA": -13.3,
+      "evB": -11.1,
+      "wertung": -21.7
+    }
+  ]
+}
