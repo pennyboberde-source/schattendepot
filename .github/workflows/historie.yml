@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       teile:
-        description: 'us, kryptokerzen, ussplits, zahlen (mit Komma)'
+        description: 'us, kryptokerzen, ussplits, zahlen, leerverkauf (mit Komma)'
         default: 'us,kryptokerzen,ussplits'
       us_ab:
         description: 'US ab diesem Tag (JJJJ-MM-TT; leer = vor 2 Jahren und 5 Tagen)'
@@ -57,6 +57,8 @@ jobs:
           SEC_KONTAKT: ${{ secrets.SEC_KONTAKT }}
           # Zahlen-Termine: im Rückblick-Lauf alle Firmen auf einmal (rund 20–40 Minuten), im täglichen Archivlauf nur ein Teil
           ZAHLEN_MAX: '30000'
+          # Leerverkaufsvolumen (FINRA): alle fehlenden Tage der zwei Jahre auf einmal
+          LEER_MAX_TAGE: '600'
           TEILE: ${{ github.event.inputs.teile || 'kryptokerzen,ussplits' }}
           US_AB_EINGABE: ${{ github.event.inputs.us_ab }}
           RUNDEN: ${{ github.event.inputs.runden || '14' }}

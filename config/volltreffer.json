@@ -496,6 +496,38 @@
           "Markt 5 Tage +1 bis +3 %",
           "Markt 5 Tage über +3 %"
         ]
+      },
+      {
+        "merkmal": "leerquote",
+        "grenzen": [
+          30,
+          45,
+          60,
+          75
+        ],
+        "namen": [
+          "Leerverkaufsanteil unter 30 %",
+          "Leerverkaufsanteil 30 bis 45 %",
+          "Leerverkaufsanteil 45 bis 60 %",
+          "Leerverkaufsanteil 60 bis 75 %",
+          "Leerverkaufsanteil über 75 %"
+        ]
+      },
+      {
+        "merkmal": "leerquoteRel",
+        "grenzen": [
+          -15,
+          -5,
+          5,
+          15
+        ],
+        "namen": [
+          "Leerverkäufe viel seltener als sonst (über 15 Punkte weniger)",
+          "Leerverkäufe seltener als sonst (5 bis 15 Punkte weniger)",
+          "Leerverkäufe wie sonst (±5 Punkte)",
+          "Leerverkäufe häufiger als sonst (5 bis 15 Punkte mehr)",
+          "Leerverkäufe viel häufiger als sonst (über 15 Punkte mehr)"
+        ]
       }
     ]
   },

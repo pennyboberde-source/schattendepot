@@ -34,6 +34,7 @@ import { figiEinordnen, handelbarkeitsKarte, type Wertpapier } from '../core/vol
 import { boersenwertCsv, krakenZuSymbol, parseBoersenwertCsv, parseGeckoChart, parseGeckoMarkets, symbolZuId, type BoersenwertZeile } from '../core/volltreffer/boersenwert.ts';
 import { ciksAusTagesverzeichnis, MELDUNG_ARTEN, MELDUNGEN_STUFE, meldungenAusSeite, meldungenErfasst, meldungenVereinen, NACHFASS_FORMULARE, parseSubmissions, secTickerKarte, zahlenAusSeite, zahlenVereinen, type ZahlenArchiv } from '../core/volltreffer/zahlen.ts';
 import { parseVixCsv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
+import { finraDatei, leerverkaufCsv, parseFinraShvol } from '../core/volltreffer/leerverkauf.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -63,6 +64,8 @@ interface Index {
   boersenwert?: { coins: number; zeilen: number; verlaeufeOffen: number; geholt: string };
   /** Zahlen-Termine und Branchen aus EDGAR (stamm/us-zahlen.json.gz) in Zählungen */
   umfeld?: { vixTage: number; vixLetzterTag: string | null; geholt: string };
+  /** Leerverkaufsvolumen je US-Handelstag (leerverkauf/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
+  leerverkauf?: Record<string, { werte: number; geholt: string }>;
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -77,7 +80,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,leerverkauf').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -635,6 +638,41 @@ async function umfeld() {
   console.log(`Marktumfeld: VIX ${vix.length} Tage bis ${index.umfeld.vixLetzterTag}.`);
 }
 
+// ---------- Leerverkaufsvolumen (FINRA Reg SHO, eine frei abrufbare Datei je US-Handelstag) ----------
+// Neueste zuerst; der tägliche Lauf holt höchstens LEER_MAX_TAGE (Standard 15) fehlende Tage und füllt so die zwei
+// Jahre nach und nach auf, historie.yml (teile=leerverkauf) holt alles auf einmal.
+async function leerverkauf() {
+  const heute = iso.slice(0, 10);
+  const ab = istDatum(process.env.LEER_AB?.trim()) ? process.env.LEER_AB!.trim() : tagPlus(heute, -Math.round(2 * 365.25) - 5);
+  const max = Number(process.env.LEER_MAX_TAGE) > 0 ? Math.floor(Number(process.env.LEER_MAX_TAGE)) : 15;
+  const idx = (index.leerverkauf ??= {});
+  const tage: string[] = [];
+  for (let d = tagPlus(heute, -1); d >= ab && tage.length < max; d = tagPlus(d, -1)) {
+    const wt = new Date(`${d}T12:00:00Z`).getUTCDay();
+    if (wt === 0 || wt === 6 || nyseFeiertage.has(d) || idx[d] || existsSync(pfad('leerverkauf', d))) continue;
+    tage.push(d);
+  }
+  let geholt = 0;
+  let fehlt = 0;
+  for (const d of tage) {
+    const r = await fetch(`https://cdn.finra.org/equity/regsho/daily/${finraDatei(d)}`, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(60000) });
+    if (r.status === 200) {
+      const m = parseFinraShvol(await r.text());
+      if (m.size < 1000) throw new Error(`FINRA ${d}: nur ${m.size} Werte`);
+      ablegen('leerverkauf', d, leerverkaufCsv(m));
+      idx[d] = { werte: m.size, geholt: iso };
+      geholt++;
+    } else if (r.status === 403 || r.status === 404) {
+      fehlt++;
+      // älter als eine Woche und immer noch nicht da → gibt es nicht (z. B. Börse geschlossen), nicht jedes Mal neu fragen
+      if (d < tagPlus(heute, -7)) idx[d] = { werte: 0, geholt: iso };
+    } else throw new Error(`FINRA ${d}: HTTP ${r.status}`);
+    await pause(250);
+  }
+  const da = Object.keys(idx).filter((d) => idx[d].werte > 0).sort();
+  console.log(`Leerverkauf (FINRA): ${geholt} Tage geholt, ${fehlt} nicht vorhanden; Archiv: ${da.length} Tage (${da[0] ?? '–'} bis ${da[da.length - 1] ?? '–'}).`);
+}
+
 const TEILE = [
   ['krypto', 'Krypto', krypto],
   ['us', 'US', us],
@@ -645,6 +683,7 @@ const TEILE = [
   ['boersenwert', 'Börsenwert', boersenwert],
   ['zahlen', 'Zahlen-Termine (SEC)', zahlen],
   ['umfeld', 'Marktumfeld', umfeld],
+  ['leerverkauf', 'Leerverkauf (FINRA)', leerverkauf],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -691,6 +730,10 @@ const stand = {
   boersenwert: index.boersenwert ?? null,
   zahlen: index.usZahlen ?? null,
   umfeld: index.umfeld ?? null,
+  leerverkauf: (() => {
+    const da = Object.keys(index.leerverkauf ?? {}).filter((d) => index.leerverkauf![d].werte > 0).sort();
+    return { tage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };
+  })(),
   neu: neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };
