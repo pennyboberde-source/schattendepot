@@ -13,7 +13,7 @@
     "host": "https://api.massive.com",
     "ab": "2026-11-09",
     "maxTageJeLauf": 5,
-    "pauseSekunden": 13,
+    "pauseSekunden": 15,
     "bereinigt": false,
     "mitOtc": true,
     "historieHinweis": "Rückblick: Workflow historie.yml holt die Kursgeschichte rückwärts ab US_AB (Standard: zwei Jahre), 4 Tage je Minute, fortsetzbar. Tage außerhalb der Historie des Tarifs (HTTP 403) werden gemerkt und nicht erneut versucht."

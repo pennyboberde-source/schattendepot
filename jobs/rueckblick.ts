@@ -237,13 +237,17 @@ interface BuchMuster {
   wertung: number;
   rueckblick: { quote: number; ev: number; se: number; faelle: number };
   status: string;
+  /** bei „beendet“: Tag des Endes und Grund */
+  am?: string;
+  grund?: string;
 }
 const musterBuch = leseJson<{ eintraege: BuchMuster[] }>('lernen/muster/muster-buch.json', { eintraege: [] });
-const imTest = new Map<string, BuchMuster>();
-for (const e of musterBuch.eintraege) imTest.set(e.schluessel, e);
-for (const [key, e] of imTest) if (e.status === 'beendet') imTest.delete(key);
+// alle Muster (jüngster Eintrag je Schlüssel); beendete zählen ihre Fälle bis zum Ende weiter, damit keine Jagd nachträglich verschwindet
+const alleMuster = new Map<string, BuchMuster>();
+for (const e of musterBuch.eintraege) alleMuster.set(e.schluessel, e);
+const imTest = new Map([...alleMuster].filter(([, e]) => e.status !== 'beendet'));
 const testJeGruppe = new Map<number, BuchMuster[]>();
-for (const e of imTest.values()) {
+for (const e of alleMuster.values()) {
   const g = gid.get(e.gruppenSchluessel);
   if (g !== undefined) (testJeGruppe.get(g) ?? testJeGruppe.set(g, []).get(g)!).push(e);
 }
@@ -295,7 +299,7 @@ for (const r of reihen) {
   const imVorwaerts = (gruppen: number[], i: number, x: Merkmale) => {
     for (const g of gruppen) {
       for (const e of testJeGruppe.get(g) ?? []) {
-        if (k[i].datum <= e.seit || i - (testZuletzt.get(e.schluessel) ?? -1e9) <= vt.pruefung.sperreTage) continue;
+        if (k[i].datum <= e.seit || (e.status === 'beendet' && e.am && k[i].datum > e.am) || i - (testZuletzt.get(e.schluessel) ?? -1e9) <= vt.pruefung.sperreTage) continue;
         const sp = spNachSchluessel.get(e.sp);
         if (!sp || (sp.hebel > 1 && !turboErlaubt(r, x))) continue;
         const fall = jagdFall(r, i, e, kostenFuer(r.markt, x.umsatz20));
@@ -532,8 +536,16 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
 // ---------- V4: Muster-Buch fortschreiben und virtuelle Jagden ----------
 {
   const v4 = vt.v4;
+  // Zurückstufen: Ein Muster im Vorwärtstest, das im heutigen Rückblick nicht mehr mit Vorteil besteht, wird beendet
+  // (Eintrag „beendet“ – das Buch wird nur angehängt). Seine bisherigen Vorwärts-Fälle bleiben im Protokoll dieses Laufs.
+  const heuteGut = new Set(ergebnisse.filter((e) => e.bestanden && e.vorteil).map((e) => `${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`));
+  const beendet = [...imTest.values()].filter((e) => !heuteGut.has(e.schluessel));
+  for (const e of beendet) {
+    musterBuch.eintraege.push({ ...e, status: 'beendet', grund: 'besteht im Rückblick nicht mehr mit Vorteil', am: heute } as BuchMuster);
+    imTest.delete(e.schluessel);
+  }
   // neue Muster: bestanden mit Vorteil gegen die Grundrate (beste Spielart je Gruppe), stärkste zuerst
-  const neu = mitVorteil.filter((e) => !imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)).slice(0, Math.max(0, v4.vorwaertsMax - imTest.size));
+  const neu =mitVorteil.filter((e) => !imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)).slice(0, Math.max(0, v4.vorwaertsMax - imTest.size));
   for (const e of neu) {
     const eintrag: BuchMuster = { schluessel: `${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, gruppe: e.gruppe, gruppenSchluessel: e.schluessel, sp: e.spielartSchluessel, fenster: e.fenster, seit: heute, wertung: e.wertung, rueckblick: { quote: e.gesamt.quote, ev: e.gesamt.ev, se: e.gesamt.se, faelle: e.gesamt.n }, status: 'vorwaertstest' };
     musterBuch.eintraege.push(eintrag);
@@ -549,7 +561,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     return { gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: e.seit, faelle: f.length, treffer: f.filter((x) => x.art === 'treffer').length, ev, offen: vorwaerts.filter((x) => x.muster === e.schluessel && x.art === 'offen').length, rueckblick: e.rueckblick, stufe2 };
   });
   const lauerliste = vorwaerts.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung);
-  const musterText = new Map([...imTest.values()].map((e) => [e.schluessel, e.gruppe]));
+  const musterText = new Map([...alleMuster.values()].map((e) => [e.schluessel, e.gruppe]));
   const ohneMuster = (j: JagdFall) => ({ ...j, muster: musterText.get(j.muster) ?? j.muster });
   schreibeJson('volltreffer/uebersicht.json', {
     stand: jetzt.toISOString(),
@@ -563,7 +575,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     uebersprungen,
     muster: jeMuster.sort((a, b) => b.faelle - a.faelle),
   });
-  log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}.`);
+  log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu, ${beendet.length} beendet), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}.`);
 }
 
 // privat: Zensus mit Werten und die vollständige Prüfung

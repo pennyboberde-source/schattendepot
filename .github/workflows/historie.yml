@@ -55,6 +55,8 @@ jobs:
           RUNDEN: ${{ github.event.inputs.runden || '14' }}
           ARCHIV_STAND_DATEI: ${{ runner.temp }}/stand.json
         run: |
+          # Fehler werden unten selbst behandelt (GitHub startet mit bash -e; eine Zählung mit Ergebnis 0 gälte sonst als Abbruch)
+          set +e
           set -uo pipefail
           zeit() { date -u +%Y-%m-%dT%H:%MZ; }
           # erst Krypto-Kerzen und Splits (je ein Durchgang), dann US in Runden
@@ -72,6 +74,8 @@ jobs:
               echo "$ausgabe" | grep -cE '^US [0-9-]+: [0-9]+ Werte' | sed 's/^/Tage in dieser Runde: /'
               bash scripts/archiv-sichern.sh "Kursgeschichte US Runde $runde $(zeit)"
               if [ $code -ne 0 ]; then echo "::warning::US-Runde $runde mit Fehler – Abbruch"; break; fi
+              # Minuten-Kontingent erreicht → eine Minute warten, sonst läuft die nächste Runde sofort wieder in die Sperre
+              if echo "$ausgabe" | grep -q "Kontingent je Minute"; then echo "Kontingent erreicht – 65 Sekunden Pause"; sleep 65; fi
               echo "$ausgabe" | grep -q 'weitere Tage folgen' || { echo "US: Kursgeschichte vollständig."; break; }
             done
           fi
