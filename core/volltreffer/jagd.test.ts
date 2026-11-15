@@ -25,4 +25,9 @@ describe('Virtuelle Jagden', () => {
     const k = jagdKennzahlen([fall('A', 'x', 'y', 'treffer', 400), fall('B', 'x', 'y', 'niete', -150), fall('C', 'x', 'y', 'zeit', -50), fall('D', 'x', null, 'offen', 20)]);
     expect(k).toEqual({ anzahl: 3, volltreffer: 1, quote: 33.3, oeNiete: -100, ev: 66.7, summe: 200, offen: 1 });
   });
+
+  it('Ausstieg am Nachziehstop zählt als abgeschlossene Jagd (kein Volltreffer)', () => {
+    const k = jagdKennzahlen([fall('A', 'x', 'y', 'gesichert', 150), fall('B', 'x', 'y', 'niete', -150)]);
+    expect(k).toMatchObject({ anzahl: 2, volltreffer: 0, quote: 0, ev: 0, offen: 0 });
+  });
 });

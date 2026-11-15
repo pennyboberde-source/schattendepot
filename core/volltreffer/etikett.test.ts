@@ -1,7 +1,8 @@
 // Volltreffer-Etikett: Richtwerte aus dem Konzept (Abschnitt 3), Reihenfolge Stop vor Ziel, Kurslücken, Knock-out,
 // Episoden und der Pflichttest gegen Rückschaufehler.
 import { describe, expect, it } from 'vitest';
-import { etikett, spielartModell, spielarten, sprungEpisoden, type EtikettKosten, type Kerze } from './etikett.ts';
+import { etikett, spielartModell, spielarten, spielartText, sprungEpisoden, type EtikettKosten, type Kerze } from './etikett.ts';
+import { spielartSchluessel } from './pruefung.ts';
 
 const KOSTEN = (spreadProzent: number, entgeltDirekt = 0): EtikettKosten => ({ einsatz: 1000, ziel: 400, beinahe: 200, spreadProzent, entgeltDirekt, turboSpreadProzent: 1, entgeltTurbo: 0, finanzierungProzentJahr: 5 });
 const tag = (n: number) => new Date(Date.UTC(2026, 0, 5) + n * 86400000).toISOString().slice(0, 10);
@@ -84,6 +85,72 @@ describe('Ausgang je Fenster', () => {
     const kz = reihe([10, 10, 10, 10], [10, 10.1, 9.9, 10]);
     expect(etikett(kz, 0, direkt, k, [1, 3])).toEqual([expect.objectContaining({ art: 'zeit' }), null]);
     expect(etikett(kz, 1, direkt, k, [1])).toEqual([null]);
+  });
+});
+
+describe('Nachziehstop ab +200 € (Plan V4)', () => {
+  const k = KOSTEN(0.15);
+  const ohne = { hebel: 1, richtung: 'long' as const, stopEuro: 150 };
+  const mit = { ...ohne, nachziehAb: 200, nachziehAnteil: 0.5 };
+
+  it('sichert ab dem Folgetag die Hälfte des besten Stands', () => {
+    // Tag 1: Hoch 13 → bester Stand ≈ +298 €; Tag 2 fällt bis 11 → der Stop bei ≈ +149 € greift
+    const kz = reihe([10, 10, 10, 10], [10, 13, 9.95, 12.5], [12.4, 12.6, 11, 11.2]);
+    const [a] = etikett(kz, 0, mit, k, [2]);
+    expect(a).toMatchObject({ art: 'gesichert', tag: 2, beinahe: true });
+    expect(a!.netto).toBeCloseTo(149, 0);
+    // ohne Nachziehstop läuft dieselbe Order bis zum Schluss von Tag 2 und bringt weniger
+    const [b] = etikett(kz, 0, ohne, k, [2]);
+    expect(b).toMatchObject({ art: 'zeit', tag: 2 });
+    expect(b!.netto).toBeLessThan(a!.netto);
+  });
+
+  it('am Tag des besten Stands wird noch nicht nachgezogen (erst nach dem Schluss)', () => {
+    const kz = reihe([10, 10, 10, 10], [10, 13, 9.95, 10.2]);
+    expect(etikett(kz, 0, mit, k, [1])[0]).toMatchObject({ art: 'zeit', tag: 1 });
+  });
+
+  it('unter +200 € bleibt der normale Stop', () => {
+    const kz = reihe([10, 10, 10, 10], [10, 11.8, 9.95, 11.5], [11.5, 11.6, 10.5, 10.6]);
+    expect(etikett(kz, 0, mit, k, [2])).toEqual(etikett(kz, 0, ohne, k, [2]));
+  });
+
+  it('Kurslücke unter den Nachziehstop: Ausstieg zur Eröffnung', () => {
+    const kz = reihe([10, 10, 10, 10], [10, 13, 9.95, 12.5], [11, 11.2, 10.9, 11.1]);
+    const [a] = etikett(kz, 0, mit, k, [3]);
+    expect(a).toMatchObject({ art: 'gesichert', tag: 2 });
+    expect(a!.netto).toBeCloseTo(98.4, 0);
+  });
+
+  it('das Ziel bleibt: Volltreffer wie ohne Nachziehstop', () => {
+    const kz = reihe([10, 10, 10, 10], [10, 13, 9.95, 12.5], [12.5, 14.5, 12.4, 14]);
+    expect(etikett(kz, 0, mit, k, [3])[0]).toMatchObject({ art: 'treffer', tag: 2, netto: 400 });
+  });
+
+  it('Turbo short: der Nachziehstop folgt der fallenden Richtung', () => {
+    // Hebel 5 short: Tag 1 Tief 92 → bester Stand ≈ +390 €; Tag 2 steigt bis 97 → der Stop bei ≈ +195 € greift
+    const kz = reihe([100, 100, 100, 100], [100, 100.2, 92, 93], [93, 97, 92.5, 96.5]);
+    const [a] = etikett(kz, 0, { hebel: 5, richtung: 'short', stopEuro: 150, nachziehAb: 200, nachziehAnteil: 0.5 }, k, [3]);
+    expect(a).toMatchObject({ art: 'gesichert', tag: 2 });
+    expect(a!.netto).toBeGreaterThan(180);
+    expect(a!.netto).toBeLessThan(200);
+  });
+
+  it('kein Rückschaufehler: eine Kerze nach dem Ausstieg ändert nichts', () => {
+    const kz = reihe([10, 10, 10, 10], [10, 13, 9.95, 12.5], [12.4, 12.6, 11, 11.2], [11.2, 20, 11, 19]);
+    const vorher = etikett(kz.slice(0, 3), 0, mit, k, [2]);
+    expect(etikett(kz, 0, mit, k, [2])).toEqual(vorher);
+  });
+
+  it('Spielarten, Schlüssel und Text mit Nachziehstop', () => {
+    const sp = spielarten([1], [100, 150], { ab: 200, anteil: 0.5, stops: [150] });
+    expect(sp).toEqual([
+      { hebel: 1, richtung: 'long', stopEuro: 100 },
+      { hebel: 1, richtung: 'long', stopEuro: 150 },
+      { hebel: 1, richtung: 'long', stopEuro: 150, nachziehAb: 200, nachziehAnteil: 0.5 },
+    ]);
+    expect(sp.map(spielartSchluessel)).toEqual(['1L100', '1L150', '1L150N']);
+    expect(spielartText(sp[2])).toBe('direkt, Stop 150 €, Nachziehstop ab 200 €');
   });
 });
 

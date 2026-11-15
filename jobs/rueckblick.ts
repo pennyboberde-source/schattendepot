@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { orderentgelt } from '../core/gebuehren.ts';
 import { parseKryptoKerzenArchiv, parseUsArchiv, parseUsSplitsArchiv } from '../core/sammelkurse.ts';
-import { etikett, spielarten, spielartText, sprungEpisoden, type Ausgang, type EtikettKosten, type Kerze, type Spielart } from '../core/volltreffer/etikett.ts';
+import { etikett, spielarten, spielartText, sprungEpisoden, type Ausgang, type EtikettKosten, type Kerze, type NachziehEinstellung, type Spielart } from '../core/volltreffer/etikett.ts';
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
@@ -19,7 +19,7 @@ import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenw
 
 type Markt = 'aktie' | 'krypto';
 interface VtConfig {
-  etikett: { einsatz: number; ziel: number; beinahe: number; zensusMaxHebel: number; hebel: number[]; stops: number[]; standardStop: number; fenster: number[]; episodeAbstand: number; finanzierungProzentJahr: number; turboSpreadKlasse: string; turboEmittent: string };
+  etikett: { einsatz: number; ziel: number; beinahe: number; zensusMaxHebel: number; hebel: number[]; stops: number[]; nachzieh?: NachziehEinstellung; standardStop: number; fenster: number[]; episodeAbstand: number; finanzierungProzentJahr: number; turboSpreadKlasse: string; turboEmittent: string };
   handelbar: {
     aktie: { mindestKurs: number; mindestUmsatzStichtag: number; turboAbUmsatz20: number; spread: { abUmsatz20: number; klasse: string }[]; handelsplatz: string };
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
@@ -187,7 +187,7 @@ for (const markt of MAERKTE) {
   for (let a = 0; a < E.length; a++) for (let b = a + 1; b < E.length; b++) for (let ca = 0; ca < klassenZahl(E[a]); ca++) for (let cb = 0; cb < klassenZahl(E[b]); cb++) neueGruppe(`${markt}|${a}=${ca}&${b}=${cb}`);
   for (const h of HYPOTHESEN) if (h.markt === 'alle' || h.markt === markt) neueGruppe(`${markt}|hyp=${h.nr}`);
 }
-const SP = spielarten(vt.etikett.hebel, vt.etikett.stops);
+const SP = spielarten(vt.etikett.hebel, vt.etikett.stops, vt.etikett.nachzieh);
 const F = vt.etikett.fenster;
 const standard = SP.map((s) => s.stopEuro === vt.etikett.standardStop);
 const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
@@ -354,7 +354,7 @@ for (const r of reihen) {
         for (const g of einzelFrei) zw.add(g, s, f, z, au);
         if (paarF[f]) for (const g of paareFrei) zw.add(g, s, f, z, au);
         // Zensus: echter Sprung – Volltreffer mit Standard-Stop binnen 10 Handelstagen, höchstens Hebel zensusMaxHebel
-        if (au.art === 'treffer' && F[f] <= 10 && sp.hebel <= vt.etikett.zensusMaxHebel && (!bester[i] || au.netto > bester[i]!.netto)) {
+        if (au.art === 'treffer' && sp.nachziehAb === undefined && F[f] <= 10 && sp.hebel <= vt.etikett.zensusMaxHebel && (!bester[i] || au.netto > bester[i]!.netto)) {
           treffer[i] = true;
           bester[i] = { datum: k[i].datum, schluessel: r.schluessel.replace(/#\d+$/, ''), markt: r.markt, spielart: spielartText(sp), fenster: F[f], netto: au.netto, tag: au.tag, umsatz20: x.umsatz20, r1: Math.round(x.r1 * 10) / 10, relVolumen: x.relVolumen === null ? null : Math.round(x.relVolumen * 10) / 10 };
         }
@@ -582,7 +582,25 @@ for (const e of ergebnisse) {
   if (!b || rang(e) > rang(b) || (rang(e) === rang(b) && e.wertung > b.wertung)) besteJeGruppe.set(e.schluessel, e);
 }
 const beste = [...besteJeGruppe.values()];
-const sortiert = (l: typeof beste) => [...l].sort((a, b) => Number(b.vorteil) - Number(a.vorteil) || b.wertung - a.wertung);
+// Nachziehstop (V4): ehrlicher Vergleich mit derselben Spielart ohne Nachziehstop – gleiche Fälle, gleiches Fenster
+{
+  const ohneN = new Map(ergebnisse.filter((e) => !e.spielartSchluessel.endsWith('N')).map((e) => [`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, e]));
+  let paare = 0;
+  let besser = 0;
+  let summeDiff = 0;
+  for (const e of ergebnisse) {
+    if (!e.spielartSchluessel.endsWith('N') || e.art === 'alle') continue;
+    const o = ohneN.get(`${e.schluessel}|${e.spielartSchluessel.slice(0, -1)}|${e.fenster}`);
+    if (!o || !(o.bestanden || e.bestanden)) continue;
+    paare++;
+    summeDiff += e.gesamt.ev - o.gesamt.ev;
+    if (e.gesamt.ev > o.gesamt.ev) besser++;
+  }
+  const gutGruppen = beste.filter((e) => e.bestanden && e.vorteil);
+  if (paare)
+    log(`Nachziehstop: in ${besser} von ${paare} bestandenen Kombinationen besser als ohne (Ø ${summeDiff >= 0 ? '+' : ''}${(summeDiff / paare).toFixed(1)} € je Order); beste Spielart mit Nachziehstop in ${gutGruppen.filter((e) => e.spielartSchluessel.endsWith('N')).length} von ${gutGruppen.length} Gruppen mit Vorteil.`);
+}
+const sortiert =(l: typeof beste) => [...l].sort((a, b) => Number(b.vorteil) - Number(a.vorteil) || b.wertung - a.wertung);
 const kurz = (e: (typeof ergebnisse)[number]) => ({
   gruppe: e.gruppe,
   spielart: e.spielart,

@@ -21,7 +21,7 @@ interface Uebersicht {
 }
 
 const zahl = (x: number) => x.toLocaleString('de-DE');
-const ART: Record<string, string> = { treffer: '🎯 Volltreffer', niete: '❌ Stop', zeit: '⏱️ Zeit abgelaufen', offen: '⏳ läuft', lauert: '👀 lauert' };
+const ART: Record<string, string> = { treffer: '🎯 Volltreffer', niete: '❌ Stop', zeit: '⏱️ Zeit abgelaufen', gesichert: '🔒 Gewinn gesichert', offen: '⏳ läuft', lauert: '👀 lauert' };
 
 function JagdZeile({ j }: { j: JagdFall }) {
   return (

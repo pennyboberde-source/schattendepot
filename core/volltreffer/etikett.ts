@@ -3,6 +3,9 @@
 // Reine Funktionen auf Tageskerzen. Kein Rückschaufehler: Eingestiegen wird zur Eröffnung des Folgetags (mit Spread),
 // danach entscheiden Hoch und Tief jedes Tags. Liegen Ziel und Stop am selben Tag, zählt der Stop. Eröffnet der Kurs
 // jenseits von Stop oder Ziel, gilt der Eröffnungskurs.
+// Nachziehstop (Spielart mit `nachziehAb`): Hat die Order bis zum Vortag zwischenzeitlich mindestens `nachziehAb` €
+// gebracht, sichert der Stop ab dem nächsten Tag `nachziehAnteil` dieses besten Stands. Nachgezogen wird einmal am Tag
+// nach dem Schluss (wie ein Händler, der abends den Stop anpasst) – so braucht es keine Annahme über den Verlauf im Tag.
 
 export interface Kerze {
   datum: string;
@@ -40,10 +43,15 @@ export interface Spielart {
   richtung: 'long' | 'short';
   /** Stop bei diesem Verlust in € (netto) */
   stopEuro: number;
+  /** Nachziehstop ab diesem besten Zwischenstand in € (fehlt = ohne Nachziehstop) */
+  nachziehAb?: number;
+  /** Anteil des besten Zwischenstands, den der Nachziehstop sichert (0,5 = die Hälfte) */
+  nachziehAnteil?: number;
 }
 
 export interface Ausgang {
-  art: 'treffer' | 'niete' | 'zeit';
+  /** gesichert = Ausstieg am Nachziehstop */
+  art: 'treffer' | 'niete' | 'zeit' | 'gesichert';
   /** Handelstag des Ausstiegs (1 = Einstiegstag) */
   tag: number;
   /** Ergebnis in € nach allen Kosten */
@@ -105,7 +113,10 @@ export function etikett(kerzen: Kerze[], i: number, sp: Spielart, k: EtikettKost
     if (!kz) break;
     const tage = kalendertage(einstieg.datum, kz.datum);
     const mZiel = mod.bewegung(k.ziel, tage);
-    const mStop = mod.bewegung(-sp.stopEuro, tage);
+    // Nachziehstop: aus dem besten Stand bis zum Vortag (am Einstiegstag gibt es noch keinen)
+    const gesichert = sp.nachziehAb !== undefined && j > 1 && best >= sp.nachziehAb ? (sp.nachziehAnteil ?? 0.5) * best : null;
+    const stopArt: Ausgang['art'] = gesichert !== null && gesichert > -sp.stopEuro ? 'gesichert' : 'niete';
+    const mStop = mod.bewegung(stopArt === 'gesichert' ? gesichert! : -sp.stopEuro, tage);
     const gunst = bew(d === 1 ? kz.h : kz.l);
     const ungunst = bew(d === 1 ? kz.l : kz.h);
     const ende = (art: Ausgang['art'], m: number, ko = false): Ausgang => {
@@ -117,7 +128,7 @@ export function etikett(kerzen: Kerze[], i: number, sp: Spielart, k: EtikettKost
     if (j > 1) {
       const mo = bew(kz.o);
       if (mo <= mod.ko) ausgang = ende('niete', mo, true);
-      else if (mo <= mStop) ausgang = ende('niete', mo);
+      else if (mo <= mStop) ausgang = ende(stopArt, mo);
       else if (mo >= mZiel) {
         best = Math.max(best, mod.netto(mo, tage));
         ausgang = ende('treffer', mo);
@@ -126,7 +137,7 @@ export function etikett(kerzen: Kerze[], i: number, sp: Spielart, k: EtikettKost
     }
     // im Tagesverlauf: Stop vor Ziel (vorsichtig – die Reihenfolge innerhalb des Tags ist unbekannt)
     if (ungunst <= mStop) {
-      ausgang = mStop <= mod.ko ? ende('niete', mod.ko, true) : ende('niete', mStop);
+      ausgang = mStop <= mod.ko ? ende('niete', mod.ko, true) : ende(stopArt, mStop);
       break;
     }
     best = Math.max(best, mod.netto(gunst, tage));
@@ -159,11 +170,26 @@ export function sprungEpisoden(treffer: boolean[], abstand = 10): number[] {
   return beginne;
 }
 
-/** Alle Spielarten aus einer Einstellung: direkt nur long, Turbos long und short. */
-export function spielarten(hebel: number[], stops: number[]): Spielart[] {
+export interface NachziehEinstellung {
+  /** Nachziehstop ab diesem besten Zwischenstand in € */
+  ab: number;
+  /** gesicherter Anteil des besten Stands */
+  anteil: number;
+  /** nur für diese Stops zusätzlich eine Spielart mit Nachziehstop */
+  stops: number[];
+}
+
+/** Alle Spielarten aus einer Einstellung: direkt nur long, Turbos long und short; mit `nachzieh` zusätzlich je Stop eine Spielart mit Nachziehstop. */
+export function spielarten(hebel: number[], stops: number[], nachzieh?: NachziehEinstellung): Spielart[] {
   const liste: Spielart[] = [];
-  for (const h of hebel) for (const r of h > 1 ? (['long', 'short'] as const) : (['long'] as const)) for (const s of stops) liste.push({ hebel: h, richtung: r, stopEuro: s });
+  for (const h of hebel)
+    for (const r of h > 1 ? (['long', 'short'] as const) : (['long'] as const))
+      for (const s of stops) {
+        liste.push({ hebel: h, richtung: r, stopEuro: s });
+        if (nachzieh?.stops.includes(s)) liste.push({ hebel: h, richtung: r, stopEuro: s, nachziehAb: nachzieh.ab, nachziehAnteil: nachzieh.anteil });
+      }
   return liste;
 }
 
-export const spielartText = (sp: Spielart) => `${sp.hebel > 1 ? `Turbo ${sp.richtung === 'long' ? 'long' : 'short'} Hebel ${sp.hebel}` : 'direkt'}, Stop ${sp.stopEuro} €`;
+export const spielartText = (sp: Spielart) =>
+  `${sp.hebel > 1 ? `Turbo ${sp.richtung === 'long' ? 'long' : 'short'} Hebel ${sp.hebel}` : 'direkt'}, Stop ${sp.stopEuro} €${sp.nachziehAb !== undefined ? `, Nachziehstop ab ${sp.nachziehAb} €` : ''}`;

@@ -16,7 +16,8 @@ export interface JagdFall {
   einstieg: string | null;
   /** Tag des Ausstiegs; null = läuft noch */
   ende: string | null;
-  art: 'treffer' | 'niete' | 'zeit' | 'offen' | 'lauert';
+  /** gesichert = Ausstieg am Nachziehstop */
+  art: 'treffer' | 'niete' | 'zeit' | 'gesichert' | 'offen' | 'lauert';
   /** Ergebnis in € (bei offenen Jagden der Stand zum letzten Schluss) */
   netto: number | null;
   /** Handelstag der Jagd (1 = Einstiegstag) */
@@ -79,7 +80,7 @@ export interface JagdKennzahlen {
 }
 
 export function jagdKennzahlen(jagden: JagdFall[]): JagdKennzahlen {
-  const fertig = jagden.filter((j) => j.art === 'treffer' || j.art === 'niete' || j.art === 'zeit');
+  const fertig = jagden.filter((j) => j.art === 'treffer' || j.art === 'niete' || j.art === 'zeit' || j.art === 'gesichert');
   const nieten = fertig.filter((j) => (j.netto ?? 0) < 0);
   const summe = fertig.reduce((s, j) => s + (j.netto ?? 0), 0);
   const r1 = (x: number) => Math.round(x * 10) / 10;

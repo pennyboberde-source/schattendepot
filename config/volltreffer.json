@@ -17,6 +17,14 @@
       250
     ],
     "standardStop": 150,
+    "nachzieh": {
+      "ab": 200,
+      "anteil": 0.5,
+      "stops": [
+        150
+      ],
+      "hinweis": "Plan V4: kein Nachziehstop vor +200 €, danach sichert der Stop die Hälfte des besten Stands (nachgezogen einmal am Tag nach dem Schluss). Der Rückblick rechnet je Stop in stops eine zusätzliche Spielart mit Nachziehstop und vergleicht sie ehrlich mit der ohne."
+    },
     "fenster": [
       1,
       3,
