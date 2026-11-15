@@ -351,6 +351,8 @@ async function boersenwert() {
   }
   const offen = [...krakenSymbole].filter((s) => ids.has(s) && !((aeltester.get(s) ?? '9999') <= grenze));
   let verlaeufe = 0;
+  let gescheitert = 0;
+  let ersterFehler = '';
   for (const s of offen.slice(0, bw.maxVerlaeufe)) {
     await pause(bw.pauseMs);
     try {
@@ -361,13 +363,16 @@ async function boersenwert() {
         console.log('Börsenwert: CoinGecko-Kontingent erreicht – Rest im nächsten Lauf.');
         break;
       }
+      gescheitert++;
+      ersterFehler ||= `${s}: ${(e as Error).message}`;
     }
   }
   const { csv, zeilen } = boersenwertCsv(alt, neu);
   mkdirSync(dirname(datei), { recursive: true });
   writeFileSync(datei, gzipSync(Buffer.from(csv, 'utf8'), { level: 9 }));
   index.boersenwert = { coins: new Set([...alt, ...neu].map((z) => z.symbol)).size, zeilen, verlaeufeOffen: Math.max(0, offen.length - verlaeufe), geholt: iso };
-  console.log(`Börsenwert: ${maerkte.length} Coins heute, ${verlaeufe} Verläufe neu (${Math.max(0, offen.length - verlaeufe)} offen), ${zeilen} Zeilen gesamt.`);
+  console.log(`Börsenwert: ${maerkte.length} Coins heute, ${verlaeufe} Verläufe neu (${Math.max(0, offen.length - verlaeufe)} offen${gescheitert ? `, ${gescheitert} gescheitert, z. B. ${ersterFehler}` : ''}), ${zeilen} Zeilen gesamt.`);
+  if (gescheitert && !verlaeufe) throw new Error(`Börsenwert-Verläufe: alle ${gescheitert} gescheitert (${ersterFehler})`);
 }
 
 // ---------- US-Aktiensplits (Massive): eine Liste, die nur wächst – Splits sind Ereignisse, keine Kurssprünge ----------
