@@ -12,8 +12,11 @@ async function coingecko() {
   const kurs = typeof daten?.bitcoin?.eur === 'number';
   // Gegenprobe: ein falscher Schlüssel muss abgelehnt werden – sonst prüft der Test nichts
   const falsch = await fetch(url(2), { headers: { 'x-cg-demo-api-key': 'CG-falsch-0000', accept: 'application/json' }, signal: AbortSignal.timeout(20000) });
-  const ok = mit.status === 200 && kurs && falsch.status !== 200;
-  return `COINGECKO_API_KEY: ${ok ? 'OK' : 'FEHLER'} (mit Schlüssel HTTP ${mit.status}, Kurs erhalten: ${kurs ? 'ja' : 'nein'}; Gegenprobe mit falschem Schlüssel HTTP ${falsch.status})`;
+  // Verlauf des Börsenwerts (für den Rückblick): nur die Zahl der Tage ins Log
+  const verlauf = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily', { headers: { 'x-cg-demo-api-key': key, accept: 'application/json' }, signal: AbortSignal.timeout(20000) });
+  const tage = ((await verlauf.json().catch(() => null))?.market_caps ?? []).length;
+  const ok = mit.status === 200 && kurs && falsch.status !== 200 && verlauf.status === 200 && tage >= 300;
+  return `COINGECKO_API_KEY: ${ok ? 'OK' : 'FEHLER'} (mit Schlüssel HTTP ${mit.status}, Kurs erhalten: ${kurs ? 'ja' : 'nein'}; Gegenprobe mit falschem Schlüssel HTTP ${falsch.status}; Verlauf Börsenwert HTTP ${verlauf.status}, ${tage} Tage)`;
 }
 
 for (const pruefung of [coingecko]) {
