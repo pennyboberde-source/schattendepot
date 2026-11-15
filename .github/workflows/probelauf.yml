@@ -54,6 +54,8 @@ jobs:
         if: github.event.inputs.art == 'schluessel'
         env:
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
         run: node scripts/schluessel-pruefen.mjs
       - name: Archiv-Probe (Sammelkurse in einen Wegwerf-Ordner – nichts wird gesichert, das Log zeigt nur Zählungen)
         if: github.event.inputs.art == 'archiv'

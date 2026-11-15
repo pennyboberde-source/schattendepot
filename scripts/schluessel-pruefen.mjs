@@ -19,7 +19,48 @@ async function coingecko() {
   return `COINGECKO_API_KEY: ${ok ? 'OK' : 'FEHLER'} (mit Schlüssel HTTP ${mit.status}, Kurs erhalten: ${kurs ? 'ja' : 'nein'}; Gegenprobe mit falschem Schlüssel HTTP ${falsch.status}; Verlauf Börsenwert HTTP ${verlauf.status}, ${tage} Tage)`;
 }
 
-for (const pruefung of [coingecko]) {
+// Zahlen-Termine der Vergangenheit (Merkmal „Zahlen“ im Rückblick): Wie weit zurück liefern Finnhub und FMP den
+// Kalender? Ins Log nur Zahl der Einträge, Spanne der Daten und ob die Tageszeit (vor/nach Börse) dabei ist.
+const tagVor = (monate, plus = 0) => {
+  const d = new Date();
+  d.setUTCMonth(d.getUTCMonth() - monate);
+  d.setUTCDate(d.getUTCDate() + plus);
+  return d.toISOString().slice(0, 10);
+};
+const kurzListe = (l, feldDatum) => {
+  const d = l.map((x) => x[feldDatum]).filter(Boolean).sort();
+  return `${l.length} Einträge${d.length ? `, ${d[0]} bis ${d[d.length - 1]}` : ''}`;
+};
+async function zahlenFinnhub() {
+  const key = process.env.FINNHUB_API_KEY?.trim();
+  if (!key) return 'Zahlen Finnhub: FINNHUB_API_KEY nicht gesetzt';
+  const teile = [];
+  for (const m of [1, 6, 12, 23]) {
+    const r = await fetch(`https://finnhub.io/api/v1/calendar/earnings?from=${tagVor(m)}&to=${tagVor(m, 6)}&token=${key}`, { signal: AbortSignal.timeout(30000) });
+    const j = await r.json().catch(() => null);
+    const l = j?.earningsCalendar ?? [];
+    teile.push(`vor ${m} Mon.: HTTP ${r.status}, ${kurzListe(l, 'date')}, Tageszeit bei ${l.filter((x) => x.hour).length}`);
+  }
+  return `Zahlen Finnhub (je 7 Tage): ${teile.join(' | ')}`;
+}
+async function zahlenFmp() {
+  const key = process.env.FMP_API_KEY?.trim();
+  if (!key) return 'Zahlen FMP: FMP_API_KEY nicht gesetzt';
+  const teile = [];
+  for (const m of [1, 6, 12, 23]) {
+    const r = await fetch(`https://financialmodelingprep.com/stable/earnings-calendar?from=${tagVor(m)}&to=${tagVor(m, 6)}&apikey=${key}`, { signal: AbortSignal.timeout(30000) });
+    const j = await r.json().catch(() => null);
+    const l = Array.isArray(j) ? j : [];
+    teile.push(`vor ${m} Mon.: HTTP ${r.status}, ${kurzListe(l, 'date')}${l.length ? '' : ` (${String(j?.['Error Message'] ?? j?.message ?? '').slice(0, 60)})`}`);
+  }
+  // längere Spanne in einem Abruf (90 Tage)?
+  const r = await fetch(`https://financialmodelingprep.com/stable/earnings-calendar?from=${tagVor(23)}&to=${tagVor(20)}&apikey=${key}`, { signal: AbortSignal.timeout(30000) });
+  const j = await r.json().catch(() => null);
+  teile.push(`90 Tage auf einmal: HTTP ${r.status}, ${kurzListe(Array.isArray(j) ? j : [], 'date')}`);
+  return `Zahlen FMP (je 7 Tage): ${teile.join(' | ')}`;
+}
+
+for (const pruefung of [coingecko, zahlenFinnhub, zahlenFmp]) {
   try {
     ergebnis.push(await pruefung());
   } catch (e) {
