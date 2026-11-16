@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-16T12:06:20.226Z",
-  "anzahl": 180,
+  "stand": "2026-11-16T15:07:50.417Z",
+  "anzahl": 201,
   "signale": [
     {
       "id": "verwaesserung:GMHS:2026-11-12",
@@ -703,7 +703,8 @@
       "q": [
         "BTC-ECHO",
         "Handelsblatt Finanzen",
-        "FAZ Finanzen"
+        "FAZ Finanzen",
+        "CNBC Top News"
       ],
       "z": "2026-11-15T09:27:00.000Z"
     },
@@ -741,14 +742,15 @@
       "t": "NVDA",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.72,
+      "st": 0.83,
       "q": [
         "CNBC Top News",
         "MarketWatch",
         "Finnhub News",
         "Handelsblatt Finanzen",
         "BTC-ECHO",
-        "tagesschau Wirtschaft"
+        "tagesschau Wirtschaft",
+        "FAZ Finanzen"
       ],
       "z": "2026-11-15T17:14:17.000Z"
     },
@@ -2325,10 +2327,11 @@
       "t": "CBK.DE",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.41,
+      "st": 0.51,
       "q": [
         "Handelsblatt Finanzen",
-        "tagesschau Wirtschaft"
+        "tagesschau Wirtschaft",
+        "FAZ Finanzen"
       ],
       "z": "2026-11-16T11:40:48.000Z"
     },
@@ -2386,6 +2389,280 @@
         "CNBC Politics"
       ],
       "z": "2026-11-16T12:06:20.226Z"
+    },
+    {
+      "id": "handelsstopp:GDHG:2026-11-16",
+      "s": "T:GDHG",
+      "n": "Golden Heaven Grp Hld Ord A",
+      "t": "GDHG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GMM:2026-11-16",
+      "s": "T:GMM",
+      "n": "Global Mofy AI Cls A Ord Sh",
+      "t": "GMM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GLX:2026-11-16",
+      "s": "T:GLX",
+      "n": "Corgi GLXY 2x Daily ETF",
+      "t": "GLX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RFAI:2026-11-16",
+      "s": "T:RFAI",
+      "n": "RF Acq Cp II Ord",
+      "t": "RFAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BGM:2026-11-16",
+      "s": "T:BGM",
+      "n": "BGM Group Ltd. Class A Ord Shs",
+      "t": "BGM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:DFSC:2026-11-16",
+      "s": "T:DFSC",
+      "n": "DEFSEC Technologies Inc. Cm",
+      "t": "DFSC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:NORD:2026-11-16",
+      "s": "T:NORD",
+      "n": "Nordicus Partners Corp Cmn Stk",
+      "t": "NORD",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MTEX:2026-11-16",
+      "s": "T:MTEX",
+      "n": "Mannatech Incorporated",
+      "t": "MTEX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MRAX:2026-11-16",
+      "s": "T:MRAX",
+      "n": "Tradr 2X Long MRAM Daily ETF",
+      "t": "MRAX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MACI:2026-11-16",
+      "s": "T:MACI",
+      "n": "Melar Acquisition Cp I Ord A",
+      "t": "MACI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:TOMZ:2026-11-16",
+      "s": "T:TOMZ",
+      "n": "TOMI Environmental Sol Cm St",
+      "t": "TOMZ",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AERT:2026-11-16",
+      "s": "T:AERT",
+      "n": "Aeries Tech Ord A",
+      "t": "AERT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:AXTC:2026-11-16",
+      "s": "T:AXTC",
+      "n": "Corgi AXTI 2x Daily ETF",
+      "t": "AXTC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RMIX:2026-11-16",
+      "s": "T:RMIX",
+      "n": "Suncrete Cmn A",
+      "t": "RMIX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BTCK:2026-11-16",
+      "s": "T:BTCK",
+      "n": "7RCC Spot Bitcoin and Carbon Credit Futures ETF",
+      "t": "BTCK",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:WENN:2026-11-16",
+      "s": "T:WENN",
+      "n": "Wen Acq Cp Ord A",
+      "t": "WENN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:WENNU:2026-11-16",
+      "s": "T:WENNU",
+      "n": "Wen Acquisition Corp",
+      "t": "WENNU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:WENNW:2026-11-16",
+      "s": "T:WENNW",
+      "n": "Wen Acq Cp Wt",
+      "t": "WENNW",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-11-16",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "FAZ Finanzen"
+      ],
+      "z": "2026-11-16T13:52:28.000Z"
+    },
+    {
+      "id": "nachricht:MSFT:2026-11-16",
+      "s": "T:MSFT",
+      "n": "Microsoft",
+      "t": "MSFT",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "tagesschau Wirtschaft",
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-16T14:22:45.000Z"
+    },
+    {
+      "id": "nachricht:TSLA:2026-11-16",
+      "s": "T:TSLA",
+      "n": "Tesla",
+      "t": "TSLA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-16T14:49:09.000Z"
     }
   ]
 }
