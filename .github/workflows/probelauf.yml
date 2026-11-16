@@ -69,7 +69,7 @@ jobs:
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
           SEC_KONTAKT: ${{ secrets.SEC_KONTAKT }}
           ZAHLEN_MAX: 1500
-          INSIDER_MAX: 600
+          INSIDER_MAX: 2500
           ARCHIV_NUR: ${{ github.event.inputs.teile }}
           US_MAX_TAGE: 3
         run: |
