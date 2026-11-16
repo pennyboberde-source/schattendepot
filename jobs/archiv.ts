@@ -5,7 +5,7 @@
 // Schalter (Umgebung): ARCHIV_NUR=krypto,us,gettex,stamm,boersenwert,zahlen,kryptokerzen,ussplits (Standard: krypto,us,gettex,stamm,boersenwert,zahlen – der tägliche Lauf).
 //   ZAHLEN_MAX=n: höchstens so viele SEC-Abrufe in diesem Lauf (Standard aus config/archiv.json); SEC_KONTAKT: Kontaktadresse für den User-Agent.
 //   US_AB=JJJJ-MM-TT und US_MAX_TAGE=n für den Rückblick (Kursgeschichte rückwärts, fortsetzbar – Workflow historie.yml).
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawn } from 'node:child_process';
 import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
@@ -37,6 +37,7 @@ import { ciksAusTagesverzeichnis, MELDUNG_ARTEN, MELDUNGEN_STUFE, meldungenAusSe
 import { parseAngst, parseStablecoins, parseVixCsv, type KryptoUmfeldArchiv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { finraDatei, leerverkaufCsv, parseFinraShvol } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandCsv, parseFinraShortInterest, stichtagKandidaten } from '../core/volltreffer/leerbestand.ts';
+import { FirdsLeser, HebelZaehler, type HebelStand } from '../core/volltreffer/firds.ts';
 import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, quartaleZwischen, quartalsEnde, quartalVon, type InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
@@ -71,6 +72,8 @@ interface Index {
   kryptoUmfeld?: { angstTage: number; angstBis: string | null; stableTage: number; stableBis: string | null; geholt: string };
   /** Leerverkaufsvolumen je US-Handelstag (leerverkauf/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
   leerverkauf?: Record<string, { werte: number; geholt: string }>;
+  /** Hebelprodukte je Basiswert (ESMA FIRDS) und Zuordnung ISIN → Kürzel in Zählungen */
+  hebel?: { quelle: string | null; basiswerte: number; zugeordnet: number; offen: number; geholt: string };
   /** Leerverkaufsbestand je FINRA-Stichtag (leerbestand/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
   leerbestand?: Record<string, { werte: number; veroeffentlicht: string | null; geholt: string }>;
   /** Insider-Käufe (stamm/insider.json.gz) in Zählungen */
@@ -89,7 +92,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,insider').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -753,6 +756,81 @@ async function leerbestand() {
   console.log(`Leerverkaufsbestand (FINRA): ${geholt} Stichtage geholt, ${offen} noch nicht veröffentlicht; Archiv: ${da.length} Stichtage (${da[0] ?? '–'} bis ${da[da.length - 1] ?? '–'}).`);
 }
 
+// ---------- Hebelprodukte je Basiswert (ESMA FIRDS, Quantensprung B Stufe 1) ----------
+// Wöchentliche Vollliste der Klasse R (samstags, ~19 Teile à ~9 MB gezippt, je ~470 MB XML in einer Zeile): nur wenn es
+// eine neue gibt, stückweise über `unzip -p` gelesen. Gezählt je US-Basiswert: Calls/Puts an gettex (MUND) und am
+// größten anderen deutschen Platz. Danach die Basiswert-ISINs per OpenFIGI einem US-Kürzel zuordnen (10 je Anfrage,
+// höchstens 25 Anfragen je Minute ohne Schlüssel), mit Zeitgrenze – der Rest im nächsten Lauf.
+async function hebel() {
+  const hc = { gettexMic: 'MUND', andereMics: ['STUB', 'STUH', 'FRAB', 'XFRA', 'XSTU', 'EUWX', 'HAND', 'HAMB', 'BERB', 'DUSB'], minuten: 8, ...(cfg as { hebel?: object }).hebel } as { gettexMic: string; andereMics: string[]; minuten: number };
+  const heute = iso.slice(0, 10);
+  const frist = Math.min(Date.now() + hc.minuten * 60000, performance.timeOrigin + 34 * 60000);
+  const datei = join(ARCHIV, 'stamm', 'gettex-hebel.json.gz');
+  let stand = existsSync(datei) ? (JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as { stand: string; quelle: string; basiswerte: Record<string, HebelStand> }) : null;
+  // 1. neueste Vollliste
+  const r = await fetch('https://registers.esma.europa.eu/solr/esma_registers_firds_files/select?q=file_name:FULINS_R*&fq=file_type:FULINS&sort=publication_date%20desc&wt=json&start=0&rows=80&fl=file_name,publication_date,download_link', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(60000) });
+  if (r.status !== 200) throw new Error(`FIRDS-Liste: HTTP ${r.status}`);
+  const docs = ((await r.json()) as { response: { docs: { file_name: string; publication_date: string; download_link: string }[] } }).response.docs;
+  const neuest = docs[0]?.publication_date.slice(0, 10) ?? null;
+  const teile = docs.filter((d) => d.publication_date.slice(0, 10) === neuest).sort((a, b) => a.file_name.localeCompare(b.file_name));
+  const soll = Number(/of(\d+)\.zip$/.exec(teile[0]?.file_name ?? '')?.[1] ?? 0);
+  if (neuest && stand?.quelle !== neuest) {
+    if (!soll || teile.length !== soll) throw new Error(`FIRDS ${neuest}: ${teile.length} von ${soll} Teilen gelistet – nächster Lauf`);
+    const leser = new FirdsLeser(heute);
+    const zaehler = new HebelZaehler(hc.gettexMic, new Set(hc.andereMics));
+    let produkte = 0;
+    for (const t of teile) {
+      const z = await fetch(t.download_link, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(180000) });
+      if (z.status !== 200) throw new Error(`FIRDS ${t.file_name}: HTTP ${z.status}`);
+      const tmp = join(ARCHIV, '..', 'firds-teil.zip');
+      writeFileSync(tmp, Buffer.from(await z.arrayBuffer()));
+      const kind = spawn('unzip', ['-p', tmp]);
+      kind.stdout.setEncoding('utf8');
+      for await (const stueck of kind.stdout as AsyncIterable<string>)
+        for (const pr of leser.teil(stueck))
+          if (pr.basis.startsWith('US')) {
+            zaehler.add(pr);
+            produkte++;
+          }
+      rmSync(tmp, { force: true });
+    }
+    stand = { stand: iso, quelle: neuest, basiswerte: zaehler.ergebnis() };
+    mkdirSync(dirname(datei), { recursive: true });
+    writeFileSync(datei, gzipSync(Buffer.from(JSON.stringify(stand), 'utf8'), { level: 9 }));
+    neu.push('stamm/gettex-hebel');
+    console.log(`Hebelprodukte (FIRDS ${neuest}): ${produkte} Einträge auf US-Basiswerte an deutschen Plätzen, ${Object.keys(stand.basiswerte).length} Basiswerte.`);
+  }
+  // 2. Zuordnung ISIN → US-Kürzel (null = OpenFIGI kennt kein US-Kürzel)
+  const zf = join(ARCHIV, 'stamm', 'isin-kuerzel.json');
+  const zu: Record<string, string | null> = existsSync(zf) ? (JSON.parse(readFileSync(zf, 'utf8')) as Record<string, string | null>) : {};
+  const offen = Object.keys(stand?.basiswerte ?? {}).filter((i) => !(i in zu));
+  let neuZu = 0;
+  for (let i = 0; i < offen.length && Date.now() < frist; i += 10) {
+    const teil = offen.slice(i, i + 10);
+    const a = await fetch('https://api.openfigi.com/v3/mapping', { method: 'POST', headers: { 'Content-Type': 'application/json', 'User-Agent': USER_AGENT }, body: JSON.stringify(teil.map((isin) => ({ idType: 'ID_ISIN', idValue: isin, exchCode: 'US' }))), signal: AbortSignal.timeout(30000) });
+    if (a.status === 429) {
+      await pause((Number(a.headers.get('ratelimit-reset')) || 60) * 1000 + 500);
+      i -= 10;
+      continue;
+    }
+    if (a.status !== 200) throw new Error(`OpenFIGI-Zuordnung: HTTP ${a.status}`);
+    const j = (await a.json()) as { data?: { ticker?: string; marketSector?: string }[] }[];
+    teil.forEach((isin, k) => {
+      const d = (j[k]?.data ?? []).find((x) => x.marketSector === 'Equity') ?? j[k]?.data?.[0];
+      zu[isin] = d?.ticker ? d.ticker.toUpperCase().replace(/[ /]/g, '.') : null;
+      neuZu++;
+    });
+    await pause(2600);
+  }
+  if (neuZu) {
+    writeFileSync(zf, JSON.stringify(zu));
+    neu.push('stamm/isin-kuerzel');
+  }
+  const zugeordnet = Object.keys(stand?.basiswerte ?? {}).filter((i) => zu[i]).length;
+  index.hebel = { quelle: stand?.quelle ?? null, basiswerte: Object.keys(stand?.basiswerte ?? {}).length, zugeordnet, offen: offen.length - neuZu, geholt: iso };
+  console.log(`Hebelprodukte: Liste ${stand?.quelle ?? '–'}, ${index.hebel.basiswerte} US-Basiswerte, ${zugeordnet} einem Kürzel zugeordnet, ${index.hebel.offen} noch offen (${neuZu} in diesem Lauf).`);
+}
+
 // ---------- Insider-Käufe (SEC Formular 4): Quartals-Datensätze für die Geschichte, einzelne Meldungen danach ----------
 async function insider() {
   const kontakt = process.env.SEC_KONTAKT?.trim();
@@ -940,6 +1018,7 @@ const TEILE = [
   ['kryptoumfeld', 'Krypto-Umfeld', kryptoumfeld],
   ['leerverkauf', 'Leerverkauf (FINRA)', leerverkauf],
   ['leerbestand', 'Leerverkaufsbestand (FINRA)', leerbestand],
+  ['hebel', 'Hebelprodukte (ESMA FIRDS)', hebel],
   ['insider', 'Insider-Käufe (SEC)', insider],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
@@ -993,6 +1072,7 @@ const stand = {
     return { tage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };
   })(),
   kryptoUmfeld: index.kryptoUmfeld ?? null,
+  hebel: index.hebel ?? null,
   leerbestand: (() => {
     const da = Object.keys(index.leerbestand ?? {}).filter((d) => index.leerbestand![d].werte > 0).sort();
     return { stichtage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };

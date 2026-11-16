@@ -64,5 +64,22 @@
   "insider": {
     "hinweis": "Insider-Käufe (SEC Formular 4). Seit 16.11.2026 nur noch die Quartals-Datensätze der SEC: einzelne Tage aus dem EDGAR-Tagesverzeichnis (1.500–3.000 Meldungen je Tag) sind nicht machbar, weil die SEC Abrufe aus GitHub Actions auf rund 0,4 je Sekunde drosselt (2.10.: 1.006 von 3.079 Meldungen in 45 Min.). Insider-Käufe ab 10.000 $ brachten im Rückblick über zwei Jahre ohnehin keinen Volltreffer-Vorteil. Das nächste Quartal (2026q4) veröffentlicht die SEC Anfang Januar; von Hand: historie.yml -f teile=insider (schaltet die Tage ein).",
     "taeglich": false
+  },
+  "hebel": {
+    "hinweis": "Hebelprodukte je Basiswert aus ESMA FIRDS (frei, amtlich): wöchentliche Vollliste der Klasse R (samstags), nur geladen, wenn neu; gettex = MIC MUND, andere deutsche Plätze werden getrennt gezählt (größter Einzelplatz). Danach Zuordnung der Basiswert-ISINs zu US-Kürzeln über OpenFIGI (ohne Schlüssel) mit Zeitgrenze minuten je Lauf.",
+    "gettexMic": "MUND",
+    "andereMics": [
+      "STUB",
+      "STUH",
+      "FRAB",
+      "XFRA",
+      "XSTU",
+      "EUWX",
+      "HAND",
+      "HAMB",
+      "BERB",
+      "DUSB"
+    ],
+    "minuten": 8
   }
 }
