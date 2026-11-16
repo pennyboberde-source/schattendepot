@@ -31,7 +31,7 @@ interface VtConfig {
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
   pruefung: { mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
-  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number };
+  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number };
   v6: V6Regeln & { ohneNein?: boolean };
 }
 
@@ -863,7 +863,22 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     if (w !== undefined) f.wertung = w;
   }
   // neue Muster: bestanden mit Vorteil gegen die Grundrate (beste Spielart je Gruppe), stärkste zuerst
-  const neu = mitVorteil.filter((e) => e.gesamt.quote >= v4.mindestQuote && !imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)).slice(0, Math.max(0, v4.vorwaertsMax - imTest.size));
+  // Vielfalt: höchstens v4.maxJeBaustein Muster je Baustein (Merkmal=Klasse, z. B. „Kapital-Registrierung vor 2–5 Tagen“) –
+  // sonst füllen Varianten derselben Idee die Plätze mit fast denselben Fällen
+  const bausteine = (gruppenSchluessel: string) => gruppenSchluessel.split('|')[1]?.split('&') ?? [];
+  const belegt = new Map<string, number>();
+  for (const e of imTest.values()) for (const b of bausteine(e.gruppenSchluessel)) belegt.set(b, (belegt.get(b) ?? 0) + 1);
+  const maxJe = v4.maxJeBaustein ?? 99;
+  const frei = Math.max(0, v4.vorwaertsMax - imTest.size);
+  const neu: typeof mitVorteil = [];
+  for (const e of mitVorteil) {
+    if (neu.length >= frei) break;
+    if (e.gesamt.quote < v4.mindestQuote || imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)) continue;
+    const bs = bausteine(e.schluessel);
+    if (bs.some((b) => (belegt.get(b) ?? 0) >= maxJe)) continue;
+    for (const b of bs) belegt.set(b, (belegt.get(b) ?? 0) + 1);
+    neu.push(e);
+  }
   for (const e of neu) {
     const eintrag: BuchMuster = { schluessel: `${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, gruppe: e.gruppe, gruppenSchluessel: e.schluessel, sp: e.spielartSchluessel, fenster: e.fenster, seit: heute, wertung: e.wertung, rueckblick: { quote: e.gesamt.quote, ev: e.gesamt.ev, se: e.gesamt.se, faelle: e.gesamt.n }, status: 'vorwaertstest' };
     musterBuch.eintraege.push(eintrag);
@@ -881,7 +896,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     if (u) Object.assign(f, u);
   }
   const ohnePump = vorwaerts.filter((f) => !f.pump);
-  const { jagden, uebersprungen } = jagdenWaehlen(ohnePump, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze });
+  const { jagden, uebersprungen } = jagdenWaehlen(ohnePump, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, einmalJeWert: true });
   // V6: Stufe 3 vor dem Fortschreiben – Stand je Muster (abgeschlossene Vorwärts-Fälle, Ø)
   const v6 = vt.v6;
   const zeitenVorher = stufe3Zeiten(musterBuch.eintraege);
@@ -946,6 +961,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
       befoerdert: befoerdertJetzt,
     },
   });
+  if (neu.length) log(`V4 neu im Vorwärtstest: ${neu.map((e) => `${e.gruppe} – ${e.spielart}`).join(" | ")}`);
   log(`V6: ${befoerdertJetzt.length} Muster in Stufe 3 (heute ${befoerdertHeute.length} befördert, ${zurueckHeute.length} zurückgestuft), ${s3.kennzahlen.anzahl} sichtbare Orders abgeschlossen (Rendite ${s3.rendite} %), ${s3.offen.length} offen, ${s3.vorgemerkt.length} vorgemerkt.`);
   log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu, ${beendet.length} beendet), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}, Pump-Verdacht ${pumpZahl} (nicht gejagt).`);
 }
