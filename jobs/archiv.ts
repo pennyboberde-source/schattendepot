@@ -775,7 +775,12 @@ async function insider() {
       const arbeiter = async () => {
         while (pos < dateien.length) {
           const f = dateien[pos++];
-          const m = await holen(`https://www.sec.gov/Archives/${f}`);
+          let m = await holen(`https://www.sec.gov/Archives/${f}`);
+          // vorübergehende Fehler (z. B. 503) einmal wiederholen – sonst fehlen Käufe an diesem Tag
+          if (m.status !== 200) {
+            await pause(1500);
+            m = await holen(`https://www.sec.gov/Archives/${f}`);
+          }
           if (m.status !== 200) continue;
           const k = kaufAusMeldung(await m.text(), ic.mindestWert);
           meldungen++;
