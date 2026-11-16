@@ -4,7 +4,7 @@
 // Aufruf: node jobs/rueckblick.ts   (ARCHIV_DIR = Checkout des privaten Archivs, DATEN_DIR = Datenzweig)
 // Öffentlich (DATEN_DIR/lernen/muster/): nur verdichtete Kennzahlen. Privat (ARCHIV_DIR/auswertung/): Zensus mit Werten.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { orderentgelt } from '../core/gebuehren.ts';
 import { parseKryptoKerzenArchiv, parseUsArchiv, parseUsSplitsArchiv } from '../core/sammelkurse.ts';
@@ -21,6 +21,8 @@ import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenw
 import { aenderungAm, breite, fedAbstand, summeBis, wertAm, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
+import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
+import { turbosPruefen } from './lib/turbos.ts';
 import type { InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfasst, zahlenAbstaende, type MeldungArt, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
 
@@ -34,6 +36,7 @@ interface VtConfig {
   pruefung: { mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number };
   v6: V6Regeln & { ohneNein?: boolean };
+  turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
 }
 
 const t0 = Date.now();
@@ -307,7 +310,18 @@ function handelbar(r: Reihe, m: Merkmale, k: Kerze): boolean {
   }
   return (k.v ?? 0) * k.c >= vt.handelbar.krypto.mindestUmsatzStichtag && (m.schwankung20 === null || m.schwankung20 >= vt.handelbar.krypto.mindestSchwankung20);
 }
-const turboErlaubt = (r: Reihe, m: Merkmale) => (r.markt === 'krypto' ? vt.handelbar.krypto.turboBasiswerte.includes(r.schluessel.slice(2)) || (r.schluessel === 'K:BTC' && vt.handelbar.krypto.turboBasiswerte.includes('XBT')) : (m.umsatz20 ?? 0) >= vt.handelbar.aktie.turboAbUmsatz20);
+// Echte Handelbarkeit (seit 16.11.2026): Hebelprodukte je Basiswert in Deutschland (OpenFIGI, Cache privat im Archiv
+// stamm/turbos.json). Wo ein Wert geprüft ist, gilt statt der Umsatz-Näherung, ob es Produkte in der Richtung der
+// Spielart gibt (Call = long, Put = short) – die heutige Karte, auf die Vergangenheit angewandt (Näherung).
+const turboPfad = join(ARCHIV, 'stamm', 'turbos.json');
+const turboCache: Record<string, TurboStand> = existsSync(turboPfad) ? (JSON.parse(readFileSync(turboPfad, 'utf8')) as Record<string, TurboStand>) : {};
+log(`Turbos: ${Object.keys(turboCache).length} US-Werte geprüft (${Object.values(turboCache).filter((t) => t.short > 0).length} mit Puts, ${Object.values(turboCache).filter((t) => t.long > 0).length} mit Calls).`);
+const turboErlaubt = (r: Reihe, m: Merkmale, richtung: 'long' | 'short') => {
+  if (r.markt === 'krypto') return vt.handelbar.krypto.turboBasiswerte.includes(r.schluessel.slice(2)) || (r.schluessel === 'K:BTC' && vt.handelbar.krypto.turboBasiswerte.includes('XBT'));
+  return turboDa(turboCache[r.schluessel.slice(2).split('#')[0]], richtung) ?? (m.umsatz20 ?? 0) >= vt.handelbar.aktie.turboAbUmsatz20;
+};
+/** beide Richtungen auf einmal (je Stichtag einmal statt je Spielart) */
+const turbosAm = (r: Reihe, m: Merkmale) => ({ long: turboErlaubt(r, m, 'long'), short: turboErlaubt(r, m, 'short') });
 
 // ---------- 3. Durchgang 1: Merkmale, Marktbewegung je Tag, Zeiträume ----------
 // Merkmale werden nicht vorgehalten (Speicher), sondern im zweiten Durchgang neu berechnet
@@ -513,7 +527,7 @@ for (const r of reihen) {
       for (const e of testJeGruppe.get(g) ?? []) {
         if (k[i].datum <= e.seit || (e.status === 'beendet' && e.am && k[i].datum > e.am) || i - (testZuletzt.get(e.schluessel) ?? -1e9) <= vt.pruefung.sperreTage) continue;
         const sp = spNachSchluessel.get(e.sp);
-        if (!sp || (sp.hebel > 1 && !turboErlaubt(r, x))) continue;
+        if (!sp || (sp.hebel > 1 && !turboErlaubt(r, x, sp.richtung))) continue;
         const fall = jagdFall(r, i, e, kostenFuer(r.markt, x.umsatz20));
         if (fall) {
           vorwaerts.push(fall);
@@ -538,9 +552,9 @@ for (const r of reihen) {
     const einzelFrei = gEinzel.filter(frei);
     const paareFrei = gPaare.filter(frei);
     let gezaehlt = false;
-    const turbo = turboErlaubt(r, x);
+    const turbo = turbosAm(r, x);
     SP.forEach((sp, s) => {
-      if (sp.hebel > 1 && !turbo) return;
+      if (sp.hebel > 1 && !turbo[sp.richtung]) return;
       const a = ausg(i, sp, x);
       a.forEach((au, f) => {
         if (!au) return;
@@ -601,9 +615,9 @@ for (const r of reihen) {
       if (i >= k.length - 1) continue;
       hypFaelle[h.nr] = (hypFaelle[h.nr] ?? 0) + 1;
       const z = k[i].datum < grenze ? 0 : 1;
-      const turbo = turboErlaubt(r, x);
+      const turbo = turbosAm(r, x);
       SP.forEach((sp, s) => {
-        if (sp.hebel > 1 && !turbo) return;
+        if (sp.hebel > 1 && !turbo[sp.richtung]) return;
         ausg(i, sp, x).forEach((au, f) => au && zw.add(g, s, f, z, au));
       });
     }
@@ -698,11 +712,11 @@ for (const name of gruppen) {
     const m = k.map((_, i) => merkmale(k, i));
     const gezaehltAm = new Map<number, number>();
     const fallZaehlen = (i: number, g: number, x: Merkmale, cache: Map<number, (Ausgang | null)[]>) => {
-      const turbo = turboErlaubt(r, x);
+      const turbo = turbosAm(r, x);
       for (const j of kandJeGruppe.get(g)!) {
         const c = kand[j];
         const sp = SP[c.s];
-        if (sp.hebel > 1 && !turbo) continue;
+        if (sp.hebel > 1 && !turbo[sp.richtung]) continue;
         const a = cache.get(c.s) ?? cache.set(c.s, etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20), F)).get(c.s)!;
         const au = a[c.fi];
         if (au) klumpen.add(j, tagNr.get(k[i].datum)!, au.netto);
@@ -925,6 +939,55 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     musterBuch.eintraege.push(eintrag);
   }
   schreibeJson('lernen/muster/muster-buch.json', musterBuch);
+  // Echte Handelbarkeit: zuerst die Werte der lauernden und laufenden Fälle mit Turbo-Spielart prüfen (Vorrang nach
+  // Wertung), dann zur Eichung die Werte abgeschlossener Fälle und eine feste Stichprobe des Markts. Fälle ohne Produkt
+  // in ihrer Richtung fallen aus Vorwärtstest, Jagd und sichtbaren Orders (gezählt als „nicht handelbar“).
+  const tc = vt.turbos;
+  const spVon = (muster: string) => {
+    const t = muster.split('|');
+    return spNachSchluessel.get(alleMuster.get(muster)?.sp ?? t[t.length - 2]);
+  };
+  const mitTurbo = (f: JagdFall) => f.markt === 'aktie' && (spVon(f.muster)?.hebel ?? 1) > 1;
+  const vorrang = vorwaerts.filter((f) => mitTurbo(f) && (f.art === 'lauert' || f.art === 'offen')).sort((a, b) => b.wertung - a.wertung).map((f) => f.wert);
+  const eichung = vorwaerts.filter(mitTurbo).map((f) => f.wert);
+  // Stichprobe: alle handelbaren US-Werte ab einem Mindestumsatz, fest gemischt (gleiche Reihenfolge an jedem Tag)
+  const umsatzJe = new Map<string, number>();
+  for (const r of reihen) {
+    if (r.markt !== 'aktie' || r.kerzen.length < 21) continue;
+    const u = merkmale(r.kerzen, r.kerzen.length - 1)?.umsatz20;
+    if (u) umsatzJe.set(r.schluessel.slice(2).split('#')[0], u);
+  }
+  const misch = (k: string) => [...k].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) | 0, 7);
+  const stichprobe = [...umsatzJe].filter(([, u]) => u >= tc.stichprobeAbUmsatz20).map(([k]) => k).sort((a, b) => misch(a) - misch(b));
+  const cacheVorher = Object.keys(turboCache).length;
+  const tStart = Date.now();
+  const tp = await turbosPruefen([...vorrang, ...eichung, ...stichprobe], turboCache, heute, tc, Date.now() + tc.minuten * 60000).catch((e: Error) => {
+    log(`Turbos: Prüfung abgebrochen (${e.message}).`);
+    return null;
+  });
+  if (tp?.geprueft) {
+    mkdirSync(dirname(turboPfad), { recursive: true });
+    writeFileSync(turboPfad, JSON.stringify(turboCache));
+  }
+  let nichtHandelbar = 0;
+  for (let n = vorwaerts.length - 1; n >= 0; n--) {
+    const f = vorwaerts[n];
+    const sp = spVon(f.muster);
+    if (!sp || !mitTurbo(f)) continue;
+    if (turboDa(turboCache[f.wert], sp.richtung) === false) {
+      vorwaerts.splice(n, 1);
+      nichtHandelbar++;
+    }
+  }
+  // Eichung der Umsatz-Näherung: Anteil geprüfter Werte mit Puts bzw. Calls je Klasse des Ø-Tagesumsatzes (nur Zählungen)
+  const klassen = [0, 5e6, 20e6, 50e6];
+  const eich = klassen.map((ab, i) => {
+    const bis = klassen[i + 1] ?? Infinity;
+    const ws = Object.entries(turboCache).filter(([k]) => (umsatzJe.get(k) ?? -1) >= ab && (umsatzJe.get(k) ?? -1) < bis).map(([, t]) => t);
+    return { abUmsatz20: ab, geprueft: ws.length, mitPuts: ws.filter((t) => t.short > 0).length, mitCalls: ws.filter((t) => t.long > 0).length };
+  });
+  const handelbarkeit = { geprueft: Object.keys(turboCache).length, neuGeprueft: tp?.geprueft ?? 0, nichtHandelbar, eichung: eich };
+  log(`Turbos: ${tp?.geprueft ?? 0} Werte neu geprüft in ${Math.round((Date.now() - tStart) / 1000)} s (${tp?.ohneName ?? 0} ohne Firmennamen, ${tp?.fehler ?? 0} Fehler), Cache ${cacheVorher} → ${Object.keys(turboCache).length}; ${nichtHandelbar} Vorwärts-Fälle ohne Produkt in ihrer Richtung entfernt. Eichung (Ø-Umsatz ab → Puts/Calls je geprüft): ${eich.map((e) => `${e.abUmsatz20 / 1e6} Mio. $: ${e.mitPuts}/${e.mitCalls} von ${e.geprueft}`).join(' · ')}.`);
   // V5: Claudes Urteile aus den Morgenläufen den Fällen zuordnen (Wert + Stichtag)
   const urteilOrdner = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'volltreffer', 'urteile');
   const urteile = new Map<string, { urteil: 'ja' | 'nein'; grund: string }>();
@@ -987,6 +1050,8 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     lauerliste: lauerliste.slice(0, v4.lauerlisteMax).map(ohneMuster),
     lauerlisteZahl: lauerliste.length,
     pumpVerdacht: pumpZahl,
+    // Echte Handelbarkeit: geprüfte Werte (Hebelprodukte in Deutschland), entfernte Fälle, Eichung der Umsatz-Näherung
+    handelbarkeit,
     uebersprungen,
     muster: jeMuster.sort((a, b) => b.faelle - a.faelle),
     // V6: sichtbare Orders (Stufe 3) – bewährte Muster, simuliert mit 1.000 € je Order, mit Einzelmitteilungen

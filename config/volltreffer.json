@@ -40,7 +40,7 @@
     "zensusHinweis": "Sprung-Zensus, Trefferbuch und Signal-Prüfung zählen nur Volltreffer mit höchstens Hebel 3 (Basiswert mindestens rund +14 %); die Musterprüfung rechnet alle Spielarten mit ihrem Erwartungswert."
   },
   "handelbar": {
-    "hinweis": "Näherung, solange es keine Handelbarkeits-Karte aus gettex-Daten gibt: US-Aktien ohne OTC, Warrants, Units und Rechte, ab 1 $ und mit ausreichend Umsatz am Stichtag; Turbos nur auf Werte mit großem Umsatz; Krypto über Kraken (Euro bevorzugt), Turbos nur auf die großen Coins.",
+    "hinweis": "Näherung, solange es keine Handelbarkeits-Karte aus gettex-Daten gibt: US-Aktien ohne OTC, Warrants, Units und Rechte, ab 1 $ und mit ausreichend Umsatz am Stichtag; Turbos nur auf Werte mit großem Umsatz; Krypto über Kraken (Euro bevorzugt), Turbos nur auf die großen Coins. Seit 16.11.2026 ersetzt die Turbo-Prüfung (turbos) die Umsatz-Näherung für jeden schon geprüften Wert.",
     "aktie": {
       "mindestKurs": 1,
       "mindestUmsatzStichtag": 500000,
@@ -605,5 +605,14 @@
       "mindestFaelle": 10
     },
     "schnellspurHinweis": "Schnellspur (Nutzer 15.11.2026: „kannst auch von 20 Tests absehen, wenn du dir sicher bist“): Muster mit Wertung ab mindestWertung im Rückblick brauchen nur mindestFaelle abgeschlossene Vorwärts-Fälle; Quote, Ø und Band gelten unverändert."
+  },
+  "turbos": {
+    "hinweis": "Echte Handelbarkeit (seit 16.11.2026, Plan V1 „Liste der Basiswerte mit Turbos“): OpenFIGI-Suche (frei, ohne Schlüssel, 5 Suchen je Minute) nach Hebelprodukten auf US-Aktien an deutschen Börsen (boerse GR = alle deutschen Plätze; nur gettex/München wäre zu eng: Beyond Meat hat dort nur Calls, an anderen Plätzen Hunderte Puts). Je Lauf des Rückblicks höchstens maxSuchen Suchen (je bis zu maxSeiten Seiten à 100 Produkte), zuerst die Werte der lauernden und laufenden Fälle, dann zur Eichung abgeschlossene Fälle und eine feste Stichprobe ab stichprobeAbUmsatz20 $ Ø-Umsatz. Ein Stand gilt gueltigTage Tage. Wo geprüft, ersetzt er die Umsatz-Näherung (turboAbUmsatz20); Fälle ohne Produkt in ihrer Richtung fallen aus Vorwärtstest, Jagd und sichtbaren Orders.",
+    "boerse": "GR",
+    "gueltigTage": 14,
+    "maxSuchen": 40,
+    "maxSeiten": 3,
+    "minuten": 12,
+    "stichprobeAbUmsatz20": 1000000
   }
 }
