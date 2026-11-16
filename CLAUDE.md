@@ -10,6 +10,7 @@ Gültiger Plan seit 11.11.2026: `KONZEPT-VOLLTREFFER.md` (dritter Bereich „Vol
 - Das System ist live: jede Änderung an `main` wird sofort deployt und von den Jobs genutzt → nur mit grünen Tests committen, Daten-Branch nie von Hand ändern.
 - **Nach jedem Meilenstein anhalten**: STAND.md aktualisieren, kurzen Stand geben, auf „weiter“ warten.
 - STAND.md und diese Datei nach jedem Arbeitsschritt aktuell halten.
+- **Quantensprünge suchen (Dauerauftrag seit 16.11.2026):** In jeder Sitzung aktiv nach Änderungen suchen, die das Programm grundlegend verbessern (ändert das Ergebnis der Art nach, z. B. doppelte Volltreffer-Quote bei gleich vielen Orders oder „real handelbar“ statt „nur im Rückblick“ – nicht ein paar Prozentpunkte, nicht bloß mehr Quellen derselben Art). Vorschlagen mit ehrlichem Nutzen und Aufwand, der Nutzer gibt Go oder nicht. Kleine Verbesserungen zweckmäßig ohne Rückfrage einarbeiten.
 - Freigabe-Anfragen (Zugänge, Klicks, Konten, Secrets) gebündelt stellen, jede Zeile mit 🔴❗ beginnen und zusätzlich eine Push-Benachrichtigung senden. der Nutzer steuert oft per Remote Control vom iPad: alles, was er bestätigen muss, so gestalten, dass es im iPad-Safari geht (nichts am PC tippen lassen).
 - Windows PowerShell 5.1 setzt beim Pipen in Programme eine UTF-8-BOM davor → Geheimnisse/Daten nie per `|` an native Programme geben, sondern per Datei + `cmd /c "prog < datei"`.
 - `schattendepot-prompt.md` (Originalauftrag) bleibt lokal und wird nicht committet (persönliche Angaben).
