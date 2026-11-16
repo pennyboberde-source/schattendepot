@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-16T05:31:06.081Z",
-  "anzahl": 164,
+  "stand": "2026-11-16T08:41:37.544Z",
+  "anzahl": 165,
   "signale": [
     {
       "id": "verwaesserung:GMHS:2026-11-12",
@@ -699,10 +699,11 @@
       "m": "krypto",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.41,
+      "st": 0.51,
       "q": [
         "BTC-ECHO",
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "FAZ Finanzen"
       ],
       "z": "2026-11-15T09:27:00.000Z"
     },
@@ -745,7 +746,9 @@
         "CNBC Top News",
         "MarketWatch",
         "Finnhub News",
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "BTC-ECHO",
+        "tagesschau Wirtschaft"
       ],
       "z": "2026-11-15T17:14:17.000Z"
     },
@@ -2104,7 +2107,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.6,
+      "st": 0.65,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2118,7 +2121,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.6,
+      "st": 0.65,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2132,7 +2135,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.6,
+      "st": 0.65,
       "q": [
         "tagesschau Ausland"
       ],
@@ -2165,6 +2168,19 @@
         "tagesschau Ausland"
       ],
       "z": "2026-11-16T05:31:06.081Z"
+    },
+    {
+      "id": "nachricht:AMZN:2026-11-16",
+      "s": "T:AMZN",
+      "n": "Amazon",
+      "t": "AMZN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-16T06:48:12.000Z"
     }
   ]
 }
