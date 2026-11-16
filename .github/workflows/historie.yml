@@ -75,8 +75,8 @@ jobs:
           if echo "$TEILE" | tr ',' '\n' | grep -qx insider; then
             for runde in $(seq 1 12); do
               echo "== Insider-Runde $runde =="
-              ausgabe=$(ARCHIV_NUR=insider INSIDER_MAX=8000 node jobs/archiv.ts 2>&1); code=$?
-              echo "$ausgabe" | grep -E '^(Insider|FEHLER)' | tail -3
+              ausgabe=$(ARCHIV_NUR=insider INSIDER_MAX=8000 INSIDER_MINUTEN=45 ARCHIV_MINUTEN=50 node jobs/archiv.ts 2>&1); code=$?
+              echo "$ausgabe" | grep -E '^(Insider|FEHLER)' | grep -vE '^Insider 20[0-9]{2}q' | tail -4
               bash scripts/archiv-sichern.sh "Insider Runde $runde $(zeit)"
               if [ $code -ne 0 ]; then echo "::warning::Insider-Runde $runde mit Fehler – Abbruch"; break; fi
               echo "$ausgabe" | grep -qE 'Insider \(SEC\): 0 Quartale, 0 Tage' && { echo "Insider: nichts mehr nachzuholen."; break; }

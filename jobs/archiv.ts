@@ -684,8 +684,13 @@ async function insider() {
     console.log('Insider (SEC): SEC_KONTAKT fehlt – übersprungen.');
     return;
   }
-  const ic = { jahre: 2, mindestWert: 10000, abstandMs: 160, maxMeldungen: 2500, ...(cfg as { insider?: object }).insider } as { jahre: number; mindestWert: number; abstandMs: number; maxMeldungen: number };
+  const ic = { jahre: 2, mindestWert: 10000, abstandMs: 160, maxMeldungen: 2500, minuten: 18, ...(cfg as { insider?: object }).insider } as { jahre: number; mindestWert: number; abstandMs: number; maxMeldungen: number; minuten: number };
   const max = Number(process.env.INSIDER_MAX) > 0 ? Math.floor(Number(process.env.INSIDER_MAX)) : ic.maxMeldungen;
+  // Zeitgrenze: höchstens `minuten` für die einzelnen Tage und nie über die Laufzeit des ganzen Jobs hinaus
+  // (archiv.yml bricht nach 40 Min. ab – dann wäre auch Gesichertes anderer Teile verloren)
+  const minuten = Number(process.env.INSIDER_MINUTEN) > 0 ? Number(process.env.INSIDER_MINUTEN) : ic.minuten;
+  const gesamt = Number(process.env.ARCHIV_MINUTEN) > 0 ? Number(process.env.ARCHIV_MINUTEN) : 34;
+  const frist = Math.min(Date.now() + minuten * 60000, performance.timeOrigin + gesamt * 60000);
   const ua = `Schattendepot-Forschung ${kontakt}`;
   const datei = join(ARCHIV, 'stamm', 'insider.json.gz');
   const heute = iso.slice(0, 10);
@@ -766,14 +771,29 @@ async function insider() {
         a.tage.push(tag); // Feiertag
         continue;
       }
-      if (r.status !== 200) break; // gestern noch nicht veröffentlicht
+      if (r.status !== 200) {
+        if (tag < gestern) console.log(`Insider ${tag}: Tagesverzeichnis HTTP ${r.status} – nächster Lauf.`);
+        break; // gestern noch nicht veröffentlicht
+      }
       const dateien = formular4Dateien(await r.text());
-      if (anfragen + dateien.length > max) break; // ganzer Tag passt nicht mehr ins Kontingent → nächster Lauf
+      // Ganzer Tag passt nicht mehr ins Kontingent → nächster Lauf. Der erste Tag eines Laufs wird immer versucht –
+      // sonst bliebe ein Tag mit mehr Meldungen als das Kontingent für immer hängen (16.11.: 2.10. nie geholt)
+      if (tageNeu > 0 && anfragen + dateien.length > max) break;
+      if (Date.now() + dateien.length * ic.abstandMs > frist) {
+        console.log(`Insider ${tag}: ${dateien.length} Meldungen passen zeitlich nicht mehr – nächster Lauf.`);
+        break;
+      }
+      const tagStart = Date.now();
       const neu = new Map<string, [string, string, number][]>();
       // 3 Abrufe gleichzeitig, gemeinsam gedrosselt (holen hält den Abstand) – sonst bremst die Antwortzeit auf ~3/s
       let pos = 0;
+      let zeitUm = false;
       const arbeiter = async () => {
         while (pos < dateien.length) {
+          if (Date.now() > frist) {
+            zeitUm = true;
+            return;
+          }
           const f = dateien[pos++];
           let m = await holen(`https://www.sec.gov/Archives/${f}`);
           // vorübergehende Fehler (z. B. 503) einmal wiederholen – sonst fehlen Käufe an diesem Tag
@@ -788,6 +808,12 @@ async function insider() {
         }
       };
       await Promise.all([arbeiter(), arbeiter(), arbeiter()]);
+      if (zeitUm) {
+        // halber Tag wird verworfen (zählt nicht als erfasst); das Tempo zeigt, ob die SEC drosselt
+        const s = (Date.now() - tagStart) / 1000;
+        console.log(`Insider ${tag}: Zeit um nach ${pos} von ${dateien.length} Meldungen (${(pos / Math.max(s, 1)).toFixed(1)} je s) – nächster Lauf.`);
+        break;
+      }
       // erst nach dem ganzen Tag übernehmen – ein halber Tag zählt nicht als erfasst
       a.kaeufe = kaeufeVereinen(a.kaeufe, neu);
       a.tage.push(tag);
