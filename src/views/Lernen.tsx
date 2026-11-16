@@ -9,6 +9,7 @@ import { Geladen, Karte, Leer } from '../ui';
 import type { VorlaufStatistik } from '../../core/datenkrake.ts';
 import { DatenkrakeKarten, MitN, urteilsWert, type HotStuffBericht } from './LernenDatenkrake';
 import { VerbesserungKarte } from './LernenVerbesserung';
+import { SammelSchattenbuchKarte } from './Kontext';
 
 const TYP_NAME = Object.fromEntries(Object.entries(signalCfg.typen).map(([k, v]) => [k, v.name])) as Record<string, string>;
 const p = (x: number | null) => (x === null ? '–' : prozent(x));
@@ -51,6 +52,7 @@ export function LernenView() {
         Rückblick, Trefferbuch und virtuelle Jagd stehen im Bereich <a href="#/volltreffer">🎯 Volltreffer</a>.
       </p>
       <VerbesserungKarte />
+      <SammelSchattenbuchKarte />
       <Geladen
         z={statistik}
         leer="Noch keine Statistik – sie entsteht mit den ersten abgeschlossenen Orders."

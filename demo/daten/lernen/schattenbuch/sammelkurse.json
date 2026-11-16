@@ -1,0 +1,115 @@
+{
+ "stand": "2026-06-24T06:00:00.000Z",
+ "hinweis": "Schattenbuch auf Sammelkursen (Plan V1 Teil b): jedes Signal der Datenkrake aus den Tageskerzen des privaten Archivs gemessen, ohne Einzelabruf. Start = Eröffnung des ersten Handelstags nach dem Signaltag; Renditen in % nach 1, 3, 5, 10 und 21 Handelstagen (Schluss), höchster/tiefster Stand seit dem Start (Median), Überrendite gegen den Markt und gegen Werte gleicher Größenklasse (Ø-Tagesumsatz) über dieselben Tage (Median, Näherung über Tagesrenditen). Je Wert und Typ ein Fall in 10 Handelstagen. Abdeckung: Signale (Wert und Tag) mit Handelstag danach, die im Archiv eine Kursreihe haben (US-Aktien/ETFs, Kraken-Coins; deutsche Werte und Rohstoffe noch nicht). Nur verdichtete Kennzahlen.",
+ "abdeckung": {
+  "signale": 16,
+  "gemessen": 12,
+  "anteil": 75,
+  "jeMarkt": {
+   "aktie": {
+    "gesamt": 16,
+    "gemessen": 12
+   }
+  }
+ },
+ "typen": [
+  {
+   "markt": "aktie",
+   "typ": "kursrakete",
+   "faelle": 20,
+   "punkte": {
+    "r1T": {
+     "n": 20,
+     "mittel": 0.3,
+     "median": 0.5,
+     "imPlus": 75,
+     "ueberMarkt": 0.4,
+     "ueberKlasse": 0.4
+    },
+    "r3T": {
+     "n": 20,
+     "mittel": -0.7,
+     "median": -1,
+     "imPlus": 25,
+     "ueberMarkt": -1,
+     "ueberKlasse": -1.1
+    },
+    "r1W": {
+     "n": 20,
+     "mittel": -1,
+     "median": -0.6,
+     "imPlus": 25,
+     "ueberMarkt": -0.4,
+     "ueberKlasse": -0.4
+    },
+    "r10T": {
+     "n": 20,
+     "mittel": -2,
+     "median": -2,
+     "imPlus": 0,
+     "ueberMarkt": -1.5,
+     "ueberKlasse": -2.1
+    },
+    "r1M": {
+     "n": 10,
+     "mittel": -5.3,
+     "median": -5.3,
+     "imPlus": 0,
+     "ueberMarkt": -4.3,
+     "ueberKlasse": -4.8
+    }
+   },
+   "hoch": 3.9,
+   "tief": -9.3
+  },
+  {
+   "markt": "aktie",
+   "typ": "insider_kauf",
+   "faelle": 10,
+   "punkte": {
+    "r1T": {
+     "n": 10,
+     "mittel": 0.4,
+     "median": 0.4,
+     "imPlus": 50,
+     "ueberMarkt": 0.2,
+     "ueberKlasse": 0.3
+    },
+    "r3T": {
+     "n": 10,
+     "mittel": 0,
+     "median": 0,
+     "imPlus": 50,
+     "ueberMarkt": 0,
+     "ueberKlasse": 0
+    },
+    "r1W": {
+     "n": 10,
+     "mittel": 0.5,
+     "median": 0.5,
+     "imPlus": 50,
+     "ueberMarkt": 0.7,
+     "ueberKlasse": 0.6
+    },
+    "r10T": {
+     "n": 10,
+     "mittel": 1.5,
+     "median": 1.5,
+     "imPlus": 100,
+     "ueberMarkt": 2,
+     "ueberKlasse": 2.1
+    },
+    "r1M": {
+     "n": 5,
+     "mittel": 4.3,
+     "median": 4.3,
+     "imPlus": 100,
+     "ueberMarkt": 5.3,
+     "ueberKlasse": 5.6
+    }
+   },
+   "hoch": 7.8,
+   "tief": -4.7
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+{
+  "stand": "2026-06-24T06:00:00.000Z",
+  "hinweis": "Gesamtmodell (Quantensprung, seit 16.11.2026): Gradient Boosting über die Klassen aller Merkmale, Ziel Ergebnis nach Kosten. Gemessen nur außerhalb der Trainingsdaten (Modell aus Zeitraum A bewertet B und umgekehrt); bestanden wie ein Muster. Nur verdichtete Kennzahlen.",
+  "modelle": [
+    {
+      "schluessel": "modell|aktie|2S150|10",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen – oberste 2 %",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "sp": "2S150",
+      "fenster": 10,
+      "q": 2,
+      "bestanden": false,
+      "grund": "weniger als 100 Fälle in einem Zeitraum; weniger als 30 Tage in einem Zeitraum; Ø − Standardfehler nicht in beiden Zeiträumen über 0; nur 0 von 5 Quartalen im Plus",
+      "zeitraeume": [
+        {
+          "n": 59,
+          "quote": 0,
+          "ev": -7,
+          "se": 8.7,
+          "tage": 29,
+          "grundEv": -22.3
+        },
+        {
+          "n": 137,
+          "quote": 0,
+          "ev": -19.6,
+          "se": 4.9,
+          "tage": 54,
+          "grundEv": -22.6
+        }
+      ],
+      "quartale": [
+        0,
+        5
+      ],
+      "wertung": -24.5,
+      "gesamt": {
+        "n": 196,
+        "quote": 0,
+        "ev": -15.8,
+        "se": 8.7
+      },
+      "wichtig": [
+        "Leerverkaufsbestand: Tage zum Eindecken (114)",
+        "Abstand zum Jahreshoch % (75)",
+        "Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte (75)",
+        "Leerverkaufsbestand gegen den vorigen FINRA-Stichtag (72)",
+        "Dollar (UUP) 5 Tage % (71)",
+        "Schluss in der Tagesspanne (0 = Tief, 1 = Hoch) (66)",
+        "Zinsentscheid der Fed (60)",
+        "Lange US-Anleihen (TLT) 5 Tage % (59)"
+      ],
+      "faelleHeute": 29
+    },
+    {
+      "schluessel": "modell|aktie|3L150|10",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen – oberste 2 %",
+      "markt": "aktie",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "sp": "3L150",
+      "fenster": 10,
+      "q": 2,
+      "bestanden": false,
+      "grund": "weniger als 100 Fälle in einem Zeitraum; weniger als 30 Tage in einem Zeitraum; Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als die Grundrate; nur 0 von 5 Quartalen im Plus",
+      "zeitraeume": [
+        {
+          "n": 36,
+          "quote": 0,
+          "ev": -89.8,
+          "se": 16,
+          "tage": 16,
+          "grundEv": -88.8
+        },
+        {
+          "n": 48,
+          "quote": 0,
+          "ev": -62.8,
+          "se": 12.7,
+          "tage": 19,
+          "grundEv": -90.5
+        }
+      ],
+      "quartale": [
+        0,
+        5
+      ],
+      "wertung": -105.8,
+      "gesamt": {
+        "n": 84,
+        "quote": 0,
+        "ev": -74.4,
+        "se": 16
+      },
+      "wichtig": [
+        "Leerverkaufsbestand: Tage zum Eindecken (121)",
+        "Abstand zum Jahreshoch % (89)",
+        "Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte (82)",
+        "Dollar (UUP) 5 Tage % (81)",
+        "Zinsentscheid der Fed (69)",
+        "Leerverkaufsbestand gegen den vorigen FINRA-Stichtag (65)",
+        "Schluss in der Tagesspanne (0 = Tief, 1 = Hoch) (62)",
+        "Lange US-Anleihen (TLT) 5 Tage % (61)"
+      ],
+      "faelleHeute": 0
+    }
+  ]
+}

@@ -10,6 +10,8 @@ test('Heute: Tagesbilanz, Briefing, Gelernt, Marktphase und Wochenzeugnis', asyn
   await expect(page.getByText('DEMO: Insider-Cluster tragen')).toBeVisible();
   await expect(page.getByText('Aufwärts, ruhig')).toBeVisible();
   await expect(page.getByTestId('zeugnis-note')).toHaveText('2,3 (gut)');
+  // Tages-Lagebild (schlanker Kontext): nur grobe Klassen
+  await expect(page.getByTestId('lage')).toContainText('Lange US-Anleihen 5 Tage ruhig');
 });
 
 test('Depot zeigt Kennzahlen, Positionen und den Pflichthinweis; alte Links funktionieren', async ({ page }) => {
@@ -85,6 +87,10 @@ test('Bereich Volltreffer: Jagd, Rückblick mit bestandenen Mustern und Hypothes
   const buch = page.getByTestId('trefferbuch');
   await expect(buch.getByText(/Vorzeichen: insider_cluster_kauf/)).toBeVisible();
   await expect(buch.getByText(/3 von 42 Fällen – noch zu wenige/)).toBeVisible();
+  // Gesamtmodell (Quantensprung) und echte Handelbarkeit
+  await expect(page.getByTestId('gesamtmodell')).toContainText('Gesamtmodell aus allen Merkmalen');
+  await expect(page.getByTestId('gesamtmodell')).toContainText('Wichtigste Merkmale');
+  await expect(jagd.getByTestId('handelbarkeit')).toContainText('36 Werte auf Hebelprodukte in Deutschland geprüft');
 });
 
 test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
@@ -107,6 +113,8 @@ test('Lernen zeigt Kalibrierung, Statistik und Gewichte', async ({ page }) => {
   await expect(page.getByText('🤖 Autopilot – bewiesene Signale')).toBeVisible();
   await expect(page.getByTestId('autopilot-tabelle').getByText('✅ kauft')).toBeVisible();
   await expect(page.getByText('Ziel/Stop je Signal – selbst optimiert')).toBeVisible();
+  // V1: Schattenbuch auf Sammelkursen mit ehrlicher Abdeckung
+  await expect(page.getByTestId('sammel-schattenbuch')).toContainText('12 von 16 Signalen');
 });
 
 test('Daytrading: eigener Bereich mit Kennzahlen, Herkunft und Trades', async ({ page }) => {

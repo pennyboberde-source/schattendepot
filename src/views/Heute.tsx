@@ -9,6 +9,7 @@ import { useDaten, type Abgeschlossen, type Kennzahlen, type Positionen } from '
 import { datumKurz } from '../lib/zeit';
 import { Betrag, Karte } from '../ui';
 import type { Lagebild } from './Briefing';
+import { LageKarte } from './Kontext';
 
 const berlinDatum = (d: Date) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Berlin' }).format(d);
 const uhr = (iso: string) => new Date(iso).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin' });
@@ -102,6 +103,7 @@ export function HeuteView() {
         </Karte>
       )}
 
+      <LageKarte />
       <div class="zwei-spalten">
         <Karte titel="Marktphase">
           {phase.status === 'ok' && (phase.daten.aktien || phase.daten.krypto) ? (
