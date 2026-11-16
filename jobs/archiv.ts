@@ -770,13 +770,19 @@ async function insider() {
       const dateien = formular4Dateien(await r.text());
       if (anfragen + dateien.length > max) break; // ganzer Tag passt nicht mehr ins Kontingent → nächster Lauf
       const neu = new Map<string, [string, string, number][]>();
-      for (const f of dateien) {
-        const m = await holen(`https://www.sec.gov/Archives/${f}`);
-        if (m.status !== 200) continue;
-        const k = kaufAusMeldung(await m.text(), ic.mindestWert);
-        meldungen++;
-        if (k) (neu.get(k.kuerzel) ?? neu.set(k.kuerzel, []).get(k.kuerzel)!).push([k.datum, k.zeit, k.wert]);
-      }
+      // 3 Abrufe gleichzeitig, gemeinsam gedrosselt (holen hält den Abstand) – sonst bremst die Antwortzeit auf ~3/s
+      let pos = 0;
+      const arbeiter = async () => {
+        while (pos < dateien.length) {
+          const f = dateien[pos++];
+          const m = await holen(`https://www.sec.gov/Archives/${f}`);
+          if (m.status !== 200) continue;
+          const k = kaufAusMeldung(await m.text(), ic.mindestWert);
+          meldungen++;
+          if (k) (neu.get(k.kuerzel) ?? neu.set(k.kuerzel, []).get(k.kuerzel)!).push([k.datum, k.zeit, k.wert]);
+        }
+      };
+      await Promise.all([arbeiter(), arbeiter(), arbeiter()]);
       // erst nach dem ganzen Tag übernehmen – ein halber Tag zählt nicht als erfasst
       a.kaeufe = kaeufeVereinen(a.kaeufe, neu);
       a.tage.push(tag);

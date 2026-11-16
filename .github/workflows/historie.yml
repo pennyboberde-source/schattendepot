@@ -70,6 +70,19 @@ jobs:
           set +e
           set -uo pipefail
           zeit() { date -u +%Y-%m-%dT%H:%MZ; }
+          # Insider in Runden von höchstens 8.000 Abrufen (~5 Tage), nach jeder Runde gesichert – bricht GitHub den Job ab
+          # (Zeitlimit) oder lehnt die SEC ab, bleibt das Geholte erhalten (Lehre vom 16.11.)
+          if echo "$TEILE" | tr ',' '\n' | grep -qx insider; then
+            for runde in $(seq 1 12); do
+              echo "== Insider-Runde $runde =="
+              ausgabe=$(ARCHIV_NUR=insider INSIDER_MAX=8000 node jobs/archiv.ts 2>&1); code=$?
+              echo "$ausgabe" | grep -E '^(Insider|FEHLER)' | tail -3
+              bash scripts/archiv-sichern.sh "Insider Runde $runde $(zeit)"
+              if [ $code -ne 0 ]; then echo "::warning::Insider-Runde $runde mit Fehler – Abbruch"; break; fi
+              echo "$ausgabe" | grep -qE 'Insider \(SEC\): 0 Quartale, 0 Tage' && { echo "Insider: nichts mehr nachzuholen."; break; }
+            done
+            TEILE=$(echo "$TEILE" | tr ',' '\n' | grep -vx insider | paste -sd, -)
+          fi
           # erst Krypto-Kerzen und Splits (je ein Durchgang), dann US in Runden
           andere=$(echo "$TEILE" | tr ',' '\n' | grep -v '^us$' | paste -sd, -)
           if [ -n "$andere" ]; then
