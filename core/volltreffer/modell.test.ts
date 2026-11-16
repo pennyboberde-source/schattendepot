@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { bewerten, gegenTag, mitSperre, schwelleFuer, tagesAuswahl, trainieren, wichtigkeit, type ModellEinstellungen } from './modell.ts';
+import { bewerten, gegenTag, mitSperre, schwelleFuer, tagesAuswahl, tagesRang, trainieren, wichtigkeit, type ModellEinstellungen } from './modell.ts';
 
 const E: ModellEinstellungen = { baeume: 60, tiefe: 3, lernrate: 0.2, minBlatt: 20, anteil: 0.5, kappe: 500, lambda: 10, start: 3 };
 
@@ -63,6 +63,9 @@ describe('Gesamtmodell (Gradient Boosting)', () => {
     expect(tagesAuswahl([0, 1, 2, 3, 4, 5], [5, 9, 1, 0, -1, 3], tag, 10).sort()).toEqual([1, 5]);
     const y = Float32Array.from([10, 20, 30, -10, -10, -40]);
     expect([...gegenTag(y, [0, 1, 2, 3, 4, 5], tag)]).toEqual([-10, 0, 10, 10, 10, -20]);
+    // Rang je Tag: Tag 1 Bewertungen 5, 9, 1 → 0,5 / 1 / 0; Tag 2 nur zwei Fälle → 0 / 1; ein Fall allein → 1
+    expect([...tagesRang([0, 1, 2, 3, 5], [5, 9, 1, 0, 3], tag)]).toEqual([0.5, 1, 0, 0, 1]);
+    expect([...tagesRang([4], [7], tag)]).toEqual([1]);
   });
 
   it('Schwelle der obersten q Prozent und Sperre je Wert', () => {

@@ -23,7 +23,7 @@ import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverka
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
 import { groessenKlasse, signalMessen, verdichten, type SammelErgebnis } from '../core/volltreffer/sammelmessung.ts';
-import { bewerten, gegenTag, mitSperre, tagesAuswahl, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
+import { bewerten, gegenTag, mitSperre, tagesAuswahl, tagesRang, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
 import { turbosPruefen } from './lib/turbos.ts';
 import type { InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfasst, zahlenAbstaende, type MeldungArt, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
@@ -38,7 +38,7 @@ interface VtConfig {
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number };
   v6: V6Regeln & { ohneNein?: boolean };
-  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
+  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
 }
 
@@ -1094,7 +1094,7 @@ interface ModellErgebnis {
   faelleHeute: number;
 }
 const modellErgebnisse: ModellErgebnis[] = [];
-const modellAuswahl = new Map<string, { modell: Modell; q: number; m: (typeof MODELLE)[number] }>();
+const modellAuswahl = new Map<string, { modell: Modell; q: number; m: (typeof MODELLE)[number]; musterP?: number; passt?: (z: number) => boolean }>();
 if (MODELLE.length && mZahl) {
   const grenzeTag = tagNrAlle.get(grenze) ?? alleTage.length;
   // marktweite Merkmale (an einem Tag für alle Werte gleich) dürfen nicht teilen
@@ -1130,6 +1130,85 @@ if (MODELLE.length && mZahl) {
     const grundA = A.reduce((su, z) => su + mY[m.idx][z], 0) / A.length;
     const grundB = B.reduce((su, z) => su + mY[m.idx][z], 0) / B.length;
     const sp = SP[m.s];
+    // ---- A: Muster × Modell (Quantensprung A, freigegeben 16.11.2026): Das Modell sortiert die Fälle der Muster im
+    // Vorwärtstest mit derselben Spielart. Behalten wird ein Musterfall, wenn das Modell ihn im oberen Teil SEINES Tages
+    // sieht (Rang ≥ p). Vergleich: alle Musterfälle (dieselbe Sperre je Wert). Bewertet nur außerhalb des Trainings.
+    const musterBed = [...imTest.values()]
+      .filter((e) => e.sp === m.spielart && e.fenster === m.fenster && !e.schluessel.startsWith('modell|') && e.gruppenSchluessel.startsWith(`${m.markt}|`) && /^\d+=\d+(&\d+=\d+)?$/.test(e.gruppenSchluessel.split('|')[1] ?? ''))
+      .map((e) => e.gruppenSchluessel.split('|')[1].split('&').map((t) => t.split('=').map(Number) as [number, number]));
+    const passt = (z: number) => musterBed.some((bed) => bed.every(([a, c]) => mX[z * P + a] === c + 1));
+    let musterErg: ModellErgebnis | null = null;
+    if (musterBed.length && MC!.musterFilter?.length) {
+      const rA = tagesRang(A, bAdurchB, (z) => mTag[z]);
+      const rB = tagesRang(B, bBdurchA, (z) => mTag[z]);
+      const kandA = A.map((z, k) => ({ z, r: rA[k] })).filter((x) => passt(x.z));
+      const kandB = B.map((z, k) => ({ z, r: rB[k] })).filter((x) => passt(x.z));
+      const waehle = (k: { z: number; r: number }[], pmin: number) => mitSperre(k.filter((x) => x.r >= pmin).map((x) => ({ z: x.z, wert: mReihe[x.z], tag: mI[x.z] })), vt.pruefung.sperreTage).map((x) => x.z);
+      const kennz = (sel: number[]) => {
+        const k = auswerten(sel, m);
+        const w = k.kl.werte(0, 0, alleTage.length);
+        return { n: w.n, quote: w.n ? Math.round((k.treffer / w.n) * 1000) / 10 : 0, ev: w.ev, se: w.se, tage: w.tage, treffer: k.treffer };
+      };
+      const quartaleVon = (sel: number[]) => {
+        const kq = new TagesKlumpen(1, alleTage.length);
+        for (const z of sel) kq.add(0, mTag[z], mY[m.idx][z]);
+        let mit = 0;
+        let plus = 0;
+        const qv = (d: string) => `${d.slice(0, 4)}${Math.floor((Number(d.slice(5, 7)) - 1) / 3)}`;
+        for (let i0 = 0; i0 < alleTage.length; ) {
+          let i1 = i0;
+          while (i1 < alleTage.length && qv(alleTage[i1]) === qv(alleTage[i0])) i1++;
+          const w = kq.werte(0, i0, i1);
+          if (w.n >= vt.pruefung.quartalMindestFaelle) {
+            mit++;
+            if (w.ev > 0) plus++;
+          }
+          i0 = i1;
+        }
+        return [plus, mit] as [number, number];
+      };
+      const allA = kennz(waehle(kandA, 0));
+      const allB = kennz(waehle(kandB, 0));
+      log(`Muster × Modell ${m.markt} ${spielartText(sp)} ${m.fenster} T: ${musterBed.length} Muster, alle Musterfälle A ${allA.n}/${allA.tage} Tage, Quote ${allA.quote} %, Ø ${allA.ev} ± ${allA.se} € · B ${allB.n}/${allB.tage}, Quote ${allB.quote} %, Ø ${allB.ev} ± ${allB.se} €.`);
+      for (const pmin of MC!.musterFilter) {
+        const sA = waehle(kandA, pmin);
+        const sB = waehle(kandB, pmin);
+        const a = kennz(sA);
+        const b = kennz(sB);
+        const qu = quartaleVon([...sA, ...sB]);
+        const zr = [
+          { n: a.n, quote: a.quote, ev: a.ev, se: a.se, tage: a.tage, grundEv: allA.ev },
+          { n: b.n, quote: b.quote, ev: b.ev, se: b.se, tage: b.tage, grundEv: allB.ev },
+        ];
+        const wertung = Math.round(Math.min(a.ev - a.se, b.ev - b.se) * 10) / 10;
+        const gruende: string[] = [];
+        if (zr.some((x) => x.n < MC!.mindestFaelle)) gruende.push(`weniger als ${MC!.mindestFaelle} Fälle in einem Zeitraum`);
+        if (zr.some((x) => x.tage < vt.pruefung.mindestTage)) gruende.push(`weniger als ${vt.pruefung.mindestTage} Tage in einem Zeitraum`);
+        if (wertung <= 0) gruende.push('Ø − Standardfehler nicht in beiden Zeiträumen über 0');
+        if (zr.some((x) => x.ev <= x.grundEv)) gruende.push('nicht besser als alle Musterfälle ohne Modell');
+        if (qu[1] >= 4 && qu[0] / qu[1] < vt.pruefung.quartaleMindestAnteil) gruende.push(`nur ${qu[0]} von ${qu[1]} Quartalen im Plus`);
+        const nAlle = a.n + b.n;
+        const erg: ModellErgebnis = {
+          schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}|muster`,
+          gruppe: `${m.markt === 'aktie' ? 'Aktien' : 'Krypto'}: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen ${Math.round((1 - pmin) * 100)} % ihres Tages sieht`,
+          markt: m.markt,
+          spielart: spielartText(sp),
+          sp: m.spielart,
+          fenster: m.fenster,
+          q: Math.round((1 - pmin) * 100),
+          bestanden: !gruende.length,
+          grund: gruende.join('; ') || 'bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen, besser als alle Musterfälle)',
+          zeitraeume: zr,
+          quartale: qu,
+          wertung,
+          gesamt: { n: nAlle, quote: nAlle ? Math.round(((a.treffer + b.treffer) / nAlle) * 1000) / 10 : 0, ev: nAlle ? Math.round(((a.ev * a.n + b.ev * b.n) / nAlle) * 10) / 10 : 0, se: Math.max(a.se, b.se) },
+          wichtig: [],
+          faelleHeute: 0,
+        };
+        log(`Muster × Modell ${m.markt} ${erg.spielart} ${m.fenster} T, oberes ${erg.q} % des Tages: A ${a.n}/${a.tage} Tage, Quote ${a.quote} %, Ø ${a.ev} ± ${a.se} € (alle Musterfälle ${allA.ev}) · B ${b.n}/${b.tage}, Quote ${b.quote} %, Ø ${b.ev} ± ${b.se} € (alle ${allB.ev}) · Quartale ${qu[0]}/${qu[1]} · Wertung ${wertung} → ${erg.grund}`);
+        if (!musterErg || (erg.bestanden && !musterErg.bestanden) || (erg.bestanden === musterErg.bestanden && erg.wertung > musterErg.wertung)) musterErg = erg;
+      }
+    }
     let bestes: ModellErgebnis | null = null;
     for (const q of MC!.obersteProzent) {
       const wahl = (zeilen: number[], b: number[]) => mitSperre(tagesAuswahl(zeilen, b, (z) => mTag[z], q).map((z) => ({ z, wert: mReihe[z], tag: mI[z] })), vt.pruefung.sperreTage).map((x) => x.z);
@@ -1205,6 +1284,15 @@ if (MODELLE.length && mZahl) {
     bestes.faelleHeute = tagesAuswahl(heuteZeilen, heuteZeilen.map((z) => bewerten(mAlle, mX, z)), (z) => mTag[z], bestes.q).length;
     modellErgebnisse.push(bestes);
     modellAuswahl.set(bestes.schluessel, { modell: mAlle, q: bestes.q, m });
+    if (musterErg) {
+      musterErg.wichtig = bestes.wichtig;
+      const pmin = 1 - musterErg.q / 100;
+      const rHeute = tagesRang(heuteZeilen, heuteZeilen.map((z) => bewerten(mAlle, mX, z)), (z) => mTag[z]);
+      musterErg.faelleHeute = heuteZeilen.filter((z, k) => passt(z) && rHeute[k] >= pmin).length;
+      modellErgebnisse.push(musterErg);
+      modellAuswahl.set(musterErg.schluessel, { modell: mAlle, q: bestes.q, m, musterP: pmin, passt });
+      log(`Muster × Modell ${m.markt} ${musterErg.spielart} ${m.fenster} T: gewählt oberes ${musterErg.q} % (${musterErg.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), heute ${musterErg.faelleHeute} Fälle.`);
+    }
     log(`Gesamtmodell ${m.markt} ${bestes.spielart} ${m.fenster} T: gewählt oberste ${bestes.q} % (${bestes.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), wichtigste Merkmale: ${bestes.wichtig.join(', ')}; ${Math.round((Date.now() - t0m) / 1000)} s.`);
   }
   // Vorwärtstest: Modelle im Muster-Buch bekommen ihre Fälle ab dem Tag nach dem Eintrag (je Wert ein Fall in sperreTage)
@@ -1214,7 +1302,13 @@ if (MODELLE.length && mZahl) {
     const vonTag = tagNrAlle.get(alleTage.find((d) => d > e.seit) ?? '9999') ?? Infinity;
     const zeilen: number[] = [];
     for (let z = 0; z < mZahl; z++) if (mAnw[a.m.idx][z] && mTag[z] >= vonTag && reihen[mReihe[z]].markt === a.m.markt) zeilen.push(z);
-    const gewaehlt = tagesAuswahl(zeilen, zeilen.map((z) => bewerten(a.modell, mX, z)), (z) => mTag[z], a.q);
+    const bew = zeilen.map((z) => bewerten(a.modell, mX, z));
+    let gewaehlt: number[];
+    if (a.passt) {
+      // Muster × Modell: Musterfälle, die das Modell im oberen Teil ihres Tages sieht
+      const r = tagesRang(zeilen, bew, (z) => mTag[z]);
+      gewaehlt = zeilen.filter((z, k) => a.passt!(z) && r[k] >= a.musterP!);
+    } else gewaehlt = tagesAuswahl(zeilen, bew, (z) => mTag[z], a.q);
     for (const { z } of mitSperre(gewaehlt.map((z) => ({ z, wert: mReihe[z], tag: mI[z] })), vt.pruefung.sperreTage)) {
       const r = reihen[mReihe[z]];
       const x = merkmale(r.kerzen, mI[z]);
@@ -1288,9 +1382,10 @@ if (MODELLE.length && mZahl) {
   // Wertung), dann zur Eichung die Werte abgeschlossener Fälle und eine feste Stichprobe des Markts. Fälle ohne Produkt
   // in ihrer Richtung fallen aus Vorwärtstest, Jagd und sichtbaren Orders (gezählt als „nicht handelbar“).
   const tc = vt.turbos;
+  const spJe = new Map(musterBuch.eintraege.map((e) => [e.schluessel, e.sp]));
   const spVon = (muster: string) => {
     const t = muster.split('|');
-    return spNachSchluessel.get(alleMuster.get(muster)?.sp ?? t[t.length - 2]);
+    return spNachSchluessel.get(spJe.get(muster) ?? alleMuster.get(muster)?.sp ?? t[t.length - 2]);
   };
   const mitTurbo = (f: JagdFall) => f.markt === 'aktie' && (spVon(f.muster)?.hebel ?? 1) > 1;
   const vorrang = vorwaerts.filter((f) => mitTurbo(f) && (f.art === 'lauert' || f.art === 'offen')).sort((a, b) => b.wertung - a.wertung).map((f) => f.wert);

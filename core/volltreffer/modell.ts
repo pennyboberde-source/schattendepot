@@ -193,6 +193,21 @@ export function tagesAuswahl(zeilen: number[], bewertung: number[], tagVon: (zei
   return aus;
 }
 
+/**
+ * Rang je Tag als Anteil (0 = schlechtester, 1 = bester Fall dieses Tages; ein einzelner Fall = 1). Für „Muster × Modell“:
+ * Fälle eines Musters werden behalten, wenn das Modell sie im oberen Teil ihres Tages sieht.
+ */
+export function tagesRang(zeilen: number[], bewertung: number[], tagVon: (zeile: number) => number): Float64Array {
+  const je = new Map<number, number[]>();
+  zeilen.forEach((z, k) => (je.get(tagVon(z)) ?? je.set(tagVon(z), []).get(tagVon(z))!).push(k));
+  const aus = new Float64Array(zeilen.length);
+  for (const ks of je.values()) {
+    ks.sort((a, b) => bewertung[a] - bewertung[b]);
+    ks.forEach((k, i) => (aus[k] = ks.length > 1 ? i / (ks.length - 1) : 1));
+  }
+  return aus;
+}
+
 /** Ziel gegen den Tagesdurchschnitt: y − Ø(y) desselben Tages (das Modell lernt, welcher Wert besser ist als die anderen) */
 export function gegenTag(y: Float32Array, zeilen: number[], tagVon: (zeile: number) => number): Float32Array {
   const su = new Map<number, [number, number]>();

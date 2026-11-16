@@ -790,6 +790,11 @@
       "stable30",
       "insider"
     ],
-    "ohneHinweis": "Marktweite Merkmale (für alle Werte eines Tages gleich) teilen nicht: in der ersten Probe (16.11.) lernte das Modell mit ihnen nur, welche Tage gut waren (Treffer im 2. Zeitraum auf 8 Tagen). Seitdem: Ziel gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % (mindestens ein Fall je Tag). Insider-Kauf ist ebenfalls ausgeschlossen (16.11. abends): seit dem Ende des täglichen Formular-4-Abrufs ist das Merkmal ab Oktober 2026 unbekannt – das Modell nutzte es als versteckte Zeitmarke (wichtigstes Merkmal), und für neue Fälle wäre es immer unbekannt."
+    "ohneHinweis": "Marktweite Merkmale (für alle Werte eines Tages gleich) teilen nicht: in der ersten Probe (16.11.) lernte das Modell mit ihnen nur, welche Tage gut waren (Treffer im 2. Zeitraum auf 8 Tagen). Seitdem: Ziel gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % (mindestens ein Fall je Tag). Insider-Kauf ist ebenfalls ausgeschlossen (16.11. abends): seit dem Ende des täglichen Formular-4-Abrufs ist das Merkmal ab Oktober 2026 unbekannt – das Modell nutzte es als versteckte Zeitmarke (wichtigstes Merkmal), und für neue Fälle wäre es immer unbekannt.",
+    "musterFilter": [
+      0.5,
+      0.75
+    ],
+    "musterHinweis": "Muster × Modell (Quantensprung A, 16.11.2026): Fälle der Muster im Vorwärtstest mit der Spielart eines Modells werden behalten, wenn das Modell sie im oberen (1 − p) ihres Tages sieht (p aus musterFilter: 0,5 = obere Hälfte, 0,75 = oberes Viertel). Bestanden nur, wenn außerhalb der Trainingsdaten besser als alle Musterfälle ohne Modell und Ø − Standardfehler in beiden Zeiträumen über 0."
   }
 }
