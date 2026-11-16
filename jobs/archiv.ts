@@ -684,7 +684,7 @@ async function insider() {
     console.log('Insider (SEC): SEC_KONTAKT fehlt – übersprungen.');
     return;
   }
-  const ic = { jahre: 2, mindestWert: 10000, abstandMs: 130, maxMeldungen: 2500, ...(cfg as { insider?: object }).insider } as { jahre: number; mindestWert: number; abstandMs: number; maxMeldungen: number };
+  const ic = { jahre: 2, mindestWert: 10000, abstandMs: 160, maxMeldungen: 2500, ...(cfg as { insider?: object }).insider } as { jahre: number; mindestWert: number; abstandMs: number; maxMeldungen: number };
   const max = Number(process.env.INSIDER_MAX) > 0 ? Math.floor(Number(process.env.INSIDER_MAX)) : ic.maxMeldungen;
   const ua = `Schattendepot-Forschung ${kontakt}`;
   const datei = join(ARCHIV, 'stamm', 'insider.json.gz');
@@ -705,9 +705,13 @@ async function insider() {
     return r;
   };
 
+  // Lehnt die SEC ab (403/429), wird nicht alles verworfen: Bis dahin Geholtes (ganze Quartale, ganze Tage) wird
+  // gesichert, der Fehler danach gemeldet – der nächste Lauf macht dort weiter (Lehre aus dem 16.11.: 88 Min. verloren)
+  let fehler: Error | null = null;
   // 1. Quartals-Datensätze (lückenlos ab dem Start-Quartal, bis die SEC keinen neueren hat)
   const aktuell = quartalVon(heute);
   let quartaleNeu = 0;
+  try {
   for (const q of quartaleZwischen(start, heute)) {
     if (q === aktuell || a.quartale.includes(q)) continue;
     let zip: Buffer | null = null;
@@ -736,6 +740,9 @@ async function insider() {
     quartaleNeu++;
     console.log(`Insider ${q}: ${[...kaeufe.values()].reduce((s, l) => s + l.length, 0)} Käufe ab ${ic.mindestWert} $ bei ${kaeufe.size} Kürzeln.`);
   }
+  } catch (e) {
+    fehler = e as Error;
+  }
   // Abdeckung durch Quartale: lückenlos vom ersten an
   let quartalBis: string | null = null;
   const erste = quartaleZwischen(start, heute)[0];
@@ -748,9 +755,9 @@ async function insider() {
   // 2. Danach Tag für Tag: Formular-4-Meldungen aus dem EDGAR-Tagesverzeichnis (mit Annahmezeit)
   let tageNeu = 0;
   let meldungen = 0;
-  let abbruch = false;
-  if (quartalBis) {
-    for (let tag = tagPlus(quartalBis, 1); tag <= gestern && !abbruch; tag = tagPlus(tag, 1)) {
+  if (quartalBis && !fehler) {
+    try {
+    for (let tag = tagPlus(quartalBis, 1); tag <= gestern; tag = tagPlus(tag, 1)) {
       const wt = new Date(`${tag}T12:00:00Z`).getUTCDay();
       if (wt === 0 || wt === 6 || a.tage.includes(tag)) continue;
       const q = Math.floor((Number(tag.slice(5, 7)) - 1) / 3) + 1;
@@ -770,9 +777,13 @@ async function insider() {
         meldungen++;
         if (k) (neu.get(k.kuerzel) ?? neu.set(k.kuerzel, []).get(k.kuerzel)!).push([k.datum, k.zeit, k.wert]);
       }
+      // erst nach dem ganzen Tag übernehmen – ein halber Tag zählt nicht als erfasst
       a.kaeufe = kaeufeVereinen(a.kaeufe, neu);
       a.tage.push(tag);
       tageNeu++;
+    }
+    } catch (e) {
+      fehler = e as Error;
     }
     a.tage.sort();
   }
@@ -796,7 +807,8 @@ async function insider() {
   }
   const kaeufeZahl = Object.values(a.kaeufe).reduce((s, l) => s + l.length, 0);
   index.insider = { kaeufe: kaeufeZahl, kuerzel: Object.keys(a.kaeufe).length, quartale: a.quartale.length, tage: a.tage.length, ab: a.ab, bis: a.bis, geholt: iso };
-  console.log(`Insider (SEC): ${quartaleNeu} Quartale, ${tageNeu} Tage (${meldungen} Formular-4-Meldungen gelesen), ${anfragen} Anfragen; Stand: ${kaeufeZahl} Käufe bei ${Object.keys(a.kaeufe).length} Kürzeln, lückenlos ${a.ab ?? '–'} bis ${a.bis ?? '–'}.`);
+  console.log(`Insider (SEC): ${quartaleNeu} Quartale, ${tageNeu} Tage (${meldungen} Formular-4-Meldungen gelesen), ${anfragen} Anfragen; Stand: ${kaeufeZahl} Käufe bei ${Object.keys(a.kaeufe).length} Kürzeln, lückenlos ${a.ab ?? '–'} bis ${a.bis ?? '–'}.${fehler ? ' Abgebrochen – Geholtes ist gesichert.' : ''}`);
+  if (fehler) throw fehler;
 }
 
 const TEILE = [
