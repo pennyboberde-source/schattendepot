@@ -72,7 +72,22 @@ async function zahlenSec() {
   return `Zahlen SEC: ${ok ? 'OK' : 'FEHLER'} (HTTP ${r.status}, Branche ${j?.sic ?? '–'}, ältere Seiten ${j?.filings?.files?.length ?? 0}; letzte Zahlen-8-K der Beispielfirma (meldet 16:30 Ostküstenzeit): ${zeiten.join(' | ') || '–'})`;
 }
 
-for (const pruefung of [coingecko, zahlenFinnhub, zahlenFmp, zahlenSec]) {
+// Längere Kursgeschichte (mehr Beispiele für den Rückblick): liefert FMP mit dem Gratis-Schlüssel Tageskurse vor der
+// Massive-Grenze (2 Jahre)? Im Log nur Status, Anzahl und Zeitraum – keine Kurse.
+async function geschichteFmp() {
+  const key = process.env.FMP_API_KEY?.trim();
+  if (!key) return 'Geschichte FMP: FMP_API_KEY nicht gesetzt';
+  const teile = [];
+  for (const [von, bis, sym] of [['2021-11-01', '2021-11-30', 'AAPL'], ['2019-11-01', '2019-11-30', 'AAPL'], ['2021-11-01', '2021-11-30', 'GME']]) {
+    const r = await fetch(`https://financialmodelingprep.com/stable/historical-price-eod/full?symbol=${sym}&from=${von}&to=${bis}&apikey=${key}`, { signal: AbortSignal.timeout(30000) });
+    const j = await r.json().catch(() => null);
+    const l = Array.isArray(j) ? j : Array.isArray(j?.historical) ? j.historical : [];
+    teile.push(`${sym} ${von.slice(0, 7)}: HTTP ${r.status}, ${kurzListe(l, 'date')}${l.length ? '' : ` (${String(j?.['Error Message'] ?? j?.message ?? '').slice(0, 60)})`}`);
+  }
+  return `Geschichte FMP: ${teile.join(' | ')}`;
+}
+
+for (const pruefung of [coingecko, zahlenFinnhub, zahlenFmp, zahlenSec, geschichteFmp]) {
   try {
     ergebnis.push(await pruefung());
   } catch (e) {
