@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-16T10:40:28.548Z",
-  "anzahl": 169,
+  "stand": "2026-11-16T12:06:20.226Z",
+  "anzahl": 180,
   "signale": [
     {
       "id": "verwaesserung:GMHS:2026-11-12",
@@ -2234,11 +2234,158 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.48,
+      "st": 0.62,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-16T10:40:28.548Z"
+    },
+    {
+      "id": "verwaesserung:NSPR:2026-11-16",
+      "s": "T:NSPR",
+      "n": "InspireMD, Inc.",
+      "t": "NSPR",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-16T12:00:19.000Z"
+    },
+    {
+      "id": "verwaesserung:RZLT:2026-11-16",
+      "s": "T:RZLT",
+      "n": "Rezolute, Inc.",
+      "t": "RZLT",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-16T11:01:59.000Z"
+    },
+    {
+      "id": "verwaesserung:KRMD:2026-11-14",
+      "s": "T:KRMD",
+      "n": "KORU Medical Systems, Inc.",
+      "t": "KRMD",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-14T00:30:59.000Z"
+    },
+    {
+      "id": "verwaesserung:OPTX:2026-11-14",
+      "s": "T:OPTX",
+      "n": "SYNTEC OPTICS HOLDINGS, INC.",
+      "t": "OPTX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-14T01:37:44.000Z"
+    },
+    {
+      "id": "verwaesserung:MDCX:2026-11-16",
+      "s": "T:MDCX",
+      "n": "Medicus Pharma Ltd.",
+      "t": "MDCX",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-16T11:04:57.000Z"
+    },
+    {
+      "id": "verwaesserung:MEDS:2026-11-16",
+      "s": "T:MEDS",
+      "n": "DataMeds AI, Inc.",
+      "t": "MEDS",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-16T11:22:00.000Z"
+    },
+    {
+      "id": "nachricht:CBK:2026-11-16",
+      "s": "T:CBK",
+      "n": "Commerzbank",
+      "t": "CBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "Handelsblatt Finanzen",
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-16T11:40:48.000Z"
+    },
+    {
+      "id": "verwaesserung:TE:2026-11-16",
+      "s": "T:TE",
+      "n": "T1 Energy Inc.",
+      "t": "TE",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-16T11:53:13.000Z"
+    },
+    {
+      "id": "politik_massnahme:RHM:2026-11-16:ruestung",
+      "s": "T:RHM",
+      "n": "Rheinmetall",
+      "t": "RHM.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-16T12:06:20.226Z"
+    },
+    {
+      "id": "politik_massnahme:HAG:2026-11-16:ruestung",
+      "s": "T:HAG",
+      "n": "Hensoldt",
+      "t": "HAG.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-16T12:06:20.226Z"
+    },
+    {
+      "id": "politik_massnahme:R3NK:2026-11-16:ruestung",
+      "s": "T:R3NK",
+      "n": "Renk",
+      "t": "R3NK.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-16T12:06:20.226Z"
     }
   ]
 }
