@@ -544,6 +544,38 @@
           "Insider-Kauf vor 6 bis 20 Handelstagen",
           "ohne Insider-Kauf in 20 Handelstagen"
         ]
+      },
+      {
+        "merkmal": "bestandTage",
+        "grenzen": [
+          1,
+          2,
+          5,
+          10
+        ],
+        "namen": [
+          "Leerverkaufsbestand unter 1 Tag Umsatz",
+          "Leerverkaufsbestand 1 bis 2 Tage Umsatz",
+          "Leerverkaufsbestand 2 bis 5 Tage Umsatz",
+          "Leerverkaufsbestand 5 bis 10 Tage Umsatz",
+          "Leerverkaufsbestand über 10 Tage Umsatz (Squeeze-Gefahr)"
+        ]
+      },
+      {
+        "merkmal": "bestandAenderung",
+        "grenzen": [
+          -25,
+          -5,
+          5,
+          25
+        ],
+        "namen": [
+          "Leerverkaufsbestand stark gesunken (über 25 %)",
+          "Leerverkaufsbestand gesunken (5 bis 25 %)",
+          "Leerverkaufsbestand etwa gleich (±5 %)",
+          "Leerverkaufsbestand gestiegen (5 bis 25 %)",
+          "Leerverkaufsbestand stark gestiegen (über 25 %)"
+        ]
       }
     ]
   },
