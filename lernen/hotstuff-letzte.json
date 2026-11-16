@@ -1,24 +1,17 @@
 {
-  "datum": "2026-11-14",
-  "stand": "2026-11-14T08:15:44.709Z",
-  "anzahl": 24,
-  "abdeckung": 45.8,
+  "datum": "2026-11-16",
+  "stand": "2026-11-16T05:31:06.081Z",
+  "anzahl": 13,
+  "abdeckung": 30.8,
   "mover": [
     {
-      "s": "T:SOPH",
+      "s": "K:SOPH",
       "n": "Sophon",
       "t": "SOPH",
       "typ": "kursrakete",
-      "r": 1,
+      "r": -1,
       "vorzeichen": [
         {
-          "typ": "insider_cluster_kauf",
-          "tageVorher": 2,
-          "q": [
-            "OpenInsider"
-          ]
-        },
-        {
           "typ": "upbit_warnung",
           "tageVorher": 2,
           "q": [
@@ -26,24 +19,10 @@
           ]
         },
         {
-          "typ": "insider_cluster_kauf",
-          "tageVorher": 3,
-          "q": [
-            "OpenInsider"
-          ]
-        },
-        {
           "typ": "upbit_warnung",
           "tageVorher": 3,
           "q": [
             "Upbit"
-          ]
-        },
-        {
-          "typ": "insider_cluster_kauf",
-          "tageVorher": 4,
-          "q": [
-            "OpenInsider"
           ]
         },
         {
@@ -56,6 +35,13 @@
         {
           "typ": "upbit_warnung",
           "tageVorher": 5,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 6,
           "q": [
             "Upbit"
           ]
@@ -69,13 +55,6 @@
         },
         {
           "typ": "upbit_warnung",
-          "tageVorher": 8,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
           "tageVorher": 9,
           "q": [
             "Upbit"
@@ -91,246 +70,65 @@
       ]
     },
     {
-      "s": "T:OMH",
-      "n": "Ohmyhome Limited",
-      "t": "OMH",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 3,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 4,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 5,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 8,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 9,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 10,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:SMX",
-      "n": "SMX (Security Matters) Public Limited Company",
-      "t": "SMX",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 3,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 4,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 5,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:POAS",
-      "n": "Phaos Technology Holdings (Caym",
-      "t": "POAS",
+      "s": "T:FCUV",
+      "n": "Focus Universal Inc.",
+      "t": "FCUV",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 8,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 9,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:BARD",
-      "n": "Lombard",
-      "t": "BARD",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 2,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
           "tageVorher": 3,
           "q": [
-            "Upbit"
+            "Nasdaq Trader"
           ]
         }
       ]
     },
     {
-      "s": "T:ADXN",
-      "n": "Addex Therapeutics Ltd",
-      "t": "ADXN",
+      "s": "T:ONFO",
+      "n": "ONFO",
+      "t": "ONFO",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:AKAN",
+      "n": "AKAN",
+      "t": "AKAN",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:WWB",
+      "n": "Windward Bio Group AG",
+      "t": "WWB",
       "typ": "tagesgewinner",
       "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
+      "vorzeichen": []
     },
     {
-      "s": "T:GP",
-      "n": "GP",
-      "t": "GP",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:PLCE",
-      "n": "PLCE",
-      "t": "PLCE",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:AIMD",
-      "n": "AIMD",
-      "t": "AIMD",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:ICMB",
-      "n": "ICMB",
-      "t": "ICMB",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:BMT",
-      "n": "Bubblemaps",
-      "t": "BMT",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 10,
-          "q": [
-            "Upbit"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:XLAB",
-      "n": "Exascale Labs Holdings Inc.",
-      "t": "XLAB",
+      "s": "T:VTSI",
+      "n": "VirTra, Inc.",
+      "t": "VTSI",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": []
@@ -344,86 +142,51 @@
       "vorzeichen": []
     },
     {
-      "s": "T:ADVB",
-      "n": "Advanced Biomed Inc. Common Stock",
-      "t": "ADVB",
+      "s": "T:SHIM",
+      "n": "Shimmick Corp.",
+      "t": "SHIM",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": []
     },
     {
-      "s": "T:CDNL",
-      "n": "Cardinal Infrastructure Group Inc.",
-      "t": "CDNL",
+      "s": "T:RMIX",
+      "n": "Suncrete, Inc. Class A Common Stock",
+      "t": "RMIX",
       "typ": "tagesverlierer",
       "r": -1,
       "vorzeichen": []
     },
     {
-      "s": "T:ADIG",
-      "n": "ADI Global Distribution Inc.",
-      "t": "ADIG",
+      "s": "T:NPCE",
+      "n": "NeuroPace, Inc.",
+      "t": "NPCE",
       "typ": "tagesverlierer",
       "r": -1,
       "vorzeichen": []
     },
     {
-      "s": "T:PSFE",
-      "n": "Paysafe Limited",
-      "t": "PSFE",
+      "s": "T:NMAD",
+      "n": "NOMAD Power Solutions, Inc.",
+      "t": "NMAD",
       "typ": "tagesverlierer",
       "r": -1,
       "vorzeichen": []
     },
     {
-      "s": "T:RIME",
-      "n": "RIME",
-      "t": "RIME",
+      "s": "T:SLSN",
+      "n": "SLSN",
+      "t": "SLSN",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "T:SANC",
-      "n": "Sanctum",
-      "t": "SANC",
+      "s": "K:SKR",
+      "n": "Seeker",
+      "t": "SKR",
       "typ": "kursrakete",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF266F3",
-      "n": "DE000HF266F3",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF11N65",
-      "n": "DE000HF11N65",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF11N81",
-      "n": "DE000HF11N81",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF0GB67",
-      "n": "HSBC TRINKAUS+BURKHARDT",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000UR4RV64",
-      "n": "UNICREDIT BANK GMBH",
-      "typ": "kursrakete",
-      "r": 0,
+      "r": 1,
       "vorzeichen": []
     }
   ]
