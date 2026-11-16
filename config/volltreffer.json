@@ -796,5 +796,11 @@
       0.75
     ],
     "musterHinweis": "Muster × Modell (Quantensprung A, 16.11.2026): Fälle der Muster im Vorwärtstest mit der Spielart eines Modells werden behalten, wenn das Modell sie im oberen (1 − p) ihres Tages sieht (p aus musterFilter: 0,5 = obere Hälfte, 0,75 = oberes Viertel). Bestanden nur, wenn außerhalb der Trainingsdaten besser als alle Musterfälle ohne Modell und Ø − Standardfehler in beiden Zeiträumen über 0."
+  },
+  "hebel": {
+    "hinweis": "Quantensprung B Stufe 1 (16.11.2026): amtliche Liste der Hebelprodukte (ESMA FIRDS, wöchentlich) je US-Basiswert. Ist sie höchstens maxAlterTage alt und sind mindestens mindestZugeordnet der Basiswert-ISINs einem Kürzel zugeordnet, gilt sie für alle Werte: handelbar nur mit Produkt in der Richtung der Spielart. nurGettex: nur Produkte an gettex zählen (wie das Gebührenmodell, das alle Orders über gettex rechnet); false = auch Stuttgart, Frankfurt, Hamburg usw.",
+    "nurGettex": true,
+    "maxAlterTage": 21,
+    "mindestZugeordnet": 0.9
   }
 }

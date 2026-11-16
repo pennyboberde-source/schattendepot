@@ -22,7 +22,7 @@ interface Uebersicht {
   /** V4: Fälle mit Pump-Verdacht (zählen für das Muster, werden nicht gejagt) */
   pumpVerdacht?: number;
   /** echte Handelbarkeit: geprüfte Werte (Hebelprodukte in Deutschland), entfernte Fälle */
-  handelbarkeit?: { geprueft: number; neuGeprueft: number; nichtHandelbar: number };
+  handelbarkeit?: { quelle?: string; geprueft: number; neuGeprueft: number; nichtHandelbar: number };
   muster: { gruppe: string; spielart: string; fenster: number; seit: string; faelle: number; treffer: number; ev: number; offen: number; rueckblick: { quote: number; ev: number; se: number; faelle: number }; stufe2: boolean; stufe3?: boolean; stufe3Grund?: string }[];
   sichtbar?: {
     regeln: { mindestFaelle: number; mindestQuote: number; mindestEv: number; maxOffen: number; einsatz: number };
@@ -209,7 +209,7 @@ export function JagdKarte() {
         )}
         {u.handelbarkeit && u.handelbarkeit.geprueft > 0 && (
           <p class="klein" data-testid="handelbarkeit">
-            🔎 Echte Handelbarkeit: {zahl(u.handelbarkeit.geprueft)} Werte auf Hebelprodukte in Deutschland geprüft{u.handelbarkeit.nichtHandelbar ? `, ${zahl(u.handelbarkeit.nichtHandelbar)} Fälle ohne Turbo in ihrer Richtung herausgenommen` : ''}.
+            🔎 Echte Handelbarkeit{u.handelbarkeit.quelle ? ` (${u.handelbarkeit.quelle})` : ''}: {zahl(u.handelbarkeit.geprueft)} Werte auf Hebelprodukte in Deutschland geprüft{u.handelbarkeit.nichtHandelbar ? `, ${zahl(u.handelbarkeit.nichtHandelbar)} Fälle ohne Turbo in ihrer Richtung herausgenommen` : ''}.
           </p>
         )}
         {(u.pumpVerdacht ?? 0) > 0 && <p class="klein">⚠️ {zahl(u.pumpVerdacht!)} Fälle mit Pump-Verdacht (Hype ohne harte Fakten) – sie zählen für das Muster, werden aber nicht gejagt.</p>}

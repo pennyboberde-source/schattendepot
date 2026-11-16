@@ -22,6 +22,7 @@ import { aenderungAm, breite, fedAbstand, schluesse, summeBis, wertAm, type Kryp
 import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
+import { hebelDa, type HebelStand } from '../core/volltreffer/firds.ts';
 import { groessenKlasse, signalMessen, verdichten, type SammelErgebnis } from '../core/volltreffer/sammelmessung.ts';
 import { bewerten, gegenTag, mitSperre, tagesAuswahl, tagesRang, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
 import { turbosPruefen } from './lib/turbos.ts';
@@ -39,6 +40,7 @@ interface VtConfig {
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number };
   v6: V6Regeln & { ohneNein?: boolean };
   modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
+  hebel?: { nurGettex: boolean; maxAlterTage: number; mindestZugeordnet: number };
   turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
 }
 
@@ -319,9 +321,38 @@ function handelbar(r: Reihe, m: Merkmale, k: Kerze): boolean {
 const turboPfad = join(ARCHIV, 'stamm', 'turbos.json');
 const turboCache: Record<string, TurboStand> = existsSync(turboPfad) ? (JSON.parse(readFileSync(turboPfad, 'utf8')) as Record<string, TurboStand>) : {};
 log(`Turbos: ${Object.keys(turboCache).length} US-Werte geprüft (${Object.values(turboCache).filter((t) => t.short > 0).length} mit Puts, ${Object.values(turboCache).filter((t) => t.long > 0).length} mit Calls).`);
+// Quantensprung B Stufe 1 (16.11.2026): amtliche Liste der Hebelprodukte (ESMA FIRDS) je US-Basiswert, über die
+// ISIN einem Kürzel zugeordnet (privat stamm/gettex-hebel.json.gz, stamm/isin-kuerzel.json). Ist die Liste frisch und
+// fast vollständig zugeordnet, gilt sie für ALLE Werte: Produkt in der Richtung (nur gettex, wenn hebel.nurGettex) →
+// handelbar, sonst nicht. Vorrang vor der OpenFIGI-Einzelsuche und der Umsatz-Näherung.
+const HC = { nurGettex: true, maxAlterTage: 21, mindestZugeordnet: 0.9, ...vt.hebel };
+const hebelJe = new Map<string, HebelStand>();
+let hebelVollstaendig = false;
+{
+  const pf = join(ARCHIV, 'stamm', 'gettex-hebel.json.gz');
+  const zf = join(ARCHIV, 'stamm', 'isin-kuerzel.json');
+  if (existsSync(pf) && existsSync(zf)) {
+    const h = JSON.parse(gz(pf)) as { quelle: string; basiswerte: Record<string, HebelStand> };
+    const zu = JSON.parse(readFileSync(zf, 'utf8')) as Record<string, string | null>;
+    const isins = Object.keys(h.basiswerte);
+    const zugeordnet = isins.filter((i) => i in zu).length;
+    for (const i of isins) {
+      const k = zu[i];
+      if (!k) continue;
+      const a = hebelJe.get(k);
+      const b = h.basiswerte[i];
+      hebelJe.set(k, a ? { l: [a.l[0] + b.l[0], a.l[1] + b.l[1]], s: [a.s[0] + b.s[0], a.s[1] + b.s[1]] } : b);
+    }
+    const alter = (Date.parse(`${heute}T12:00:00Z`) - Date.parse(`${h.quelle}T12:00:00Z`)) / 86400000;
+    hebelVollstaendig = alter <= HC.maxAlterTage && isins.length > 0 && zugeordnet / isins.length >= HC.mindestZugeordnet;
+    log(`Hebelprodukte (FIRDS ${h.quelle}): ${isins.length} US-Basiswerte, ${zugeordnet} zugeordnet (${hebelJe.size} Kürzel), ${[...hebelJe.values()].filter((x) => x.s[0] > 0).length} mit Puts an gettex, ${[...hebelJe.values()].filter((x) => x.s[0] + x.s[1] > 0).length} mit Puts an irgendeinem deutschen Platz → ${hebelVollstaendig ? `gilt für alle Werte (${HC.nurGettex ? 'nur gettex' : 'alle deutschen Plätze'})` : 'noch nicht vollständig – Einzelsuche/Näherung'}.`);
+  } else log('Hebelprodukte (FIRDS): noch keine Liste im Archiv – Einzelsuche/Näherung.');
+}
 const turboErlaubt = (r: Reihe, m: Merkmale, richtung: 'long' | 'short') => {
   if (r.markt === 'krypto') return vt.handelbar.krypto.turboBasiswerte.includes(r.schluessel.slice(2)) || (r.schluessel === 'K:BTC' && vt.handelbar.krypto.turboBasiswerte.includes('XBT'));
-  return turboDa(turboCache[r.schluessel.slice(2).split('#')[0]], richtung) ?? (m.umsatz20 ?? 0) >= vt.handelbar.aktie.turboAbUmsatz20;
+  const k = r.schluessel.slice(2).split('#')[0];
+  if (hebelVollstaendig) return hebelDa(hebelJe.get(k), richtung, HC.nurGettex);
+  return turboDa(turboCache[k], richtung) ?? (m.umsatz20 ?? 0) >= vt.handelbar.aktie.turboAbUmsatz20;
 };
 /** beide Richtungen auf einmal (je Stichtag einmal statt je Spielart) */
 const turbosAm = (r: Reihe, m: Merkmale) => ({ long: turboErlaubt(r, m, 'long'), short: turboErlaubt(r, m, 'short') });
@@ -1401,10 +1432,13 @@ if (MODELLE.length && mZahl) {
   const stichprobe = [...umsatzJe].filter(([, u]) => u >= tc.stichprobeAbUmsatz20).map(([k]) => k).sort((a, b) => misch(a) - misch(b));
   const cacheVorher = Object.keys(turboCache).length;
   const tStart = Date.now();
-  const tp = await turbosPruefen([...vorrang, ...eichung, ...stichprobe], turboCache, heute, tc, Date.now() + tc.minuten * 60000).catch((e: Error) => {
-    log(`Turbos: Prüfung abgebrochen (${e.message}).`);
-    return null;
-  });
+  // Mit vollständiger FIRDS-Liste ist die langsame Einzelsuche (5 je Minute) überflüssig
+  const tp = hebelVollstaendig
+    ? null
+    : await turbosPruefen([...vorrang, ...eichung, ...stichprobe], turboCache, heute, tc, Date.now() + tc.minuten * 60000).catch((e: Error) => {
+        log(`Turbos: Prüfung abgebrochen (${e.message}).`);
+        return null;
+      });
   if (tp?.geprueft) {
     mkdirSync(dirname(turboPfad), { recursive: true });
     writeFileSync(turboPfad, JSON.stringify(turboCache));
@@ -1414,7 +1448,8 @@ if (MODELLE.length && mZahl) {
     const f = vorwaerts[n];
     const sp = spVon(f.muster);
     if (!sp || !mitTurbo(f)) continue;
-    if (turboDa(turboCache[f.wert], sp.richtung) === false) {
+    const da = hebelVollstaendig ? hebelDa(hebelJe.get(f.wert), sp.richtung, HC.nurGettex) : turboDa(turboCache[f.wert], sp.richtung);
+    if (da === false) {
       vorwaerts.splice(n, 1);
       nichtHandelbar++;
     }
@@ -1423,10 +1458,15 @@ if (MODELLE.length && mZahl) {
   const klassen = [0, 5e6, 20e6, 50e6];
   const eich = klassen.map((ab, i) => {
     const bis = klassen[i + 1] ?? Infinity;
+    if (hebelVollstaendig) {
+      // FIRDS: alle Werte der Klasse (nicht nur geprüfte), Puts/Calls nach der gültigen Regel (gettex bzw. alle Plätze)
+      const ks = [...umsatzJe].filter(([, u]) => u >= ab && u < bis).map(([k]) => k);
+      return { abUmsatz20: ab, geprueft: ks.length, mitPuts: ks.filter((k) => hebelDa(hebelJe.get(k), 'short', HC.nurGettex)).length, mitCalls: ks.filter((k) => hebelDa(hebelJe.get(k), 'long', HC.nurGettex)).length };
+    }
     const ws = Object.entries(turboCache).filter(([k]) => (umsatzJe.get(k) ?? -1) >= ab && (umsatzJe.get(k) ?? -1) < bis).map(([, t]) => t);
     return { abUmsatz20: ab, geprueft: ws.length, mitPuts: ws.filter((t) => t.short > 0).length, mitCalls: ws.filter((t) => t.long > 0).length };
   });
-  const handelbarkeit = { geprueft: Object.keys(turboCache).length, neuGeprueft: tp?.geprueft ?? 0, nichtHandelbar, eichung: eich };
+  const handelbarkeit = { quelle: hebelVollstaendig ? (HC.nurGettex ? 'ESMA FIRDS, nur gettex' : 'ESMA FIRDS, deutsche Börsen') : 'OpenFIGI-Einzelsuche', geprueft: hebelVollstaendig ? hebelJe.size : Object.keys(turboCache).length, neuGeprueft: tp?.geprueft ?? 0, nichtHandelbar, eichung: eich };
   log(`Turbos: ${tp?.geprueft ?? 0} Werte neu geprüft in ${Math.round((Date.now() - tStart) / 1000)} s (${tp?.ohneName ?? 0} ohne Firmennamen, ${tp?.fehler ?? 0} Fehler), Cache ${cacheVorher} → ${Object.keys(turboCache).length}; ${nichtHandelbar} Vorwärts-Fälle ohne Produkt in ihrer Richtung entfernt. Eichung (Ø-Umsatz ab → Puts/Calls je geprüft): ${eich.map((e) => `${e.abUmsatz20 / 1e6} Mio. $: ${e.mitPuts}/${e.mitCalls} von ${e.geprueft}`).join(' · ')}.`);
   // V5: Claudes Urteile aus den Morgenläufen den Fällen zuordnen (Wert + Stichtag)
   const urteilOrdner = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'volltreffer', 'urteile');
