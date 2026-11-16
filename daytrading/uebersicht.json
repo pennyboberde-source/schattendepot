@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-16T11:46:27.395Z",
+  "stand": "2026-11-16T14:12:41.144Z",
   "heute": {
     "datum": "2026-11-16",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -0.39,
       "oeR": -0.03
     },
-    "offen": 3
+    "offen": 4
   },
   "gesamt": {
     "anzahl": 517,
@@ -586,37 +586,36 @@
       }
     },
     {
-      "id": "2026-11-16-scan-sol",
+      "id": "2026-11-16-scan-stellantis-nv",
       "datum": "2026-11-16",
       "herkunft": "code_scan",
-      "markt": "krypto",
+      "markt": "eu",
       "setup": "orb",
       "richtung": "long",
-      "instrument": "krypto",
-      "name": "SOL",
-      "symbol": "SOL",
+      "instrument": "aktie",
+      "name": "STELLANTIS NV",
+      "isin": "NL00150001Q9",
       "spekulativ": true,
       "ausloeser": {
-        "zeit": "2026-11-16T10:40:00.000Z",
-        "kurs": 64.95,
-        "level": 64.76,
+        "zeit": "2026-11-16T11:50:00.000Z",
+        "kurs": 3.525,
+        "level": 3.523,
         "spanne": {
-          "hoch": 64.76,
-          "tief": 64.4
+          "hoch": 3.523,
+          "tief": 3.4655
         },
         "richtung": "long"
       },
-      "stop": 64.58,
-      "ziel": 65.54,
+      "stop": 3.4202,
+      "ziel": 3.6296,
       "zielR": 2,
-      "flatBis": "2026-11-16T20:55:00.000Z",
-      "virtuell": true,
+      "flatBis": "2026-11-16T16:25:00.000Z",
       "einstieg": {
-        "zeit": "2026-11-16T10:40:00.000Z",
-        "basisKurs": 64.9,
-        "kurs": 65.062,
-        "stueck": 15.369954,
-        "kurswert": 1000
+        "zeit": "2026-11-16T12:10:00.000Z",
+        "basisKurs": 3.49,
+        "kurs": 3.5075,
+        "stueck": 285,
+        "kurswert": 999.64
       }
     }
   ],
@@ -844,6 +843,39 @@
       }
     },
     {
+      "id": "2026-11-16-scan-stellantis-nv",
+      "datum": "2026-11-16",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "STELLANTIS NV",
+      "isin": "NL00150001Q9",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-16T11:50:00.000Z",
+        "kurs": 3.525,
+        "level": 3.523,
+        "spanne": {
+          "hoch": 3.523,
+          "tief": 3.4655
+        },
+        "richtung": "long"
+      },
+      "stop": 3.4202,
+      "ziel": 3.6296,
+      "zielR": 2,
+      "flatBis": "2026-11-16T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-16T12:10:00.000Z",
+        "basisKurs": 3.49,
+        "kurs": 3.5075,
+        "stueck": 285,
+        "kurswert": 999.64
+      }
+    },
+    {
       "id": "2026-11-16-scan-sol",
       "datum": "2026-11-16",
       "herkunft": "code_scan",
@@ -875,6 +907,25 @@
         "kurs": 65.062,
         "stueck": 15.369954,
         "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-11-16T12:10:00.000Z",
+        "basisKurs": 64.56,
+        "kurs": 64.399,
+        "kurswert": 989.81,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -10.19,
+        "bruttoProzent": -1.02,
+        "netto": -12.19,
+        "nettoProzent": -1.22,
+        "nettoTR": -12.19,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1.06
       }
     },
     {
@@ -9792,26 +9843,26 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 54,
+      "anzahl": 55,
       "treffer": 18,
-      "quote": 33.3,
-      "netto": -1106.85,
-      "brutto": -1074.85,
-      "nettoTR": -1182.85,
-      "oeNettoProzent": -2.06,
-      "oeR": 0.09
+      "quote": 32.7,
+      "netto": -1119.04,
+      "brutto": -1085.04,
+      "nettoTR": -1195.04,
+      "oeNettoProzent": -2.05,
+      "oeR": 0.07
     },
     "heute": {
-      "anzahl": 4,
+      "anzahl": 5,
       "treffer": 1,
-      "quote": 25,
-      "netto": -36.44,
-      "brutto": -34.44,
-      "nettoTR": -42.44,
-      "oeNettoProzent": -0.92,
-      "oeR": 0.38
+      "quote": 20,
+      "netto": -48.63,
+      "brutto": -44.63,
+      "nettoTR": -54.63,
+      "oeNettoProzent": -0.98,
+      "oeR": 0.09
     },
-    "offen": 4,
+    "offen": 3,
     "gruppen": {
       "turbo": {
         "anzahl": 38,
@@ -9834,14 +9885,14 @@
         "oeR": -0.16
       },
       "krypto": {
-        "anzahl": 16,
+        "anzahl": 17,
         "treffer": 7,
-        "quote": 43.8,
-        "netto": -50.17,
-        "brutto": -18.17,
-        "nettoTR": -50.17,
-        "oeNettoProzent": -0.31,
-        "oeR": 0.69
+        "quote": 41.2,
+        "netto": -62.36,
+        "brutto": -28.36,
+        "nettoTR": -62.36,
+        "oeNettoProzent": -0.37,
+        "oeR": 0.59
       }
     }
   },
@@ -9897,8 +9948,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 77,
-        "chance": 32.5,
+        "faelle": 78,
+        "chance": 32.1,
         "oeNetto": -0.06,
         "wertung": -0.13
       }
