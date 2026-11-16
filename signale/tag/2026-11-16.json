@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-16T08:41:37.544Z",
-  "anzahl": 165,
+  "stand": "2026-11-16T10:40:28.548Z",
+  "anzahl": 169,
   "signale": [
     {
       "id": "verwaesserung:GMHS:2026-11-12",
@@ -741,7 +741,7 @@
       "t": "NVDA",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.62,
+      "st": 0.72,
       "q": [
         "CNBC Top News",
         "MarketWatch",
@@ -2107,9 +2107,10 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.65,
+      "st": 0.95,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "CNBC Politics"
       ],
       "z": "2026-11-16T05:31:06.081Z"
     },
@@ -2121,9 +2122,10 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.65,
+      "st": 0.95,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "CNBC Politics"
       ],
       "z": "2026-11-16T05:31:06.081Z"
     },
@@ -2135,9 +2137,10 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.65,
+      "st": 0.95,
       "q": [
-        "tagesschau Ausland"
+        "tagesschau Ausland",
+        "CNBC Politics"
       ],
       "z": "2026-11-16T05:31:06.081Z"
     },
@@ -2181,6 +2184,61 @@
         "tagesschau Wirtschaft"
       ],
       "z": "2026-11-16T06:48:12.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.BTC:2026-11-16",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-16T09:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.ETH:2026-11-16",
+      "s": "K:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-16T09:00:00.000Z"
+    },
+    {
+      "id": "nachricht:GS:2026-11-16",
+      "s": "T:GS",
+      "n": "Goldman Sachs",
+      "t": "GS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-16T09:30:50.000Z"
+    },
+    {
+      "id": "kursrakete:K.CASHCAT:2026-11-16",
+      "s": "K:CASHCAT",
+      "n": "Cash Cat",
+      "t": "CASHCAT",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.48,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-16T10:40:28.548Z"
     }
   ]
 }
