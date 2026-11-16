@@ -20,6 +20,11 @@ export interface V6Regeln {
   tagesVerlustGrenze: number;
   /** Einsatz je Order (€) */
   einsatz: number;
+  /**
+   * Schnellspur (Nutzer 15.11.2026: „kannst auch von 20 Tests absehen, wenn du dir sicher bist“): Muster mit sehr
+   * starker Wertung im Rückblick brauchen nur `mindestFaelle` abgeschlossene Fälle vorwärts – alle anderen Bedingungen gelten.
+   */
+  schnellspur?: { mindestWertung: number; mindestFaelle: number };
 }
 
 export interface MusterStand {
@@ -28,13 +33,19 @@ export interface MusterStand {
   /** Ø je Fall im Vorwärtstest (€) */
   ev: number;
   rueckblick: { quote: number; ev: number; se: number };
+  /** Wertung im Rückblick (für die Schnellspur) */
+  wertung?: number;
 }
+
+/** Wie viele abgeschlossene Vorwärts-Fälle braucht dieses Muster? */
+export const noetigeFaelle = (m: Pick<MusterStand, 'wertung'>, r: V6Regeln) => (r.schnellspur && (m.wertung ?? 0) >= r.schnellspur.mindestWertung ? Math.min(r.schnellspur.mindestFaelle, r.mindestFaelle) : r.mindestFaelle);
 
 /** Erfüllt ein Muster heute die Bedingungen für Stufe 3? Mit Grund (für das Muster-Buch und die App). */
 export function befoerderungPruefen(m: MusterStand, r: V6Regeln): { ok: boolean; grund: string } {
   if (m.rueckblick.quote < r.mindestQuote) return { ok: false, grund: `Volltreffer-Quote im Rückblick ${m.rueckblick.quote} % unter ${r.mindestQuote} %` };
   if (m.rueckblick.ev < r.mindestEv) return { ok: false, grund: `Ø im Rückblick ${euro(m.rueckblick.ev)} unter ${euro(r.mindestEv)}` };
-  if (m.faelle < r.mindestFaelle) return { ok: false, grund: `erst ${m.faelle} von ${r.mindestFaelle} Fällen im Vorwärtstest` };
+  const noetig = noetigeFaelle(m, r);
+  if (m.faelle < noetig) return { ok: false, grund: `erst ${m.faelle} von ${noetig} Fällen im Vorwärtstest${noetig < r.mindestFaelle ? ' (Schnellspur)' : ''}` };
   if (m.ev <= 0) return { ok: false, grund: `vorwärts Ø ${euro(m.ev, { vorzeichen: true })} – nicht im Plus` };
   const band = m.rueckblick.ev - 2 * Math.max(m.rueckblick.se, 1);
   if (m.ev < band) return { ok: false, grund: `vorwärts Ø ${euro(m.ev)} unter dem Band des Rückblicks (${euro(band)})` };

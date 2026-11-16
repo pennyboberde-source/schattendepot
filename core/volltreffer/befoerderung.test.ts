@@ -24,6 +24,18 @@ describe('Beförderung prüfen (Klasse vor Masse)', () => {
   });
 });
 
+describe('Schnellspur für sehr starke Muster', () => {
+  const S: V6Regeln = { ...R, schnellspur: { mindestWertung: 30, mindestFaelle: 10 } };
+  const stark = { faelle: 11, ev: 60, rueckblick: { quote: 27.6, ev: 72.6, se: 23 }, wertung: 46.3 };
+  it('ab Wertung 30 reichen 10 Fälle – alle anderen Bedingungen gelten weiter', () => {
+    expect(befoerderungPruefen(stark, S).ok).toBe(true);
+    expect(befoerderungPruefen({ ...stark, wertung: 20 }, S).ok).toBe(false);
+    expect(n(befoerderungPruefen({ ...stark, faelle: 9 }, S).grund)).toContain('erst 9 von 10 Fällen im Vorwärtstest (Schnellspur)');
+    expect(befoerderungPruefen({ ...stark, ev: -1 }, S).ok).toBe(false);
+    expect(befoerderungPruefen(stark, R).ok).toBe(false);
+  });
+});
+
 describe('Beförderungszeiten aus dem Muster-Buch', () => {
   const buch = [
     { schluessel: 'A', status: 'vorwaertstest' },

@@ -13,7 +13,7 @@ import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '.
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
 import { pumpVerdacht } from '../core/datenkrake.ts';
-import { befoerderungPruefen, istBefoerdert, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
+import { befoerderungPruefen, istBefoerdert, noetigeFaelle, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { schluesselNormal } from '../core/signale.ts';
@@ -910,12 +910,12 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     // Stufe 2: mindestens 20 Fälle im Vorwärtstest und ein Ergebnis im Band des Rückblicks (Ø ≥ Rückblick − 2 Standardfehler und > 0)
     const stufe2 = f.length >= v4.stufe2Faelle && ev > 0 && ev >= e.rueckblick.ev - 2 * Math.max(e.rueckblick.se, 1);
     // Stufe 3 (V6): automatisch befördern bzw. zurückstufen – nur nach vorn, als Eintrag im Muster-Buch
-    const p6 = befoerderungPruefen({ faelle: f.length, ev, rueckblick: e.rueckblick }, v6);
+    const p6 = befoerderungPruefen({ faelle: f.length, ev, rueckblick: e.rueckblick, wertung: e.wertung }, v6);
     const war = istBefoerdert(zeitenVorher, e.schluessel);
     if (p6.ok && !war) {
       musterBuch.eintraege.push({ ...e, status: 'befoerdert', am: heute, grund: p6.grund });
       befoerdertHeute.push(e.gruppe);
-    } else if (!p6.ok && war && f.length >= v6.mindestFaelle) {
+    } else if (!p6.ok && war && f.length >= noetigeFaelle({ wertung: e.wertung }, v6)) {
       musterBuch.eintraege.push({ ...e, status: 'zurueckgestuft', am: heute, grund: p6.grund });
       zurueckHeute.push(e.gruppe);
     }

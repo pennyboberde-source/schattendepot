@@ -567,6 +567,11 @@
     "maxOffen": 3,
     "tagesVerlustGrenze": 300,
     "einsatz": 1000,
-    "ohneNein": false
+    "ohneNein": false,
+    "schnellspur": {
+      "mindestWertung": 30,
+      "mindestFaelle": 10
+    },
+    "schnellspurHinweis": "Schnellspur (Nutzer 15.11.2026: „kannst auch von 20 Tests absehen, wenn du dir sicher bist“): Muster mit Wertung ab mindestWertung im Rückblick brauchen nur mindestFaelle abgeschlossene Vorwärts-Fälle; Quote, Ø und Band gelten unverändert."
   }
 }
