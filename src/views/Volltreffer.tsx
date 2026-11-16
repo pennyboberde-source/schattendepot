@@ -47,6 +47,7 @@ function JagdZeile({ j }: { j: JagdFall }) {
         {j.einstieg ? `, Einstieg ${datumKurz(j.einstieg)}` : ', Einstieg zur nächsten Eröffnung'}
       </span>
       <span class="klein">Muster: {j.muster}</span>
+      {j.hinweis && <span class="klein">📄 {j.hinweis}</span>}
       {j.urteil && (
         <span class="klein">
           {j.urteil === 'ja' ? '✅ Claude: ja' : '❌ Claude: nein'} – {j.grund}

@@ -388,6 +388,7 @@ const spNachSchluessel = new Map(SP.map((sp) => [spielartSchluessel(sp), sp]));
 const vorwaerts: JagdFall[] = [];
 const FENSTER_ALLE = (f: number) => Array.from({ length: f }, (_, n) => n + 1);
 /** Fall eines Musters im Vorwärtstest: Ausgang, laufend oder noch lauernd (kein Folgetag) */
+const SEC_NAME: Record<MeldungArt, string> = { angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: '13D-Meldung (Großaktionär)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz/Delisting/Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzungsänderung (8-K 5.03, oft Aktiensplit)' };
 function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten): JagdFall | null {
   const sp = spNachSchluessel.get(e.sp);
   if (!sp) return null;
@@ -397,7 +398,16 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten): Ja
   const von = new Date(Date.parse(`${k[i].datum}T12:00:00Z`) - 3 * 86400000).toISOString().slice(0, 10);
   const typen = (signaleJe.get(r.schluessel.split('#')[0]) ?? []).filter((x) => x.datum >= von && x.datum <= k[i].datum).map((x) => x.typ);
   const pump = pumpVerdacht(typen, { kurs: k[i].c });
-  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), ...(pump ? { pump: true } : {}) };
+  // V5: amtliche SEC-Meldungen der letzten 20 Handelstage als Hinweis für Claudes Urteil (öffentlich, gemeinfrei)
+  const sec: string[] = [];
+  const wann = (d: number) => (d === 0 ? 'am Stichtag' : d === 1 ? 'am Vortag' : `vor ${d} Handelstagen`);
+  const za = zahlenAm(r, k[i].datum);
+  if (za !== null && za <= 20) sec.push(`Quartalszahlen ${wann(za)}`);
+  for (const a of MELDUNG_ARTEN) {
+    const d = meldungAm(r, k[i].datum, a);
+    if (d !== null && d <= 20) sec.push(`${SEC_NAME[a]} ${wann(d)}`);
+  }
+  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
   if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
   const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));
   const fertig = res.find((a) => a && a.art !== 'zeit') ?? res[e.fenster - 1];

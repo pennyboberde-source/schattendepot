@@ -124,7 +124,7 @@ if (typ === 'morgenlauf') {
   const ll = vu?.lauerliste ?? [];
   if (ll.length) {
     p(`## 🎯 Volltreffer-Lauerliste (${vu.lauerlisteZahl} Werte, die obersten ${Math.min(10, ll.length)}) – Urteil in \`volltrefferUrteil\``);
-    for (const j of ll.slice(0, 10)) p(`- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage · Muster: ${j.muster}`);
+    for (const j of ll.slice(0, 10)) p(`- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage · Muster: ${j.muster}${j.hinweis ? ` · ${j.hinweis}` : ''}`);
     const k = vu.kennzahlen;
     if (k?.anzahl) p(`Virtuelle Jagden bisher: ${k.anzahl} abgeschlossen, Volltreffer ${k.quote} %, Ø ${k.ev} € je Jagd.`);
     const u = vu.urteil;
