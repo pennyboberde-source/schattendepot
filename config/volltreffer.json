@@ -576,8 +576,131 @@
           "Leerverkaufsbestand gestiegen (5 bis 25 %)",
           "Leerverkaufsbestand stark gestiegen (über 25 %)"
         ]
+      },
+      {
+        "merkmal": "anleihen5",
+        "grenzen": [
+          -3,
+          -1,
+          1,
+          3
+        ],
+        "namen": [
+          "Lange US-Anleihen 5 Tage stark gefallen (Zinsen steigen deutlich)",
+          "Lange US-Anleihen 5 Tage gefallen",
+          "Lange US-Anleihen 5 Tage ruhig",
+          "Lange US-Anleihen 5 Tage gestiegen",
+          "Lange US-Anleihen 5 Tage stark gestiegen (Zinsen fallen deutlich)"
+        ],
+        "paare": false
+      },
+      {
+        "merkmal": "dollar5",
+        "grenzen": [
+          -1.5,
+          -0.5,
+          0.5,
+          1.5
+        ],
+        "namen": [
+          "Dollar 5 Tage stark schwächer",
+          "Dollar 5 Tage schwächer",
+          "Dollar 5 Tage ruhig",
+          "Dollar 5 Tage stärker",
+          "Dollar 5 Tage stark stärker"
+        ],
+        "paare": false
+      },
+      {
+        "merkmal": "kredit5",
+        "grenzen": [
+          -1.5,
+          -0.5,
+          0.5,
+          1.5
+        ],
+        "namen": [
+          "Kreditmarkt 5 Tage im Stress (Hochzinsanleihen deutlich schwächer)",
+          "Kreditmarkt 5 Tage angespannt",
+          "Kreditmarkt 5 Tage ruhig",
+          "Kreditmarkt 5 Tage risikofreudig",
+          "Kreditmarkt 5 Tage sehr risikofreudig"
+        ],
+        "paare": false
+      },
+      {
+        "merkmal": "oel5",
+        "grenzen": [
+          -8,
+          -3,
+          3,
+          8
+        ],
+        "namen": [
+          "Öl 5 Tage stark gefallen",
+          "Öl 5 Tage gefallen",
+          "Öl 5 Tage ruhig",
+          "Öl 5 Tage gestiegen",
+          "Öl 5 Tage stark gestiegen"
+        ],
+        "paare": false
+      },
+      {
+        "merkmal": "sektor5",
+        "grenzen": [
+          -5,
+          -2,
+          2,
+          5
+        ],
+        "namen": [
+          "Eigene Branche 5 Tage stark schwächer",
+          "Eigene Branche 5 Tage schwächer",
+          "Eigene Branche 5 Tage ruhig",
+          "Eigene Branche 5 Tage stärker",
+          "Eigene Branche 5 Tage stark stärker"
+        ],
+        "paare": false
+      },
+      {
+        "merkmal": "angst",
+        "grenzen": [
+          25,
+          45,
+          55,
+          75
+        ],
+        "namen": [
+          "Krypto: extreme Angst (Fear & Greed unter 25)",
+          "Krypto: Angst (25 bis 45)",
+          "Krypto: neutral (45 bis 55)",
+          "Krypto: Gier (55 bis 75)",
+          "Krypto: extreme Gier (über 75)"
+        ],
+        "paare": false
+      },
+      {
+        "merkmal": "stable30",
+        "grenzen": [
+          -1,
+          0,
+          2,
+          5
+        ],
+        "namen": [
+          "Stablecoins 30 Tage geschrumpft (über 1 %)",
+          "Stablecoins 30 Tage leicht geschrumpft",
+          "Stablecoins 30 Tage leicht gewachsen (0 bis 2 %)",
+          "Stablecoins 30 Tage gewachsen (2 bis 5 %)",
+          "Stablecoins 30 Tage stark gewachsen (über 5 %)"
+        ],
+        "paare": false
       }
-    ]
+    ],
+    "quartalMindestFaelle": 5,
+    "quartaleMindestAnteil": 0.5,
+    "quartaleHinweis": "Rollierende Prüfung gegen den Startpunkt-Effekt (seit 16.11.2026): je bestandener Kombination die Kalenderquartale mit mindestens quartalMindestFaelle Fällen; ist bei mindestens 4 solchen Quartalen der Anteil mit Ø nach Kosten über 0 kleiner als quartaleMindestAnteil, gilt sie als nicht bestanden (der Erfolg hing an wenigen Phasen).",
+    "lageHinweis": "Lage-Merkmale (paare: false, seit 16.11.2026) werden nur einzeln geprüft, nicht in Zweierkombinationen – das hält Laufzeit und Zufallstreffer klein; im Gesamtmodell wirken sie mit allen Merkmalen zusammen."
   },
   "v4": {
     "hinweis": "Bereich Volltreffer, virtuell (Konzept V4): höchstens maxOffen Jagden gleichzeitig, nach tagesVerlustGrenze € realisiertem Verlust am nächsten Einstiegstag keine neue Jagd; höchstens vorwaertsMax Muster gleichzeitig im Vorwärtstest; Stufe 2 ab stufe2Faelle Fällen mit Ø im Band des Rückblicks. 15.11.2026 abends auf Wunsch des Nutzers („so viele Volltreffer wie möglich“): 10 statt 5 Jagden gleichzeitig, Tagesverlustgrenze im selben Verhältnis 900 statt 450 €, 40 statt 30 Muster im Vorwärtstest. Nachziehstop ab +200 € ist als Spielart gemessen (im Schnitt schlechter, nur wo besser gewählt). Nicht umgesetzt: höchstens 2 Jagden je Thema (würde Jagden kosten; Branche ist jetzt Merkmal im Rückblick), eigener Pump-Filter (Turbo-Handelbarkeit verlangt schon großen Umsatz).",

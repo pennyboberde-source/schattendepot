@@ -18,7 +18,7 @@ import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekan
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { schluesselNormal } from '../core/signale.ts';
 import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenwert.ts';
-import { aenderungAm, breite, fedAbstand, summeBis, wertAm, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
+import { aenderungAm, breite, fedAbstand, schluesse, summeBis, wertAm, type KryptoUmfeldArchiv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
@@ -33,7 +33,7 @@ interface VtConfig {
     aktie: { mindestKurs: number; mindestUmsatzStichtag: number; turboAbUmsatz20: number; spread: { abUmsatz20: number; klasse: string }[]; handelsplatz: string };
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
-  pruefung: { mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
+  pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number };
   v6: V6Regeln & { ohneNein?: boolean };
   turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
@@ -354,6 +354,30 @@ const vixReihe: [string, number][] = (() => {
   return existsSync(pf) ? (JSON.parse(gz(pf)) as UmfeldArchiv).vix : [];
 })();
 const umfeldJeTag = new Map(alleTage.map((d) => [d, { vix: wertAm(vixReihe, d), vix5: aenderungAm(vixReihe, d), fed: fedAbstand(d, umfeldCfg.fedEntscheide) }]));
+// Lage (schlanker Kontext, seit 16.11.2026): aus vorhandenen ETF-Kursen 5-Tage-Bewegung von langen US-Anleihen (TLT,
+// steigt bei fallenden Zinsen), Dollar (UUP), Kreditmarkt (Hochzinsanleihen HYG gegen 7–10-jährige Staatsanleihen IEF)
+// und Öl (USO); je Aktie die eigene Branche (Branchen-ETF). Krypto: Fear & Greed und Stablecoin-Menge über 30 Tage.
+const etfReihe = (t: string) => schluesse(reihen.find((r) => r.schluessel === `T:${t}`)?.kerzen ?? []);
+const [tlt, uup, hyg, ief, uso] = ['TLT', 'UUP', 'HYG', 'IEF', 'USO'].map(etfReihe);
+// Branchen-Code (brancheAusSic) → ETF: Biotech XBI, Gesundheit XLV, Technologie XLK, Finanzen XLF, SPAC –, Energie XLE, Sonstige IWM
+const SEKTOR_ETF = ['XBI', 'XLV', 'XLK', 'XLF', null, 'XLE', 'IWM'];
+const sektorReihen = SEKTOR_ETF.map((t) => (t ? etfReihe(t) : []));
+const kryptoUmfeld: KryptoUmfeldArchiv | null = (() => {
+  const pf = join(ARCHIV, 'stamm', 'krypto-umfeld.json.gz');
+  return existsSync(pf) ? (JSON.parse(gz(pf)) as KryptoUmfeldArchiv) : null;
+})();
+const lageJeTag = new Map(
+  alleTage.map((d) => {
+    const h = aenderungAm(hyg, d);
+    const i = aenderungAm(ief, d);
+    return [d, { anleihen5: aenderungAm(tlt, d), dollar5: aenderungAm(uup, d), kredit5: h !== null && i !== null ? Math.round((h - i) * 10) / 10 : null, oel5: aenderungAm(uso, d), angst: kryptoUmfeld ? wertAm(kryptoUmfeld.angst, d, 2) : null, stable30: kryptoUmfeld ? aenderungAm(kryptoUmfeld.stable, d, 30, 3) : null }];
+  }),
+);
+const sektorAm = (r: Reihe, d: string): number | null => {
+  const b = r.markt === 'aktie' ? brancheVon(r) : null;
+  return b === null || !sektorReihen[b]?.length ? null : aenderungAm(sektorReihen[b], d);
+};
+log(`Lage: ETF-Reihen TLT ${tlt.length}, UUP ${uup.length}, HYG ${hyg.length}, IEF ${ief.length}, USO ${uso.length} Tage, Branchen-ETFs ${sektorReihen.filter((x) => x.length).length} von 6; Krypto Fear & Greed ${kryptoUmfeld?.angst.length ?? 0}, Stablecoins ${kryptoUmfeld?.stable.length ?? 0} Tage.`);
 log(`Marktumfeld: VIX ${vixReihe.length} Tage (${[...umfeldJeTag.values()].filter((u) => u.vix !== null).length} von ${alleTage.length} Stichtagen), Zinsentscheide ${umfeldCfg.fedEntscheide.length}.`);
 const grenze = alleTage[Math.floor(alleTage.length / 2)] ?? heute;
 log(`Merkmale berechnet. Stichtage von ${alleTage[0]} bis ${alleTage[alleTage.length - 1]}; Zeitraum B ab ${grenze}.`);
@@ -370,7 +394,7 @@ for (const markt of MAERKTE) {
   E.forEach((e, a) => {
     for (let c = 0; c < klassenZahl(e); c++) neueGruppe(`${markt}|${a}=${c}`);
   });
-  for (let a = 0; a < E.length; a++) for (let b = a + 1; b < E.length; b++) for (let ca = 0; ca < klassenZahl(E[a]); ca++) for (let cb = 0; cb < klassenZahl(E[b]); cb++) neueGruppe(`${markt}|${a}=${ca}&${b}=${cb}`);
+  for (let a = 0; a < E.length; a++) for (let b = a + 1; b < E.length; b++) if (E[a].paare !== false && E[b].paare !== false) for (let ca = 0; ca < klassenZahl(E[a]); ca++) for (let cb = 0; cb < klassenZahl(E[b]); cb++) neueGruppe(`${markt}|${a}=${ca}&${b}=${cb}`);
   for (const h of HYPOTHESEN) if (h.markt === 'alle' || h.markt === markt) neueGruppe(`${markt}|hyp=${h.nr}`);
 }
 const SP = spielarten(vt.etikett.hebel, vt.etikett.stops, vt.etikett.nachzieh);
@@ -380,8 +404,8 @@ const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
 const zw = new Zaehlwerk(gruppen.length, SP.length, F.length, 2);
 log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
-type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null; bestandTage: number | null; bestandAenderung: number | null } & Partial<Record<MeldungArt, number | null>>;
-const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', ...MELDUNG_ARTEN]);
+type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null; bestandTage: number | null; bestandAenderung: number | null; anleihen5: number | null; dollar5: number | null; kredit5: number | null; oel5: number | null; sektor5: number | null; angst: number | null; stable30: number | null } & Partial<Record<MeldungArt, number | null>>;
+const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', ...MELDUNG_ARTEN]);
 const merkmalWert = (e: Einteilung, m: Merkmale, kontext: Kontext): number | null =>
   KONTEXT_MERKMALE.has(e.merkmal) ? (kontext[e.merkmal as keyof Kontext] ?? null) : (m[e.merkmal as keyof Merkmale] as number | null);
 /** Meldungsarten, nach denen die Einteilungen fragen (nur die werden je Stichtag gerechnet) */
@@ -389,10 +413,16 @@ const GEFRAGTE_ARTEN = MELDUNG_ARTEN.filter((a) => E.some((e) => e.merkmal === a
 const LEER_GEFRAGT = E.some((e) => e.merkmal === 'leerquote' || e.merkmal === 'leerquoteRel');
 const INSIDER_GEFRAGT = E.some((e) => e.merkmal === 'insider');
 const LB_GEFRAGT = E.some((e) => e.merkmal === 'bestandTage' || e.merkmal === 'bestandAenderung');
+const LEER_LAGE = { anleihen5: null, dollar5: null, kredit5: null, oel5: null, angst: null, stable30: null };
+/** Lage am Stichtag: US-Lage nur für Aktien, Krypto-Lage nur für Coins */
+const lageFuer = (r: Reihe, datum: string) => {
+  const l = lageJeTag.get(datum) ?? LEER_LAGE;
+  return r.markt === 'aktie' ? { anleihen5: l.anleihen5, dollar5: l.dollar5, kredit5: l.kredit5, oel5: l.oel5, sektor5: sektorAm(r, datum), angst: null, stable30: null } : { anleihen5: null, dollar5: null, kredit5: null, oel5: null, sektor5: null, angst: l.angst, stable30: l.stable30 };
+};
 /** Klasse je Einteilung an einem Stichtag (Durchgang 2 und Klumpen-Prüfung rechnen genau gleich) */
 const klassenAm = (r: Reihe, x: Merkmale, datum: string) => {
   const mr = marktR1[r.markt].get(datum) ?? 0;
-  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null, ...(LB_GEFRAGT ? leerbestandAm(r, datum) : { bestandTage: null, bestandAenderung: null }) };
+  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null, ...(LB_GEFRAGT ? leerbestandAm(r, datum) : { bestandTage: null, bestandAenderung: null }), ...lageFuer(r, datum) };
   for (const a of GEFRAGTE_ARTEN) kontext[a] = meldungAm(r, datum, a);
   return E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
 };
@@ -545,7 +575,7 @@ for (const r of reihen) {
     const gAlle = gid.get(`${r.markt}|alle`)!;
     const gEinzel = klassen.map((c, a) => (c === null ? -1 : gid.get(`${r.markt}|${a}=${c}`)!));
     const gPaare: number[] = [];
-    for (let a = 0; a < E.length; a++) for (let b = a + 1; b < E.length; b++) if (klassen[a] !== null && klassen[b] !== null) gPaare.push(gid.get(`${r.markt}|${a}=${klassen[a]}&${b}=${klassen[b]}`)!);
+    for (let a = 0; a < E.length; a++) for (let b = a + 1; b < E.length; b++) if (klassen[a] !== null && klassen[b] !== null && E[a].paare !== false && E[b].paare !== false) gPaare.push(gid.get(`${r.markt}|${a}=${klassen[a]}&${b}=${klassen[b]}`)!);
     if (testJeGruppe.size) imVorwaerts([...gEinzel.filter((g) => g >= 0), ...gPaare], i, x);
     const frei = (g: number) => g >= 0 && i - gezaehltAm[g] > sperre;
     const alleFrei = frei(gAlle);
@@ -626,7 +656,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
@@ -643,7 +673,7 @@ const gruppenText = (name: string) => {
     })
     .join(' und ')}`;
 };
-const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string; tage?: [number, number]; groessterTag?: [number, number]; splitVerdacht?: number })[] = [];
+const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string; tage?: [number, number]; groessterTag?: [number, number]; splitVerdacht?: number; quartale?: [number, number] })[] = [];
 for (const name of gruppen) {
   const g = gid.get(name)!;
   const markt = name.split('|')[0];
@@ -701,6 +731,15 @@ for (const name of gruppen) {
   const tagNr = new Map(alleTage.map((d, i) => [d, i]));
   const grenzeNr = alleTage.indexOf(grenze) >= 0 ? alleTage.indexOf(grenze) : alleTage.length;
   const klumpen = new TagesKlumpen(kand.length, alleTage.length);
+  // Kalenderquartale als Tagesbereiche [von, bis) für die rollierende Prüfung (Startpunkt-Effekt)
+  const quartalGrenzen: [number, number][] = [];
+  const quartalVon = (d: string) => `${d.slice(0, 4)}q${Math.floor((Number(d.slice(5, 7)) - 1) / 3)}`;
+  for (let i = 0; i < alleTage.length; ) {
+    let j = i;
+    while (j < alleTage.length && quartalVon(alleTage[j]) === quartalVon(alleTage[i])) j++;
+    quartalGrenzen.push([i, j]);
+    i = j;
+  }
   // Split-Verdacht: Volltreffer, in deren Fenster eine Lücke genau wie ein kleiner Split (3:2, 2:1, 3:1, 4:1) aussieht
   const trefferJe = new Int32Array(kand.length);
   const verdachtJe = new Int32Array(kand.length);
@@ -754,6 +793,7 @@ for (const name of gruppen) {
   let abweichend = 0;
   let gefallen = 0;
   let splitGefallen = 0;
+  let quartalGefallen = 0;
   const geprueft = new Map<Ergebnis, number>();
   kand.forEach((c, j) => geprueft.set(c.e, j));
   for (const e of ergebnisse) {
@@ -778,12 +818,27 @@ for (const name of gruppen) {
     if (A.tage < vt.pruefung.mindestTage || B.tage < vt.pruefung.mindestTage) {
       e.bestanden = false;
       gefallen++;
+    }
+    let qMit = 0;
+    let qPlus = 0;
+    for (const [von, bis] of quartalGrenzen) {
+      const q = klumpen.werte(j, von, bis);
+      if (q.n < vt.pruefung.quartalMindestFaelle) continue;
+      qMit++;
+      if (q.ev > 0) qPlus++;
+    }
+    e.quartale = [qPlus, qMit];
+    if (!e.bestanden) {
+      // schon durchgefallen (zu wenige Tage)
     } else if (e.splitVerdacht > vt.pruefung.splitVerdachtMax) {
       e.bestanden = false;
       splitGefallen++;
+    } else if (qMit >= 4 && qPlus / qMit < vt.pruefung.quartaleMindestAnteil) {
+      e.bestanden = false;
+      quartalGefallen++;
     }
   }
-  log(`Klumpen-Prüfung: ${kand.length} Kombinationen nachgezählt, ${gefallen} fallen durch (in einem Zeitraum weniger als ${vt.pruefung.mindestTage} verschiedene Stichtage), ${splitGefallen} wegen Split-Verdacht (mehr als ${vt.pruefung.splitVerdachtMax} % der Volltreffer), Volltreffer mit Split-Verdacht insgesamt ${verdachtJe.reduce((a, x) => a + x, 0)} von ${trefferJe.reduce((a, x) => a + x, 0)}${abweichend ? `, ${abweichend} mit abweichender Fallzahl (Durchgang 2 ≠ 3)` : ', Fallzahlen stimmen mit Durchgang 2 überein'}.`);
+  log(`Klumpen-Prüfung: ${kand.length} Kombinationen nachgezählt, ${gefallen} fallen durch (in einem Zeitraum weniger als ${vt.pruefung.mindestTage} verschiedene Stichtage), ${splitGefallen} wegen Split-Verdacht (mehr als ${vt.pruefung.splitVerdachtMax} % der Volltreffer), ${quartalGefallen} wegen zu weniger Quartale im Plus (unter ${vt.pruefung.quartaleMindestAnteil * 100} % der Quartale mit mindestens ${vt.pruefung.quartalMindestFaelle} Fällen), Volltreffer mit Split-Verdacht insgesamt ${verdachtJe.reduce((a, x) => a + x, 0)} von ${trefferJe.reduce((a, x) => a + x, 0)}${abweichend ? `, ${abweichend} mit abweichender Fallzahl (Durchgang 2 ≠ 3)` : ', Fallzahlen stimmen mit Durchgang 2 überein'}.`);
 }
 // je Gruppe die beste Spielart/das beste Fenster (nach Wertung)
 const besteJeGruppe = new Map<string, (typeof ergebnisse)[number]>();
@@ -825,6 +880,8 @@ const kurz = (e: (typeof ergebnisse)[number]) => ({
   evGesamt: e.gesamt.ev,
   zeitraumA: { n: e.zeitraeume[0].n, quote: e.zeitraeume[0].quote, ev: e.zeitraeume[0].ev, se: e.zeitraeume[0].se, tage: e.tage?.[0] ?? null, groessterTag: e.groessterTag?.[0] ?? null },
   zeitraumB: { n: e.zeitraeume[1].n, quote: e.zeitraeume[1].quote, ev: e.zeitraeume[1].ev, se: e.zeitraeume[1].se, tage: e.tage?.[1] ?? null, groessterTag: e.groessterTag?.[1] ?? null },
+  // rollierend: Quartale mit Ø über 0 von den Quartalen mit genug Fällen
+  quartale: e.quartale ? { imPlus: e.quartale[0], mitFaellen: e.quartale[1] } : null,
   knockoutQuote: e.gesamt.n ? Math.round((e.gesamt.knockout / e.gesamt.n) * 1000) / 10 : 0,
   /** Anteil der Volltreffer mit Split-Verdacht im Fenster, in % (nur geprüfte Kombinationen) */
   splitVerdacht: e.splitVerdacht ?? null,
@@ -1072,6 +1129,33 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
   log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu, ${beendet.length} beendet), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}, Pump-Verdacht ${pumpZahl} (nicht gejagt).`);
 }
 
+// Tages-Lagebild für alle Bereiche (schlanker Kontext, seit 16.11.2026): nur grobe Klassen, keine Kurswerte (die Quellen
+// erlauben keine Weitergabe von Kursen) – Depot, Daytrading, Schattenbuch und Routinen können ihre Ergebnisse über das
+// Datum mit der Lage verbinden. Öffentlich: lernen/lage.json (die letzten 250 Tage).
+{
+  const textVon = (merkmal: string, wert: number | null | undefined) => {
+    const e = E.find((x) => x.merkmal === merkmal);
+    const c = e ? klasse(wert ?? null, e.grenzen) : null;
+    return e && c !== null ? klassenName(e, c) : null;
+  };
+  const tage = alleTage.slice(-250);
+  const verlauf = tage.map((d) => {
+    const l = lageJeTag.get(d);
+    const u = umfeldJeTag.get(d);
+    return {
+      datum: d,
+      aktien: { vix: textVon('vix', u?.vix), vix5: textVon('vix5', u?.vix5), breite: textVon('breite', breiteJeTag.aktie.get(d)), markt5: textVon('markt5', markt5JeTag.aktie.get(d)), anleihen: textVon('anleihen5', l?.anleihen5), dollar: textVon('dollar5', l?.dollar5), kredit: textVon('kredit5', l?.kredit5), oel: textVon('oel5', l?.oel5) },
+      krypto: { angst: textVon('angst', l?.angst), stablecoins: textVon('stable30', l?.stable30), breite: textVon('breite', breiteJeTag.krypto.get(d)), markt5: textVon('markt5', markt5JeTag.krypto.get(d)) },
+    };
+  });
+  schreibeJson('lernen/lage.json', {
+    stand: jetzt.toISOString(),
+    hinweis: 'Tages-Lagebild in groben Klassen (keine Kurswerte): Angstbarometer VIX, Marktbreite und 5-Tage-Bewegung des Markts, lange US-Anleihen (Zinsen), Dollar, Kreditmarkt und Öl über ETF-Kurse; Krypto: Fear & Greed (alternative.me) und Stablecoin-Menge (DefiLlama). Stichtag = US-Handelstag bzw. Krypto-Tag (UTC).',
+    heute: verlauf[verlauf.length - 1] ?? null,
+    verlauf,
+  });
+}
+
 // privat: Zensus mit Werten und die vollständige Prüfung
 const aus = join(ARCHIV, 'auswertung');
 mkdirSync(aus, { recursive: true });
@@ -1086,7 +1170,7 @@ log(`Fertig: ${bestanden.length} Gruppen bestanden, davon ${mitVorteil.length} m
   .join(' | ') || '–'}`);
 for (const h of hypothesen) log(`${h.gruppe}: ${h.spielart}, ${h.fenster} T – ${h.faelle} Fälle, Quote ${h.quote} %, Ø A ${h.zeitraumA.ev} € / B ${h.zeitraumB.ev} € → ${h.bestanden ? 'BESTANDEN' : 'nicht bestanden'}`);
 // Was bringen die Merkmale aus Zusatzquellen (Quartalszahlen, Branche)? Nur verdichtete Kennzahlen ins Log
-for (const merkmal of ['zahlen', 'branche', ...MELDUNG_ARTEN, 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung']) {
+for (const merkmal of ['zahlen', 'branche', ...MELDUNG_ARTEN, 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30']) {
   const a = E.findIndex((e) => e.merkmal === merkmal);
   if (a < 0) continue;
   const mit = (e: (typeof bestanden)[number]) => e.schluessel.split('|')[1].split('&').some((t) => t.startsWith(`${a}=`));

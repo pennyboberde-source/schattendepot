@@ -34,7 +34,7 @@ import {
 import { figiEinordnen, handelbarkeitsKarte, type Wertpapier } from '../core/volltreffer/stamm.ts';
 import { boersenwertCsv, krakenZuSymbol, parseBoersenwertCsv, parseGeckoChart, parseGeckoMarkets, symbolZuId, type BoersenwertZeile } from '../core/volltreffer/boersenwert.ts';
 import { ciksAusTagesverzeichnis, MELDUNG_ARTEN, MELDUNGEN_STUFE, meldungenAusSeite, meldungenErfasst, meldungenVereinen, NACHFASS_FORMULARE, parseSubmissions, secTickerKarte, zahlenAusSeite, zahlenVereinen, type ZahlenArchiv } from '../core/volltreffer/zahlen.ts';
-import { parseVixCsv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
+import { parseAngst, parseStablecoins, parseVixCsv, type KryptoUmfeldArchiv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { finraDatei, leerverkaufCsv, parseFinraShvol } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandCsv, parseFinraShortInterest, stichtagKandidaten } from '../core/volltreffer/leerbestand.ts';
 import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, quartaleZwischen, quartalsEnde, quartalVon, type InsiderArchiv } from '../core/volltreffer/insider.ts';
@@ -67,6 +67,8 @@ interface Index {
   boersenwert?: { coins: number; zeilen: number; verlaeufeOffen: number; geholt: string };
   /** Zahlen-Termine und Branchen aus EDGAR (stamm/us-zahlen.json.gz) in Zählungen */
   umfeld?: { vixTage: number; vixLetzterTag: string | null; geholt: string };
+  /** Krypto-Umfeld (stamm/krypto-umfeld.json.gz) in Zählungen */
+  kryptoUmfeld?: { angstTage: number; angstBis: string | null; stableTage: number; stableBis: string | null; geholt: string };
   /** Leerverkaufsvolumen je US-Handelstag (leerverkauf/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
   leerverkauf?: Record<string, { werte: number; geholt: string }>;
   /** Leerverkaufsbestand je FINRA-Stichtag (leerbestand/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
@@ -87,7 +89,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,leerverkauf,leerbestand,insider').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,insider').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -645,6 +647,28 @@ async function umfeld() {
   console.log(`Marktumfeld: VIX ${vix.length} Tage bis ${index.umfeld.vixLetzterTag}.`);
 }
 
+// ---------- Krypto-Umfeld: Fear & Greed (alternative.me, frei mit Quellenangabe) und Stablecoin-Menge (DefiLlama, frei) ----------
+// Je Abruf die ganze Geschichte (zwei kleine Antworten); gespeichert nur, wenn sich etwas geändert hat.
+async function kryptoumfeld() {
+  const holen = async (url: string) => {
+    const r = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(60000) });
+    if (r.status !== 200) throw new Error(`${new URL(url).host}: HTTP ${r.status}`);
+    return r.json();
+  };
+  const angst = parseAngst(await holen('https://api.alternative.me/fng/?limit=0&format=json'));
+  const stable = parseStablecoins(await holen('https://stablecoins.llama.fi/stablecoincharts/all'));
+  if (angst.length < 1000 || stable.length < 1000) throw new Error(`Krypto-Umfeld unvollständig (Fear & Greed ${angst.length}, Stablecoins ${stable.length} Tage)`);
+  const datei = join(ARCHIV, 'stamm', 'krypto-umfeld.json.gz');
+  const alt = existsSync(datei) ? (JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as KryptoUmfeldArchiv) : null;
+  if (JSON.stringify([alt?.angst, alt?.stable]) !== JSON.stringify([angst, stable])) {
+    mkdirSync(dirname(datei), { recursive: true });
+    writeFileSync(datei, gzipSync(Buffer.from(JSON.stringify({ stand: iso, angst, stable } satisfies KryptoUmfeldArchiv), 'utf8'), { level: 9 }));
+    neu.push('stamm/krypto-umfeld');
+  }
+  index.kryptoUmfeld = { angstTage: angst.length, angstBis: angst[angst.length - 1]?.[0] ?? null, stableTage: stable.length, stableBis: stable[stable.length - 1]?.[0] ?? null, geholt: iso };
+  console.log(`Krypto-Umfeld: Fear & Greed ${angst.length} Tage bis ${index.kryptoUmfeld.angstBis}, Stablecoins ${stable.length} Tage bis ${index.kryptoUmfeld.stableBis}.`);
+}
+
 // ---------- Leerverkaufsvolumen (FINRA Reg SHO, eine frei abrufbare Datei je US-Handelstag) ----------
 // Neueste zuerst; der tägliche Lauf holt höchstens LEER_MAX_TAGE (Standard 15) fehlende Tage und füllt so die zwei
 // Jahre nach und nach auf, historie.yml (teile=leerverkauf) holt alles auf einmal.
@@ -913,6 +937,7 @@ const TEILE = [
   ['boersenwert', 'Börsenwert', boersenwert],
   ['zahlen', 'Zahlen-Termine (SEC)', zahlen],
   ['umfeld', 'Marktumfeld', umfeld],
+  ['kryptoumfeld', 'Krypto-Umfeld', kryptoumfeld],
   ['leerverkauf', 'Leerverkauf (FINRA)', leerverkauf],
   ['leerbestand', 'Leerverkaufsbestand (FINRA)', leerbestand],
   ['insider', 'Insider-Käufe (SEC)', insider],
@@ -967,6 +992,7 @@ const stand = {
     const da = Object.keys(index.leerverkauf ?? {}).filter((d) => index.leerverkauf![d].werte > 0).sort();
     return { tage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };
   })(),
+  kryptoUmfeld: index.kryptoUmfeld ?? null,
   leerbestand: (() => {
     const da = Object.keys(index.leerbestand ?? {}).filter((d) => index.leerbestand![d].werte > 0).sort();
     return { stichtage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };

@@ -80,3 +80,43 @@ export function summeBis(werte: number[], i: number, n = 5): number | null {
   for (let k = i - n + 1; k <= i; k++) s += werte[k];
   return Math.round(s * 100) / 100;
 }
+
+// ---------- Krypto-Umfeld (seit 16.11.2026, Plan „schlanker Kontext“) ----------
+// Fear & Greed Index für Krypto (alternative.me, frei mit Quellenangabe, täglich seit 2018) und die Gesamtmenge der
+// Dollar-Stablecoins (DefiLlama, frei, täglich seit 2017) als Maß für frisches Geld im Kryptomarkt. Beide tragen den
+// Zeitstempel 00:00 UTC des Tages, an dem sie gelten – an einem Krypto-Stichtag (Kerze bis 24:00 UTC) sind sie bekannt.
+
+/** Gespeicherter Stand (privat: stamm/krypto-umfeld.json.gz) */
+export interface KryptoUmfeldArchiv {
+  stand: string;
+  /** Fear & Greed 0–100 [Tag, Wert], aufsteigend */
+  angst: [string, number][];
+  /** Dollar-Stablecoins im Umlauf in $ [Tag, Wert], aufsteigend */
+  stable: [string, number][];
+}
+
+const tagAusSekunden = (s: unknown) => new Date(Number(s) * 1000).toISOString().slice(0, 10);
+
+/** alternative.me /fng/?limit=0 → [Tag, Wert] aufsteigend */
+export function parseAngst(json: unknown): [string, number][] {
+  const daten = (json as { data?: { value?: string; timestamp?: string }[] })?.data ?? [];
+  const aus = new Map<string, number>();
+  for (const d of daten) {
+    const v = Number(d.value);
+    if (d.timestamp && Number.isFinite(v) && v >= 0 && v <= 100) aus.set(tagAusSekunden(d.timestamp), v);
+  }
+  return [...aus].sort((a, b) => a[0].localeCompare(b[0]));
+}
+
+/** DefiLlama /stablecoincharts/all → [Tag, Dollar-Stablecoins im Umlauf] aufsteigend */
+export function parseStablecoins(json: unknown): [string, number][] {
+  const aus = new Map<string, number>();
+  for (const d of (Array.isArray(json) ? json : []) as { date?: string; totalCirculatingUSD?: { peggedUSD?: number } }[]) {
+    const v = d.totalCirculatingUSD?.peggedUSD;
+    if (d.date && typeof v === 'number' && v > 0) aus.set(tagAusSekunden(d.date), v);
+  }
+  return [...aus].sort((a, b) => a[0].localeCompare(b[0]));
+}
+
+/** Schlusskurse einer Kursreihe als [Tag, Schluss] (für ETF-Lage wie Anleihen, Dollar, Kredit, Öl, Branchen) */
+export const schluesse = (kerzen: { datum: string; c: number }[]): [string, number][] => kerzen.map((k) => [k.datum, k.c]);

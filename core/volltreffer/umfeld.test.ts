@@ -1,6 +1,6 @@
 // Marktumfeld: aufgezeichnete Beispielzeilen (gekürzt), keine echten Abrufe.
 import { describe, expect, it } from 'vitest';
-import { aenderungAm, breite, fedAbstand, parseVixCsv, summeBis, wertAm } from './umfeld.ts';
+import { aenderungAm, breite, fedAbstand, parseAngst, parseStablecoins, parseVixCsv, summeBis, wertAm } from './umfeld.ts';
 
 const CSV = ['DATE,OPEN,HIGH,LOW,CLOSE', '11/05/2026,17.0,18.0,16.5,17.500000', '11/06/2026,17.5,19.0,17.0,18.000000', '11/09/2026,18,20,17,20.000000', '11/10/2026,20,21,19,19.000000', '11/11/2026,19,19,18,18.500000', '11/12/2026,18.36,19.34,17.38,18.700000', '11/13/2026,18.78,20.92,17.64,19.300000', 'kaputt', ''].join('\r\n');
 
@@ -48,5 +48,24 @@ describe('Marktbreite und Mehrtagesbewegung', () => {
   it('Summe der letzten n Tage', () => {
     expect(summeBis([1, 2, 3, -1, 0.5, 2], 5)).toBe(6.5);
     expect(summeBis([1, 2], 1, 5)).toBeNull();
+  });
+});
+
+describe('Krypto-Umfeld', () => {
+  it('Fear & Greed aus alternative.me (Format wie /fng/?limit=0, Werte erfunden)', () => {
+    const j = { name: 'Fear and Greed Index', data: [{ value: '10', value_classification: 'Extreme Fear', timestamp: '1794787200' }, { value: '55', value_classification: 'Greed', timestamp: '1794700800' }, { value: 'x', timestamp: '1794614400' }] };
+    expect(parseAngst(j)).toEqual([
+      ['2026-11-15', 55],
+      ['2026-11-16', 10],
+    ]);
+  });
+  it('Stablecoins aus DefiLlama (Format wie /stablecoincharts/all, Werte erfunden)', () => {
+    const j = [{ date: '1794700800', totalCirculating: { peggedUSD: 1 }, totalCirculatingUSD: { peggedUSD: 300e9 } }, { date: '1794787200', totalCirculatingUSD: { peggedUSD: 303e9 } }, { date: '1794873600' }];
+    const s = parseStablecoins(j);
+    expect(s).toEqual([
+      ['2026-11-15', 300e9],
+      ['2026-11-16', 303e9],
+    ]);
+    expect(aenderungAm(s, '2026-11-16', 1)).toBe(1);
   });
 });
