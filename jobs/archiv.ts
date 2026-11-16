@@ -736,7 +736,9 @@ async function insider() {
     console.log('Insider (SEC): SEC_KONTAKT fehlt – übersprungen.');
     return;
   }
-  const ic = { jahre: 2, mindestWert: 10000, abstandMs: 160, maxMeldungen: 2500, minuten: 18, ...(cfg as { insider?: object }).insider } as { jahre: number; mindestWert: number; abstandMs: number; maxMeldungen: number; minuten: number };
+  const ic = { jahre: 2, mindestWert: 10000, abstandMs: 160, maxMeldungen: 2500, minuten: 18, taeglich: true, ...(cfg as { insider?: object }).insider } as { jahre: number; mindestWert: number; abstandMs: number; maxMeldungen: number; minuten: number; taeglich: boolean };
+  // Einzelne Formular-4-Tage nur, wenn eingeschaltet (config insider.taeglich) oder ausdrücklich verlangt (INSIDER_TAEGLICH=1)
+  const taeglich = ic.taeglich || process.env.INSIDER_TAEGLICH === "1";
   const max = Number(process.env.INSIDER_MAX) > 0 ? Math.floor(Number(process.env.INSIDER_MAX)) : ic.maxMeldungen;
   // Zeitgrenze: höchstens `minuten` für die einzelnen Tage und nie über die Laufzeit des ganzen Jobs hinaus
   // (archiv.yml bricht nach 40 Min. ab – dann wäre auch Gesichertes anderer Teile verloren)
@@ -812,7 +814,8 @@ async function insider() {
   // 2. Danach Tag für Tag: Formular-4-Meldungen aus dem EDGAR-Tagesverzeichnis (mit Annahmezeit)
   let tageNeu = 0;
   let meldungen = 0;
-  if (quartalBis && !fehler) {
+  if (quartalBis && !fehler && !taeglich) console.log("Insider (SEC): einzelne Tage abgeschaltet (config insider.taeglich) – nur Quartals-Datensätze.");
+  if (quartalBis && !fehler && taeglich) {
     try {
     for (let tag = tagPlus(quartalBis, 1); tag <= gestern; tag = tagPlus(tag, 1)) {
       const wt = new Date(`${tag}T12:00:00Z`).getUTCDay();
