@@ -49,9 +49,9 @@ function zufall(start: number) {
 
 /**
  * Trainiert das Modell. X: Klassen je Fall (Zeilen nacheinander, p Merkmale, Werte 0…stufen-1), y: Ergebnis in €,
- * zeilen: welche Zeilen zum Training gehören.
+ * zeilen: welche Zeilen zum Training gehören; erlaubt: nur diese Merkmale dürfen teilen (z. B. ohne marktweite Größen).
  */
-export function trainieren(X: Uint8Array, p: number, y: Float32Array, zeilen: Int32Array, e: ModellEinstellungen): Modell {
+export function trainieren(X: Uint8Array, p: number, y: Float32Array, zeilen: Int32Array, e: ModellEinstellungen, erlaubt?: boolean[]): Modell {
   const n = zeilen.length;
   if (!n) return { basis: 0, baeume: [], merkmale: p };
   const stufen = 1 + X.reduce((m, v) => (v > m ? v : m), 0);
@@ -100,6 +100,7 @@ export function trainieren(X: Uint8Array, p: number, y: Float32Array, zeilen: In
         let bestesF = -1;
         let besteS = 0;
         for (let f = 0; f < p; f++) {
+          if (erlaubt && !erlaubt[f]) continue;
           let sl = 0;
           let nl = 0;
           for (let s = 0; s < stufen - 1; s++) {
@@ -174,6 +175,39 @@ export function schwelleFuer(bewertungen: Float64Array | number[], q: number): n
   if (!s.length) return Infinity;
   const i = Math.min(s.length - 1, Math.max(0, Math.floor(s.length * (1 - q / 100))));
   return s[i];
+}
+
+/**
+ * Auswahl je Tag (Querschnitt): an jedem Tag die obersten q % der Fälle dieses Tages nach Bewertung, mindestens einer.
+ * Kein fester Schwellwert über die Zeit – so wählt das Modell nicht ganze Tage aus, sondern die besten Werte eines Tages.
+ */
+export function tagesAuswahl(zeilen: number[], bewertung: number[], tagVon: (zeile: number) => number, q: number): number[] {
+  const je = new Map<number, number[]>();
+  zeilen.forEach((z, k) => (je.get(tagVon(z)) ?? je.set(tagVon(z), []).get(tagVon(z))!).push(k));
+  const aus: number[] = [];
+  for (const ks of je.values()) {
+    ks.sort((a, b) => bewertung[b] - bewertung[a]);
+    const n = Math.max(1, Math.round((ks.length * q) / 100));
+    for (const k of ks.slice(0, n)) aus.push(zeilen[k]);
+  }
+  return aus;
+}
+
+/** Ziel gegen den Tagesdurchschnitt: y − Ø(y) desselben Tages (das Modell lernt, welcher Wert besser ist als die anderen) */
+export function gegenTag(y: Float32Array, zeilen: number[], tagVon: (zeile: number) => number): Float32Array {
+  const su = new Map<number, [number, number]>();
+  for (const z of zeilen) {
+    const t = su.get(tagVon(z)) ?? [0, 0];
+    t[0] += y[z];
+    t[1]++;
+    su.set(tagVon(z), t);
+  }
+  const aus = new Float32Array(y.length).fill(Number.NaN);
+  for (const z of zeilen) {
+    const [s, n] = su.get(tagVon(z))!;
+    aus[z] = y[z] - s / n;
+  }
+  return aus;
 }
 
 /**

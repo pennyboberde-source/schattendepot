@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { bewerten, mitSperre, schwelleFuer, trainieren, wichtigkeit, type ModellEinstellungen } from './modell.ts';
+import { bewerten, gegenTag, mitSperre, schwelleFuer, tagesAuswahl, trainieren, wichtigkeit, type ModellEinstellungen } from './modell.ts';
 
 const E: ModellEinstellungen = { baeume: 60, tiefe: 3, lernrate: 0.2, minBlatt: 20, anteil: 0.5, kappe: 500, lambda: 10, start: 3 };
 
@@ -48,6 +48,21 @@ describe('Gesamtmodell (Gradient Boosting)', () => {
     const { X, y, p } = daten(30, 9);
     const m = trainieren(X, p, y, Int32Array.from({ length: 30 }, (_, i) => i), E);
     expect(m.baeume.every((b) => b.merkmal.length === 1)).toBe(true);
+  });
+
+  it('nicht erlaubte Merkmale teilen nie', () => {
+    const { X, y, p } = daten(3000, 13);
+    const m = trainieren(X, p, y, Int32Array.from({ length: 3000 }, (_, i) => i), E, [false, true, true]);
+    expect(wichtigkeit(m)[0]).toBe(0);
+    expect(wichtigkeit(m)[1]).toBeGreaterThan(0);
+  });
+
+  it('Auswahl je Tag und Ziel gegen den Tagesdurchschnitt', () => {
+    // Zeilen 0–5: Tag 1 (drei Fälle) und Tag 2 (drei Fälle)
+    const tag = (z: number) => (z < 3 ? 1 : 2);
+    expect(tagesAuswahl([0, 1, 2, 3, 4, 5], [5, 9, 1, 0, -1, 3], tag, 10).sort()).toEqual([1, 5]);
+    const y = Float32Array.from([10, 20, 30, -10, -10, -40]);
+    expect([...gegenTag(y, [0, 1, 2, 3, 4, 5], tag)]).toEqual([-10, 0, 10, 10, 10, -20]);
   });
 
   it('Schwelle der obersten q Prozent und Sperre je Wert', () => {

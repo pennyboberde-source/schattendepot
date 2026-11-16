@@ -23,7 +23,7 @@ import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverka
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
 import { groessenKlasse, signalMessen, verdichten, type SammelErgebnis } from '../core/volltreffer/sammelmessung.ts';
-import { bewerten, mitSperre, schwelleFuer, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
+import { bewerten, gegenTag, mitSperre, tagesAuswahl, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
 import { turbosPruefen } from './lib/turbos.ts';
 import type { InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfasst, zahlenAbstaende, type MeldungArt, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
@@ -38,7 +38,7 @@ interface VtConfig {
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number };
   v6: V6Regeln & { ohneNein?: boolean };
-  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
+  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
 }
 
@@ -1094,9 +1094,11 @@ interface ModellErgebnis {
   faelleHeute: number;
 }
 const modellErgebnisse: ModellErgebnis[] = [];
-const modellAuswahl = new Map<string, { modell: Modell; schwelle: number; m: (typeof MODELLE)[number] }>();
+const modellAuswahl = new Map<string, { modell: Modell; q: number; m: (typeof MODELLE)[number] }>();
 if (MODELLE.length && mZahl) {
   const grenzeTag = tagNrAlle.get(grenze) ?? alleTage.length;
+  // marktweite Merkmale (an einem Tag für alle Werte gleich) dürfen nicht teilen
+  const erlaubt = E.map((e) => !MC!.ohne.includes(e.merkmal));
   const ab = MC!.abstandTage;
   const auswerten = (zeilen: number[], m: (typeof MODELLE)[number]) => {
     const kl = new TagesKlumpen(1, alleTage.length);
@@ -1118,10 +1120,11 @@ if (MODELLE.length && mZahl) {
       continue;
     }
     const e = MC!.einstellungen;
-    const mA = trainieren(mX, P, mY[m.idx], Int32Array.from(A), e);
-    const mB = trainieren(mX, P, mY[m.idx], Int32Array.from(B), e);
-    const bAinA = A.map((z) => bewerten(mA, mX, z));
-    const bBinB = B.map((z) => bewerten(mB, mX, z));
+    // Ziel gegen den Tagesdurchschnitt, ohne marktweite Merkmale: das Modell soll lernen, welcher Wert an einem Tag
+    // besser ist als die anderen – nicht, welcher Tag gut war (sonst lernt es wenige Crash-Tage auswendig, Probe 16.11.)
+    const yRel = gegenTag(mY[m.idx], gelabelt, (z) => mTag[z]);
+    const mA = trainieren(mX, P, yRel, Int32Array.from(A), e, erlaubt);
+    const mB = trainieren(mX, P, yRel, Int32Array.from(B), e, erlaubt);
     const bBdurchA = B.map((z) => bewerten(mA, mX, z));
     const bAdurchB = A.map((z) => bewerten(mB, mX, z));
     const grundA = A.reduce((su, z) => su + mY[m.idx][z], 0) / A.length;
@@ -1129,11 +1132,9 @@ if (MODELLE.length && mZahl) {
     const sp = SP[m.s];
     let bestes: ModellErgebnis | null = null;
     for (const q of MC!.obersteProzent) {
-      const tA = schwelleFuer(bAinA, q);
-      const tB = schwelleFuer(bBinB, q);
-      const wahl = (zeilen: number[], b: number[], t: number) => mitSperre(zeilen.filter((_, k) => b[k] >= t).map((z) => ({ z, wert: mReihe[z], tag: mI[z] })), vt.pruefung.sperreTage).map((x) => x.z);
-      const selA = wahl(A, bAdurchB, tB);
-      const selB = wahl(B, bBdurchA, tA);
+      const wahl = (zeilen: number[], b: number[]) => mitSperre(tagesAuswahl(zeilen, b, (z) => mTag[z], q).map((z) => ({ z, wert: mReihe[z], tag: mI[z] })), vt.pruefung.sperreTage).map((x) => x.z);
+      const selA = wahl(A, bAdurchB);
+      const selB = wahl(B, bBdurchA);
       const ka = auswerten(selA, m);
       const kb = auswerten(selB, m);
       const wa = ka.kl.werte(0, 0, alleTage.length);
@@ -1187,9 +1188,8 @@ if (MODELLE.length && mZahl) {
       if (!bestes || (erg.bestanden && !bestes.bestanden) || (erg.bestanden === bestes.bestanden && erg.wertung > bestes.wertung)) bestes = erg;
     }
     if (!bestes) continue;
-    // Endgültiges Modell auf allen Fällen; Schwelle für die obersten q % aus seinen eigenen Bewertungen
-    const mAlle = trainieren(mX, P, mY[m.idx], Int32Array.from(gelabelt), MC!.einstellungen);
-    const schwelle = schwelleFuer(gelabelt.map((z) => bewerten(mAlle, mX, z)), bestes.q);
+    // Endgültiges Modell auf allen Fällen; gewählt wird später je Tag (oberste q % des Tages)
+    const mAlle = trainieren(mX, P, gegenTag(mY[m.idx], gelabelt, (z) => mTag[z]), Int32Array.from(gelabelt), MC!.einstellungen, erlaubt);
     const w = wichtigkeit(mAlle);
     bestes.wichtig = w
       .map((x, a) => [x, a] as const)
@@ -1197,11 +1197,14 @@ if (MODELLE.length && mZahl) {
       .slice(0, 8)
       .filter(([x]) => x > 0)
       .map(([x, a]) => `${MERKMAL_TEXT[E[a].merkmal] ?? E[a].merkmal} (${x})`);
-    // heutige Kandidaten (Stichtag = letzter Tag des Markts): wie viele lägen über der Schwelle?
-    const letzter = Math.max(...gelabelt.slice(-1).map((z) => mTag[z]), 0);
-    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && mTag[z] > letzter && bewerten(mAlle, mX, z) >= schwelle) bestes.faelleHeute++;
+    // heutige Kandidaten: Fälle des jüngsten Stichtags dieses Markts, die in die obersten q % fallen
+    let juengster = -1;
+    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && reihen[mReihe[z]].markt === m.markt && mTag[z] > juengster) juengster = mTag[z];
+    const heuteZeilen: number[] = [];
+    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && reihen[mReihe[z]].markt === m.markt && mTag[z] === juengster) heuteZeilen.push(z);
+    bestes.faelleHeute = tagesAuswahl(heuteZeilen, heuteZeilen.map((z) => bewerten(mAlle, mX, z)), (z) => mTag[z], bestes.q).length;
     modellErgebnisse.push(bestes);
-    modellAuswahl.set(bestes.schluessel, { modell: mAlle, schwelle, m });
+    modellAuswahl.set(bestes.schluessel, { modell: mAlle, q: bestes.q, m });
     log(`Gesamtmodell ${m.markt} ${bestes.spielart} ${m.fenster} T: gewählt oberste ${bestes.q} % (${bestes.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), wichtigste Merkmale: ${bestes.wichtig.join(', ')}; ${Math.round((Date.now() - t0m) / 1000)} s.`);
   }
   // Vorwärtstest: Modelle im Muster-Buch bekommen ihre Fälle ab dem Tag nach dem Eintrag (je Wert ein Fall in sperreTage)
@@ -1209,9 +1212,10 @@ if (MODELLE.length && mZahl) {
     const e = imTest.get(schluessel);
     if (!e) continue;
     const vonTag = tagNrAlle.get(alleTage.find((d) => d > e.seit) ?? '9999') ?? Infinity;
-    const kand: { z: number; wert: number; tag: number }[] = [];
-    for (let z = 0; z < mZahl; z++) if (mAnw[a.m.idx][z] && mTag[z] >= vonTag && reihen[mReihe[z]].markt === a.m.markt && bewerten(a.modell, mX, z) >= a.schwelle) kand.push({ z, wert: mReihe[z], tag: mI[z] });
-    for (const { z } of mitSperre(kand, vt.pruefung.sperreTage)) {
+    const zeilen: number[] = [];
+    for (let z = 0; z < mZahl; z++) if (mAnw[a.m.idx][z] && mTag[z] >= vonTag && reihen[mReihe[z]].markt === a.m.markt) zeilen.push(z);
+    const gewaehlt = tagesAuswahl(zeilen, zeilen.map((z) => bewerten(a.modell, mX, z)), (z) => mTag[z], a.q);
+    for (const { z } of mitSperre(gewaehlt.map((z) => ({ z, wert: mReihe[z], tag: mI[z] })), vt.pruefung.sperreTage)) {
       const r = reihen[mReihe[z]];
       const x = merkmale(r.kerzen, mI[z]);
       if (!x) continue;
@@ -1221,7 +1225,7 @@ if (MODELLE.length && mZahl) {
   }
   schreibeJson('lernen/muster/modell.json', {
     stand: jetzt.toISOString(),
-    hinweis: 'Gesamtmodell (Quantensprung, seit 16.11.2026): Gradient Boosting über die Klassen aller Merkmale, Ziel Ergebnis nach Kosten. Gemessen nur außerhalb der Trainingsdaten (Modell aus Zeitraum A bewertet B und umgekehrt); bestanden wie ein Muster. Nur verdichtete Kennzahlen.',
+    hinweis: 'Gesamtmodell (Quantensprung, seit 16.11.2026): Gradient Boosting über die Klassen aller wertbezogenen Merkmale (marktweite wie VIX, Fed, Öl bleiben draußen), Ziel Ergebnis nach Kosten gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % des Tages. Gemessen nur außerhalb der Trainingsdaten (Modell aus Zeitraum A bewertet B und umgekehrt); bestanden wie ein Muster. Nur verdichtete Kennzahlen.',
     modelle: modellErgebnisse,
   });
 }

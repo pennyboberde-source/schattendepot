@@ -739,7 +739,7 @@
     "stichprobeAbUmsatz20": 1000000
   },
   "modell": {
-    "hinweis": "Gesamtmodell (Quantensprung, vom Nutzer freigegeben 16.11.2026): Gradient Boosting (flache Bäume, Tiefe 3) über die Klassen aller Einteilungen, Ziel = Ergebnis der Spielart nach Kosten (gekappt auf ± kappe €). Prüfung nur außerhalb der Trainingsdaten: Modell aus Zeitraum A bewertet B und umgekehrt (abstandTage Tage Abstand an der Grenze), Auswahl = oberste q % (Schwelle aus den eigenen Trainingsdaten), je Wert ein Fall in sperreTage Tagen. Bestanden wie ein Muster (mindestFaelle Fälle und pruefung.mindestTage Tage je Zeitraum, Ø − Standardfehler über 0, besser als die Grundrate, Quartale überwiegend im Plus) → eigener Platz im Vorwärtstest, Beförderung wie jedes Muster (V6).",
+    "hinweis": "Gesamtmodell (Quantensprung, vom Nutzer freigegeben 16.11.2026): Gradient Boosting (flache Bäume, Tiefe 3) über die Klassen aller Einteilungen, Ziel = Ergebnis der Spielart nach Kosten (gekappt auf ± kappe €). Prüfung nur außerhalb der Trainingsdaten: Modell aus Zeitraum A bewertet B und umgekehrt (abstandTage Tage Abstand an der Grenze), Auswahl = je Tag die obersten q % der Fälle dieses Tages, je Wert ein Fall in sperreTage Tagen. Bestanden wie ein Muster (mindestFaelle Fälle und pruefung.mindestTage Tage je Zeitraum, Ø − Standardfehler über 0, besser als die Grundrate, Quartale überwiegend im Plus) → eigener Platz im Vorwärtstest, Beförderung wie jedes Muster (V6).",
     "aktiv": true,
     "modelle": [
       {
@@ -774,6 +774,21 @@
       "kappe": 450,
       "lambda": 100,
       "start": 7
-    }
+    },
+    "ohne": [
+      "marktR1",
+      "vix",
+      "vix5",
+      "fed",
+      "breite",
+      "markt5",
+      "anleihen5",
+      "dollar5",
+      "kredit5",
+      "oel5",
+      "angst",
+      "stable30"
+    ],
+    "ohneHinweis": "Marktweite Merkmale (für alle Werte eines Tages gleich) teilen nicht: in der ersten Probe (16.11.) lernte das Modell mit ihnen nur, welche Tage gut waren (Treffer im 2. Zeitraum auf 8 Tagen). Seitdem: Ziel gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % (mindestens ein Fall je Tag)."
   }
 }
