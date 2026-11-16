@@ -1,6 +1,474 @@
 {
-  "stand": "2026-11-16T07:43:05.424Z",
+  "stand": "2026-11-16T08:40:45.473Z",
   "orders": [
+    {
+      "id": "2026-11-12-auto-six-flags-entertainment-corpor",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-12T04:57:06.186Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Six Flags Entertainment Corporation/New",
+          "isin": "",
+          "ticker": "FUN",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "FUN",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "insider_kauf",
+        "these": "Autopilot: beste gemessene Spielart für „insider_cluster_kauf“ – direkt kaufen, 1 Tage: Ø 0.84 % nach Kosten, 48.8 % im Plus (41 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:FUN: insider_cluster_kauf, insider_kauf (Score 2.07)",
+        "signalIds": [
+          "insider_cluster_kauf:FUN:2026-11-12",
+          "insider_kauf:FUN:2026-11-12"
+        ],
+        "quellen": [
+          {
+            "name": "OpenInsider",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 49,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.84,
+        "zielNettoProzent": 7.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-14T04:57:06.186Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (34 Fälle)"
+      },
+      "verkaufstermin": "2026-11-14T04:57:06.186Z",
+      "anpassungen": [
+        {
+          "zeit": "2026-11-13T15:30:13.786Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 9.5997,
+          "neu": 9.8966,
+          "begruendung": "Teilverkauf 50 Stk. am 1. Ziel, Stop auf Einstand"
+        }
+      ],
+      "kauf": {
+        "zeit": "2026-11-12T14:39:47.212Z",
+        "stueck": 101,
+        "kurs": 9.8966,
+        "kurswert": 999.56,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 999.56,
+        "kursquelle": "Finnhub (2026-11-12T14:39:09.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 10.629,
+      "stopkurs": 9.8966,
+      "etfKauf": {
+        "wert": 130.34,
+        "zeit": "2026-11-12T14:28:31.073Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 11,
+        "hinweis": "letztes Geschäft 2026-11-12",
+        "vortag": 131.14
+      },
+      "teilverkaeufe": [
+        {
+          "zeit": "2026-11-13T15:30:13.786Z",
+          "stueck": 50,
+          "kurs": 10.333,
+          "kurswert": 516.65,
+          "entgelt": {
+            "provision": 0,
+            "handelsplatz": 0,
+            "gesamt": 0
+          },
+          "betrag": 516.65,
+          "kursquelle": "Finnhub (2026-11-13T15:29:57.000Z)",
+          "synthetisch": true,
+          "grund": "teilziel"
+        }
+      ],
+      "etfVergleich": {
+        "netto": 1.74,
+        "nettoProzent": 0.19,
+        "etfKauf": 130.34,
+        "etfVerkauf": 130.745
+      },
+      "verkauf": {
+        "zeit": "2026-11-16T08:40:45.473Z",
+        "stueck": 51,
+        "kurs": 10.455,
+        "kurswert": 533.21,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 533.21,
+        "kursquelle": "Finnhub (2026-11-13T21:00:00.000Z)",
+        "synthetisch": true,
+        "grund": "termin"
+      },
+      "ergebnis": {
+        "kursProzent": 5.03,
+        "netto": 50.3,
+        "nettoProzent": 5.03,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": 50.3
+      }
+    },
+    {
+      "id": "2026-11-11-auto-oxy",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-11T04:56:21.152Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "OXY",
+          "isin": "",
+          "ticker": "OXY",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "OXY",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:OXY: gewinn_ueberraschung, nachzahlen_drift (Score 2.91)",
+        "signalIds": [
+          "gewinn_ueberraschung:OXY:2026-11-11",
+          "nachzahlen_drift:OXY:2026-11-11"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-16T04:56:21.152Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-16T04:56:21.152Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-11T14:38:28.943Z",
+        "stueck": 19,
+        "kurs": 51.372,
+        "kurswert": 976.07,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 976.07,
+        "kursquelle": "Finnhub (2026-11-11T14:38:08.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 61.34,
+      "stopkurs": 49.83,
+      "etfKauf": {
+        "wert": 130.665,
+        "zeit": "2026-11-11T14:29:43.311Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-11",
+        "vortag": 128.73
+      },
+      "etfVergleich": {
+        "netto": -0.53,
+        "nettoProzent": -0.06,
+        "etfKauf": 130.665,
+        "etfVerkauf": 130.745
+      },
+      "verkauf": {
+        "zeit": "2026-11-16T08:40:45.473Z",
+        "stueck": 19,
+        "kurs": 53.18,
+        "kurswert": 1010.42,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 1010.42,
+        "kursquelle": "Finnhub (2026-11-13T21:00:00.000Z)",
+        "synthetisch": true,
+        "grund": "termin"
+      },
+      "ergebnis": {
+        "kursProzent": 3.52,
+        "netto": 34.35,
+        "nettoProzent": 3.52,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": 34.35
+      }
+    },
+    {
+      "id": "2026-11-10-auto-nrg",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-10T04:50:12.542Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "NRG",
+          "isin": "",
+          "ticker": "NRG",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "NRG",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:NRG: gewinn_ueberraschung, nachzahlen_drift (Score 3.69)",
+        "signalIds": [
+          "gewinn_ueberraschung:NRG:2026-11-10",
+          "nachzahlen_drift:NRG:2026-11-10"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-15T04:50:12.542Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-15T04:50:12.542Z",
+      "anpassungen": [
+        {
+          "zeit": "2026-11-12T06:42:58.047Z",
+          "quelle": "morgenlauf",
+          "feld": "stop",
+          "alt": 84.61,
+          "neu": 86.4,
+          "begruendung": "Gleiches KI-Strom-Thema wie CEG; Nasdaq-Futures schwach. Stop knapp unter Einstand, Signal ist laut Lektion 6 nur Münzwurf."
+        }
+      ],
+      "kauf": {
+        "zeit": "2026-11-10T15:06:53.810Z",
+        "stueck": 11,
+        "kurs": 87.225,
+        "kurswert": 959.48,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 959.48,
+        "kursquelle": "Finnhub (2026-11-10T15:06:25.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 104.15,
+      "stopkurs": 86.4,
+      "etfKauf": {
+        "wert": 128.92,
+        "zeit": "2026-11-10T14:59:42.312Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 7,
+        "hinweis": "letztes Geschäft 2026-11-10",
+        "vortag": 129.11
+      },
+      "etfVergleich": {
+        "netto": 11.69,
+        "nettoProzent": 1.29,
+        "etfKauf": 128.92,
+        "etfVerkauf": 130.745
+      },
+      "verkauf": {
+        "zeit": "2026-11-16T08:40:45.473Z",
+        "stueck": 11,
+        "kurs": 87.895,
+        "kurswert": 966.85,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 966.85,
+        "kursquelle": "Finnhub (2026-11-13T21:00:00.000Z)",
+        "synthetisch": true,
+        "grund": "termin"
+      },
+      "ergebnis": {
+        "kursProzent": 0.77,
+        "netto": 7.37,
+        "nettoProzent": 0.77,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": 7.37
+      }
+    },
+    {
+      "id": "2026-11-10-auto-ceg",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-10T04:50:12.542Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "CEG",
+          "isin": "",
+          "ticker": "CEG",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "CEG",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "normal",
+        "herkunft": "autopilot",
+        "strategie": "quartalszahlen_momentum",
+        "these": "Autopilot: Signaltyp „gewinn_ueberraschung“ hat sich im Schattenbuch bewiesen – 55 Fälle, 47.3 % nach Gebühren im Plus, Ø 0.05 % nach 3 Handelstagen.",
+        "ausloeser": "Autopilot-Kandidat T:CEG: gewinn_ueberraschung, nachzahlen_drift (Score 3.69)",
+        "signalIds": [
+          "gewinn_ueberraschung:CEG:2026-11-10",
+          "nachzahlen_drift:CEG:2026-11-10"
+        ],
+        "quellen": [
+          {
+            "name": "Finnhub",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          },
+          {
+            "name": "Finnhub Kurs",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 47,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 0.05,
+        "zielNettoProzent": 19.4,
+        "stopProzent": -3,
+        "verkaufstermin": "2026-11-15T04:50:12.542Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (55 Fälle)"
+      },
+      "verkaufstermin": "2026-11-15T04:50:12.542Z",
+      "anpassungen": [
+        {
+          "zeit": "2026-11-12T06:42:58.047Z",
+          "quelle": "morgenlauf",
+          "feld": "stop",
+          "alt": 235.95,
+          "neu": 241,
+          "begruendung": "Nvidia-CEO-Krise belastet KI-Rechenzentrumsthemen (Stromversorger); Gewinn +2 % absichern, Stop knapp unter Einstand statt −3 %."
+        }
+      ],
+      "kauf": {
+        "zeit": "2026-11-10T15:06:53.810Z",
+        "stueck": 4,
+        "kurs": 243.251,
+        "kurswert": 973,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 973,
+        "kursquelle": "Finnhub (2026-11-10T15:06:25.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 290.45,
+      "stopkurs": 241,
+      "etfKauf": {
+        "wert": 128.92,
+        "zeit": "2026-11-10T14:59:42.312Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 7,
+        "hinweis": "letztes Geschäft 2026-11-10",
+        "vortag": 129.11
+      },
+      "etfVergleich": {
+        "netto": 11.69,
+        "nettoProzent": 1.29,
+        "etfKauf": 128.92,
+        "etfVerkauf": 130.745
+      },
+      "verkauf": {
+        "zeit": "2026-11-16T08:40:45.473Z",
+        "stueck": 4,
+        "kurs": 253.636,
+        "kurswert": 1014.54,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 0,
+          "gesamt": 0
+        },
+        "betrag": 1014.54,
+        "kursquelle": "Finnhub (2026-11-13T21:00:00.000Z)",
+        "synthetisch": true,
+        "grund": "termin"
+      },
+      "ergebnis": {
+        "kursProzent": 4.27,
+        "netto": 41.54,
+        "nettoProzent": 4.27,
+        "gebuehren": 0,
+        "steuer": 0,
+        "nachSteuern": 41.54
+      }
+    },
     {
       "id": "2026-11-12-auto-upbound-group-inc",
       "status": "geschlossen",

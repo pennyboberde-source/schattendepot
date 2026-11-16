@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-15T22:16:30.920Z",
+  "stand": "2026-11-16T08:40:49.663Z",
   "heute": {
-    "datum": "2026-11-15",
+    "datum": "2026-11-16",
     "gruppe": {
       "anzahl": 0,
       "treffer": 0,
@@ -356,8 +356,173 @@
       "oeR": 0.1
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-11-16-scan-siemens-ag-reg",
+      "datum": "2026-11-16",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SIEMENS AG-REG",
+      "isin": "DE0007236101",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 328.5,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-16T08:20:00.000Z",
+        "kurs": 273.8,
+        "level": 274.75,
+        "spanne": {
+          "hoch": 278.95,
+          "tief": 274.75
+        },
+        "richtung": "short"
+      },
+      "stop": 276.85,
+      "ziel": 267.55,
+      "zielR": 2,
+      "flatBis": "2026-11-16T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-16T08:20:00.000Z",
+        "basisKurs": 273.75,
+        "kurs": 5.4887,
+        "stueck": 182,
+        "kurswert": 998.94
+      }
+    },
+    {
+      "id": "2026-11-16-scan-deutsche-telekom-ag-reg",
+      "datum": "2026-11-16",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 32.24,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-16T08:25:00.000Z",
+        "kurs": 26.89,
+        "level": 26.9,
+        "spanne": {
+          "hoch": 26.99,
+          "tief": 26.9
+        },
+        "richtung": "short"
+      },
+      "stop": 26.95,
+      "ziel": 26.72,
+      "zielR": 2,
+      "flatBis": "2026-11-16T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-16T08:25:00.000Z",
+        "basisKurs": 26.87,
+        "kurs": 5.3834,
+        "stueck": 185,
+        "kurswert": 995.93
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-11-16-scan-siemens-ag-reg",
+      "datum": "2026-11-16",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SIEMENS AG-REG",
+      "isin": "DE0007236101",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 328.5,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-16T08:20:00.000Z",
+        "kurs": 273.8,
+        "level": 274.75,
+        "spanne": {
+          "hoch": 278.95,
+          "tief": 274.75
+        },
+        "richtung": "short"
+      },
+      "stop": 276.85,
+      "ziel": 267.55,
+      "zielR": 2,
+      "flatBis": "2026-11-16T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-16T08:20:00.000Z",
+        "basisKurs": 273.75,
+        "kurs": 5.4887,
+        "stueck": 182,
+        "kurswert": 998.94
+      }
+    },
+    {
+      "id": "2026-11-16-scan-deutsche-telekom-ag-reg",
+      "datum": "2026-11-16",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 32.24,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-16T08:25:00.000Z",
+        "kurs": 26.89,
+        "level": 26.9,
+        "spanne": {
+          "hoch": 26.99,
+          "tief": 26.9
+        },
+        "richtung": "short"
+      },
+      "stop": 26.95,
+      "ziel": 26.72,
+      "zielR": 2,
+      "flatBis": "2026-11-16T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-16T08:25:00.000Z",
+        "basisKurs": 26.87,
+        "kurs": 5.3834,
+        "stueck": 185,
+        "kurswert": 995.93
+      }
+    },
     {
       "id": "2026-11-15-scan-xrp",
       "datum": "2026-11-15",
@@ -8879,314 +9044,6 @@
         },
         "r": 0.04
       }
-    },
-    {
-      "id": "2026-11-10-scan-marvell-technology-inc",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "MARVELL TECHNOLOGY INC",
-      "isin": "US5738741041",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T14:55:00.000Z",
-        "kurs": 139.26,
-        "level": 137.34,
-        "spanne": {
-          "hoch": 137.34,
-          "tief": 133
-        },
-        "richtung": "long"
-      },
-      "stop": 135.17,
-      "ziel": 148.58,
-      "zielR": 2,
-      "flatBis": "2026-11-10T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T14:55:00.000Z",
-        "basisKurs": 139.64,
-        "kurs": 140.338,
-        "stueck": 7,
-        "kurswert": 982.37
-      },
-      "timeMachine": {
-        "zielZuerst": 1.9,
-        "stopZuerst": 28.6,
-        "keins": 69.5,
-        "gruen": 45.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 64,
-        "historie": {
-          "faelle": 34,
-          "ziel": 2,
-          "stop": 12,
-          "oeR": -0.14
-        }
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T17:40:00.000Z",
-        "basisKurs": 134.88,
-        "kurs": 134.206,
-        "kurswert": 939.44,
-        "grund": "stop"
-      },
-      "ergebnis": {
-        "brutto": -42.93,
-        "bruttoProzent": -4.37,
-        "netto": -42.93,
-        "nettoProzent": -4.37,
-        "nettoTR": -44.93,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": -1.06
-      }
-    },
-    {
-      "id": "2026-11-10-scan-advanced-micro-devices",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ADVANCED MICRO DEVICES",
-      "isin": "US0079031078",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-10T14:55:00.000Z",
-        "kurs": 469.65,
-        "level": 464.5,
-        "spanne": {
-          "hoch": 464.5,
-          "tief": 450.45
-        },
-        "richtung": "long"
-      },
-      "stop": 457.48,
-      "ziel": 491.75,
-      "zielR": 2,
-      "flatBis": "2026-11-10T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T14:55:00.000Z",
-        "basisKurs": 468.9,
-        "kurs": 469.252,
-        "stueck": 2,
-        "kurswert": 938.5
-      },
-      "timeMachine": {
-        "zielZuerst": 2.2,
-        "stopZuerst": 25.9,
-        "keins": 71.9,
-        "gruen": 47.7,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 64,
-        "historie": {
-          "faelle": 40,
-          "ziel": 4,
-          "stop": 18,
-          "oeR": 0
-        }
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:55:00.000Z",
-        "basisKurs": 457.48,
-        "kurs": 457.137,
-        "kurswert": 914.27,
-        "grund": "stop"
-      },
-      "ergebnis": {
-        "brutto": -24.23,
-        "bruttoProzent": -2.58,
-        "netto": -24.23,
-        "nettoProzent": -2.58,
-        "nettoTR": -26.23,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": -1
-      }
-    },
-    {
-      "id": "2026-11-10-scan-super-micro-computer-inc",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "SUPER MICRO COMPUTER INC",
-      "isin": "US86800U3023",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T14:55:00.000Z",
-        "kurs": 25.1,
-        "level": 25.055,
-        "spanne": {
-          "hoch": 25.055,
-          "tief": 24.595
-        },
-        "richtung": "long"
-      },
-      "stop": 24.83,
-      "ziel": 26.96,
-      "zielR": 2,
-      "flatBis": "2026-11-10T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T14:55:00.000Z",
-        "basisKurs": 25.535,
-        "kurs": 25.663,
-        "stueck": 38,
-        "kurswert": 975.19
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:50:00.000Z",
-        "basisKurs": 24.83,
-        "kurs": 24.706,
-        "kurswert": 938.83,
-        "grund": "stop"
-      },
-      "ergebnis": {
-        "brutto": -36.36,
-        "bruttoProzent": -3.73,
-        "netto": -36.36,
-        "nettoProzent": -3.73,
-        "nettoTR": -38.36,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": -1
-      }
-    },
-    {
-      "id": "2026-11-10-scan-bayerische-motoren-werke",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "BAYERISCHE MOTOREN WERKE AG",
-      "isin": "DE0005190003",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 70.39,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:20:00.000Z",
-        "kurs": 58.78,
-        "level": 59.16,
-        "spanne": {
-          "hoch": 59.6,
-          "tief": 59.16
-        },
-        "richtung": "short"
-      },
-      "stop": 59.38,
-      "ziel": 57.22,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:20:00.000Z",
-        "basisKurs": 58.66,
-        "kurs": 11.759,
-        "stueck": 85,
-        "kurswert": 999.52
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:25:00.000Z",
-        "basisKurs": 58.4,
-        "kurs": 11.96,
-        "kurswert": 1016.6,
-        "grund": "schluss"
-      },
-      "ergebnis": {
-        "brutto": 17.08,
-        "bruttoProzent": 1.71,
-        "netto": 17.08,
-        "nettoProzent": 1.71,
-        "nettoTR": 15.08,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": 0.36
-      }
-    },
-    {
-      "id": "2026-11-10-scan-deutsche-lufthansa-reg",
-      "datum": "2026-11-10",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE LUFTHANSA-REG",
-      "isin": "DE0008232125",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 10.6392,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-10T08:20:00.000Z",
-        "kurs": 8.806,
-        "level": 8.824,
-        "spanne": {
-          "hoch": 8.89,
-          "tief": 8.824
-        },
-        "richtung": "short"
-      },
-      "stop": 9.0433,
-      "ziel": 8.5114,
-      "zielR": 2,
-      "flatBis": "2026-11-10T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-10T08:30:00.000Z",
-        "basisKurs": 8.866,
-        "kurs": 1.7776,
-        "stueck": 562,
-        "kurswert": 999.01
-      },
-      "ausstieg": {
-        "zeit": "2026-11-10T16:25:00.000Z",
-        "basisKurs": 8.81,
-        "kurs": 1.8246,
-        "kurswert": 1025.43,
-        "grund": "schluss"
-      },
-      "ergebnis": {
-        "brutto": 26.42,
-        "bruttoProzent": 2.64,
-        "netto": 26.42,
-        "nettoProzent": 2.64,
-        "nettoTR": 24.42,
-        "gebuehren": {
-          "haupt": 0,
-          "tr": 2
-        },
-        "r": 0.32
-      }
     }
   ],
   "virtuell": {
@@ -9202,16 +9059,16 @@
       "oeR": 0.07
     },
     "heute": {
-      "anzahl": 5,
-      "treffer": 5,
-      "quote": 100,
-      "netto": 24.86,
-      "brutto": 34.86,
-      "nettoTR": 24.86,
-      "oeNettoProzent": 0.5,
-      "oeR": 2.03
+      "anzahl": 0,
+      "treffer": 0,
+      "quote": 0,
+      "netto": 0,
+      "brutto": 0,
+      "nettoTR": 0,
+      "oeNettoProzent": 0,
+      "oeR": 0
     },
-    "offen": 0,
+    "offen": 2,
     "gruppen": {
       "turbo": {
         "anzahl": 35,
@@ -9327,9 +9184,11 @@
     }
   },
   "beobachtet": {
-    "code_scan": 10,
-    "claude": 0,
+    "code_scan": 24,
+    "claude": 3,
     "autopilot": 0
   },
-  "hinweise": []
+  "hinweise": [
+    "ASML HOLDING NV: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)"
+  ]
 }

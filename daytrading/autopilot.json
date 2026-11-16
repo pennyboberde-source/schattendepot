@@ -1,13 +1,22 @@
 {
-  "stand": "2026-11-13T22:18:12.409Z",
+  "stand": "2026-11-16T08:40:49.663Z",
   "horizont": "r1h",
   "beweise": [
     {
       "typ": "krypto_einnahmen",
       "gruppe": "krypto",
-      "faelle": 5,
+      "faelle": 7,
       "chance": 0,
-      "oeNetto": -2.12,
+      "oeNetto": -2.03,
+      "huerde": 0.7,
+      "bewiesen": false
+    },
+    {
+      "typ": "upbit_warnung",
+      "gruppe": "krypto",
+      "faelle": 3,
+      "chance": 0,
+      "oeNetto": -3.39,
       "huerde": 0.7,
       "bewiesen": false
     }
