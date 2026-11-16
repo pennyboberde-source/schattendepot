@@ -22,6 +22,7 @@ import { aenderungAm, breite, fedAbstand, schluesse, summeBis, wertAm, type Kryp
 import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
+import { bewerten, mitSperre, schwelleFuer, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
 import { turbosPruefen } from './lib/turbos.ts';
 import type { InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfasst, zahlenAbstaende, type MeldungArt, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
@@ -36,6 +37,7 @@ interface VtConfig {
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number };
   v6: V6Regeln & { ohneNein?: boolean };
+  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
 }
 
@@ -524,6 +526,53 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten): Ja
   return { ...basis, einstieg: k[i + 1].datum, ende: null, art: 'offen', netto: stand?.netto ?? 0, tag: stand?.tag ?? 1 };
 }
 
+// ---------- 4c. Gesamtmodell: Speicher der Fälle (Klassen aller Merkmale + Ergebnis je Modell-Spielart) ----------
+// Jeder handelbare Stichtag eines Modell-Markts wird eine Zeile: Klasse je Einteilung (0 = unbekannt, sonst Klasse + 1)
+// und je Modell das Ergebnis der Spielart nach Kosten (NaN = Fenster noch offen); anwendbar = Spielart dort erlaubt
+// (z. B. Turbo vorhanden). Gerechnet wird nach Durchgang 2 (Abschnitt 6b).
+const MC = vt.modell;
+const MODELLE = (MC?.aktiv ? MC.modelle : [])
+  .map((m, idx) => ({ ...m, idx, s: SP.findIndex((sp) => spielartSchluessel(sp) === m.spielart), f: F.indexOf(m.fenster) }))
+  .filter((m) => m.s >= 0 && m.f >= 0);
+const MODELL_MAERKTE = new Set<Markt>(MODELLE.map((m) => m.markt));
+const P = E.length;
+const wachse = <A extends Uint8Array | Int32Array | Float32Array>(a: A, n: number): A => {
+  if (n <= a.length) return a;
+  const b = new (a.constructor as new (l: number) => A)(Math.max(n, a.length * 2));
+  b.set(a);
+  return b;
+};
+let mZahl = 0;
+let mX = new Uint8Array(P * 4096);
+let mReihe = new Int32Array(4096);
+let mI = new Int32Array(4096);
+let mTag = new Int32Array(4096);
+const mY = MODELLE.map(() => new Float32Array(4096));
+const mTreffer = MODELLE.map(() => new Uint8Array(4096));
+const mAnw = MODELLE.map(() => new Uint8Array(4096));
+const reihenNr = new Map(reihen.map((r, n) => [r, n]));
+const tagNrAlle = new Map(alleTage.map((d, n) => [d, n]));
+const modellZeile = (r: Reihe, i: number, klassen: (number | null)[]): number => {
+  const z = mZahl++;
+  mX = wachse(mX, mZahl * P);
+  mReihe = wachse(mReihe, mZahl);
+  mI = wachse(mI, mZahl);
+  mTag = wachse(mTag, mZahl);
+  for (let a = 0; a < P; a++) mX[z * P + a] = klassen[a] === null ? 0 : klassen[a]! + 1;
+  mReihe[z] = reihenNr.get(r)!;
+  mI[z] = i;
+  mTag[z] = tagNrAlle.get(r.kerzen[i].datum) ?? 0;
+  for (let m = 0; m < MODELLE.length; m++) {
+    mY[m] = wachse(mY[m], mZahl);
+    mTreffer[m] = wachse(mTreffer[m], mZahl);
+    mAnw[m] = wachse(mAnw[m], mZahl);
+    mY[m][z] = Number.NaN;
+    mTreffer[m][z] = 0;
+    mAnw[m][z] = 0;
+  }
+  return z;
+};
+
 // ---------- 5. Durchgang 2: Etiketten, Zensus, Hypothesen ----------
 interface Episode {
   datum: string;
@@ -583,9 +632,20 @@ for (const r of reihen) {
     const paareFrei = gPaare.filter(frei);
     let gezaehlt = false;
     const turbo = turbosAm(r, x);
+    const mz = MODELL_MAERKTE.has(r.markt) ? modellZeile(r, i, klassen) : -1;
     SP.forEach((sp, s) => {
       if (sp.hebel > 1 && !turbo[sp.richtung]) return;
       const a = ausg(i, sp, x);
+      if (mz >= 0)
+        for (const mm of MODELLE)
+          if (mm.s === s && mm.markt === r.markt) {
+            mAnw[mm.idx][mz] = 1;
+            const au = a[mm.f];
+            if (au) {
+              mY[mm.idx][mz] = au.netto;
+              mTreffer[mm.idx][mz] = au.art === 'treffer' ? 1 : 0;
+            }
+          }
       a.forEach((au, f) => {
         if (!au) return;
         if (F[f] === 10 || au.art === 'treffer') fertig[i] = true;
@@ -956,6 +1016,161 @@ for (const h of HYPOTHESEN) {
 }
 schreibeJson('lernen/muster/hypothesen.json', buch);
 
+// ---------- 6b. Gesamtmodell: Training auf A → Prüfung auf B und umgekehrt, rollierende Quartale ----------
+// Ehrlich: Jeder Fall wird nur von einem Modell bewertet, das ihn nie gesehen hat (A-Modell bewertet B und umgekehrt,
+// mit abstandTage Handelstagen Abstand an der Grenze). Ausgewählt werden die obersten q % nach der Schwelle aus den
+// eigenen Trainingsdaten; je Wert ein Fall in sperreTage Tagen. Bestanden wie ein Muster: beide Zeiträume genug Fälle
+// an genug Tagen, Ø − Standardfehler (Tag als Einheit) über 0, besser als die Grundrate, Quartale überwiegend im Plus.
+interface ModellErgebnis {
+  schluessel: string;
+  gruppe: string;
+  markt: Markt;
+  spielart: string;
+  sp: string;
+  fenster: number;
+  q: number;
+  bestanden: boolean;
+  grund: string;
+  zeitraeume: { n: number; quote: number; ev: number; se: number; tage: number; grundEv: number }[];
+  quartale: [number, number];
+  wertung: number;
+  gesamt: { n: number; quote: number; ev: number; se: number };
+  wichtig: string[];
+  faelleHeute: number;
+}
+const modellErgebnisse: ModellErgebnis[] = [];
+const modellAuswahl = new Map<string, { modell: Modell; schwelle: number; m: (typeof MODELLE)[number] }>();
+if (MODELLE.length && mZahl) {
+  const grenzeTag = tagNrAlle.get(grenze) ?? alleTage.length;
+  const ab = MC!.abstandTage;
+  const auswerten = (zeilen: number[], m: (typeof MODELLE)[number]) => {
+    const kl = new TagesKlumpen(1, alleTage.length);
+    let treffer = 0;
+    for (const z of zeilen) {
+      kl.add(0, mTag[z], mY[m.idx][z]);
+      treffer += mTreffer[m.idx][z];
+    }
+    return { kl, treffer };
+  };
+  for (const m of MODELLE) {
+    const t0m = Date.now();
+    const gelabelt: number[] = [];
+    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && Number.isFinite(mY[m.idx][z]) && reihen[mReihe[z]].markt === m.markt) gelabelt.push(z);
+    const A = gelabelt.filter((z) => mTag[z] < grenzeTag - ab);
+    const B = gelabelt.filter((z) => mTag[z] >= grenzeTag);
+    if (A.length < 5000 || B.length < 5000) {
+      log(`Gesamtmodell ${m.markt} ${m.spielart} ${m.fenster} T: zu wenige Fälle (A ${A.length}, B ${B.length}) – übersprungen.`);
+      continue;
+    }
+    const e = MC!.einstellungen;
+    const mA = trainieren(mX, P, mY[m.idx], Int32Array.from(A), e);
+    const mB = trainieren(mX, P, mY[m.idx], Int32Array.from(B), e);
+    const bAinA = A.map((z) => bewerten(mA, mX, z));
+    const bBinB = B.map((z) => bewerten(mB, mX, z));
+    const bBdurchA = B.map((z) => bewerten(mA, mX, z));
+    const bAdurchB = A.map((z) => bewerten(mB, mX, z));
+    const grundA = A.reduce((su, z) => su + mY[m.idx][z], 0) / A.length;
+    const grundB = B.reduce((su, z) => su + mY[m.idx][z], 0) / B.length;
+    const sp = SP[m.s];
+    let bestes: ModellErgebnis | null = null;
+    for (const q of MC!.obersteProzent) {
+      const tA = schwelleFuer(bAinA, q);
+      const tB = schwelleFuer(bBinB, q);
+      const wahl = (zeilen: number[], b: number[], t: number) => mitSperre(zeilen.filter((_, k) => b[k] >= t).map((z) => ({ z, wert: mReihe[z], tag: mI[z] })), vt.pruefung.sperreTage).map((x) => x.z);
+      const selA = wahl(A, bAdurchB, tB);
+      const selB = wahl(B, bBdurchA, tA);
+      const ka = auswerten(selA, m);
+      const kb = auswerten(selB, m);
+      const wa = ka.kl.werte(0, 0, alleTage.length);
+      const wb = kb.kl.werte(0, 0, alleTage.length);
+      // rollierend: Quartale der außerhalb des Trainings bewerteten Fälle
+      const kq = new TagesKlumpen(1, alleTage.length);
+      for (const z of [...selA, ...selB]) kq.add(0, mTag[z], mY[m.idx][z]);
+      let qMit = 0;
+      let qPlus = 0;
+      for (let i0 = 0; i0 < alleTage.length; ) {
+        let i1 = i0;
+        const qv = (d: string) => `${d.slice(0, 4)}${Math.floor((Number(d.slice(5, 7)) - 1) / 3)}`;
+        while (i1 < alleTage.length && qv(alleTage[i1]) === qv(alleTage[i0])) i1++;
+        const w = kq.werte(0, i0, i1);
+        if (w.n >= vt.pruefung.quartalMindestFaelle) {
+          qMit++;
+          if (w.ev > 0) qPlus++;
+        }
+        i0 = i1;
+      }
+      const zr = [
+        { n: wa.n, quote: wa.n ? Math.round((ka.treffer / wa.n) * 1000) / 10 : 0, ev: wa.ev, se: wa.se, tage: wa.tage, grundEv: Math.round(grundA * 10) / 10 },
+        { n: wb.n, quote: wb.n ? Math.round((kb.treffer / wb.n) * 1000) / 10 : 0, ev: wb.ev, se: wb.se, tage: wb.tage, grundEv: Math.round(grundB * 10) / 10 },
+      ];
+      const wertung = Math.round(Math.min(wa.ev - wa.se, wb.ev - wb.se) * 10) / 10;
+      const gruende: string[] = [];
+      if (zr.some((x) => x.n < MC!.mindestFaelle)) gruende.push(`weniger als ${MC!.mindestFaelle} Fälle in einem Zeitraum`);
+      if (zr.some((x) => x.tage < vt.pruefung.mindestTage)) gruende.push(`weniger als ${vt.pruefung.mindestTage} Tage in einem Zeitraum`);
+      if (wertung <= 0) gruende.push('Ø − Standardfehler nicht in beiden Zeiträumen über 0');
+      if (zr.some((x) => x.ev <= x.grundEv)) gruende.push('nicht besser als die Grundrate');
+      if (qMit >= 4 && qPlus / qMit < vt.pruefung.quartaleMindestAnteil) gruende.push(`nur ${qPlus} von ${qMit} Quartalen im Plus`);
+      const nAlle = wa.n + wb.n;
+      const erg: ModellErgebnis = {
+        schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}`,
+        gruppe: `${m.markt === 'aktie' ? 'Aktien' : 'Krypto'}: Gesamtmodell aus allen Merkmalen – oberste ${String(q).replace('.', ',')} %`,
+        markt: m.markt,
+        spielart: spielartText(sp),
+        sp: m.spielart,
+        fenster: m.fenster,
+        q,
+        bestanden: !gruende.length,
+        grund: gruende.join('; ') || 'bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen)',
+        zeitraeume: zr,
+        quartale: [qPlus, qMit],
+        wertung,
+        gesamt: { n: nAlle, quote: nAlle ? Math.round(((ka.treffer + kb.treffer) / nAlle) * 1000) / 10 : 0, ev: nAlle ? Math.round(((wa.ev * wa.n + wb.ev * wb.n) / nAlle) * 10) / 10 : 0, se: Math.max(wa.se, wb.se) },
+        wichtig: [],
+        faelleHeute: 0,
+      };
+      log(`Gesamtmodell ${m.markt} ${erg.spielart} ${m.fenster} T, oberste ${q} %: A ${zr[0].n} Fälle/${zr[0].tage} Tage, Quote ${zr[0].quote} %, Ø ${zr[0].ev} ± ${zr[0].se} € (Grundrate ${zr[0].grundEv}) · B ${zr[1].n}/${zr[1].tage}, Quote ${zr[1].quote} %, Ø ${zr[1].ev} ± ${zr[1].se} € (Grundrate ${zr[1].grundEv}) · Quartale ${qPlus}/${qMit} im Plus · Wertung ${wertung} → ${erg.grund}`);
+      if (!bestes || (erg.bestanden && !bestes.bestanden) || (erg.bestanden === bestes.bestanden && erg.wertung > bestes.wertung)) bestes = erg;
+    }
+    if (!bestes) continue;
+    // Endgültiges Modell auf allen Fällen; Schwelle für die obersten q % aus seinen eigenen Bewertungen
+    const mAlle = trainieren(mX, P, mY[m.idx], Int32Array.from(gelabelt), MC!.einstellungen);
+    const schwelle = schwelleFuer(gelabelt.map((z) => bewerten(mAlle, mX, z)), bestes.q);
+    const w = wichtigkeit(mAlle);
+    bestes.wichtig = w
+      .map((x, a) => [x, a] as const)
+      .sort((x, y) => y[0] - x[0])
+      .slice(0, 8)
+      .filter(([x]) => x > 0)
+      .map(([x, a]) => `${MERKMAL_TEXT[E[a].merkmal] ?? E[a].merkmal} (${x})`);
+    // heutige Kandidaten (Stichtag = letzter Tag des Markts): wie viele lägen über der Schwelle?
+    const letzter = Math.max(...gelabelt.slice(-1).map((z) => mTag[z]), 0);
+    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && mTag[z] > letzter && bewerten(mAlle, mX, z) >= schwelle) bestes.faelleHeute++;
+    modellErgebnisse.push(bestes);
+    modellAuswahl.set(bestes.schluessel, { modell: mAlle, schwelle, m });
+    log(`Gesamtmodell ${m.markt} ${bestes.spielart} ${m.fenster} T: gewählt oberste ${bestes.q} % (${bestes.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), wichtigste Merkmale: ${bestes.wichtig.join(', ')}; ${Math.round((Date.now() - t0m) / 1000)} s.`);
+  }
+  // Vorwärtstest: Modelle im Muster-Buch bekommen ihre Fälle ab dem Tag nach dem Eintrag (je Wert ein Fall in sperreTage)
+  for (const [schluessel, a] of modellAuswahl) {
+    const e = imTest.get(schluessel);
+    if (!e) continue;
+    const vonTag = tagNrAlle.get(alleTage.find((d) => d > e.seit) ?? '9999') ?? Infinity;
+    const kand: { z: number; wert: number; tag: number }[] = [];
+    for (let z = 0; z < mZahl; z++) if (mAnw[a.m.idx][z] && mTag[z] >= vonTag && reihen[mReihe[z]].markt === a.m.markt && bewerten(a.modell, mX, z) >= a.schwelle) kand.push({ z, wert: mReihe[z], tag: mI[z] });
+    for (const { z } of mitSperre(kand, vt.pruefung.sperreTage)) {
+      const r = reihen[mReihe[z]];
+      const x = merkmale(r.kerzen, mI[z]);
+      if (!x) continue;
+      const fall = jagdFall(r, mI[z], e, kostenFuer(r.markt, x.umsatz20));
+      if (fall) vorwaerts.push(fall);
+    }
+  }
+  schreibeJson('lernen/muster/modell.json', {
+    stand: jetzt.toISOString(),
+    hinweis: 'Gesamtmodell (Quantensprung, seit 16.11.2026): Gradient Boosting über die Klassen aller Merkmale, Ziel Ergebnis nach Kosten. Gemessen nur außerhalb der Trainingsdaten (Modell aus Zeitraum A bewertet B und umgekehrt); bestanden wie ein Muster. Nur verdichtete Kennzahlen.',
+    modelle: modellErgebnisse,
+  });
+}
+
 // ---------- V4: Muster-Buch fortschreiben und virtuelle Jagden ----------
 {
   const v4 = vt.v4;
@@ -963,9 +1178,10 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
   // (Eintrag „beendet“ – das Buch wird nur angehängt). Seine bisherigen Vorwärts-Fälle bleiben im Protokoll dieses Laufs.
   // Maßstab ist der Volltreffer: Muster, die fast nie einen bringen (Quote unter v4.mindestQuote), belegen keinen Platz
   const mitVorteilHeute = new Map(ergebnisse.filter((e) => e.bestanden && e.vorteil).map((e) => [`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, e]));
-  const beendet = [...imTest.values()].filter((e) => !mitVorteilHeute.has(e.schluessel) || mitVorteilHeute.get(e.schluessel)!.gesamt.quote < v4.mindestQuote);
+  const modellOk = new Map(modellErgebnisse.filter((x) => x.bestanden).map((x) => [x.schluessel, x]));
+  const beendet = [...imTest.values()].filter((e) => (e.schluessel.startsWith('modell|') ? MODELLE.length > 0 && !modellOk.has(e.schluessel) : !mitVorteilHeute.has(e.schluessel) || mitVorteilHeute.get(e.schluessel)!.gesamt.quote < v4.mindestQuote));
   for (const e of beendet) {
-    const grund = mitVorteilHeute.has(e.schluessel) ? `Volltreffer-Quote unter ${v4.mindestQuote} %` : 'besteht im Rückblick nicht mehr mit Vorteil';
+    const grund = e.schluessel.startsWith('modell|') ? 'Gesamtmodell besteht außerhalb der Trainingsdaten nicht mehr' : mitVorteilHeute.has(e.schluessel) ? `Volltreffer-Quote unter ${v4.mindestQuote} %` : 'besteht im Rückblick nicht mehr mit Vorteil';
     musterBuch.eintraege.push({ ...e, status: 'beendet', grund, am: heute } as BuchMuster);
     imTest.delete(e.schluessel);
   }
@@ -983,6 +1199,7 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
   const maxJe = v4.maxJeBaustein ?? 99;
   const frei = Math.max(0, v4.vorwaertsMax - imTest.size);
   const neu: typeof mitVorteil = [];
+  const neuModelle: string[] = [];
   for (const e of mitVorteil) {
     if (neu.length >= frei) break;
     if (e.gesamt.quote < v4.mindestQuote || imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)) continue;
@@ -995,7 +1212,19 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
     const eintrag: BuchMuster = { schluessel: `${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, gruppe: e.gruppe, gruppenSchluessel: e.schluessel, sp: e.spielartSchluessel, fenster: e.fenster, seit: heute, wertung: e.wertung, rueckblick: { quote: e.gesamt.quote, ev: e.gesamt.ev, se: e.gesamt.se, faelle: e.gesamt.n }, status: 'vorwaertstest' };
     musterBuch.eintraege.push(eintrag);
   }
+  // Gesamtmodell: bestandene Modelle kommen zusätzlich in den Vorwärtstest (eigene Plätze, nicht gegen vorwaertsMax)
+  for (const x of modellOk.values()) {
+    if (imTest.has(x.schluessel)) continue;
+    const eintrag: BuchMuster = { schluessel: x.schluessel, gruppe: x.gruppe, gruppenSchluessel: `modell|${x.markt}`, sp: x.sp, fenster: x.fenster, seit: heute, wertung: x.wertung, rueckblick: { quote: x.gesamt.quote, ev: x.gesamt.ev, se: x.gesamt.se, faelle: x.gesamt.n }, status: 'vorwaertstest' };
+    musterBuch.eintraege.push(eintrag);
+    neuModelle.push(x.gruppe);
+  }
+  for (const f of vorwaerts) {
+    const w = modellOk.get(f.muster)?.wertung;
+    if (w !== undefined) f.wertung = w;
+  }
   schreibeJson('lernen/muster/muster-buch.json', musterBuch);
+  if (neuModelle.length) log(`Gesamtmodell neu im Vorwärtstest: ${neuModelle.join(' | ')}`);
   // Echte Handelbarkeit: zuerst die Werte der lauernden und laufenden Fälle mit Turbo-Spielart prüfen (Vorrang nach
   // Wertung), dann zur Eichung die Werte abgeschlossener Fälle und eine feste Stichprobe des Markts. Fälle ohne Produkt
   // in ihrer Richtung fallen aus Vorwärtstest, Jagd und sichtbaren Orders (gezählt als „nicht handelbar“).

@@ -737,5 +737,43 @@
     "maxSeiten": 3,
     "minuten": 12,
     "stichprobeAbUmsatz20": 1000000
+  },
+  "modell": {
+    "hinweis": "Gesamtmodell (Quantensprung, vom Nutzer freigegeben 16.11.2026): Gradient Boosting (flache Bäume, Tiefe 3) über die Klassen aller Einteilungen, Ziel = Ergebnis der Spielart nach Kosten (gekappt auf ± kappe €). Prüfung nur außerhalb der Trainingsdaten: Modell aus Zeitraum A bewertet B und umgekehrt (abstandTage Tage Abstand an der Grenze), Auswahl = oberste q % (Schwelle aus den eigenen Trainingsdaten), je Wert ein Fall in sperreTage Tagen. Bestanden wie ein Muster (mindestFaelle Fälle und pruefung.mindestTage Tage je Zeitraum, Ø − Standardfehler über 0, besser als die Grundrate, Quartale überwiegend im Plus) → eigener Platz im Vorwärtstest, Beförderung wie jedes Muster (V6).",
+    "aktiv": true,
+    "modelle": [
+      {
+        "markt": "aktie",
+        "spielart": "2S150",
+        "fenster": 10
+      },
+      {
+        "markt": "aktie",
+        "spielart": "3L150",
+        "fenster": 10
+      },
+      {
+        "markt": "krypto",
+        "spielart": "1L150",
+        "fenster": 10
+      }
+    ],
+    "obersteProzent": [
+      0.5,
+      1,
+      2
+    ],
+    "abstandTage": 15,
+    "mindestFaelle": 100,
+    "einstellungen": {
+      "baeume": 150,
+      "tiefe": 3,
+      "lernrate": 0.05,
+      "minBlatt": 400,
+      "anteil": 0.3,
+      "kappe": 450,
+      "lambda": 100,
+      "start": 7
+    }
   }
 }
