@@ -41,6 +41,11 @@ interface VtConfig {
   v6: V6Regeln & { ohneNein?: boolean };
   modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   hebel?: { nurGettex: boolean; maxAlterTage: number; mindestZugeordnet: number };
+  plattformen: {
+    andereBoerse: { name: string; entgeltJeOrder: number };
+    auslandDirekt: { name: string; entgeltJeOrder: number; prozent: number };
+    usBroker: { name: string; maxHebel: number; entgeltJeOrder: number; devisenProzent: number; leihgebuehrProzentJahr: { abUmsatz20: number; prozent: number }[]; margenzinsProzentJahr: number };
+  };
   turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
 }
 
@@ -291,9 +296,23 @@ const kosten = (markt: Markt, umsatz20: number | null): EtikettKosten => {
   return { ...basis, spreadProzent: spreadProzent(klasseName), entgeltDirekt: orderentgelt(e.einsatz, cfg.gebuehren, { handelsplatz: h.aktie.handelsplatz }).gesamt };
 };
 const kostenCache = new Map<string, EtikettKosten>();
-const kostenFuer = (markt: Markt, umsatz20: number | null) => {
+const leihProzent = (umsatz20: number | null) => vt.plattformen.usBroker.leihgebuehrProzentJahr.find((x) => (umsatz20 ?? 0) >= x.abUmsatz20)?.prozent ?? 30;
+const kostenFuer = (markt: Markt, umsatz20: number | null, platz: 'gettex' | 'boerse' | 'ausland' | 'us' = 'gettex', sp?: Spielart) => {
   const s = markt === 'krypto' ? 'krypto' : (vt.handelbar.aktie.spread.find((x) => (umsatz20 ?? 0) >= x.abUmsatz20)?.klasse ?? 'spekulativ');
-  return kostenCache.get(s) ?? kostenCache.set(s, kosten(markt, umsatz20)).get(s)!;
+  const key = `${s}|${platz}|${platz === 'us' ? `${sp?.richtung}|${sp?.hebel}|${leihProzent(umsatz20)}` : ''}`;
+  const da = kostenCache.get(key);
+  if (da) return da;
+  const b = kosten(markt, umsatz20);
+  const u = vt.plattformen.usBroker;
+  let k = b;
+  if (platz === 'boerse') k = { ...b, entgeltTurbo: vt.plattformen.andereBoerse.entgeltJeOrder };
+  else if (platz === 'ausland') k = { ...b, entgeltDirekt: vt.plattformen.auslandDirekt.entgeltJeOrder + (b.einsatz * vt.plattformen.auslandDirekt.prozent) / 100 };
+  else if (platz === 'us' && sp)
+    // Marge-Position: Spread und Devisen wirken auf den Gegenwert (Hebel × Einsatz); Leihgebühr auf die ganze Short-
+    // Position, Marge-Zins nur auf den geliehenen Teil
+    k = { ...b, turboSpreadProzent: sp.hebel * (b.spreadProzent + 2 * u.devisenProzent), entgeltTurbo: u.entgeltJeOrder, finanzierungProzentJahr: sp.richtung === 'short' ? leihProzent(umsatz20) : (u.margenzinsProzentJahr * (sp.hebel - 1)) / sp.hebel };
+  kostenCache.set(key, k);
+  return k;
 };
 
 // Handelbarkeits-Karte aus gettex (stamm/handelbar.json): sobald sie auf mindestens 10 gettex-Tagen beruht, zählen nur
@@ -310,7 +329,6 @@ log(gettexUs ? `Handelbarkeit: gettex-Karte mit ${gettexUs.size} US-Aktien.` : '
 /** Gilt der Wert am Stichtag als handelbar? */
 function handelbar(r: Reihe, m: Merkmale, k: Kerze): boolean {
   if (r.markt === 'aktie') {
-    if (gettexUs && !gettexUs.has(r.schluessel.slice(2).replace(/#\d+$/, ''))) return false;
     return m.kurs >= vt.handelbar.aktie.mindestKurs && (k.v ?? 0) * k.c >= vt.handelbar.aktie.mindestUmsatzStichtag;
   }
   return (k.v ?? 0) * k.c >= vt.handelbar.krypto.mindestUmsatzStichtag && (m.schwankung20 === null || m.schwankung20 >= vt.handelbar.krypto.mindestSchwankung20);
@@ -355,7 +373,34 @@ const turboErlaubt = (r: Reihe, m: Merkmale, richtung: 'long' | 'short') => {
   return turboDa(turboCache[k], richtung) ?? (m.umsatz20 ?? 0) >= vt.handelbar.aktie.turboAbUmsatz20;
 };
 /** beide Richtungen auf einmal (je Stichtag einmal statt je Spielart) */
-const turbosAm = (r: Reihe, m: Merkmale) => ({ long: turboErlaubt(r, m, 'long'), short: turboErlaubt(r, m, 'short') });
+// Plattformen (Nutzer 16.11.2026 abends: „Wenn auf gettex nicht handelbar, trotzdem handeln auf einer simulierten
+// Plattform, die diese anbietet; neben dem Handel vermerken und Kosten verrechnen“): gettex → Smartbroker+ an einer
+// anderen deutschen Börse/außerbörslich (Hebelprodukt vorhanden) → simulierter US-Broker mit Leerverkauf/Marge bis
+// usBroker.maxHebel. Direkte Käufe: gettex, sonst Smartbroker+ an der US-Börse. Kosten je Plattform in kostenFuer.
+type Platz = 'gettex' | 'boerse' | 'ausland' | 'us';
+const PL = vt.plattformen;
+const PLATZ_NAME: Record<Platz, string> = { gettex: 'Smartbroker+ an gettex', boerse: PL.andereBoerse.name, ausland: PL.auslandDirekt.name, us: PL.usBroker.name };
+const plattformAm = (r: Reihe, m: Merkmale): { long: Platz | null; short: Platz | null } => {
+  if (r.markt === 'krypto') {
+    const t = turboErlaubt(r, m, 'long');
+    return { long: t ? 'gettex' : null, short: t ? 'gettex' : null };
+  }
+  if (hebelVollstaendig) {
+    const st = hebelJe.get(r.schluessel.slice(2).split('#')[0]);
+    const wahl = (d: 'long' | 'short'): Platz => {
+      const [g, a] = (d === 'long' ? st?.l : st?.s) ?? [0, 0];
+      return g > 0 ? 'gettex' : a > 0 ? 'boerse' : 'us';
+    };
+    return { long: wahl('long'), short: wahl('short') };
+  }
+  return { long: turboErlaubt(r, m, 'long') ? 'gettex' : 'us', short: turboErlaubt(r, m, 'short') ? 'gettex' : 'us' };
+};
+/** Plattform einer Spielart (null = nirgends handelbar, z. B. Hebel über der Marge des US-Brokers ohne deutsches Produkt) */
+const platzFuer = (r: Reihe, sp: Spielart, pa: { long: Platz | null; short: Platz | null }): Platz | null => {
+  if (sp.hebel === 1) return r.markt === 'aktie' && gettexUs && !gettexUs.has(r.schluessel.slice(2).split('#')[0]) ? 'ausland' : 'gettex';
+  const pl = pa[sp.richtung];
+  return pl === 'us' && sp.hebel > PL.usBroker.maxHebel ? null : pl;
+};
 
 // ---------- 3. Durchgang 1: Merkmale, Marktbewegung je Tag, Zeiträume ----------
 // Merkmale werden nicht vorgehalten (Speicher), sondern im zweiten Durchgang neu berechnet
@@ -538,7 +583,7 @@ const vorwaerts: JagdFall[] = [];
 const FENSTER_ALLE = (f: number) => Array.from({ length: f }, (_, n) => n + 1);
 /** Fall eines Musters im Vorwärtstest: Ausgang, laufend oder noch lauernd (kein Folgetag) */
 const SEC_NAME: Record<MeldungArt, string> = { angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: '13D-Meldung (Großaktionär)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz/Delisting/Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzungsänderung (8-K 5.03, oft Aktiensplit)' };
-function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten): JagdFall | null {
+function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten, pl: Platz = 'gettex'): JagdFall | null {
   const sp = spNachSchluessel.get(e.sp);
   if (!sp) return null;
   const k = r.kerzen;
@@ -558,7 +603,7 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten): Ja
   }
   const ins = insiderAm(r, k[i].datum);
   if (ins !== null && ins <= 20) sec.push(`Insider-Kauf ${wann(ins)}`);
-  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
+  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), plattform: r.markt === 'krypto' && sp.hebel === 1 ? 'Trade Republic (Krypto direkt)' : PLATZ_NAME[pl], ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
   if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
   const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));
   const fertig = res.find((a) => a && a.art !== 'zeit') ?? res[e.fenster - 1];
@@ -640,15 +685,17 @@ for (const r of reihen) {
   // Ehrliche Fallzahl: je Wert und Gruppe höchstens ein Fall in `sperreTage` Handelstagen (wie bei den Hypothesen)
   const gezaehltAm = new Int32Array(gruppen.length).fill(-1e9);
   const sperre = vt.pruefung.sperreTage;
-  const ausg = (i: number, sp: Spielart, x: Merkmale) => etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20), F);
+  const ausg = (i: number, sp: Spielart, x: Merkmale, pl: Platz) => etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), F);
   const testZuletzt = new Map<string, number>();
   const imVorwaerts = (gruppen: number[], i: number, x: Merkmale) => {
     for (const g of gruppen) {
       for (const e of testJeGruppe.get(g) ?? []) {
         if (k[i].datum <= e.seit || (e.status === 'beendet' && e.am && k[i].datum > e.am) || i - (testZuletzt.get(e.schluessel) ?? -1e9) <= vt.pruefung.sperreTage) continue;
         const sp = spNachSchluessel.get(e.sp);
-        if (!sp || (sp.hebel > 1 && !turboErlaubt(r, x, sp.richtung))) continue;
-        const fall = jagdFall(r, i, e, kostenFuer(r.markt, x.umsatz20));
+        if (!sp) continue;
+        const pl = platzFuer(r, sp, plattformAm(r, x));
+        if (!pl) continue;
+        const fall = jagdFall(r, i, e, kostenFuer(r.markt, x.umsatz20, pl, sp), pl);
         if (fall) {
           vorwaerts.push(fall);
           testZuletzt.set(e.schluessel, i);
@@ -672,11 +719,12 @@ for (const r of reihen) {
     const einzelFrei = gEinzel.filter(frei);
     const paareFrei = gPaare.filter(frei);
     let gezaehlt = false;
-    const turbo = turbosAm(r, x);
+    const pa = plattformAm(r, x);
     const mz = MODELL_MAERKTE.has(r.markt) ? modellZeile(r, i, klassen) : -1;
     SP.forEach((sp, s) => {
-      if (sp.hebel > 1 && !turbo[sp.richtung]) return;
-      const a = ausg(i, sp, x);
+      const pl = platzFuer(r, sp, pa);
+      if (!pl) return;
+      const a = ausg(i, sp, x, pl);
       if (mz >= 0)
         for (const mm of MODELLE)
           if (mm.s === s && mm.markt === r.markt) {
@@ -764,10 +812,11 @@ for (const r of reihen) {
       if (i >= k.length - 1) continue;
       hypFaelle[h.nr] = (hypFaelle[h.nr] ?? 0) + 1;
       const z = k[i].datum < grenze ? 0 : 1;
-      const turbo = turbosAm(r, x);
+      const pa = plattformAm(r, x);
       SP.forEach((sp, s) => {
-        if (sp.hebel > 1 && !turbo[sp.richtung]) return;
-        ausg(i, sp, x).forEach((au, f) => au && zw.add(g, s, f, z, au));
+        const pl = platzFuer(r, sp, pa);
+        if (!pl) return;
+        ausg(i, sp, x, pl).forEach((au, f) => au && zw.add(g, s, f, z, au));
       });
     }
   }
@@ -870,12 +919,13 @@ for (const name of gruppen) {
     const m = k.map((_, i) => merkmale(k, i));
     const gezaehltAm = new Map<number, number>();
     const fallZaehlen = (i: number, g: number, x: Merkmale, cache: Map<number, (Ausgang | null)[]>) => {
-      const turbo = turbosAm(r, x);
+      const pa = plattformAm(r, x);
       for (const j of kandJeGruppe.get(g)!) {
         const c = kand[j];
         const sp = SP[c.s];
-        if (sp.hebel > 1 && !turbo[sp.richtung]) continue;
-        const a = cache.get(c.s) ?? cache.set(c.s, etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20), F)).get(c.s)!;
+        const pl = platzFuer(r, sp, pa);
+        if (!pl) continue;
+        const a = cache.get(c.s) ?? cache.set(c.s, etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), F)).get(c.s)!;
         const au = a[c.fi];
         if (au) klumpen.add(j, tagNr.get(k[i].datum)!, au.netto);
         if (au?.art === 'treffer') {
@@ -1344,7 +1394,10 @@ if (MODELLE.length && mZahl) {
       const r = reihen[mReihe[z]];
       const x = merkmale(r.kerzen, mI[z]);
       if (!x) continue;
-      const fall = jagdFall(r, mI[z], e, kostenFuer(r.markt, x.umsatz20));
+      const spM = spNachSchluessel.get(e.sp);
+      const pl = spM ? platzFuer(r, spM, plattformAm(r, x)) : null;
+      if (!spM || !pl) continue;
+      const fall = jagdFall(r, mI[z], e, kostenFuer(r.markt, x.umsatz20, pl, spM), pl);
       if (fall) vorwaerts.push(fall);
     }
   }
@@ -1444,7 +1497,7 @@ if (MODELLE.length && mZahl) {
     writeFileSync(turboPfad, JSON.stringify(turboCache));
   }
   let nichtHandelbar = 0;
-  for (let n = vorwaerts.length - 1; n >= 0; n--) {
+  for (let n = -1; n >= 0; n--) {
     const f = vorwaerts[n];
     const sp = spVon(f.muster);
     if (!sp || !mitTurbo(f)) continue;
@@ -1466,7 +1519,9 @@ if (MODELLE.length && mZahl) {
     const ws = Object.entries(turboCache).filter(([k]) => (umsatzJe.get(k) ?? -1) >= ab && (umsatzJe.get(k) ?? -1) < bis).map(([, t]) => t);
     return { abUmsatz20: ab, geprueft: ws.length, mitPuts: ws.filter((t) => t.short > 0).length, mitCalls: ws.filter((t) => t.long > 0).length };
   });
-  const handelbarkeit = { quelle: hebelVollstaendig ? (HC.nurGettex ? 'ESMA FIRDS, nur gettex' : 'ESMA FIRDS, deutsche Börsen') : 'OpenFIGI-Einzelsuche', geprueft: hebelVollstaendig ? hebelJe.size : Object.keys(turboCache).length, neuGeprueft: tp?.geprueft ?? 0, nichtHandelbar, eichung: eich };
+  const jePlattform: Record<string, number> = {};
+  for (const f of vorwaerts) if (f.plattform) jePlattform[f.plattform] = (jePlattform[f.plattform] ?? 0) + 1;
+  const handelbarkeit = { jePlattform, quelle: hebelVollstaendig ? (HC.nurGettex ? 'ESMA FIRDS, nur gettex' : 'ESMA FIRDS, deutsche Börsen') : 'OpenFIGI-Einzelsuche', geprueft: hebelVollstaendig ? hebelJe.size : Object.keys(turboCache).length, neuGeprueft: tp?.geprueft ?? 0, nichtHandelbar, eichung: eich };
   log(`Turbos: ${tp?.geprueft ?? 0} Werte neu geprüft in ${Math.round((Date.now() - tStart) / 1000)} s (${tp?.ohneName ?? 0} ohne Firmennamen, ${tp?.fehler ?? 0} Fehler), Cache ${cacheVorher} → ${Object.keys(turboCache).length}; ${nichtHandelbar} Vorwärts-Fälle ohne Produkt in ihrer Richtung entfernt. Eichung (Ø-Umsatz ab → Puts/Calls je geprüft): ${eich.map((e) => `${e.abUmsatz20 / 1e6} Mio. $: ${e.mitPuts}/${e.mitCalls} von ${e.geprueft}`).join(' · ')}.`);
   // V5: Claudes Urteile aus den Morgenläufen den Fällen zuordnen (Wert + Stichtag)
   const urteilOrdner = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'volltreffer', 'urteile');

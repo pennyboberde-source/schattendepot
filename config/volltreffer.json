@@ -798,9 +798,49 @@
     "musterHinweis": "Muster × Modell (Quantensprung A, 16.11.2026): Fälle der Muster im Vorwärtstest mit der Spielart eines Modells werden behalten, wenn das Modell sie im oberen (1 − p) ihres Tages sieht (p aus musterFilter: 0,5 = obere Hälfte, 0,75 = oberes Viertel). Bestanden nur, wenn außerhalb der Trainingsdaten besser als alle Musterfälle ohne Modell und Ø − Standardfehler in beiden Zeiträumen über 0."
   },
   "hebel": {
-    "hinweis": "Quantensprung B Stufe 1 (16.11.2026): amtliche Liste der Hebelprodukte (ESMA FIRDS, wöchentlich) je US-Basiswert. Ist sie höchstens maxAlterTage alt und sind mindestens mindestZugeordnet der Basiswert-ISINs einem Kürzel zugeordnet, gilt sie für alle Werte: handelbar nur mit Produkt in der Richtung der Spielart. nurGettex: nur Produkte an gettex zählen (wie das Gebührenmodell, das alle Orders über gettex rechnet); false = auch Stuttgart, Frankfurt, Hamburg usw.",
+    "hinweis": "Quantensprung B Stufe 1 (16.11.2026): amtliche Liste der Hebelprodukte (ESMA FIRDS, wöchentlich) je US-Basiswert. Ist sie höchstens maxAlterTage alt und sind mindestens mindestZugeordnet der Basiswert-ISINs einem Kürzel zugeordnet, gilt sie für alle Werte: handelbar nur mit Produkt in der Richtung der Spielart. nurGettex: nur Produkte an gettex zählen (wie das Gebührenmodell, das alle Orders über gettex rechnet); false = auch Stuttgart, Frankfurt, Hamburg usw. Seit 16.11. abends bestimmt die Liste nur die Plattform (gettex/andere Börse/US-Broker), nicht mehr, ob gehandelt wird.",
     "nurGettex": true,
     "maxAlterTage": 21,
     "mindestZugeordnet": 0.9
+  },
+  "plattformen": {
+    "hinweis": "Plattformen (Nutzer 16.11.2026 abends: „Wenn auf gettex nicht handelbar, trotzdem handeln auf einer simulierten Plattform, die diese anbietet. Das Ganze neben dem Handel vermerken und Plattform-/Handelskosten verrechnen. Fürs Lernen/Datenkrake nutzt du eh alles.“). Reihenfolge je Fall und Richtung: Hebelprodukt an gettex → Hebelprodukt an anderer deutscher Börse/außerbörslich über Smartbroker+ → simulierter US-Broker (Leerverkauf/Marge, höchstens maxHebel). Direkte Käufe: gettex, sonst Smartbroker+ an der US-Börse. Die Plattform steht an jeder Jagd/Order (Feld plattform), die Kosten rechnet das Etikett.",
+    "andereBoerse": {
+      "name": "Smartbroker+ an Börse Stuttgart/außerbörslich",
+      "entgeltJeOrder": 5.5,
+      "quelle": "smartbrokerplus.de/de-de/konditionen (gelesen 16.11.2026): Stuttgart Derivate 0 € für JP Morgan und Vontobel ab 500 €, 2 € CMC, sonst 4 € + ggf. börsenplatzabhängige Entgelte; außerbörslich JP Morgan, Morgan Stanley, UBS, UniCredit, Vontobel 0 € ab 500 €, DZ Bank 2 €, BNP/Société Générale 4 €. Angesetzt: 4 € + 1,50 € Börsenentgelt (Annahme, eher zu hoch)."
+    },
+    "auslandDirekt": {
+      "name": "Smartbroker+ an US-Börse",
+      "entgeltJeOrder": 4,
+      "prozent": 0.25,
+      "quelle": "Konditionen: Auslandshandel USA 4 € + x % (Währungsaufschlag) – x hier mit 0,25 % angenommen."
+    },
+    "usBroker": {
+      "name": "US-Broker (simuliert, Leerverkauf/Marge)",
+      "maxHebel": 2,
+      "entgeltJeOrder": 2,
+      "devisenProzent": 0.1,
+      "leihgebuehrProzentJahr": [
+        {
+          "abUmsatz20": 50000000,
+          "prozent": 0.5
+        },
+        {
+          "abUmsatz20": 20000000,
+          "prozent": 3
+        },
+        {
+          "abUmsatz20": 5000000,
+          "prozent": 10
+        },
+        {
+          "abUmsatz20": 0,
+          "prozent": 30
+        }
+      ],
+      "margenzinsProzentJahr": 6,
+      "quelle": "Simuliert (Smartbroker+ bietet keine Leerverkäufe): Kosten wie bei einem Broker mit Leerverkauf und Marge (z. B. Interactive Brokers) – Annahmen: 2 € je Order, 0,1 % Devisen je Seite, Leihgebühr je nach Ø-Tagesumsatz 0,5 % bis 30 % p. a. (schwer leihbare Kleinwerte teuer; ob sie überhaupt leihbar sind, ist offen), Marge-Zins 6 % p. a. auf den geliehenen Teil, Hebel höchstens 2 (Reg T)."
+    }
   }
 }
