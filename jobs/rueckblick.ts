@@ -22,6 +22,7 @@ import { aenderungAm, breite, fedAbstand, schluesse, summeBis, wertAm, type Kryp
 import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
+import { groessenKlasse, signalMessen, verdichten, type SammelErgebnis } from '../core/volltreffer/sammelmessung.ts';
 import { bewerten, mitSperre, schwelleFuer, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
 import { turbosPruefen } from './lib/turbos.ts';
 import type { InsiderArchiv } from '../core/volltreffer/insider.ts';
@@ -328,14 +329,20 @@ const turbosAm = (r: Reihe, m: Merkmale) => ({ long: turboErlaubt(r, m, 'long'),
 // ---------- 3. Durchgang 1: Merkmale, Marktbewegung je Tag, Zeiträume ----------
 // Merkmale werden nicht vorgehalten (Speicher), sondern im zweiten Durchgang neu berechnet
 const r1JeTag: Record<Markt, Map<string, number[]>> = { aktie: new Map(), krypto: new Map() };
+const r1JeKlasse: Record<Markt, Map<string, number[]>> = { aktie: new Map(), krypto: new Map() };
 for (const r of reihen) {
   r.kerzen.forEach((_, i) => {
     const x = merkmale(r.kerzen, i);
     if (!x || !handelbar(r, x, r.kerzen[i])) return;
     const d = r.kerzen[i].datum;
     (r1JeTag[r.markt].get(d) ?? r1JeTag[r.markt].set(d, []).get(d)!).push(x.r1);
+    const kk = `${groessenKlasse(x.umsatz20)}|${d}`;
+    (r1JeKlasse[r.markt].get(kk) ?? r1JeKlasse[r.markt].set(kk, []).get(kk)!).push(x.r1);
   });
 }
+// Vergleichsgruppe (V1): Median der Tagesrendite je Größenklasse (Ø-Tagesumsatz) und Tag, mindestens 10 Werte
+const klasseR1: Record<Markt, Map<string, number>> = { aktie: new Map(), krypto: new Map() };
+for (const markt of ['aktie', 'krypto'] as Markt[]) for (const [kk, xs] of r1JeKlasse[markt]) if (xs.length >= 10) klasseR1[markt].set(kk, median(xs));
 const marktR1: Record<Markt, Map<string, number>> = { aktie: new Map(), krypto: new Map() };
 for (const markt of ['aktie', 'krypto'] as Markt[]) for (const [d, xs] of r1JeTag[markt]) marktR1[markt].set(d, xs.length >= 20 ? median(xs) : 0);
 const alleTage = [...new Set([...r1JeTag.aktie.keys(), ...r1JeTag.krypto.keys()])].sort();
@@ -451,6 +458,9 @@ const signaleJe = new Map<string, Sig[]>();
 }
 // Signal-Prüfung: je Signaltyp Fälle (je Wert höchstens einmal in 10 Handelstagen) und Volltreffer ab dem Folgetag
 const sigStat = new Map<string, { n: number; treffer: number; markt: Markt }>();
+// Schattenbuch auf Sammelkursen (V1): je Markt und Signaltyp die Messungen; gemessene Signale (Wert|Tag) für die Abdeckung
+const sammel = new Map<string, SammelErgebnis[]>();
+const sammelGemessen = new Set<string>();
 // Grundrate je Markt und Tag (fertige Etiketten)
 const tagStat = new Map<string, { n: number; treffer: number }>();
 interface BuchEintrag {
@@ -685,6 +695,24 @@ for (const r of reihen) {
     const st = sigStat.get(key) ?? sigStat.set(key, { n: 0, treffer: 0, markt: r.markt }).get(key)!;
     st.n++;
     if (treffer[i]) st.treffer++;
+  }
+  // Schattenbuch auf Sammelkursen: jedes Signal ab dem ersten Handelstag danach (je Wert und Typ ein Fall in sperreTage)
+  {
+    const zuletztJ = new Map<string, number>();
+    const idxVon = sigs.length ? new Map(k.map((x, n) => [x.datum, n])) : new Map<string, number>();
+    for (const sg of [...sigs].sort((a, b) => a.datum.localeCompare(b.datum))) {
+      const kl = (d: string) => {
+        const xs = m[idxVon.get(d) ?? -1];
+        return xs ? (klasseR1[r.markt].get(`${groessenKlasse(xs.umsatz20)}|${d}`) ?? null) : null;
+      };
+      const g = signalMessen(k, sg.datum, (d) => marktR1[r.markt].get(d) ?? null, kl);
+      if (!g) continue;
+      sammelGemessen.add(`${schluessel}|${sg.datum}`);
+      if (g.j - (zuletztJ.get(sg.typ) ?? -1e9) <= vt.pruefung.sperreTage) continue;
+      zuletztJ.set(sg.typ, g.j);
+      const key = `${r.markt}|${sg.typ}`;
+      (sammel.get(key) ?? sammel.set(key, []).get(key)!).push(g);
+    }
   }
   // Trefferbuch: Volltreffer der letzten 30 Tage mit den Vorzeichen der 14 Tage davor
   for (const i of sprungEpisoden(treffer, vt.etikett.episodeAbstand)) {
@@ -1015,6 +1043,33 @@ for (const h of HYPOTHESEN) {
   if (top) buch.eintraege.push({ nr: h.nr, datum: heute, status: top.bestanden ? 'rueckblick_bestanden' : 'rueckblick_nicht_bestanden', spielart: top.spielart, fenster: top.fenster, faelle: top.faelle, quote: top.quote, evA: top.zeitraumA.ev, evB: top.zeitraumB.ev, wertung: top.wertung });
 }
 schreibeJson('lernen/muster/hypothesen.json', buch);
+
+// ---------- 6a. Schattenbuch auf Sammelkursen (V1 Teil b): verdichtet je Signaltyp, Abdeckung ehrlich gezählt ----------
+{
+  const letzterTag = alleTage[alleTage.length - 1] ?? heute;
+  let gesamt = 0;
+  const jeMarkt: Record<string, { gesamt: number; gemessen: number }> = {};
+  for (const [sch, liste] of signaleJe)
+    for (const d of new Set(liste.map((x) => x.datum))) {
+      if (d >= letzterTag) continue; // noch kein Handelstag danach im Archiv
+      gesamt++;
+      const mk = sch.startsWith('K:') ? 'krypto' : sch.startsWith('T:') ? 'aktie' : 'sonstige';
+      const e = (jeMarkt[mk] ??= { gesamt: 0, gemessen: 0 });
+      e.gesamt++;
+      if (sammelGemessen.has(`${sch}|${d}`)) e.gemessen++;
+    }
+  const gemessen = Object.values(jeMarkt).reduce((a, x) => a + x.gemessen, 0);
+  const typen = [...sammel]
+    .map(([key, liste]) => ({ markt: key.split('|')[0], typ: key.split('|')[1], ...verdichten(liste) }))
+    .sort((a, b) => b.faelle - a.faelle);
+  schreibeJson('lernen/schattenbuch/sammelkurse.json', {
+    stand: jetzt.toISOString(),
+    hinweis: 'Schattenbuch auf Sammelkursen (Plan V1 Teil b): jedes Signal der Datenkrake aus den Tageskerzen des privaten Archivs gemessen, ohne Einzelabruf. Start = Eröffnung des ersten Handelstags nach dem Signaltag; Renditen in % nach 1, 3, 5, 10 und 21 Handelstagen (Schluss), höchster/tiefster Stand seit dem Start (Median), Überrendite gegen den Markt und gegen Werte gleicher Größenklasse (Ø-Tagesumsatz) über dieselben Tage (Median, Näherung über Tagesrenditen). Je Wert und Typ ein Fall in ' + vt.pruefung.sperreTage + ' Handelstagen. Abdeckung: Signale (Wert und Tag) mit Handelstag danach, die im Archiv eine Kursreihe haben (US-Aktien/ETFs, Kraken-Coins; deutsche Werte und Rohstoffe noch nicht). Nur verdichtete Kennzahlen.',
+    abdeckung: { signale: gesamt, gemessen, anteil: gesamt ? Math.round((gemessen / gesamt) * 1000) / 10 : 0, jeMarkt },
+    typen,
+  });
+  log(`Schattenbuch auf Sammelkursen: ${gemessen} von ${gesamt} Signalen gemessen (${gesamt ? Math.round((gemessen / gesamt) * 1000) / 10 : 0} %; ${Object.entries(jeMarkt).map(([mk, x]) => `${mk} ${x.gemessen}/${x.gesamt}`).join(', ')}), ${typen.length} Signaltypen, ${typen.reduce((a, t) => a + t.faelle, 0)} Fälle.`);
+}
 
 // ---------- 6b. Gesamtmodell: Training auf A → Prüfung auf B und umgekehrt, rollierende Quartale ----------
 // Ehrlich: Jeder Fall wird nur von einem Modell bewertet, das ihn nie gesehen hat (A-Modell bewertet B und umgekehrt,
