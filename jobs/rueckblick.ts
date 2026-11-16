@@ -20,6 +20,7 @@ import { schluesselNormal } from '../core/signale.ts';
 import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenwert.ts';
 import { aenderungAm, breite, fedAbstand, summeBis, wertAm, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverkauf.ts';
+import type { InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfasst, zahlenAbstaende, type MeldungArt, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
 
 type Markt = 'aktie' | 'krypto';
@@ -210,6 +211,25 @@ const leerAm = (r: Reihe, datum: string): { leerquote: number | null; leerquoteR
   }
   return { leerquote: leerCache.quote.get(datum) ?? null, leerquoteRel: leerCache.abw.get(datum) ?? null };
 };
+// Insider-Käufe (SEC Formular 4, privat im Archiv): Handelstage seit dem letzten Kauf – bekannt nur im lückenlos erfassten
+// Bereich (ab Beginn + 30 Tage Vorlauf bis zum letzten erfassten Tag), sonst unbekannt statt „kein Kauf“
+const insider: InsiderArchiv | null = (() => {
+  const pf = join(ARCHIV, 'stamm', 'insider.json.gz');
+  return existsSync(pf) ? (JSON.parse(gz(pf)) as InsiderArchiv) : null;
+})();
+const insiderAb = insider?.ab ? new Date(Date.parse(`${insider.ab}T12:00:00Z`) + 30 * 86400000).toISOString().slice(0, 10) : null;
+log(`Insider-Käufe (SEC): ${insider ? Object.values(insider.kaeufe).reduce((a, l) => a + l.length, 0) : 0} Käufe, bekannt ${insiderAb ?? '–'} bis ${insider?.bis ?? '–'}.`);
+let insiderCache: { r: Reihe; je: Map<string, number | null> } | null = null;
+const insiderAm = (r: Reihe, datum: string): number | null => {
+  if (r.markt !== 'aktie' || !insider || !insiderAb || !insider.bis || datum < insiderAb || datum > insider.bis) return null;
+  if (insiderCache?.r !== r) {
+    const daten = r.kerzen.map((k) => k.datum);
+    const liste = (insider.kaeufe[r.schluessel.slice(2).split('#')[0]] ?? []).map((x) => [x[0], x[1]] as [string, string]);
+    const abst = zahlenAbstaende(daten, liste, insiderAb);
+    insiderCache = { r, je: new Map(daten.map((d, i) => [d, abst[i]])) };
+  }
+  return insiderCache.je.get(datum) ?? null;
+};
 const brancheVon = (r: Reihe): number | null => (r.markt === 'aktie' ? brancheAusSic(firmen.get(r.schluessel.slice(2).split('#')[0])?.sic) : null);
 
 // ---------- 2. Kosten je Wertklasse ----------
@@ -306,17 +326,18 @@ const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
 const zw = new Zaehlwerk(gruppen.length, SP.length, F.length, 2);
 log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
-type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null } & Partial<Record<MeldungArt, number | null>>;
-const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', ...MELDUNG_ARTEN]);
+type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null } & Partial<Record<MeldungArt, number | null>>;
+const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', ...MELDUNG_ARTEN]);
 const merkmalWert = (e: Einteilung, m: Merkmale, kontext: Kontext): number | null =>
   KONTEXT_MERKMALE.has(e.merkmal) ? (kontext[e.merkmal as keyof Kontext] ?? null) : (m[e.merkmal as keyof Merkmale] as number | null);
 /** Meldungsarten, nach denen die Einteilungen fragen (nur die werden je Stichtag gerechnet) */
 const GEFRAGTE_ARTEN = MELDUNG_ARTEN.filter((a) => E.some((e) => e.merkmal === a));
 const LEER_GEFRAGT = E.some((e) => e.merkmal === 'leerquote' || e.merkmal === 'leerquoteRel');
+const INSIDER_GEFRAGT = E.some((e) => e.merkmal === 'insider');
 /** Klasse je Einteilung an einem Stichtag (Durchgang 2 und Klumpen-Prüfung rechnen genau gleich) */
 const klassenAm = (r: Reihe, x: Merkmale, datum: string) => {
   const mr = marktR1[r.markt].get(datum) ?? 0;
-  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }) };
+  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null };
   for (const a of GEFRAGTE_ARTEN) kontext[a] = meldungAm(r, datum, a);
   return E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
 };
@@ -407,6 +428,8 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten): Ja
     const d = meldungAm(r, k[i].datum, a);
     if (d !== null && d <= 20) sec.push(`${SEC_NAME[a]} ${wann(d)}`);
   }
+  const ins = insiderAm(r, k[i].datum);
+  if (ins !== null && ins <= 20) sec.push(`Insider-Kauf ${wann(ins)}`);
   const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
   if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
   const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));
@@ -548,7 +571,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
@@ -941,7 +964,7 @@ log(`Fertig: ${bestanden.length} Gruppen bestanden, davon ${mitVorteil.length} m
   .join(' | ') || '–'}`);
 for (const h of hypothesen) log(`${h.gruppe}: ${h.spielart}, ${h.fenster} T – ${h.faelle} Fälle, Quote ${h.quote} %, Ø A ${h.zeitraumA.ev} € / B ${h.zeitraumB.ev} € → ${h.bestanden ? 'BESTANDEN' : 'nicht bestanden'}`);
 // Was bringen die Merkmale aus Zusatzquellen (Quartalszahlen, Branche)? Nur verdichtete Kennzahlen ins Log
-for (const merkmal of ['zahlen', 'branche', ...MELDUNG_ARTEN, 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel']) {
+for (const merkmal of ['zahlen', 'branche', ...MELDUNG_ARTEN, 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider']) {
   const a = E.findIndex((e) => e.merkmal === merkmal);
   if (a < 0) continue;
   const mit = (e: (typeof bestanden)[number]) => e.schluessel.split('|')[1].split('&').some((t) => t.startsWith(`${a}=`));

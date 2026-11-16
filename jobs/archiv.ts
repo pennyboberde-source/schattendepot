@@ -5,7 +5,8 @@
 // Schalter (Umgebung): ARCHIV_NUR=krypto,us,gettex,stamm,boersenwert,zahlen,kryptokerzen,ussplits (Standard: krypto,us,gettex,stamm,boersenwert,zahlen – der tägliche Lauf).
 //   ZAHLEN_MAX=n: höchstens so viele SEC-Abrufe in diesem Lauf (Standard aus config/archiv.json); SEC_KONTAKT: Kontaktadresse für den User-Agent.
 //   US_AB=JJJJ-MM-TT und US_MAX_TAGE=n für den Rückblick (Kursgeschichte rückwärts, fortsetzbar – Workflow historie.yml).
-import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { berlin, berlinZuUtc, istHandelstag } from '../core/kalender.ts';
@@ -35,6 +36,7 @@ import { boersenwertCsv, krakenZuSymbol, parseBoersenwertCsv, parseGeckoChart, p
 import { ciksAusTagesverzeichnis, MELDUNG_ARTEN, MELDUNGEN_STUFE, meldungenAusSeite, meldungenErfasst, meldungenVereinen, NACHFASS_FORMULARE, parseSubmissions, secTickerKarte, zahlenAusSeite, zahlenVereinen, type ZahlenArchiv } from '../core/volltreffer/zahlen.ts';
 import { parseVixCsv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { finraDatei, leerverkaufCsv, parseFinraShvol } from '../core/volltreffer/leerverkauf.ts';
+import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, quartaleZwischen, quartalsEnde, quartalVon, type InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -66,6 +68,8 @@ interface Index {
   umfeld?: { vixTage: number; vixLetzterTag: string | null; geholt: string };
   /** Leerverkaufsvolumen je US-Handelstag (leerverkauf/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
   leerverkauf?: Record<string, { werte: number; geholt: string }>;
+  /** Insider-Käufe (stamm/insider.json.gz) in Zählungen */
+  insider?: { kaeufe: number; kuerzel: number; quartale: number; tage: number; ab: string | null; bis: string | null; geholt: string };
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -80,7 +84,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,leerverkauf').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,leerverkauf,insider').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -673,6 +677,128 @@ async function leerverkauf() {
   console.log(`Leerverkauf (FINRA): ${geholt} Tage geholt, ${fehlt} nicht vorhanden; Archiv: ${da.length} Tage (${da[0] ?? '–'} bis ${da[da.length - 1] ?? '–'}).`);
 }
 
+// ---------- Insider-Käufe (SEC Formular 4): Quartals-Datensätze für die Geschichte, einzelne Meldungen danach ----------
+async function insider() {
+  const kontakt = process.env.SEC_KONTAKT?.trim();
+  if (!kontakt || !kontakt.includes('@')) {
+    console.log('Insider (SEC): SEC_KONTAKT fehlt – übersprungen.');
+    return;
+  }
+  const ic = { jahre: 2, mindestWert: 10000, abstandMs: 130, maxMeldungen: 2500, ...(cfg as { insider?: object }).insider } as { jahre: number; mindestWert: number; abstandMs: number; maxMeldungen: number };
+  const max = Number(process.env.INSIDER_MAX) > 0 ? Math.floor(Number(process.env.INSIDER_MAX)) : ic.maxMeldungen;
+  const ua = `Schattendepot-Forschung ${kontakt}`;
+  const datei = join(ARCHIV, 'stamm', 'insider.json.gz');
+  const heute = iso.slice(0, 10);
+  const gestern = tagPlus(heute, -1);
+  const start = tagPlus(heute, -Math.round(ic.jahre * 365.25) - 30);
+  const a: InsiderArchiv = existsSync(datei) ? (JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as InsiderArchiv) : { stand: iso, ab: null, bis: null, quartale: [], tage: [], kaeufe: {} };
+  const vorher = JSON.stringify({ ...a, stand: '' });
+  let anfragen = 0;
+  let naechste = 0;
+  const holen = async (url: string) => {
+    const slot = Math.max(Date.now(), naechste);
+    naechste = slot + ic.abstandMs;
+    if (slot > Date.now()) await pause(slot - Date.now());
+    anfragen++;
+    const r = await fetch(url, { headers: { 'User-Agent': ua }, signal: AbortSignal.timeout(120000) });
+    if (r.status === 403 || r.status === 429) throw new Error(`SEC lehnt ab (HTTP ${r.status})`);
+    return r;
+  };
+
+  // 1. Quartals-Datensätze (lückenlos ab dem Start-Quartal, bis die SEC keinen neueren hat)
+  const aktuell = quartalVon(heute);
+  let quartaleNeu = 0;
+  for (const q of quartaleZwischen(start, heute)) {
+    if (q === aktuell || a.quartale.includes(q)) continue;
+    let zip: Buffer | null = null;
+    for (const ordner of ['structureddata', 'datastandardsinnovation']) {
+      const r = await holen(`https://www.sec.gov/files/${ordner}/data/insider-transactions-data-sets/${q}_form345.zip`);
+      if (r.status === 200) {
+        zip = Buffer.from(await r.arrayBuffer());
+        break;
+      }
+    }
+    if (!zip) break; // noch nicht veröffentlicht → später
+    const tmp = join(ARCHIV, '..', `insider-${q}.zip`);
+    writeFileSync(tmp, zip);
+    const liste = execFileSync('unzip', ['-Z1', tmp], { encoding: 'utf8' }).split('\n').map((x) => x.trim());
+    const finde = (name: string) => liste.find((x) => x.toUpperCase().endsWith(name));
+    const sub = finde('SUBMISSION.TSV');
+    const tr = finde('NONDERIV_TRANS.TSV');
+    if (!sub || !tr) throw new Error(`Insider ${q}: Tabellen fehlen (${liste.join(', ')})`);
+    const lies = (n: string) => execFileSync('unzip', ['-p', tmp, n], { encoding: 'utf8', maxBuffer: 1e9 });
+    const { kaeufe, fehlt } = kaeufeAusDatensatz(lies(sub), lies(tr), ic.mindestWert);
+    rmSync(tmp, { force: true });
+    if (fehlt.length) throw new Error(`Insider ${q}: Spalten fehlen: ${fehlt.join(', ')}`);
+    a.kaeufe = kaeufeVereinen(a.kaeufe, kaeufe);
+    a.quartale.push(q);
+    a.quartale.sort();
+    quartaleNeu++;
+    console.log(`Insider ${q}: ${[...kaeufe.values()].reduce((s, l) => s + l.length, 0)} Käufe ab ${ic.mindestWert} $ bei ${kaeufe.size} Kürzeln.`);
+  }
+  // Abdeckung durch Quartale: lückenlos vom ersten an
+  let quartalBis: string | null = null;
+  const erste = quartaleZwischen(start, heute)[0];
+  for (const q of quartaleZwischen(start, heute)) {
+    if (!a.quartale.includes(q)) break;
+    quartalBis = quartalsEnde(q);
+  }
+  a.ab = a.quartale.includes(erste) ? `${erste.slice(0, 4)}-${['01-01', '04-01', '07-01', '10-01'][Number(erste.slice(5)) - 1]}` : null;
+
+  // 2. Danach Tag für Tag: Formular-4-Meldungen aus dem EDGAR-Tagesverzeichnis (mit Annahmezeit)
+  let tageNeu = 0;
+  let meldungen = 0;
+  let abbruch = false;
+  if (quartalBis) {
+    for (let tag = tagPlus(quartalBis, 1); tag <= gestern && !abbruch; tag = tagPlus(tag, 1)) {
+      const wt = new Date(`${tag}T12:00:00Z`).getUTCDay();
+      if (wt === 0 || wt === 6 || a.tage.includes(tag)) continue;
+      const q = Math.floor((Number(tag.slice(5, 7)) - 1) / 3) + 1;
+      const r = await holen(`https://www.sec.gov/Archives/edgar/daily-index/${tag.slice(0, 4)}/QTR${q}/form.${tag.replace(/-/g, '')}.idx`);
+      if (r.status === 404 && tag < gestern) {
+        a.tage.push(tag); // Feiertag
+        continue;
+      }
+      if (r.status !== 200) break; // gestern noch nicht veröffentlicht
+      const dateien = formular4Dateien(await r.text());
+      if (anfragen + dateien.length > max) break; // ganzer Tag passt nicht mehr ins Kontingent → nächster Lauf
+      const neu = new Map<string, [string, string, number][]>();
+      for (const f of dateien) {
+        const m = await holen(`https://www.sec.gov/Archives/${f}`);
+        if (m.status !== 200) continue;
+        const k = kaufAusMeldung(await m.text(), ic.mindestWert);
+        meldungen++;
+        if (k) (neu.get(k.kuerzel) ?? neu.set(k.kuerzel, []).get(k.kuerzel)!).push([k.datum, k.zeit, k.wert]);
+      }
+      a.kaeufe = kaeufeVereinen(a.kaeufe, neu);
+      a.tage.push(tag);
+      tageNeu++;
+    }
+    a.tage.sort();
+  }
+  // Abdeckung insgesamt: Quartale, dann lückenlos die Werktage danach
+  let bis = quartalBis;
+  if (bis) for (let tag = tagPlus(bis, 1); tag <= gestern; tag = tagPlus(tag, 1)) {
+    const wt = new Date(`${tag}T12:00:00Z`).getUTCDay();
+    if (wt === 0 || wt === 6) {
+      bis = tag;
+      continue;
+    }
+    if (!a.tage.includes(tag)) break;
+    bis = tag;
+  }
+  a.bis = bis;
+  if (JSON.stringify({ ...a, stand: '' }) !== vorher) {
+    a.stand = iso;
+    mkdirSync(dirname(datei), { recursive: true });
+    writeFileSync(datei, gzipSync(Buffer.from(JSON.stringify(a), 'utf8'), { level: 9 }));
+    neu.push('stamm/insider');
+  }
+  const kaeufeZahl = Object.values(a.kaeufe).reduce((s, l) => s + l.length, 0);
+  index.insider = { kaeufe: kaeufeZahl, kuerzel: Object.keys(a.kaeufe).length, quartale: a.quartale.length, tage: a.tage.length, ab: a.ab, bis: a.bis, geholt: iso };
+  console.log(`Insider (SEC): ${quartaleNeu} Quartale, ${tageNeu} Tage (${meldungen} Formular-4-Meldungen gelesen), ${anfragen} Anfragen; Stand: ${kaeufeZahl} Käufe bei ${Object.keys(a.kaeufe).length} Kürzeln, lückenlos ${a.ab ?? '–'} bis ${a.bis ?? '–'}.`);
+}
+
 const TEILE = [
   ['krypto', 'Krypto', krypto],
   ['us', 'US', us],
@@ -684,6 +810,7 @@ const TEILE = [
   ['zahlen', 'Zahlen-Termine (SEC)', zahlen],
   ['umfeld', 'Marktumfeld', umfeld],
   ['leerverkauf', 'Leerverkauf (FINRA)', leerverkauf],
+  ['insider', 'Insider-Käufe (SEC)', insider],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -730,6 +857,7 @@ const stand = {
   boersenwert: index.boersenwert ?? null,
   zahlen: index.usZahlen ?? null,
   umfeld: index.umfeld ?? null,
+  insider: index.insider ?? null,
   leerverkauf: (() => {
     const da = Object.keys(index.leerverkauf ?? {}).filter((d) => index.leerverkauf![d].werte > 0).sort();
     return { tage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };

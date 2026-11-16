@@ -528,6 +528,22 @@
           "Leerverkäufe häufiger als sonst (5 bis 15 Punkte mehr)",
           "Leerverkäufe viel häufiger als sonst (über 15 Punkte mehr)"
         ]
+      },
+      {
+        "merkmal": "insider",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Insider-Kauf: Reaktion am Stichtag",
+          "Insider-Kauf: Reaktion am Vortag",
+          "Insider-Kauf vor 2 bis 5 Handelstagen",
+          "Insider-Kauf vor 6 bis 20 Handelstagen",
+          "ohne Insider-Kauf in 20 Handelstagen"
+        ]
       }
     ]
   },
