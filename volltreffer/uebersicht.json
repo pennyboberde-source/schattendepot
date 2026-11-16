@@ -1,9 +1,9 @@
 {
-  "stand": "2026-11-15T14:27:22.617Z",
-  "hinweis": "Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens 10 % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens 5 Jagden gleichzeitig, nach 450 € Tagesverlust am Folgetag keine neue. Keine Mitteilungen, kein echtes Geld.",
+  "stand": "2026-11-16T07:03:38.971Z",
+  "hinweis": "Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens 10 % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens 10 Jagden gleichzeitig, nach 900 € Tagesverlust am Folgetag keine neue. Mitteilungen nur gesammelt in der Abendbilanz, kein echtes Geld.",
   "regeln": {
-    "maxOffen": 5,
-    "tagesVerlustGrenze": 450,
+    "maxOffen": 10,
+    "tagesVerlustGrenze": 900,
     "stufe2Faelle": 20
   },
   "kennzahlen": {
@@ -40,9 +40,12 @@
   "abgeschlossen": [],
   "lauerliste": [],
   "lauerlisteZahl": 0,
+  "pumpVerdacht": 0,
   "uebersprungen": 0,
   "muster": [
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 10 Fällen im Vorwärtstest (Schnellspur)",
       "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Markt am Stichtag %: -2 bis -0,5",
       "spielart": "Turbo long Hebel 5, Stop 150 €",
       "fenster": 10,
@@ -60,6 +63,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 19.39 % unter 25 %",
       "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 2 bis 4 und Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): unter 0,2",
       "spielart": "Turbo long Hebel 5, Stop 150 €",
       "fenster": 10,
@@ -77,6 +82,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 17.86 % unter 25 %",
       "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): unter 0,2 und Markt am Stichtag %: -2 bis -0,5",
       "spielart": "Turbo long Hebel 5, Stop 150 €",
       "fenster": 10,
@@ -94,6 +101,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 11,10 € unter 30,00 €",
       "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Markt am Stichtag %: -2 bis -0,5",
       "spielart": "Turbo long Hebel 5, Stop 150 €",
       "fenster": 10,
@@ -111,6 +120,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 24.59 % unter 25 %",
       "gruppe": "Aktien: Kurs: 5 bis 20 und Markt am Stichtag %: -2 bis -0,5",
       "spielart": "Turbo long Hebel 5, Stop 150 €",
       "fenster": 10,
@@ -128,6 +139,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 18.69 % unter 25 %",
       "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Schwankung je Tag %: 2 bis 4",
       "spielart": "Turbo long Hebel 3, Stop 150 €",
       "fenster": 10,
@@ -145,6 +158,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 10 Fällen im Vorwärtstest (Schnellspur)",
       "gruppe": "Aktien: 20-Tage-Rendite %: unter -50 und Markt am Stichtag %: 0,5 bis 2",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
@@ -162,6 +177,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 10 Fällen im Vorwärtstest (Schnellspur)",
       "gruppe": "Aktien: Tagesrendite %: -3 bis 3 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
@@ -179,6 +196,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 1 bis 2 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
@@ -196,6 +215,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: 5-Tage-Rendite %: -10 bis 0 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
@@ -213,6 +234,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Kurslücke %: 3 bis 10",
       "spielart": "Turbo long Hebel 2, Stop 150 €",
       "fenster": 10,
@@ -230,6 +253,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: -2 bis -0,5",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
@@ -247,6 +272,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 5, Stop 150 €",
       "fenster": 10,
@@ -264,6 +291,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 0,5 bis 1 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
@@ -281,6 +310,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: Kurslücke %: unter -10 und Markt am Stichtag %: 0,5 bis 2",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
@@ -298,6 +329,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
@@ -315,6 +348,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 1 bis 2 und Kurslücke %: unter -10",
       "spielart": "Turbo short Hebel 5, Stop 150 €",
       "fenster": 10,
@@ -332,6 +367,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 26,10 € unter 30,00 €",
       "gruppe": "Aktien: Kurslücke %: unter -10 und Schwankung je Tag %: ab 8",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
@@ -349,6 +386,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): unter 0,5 und Tagesrendite über dem Markt %: -20 bis -5",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
@@ -366,6 +405,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 22.05 % unter 25 %",
       "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Umsatz (× Ø 20 Tage): unter 0,5",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
@@ -383,6 +424,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 24,20 € unter 30,00 €",
       "gruppe": "Aktien: Kurslücke %: unter -10 und Kurs: 20 bis 100",
       "spielart": "Turbo short Hebel 5, Stop 150 €",
       "fenster": 10,
@@ -400,6 +443,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
       "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und 20-Tage-Rendite %: ab 50",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "fenster": 10,
@@ -417,6 +462,8 @@
       "stufe2": false
     },
     {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 23,10 € unter 30,00 €",
       "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Schwankung je Tag %: ab 8",
       "spielart": "Turbo short Hebel 3, Stop 150 €",
       "fenster": 10,
@@ -432,6 +479,165 @@
         "faelle": 3497
       },
       "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: Schwankung je Tag %: ab 8 und Kurs: ab 100",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 29.61,
+        "ev": 34.9,
+        "se": 15.2,
+        "faelle": 814
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 24,60 € unter 30,00 €",
+      "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Kurslücke %: -10 bis -3",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 28,
+        "ev": 24.6,
+        "se": 18.7,
+        "faelle": 1557
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 22,30 € unter 30,00 €",
+      "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Tagesspanne (× Ø 20 Tage): 0,5 bis 1",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 29.5,
+        "ev": 22.3,
+        "se": 15,
+        "faelle": 1556
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,8 bis 0,95",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 30.77,
+        "ev": 35.5,
+        "se": 26.3,
+        "faelle": 312
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: 5-Tage-Rendite %: unter -30 und Tagesspanne (× Ø 20 Tage): 2 bis 4",
+      "spielart": "Turbo long Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 31.21,
+        "ev": 42.5,
+        "se": 45.9,
+        "faelle": 580
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 26,20 € unter 30,00 €",
+      "gruppe": "Aktien: Tagesrendite %: -3 bis 3 und 20-Tage-Rendite %: unter -50",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 31.26,
+        "ev": 26.2,
+        "se": 20.4,
+        "faelle": 595
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 19,20 € unter 30,00 €",
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Ø Tagesumsatz: 20000000 bis 100000000",
+      "spielart": "Turbo short Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-15",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 26.22,
+        "ev": 19.2,
+        "se": 11.5,
+        "faelle": 2010
+      },
+      "stufe2": false
     }
-  ]
+  ],
+  "sichtbar": {
+    "hinweis": "Stufe 3 (Plan V6): Muster mit mindestens 20 abgeschlossenen Fällen im Vorwärtstest, Ø im Plus und im Band des Rückblicks, Volltreffer-Quote im Rückblick ab 25 % und Ø ab 30 € handeln sichtbar – ohne Rückfrage, aber Klasse vor Masse: höchstens 3 Orders gleichzeitig, je Wert eine. Nur Fälle ab dem Tag der Beförderung, nie rückwirkend. Simuliert, kein echtes Geld.",
+    "regeln": {
+      "mindestFaelle": 20,
+      "mindestQuote": 25,
+      "mindestEv": 30,
+      "maxOffen": 3,
+      "tagesVerlustGrenze": 300,
+      "einsatz": 1000
+    },
+    "kennzahlen": {
+      "anzahl": 0,
+      "volltreffer": 0,
+      "quote": 0,
+      "oeNiete": 0,
+      "ev": 0,
+      "summe": 0,
+      "offen": 0
+    },
+    "rendite": 0,
+    "offen": [],
+    "abgeschlossen": [],
+    "vorgemerkt": [],
+    "uebersprungen": 0,
+    "befoerdert": []
+  }
 }

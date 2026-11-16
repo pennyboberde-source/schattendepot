@@ -1533,6 +1533,486 @@
         "faelle": 2010
       },
       "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|18=2&27=2|2S150|10",
+      "gruppe": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen und Marktbreite: 40 bis 60 % im Plus",
+      "gruppenSchluessel": "aktie|18=2&27=2",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 46.3,
+      "rueckblick": {
+        "quote": 27.57,
+        "ev": 72.6,
+        "se": 25.7,
+        "faelle": 272
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|7=2&18=2|2S150|10",
+      "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,5 bis 0,8 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
+      "gruppenSchluessel": "aktie|7=2&18=2",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 23,
+      "rueckblick": {
+        "quote": 23.53,
+        "ev": 51.7,
+        "se": 28.7,
+        "faelle": 238
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|2=0&27=3|3S150|10",
+      "gruppe": "Aktien: 20-Tage-Rendite %: unter -50 und Marktbreite: 60 bis 75 % im Plus",
+      "gruppenSchluessel": "aktie|2=0&27=3",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 21.7,
+      "rueckblick": {
+        "quote": 38.53,
+        "ev": 67.3,
+        "se": 30.1,
+        "faelle": 654
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|13=2&18=2|3S150|10",
+      "gruppe": "Aktien: Markt am Stichtag %: -0,5 bis 0,5 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
+      "gruppenSchluessel": "aktie|13=2&18=2",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 20.8,
+      "rueckblick": {
+        "quote": 28.44,
+        "ev": 42.2,
+        "se": 20.7,
+        "faelle": 334
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|5=0&17=1|2S150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Vortag",
+      "gruppenSchluessel": "aktie|5=0&17=1",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 19.7,
+      "rueckblick": {
+        "quote": 29.51,
+        "ev": 40.1,
+        "se": 19.6,
+        "faelle": 427
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|5=0&20=1|2S150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Großvertrag (8-K 1.01): Großvertrag: Reaktion am Vortag",
+      "gruppenSchluessel": "aktie|5=0&20=1",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 15.4,
+      "rueckblick": {
+        "quote": 28.48,
+        "ev": 36.9,
+        "se": 18.3,
+        "faelle": 467
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|3=0&20=1|3S150|10",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Großvertrag (8-K 1.01): Großvertrag: Reaktion am Vortag",
+      "gruppenSchluessel": "aktie|3=0&20=1",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 13.2,
+      "rueckblick": {
+        "quote": 24.64,
+        "ev": 31.9,
+        "se": 17.7,
+        "faelle": 414
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|4=0&12=1|2S150N|10",
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): unter 0,5 und Tagesrendite über dem Markt %: -20 bis -5",
+      "gruppenSchluessel": "aktie|4=0&12=1",
+      "sp": "2S150N",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 11.7,
+      "rueckblick": {
+        "quote": 20.31,
+        "ev": 26.3,
+        "se": 15.2,
+        "faelle": 852
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|0=1&25=2|3S150|10",
+      "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und VIX-Änderung 5 Tage: VIX ruhig (−5 bis +5 %)",
+      "gruppenSchluessel": "aktie|0=1&25=2",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 11.5,
+      "rueckblick": {
+        "quote": 29.13,
+        "ev": 32.2,
+        "se": 21.9,
+        "faelle": 2849
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|12=0&25=2|3S150|10",
+      "gruppe": "Aktien: Tagesrendite über dem Markt %: unter -20 und VIX-Änderung 5 Tage: VIX ruhig (−5 bis +5 %)",
+      "gruppenSchluessel": "aktie|12=0&25=2",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 9.4,
+      "rueckblick": {
+        "quote": 31.42,
+        "ev": 33.5,
+        "se": 20.6,
+        "faelle": 646
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|1=5&28=1|2S150|10",
+      "gruppe": "Aktien: 5-Tage-Rendite %: ab 30 und Markt 5 Tage: Markt 5 Tage −3 bis −1 %",
+      "gruppenSchluessel": "aktie|1=5&28=1",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 9.3,
+      "rueckblick": {
+        "quote": 29.12,
+        "ev": 33.8,
+        "se": 23.3,
+        "faelle": 807
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|18=3&27=3|3S150|10",
+      "gruppe": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen und Marktbreite: 60 bis 75 % im Plus",
+      "gruppenSchluessel": "aktie|18=3&27=3",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 9.3,
+      "rueckblick": {
+        "quote": 27.72,
+        "ev": 34.2,
+        "se": 22.5,
+        "faelle": 451
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|7=1&21=3|2S150|10",
+      "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,2 bis 0,5 und Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 6 bis 20 Handelstagen",
+      "gruppenSchluessel": "aktie|7=1&21=3",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 8.3,
+      "rueckblick": {
+        "quote": 16.3,
+        "ev": 30,
+        "se": 20.7,
+        "faelle": 276
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|5=0&17=2|2S150|10",
+      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen",
+      "gruppenSchluessel": "aktie|5=0&17=2",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 7.8,
+      "rueckblick": {
+        "quote": 26.09,
+        "ev": 24.4,
+        "se": 15.8,
+        "faelle": 548
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|4=0&18=3|3S150|10",
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): unter 0,5 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
+      "gruppenSchluessel": "aktie|4=0&18=3",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 7.5,
+      "rueckblick": {
+        "quote": 29.17,
+        "ev": 35.9,
+        "se": 26.3,
+        "faelle": 288
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|0=1&13=3|2S150N|10",
+      "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Markt am Stichtag %: 0,5 bis 2",
+      "gruppenSchluessel": "aktie|0=1&13=3",
+      "sp": "2S150N",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 7.3,
+      "rueckblick": {
+        "quote": 16.53,
+        "ev": 23.8,
+        "se": 18.9,
+        "faelle": 1113
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|0=0&25=2|2S150|10",
+      "gruppe": "Aktien: Tagesrendite %: unter -25 und VIX-Änderung 5 Tage: VIX ruhig (−5 bis +5 %)",
+      "gruppenSchluessel": "aktie|0=0&25=2",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 6.8,
+      "rueckblick": {
+        "quote": 28.93,
+        "ev": 31.1,
+        "se": 24.7,
+        "faelle": 363
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|12=1&17=1|2S150|10",
+      "gruppe": "Aktien: Tagesrendite über dem Markt %: -20 bis -5 und Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Vortag",
+      "gruppenSchluessel": "aktie|12=1&17=1",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 6.2,
+      "rueckblick": {
+        "quote": 27,
+        "ev": 49.1,
+        "se": 23.3,
+        "faelle": 300
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|21=3&27=3|3S150|10",
+      "gruppe": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 6 bis 20 Handelstagen und Marktbreite: 60 bis 75 % im Plus",
+      "gruppenSchluessel": "aktie|21=3&27=3",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 6.1,
+      "rueckblick": {
+        "quote": 20.63,
+        "ev": 37.4,
+        "se": 25.2,
+        "faelle": 286
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|8=3&18=3|2S150N|10",
+      "gruppe": "Aktien: Kurslücke %: 3 bis 10 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
+      "gruppenSchluessel": "aktie|8=3&18=3",
+      "sp": "2S150N",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 5.8,
+      "rueckblick": {
+        "quote": 20.87,
+        "ev": 33.8,
+        "se": 24.5,
+        "faelle": 230
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|3=0&17=1|2S150|10",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Vortag",
+      "gruppenSchluessel": "aktie|3=0&17=1",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 5.5,
+      "rueckblick": {
+        "quote": 23.5,
+        "ev": 39.9,
+        "se": 20.7,
+        "faelle": 349
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|8=3&17=2|3S150|10",
+      "gruppe": "Aktien: Kurslücke %: 3 bis 10 und Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen",
+      "gruppenSchluessel": "aktie|8=3&17=2",
+      "sp": "3S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 5.3,
+      "rueckblick": {
+        "quote": 28.52,
+        "ev": 26.5,
+        "se": 20,
+        "faelle": 526
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|10=3&21=3|2S150|10",
+      "gruppe": "Aktien: Ø Tagesumsatz: 20000000 bis 100000000 und Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 6 bis 20 Handelstagen",
+      "gruppenSchluessel": "aktie|10=3&21=3",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 4.7,
+      "rueckblick": {
+        "quote": 21.96,
+        "ev": 33.4,
+        "se": 20.9,
+        "faelle": 296
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|9=2&24=2|10L150|10",
+      "gruppe": "Aktien: Schwankung je Tag %: 2 bis 4 und VIX (Angstbarometer): VIX 20 bis 25",
+      "gruppenSchluessel": "aktie|9=2&24=2",
+      "sp": "10L150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 3.4,
+      "rueckblick": {
+        "quote": 31.01,
+        "ev": 27.3,
+        "se": 23.7,
+        "faelle": 19003
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|15=3&16=5|3L150|10",
+      "gruppe": "Aktien: Quartalszahlen: vor 6 bis 20 Handelstagen und Branche: Energie/Rohstoffe",
+      "gruppenSchluessel": "aktie|15=3&16=5",
+      "sp": "3L150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 3.2,
+      "rueckblick": {
+        "quote": 15.46,
+        "ev": 23.1,
+        "se": 14.5,
+        "faelle": 1184
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|12=0&30=2|2S150|10",
+      "gruppe": "Aktien: Tagesrendite über dem Markt %: unter -20 und Leerverkäufe gegen den eigenen Schnitt: Leerverkäufe wie sonst (±5 Punkte)",
+      "gruppenSchluessel": "aktie|12=0&30=2",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 2.6,
+      "rueckblick": {
+        "quote": 26.2,
+        "ev": 19.5,
+        "se": 16.3,
+        "faelle": 664
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|1=1&24=2|5L150|10",
+      "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und VIX (Angstbarometer): VIX 20 bis 25",
+      "gruppenSchluessel": "aktie|1=1&24=2",
+      "sp": "5L150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 2.5,
+      "rueckblick": {
+        "quote": 31.36,
+        "ev": 37.3,
+        "se": 35.6,
+        "faelle": 6390
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|3=3&12=0|5S150|10",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 2 bis 5 und Tagesrendite über dem Markt %: unter -20",
+      "gruppenSchluessel": "aktie|3=3&12=0",
+      "sp": "5S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 2.4,
+      "rueckblick": {
+        "quote": 32.12,
+        "ev": 28,
+        "se": 23.3,
+        "faelle": 523
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|9=3&24=2|3L150N|10",
+      "gruppe": "Aktien: Schwankung je Tag %: 4 bis 8 und VIX (Angstbarometer): VIX 20 bis 25",
+      "gruppenSchluessel": "aktie|9=3&24=2",
+      "sp": "3L150N",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 2.4,
+      "rueckblick": {
+        "quote": 15.03,
+        "ev": 23.4,
+        "se": 24.4,
+        "faelle": 7583
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "aktie|19=3&29=3|5S150|10",
+      "gruppe": "Aktien: Großaktionär (13D): 13D-Meldung vor 6 bis 20 Handelstagen und Leerverkaufsanteil: Leerverkaufsanteil 60 bis 75 %",
+      "gruppenSchluessel": "aktie|19=3&29=3",
+      "sp": "5S150",
+      "fenster": 10,
+      "seit": "2026-11-16",
+      "wertung": 2.3,
+      "rueckblick": {
+        "quote": 26.55,
+        "ev": 23.9,
+        "se": 23.5,
+        "faelle": 275
+      },
+      "status": "vorwaertstest"
     }
   ]
 }
