@@ -36,6 +36,7 @@ import { boersenwertCsv, krakenZuSymbol, parseBoersenwertCsv, parseGeckoChart, p
 import { ciksAusTagesverzeichnis, MELDUNG_ARTEN, MELDUNGEN_STUFE, meldungenAusSeite, meldungenErfasst, meldungenVereinen, NACHFASS_FORMULARE, parseSubmissions, secTickerKarte, zahlenAusSeite, zahlenVereinen, type ZahlenArchiv } from '../core/volltreffer/zahlen.ts';
 import { parseVixCsv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { finraDatei, leerverkaufCsv, parseFinraShvol } from '../core/volltreffer/leerverkauf.ts';
+import { leerbestandCsv, parseFinraShortInterest, stichtagKandidaten } from '../core/volltreffer/leerbestand.ts';
 import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, quartaleZwischen, quartalsEnde, quartalVon, type InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
@@ -68,6 +69,8 @@ interface Index {
   umfeld?: { vixTage: number; vixLetzterTag: string | null; geholt: string };
   /** Leerverkaufsvolumen je US-Handelstag (leerverkauf/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
   leerverkauf?: Record<string, { werte: number; geholt: string }>;
+  /** Leerverkaufsbestand je FINRA-Stichtag (leerbestand/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
+  leerbestand?: Record<string, { werte: number; veroeffentlicht: string | null; geholt: string }>;
   /** Insider-Käufe (stamm/insider.json.gz) in Zählungen */
   insider?: { kaeufe: number; kuerzel: number; quartale: number; tage: number; ab: string | null; bis: string | null; geholt: string };
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
@@ -84,7 +87,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,leerverkauf,insider').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,leerverkauf,leerbestand,insider').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -677,6 +680,55 @@ async function leerverkauf() {
   console.log(`Leerverkauf (FINRA): ${geholt} Tage geholt, ${fehlt} nicht vorhanden; Archiv: ${da.length} Tage (${da[0] ?? '–'} bis ${da[da.length - 1] ?? '–'}).`);
 }
 
+// ---------- Leerverkaufsbestand (FINRA Equity Short Interest, zwei Stichtage im Monat, frei abrufbar) ----------
+// Neueste zuerst. Je Stichtag eine Datei (rund 22.500 Werte, ~2,7 MB); der Zeitpunkt der Veröffentlichung kommt aus
+// Last-Modified und steht in der Archivdatei – der Rückblick nutzt einen Stichtag erst ab diesem Tag.
+async function leerbestand() {
+  const heute = iso.slice(0, 10);
+  const ab = tagPlus(heute, -Math.round(2 * 365.25) - 45);
+  const max = Number(process.env.LEERBESTAND_MAX) > 0 ? Math.floor(Number(process.env.LEERBESTAND_MAX)) : 60;
+  const idx = (index.leerbestand ??= {});
+  const usHandelstag = (d: string) => ![0, 6].includes(new Date(`${d}T12:00:00Z`).getUTCDay()) && !nyseFeiertage.has(d);
+  // Halbmonate von heute rückwärts; je Halbmonat die Kandidaten (Regeltag zuerst)
+  const halbmonate: string[][] = [];
+  for (let j = Number(heute.slice(0, 4)), m = Number(heute.slice(5, 7)); `${j}-${String(m).padStart(2, '0')}-31` >= ab; m === 1 ? ((m = 12), j--) : m--) {
+    const [mitte, ende] = stichtagKandidaten(j, m, usHandelstag);
+    for (const k of [ende, mitte]) if (k.length && k[0] < heute && k[0] >= ab) halbmonate.push(k);
+  }
+  let geholt = 0;
+  let offen = 0;
+  for (const kandidaten of halbmonate) {
+    if (geholt >= max) break;
+    if (kandidaten.some((d) => idx[d] || existsSync(pfad('leerbestand', d)))) continue;
+    let gefunden = false;
+    for (const d of kandidaten) {
+      const r = await fetch(`https://cdn.finra.org/equity/otcmarket/biweekly/shrt${d.replace(/-/g, '')}.csv`, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(120000) });
+      await pause(150);
+      if (r.status === 403 || r.status === 404) {
+        await r.arrayBuffer().catch(() => undefined);
+        continue;
+      }
+      if (r.status !== 200) throw new Error(`FINRA-Bestand ${d}: HTTP ${r.status}`);
+      const m = parseFinraShortInterest(await r.text());
+      if (m.size < 5000) throw new Error(`FINRA-Bestand ${d}: nur ${m.size} Werte`);
+      const lm = Date.parse(r.headers.get('last-modified') ?? '');
+      const veroeffentlicht = Number.isFinite(lm) ? new Date(lm).toISOString() : null;
+      ablegen('leerbestand', d, leerbestandCsv(m, veroeffentlicht));
+      idx[d] = { werte: m.size, veroeffentlicht, geholt: iso };
+      geholt++;
+      gefunden = true;
+      break;
+    }
+    if (!gefunden) {
+      offen++;
+      // 30 Tage nach dem Regeltag immer noch nichts → gibt es nicht, nicht jedes Mal neu fragen
+      if (kandidaten[0] < tagPlus(heute, -30)) idx[kandidaten[0]] = { werte: 0, veroeffentlicht: null, geholt: iso };
+    }
+  }
+  const da = Object.keys(idx).filter((d) => idx[d].werte > 0).sort();
+  console.log(`Leerverkaufsbestand (FINRA): ${geholt} Stichtage geholt, ${offen} noch nicht veröffentlicht; Archiv: ${da.length} Stichtage (${da[0] ?? '–'} bis ${da[da.length - 1] ?? '–'}).`);
+}
+
 // ---------- Insider-Käufe (SEC Formular 4): Quartals-Datensätze für die Geschichte, einzelne Meldungen danach ----------
 async function insider() {
   const kontakt = process.env.SEC_KONTAKT?.trim();
@@ -859,6 +911,7 @@ const TEILE = [
   ['zahlen', 'Zahlen-Termine (SEC)', zahlen],
   ['umfeld', 'Marktumfeld', umfeld],
   ['leerverkauf', 'Leerverkauf (FINRA)', leerverkauf],
+  ['leerbestand', 'Leerverkaufsbestand (FINRA)', leerbestand],
   ['insider', 'Insider-Käufe (SEC)', insider],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
@@ -911,7 +964,11 @@ const stand = {
     const da = Object.keys(index.leerverkauf ?? {}).filter((d) => index.leerverkauf![d].werte > 0).sort();
     return { tage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };
   })(),
-  neu: neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
+  leerbestand: (() => {
+    const da = Object.keys(index.leerbestand ?? {}).filter((d) => index.leerbestand![d].werte > 0).sort();
+    return { stichtage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };
+  })(),
+  neu:neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };
 console.log(`Archiv: neu ${neu.length > 12 ? `${neu.length} Dateien` : neu.join(', ') || '–'} · in Folge: gettex ${stand.gettex.inFolge}, US ${stand.us.inFolge}, Krypto ${stand.krypto.inFolge} · Historie: US ${stand.historie.usTage} Tage ab ${stand.historie.usAb ?? '–'}, Krypto-Kerzen ${stand.historie.kryptoKerzenTage} Tage${fehler.length ? ` · ${fehler.length} Fehler` : ''}`);

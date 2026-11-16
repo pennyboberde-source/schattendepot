@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       teile:
-        description: 'us, kryptokerzen, ussplits, zahlen, leerverkauf, insider (mit Komma)'
+        description: 'us, kryptokerzen, ussplits, zahlen, leerverkauf, leerbestand, insider (mit Komma)'
         default: 'us,kryptokerzen,ussplits'
       us_ab:
         description: 'US ab diesem Tag (JJJJ-MM-TT; leer = vor 2 Jahren und 5 Tagen)'
