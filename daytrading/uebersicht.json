@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T13:19:19.327Z",
+  "stand": "2026-11-17T13:34:49.884Z",
   "heute": {
     "datum": "2026-11-17",
     "gruppe": {
@@ -573,6 +573,47 @@
         "stueck": 1124.859392,
         "kurswert": 1000
       }
+    },
+    {
+      "id": "2026-11-17-scan-deutsche-lufthansa-reg",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE LUFTHANSA-REG",
+      "isin": "DE0008232125",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 10.6152,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T13:15:00.000Z",
+        "kurs": 8.872,
+        "level": 8.878,
+        "spanne": {
+          "hoch": 8.98,
+          "tief": 8.878
+        },
+        "richtung": "short"
+      },
+      "stop": 8.929,
+      "ziel": 8.68,
+      "zielR": 2,
+      "flatBis": "2026-11-17T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T13:20:00.000Z",
+        "basisKurs": 8.846,
+        "kurs": 1.7736,
+        "stueck": 563,
+        "kurswert": 998.54
+      }
     }
   ],
   "trades": [
@@ -779,6 +820,47 @@
         "kurs": 0.889,
         "stueck": 1124.859392,
         "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-17-scan-deutsche-lufthansa-reg",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE LUFTHANSA-REG",
+      "isin": "DE0008232125",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 10.6152,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T13:15:00.000Z",
+        "kurs": 8.872,
+        "level": 8.878,
+        "spanne": {
+          "hoch": 8.98,
+          "tief": 8.878
+        },
+        "richtung": "short"
+      },
+      "stop": 8.929,
+      "ziel": 8.68,
+      "zielR": 2,
+      "flatBis": "2026-11-17T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T13:20:00.000Z",
+        "basisKurs": 8.846,
+        "kurs": 1.7736,
+        "stueck": 563,
+        "kurswert": 998.54
       }
     },
     {
@@ -10604,7 +10686,7 @@
       "oeNettoProzent": -0.55,
       "oeR": 0.88
     },
-    "offen": 5,
+    "offen": 6,
     "gruppen": {
       "turbo": {
         "anzahl": 68,
@@ -10679,10 +10761,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 189,
-        "chance": 40.7,
+        "faelle": 190,
+        "chance": 41.1,
         "oeNetto": -0.07,
-        "wertung": -0.19
+        "wertung": -0.18
       }
     },
     "krypto:orb_long": {
@@ -10690,10 +10772,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 85,
-        "chance": 35.3,
-        "oeNetto": -0.06,
-        "wertung": -0.12
+        "faelle": 86,
+        "chance": 36,
+        "oeNetto": -0.05,
+        "wertung": -0.11
       }
     },
     "us:orb_short": {
