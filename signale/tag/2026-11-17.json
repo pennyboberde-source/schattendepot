@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-17T04:56:49.971Z",
-  "anzahl": 212,
+  "stand": "2026-11-17T15:52:41.896Z",
+  "anzahl": 258,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-13",
@@ -230,7 +230,7 @@
       "t": "PCRX",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -566,7 +566,8 @@
         "Finnhub News",
         "CNBC Top News",
         "FAZ Finanzen",
-        "Handelsblatt Finanzen"
+        "Handelsblatt Finanzen",
+        "MarketWatch"
       ],
       "z": "2026-11-16T06:59:50.000Z"
     },
@@ -2791,7 +2792,7 @@
       "m": "us",
       "typ": "politik_wahrscheinlichkeit",
       "r": -1,
-      "st": 0.43,
+      "st": 1,
       "q": [
         "Polymarket (Politik)"
       ],
@@ -2805,11 +2806,626 @@
       "m": "eu",
       "typ": "politik_wahrscheinlichkeit",
       "r": 1,
-      "st": 0.43,
+      "st": 1,
       "q": [
         "Polymarket (Politik)"
       ],
       "z": "2026-11-17T04:56:49.971Z"
+    },
+    {
+      "id": "handelsstopp:NCT:2026-11-17",
+      "s": "T:NCT",
+      "n": "Intercont Cayman Cl A Ord Shs",
+      "t": "NCT",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SMX:2026-11-17",
+      "s": "T:SMX",
+      "n": "SMX Sc Mtr PLC Ord",
+      "t": "SMX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:OMH:2026-11-17",
+      "s": "T:OMH",
+      "n": "Ohmyhome Ltd Ords A",
+      "t": "OMH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CUE:2026-11-17",
+      "s": "T:CUE",
+      "n": "Cue Biopharma, Inc. CM",
+      "t": "CUE",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.8,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SLS:2026-11-17",
+      "s": "T:SLS",
+      "n": "SELLAS Life Sciences Gp Cmn",
+      "t": "SLS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PAVS:2026-11-17",
+      "s": "T:PAVS",
+      "n": "Paranovus Entrmt Tech Cl A Ord",
+      "t": "PAVS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:JSPR:2026-11-17",
+      "s": "T:JSPR",
+      "n": "Jasper Therapeutics, Inc.",
+      "t": "JSPR",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:QNRX:2026-11-17",
+      "s": "T:QNRX",
+      "n": "Quoin Pharmaceuticals ADR",
+      "t": "QNRX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BKHAU:2026-11-17",
+      "s": "T:BKHAU",
+      "n": "Black Hawk Acquisition Corpora",
+      "t": "BKHAU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RILYL:2026-11-17",
+      "s": "T:RILYL",
+      "n": "BRC Grp Dep Sh 7.375 Pref Stk",
+      "t": "RILYL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MPU:2026-11-17",
+      "s": "T:MPU",
+      "n": "Mega Matrix Inc. Class A Ordinary Shares",
+      "t": "MPU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MDRN:2026-11-17",
+      "s": "T:MDRN",
+      "n": "Modern Mining Technology Corp. Common Shares",
+      "t": "MDRN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BGIN:2026-11-17",
+      "s": "T:BGIN",
+      "n": "Bgin Blockchain Limitd Cl A OS",
+      "t": "BGIN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GIBO:2026-11-17",
+      "s": "T:GIBO",
+      "n": "GIBO Holdings Limited Cl A OS",
+      "t": "GIBO",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:UFG:2026-11-17",
+      "s": "T:UFG",
+      "n": "Uni-Fuels Hldgs Ord A",
+      "t": "UFG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:LUNC:2026-11-17",
+      "s": "T:LUNC",
+      "n": "Longnook Uncommon Compounders ETF",
+      "t": "LUNC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SPCI:2026-11-17",
+      "s": "T:SPCI",
+      "n": "Tuttle Capital Space Industry Income Blast ETF",
+      "t": "SPCI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SFWL:2026-11-17",
+      "s": "T:SFWL",
+      "n": "Shengfeng Development Os",
+      "t": "SFWL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:FHIL:2026-11-17",
+      "s": "T:FHIL",
+      "n": "Federated Hermes International Leaders ETF",
+      "t": "FHIL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GALX:2026-11-17",
+      "s": "T:GALX",
+      "n": "VistaShares Space Supercycle ETF",
+      "t": "GALX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:VRSA:2026-11-17",
+      "s": "T:VRSA",
+      "n": "Versa Bancorp Cmn Stk",
+      "t": "VRSA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SVCCU:2026-11-17",
+      "s": "T:SVCCU",
+      "n": "Stellar V Cap Cp Ut",
+      "t": "SVCCU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SVCCW:2026-11-17",
+      "s": "T:SVCCW",
+      "n": "Stellar V Cap Wts",
+      "t": "SVCCW",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SVCC:2026-11-17",
+      "s": "T:SVCC",
+      "n": "Stellar V Cap Ord A",
+      "t": "SVCC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "verwaesserung:TVGN:2026-11-17",
+      "s": "T:TVGN",
+      "n": "Tevogen Inc.",
+      "t": "TVGN",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-17T02:37:55.000Z"
+    },
+    {
+      "id": "verwaesserung:AZR:2026-11-17",
+      "s": "T:AZR",
+      "n": "Azora Therapeutics, Inc. (DE)",
+      "t": "AZR",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.3,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-17T02:45:56.000Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-11-17",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-17T08:52:45.000Z"
+    },
+    {
+      "id": "nachricht:DBK:2026-11-17",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.62,
+      "q": [
+        "tagesschau Wirtschaft",
+        "BTC-ECHO",
+        "Handelsblatt Finanzen",
+        "CNBC Top News"
+      ],
+      "z": "2026-11-17T09:42:53.000Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-11-17",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-17T13:58:07.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.BTC:2026-11-17",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-17T14:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.ETH:2026-11-17",
+      "s": "K:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-17T14:00:00.000Z"
+    },
+    {
+      "id": "nachricht:DIS:2026-11-17",
+      "s": "T:DIS",
+      "n": "Disney",
+      "t": "DIS",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "CNBC Top News",
+        "FAZ Finanzen"
+      ],
+      "z": "2026-11-17T14:15:14.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF138L2:2026-11-17",
+      "s": "I:DE000HF138L2",
+      "n": "DE000HF138L2",
+      "i": "DE000HF138L2",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-17T15:42:04.356Z"
+    },
+    {
+      "id": "kursrakete:DE000HF138U3:2026-11-17",
+      "s": "I:DE000HF138U3",
+      "n": "DE000HF138U3",
+      "i": "DE000HF138U3",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.66,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-17T15:44:00.851Z"
+    },
+    {
+      "id": "kursrakete:DE000HF13897:2026-11-17",
+      "s": "I:DE000HF13897",
+      "n": "DE000HF13897",
+      "i": "DE000HF13897",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-17T15:44:55.685Z"
+    },
+    {
+      "id": "upbit_warnung:K.BREV:2026-11-17",
+      "s": "K:BREV",
+      "n": "Brevis",
+      "t": "BREV",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "kursrakete:K.BREV:2026-11-17",
+      "s": "K:BREV",
+      "n": "Brevis",
+      "t": "BREV",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 1,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:RHM:2026-11-17:ukraine_russland",
+      "s": "T:RHM",
+      "n": "Rheinmetall",
+      "t": "RHM.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.9,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:HAG:2026-11-17:ukraine_russland",
+      "s": "T:HAG",
+      "n": "Hensoldt",
+      "t": "HAG.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.9,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:R3NK:2026-11-17:ukraine_russland",
+      "s": "T:R3NK",
+      "n": "Renk",
+      "t": "R3NK.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.9,
+      "q": [
+        "tagesschau Ausland"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:XOM:2026-11-17:nahost_oel",
+      "s": "T:XOM",
+      "n": "Exxon Mobil",
+      "t": "XOM",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:LHA:2026-11-17:nahost_oel",
+      "s": "T:LHA",
+      "n": "Lufthansa",
+      "t": "LHA.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:NVDA:2026-11-17:chips_rechenzentren",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.55,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:AMD:2026-11-17:chips_rechenzentren",
+      "s": "T:AMD",
+      "n": "AMD",
+      "t": "AMD",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.55,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:AVGO:2026-11-17:chips_rechenzentren",
+      "s": "T:AVGO",
+      "n": "Broadcom",
+      "t": "AVGO",
+      "m": "us",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.55,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
+    },
+    {
+      "id": "politik_massnahme:IFX:2026-11-17:chips_rechenzentren",
+      "s": "T:IFX",
+      "n": "Infineon",
+      "t": "IFX.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.55,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-17T15:52:41.896Z"
     }
   ]
 }
