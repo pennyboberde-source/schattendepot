@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T11:30:22.508Z",
+  "stand": "2026-11-17T11:45:54.442Z",
   "heute": {
     "datum": "2026-11-17",
     "gruppe": {
@@ -485,47 +485,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-ohb-se",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "OHB SE",
-      "isin": "DE0005936124",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 202.08,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T09:05:00.000Z",
-        "kurs": 168.4,
-        "level": 168.8,
-        "spanne": {
-          "hoch": 173,
-          "tief": 168.8
-        },
-        "richtung": "short"
-      },
-      "stop": 170.9,
-      "ziel": 163.4,
-      "zielR": 2,
-      "flatBis": "2026-11-17T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T09:05:00.000Z",
-        "basisKurs": 168.4,
-        "kurs": 3.3764,
-        "stueck": 296,
-        "kurswert": 999.41
-      }
-    },
-    {
       "id": "2026-11-17-scan-var-energi-asa",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -671,36 +630,70 @@
       }
     },
     {
-      "id": "2026-11-17-scan-sol-2",
+      "id": "2026-11-17-scan-ada",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
       "markt": "krypto",
       "setup": "orb",
       "richtung": "long",
       "instrument": "krypto",
-      "name": "SOL",
-      "symbol": "SOL",
+      "name": "ADA",
+      "symbol": "ADA",
       "spekulativ": true,
       "ausloeser": {
-        "zeit": "2026-11-17T11:20:00.000Z",
-        "kurs": 66.33,
-        "level": 66.32,
+        "zeit": "2026-11-17T11:35:00.000Z",
+        "kurs": 0.139957,
+        "level": 0.1397,
         "spanne": {
-          "hoch": 66.32,
-          "tief": 66.02
+          "hoch": 0.139733,
+          "tief": 0.139212
         },
         "richtung": "long"
       },
-      "stop": 66.17,
-      "ziel": 66.71,
+      "stop": 0.1395,
+      "ziel": 0.1412,
       "zielR": 2,
       "flatBis": "2026-11-17T20:55:00.000Z",
       "virtuell": true,
       "einstieg": {
-        "zeit": "2026-11-17T11:20:00.000Z",
-        "basisKurs": 66.35,
-        "kurs": 66.516,
-        "stueck": 15.033976,
+        "zeit": "2026-11-17T11:35:00.000Z",
+        "basisKurs": 0.140054,
+        "kurs": 0.1404,
+        "stueck": 7122.507122,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-17-scan-btc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T11:40:00.000Z",
+        "kurs": 58872.1,
+        "level": 58846.3,
+        "spanne": {
+          "hoch": 58846.3,
+          "tief": 58653.8
+        },
+        "richtung": "long"
+      },
+      "stop": 58750.05,
+      "ziel": 59039.1,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T11:40:00.000Z",
+        "basisKurs": 58846.4,
+        "kurs": 58993.516,
+        "stueck": 0.016951,
         "kurswert": 1000
       }
     }
@@ -822,47 +815,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-ohb-se",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "OHB SE",
-      "isin": "DE0005936124",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 202.08,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T09:05:00.000Z",
-        "kurs": 168.4,
-        "level": 168.8,
-        "spanne": {
-          "hoch": 173,
-          "tief": 168.8
-        },
-        "richtung": "short"
-      },
-      "stop": 170.9,
-      "ziel": 163.4,
-      "zielR": 2,
-      "flatBis": "2026-11-17T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T09:05:00.000Z",
-        "basisKurs": 168.4,
-        "kurs": 3.3764,
-        "stueck": 296,
-        "kurswert": 999.41
-      }
-    },
-    {
       "id": "2026-11-17-scan-var-energi-asa",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -1008,6 +960,74 @@
       }
     },
     {
+      "id": "2026-11-17-scan-ada",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T11:35:00.000Z",
+        "kurs": 0.139957,
+        "level": 0.1397,
+        "spanne": {
+          "hoch": 0.139733,
+          "tief": 0.139212
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1395,
+      "ziel": 0.1412,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T11:35:00.000Z",
+        "basisKurs": 0.140054,
+        "kurs": 0.1404,
+        "stueck": 7122.507122,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-17-scan-btc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T11:40:00.000Z",
+        "kurs": 58872.1,
+        "level": 58846.3,
+        "spanne": {
+          "hoch": 58846.3,
+          "tief": 58653.8
+        },
+        "richtung": "long"
+      },
+      "stop": 58750.05,
+      "ziel": 59039.1,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T11:40:00.000Z",
+        "basisKurs": 58846.4,
+        "kurs": 58993.516,
+        "stueck": 0.016951,
+        "kurswert": 1000
+      }
+    },
+    {
       "id": "2026-11-17-scan-sol-2",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -1039,6 +1059,85 @@
         "kurs": 66.516,
         "stueck": 15.033976,
         "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T11:40:00.000Z",
+        "basisKurs": 66.71,
+        "kurs": 66.543,
+        "kurswert": 1000.41,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 0.41,
+        "bruttoProzent": 0.04,
+        "netto": -1.59,
+        "nettoProzent": -0.16,
+        "nettoTR": -1.59,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": 2
+      }
+    },
+    {
+      "id": "2026-11-17-scan-ohb-se",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "OHB SE",
+      "isin": "DE0005936124",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 202.08,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T09:05:00.000Z",
+        "kurs": 168.4,
+        "level": 168.8,
+        "spanne": {
+          "hoch": 173,
+          "tief": 168.8
+        },
+        "richtung": "short"
+      },
+      "stop": 170.9,
+      "ziel": 163.4,
+      "zielR": 2,
+      "flatBis": "2026-11-17T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T09:05:00.000Z",
+        "basisKurs": 168.4,
+        "kurs": 3.3764,
+        "stueck": 296,
+        "kurswert": 999.41
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T11:20:00.000Z",
+        "basisKurs": 171.2,
+        "kurs": 3.0803,
+        "kurswert": 911.77,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -87.64,
+        "bruttoProzent": -8.77,
+        "netto": -87.64,
+        "nettoProzent": -8.77,
+        "nettoTR": -89.64,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.12
       }
     },
     {
@@ -10454,56 +10553,56 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 87,
+      "anzahl": 89,
       "treffer": 34,
-      "quote": 39.1,
-      "netto": -1066.46,
-      "brutto": -1022.46,
-      "nettoTR": -1196.46,
-      "oeNettoProzent": -1.23,
-      "oeR": 0.17
+      "quote": 38.2,
+      "netto": -1155.69,
+      "brutto": -1109.69,
+      "nettoTR": -1287.69,
+      "oeNettoProzent": -1.31,
+      "oeR": 0.18
     },
     "heute": {
-      "anzahl": 8,
+      "anzahl": 10,
       "treffer": 5,
-      "quote": 62.5,
-      "netto": 115.7,
-      "brutto": 117.7,
-      "nettoTR": 101.7,
-      "oeNettoProzent": 1.45,
-      "oeR": 1.22
+      "quote": 50,
+      "netto": 26.47,
+      "brutto": 30.47,
+      "nettoTR": 10.47,
+      "oeNettoProzent": 0.27,
+      "oeR": 1.06
     },
     "offen": 7,
     "gruppen": {
       "turbo": {
-        "anzahl": 65,
+        "anzahl": 66,
         "treffer": 25,
-        "quote": 38.5,
-        "netto": -958.18,
-        "brutto": -958.18,
-        "nettoTR": -1088.18,
-        "oeNettoProzent": -1.49,
-        "oeR": 0.02
+        "quote": 37.9,
+        "netto": -1045.82,
+        "brutto": -1045.82,
+        "nettoTR": -1177.82,
+        "oeNettoProzent": -1.6,
+        "oeR": 0
       },
       "short": {
-        "anzahl": 65,
+        "anzahl": 66,
         "treffer": 25,
-        "quote": 38.5,
-        "netto": -958.18,
-        "brutto": -958.18,
-        "nettoTR": -1088.18,
-        "oeNettoProzent": -1.49,
-        "oeR": 0.02
+        "quote": 37.9,
+        "netto": -1045.82,
+        "brutto": -1045.82,
+        "nettoTR": -1177.82,
+        "oeNettoProzent": -1.6,
+        "oeR": 0
       },
       "krypto": {
-        "anzahl": 22,
+        "anzahl": 23,
         "treffer": 9,
-        "quote": 40.9,
-        "netto": -108.28,
-        "brutto": -64.28,
-        "nettoTR": -108.28,
-        "oeNettoProzent": -0.49,
-        "oeR": 0.63
+        "quote": 39.1,
+        "netto": -109.87,
+        "brutto": -63.87,
+        "nettoTR": -109.87,
+        "oeNettoProzent": -0.48,
+        "oeR": 0.69
       }
     }
   },
@@ -10559,9 +10658,9 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 82,
-        "chance": 32.9,
-        "oeNetto": -0.07,
+        "faelle": 83,
+        "chance": 33.7,
+        "oeNetto": -0.06,
         "wertung": -0.13
       }
     },
