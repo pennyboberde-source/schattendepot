@@ -96,3 +96,25 @@ export function hebelDa(stand: HebelStand | undefined, richtung: 'long' | 'short
   const [g, a] = richtung === 'long' ? stand.l : stand.s;
   return g > 0 || (!nurGettex && a > 0);
 }
+
+/**
+ * Produkt-ISINs an gettex je US-Basiswert (B Stufe 2a, 17.11.2026): damit der Archivlauf die gettex-Kursstellungen genau der
+ * Hebelprodukte mitschreiben kann, die zu Werten auf der Lauerliste bzw. in Jagden passen. 'C' = Call/Long, 'P' = Put/Short.
+ */
+export class GettexProdukte {
+  private je = new Map<string, [string, 'C' | 'P'][]>();
+  private mic: string;
+  constructor(gettexMic: string) {
+    this.mic = gettexMic;
+  }
+  add(p: HebelProdukt) {
+    if (p.mic !== this.mic) return;
+    const l = this.je.get(p.basis) ?? this.je.set(p.basis, []).get(p.basis)!;
+    l.push([p.isin, p.richtung === 'long' ? 'C' : 'P']);
+  }
+  ergebnis(): Record<string, [string, 'C' | 'P'][]> {
+    const aus: Record<string, [string, 'C' | 'P'][]> = {};
+    for (const [b, l] of [...this.je.entries()].sort(([a], [c]) => a.localeCompare(c))) aus[b] = [...new Map(l.map((x) => [x[0], x])).values()].sort((a, c) => a[0].localeCompare(c[0]));
+    return aus;
+  }
+}

@@ -81,5 +81,12 @@
       "DUSB"
     ],
     "minuten": 8
+  },
+  "hebelkurse": {
+    "hinweis": "B Stufe 2a (Nutzer 16.11.: „Ja, morgen oder übermorgen“; gebaut 17.11.): Im gettex-Teil werden die Zeilen der Hebelprodukte mitgeschrieben, die laut FIRDS (stamm/gettex-produkte.json.gz) zu Werten auf der Lauerliste, in offenen Jagden und sichtbaren Volltreffer-Orders passen – in deren Richtung, je Basiswert und Richtung höchstens produkteJeRichtung Produkte gleichmäßig verteilt. Geschäfte immer, Kursstellungen (Stück 0) nur in jedem kursstellungJedesNteFenster-ten 15-Minuten-Fenster. Privat unter hebelkurse/JJJJ/<Tag>.csv.gz, nur anhängen. Auswertung (Hebel/Knock-out schätzen) ist Stufe 2b.",
+    "basiswerteMax": 60,
+    "produkteJeRichtung": 150,
+    "kursstellungJedesNteFenster": 2,
+    "quelle": "https://raw.githubusercontent.com/pennyboberde-source/schattendepot/daten/volltreffer/uebersicht.json"
   }
 }

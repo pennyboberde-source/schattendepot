@@ -37,7 +37,8 @@ import { ciksAusTagesverzeichnis, MELDUNG_ARTEN, MELDUNGEN_STUFE, meldungenAusSe
 import { parseAngst, parseStablecoins, parseVixCsv, type KryptoUmfeldArchiv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { finraDatei, leerverkaufCsv, parseFinraShvol } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandCsv, parseFinraShortInterest, stichtagKandidaten } from '../core/volltreffer/leerbestand.ts';
-import { FirdsLeser, HebelZaehler, type HebelStand } from '../core/volltreffer/firds.ts';
+import { FirdsLeser, GettexProdukte, HebelZaehler, type HebelStand } from '../core/volltreffer/firds.ts';
+import { hebelZeilen, produktAuswahl, richtungenAus, type ProdukteJeBasis } from '../core/volltreffer/hebelkurse.ts';
 import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, quartaleZwischen, quartalsEnde, quartalVon, type InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
@@ -74,6 +75,8 @@ interface Index {
   leerverkauf?: Record<string, { werte: number; geholt: string }>;
   /** Hebelprodukte je Basiswert (ESMA FIRDS) und Zuordnung ISIN → Kürzel in Zählungen */
   hebel?: { quelle: string | null; basiswerte: number; zugeordnet: number; offen: number; geholt: string };
+  /** B Stufe 2a: mitgeschriebene gettex-Zeilen passender Hebelprodukte je Tag (nur Zählungen) */
+  hebelkurse?: Record<string, { basiswerte: number; produkte: number; zeilen: number; geschaefte: number; geholt: string }>;
   /** Leerverkaufsbestand je FINRA-Stichtag (leerbestand/JJJJ/JJJJ-MM-TT.csv.gz); werte 0 = bei FINRA nicht vorhanden */
   leerbestand?: Record<string, { werte: number; veroeffentlicht: string | null; geholt: string }>;
   /** Insider-Käufe (stamm/insider.json.gz) in Zählungen */
@@ -579,12 +582,50 @@ async function zahlen() {
   if (abbruch) throw abbruch;
 }
 
+// ---------- B Stufe 2a: welche Hebelprodukte mitschreiben? ----------
+// Werte der öffentlichen Lauerliste, offenen Jagden und sichtbaren Volltreffer-Orders (Kürzel → Basiswert-ISIN über die
+// OpenFIGI-Zuordnung) in der Richtung ihrer Spielart. Fehlt etwas, wird nichts mitgeschrieben (null).
+async function hebelAuswahlLaden(): Promise<{ auswahl: Map<string, { b: string; t: 'C' | 'P' }>; jedesNte: number; basiswerte: number } | null> {
+  const hc = (cfg as { hebelkurse?: { basiswerteMax: number; produkteJeRichtung: number; kursstellungJedesNteFenster: number; quelle: string } }).hebelkurse;
+  const pd = join(ARCHIV, 'stamm', 'gettex-produkte.json.gz');
+  const zf = join(ARCHIV, 'stamm', 'isin-kuerzel.json');
+  if (!hc || !existsSync(pd) || !existsSync(zf)) return null;
+  try {
+    const r = await fetch(hc.quelle, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(30000) });
+    if (r.status !== 200) throw new Error(`HTTP ${r.status}`);
+    const u = (await r.json()) as Record<string, unknown>;
+    const faelle = ['offen', 'sichtbar', 'lauerliste'].flatMap((k) => (Array.isArray(u[k]) ? (u[k] as { wert?: string; markt?: string; spielart?: string }[]) : []));
+    const zu = JSON.parse(readFileSync(zf, 'utf8')) as Record<string, string | null>;
+    const isinsJe = new Map<string, string[]>();
+    for (const [isin, k] of Object.entries(zu)) if (k) isinsJe.set(k, [...(isinsJe.get(k) ?? []), isin]);
+    const wunsch = new Map<string, Set<'C' | 'P'>>();
+    const werte = new Set<string>();
+    for (const f of faelle) {
+      if (!f.wert || f.markt === 'krypto') continue;
+      if (!werte.has(f.wert) && werte.size >= hc.basiswerteMax) continue;
+      werte.add(f.wert);
+      for (const isin of isinsJe.get(f.wert.toUpperCase()) ?? []) {
+        const s = wunsch.get(isin) ?? wunsch.set(isin, new Set()).get(isin)!;
+        for (const t of richtungenAus(f.spielart ?? '')) s.add(t);
+      }
+    }
+    const produkte = (JSON.parse(gunzipSync(readFileSync(pd)).toString('utf8')) as { produkte: ProdukteJeBasis }).produkte;
+    const auswahl = produktAuswahl(produkte, wunsch, hc.produkteJeRichtung);
+    console.log(`Hebelkurse: ${werte.size} Werte, ${wunsch.size} Basiswert-ISINs, ${auswahl.size} Produkte an gettex ausgewählt.`);
+    return auswahl.size ? { auswahl, jedesNte: Math.max(1, hc.kursstellungJedesNteFenster), basiswerte: werte.size } : null;
+  } catch (e) {
+    console.log(`Hebelkurse: Auswahl nicht möglich (${(e as Error).message.slice(0, 80)}) – nur Tageskerzen.`);
+    return null;
+  }
+}
+
 // ---------- gettex: Tageskerzen je ISIN aus allen 15-Minuten-Dateien ----------
 async function gettex() {
   const b = berlin(jetzt);
   const tage = [tagPlus(b.datum, -1), b.datum].filter((d) => istHandelstag(d) && !index.gettex[d] && !existsSync(pfad('gettex', d)));
   if (!tage.length) return;
   const liste = await gettexDateiliste();
+  const hk = await hebelAuswahlLaden();
   for (const d of tage) {
     const schluss = berlinZuUtc(d, cfg.gettex.handelBis).getTime() + cfg.gettex.fertigNachMinuten * 60000;
     if (jetzt.getTime() < schluss) {
@@ -600,6 +641,7 @@ async function gettex() {
       continue;
     }
     const kerzen = new Map<string, Tageskerze>();
+    const hebelZiel: string[] = [];
     let geschaefte = 0;
     let abgelaufen = 0;
     const schlange = [...dateien];
@@ -621,6 +663,10 @@ async function gettex() {
           }
           if (csv === null) throw new Error(`gettex ${f.name}: nicht ladbar`);
           geschaefte += gettexZeilen(kerzen, csv);
+          if (hk && csv) {
+            const fensterNr = Math.round(Date.parse(`${f.schluessel.slice(0, 4)}-${f.schluessel.slice(4, 6)}-${f.schluessel.slice(6, 8)}T${f.schluessel.slice(8, 10)}:${f.schluessel.slice(10, 12)}:00Z`) / 900000);
+            hebelZeilen(hebelZiel, csv, hk.auswahl, fensterNr % hk.jedesNte === 0);
+          }
         }
       }),
     );
@@ -629,6 +675,15 @@ async function gettex() {
     const vollstaendig = st.vollstaendig && abgelaufen === 0;
     if (ablegen('gettex', d, gettexCsv(kerzen))) index.gettex[d] = { isins: kerzen.size, geschaefte, umsatz, fenster: st.fenster, erwartet: st.erwartet, vollstaendig, geholt: iso };
     console.log(`gettex ${d}: ${kerzen.size} ISINs, ${geschaefte} Geschäfte, ${st.fenster} von ${st.erwartet} Fenstern${vollstaendig ? '' : ' (UNVOLLSTÄNDIG – frühe Fenster waren schon abgelaufen)'}.`);
+    if (hk && hebelZiel.length) {
+      hebelZiel.sort((a, b) => a.slice(13, 21).localeCompare(b.slice(13, 21)) || a.localeCompare(b));
+      const geschaefteH = hebelZiel.filter((z) => !z.endsWith(',0')).length;
+      const kopf = `# basis je Produkt: siehe stamm/gettex-produkte.json.gz · Kursstellungen jedes ${hk.jedesNte}. Fenster\nisin,zeit,kurs,stueck\n`;
+      if (ablegen('hebelkurse', d, kopf + hebelZiel.join('\n') + '\n')) {
+        (index.hebelkurse ??= {})[d] = { basiswerte: hk.basiswerte, produkte: new Set(hebelZiel.map((z) => z.slice(0, 12))).size, zeilen: hebelZiel.length, geschaefte: geschaefteH, geholt: iso };
+        console.log(`Hebelkurse ${d}: ${hebelZiel.length} Zeilen (${geschaefteH} Geschäfte) von ${index.hebelkurse[d].produkte} Produkten auf ${hk.basiswerte} Basiswerte.`);
+      }
+    }
   }
 }
 
@@ -766,6 +821,7 @@ async function hebel() {
   const heute = iso.slice(0, 10);
   const frist = Math.min(Date.now() + hc.minuten * 60000, performance.timeOrigin + 34 * 60000);
   const datei = join(ARCHIV, 'stamm', 'gettex-hebel.json.gz');
+  const produkteDatei = join(ARCHIV, 'stamm', 'gettex-produkte.json.gz');
   let stand = existsSync(datei) ? (JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as { stand: string; quelle: string; basiswerte: Record<string, HebelStand> }) : null;
   // 1. neueste Vollliste
   const r = await fetch('https://registers.esma.europa.eu/solr/esma_registers_firds_files/select?q=file_name:FULINS_R*&fq=file_type:FULINS&sort=publication_date%20desc&wt=json&start=0&rows=80&fl=file_name,publication_date,download_link', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(60000) });
@@ -774,10 +830,11 @@ async function hebel() {
   const neuest = docs[0]?.publication_date.slice(0, 10) ?? null;
   const teile = docs.filter((d) => d.publication_date.slice(0, 10) === neuest).sort((a, b) => a.file_name.localeCompare(b.file_name));
   const soll = Number(/of(\d+)\.zip$/.exec(teile[0]?.file_name ?? '')?.[1] ?? 0);
-  if (neuest && stand?.quelle !== neuest) {
+  if (neuest && (stand?.quelle !== neuest || !existsSync(produkteDatei))) {
     if (!soll || teile.length !== soll) throw new Error(`FIRDS ${neuest}: ${teile.length} von ${soll} Teilen gelistet – nächster Lauf`);
     const leser = new FirdsLeser(heute);
     const zaehler = new HebelZaehler(hc.gettexMic, new Set(hc.andereMics));
+    const gp = new GettexProdukte(hc.gettexMic);
     let produkte = 0;
     for (const t of teile) {
       const z = await fetch(t.download_link, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(180000) });
@@ -790,6 +847,7 @@ async function hebel() {
         for (const pr of leser.teil(stueck))
           if (pr.basis.startsWith('US')) {
             zaehler.add(pr);
+            gp.add(pr);
             produkte++;
           }
       rmSync(tmp, { force: true });
@@ -798,6 +856,11 @@ async function hebel() {
     mkdirSync(dirname(datei), { recursive: true });
     writeFileSync(datei, gzipSync(Buffer.from(JSON.stringify(stand), 'utf8'), { level: 9 }));
     neu.push('stamm/gettex-hebel');
+    // B Stufe 2a: Produkt-ISINs an gettex je Basiswert (für die Mitschrift der Hebelkurse im gettex-Teil)
+    const gpe = gp.ergebnis();
+    writeFileSync(produkteDatei, gzipSync(Buffer.from(JSON.stringify({ stand: iso, quelle: neuest, produkte: gpe }), 'utf8'), { level: 9 }));
+    neu.push('stamm/gettex-produkte');
+    console.log(`gettex-Produkte (FIRDS ${neuest}): ${Object.values(gpe).reduce((a, l) => a + l.length, 0)} an gettex auf ${Object.keys(gpe).length} US-Basiswerte.`);
     console.log(`Hebelprodukte (FIRDS ${neuest}): ${produkte} Einträge auf US-Basiswerte an deutschen Plätzen, ${Object.keys(stand.basiswerte).length} Basiswerte.`);
   }
   // 2. Zuordnung ISIN → US-Kürzel (null = OpenFIGI kennt kein US-Kürzel)
