@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T12:01:36.853Z",
+  "stand": "2026-11-17T12:17:06.923Z",
   "heute": {
     "datum": "2026-11-17",
     "gruppe": {
@@ -403,47 +403,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-renk-group-ag",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "RENK GROUP AG",
-      "isin": "DE000RENK730",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 38.36,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-17T09:00:00.000Z",
-        "kurs": 32.01,
-        "level": 32.135,
-        "spanne": {
-          "hoch": 32.455,
-          "tief": 32.135
-        },
-        "richtung": "short"
-      },
-      "stop": 32.3,
-      "ziel": 31.31,
-      "zielR": 2,
-      "flatBis": "2026-11-17T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T09:00:00.000Z",
-        "basisKurs": 31.965,
-        "kurs": 6.411,
-        "stueck": 155,
-        "kurswert": 993.71
-      }
-    },
-    {
       "id": "2026-11-17-scan-var-energi-asa",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -658,47 +617,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-renk-group-ag",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "RENK GROUP AG",
-      "isin": "DE000RENK730",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 38.36,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-17T09:00:00.000Z",
-        "kurs": 32.01,
-        "level": 32.135,
-        "spanne": {
-          "hoch": 32.455,
-          "tief": 32.135
-        },
-        "richtung": "short"
-      },
-      "stop": 32.3,
-      "ziel": 31.31,
-      "zielR": 2,
-      "flatBis": "2026-11-17T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T09:00:00.000Z",
-        "basisKurs": 31.965,
-        "kurs": 6.411,
-        "stueck": 155,
-        "kurswert": 993.71
-      }
-    },
-    {
       "id": "2026-11-17-scan-var-energi-asa",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -875,6 +793,66 @@
         "kurs": 0.1404,
         "stueck": 7122.507122,
         "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-17-scan-renk-group-ag",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "RENK GROUP AG",
+      "isin": "DE000RENK730",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 38.36,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T09:00:00.000Z",
+        "kurs": 32.01,
+        "level": 32.135,
+        "spanne": {
+          "hoch": 32.455,
+          "tief": 32.135
+        },
+        "richtung": "short"
+      },
+      "stop": 32.3,
+      "ziel": 31.31,
+      "zielR": 2,
+      "flatBis": "2026-11-17T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T09:00:00.000Z",
+        "basisKurs": 31.965,
+        "kurs": 6.411,
+        "stueck": 155,
+        "kurswert": 993.71
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T12:00:00.000Z",
+        "basisKurs": 32.4,
+        "kurs": 5.9451,
+        "kurswert": 921.49,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -72.22,
+        "bruttoProzent": -7.27,
+        "netto": -72.22,
+        "nettoProzent": -7.27,
+        "nettoTR": -74.22,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.3
       }
     },
     {
@@ -10516,46 +10494,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 91,
+      "anzahl": 92,
       "treffer": 34,
-      "quote": 37.4,
-      "netto": -1188.08,
-      "brutto": -1140.08,
-      "nettoTR": -1322.08,
-      "oeNettoProzent": -1.31,
-      "oeR": 0.19
+      "quote": 37,
+      "netto": -1260.3,
+      "brutto": -1212.3,
+      "nettoTR": -1396.3,
+      "oeNettoProzent": -1.38,
+      "oeR": 0.17
     },
     "heute": {
-      "anzahl": 12,
+      "anzahl": 13,
       "treffer": 5,
-      "quote": 41.7,
-      "netto": -5.92,
-      "brutto": 0.08,
-      "nettoTR": -23.92,
-      "oeNettoProzent": -0.05,
-      "oeR": 0.97
+      "quote": 38.5,
+      "netto": -78.14,
+      "brutto": -72.14,
+      "nettoTR": -98.14,
+      "oeNettoProzent": -0.6,
+      "oeR": 0.79
     },
-    "offen": 5,
+    "offen": 4,
     "gruppen": {
       "turbo": {
-        "anzahl": 67,
+        "anzahl": 68,
         "treffer": 25,
-        "quote": 37.3,
-        "netto": -1074.48,
-        "brutto": -1074.48,
-        "nettoTR": -1208.48,
-        "oeNettoProzent": -1.61,
-        "oeR": -0.01
+        "quote": 36.8,
+        "netto": -1146.7,
+        "brutto": -1146.7,
+        "nettoTR": -1282.7,
+        "oeNettoProzent": -1.7,
+        "oeR": -0.03
       },
       "short": {
-        "anzahl": 67,
+        "anzahl": 68,
         "treffer": 25,
-        "quote": 37.3,
-        "netto": -1074.48,
-        "brutto": -1074.48,
-        "nettoTR": -1208.48,
-        "oeNettoProzent": -1.61,
-        "oeR": -0.01
+        "quote": 36.8,
+        "netto": -1146.7,
+        "brutto": -1146.7,
+        "nettoTR": -1282.7,
+        "oeNettoProzent": -1.7,
+        "oeR": -0.03
       },
       "krypto": {
         "anzahl": 24,
@@ -10588,8 +10566,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 145,
-        "chance": 35.9,
+        "faelle": 146,
+        "chance": 35.6,
         "oeNetto": -0.94,
         "wertung": -1.43
       }
@@ -10621,8 +10599,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 84,
-        "chance": 34.5,
+        "faelle": 85,
+        "chance": 35.3,
         "oeNetto": -0.06,
         "wertung": -0.12
       }
