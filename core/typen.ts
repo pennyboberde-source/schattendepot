@@ -49,6 +49,8 @@ export interface Wertpapier {
   teilfreistellung?: number;
   /** Kursquelle für Aktien/ETFs/ETCs. Bei Hebelprodukten und Krypto-ETNs steht sie am Basiswert. */
   kursbasis?: Kursbasis;
+  /** Plattform, auf der beim Kauf gehandelt wurde, mit Grund (seit 17.11.2026, core/plattform.ts) */
+  plattform?: string;
 }
 
 /** Hebelprodukt eines echten Emittenten (ISIN/WKN); Kurs synthetisch aus dem Basiswert (Turbo-Formel). */

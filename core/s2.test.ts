@@ -5,7 +5,8 @@ import { describe, expect, it } from 'vitest';
 import gebuehrenDatei from './testdaten/gebuehren-prozentmodell.json';
 import schema from '../schema/entscheidung.schema.json';
 import { ordersAusEreignissen } from './ableiten.ts';
-import { autopilotOrders, kostenHuerdeProzent, kursbasisAusTicker, signalBeweise, type AutopilotEinstellungen, type AutopilotKandidat } from './autopilot.ts';
+import { autopilotOrders, beweiseVereinen, kostenHuerdeProzent, kursbasisAusTicker, sammelBeweise, signalBeweise, type AutopilotEinstellungen, type AutopilotKandidat, type SammelTyp } from './autopilot.ts';
+import { verdichten } from './volltreffer/sammelmessung.ts';
 import { entscheidungUebernehmen, type Entscheidung } from './entscheidung.ts';
 import type { GebuehrenConfig } from './gebuehren.ts';
 import { gegensignaleFinden, istStarkesGegensignal } from './gegensignal.ts';
@@ -238,6 +239,43 @@ describe('Statistik S2', () => {
     expect(wirksamesRisikoBudget(basis, gut)).toMatchObject({ maxSpekulativJeLauf: 4, maxAnteilSpekulativ: 0.7 });
     const schlecht = { nachRisikoklasse: { spekulativ: { anzahl: 12, quote: 20, oeNetto: -8 }, normal: { anzahl: 10, oeNetto: 1 } } } as unknown as Statistik;
     expect(wirksamesRisikoBudget(basis, schlecht)).toMatchObject({ maxSpekulativJeLauf: 2, maxAnteilSpekulativ: 0.35 });
+  });
+});
+
+describe('Autopilot: Beweis auf Sammelkursen (17.11.2026)', () => {
+  const e = { horizont: 'r3T' as const, mindestFaelle: 30, mindestChance: 55, mindestOeNetto: 1 };
+  const typ = (t: string, n: number, imPlus: number, mittel: number, markt = 'aktie'): SammelTyp => ({ markt, typ: t, punkte: { r3T: { n, netto: { imPlus, mittel } } } });
+
+  it('verdichten rechnet netto über der Hürde', () => {
+    const r = (x: number) => ({ r: { r3T: x }, ueberMarkt: {}, ueberKlasse: {}, hoch: 0, tief: 0, j: 0 });
+    const v = verdichten([r(5), r(4), r(1), r(-2)] as never, 2);
+    expect(v.punkte.r3T.netto).toEqual({ imPlus: 50, mittel: 0 });
+    expect(verdichten([r(5)] as never).punkte.r3T.netto).toBeUndefined();
+  });
+
+  it('gleiche Schwelle wie beim Einzelabruf; ohne netto kein Beweis', () => {
+    const b = sammelBeweise([typ('insider_kauf', 40, 60, 1.5), typ('kursrakete', 200, 30, -9), typ('alt', 50, 0, 0), { markt: 'aktie', typ: 'ohne', punkte: { r3T: { n: 99 } } }, typ('rohstoff', 50, 70, 3, 'sonstige')], e, HUERDEN);
+    expect(b.map((x) => [x.typ, x.bewiesen, x.quelle])).toEqual([['insider_kauf', true, 'sammelkurse'], ['kursrakete', false, 'sammelkurse'], ['alt', false, 'sammelkurse']]);
+  });
+
+  it('die größere Messung zählt, eine widersprechende mit genug Fällen verhindert den Beweis', () => {
+    const einzel = { typ: 'insider_kauf', gruppe: 'aktie' as const, faelle: 31, chance: 58, oeNetto: 2, huerde: 2.78, bewiesen: true };
+    const [klein] = sammelBeweise([typ('insider_kauf', 12, 20, -3)], e, HUERDEN);
+    expect(beweiseVereinen([einzel], [klein], 30)[0]).toMatchObject({ quelle: 'einzel', bewiesen: true });
+    const [gross] = sammelBeweise([typ('insider_kauf', 120, 40, -0.5)], e, HUERDEN);
+    expect(beweiseVereinen([einzel], [gross], 30)[0]).toMatchObject({ quelle: 'sammelkurse', faelle: 120, bewiesen: false });
+    const [gut] = sammelBeweise([typ('insider_kauf', 120, 60, 1.4)], e, HUERDEN);
+    expect(beweiseVereinen([{ ...einzel, oeNetto: -1, bewiesen: false }], [gut], 30)[0]).toMatchObject({ bewiesen: false });
+    expect(beweiseVereinen([], [gut], 30)[0]).toMatchObject({ bewiesen: true, faelle: 120 });
+  });
+
+  it('Autopilot-These nennt die Sammelkurse', () => {
+    const [gut] = sammelBeweise([typ('insider_kauf', 120, 60, 1.4)], e, HUERDEN);
+    const E: AutopilotEinstellungen = { aktiv: true, mindestFaelle: 30, horizont: 'r3T', maxJeLauf: 2, maxJeTag: 4, maxOffen: 8, zielNettoProzent: 6, stopProzent: -8, maerkte: ['us'] };
+    const k: AutopilotKandidat = { schluessel: 'T:ACME', name: 'Acme', ticker: 'ACME', markt: 'us', score: 3, typen: ['insider_kauf'], quellen: ['SEC'] };
+    const r = autopilotOrders([k], [gut], [], new Date('2026-11-18T08:00:00Z'), E);
+    expect(r.ereignisse).toHaveLength(1);
+    expect(r.ereignisse[0].begruendung).toContain('Sammelkursen');
   });
 });
 

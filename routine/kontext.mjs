@@ -109,8 +109,8 @@ if (polSt.length) p(`Politik-Signale im Schattenbuch: ${polSt.map(([t, v]) => `$
 // S2: Autopilot, Ziel/Stop-Vorschläge, Tagesprognose, Gegenprüfung
 const ap = statistik?.autopilot ?? [];
 const apBew = ap.filter((b) => b.bewiesen);
-if (apBew.length) p(`🤖 Autopilot kauft selbst (bewiesen): ${apBew.map((b) => `${b.typ}/${b.gruppe} ${b.chance} % im Plus, Ø ${b.oeNetto} % (n=${b.faelle})`).join('; ')}`);
-else if (ap.length) p(`🤖 Autopilot: noch nichts bewiesen. Am nächsten dran: ${ap.slice(0, 3).map((b) => `${b.typ}/${b.gruppe} n=${b.faelle}, ${b.chance} %, Ø ${b.oeNetto} %`).join('; ')}`);
+if (apBew.length) p(`🤖 Autopilot kauft selbst (bewiesen): ${apBew.map((b) => `${b.typ}/${b.gruppe} ${b.chance} % im Plus, Ø ${b.oeNetto} % (n=${b.faelle}${b.quelle === 'sammelkurse' ? ', Sammelkurse' : ''})`).join('; ')}`);
+else if (ap.length) p(`🤖 Autopilot: noch nichts bewiesen. Am nächsten dran: ${ap.slice(0, 3).map((b) => `${b.typ}/${b.gruppe} n=${b.faelle}${b.quelle === 'sammelkurse' ? ' (Sammelkurse)' : ''}, ${b.chance} %, Ø ${b.oeNetto} %`).join('; ')}`);
 const zs = statistik?.zielStop ?? [];
 if (zs.length) p(`Ziel/Stop-Vorschlag je Signaltyp (Schattenbuch, nach Gebühren): ${zs.slice(0, 6).map((z) => `${z.typ}: Ziel ${z.zielNettoProzent} % netto / Stop ${z.stopProzent} % → Ø ${z.oeNetto} % (ohne Regel ${z.ohneRegelOeNetto} %, n=${z.faelle})`).join('; ')}`);
 const vt = (statistik?.varianten ?? []).filter((x) => x.volltreffer && x.volltreffer.faelle >= 10).sort((a, b) => b.volltreffer.anteil - a.volltreffer.anteil).slice(0, 5);

@@ -43,6 +43,56 @@ export interface SignalBeweis {
   oeNetto: number;
   huerde: number;
   bewiesen: boolean;
+  /** Herkunft der Messung: Einzelabruf-Schattenbuch (Standard) oder Sammelkurse (alle Signale aus dem Kursarchiv) */
+  quelle?: 'einzel' | 'sammelkurse';
+}
+
+/** Ein Signaltyp aus `lernen/schattenbuch/sammelkurse.json` (nur die Felder, die der Autopilot braucht). */
+export interface SammelTyp {
+  markt: string;
+  typ: string;
+  punkte: Partial<Record<string, { n: number; netto?: { imPlus: number; mittel: number } }>>;
+}
+
+/**
+ * Beweise aus dem Schattenbuch auf Sammelkursen (17.11.2026, Nutzer: „alle Bereiche so schlau wie möglich“): dieselbe
+ * Schwelle wie beim Einzelabruf, aber auf allen Signalen der Datenkrake (Kauf zur nächsten Eröffnung, je Wert und Typ ein
+ * Fall in 10 Handelstagen, nach Kosten). Ohne `netto` (ältere Datei) gibt es keinen Beweis.
+ */
+export function sammelBeweise(
+  typen: SammelTyp[],
+  e: { horizont: AutopilotEinstellungen['horizont']; mindestFaelle: number; mindestChance: number; mindestOeNetto?: number },
+  huerden: Record<MarktGruppe, number>,
+): SignalBeweis[] {
+  const out: SignalBeweis[] = [];
+  for (const t of typen) {
+    if (t.markt !== 'aktie' && t.markt !== 'krypto') continue;
+    const pk = t.punkte?.[e.horizont];
+    if (!pk?.netto || !(pk.n >= 3)) continue;
+    const { imPlus: chance, mittel: oeNetto } = pk.netto;
+    const ertragReicht = e.mindestOeNetto === undefined ? oeNetto > 0 : oeNetto >= e.mindestOeNetto;
+    out.push({ typ: t.typ, gruppe: t.markt, faelle: pk.n, chance, oeNetto, huerde: huerden[t.markt], bewiesen: pk.n >= e.mindestFaelle && chance >= e.mindestChance && ertragReicht, quelle: 'sammelkurse' });
+  }
+  return out;
+}
+
+/**
+ * Einzelabruf und Sammelkurse zusammenführen: je Signaltyp und Marktgruppe zählt die Messung mit mehr Fällen.
+ * Widerspricht die andere Messung mit genug Fällen (Ø nach Kosten unter 0), gilt der Typ nicht als bewiesen.
+ */
+export function beweiseVereinen(einzel: SignalBeweis[], sammel: SignalBeweis[], mindestFaelle: number): SignalBeweis[] {
+  const je = new Map<string, SignalBeweis[]>();
+  for (const b of [...einzel.map((x) => ({ ...x, quelle: x.quelle ?? ('einzel' as const) })), ...sammel]) {
+    const k = `${b.typ}|${b.gruppe}`;
+    je.set(k, [...(je.get(k) ?? []), b]);
+  }
+  const out: SignalBeweis[] = [];
+  for (const liste of je.values()) {
+    const [haupt, ...rest] = [...liste].sort((a, b) => b.faelle - a.faelle);
+    const widerspruch = rest.some((r) => r.faelle >= mindestFaelle && r.oeNetto < 0);
+    out.push({ ...haupt, bewiesen: haupt.bewiesen && !widerspruch });
+  }
+  return out.sort((a, b) => Number(b.bewiesen) - Number(a.bewiesen) || b.oeNetto - a.oeNetto);
 }
 
 export interface AutopilotKandidat {
@@ -216,7 +266,7 @@ export function autopilotOrders(
       risikoklasse: 'normal',
       herkunft: 'autopilot',
       strategie: STRATEGIE_JE_TYP[beweis.typ] ?? 'sonstige',
-      these: `Autopilot: Signaltyp „${beweis.typ}“ hat sich im Schattenbuch bewiesen – ${beweis.faelle} Fälle, ${beweis.chance} % nach Gebühren im Plus, Ø ${beweis.oeNetto} % nach ${HORIZONT_TEXT[e.horizont]}.`,
+      these: `Autopilot: Signaltyp „${beweis.typ}“ hat sich im Schattenbuch${beweis.quelle === 'sammelkurse' ? ' auf Sammelkursen (alle Signale der Datenkrake)' : ''} bewiesen – ${beweis.faelle} Fälle, ${beweis.chance} % nach Gebühren im Plus, Ø ${beweis.oeNetto} % nach ${HORIZONT_TEXT[e.horizont]}.`,
       ausloeser,
       signalIds: k.typen.map((t) => `${t}:${k.ticker}:${heute}`),
       quellen: k.quellen.slice(0, 10).map((name) => ({ name, link: `${opt.appUrl ?? 'https://pennyboberde-source.github.io/schattendepot/'}#/lernen` })),

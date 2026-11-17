@@ -85,8 +85,12 @@ export function groessenKlasse(umsatz20: number | null): number {
   return k;
 }
 
-/** Verdichtung je Signaltyp: n, Ø, Median, Anteil im Plus, Median der Überrenditen */
-export function verdichten(liste: SammelErgebnis[]) {
+/**
+ * Verdichtung je Signaltyp: n, Ø, Median, Anteil im Plus, Median der Überrenditen.
+ * Mit `huerde` (Kosten hin und zurück in %, wie beim Autopilot) zusätzlich `netto`: Anteil über der Hürde und Ø nach Kosten –
+ * daraus prüft der Autopilot des Depots seine Beweisschwelle auf der großen Fallzahl (17.11.2026).
+ */
+export function verdichten(liste: SammelErgebnis[], huerde?: number) {
   const je = (name: SammelPunkt) => {
     const w = liste.map((x) => x.r[name]).filter((x): x is number => x !== undefined);
     const um = liste.map((x) => x.ueberMarkt[name]).filter((x): x is number => x !== undefined);
@@ -98,6 +102,9 @@ export function verdichten(liste: SammelErgebnis[]) {
       imPlus: w.length ? r1((w.filter((x) => x > 0).length / w.length) * 100) : null,
       ueberMarkt: um.length ? r1(median(um)) : null,
       ueberKlasse: uk.length ? r1(median(uk)) : null,
+      ...(huerde !== undefined && w.length
+        ? { netto: { imPlus: r1((w.filter((x) => x > huerde).length / w.length) * 100), mittel: Math.round((w.reduce((a, b) => a + b, 0) / w.length - huerde) * 100) / 100 } }
+        : {}),
     };
   };
   return {

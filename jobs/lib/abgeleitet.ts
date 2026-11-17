@@ -7,7 +7,7 @@ import { termineIcs } from '../../core/ics.ts';
 import { lernhinweise, wirksamesRisikoBudget } from '../../core/lernhinweise.ts';
 import { statistikBerechnen, type Statistik } from '../../core/statistik.ts';
 import { leereVorlaufStatistik, vorlaufLift, type VorlaufStatistik } from '../../core/datenkrake.ts';
-import { kostenHuerdeProzent, marktGruppe, signalBeweise, type MarktGruppe } from '../../core/autopilot.ts';
+import { beweiseVereinen, kostenHuerdeProzent, marktGruppe, sammelBeweise, signalBeweise, type MarktGruppe, type SammelTyp } from '../../core/autopilot.ts';
 import { zielStopVorschlaege } from '../../core/zielstop.ts';
 import { varianteText, variantenSchattenbuch, type VariantenKosten } from '../../core/varianten.ts';
 import type { Kurs, Order } from '../../core/typen.ts';
@@ -76,7 +76,11 @@ export function abgeleitetSchreiben(jetzt: Date, opt: { kurse?: Record<string, K
   // S2: Autopilot-Beweise und Ziel/Stop-Vorschläge aus dem Schattenbuch
   const huerden = huerdenAusConfig(cfg);
   const ap = cfg.einstellungen.autopilot;
-  if (ap && erreichbar) statistik.autopilot = signalBeweise(tracking, { horizont: ap.horizont, mindestFaelle: ap.mindestFaelle, mindestChance: ap.mindestChance ?? cfg.einstellungen.mindestChance ?? 40, mindestOeNetto: ap.mindestOeNetto }, huerden).slice(0, 30);
+  if (ap && erreichbar) {
+    const schwelle = { horizont: ap.horizont, mindestFaelle: ap.mindestFaelle, mindestChance: ap.mindestChance ?? cfg.einstellungen.mindestChance ?? 40, mindestOeNetto: ap.mindestOeNetto };
+    const sammel = leseJson<{ typen?: SammelTyp[] }>('lernen/schattenbuch/sammelkurse.json', {}).typen ?? [];
+    statistik.autopilot = beweiseVereinen(signalBeweise(tracking, schwelle, huerden), sammelBeweise(sammel, schwelle, huerden), ap.mindestFaelle).slice(0, 30);
+  }
   if (cfg.einstellungen.zielStop && erreichbar) statistik.zielStop = zielStopVorschlaege(tracking, (t) => huerden[marktGruppe(t) ?? 'aktie'], cfg.einstellungen.zielStop);
   if (!erreichbar && vorher) Object.assign(statistik, { autopilot: vorher.autopilot, zielStop: vorher.zielStop, varianten: vorher.varianten });
   if (erreichbar) statistik.varianten = variantenSchattenbuch(tracking, marktGruppe, variantenKosten(cfg), { mindestFaelle: cfg.einstellungen.varianten?.mindestFaelle ?? 25, mindestChance: cfg.einstellungen.mindestChance ?? 40, volltrefferProzent: cfg.einstellungen.varianten?.volltrefferProzent ?? 15, kellyAnteil: cfg.einstellungen.varianten?.kellyAnteil ?? 0.5, hebelMax: cfg.einstellungen.varianten?.hebelMax ?? 50 }).slice(0, 40);

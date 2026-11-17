@@ -15,6 +15,7 @@ import { haengeEreignisseAn, ladeConfig, leseEreignisse, leseJson, schreibeJson 
 import { pushen } from './lib/pushen.ts';
 import { ereignisBehandeln } from './lib/routine.ts';
 import { uebernehmeAlle } from './lib/uebernahme.ts';
+import { hebelListeLaden } from './lib/plattform.ts';
 import { lesePrivat, schreibePrivat } from './lib/privat.ts';
 import { verlaufInProzent, verlaufPunkt, type VerlaufAlt, type VerlaufProzent } from '../core/verlauf.ts';
 
@@ -134,6 +135,10 @@ if (aktiv.length) {
 }
 
 const system = leseJson<System>('system.json', {});
+// Plattformwahl für Depot-Orders (17.11.2026): Hebelprodukte je US-Kürzel aus ESMA FIRDS (privat im Archiv, nur zwei
+// Stammdateien per Sparse-Checkout). Fehlt die Liste oder ist sie nicht frisch/vollständig → wie bisher (gettex).
+const plattform = hebelListeLaden(b.datum);
+if (!nurKrypto) console.log(plattform.hinweis);
 const heuteLaeufe = system.ereignislaeufe?.[b.datum] ?? [];
 const r = waechterLauf({
   jetzt,
@@ -145,6 +150,8 @@ const r = waechterLauf({
   cfg: { gebuehren: cfg.gebuehren, spreads: cfg.spreads, einstellungen: cfg.einstellungen },
   gegensignale: leseJson<Record<string, Gegensignal>>('gegensignale.json', {}),
   nurKrypto,
+  hebelJe: plattform.je,
+  usMaxHebel: plattform.usMaxHebel,
   heute: {
     ereignisLaeufe: heuteLaeufe.length,
     ereignislaufOrders: heuteLaeufe,

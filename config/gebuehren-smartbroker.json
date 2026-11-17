@@ -25,6 +25,27 @@
       "variabelProzent": 0,
       "ohneProvision": true,
       "hinweis": "Krypto direkt wird wie bisher mit Trade Republic gerechnet: 1 € je Order plus Spread, rund um die Uhr."
+    },
+    "SBX": {
+      "name": "Smartbroker+ an Börse Stuttgart/außerbörslich (Hebelprodukte)",
+      "entgelt": 5.5,
+      "variabelProzent": 0,
+      "ohneProvision": true,
+      "hinweis": "Seit 17.11.2026 für Depot-Orders mit Wunsch-Hebel, wenn es laut ESMA FIRDS kein passendes Produkt an gettex gibt. Werte wie config/volltreffer.json › plattformen.andereBoerse (4 € + 1,50 € Börsenentgelt, eher zu hoch)."
+    },
+    "USA": {
+      "name": "Smartbroker+ an US-Börse",
+      "entgelt": 4,
+      "variabelProzent": 0.25,
+      "ohneProvision": true,
+      "hinweis": "Seit 17.11.2026 für US-Aktien ohne ISIN (nicht an gettex). Wie config/volltreffer.json › plattformen.auslandDirekt: 4 € + 0,25 % angenommener Währungsaufschlag."
+    },
+    "USB": {
+      "name": "US-Broker (simuliert, Leerverkauf/Marge)",
+      "entgelt": 2,
+      "variabelProzent": 0.1,
+      "ohneProvision": true,
+      "hinweis": "Seit 17.11.2026 für Depot-Orders mit Wunsch-Hebel bis 2, wenn es an keiner deutschen Börse ein Produkt gibt. Wie config/volltreffer.json › plattformen.usBroker (2 € + 0,1 % Devisen); Finanzierung steckt im nachgebildeten Turbo, Leihgebühr für Leerverkäufe ist hier nicht eigens gerechnet (kurze Haltedauer)."
     }
   },
   "standardHandelsplatz": "GTX",

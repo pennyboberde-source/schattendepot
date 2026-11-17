@@ -35,6 +35,7 @@ function Detail({ o }: { o: Order }) {
         {p.wertpapier.wkn ? ` · WKN ${p.wertpapier.wkn}` : ''} · {STRATEGIE_TEXT[p.strategie]} · Erfolgschance ~{p.konfidenz} %
         {p.pflichtOrder ? ' · Pflicht-Order' : ''}
       </p>
+      {p.wertpapier.plattform && <p class="klein">Gehandelt über {p.wertpapier.plattform}</p>}
 
       {o.ergebnis && (
         <div class="raster-kennzahlen">

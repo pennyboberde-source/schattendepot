@@ -16,6 +16,7 @@ import { pumpVerdacht } from '../core/datenkrake.ts';
 import { befoerderungPruefen, istBefoerdert, noetigeFaelle, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
+import { huerdenAusConfig } from './lib/abgeleitet.ts';
 import { schluesselNormal } from '../core/signale.ts';
 import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenwert.ts';
 import { aenderungAm, breite, fedAbstand, schluesse, summeBis, wertAm, type KryptoUmfeldArchiv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
@@ -1140,8 +1141,10 @@ schreibeJson('lernen/muster/hypothesen.json', buch);
       if (sammelGemessen.has(`${sch}|${d}`)) e.gemessen++;
     }
   const gemessen = Object.values(jeMarkt).reduce((a, x) => a + x.gemessen, 0);
+  // Kosten hin und zurück wie beim Autopilot des Depots (Smartbroker+ bzw. Trade Republic, Spread) → `netto` je Messpunkt
+  const sammelHuerden = huerdenAusConfig(cfg);
   const typen = [...sammel]
-    .map(([key, liste]) => ({ markt: key.split('|')[0], typ: key.split('|')[1], ...verdichten(liste) }))
+    .map(([key, liste]) => ({ markt: key.split('|')[0], typ: key.split('|')[1], ...verdichten(liste, sammelHuerden[key.split('|')[0] === 'krypto' ? 'krypto' : 'aktie']) }))
     .sort((a, b) => b.faelle - a.faelle);
   schreibeJson('lernen/schattenbuch/sammelkurse.json', {
     stand: jetzt.toISOString(),

@@ -40,6 +40,18 @@ jobs:
           ref: zustand
           token: ${{ secrets.ARCHIV_TOKEN }}
           path: _privat
+      - name: Hebel-Liste (ESMA FIRDS, privat, nur zwei Stammdateien) – ohne sie bleibt die Plattformwahl wie bisher
+        uses: actions/checkout@v5
+        continue-on-error: true
+        with:
+          repository: pennyboberde-source/schattendepot-archiv
+          token: ${{ secrets.ARCHIV_TOKEN }}
+          path: _archiv
+          filter: blob:none
+          sparse-checkout: |
+            stamm/gettex-hebel.json.gz
+            stamm/isin-kuerzel.json
+          sparse-checkout-cone-mode: false
       - uses: actions/setup-node@v5
         with:
           node-version: 24

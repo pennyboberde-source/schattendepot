@@ -11,7 +11,7 @@ import type { Anpassung, Ausfuehrung, Ereignis, Hebel, Kurs, Order, OrderPlan, P
 
 export interface EreignisDaten {
   vorgemerkt: { plan: OrderPlan; verkaufstermin: string };
-  gekauft: { kauf: Ausfuehrung; zielkurs: number; stopkurs: number; etf?: Kurs; hebel?: Hebel };
+  gekauft: { kauf: Ausfuehrung; zielkurs: number; stopkurs: number; etf?: Kurs; hebel?: Hebel; handelsplatz?: string; plattform?: string };
   angepasst: { anpassung: Anpassung };
   verkauft: { verkauf: Ausfuehrung & { grund: Verkaufsgrund }; ergebnis: { kursProzent: number; netto: number; nettoProzent: number; gebuehren: number } };
   teilverkauft: { verkauf: Ausfuehrung & { grund: Verkaufsgrund } };
@@ -86,6 +86,8 @@ export function ordersAusEreignissen(ereignisse: Ereignis[]): Order[] {
         Object.assign(o, { status: 'offen', kauf: d.kauf, zielkurs: d.zielkurs, stopkurs: d.stopkurs, etfKauf: d.etf });
         // Wunsch-Hebel: gekauft wurde ein nachgebildeter Turbo auf den Wert
         if (d.hebel) o.plan = { ...o.plan, hebel: d.hebel, wertpapier: { ...o.plan.wertpapier, anlageklasse: 'hebel', spreadKlasse: 'hebel' } };
+        // Plattform beim Kauf (seit 17.11.2026): Gebühren für Kauf und Verkauf über diesen Handelsplatz
+        if (d.handelsplatz) o.plan = { ...o.plan, wertpapier: { ...o.plan.wertpapier, handelsplatz: d.handelsplatz, ...(d.plattform ? { plattform: d.plattform } : {}) } };
         break;
       }
       case 'angepasst': {

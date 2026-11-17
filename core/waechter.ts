@@ -6,6 +6,10 @@ import { turboAnlegen } from './daytrading/kern.ts';
 import { etfVergleich } from './etf.ts';
 import { runde } from './geld.ts';
 import { depotEntgeltOpt, type GebuehrenConfig } from './gebuehren.ts';
+import { depotPlattform, type DepotPlatz } from './plattform.ts';
+import type { HebelStand } from './volltreffer/firds.ts';
+
+const PLATZ_NAME: Record<DepotPlatz, string> = { gettex: 'Smartbroker+ an gettex', boerse: 'Smartbroker+ an anderer deutscher Börse', ausland: 'Smartbroker+ an US-Börse', us: 'US-Broker (simuliert)' };
 import { berlin, inHandelszeit, istHandelstag, uhrzeitMinuten } from './kalender.ts';
 import { restStueck } from './ableiten.ts';
 import { pushAngepasst, pushGekauft, pushTeilverkauf, pushVerkauft, pushWarnung, type PushNachricht } from './push.ts';
@@ -78,6 +82,10 @@ export interface WaechterKontext {
   gegensignale?: Record<string, Gegensignal>;
   /** außerhalb der Börsenzeiten (nachts/Wochenende): nur Krypto direkt handeln */
   nurKrypto?: boolean;
+  /** Hebelprodukte je US-Kürzel aus ESMA FIRDS (nur wenn frisch und vollständig) → Plattformwahl (core/plattform.ts); fehlt = wie bisher */
+  hebelJe?: Map<string, HebelStand> | null;
+  /** höchster Hebel beim simulierten US-Broker (config/volltreffer.json › plattformen.usBroker.maxHebel) */
+  usMaxHebel?: number;
 }
 
 export interface WaechterErgebnis {
@@ -175,7 +183,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
     const basis = ctx.basisKurse[o.id];
     /** maßgeblicher Kurs für Zeitprüfungen (kein Rückschaufehler) */
     const zeitKurs = direkt ?? basis;
-    const hp = depotEntgeltOpt(o.plan);
+    let hp = depotEntgeltOpt(o.plan);
 
     if (o.status === 'vorgemerkt') {
       const alterStd = (jetzt.getTime() - new Date(o.vorgemerktUm).getTime()) / 3600000;
@@ -192,6 +200,14 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
         }
         continue;
       }
+      // Plattform (seit 17.11.2026, wie im Bereich Volltreffer): nicht an gettex handelbar → andere Plattform mit deren Kosten
+      const wahl = depotPlattform(o.plan, ctx.hebelJe ?? null, ctx.usMaxHebel ?? 2);
+      if (wahl.art === 'nicht_handelbar') {
+        ereignisse.push(ev('verworfen', o.id, { grund: `nicht handelbar: ${wahl.grund}` }));
+        continue;
+      }
+      const platz = wahl.art === 'platz' ? { handelsplatz: wahl.handelsplatz, plattform: `${PLATZ_NAME[wahl.platz]} – ${wahl.grund}` } : null;
+      if (platz) hp = { ...hp, handelsplatz: platz.handelsplatz };
       let ik;
       let turbo: Hebel | undefined;
       try {
@@ -235,6 +251,7 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
           stopkurs: stop,
           ...(ctx.etfKurs ? { etf: ctx.etfKurs } : {}),
           ...(turbo ? { hebel: turbo } : {}),
+          ...(platz ?? {}),
         }),
       );
       continue;
