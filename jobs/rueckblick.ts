@@ -403,12 +403,14 @@ const plattformAm = (r: Reihe, m: Merkmale): { long: Platz | null; short: Platz 
   }
   return { long: turboErlaubt(r, m, 'long') ? 'gettex' : 'us', short: turboErlaubt(r, m, 'short') ? 'gettex' : 'us' };
 };
-/** Plattform einer Spielart (null = nirgends handelbar). Über der Marge des US-Brokers ohne deutsches Produkt: CFD-Broker,
- *  Handelbarkeit ungeprüft (Nutzer 17.11.2026: „lieber kaufen und als vielleicht unrealistisch vermerken, als es zu lassen“). */
-const platzFuer = (r: Reihe, sp: Spielart, pa: { long: Platz | null; short: Platz | null }): Platz | null => {
+/** Plattform einer Spielart (null = nirgends handelbar). Über der Marge des US-Brokers ohne deutsches Produkt: mit `mitCfd`
+ *  CFD-Broker, Handelbarkeit ungeprüft (Nutzer 17.11.2026: „lieber kaufen und als vielleicht unrealistisch vermerken, als es
+ *  zu lassen“) – nur für Vorwärtstest, Jagden und Lauerliste. Die Musterprüfung im Rückblick bleibt auf geprüft handelbaren
+ *  Fällen (Probe 17.11.: mit CFD-Fällen fielen 419 → 97 bestandene Gruppen, weil teure Kleinwert-Hebel die Muster überdecken). */
+const platzFuer = (r: Reihe, sp: Spielart, pa: { long: Platz | null; short: Platz | null }, mitCfd = false): Platz | null => {
   if (sp.hebel === 1) return r.markt === 'aktie' && gettexUs && !gettexUs.has(r.schluessel.slice(2).split('#')[0]) ? 'ausland' : 'gettex';
   const pl = pa[sp.richtung];
-  return pl === 'us' && sp.hebel > PL.usBroker.maxHebel ? 'cfd' : pl;
+  return pl === 'us' && sp.hebel > PL.usBroker.maxHebel ? (mitCfd ? 'cfd' : null) : pl;
 };
 
 // ---------- 3. Durchgang 1: Merkmale, Marktbewegung je Tag, Zeiträume ----------
@@ -702,7 +704,7 @@ for (const r of reihen) {
         if (k[i].datum <= e.seit || (e.status === 'beendet' && e.am && k[i].datum > e.am) || i - (testZuletzt.get(e.schluessel) ?? -1e9) <= vt.pruefung.sperreTage) continue;
         const sp = spNachSchluessel.get(e.sp);
         if (!sp) continue;
-        const pl = platzFuer(r, sp, plattformAm(r, x));
+        const pl = platzFuer(r, sp, plattformAm(r, x), true);
         if (!pl) continue;
         const fall = jagdFall(r, i, e, kostenFuer(r.markt, x.umsatz20, pl, sp), pl);
         if (fall) {
@@ -1406,7 +1408,7 @@ if (MODELLE.length && mZahl) {
       const x = merkmale(r.kerzen, mI[z]);
       if (!x) continue;
       const spM = spNachSchluessel.get(e.sp);
-      const pl = spM ? platzFuer(r, spM, plattformAm(r, x)) : null;
+      const pl = spM ? platzFuer(r, spM, plattformAm(r, x), true) : null;
       if (!spM || !pl) continue;
       const fall = jagdFall(r, mI[z], e, kostenFuer(r.markt, x.umsatz20, pl, spM), pl);
       if (fall) vorwaerts.push(fall);
