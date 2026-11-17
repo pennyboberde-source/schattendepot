@@ -24,6 +24,7 @@ import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverka
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
 import { hebelDa, type HebelStand } from '../core/volltreffer/firds.ts';
+import { haltefristFortschreiben, type Haltefrist } from '../core/volltreffer/haltefrist.ts';
 import { groessenKlasse, signalMessen, verdichten, type SammelErgebnis } from '../core/volltreffer/sammelmessung.ts';
 import { bewerten, gegenTag, mitSperre, tagesAuswahl, tagesRang, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
 import { turbosPruefen } from './lib/turbos.ts';
@@ -38,7 +39,7 @@ interface VtConfig {
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
-  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number };
+  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number; haltefristTage?: number };
   v6: V6Regeln & { ohneNein?: boolean };
   modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   hebel?: { nurGettex: boolean; maxAlterTage: number; mindestZugeordnet: number };
@@ -580,6 +581,7 @@ interface BuchMuster {
   grund?: string;
 }
 const musterBuch = leseJson<{ eintraege: BuchMuster[] }>('lernen/muster/muster-buch.json', { eintraege: [] });
+
 // alle Muster (jüngster Eintrag je Schlüssel); beendete zählen ihre Fälle bis zum Ende weiter, damit keine Jagd nachträglich verschwindet
 const alleMuster = new Map<string, BuchMuster>();
 for (const e of musterBuch.eintraege) alleMuster.set(e.schluessel, e);
@@ -1429,7 +1431,14 @@ if (MODELLE.length && mZahl) {
   // Maßstab ist der Volltreffer: Muster, die fast nie einen bringen (Quote unter v4.mindestQuote), belegen keinen Platz
   const mitVorteilHeute = new Map(ergebnisse.filter((e) => e.bestanden && e.vorteil).map((e) => [`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`, e]));
   const modellOk = new Map(modellErgebnisse.filter((x) => x.bestanden).map((x) => [x.schluessel, x]));
-  const beendet = [...imTest.values()].filter((e) => (e.schluessel.startsWith('modell|') ? MODELLE.length > 0 && !modellOk.has(e.schluessel) : !mitVorteilHeute.has(e.schluessel) || mitVorteilHeute.get(e.schluessel)!.gesamt.quote < v4.mindestQuote));
+  const verfehltHeute = [...imTest.values()].filter((e) => (e.schluessel.startsWith('modell|') ? MODELLE.length > 0 && !modellOk.has(e.schluessel) : !mitVorteilHeute.has(e.schluessel) || mitVorteilHeute.get(e.schluessel)!.gesamt.quote < v4.mindestQuote));
+  // Haltefrist (17.11.2026): erst nach haltefristTage verfehlten Rückblick-Tagen in Folge beenden – sonst wechselt der
+  // Vorwärtstest täglich fast vollständig und kein Muster sammelt je genug Fälle für die Beförderung
+  const halte = haltefristFortschreiben(leseJson<Haltefrist>('lernen/muster/haltefrist.json', { verfehlt: {} }), [...imTest.keys()], verfehltHeute.map((e) => e.schluessel), heute);
+  const beendet = verfehltHeute.filter((e) => (halte.verfehlt[e.schluessel]?.length ?? 0) >= (v4.haltefristTage ?? 1));
+  for (const e of beendet) delete halte.verfehlt[e.schluessel];
+  schreibeJson('lernen/muster/haltefrist.json', { stand: jetzt.toISOString(), hinweis: `Muster im Vorwärtstest, die im Rückblick nicht mehr mit Vorteil bestehen: Tage in Folge (beendet ab ${v4.haltefristTage ?? 1}).`, verfehlt: halte.verfehlt });
+  if (verfehltHeute.length) log(`Haltefrist: ${verfehltHeute.length} Muster verfehlen heute, ${beendet.length} davon beendet (${v4.haltefristTage ?? 1} Tage in Folge).`);
   for (const e of beendet) {
     const grund = e.schluessel.startsWith('modell|') ? 'Gesamtmodell besteht außerhalb der Trainingsdaten nicht mehr' : mitVorteilHeute.has(e.schluessel) ? `Volltreffer-Quote unter ${v4.mindestQuote} %` : 'besteht im Rückblick nicht mehr mit Vorteil';
     musterBuch.eintraege.push({ ...e, status: 'beendet', grund, am: heute } as BuchMuster);

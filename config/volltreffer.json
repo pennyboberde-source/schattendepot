@@ -712,7 +712,9 @@
     "mindestQuote": 10,
     "pumpHinweis": "Pump-Filter (seit 16.11.2026): Fälle mit Pump-Verdacht (Regel pumpVerdacht der Datenkrake: Hype-Signale ohne harte Fakten in den 3 Tagen bis zum Stichtag, ein Hype-Signal reicht bei Kurs unter 1) zählen für das Muster, werden aber weder gejagt noch sichtbar geordert.",
     "maxJeBaustein": 3,
-    "vielfaltHinweis": "Seit 16.11.2026: höchstens maxJeBaustein Muster je Baustein (Merkmal=Klasse) im Vorwärtstest, damit nicht Varianten derselben Idee alle Plätze belegen; je Wert höchstens eine virtuelle Jagd zugleich."
+    "vielfaltHinweis": "Seit 16.11.2026: höchstens maxJeBaustein Muster je Baustein (Merkmal=Klasse) im Vorwärtstest, damit nicht Varianten derselben Idee alle Plätze belegen; je Wert höchstens eine virtuelle Jagd zugleich.",
+    "haltefristTage": 5,
+    "haltefristHinweis": "Seit 17.11.2026: Ein Muster im Vorwärtstest wird erst beendet, wenn es an haltefristTage verschiedenen Rückblick-Tagen in Folge nicht mehr mit Vorteil besteht (bzw. die Mindest-Quote verfehlt). Vorher wurden Muster schon nach einem verfehlten Lauf beendet: 86 von 233 Einträgen endeten nach 0–2 Tagen (am 17.11.: 55 beendet, 55 neu), kein Muster hätte je 10–20 Vorwärts-Fälle für die Beförderung (V6) gesammelt. Zählstand in lernen/muster/haltefrist.json."
   },
   "v6": {
     "hinweis": "Stufe 3 (Plan V6, Nutzer 15.11.2026: „Bewährte Muster“ ohne Rückfrage, „Klasse vor Masse“): befördert wird, wer im Vorwärtstest mindestFaelle abgeschlossene Fälle hat, im Plus und im Band des Rückblicks liegt und im Rückblick mindestQuote % Volltreffer und mindestEv € Ø zeigt. Sichtbar höchstens maxOffen Orders gleichzeitig, je Wert eine. ohneNein: Fälle mit Claudes „nein“ weglassen – erst einschalten, wenn gemessen ist, dass „nein“ schlechter abschneidet.",
