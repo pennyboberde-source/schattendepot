@@ -30,21 +30,29 @@ export interface ZahlenFirma {
  * Großverträge sind Kandidaten für Long-Muster, Warnungen (Insolvenz, Delisting-Hinweis, Bilanzkorrektur, Abschreibung)
  * für beides. Berichtigungen (…/A) zählen nicht.
  */
-export const MELDUNG_ARTEN = ['angebot', 'registrierung', 'grossaktionaer', 'vertrag', 'warnung', 'fuehrung', 'satzung'] as const;
+// F2 (17.11.2026, KONZEPT-FRUEHERKENNUNG.md): Fusion (425, DEFM14A/PREM14A), Übernahmeangebot (SC TO-T, SC TO-C, SC 14D9),
+// passive Großbeteiligung ab 5 % (13G) – Übernahmen und Einstiege großer Investoren früher und vollständig.
+export const MELDUNG_ARTEN = ['angebot', 'registrierung', 'grossaktionaer', 'vertrag', 'warnung', 'fuehrung', 'satzung', 'fusion', 'uebernahme', 'beteiligung'] as const;
 export type MeldungArt = (typeof MELDUNG_ARTEN)[number];
 /** Erhöhen, wenn sich die Arten ändern: dann holt der Archivlauf alle Firmen einmal neu */
-export const MELDUNGEN_STUFE = 1;
+export const MELDUNGEN_STUFE = 2;
 const ANGEBOT = new Set(['424B1', '424B3', '424B4', '424B5', '424B7']);
 const REGISTRIERUNG = new Set(['S-1', 'S-3', 'F-1', 'F-3']);
 const GROSSAKTIONAER = new Set(['SC 13D', 'SCHEDULE 13D']);
+const FUSION = new Set(['425', 'DEFM14A', 'PREM14A']);
+const UEBERNAHME = new Set(['SC TO-T', 'SC TO-C', 'SC 14D9', 'SC14D9C']);
+const BETEILIGUNG = new Set(['SC 13G', 'SCHEDULE 13G']);
 /** Formulare, die im EDGAR-Tagesverzeichnis ein Nachfassen auslösen */
-export const NACHFASS_FORMULARE = new Set(['8-K', ...ANGEBOT, ...REGISTRIERUNG, ...GROSSAKTIONAER]);
+export const NACHFASS_FORMULARE = new Set(['8-K', ...ANGEBOT, ...REGISTRIERUNG, ...GROSSAKTIONAER, ...FUSION, ...UEBERNAHME, ...BETEILIGUNG]);
 
 /** Meldungsarten eines Formulars (8-K nach Punkten) */
 export function meldungsArten(form: string, items: string): MeldungArt[] {
   if (ANGEBOT.has(form)) return ['angebot'];
   if (REGISTRIERUNG.has(form)) return ['registrierung'];
   if (GROSSAKTIONAER.has(form)) return ['grossaktionaer'];
+  if (FUSION.has(form)) return ['fusion'];
+  if (UEBERNAHME.has(form)) return ['uebernahme'];
+  if (BETEILIGUNG.has(form)) return ['beteiligung'];
   if (form !== '8-K') return [];
   const p = new Set(items.split(',').map((x) => x.trim()));
   const aus: MeldungArt[] = [];

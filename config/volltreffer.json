@@ -695,6 +695,54 @@
           "Stablecoins 30 Tage stark gewachsen (über 5 %)"
         ],
         "paare": false
+      },
+      {
+        "merkmal": "fusion",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Fusionsmeldung: Reaktion am Stichtag",
+          "Fusionsmeldung: Reaktion am Vortag",
+          "Fusionsmeldung vor 2 bis 5 Handelstagen",
+          "Fusionsmeldung vor 6 bis 20 Handelstagen",
+          "ohne Fusionsmeldung in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "uebernahme",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "Übernahmeangebot: Reaktion am Stichtag",
+          "Übernahmeangebot: Reaktion am Vortag",
+          "Übernahmeangebot vor 2 bis 5 Handelstagen",
+          "Übernahmeangebot vor 6 bis 20 Handelstagen",
+          "ohne Übernahmeangebot in 20 Handelstagen"
+        ]
+      },
+      {
+        "merkmal": "beteiligung",
+        "grenzen": [
+          0.5,
+          1.5,
+          5.5,
+          20.5
+        ],
+        "namen": [
+          "13G-Meldung: Reaktion am Stichtag",
+          "13G-Meldung: Reaktion am Vortag",
+          "13G-Meldung vor 2 bis 5 Handelstagen",
+          "13G-Meldung vor 6 bis 20 Handelstagen",
+          "ohne 13G-Meldung in 20 Handelstagen"
+        ]
       }
     ],
     "quartalMindestFaelle": 5,
@@ -854,5 +902,70 @@
       "finanzierungProzentJahr": 7,
       "quelle": "ESMA/BaFin: CFD auf Aktien für Privatkunden höchstens 5:1 (20 % Ersteinschuss); Profikunden bei CFD-Anbietern bis 20:1 auf Aktien (z. B. Pepperstone Pro „Stocks & ETFs up to 1:20“). US: Reg T 2:1 über Nacht, Portfolio Margin bis 6,67:1 (ab 100.000 $). Kosten angenommen: 0,1 % je Order, Finanzierung 7 %/Jahr auf den ganzen Gegenwert (Long), Short wie beim US-Broker mit Leihgebühr nach Umsatzklasse."
     }
+  },
+  "erkennung": {
+    "hinweis": "F1 (KONZEPT-FRUEHERKENNUNG.md, 17.11.2026): Wie viele hebelfreie Volltreffer (direkt, Stop maxStop, ≥ +400 € nach Kosten binnen fenster Handelstagen) hatten am Stichtag ein bestandenes Muster mit Vorteil? Verglichen mit dem Anteil aller handelbaren Stichtage, an denen ein solches Muster feuert (Lift). Dazu je Ereignis-Merkmal und Klasse der Anteil unter den Sprüngen gegen alle Tage. Öffentlich nur Anteile, privat die Fälle. fallstudie: bekannte Fälle (Nutzer), Log nur ja/nein und Zahl der Muster.",
+    "fenster": 21,
+    "ereignisMerkmale": [
+      "zahlen",
+      "angebot",
+      "registrierung",
+      "grossaktionaer",
+      "vertrag",
+      "warnung",
+      "fuehrung",
+      "satzung",
+      "insider",
+      "bestandTage",
+      "bestandAenderung",
+      "leerquote",
+      "leerquoteRel",
+      "abstandHoch250",
+      "r20",
+      "relVolumen",
+      "branche",
+      "fusion",
+      "uebernahme",
+      "beteiligung"
+    ],
+    "mindestSpruenge": 20,
+    "fallstudie": [
+      {
+        "wert": "ORCL",
+        "von": "2025-09-02",
+        "bis": "2025-09-10",
+        "anlass": "Quartalszahlen, Auftragsbestand +359 %"
+      },
+      {
+        "wert": "INTC",
+        "von": "2025-08-14",
+        "bis": "2025-09-19",
+        "anlass": "SoftBank 2 Mrd. $, Staatsbeteiligung 10 %, Nvidia 5 Mrd. $"
+      },
+      {
+        "wert": "UNH",
+        "von": "2025-08-01",
+        "bis": "2025-08-15",
+        "anlass": "Insider-Käufe ab Mai, Berkshire-Einstieg (13F)"
+      },
+      {
+        "wert": "SLV",
+        "von": "2025-12-15",
+        "bis": "2026-01-31",
+        "anlass": "Exportbeschränkungen China für Silber"
+      },
+      {
+        "wert": "COIN",
+        "von": "2024-11-15",
+        "bis": "2024-12-06",
+        "anlass": "US-Wahl, kryptofreundliche Regulierung"
+      },
+      {
+        "wert": "MSTR",
+        "von": "2024-11-15",
+        "bis": "2024-12-06",
+        "anlass": "US-Wahl, Bitcoin"
+      }
+    ]
   }
 }

@@ -74,7 +74,7 @@ export function merkmale(kerzen: Kerze[], i: number): Merkmale | null {
 
 /** Eine Einteilung: Name des Merkmals und Grenzen der Klassen (aufsteigend). */
 export interface Einteilung {
-  merkmal: keyof Merkmale | 'ueberrendite1' | 'marktR1' | 'boersenwert' | 'zahlen' | 'branche' | 'angebot' | 'registrierung' | 'grossaktionaer' | 'vertrag' | 'warnung' | 'fuehrung' | 'satzung' | 'vix' | 'vix5' | 'fed' | 'breite' | 'markt5' | 'leerquote' | 'leerquoteRel' | 'insider' | 'bestandTage' | 'bestandAenderung' | 'anleihen5' | 'dollar5' | 'kredit5' | 'oel5' | 'sektor5' | 'angst' | 'stable30';
+  merkmal: keyof Merkmale | 'ueberrendite1' | 'marktR1' | 'boersenwert' | 'zahlen' | 'branche' | 'angebot' | 'registrierung' | 'grossaktionaer' | 'vertrag' | 'warnung' | 'fuehrung' | 'satzung' | 'fusion' | 'uebernahme' | 'beteiligung' | 'vix' | 'vix5' | 'fed' | 'breite' | 'markt5' | 'leerquote' | 'leerquoteRel' | 'insider' | 'bestandTage' | 'bestandAenderung' | 'anleihen5' | 'dollar5' | 'kredit5' | 'oel5' | 'sektor5' | 'angst' | 'stable30';
   grenzen: number[];
   /** false = nur als Einzelmerkmal prüfen, nicht in Zweierkombinationen (Lage-Merkmale: hält die Laufzeit klein; im Gesamtmodell wirken sie mit allem zusammen) */
   paare?: boolean;

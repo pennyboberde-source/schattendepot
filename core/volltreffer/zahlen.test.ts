@@ -194,3 +194,16 @@ describe('Branche aus dem SIC-Code', () => {
     expect([...m.keys()]).toEqual(['AAA', 'AAA.B']);
   });
 });
+
+describe('F2: Fusion, Übernahmeangebot, 13G (17.11.2026)', () => {
+  it('ordnet die neuen Formulare zu', async () => {
+    const { meldungsArten, NACHFASS_FORMULARE } = await import('./zahlen.ts');
+    expect(meldungsArten('425', '')).toEqual(['fusion']);
+    expect(meldungsArten('DEFM14A', '')).toEqual(['fusion']);
+    expect(meldungsArten('SC TO-T', '')).toEqual(['uebernahme']);
+    expect(meldungsArten('SC 14D9', '')).toEqual(['uebernahme']);
+    expect(meldungsArten('SCHEDULE 13G', '')).toEqual(['beteiligung']);
+    expect(meldungsArten('SC 13G/A', '')).toEqual([]);
+    expect(NACHFASS_FORMULARE.has('425')).toBe(true);
+  });
+});

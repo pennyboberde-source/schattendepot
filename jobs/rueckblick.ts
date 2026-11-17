@@ -39,6 +39,7 @@ interface VtConfig {
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
+  erkennung?: { fenster: number; ereignisMerkmale: string[]; mindestSpruenge: number; fallstudie: { wert: string; von: string; bis: string; anlass: string }[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number; haltefristTage?: number };
   v6: V6Regeln & { ohneNein?: boolean };
   modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
@@ -595,7 +596,7 @@ const spNachSchluessel = new Map(SP.map((sp) => [spielartSchluessel(sp), sp]));
 const vorwaerts: JagdFall[] = [];
 const FENSTER_ALLE = (f: number) => Array.from({ length: f }, (_, n) => n + 1);
 /** Fall eines Musters im Vorwärtstest: Ausgang, laufend oder noch lauernd (kein Folgetag) */
-const SEC_NAME: Record<MeldungArt, string> = { angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: '13D-Meldung (Großaktionär)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz/Delisting/Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzungsänderung (8-K 5.03, oft Aktiensplit)' };
+const SEC_NAME: Record<MeldungArt, string> = { angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: '13D-Meldung (Großaktionär)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz/Delisting/Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzungsänderung (8-K 5.03, oft Aktiensplit)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: '13G-Meldung (Beteiligung ab 5 %)' };
 function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten, pl: Platz = 'gettex'): JagdFall | null {
   const sp = spNachSchluessel.get(e.sp);
   if (!sp) return null;
@@ -837,7 +838,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: 'Beteiligung ab 5 % (13G)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
@@ -1423,6 +1424,94 @@ if (MODELLE.length && mZahl) {
   });
 }
 
+// ---------- F1: Erkennungsquote hebelfreier Volltreffer (KONZEPT-FRUEHERKENNUNG.md, 17.11.2026) ----------
+const fallstudieZeilen: { wert: string; datum: string; anlass: string; sprung: boolean; tag: number | null; muster: string[]; ereignisse: string[] }[] = [];
+if (vt.erkennung) {
+  const ek = vt.erkennung;
+  const fi = F.indexOf(ek.fenster);
+  const sMax = Math.max(...vt.etikett.stops);
+  const s1 = SP.findIndex((sp) => sp.hebel === 1 && sp.stopEuro === sMax && sp.nachziehAb === undefined);
+  // bestandene Gruppen mit Vorteil als Bedingungen [Merkmal, Klasse][]
+  const bedingungen = new Map<string, { name: string; bed: [number, number][] }[]>();
+  for (const e of mitVorteil) {
+    if (e.schluessel.includes('hyp=') || e.schluessel.endsWith('|alle')) continue;
+    const [markt, rest] = e.schluessel.split('|');
+    const bed = rest.split('&').map((t) => t.split('=').map(Number) as [number, number]);
+    if (bed.some(([a, c]) => !Number.isFinite(a) || !Number.isFinite(c))) continue;
+    (bedingungen.get(markt) ?? bedingungen.set(markt, []).get(markt)!).push({ name: e.gruppe ?? e.schluessel, bed });
+  }
+  const eIdx = ek.ereignisMerkmale.map((nm) => E.findIndex((x) => x.merkmal === nm)).filter((a) => a >= 0);
+  type Z = { spruenge: number; erkannt: number; tage: number; feuern: number; klasse: Map<string, [number, number]> };
+  const jeMarkt = new Map<string, Z>();
+  const fallJe = new Map(ek.fallstudie.map((f) => [f.wert.toUpperCase(), f]));
+  if (fi >= 0 && s1 >= 0)
+    for (const r of reihen) {
+      const muster = bedingungen.get(r.markt) ?? [];
+      const k = r.kerzen;
+      const fall = r.markt === 'aktie' ? fallJe.get(r.schluessel.replace(/#\d+$/, '').replace(/^T:/, '').toUpperCase()) : undefined;
+      const z = jeMarkt.get(r.markt) ?? jeMarkt.set(r.markt, { spruenge: 0, erkannt: 0, tage: 0, feuern: 0, klasse: new Map() }).get(r.markt)!;
+      let letzterSprung = -1e9;
+      for (let i = 1; i < k.length - 1; i++) {
+        const x = merkmale(k, i);
+        if (!x || !handelbar(r, x, k[i])) continue;
+        const pl = platzFuer(r, SP[s1], plattformAm(r, x));
+        if (!pl) continue;
+        const au = etikett(k, i, SP[s1], kostenFuer(r.markt, x.umsatz20, pl, SP[s1]), F)[fi];
+        if (!au) continue;
+        const klassen = klassenAm(r, x, k[i].datum);
+        const feuernd = muster.filter((mu) => mu.bed.every(([a, c]) => klassen[a] === c));
+        const sprung = au.art === 'treffer' && i - letzterSprung > vt.pruefung.sperreTage;
+        z.tage++;
+        if (feuernd.length) z.feuern++;
+        for (const a of eIdx) {
+          if (klassen[a] === null) continue;
+          const key = `${a}=${klassen[a]}`;
+          const w = z.klasse.get(key) ?? z.klasse.set(key, [0, 0]).get(key)!;
+          w[0]++;
+          if (sprung) w[1]++;
+        }
+        if (sprung) {
+          letzterSprung = i;
+          z.spruenge++;
+          if (feuernd.length) z.erkannt++;
+        }
+        if (fall && k[i].datum >= fall.von && k[i].datum <= fall.bis)
+          fallstudieZeilen.push({
+            wert: fall.wert, datum: k[i].datum, anlass: fall.anlass, sprung: au.art === 'treffer', tag: au.art === 'treffer' ? au.tag : null,
+            muster: feuernd.slice(0, 5).map((mu) => mu.name),
+            ereignisse: eIdx.filter((a) => klassen[a] !== null).map((a) => gruppenText(`${r.markt}|${a}=${klassen[a]}`).replace(/^[^:]*:\s*/, '')),
+          });
+      }
+    }
+  const maerkte = [...jeMarkt.entries()].map(([markt, z]) => {
+    const anteilErkannt = z.spruenge ? Math.round((z.erkannt / z.spruenge) * 1000) / 10 : null;
+    const anteilFeuern = z.tage ? Math.round((z.feuern / z.tage) * 1000) / 10 : null;
+    const grund = z.tage ? z.spruenge / z.tage : 0;
+    const klassen = [...z.klasse.entries()]
+      .filter(([, [n, s]]) => n >= 200 && s >= 5)
+      .map(([key, [n, s]]) => ({ merkmal: gruppenText(`${markt}|${key}`), faelle: n, spruenge: s, quote: Math.round((s / n) * 1000) / 10, lift: grund ? Math.round((s / n / grund) * 10) / 10 : null }))
+      .sort((a, b) => (b.lift ?? 0) - (a.lift ?? 0))
+      .slice(0, 25);
+    return { markt, stichtage: z.tage, spruenge: z.spruenge, grundrate: Math.round(grund * 10000) / 100, erkannt: z.erkannt, anteilErkannt, anteilFeuern, lift: anteilErkannt !== null && anteilFeuern ? Math.round((anteilErkannt / anteilFeuern) * 10) / 10 : null, klassen };
+  });
+  schreibeJson('lernen/muster/erkennung.json', {
+    stand: jetzt.toISOString(),
+    hinweis: `F1 Erkennungsquote: hebelfreie Volltreffer (direkt, Stop ${sMax} €, ≥ +${vt.etikett.ziel} € nach Kosten binnen ${ek.fenster} Handelstagen, je Wert einer in ${vt.pruefung.sperreTage} Tagen). „erkannt“ = am Stichtag feuerte mindestens ein bestandenes Muster mit Vorteil (Muster sind auf derselben Geschichte geprüft – die Quote ist eine Obergrenze). Klassen: Anteil der Sprünge unter allen Stichtagen mit dieser Klasse gegen die Grundrate (Lift).`,
+    maerkte,
+    fallstudie: [...new Set(fallstudieZeilen.map((f) => f.wert))].map((w) => {
+      const z = fallstudieZeilen.filter((f) => f.wert === w);
+      const sp = z.filter((f) => f.sprung);
+      return { wert: w, anlass: z[0]?.anlass ?? '', stichtage: z.length, sprungTage: sp.length, sprungMitMuster: sp.filter((f) => f.muster.length).length };
+    }),
+  });
+  for (const m of maerkte) log(`F1 ${m.markt}: ${m.spruenge} hebelfreie Sprünge (Grundrate ${m.grundrate} %), erkannt ${m.erkannt} = ${m.anteilErkannt} % bei Muster-Feuer an ${m.anteilFeuern} % aller Tage (Lift ${m.lift}).`);
+  for (const w of new Set(fallstudieZeilen.map((f) => f.wert))) {
+    const z = fallstudieZeilen.filter((f) => f.wert === w);
+    const sp = z.filter((f) => f.sprung);
+    log(`F1 Fallstudie ${w}: ${z.length} Stichtage, ${sp.length} mit hebelfreiem Volltreffer, davon ${sp.filter((f) => f.muster.length).length} mit bestandenem Muster am Stichtag.`);
+  }
+}
+
 // ---------- V4: Muster-Buch fortschreiben und virtuelle Jagden ----------
 {
   const v4 = vt.v4;
@@ -1658,6 +1747,7 @@ if (MODELLE.length && mZahl) {
 
 // privat: Zensus mit Werten und die vollständige Prüfung
 const aus = join(ARCHIV, 'auswertung');
+if (fallstudieZeilen.length) { mkdirSync(aus, { recursive: true }); writeFileSync(join(aus, `fallstudie-${heute}.json`), JSON.stringify(fallstudieZeilen, null, 1)); }
 mkdirSync(aus, { recursive: true });
 const zensusCsv = ['datum,schluessel,markt,spielart,fenster,netto,tag,umsatz20,r1,relVolumen', ...episoden.sort((a, b) => a.datum.localeCompare(b.datum)).map((e) => [e.datum, e.schluessel, e.markt, `"${e.spielart}"`, e.fenster, e.netto, e.tag, e.umsatz20 === null ? '' : Math.round(e.umsatz20), e.r1, e.relVolumen ?? ''].join(','))].join('\n');
 writeFileSync(join(aus, `zensus-${heute}.csv.gz`), gzipSync(Buffer.from(zensusCsv + '\n', 'utf8'), { level: 9 }));
