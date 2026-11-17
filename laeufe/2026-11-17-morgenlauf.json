@@ -1,0 +1,42 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-17",
+  "erstellt": "2026-11-17T07:50:00Z",
+  "briefing": [
+    "Keine neue Order: Aktien und Krypto seitwärts/nervös, keine Idee mit belegtem Vorteil nach Gebühren – abwarten.",
+    "Heute Zahlen von Home Depot und Disney vor US-Start, Nvidia nach Schluss; 14:30 Uhr US-Einzelhandelsumsätze.",
+    "Kursraketen GMM (+97 %), GDHG (+90 %), AKAN: Raketen fallen laut Schattenbuch meist zurück (Median −11,5 %) – nur beobachten."
+  ],
+  "orders": [],
+  "anpassungen": [],
+  "prognose": [
+    {"name": "Global Mofy AI", "ticker": "GMM", "markt": "us", "richtung": "runter", "chance": 60, "grund": "+97 % mit Handelsstopps, kursrakete Median −11,5 % nach 1 Woche"},
+    {"name": "Golden Heaven", "ticker": "GDHG", "markt": "us", "richtung": "runter", "chance": 60, "grund": "+90 % ohne harte Nachricht, Pump-Verdacht, 14 Volatilitätspausen"},
+    {"name": "Akanda", "ticker": "AKAN", "markt": "us", "richtung": "runter", "chance": 57, "grund": "Zweiter Sprung in Folge (+63 %), Pump-Verdacht"},
+    {"name": "Century Casinos", "ticker": "CNTY", "markt": "us", "richtung": "runter", "chance": 58, "grund": "8-K 4.02: frühere Abschlüsse nicht verlässlich – Vertrauensverlust"},
+    {"name": "Aspira Women's Health", "ticker": "AWHL", "markt": "us", "richtung": "runter", "chance": 57, "grund": "8-K 4.02 Bilanzkorrektur bei Kleinstwert"},
+    {"name": "Aramark", "ticker": "ARMK", "markt": "us", "richtung": "runter", "chance": 53, "grund": "Gewinnenttäuschung −8 %, Schattenbuch Median −1,6 % nach 1 Woche"},
+    {"name": "PagSeguro Digital", "ticker": "PAGS", "markt": "us", "richtung": "hoch", "chance": 54, "grund": "EPS +16 % über Erwartung, Rekord-Q3, Rückkauf und Ausschüttung angekündigt"},
+    {"name": "iQIYI", "ticker": "IQ", "markt": "us", "richtung": "hoch", "chance": 51, "grund": "Verlust kleiner als erwartet; Reaktion unklar"},
+    {"name": "Claritev", "ticker": "CTEV", "markt": "us", "richtung": "hoch", "chance": 53, "grund": "Insider-Cluster 10,4 Mio. $ (Ares), auf der Volltreffer-Lauerliste"},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "hoch", "chance": 51, "grund": "Fear & Greed 12, Liquidationen gering – leichte Gegenbewegung möglich"}
+  ],
+  "volltrefferUrteil": [
+    {"wert": "CSEX", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Kurslücke unter −10 % ohne bekannten Anlass; Short nach großer Lücke riskant"},
+    {"wert": "BNAI", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": true, "urteil": "nein", "grund": "Kleinstwert mit KI-Etikett, Lücke nach oben verpufft – kein harter Anlass"},
+    {"wert": "HGLB", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Geschlossener Fonds, Lücke eher technisch – kein Anlass für große Bewegung"},
+    {"wert": "IVA", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Biotech ohne neue Meldung im Kontext; Studien-/Finanzierungsrisiko dominiert"},
+    {"wert": "PSNY", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "runter", "werbung": false, "urteil": "nein", "grund": "Fortführungsrisiko, −79 % in einem Jahr; Long-Jagd gegen den Trend"},
+    {"wert": "TROO", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": true, "urteil": "nein", "grund": "Kleinstwert ohne harte Meldung, Sprünge oft werbegetrieben"},
+    {"wert": "GRO", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Kein Anlass bekannt, Muster allein reicht nicht"},
+    {"wert": "CTEV", "markt": "aktie", "stichtag": "2026-11-16", "anlass": true, "richtung": "hoch", "werbung": false, "urteil": "ja", "grund": "Insider-Cluster 10,4 Mio. $ (u. a. Ares) nach starkem Kursverfall – harter, öffentlicher Anlass"},
+    {"wert": "NTHI", "markt": "aktie", "stichtag": "2026-11-16", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Quartalszahlen vor 6 Tagen schon verarbeitet; kein frischer Anlass"},
+    {"wert": "PPHC", "markt": "aktie", "stichtag": "2026-11-16", "anlass": true, "richtung": "hoch", "werbung": false, "urteil": "ja", "grund": "Zahlen und Großvertrag (8-K 1.01) kurz zuvor – Lücke nach oben hat einen belegten Grund"}
+  ],
+  "daytrading": [
+    {"name": "Home Depot", "markt": "us", "isin": "US4370761029", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 33, "these": "Quartalszahlen vor US-Start, hoher Umsatz; nur Ausbruch long aus der Eröffnungsspanne."},
+    {"name": "Walt Disney", "markt": "us", "isin": "US2546871060", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 33, "these": "Zahlen vor US-Start, Reaktion oft deutlich; ORB long bei klarem Ausbruch."},
+    {"name": "Tencent Music", "markt": "us", "isin": "US88034P1093", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 32, "these": "Zahlen vor US-Start, große Tagesspanne üblich; nur long-Ausbruch."}
+  ],
+  "notiz": "Morgenlauf 17.11.: Marktphase Aktien und Krypto seitwärts/nervös → höchstens 2 Depot-Orders, kein Hebel ohne Volltreffer-Beleg. Keine offene Position. Keine Idee erreicht glaubwürdig Konfidenz ≥ 40 mit positivem Erwartungswert: PAGS (Rekord-Q3, EPS +16 %) ist ein solider Wert, aber gewinn_ueberraschung trägt nur Median +0,6 % nach 1 Woche und die Reaktion ist unbekannt (Lektion 2/23); IQ ohne belegte Reaktion; Insider-Cluster Median −0,1 %; Kursraketen Median −11,5 %. Nvidia-Zahlen nach Schluss sind ein binäres Ereignis – kein Kauf davor. Websuchen: 4 (PAGS, IQ, PSNY, CTEV). Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung."
+}
