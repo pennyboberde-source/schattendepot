@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T19:14:17.227Z",
+  "stand": "2026-11-17T19:29:50.023Z",
   "heute": {
     "datum": "2026-11-17",
     "gruppe": {
@@ -428,47 +428,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-axon-enterprise-inc",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "AXON ENTERPRISE INC",
-      "isin": "US05464C1018",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 327.48,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T14:55:00.000Z",
-        "kurs": 274.3,
-        "level": 276,
-        "spanne": {
-          "hoch": 280.3,
-          "tief": 276
-        },
-        "richtung": "short"
-      },
-      "stop": 278.15,
-      "ziel": 262.4,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T14:55:00.000Z",
-        "basisKurs": 272.9,
-        "kurs": 5.4716,
-        "stueck": 182,
-        "kurswert": 995.83
-      }
-    },
-    {
       "id": "2026-11-17-scan-marvell-technology-inc",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -745,47 +704,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-axon-enterprise-inc",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "AXON ENTERPRISE INC",
-      "isin": "US05464C1018",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 327.48,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T14:55:00.000Z",
-        "kurs": 274.3,
-        "level": 276,
-        "spanne": {
-          "hoch": 280.3,
-          "tief": 276
-        },
-        "richtung": "short"
-      },
-      "stop": 278.15,
-      "ziel": 262.4,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T14:55:00.000Z",
-        "basisKurs": 272.9,
-        "kurs": 5.4716,
-        "stueck": 182,
-        "kurswert": 995.83
-      }
-    },
-    {
       "id": "2026-11-17-scan-marvell-technology-inc",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -999,6 +917,66 @@
         "kurs": 8.5864,
         "stueck": 116,
         "kurswert": 996.02
+      }
+    },
+    {
+      "id": "2026-11-17-scan-axon-enterprise-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "AXON ENTERPRISE INC",
+      "isin": "US05464C1018",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 327.48,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 274.3,
+        "level": 276,
+        "spanne": {
+          "hoch": 280.3,
+          "tief": 276
+        },
+        "richtung": "short"
+      },
+      "stop": 278.15,
+      "ziel": 262.4,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 272.9,
+        "kurs": 5.4716,
+        "stueck": 182,
+        "kurswert": 995.83
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T19:10:00.000Z",
+        "basisKurs": 278.6,
+        "kurs": 4.8758,
+        "kurswert": 887.4,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -108.43,
+        "bruttoProzent": -10.89,
+        "netto": -108.43,
+        "nettoProzent": -10.89,
+        "nettoTR": -110.43,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.09
       }
     },
     {
@@ -12388,46 +12366,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 113,
+      "anzahl": 114,
       "treffer": 50,
-      "quote": 44.2,
-      "netto": -551.89,
-      "brutto": -495.89,
-      "nettoTR": -720.89,
-      "oeNettoProzent": -0.49,
-      "oeR": 0.35
+      "quote": 43.9,
+      "netto": -660.32,
+      "brutto": -604.32,
+      "nettoTR": -831.32,
+      "oeNettoProzent": -0.58,
+      "oeR": 0.34
     },
     "heute": {
-      "anzahl": 34,
+      "anzahl": 35,
       "treffer": 21,
-      "quote": 61.8,
-      "netto": 630.27,
-      "brutto": 644.27,
-      "nettoTR": 577.27,
-      "oeNettoProzent": 1.87,
-      "oeR": 1
+      "quote": 60,
+      "netto": 521.84,
+      "brutto": 535.84,
+      "nettoTR": 466.84,
+      "oeNettoProzent": 1.5,
+      "oeR": 0.94
     },
-    "offen": 6,
+    "offen": 5,
     "gruppen": {
       "turbo": {
-        "anzahl": 85,
+        "anzahl": 86,
         "treffer": 40,
-        "quote": 47.1,
-        "netto": -358.04,
-        "brutto": -358.04,
-        "nettoTR": -527.04,
-        "oeNettoProzent": -0.43,
-        "oeR": 0.27
+        "quote": 46.5,
+        "netto": -466.47,
+        "brutto": -466.47,
+        "nettoTR": -637.47,
+        "oeNettoProzent": -0.55,
+        "oeR": 0.25
       },
       "short": {
-        "anzahl": 85,
+        "anzahl": 86,
         "treffer": 40,
-        "quote": 47.1,
-        "netto": -358.04,
-        "brutto": -358.04,
-        "nettoTR": -527.04,
-        "oeNettoProzent": -0.43,
-        "oeR": 0.27
+        "quote": 46.5,
+        "netto": -466.47,
+        "brutto": -466.47,
+        "nettoTR": -637.47,
+        "oeNettoProzent": -0.55,
+        "oeR": 0.25
       },
       "krypto": {
         "anzahl": 28,
