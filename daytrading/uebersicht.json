@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T15:18:45.585Z",
+  "stand": "2026-11-17T15:34:22.306Z",
   "heute": {
     "datum": "2026-11-17",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -0.65,
       "oeR": 0.33
     },
-    "offen": 3
+    "offen": 4
   },
   "gesamt": {
     "anzahl": 544,
@@ -1186,64 +1186,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-unitedhealth-group-inc",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "UNITEDHEALTH GROUP INC",
-      "isin": "US91324P1021",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 427.62,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:05:00.000Z",
-        "kurs": 354.55,
-        "level": 355,
-        "spanne": {
-          "hoch": 363,
-          "tief": 355
-        },
-        "richtung": "short"
-      },
-      "stop": 359,
-      "ziel": 351.05,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:05:00.000Z",
-        "basisKurs": 356.35,
-        "kurs": 7.1448,
-        "stueck": 139,
-        "kurswert": 993.13
-      },
-      "timeMachine": {
-        "zielZuerst": 19.9,
-        "stopZuerst": 52.1,
-        "keins": 28.1,
-        "gruen": 40.6,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 35,
-          "ziel": 1,
-          "stop": 14,
-          "oeR": -0.14
-        }
-      }
-    },
-    {
       "id": "2026-11-17-scan-advanced-micro-devices",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -1521,6 +1463,56 @@
         "kurs": 3.5027,
         "stueck": 285,
         "kurswert": 998.27
+      }
+    },
+    {
+      "id": "2026-11-17-scan-netflix-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "NETFLIX INC",
+      "isin": "US64110L1061",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T15:15:00.000Z",
+        "kurs": 55.33,
+        "level": 55.32,
+        "spanne": {
+          "hoch": 55.32,
+          "tief": 54.89
+        },
+        "richtung": "long"
+      },
+      "stop": 55.11,
+      "ziel": 55.9,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-17T15:15:00.000Z",
+        "basisKurs": 55.37,
+        "kurs": 55.647,
+        "stueck": 17,
+        "kurswert": 946
+      },
+      "timeMachine": {
+        "zielZuerst": 25.6,
+        "stopZuerst": 66.5,
+        "keins": 7.8,
+        "gruen": 31.5,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 27,
+          "ziel": 3,
+          "stop": 8,
+          "oeR": 0.19
+        }
       }
     }
   ],
@@ -2342,64 +2334,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-unitedhealth-group-inc",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "UNITEDHEALTH GROUP INC",
-      "isin": "US91324P1021",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 427.62,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:05:00.000Z",
-        "kurs": 354.55,
-        "level": 355,
-        "spanne": {
-          "hoch": 363,
-          "tief": 355
-        },
-        "richtung": "short"
-      },
-      "stop": 359,
-      "ziel": 351.05,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:05:00.000Z",
-        "basisKurs": 356.35,
-        "kurs": 7.1448,
-        "stueck": 139,
-        "kurswert": 993.13
-      },
-      "timeMachine": {
-        "zielZuerst": 19.9,
-        "stopZuerst": 52.1,
-        "keins": 28.1,
-        "gruen": 40.6,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 35,
-          "ziel": 1,
-          "stop": 14,
-          "oeR": -0.14
-        }
-      }
-    },
-    {
       "id": "2026-11-17-scan-advanced-micro-devices",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -2677,6 +2611,133 @@
         "kurs": 3.5027,
         "stueck": 285,
         "kurswert": 998.27
+      }
+    },
+    {
+      "id": "2026-11-17-scan-netflix-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "NETFLIX INC",
+      "isin": "US64110L1061",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T15:15:00.000Z",
+        "kurs": 55.33,
+        "level": 55.32,
+        "spanne": {
+          "hoch": 55.32,
+          "tief": 54.89
+        },
+        "richtung": "long"
+      },
+      "stop": 55.11,
+      "ziel": 55.9,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-17T15:15:00.000Z",
+        "basisKurs": 55.37,
+        "kurs": 55.647,
+        "stueck": 17,
+        "kurswert": 946
+      },
+      "timeMachine": {
+        "zielZuerst": 25.6,
+        "stopZuerst": 66.5,
+        "keins": 7.8,
+        "gruen": 31.5,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 27,
+          "ziel": 3,
+          "stop": 8,
+          "oeR": 0.19
+        }
+      }
+    },
+    {
+      "id": "2026-11-17-scan-unitedhealth-group-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "UNITEDHEALTH GROUP INC",
+      "isin": "US91324P1021",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 427.62,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T15:05:00.000Z",
+        "kurs": 354.55,
+        "level": 355,
+        "spanne": {
+          "hoch": 363,
+          "tief": 355
+        },
+        "richtung": "short"
+      },
+      "stop": 359,
+      "ziel": 351.05,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T15:05:00.000Z",
+        "basisKurs": 356.35,
+        "kurs": 7.1448,
+        "stueck": 139,
+        "kurswert": 993.13
+      },
+      "timeMachine": {
+        "zielZuerst": 19.9,
+        "stopZuerst": 52.1,
+        "keins": 28.1,
+        "gruen": 40.6,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 1,
+          "stop": 14,
+          "oeR": -0.14
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T15:30:00.000Z",
+        "basisKurs": 360.15,
+        "kurs": 6.7301,
+        "kurswert": 935.48,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -57.65,
+        "bruttoProzent": -5.8,
+        "netto": -57.65,
+        "nettoProzent": -5.8,
+        "nettoTR": -59.65,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.43
       }
     },
     {
@@ -12647,46 +12708,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 94,
+      "anzahl": 95,
       "treffer": 36,
-      "quote": 38.3,
-      "netto": -1184.91,
-      "brutto": -1134.91,
-      "nettoTR": -1322.91,
-      "oeNettoProzent": -1.27,
-      "oeR": 0.21
+      "quote": 37.9,
+      "netto": -1242.56,
+      "brutto": -1192.56,
+      "nettoTR": -1382.56,
+      "oeNettoProzent": -1.32,
+      "oeR": 0.19
     },
     "heute": {
-      "anzahl": 15,
+      "anzahl": 16,
       "treffer": 7,
-      "quote": 46.7,
-      "netto": -2.75,
-      "brutto": 5.25,
-      "nettoTR": -24.75,
-      "oeNettoProzent": -0.02,
-      "oeR": 0.96
+      "quote": 43.8,
+      "netto": -60.4,
+      "brutto": -52.4,
+      "nettoTR": -84.4,
+      "oeNettoProzent": -0.38,
+      "oeR": 0.81
     },
-    "offen": 24,
+    "offen": 23,
     "gruppen": {
       "turbo": {
-        "anzahl": 69,
+        "anzahl": 70,
         "treffer": 26,
-        "quote": 37.7,
-        "netto": -1072.16,
-        "brutto": -1072.16,
-        "nettoTR": -1210.16,
-        "oeNettoProzent": -1.56,
-        "oeR": 0
+        "quote": 37.1,
+        "netto": -1129.81,
+        "brutto": -1129.81,
+        "nettoTR": -1269.81,
+        "oeNettoProzent": -1.63,
+        "oeR": -0.02
       },
       "short": {
-        "anzahl": 69,
+        "anzahl": 70,
         "treffer": 26,
-        "quote": 37.7,
-        "netto": -1072.16,
-        "brutto": -1072.16,
-        "nettoTR": -1210.16,
-        "oeNettoProzent": -1.56,
-        "oeR": 0
+        "quote": 37.1,
+        "netto": -1129.81,
+        "brutto": -1129.81,
+        "nettoTR": -1269.81,
+        "oeNettoProzent": -1.63,
+        "oeR": -0.02
       },
       "krypto": {
         "anzahl": 25,
@@ -12774,8 +12835,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 102,
-        "chance": 44.1,
+        "faelle": 104,
+        "chance": 44.2,
         "oeNetto": -0.08,
         "wertung": -0.29
       }
