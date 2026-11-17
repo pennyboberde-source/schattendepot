@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T15:52:23.125Z",
+  "stand": "2026-11-17T16:07:46.164Z",
   "heute": {
     "datum": "2026-11-17",
     "gruppe": {
@@ -608,47 +608,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-servicenow-inc",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SERVICENOW INC",
-      "isin": "US81762P1021",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 104.4,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T14:50:00.000Z",
-        "kurs": 87.07,
-        "level": 87.85,
-        "spanne": {
-          "hoch": 89,
-          "tief": 87.85
-        },
-        "richtung": "short"
-      },
-      "stop": 88.43,
-      "ziel": 84.15,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T14:50:00.000Z",
-        "basisKurs": 87,
-        "kurs": 17.444,
-        "stueck": 57,
-        "kurswert": 994.31
-      }
-    },
-    {
       "id": "2026-11-17-scan-take-two-interactive-sof",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -973,64 +932,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-advanced-micro-devices",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ADVANCED MICRO DEVICES",
-      "isin": "US0079031078",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 545.82,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "kurs": 455.65,
-        "level": 455.9,
-        "spanne": {
-          "hoch": 465,
-          "tief": 455.9
-        },
-        "richtung": "short"
-      },
-      "stop": 460.45,
-      "ziel": 443.65,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "basisKurs": 454.85,
-        "kurs": 9.1197,
-        "stueck": 109,
-        "kurswert": 994.05
-      },
-      "timeMachine": {
-        "zielZuerst": 21.4,
-        "stopZuerst": 56.4,
-        "keins": 22.2,
-        "gruen": 37.7,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 33,
-          "ziel": 5,
-          "stop": 17,
-          "oeR": -0.11
-        }
-      }
-    },
-    {
       "id": "2026-11-17-scan-micron-technology-inc",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -1127,146 +1028,6 @@
         "kurs": 14.336,
         "stueck": 69,
         "kurswert": 989.18
-      }
-    },
-    {
-      "id": "2026-11-17-scan-sk-hynix-inc-gds-reg-s",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SK HYNIX INC-GDS REG S",
-      "isin": "US78392B1070",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 885.6,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "kurs": 738,
-        "level": 744,
-        "spanne": {
-          "hoch": 754,
-          "tief": 744
-        },
-        "richtung": "short"
-      },
-      "stop": 749,
-      "ziel": 716,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "basisKurs": 738,
-        "kurs": 14.797,
-        "stueck": 67,
-        "kurswert": 991.4
-      }
-    },
-    {
-      "id": "2026-11-17-scan-vertiv-holdings-co-a",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "VERTIV HOLDINGS CO-A",
-      "isin": "US92537N1081",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 209.62,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "kurs": 174.92,
-        "level": 175.66,
-        "spanne": {
-          "hoch": 179.92,
-          "tief": 175.66
-        },
-        "richtung": "short"
-      },
-      "stop": 177.79,
-      "ziel": 168.46,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "basisKurs": 174.68,
-        "kurs": 3.5027,
-        "stueck": 285,
-        "kurswert": 998.27
-      }
-    },
-    {
-      "id": "2026-11-17-scan-intel-corp",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "INTEL CORP",
-      "isin": "US4581401001",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 59.02,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:35:00.000Z",
-        "kurs": 49.135,
-        "level": 49.27,
-        "spanne": {
-          "hoch": 50.06,
-          "tief": 49.27
-        },
-        "richtung": "short"
-      },
-      "stop": 49.67,
-      "ziel": 48.23,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:35:00.000Z",
-        "basisKurs": 49.185,
-        "kurs": 9.8596,
-        "stueck": 101,
-        "kurswert": 995.82
-      },
-      "timeMachine": {
-        "zielZuerst": 27.7,
-        "stopZuerst": 63.8,
-        "keins": 8.5,
-        "gruen": 34,
-        "schwelle": 33.3,
-        "urteil": "Nahe an der Gewinnschwelle",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 38,
-          "ziel": 5,
-          "stop": 18,
-          "oeR": -0.09
-        }
       }
     }
   ],
@@ -1510,47 +1271,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-servicenow-inc",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SERVICENOW INC",
-      "isin": "US81762P1021",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 104.4,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T14:50:00.000Z",
-        "kurs": 87.07,
-        "level": 87.85,
-        "spanne": {
-          "hoch": 89,
-          "tief": 87.85
-        },
-        "richtung": "short"
-      },
-      "stop": 88.43,
-      "ziel": 84.15,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T14:50:00.000Z",
-        "basisKurs": 87,
-        "kurs": 17.444,
-        "stueck": 57,
-        "kurswert": 994.31
-      }
-    },
-    {
       "id": "2026-11-17-scan-take-two-interactive-sof",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -1875,64 +1595,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-advanced-micro-devices",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ADVANCED MICRO DEVICES",
-      "isin": "US0079031078",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 545.82,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "kurs": 455.65,
-        "level": 455.9,
-        "spanne": {
-          "hoch": 465,
-          "tief": 455.9
-        },
-        "richtung": "short"
-      },
-      "stop": 460.45,
-      "ziel": 443.65,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "basisKurs": 454.85,
-        "kurs": 9.1197,
-        "stueck": 109,
-        "kurswert": 994.05
-      },
-      "timeMachine": {
-        "zielZuerst": 21.4,
-        "stopZuerst": 56.4,
-        "keins": 22.2,
-        "gruen": 37.7,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 33,
-          "ziel": 5,
-          "stop": 17,
-          "oeR": -0.11
-        }
-      }
-    },
-    {
       "id": "2026-11-17-scan-micron-technology-inc",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -2032,47 +1694,6 @@
       }
     },
     {
-      "id": "2026-11-17-scan-sk-hynix-inc-gds-reg-s",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SK HYNIX INC-GDS REG S",
-      "isin": "US78392B1070",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 885.6,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "kurs": 738,
-        "level": 744,
-        "spanne": {
-          "hoch": 754,
-          "tief": 744
-        },
-        "richtung": "short"
-      },
-      "stop": 749,
-      "ziel": 716,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:10:00.000Z",
-        "basisKurs": 738,
-        "kurs": 14.797,
-        "stueck": 67,
-        "kurswert": 991.4
-      }
-    },
-    {
       "id": "2026-11-17-scan-vertiv-holdings-co-a",
       "datum": "2026-11-17",
       "herkunft": "code_scan",
@@ -2111,64 +1732,25 @@
         "kurs": 3.5027,
         "stueck": 285,
         "kurswert": 998.27
-      }
-    },
-    {
-      "id": "2026-11-17-scan-intel-corp",
-      "datum": "2026-11-17",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "INTEL CORP",
-      "isin": "US4581401001",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 59.02,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
       },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-17T15:35:00.000Z",
-        "kurs": 49.135,
-        "level": 49.27,
-        "spanne": {
-          "hoch": 50.06,
-          "tief": 49.27
+      "ausstieg": {
+        "zeit": "2026-11-17T15:55:00.000Z",
+        "basisKurs": 168.46,
+        "kurs": 4.1057,
+        "kurswert": 1170.12,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 171.85,
+        "bruttoProzent": 17.21,
+        "netto": 171.85,
+        "nettoProzent": 17.21,
+        "nettoTR": 169.85,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
         },
-        "richtung": "short"
-      },
-      "stop": 49.67,
-      "ziel": 48.23,
-      "zielR": 2,
-      "flatBis": "2026-11-17T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-17T15:35:00.000Z",
-        "basisKurs": 49.185,
-        "kurs": 9.8596,
-        "stueck": 101,
-        "kurswert": 995.82
-      },
-      "timeMachine": {
-        "zielZuerst": 27.7,
-        "stopZuerst": 63.8,
-        "keins": 8.5,
-        "gruen": 34,
-        "schwelle": 33.3,
-        "urteil": "Nahe an der Gewinnschwelle",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 38,
-          "ziel": 5,
-          "stop": 18,
-          "oeR": -0.09
-        }
+        "r": 2
       }
     },
     {
@@ -2267,6 +1849,280 @@
           "tr": 2
         },
         "r": -1
+      }
+    },
+    {
+      "id": "2026-11-17-scan-servicenow-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SERVICENOW INC",
+      "isin": "US81762P1021",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 104.4,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 87.07,
+        "level": 87.85,
+        "spanne": {
+          "hoch": 89,
+          "tief": 87.85
+        },
+        "richtung": "short"
+      },
+      "stop": 88.43,
+      "ziel": 84.15,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 87,
+        "kurs": 17.444,
+        "stueck": 57,
+        "kurswert": 994.31
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T15:50:00.000Z",
+        "basisKurs": 84.15,
+        "kurs": 20.199,
+        "kurswert": 1151.34,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 157.03,
+        "bruttoProzent": 15.79,
+        "netto": 157.03,
+        "nettoProzent": 15.79,
+        "nettoTR": 155.03,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.99
+      }
+    },
+    {
+      "id": "2026-11-17-scan-advanced-micro-devices",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ADVANCED MICRO DEVICES",
+      "isin": "US0079031078",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 545.82,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T15:10:00.000Z",
+        "kurs": 455.65,
+        "level": 455.9,
+        "spanne": {
+          "hoch": 465,
+          "tief": 455.9
+        },
+        "richtung": "short"
+      },
+      "stop": 460.45,
+      "ziel": 443.65,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T15:10:00.000Z",
+        "basisKurs": 454.85,
+        "kurs": 9.1197,
+        "stueck": 109,
+        "kurswert": 994.05
+      },
+      "timeMachine": {
+        "zielZuerst": 21.4,
+        "stopZuerst": 56.4,
+        "keins": 22.2,
+        "gruen": 37.7,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 33,
+          "ziel": 5,
+          "stop": 17,
+          "oeR": -0.11
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T15:50:00.000Z",
+        "basisKurs": 443.65,
+        "kurs": 10.191,
+        "kurswert": 1110.82,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 116.77,
+        "bruttoProzent": 11.75,
+        "netto": 116.77,
+        "nettoProzent": 11.75,
+        "nettoTR": 114.77,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
+      }
+    },
+    {
+      "id": "2026-11-17-scan-sk-hynix-inc-gds-reg-s",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SK HYNIX INC-GDS REG S",
+      "isin": "US78392B1070",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 885.6,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T15:10:00.000Z",
+        "kurs": 738,
+        "level": 744,
+        "spanne": {
+          "hoch": 754,
+          "tief": 744
+        },
+        "richtung": "short"
+      },
+      "stop": 749,
+      "ziel": 716,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T15:10:00.000Z",
+        "basisKurs": 738,
+        "kurs": 14.797,
+        "stueck": 67,
+        "kurswert": 991.4
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T15:50:00.000Z",
+        "basisKurs": 716,
+        "kurs": 16.918,
+        "kurswert": 1133.51,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 142.11,
+        "bruttoProzent": 14.33,
+        "netto": 142.11,
+        "nettoProzent": 14.33,
+        "nettoTR": 140.11,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
+      }
+    },
+    {
+      "id": "2026-11-17-scan-intel-corp",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "INTEL CORP",
+      "isin": "US4581401001",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 59.02,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T15:35:00.000Z",
+        "kurs": 49.135,
+        "level": 49.27,
+        "spanne": {
+          "hoch": 50.06,
+          "tief": 49.27
+        },
+        "richtung": "short"
+      },
+      "stop": 49.67,
+      "ziel": 48.23,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T15:35:00.000Z",
+        "basisKurs": 49.185,
+        "kurs": 9.8596,
+        "stueck": 101,
+        "kurswert": 995.82
+      },
+      "timeMachine": {
+        "zielZuerst": 27.7,
+        "stopZuerst": 63.8,
+        "keins": 8.5,
+        "gruen": 34,
+        "schwelle": 33.3,
+        "urteil": "Nahe an der Gewinnschwelle",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 38,
+          "ziel": 5,
+          "stop": 18,
+          "oeR": -0.09
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-17T15:50:00.000Z",
+        "basisKurs": 48.23,
+        "kurs": 10.763,
+        "kurswert": 1087.06,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 91.24,
+        "bruttoProzent": 9.16,
+        "netto": 91.24,
+        "nettoProzent": 9.16,
+        "nettoTR": 89.24,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.97
       }
     },
     {
@@ -12672,46 +12528,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 102,
-      "treffer": 40,
-      "quote": 39.2,
-      "netto": -842.93,
-      "brutto": -786.93,
-      "nettoTR": -990.93,
-      "oeNettoProzent": -0.83,
-      "oeR": 0.23
+      "anzahl": 107,
+      "treffer": 45,
+      "quote": 42.1,
+      "netto": -163.93,
+      "brutto": -107.93,
+      "nettoTR": -321.93,
+      "oeNettoProzent": -0.16,
+      "oeR": 0.31
     },
     "heute": {
-      "anzahl": 23,
-      "treffer": 11,
-      "quote": 47.8,
-      "netto": 339.23,
-      "brutto": 353.23,
-      "nettoTR": 307.23,
-      "oeNettoProzent": 1.48,
-      "oeR": 0.78
+      "anzahl": 28,
+      "treffer": 16,
+      "quote": 57.1,
+      "netto": 1018.23,
+      "brutto": 1032.23,
+      "nettoTR": 976.23,
+      "oeNettoProzent": 3.65,
+      "oeR": 0.99
     },
-    "offen": 17,
+    "offen": 12,
     "gruppen": {
       "turbo": {
-        "anzahl": 74,
-        "treffer": 30,
-        "quote": 40.5,
-        "netto": -649.08,
-        "brutto": -649.08,
-        "nettoTR": -797.08,
-        "oeNettoProzent": -0.89,
-        "oeR": 0.09
+        "anzahl": 79,
+        "treffer": 35,
+        "quote": 44.3,
+        "netto": 29.92,
+        "brutto": 29.92,
+        "nettoTR": -128.08,
+        "oeNettoProzent": 0.03,
+        "oeR": 0.21
       },
       "short": {
-        "anzahl": 74,
-        "treffer": 30,
-        "quote": 40.5,
-        "netto": -649.08,
-        "brutto": -649.08,
-        "nettoTR": -797.08,
-        "oeNettoProzent": -0.89,
-        "oeR": 0.09
+        "anzahl": 79,
+        "treffer": 35,
+        "quote": 44.3,
+        "netto": 29.92,
+        "brutto": 29.92,
+        "nettoTR": -128.08,
+        "oeNettoProzent": 0.03,
+        "oeR": 0.21
       },
       "krypto": {
         "anzahl": 28,
@@ -12811,5 +12667,8 @@
     "claude": 3,
     "autopilot": 0
   },
-  "hinweise": []
+  "hinweise": [
+    "SPACE EXPLORATION TECHN-CL A: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)",
+    "BROADCOM INC: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)"
+  ]
 }
