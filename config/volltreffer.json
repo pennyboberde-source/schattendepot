@@ -904,8 +904,8 @@
     }
   },
   "erkennung": {
-    "hinweis": "F1 (KONZEPT-FRUEHERKENNUNG.md, 17.11.2026): Wie viele hebelfreie Volltreffer (direkt, Stop maxStop, ≥ +400 € nach Kosten binnen fenster Handelstagen) hatten am Stichtag ein bestandenes Muster mit Vorteil? Verglichen mit dem Anteil aller handelbaren Stichtage, an denen ein solches Muster feuert (Lift). Dazu je Ereignis-Merkmal und Klasse der Anteil unter den Sprüngen gegen alle Tage. Öffentlich nur Anteile, privat die Fälle. fallstudie: bekannte Fälle (Nutzer), Log nur ja/nein und Zahl der Muster.",
-    "fenster": 21,
+    "hinweis": "F1 (KONZEPT-FRUEHERKENNUNG.md, 17.11.2026): Wie viele hebelfreie Volltreffer (direkt, Standard-Stop, ≥ +400 € nach Kosten binnen fenster Handelstagen (10 – nur dafür gibt es Paar-Gruppen)) hatten am Stichtag ein Erkennungs-Muster (hebelfreie Volltreffer-Quote in beiden Zeiträumen ≥ liftMin × Grundrate)? Verglichen mit dem Anteil aller handelbaren Stichtage, an denen ein solches Muster feuert (Lift). Dazu je Ereignis-Merkmal und Klasse der Anteil unter den Sprüngen gegen alle Tage. Öffentlich nur Anteile, privat die Fälle. fallstudie: bekannte Fälle (Nutzer), Log nur ja/nein und Zahl der Muster.",
+    "fenster": 10,
     "ereignisMerkmale": [
       "zahlen",
       "angebot",
@@ -966,6 +966,7 @@
         "bis": "2024-12-06",
         "anlass": "US-Wahl, Bitcoin"
       }
-    ]
+    ],
+    "liftMin": 3
   }
 }

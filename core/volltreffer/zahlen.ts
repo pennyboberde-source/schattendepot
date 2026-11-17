@@ -225,6 +225,9 @@ export function brancheAusSic(sic: number | null | undefined): number | null {
 
 /** Meldungsarten dieser Firma vollständig erfasst? (sonst gilt das Merkmal als unbekannt, nicht als „keine Meldung“) */
 export const meldungenErfasst = (f: ZahlenFirma | undefined): boolean => !!f?.geholt && (f.stufe ?? 0) >= MELDUNGEN_STUFE;
+/** Ab welcher Stufe eine Art erfasst ist: ältere Arten gelten schon mit Stufe 1, damit der Rückblick sie während des Neuabrufs behält */
+export const ART_AB_STUFE: Record<MeldungArt, number> = { angebot: 1, registrierung: 1, grossaktionaer: 1, vertrag: 1, warnung: 1, fuehrung: 1, satzung: 1, fusion: 2, uebernahme: 2, beteiligung: 2 };
+export const artErfasst = (f: ZahlenFirma | undefined, art: MeldungArt): boolean => !!f?.geholt && (f.stufe ?? 0) >= ART_AB_STUFE[art];
 
 /** Kürzel → Firma (für den Rückblick) */
 export function firmaJeTicker(a: ZahlenArchiv): Map<string, ZahlenFirma> {

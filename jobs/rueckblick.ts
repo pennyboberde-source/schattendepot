@@ -29,7 +29,7 @@ import { groessenKlasse, signalMessen, verdichten, type SammelErgebnis } from '.
 import { bewerten, gegenTag, mitSperre, tagesAuswahl, tagesRang, trainieren, wichtigkeit, type Modell, type ModellEinstellungen } from '../core/volltreffer/modell.ts';
 import { turbosPruefen } from './lib/turbos.ts';
 import type { InsiderArchiv } from '../core/volltreffer/insider.ts';
-import { brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfasst, zahlenAbstaende, type MeldungArt, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
+import { artErfasst, brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfasst, zahlenAbstaende, type MeldungArt, type ZahlenArchiv, type ZahlenFirma } from '../core/volltreffer/zahlen.ts';
 
 type Markt = 'aktie' | 'krypto';
 interface VtConfig {
@@ -39,7 +39,7 @@ interface VtConfig {
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
-  erkennung?: { fenster: number; ereignisMerkmale: string[]; mindestSpruenge: number; fallstudie: { wert: string; von: string; bis: string; anlass: string }[] };
+  erkennung?: { fenster: number; ereignisMerkmale: string[]; mindestSpruenge: number; liftMin: number; fallstudie: { wert: string; von: string; bis: string; anlass: string }[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number; haltefristTage?: number };
   v6: V6Regeln & { ohneNein?: boolean };
   modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
@@ -177,7 +177,7 @@ let meldungCache: { r: Reihe; je: Map<string, Map<string, number | null>> } | nu
 const meldungAm = (r: Reihe, datum: string, art: MeldungArt): number | null => {
   if (r.markt !== 'aktie') return null;
   const f = firmen.get(r.schluessel.slice(2).split('#')[0]);
-  if (!meldungenErfasst(f)) return null;
+  if (!artErfasst(f, art)) return null;
   if (meldungCache?.r !== r) {
     const daten = r.kerzen.map((k) => k.datum);
     const je = new Map<string, Map<string, number | null>>();
@@ -1429,16 +1429,27 @@ const fallstudieZeilen: { wert: string; datum: string; anlass: string; sprung: b
 if (vt.erkennung) {
   const ek = vt.erkennung;
   const fi = F.indexOf(ek.fenster);
-  const sMax = Math.max(...vt.etikett.stops);
+  // Standard-Stop und ein Paar-Fenster: nur dafür rechnet der Rückblick Einzel- und Paar-Gruppen
+  const sMax = vt.etikett.standardStop;
   const s1 = SP.findIndex((sp) => sp.hebel === 1 && sp.stopEuro === sMax && sp.nachziehAb === undefined);
-  // bestandene Gruppen mit Vorteil als Bedingungen [Merkmal, Klasse][]
+  // Erkennungs-Muster: Gruppen, deren hebelfreie Volltreffer-Quote (direkt, dieser Stop, dieses Fenster) in BEIDEN Zeiträumen
+  // mindestens liftMin × die Grundrate ist, mit genug Fällen. (Probe 17.11.: „irgendein bestandenes Muster“ feuert an 91 %
+  // aller Tage – kein Maßstab.)
+  const spS = spielartSchluessel(SP[s1]);
+  const grundJe = new Map(ergebnisse.filter((e) => e.art === 'alle' && e.spielartSchluessel === spS && e.fenster === ek.fenster).map((e) => [e.schluessel.split('|')[0], e.gesamt.quote]));
+  const stark = ergebnisse.filter((e) => {
+    if ((e.art !== 'einzel' && e.art !== 'paar') || e.spielartSchluessel !== spS || e.fenster !== ek.fenster) return false;
+    const g = grundJe.get(e.schluessel.split('|')[0]) ?? 0;
+    return g > 0 && e.zeitraeume.every((z) => z.n >= vt.pruefung.mindestFaelle && z.quote >= ek.liftMin * g);
+  });
+  log(`F1: ${stark.length} Erkennungs-Muster (hebelfreie Quote in beiden Zeiträumen ≥ ${ek.liftMin} × Grundrate).`);
   const bedingungen = new Map<string, { name: string; bed: [number, number][] }[]>();
-  for (const e of mitVorteil) {
+  for (const e of stark) {
     if (e.schluessel.includes('hyp=') || e.schluessel.endsWith('|alle')) continue;
     const [markt, rest] = e.schluessel.split('|');
     const bed = rest.split('&').map((t) => t.split('=').map(Number) as [number, number]);
     if (bed.some(([a, c]) => !Number.isFinite(a) || !Number.isFinite(c))) continue;
-    (bedingungen.get(markt) ?? bedingungen.set(markt, []).get(markt)!).push({ name: e.gruppe ?? e.schluessel, bed });
+    (bedingungen.get(markt) ?? bedingungen.set(markt, []).get(markt)!).push({ name: gruppenText(e.schluessel), bed });
   }
   const eIdx = ek.ereignisMerkmale.map((nm) => E.findIndex((x) => x.merkmal === nm)).filter((a) => a >= 0);
   type Z = { spruenge: number; erkannt: number; tage: number; feuern: number; klasse: Map<string, [number, number]> };
@@ -1496,7 +1507,7 @@ if (vt.erkennung) {
   });
   schreibeJson('lernen/muster/erkennung.json', {
     stand: jetzt.toISOString(),
-    hinweis: `F1 Erkennungsquote: hebelfreie Volltreffer (direkt, Stop ${sMax} €, ≥ +${vt.etikett.ziel} € nach Kosten binnen ${ek.fenster} Handelstagen, je Wert einer in ${vt.pruefung.sperreTage} Tagen). „erkannt“ = am Stichtag feuerte mindestens ein bestandenes Muster mit Vorteil (Muster sind auf derselben Geschichte geprüft – die Quote ist eine Obergrenze). Klassen: Anteil der Sprünge unter allen Stichtagen mit dieser Klasse gegen die Grundrate (Lift).`,
+    hinweis: `F1 Erkennungsquote: hebelfreie Volltreffer (direkt, Stop ${sMax} €, ≥ +${vt.etikett.ziel} € nach Kosten binnen ${ek.fenster} Handelstagen, je Wert einer in ${vt.pruefung.sperreTage} Tagen). „erkannt“ = am Stichtag feuerte mindestens ein Erkennungs-Muster (hebelfreie Volltreffer-Quote in beiden Zeiträumen ≥ ${ek.liftMin} × Grundrate; auf derselben Geschichte gefunden – die Quote ist eine Obergrenze). Klassen: Anteil der Sprünge unter allen Stichtagen mit dieser Klasse gegen die Grundrate (Lift).`,
     maerkte,
     fallstudie: [...new Set(fallstudieZeilen.map((f) => f.wert))].map((w) => {
       const z = fallstudieZeilen.filter((f) => f.wert === w);
@@ -1508,7 +1519,7 @@ if (vt.erkennung) {
   for (const w of new Set(fallstudieZeilen.map((f) => f.wert))) {
     const z = fallstudieZeilen.filter((f) => f.wert === w);
     const sp = z.filter((f) => f.sprung);
-    log(`F1 Fallstudie ${w}: ${z.length} Stichtage, ${sp.length} mit hebelfreiem Volltreffer, davon ${sp.filter((f) => f.muster.length).length} mit bestandenem Muster am Stichtag.`);
+    log(`F1 Fallstudie ${w}: ${z.length} Stichtage, ${sp.length} mit hebelfreiem Volltreffer, davon ${sp.filter((f) => f.muster.length).length} mit Erkennungs-Muster am Stichtag; Muster an ${z.filter((f) => f.muster.length).length} von ${z.length} Tagen.`);
   }
 }
 
