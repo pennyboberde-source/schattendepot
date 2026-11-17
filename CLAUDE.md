@@ -5,6 +5,7 @@ Der vollständige Auftrag steht in `schattendepot-prompt.md` (Abschnitte 0–9).
 Zusatzplan seit 17.11.2026: `KONZEPT-FRUEHERKENNUNG.md` (große Sprünge ohne Hebel, Pennystocks, Frühwarnsignale; Stufen F1–F7). Gültiger Plan seit 11.11.2026: `KONZEPT-VOLLTREFFER.md` (dritter Bereich „Volltreffer“, Meilensteine V0, VS, V1–V6, Freigaben F1–F4); der Stand der Meilensteine steht in STAND.md ganz oben.
 
 ## Arbeitsweise mit dem Nutzer
+- **Rückfragen (Nutzer 17.11.2026, gilt immer):** Bei Fragen oder Unklarheiten immer von selbst nachfragen – nicht warten, bis der Nutzer am Ende nach Fragen fragt. Ist er nicht da (eigenständiger Lauf), die Frage mit 🔴❗ markieren, eine Push-Benachrichtigung senden und mit der vernünftigsten Lesart weiterarbeiten.
 - Sitzungsstart: „Lies STAND.md und mach weiter“ → STAND.md lesen, beim „Nächsten Schritt“ weitermachen.
 - Fehler: „Lies STAND.md und behebe die offenen Fehler-Issues“ → Ablauf in STAND.md › „Fehler beheben in einer neuen Sitzung“ (Issues mit Label `fehler` aus dem App-Knopf „Fehler melden“).
 - Das System ist live: jede Änderung an `main` wird sofort deployt und von den Jobs genutzt → nur mit grünen Tests committen, Daten-Branch nie von Hand ändern.
