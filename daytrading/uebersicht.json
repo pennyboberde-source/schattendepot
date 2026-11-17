@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T18:43:19.678Z",
+  "stand": "2026-11-17T18:58:47.215Z",
   "heute": {
     "datum": "2026-11-17",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -1.16,
       "oeR": -0.02
     },
-    "offen": 0
+    "offen": 1
   },
   "gesamt": {
     "anzahl": 548,
@@ -648,6 +648,41 @@
         "stueck": 69,
         "kurswert": 989.18
       }
+    },
+    {
+      "id": "2026-11-17-claude-tencent-music",
+      "datum": "2026-11-17",
+      "herkunft": "claude",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "Tencent Music",
+      "isin": "US88034P1093",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T18:35:00.000Z",
+        "kurs": 8.62,
+        "level": 8.6,
+        "spanne": {
+          "hoch": 8.6,
+          "tief": 8.38
+        },
+        "richtung": "long"
+      },
+      "stop": 8.49,
+      "ziel": 8.76,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "chance": 32,
+      "these": "Zahlen vor US-Start, große Tagesspanne üblich; nur long-Ausbruch.",
+      "einstieg": {
+        "zeit": "2026-11-17T18:40:00.000Z",
+        "basisKurs": 8.58,
+        "kurs": 8.5864,
+        "stueck": 116,
+        "kurswert": 996.02
+      }
     }
   ],
   "trades": [
@@ -929,6 +964,41 @@
         "kurs": 14.336,
         "stueck": 69,
         "kurswert": 989.18
+      }
+    },
+    {
+      "id": "2026-11-17-claude-tencent-music",
+      "datum": "2026-11-17",
+      "herkunft": "claude",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "Tencent Music",
+      "isin": "US88034P1093",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T18:35:00.000Z",
+        "kurs": 8.62,
+        "level": 8.6,
+        "spanne": {
+          "hoch": 8.6,
+          "tief": 8.38
+        },
+        "richtung": "long"
+      },
+      "stop": 8.49,
+      "ziel": 8.76,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "chance": 32,
+      "these": "Zahlen vor US-Start, große Tagesspanne üblich; nur long-Ausbruch.",
+      "einstieg": {
+        "zeit": "2026-11-17T18:40:00.000Z",
+        "basisKurs": 8.58,
+        "kurs": 8.5864,
+        "stueck": 116,
+        "kurswert": 996.02
       }
     },
     {
