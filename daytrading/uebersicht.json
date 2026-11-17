@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T14:47:43.349Z",
+  "stand": "2026-11-17T15:03:10.203Z",
   "heute": {
     "datum": "2026-11-17",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -0.66,
       "oeR": 0.31
     },
-    "offen": 1
+    "offen": 4
   },
   "gesamt": {
     "anzahl": 542,
@@ -573,6 +573,609 @@
         "stueck": 563,
         "kurswert": 998.54
       }
+    },
+    {
+      "id": "2026-11-17-scan-atlassian-corp-cl-a",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ATLASSIAN CORP-CL A",
+      "isin": "US0494681010",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 157.68,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 130.8,
+        "level": 131.8,
+        "spanne": {
+          "hoch": 135.8,
+          "tief": 131.8
+        },
+        "richtung": "short"
+      },
+      "stop": 133.8,
+      "ziel": 126.6,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 131.4,
+        "kurs": 2.6346,
+        "stueck": 379,
+        "kurswert": 998.51
+      }
+    },
+    {
+      "id": "2026-11-17-scan-nike-inc-cl-b",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NIKE INC -CL B",
+      "isin": "US6541061031",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 42.96,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 35.73,
+        "level": 35.97,
+        "spanne": {
+          "hoch": 36.88,
+          "tief": 35.97
+        },
+        "richtung": "short"
+      },
+      "stop": 36.43,
+      "ziel": 34.55,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 35.8,
+        "kurs": 7.1779,
+        "stueck": 139,
+        "kurswert": 997.73
+      }
+    },
+    {
+      "id": "2026-11-17-scan-salesforce-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SALESFORCE INC",
+      "isin": "US79466L3024",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 220.68,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 184.28,
+        "level": 186,
+        "spanne": {
+          "hoch": 190,
+          "tief": 186
+        },
+        "richtung": "short"
+      },
+      "stop": 188,
+      "ziel": 175.7,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 183.9,
+        "kurs": 3.6872,
+        "stueck": 271,
+        "kurswert": 999.23
+      }
+    },
+    {
+      "id": "2026-11-17-scan-servicenow-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SERVICENOW INC",
+      "isin": "US81762P1021",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 104.4,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 87.07,
+        "level": 87.85,
+        "spanne": {
+          "hoch": 89,
+          "tief": 87.85
+        },
+        "richtung": "short"
+      },
+      "stop": 88.43,
+      "ziel": 84.15,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 87,
+        "kurs": 17.444,
+        "stueck": 57,
+        "kurswert": 994.31
+      }
+    },
+    {
+      "id": "2026-11-17-scan-super-micro-computer-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SUPER MICRO COMPUTER INC",
+      "isin": "US86800U3023",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 26.69,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 22.335,
+        "level": 22.395,
+        "spanne": {
+          "hoch": 22.855,
+          "tief": 22.395
+        },
+        "richtung": "short"
+      },
+      "stop": 22.63,
+      "ziel": 21.49,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 22.245,
+        "kurs": 4.4561,
+        "stueck": 224,
+        "kurswert": 998.17
+      }
+    },
+    {
+      "id": "2026-11-17-scan-take-two-interactive-sof",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "TAKE-TWO INTERACTIVE SOFTWRE",
+      "isin": "US8740541094",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 228.98,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 191.98,
+        "level": 194.56,
+        "spanne": {
+          "hoch": 200.15,
+          "tief": 194.56
+        },
+        "richtung": "short"
+      },
+      "stop": 197.36,
+      "ziel": 177.75,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 190.82,
+        "kurs": 3.8255,
+        "stueck": 261,
+        "kurswert": 998.46
+      },
+      "timeMachine": {
+        "zielZuerst": 0.7,
+        "stopZuerst": 6.2,
+        "keins": 93.2,
+        "gruen": 54.4,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 35,
+          "ziel": 5,
+          "stop": 10,
+          "oeR": 0.22
+        }
+      }
+    },
+    {
+      "id": "2026-11-17-claude-walt-disney",
+      "datum": "2026-11-17",
+      "herkunft": "claude",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "Walt Disney",
+      "isin": "US2546871060",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 111.06,
+        "level": 109.42,
+        "spanne": {
+          "hoch": 109.42,
+          "tief": 108.02
+        },
+        "richtung": "long"
+      },
+      "stop": 108.72,
+      "ziel": 117.3,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "chance": 33,
+      "these": "Zahlen vor US-Start, Reaktion oft deutlich; ORB long bei klarem Ausbruch.",
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 111.58,
+        "kurs": 111.664,
+        "stueck": 8,
+        "kurswert": 893.31
+      },
+      "timeMachine": {
+        "zielZuerst": 0,
+        "stopZuerst": 0.4,
+        "keins": 99.6,
+        "gruen": 49.9,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 37,
+          "ziel": 5,
+          "stop": 13,
+          "oeR": 0.07
+        }
+      }
+    },
+    {
+      "id": "2026-11-17-scan-amazon-com-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AMAZON.COM INC",
+      "isin": "US0231351067",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 235.7,
+        "level": 235.4,
+        "spanne": {
+          "hoch": 235.4,
+          "tief": 234.5
+        },
+        "richtung": "long"
+      },
+      "stop": 234.95,
+      "ziel": 236.15,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 235.35,
+        "kurs": 236.527,
+        "stueck": 4,
+        "kurswert": 946.11
+      }
+    },
+    {
+      "id": "2026-11-17-scan-axon-enterprise-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "AXON ENTERPRISE INC",
+      "isin": "US05464C1018",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 327.48,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 274.3,
+        "level": 276,
+        "spanne": {
+          "hoch": 280.3,
+          "tief": 276
+        },
+        "richtung": "short"
+      },
+      "stop": 278.15,
+      "ziel": 262.4,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 272.9,
+        "kurs": 5.4716,
+        "stueck": 182,
+        "kurswert": 995.83
+      }
+    },
+    {
+      "id": "2026-11-17-scan-d-wave-quantum-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "D-WAVE QUANTUM INC",
+      "isin": "US26740W1099",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 9.0792,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 7.528,
+        "level": 7.59,
+        "spanne": {
+          "hoch": 7.816,
+          "tief": 7.59
+        },
+        "richtung": "short"
+      },
+      "stop": 7.703,
+      "ziel": 7.292,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 7.566,
+        "kurs": 1.517,
+        "stueck": 659,
+        "kurswert": 999.7
+      }
+    },
+    {
+      "id": "2026-11-17-scan-marvell-technology-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MARVELL TECHNOLOGY INC",
+      "isin": "US5738741041",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 159.89,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 134,
+        "level": 134.76,
+        "spanne": {
+          "hoch": 137.28,
+          "tief": 134.76
+        },
+        "richtung": "short"
+      },
+      "stop": 136.02,
+      "ziel": 127.68,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 133.24,
+        "kurs": 2.6717,
+        "stueck": 374,
+        "kurswert": 999.22
+      }
+    },
+    {
+      "id": "2026-11-17-scan-moderna-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MODERNA INC",
+      "isin": "US60770K1079",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 226.18,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 188.12,
+        "level": 189.18,
+        "spanne": {
+          "hoch": 194.88,
+          "tief": 189.18
+        },
+        "richtung": "short"
+      },
+      "stop": 192.03,
+      "ziel": 181.38,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 188.48,
+        "kurs": 3.7794,
+        "stueck": 264,
+        "kurswert": 997.76
+      }
+    },
+    {
+      "id": "2026-11-17-scan-sellas-life-sciences-gro",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SELLAS LIFE SCIENCES GROUP I",
+      "isin": "US81642T2096",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 19.74,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 16.1,
+        "level": 18.65,
+        "spanne": {
+          "hoch": 22.5,
+          "tief": 18.65
+        },
+        "richtung": "short"
+      },
+      "stop": 20.58,
+      "ziel": 8.2,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 16.45,
+        "kurs": 3.2982,
+        "stueck": 303,
+        "kurswert": 999.35
+      }
+    },
+    {
+      "id": "2026-11-17-scan-walt-disney-co-the",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "WALT DISNEY CO/THE",
+      "isin": "US2546871060",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 111.06,
+        "level": 109.42,
+        "spanne": {
+          "hoch": 109.42,
+          "tief": 108.02
+        },
+        "richtung": "long"
+      },
+      "stop": 108.72,
+      "ziel": 117.3,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 111.58,
+        "kurs": 112.138,
+        "stueck": 8,
+        "kurswert": 897.1
+      },
+      "timeMachine": {
+        "zielZuerst": 0,
+        "stopZuerst": 0.4,
+        "keins": 99.6,
+        "gruen": 49.9,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 37,
+          "ziel": 5,
+          "stop": 13,
+          "oeR": 0.07
+        }
+      }
     }
   ],
   "trades": [
@@ -779,6 +1382,609 @@
         "kurs": 1.7736,
         "stueck": 563,
         "kurswert": 998.54
+      }
+    },
+    {
+      "id": "2026-11-17-scan-atlassian-corp-cl-a",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ATLASSIAN CORP-CL A",
+      "isin": "US0494681010",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 157.68,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 130.8,
+        "level": 131.8,
+        "spanne": {
+          "hoch": 135.8,
+          "tief": 131.8
+        },
+        "richtung": "short"
+      },
+      "stop": 133.8,
+      "ziel": 126.6,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 131.4,
+        "kurs": 2.6346,
+        "stueck": 379,
+        "kurswert": 998.51
+      }
+    },
+    {
+      "id": "2026-11-17-scan-nike-inc-cl-b",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NIKE INC -CL B",
+      "isin": "US6541061031",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 42.96,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 35.73,
+        "level": 35.97,
+        "spanne": {
+          "hoch": 36.88,
+          "tief": 35.97
+        },
+        "richtung": "short"
+      },
+      "stop": 36.43,
+      "ziel": 34.55,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 35.8,
+        "kurs": 7.1779,
+        "stueck": 139,
+        "kurswert": 997.73
+      }
+    },
+    {
+      "id": "2026-11-17-scan-salesforce-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SALESFORCE INC",
+      "isin": "US79466L3024",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 220.68,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 184.28,
+        "level": 186,
+        "spanne": {
+          "hoch": 190,
+          "tief": 186
+        },
+        "richtung": "short"
+      },
+      "stop": 188,
+      "ziel": 175.7,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 183.9,
+        "kurs": 3.6872,
+        "stueck": 271,
+        "kurswert": 999.23
+      }
+    },
+    {
+      "id": "2026-11-17-scan-servicenow-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SERVICENOW INC",
+      "isin": "US81762P1021",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 104.4,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 87.07,
+        "level": 87.85,
+        "spanne": {
+          "hoch": 89,
+          "tief": 87.85
+        },
+        "richtung": "short"
+      },
+      "stop": 88.43,
+      "ziel": 84.15,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 87,
+        "kurs": 17.444,
+        "stueck": 57,
+        "kurswert": 994.31
+      }
+    },
+    {
+      "id": "2026-11-17-scan-super-micro-computer-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SUPER MICRO COMPUTER INC",
+      "isin": "US86800U3023",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 26.69,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 22.335,
+        "level": 22.395,
+        "spanne": {
+          "hoch": 22.855,
+          "tief": 22.395
+        },
+        "richtung": "short"
+      },
+      "stop": 22.63,
+      "ziel": 21.49,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 22.245,
+        "kurs": 4.4561,
+        "stueck": 224,
+        "kurswert": 998.17
+      }
+    },
+    {
+      "id": "2026-11-17-scan-take-two-interactive-sof",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "TAKE-TWO INTERACTIVE SOFTWRE",
+      "isin": "US8740541094",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 228.98,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 191.98,
+        "level": 194.56,
+        "spanne": {
+          "hoch": 200.15,
+          "tief": 194.56
+        },
+        "richtung": "short"
+      },
+      "stop": 197.36,
+      "ziel": 177.75,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "basisKurs": 190.82,
+        "kurs": 3.8255,
+        "stueck": 261,
+        "kurswert": 998.46
+      },
+      "timeMachine": {
+        "zielZuerst": 0.7,
+        "stopZuerst": 6.2,
+        "keins": 93.2,
+        "gruen": 54.4,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 35,
+          "ziel": 5,
+          "stop": 10,
+          "oeR": 0.22
+        }
+      }
+    },
+    {
+      "id": "2026-11-17-claude-walt-disney",
+      "datum": "2026-11-17",
+      "herkunft": "claude",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "Walt Disney",
+      "isin": "US2546871060",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 111.06,
+        "level": 109.42,
+        "spanne": {
+          "hoch": 109.42,
+          "tief": 108.02
+        },
+        "richtung": "long"
+      },
+      "stop": 108.72,
+      "ziel": 117.3,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "chance": 33,
+      "these": "Zahlen vor US-Start, Reaktion oft deutlich; ORB long bei klarem Ausbruch.",
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 111.58,
+        "kurs": 111.664,
+        "stueck": 8,
+        "kurswert": 893.31
+      },
+      "timeMachine": {
+        "zielZuerst": 0,
+        "stopZuerst": 0.4,
+        "keins": 99.6,
+        "gruen": 49.9,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 37,
+          "ziel": 5,
+          "stop": 13,
+          "oeR": 0.07
+        }
+      }
+    },
+    {
+      "id": "2026-11-17-scan-amazon-com-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AMAZON.COM INC",
+      "isin": "US0231351067",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 235.7,
+        "level": 235.4,
+        "spanne": {
+          "hoch": 235.4,
+          "tief": 234.5
+        },
+        "richtung": "long"
+      },
+      "stop": 234.95,
+      "ziel": 236.15,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 235.35,
+        "kurs": 236.527,
+        "stueck": 4,
+        "kurswert": 946.11
+      }
+    },
+    {
+      "id": "2026-11-17-scan-axon-enterprise-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "AXON ENTERPRISE INC",
+      "isin": "US05464C1018",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 327.48,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 274.3,
+        "level": 276,
+        "spanne": {
+          "hoch": 280.3,
+          "tief": 276
+        },
+        "richtung": "short"
+      },
+      "stop": 278.15,
+      "ziel": 262.4,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 272.9,
+        "kurs": 5.4716,
+        "stueck": 182,
+        "kurswert": 995.83
+      }
+    },
+    {
+      "id": "2026-11-17-scan-d-wave-quantum-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "D-WAVE QUANTUM INC",
+      "isin": "US26740W1099",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 9.0792,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 7.528,
+        "level": 7.59,
+        "spanne": {
+          "hoch": 7.816,
+          "tief": 7.59
+        },
+        "richtung": "short"
+      },
+      "stop": 7.703,
+      "ziel": 7.292,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 7.566,
+        "kurs": 1.517,
+        "stueck": 659,
+        "kurswert": 999.7
+      }
+    },
+    {
+      "id": "2026-11-17-scan-marvell-technology-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MARVELL TECHNOLOGY INC",
+      "isin": "US5738741041",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 159.89,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 134,
+        "level": 134.76,
+        "spanne": {
+          "hoch": 137.28,
+          "tief": 134.76
+        },
+        "richtung": "short"
+      },
+      "stop": 136.02,
+      "ziel": 127.68,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 133.24,
+        "kurs": 2.6717,
+        "stueck": 374,
+        "kurswert": 999.22
+      }
+    },
+    {
+      "id": "2026-11-17-scan-moderna-inc",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MODERNA INC",
+      "isin": "US60770K1079",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 226.18,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 188.12,
+        "level": 189.18,
+        "spanne": {
+          "hoch": 194.88,
+          "tief": 189.18
+        },
+        "richtung": "short"
+      },
+      "stop": 192.03,
+      "ziel": 181.38,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 188.48,
+        "kurs": 3.7794,
+        "stueck": 264,
+        "kurswert": 997.76
+      }
+    },
+    {
+      "id": "2026-11-17-scan-sellas-life-sciences-gro",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SELLAS LIFE SCIENCES GROUP I",
+      "isin": "US81642T2096",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 19.74,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:50:00.000Z",
+        "kurs": 16.1,
+        "level": 18.65,
+        "spanne": {
+          "hoch": 22.5,
+          "tief": 18.65
+        },
+        "richtung": "short"
+      },
+      "stop": 20.58,
+      "ziel": 8.2,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 16.45,
+        "kurs": 3.2982,
+        "stueck": 303,
+        "kurswert": 999.35
+      }
+    },
+    {
+      "id": "2026-11-17-scan-walt-disney-co-the",
+      "datum": "2026-11-17",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "WALT DISNEY CO/THE",
+      "isin": "US2546871060",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "kurs": 111.06,
+        "level": 109.42,
+        "spanne": {
+          "hoch": 109.42,
+          "tief": 108.02
+        },
+        "richtung": "long"
+      },
+      "stop": 108.72,
+      "ziel": 117.3,
+      "zielR": 2,
+      "flatBis": "2026-11-17T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-17T14:55:00.000Z",
+        "basisKurs": 111.58,
+        "kurs": 112.138,
+        "stueck": 8,
+        "kurswert": 897.1
+      },
+      "timeMachine": {
+        "zielZuerst": 0,
+        "stopZuerst": 0.4,
+        "keins": 99.6,
+        "gruen": 49.9,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 37,
+          "ziel": 5,
+          "stop": 13,
+          "oeR": 0.07
+        }
       }
     },
     {
@@ -10664,7 +11870,7 @@
       "oeNettoProzent": -0.02,
       "oeR": 0.96
     },
-    "offen": 5,
+    "offen": 16,
     "gruppen": {
       "turbo": {
         "anzahl": 69,
@@ -10780,7 +11986,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 32,
+    "code_scan": 58,
     "claude": 3,
     "autopilot": 0
   },
