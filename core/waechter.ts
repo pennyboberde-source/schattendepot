@@ -9,7 +9,7 @@ import { depotEntgeltOpt, type GebuehrenConfig } from './gebuehren.ts';
 import { depotPlattform, type DepotPlatz } from './plattform.ts';
 import type { HebelStand } from './volltreffer/firds.ts';
 
-const PLATZ_NAME: Record<DepotPlatz, string> = { gettex: 'Smartbroker+ an gettex', boerse: 'Smartbroker+ an anderer deutscher Börse', ausland: 'Smartbroker+ an US-Börse', us: 'US-Broker (simuliert)' };
+const PLATZ_NAME: Record<DepotPlatz, string> = { gettex: 'Smartbroker+ an gettex', boerse: 'Smartbroker+ an anderer deutscher Börse', ausland: 'Smartbroker+ an US-Börse', us: 'US-Broker (simuliert)', cfd: 'CFD-Broker (simuliert)' };
 import { berlin, inHandelszeit, istHandelstag, uhrzeitMinuten } from './kalender.ts';
 import { restStueck } from './ableiten.ts';
 import { pushAngepasst, pushGekauft, pushTeilverkauf, pushVerkauft, pushWarnung, type PushNachricht } from './push.ts';
@@ -86,6 +86,8 @@ export interface WaechterKontext {
   hebelJe?: Map<string, HebelStand> | null;
   /** höchster Hebel beim simulierten US-Broker (config/volltreffer.json › plattformen.usBroker.maxHebel) */
   usMaxHebel?: number;
+  /** CFD-Stufe (config/volltreffer.json › plattformen.cfd) */
+  cfd?: { maxHebelPrivat: number; maxHebelProfi: number };
 }
 
 export interface WaechterErgebnis {
@@ -201,12 +203,8 @@ export function waechterLauf(ctx: WaechterKontext): WaechterErgebnis {
         continue;
       }
       // Plattform (seit 17.11.2026, wie im Bereich Volltreffer): nicht an gettex handelbar → andere Plattform mit deren Kosten
-      const wahl = depotPlattform(o.plan, ctx.hebelJe ?? null, ctx.usMaxHebel ?? 2);
-      if (wahl.art === 'nicht_handelbar') {
-        ereignisse.push(ev('verworfen', o.id, { grund: `nicht handelbar: ${wahl.grund}` }));
-        continue;
-      }
-      const platz = wahl.art === 'platz' ? { handelsplatz: wahl.handelsplatz, plattform: `${PLATZ_NAME[wahl.platz]} – ${wahl.grund}` } : null;
+      const wahl = depotPlattform(o.plan, ctx.hebelJe ?? null, ctx.usMaxHebel ?? 2, ctx.cfd);
+      const platz = wahl.art === 'platz' ? { handelsplatz: wahl.handelsplatz, plattform: `${wahl.ungeprueft ? '⚠️ ' : ''}${PLATZ_NAME[wahl.platz]} – ${wahl.grund}`, ...(wahl.ungeprueft ? { ungeprueft: true } : {}) } : null;
       if (platz) hp = { ...hp, handelsplatz: platz.handelsplatz };
       let ik;
       let turbo: Hebel | undefined;

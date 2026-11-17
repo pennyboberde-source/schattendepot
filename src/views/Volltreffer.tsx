@@ -46,7 +46,7 @@ function JagdZeile({ j }: { j: JagdFall }) {
         {j.netto !== null ? ` · ${euro(j.netto, { vorzeichen: true })}` : ''}
       </strong>
       <span class="klein">
-        {j.spielart}, bis {j.fenster} Tage{j.tag ? ` · Tag ${j.tag}` : ''} · Stichtag {datumKurz(j.stichtag)}{j.plattform ? ` · über ${j.plattform}` : ''}
+        {j.spielart}, bis {j.fenster} Tage{j.tag ? ` · Tag ${j.tag}` : ''} · Stichtag {datumKurz(j.stichtag)}{j.plattform ? ` · über ${j.plattform}` : ''}{j.ungeprueft ? ' · ⚠️ Handelbarkeit ungeprüft' : ''}
         {j.einstieg ? `, Einstieg ${datumKurz(j.einstieg)}` : ', Einstieg zur nächsten Eröffnung'}
       </span>
       <span class="klein">Muster: {j.muster}</span>

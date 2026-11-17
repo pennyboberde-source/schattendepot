@@ -25,10 +25,13 @@ describe('Plattformwahl Depot', () => {
     expect(depotPlattform(long(5), je({ ACME: { l: [3, 1], s: [0, 0] } }), 2)).toMatchObject({ art: 'platz', platz: 'gettex', handelsplatz: 'GTX' });
     expect(depotPlattform(short(5), je({ ACME: { l: [3, 1], s: [0, 4] } }), 2)).toMatchObject({ art: 'platz', platz: 'boerse', handelsplatz: 'SBX' });
     expect(depotPlattform(short(2), je({ ACME: { l: [3, 1], s: [0, 0] } }), 2)).toMatchObject({ art: 'platz', platz: 'us', handelsplatz: 'USB' });
-    expect(depotPlattform(short(5), je({}), 2)).toMatchObject({ art: 'nicht_handelbar' });
+    // Nutzer 17.11.: lieber kaufen und als ungeprüft vermerken – CFD-Stufe statt verwerfen
+    expect(depotPlattform(short(5), je({}), 2)).toMatchObject({ art: 'platz', platz: 'cfd', handelsplatz: 'CFD', ungeprueft: true });
+    expect((depotPlattform(short(5), je({}), 2) as { grund: string }).grund).toMatch(/Privatkunde bis 5:1.*NICHT geprüft/);
+    expect((depotPlattform(long(10), je({}), 2) as { grund: string }).grund).toMatch(/Profikunde bis 20:1/);
+    expect((depotPlattform(long(50), je({}), 2) as { grund: string }).grund).toMatch(/unrealistisch/);
     // ohne frische Liste, Krypto, EU-Werte: unverändert
     expect(depotPlattform(short(5), null, 2)).toEqual({ art: 'unveraendert' });
-    expect(depotPlattform(long(5), je({}), 2).art).toBe('nicht_handelbar');
     expect(depotPlattform(plan({ hebelWunsch: { richtung: 'long', hebel: 5 } }, { kursbasis: { markt: 'eu', symbol: 'SAP.DE', waehrung: 'EUR' } }), je({}), 2)).toEqual({ art: 'unveraendert' });
     expect(depotPlattform(plan({}, { anlageklasse: 'krypto', handelsplatz: 'TRK', kursbasis: { markt: 'krypto', symbol: 'BTC', waehrung: 'EUR' } }), je({}), 2)).toEqual({ art: 'unveraendert' });
   });
@@ -43,6 +46,7 @@ describe('Plattformwahl Depot', () => {
     expect(orderentgelt(1000, sb, { handelsplatz: 'SBX', emittent: 'Vontobel' }).gesamt).toBe(5.5);
     expect(orderentgelt(1000, sb, { handelsplatz: 'USA' }).gesamt).toBe(6.5);
     expect(orderentgelt(1000, sb, { handelsplatz: 'USB' }).gesamt).toBe(3);
+    expect(orderentgelt(1000, sb, { handelsplatz: 'CFD' }).gesamt).toBe(1);
   });
 
   it('FIRDS-Liste je Kürzel: zusammengeführt, frisch und vollständig', () => {
@@ -74,8 +78,11 @@ describe('Plattformwahl Depot', () => {
     expect(o.plan.wertpapier.handelsplatz).toBe('SBX');
     expect(o.kauf!.entgelt.gesamt).toBe(5.5);
 
-    const nein = lauf(vor(plan({ hebelWunsch: { richtung: 'short', hebel: 5 } })), je({}));
-    expect(nein.ereignisse[0]).toMatchObject({ typ: 'verworfen' });
-    expect((nein.ereignisse[0].daten as { grund: string }).grund).toMatch(/nicht handelbar/);
+    const evCfd = vor(plan({ hebelWunsch: { richtung: 'short', hebel: 5 } }));
+    const cfd = lauf(evCfd, je({}));
+    expect(cfd.ereignisse[0]).toMatchObject({ typ: 'gekauft', daten: { handelsplatz: 'CFD', ungeprueft: true } });
+    const oc = ordersAusEreignissen([...evCfd, ...cfd.ereignisse])[0];
+    expect(oc.plan.wertpapier).toMatchObject({ handelsplatz: 'CFD', handelbarkeitUngeprueft: true });
+    expect(oc.plan.wertpapier.plattform).toMatch(/^⚠️ CFD-Broker/);
   });
 });

@@ -841,6 +841,16 @@
       ],
       "margenzinsProzentJahr": 6,
       "quelle": "Simuliert (Smartbroker+ bietet keine Leerverkäufe): Kosten wie bei einem Broker mit Leerverkauf und Marge (z. B. Interactive Brokers) – Annahmen: 2 € je Order, 0,1 % Devisen je Seite, Leihgebühr je nach Ø-Tagesumsatz 0,5 % bis 30 % p. a. (schwer leihbare Kleinwerte teuer; ob sie überhaupt leihbar sind, ist offen), Marge-Zins 6 % p. a. auf den geliehenen Teil, Hebel höchstens 2 (Reg T)."
+    },
+    "cfd": {
+      "name": "CFD-Broker (simuliert, Handelbarkeit nicht geprüft)",
+      "hinweis": "Nutzer 17.11.2026: „Es gibt US-Broker, die mehr anbieten, also auch wesentlich mehr Hebel … Lieber kaufen und als vielleicht unrealistisch, da Handelbarkeit nicht geprüft, vermerken, als es zu lassen.“ Letzte Stufe, wenn es kein deutsches Hebelprodukt gibt und der Hebel über der Marge des US-Brokers liegt: CFD auf die Aktie. Ob der Anbieter den Wert führt und Leerverkauf zulässt, ist nicht geprüft → jede Jagd/Order trägt ungeprueft.",
+      "maxHebelPrivat": 5,
+      "maxHebelProfi": 20,
+      "entgeltJeOrder": 0,
+      "prozent": 0.1,
+      "finanzierungProzentJahr": 7,
+      "quelle": "ESMA/BaFin: CFD auf Aktien für Privatkunden höchstens 5:1 (20 % Ersteinschuss); Profikunden bei CFD-Anbietern bis 20:1 auf Aktien (z. B. Pepperstone Pro „Stocks & ETFs up to 1:20“). US: Reg T 2:1 über Nacht, Portfolio Margin bis 6,67:1 (ab 100.000 $). Kosten angenommen: 0,1 % je Order, Finanzierung 7 %/Jahr auf den ganzen Gegenwert (Long), Short wie beim US-Broker mit Leihgebühr nach Umsatzklasse."
     }
   }
 }

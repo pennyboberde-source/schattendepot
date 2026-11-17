@@ -2,21 +2,21 @@
 // seit 16.11.: „Wenn auf gettex nicht handelbar, trotzdem handeln auf einer simulierten Plattform, die diese anbietet,
 // vermerken und Kosten verrechnen“). Reihenfolge für einen nachgebildeten Turbo (Wunsch-Hebel) auf einen US-Wert:
 // Hebelprodukt an gettex → Hebelprodukt an anderer deutscher Börse/außerbörslich (Smartbroker+) → simulierter US-Broker
-// (Leerverkauf/Marge bis maxHebel) → nicht handelbar. Direktkauf einer US-Aktie ohne ISIN: Smartbroker+ an der US-Börse.
+// (Leerverkauf/Marge bis maxHebel) → CFD-Broker (Nutzer 17.11.: „lieber kaufen und als vielleicht unrealistisch, da
+// Handelbarkeit nicht geprüft, vermerken, als es zu lassen“ – Privatkunden bis 5:1, Profikunden bis 20:1). Direktkauf einer US-Aktie ohne ISIN: Smartbroker+ an der US-Börse.
 // Grundlage ist die amtliche Liste ESMA FIRDS (privat im Archiv). Ohne frische Liste bleibt alles wie bisher (gettex).
 // Reine Funktionen.
 import type { HebelStand } from './volltreffer/firds.ts';
 import type { OrderPlan } from './typen.ts';
 
-export type DepotPlatz = 'gettex' | 'boerse' | 'ausland' | 'us';
+export type DepotPlatz = 'gettex' | 'boerse' | 'ausland' | 'us' | 'cfd';
 
 /** Handelsplatz-Kürzel im Gebührenmodell (config/gebuehren-smartbroker.json › handelsplaetze) */
-export const HANDELSPLATZ_JE_PLATZ: Record<DepotPlatz, string> = { gettex: 'GTX', boerse: 'SBX', ausland: 'USA', us: 'USB' };
+export const HANDELSPLATZ_JE_PLATZ: Record<DepotPlatz, string> = { gettex: 'GTX', boerse: 'SBX', ausland: 'USA', us: 'USB', cfd: 'CFD' };
 
 export type PlattformWahl =
   | { art: 'unveraendert' }
-  | { art: 'platz'; platz: DepotPlatz; handelsplatz: string; grund: string }
-  | { art: 'nicht_handelbar'; grund: string };
+  | { art: 'platz'; platz: DepotPlatz; handelsplatz: string; grund: string; ungeprueft?: boolean };
 
 /** Hebelstand je US-Kürzel aus der FIRDS-Liste (ISIN des Basiswerts → Kürzel), mit Frische- und Abdeckungsprüfung. */
 export function hebelJeKuerzel(
@@ -46,7 +46,7 @@ const symbol = (plan: OrderPlan) => (plan.wertpapier.kursbasis?.symbol ?? plan.w
  * Plattform für eine Depot-Order beim Kauf. `hebelJe` = null: keine frische FIRDS-Liste → unverändert (wie bisher gettex).
  * Krypto direkt, echte Hebelprodukte mit eigener ISIN und Werte außerhalb der USA bleiben unverändert.
  */
-export function depotPlattform(plan: OrderPlan, hebelJe: Map<string, HebelStand> | null, usMaxHebel: number): PlattformWahl {
+export function depotPlattform(plan: OrderPlan, hebelJe: Map<string, HebelStand> | null, usMaxHebel: number, cfd: { maxHebelPrivat: number; maxHebelProfi: number } = { maxHebelPrivat: 5, maxHebelProfi: 20 }): PlattformWahl {
   const wp = plan.wertpapier;
   if (wp.anlageklasse === 'krypto' || wp.handelsplatz === 'TRK') return { art: 'unveraendert' };
   if (wp.kursbasis?.markt !== 'us') return { art: 'unveraendert' };
@@ -59,7 +59,9 @@ export function depotPlattform(plan: OrderPlan, hebelJe: Map<string, HebelStand>
     if (a > 0) return { art: 'platz', platz: 'boerse', handelsplatz: HANDELSPLATZ_JE_PLATZ.boerse, grund: `${was} nicht an gettex, aber an einer anderen deutschen Börse (ESMA FIRDS)` };
     if (plan.hebelWunsch.hebel <= usMaxHebel)
       return { art: 'platz', platz: 'us', handelsplatz: HANDELSPLATZ_JE_PLATZ.us, grund: `kein ${was} an deutschen Börsen – ${r === 'short' ? 'Leerverkauf' : 'Marge'} beim US-Broker (Hebel ${plan.hebelWunsch.hebel})` };
-    return { art: 'nicht_handelbar', grund: `kein ${was} an deutschen Börsen (ESMA FIRDS) und Hebel ${plan.hebelWunsch.hebel} über der Marge des US-Brokers (${usMaxHebel})` };
+    const h = plan.hebelWunsch.hebel;
+    const stufe = h <= cfd.maxHebelPrivat ? `Privatkunde bis ${cfd.maxHebelPrivat}:1` : h <= cfd.maxHebelProfi ? `nur als Profikunde bis ${cfd.maxHebelProfi}:1` : `über jedem bekannten Angebot (Profikunde bis ${cfd.maxHebelProfi}:1) – unrealistisch`;
+    return { art: 'platz', platz: 'cfd', handelsplatz: HANDELSPLATZ_JE_PLATZ.cfd, ungeprueft: true, grund: `kein ${was} an deutschen Börsen, Hebel ${h} über der US-Marge (${usMaxHebel}) – CFD ${stufe}; ob der Anbieter den Wert${r === 'short' ? ' leer' : ''} handelt, ist NICHT geprüft` };
   }
   if (!plan.hebel && !wp.isin && (wp.anlageklasse === 'aktie' || wp.anlageklasse === 'etf'))
     return { art: 'platz', platz: 'ausland', handelsplatz: HANDELSPLATZ_JE_PLATZ.ausland, grund: 'ohne ISIN nicht an gettex – Smartbroker+ an der US-Börse' };

@@ -51,6 +51,8 @@ export interface Wertpapier {
   kursbasis?: Kursbasis;
   /** Plattform, auf der beim Kauf gehandelt wurde, mit Grund (seit 17.11.2026, core/plattform.ts) */
   plattform?: string;
+  /** Handelbarkeit auf der Plattform nicht geprüft – „vielleicht unrealistisch“ (CFD-Stufe, seit 17.11.2026) */
+  handelbarkeitUngeprueft?: boolean;
 }
 
 /** Hebelprodukt eines echten Emittenten (ISIN/WKN); Kurs synthetisch aus dem Basiswert (Turbo-Formel). */

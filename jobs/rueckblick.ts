@@ -46,6 +46,7 @@ interface VtConfig {
     andereBoerse: { name: string; entgeltJeOrder: number };
     auslandDirekt: { name: string; entgeltJeOrder: number; prozent: number };
     usBroker: { name: string; maxHebel: number; entgeltJeOrder: number; devisenProzent: number; leihgebuehrProzentJahr: { abUmsatz20: number; prozent: number }[]; margenzinsProzentJahr: number };
+    cfd: { name: string; maxHebelPrivat: number; maxHebelProfi: number; entgeltJeOrder: number; prozent: number; finanzierungProzentJahr: number };
   };
   turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
 }
@@ -298,9 +299,9 @@ const kosten = (markt: Markt, umsatz20: number | null): EtikettKosten => {
 };
 const kostenCache = new Map<string, EtikettKosten>();
 const leihProzent = (umsatz20: number | null) => vt.plattformen.usBroker.leihgebuehrProzentJahr.find((x) => (umsatz20 ?? 0) >= x.abUmsatz20)?.prozent ?? 30;
-const kostenFuer = (markt: Markt, umsatz20: number | null, platz: 'gettex' | 'boerse' | 'ausland' | 'us' = 'gettex', sp?: Spielart) => {
+const kostenFuer = (markt: Markt, umsatz20: number | null, platz: 'gettex' | 'boerse' | 'ausland' | 'us' | 'cfd' = 'gettex', sp?: Spielart) => {
   const s = markt === 'krypto' ? 'krypto' : (vt.handelbar.aktie.spread.find((x) => (umsatz20 ?? 0) >= x.abUmsatz20)?.klasse ?? 'spekulativ');
-  const key = `${s}|${platz}|${platz === 'us' ? `${sp?.richtung}|${sp?.hebel}|${leihProzent(umsatz20)}` : ''}`;
+  const key = `${s}|${platz}|${platz === 'us' || platz === 'cfd' ? `${sp?.richtung}|${sp?.hebel}|${leihProzent(umsatz20)}` : ''}`;
   const da = kostenCache.get(key);
   if (da) return da;
   const b = kosten(markt, umsatz20);
@@ -312,6 +313,12 @@ const kostenFuer = (markt: Markt, umsatz20: number | null, platz: 'gettex' | 'bo
     // Marge-Position: Spread und Devisen wirken auf den Gegenwert (Hebel × Einsatz); Leihgebühr auf die ganze Short-
     // Position, Marge-Zins nur auf den geliehenen Teil
     k = { ...b, turboSpreadProzent: sp.hebel * (b.spreadProzent + 2 * u.devisenProzent), entgeltTurbo: u.entgeltJeOrder, finanzierungProzentJahr: sp.richtung === 'short' ? leihProzent(umsatz20) : (u.margenzinsProzentJahr * (sp.hebel - 1)) / sp.hebel };
+  else if (platz === 'cfd' && sp) {
+    // CFD (17.11.2026, Handelbarkeit ungeprüft): Spread und 0,1 % je Seite auf den Gegenwert, Finanzierung auf den ganzen
+    // Gegenwert (Long), Short vorsichtig mit der Leihgebühr der Umsatzklasse
+    const c = vt.plattformen.cfd;
+    k = { ...b, turboSpreadProzent: sp.hebel * (b.spreadProzent + 2 * c.prozent), entgeltTurbo: c.entgeltJeOrder, finanzierungProzentJahr: sp.richtung === 'short' ? leihProzent(umsatz20) : c.finanzierungProzentJahr };
+  }
   kostenCache.set(key, k);
   return k;
 };
@@ -378,9 +385,9 @@ const turboErlaubt = (r: Reihe, m: Merkmale, richtung: 'long' | 'short') => {
 // Plattform, die diese anbietet; neben dem Handel vermerken und Kosten verrechnen“): gettex → Smartbroker+ an einer
 // anderen deutschen Börse/außerbörslich (Hebelprodukt vorhanden) → simulierter US-Broker mit Leerverkauf/Marge bis
 // usBroker.maxHebel. Direkte Käufe: gettex, sonst Smartbroker+ an der US-Börse. Kosten je Plattform in kostenFuer.
-type Platz = 'gettex' | 'boerse' | 'ausland' | 'us';
+type Platz = 'gettex' | 'boerse' | 'ausland' | 'us' | 'cfd';
 const PL = vt.plattformen;
-const PLATZ_NAME: Record<Platz, string> = { gettex: 'Smartbroker+ an gettex', boerse: PL.andereBoerse.name, ausland: PL.auslandDirekt.name, us: PL.usBroker.name };
+const PLATZ_NAME: Record<Platz, string> = { gettex: 'Smartbroker+ an gettex', boerse: PL.andereBoerse.name, ausland: PL.auslandDirekt.name, us: PL.usBroker.name, cfd: PL.cfd.name };
 const plattformAm = (r: Reihe, m: Merkmale): { long: Platz | null; short: Platz | null } => {
   if (r.markt === 'krypto') {
     const t = turboErlaubt(r, m, 'long');
@@ -396,11 +403,12 @@ const plattformAm = (r: Reihe, m: Merkmale): { long: Platz | null; short: Platz 
   }
   return { long: turboErlaubt(r, m, 'long') ? 'gettex' : 'us', short: turboErlaubt(r, m, 'short') ? 'gettex' : 'us' };
 };
-/** Plattform einer Spielart (null = nirgends handelbar, z. B. Hebel über der Marge des US-Brokers ohne deutsches Produkt) */
+/** Plattform einer Spielart (null = nirgends handelbar). Über der Marge des US-Brokers ohne deutsches Produkt: CFD-Broker,
+ *  Handelbarkeit ungeprüft (Nutzer 17.11.2026: „lieber kaufen und als vielleicht unrealistisch vermerken, als es zu lassen“). */
 const platzFuer = (r: Reihe, sp: Spielart, pa: { long: Platz | null; short: Platz | null }): Platz | null => {
   if (sp.hebel === 1) return r.markt === 'aktie' && gettexUs && !gettexUs.has(r.schluessel.slice(2).split('#')[0]) ? 'ausland' : 'gettex';
   const pl = pa[sp.richtung];
-  return pl === 'us' && sp.hebel > PL.usBroker.maxHebel ? null : pl;
+  return pl === 'us' && sp.hebel > PL.usBroker.maxHebel ? 'cfd' : pl;
 };
 
 // ---------- 3. Durchgang 1: Merkmale, Marktbewegung je Tag, Zeiträume ----------
@@ -604,7 +612,7 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten, pl:
   }
   const ins = insiderAm(r, k[i].datum);
   if (ins !== null && ins <= 20) sec.push(`Insider-Kauf ${wann(ins)}`);
-  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), plattform: r.markt === 'krypto' && sp.hebel === 1 ? 'Trade Republic (Krypto direkt)' : PLATZ_NAME[pl], ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
+  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), plattform: r.markt === 'krypto' && sp.hebel === 1 ? 'Trade Republic (Krypto direkt)' : PLATZ_NAME[pl], ...(pl === 'cfd' ? { ungeprueft: true } : {}), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
   if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
   const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));
   const fertig = res.find((a) => a && a.art !== 'zeit') ?? res[e.fenster - 1];

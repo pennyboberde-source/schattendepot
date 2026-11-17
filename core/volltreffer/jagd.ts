@@ -29,6 +29,8 @@ export interface JagdFall {
   hinweis?: string;
   /** Plattform der Order (gettex, andere deutsche Börse, US-Broker …) – Kosten sind darin verrechnet */
   plattform?: string;
+  /** Handelbarkeit auf der Plattform nicht geprüft (CFD-Stufe, seit 17.11.2026) – „vielleicht unrealistisch“ */
+  ungeprueft?: boolean;
   /** V4: Pump-Verdacht (Hype-Signale ohne harte Fakten bis zum Stichtag) – wird nicht gejagt */
   pump?: boolean;
   /** V5: Claudes Urteil im Morgenlauf (falls abgegeben) */

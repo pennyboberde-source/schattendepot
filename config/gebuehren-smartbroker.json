@@ -46,6 +46,13 @@
       "variabelProzent": 0.1,
       "ohneProvision": true,
       "hinweis": "Seit 17.11.2026 für Depot-Orders mit Wunsch-Hebel bis 2, wenn es an keiner deutschen Börse ein Produkt gibt. Wie config/volltreffer.json › plattformen.usBroker (2 € + 0,1 % Devisen); Finanzierung steckt im nachgebildeten Turbo, Leihgebühr für Leerverkäufe ist hier nicht eigens gerechnet (kurze Haltedauer)."
+    },
+    "CFD": {
+      "name": "CFD-Broker (simuliert, Handelbarkeit nicht geprüft)",
+      "entgelt": 0,
+      "variabelProzent": 0.1,
+      "ohneProvision": true,
+      "hinweis": "Seit 17.11.2026 (Nutzer: lieber kaufen und als ungeprüft vermerken): Wunsch-Hebel auf US-Werte über der Marge des US-Brokers ohne deutsches Produkt. Wie config/volltreffer.json › plattformen.cfd (0,1 % je Order; Finanzierung steckt im nachgebildeten Turbo)."
     }
   },
   "standardHandelsplatz": "GTX",

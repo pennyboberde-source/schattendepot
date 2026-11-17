@@ -152,6 +152,7 @@ const r = waechterLauf({
   nurKrypto,
   hebelJe: plattform.je,
   usMaxHebel: plattform.usMaxHebel,
+  cfd: plattform.cfd,
   heute: {
     ereignisLaeufe: heuteLaeufe.length,
     ereignislaufOrders: heuteLaeufe,
