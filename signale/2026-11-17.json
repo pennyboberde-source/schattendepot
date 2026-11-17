@@ -1,0 +1,639 @@
+{
+  "stand": "2026-11-17T04:56:49.971Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:GMM",
+      "name": "Global Mofy AI Cls A Ord Sh",
+      "ticker": "GMM",
+      "score": 2.81,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner",
+        "kursrakete",
+        "volumen_ungewoehnlich",
+        "leerverkauf_quote"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP",
+        "Alpha Vantage",
+        "FINRA"
+      ]
+    },
+    {
+      "schluessel": "T:RZLT",
+      "name": "Rezolute, Inc.",
+      "ticker": "RZLT",
+      "score": -2.4,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:VIR",
+      "name": "Vir Biotechnology, Inc.",
+      "ticker": "VIR",
+      "score": -2.4,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BNBX",
+      "name": "BNB PLUS CORP.",
+      "ticker": "BNBX",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:IQ",
+      "name": "IQ",
+      "ticker": "IQ",
+      "score": 2.25,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CNTY",
+      "name": "CENTURY CASINOS INC /CO/",
+      "ticker": "CNTY",
+      "score": -2.1,
+      "typen": [
+        "prognose_senkung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:AWHL",
+      "name": "Aspira Women's Health Inc.",
+      "ticker": "AWHL",
+      "score": -2.1,
+      "typen": [
+        "prognose_senkung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NCT",
+      "name": "Intercont Cayman Cl A Ord Shs",
+      "ticker": "NCT",
+      "pump": true,
+      "score": 2.04,
+      "typen": [
+        "handelsstopp",
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:AKAN",
+      "name": "Akanda Corp.",
+      "ticker": "AKAN",
+      "pump": true,
+      "score": 1.83,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:PAGS",
+      "name": "PAGS",
+      "ticker": "PAGS",
+      "score": 1.63,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:CLRO",
+      "name": "ClearOne, Inc.",
+      "ticker": "CLRO",
+      "score": 1.54,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:BGIN",
+      "name": "Bgin Blockchain Limited",
+      "ticker": "BGIN",
+      "score": 1.54,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:MTEX",
+      "name": "Mannatech, Incorporated",
+      "ticker": "MTEX",
+      "score": -1.54,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:FCUV",
+      "name": "Focus Universal Inc.",
+      "ticker": "FCUV",
+      "score": -1.54,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:AON",
+      "name": "Aon plc",
+      "ticker": "AON",
+      "score": 1.5,
+      "typen": [
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NSLR",
+      "name": "Neostellar Capital Corp.",
+      "ticker": "NSLR",
+      "score": 1.26,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:NNOX",
+      "name": "Nano-X Imaging Ltd.",
+      "ticker": "NNOX",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LINK",
+      "name": "INTERLINK ELECTRONICS INC",
+      "ticker": "LINK",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CTGO",
+      "name": "Contango Silver & Gold Inc.",
+      "ticker": "CTGO",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CENN",
+      "name": "Cenntro Inc.",
+      "ticker": "CENN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:VATE",
+      "name": "INNOVATE Corp.",
+      "ticker": "VATE",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NAKA",
+      "name": "Nakamoto Inc.",
+      "ticker": "NAKA",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MDCX",
+      "name": "Medicus Pharma Ltd.",
+      "ticker": "MDCX",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MEDS",
+      "name": "DataMeds AI, Inc.",
+      "ticker": "MEDS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:TE",
+      "name": "T1 Energy Inc.",
+      "ticker": "TE",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NSPR",
+      "name": "InspireMD, Inc.",
+      "ticker": "NSPR",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SRZN",
+      "name": "Surrozen, Inc./DE",
+      "ticker": "SRZN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SLE",
+      "name": "Super League Enterprise, Inc.",
+      "ticker": "SLE",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NTB",
+      "name": "Bank of N.T. Butterfield & Son Ltd",
+      "ticker": "NTB",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ZTG",
+      "name": "Zenta Group Co Ltd",
+      "ticker": "ZTG",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:TTRX",
+      "name": "Turn Therapeutics Inc.",
+      "ticker": "TTRX",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:IMDX",
+      "name": "Insight Molecular Diagnostics Inc.",
+      "ticker": "IMDX",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:DNP",
+      "name": "DNP SELECT INCOME FUND INC",
+      "ticker": "DNP",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MTTN",
+      "name": "Matternet, Inc.",
+      "ticker": "MTTN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GDHG",
+      "name": "Golden Heaven Grp Hld Ord A",
+      "ticker": "GDHG",
+      "pump": true,
+      "score": 1.19,
+      "typen": [
+        "handelsstopp",
+        "kursrakete",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "Nasdaq Trader",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:CTEV",
+      "name": "Claritev Corp",
+      "ticker": "CTEV",
+      "score": 1.15,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:PAM",
+      "name": "Pampa Energy Inc.",
+      "ticker": "PAM",
+      "score": 1.09,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FUN",
+      "name": "Six Flags Entertainment Corporation/New",
+      "ticker": "FUN",
+      "score": 1.03,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:GAM",
+      "name": "General American Investors Co Inc",
+      "ticker": "GAM",
+      "score": 0.98,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:NVDA",
+      "name": "Nvidia",
+      "ticker": "NVDA",
+      "score": 0.97,
+      "typen": [
+        "nachricht",
+        "stimmung_social",
+        "quartalstermin",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "BTC-ECHO",
+        "tagesschau Wirtschaft",
+        "Finnhub News",
+        "CNBC Top News",
+        "FAZ Finanzen",
+        "Handelsblatt Finanzen",
+        "ApeWisdom",
+        "Finnhub",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:ARMK",
+      "name": "ARMK",
+      "ticker": "ARMK",
+      "score": -0.94,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:ADIG",
+      "name": "Adi Global Distribution Inc.",
+      "ticker": "ADIG",
+      "score": 0.92,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CTVA",
+      "name": "Corteva, Inc.",
+      "ticker": "CTVA",
+      "score": 0.92,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:STWD",
+      "name": "Starwood Property Trust, Inc.",
+      "ticker": "STWD",
+      "score": 0.91,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MP",
+      "name": "Mp Materials Corp. / De",
+      "ticker": "MP",
+      "score": 0.9,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ENOV",
+      "name": "Enovis Corp",
+      "ticker": "ENOV",
+      "score": 0.87,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:HPP",
+      "name": "Hudson Pacific Properties, Inc.",
+      "ticker": "HPP",
+      "score": 0.81,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DDC",
+      "name": "DDC Enterprise Limited",
+      "ticker": "DDC",
+      "score": -0.8,
+      "typen": [
+        "handelsstopp"
+      ],
+      "quellen": [
+        "Nasdaq Trader"
+      ]
+    },
+    {
+      "schluessel": "T:GH",
+      "name": "Guardant Health, Inc.",
+      "ticker": "GH",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SAH",
+      "name": "SONIC AUTOMOTIVE INC",
+      "ticker": "SAH",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    }
+  ],
+  "anzahlSignale": 212
+}

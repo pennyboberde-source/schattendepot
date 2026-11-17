@@ -1,112 +1,138 @@
 {
-  "datum": "2026-11-16",
+  "datum": "2026-11-17",
   "liste": [
     {
-      "id": "kursrakete:FCUV:2026-11-16",
-      "zeit": "2026-11-16T05:31:06.081Z",
+      "id": "uebernahmeangebot:BNBX:2026-11-16",
+      "zeit": "2026-11-16T21:31:07.000Z",
+      "typ": "uebernahmeangebot",
+      "wertpapier": {
+        "name": "BNB PLUS CORP.",
+        "ticker": "BNBX"
+      },
+      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
+      "link": "https://www.sec.gov/Archives/edgar/data/744452/000110465926128406/0001104659-26-128406-index.htm",
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "id": "uebernahmeangebot:AON:2026-11-16",
+      "zeit": "2026-11-16T21:51:14.000Z",
+      "typ": "uebernahmeangebot",
+      "wertpapier": {
+        "name": "Aon plc",
+        "ticker": "AON"
+      },
+      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
+      "link": "https://www.sec.gov/Archives/edgar/data/315293/000119312526463733/0001193125-26-463733-index.htm",
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "id": "kursrakete:RCAT:2026-11-16",
+      "zeit": "2026-11-16T21:59:36.539Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "FCUV",
-        "ticker": "FCUV"
+        "name": "RED CAT HOLDINGS INC",
+        "isin": "US75644T1007",
+        "ticker": "RCAT"
       },
-      "fakt": "Tagesgewinner +142 % bei 7.08 $ (Volumen 115 Mio.) – spekulativ",
+      "fakt": "-19 % in der letzten Stunde auf 2.52 € (56 Geschäfte, Umsatz 60 T€, gettex) – spekulativ",
+      "link": "https://www.gettex.de/suche/?q=US75644T1007",
+      "quellen": [
+        "gettex-Scanner"
+      ]
+    },
+    {
+      "id": "kursrakete:GMM:2026-11-17",
+      "zeit": "2026-11-17T04:56:49.971Z",
+      "typ": "kursrakete",
+      "wertpapier": {
+        "name": "GMM",
+        "ticker": "GMM"
+      },
+      "fakt": "Tagesgewinner +97 % bei 2.01 $ (Volumen 110 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:ONFO:2026-11-16",
-      "zeit": "2026-11-16T05:31:06.081Z",
+      "id": "kursrakete:GDHG:2026-11-17",
+      "zeit": "2026-11-17T04:56:49.971Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "ONFO",
-        "ticker": "ONFO"
+        "name": "GDHG",
+        "ticker": "GDHG"
       },
-      "fakt": "Tagesgewinner +129 % bei 0.7745 $ (Volumen 199 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +90 % bei 1.58 $ (Volumen 119 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:AKAN:2026-11-16",
-      "zeit": "2026-11-16T05:31:06.081Z",
+      "id": "kursrakete:VIVK:2026-11-17",
+      "zeit": "2026-11-17T04:56:49.971Z",
+      "typ": "kursrakete",
+      "wertpapier": {
+        "name": "VIVK",
+        "ticker": "VIVK"
+      },
+      "fakt": "Tagesgewinner +80 % bei 0.3784 $ (Volumen 55 Mio.) – spekulativ",
+      "quellen": [
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "id": "kursrakete:AKAN:2026-11-17",
+      "zeit": "2026-11-17T04:56:49.971Z",
       "typ": "kursrakete",
       "wertpapier": {
         "name": "AKAN",
         "ticker": "AKAN"
       },
-      "fakt": "Tagesgewinner +102 % bei 1.36 $ (Volumen 76 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +63 % bei 2.21 $ (Volumen 96 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:SLSN:2026-11-16",
-      "zeit": "2026-11-16T05:31:06.081Z",
+      "id": "kursrakete:CYAB:2026-11-17",
+      "zeit": "2026-11-17T04:56:49.971Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "SLSN",
-        "ticker": "SLSN"
+        "name": "CYAB",
+        "ticker": "CYAB"
       },
-      "fakt": "Tagesgewinner +67 % bei 1.52 $ (Volumen 16 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +54 % bei 0.1368 $ (Volumen 845 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:VTSI:2026-11-16",
-      "zeit": "2026-11-16T05:31:06.081Z",
+      "id": "kursrakete:HIHO:2026-11-17",
+      "zeit": "2026-11-17T04:56:49.971Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "VTSI",
-        "ticker": "VTSI"
+        "name": "HIHO",
+        "ticker": "HIHO"
       },
-      "fakt": "Tagesgewinner +62 % bei 4.24 $ (Volumen 10 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +53 % bei 1.2 $ (Volumen 107 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:K.SOPH:2026-11-16",
-      "zeit": "2026-11-16T05:31:06.081Z",
+      "id": "kursrakete:K.NCT:2026-11-17",
+      "zeit": "2026-11-17T04:56:49.971Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "Sophon",
-        "ticker": "SOPH",
+        "name": "Polyswarm",
+        "ticker": "NCT",
         "markt": "krypto"
       },
-      "fakt": "Sophon -31,3 % an Upbit seit Tagesbeginn (Korea)",
-      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-SOPH",
-      "quellen": [
-        "Upbit"
-      ]
-    },
-    {
-      "id": "kursrakete:K.SKR:2026-11-16",
-      "zeit": "2026-11-16T05:31:06.081Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "Seeker",
-        "ticker": "SKR",
-        "markt": "krypto"
-      },
-      "fakt": "Seeker +23,1 % an Upbit seit Tagesbeginn (Korea)",
-      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-SKR",
-      "quellen": [
-        "Upbit"
-      ]
-    },
-    {
-      "id": "kursrakete:K.CASHCAT:2026-11-16",
-      "zeit": "2026-11-16T10:40:28.548Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "Cash Cat",
-        "ticker": "CASHCAT",
-        "markt": "krypto"
-      },
-      "fakt": "Cash Cat +24,0 % an Upbit seit Tagesbeginn (Korea)",
-      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-CASHCAT",
+      "fakt": "Polyswarm +23,3 % an Upbit seit Tagesbeginn (Korea)",
+      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-NCT",
       "quellen": [
         "Upbit"
       ]

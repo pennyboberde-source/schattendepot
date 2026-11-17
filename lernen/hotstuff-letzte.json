@@ -1,8 +1,8 @@
 {
-  "datum": "2026-11-16",
-  "stand": "2026-11-16T05:31:06.081Z",
-  "anzahl": 13,
-  "abdeckung": 30.8,
+  "datum": "2026-11-17",
+  "stand": "2026-11-17T04:56:49.971Z",
+  "anzahl": 24,
+  "abdeckung": 41.7,
   "mover": [
     {
       "s": "K:SOPH",
@@ -11,13 +11,6 @@
       "typ": "kursrakete",
       "r": -1,
       "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 2,
-          "q": [
-            "Upbit"
-          ]
-        },
         {
           "typ": "upbit_warnung",
           "tageVorher": 3,
@@ -55,7 +48,7 @@
         },
         {
           "typ": "upbit_warnung",
-          "tageVorher": 9,
+          "tageVorher": 8,
           "q": [
             "Upbit"
           ]
@@ -70,15 +63,160 @@
       ]
     },
     {
-      "s": "T:FCUV",
-      "n": "Focus Universal Inc.",
-      "t": "FCUV",
+      "s": "T:NCT",
+      "n": "Intercont (Cayman) Limited Ordinary shares",
+      "t": "NCT",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": [
         {
           "typ": "handelsstopp",
           "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 5,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 6,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:VIVK",
+      "n": "VIVK",
+      "t": "VIVK",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "grossauftrag",
+          "tageVorher": 5,
+          "q": [
+            "SEC EDGAR"
+          ]
+        },
+        {
+          "typ": "grossauftrag",
+          "tageVorher": 6,
+          "q": [
+            "SEC EDGAR"
+          ]
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 8,
+          "q": [
+            "Alpha Vantage"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:GMM",
+      "n": "Global Mofy Metaverse Limited",
+      "t": "GMM",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 4,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 5,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:CYAB",
+      "n": "CYAB",
+      "t": "CYAB",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "grossauftrag",
+          "tageVorher": 5,
+          "q": [
+            "SEC EDGAR"
+          ]
+        },
+        {
+          "typ": "grossauftrag",
+          "tageVorher": 6,
+          "q": [
+            "SEC EDGAR"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "K:NCT",
+      "n": "Polyswarm",
+      "t": "NCT",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 6,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 7,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:AKAN",
+      "n": "Akanda Corp.",
+      "t": "AKAN",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 4,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:FCUV",
+      "n": "Focus Universal Inc.",
+      "t": "FCUV",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 4,
           "q": [
             "Nasdaq Trader"
           ]
@@ -94,7 +232,7 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 3,
+          "tageVorher": 4,
           "q": [
             "Nasdaq Trader"
           ]
@@ -102,20 +240,68 @@
       ]
     },
     {
-      "s": "T:AKAN",
-      "n": "AKAN",
-      "t": "AKAN",
+      "s": "K:CASHCAT",
+      "n": "Cash Cat",
+      "t": "CASHCAT",
       "typ": "kursrakete",
-      "r": 0,
+      "r": 1,
       "vorzeichen": [
         {
-          "typ": "handelsstopp",
-          "tageVorher": 3,
+          "typ": "upbit_warnung",
+          "tageVorher": 8,
           "q": [
-            "Nasdaq Trader"
+            "Upbit"
           ]
         }
       ]
+    },
+    {
+      "s": "T:RCAT",
+      "n": "RED CAT HOLDINGS INC",
+      "t": "RCAT",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:CLRO",
+      "n": "ClearOne, Inc.",
+      "t": "CLRO",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:BGIN",
+      "n": "Bgin Blockchain Limited",
+      "t": "BGIN",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MTEX",
+      "n": "Mannatech, Incorporated",
+      "t": "MTEX",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:GDHG",
+      "n": "GDHG",
+      "t": "GDHG",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:HIHO",
+      "n": "HIHO",
+      "t": "HIHO",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
     },
     {
       "s": "T:WWB",
@@ -129,14 +315,6 @@
       "s": "T:VTSI",
       "n": "VirTra, Inc.",
       "t": "VTSI",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:BGIN",
-      "n": "Bgin Blockchain Limited",
-      "t": "BGIN",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": []
