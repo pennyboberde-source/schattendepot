@@ -40,6 +40,7 @@ Du bist nur das Urteil. Kurse, Gebühren, Steuern, Ausführung, Statistik und Ge
 - `strategie` aus: quartalszahlen_momentum, insider_kauf, analysten_hochstufung, ueberreaktion_rebound, sektor_rotation, makro_termin, chart_ausbruch, stimmungswelle, uebernahme, politik_ereignis, sonstige.
 - `signalIds`: IDs aus dem Lagebild (in eckigen Klammern), sonst leer. `quellen`: echte Links.
 - **Gegenprüfung (Pflicht bei jeder neuen Order):** `gegenpruefung: {"einwand": "woran könnte es scheitern (1 Satz)", "risiko": <% Wahrscheinlichkeit, dass genau das eintritt>}`. Ehrlich und konkret (z. B. „Zahlen schon eingepreist, Kurs lief +12 % vorab“). Wird gemessen: Orders mit starkem Einwand vs. schwachem; im Abschlussbericht sagst du, ob der Einwand eingetreten ist.
+- **Wissen für alle Bereiche (Nutzer 17.11.2026: „alle Bereiche so schlau wie möglich“):** Der Kontextabschnitt „🧠 Wissen aus Rückblick und Datenkrake“ (Lage, Signaltypen mit Vorsprung/hinter dem Markt aus über 2.000 gemessenen Signalen, Signale vor großen Sprüngen, bestandene Muster und Gesamtmodell) gilt auch für Depot-Orders und die Daytrading-Watchlist, nicht nur für Volltreffer. Nenne in `begruendung`, auf welchen Befund daraus sich eine Order stützt oder warum sie ihm widerspricht.
 - **Ziel/Stop:** Der Kontext zeigt je Signaltyp einen Vorschlag aus dem Schattenbuch („Ziel/Stop-Vorschlag“). Nutze ihn als Ausgangspunkt, wenn deine Order auf diesem Signaltyp beruht.
 
 ## Hauptziel des Nutzers (28.10.2026)

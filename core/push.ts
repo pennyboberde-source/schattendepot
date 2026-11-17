@@ -147,9 +147,12 @@ export function zustellen(
 ): Zustellung {
   const erlaubt = neu.filter((n) => einstellungen.pushTypen[n.typ] !== false);
   if (inRuhezeit(jetzt, einstellungen.ruhezeit)) return { senden: [], warteschlange: [...warteschlange, ...erlaubt] };
-  const alle = [...warteschlange, ...erlaubt];
+  const gesamt = [...warteschlange, ...erlaubt];
+  // Das Morgen-Briefing kommt immer als eigene Mitteilung zuerst, nie versteckt in der Sammelnachricht (Nutzer 17.11.2026)
+  const briefing = gesamt.filter((n) => n.typ === 'briefing');
+  const alle = gesamt.filter((n) => n.typ !== 'briefing');
   // Was in der Ruhezeit anfiel, kommt morgens gebündelt als eine Sammelnachricht (Nutzer 28.10.2026)
-  if (alle.length >= 2 && warteschlange.length > 0) {
+  if (alle.length >= 2 && warteschlange.some((n) => n.typ !== 'briefing')) {
     const sammel: PushNachricht = {
       typ: 'warnung',
       titel: `📬 ${alle.length} Nachrichten`,
@@ -158,7 +161,7 @@ export function zustellen(
       tag: `sammel-${jetzt.toISOString().slice(0, 13)}`,
       erstellt: jetzt.toISOString(),
     };
-    return { senden: [sammel], warteschlange: [] };
+    return { senden: [...briefing, sammel], warteschlange: [] };
   }
-  return { senden: alle, warteschlange: [] };
+  return { senden: [...briefing, ...alle], warteschlange: [] };
 }

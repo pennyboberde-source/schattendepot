@@ -256,6 +256,16 @@ describe('Ableitung, Push-Texte, Kalender', () => {
     expect(zustellen([{ ...n, typ: 'bericht' }], [], new Date('2026-10-22T10:00:00Z'), e).senden).toEqual([]);
   });
 
+  it('Briefing kommt morgens einzeln und zuerst, der Rest gebündelt', () => {
+    const n = { typ: 'gekauft' as const, titel: 't', text: 'x', ziel: '#', erstellt: 'x' };
+    const b = { typ: 'briefing' as const, titel: '☀️ Briefing', text: '1) a', ziel: '#/briefing', erstellt: 'x' };
+    const e = { ruhezeit: { von: '22:30', bis: '07:00' }, pushTypen: { gekauft: true } };
+    const morgens = zustellen([b], [n, n], new Date('2026-10-22T07:40:00Z'), e);
+    expect(morgens.senden.map((x) => x.titel)).toEqual(['☀️ Briefing', '📬 2 Nachrichten']);
+    expect(zustellen([b], [n], new Date('2026-10-22T07:40:00Z'), e).senden).toEqual([b, n]);
+    expect(zustellen([b], [], new Date('2026-10-22T07:40:00Z'), e).senden).toEqual([b]);
+  });
+
   it('Kalender-Abo enthält offene Orders mit stabiler UID', () => {
     const orders: Order[] = ordersAusEreignissen([...ev, ...k]);
     const ics = termineIcs(orders, '2026-10-21T06:00:00Z', 'https://example.org/app/');

@@ -51,7 +51,7 @@ jobs:
             local summe=0 s n
             for s in queued pending waiting requested in_progress; do
               n=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?status=$s&per_page=50" \
-                --jq "[.workflow_runs[] | select(.id != $GITHUB_RUN_ID) | select(.path | (endswith(\"/deploy.yml\") or endswith(\"/probelauf.yml\") or endswith(\"/archiv.yml\") or endswith(\"/historie.yml\") or endswith(\"/routine-meldung.yml\")) | not)] | length")
+                --jq "[.workflow_runs[] | select(.id != $GITHUB_RUN_ID) | select(.path | (endswith(\"/deploy.yml\") or endswith(\"/probelauf.yml\") or endswith(\"/archiv.yml\") or endswith(\"/historie.yml\") or endswith(\"/routine-meldung.yml\") or endswith(\"/takt.yml\")) | not)] | length")
               if [ $? -ne 0 ] || [ -z "$n" ]; then n=1; fi
               summe=$((summe + n))
             done

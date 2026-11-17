@@ -118,6 +118,43 @@ if (vt.length) p(`Volltreffer-Quote (≥ 15 % binnen 2 Wochen in Signalrichtung 
 if (statistik?.prognose?.n1T) p(`Deine Tagesprognosen bisher: ${statistik.prognose.quote1T} % Richtung richtig (n=${statistik.prognose.n1T}), Ø ${statistik.prognose.oe1T} % gerichtet.`);
 p('');
 
+// 17.11.2026 (Nutzer: „alle Bereiche so schlau wie möglich“): Wissen aus dem Umbau (Rückblick, Sammelkurse, Lage,
+// Gesamtmodell) gilt nicht nur für Volltreffer, sondern auch für Depot-Orders und die Daytrading-Watchlist.
+{
+  const z = [];
+  const lage = await json('lernen/lage.json', null);
+  const lh = lage?.heute;
+  if (lh) {
+    const kl = (o) => Object.values(o ?? {}).filter(Boolean).join(' · ');
+    if (kl(lh.aktien)) z.push(`Lage (Stand ${lh.datum}) Aktien: ${kl(lh.aktien)}`);
+    if (kl(lh.krypto)) z.push(`Lage Krypto: ${kl(lh.krypto)}`);
+  }
+  const sk = await json('lernen/schattenbuch/sammelkurse.json', null);
+  const mitW = (sk?.typen ?? []).filter((t) => (t.punkte?.r1W?.n ?? 0) >= 30 && t.punkte.r1W.ueberMarkt != null);
+  if (mitW.length) {
+    const fmt = (t) => {
+      const w = t.punkte.r1W, d = t.punkte.r10T;
+      return `${t.typ} (${t.markt}) 1 Woche Median ${w.median} %, ${w.imPlus} % im Plus, über Markt ${w.ueberMarkt} %${d?.n >= 30 ? `, 10 Tage über Markt ${d.ueberMarkt} %` : ''} (n=${w.n})`;
+    };
+    const sortiert = [...mitW].sort((a, b) => b.punkte.r1W.ueberMarkt - a.punkte.r1W.ueberMarkt);
+    z.push(`Signaltypen mit Vorsprung (Sammelkurse: ${sk.abdeckung?.gemessen ?? '?'} Signale gemessen): ${sortiert.slice(0, 6).map(fmt).join('; ')}`);
+    z.push(`Signaltypen, die hinter dem Markt bleiben (kein Kaufgrund in Signalrichtung): ${sortiert.slice(-5).reverse().map(fmt).join('; ')}`);
+  }
+  const sv = await json('lernen/muster/signale-volltreffer.json', null);
+  const vor = (sv?.typen ?? []).filter((t) => t.faelle >= 30 && t.lift >= 1.5).sort((a, b) => b.lift - a.lift).slice(0, 6);
+  if (vor.length) z.push(`Signale vor großen Sprüngen (≥ +400 € je 1.000 € binnen 10 Tagen): ${vor.map((t) => `${t.typ} (${t.markt}) ${t.quote} % statt ${t.grundrate} % (×${t.lift}, n=${t.faelle})`).join('; ')}`);
+  const mo = await json('lernen/muster/modell.json', null);
+  const bm = (mo?.modelle ?? []).filter((m) => m.bestanden);
+  if (bm.length) z.push(`Gesamtmodell bestanden: ${bm.map((m) => `${m.gruppe} – ${m.spielart}, ${m.fenster} Tage`).join('; ')} (Werte daraus stehen in der Volltreffer-Lauerliste)`);
+  const rl = await json('lernen/muster/rangliste.json', null);
+  if (rl?.bestandenZahl) z.push(`Rückblick über ${rl.umfang?.reihen ?? '?'} Kursreihen (2 Jahre): ${rl.bestandenZahl} Muster bestanden; die besten: ${(rl.bestanden ?? []).slice(0, 3).map((b) => `${b.gruppe} → ${b.spielart}, ${b.fenster} Tage: ${b.quote} % Volltreffer, Ø ${b.evGesamt} € (n=${b.faelle})`).join('; ')}`);
+  if (z.length) {
+    p('## 🧠 Wissen aus Rückblick und Datenkrake – gilt für ALLE Bereiche (Depot, Daytrading, Volltreffer)');
+    p(...z.map((x) => `- ${kurz(x, 900)}`));
+    p('So nutzen: Depot-Orders und Daytrading-Watchlist bevorzugt auf Signaltypen mit Vorsprung stützen, Typen hinter dem Markt nicht als Kaufgrund nehmen; „Signale vor großen Sprüngen“ messen Sprünge in beide Richtungen – steht derselbe Typ auch hinter dem Markt (z. B. Kursrakete), folgt meist der Absturz: nie blind long; die Lage (VIX, Breite, Zinsen, Krypto-Angst) bei Größe, Hebel und Haltedauer berücksichtigen. Kleine Fallzahlen sind Zufall.', '');
+  }
+}
+
 // V5 (Plan Volltreffer): Lauerliste des Bereichs Volltreffer – Claude urteilt, der Code misst
 if (typ === 'morgenlauf') {
   const vu = await json('volltreffer/uebersicht.json', null);
