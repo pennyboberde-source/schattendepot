@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T19:20:09.793Z",
-  "anzahl": 117,
+  "stand": "2026-11-18T20:19:57.112Z",
+  "anzahl": 118,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -1340,7 +1340,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.52,
+      "st": 0.64,
       "q": [
         "Upbit"
       ],
@@ -1571,6 +1571,20 @@
         "Nasdaq Trader"
       ],
       "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "upbit_warnung:K.PUFFER:2026-11-18",
+      "s": "K:PUFFER",
+      "n": "Puffer",
+      "t": "PUFFER",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-18T20:19:57.112Z"
     }
   ]
 }
