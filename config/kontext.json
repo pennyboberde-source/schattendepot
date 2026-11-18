@@ -4,7 +4,7 @@
   "gdelt": {
     "hinweis": "GDELT DOC 2.0 API (Suche ab 01.01.2017), mode=timelinevolraw: Artikel je Tag zum Thema und alle beobachteten Artikel (norm). Höchstens ein Abruf alle pauseMs Millisekunden. Neue Themen hinten anhängen.",
     "url": "https://api.gdeltproject.org/api/v2/doc/doc",
-    "pauseMs": 12000,
+    "pauseMs": 20000,
     "themen": [
       { "id": "zoelle", "name": "Zölle und Handelsstreit", "gdelt": "(tariff OR tariffs OR \"trade war\")", "politik": true, "sic": [[2000, 3999], [5000, 5199]] },
       { "id": "sanktionen", "name": "Sanktionen und Embargos", "gdelt": "(sanctions OR embargo)", "politik": true, "sic": [[1300, 1399], [2900, 2999]] },
@@ -31,7 +31,7 @@
       { "id": "raumfahrt", "name": "Raumfahrt", "gdelt": "(SpaceX OR \"rocket launch\" OR satellite)", "sic": [[3760, 3769], [4890, 4899]] },
       { "id": "quanten", "name": "Quantencomputer", "gdelt": "(\"quantum computing\" OR \"quantum computer\")", "sic": [[3570, 3579], [7370, 7379]] },
       { "id": "drohnen", "name": "Drohnen", "gdelt": "(drone OR drones OR UAV)", "sic": [[3720, 3729], [3812, 3812]] },
-      { "id": "abnehmspritze", "name": "Abnehmspritzen", "gdelt": "(GLP-1 OR Ozempic OR Wegovy)", "sic": [[2830, 2836], [8731, 8731]] }
+      { "id": "abnehmspritze", "name": "Abnehmspritzen", "gdelt": "(Ozempic OR Wegovy OR Zepbound OR Mounjaro)", "sic": [[2830, 2836], [8731, 8731]] }
     ]
   },
   "aufmerksamkeit": {

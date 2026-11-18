@@ -1212,13 +1212,16 @@ async function themen() {
   const alt = stammLesen<{ themen: Record<string, { treffer: Tagesreihe; gesamt: Tagesreihe }> }>('themen.json.gz', { themen: {} });
   let ok = 0;
   for (const t of c.gdelt.themen) {
-    const url = `${c.gdelt.url}?query=${encodeURIComponent(t.gdelt)}&mode=timelinevolraw&format=json&startdatetime=${ymd(c.ab)}000000&enddatetime=${ymd(heute)}235959&timelinesmooth=0`;
+    // Reihe schon lang (über 600 Tage)? Dann reichen die letzten 45 Tage – kürzere Antworten, weniger Drosselung
+    const vorhanden = Object.keys(alt.themen[t.id]?.treffer ?? {}).length;
+    const von = vorhanden > 600 ? tagPlus(heute, -45) : c.ab;
+    const url = `${c.gdelt.url}?query=${encodeURIComponent(t.gdelt)}&mode=timelinevolraw&format=json&startdatetime=${ymd(von)}000000&enddatetime=${ymd(heute)}235959&timelinesmooth=0`;
     // schon heute geholt? (GDELT drosselt stark – lieber über mehrere Läufe verteilen)
     if (alt.themen[t.id] && (alt as { geholt?: Record<string, string> }).geholt?.[t.id] === heute) {
       ok++;
       continue;
     }
-    const r = await geduldig(url, { 'User-Agent': USER_AGENT }, { zeitMs: 150000, versuche: 3, warteMs: 30000 });
+    const r = await geduldig(url, { 'User-Agent': USER_AGENT }, { zeitMs: 150000, versuche: 2, warteMs: 60000 });
     await pause(c.gdelt.pauseMs);
     if (!r || r.status !== 200) {
       console.log(`Themen: ${t.id} – ${r ? `HTTP ${r.status}` : 'keine Antwort'}`);
