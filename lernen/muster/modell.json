@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-17T06:37:45.988Z",
+  "stand": "2026-11-18T07:51:53.438Z",
   "hinweis": "Gesamtmodell (Quantensprung, seit 16.11.2026): Gradient Boosting über die Klassen aller wertbezogenen Merkmale (marktweite wie VIX, Fed, Öl bleiben draußen), Ziel Ergebnis nach Kosten gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % des Tages. Gemessen nur außerhalb der Trainingsdaten (Modell aus Zeitraum A bewertet B und umgekehrt); bestanden wie ein Muster. Nur verdichtete Kennzahlen.",
   "modelle": [
     {
@@ -14,44 +14,44 @@
       "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen)",
       "zeitraeume": [
         {
-          "n": 2330,
-          "quote": 26.9,
-          "ev": 13,
-          "se": 6.8,
+          "n": 2391,
+          "quote": 26,
+          "ev": 9.2,
+          "se": 6.5,
           "tage": 239,
           "grundEv": -48.4
         },
         {
-          "n": 2525,
-          "quote": 28.1,
-          "ev": 14.3,
-          "se": 7.1,
-          "tage": 248,
-          "grundEv": -46.8
+          "n": 2509,
+          "quote": 28.6,
+          "ev": 15.9,
+          "se": 7.3,
+          "tage": 250,
+          "grundEv": -46.4
         }
       ],
       "quartale": [
         6,
         9
       ],
-      "wertung": 6.2,
+      "wertung": 2.7,
       "gesamt": {
-        "n": 4855,
-        "quote": 27.5,
-        "ev": 13.7,
-        "se": 7.1
+        "n": 4900,
+        "quote": 27.3,
+        "ev": 12.6,
+        "se": 7.3
       },
       "wichtig": [
         "Ø Tagesumsatz (123)",
-        "Schwankung je Tag % (103)",
-        "20-Tage-Hoch (97)",
-        "20-Tage-Rendite % (93)",
-        "Quartalszahlen (86)",
-        "Abstand zum Jahreshoch % (80)",
-        "Kurs (69)",
-        "Leerverkaufsanteil (42)"
+        "20-Tage-Hoch (101)",
+        "Schwankung je Tag % (101)",
+        "Abstand zum Jahreshoch % (87)",
+        "Quartalszahlen (84)",
+        "20-Tage-Rendite % (79)",
+        "Kurs (73)",
+        "Leerverkaufsbestand: Tage zum Eindecken (48)"
       ],
-      "faelleHeute": 36
+      "faelleHeute": 35
     },
     {
       "schluessel": "modell|aktie|2S150|10|muster",
@@ -61,150 +61,150 @@
       "sp": "2S150",
       "fenster": 10,
       "q": 25,
-      "bestanden": false,
-      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0",
+      "bestanden": true,
+      "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen, besser als alle Musterfälle)",
       "zeitraeume": [
         {
-          "n": 5361,
-          "quote": 20.3,
-          "ev": -7,
-          "se": 6,
+          "n": 1940,
+          "quote": 26.9,
+          "ev": 19.4,
+          "se": 8,
           "tage": 239,
-          "grundEv": -32.3
+          "grundEv": -2.6
         },
         {
-          "n": 4750,
-          "quote": 24.2,
-          "ev": 7,
-          "se": 6.3,
-          "tage": 249,
-          "grundEv": -20.1
-        }
-      ],
-      "quartale": [
-        6,
-        9
-      ],
-      "wertung": -13,
-      "gesamt": {
-        "n": 10111,
-        "quote": 22.1,
-        "ev": -0.4,
-        "se": 6.3
-      },
-      "wichtig": [
-        "Ø Tagesumsatz (123)",
-        "Schwankung je Tag % (103)",
-        "20-Tage-Hoch (97)",
-        "20-Tage-Rendite % (93)",
-        "Quartalszahlen (86)",
-        "Abstand zum Jahreshoch % (80)",
-        "Kurs (69)",
-        "Leerverkaufsanteil (42)"
-      ],
-      "faelleHeute": 147
-    },
-    {
-      "schluessel": "modell|aktie|3L150|10",
-      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen – oberste 2 %",
-      "markt": "aktie",
-      "spielart": "Turbo long Hebel 3, Stop 150 €",
-      "sp": "3L150",
-      "fenster": 10,
-      "q": 2,
-      "bestanden": false,
-      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als die Grundrate; nur 2 von 9 Quartalen im Plus",
-      "zeitraeume": [
-        {
-          "n": 2925,
-          "quote": 11.4,
-          "ev": -15,
-          "se": 6.4,
-          "tage": 239,
-          "grundEv": -13.3
-        },
-        {
-          "n": 2280,
-          "quote": 15.8,
-          "ev": -22.1,
-          "se": 6.7,
-          "tage": 249,
-          "grundEv": -10.8
-        }
-      ],
-      "quartale": [
-        2,
-        9
-      ],
-      "wertung": -28.8,
-      "gesamt": {
-        "n": 5205,
-        "quote": 13.3,
-        "ev": -18.1,
-        "se": 6.7
-      },
-      "wichtig": [
-        "Branche (106)",
-        "Abstand zum Jahreshoch % (103)",
-        "Quartalszahlen (87)",
-        "20-Tage-Rendite % (71)",
-        "Schwankung je Tag % (59)",
-        "5-Tage-Rendite % (53)",
-        "Ø Tagesumsatz (51)",
-        "Leerverkaufsbestand: Tage zum Eindecken (51)"
-      ],
-      "faelleHeute": 31
-    },
-    {
-      "schluessel": "modell|aktie|3L150|10|muster",
-      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 25 % ihres Tages sieht",
-      "markt": "aktie",
-      "spielart": "Turbo long Hebel 3, Stop 150 €",
-      "sp": "3L150",
-      "fenster": 10,
-      "q": 25,
-      "bestanden": false,
-      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als alle Musterfälle ohne Modell",
-      "zeitraeume": [
-        {
-          "n": 938,
-          "quote": 14.6,
-          "ev": 6.8,
-          "se": 17.7,
-          "tage": 182,
-          "grundEv": 6.8
-        },
-        {
-          "n": 1470,
-          "quote": 18.6,
-          "ev": 2.5,
-          "se": 11.3,
-          "tage": 230,
-          "grundEv": 6.3
+          "n": 1677,
+          "quote": 26.7,
+          "ev": 20.7,
+          "se": 7.8,
+          "tage": 247,
+          "grundEv": 2.2
         }
       ],
       "quartale": [
         5,
         9
       ],
-      "wertung": -10.9,
+      "wertung": 11.4,
       "gesamt": {
-        "n": 2408,
-        "quote": 17,
-        "ev": 4.2,
-        "se": 17.7
+        "n": 3617,
+        "quote": 26.8,
+        "ev": 20,
+        "se": 8
       },
       "wichtig": [
-        "Branche (106)",
-        "Abstand zum Jahreshoch % (103)",
-        "Quartalszahlen (87)",
-        "20-Tage-Rendite % (71)",
-        "Schwankung je Tag % (59)",
-        "5-Tage-Rendite % (53)",
-        "Ø Tagesumsatz (51)",
-        "Leerverkaufsbestand: Tage zum Eindecken (51)"
+        "Ø Tagesumsatz (123)",
+        "20-Tage-Hoch (101)",
+        "Schwankung je Tag % (101)",
+        "Abstand zum Jahreshoch % (87)",
+        "Quartalszahlen (84)",
+        "20-Tage-Rendite % (79)",
+        "Kurs (73)",
+        "Leerverkaufsbestand: Tage zum Eindecken (48)"
       ],
-      "faelleHeute": 60
+      "faelleHeute": 28
+    },
+    {
+      "schluessel": "modell|aktie|3L150|10",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen – oberste 1 %",
+      "markt": "aktie",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "sp": "3L150",
+      "fenster": 10,
+      "q": 1,
+      "bestanden": false,
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als die Grundrate; nur 1 von 9 Quartalen im Plus",
+      "zeitraeume": [
+        {
+          "n": 1556,
+          "quote": 9.6,
+          "ev": -14.1,
+          "se": 7.1,
+          "tage": 239,
+          "grundEv": -13.3
+        },
+        {
+          "n": 1444,
+          "quote": 16.9,
+          "ev": -21.1,
+          "se": 7.9,
+          "tage": 249,
+          "grundEv": -11.4
+        }
+      ],
+      "quartale": [
+        1,
+        9
+      ],
+      "wertung": -29,
+      "gesamt": {
+        "n": 3000,
+        "quote": 13.1,
+        "ev": -17.5,
+        "se": 7.9
+      },
+      "wichtig": [
+        "Branche (108)",
+        "Abstand zum Jahreshoch % (103)",
+        "Quartalszahlen (78)",
+        "20-Tage-Rendite % (68)",
+        "Schwankung je Tag % (63)",
+        "Leerverkaufsbestand: Tage zum Eindecken (53)",
+        "Ø Tagesumsatz (52)",
+        "20-Tage-Hoch (47)"
+      ],
+      "faelleHeute": 16
+    },
+    {
+      "schluessel": "modell|aktie|3L150|10|muster",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 50 % ihres Tages sieht",
+      "markt": "aktie",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "sp": "3L150",
+      "fenster": 10,
+      "q": 50,
+      "bestanden": false,
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als alle Musterfälle ohne Modell",
+      "zeitraeume": [
+        {
+          "n": 2544,
+          "quote": 14.9,
+          "ev": 6.9,
+          "se": 11.7,
+          "tage": 234,
+          "grundEv": 15.7
+        },
+        {
+          "n": 4734,
+          "quote": 19.4,
+          "ev": -0.3,
+          "se": 10.4,
+          "tage": 250,
+          "grundEv": 3
+        }
+      ],
+      "quartale": [
+        5,
+        9
+      ],
+      "wertung": -10.7,
+      "gesamt": {
+        "n": 7278,
+        "quote": 17.8,
+        "ev": 2.2,
+        "se": 11.7
+      },
+      "wichtig": [
+        "Branche (108)",
+        "Abstand zum Jahreshoch % (103)",
+        "Quartalszahlen (78)",
+        "20-Tage-Rendite % (68)",
+        "Schwankung je Tag % (63)",
+        "Leerverkaufsbestand: Tage zum Eindecken (53)",
+        "Ø Tagesumsatz (52)",
+        "20-Tage-Hoch (47)"
+      ],
+      "faelleHeute": 156
     },
     {
       "schluessel": "modell|krypto|1L150|10",

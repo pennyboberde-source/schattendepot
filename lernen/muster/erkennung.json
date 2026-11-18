@@ -1,0 +1,361 @@
+{
+  "stand": "2026-11-18T07:51:53.438Z",
+  "hinweis": "F1 Erkennungsquote: hebelfreie Volltreffer (direkt, Stop 150 €, ≥ +400 € nach Kosten binnen 10 Handelstagen, je Wert einer in 10 Tagen). „erkannt“ = am Stichtag feuerte mindestens ein Erkennungs-Muster (hebelfreie Volltreffer-Quote in beiden Zeiträumen ≥ 3 × Grundrate; auf derselben Geschichte gefunden – die Quote ist eine Obergrenze). Klassen: Anteil der Sprünge unter allen Stichtagen mit dieser Klasse gegen die Grundrate (Lift).",
+  "maerkte": [
+    {
+      "markt": "aktie",
+      "stichtage": 3295764,
+      "spruenge": 12603,
+      "grundrate": 0.38,
+      "erkannt": 11870,
+      "anteilErkannt": 94.2,
+      "anteilFeuern": 32.5,
+      "lift": 2.9,
+      "klassen": [
+        {
+          "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung: Reaktion am Vortag",
+          "faelle": 827,
+          "spruenge": 47,
+          "quote": 5.7,
+          "lift": 14.9
+        },
+        {
+          "merkmal": "Aktien: 20-Tage-Rendite %: unter -50",
+          "faelle": 22255,
+          "spruenge": 1205,
+          "quote": 5.4,
+          "lift": 14.2
+        },
+        {
+          "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung: Reaktion am Vortag",
+          "faelle": 2213,
+          "spruenge": 77,
+          "quote": 3.5,
+          "lift": 9.1
+        },
+        {
+          "merkmal": "Aktien: Abstand zum Jahreshoch %: unter -80",
+          "faelle": 42679,
+          "spruenge": 1361,
+          "quote": 3.2,
+          "lift": 8.3
+        },
+        {
+          "merkmal": "Aktien: Umsatz (× Ø 20 Tage): ab 10",
+          "faelle": 32246,
+          "spruenge": 959,
+          "quote": 3,
+          "lift": 7.8
+        },
+        {
+          "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung: Reaktion am Stichtag",
+          "faelle": 753,
+          "spruenge": 21,
+          "quote": 2.8,
+          "lift": 7.3
+        },
+        {
+          "merkmal": "Aktien: 20-Tage-Rendite %: ab 50",
+          "faelle": 53310,
+          "spruenge": 1276,
+          "quote": 2.4,
+          "lift": 6.3
+        },
+        {
+          "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 6 bis 20 Handelstagen",
+          "faelle": 10899,
+          "spruenge": 238,
+          "quote": 2.2,
+          "lift": 5.7
+        },
+        {
+          "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
+          "faelle": 8533,
+          "spruenge": 186,
+          "quote": 2.2,
+          "lift": 5.7
+        },
+        {
+          "merkmal": "Aktien: Satzung/Aktiensplit (8-K 5.03): Satzungsänderung: Reaktion am Stichtag",
+          "faelle": 2295,
+          "spruenge": 49,
+          "quote": 2.1,
+          "lift": 5.6
+        },
+        {
+          "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 2 bis 5 Handelstagen",
+          "faelle": 3145,
+          "spruenge": 66,
+          "quote": 2.1,
+          "lift": 5.5
+        },
+        {
+          "merkmal": "Aktien: Großaktionär (13D): 13D-Meldung: Reaktion am Vortag",
+          "faelle": 1072,
+          "spruenge": 22,
+          "quote": 2.1,
+          "lift": 5.4
+        },
+        {
+          "merkmal": "Aktien: Satzung/Aktiensplit (8-K 5.03): Satzungsänderung: Reaktion am Vortag",
+          "faelle": 2589,
+          "spruenge": 47,
+          "quote": 1.8,
+          "lift": 4.7
+        },
+        {
+          "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung: Reaktion am Stichtag",
+          "faelle": 1695,
+          "spruenge": 30,
+          "quote": 1.8,
+          "lift": 4.6
+        },
+        {
+          "merkmal": "Aktien: 20-Tage-Rendite %: -50 bis -20",
+          "faelle": 154986,
+          "spruenge": 2562,
+          "quote": 1.7,
+          "lift": 4.3
+        },
+        {
+          "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
+          "faelle": 29398,
+          "spruenge": 476,
+          "quote": 1.6,
+          "lift": 4.2
+        },
+        {
+          "merkmal": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Vortag",
+          "faelle": 8907,
+          "spruenge": 130,
+          "quote": 1.5,
+          "lift": 3.8
+        },
+        {
+          "merkmal": "Aktien: Großaktionär (13D): 13D-Meldung: Reaktion am Stichtag",
+          "faelle": 933,
+          "spruenge": 13,
+          "quote": 1.4,
+          "lift": 3.6
+        },
+        {
+          "merkmal": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Stichtag",
+          "faelle": 9542,
+          "spruenge": 120,
+          "quote": 1.3,
+          "lift": 3.3
+        },
+        {
+          "merkmal": "Aktien: Umsatz (× Ø 20 Tage): 5 bis 10",
+          "faelle": 39247,
+          "spruenge": 492,
+          "quote": 1.3,
+          "lift": 3.3
+        },
+        {
+          "merkmal": "Aktien: Satzung/Aktiensplit (8-K 5.03): Satzungsänderung vor 2 bis 5 Handelstagen",
+          "faelle": 10016,
+          "spruenge": 124,
+          "quote": 1.2,
+          "lift": 3.2
+        },
+        {
+          "merkmal": "Aktien: Großvertrag (8-K 1.01): Großvertrag: Reaktion am Stichtag",
+          "faelle": 10670,
+          "spruenge": 132,
+          "quote": 1.2,
+          "lift": 3.2
+        },
+        {
+          "merkmal": "Aktien: Großvertrag (8-K 1.01): Großvertrag: Reaktion am Vortag",
+          "faelle": 10954,
+          "spruenge": 133,
+          "quote": 1.2,
+          "lift": 3.2
+        },
+        {
+          "merkmal": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen",
+          "faelle": 28961,
+          "spruenge": 319,
+          "quote": 1.1,
+          "lift": 2.9
+        },
+        {
+          "merkmal": "Aktien: Großaktionär (13D): 13D-Meldung vor 2 bis 5 Handelstagen",
+          "faelle": 3976,
+          "spruenge": 44,
+          "quote": 1.1,
+          "lift": 2.9
+        }
+      ]
+    },
+    {
+      "markt": "krypto",
+      "stichtage": 36502,
+      "spruenge": 805,
+      "grundrate": 2.21,
+      "erkannt": 0,
+      "anteilErkannt": 0,
+      "anteilFeuern": 0,
+      "lift": null,
+      "klassen": [
+        {
+          "merkmal": "Krypto: Umsatz (× Ø 20 Tage): ab 10",
+          "faelle": 749,
+          "spruenge": 92,
+          "quote": 12.3,
+          "lift": 5.6
+        },
+        {
+          "merkmal": "Krypto: 20-Tage-Rendite %: unter -50",
+          "faelle": 426,
+          "spruenge": 41,
+          "quote": 9.6,
+          "lift": 4.4
+        },
+        {
+          "merkmal": "Krypto: Umsatz (× Ø 20 Tage): 5 bis 10",
+          "faelle": 1278,
+          "spruenge": 78,
+          "quote": 6.1,
+          "lift": 2.8
+        },
+        {
+          "merkmal": "Krypto: Abstand zum Jahreshoch %: unter -80",
+          "faelle": 786,
+          "spruenge": 37,
+          "quote": 4.7,
+          "lift": 2.1
+        },
+        {
+          "merkmal": "Krypto: 20-Tage-Rendite %: ab 50",
+          "faelle": 2926,
+          "spruenge": 126,
+          "quote": 4.3,
+          "lift": 2
+        },
+        {
+          "merkmal": "Krypto: Umsatz (× Ø 20 Tage): 2 bis 5",
+          "faelle": 5696,
+          "spruenge": 176,
+          "quote": 3.1,
+          "lift": 1.4
+        },
+        {
+          "merkmal": "Krypto: 20-Tage-Rendite %: 20 bis 50",
+          "faelle": 4333,
+          "spruenge": 108,
+          "quote": 2.5,
+          "lift": 1.1
+        },
+        {
+          "merkmal": "Krypto: 20-Tage-Rendite %: -50 bis -20",
+          "faelle": 5284,
+          "spruenge": 111,
+          "quote": 2.1,
+          "lift": 1
+        },
+        {
+          "merkmal": "Krypto: Abstand zum Jahreshoch %: -80 bis -50",
+          "faelle": 8770,
+          "spruenge": 156,
+          "quote": 1.8,
+          "lift": 0.8
+        },
+        {
+          "merkmal": "Krypto: Umsatz (× Ø 20 Tage): 1 bis 2",
+          "faelle": 10994,
+          "spruenge": 160,
+          "quote": 1.5,
+          "lift": 0.7
+        },
+        {
+          "merkmal": "Krypto: 20-Tage-Rendite %: -20 bis 0",
+          "faelle": 11821,
+          "spruenge": 149,
+          "quote": 1.3,
+          "lift": 0.6
+        },
+        {
+          "merkmal": "Krypto: 20-Tage-Rendite %: 0 bis 20",
+          "faelle": 8830,
+          "spruenge": 121,
+          "quote": 1.4,
+          "lift": 0.6
+        },
+        {
+          "merkmal": "Krypto: Umsatz (× Ø 20 Tage): 0,5 bis 1",
+          "faelle": 10590,
+          "spruenge": 111,
+          "quote": 1,
+          "lift": 0.5
+        },
+        {
+          "merkmal": "Krypto: Abstand zum Jahreshoch %: -50 bis -20",
+          "faelle": 6881,
+          "spruenge": 80,
+          "quote": 1.2,
+          "lift": 0.5
+        },
+        {
+          "merkmal": "Krypto: Umsatz (× Ø 20 Tage): unter 0,5",
+          "faelle": 4313,
+          "spruenge": 39,
+          "quote": 0.9,
+          "lift": 0.4
+        },
+        {
+          "merkmal": "Krypto: Abstand zum Jahreshoch %: -20 bis -5",
+          "faelle": 2383,
+          "spruenge": 20,
+          "quote": 0.8,
+          "lift": 0.4
+        }
+      ]
+    }
+  ],
+  "fallstudie": [
+    {
+      "wert": "COIN",
+      "anlass": "US-Wahl, kryptofreundliche Regulierung",
+      "stichtage": 14,
+      "sprungTage": 0,
+      "sprungMitMuster": 0
+    },
+    {
+      "wert": "INTC",
+      "anlass": "SoftBank 2 Mrd. $, Staatsbeteiligung 10 %, Nvidia 5 Mrd. $",
+      "stichtage": 26,
+      "sprungTage": 3,
+      "sprungMitMuster": 3
+    },
+    {
+      "wert": "MSTR",
+      "anlass": "US-Wahl, Bitcoin",
+      "stichtage": 14,
+      "sprungTage": 0,
+      "sprungMitMuster": 0
+    },
+    {
+      "wert": "ORCL",
+      "anlass": "Quartalszahlen, Auftragsbestand +359 %",
+      "stichtage": 7,
+      "sprungTage": 5,
+      "sprungMitMuster": 2
+    },
+    {
+      "wert": "SLV",
+      "anlass": "Exportbeschränkungen China für Silber",
+      "stichtage": 32,
+      "sprungTage": 0,
+      "sprungMitMuster": 0
+    },
+    {
+      "wert": "UNH",
+      "anlass": "Insider-Käufe ab Mai, Berkshire-Einstieg (13F)",
+      "stichtage": 11,
+      "sprungTage": 0,
+      "sprungMitMuster": 0
+    }
+  ]
+}
