@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T17:19:47.813Z",
-  "anzahl": 110,
+  "stand": "2026-11-18T18:19:41.277Z",
+  "anzahl": 115,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -1247,7 +1247,7 @@
       "t": "BKHAU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -1476,6 +1476,75 @@
         "Nasdaq Trader"
       ],
       "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-18",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.62,
+      "q": [
+        "tagesschau Wirtschaft",
+        "CNBC Top News",
+        "Handelsblatt Finanzen",
+        "MarketWatch"
+      ],
+      "z": "2026-11-18T00:59:30.000Z"
+    },
+    {
+      "id": "nachricht:K.ETH:2026-11-18",
+      "s": "K:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-18T16:10:44.000Z"
+    },
+    {
+      "id": "nachricht:DBK:2026-11-18",
+      "s": "T:DBK",
+      "n": "Deutsche Bank",
+      "t": "DBK.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "FAZ Finanzen"
+      ],
+      "z": "2026-11-18T17:18:16.000Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-11-18",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-18T18:10:21.000Z"
+    },
+    {
+      "id": "aktienrueckkauf:NVDA:2026-11-18",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "aktienrueckkauf",
+      "r": 1,
+      "st": 0.7,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-18T18:14:42.000Z"
     }
   ]
 }
