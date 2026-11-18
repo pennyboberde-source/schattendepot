@@ -9,6 +9,15 @@
     "zeilenOhne": ["verbesserung/aenderungen/**", "demo/daten/**"]
   },
   "branchPrefix": "claude/verbesserung-",
+  "fehler": {
+    "hinweis": "Fehler-Spur (Nutzer 18.11.2026: „alle Fehler, die die App meldet, automatisch überprüfen und beheben“). Der Fehlerlauf (routine/fehlerlauf.md, geplante Aufgabe 06:23 und 20:23) liest fehler/lage.json (daten-Zweig, schreibt jobs/fehlerlage.ts stündlich) und liefert je Lauf höchstens einen Branch claude/fehler-<JJJJ-MM-TT>-<kurz> mit Manifest verbesserung/aenderungen/fehler-<JJJJ-MM-TT>-<kurz>.json (art „fehler“, issues, je Änderung „fehler“). Gleiche Erlaubt-/Sperrliste wie der Verbesserungslauf, eigene Grenzen, ein Test ist Pflicht. Die Übernahme schließt die genannten Fehler-Issues. Bleibt ein Punkt meldenNachStunden offen, meldet der Code ihn einmal mit 🔴❗ (Bau-Sitzung nötig).",
+    "branchPrefix": "claude/fehler-",
+    "maxAenderungen": 3,
+    "maxZeilen": 300,
+    "testPflicht": true,
+    "meldenNachStunden": 36,
+    "ohneWorkflows": ["test-push.yml", "trockenlauf.yml", "probelauf.yml", "tresor-pruefung.yml"]
+  },
   "erlaubtePfade": [
     "config/einstellungen.json",
     "config/daytrading.json",
@@ -28,6 +37,9 @@
   ],
   "verbotenePfade": [
     ".github/**",
+    "routine/fehlerlauf.md",
+    "jobs/fehlerlage.ts",
+    "core/fehlerlage.ts",
     "config/verbesserung.json",
     "core/verbesserung/**",
     "jobs/verbesserung.ts",

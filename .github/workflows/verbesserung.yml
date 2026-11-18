@@ -104,6 +104,7 @@ jobs:
     permissions:
       contents: write
       actions: write
+      issues: write
     concurrency:
       group: daten-schreiben
       cancel-in-progress: false
@@ -130,6 +131,7 @@ jobs:
       - name: Leitplanken erneut prüfen, zusammenführen, protokollieren, melden
         id: uebernehmen
         env:
+          GH_TOKEN: ${{ github.token }}
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
           ERGEBNIS: ${{ runner.temp }}/ergebnis/verbesserung-ergebnis.json
@@ -141,6 +143,44 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run deploy.yml --ref main
+
+  # Fehlerlage (18.11.2026): stündlich sammeln, was kaputt ist – für den Fehlerlauf (routine/fehlerlauf.md).
+  # Nur Code von main; liest Issues/Läufe mit dem Action-Token, schreibt fehler/lage.json in den daten-Zweig.
+  fehlerlage:
+    runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+      issues: read
+    # bewusst ohne die Gruppe daten-schreiben: schreibt nur fehler/lage.json (kein Konflikt beim Rebase in
+    # daten-sichern.sh) und soll keinen wartenden Wächter- oder Übernahme-Job verdrängen
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Fehlerlage sammeln
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+        run: node jobs/fehlerlage.ts
+      - name: Daten sichern
+        run: bash scripts/daten-sichern.sh "Fehlerlage $(date -u +%Y-%m-%dT%H:%MZ)"
 
   ablehnen:
     needs: [finden, pruefen]

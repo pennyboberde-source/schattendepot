@@ -5,7 +5,9 @@
 //   node jobs/verbesserung.ts uebernehmen <ergebnis.json>    → Leitplanken erneut, zusammenführen, pushen, protokollieren
 //   node jobs/verbesserung.ts ablehnen <ergebnis.json>       → Pull Request (oder Issue) mit Begründung, Mitteilung
 //   node jobs/verbesserung.ts zurueck <merge|letzte> <ausloeser> [grund] → Übernahme zurücknehmen
-//   node jobs/verbesserung.ts vorpruefen                     → Leitplanken-Prüfung des eigenen Commits (für den Verbesserungslauf, vor dem Push)
+//   node jobs/verbesserung.ts vorpruefen [branch]            → Leitplanken-Prüfung des eigenen Commits (Verbesserungs- oder Fehlerlauf, vor dem Push)
+// Zwei Spuren: claude/verbesserung-<datum> (wöchentlicher Verbesserungslauf) und claude/fehler-<datum>-<kurz>
+// (Fehlerlauf, seit 18.11.2026: eigene Grenzen, Test Pflicht, schließt die genannten Fehler-Issues).
 import { execFileSync } from 'node:child_process';
 import { appendFileSync, existsSync, mkdtempSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -32,7 +34,9 @@ function ausgabe(name: string, wert: string) {
   console.log(`→ ${name}=${wert}`);
   if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `${name}=${wert.replace(/[\r\n]+/g, ' ')}\n`);
 }
-const branchOk = (l: Leitplanken, b: string) => b.startsWith(l.branchPrefix) && /^[A-Za-z0-9._/-]+$/.test(b) && !b.includes('..');
+const branchOk = (l: Leitplanken, b: string) => (b.startsWith(l.branchPrefix) || (!!l.fehler && b.startsWith(l.fehler.branchPrefix))) && /^[A-Za-z0-9._/-]+$/.test(b) && !b.includes('..');
+/** Fehler-Spur? Dann mit Kennung (Teil nach dem Präfix). */
+const spurVon = (l: Leitplanken, b: string): { art: 'fehler'; kennung: string } | undefined => (l.fehler && b.startsWith(l.fehler.branchPrefix) ? { art: 'fehler', kennung: b.slice(l.fehler.branchPrefix.length) } : undefined);
 
 export interface Ergebnis {
   ok: boolean;
@@ -70,7 +74,7 @@ function probeMerge(branch: string, sha: string, lokal = false): { dir: string; 
 }
 
 /** Leitplanken-Prüfung des Probe-Merges gegen main (rein lesend, ohne Code des Branches auszuführen). */
-function statischPruefen(dir: string, l: Leitplanken) {
+function statischPruefen(dir: string, l: Leitplanken, spur?: { art: 'fehler'; kennung: string }) {
   const null0 = (s: string) => s.split('\0').filter((x) => x.length);
   const status = null0(git(['diff', '--cached', '--no-renames', '--name-status', '-z', 'origin/main'], dir));
   const zeilen = new Map(
@@ -96,6 +100,7 @@ function statischPruefen(dir: string, l: Leitplanken) {
       kennzahlen: Object.keys(KENNZAHLEN),
     },
     l,
+    spur,
   );
 }
 
@@ -173,12 +178,15 @@ if (befehl === 'finden') {
   const l = leitplanken();
   const protokoll = protokollVonDaten();
   const bekannt = new Set(protokoll.flatMap((p) => (p.typ === 'uebernommen' || p.typ === 'abgelehnt' ? [p.sha] : [])));
-  const koepfe = (versuch(() => git(['ls-remote', '--heads', 'origin', `${l.branchPrefix}*`])) ?? '')
+  const koepfe = [l.branchPrefix, ...(l.fehler ? [l.fehler.branchPrefix] : [])]
+    .map((prefix) => versuch(() => git(['ls-remote', '--heads', 'origin', `${prefix}*`])) ?? '')
+    .join('\n')
     .split('\n')
     .filter((z) => z.trim())
     .map((z) => ({ sha: z.split(/\s+/)[0], branch: z.split(/\s+/)[1].replace('refs/heads/', '') }))
     .filter((k) => branchOk(l, k.branch) && !bekannt.has(k.sha))
-    .sort((a, b) => a.branch.localeCompare(b.branch));
+    // Fehlerbehebungen zuerst, sonst nach Name (= Datum)
+    .sort((a, b) => Number(!spurVon(l, a.branch)) - Number(!spurVon(l, b.branch)) || a.branch.localeCompare(b.branch));
   if (!l.aktiv) console.log('Selbstverbesserung ist ausgeschaltet (config/verbesserung.json › aktiv) – es wird nichts übernommen.');
   else if (koepfe.length) {
     ausgabe('branch', koepfe[0].branch);
@@ -207,7 +215,7 @@ if (befehl === 'finden') {
   const e: Ergebnis = { ok: false, branch, sha, mainSha: m.mainSha, gruende: [], zeilen: 0, geprueftUm: iso };
   if (m.fehler) e.gruende.push(m.fehler);
   else {
-    const s = statischPruefen(m.dir, l);
+    const s = statischPruefen(m.dir, l, spurVon(l, branch));
     Object.assign(e, { gruende: s.gruende, zeilen: s.zeilen, ...(s.manifest ? { manifest: s.manifest } : {}) });
     if (s.ok && !process.env.VERBESSERUNG_NUR_STATISCH) {
       const d = dynamischPruefen(m.dir);
@@ -230,19 +238,27 @@ if (befehl === 'finden') {
     ausgabe('uebernommen', 'nein');
   } else {
     // Leitplanken noch einmal prüfen – hier läuft kein Code des Branches, nur der von main
-    const s = statischPruefen(m.dir, l);
+    const spur = spurVon(l, e.branch);
+    const s = statischPruefen(m.dir, l, spur);
     if (!s.ok || !s.manifest) throw new Error(`Leitplanken-Prüfung vor der Übernahme gescheitert:\n- ${s.gruende.join('\n- ')}`);
-    const titel = `Verbesserung ${s.manifest.datum}: ${s.manifest.zusammenfassung}`.slice(0, 180);
-    const text = [titel, '', ...s.manifest.aenderungen.map((a) => `- ${a.titel} (${a.bereich}) – Messkriterium: ${a.messkriterium.text}`), '', `Automatisch übernommen aus ${e.branch} nach Leitplanken-Prüfung, ${e.tests?.unit ?? '?'} Unit-Tests, ${e.tests?.e2e ?? '?'} E2E-Tests und Probelauf auf einer Datenkopie.`].join('\n');
+    const titel = `${spur ? 'Fehlerbehebung' : 'Verbesserung'} ${s.manifest.datum}: ${s.manifest.zusammenfassung}`.slice(0, 180);
+    const text = [titel, '', ...s.manifest.aenderungen.map((a) => `- ${a.titel} (${a.bereich}) – ${a.messkriterium ? `Messkriterium: ${a.messkriterium.text}` : `Fehler: ${a.fehler ?? '?'}`}`), '', `Automatisch übernommen aus ${e.branch} nach Leitplanken-Prüfung, ${e.tests?.unit ?? '?'} Unit-Tests, ${e.tests?.e2e ?? '?'} E2E-Tests und Probelauf auf einer Datenkopie.`].join('\n');
     git([...BOT, 'commit', '-q', '-m', text], m.dir);
     const merge = git(['rev-parse', 'HEAD'], m.dir);
     git(['push', '-q', 'origin', 'HEAD:refs/heads/main'], m.dir);
     console.log(`Übernommen: ${merge.slice(0, 7)} auf main.`);
     const { protokollAnhaengen, uebersichtSchreiben } = await import('./lib/verbesserung.ts');
-    protokollAnhaengen([{ typ: 'uebernommen', zeit: iso, datum: s.manifest.datum, branch: e.branch, sha: e.sha, merge, zeilen: s.zeilen, tests: e.tests ?? { unit: 0, e2e: 0 }, zusammenfassung: s.manifest.zusammenfassung, aenderungen: s.manifest.aenderungen, ...(s.manifest.freigaben?.length ? { freigaben: s.manifest.freigaben } : {}) }]);
+    protokollAnhaengen([{ typ: 'uebernommen', zeit: iso, datum: s.manifest.datum, branch: e.branch, sha: e.sha, merge, zeilen: s.zeilen, tests: e.tests ?? { unit: 0, e2e: 0 }, zusammenfassung: s.manifest.zusammenfassung, aenderungen: s.manifest.aenderungen, ...(s.manifest.freigaben?.length ? { freigaben: s.manifest.freigaben } : {}), ...(spur ? { art: 'fehler' as const, ...(s.manifest.issues?.length ? { issues: s.manifest.issues } : {}) } : {}) }]);
     uebersichtSchreiben(jetzt, l);
     const n = s.manifest.aenderungen.length;
-    const nachrichten: PushNachricht[] = [{ typ: 'bericht', titel: `🛠️ Verbesserung: ${n} Änderung${n === 1 ? '' : 'en'} übernommen`, text: `${s.manifest.aenderungen.map((a) => a.titel).join(' · ')} · Rückgängig machen: in der App unter Lernen`.slice(0, 400), ziel: '#/lernen', tag: `verbesserung-${s.manifest.datum}`, erstellt: iso }];
+    // Fehler-Spur: genannte Fehler-Issues schließen (nur solche mit Label „fehler“)
+    for (const nr of spur ? (s.manifest.issues ?? []) : []) {
+      const info = versuch(() => JSON.parse(execFileSync('gh', ['issue', 'view', String(nr), '--repo', REPO, '--json', 'labels,state'], { encoding: 'utf8' })) as { labels: { name: string }[]; state: string });
+      if (!info || info.state !== 'OPEN' || !info.labels.some((x) => x.name === 'fehler')) continue;
+      const kommentar = `Automatisch behoben vom Fehlerlauf (${merge.slice(0, 7)}): ${s.manifest.zusammenfassung}\n\nDie Änderung ging durch Leitplanken, Tests und Probelauf. Rückgängig machen: App › Lernen › Was sich verbessert hat.`;
+      console.log(versuch(() => execFileSync('gh', ['issue', 'close', String(nr), '--repo', REPO, '--comment', kommentar], { encoding: 'utf8' })) !== null ? `Issue #${nr} geschlossen.` : `Issue #${nr} konnte nicht geschlossen werden.`);
+    }
+    const nachrichten: PushNachricht[] = [{ typ: 'bericht', titel: spur ? `🛠️ Fehler behoben: ${s.manifest.zusammenfassung}`.slice(0, 120) : `🛠️ Verbesserung: ${n} Änderung${n === 1 ? '' : 'en'} übernommen`, text: `${s.manifest.aenderungen.map((a) => a.titel).join(' · ')} · Rückgängig machen: in der App unter Lernen`.slice(0, 400), ziel: '#/lernen', tag: `verbesserung-${s.manifest.datum}`, erstellt: iso }];
     for (const f of s.manifest.freigaben ?? []) nachrichten.push({ typ: 'warnung', titel: `🔴❗ Freigabe nötig: ${f.titel}`.slice(0, 120), text: 'Die Anleitung steht in der App unter Lernen › Was sich verbessert hat.', ziel: '#/lernen', tag: `verbesserung-freigabe-${s.manifest.datum}`, erstellt: iso });
     await mitteilen(nachrichten, jetzt);
     versuch(() => git(['push', '-q', 'origin', '--delete', e.branch]));
@@ -257,7 +273,7 @@ if (befehl === 'finden') {
   const koerper = join(tmpdir(), `verbesserung-ablehnung-${Date.now()}.md`);
   const vergleich = `https://github.com/${REPO}/compare/main...${e.branch}`;
   writeFileSync(koerper, [`Der Verbesserungslauf hat den Branch \`${e.branch}\` abgeliefert. Die Übernahme-Action hat ihn **nicht übernommen**:`, '', ...e.gruende.map((g) => `- ${g}`), '', `Vergleich: ${vergleich}`, '', 'Was jetzt? Nichts tun heißt: Die Änderung bleibt draußen. Soll sie doch hinein, kann eine Bau-Sitzung sie prüfen und anpassen.', '', 'Simulation mit fiktivem Geld – keine Anlageberatung, keine Kauf- oder Verkaufsempfehlung.'].join('\n'));
-  const titel = `Verbesserung ${e.branch.replace(l.branchPrefix, '')} – nicht übernommen`;
+  const titel = spurVon(l, e.branch) ? `Fehlerbehebung ${e.branch.replace(l.fehler!.branchPrefix, '')} – nicht übernommen` : `Verbesserung ${e.branch.replace(l.branchPrefix, '')} – nicht übernommen`;
   let link =
     versuch(() => (JSON.parse(gh(['pr', 'list', '--repo', REPO, '--head', e.branch, '--state', 'open', '--json', 'url'])) as { url: string }[])[0]?.url) ??
     versuch(() => gh(['pr', 'create', '--repo', REPO, '--base', 'main', '--head', e.branch, '--title', titel, '--body-file', koerper])) ??
@@ -308,10 +324,12 @@ if (befehl === 'finden') {
   // Für den Verbesserungslauf: prüft den eigenen, schon committeten Stand gegen die Leitplanken, bevor er pusht
   const l = leitplanken();
   if (git(['status', '--porcelain', '--untracked-files=no'])) console.log('Hinweis: Es gibt noch nicht committete Änderungen – geprüft wird nur der Commit.');
+  const eigenerBranch = process.argv[3] ?? versuch(() => git(['rev-parse', '--abbrev-ref', 'HEAD'])) ?? '';
+  const spur = spurVon(l, eigenerBranch);
   const m = probeMerge('(lokal)', git(['rev-parse', 'HEAD']), true);
-  const s = m.fehler ? { ok: false, gruende: [m.fehler], zeilen: 0 } : statischPruefen(m.dir, l);
+  const s = m.fehler ? { ok: false, gruende: [m.fehler], zeilen: 0 } : statischPruefen(m.dir, l, spur);
   versuch(() => git(['worktree', 'remove', '--force', m.dir]));
-  console.log(s.ok ? `✓ Leitplanken eingehalten (${s.zeilen} von ${l.wochenbudget.maxZeilen} Zeilen). Die Action prüft zusätzlich tsc, Unit-Tests, E2E-Tests und einen Probelauf.` : `✗ Die Action würde diesen Stand ablehnen:\n- ${s.gruende.join('\n- ')}`);
+  console.log(s.ok ? `✓ Leitplanken eingehalten (${spur ? 'Fehler-Spur, ' : ''}${s.zeilen} von ${spur ? l.fehler!.maxZeilen : l.wochenbudget.maxZeilen} Zeilen). Die Action prüft zusätzlich tsc, Unit-Tests, E2E-Tests und einen Probelauf.` : `✗ Die Action würde diesen Stand ablehnen:\n- ${s.gruende.join('\n- ')}`);
   process.exitCode = s.ok ? 0 : 1;
 } else {
   console.error('Aufruf: node jobs/verbesserung.ts finden | vorpruefen | pruefen <branch> <sha> | uebernehmen <ergebnis.json> | ablehnen <ergebnis.json> | zurueck <merge|letzte> <ausloeser> [grund]');

@@ -168,3 +168,16 @@ export function marktOffen(markt: 'us' | 'eu' | 'krypto', zeit: Date, opt: { nys
   const minuten = Number(t.hour) * 60 + Number(t.minute);
   return minuten >= 9 * 60 + 30 && minuten < 16 * 60;
 }
+
+/**
+ * Laufart des Datensammlers bei „auto“. Der Hauptlauf gehört in den frühen Morgen (05:30–07:30); fehlt das Lagebild
+ * des Tages danach noch (Zeitplan ausgefallen, 18.11.2026: 18 Quellen standen still), holt der nächste Lauf bis 22 Uhr
+ * den Hauptlauf nach statt nur stündlich zu sammeln.
+ */
+export function sammlerLaufart(b: Pick<BerlinZeit, 'wochentag' | 'minuten'>, handelstag: boolean, lagebildDa: boolean): 'haupt' | 'stuendlich' | 'samstag' | null {
+  if (b.wochentag === 6) return 'samstag';
+  if (!handelstag) return null;
+  if (b.minuten >= 5 * 60 + 30 && b.minuten < 22 * 60 && !lagebildDa) return 'haupt';
+  if (b.minuten >= 8 * 60 && b.minuten < 22 * 60) return 'stuendlich';
+  return null;
+}

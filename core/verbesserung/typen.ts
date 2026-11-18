@@ -6,6 +6,8 @@ export interface Leitplanken {
   aktiv: boolean;
   wochenbudget: { maxAenderungen: number; maxZeilen: number; zeilenOhne?: string[] };
   branchPrefix: string;
+  /** zweite Spur: Fehlerbehebungen des Fehlerlaufs (18.11.2026) – eigene Grenzen, Test Pflicht */
+  fehler?: { branchPrefix: string; maxAenderungen: number; maxZeilen: number; testPflicht: boolean; meldenNachStunden?: number; ohneWorkflows?: string[] };
   erlaubtePfade: string[];
   verbotenePfade: string[];
   nieLoeschen: string[];
@@ -41,7 +43,10 @@ export interface Aenderung {
   /** ID des Kandidaten aus dem Verbesserungsbuch, falls die Änderung daraus stammt */
   kandidat?: string;
   hypothese: string;
-  messkriterium: Messkriterium;
+  /** Pflicht für Verbesserungen; bei Fehlerbehebungen (Spur „fehler“) freiwillig */
+  messkriterium?: Messkriterium;
+  /** nur Spur „fehler“: welcher Fehler (Issue-Nummer, Workflow, Quelle) behoben wird */
+  fehler?: string;
   /** geänderte Dateien dieser Änderung */
   dateien: string[];
 }
@@ -49,6 +54,10 @@ export interface Aenderung {
 /** Datei verbesserung/aenderungen/<datum>.json auf dem Branch claude/verbesserung-<datum> */
 export interface Manifest {
   datum: string;
+  /** „fehler“ = Fehlerbehebung des Fehlerlaufs (Branch claude/fehler-<kennung>, Manifest fehler-<kennung>.json) */
+  art?: 'verbesserung' | 'fehler';
+  /** nur Spur „fehler“: diese Fehler-Issues schließt die Übernahme */
+  issues?: number[];
   zusammenfassung: string;
   aenderungen: Aenderung[];
   /** nötige Freigaben des Nutzers (z. B. Gratis-Schlüssel für eine neue Quelle) – die Quelle läuft ohne Secret einfach nicht */
@@ -81,7 +90,7 @@ export interface Kandidat {
 
 /** Zeilen in lernen/verbesserung/protokoll.jsonl (nur anhängen) */
 export type ProtokollEintrag =
-  | { typ: 'uebernommen'; zeit: string; datum: string; branch: string; sha: string; merge: string; zeilen: number; tests: { unit: number; e2e: number }; zusammenfassung: string; aenderungen: Aenderung[]; freigaben?: Manifest['freigaben'] }
+  | { typ: 'uebernommen'; zeit: string; datum: string; branch: string; sha: string; merge: string; zeilen: number; tests: { unit: number; e2e: number }; zusammenfassung: string; aenderungen: Aenderung[]; freigaben?: Manifest['freigaben']; art?: 'fehler'; issues?: number[] }
   | { typ: 'abgelehnt'; zeit: string; branch: string; sha: string; gruende: string[]; link?: string }
   | { typ: 'zurueckgenommen'; zeit: string; merge: string; revert: string; grund: string; ausloeser: 'nutzer' | 'wache' | 'bewertung' }
   | { typ: 'bewertet'; zeit: string; merge: string; aenderung: string; kennzahl: string; urteil: 'besser' | 'gleich' | 'schlechter' | 'nicht messbar'; vorher: number | null; nachher: number | null; text: string };

@@ -2,7 +2,7 @@
 // Hauptlauf ~06:30: alle Quellen → Signale → Bewertung → lagebild/<datum>.md (für Claude) + .json (App).
 // Stündlich 08–22 Uhr: Nachrichten zu offenen Positionen; starke Meldung → Ereignislauf (max. 1/Tag, geteilt mit Kurswächter).
 import { ordersAusEreignissen } from '../core/ableiten.ts';
-import { berlin, istHandelstag } from '../core/kalender.ts';
+import { berlin, istHandelstag, sammlerLaufart } from '../core/kalender.ts';
 import { lagebildJson, lagebildMarkdown, type LagebildDaten } from '../core/lagebild.ts';
 import { kandidaten, zusammenfuehren, type Gewichte, type Signal, type SignalConfig } from '../core/signale.ts';
 import type { PushNachricht } from '../core/push.ts';
@@ -79,11 +79,7 @@ function kandidatenHinweise(top: ReturnType<typeof kandidaten>, tracking: Tracki
 function laufartBestimmen(): Laufart | null {
   const arg = process.argv[2] ?? 'auto';
   if (arg !== 'auto') return arg as Laufart;
-  if (b.wochentag === 6) return 'samstag';
-  if (!istHandelstag(b.datum)) return null;
-  if (b.minuten >= 5 * 60 + 30 && b.minuten < 7 * 60 + 30) return existsSync(join(DATEN_DIR, `lagebild/${b.datum}.md`)) ? null : 'haupt';
-  if (b.minuten >= 8 * 60 && b.minuten < 22 * 60) return 'stuendlich';
-  return null;
+  return sammlerLaufart(b, istHandelstag(b.datum), existsSync(join(DATEN_DIR, `lagebild/${b.datum}.md`)));
 }
 
 const laufart = laufartBestimmen();

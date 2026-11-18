@@ -8,6 +8,7 @@ Zusatzplan seit 17.11.2026: `KONZEPT-FRUEHERKENNUNG.md` (große Sprünge ohne He
 - **Rückfragen (Nutzer 17.11.2026, gilt immer):** Bei Fragen oder Unklarheiten immer von selbst nachfragen – nicht warten, bis der Nutzer am Ende nach Fragen fragt. Ist er nicht da (eigenständiger Lauf), die Frage mit 🔴❗ markieren, eine Push-Benachrichtigung senden und mit der vernünftigsten Lesart weiterarbeiten.
 - Sitzungsstart: „Lies STAND.md und mach weiter“ → STAND.md lesen, beim „Nächsten Schritt“ weitermachen.
 - Fehler: „Lies STAND.md und behebe die offenen Fehler-Issues“ → Ablauf in STAND.md › „Fehler beheben in einer neuen Sitzung“ (Issues mit Label `fehler` aus dem App-Knopf „Fehler melden“).
+- **Fehler automatisch (Nutzer 18.11.2026):** Fehlerlauf (geplante Aufgabe 06:23/20:23, `routine/fehlerlauf.md`) liest `fehler/lage.json` (daten-Zweig; `jobs/fehlerlage.ts` stündlich im Workflow Selbstverbesserung: eigene Fehler-Issues, gescheiterte Workflows auf main, Quellen im Ausfall, abgewiesene Routinen-Ausgaben) und liefert Behebungen nur als `claude/fehler-<datum>-<kurz>` über die Prüfstrecke (`config/verbesserung.json › fehler`: Test Pflicht, gleiche Sperrliste). Was 36 Std. offen bleibt, meldet der Code mit 🔴❗ → Bau-Sitzung.
 - Das System ist live: jede Änderung an `main` wird sofort deployt und von den Jobs genutzt → nur mit grünen Tests committen, Daten-Branch nie von Hand ändern.
 - **Nach jedem Meilenstein anhalten**: STAND.md aktualisieren, kurzen Stand geben, auf „weiter“ warten.
 - STAND.md und diese Datei nach jedem Arbeitsschritt aktuell halten.

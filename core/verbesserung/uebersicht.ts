@@ -41,7 +41,7 @@ export function uebersichtBauen(protokoll: ProtokollEintrag[], kandidaten: Kandi
         ...(z ? { grund: z.grund } : {}),
         aenderungen: u.aenderungen.map((a) => {
           const b = bewertet.get(`${u.merge}|${a.id}`);
-          return { id: a.id, titel: a.titel, bereich: a.bereich, hypothese: a.hypothese, messkriterium: a.messkriterium.text, ...(b ? { urteil: b.urteil, bewertung: b.text } : {}) };
+          return { id: a.id, titel: a.titel, bereich: a.bereich, hypothese: a.hypothese, messkriterium: a.messkriterium?.text ?? `Fehlerbehebung: ${a.fehler ?? 'siehe Titel'}`, ...(b ? { urteil: b.urteil, bewertung: b.text } : {}) };
         }),
       };
     }),

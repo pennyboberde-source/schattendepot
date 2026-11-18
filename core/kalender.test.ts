@@ -65,3 +65,16 @@ describe('Börsenkalender', () => {
     expect(inRuhezeit(new Date('2026-10-21T05:00:00Z'), r)).toBe(false); // 07:00
   });
 });
+
+describe('sammlerLaufart (18.11.2026: verpassten Hauptlauf nachholen)', () => {
+  it('holt den Hauptlauf bis 22 Uhr nach, solange das Lagebild fehlt', async () => {
+    const { sammlerLaufart } = await import('./kalender.ts');
+    expect(sammlerLaufart({ wochentag: 3, minuten: 6 * 60 }, true, false)).toBe('haupt');
+    expect(sammlerLaufart({ wochentag: 3, minuten: 6 * 60 }, true, true)).toBeNull();
+    expect(sammlerLaufart({ wochentag: 3, minuten: 8 * 60 + 51 }, true, false)).toBe('haupt');
+    expect(sammlerLaufart({ wochentag: 3, minuten: 8 * 60 + 51 }, true, true)).toBe('stuendlich');
+    expect(sammlerLaufart({ wochentag: 3, minuten: 22 * 60 + 5 }, true, false)).toBeNull();
+    expect(sammlerLaufart({ wochentag: 3, minuten: 9 * 60 }, false, false)).toBeNull();
+    expect(sammlerLaufart({ wochentag: 6, minuten: 9 * 60 }, false, false)).toBe('samstag');
+  });
+});

@@ -152,6 +152,41 @@ describe('Leitplanken: ganzer Branch', () => {
   });
 });
 
+describe('Fehler-Spur (18.11.2026)', () => {
+  const FA: Aenderung = { id: 'kurs-null', titel: 'Depot-Ansicht stürzt bei Kurs null ab', bereich: 'oberflaeche', hypothese: 'Ein fehlender Tageskurs wurde ohne Prüfung formatiert.', fehler: 'Issue #12', dateien: ['src/lib/format.ts', 'src/lib/format.test.ts'] };
+  const FM: Manifest = { datum: '2026-11-19', art: 'fehler', issues: [12], zusammenfassung: 'Depot-Ansicht bei fehlendem Kurs', aenderungen: [FA] };
+  const pfadM = 'verbesserung/aenderungen/fehler-2026-11-19-kurs-null.json';
+  const eingabe = (m: unknown = FM, dateien = [datei('src/lib/format.ts', { plus: 3, minus: 1 }), datei('src/lib/format.test.ts', { plus: 8, minus: 0 }), datei(pfadM, { status: 'A', plus: 15, minus: 0 })]): PruefEingabe => ({
+    dateien,
+    alt: () => null,
+    neu: (p) => (p === pfadM ? JSON.stringify(m) : 'x'),
+    neueZeilen: [{ pfad: 'src/lib/format.ts', zeile: 'if (k == null) return "–";' }],
+    kennzahlen: KENN,
+  });
+  const spur = { art: 'fehler' as const, kennung: '2026-11-19-kurs-null' };
+
+  it('Fehlerbehebung mit Test und Manifest besteht ohne Messkriterium', () => {
+    expect(branchPruefen(eingabe(), L, spur)).toMatchObject({ ok: true, gruende: [], manifest: FM });
+  });
+
+  it('ohne Test, ohne Fehlerbezug, falscher Name oder gesperrter Pfad → abgelehnt', () => {
+    const ohneTest = branchPruefen(eingabe({ ...FM, aenderungen: [{ ...FA, dateien: ['src/lib/format.ts'] }] }, [datei('src/lib/format.ts'), datei(pfadM, { status: 'A' })]), L, spur);
+    expect(ohneTest.gruende.join(' ')).toMatch(/braucht einen neuen oder geänderten Test/);
+    expect(branchPruefen(eingabe({ ...FM, aenderungen: [{ ...FA, fehler: '' }] }), L, spur).gruende.join(' ')).toMatch(/fehler fehlt/);
+    expect(branchPruefen(eingabe({ ...FM, art: undefined }), L, spur).gruende.join(' ')).toMatch(/art muss „fehler“/);
+    expect(branchPruefen(eingabe(), L, { art: 'fehler', kennung: 'irgendwas' }).gruende.join(' ')).toMatch(/claude\/fehler-<JJJJ-MM-TT>-<kurz>/);
+    const gesperrt = branchPruefen(eingabe({ ...FM, aenderungen: [{ ...FA, dateien: ['core/gebuehren.ts', 'src/lib/format.test.ts'] }] }, [datei('core/gebuehren.ts'), datei('src/lib/format.test.ts'), datei(pfadM, { status: 'A' })]), L, spur);
+    expect(gesperrt.gruende.join(' ')).toMatch(/core\/gebuehren\.ts: gesperrt/);
+    expect(branchPruefen(eingabe(), L, spur).ok).toBe(true);
+    // Fehler-Manifest auf der Verbesserungs-Spur → abgelehnt
+    expect(manifestPruefen(FM, { kennzahlen: KENN, maxAenderungen: 3, geaenderteDateien: FA.dateien }).verstoesse.join(' ')).toMatch(/gehört auf einen Branch der Fehler-Spur/);
+  });
+
+  it('Fehlerlauf darf seine eigene Anweisung und den Sammler nicht ändern', () => {
+    expect(pfadePruefen([datei('routine/fehlerlauf.md'), datei('core/fehlerlage.ts')], L).join(' ')).toMatch(/routine\/fehlerlauf\.md: gesperrt.*core\/fehlerlage\.ts: gesperrt/);
+  });
+});
+
 describe('Kennzahlen, Bewertung und Wache', () => {
   const reihe = (werte: Record<string, number | null>): Zeitreihe => Object.fromEntries(Object.entries(werte).map(([d, w]) => [d, { 'schattenbuch.quote1T': w, 'depot.netto': w }]));
   const CFG = L.bewertung;
@@ -192,7 +227,7 @@ describe('Kennzahlen, Bewertung und Wache', () => {
     const b = aenderungBewerten(AENDERUNG, '2026-11-14', schlechter, '2026-11-28', CFG)!;
     expect(b.urteil).toBe('schlechter');
     expect(b.text).toMatch(/sollte steigen/);
-    expect(aenderungBewerten({ ...AENDERUNG, messkriterium: { ...AENDERUNG.messkriterium, richtung: 'faellt' } }, '2026-11-14', schlechter, '2026-11-28', CFG)!.urteil).toBe('besser');
+    expect(aenderungBewerten({ ...AENDERUNG, messkriterium: { ...AENDERUNG.messkriterium!, richtung: 'faellt' } }, '2026-11-14', schlechter, '2026-11-28', CFG)!.urteil).toBe('besser');
     // zu wenige Tageswerte: warten bis zum spätesten Termin, dann „nicht messbar“
     expect(aenderungBewerten(AENDERUNG, '2026-11-14', reihe(vorher), '2026-11-30', CFG)).toBeNull();
     expect(aenderungBewerten(AENDERUNG, '2026-11-14', reihe(vorher), '2026-12-12', CFG)!.urteil).toBe('nicht messbar');
@@ -290,7 +325,7 @@ describe('Übersicht „Was sich verbessert hat“', () => {
     ];
     const u = uebersichtBauen(p, [], L, '2026-11-28T06:00:00Z', 'x/y');
     expect(u.rueckgaengigLink).toBe('https://github.com/x/y/actions/workflows/verbesserung-zurueck.yml');
-    expect(u.uebernahmen[0]).toMatchObject({ merge: 'm1', status: 'aktiv', aenderungen: [{ titel: AENDERUNG.titel, urteil: 'besser', messkriterium: AENDERUNG.messkriterium.text }] });
+    expect(u.uebernahmen[0]).toMatchObject({ merge: 'm1', status: 'aktiv', aenderungen: [{ titel: AENDERUNG.titel, urteil: 'besser', messkriterium: AENDERUNG.messkriterium!.text }] });
     expect(u.abgelehnt[0].gruende).toEqual(['.github/workflows/sammler.yml: gesperrt']);
     expect(u.freigaben).toHaveLength(1);
     const zurueck = uebersichtBauen([...p, { typ: 'zurueckgenommen', zeit: 'x', merge: 'm1', revert: 'r1', grund: 'zwei Ausfälle', ausloeser: 'wache' }], [], L, '2026-11-28T06:00:00Z', 'x/y');

@@ -127,12 +127,16 @@ export function mitteilungenPruefen(neueZeilen: { pfad: string; zeile: string }[
 const text = (x: unknown, max: number) => typeof x === 'string' && x.trim().length > 0 && x.length <= max;
 
 /** Manifest verbesserung/aenderungen/<datum>.json: Form, Umfang, Messkriterium, Zuordnung der Dateien. */
-export function manifestPruefen(roh: unknown, opt: { kennzahlen: string[]; maxAenderungen: number; geaenderteDateien: string[]; ohneZuordnung?: string[] }): { manifest?: Manifest; verstoesse: string[] } {
+export function manifestPruefen(roh: unknown, opt: { kennzahlen: string[]; maxAenderungen: number; geaenderteDateien: string[]; ohneZuordnung?: string[]; fehler?: boolean }): { manifest?: Manifest; verstoesse: string[] } {
   const v: string[] = [];
   const m = roh as Partial<Manifest> | null;
   if (!m || typeof m !== 'object' || Array.isArray(m)) return { verstoesse: ['Manifest: kein JSON-Objekt'] };
   if (typeof m.datum !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(m.datum)) v.push('Manifest: datum fehlt (JJJJ-MM-TT)');
   if (!text(m.zusammenfassung, 300)) v.push('Manifest: zusammenfassung fehlt (höchstens 300 Zeichen)');
+  if (opt.fehler) {
+    if (m.art !== 'fehler') v.push('Manifest: art muss „fehler“ sein (Fehlerbehebung)');
+    if (m.issues !== undefined && (!Array.isArray(m.issues) || m.issues.some((n) => !Number.isInteger(n) || n <= 0))) v.push('Manifest: issues muss eine Liste von Issue-Nummern sein');
+  } else if (m.art === 'fehler') v.push('Manifest: art „fehler“ gehört auf einen Branch der Fehler-Spur');
   const liste = Array.isArray(m.aenderungen) ? m.aenderungen : [];
   if (!liste.length) v.push('Manifest: keine Änderung genannt');
   if (liste.length > opt.maxAenderungen) v.push(`Manifest: ${liste.length} Änderungen, erlaubt sind ${opt.maxAenderungen} je Woche`);
@@ -146,9 +150,11 @@ export function manifestPruefen(roh: unknown, opt: { kennzahlen: string[]; maxAe
     if (!text(a?.titel, 120)) v.push(`${wo}: titel fehlt (höchstens 120 Zeichen)`);
     if (!BEREICHE.includes(a?.bereich as never)) v.push(`${wo}: bereich muss einer von ${BEREICHE.join(', ')} sein`);
     if (!text(a?.hypothese, 400)) v.push(`${wo}: hypothese fehlt (höchstens 400 Zeichen)`);
+    if (opt.fehler && !text(a?.fehler, 200)) v.push(`${wo}: fehler fehlt (welcher Fehler wird behoben – Issue-Nummer, Workflow oder Quelle, höchstens 200 Zeichen)`);
     const k = a?.messkriterium;
-    if (!k || typeof k !== 'object') v.push(`${wo}: messkriterium fehlt`);
-    else {
+    if (!k || typeof k !== 'object') {
+      if (!opt.fehler) v.push(`${wo}: messkriterium fehlt`);
+    } else {
       if (!opt.kennzahlen.includes(k.kennzahl)) v.push(`${wo}: messkriterium.kennzahl „${String(k.kennzahl)}“ ist keine bekannte Kennzahl`);
       if (k.richtung !== 'steigt' && k.richtung !== 'faellt') v.push(`${wo}: messkriterium.richtung muss steigt oder faellt sein`);
       if (!text(k.text, 300)) v.push(`${wo}: messkriterium.text fehlt (höchstens 300 Zeichen)`);
@@ -182,8 +188,14 @@ export interface PruefErgebnis {
 }
 
 /** Alle statischen Prüfungen zusammen. */
-export function branchPruefen(e: PruefEingabe, l: Leitplanken): PruefErgebnis {
+export function branchPruefen(e: PruefEingabe, l0: Leitplanken, spur?: { art: 'fehler'; kennung: string }): PruefErgebnis {
   const gruende: string[] = [];
+  // Fehler-Spur: eigene Grenzen für Umfang und Zahl der Änderungen, sonst dieselben Leitplanken
+  const f = spur ? l0.fehler : undefined;
+  if (spur && !f) gruende.push('Fehler-Spur ist in den Leitplanken nicht eingerichtet (config/verbesserung.json › fehler)');
+  const l: Leitplanken = f ? { ...l0, wochenbudget: { ...l0.wochenbudget, maxAenderungen: f.maxAenderungen, maxZeilen: f.maxZeilen } } : l0;
+  if (spur && !/^\d{4}-\d{2}-\d{2}-[a-z0-9-]{1,30}$/.test(spur.kennung)) gruende.push('Fehler-Spur: Branch muss claude/fehler-<JJJJ-MM-TT>-<kurz> heißen');
+  if (f?.testPflicht && !e.dateien.some((d) => d.status !== 'D' && (globPasst('**/*.test.ts', d.pfad) || globPasst('e2e/**', d.pfad)))) gruende.push('Fehler-Spur: jede Fehlerbehebung braucht einen neuen oder geänderten Test, der den Fehler nachstellt');
   if (!l.aktiv) gruende.push('Selbstverbesserung ist ausgeschaltet (config/verbesserung.json › aktiv)');
   if (!e.dateien.length) gruende.push('Der Branch enthält keine Änderung gegenüber main');
   gruende.push(...pfadePruefen(e.dateien, l));
@@ -194,7 +206,7 @@ export function branchPruefen(e: PruefEingabe, l: Leitplanken): PruefErgebnis {
   gruende.push(...mitteilungenPruefen(e.neueZeilen, l));
   const manifeste = e.dateien.filter((d) => globPasst('verbesserung/aenderungen/*.json', d.pfad));
   let manifest: Manifest | undefined;
-  if (manifeste.length !== 1 || manifeste[0].status !== 'A') gruende.push('Es muss genau ein neues Manifest verbesserung/aenderungen/<datum>.json geben');
+  if (manifeste.length !== 1 || manifeste[0].status !== 'A') gruende.push(spur ? 'Es muss genau ein neues Manifest verbesserung/aenderungen/fehler-<kennung>.json geben' : 'Es muss genau ein neues Manifest verbesserung/aenderungen/<datum>.json geben');
   else {
     let roh: unknown = null;
     try {
@@ -203,10 +215,11 @@ export function branchPruefen(e: PruefEingabe, l: Leitplanken): PruefErgebnis {
       gruende.push('Manifest: kein gültiges JSON');
     }
     const ohneZuordnung = ['verbesserung/aenderungen/*.json', ...(l.wochenbudget.zeilenOhne ?? [])];
-    const r = manifestPruefen(roh, { kennzahlen: e.kennzahlen, maxAenderungen: l.wochenbudget.maxAenderungen, geaenderteDateien: e.dateien.map((d) => d.pfad), ohneZuordnung });
+    const r = manifestPruefen(roh, { kennzahlen: e.kennzahlen, maxAenderungen: l.wochenbudget.maxAenderungen, geaenderteDateien: e.dateien.map((d) => d.pfad), ohneZuordnung, fehler: !!spur });
     gruende.push(...r.verstoesse);
     manifest = r.manifest;
-    if (manifest && manifeste[0].pfad !== `verbesserung/aenderungen/${manifest.datum}.json`) gruende.push('Manifest: Dateiname und datum passen nicht zusammen');
+    const erwartet = spur ? `verbesserung/aenderungen/fehler-${spur.kennung}.json` : manifest ? `verbesserung/aenderungen/${manifest.datum}.json` : '';
+    if (manifest && manifeste[0].pfad !== erwartet) gruende.push(spur ? `Manifest: muss ${erwartet} heißen (Kennung des Branches)` : 'Manifest: Dateiname und datum passen nicht zusammen');
   }
   return { ok: gruende.length === 0, gruende: [...new Set(gruende)], zeilen: umfang.zeilen, ...(manifest ? { manifest } : {}) };
 }

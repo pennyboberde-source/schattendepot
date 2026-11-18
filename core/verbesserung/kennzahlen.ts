@@ -109,8 +109,9 @@ const de = (x: number) => (Math.round(x * 100) / 100).toLocaleString('de-DE');
  */
 export function aenderungBewerten(a: Aenderung, uebernommenAm: string, reihe: Zeitreihe, heute: string, cfg: Leitplanken['bewertung']): Bewertung | null {
   const tage = tageZwischen(uebernommenAm, heute);
-  if (tage < cfg.fruehestensNachTagen) return null;
-  const k = a.messkriterium.kennzahl;
+  const m = a.messkriterium;
+  if (!m || tage < cfg.fruehestensNachTagen) return null;
+  const k = m.kennzahl;
   const def = KENNZAHLEN[k];
   const vorher = fensterWert(reihe, k, tagPlus(uebernommenAm, -cfg.fensterTage), tagPlus(uebernommenAm, -1));
   const nachher = fensterWert(reihe, k, tagPlus(uebernommenAm, 1), heute);
@@ -119,10 +120,10 @@ export function aenderungBewerten(a: Aenderung, uebernommenAm: string, reihe: Ze
     return { urteil: 'nicht messbar', vorher, nachher, text: `„${a.titel}“: ${def?.name ?? k} ließ sich nicht vergleichen (zu wenige Tageswerte).` };
   }
   const schwelle = Math.max(Math.abs(vorher) * (cfg.schwelleProzent / 100), 1e-9);
-  const delta = (nachher - vorher) * (a.messkriterium.richtung === 'steigt' ? 1 : -1);
+  const delta = (nachher - vorher) * (m.richtung === 'steigt' ? 1 : -1);
   const urteil = delta > schwelle ? 'besser' : delta < -schwelle ? 'schlechter' : 'gleich';
   const je = def.art === 'summe' ? ' je Tag' : '';
-  return { urteil, vorher, nachher, text: `„${a.titel}“: ${def.name} ${de(vorher)} → ${de(nachher)} ${def.einheit}${je} (sollte ${a.messkriterium.richtung === 'steigt' ? 'steigen' : 'fallen'}) – ${urteil}.` };
+  return { urteil, vorher, nachher, text: `„${a.titel}“: ${def.name} ${de(vorher)} → ${de(nachher)} ${def.einheit}${je} (sollte ${m.richtung === 'steigt' ? 'steigen' : 'fallen'}) – ${urteil}.` };
 }
 
 /** Neue Bewertungen für alle Übernahmen, die fällig, noch nicht bewertet und nicht zurückgenommen sind. */
@@ -135,7 +136,7 @@ export function faelligeBewertungen(protokoll: ProtokollEintrag[], reihe: Zeitre
     for (const a of u.aenderungen) {
       if (bewertet.has(`${u.merge}|${a.id}`)) continue;
       const b = aenderungBewerten(a, u.zeit.slice(0, 10), reihe, heute, cfg);
-      if (b) out.push({ typ: 'bewertet', zeit: jetzt, merge: u.merge, aenderung: a.id, kennzahl: a.messkriterium.kennzahl, ...b });
+      if (b && a.messkriterium) out.push({ typ: 'bewertet', zeit: jetzt, merge: u.merge, aenderung: a.id, kennzahl: a.messkriterium.kennzahl, ...b });
     }
   }
   return out;
