@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T15:19:31.383Z",
-  "anzahl": 99,
+  "stand": "2026-11-18T15:30:57.943Z",
+  "anzahl": 100,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -1208,7 +1208,7 @@
       "t": "ANPA",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -1247,7 +1247,7 @@
       "t": "BKHAU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -1331,6 +1331,20 @@
         "Upbit"
       ],
       "z": "2026-11-18T15:19:31.383Z"
+    },
+    {
+      "id": "kursrakete:K.PROS:2026-11-18",
+      "s": "K:PROS",
+      "n": "Pharos",
+      "t": "PROS",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.44,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-18T15:30:57.943Z"
     }
   ]
 }
