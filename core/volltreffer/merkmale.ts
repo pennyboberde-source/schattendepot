@@ -24,6 +24,10 @@ export interface Merkmale {
   umsatz20: number | null;
   /** Schlusskurs */
   kurs: number;
+  /** F5 (18.11.2026): größte Tagesrendite der letzten 20 Tage in % (MAX-Effekt / Wiederholungsläufer) */
+  max20?: number | null;
+  /** F5: Ø Umsatz (Stück) der letzten 5 Tage gegen den Ø der 20 Tage davor (Anhäufung vor dem Sprung) */
+  volumen5?: number | null;
   /** Tage mit Kursdaten bis zum Stichtag */
   historie: number;
 }
@@ -69,12 +73,20 @@ export function merkmale(kerzen: Kerze[], i: number): Merkmale | null {
     umsatz20: i >= 19 && kerzen.slice(i - 19, i + 1).every((x) => x.v !== undefined) ? mittel(umsaetze) : null,
     kurs: k.c,
     historie: i + 1,
+    max20: tagesR.length >= 19 ? Math.max(...tagesR) * 100 : null,
+    volumen5: (() => {
+      if (i < 24) return null;
+      const v5 = kerzen.slice(i - 4, i + 1).map((x) => x.v ?? NaN);
+      const v20 = kerzen.slice(i - 24, i - 4).map((x) => x.v ?? NaN).filter((x) => x > 0);
+      if (v5.some((x) => !Number.isFinite(x)) || v20.length < 10) return null;
+      return mittel(v5) / mittel(v20);
+    })(),
   };
 }
 
 /** Eine Einteilung: Name des Merkmals und Grenzen der Klassen (aufsteigend). */
 export interface Einteilung {
-  merkmal: keyof Merkmale | 'ueberrendite1' | 'marktR1' | 'boersenwert' | 'zahlen' | 'branche' | 'angebot' | 'registrierung' | 'grossaktionaer' | 'vertrag' | 'warnung' | 'fuehrung' | 'satzung' | 'fusion' | 'uebernahme' | 'beteiligung' | 'vix' | 'vix5' | 'fed' | 'breite' | 'markt5' | 'leerquote' | 'leerquoteRel' | 'insider' | 'bestandTage' | 'bestandAenderung' | 'anleihen5' | 'dollar5' | 'kredit5' | 'oel5' | 'sektor5' | 'angst' | 'stable30';
+  merkmal: keyof Merkmale | 'otc' | 'ueberrendite1' | 'marktR1' | 'boersenwert' | 'zahlen' | 'branche' | 'angebot' | 'registrierung' | 'grossaktionaer' | 'vertrag' | 'warnung' | 'fuehrung' | 'satzung' | 'fusion' | 'uebernahme' | 'beteiligung' | 'vix' | 'vix5' | 'fed' | 'breite' | 'markt5' | 'leerquote' | 'leerquoteRel' | 'insider' | 'bestandTage' | 'bestandAenderung' | 'anleihen5' | 'dollar5' | 'kredit5' | 'oel5' | 'sektor5' | 'angst' | 'stable30';
   grenzen: number[];
   /** false = nur als Einzelmerkmal prüfen, nicht in Zweierkombinationen (Lage-Merkmale: hält die Laufzeit klein; im Gesamtmodell wirken sie mit allem zusammen) */
   paare?: boolean;

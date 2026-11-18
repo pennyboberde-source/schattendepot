@@ -35,7 +35,7 @@ type Markt = 'aktie' | 'krypto';
 interface VtConfig {
   etikett: { einsatz: number; ziel: number; beinahe: number; zensusMaxHebel: number; hebel: number[]; stops: number[]; nachzieh?: NachziehEinstellung; standardStop: number; fenster: number[]; episodeAbstand: number; finanzierungProzentJahr: number; turboSpreadKlasse: string; turboEmittent: string };
   handelbar: {
-    aktie: { mindestKurs: number; mindestUmsatzStichtag: number; turboAbUmsatz20: number; spread: { abUmsatz20: number; klasse: string }[]; handelsplatz: string };
+    aktie: { mindestKurs: number; otc?: boolean; mindestUmsatzStichtag: number; turboAbUmsatz20: number; spread: { abUmsatz20: number; klasse: string }[]; handelsplatz: string };
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
   };
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
@@ -49,6 +49,7 @@ interface VtConfig {
     auslandDirekt: { name: string; entgeltJeOrder: number; prozent: number };
     usBroker: { name: string; maxHebel: number; entgeltJeOrder: number; devisenProzent: number; leihgebuehrProzentJahr: { abUmsatz20: number; prozent: number }[]; margenzinsProzentJahr: number };
     cfd: { name: string; maxHebelPrivat: number; maxHebelProfi: number; entgeltJeOrder: number; prozent: number; finanzierungProzentJahr: number };
+    otc: { name: string; entgeltJeOrder: number; prozent: number; spreadZuschlag: number };
   };
   turbos: { boerse: string; gueltigTage: number; maxSuchen: number; maxSeiten: number; minuten: number; stichprobeAbUmsatz20: number };
 }
@@ -81,19 +82,23 @@ interface Reihe {
   schluessel: string;
   markt: Markt;
   kerzen: Kerze[];
+  /** F5 (18.11.2026): außerbörslich gehandelter US-Wert (OTC) – zum Lernen, Handelbarkeit von Deutschland ungeprüft */
+  otc?: boolean;
 }
 const reihen: Reihe[] = [];
 
-// US-Aktien: eine Datei je Handelstag mit allen Werten → je Wert eine Reihe
+// US-Aktien: eine Datei je Handelstag mit allen Werten → je Wert eine Reihe (seit F5 auch OTC, wenn handelbar.aktie.otc)
+const otcTicker = new Set<string>();
 {
   const dateien = tagesDateien('us');
   const je = new Map<string, Kerze[]>();
   for (const p of dateien) {
     const datum = datumAus(p);
     for (const k of parseUsArchiv(gz(p)).values()) {
-      if (k.otc || !istUsAktie(k.ticker)) continue;
+      if ((k.otc && !vt.handelbar.aktie.otc) || !istUsAktie(k.ticker)) continue;
       let r = je.get(k.ticker);
       if (!r) je.set(k.ticker, (r = []));
+      if (k.otc) otcTicker.add(k.ticker);
       r.push({ datum, o: k.o, h: k.h, l: k.l, c: k.c, v: k.v });
     }
   }
@@ -104,9 +109,9 @@ const reihen: Reihe[] = [];
   for (const [ticker, kerzen] of je) {
     const teile = unbekannteSplitsTeilen(splitBereinigen(kerzen, splits.get(ticker) ?? []));
     geteilt += teile.length - 1;
-    teile.forEach((t, n) => reihen.push({ schluessel: `T:${ticker}${n ? `#${n}` : ''}`, markt: 'aktie', kerzen: t }));
+    teile.forEach((t, n) => reihen.push({ schluessel: `T:${ticker}${n ? `#${n}` : ''}`, markt: 'aktie', kerzen: t, ...(otcTicker.has(ticker) ? { otc: true } : {}) }));
   }
-  log(`US: ${dateien.length} Handelstage, ${je.size} Aktien, ${[...splits.values()].flat().length} gemeldete Splits, ${geteilt} Reihen an nicht gemeldeten Splits geteilt.`);
+  log(`US: ${dateien.length} Handelstage, ${je.size} Aktien (davon ${otcTicker.size} OTC), ${[...splits.values()].flat().length} gemeldete Splits, ${geteilt} Reihen an nicht gemeldeten Splits geteilt.`);
 }
 
 // Krypto: Tageskerzen aller Kraken-Paare → je Coin eine Reihe (Euro bevorzugt, sonst Dollar)
@@ -301,7 +306,7 @@ const kosten = (markt: Markt, umsatz20: number | null): EtikettKosten => {
 };
 const kostenCache = new Map<string, EtikettKosten>();
 const leihProzent = (umsatz20: number | null) => vt.plattformen.usBroker.leihgebuehrProzentJahr.find((x) => (umsatz20 ?? 0) >= x.abUmsatz20)?.prozent ?? 30;
-const kostenFuer = (markt: Markt, umsatz20: number | null, platz: 'gettex' | 'boerse' | 'ausland' | 'us' | 'cfd' = 'gettex', sp?: Spielart) => {
+const kostenFuer = (markt: Markt, umsatz20: number | null, platz: 'gettex' | 'boerse' | 'ausland' | 'us' | 'cfd' | 'otc' = 'gettex', sp?: Spielart) => {
   const s = markt === 'krypto' ? 'krypto' : (vt.handelbar.aktie.spread.find((x) => (umsatz20 ?? 0) >= x.abUmsatz20)?.klasse ?? 'spekulativ');
   const key = `${s}|${platz}|${platz === 'us' || platz === 'cfd' ? `${sp?.richtung}|${sp?.hebel}|${leihProzent(umsatz20)}` : ''}`;
   const da = kostenCache.get(key);
@@ -311,6 +316,8 @@ const kostenFuer = (markt: Markt, umsatz20: number | null, platz: 'gettex' | 'bo
   let k = b;
   if (platz === 'boerse') k = { ...b, entgeltTurbo: vt.plattformen.andereBoerse.entgeltJeOrder };
   else if (platz === 'ausland') k = { ...b, entgeltDirekt: vt.plattformen.auslandDirekt.entgeltJeOrder + (b.einsatz * vt.plattformen.auslandDirekt.prozent) / 100 };
+  // F5 (18.11.2026): OTC direkt – Entgelt wie beim US-Direkthandel und ein Spread-Zuschlag (dünne Orderbücher), ungeprüft
+  else if (platz === 'otc') k = { ...b, spreadProzent: b.spreadProzent + vt.plattformen.otc.spreadZuschlag, entgeltDirekt: vt.plattformen.otc.entgeltJeOrder + (b.einsatz * vt.plattformen.otc.prozent) / 100 };
   else if (platz === 'us' && sp)
     // Marge-Position: Spread und Devisen wirken auf den Gegenwert (Hebel × Einsatz); Leihgebühr auf die ganze Short-
     // Position, Marge-Zins nur auf den geliehenen Teil
@@ -387,9 +394,9 @@ const turboErlaubt = (r: Reihe, m: Merkmale, richtung: 'long' | 'short') => {
 // Plattform, die diese anbietet; neben dem Handel vermerken und Kosten verrechnen“): gettex → Smartbroker+ an einer
 // anderen deutschen Börse/außerbörslich (Hebelprodukt vorhanden) → simulierter US-Broker mit Leerverkauf/Marge bis
 // usBroker.maxHebel. Direkte Käufe: gettex, sonst Smartbroker+ an der US-Börse. Kosten je Plattform in kostenFuer.
-type Platz = 'gettex' | 'boerse' | 'ausland' | 'us' | 'cfd';
+type Platz = 'gettex' | 'boerse' | 'ausland' | 'us' | 'cfd' | 'otc';
 const PL = vt.plattformen;
-const PLATZ_NAME: Record<Platz, string> = { gettex: 'Smartbroker+ an gettex', boerse: PL.andereBoerse.name, ausland: PL.auslandDirekt.name, us: PL.usBroker.name, cfd: PL.cfd.name };
+const PLATZ_NAME: Record<Platz, string> = { gettex: 'Smartbroker+ an gettex', boerse: PL.andereBoerse.name, ausland: PL.auslandDirekt.name, us: PL.usBroker.name, cfd: PL.cfd.name, otc: PL.otc.name };
 const plattformAm = (r: Reihe, m: Merkmale): { long: Platz | null; short: Platz | null } => {
   if (r.markt === 'krypto') {
     const t = turboErlaubt(r, m, 'long');
@@ -410,6 +417,7 @@ const plattformAm = (r: Reihe, m: Merkmale): { long: Platz | null; short: Platz 
  *  zu lassen“) – nur für Vorwärtstest, Jagden und Lauerliste. Die Musterprüfung im Rückblick bleibt auf geprüft handelbaren
  *  Fällen (Probe 17.11.: mit CFD-Fällen fielen 419 → 97 bestandene Gruppen, weil teure Kleinwert-Hebel die Muster überdecken). */
 const platzFuer = (r: Reihe, sp: Spielart, pa: { long: Platz | null; short: Platz | null }, mitCfd = false): Platz | null => {
+  if (r.otc) return sp.hebel === 1 ? 'otc' : mitCfd ? 'cfd' : null;
   if (sp.hebel === 1) return r.markt === 'aktie' && gettexUs && !gettexUs.has(r.schluessel.slice(2).split('#')[0]) ? 'ausland' : 'gettex';
   const pl = pa[sp.richtung];
   return pl === 'us' && sp.hebel > PL.usBroker.maxHebel ? (mitCfd ? 'cfd' : null) : pl;
@@ -502,8 +510,8 @@ const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
 const zw = new Zaehlwerk(gruppen.length, SP.length, F.length, 2);
 log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
-type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null; bestandTage: number | null; bestandAenderung: number | null; anleihen5: number | null; dollar5: number | null; kredit5: number | null; oel5: number | null; sektor5: number | null; angst: number | null; stable30: number | null } & Partial<Record<MeldungArt, number | null>>;
-const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', ...MELDUNG_ARTEN]);
+type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null; bestandTage: number | null; bestandAenderung: number | null; anleihen5: number | null; dollar5: number | null; kredit5: number | null; oel5: number | null; sektor5: number | null; angst: number | null; stable30: number | null; otc: number | null } & Partial<Record<MeldungArt, number | null>>;
+const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', 'otc', ...MELDUNG_ARTEN]);
 const merkmalWert = (e: Einteilung, m: Merkmale, kontext: Kontext): number | null =>
   KONTEXT_MERKMALE.has(e.merkmal) ? (kontext[e.merkmal as keyof Kontext] ?? null) : (m[e.merkmal as keyof Merkmale] as number | null);
 /** Meldungsarten, nach denen die Einteilungen fragen (nur die werden je Stichtag gerechnet) */
@@ -520,7 +528,7 @@ const lageFuer = (r: Reihe, datum: string) => {
 /** Klasse je Einteilung an einem Stichtag (Durchgang 2 und Klumpen-Prüfung rechnen genau gleich) */
 const klassenAm = (r: Reihe, x: Merkmale, datum: string) => {
   const mr = marktR1[r.markt].get(datum) ?? 0;
-  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null, ...(LB_GEFRAGT ? leerbestandAm(r, datum) : { bestandTage: null, bestandAenderung: null }), ...lageFuer(r, datum) };
+  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null, ...(LB_GEFRAGT ? leerbestandAm(r, datum) : { bestandTage: null, bestandAenderung: null }), ...lageFuer(r, datum), otc: r.markt === 'aktie' ? (r.otc ? 1 : 0) : null };
   for (const a of GEFRAGTE_ARTEN) kontext[a] = meldungAm(r, datum, a);
   return E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
 };
@@ -617,7 +625,7 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten, pl:
   }
   const ins = insiderAm(r, k[i].datum);
   if (ins !== null && ins <= 20) sec.push(`Insider-Kauf ${wann(ins)}`);
-  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), plattform: r.markt === 'krypto' && sp.hebel === 1 ? 'Trade Republic (Krypto direkt)' : PLATZ_NAME[pl], ...(pl === 'cfd' ? { ungeprueft: true } : {}), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
+  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), plattform: r.markt === 'krypto' && sp.hebel === 1 ? 'Trade Republic (Krypto direkt)' : PLATZ_NAME[pl], ...(pl === 'cfd' || pl === 'otc' ? { ungeprueft: true } : {}), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
   if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
   const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));
   const fertig = res.find((a) => a && a.art !== 'zeit') ?? res[e.fenster - 1];
@@ -838,7 +846,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: 'Beteiligung ab 5 % (13G)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: 'Beteiligung ab 5 % (13G)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %', otc: 'Handelsplatz (Börse/OTC)', max20: 'Größter Tagesgewinn 20 Tage %', volumen5: 'Umsatz 5 Tage (× Ø 20 Tage davor)' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
@@ -1460,11 +1468,13 @@ if (vt.erkennung) {
       const muster = bedingungen.get(r.markt) ?? [];
       const k = r.kerzen;
       const fall = r.markt === 'aktie' ? fallJe.get(r.schluessel.replace(/#\d+$/, '').replace(/^T:/, '').toUpperCase()) : undefined;
-      const z = jeMarkt.get(r.markt) ?? jeMarkt.set(r.markt, { spruenge: 0, erkannt: 0, tage: 0, feuern: 0, klasse: new Map() }).get(r.markt)!;
+      const zFuer = (teil: string) => jeMarkt.get(teil) ?? jeMarkt.set(teil, { spruenge: 0, erkannt: 0, tage: 0, feuern: 0, klasse: new Map() }).get(teil)!;
       let letzterSprung = -1e9;
       for (let i = 1; i < k.length - 1; i++) {
         const x = merkmale(k, i);
         if (!x || !handelbar(r, x, k[i])) continue;
+        // F5: Pennystocks (unter 1 $ oder OTC) getrennt ausweisen; die Muster bleiben die des Marktes „aktie“
+        const z = zFuer(r.markt === 'aktie' && (r.otc || x.kurs < 1) ? 'penny' : r.markt);
         const pl = platzFuer(r, SP[s1], plattformAm(r, x));
         if (!pl) continue;
         const au = etikett(k, i, SP[s1], kostenFuer(r.markt, x.umsatz20, pl, SP[s1]), F)[fi];
@@ -1494,7 +1504,8 @@ if (vt.erkennung) {
           });
       }
     }
-  const maerkte = [...jeMarkt.entries()].map(([markt, z]) => {
+  const maerkte = [...jeMarkt.entries()].map(([teil, z]) => {
+    const markt = teil === 'penny' ? 'aktie' : teil;
     const anteilErkannt = z.spruenge ? Math.round((z.erkannt / z.spruenge) * 1000) / 10 : null;
     const anteilFeuern = z.tage ? Math.round((z.feuern / z.tage) * 1000) / 10 : null;
     const grund = z.tage ? z.spruenge / z.tage : 0;
@@ -1503,7 +1514,7 @@ if (vt.erkennung) {
       .map(([key, [n, s]]) => ({ merkmal: gruppenText(`${markt}|${key}`), faelle: n, spruenge: s, quote: Math.round((s / n) * 1000) / 10, lift: grund ? Math.round((s / n / grund) * 10) / 10 : null }))
       .sort((a, b) => (b.lift ?? 0) - (a.lift ?? 0))
       .slice(0, 25);
-    return { markt, stichtage: z.tage, spruenge: z.spruenge, grundrate: Math.round(grund * 10000) / 100, erkannt: z.erkannt, anteilErkannt, anteilFeuern, lift: anteilErkannt !== null && anteilFeuern ? Math.round((anteilErkannt / anteilFeuern) * 10) / 10 : null, klassen };
+    return { markt: teil, stichtage: z.tage, spruenge: z.spruenge, grundrate: Math.round(grund * 10000) / 100, erkannt: z.erkannt, anteilErkannt, anteilFeuern, lift: anteilErkannt !== null && anteilFeuern ? Math.round((anteilErkannt / anteilFeuern) * 10) / 10 : null, klassen };
   });
   schreibeJson('lernen/muster/erkennung.json', {
     stand: jetzt.toISOString(),

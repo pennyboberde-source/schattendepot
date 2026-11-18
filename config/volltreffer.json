@@ -40,9 +40,9 @@
     "zensusHinweis": "Sprung-Zensus, Trefferbuch und Signal-Prüfung zählen nur Volltreffer mit höchstens Hebel 3 (Basiswert mindestens rund +14 %); die Musterprüfung rechnet alle Spielarten mit ihrem Erwartungswert."
   },
   "handelbar": {
-    "hinweis": "Näherung, solange es keine Handelbarkeits-Karte aus gettex-Daten gibt: US-Aktien ohne OTC, Warrants, Units und Rechte, ab 1 $ und mit ausreichend Umsatz am Stichtag; Turbos nur auf Werte mit großem Umsatz; Krypto über Kraken (Euro bevorzugt), Turbos nur auf die großen Coins. Seit 16.11.2026 ersetzt die Turbo-Prüfung (turbos) die Umsatz-Näherung für jeden schon geprüften Wert.",
+    "hinweis": "Näherung, solange es keine Handelbarkeits-Karte aus gettex-Daten gibt: US-Aktien ohne OTC, Warrants, Units und Rechte, ab 1 $ und mit ausreichend Umsatz am Stichtag; Turbos nur auf Werte mit großem Umsatz; Krypto über Kraken (Euro bevorzugt), Turbos nur auf die großen Coins. Seit 16.11.2026 ersetzt die Turbo-Prüfung (turbos) die Umsatz-Näherung für jeden schon geprüften Wert. Seit F5 (18.11.2026, Nutzer: Pennystocks primär für Volltreffer): ab 0,10 $ statt 1 $, OTC-Werte zum Lernen und für ungeprüfte Jagden (Plattform otc); Mindestumsatz am Stichtag gilt unverändert.",
     "aktie": {
-      "mindestKurs": 1,
+      "mindestKurs": 0.1,
       "mindestUmsatzStichtag": 500000,
       "turboAbUmsatz20": 20000000,
       "spread": [
@@ -59,7 +59,8 @@
           "klasse": "spekulativ"
         }
       ],
-      "handelsplatz": "GTX"
+      "handelsplatz": "GTX",
+      "otc": true
     },
     "krypto": {
       "mindestUmsatzStichtag": 100000,
@@ -743,6 +744,48 @@
           "13G-Meldung vor 6 bis 20 Handelstagen",
           "ohne 13G-Meldung in 20 Handelstagen"
         ]
+      },
+      {
+        "merkmal": "otc",
+        "grenzen": [
+          0.5
+        ],
+        "namen": [
+          "an Nasdaq/NYSE",
+          "außerbörslich (OTC)"
+        ]
+      },
+      {
+        "merkmal": "max20",
+        "grenzen": [
+          5,
+          10,
+          20,
+          50
+        ],
+        "namen": [
+          "größter Tagesgewinn 20 Tage unter 5 %",
+          "5 bis 10 %",
+          "10 bis 20 %",
+          "20 bis 50 %",
+          "über 50 % (Wiederholungsläufer)"
+        ]
+      },
+      {
+        "merkmal": "volumen5",
+        "grenzen": [
+          0.7,
+          1.5,
+          3,
+          6
+        ],
+        "namen": [
+          "Umsatz 5 Tage unter 0,7 × Ø",
+          "0,7 bis 1,5 × Ø",
+          "1,5 bis 3 × Ø",
+          "3 bis 6 × Ø",
+          "über 6 × Ø (Anhäufung)"
+        ]
       }
     ],
     "quartalMindestFaelle": 5,
@@ -901,6 +944,13 @@
       "prozent": 0.1,
       "finanzierungProzentJahr": 7,
       "quelle": "ESMA/BaFin: CFD auf Aktien für Privatkunden höchstens 5:1 (20 % Ersteinschuss); Profikunden bei CFD-Anbietern bis 20:1 auf Aktien (z. B. Pepperstone Pro „Stocks & ETFs up to 1:20“). US: Reg T 2:1 über Nacht, Portfolio Margin bis 6,67:1 (ab 100.000 $). Kosten angenommen: 0,1 % je Order, Finanzierung 7 %/Jahr auf den ganzen Gegenwert (Long), Short wie beim US-Broker mit Leihgebühr nach Umsatzklasse."
+    },
+    "otc": {
+      "name": "US-OTC direkt (simuliert, Handelbarkeit ungeprüft)",
+      "entgeltJeOrder": 4,
+      "prozent": 0.25,
+      "spreadZuschlag": 2,
+      "hinweis": "F5 (18.11.2026): außerbörslich gehandelte US-Werte. Entgelt wie Smartbroker+ an US-Börse (4 € + 0,25 %), dazu 2 Prozentpunkte Spread-Zuschlag für dünne Orderbücher (Annahme). Ob ein deutscher Broker den Wert anbietet, ist nicht geprüft → jede Jagd/Order trägt ungeprueft."
     }
   },
   "erkennung": {
@@ -926,7 +976,11 @@
       "branche",
       "fusion",
       "uebernahme",
-      "beteiligung"
+      "beteiligung",
+      "otc",
+      "max20",
+      "volumen5",
+      "kurs"
     ],
     "mindestSpruenge": 20,
     "fallstudie": [

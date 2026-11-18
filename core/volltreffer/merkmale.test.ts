@@ -50,3 +50,15 @@ describe('Klassen', () => {
     expect([0, 1, 3].map((n) => klassenName(e, n))).toEqual(['unter 1', '1 bis 2', 'ab 5']);
   });
 });
+
+describe('F5: Wiederholungsläufer und Anhäufung', () => {
+  it('max20 = größter Tagesgewinn, volumen5 = Umsatz 5 Tage gegen die 20 davor', () => {
+    const k = Array.from({ length: 40 }, (_, i) => ({ datum: `2026-01-${String(i + 1).padStart(2, '0')}`, o: 1, h: 1, l: 1, c: 1, v: i >= 35 ? 300 : 100 }));
+    k[30] = { ...k[30], c: 1.5, h: 1.5, o: 1.5, l: 1.5 };
+    k[31] = { ...k[31], c: 1.5, h: 1.5, o: 1.5, l: 1.5 };
+    const m = merkmale(k, 39)!;
+    expect(m.max20).toBeCloseTo(50, 5);
+    expect(m.volumen5).toBeCloseTo(3, 5);
+    expect(merkmale(k, 10)!.volumen5).toBeNull();
+  });
+});
