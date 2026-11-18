@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T12:38:32.696Z",
+  "stand": "2026-11-18T12:53:58.638Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -587,47 +587,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-basf-se",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "BASF SE",
-      "isin": "DE000BASF111",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 62.09,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-18T09:05:00.000Z",
-        "kurs": 51.68,
-        "level": 51.71,
-        "spanne": {
-          "hoch": 52.06,
-          "tief": 51.71
-        },
-        "richtung": "short"
-      },
-      "stop": 51.89,
-      "ziel": 51.45,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T09:05:00.000Z",
-        "basisKurs": 51.74,
-        "kurs": 10.376,
-        "stueck": 96,
-        "kurswert": 996.1
-      }
-    },
-    {
       "id": "2026-11-18-scan-kion-group-ag",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -964,47 +923,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-basf-se",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "BASF SE",
-      "isin": "DE000BASF111",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 62.09,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-18T09:05:00.000Z",
-        "kurs": 51.68,
-        "level": 51.71,
-        "spanne": {
-          "hoch": 52.06,
-          "tief": 51.71
-        },
-        "richtung": "short"
-      },
-      "stop": 51.89,
-      "ziel": 51.45,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T09:05:00.000Z",
-        "basisKurs": 51.74,
-        "kurs": 10.376,
-        "stueck": 96,
-        "kurswert": 996.1
-      }
-    },
-    {
       "id": "2026-11-18-scan-kion-group-ag",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1125,6 +1043,66 @@
         "kurs": 14.185,
         "stueck": 70,
         "kurswert": 992.95
+      }
+    },
+    {
+      "id": "2026-11-18-scan-basf-se",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "BASF SE",
+      "isin": "DE000BASF111",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 62.09,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T09:05:00.000Z",
+        "kurs": 51.68,
+        "level": 51.71,
+        "spanne": {
+          "hoch": 52.06,
+          "tief": 51.71
+        },
+        "richtung": "short"
+      },
+      "stop": 51.89,
+      "ziel": 51.45,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T09:05:00.000Z",
+        "basisKurs": 51.74,
+        "kurs": 10.376,
+        "stueck": 96,
+        "kurswert": 996.1
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T12:45:00.000Z",
+        "basisKurs": 51.45,
+        "kurs": 10.613,
+        "kurswert": 1018.85,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 22.75,
+        "bruttoProzent": 2.28,
+        "netto": 22.75,
+        "nettoProzent": 2.28,
+        "nettoTR": 20.75,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.93
       }
     },
     {
@@ -10495,46 +10473,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 126,
-      "treffer": 55,
-      "quote": 43.7,
-      "netto": -541.27,
-      "brutto": -483.27,
-      "nettoTR": -734.27,
-      "oeNettoProzent": -0.43,
-      "oeR": 0.32
+      "anzahl": 127,
+      "treffer": 56,
+      "quote": 44.1,
+      "netto": -518.52,
+      "brutto": -460.52,
+      "nettoTR": -713.52,
+      "oeNettoProzent": -0.41,
+      "oeR": 0.33
     },
     "heute": {
-      "anzahl": 7,
-      "treffer": 3,
-      "quote": 42.9,
-      "netto": 140.08,
-      "brutto": 142.08,
-      "nettoTR": 128.08,
-      "oeNettoProzent": 2,
-      "oeR": 0.28
+      "anzahl": 8,
+      "treffer": 4,
+      "quote": 50,
+      "netto": 162.83,
+      "brutto": 164.83,
+      "nettoTR": 148.83,
+      "oeNettoProzent": 2.04,
+      "oeR": 0.48
     },
-    "offen": 7,
+    "offen": 6,
     "gruppen": {
       "turbo": {
-        "anzahl": 97,
-        "treffer": 45,
-        "quote": 46.4,
-        "netto": -336.27,
-        "brutto": -336.27,
-        "nettoTR": -529.27,
-        "oeNettoProzent": -0.35,
-        "oeR": 0.25
+        "anzahl": 98,
+        "treffer": 46,
+        "quote": 46.9,
+        "netto": -313.52,
+        "brutto": -313.52,
+        "nettoTR": -508.52,
+        "oeNettoProzent": -0.33,
+        "oeR": 0.27
       },
       "short": {
-        "anzahl": 97,
-        "treffer": 45,
-        "quote": 46.4,
-        "netto": -336.27,
-        "brutto": -336.27,
-        "nettoTR": -529.27,
-        "oeNettoProzent": -0.35,
-        "oeR": 0.25
+        "anzahl": 98,
+        "treffer": 46,
+        "quote": 46.9,
+        "netto": -313.52,
+        "brutto": -313.52,
+        "nettoTR": -508.52,
+        "oeNettoProzent": -0.33,
+        "oeR": 0.27
       },
       "krypto": {
         "anzahl": 29,
@@ -10567,10 +10545,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 155,
-        "chance": 36.8,
-        "oeNetto": -0.84,
-        "wertung": -1.31
+        "faelle": 156,
+        "chance": 37.2,
+        "oeNetto": -0.82,
+        "wertung": -1.29
       }
     },
     "krypto:level_long": {
