@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T10:38:44.537Z",
+  "stand": "2026-11-18T10:54:05.814Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -897,6 +897,47 @@
         "stueck": 70,
         "kurswert": 992.95
       }
+    },
+    {
+      "id": "2026-11-18-scan-deutsche-telekom-ag-reg",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 32.29,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T10:35:00.000Z",
+        "kurs": 26.87,
+        "level": 26.92,
+        "spanne": {
+          "hoch": 27.14,
+          "tief": 26.92
+        },
+        "richtung": "short"
+      },
+      "stop": 27.03,
+      "ziel": 26.67,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T10:35:00.000Z",
+        "basisKurs": 26.91,
+        "kurs": 5.3935,
+        "stueck": 185,
+        "kurswert": 997.8
+      }
     }
   ],
   "trades": [
@@ -1421,6 +1462,47 @@
         "kurs": 14.185,
         "stueck": 70,
         "kurswert": 992.95
+      }
+    },
+    {
+      "id": "2026-11-18-scan-deutsche-telekom-ag-reg",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 32.29,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T10:35:00.000Z",
+        "kurs": 26.87,
+        "level": 26.92,
+        "spanne": {
+          "hoch": 27.14,
+          "tief": 26.92
+        },
+        "richtung": "short"
+      },
+      "stop": 27.03,
+      "ziel": 26.67,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T10:35:00.000Z",
+        "basisKurs": 26.91,
+        "kurs": 5.3935,
+        "stueck": 185,
+        "kurswert": 997.8
       }
     },
     {
@@ -10526,7 +10608,7 @@
       "oeNettoProzent": 2.34,
       "oeR": -0.26
     },
-    "offen": 9,
+    "offen": 10,
     "gruppen": {
       "turbo": {
         "anzahl": 94,
