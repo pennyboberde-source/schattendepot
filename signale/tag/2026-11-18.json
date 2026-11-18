@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T15:30:57.943Z",
-  "anzahl": 100,
+  "stand": "2026-11-18T16:19:34.195Z",
+  "anzahl": 108,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -1195,7 +1195,7 @@
       "t": "AKTX",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -1234,7 +1234,7 @@
       "t": "CLRO",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -1345,6 +1345,111 @@
         "Upbit"
       ],
       "z": "2026-11-18T15:30:57.943Z"
+    },
+    {
+      "id": "handelsstopp:RNTZ:2026-11-18",
+      "s": "T:RNTZ",
+      "n": "Rantizo Cl A Ord",
+      "t": "RNTZ",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MACIU:2026-11-18",
+      "s": "T:MACIU",
+      "n": "Melar Acquisition Cp I Unit",
+      "t": "MACIU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SFWL:2026-11-18",
+      "s": "T:SFWL",
+      "n": "Shengfeng Development Os",
+      "t": "SFWL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:EFOI:2026-11-18",
+      "s": "T:EFOI",
+      "n": "Energy Focus, Inc.",
+      "t": "EFOI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:K.BTC:2026-11-18",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-18T03:00:00.000Z"
+    },
+    {
+      "id": "nachricht:ORCL:2026-11-18",
+      "s": "T:ORCL",
+      "n": "Oracle",
+      "t": "ORCL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-18T15:57:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF14T74:2026-11-18",
+      "s": "I:DE000HF14T74",
+      "n": "DE000HF14T74",
+      "i": "DE000HF14T74",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.64,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-18T16:10:08.977Z"
+    },
+    {
+      "id": "kursrakete:DE000GN8BJ62:2026-11-18",
+      "s": "I:DE000GN8BJ62",
+      "n": "DE000GN8BJ62",
+      "i": "DE000GN8BJ62",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.66,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-18T16:12:42.515Z"
     }
   ]
 }
