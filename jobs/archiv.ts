@@ -41,6 +41,7 @@ import { FirdsLeser, GettexProdukte, HebelZaehler, type HebelStand } from '../co
 import { hebelZeilen, produktAuswahl, richtungenAus, type ProdukteJeBasis } from '../core/volltreffer/hebelkurse.ts';
 import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, quartaleZwischen, quartalsEnde, quartalVon, type InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { frameEinarbeiten, frameLesen, framesBis, type AktienzahlArchiv } from '../core/volltreffer/aktienzahl.ts';
+import { istBiotech, sponsorName, studienLesen, type Studie } from '../core/volltreffer/studien.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -84,6 +85,8 @@ interface Index {
   insider?: { kaeufe: number; kuerzel: number; quartale: number; tage: number; ab: string | null; bis: string | null; geholt: string };
   /** F4: Aktienzahl je Firma aus SEC-XBRL-Frames (nur Zählungen) */
   aktienzahl?: { firmen: number; werte: number; frames: number; geholt: string };
+  /** F3: tägliche Schnappschüsse der Studien-Termine (nur Zählungen) */
+  studien?: Record<string, { firmen: number; mitStudien: number; studien: number; geholt: string }>;
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -98,7 +101,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider,aktienzahl,studien').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -854,6 +857,51 @@ async function aktienzahl() {
   console.log(`Aktienzahl (SEC-Frames): ${neu.length} Quartale abgefragt, ${werte} neue Werte; Archiv: ${Object.keys(a.je).length} Firmen, ${gesamt} Werte.`);
 }
 
+// ---------- F3: Studien-Termine (ClinicalTrials.gov API v2, frei) – täglicher Schnappschuss je Biotech-Firma ----------
+// Nur anhängen: studien/JJJJ/<Tag>.json.gz { Kürzel: [nct, phase, status, ende, endeArt][] }. Der Rückblick darf nur
+// Schnappschüsse ≤ Stichtag nutzen (die API kennt nur den heutigen Stand). Firmen: SIC Biotech/Pharma/Medizintechnik aus
+// stamm/us-zahlen.json.gz, Name aus company_tickers.json der SEC.
+async function studien() {
+  const heute = iso.slice(0, 10);
+  if (existsSync(pfad('studien', heute))) return console.log('Studien: heutiger Schnappschuss schon da.');
+  const kontakt = process.env.SEC_KONTAKT?.trim();
+  const zf = join(ARCHIV, 'stamm', 'us-zahlen.json.gz');
+  if (!kontakt || !existsSync(zf)) return console.log('Studien: SEC_KONTAKT oder Zahlen-Archiv fehlt – übersprungen.');
+  const za = JSON.parse(gunzipSync(readFileSync(zf)).toString('utf8')) as ZahlenArchiv;
+  const tr = await fetch('https://www.sec.gov/files/company_tickers.json', { headers: { 'User-Agent': `Schattendepot-Forschung ${kontakt}` }, signal: AbortSignal.timeout(60000) });
+  if (tr.status !== 200) throw new Error(`company_tickers: HTTP ${tr.status}`);
+  const titel = new Map<string, string>();
+  for (const e of Object.values((await tr.json()) as Record<string, { cik_str: number; title: string }>)) titel.set(String(e.cik_str), e.title);
+  const firmen = Object.entries(za.firmen).filter(([, f]) => istBiotech(f.sic) && f.tickers.length);
+  const aus: Record<string, [string, string, string, string | null, string | null][]> = {};
+  let anfragen = 0;
+  let mit = 0;
+  let zahl = 0;
+  const frist = Date.now() + 15 * 60000;
+  for (const [cik, f] of firmen) {
+    if (Date.now() > frist) break;
+    const name = sponsorName(titel.get(String(Number(cik))) ?? '');
+    if (name.length < 3) continue;
+    const url = `https://clinicaltrials.gov/api/v2/studies?query.lead=${encodeURIComponent(name)}&fields=NCTId,OverallStatus,PrimaryCompletionDate,PrimaryCompletionDateType,Phase&pageSize=100`;
+    const r = await fetch(url, { headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' }, signal: AbortSignal.timeout(30000) }).catch(() => null);
+    anfragen++;
+    await pause(350);
+    if (!r || r.status !== 200) {
+      await r?.arrayBuffer().catch(() => undefined);
+      continue;
+    }
+    const st: Studie[] = studienLesen(await r.json());
+    if (!st.length) continue;
+    mit++;
+    zahl += st.length;
+    for (const t of f.tickers) aus[t] = st.map((s) => [s.nct, s.phase, s.status, s.ende, s.endeArt]);
+  }
+  if (anfragen < firmen.length * 0.8) return console.log(`Studien: nur ${anfragen} von ${firmen.length} Firmen abgefragt – kein Schnappschuss (nächster Lauf).`);
+  ablegen('studien', heute, JSON.stringify(aus));
+  (index.studien ??= {})[heute] = { firmen: firmen.length, mitStudien: mit, studien: zahl, geholt: iso };
+  console.log(`Studien (ClinicalTrials.gov): ${firmen.length} Biotech-Firmen, ${mit} mit Phase-2/3-Studien, ${zahl} Studien.`);
+}
+
 // ---------- Hebelprodukte je Basiswert (ESMA FIRDS, Quantensprung B Stufe 1) ----------
 // Wöchentliche Vollliste der Klasse R (samstags, ~19 Teile à ~9 MB gezippt, je ~470 MB XML in einer Zeile): nur wenn es
 // eine neue gibt, stückweise über `unzip -p` gelesen. Gezählt je US-Basiswert: Calls/Puts an gettex (MUND) und am
@@ -1127,6 +1175,7 @@ const TEILE = [
   ['hebel', 'Hebelprodukte (ESMA FIRDS)', hebel],
   ['insider', 'Insider-Käufe (SEC)', insider],
   ['aktienzahl', 'Aktienzahl (SEC-Frames)', aktienzahl],
+  ['studien', 'Studien-Termine (ClinicalTrials.gov)', studien],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;

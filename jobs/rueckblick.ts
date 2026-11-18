@@ -23,6 +23,7 @@ import { aenderungAm, breite, fedAbstand, schluesse, summeBis, wertAm, type Kryp
 import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
 import { aktienzahlAm, type AktienzahlArchiv } from '../core/volltreffer/aktienzahl.ts';
+import { tageBisStudie, type Studie } from '../core/volltreffer/studien.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
 import { hebelDa, type HebelStand } from '../core/volltreffer/firds.ts';
 import { haltefristFortschreiben, type Haltefrist } from '../core/volltreffer/haltefrist.ts';
@@ -323,6 +324,26 @@ const aktienAm = (r: Reihe, x: Merkmale, datum: string): { aktien: number | null
     if (i >= 0 && Number.isFinite(lb[3 * i + 2])) leer = Math.round((lb[3 * i + 2] / n) * 1000) / 10;
   }
   return { aktien: Math.round(n / 1e5) / 10, boersenwertUS: Math.round((n * x.kurs) / 1e5) / 10, leerAnteil: leer };
+};
+// F3 (18.11.2026): Studien-Termine aus täglichen Schnappschüssen (privat studien/JJJJ/<Tag>.csv.gz, JSON) – nur
+// Schnappschüsse ≤ Stichtag, damit kein heutiges Wissen in die Vergangenheit fließt. Vorerst nur als Hinweis (V5).
+const studienSchnapp: { datum: string; je: Record<string, [string, string, string, string | null, string | null][]> }[] = [];
+{
+  const ordner = join(ARCHIV, 'studien');
+  if (existsSync(ordner))
+    for (const j of readdirSync(ordner).filter((x) => /^\d{4}$/.test(x)))
+      for (const f of readdirSync(join(ordner, j)).filter((x) => /^\d{4}-\d{2}-\d{2}\.csv\.gz$/.test(x)).sort())
+        studienSchnapp.push({ datum: f.slice(0, 10), je: JSON.parse(gz(join(ordner, j, f))) });
+  studienSchnapp.sort((a, b) => a.datum.localeCompare(b.datum));
+  log(`Studien-Termine: ${studienSchnapp.length} Schnappschüsse${studienSchnapp.length ? ` (${studienSchnapp[0].datum} bis ${studienSchnapp[studienSchnapp.length - 1].datum})` : ''}.`);
+}
+const studieAm = (r: Reihe, datum: string): number | null => {
+  if (r.markt !== 'aktie' || !studienSchnapp.length) return null;
+  let s: (typeof studienSchnapp)[number] | undefined;
+  for (let i = studienSchnapp.length - 1; i >= 0; i--) if (studienSchnapp[i].datum <= datum) { s = studienSchnapp[i]; break; }
+  const l = s?.je[r.schluessel.slice(2).split('#')[0]];
+  if (!l) return null;
+  return tageBisStudie(l.map(([nct, phase, status, ende, endeArt]) => ({ nct, phase, status, ende, endeArt: endeArt as Studie['endeArt'] })), datum);
 };
 const brancheVon = (r: Reihe): number | null => (r.markt === 'aktie' ? brancheAusSic(firmen.get(r.schluessel.slice(2).split('#')[0])?.sic) : null);
 
@@ -657,6 +678,8 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten, pl:
   }
   const ins = insiderAm(r, k[i].datum);
   if (ins !== null && ins <= 20) sec.push(`Insider-Kauf ${wann(ins)}`);
+  const stu = studieAm(r, k[i].datum);
+  if (stu !== null) sec.push(stu >= 0 ? `Studien-Ende (Phase 2/3) erwartet in ${stu} Tagen` : `Studien-Ende (Phase 2/3) vor ${-stu} Tagen erwartet, Daten ausstehend`);
   const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), plattform: r.markt === 'krypto' && sp.hebel === 1 ? 'Trade Republic (Krypto direkt)' : PLATZ_NAME[pl], ...(pl === 'cfd' || pl === 'otc' ? { ungeprueft: true } : {}), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
   if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
   const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));

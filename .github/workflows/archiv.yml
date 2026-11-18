@@ -23,7 +23,7 @@ jobs:
     environment:
       name: live
       deployment: false
-    timeout-minutes: 40
+    timeout-minutes: 60
     concurrency:
       group: archiv-schreiben
       cancel-in-progress: false
