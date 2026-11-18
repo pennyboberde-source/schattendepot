@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T12:24:43.408Z",
+  "stand": "2026-11-18T12:38:32.696Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -513,47 +513,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-mercedes-benz-group-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MERCEDES-BENZ GROUP AG",
-      "isin": "DE0007100000",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 47.04,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T08:25:00.000Z",
-        "kurs": 39.195,
-        "level": 39.2,
-        "spanne": {
-          "hoch": 39.495,
-          "tief": 39.2
-        },
-        "richtung": "short"
-      },
-      "stop": 39.35,
-      "ziel": 38.91,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T08:25:00.000Z",
-        "basisKurs": 39.2,
-        "kurs": 7.8596,
-        "stueck": 127,
-        "kurswert": 998.17
-      }
-    },
-    {
       "id": "2026-11-18-scan-siemens-energy-ag",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -931,47 +890,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-mercedes-benz-group-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MERCEDES-BENZ GROUP AG",
-      "isin": "DE0007100000",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 47.04,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T08:25:00.000Z",
-        "kurs": 39.195,
-        "level": 39.2,
-        "spanne": {
-          "hoch": 39.495,
-          "tief": 39.2
-        },
-        "richtung": "short"
-      },
-      "stop": 39.35,
-      "ziel": 38.91,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T08:25:00.000Z",
-        "basisKurs": 39.2,
-        "kurs": 7.8596,
-        "stueck": 127,
-        "kurswert": 998.17
-      }
-    },
-    {
       "id": "2026-11-18-scan-siemens-energy-ag",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1207,6 +1125,66 @@
         "kurs": 14.185,
         "stueck": 70,
         "kurswert": 992.95
+      }
+    },
+    {
+      "id": "2026-11-18-scan-mercedes-benz-group-ag",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MERCEDES-BENZ GROUP AG",
+      "isin": "DE0007100000",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 47.04,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T08:25:00.000Z",
+        "kurs": 39.195,
+        "level": 39.2,
+        "spanne": {
+          "hoch": 39.495,
+          "tief": 39.2
+        },
+        "richtung": "short"
+      },
+      "stop": 39.35,
+      "ziel": 38.91,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T08:25:00.000Z",
+        "basisKurs": 39.2,
+        "kurs": 7.8596,
+        "stueck": 127,
+        "kurswert": 998.17
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T12:25:00.000Z",
+        "basisKurs": 38.91,
+        "kurs": 8.1097,
+        "kurswert": 1029.93,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 31.76,
+        "bruttoProzent": 3.18,
+        "netto": 31.76,
+        "nettoProzent": 3.18,
+        "nettoTR": 29.76,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.93
       }
     },
     {
@@ -10517,46 +10495,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 125,
-      "treffer": 54,
-      "quote": 43.2,
-      "netto": -573.03,
-      "brutto": -515.03,
-      "nettoTR": -764.03,
-      "oeNettoProzent": -0.46,
-      "oeR": 0.31
+      "anzahl": 126,
+      "treffer": 55,
+      "quote": 43.7,
+      "netto": -541.27,
+      "brutto": -483.27,
+      "nettoTR": -734.27,
+      "oeNettoProzent": -0.43,
+      "oeR": 0.32
     },
     "heute": {
-      "anzahl": 6,
-      "treffer": 2,
-      "quote": 33.3,
-      "netto": 108.32,
-      "brutto": 110.32,
-      "nettoTR": 98.32,
-      "oeNettoProzent": 1.8,
-      "oeR": 0
+      "anzahl": 7,
+      "treffer": 3,
+      "quote": 42.9,
+      "netto": 140.08,
+      "brutto": 142.08,
+      "nettoTR": 128.08,
+      "oeNettoProzent": 2,
+      "oeR": 0.28
     },
-    "offen": 8,
+    "offen": 7,
     "gruppen": {
       "turbo": {
-        "anzahl": 96,
-        "treffer": 44,
-        "quote": 45.8,
-        "netto": -368.03,
-        "brutto": -368.03,
-        "nettoTR": -559.03,
-        "oeNettoProzent": -0.39,
-        "oeR": 0.23
+        "anzahl": 97,
+        "treffer": 45,
+        "quote": 46.4,
+        "netto": -336.27,
+        "brutto": -336.27,
+        "nettoTR": -529.27,
+        "oeNettoProzent": -0.35,
+        "oeR": 0.25
       },
       "short": {
-        "anzahl": 96,
-        "treffer": 44,
-        "quote": 45.8,
-        "netto": -368.03,
-        "brutto": -368.03,
-        "nettoTR": -559.03,
-        "oeNettoProzent": -0.39,
-        "oeR": 0.23
+        "anzahl": 97,
+        "treffer": 45,
+        "quote": 46.4,
+        "netto": -336.27,
+        "brutto": -336.27,
+        "nettoTR": -529.27,
+        "oeNettoProzent": -0.35,
+        "oeR": 0.25
       },
       "krypto": {
         "anzahl": 29,
