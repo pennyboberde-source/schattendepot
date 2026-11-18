@@ -48,3 +48,20 @@ Reihenfolge: F1 zuerst – sie zeigt, welche der Stufen F2–F7 die meisten verp
 - Überraschungen wie der Inhalt der Oracle-Zahlen sind vorher nicht erkennbar. Erkennbar ist nur, dass ein Termin ansteht und wie der Wert danach weiterläuft.
 - Jede neue Quelle und jedes neue Merkmal verlängert den Rückblick, zurzeit rund 35 Minuten.
 - Pennystocks erhöhen die Zahl der Treffer, aber auch die der Totalverluste. Der Vorwärtstest misst das mit vollen Kosten, bevor etwas sichtbar ordert.
+
+## 5. Penny-Kursraketen: Belege und Filter (Recherche 18.11.2026)
+
+Was Studien und Aufsichtsbehörden über die Vorzeichen großer Sprünge bei Pennystocks zeigen, und was daraus im Rückblick wird. Grundsatz: Filter nur aus Belegen, jede Annahme wird im Rückblick auf zwei Jahre eigener Daten (US inkl. OTC seit 15.11.2024) geprüft und im Vorwärtstest mit vollen Kosten bestätigt.
+
+| Befund | Beleg | Umsetzung im Rückblick |
+|---|---|---|
+| Ungewöhnlich hoher Umsatz über einen Tag oder eine Woche sagt höhere Renditen im Folgemonat voraus, am stärksten bei kleinen Werten – und **noch stärker, wenn der Kurs dabei kaum steigt** | Gervais, Kaniel, Mingelgrin, Journal of Finance 2001 („High-Volume Return Premium“) | Merkmal `volumen5` (Umsatz 5 Tage gegen die 20 davor), Paare mit `r1`/`r5` (Umsatz hoch, Kurs ruhig) |
+| Pump-and-Dump zielt fast immer auf OTC-Werte; Social-Media-Wellen bringen am Ereignistag deutliche Plus-Renditen, danach Umkehr binnen einer Woche | Renault 2017 (86 % der SEC-Fälle auf OTC; Twitter-Spitzen +6,5 % am Tag, −2,5 % in 5 Tagen); bezahlte Promotion: +11,9 % in 5 Tagen, dann Umkehr | Merkmal `otc`, Social-Signale der Datenkrake, **Pump-Filter bleibt** (keine Jagd auf `pumpVerdacht`); Ausstieg früh (Nachziehstop) statt halten |
+| Werte mit extremen Tagesgewinnen im Vormonat liefern im Mittel schlechtere Folgerenditen, **wiederholen** aber häufiger extreme Tage | Bali, Cakici, Whitelaw, JFE 2011 („MAX-Effekt“) | Merkmal `max20` – für Volltreffer (seltene große Sprünge) interessant, im Mittel negativ: nur über den Vorwärtstest mit Kosten |
+| Geringer Streubesitz verstärkt jeden Katalysator; Leerbestand über 20 % des Streubesitzes ist Squeeze-Kandidat | Händler-Literatur (Float, Short Interest), GameStop 2021 | F4: Aktienzahl aus SEC XBRL → Leerbestand je Aktienzahl |
+| Reverse Splits schrumpfen den Streubesitz (Squeeze-Potenzial), im Mittel aber Underperformance; seit 2025 kein Aufschub mehr bei erneutem Unterschreiten von 1 $ | Studien zu Reverse Splits (Underperformance als Auswahl-Effekt); Nasdaq/NYSE-Regeln 2025 | Merkmal `satzung` (8-K 5.03) und `warnung` (3.01 Delisting-Hinweis) mit `kurs` < 1 $ als Paare |
+| Kapitalerhöhungen (S-1/S-3/424B, Warrants) beenden Läufe; nach Spitzen folgt oft Verwässerung | SEC-Meldungen, Händler-Erfahrung | Merkmale `angebot`, `registrierung` (Short-Kandidaten, Warnung bei Long) |
+| Große Eröffnungslücken (≥ 30 %) bei Kleinwerten geben oft nach | Small-Cap-Statistiken zu Gap-Ups | Einstieg nur zur Eröffnung des Folgetags (wie bisher), Merkmal `luecke` |
+| Anzeichen für Manipulation: Promotion, Kursanstieg ohne Meldung, Werbe-Mails, „hohe Rendite ohne Risiko“ | SEC/FINRA-Warnhinweise | Pump-Filter; Anstieg ohne SEC-Meldung als Paar (`r5` hoch & alle Meldungsarten „ohne“) |
+
+**Ehrlich:** Die Studien zeigen fast alle, dass Pennystock-Sprünge **im Mittel** nicht profitabel sind (Umkehr, Verwässerung, Manipulation). Für den Bereich Volltreffer zählt aber die **Trefferquote großer Sprünge** und der Erwartungswert nach Kosten in genau den Fällen, die ein Muster auswählt. Deshalb entscheidet nicht die Literatur, sondern der Rückblick (beide Zeiträume) und danach der Vorwärtstest.
