@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T07:51:53.438Z",
+  "stand": "2026-11-18T14:31:58.234Z",
   "hinweis": "Gesamtmodell (Quantensprung, seit 16.11.2026): Gradient Boosting über die Klassen aller wertbezogenen Merkmale (marktweite wie VIX, Fed, Öl bleiben draußen), Ziel Ergebnis nach Kosten gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % des Tages. Gemessen nur außerhalb der Trainingsdaten (Modell aus Zeitraum A bewertet B und umgekehrt); bestanden wie ein Muster. Nur verdichtete Kennzahlen.",
   "modelle": [
     {
@@ -14,44 +14,44 @@
       "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen)",
       "zeitraeume": [
         {
-          "n": 2391,
-          "quote": 26,
-          "ev": 9.2,
-          "se": 6.5,
+          "n": 2045,
+          "quote": 26.5,
+          "ev": 12.8,
+          "se": 6.9,
           "tage": 239,
-          "grundEv": -48.4
+          "grundEv": -48.6
         },
         {
-          "n": 2509,
-          "quote": 28.6,
-          "ev": 15.9,
-          "se": 7.3,
-          "tage": 250,
-          "grundEv": -46.4
+          "n": 2151,
+          "quote": 28,
+          "ev": 11.4,
+          "se": 7.2,
+          "tage": 248,
+          "grundEv": -46.5
         }
       ],
       "quartale": [
         6,
         9
       ],
-      "wertung": 2.7,
+      "wertung": 4.2,
       "gesamt": {
-        "n": 4900,
+        "n": 4196,
         "quote": 27.3,
-        "ev": 12.6,
-        "se": 7.3
+        "ev": 12.1,
+        "se": 7.2
       },
       "wichtig": [
-        "Ø Tagesumsatz (123)",
-        "20-Tage-Hoch (101)",
-        "Schwankung je Tag % (101)",
-        "Abstand zum Jahreshoch % (87)",
-        "Quartalszahlen (84)",
-        "20-Tage-Rendite % (79)",
-        "Kurs (73)",
-        "Leerverkaufsbestand: Tage zum Eindecken (48)"
+        "Ø Tagesumsatz (119)",
+        "20-Tage-Hoch (85)",
+        "Schwankung je Tag % (85)",
+        "Abstand zum Jahreshoch % (82)",
+        "20-Tage-Rendite % (70)",
+        "Quartalszahlen (66)",
+        "Kurs (61)",
+        "Börsenwert (Mio. $) (42)"
       ],
-      "faelleHeute": 35
+      "faelleHeute": 36
     },
     {
       "schluessel": "modell|aktie|2S150|10|muster",
@@ -65,44 +65,44 @@
       "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen, besser als alle Musterfälle)",
       "zeitraeume": [
         {
-          "n": 1940,
-          "quote": 26.9,
-          "ev": 19.4,
+          "n": 1783,
+          "quote": 27,
+          "ev": 20.4,
           "se": 8,
-          "tage": 239,
-          "grundEv": -2.6
+          "tage": 238,
+          "grundEv": -2.9
         },
         {
-          "n": 1677,
-          "quote": 26.7,
-          "ev": 20.7,
-          "se": 7.8,
-          "tage": 247,
-          "grundEv": 2.2
+          "n": 1664,
+          "quote": 26.3,
+          "ev": 18.4,
+          "se": 7.4,
+          "tage": 248,
+          "grundEv": 0.7
         }
       ],
       "quartale": [
-        5,
+        6,
         9
       ],
-      "wertung": 11.4,
+      "wertung": 11,
       "gesamt": {
-        "n": 3617,
-        "quote": 26.8,
-        "ev": 20,
+        "n": 3447,
+        "quote": 26.7,
+        "ev": 19.4,
         "se": 8
       },
       "wichtig": [
-        "Ø Tagesumsatz (123)",
-        "20-Tage-Hoch (101)",
-        "Schwankung je Tag % (101)",
-        "Abstand zum Jahreshoch % (87)",
-        "Quartalszahlen (84)",
-        "20-Tage-Rendite % (79)",
-        "Kurs (73)",
-        "Leerverkaufsbestand: Tage zum Eindecken (48)"
+        "Ø Tagesumsatz (119)",
+        "20-Tage-Hoch (85)",
+        "Schwankung je Tag % (85)",
+        "Abstand zum Jahreshoch % (82)",
+        "20-Tage-Rendite % (70)",
+        "Quartalszahlen (66)",
+        "Kurs (61)",
+        "Börsenwert (Mio. $) (42)"
       ],
-      "faelleHeute": 28
+      "faelleHeute": 29
     },
     {
       "schluessel": "modell|aktie|3L150|10",
@@ -113,98 +113,98 @@
       "fenster": 10,
       "q": 1,
       "bestanden": false,
-      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als die Grundrate; nur 1 von 9 Quartalen im Plus",
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nur 2 von 9 Quartalen im Plus",
       "zeitraeume": [
         {
-          "n": 1556,
-          "quote": 9.6,
-          "ev": -14.1,
+          "n": 1533,
+          "quote": 10.8,
+          "ev": -11.3,
           "se": 7.1,
           "tage": 239,
           "grundEv": -13.3
         },
         {
-          "n": 1444,
-          "quote": 16.9,
-          "ev": -21.1,
-          "se": 7.9,
-          "tage": 249,
+          "n": 1001,
+          "quote": 19.5,
+          "ev": -8.5,
+          "se": 9.9,
+          "tage": 247,
           "grundEv": -11.4
         }
       ],
       "quartale": [
-        1,
+        2,
         9
       ],
-      "wertung": -29,
+      "wertung": -18.4,
       "gesamt": {
-        "n": 3000,
-        "quote": 13.1,
-        "ev": -17.5,
-        "se": 7.9
+        "n": 2534,
+        "quote": 14.2,
+        "ev": -10.2,
+        "se": 9.9
       },
       "wichtig": [
-        "Branche (108)",
-        "Abstand zum Jahreshoch % (103)",
-        "Quartalszahlen (78)",
-        "20-Tage-Rendite % (68)",
-        "Schwankung je Tag % (63)",
-        "Leerverkaufsbestand: Tage zum Eindecken (53)",
-        "Ø Tagesumsatz (52)",
-        "20-Tage-Hoch (47)"
+        "Abstand zum Jahreshoch % (95)",
+        "Branche (95)",
+        "Quartalszahlen (68)",
+        "20-Tage-Rendite % (63)",
+        "Leerverkaufsbestand: Tage zum Eindecken (55)",
+        "Größter Tagesgewinn 20 Tage % (52)",
+        "Ø Tagesumsatz (45)",
+        "20-Tage-Hoch (40)"
       ],
       "faelleHeute": 16
     },
     {
       "schluessel": "modell|aktie|3L150|10|muster",
-      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 50 % ihres Tages sieht",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 25 % ihres Tages sieht",
       "markt": "aktie",
       "spielart": "Turbo long Hebel 3, Stop 150 €",
       "sp": "3L150",
       "fenster": 10,
-      "q": 50,
+      "q": 25,
       "bestanden": false,
       "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als alle Musterfälle ohne Modell",
       "zeitraeume": [
         {
-          "n": 2544,
-          "quote": 14.9,
-          "ev": 6.9,
-          "se": 11.7,
-          "tage": 234,
-          "grundEv": 15.7
+          "n": 2219,
+          "quote": 14.3,
+          "ev": 5,
+          "se": 10.5,
+          "tage": 232,
+          "grundEv": 15
         },
         {
-          "n": 4734,
-          "quote": 19.4,
-          "ev": -0.3,
-          "se": 10.4,
-          "tage": 250,
-          "grundEv": 3
+          "n": 3651,
+          "quote": 21,
+          "ev": 4.9,
+          "se": 12.1,
+          "tage": 248,
+          "grundEv": 3.8
         }
       ],
       "quartale": [
         5,
         9
       ],
-      "wertung": -10.7,
+      "wertung": -7.2,
       "gesamt": {
-        "n": 7278,
-        "quote": 17.8,
-        "ev": 2.2,
-        "se": 11.7
+        "n": 5870,
+        "quote": 18.5,
+        "ev": 4.9,
+        "se": 12.1
       },
       "wichtig": [
-        "Branche (108)",
-        "Abstand zum Jahreshoch % (103)",
-        "Quartalszahlen (78)",
-        "20-Tage-Rendite % (68)",
-        "Schwankung je Tag % (63)",
-        "Leerverkaufsbestand: Tage zum Eindecken (53)",
-        "Ø Tagesumsatz (52)",
-        "20-Tage-Hoch (47)"
+        "Abstand zum Jahreshoch % (95)",
+        "Branche (95)",
+        "Quartalszahlen (68)",
+        "20-Tage-Rendite % (63)",
+        "Leerverkaufsbestand: Tage zum Eindecken (55)",
+        "Größter Tagesgewinn 20 Tage % (52)",
+        "Ø Tagesumsatz (45)",
+        "20-Tage-Hoch (40)"
       ],
-      "faelleHeute": 156
+      "faelleHeute": 112
     },
     {
       "schluessel": "modell|krypto|1L150|10",
@@ -215,45 +215,45 @@
       "fenster": 10,
       "q": 0.5,
       "bestanden": false,
-      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nur 4 von 9 Quartalen im Plus",
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nur 3 von 9 Quartalen im Plus",
       "zeitraeume": [
         {
-          "n": 205,
-          "quote": 6.3,
-          "ev": -25.5,
-          "se": 11.1,
-          "tage": 205,
+          "n": 196,
+          "quote": 4.6,
+          "ev": -30.9,
+          "se": 11,
+          "tage": 196,
           "grundEv": -34.1
         },
         {
-          "n": 114,
-          "quote": 6.1,
-          "ev": -2.6,
-          "se": 12.7,
-          "tage": 114,
+          "n": 115,
+          "quote": 7,
+          "ev": -3.6,
+          "se": 13.4,
+          "tage": 115,
           "grundEv": -18.2
         }
       ],
       "quartale": [
-        4,
+        3,
         9
       ],
-      "wertung": -36.6,
+      "wertung": -41.9,
       "gesamt": {
-        "n": 319,
-        "quote": 6.3,
-        "ev": -17.3,
-        "se": 12.7
+        "n": 311,
+        "quote": 5.5,
+        "ev": -20.8,
+        "se": 13.4
       },
       "wichtig": [
-        "20-Tage-Rendite % (98)",
-        "Börsenwert (Coins) (94)",
-        "5-Tage-Rendite % (85)",
-        "Schwankung je Tag % (82)",
-        "Abstand zum Jahreshoch % (74)",
-        "Kurs (68)",
-        "Schluss in der Tagesspanne (0 = Tief, 1 = Hoch) (63)",
-        "20-Tage-Hoch (51)"
+        "Börsenwert (Coins) (104)",
+        "20-Tage-Rendite % (75)",
+        "Größter Tagesgewinn 20 Tage % (72)",
+        "Abstand zum Jahreshoch % (66)",
+        "5-Tage-Rendite % (65)",
+        "Schwankung je Tag % (65)",
+        "Kurs (57)",
+        "Schluss in der Tagesspanne (0 = Tief, 1 = Hoch) (54)"
       ],
       "faelleHeute": 1
     }

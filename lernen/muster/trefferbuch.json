@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T07:51:53.438Z",
+  "stand": "2026-11-18T14:31:58.234Z",
   "hinweis": "Volltreffer der letzten 30 Tage (Beginn eines Sprungs, beste Spielart mit Stop 150 €) und die Signale der Datenkrake zu diesem Wert in den 14 Tagen davor. Rückwärts gelernt: Was war vorher bekannt?",
   "eintraege": [
     {
@@ -28,6 +28,22 @@
       "r1": 1,
       "relVolumen": 2.5,
       "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-16",
+      "wert": "TDTH",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 1,
+      "r1": 35.1,
+      "relVolumen": 86,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "datum": "2026-11-16"
+        }
+      ]
     },
     {
       "datum": "2026-11-16",
@@ -86,6 +102,22 @@
     },
     {
       "datum": "2026-11-13",
+      "wert": "FCDH",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 4161.93,
+      "tage": 2,
+      "r1": 36,
+      "relVolumen": null,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "datum": "2026-11-13"
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-13",
       "wert": "GP",
       "markt": "aktie",
       "spielart": "direkt, Stop 150 €",
@@ -133,6 +165,17 @@
     },
     {
       "datum": "2026-11-13",
+      "wert": "LAB",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 2,
+      "r1": 8.6,
+      "relVolumen": 1.8,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-13",
       "wert": "MOB",
       "markt": "aktie",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
@@ -164,17 +207,6 @@
     },
     {
       "datum": "2026-11-13",
-      "wert": "SLSN",
-      "markt": "aktie",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 1,
-      "r1": 67.2,
-      "relVolumen": 165.9,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-13",
       "wert": "EGG",
       "markt": "aktie",
       "spielart": "Turbo long Hebel 2, Stop 150 €",
@@ -183,6 +215,22 @@
       "r1": -8.7,
       "relVolumen": 13.6,
       "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-13",
+      "wert": "CRMN",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 2,
+      "r1": -10.9,
+      "relVolumen": null,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "datum": "2026-11-12"
+        }
+      ]
     },
     {
       "datum": "2026-11-12",
@@ -203,6 +251,17 @@
           "datum": "2026-11-12"
         }
       ]
+    },
+    {
+      "datum": "2026-11-12",
+      "wert": "TRUG",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 526.14,
+      "tage": 3,
+      "r1": 3.3,
+      "relVolumen": 3.5,
+      "vorzeichen": []
     },
     {
       "datum": "2026-11-12",
@@ -295,6 +354,65 @@
     },
     {
       "datum": "2026-11-12",
+      "wert": "HAIN",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 3,
+      "r1": 6.8,
+      "relVolumen": 2.8,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-12",
+      "wert": "SLND",
+      "markt": "aktie",
+      "spielart": "Turbo long Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 1,
+      "r1": 0.2,
+      "relVolumen": 12.2,
+      "vorzeichen": [
+        {
+          "typ": "leerverkauf_aenderung",
+          "datum": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-12",
+      "wert": "VIVK",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 2,
+      "r1": -9.6,
+      "relVolumen": 0.1,
+      "vorzeichen": [
+        {
+          "typ": "leerverkauf_aenderung",
+          "datum": "2026-10-29"
+        },
+        {
+          "typ": "handelsstopp",
+          "datum": "2026-11-06"
+        },
+        {
+          "typ": "kursrakete",
+          "datum": "2026-11-09"
+        },
+        {
+          "typ": "volumen_ungewoehnlich",
+          "datum": "2026-11-09"
+        },
+        {
+          "typ": "grossauftrag",
+          "datum": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-12",
       "wert": "VTSI",
       "markt": "aktie",
       "spielart": "Turbo long Hebel 2, Stop 150 €",
@@ -302,6 +420,17 @@
       "tage": 2,
       "r1": 6.1,
       "relVolumen": 146.1,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-12",
+      "wert": "XRTX",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 2,
+      "r1": 3.4,
+      "relVolumen": 13.9,
       "vorzeichen": []
     },
     {
@@ -317,6 +446,17 @@
     },
     {
       "datum": "2026-11-12",
+      "wert": "RAIN",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 1,
+      "r1": -7.1,
+      "relVolumen": 100,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-12",
       "wert": "ADVB",
       "markt": "aktie",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
@@ -324,6 +464,39 @@
       "tage": 1,
       "r1": 42.7,
       "relVolumen": 22.2,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-12",
+      "wert": "SLSN",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 1,
+      "r1": -0.2,
+      "relVolumen": 71.3,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-12",
+      "wert": "PFSA",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 3,
+      "r1": -16.4,
+      "relVolumen": 1.9,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-12",
+      "wert": "VWAV",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 3,
+      "r1": -46.5,
+      "relVolumen": 164,
       "vorzeichen": []
     },
     {
@@ -365,14 +538,14 @@
       "vorzeichen": []
     },
     {
-      "datum": "2026-11-12",
-      "wert": "BSEM",
+      "datum": "2026-11-11",
+      "wert": "CDXS",
       "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "spielart": "Turbo long Hebel 2, Stop 150 €",
       "netto": 400,
-      "tage": 1,
-      "r1": -11.6,
-      "relVolumen": 1.6,
+      "tage": 2,
+      "r1": -2.4,
+      "relVolumen": 2,
       "vorzeichen": []
     },
     {
@@ -457,13 +630,56 @@
     },
     {
       "datum": "2026-11-11",
-      "wert": "ORGO",
+      "wert": "NNOX",
       "markt": "aktie",
       "spielart": "Turbo short Hebel 2, Stop 150 €",
       "netto": 400,
-      "tage": 3,
-      "r1": 12.3,
-      "relVolumen": 0.8,
+      "tage": 4,
+      "r1": -2.5,
+      "relVolumen": 1.7,
+      "vorzeichen": [
+        {
+          "typ": "kursrakete",
+          "datum": "2026-11-11"
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-11",
+      "wert": "OPTT",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 1,
+      "r1": 32.4,
+      "relVolumen": 7.7,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-11",
+      "wert": "OTLK",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 4,
+      "r1": 4.4,
+      "relVolumen": 0.7,
+      "vorzeichen": [
+        {
+          "typ": "leerverkauf_quote",
+          "datum": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-11",
+      "wert": "SCKT",
+      "markt": "aktie",
+      "spielart": "Turbo long Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 1,
+      "r1": 84.9,
+      "relVolumen": 344.2,
       "vorzeichen": []
     },
     {
@@ -496,6 +712,22 @@
       "r1": 49.3,
       "relVolumen": 11.2,
       "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-11",
+      "wert": "VIVS",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 4,
+      "r1": 19.5,
+      "relVolumen": 6.7,
+      "vorzeichen": [
+        {
+          "typ": "leerverkauf_quote",
+          "datum": "2026-10-30"
+        }
+      ]
     },
     {
       "datum": "2026-11-11",
@@ -575,6 +807,28 @@
       "vorzeichen": []
     },
     {
+      "datum": "2026-11-11",
+      "wert": "SRTM",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 3,
+      "r1": 3,
+      "relVolumen": null,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-10",
+      "wert": "AACG",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 4,
+      "r1": 52.1,
+      "relVolumen": 282.3,
+      "vorzeichen": []
+    },
+    {
       "datum": "2026-11-10",
       "wert": "BNAI",
       "markt": "aktie",
@@ -625,6 +879,17 @@
     },
     {
       "datum": "2026-11-10",
+      "wert": "DBGI",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 2,
+      "r1": -19.5,
+      "relVolumen": 1,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-10",
       "wert": "FGL",
       "markt": "aktie",
       "spielart": "direkt, Stop 150 €",
@@ -633,6 +898,22 @@
       "r1": -23.7,
       "relVolumen": 0.8,
       "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-10",
+      "wert": "HRTX",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "netto": 400,
+      "tage": 4,
+      "r1": 0.9,
+      "relVolumen": 1.3,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "datum": "2026-11-10"
+        }
+      ]
     },
     {
       "datum": "2026-11-10",
@@ -720,6 +1001,22 @@
     },
     {
       "datum": "2026-11-10",
+      "wert": "SKYE",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 2,
+      "r1": 21.6,
+      "relVolumen": 61.9,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "datum": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "datum": "2026-11-10",
       "wert": "TISI",
       "markt": "aktie",
       "spielart": "Turbo long Hebel 2, Stop 150 €",
@@ -749,6 +1046,17 @@
       "tage": 5,
       "r1": 3,
       "relVolumen": 0.3,
+      "vorzeichen": []
+    },
+    {
+      "datum": "2026-11-10",
+      "wert": "WKSP",
+      "markt": "aktie",
+      "spielart": "direkt, Stop 150 €",
+      "netto": 400,
+      "tage": 3,
+      "r1": -1.5,
+      "relVolumen": 66.6,
       "vorzeichen": []
     },
     {
@@ -785,269 +1093,8 @@
           "datum": "2026-11-10"
         }
       ]
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "OFAL",
-      "markt": "aktie",
-      "spielart": "direkt, Stop 150 €",
-      "netto": 400,
-      "tage": 4,
-      "r1": -7.7,
-      "relVolumen": 35.5,
-      "vorzeichen": [
-        {
-          "typ": "grossauftrag",
-          "datum": "2026-10-29"
-        },
-        {
-          "typ": "handelsstopp",
-          "datum": "2026-11-09"
-        }
-      ]
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "QUBX",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 3,
-      "r1": -15.3,
-      "relVolumen": 1.6,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "FMFC",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 5,
-      "r1": -26.6,
-      "relVolumen": 1.8,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "BCIC",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 3,
-      "r1": 4.9,
-      "relVolumen": 3.5,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "EUVX",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 5,
-      "r1": -1.7,
-      "relVolumen": 2.3,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "QTUP",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 5,
-      "r1": -3.5,
-      "relVolumen": 1.3,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "NMAD",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 3,
-      "r1": 5.9,
-      "relVolumen": 1.1,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "TREO",
-      "markt": "aktie",
-      "spielart": "direkt, Stop 150 €",
-      "netto": 400,
-      "tage": 4,
-      "r1": 31.5,
-      "relVolumen": 11.6,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-10",
-      "wert": "MTRI",
-      "markt": "aktie",
-      "spielart": "direkt, Stop 150 €",
-      "netto": 400,
-      "tage": 2,
-      "r1": -23.8,
-      "relVolumen": null,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "datum": "2026-11-09"
-        }
-      ]
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "PLUL",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 543.26,
-      "tage": 3,
-      "r1": 6.8,
-      "relVolumen": 2.3,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "STXS",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 487.51,
-      "tage": 2,
-      "r1": 4.6,
-      "relVolumen": 1.2,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "CIEX",
-      "markt": "aktie",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "netto": 432.83,
-      "tage": 2,
-      "r1": 21.7,
-      "relVolumen": 3.9,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "GEVX",
-      "markt": "aktie",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "netto": 431.48,
-      "tage": 2,
-      "r1": 13.8,
-      "relVolumen": 0.9,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "BRCB",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 406.59,
-      "tage": 3,
-      "r1": 3.4,
-      "relVolumen": 1.6,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "CWST",
-      "markt": "aktie",
-      "spielart": "Turbo long Hebel 3, Stop 150 €",
-      "netto": 401.24,
-      "tage": 4,
-      "r1": 0.8,
-      "relVolumen": 1.1,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "ALGS",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 1,
-      "r1": -2.9,
-      "relVolumen": 3.8,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "AMIX",
-      "markt": "aktie",
-      "spielart": "direkt, Stop 150 €",
-      "netto": 400,
-      "tage": 1,
-      "r1": 11.8,
-      "relVolumen": 6.2,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "CIA",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 4,
-      "r1": 5.3,
-      "relVolumen": 0.9,
-      "vorzeichen": [
-        {
-          "typ": "stimmung_social",
-          "datum": "2026-11-09"
-        }
-      ]
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "EDSA",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 4,
-      "r1": 16.4,
-      "relVolumen": 1788.6,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "GTBP",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 6,
-      "r1": -2.3,
-      "relVolumen": 2.1,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "KLTR",
-      "markt": "aktie",
-      "spielart": "Turbo short Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 6,
-      "r1": -5.9,
-      "relVolumen": 1.9,
-      "vorzeichen": []
-    },
-    {
-      "datum": "2026-11-09",
-      "wert": "KROS",
-      "markt": "aktie",
-      "spielart": "Turbo long Hebel 2, Stop 150 €",
-      "netto": 400,
-      "tage": 6,
-      "r1": -2,
-      "relVolumen": 0.9,
-      "vorzeichen": []
     }
   ],
-  "zahl": 1574,
-  "mitVorzeichen": 67
+  "zahl": 1662,
+  "mitVorzeichen": 81
 }
