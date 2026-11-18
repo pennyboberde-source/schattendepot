@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T13:20:05.071Z",
-  "anzahl": 83,
+  "stand": "2026-11-18T13:49:38.914Z",
+  "anzahl": 84,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -1022,7 +1022,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.78,
+      "st": 0.88,
       "q": [
         "Upbit"
       ],
@@ -1116,11 +1116,25 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.41,
+      "st": 0.42,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-18T13:20:05.071Z"
+    },
+    {
+      "id": "upbit_warnung:K.PIEVERSE:2026-11-18",
+      "s": "K:PIEVERSE",
+      "n": "Pieverse",
+      "t": "PIEVERSE",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-18T13:49:38.914Z"
     }
   ]
 }
