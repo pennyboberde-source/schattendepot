@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T08:54:17.711Z",
+  "stand": "2026-11-18T09:09:36.578Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -0.53,
       "oeR": -1
     },
-    "offen": 5
+    "offen": 6
   },
   "gesamt": {
     "anzahl": 550,
@@ -815,6 +815,39 @@
         "stueck": 561,
         "kurswert": 999.37
       }
+    },
+    {
+      "id": "2026-11-18-scan-freenet-ag",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "FREENET AG",
+      "isin": "DE000A0Z2ZZ5",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T08:45:00.000Z",
+        "kurs": 24.66,
+        "level": 24.62,
+        "spanne": {
+          "hoch": 24.62,
+          "tief": 24.26
+        },
+        "richtung": "long"
+      },
+      "stop": 24.44,
+      "ziel": 25.1,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T08:45:00.000Z",
+        "basisKurs": 24.66,
+        "kurs": 24.783,
+        "stueck": 40,
+        "kurswert": 991.32
+      }
     }
   ],
   "trades": [
@@ -1257,6 +1290,39 @@
         "kurs": 1.7814,
         "stueck": 561,
         "kurswert": 999.37
+      }
+    },
+    {
+      "id": "2026-11-18-scan-freenet-ag",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "FREENET AG",
+      "isin": "DE000A0Z2ZZ5",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T08:45:00.000Z",
+        "kurs": 24.66,
+        "level": 24.62,
+        "spanne": {
+          "hoch": 24.62,
+          "tief": 24.26
+        },
+        "richtung": "long"
+      },
+      "stop": 24.44,
+      "ziel": 25.1,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T08:45:00.000Z",
+        "basisKurs": 24.66,
+        "kurs": 24.783,
+        "stueck": 40,
+        "kurswert": 991.32
       }
     },
     {
@@ -10216,8 +10282,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 86,
-        "chance": 36,
+        "faelle": 87,
+        "chance": 35.6,
         "oeNetto": -0.05,
         "wertung": -0.11
       }
