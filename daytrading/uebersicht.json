@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T17:24:18.870Z",
+  "stand": "2026-11-18T17:39:48.467Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -849,64 +849,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-sandisk-corp",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SANDISK CORP",
-      "isin": "US80004C2008",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 834,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T16:15:00.000Z",
-        "kurs": 690,
-        "level": 695,
-        "spanne": {
-          "hoch": 730,
-          "tief": 695
-        },
-        "richtung": "short"
-      },
-      "stop": 712.5,
-      "ziel": 660,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T16:15:00.000Z",
-        "basisKurs": 695,
-        "kurs": 13.935,
-        "stueck": 71,
-        "kurswert": 989.39
-      },
-      "timeMachine": {
-        "zielZuerst": 2.6,
-        "stopZuerst": 23.6,
-        "keins": 73.8,
-        "gruen": 51,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 36,
-          "ziel": 5,
-          "stop": 10,
-          "oeR": 0.15
-        }
-      }
-    },
-    {
       "id": "2026-11-18-scan-sellas-life-sciences-gro",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -953,64 +895,6 @@
           "ziel": 7,
           "stop": 15,
           "oeR": 0.04
-        }
-      }
-    },
-    {
-      "id": "2026-11-18-scan-tesla-inc",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "TESLA INC",
-      "isin": "US88160R1014",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 416.34,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-18T16:25:00.000Z",
-        "kurs": 345.5,
-        "level": 345.95,
-        "spanne": {
-          "hoch": 354.3,
-          "tief": 345.95
-        },
-        "richtung": "short"
-      },
-      "stop": 350.13,
-      "ziel": 340.6,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T16:30:00.000Z",
-        "basisKurs": 346.95,
-        "kurs": 6.9563,
-        "stueck": 143,
-        "kurswert": 994.75
-      },
-      "timeMachine": {
-        "zielZuerst": 12.9,
-        "stopZuerst": 36.5,
-        "keins": 50.7,
-        "gruen": 49.8,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 28,
-          "ziel": 2,
-          "stop": 12,
-          "oeR": -0.29
         }
       }
     },
@@ -1606,64 +1490,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-sandisk-corp",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SANDISK CORP",
-      "isin": "US80004C2008",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 834,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T16:15:00.000Z",
-        "kurs": 690,
-        "level": 695,
-        "spanne": {
-          "hoch": 730,
-          "tief": 695
-        },
-        "richtung": "short"
-      },
-      "stop": 712.5,
-      "ziel": 660,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T16:15:00.000Z",
-        "basisKurs": 695,
-        "kurs": 13.935,
-        "stueck": 71,
-        "kurswert": 989.39
-      },
-      "timeMachine": {
-        "zielZuerst": 2.6,
-        "stopZuerst": 23.6,
-        "keins": 73.8,
-        "gruen": 51,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 36,
-          "ziel": 5,
-          "stop": 10,
-          "oeR": 0.15
-        }
-      }
-    },
-    {
       "id": "2026-11-18-scan-sellas-life-sciences-gro",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1710,64 +1536,6 @@
           "ziel": 7,
           "stop": 15,
           "oeR": 0.04
-        }
-      }
-    },
-    {
-      "id": "2026-11-18-scan-tesla-inc",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "TESLA INC",
-      "isin": "US88160R1014",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 416.34,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-18T16:25:00.000Z",
-        "kurs": 345.5,
-        "level": 345.95,
-        "spanne": {
-          "hoch": 354.3,
-          "tief": 345.95
-        },
-        "richtung": "short"
-      },
-      "stop": 350.13,
-      "ziel": 340.6,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T16:30:00.000Z",
-        "basisKurs": 346.95,
-        "kurs": 6.9563,
-        "stueck": 143,
-        "kurswert": 994.75
-      },
-      "timeMachine": {
-        "zielZuerst": 12.9,
-        "stopZuerst": 36.5,
-        "keins": 50.7,
-        "gruen": 49.8,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 28,
-          "ziel": 2,
-          "stop": 12,
-          "oeR": -0.29
         }
       }
     },
@@ -1885,6 +1653,160 @@
           "stop": 13,
           "oeR": 0.18
         }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-tesla-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "TESLA INC",
+      "isin": "US88160R1014",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 416.34,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:25:00.000Z",
+        "kurs": 345.5,
+        "level": 345.95,
+        "spanne": {
+          "hoch": 354.3,
+          "tief": 345.95
+        },
+        "richtung": "short"
+      },
+      "stop": 350.13,
+      "ziel": 340.6,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T16:30:00.000Z",
+        "basisKurs": 346.95,
+        "kurs": 6.9563,
+        "stueck": 143,
+        "kurswert": 994.75
+      },
+      "timeMachine": {
+        "zielZuerst": 12.9,
+        "stopZuerst": 36.5,
+        "keins": 50.7,
+        "gruen": 49.8,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 28,
+          "ziel": 2,
+          "stop": 12,
+          "oeR": -0.29
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T17:30:00.000Z",
+        "basisKurs": 350.13,
+        "kurs": 6.6044,
+        "kurswert": 944.43,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -50.32,
+        "bruttoProzent": -5.06,
+        "netto": -50.32,
+        "nettoProzent": -5.06,
+        "nettoTR": -52.32,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-18-scan-sandisk-corp",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SANDISK CORP",
+      "isin": "US80004C2008",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 834,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:15:00.000Z",
+        "kurs": 690,
+        "level": 695,
+        "spanne": {
+          "hoch": 730,
+          "tief": 695
+        },
+        "richtung": "short"
+      },
+      "stop": 712.5,
+      "ziel": 660,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T16:15:00.000Z",
+        "basisKurs": 695,
+        "kurs": 13.935,
+        "stueck": 71,
+        "kurswert": 989.39
+      },
+      "timeMachine": {
+        "zielZuerst": 2.6,
+        "stopZuerst": 23.6,
+        "keins": 73.8,
+        "gruen": 51,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 5,
+          "stop": 10,
+          "oeR": 0.15
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T17:25:00.000Z",
+        "basisKurs": 712.5,
+        "kurs": 12.12,
+        "kurswert": 860.52,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -128.87,
+        "bruttoProzent": -13.03,
+        "netto": -128.87,
+        "nettoProzent": -13.03,
+        "nettoTR": -130.87,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -12637,46 +12559,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 140,
+      "anzahl": 142,
       "treffer": 61,
-      "quote": 43.6,
-      "netto": -836.01,
-      "brutto": -776.01,
-      "nettoTR": -1055.01,
-      "oeNettoProzent": -0.6,
-      "oeR": 0.3
+      "quote": 43,
+      "netto": -1015.2,
+      "brutto": -955.2,
+      "nettoTR": -1238.2,
+      "oeNettoProzent": -0.72,
+      "oeR": 0.28
     },
     "heute": {
-      "anzahl": 21,
+      "anzahl": 23,
       "treffer": 9,
-      "quote": 42.9,
-      "netto": -154.66,
-      "brutto": -150.66,
-      "nettoTR": -192.66,
-      "oeNettoProzent": -0.75,
-      "oeR": 0.2
+      "quote": 39.1,
+      "netto": -333.85,
+      "brutto": -329.85,
+      "nettoTR": -375.85,
+      "oeNettoProzent": -1.47,
+      "oeR": 0.09
     },
-    "offen": 9,
+    "offen": 7,
     "gruppen": {
       "turbo": {
-        "anzahl": 110,
+        "anzahl": 112,
         "treffer": 51,
-        "quote": 46.4,
-        "netto": -604.1,
-        "brutto": -604.1,
-        "nettoTR": -823.1,
-        "oeNettoProzent": -0.56,
-        "oeR": 0.25
+        "quote": 45.5,
+        "netto": -783.29,
+        "brutto": -783.29,
+        "nettoTR": -1006.29,
+        "oeNettoProzent": -0.71,
+        "oeR": 0.23
       },
       "short": {
-        "anzahl": 110,
+        "anzahl": 112,
         "treffer": 51,
-        "quote": 46.4,
-        "netto": -604.1,
-        "brutto": -604.1,
-        "nettoTR": -823.1,
-        "oeNettoProzent": -0.56,
-        "oeR": 0.25
+        "quote": 45.5,
+        "netto": -783.29,
+        "brutto": -783.29,
+        "nettoTR": -1006.29,
+        "oeNettoProzent": -0.71,
+        "oeR": 0.23
       },
       "krypto": {
         "anzahl": 30,
