@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T16:39:40.566Z",
+  "stand": "2026-11-18T16:53:28.278Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -1.41,
       "oeR": -0.96
     },
-    "offen": 5
+    "offen": 6
   },
   "gesamt": {
     "anzahl": 561,
@@ -692,64 +692,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-coinbase-global-inc-clas",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "COINBASE GLOBAL INC -CLASS A",
-      "isin": "US19260Q1076",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 123,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T15:30:00.000Z",
-        "kurs": 101.92,
-        "level": 101.94,
-        "spanne": {
-          "hoch": 104.98,
-          "tief": 101.94
-        },
-        "richtung": "short"
-      },
-      "stop": 103.46,
-      "ziel": 100.58,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T15:30:00.000Z",
-        "basisKurs": 102.5,
-        "kurs": 2.0551,
-        "stueck": 486,
-        "kurswert": 998.78
-      },
-      "timeMachine": {
-        "zielZuerst": 31.2,
-        "stopZuerst": 65.6,
-        "keins": 3.3,
-        "gruen": 33.6,
-        "schwelle": 33.3,
-        "urteil": "Nahe an der Gewinnschwelle",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 35,
-          "ziel": 4,
-          "stop": 15,
-          "oeR": -0.01
-        }
-      }
-    },
-    {
       "id": "2026-11-18-scan-ionq-inc",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1011,6 +953,172 @@
           "ziel": 5,
           "stop": 10,
           "oeR": 0.15
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-sellas-life-sciences-gro",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SELLAS LIFE SCIENCES GROUP I",
+      "isin": "US81642T2096",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:30:00.000Z",
+        "kurs": 19.15,
+        "level": 18.75,
+        "spanne": {
+          "hoch": 18.75,
+          "tief": 15.7
+        },
+        "richtung": "long"
+      },
+      "stop": 17.23,
+      "ziel": 22.55,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T16:30:00.000Z",
+        "basisKurs": 19,
+        "kurs": 19.014,
+        "stueck": 52,
+        "kurswert": 988.73
+      },
+      "timeMachine": {
+        "zielZuerst": 0,
+        "stopZuerst": 0.4,
+        "keins": 99.6,
+        "gruen": 48.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 62,
+        "historie": {
+          "faelle": 33,
+          "ziel": 7,
+          "stop": 15,
+          "oeR": 0.04
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-tesla-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "TESLA INC",
+      "isin": "US88160R1014",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 416.34,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:25:00.000Z",
+        "kurs": 345.5,
+        "level": 345.95,
+        "spanne": {
+          "hoch": 354.3,
+          "tief": 345.95
+        },
+        "richtung": "short"
+      },
+      "stop": 350.13,
+      "ziel": 340.6,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T16:30:00.000Z",
+        "basisKurs": 346.95,
+        "kurs": 6.9563,
+        "stueck": 143,
+        "kurswert": 994.75
+      },
+      "timeMachine": {
+        "zielZuerst": 12.9,
+        "stopZuerst": 36.5,
+        "keins": 50.7,
+        "gruen": 49.8,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 28,
+          "ziel": 2,
+          "stop": 12,
+          "oeR": -0.29
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-alphabet-inc-cl-a",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ALPHABET INC-CL A",
+      "isin": "US02079K3059",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 307.08,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:40:00.000Z",
+        "kurs": 256.1,
+        "level": 256.45,
+        "spanne": {
+          "hoch": 259.6,
+          "tief": 256.45
+        },
+        "richtung": "short"
+      },
+      "stop": 258.03,
+      "ziel": 251.65,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T16:40:00.000Z",
+        "basisKurs": 255.9,
+        "kurs": 5.1308,
+        "stueck": 194,
+        "kurswert": 995.38
+      },
+      "timeMachine": {
+        "zielZuerst": 6.2,
+        "stopZuerst": 21.3,
+        "keins": 72.5,
+        "gruen": 58.2,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 9,
+          "stop": 14,
+          "oeR": 0.25
         }
       }
     }
@@ -1333,64 +1441,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-coinbase-global-inc-clas",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "COINBASE GLOBAL INC -CLASS A",
-      "isin": "US19260Q1076",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 123,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T15:30:00.000Z",
-        "kurs": 101.92,
-        "level": 101.94,
-        "spanne": {
-          "hoch": 104.98,
-          "tief": 101.94
-        },
-        "richtung": "short"
-      },
-      "stop": 103.46,
-      "ziel": 100.58,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T15:30:00.000Z",
-        "basisKurs": 102.5,
-        "kurs": 2.0551,
-        "stueck": 486,
-        "kurswert": 998.78
-      },
-      "timeMachine": {
-        "zielZuerst": 31.2,
-        "stopZuerst": 65.6,
-        "keins": 3.3,
-        "gruen": 33.6,
-        "schwelle": 33.3,
-        "urteil": "Nahe an der Gewinnschwelle",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 35,
-          "ziel": 4,
-          "stop": 15,
-          "oeR": -0.01
-        }
-      }
-    },
-    {
       "id": "2026-11-18-scan-ionq-inc",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1653,6 +1703,249 @@
           "stop": 10,
           "oeR": 0.15
         }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-sellas-life-sciences-gro",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SELLAS LIFE SCIENCES GROUP I",
+      "isin": "US81642T2096",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:30:00.000Z",
+        "kurs": 19.15,
+        "level": 18.75,
+        "spanne": {
+          "hoch": 18.75,
+          "tief": 15.7
+        },
+        "richtung": "long"
+      },
+      "stop": 17.23,
+      "ziel": 22.55,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T16:30:00.000Z",
+        "basisKurs": 19,
+        "kurs": 19.014,
+        "stueck": 52,
+        "kurswert": 988.73
+      },
+      "timeMachine": {
+        "zielZuerst": 0,
+        "stopZuerst": 0.4,
+        "keins": 99.6,
+        "gruen": 48.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 62,
+        "historie": {
+          "faelle": 33,
+          "ziel": 7,
+          "stop": 15,
+          "oeR": 0.04
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-tesla-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "TESLA INC",
+      "isin": "US88160R1014",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 416.34,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:25:00.000Z",
+        "kurs": 345.5,
+        "level": 345.95,
+        "spanne": {
+          "hoch": 354.3,
+          "tief": 345.95
+        },
+        "richtung": "short"
+      },
+      "stop": 350.13,
+      "ziel": 340.6,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T16:30:00.000Z",
+        "basisKurs": 346.95,
+        "kurs": 6.9563,
+        "stueck": 143,
+        "kurswert": 994.75
+      },
+      "timeMachine": {
+        "zielZuerst": 12.9,
+        "stopZuerst": 36.5,
+        "keins": 50.7,
+        "gruen": 49.8,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 28,
+          "ziel": 2,
+          "stop": 12,
+          "oeR": -0.29
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-alphabet-inc-cl-a",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ALPHABET INC-CL A",
+      "isin": "US02079K3059",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 307.08,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:40:00.000Z",
+        "kurs": 256.1,
+        "level": 256.45,
+        "spanne": {
+          "hoch": 259.6,
+          "tief": 256.45
+        },
+        "richtung": "short"
+      },
+      "stop": 258.03,
+      "ziel": 251.65,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T16:40:00.000Z",
+        "basisKurs": 255.9,
+        "kurs": 5.1308,
+        "stueck": 194,
+        "kurswert": 995.38
+      },
+      "timeMachine": {
+        "zielZuerst": 6.2,
+        "stopZuerst": 21.3,
+        "keins": 72.5,
+        "gruen": 58.2,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 9,
+          "stop": 14,
+          "oeR": 0.25
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-coinbase-global-inc-clas",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "COINBASE GLOBAL INC -CLASS A",
+      "isin": "US19260Q1076",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 123,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:30:00.000Z",
+        "kurs": 101.92,
+        "level": 101.94,
+        "spanne": {
+          "hoch": 104.98,
+          "tief": 101.94
+        },
+        "richtung": "short"
+      },
+      "stop": 103.46,
+      "ziel": 100.58,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T15:30:00.000Z",
+        "basisKurs": 102.5,
+        "kurs": 2.0551,
+        "stueck": 486,
+        "kurswert": 998.78
+      },
+      "timeMachine": {
+        "zielZuerst": 31.2,
+        "stopZuerst": 65.6,
+        "keins": 3.3,
+        "gruen": 33.6,
+        "schwelle": 33.3,
+        "urteil": "Nahe an der Gewinnschwelle",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 4,
+          "stop": 15,
+          "oeR": -0.01
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T16:40:00.000Z",
+        "basisKurs": 100.52,
+        "kurs": 2.2424,
+        "kurswert": 1089.81,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 91.03,
+        "bruttoProzent": 9.11,
+        "netto": 91.03,
+        "nettoProzent": 9.11,
+        "nettoTR": 89.03,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.06
       }
     },
     {
@@ -12259,46 +12552,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 139,
-      "treffer": 60,
-      "quote": 43.2,
-      "netto": -927.04,
-      "brutto": -867.04,
-      "nettoTR": -1144.04,
-      "oeNettoProzent": -0.67,
-      "oeR": 0.29
+      "anzahl": 140,
+      "treffer": 61,
+      "quote": 43.6,
+      "netto": -836.01,
+      "brutto": -776.01,
+      "nettoTR": -1055.01,
+      "oeNettoProzent": -0.6,
+      "oeR": 0.3
     },
     "heute": {
-      "anzahl": 20,
-      "treffer": 8,
-      "quote": 40,
-      "netto": -245.69,
-      "brutto": -241.69,
-      "nettoTR": -281.69,
-      "oeNettoProzent": -1.25,
-      "oeR": 0.11
+      "anzahl": 21,
+      "treffer": 9,
+      "quote": 42.9,
+      "netto": -154.66,
+      "brutto": -150.66,
+      "nettoTR": -192.66,
+      "oeNettoProzent": -0.75,
+      "oeR": 0.2
     },
-    "offen": 7,
+    "offen": 8,
     "gruppen": {
       "turbo": {
-        "anzahl": 109,
-        "treffer": 50,
-        "quote": 45.9,
-        "netto": -695.13,
-        "brutto": -695.13,
-        "nettoTR": -912.13,
-        "oeNettoProzent": -0.65,
-        "oeR": 0.23
+        "anzahl": 110,
+        "treffer": 51,
+        "quote": 46.4,
+        "netto": -604.1,
+        "brutto": -604.1,
+        "nettoTR": -823.1,
+        "oeNettoProzent": -0.56,
+        "oeR": 0.25
       },
       "short": {
-        "anzahl": 109,
-        "treffer": 50,
-        "quote": 45.9,
-        "netto": -695.13,
-        "brutto": -695.13,
-        "nettoTR": -912.13,
-        "oeNettoProzent": -0.65,
-        "oeR": 0.23
+        "anzahl": 110,
+        "treffer": 51,
+        "quote": 46.4,
+        "netto": -604.1,
+        "brutto": -604.1,
+        "nettoTR": -823.1,
+        "oeNettoProzent": -0.56,
+        "oeR": 0.25
       },
       "krypto": {
         "anzahl": 30,
@@ -12331,10 +12624,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 161,
-        "chance": 37.9,
-        "oeNetto": -0.85,
-        "wertung": -1.31
+        "faelle": 163,
+        "chance": 38.7,
+        "oeNetto": -0.77,
+        "wertung": -1.23
       }
     },
     "krypto:level_long": {
@@ -12353,8 +12646,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 198,
-        "chance": 39.4,
+        "faelle": 199,
+        "chance": 39.2,
         "oeNetto": -0.09,
         "wertung": -0.2
       }
