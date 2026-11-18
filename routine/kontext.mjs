@@ -104,6 +104,16 @@ if (pol?.lage) {
   p(`Politik (Stand ${String(pol.lage.stand).slice(11, 16)} UTC): Risiko ${pol.lage.index}/100 (${pol.lage.stufe})`);
   for (const zl of (pol.lage.zeilen ?? []).slice(1, 7)) p(`- ${zl}`);
 }
+// Quantensprung 3 (18.11.2026): Weltlage aus der Kontext-Geschichte – Themen der Weltnachrichten (GDELT), US-Amtsblatt,
+// Weltgeschehen (Wikipedia) und was nach früheren Wellen desselben Themas geschah
+const wl = await json('lernen/kontext.json', null);
+if (wl?.datum) {
+  const th = (wl.themen ?? []).filter((t) => t.klasse !== 'ruhig').slice(0, 6);
+  p(`🌍 Weltlage (${wl.datum}): ${th.length ? th.map((t) => `${t.name} ${t.klasse} (×${t.spitze})`).join(', ') : 'kein Thema auffällig'} · Politik ${wl.politik ?? '–'} · US-Amtsblatt (Erlasse/Zölle/Sanktionen) ${wl.amtsblatt?.klasse ?? '–'}`);
+  for (const a of (wl.aehnlich ?? []).filter((x) => x.fruehereWellen >= 3).slice(0, 4)) p(`- Frühere Wellen „${a.thema}“ (${a.fruehereWellen}): Aktienmarkt 5 Handelstage danach ${Object.entries(a.danach5).filter(([, n]) => n).map(([k, n]) => `${k} ${n}×`).join(', ')}`);
+  const wg = wl.weltgeschehen?.[0];
+  if (wg?.ereignisse?.length) p(`Weltgeschehen ${wg.datum} (Wikipedia, Auswahl): ${wg.ereignisse.slice(0, 6).map((e) => e.slice(0, 160)).join(' | ')}`);
+}
 const polSt = ['politik_massnahme', 'politik_wahrscheinlichkeit'].map((t) => [t, statistik?.kandidaten?.nachSignalTyp?.[t]]).filter(([, v]) => v);
 if (polSt.length) p(`Politik-Signale im Schattenbuch: ${polSt.map(([t, v]) => `${t} n=${v.n1T ?? 0}, ${v.quote1T ?? '–'} % im Plus, Ø ${v.oe1T ?? '–'} % nach 1 Tag`).join('; ')}`);
 // S2: Autopilot, Ziel/Stop-Vorschläge, Tagesprognose, Gegenprüfung

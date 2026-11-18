@@ -842,6 +842,87 @@
           "10 bis 20 %",
           "über 20 % (Squeeze-Kandidat)"
         ]
+      },
+      {
+        "merkmal": "aufmerksamkeit",
+        "grenzen": [
+          1.5,
+          3,
+          8
+        ],
+        "namen": [
+          "Wikipedia-Aufrufe normal",
+          "1,5- bis 3-mal so viele wie üblich",
+          "3- bis 8-mal",
+          "mehr als 8-mal (Aufmerksamkeits-Sturm)"
+        ]
+      },
+      {
+        "merkmal": "branchenThema",
+        "grenzen": [
+          1.4,
+          2,
+          4
+        ],
+        "namen": [
+          "Branchen-Thema ruhig",
+          "Branchen-Thema erhöht",
+          "Branchen-Thema als Welle",
+          "Branchen-Thema als Sturm"
+        ]
+      },
+      {
+        "merkmal": "erwaehnt",
+        "grenzen": [
+          0.5,
+          3.5,
+          20.5
+        ],
+        "namen": [
+          "im Weltgeschehen am Stichtag erwähnt",
+          "vor 1 bis 3 Tagen erwähnt",
+          "vor 4 bis 20 Tagen erwähnt",
+          "nicht erwähnt (20 Tage)"
+        ]
+      },
+      {
+        "merkmal": "nachrichtenlage",
+        "grenzen": [
+          1.8,
+          3
+        ],
+        "namen": [
+          "Nachrichtenlage ruhig",
+          "ein Thema als Welle",
+          "ein Thema als Sturm"
+        ],
+        "paare": false
+      },
+      {
+        "merkmal": "politikDruck",
+        "grenzen": [
+          1.5,
+          2.5
+        ],
+        "namen": [
+          "Politik ruhig",
+          "Politik erhöht",
+          "Politik als Sturm"
+        ],
+        "paare": false
+      },
+      {
+        "merkmal": "amtsblatt5",
+        "grenzen": [
+          1.5,
+          3
+        ],
+        "namen": [
+          "Erlasse/Zölle/Sanktionen normal",
+          "erhöht",
+          "Welle (US-Amtsblatt)"
+        ],
+        "paare": false
       }
     ],
     "quartalMindestFaelle": 5,
@@ -982,7 +1063,10 @@
       "oel5",
       "angst",
       "stable30",
-      "insider"
+      "insider",
+      "nachrichtenlage",
+      "politikDruck",
+      "amtsblatt5"
     ],
     "ohneHinweis": "Marktweite Merkmale (für alle Werte eines Tages gleich) teilen nicht: in der ersten Probe (16.11.) lernte das Modell mit ihnen nur, welche Tage gut waren (Treffer im 2. Zeitraum auf 8 Tagen). Seitdem: Ziel gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % (mindestens ein Fall je Tag). Insider-Kauf ist ebenfalls ausgeschlossen (16.11. abends): seit dem Ende des täglichen Formular-4-Abrufs ist das Merkmal ab Oktober 2026 unbekannt – das Modell nutzte es als versteckte Zeitmarke (wichtigstes Merkmal), und für neue Fälle wäre es immer unbekannt.",
     "musterFilter": [
