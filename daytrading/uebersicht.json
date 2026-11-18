@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T17:08:55.004Z",
+  "stand": "2026-11-18T17:24:18.870Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -1071,6 +1071,64 @@
           "oeR": 0.25
         }
       }
+    },
+    {
+      "id": "2026-11-18-scan-marvell-technology-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MARVELL TECHNOLOGY INC",
+      "isin": "US5738741041",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 157.78,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T17:00:00.000Z",
+        "kurs": 130.92,
+        "level": 131,
+        "spanne": {
+          "hoch": 137.32,
+          "tief": 131
+        },
+        "richtung": "short"
+      },
+      "stop": 134.16,
+      "ziel": 126.12,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T17:00:00.000Z",
+        "basisKurs": 131.48,
+        "kurs": 2.6366,
+        "stueck": 379,
+        "kurswert": 999.27
+      },
+      "timeMachine": {
+        "zielZuerst": 4.2,
+        "stopZuerst": 22.3,
+        "keins": 73.5,
+        "gruen": 52.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 8,
+          "stop": 13,
+          "oeR": 0.18
+        }
+      }
     }
   ],
   "trades": [
@@ -1768,6 +1826,64 @@
           "ziel": 9,
           "stop": 14,
           "oeR": 0.25
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-marvell-technology-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MARVELL TECHNOLOGY INC",
+      "isin": "US5738741041",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 157.78,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T17:00:00.000Z",
+        "kurs": 130.92,
+        "level": 131,
+        "spanne": {
+          "hoch": 137.32,
+          "tief": 131
+        },
+        "richtung": "short"
+      },
+      "stop": 134.16,
+      "ziel": 126.12,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T17:00:00.000Z",
+        "basisKurs": 131.48,
+        "kurs": 2.6366,
+        "stueck": 379,
+        "kurswert": 999.27
+      },
+      "timeMachine": {
+        "zielZuerst": 4.2,
+        "stopZuerst": 22.3,
+        "keins": 73.5,
+        "gruen": 52.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 8,
+          "stop": 13,
+          "oeR": 0.18
         }
       }
     },
@@ -12540,7 +12656,7 @@
       "oeNettoProzent": -0.75,
       "oeR": 0.2
     },
-    "offen": 8,
+    "offen": 9,
     "gruppen": {
       "turbo": {
         "anzahl": 110,
@@ -12648,10 +12764,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 110,
-        "chance": 41.8,
-        "oeNetto": -0.18,
-        "wertung": -0.39
+        "faelle": 111,
+        "chance": 41.4,
+        "oeNetto": -0.2,
+        "wertung": -0.41
       }
     }
   },
