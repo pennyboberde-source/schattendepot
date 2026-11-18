@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T09:38:52.998Z",
+  "stand": "2026-11-18T09:54:07.305Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -661,47 +661,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-tui-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "TUI AG",
-      "isin": "DE000TUAG505",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 8.7048,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T08:35:00.000Z",
-        "kurs": 7.264,
-        "level": 7.274,
-        "spanne": {
-          "hoch": 7.362,
-          "tief": 7.274
-        },
-        "richtung": "short"
-      },
-      "stop": 7.318,
-      "ziel": 7.126,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T08:35:00.000Z",
-        "basisKurs": 7.254,
-        "kurs": 1.4544,
-        "stueck": 687,
-        "kurswert": 999.17
-      }
-    },
-    {
       "id": "2026-11-18-scan-alstom",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1227,47 +1186,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-tui-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "TUI AG",
-      "isin": "DE000TUAG505",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 8.7048,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T08:35:00.000Z",
-        "kurs": 7.264,
-        "level": 7.274,
-        "spanne": {
-          "hoch": 7.362,
-          "tief": 7.274
-        },
-        "richtung": "short"
-      },
-      "stop": 7.318,
-      "ziel": 7.126,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T08:35:00.000Z",
-        "basisKurs": 7.254,
-        "kurs": 1.4544,
-        "stueck": 687,
-        "kurswert": 999.17
-      }
-    },
-    {
       "id": "2026-11-18-scan-alstom",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1503,6 +1421,66 @@
         "kurs": 14.185,
         "stueck": 70,
         "kurswert": 992.95
+      }
+    },
+    {
+      "id": "2026-11-18-scan-tui-ag",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "TUI AG",
+      "isin": "DE000TUAG505",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 8.7048,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T08:35:00.000Z",
+        "kurs": 7.264,
+        "level": 7.274,
+        "spanne": {
+          "hoch": 7.362,
+          "tief": 7.274
+        },
+        "richtung": "short"
+      },
+      "stop": 7.318,
+      "ziel": 7.126,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T08:35:00.000Z",
+        "basisKurs": 7.254,
+        "kurs": 1.4544,
+        "stueck": 687,
+        "kurswert": 999.17
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T09:35:00.000Z",
+        "basisKurs": 7.32,
+        "kurs": 1.3813,
+        "kurswert": 948.95,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -50.22,
+        "bruttoProzent": -5.03,
+        "netto": -50.22,
+        "nettoProzent": -5.03,
+        "nettoTR": -52.22,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.03
       }
     },
     {
@@ -10529,46 +10507,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 122,
+      "anzahl": 123,
       "treffer": 53,
-      "quote": 43.4,
-      "netto": -537.7,
-      "brutto": -479.7,
-      "nettoTR": -722.7,
-      "oeNettoProzent": -0.44,
-      "oeR": 0.31
+      "quote": 43.1,
+      "netto": -587.92,
+      "brutto": -529.92,
+      "nettoTR": -774.92,
+      "oeNettoProzent": -0.48,
+      "oeR": 0.3
     },
     "heute": {
-      "anzahl": 3,
+      "anzahl": 4,
       "treffer": 1,
-      "quote": 33.3,
-      "netto": 143.65,
-      "brutto": 145.65,
-      "nettoTR": 139.65,
-      "oeNettoProzent": 4.79,
-      "oeR": 0
+      "quote": 25,
+      "netto": 93.43,
+      "brutto": 95.43,
+      "nettoTR": 87.43,
+      "oeNettoProzent": 2.34,
+      "oeR": -0.26
     },
-    "offen": 10,
+    "offen": 9,
     "gruppen": {
       "turbo": {
-        "anzahl": 93,
+        "anzahl": 94,
         "treffer": 43,
-        "quote": 46.2,
-        "netto": -332.7,
-        "brutto": -332.7,
-        "nettoTR": -517.7,
-        "oeNettoProzent": -0.36,
-        "oeR": 0.24
+        "quote": 45.7,
+        "netto": -382.92,
+        "brutto": -382.92,
+        "nettoTR": -569.92,
+        "oeNettoProzent": -0.41,
+        "oeR": 0.23
       },
       "short": {
-        "anzahl": 93,
+        "anzahl": 94,
         "treffer": 43,
-        "quote": 46.2,
-        "netto": -332.7,
-        "brutto": -332.7,
-        "nettoTR": -517.7,
-        "oeNettoProzent": -0.36,
-        "oeR": 0.24
+        "quote": 45.7,
+        "netto": -382.92,
+        "brutto": -382.92,
+        "nettoTR": -569.92,
+        "oeNettoProzent": -0.41,
+        "oeR": 0.23
       },
       "krypto": {
         "anzahl": 29,
