@@ -45,6 +45,74 @@ export function LageKarte() {
   );
 }
 
+// ---------- Weltlage (lernen/kontext.json, Quantensprung 3 seit 18.11.2026) ----------
+interface Weltlage {
+  datum: string | null;
+  themen: { name: string; spitze: number; klasse: string }[];
+  politik: string | null;
+  amtsblatt: { klasse: string | null };
+  weltgeschehen: { datum: string; ereignisse: string[] }[];
+  aehnlich: { thema: string; heute: string; fruehereWellen: number; danach5: Record<string, number> }[];
+  chronik: { datum: string; markt: string; danach5: string | null; themen: string[]; schlagzeilen: string[] }[];
+}
+
+export function WeltlageKarte() {
+  const z = useDaten<Weltlage>('lernen/kontext.json');
+  if (z.status !== 'ok' || !z.daten.datum) return null;
+  const w = z.daten;
+  const auffaellig = w.themen.filter((t) => t.klasse !== 'ruhig');
+  const wg = w.weltgeschehen[0];
+  return (
+    <Karte titel={`🌍 Weltlage ${datumKurz(w.datum!)}`}>
+      <div data-testid="weltlage">
+        <p>
+          {auffaellig.length ? auffaellig.slice(0, 6).map((t) => `${t.name}: ${t.klasse}`).join(' · ') : 'Kein Thema auffällig in den Weltnachrichten.'}
+          {w.politik ? ` · Politik ${w.politik}` : ''}
+          {w.amtsblatt.klasse ? ` · US-Amtsblatt ${w.amtsblatt.klasse}` : ''}
+        </p>
+        {w.aehnlich
+          .filter((a) => a.fruehereWellen >= 3)
+          .slice(0, 3)
+          .map((a) => (
+            <p class="klein" key={a.thema}>
+              Nach {zahl(a.fruehereWellen)} früheren Wellen „{a.thema}“ war der Aktienmarkt 5 Handelstage später:{' '}
+              {Object.entries(a.danach5)
+                .filter(([, n]) => n)
+                .map(([k, n]) => `${k} ${n}×`)
+                .join(', ')}
+            </p>
+          ))}
+        {wg && wg.ereignisse.length > 0 && (
+          <details>
+            <summary>Weltgeschehen {datumKurz(wg.datum)} ({zahl(wg.ereignisse.length)})</summary>
+            <ul class="klein">
+              {wg.ereignisse.slice(0, 12).map((e, i) => (
+                <li key={i}>{e}</li>
+              ))}
+            </ul>
+          </details>
+        )}
+        {w.chronik.length > 0 && (
+          <details>
+            <summary>Chronik: die stärksten Markttage und ihre Themen</summary>
+            <ul class="klein">
+              {w.chronik.slice(0, 20).map((c) => (
+                <li key={c.datum}>
+                  {datumKurz(c.datum)} – Aktien {c.markt}
+                  {c.danach5 ? `, 5 Tage danach ${c.danach5}` : ''}
+                  {c.themen.length ? ` · ${c.themen.join(', ')}` : ''}
+                  {c.schlagzeilen[0] ? ` · ${c.schlagzeilen[0]}` : ''}
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+        <p class="klein">Quellen: GDELT (Weltnachrichten), Federal Register (US-Amtsblatt), Wikipedia (Weltgeschehen, CC BY-SA 4.0). Nur Klassen, keine Kurse.</p>
+      </div>
+    </Karte>
+  );
+}
+
 // ---------- Gesamtmodell (lernen/muster/modell.json) ----------
 interface ModellZeitraum {
   n: number;

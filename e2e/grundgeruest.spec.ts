@@ -12,6 +12,8 @@ test('Heute: Tagesbilanz, Briefing, Gelernt, Marktphase und Wochenzeugnis', asyn
   await expect(page.getByTestId('zeugnis-note')).toHaveText('2,3 (gut)');
   // Tages-Lagebild (schlanker Kontext): nur grobe Klassen
   await expect(page.getByTestId('lage')).toContainText('Lange US-Anleihen 5 Tage ruhig');
+  // Weltlage (Kontext-Geschichte): Themen in Klassen, frühere Wellen
+  await expect(page.getByTestId('weltlage')).toContainText('Zölle und Handelsstreit: Welle');
 });
 
 test('Depot zeigt Kennzahlen, Positionen und den Pflichthinweis; alte Links funktionieren', async ({ page }) => {

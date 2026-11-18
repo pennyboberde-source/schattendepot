@@ -1,0 +1,65 @@
+{
+  "stand": "2026-11-18T06:30:00Z",
+  "hinweis": "DEMO",
+  "quellen": [
+    "GDELT"
+  ],
+  "datum": "2026-11-17",
+  "themen": [
+    {
+      "name": "Zölle und Handelsstreit",
+      "spitze": 3.4,
+      "klasse": "Welle"
+    },
+    {
+      "name": "Halbleiter und Exportkontrollen",
+      "spitze": 1.6,
+      "klasse": "erhöht"
+    },
+    {
+      "name": "Inflation",
+      "spitze": 1.0,
+      "klasse": "ruhig"
+    }
+  ],
+  "politik": "Welle",
+  "amtsblatt": {
+    "klasse": "erhöht",
+    "tage": []
+  },
+  "weltgeschehen": [
+    {
+      "datum": "2026-11-17",
+      "ereignisse": [
+        "Business and economy: DEMO – Ein Handelsabkommen wird verkündet."
+      ]
+    }
+  ],
+  "aehnlich": [
+    {
+      "thema": "Zölle und Handelsstreit",
+      "heute": "Welle",
+      "fruehereWellen": 7,
+      "danach5": {
+        "stark fallend": 1,
+        "fallend": 2,
+        "seitwärts": 3,
+        "steigend": 1,
+        "stark steigend": 0
+      }
+    }
+  ],
+  "chronik": [
+    {
+      "datum": "2025-04-03",
+      "markt": "stark gefallen",
+      "danach5": "fallend",
+      "themen": [
+        "Zölle und Handelsstreit (Sturm)"
+      ],
+      "schlagzeilen": [
+        "Business and economy: DEMO – Neue Zölle angekündigt."
+      ]
+    }
+  ]
+}
