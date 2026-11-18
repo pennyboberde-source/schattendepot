@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T14:54:54.989Z",
+  "stand": "2026-11-18T15:08:41.256Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -0.93,
       "oeR": -1
     },
-    "offen": 1
+    "offen": 2
   },
   "gesamt": {
     "anzahl": 555,
@@ -530,6 +530,196 @@
         "stueck": 157,
         "kurswert": 999.45
       }
+    },
+    {
+      "id": "2026-11-18-scan-asml-holding-nv",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ASML HOLDING NV",
+      "isin": "NL0010273215",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 1498.8,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 1250,
+        "level": 1254,
+        "spanne": {
+          "hoch": 1286.8,
+          "tief": 1254
+        },
+        "richtung": "short"
+      },
+      "stop": 1270.4,
+      "ziel": 1206.2,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 1249,
+        "kurs": 25.042,
+        "stueck": 39,
+        "kurswert": 976.64
+      }
+    },
+    {
+      "id": "2026-11-18-scan-freeport-mcmoran-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "FREEPORT-MCMORAN INC",
+      "isin": "US35671D8570",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 55.43,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 46.1,
+        "level": 46.5,
+        "spanne": {
+          "hoch": 47.375,
+          "tief": 46.5
+        },
+        "richtung": "short"
+      },
+      "stop": 46.94,
+      "ziel": 44.7,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 46.19,
+        "kurs": 9.2631,
+        "stueck": 107,
+        "kurswert": 991.15
+      }
+    },
+    {
+      "id": "2026-11-18-scan-nvidia-corp",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NVIDIA CORP",
+      "isin": "US67066G1040",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 168.82,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 140.66,
+        "level": 140.72,
+        "spanne": {
+          "hoch": 145.56,
+          "tief": 140.72
+        },
+        "richtung": "short"
+      },
+      "stop": 143.14,
+      "ziel": 135.76,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 140.68,
+        "kurs": 2.821,
+        "stueck": 354,
+        "kurswert": 998.63
+      },
+      "timeMachine": {
+        "zielZuerst": 4.9,
+        "stopZuerst": 20.5,
+        "keins": 74.6,
+        "gruen": 60.1,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 38,
+          "ziel": 10,
+          "stop": 12,
+          "oeR": 0.39
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-almonty-industries-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ALMONTY INDUSTRIES INC",
+      "isin": "CA0203987072",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:55:00.000Z",
+        "kurs": 7.488,
+        "level": 7.394,
+        "spanne": {
+          "hoch": 7.394,
+          "tief": 7.054
+        },
+        "richtung": "long"
+      },
+      "stop": 7.224,
+      "ziel": 7.956,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T14:55:00.000Z",
+        "basisKurs": 7.468,
+        "kurs": 7.4736,
+        "stueck": 133,
+        "kurswert": 993.99
+      },
+      "timeMachine": {
+        "zielZuerst": 7.7,
+        "stopZuerst": 39.7,
+        "keins": 52.6,
+        "gruen": 42.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 31,
+          "ziel": 7,
+          "stop": 13,
+          "oeR": 0.16
+        }
+      }
     }
   ],
   "trades": [
@@ -687,6 +877,453 @@
         "kurs": 6.3659,
         "stueck": 157,
         "kurswert": 999.45
+      }
+    },
+    {
+      "id": "2026-11-18-scan-asml-holding-nv",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ASML HOLDING NV",
+      "isin": "NL0010273215",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 1498.8,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 1250,
+        "level": 1254,
+        "spanne": {
+          "hoch": 1286.8,
+          "tief": 1254
+        },
+        "richtung": "short"
+      },
+      "stop": 1270.4,
+      "ziel": 1206.2,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 1249,
+        "kurs": 25.042,
+        "stueck": 39,
+        "kurswert": 976.64
+      }
+    },
+    {
+      "id": "2026-11-18-scan-freeport-mcmoran-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "FREEPORT-MCMORAN INC",
+      "isin": "US35671D8570",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 55.43,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 46.1,
+        "level": 46.5,
+        "spanne": {
+          "hoch": 47.375,
+          "tief": 46.5
+        },
+        "richtung": "short"
+      },
+      "stop": 46.94,
+      "ziel": 44.7,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 46.19,
+        "kurs": 9.2631,
+        "stueck": 107,
+        "kurswert": 991.15
+      }
+    },
+    {
+      "id": "2026-11-18-scan-nvidia-corp",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NVIDIA CORP",
+      "isin": "US67066G1040",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 168.82,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 140.66,
+        "level": 140.72,
+        "spanne": {
+          "hoch": 145.56,
+          "tief": 140.72
+        },
+        "richtung": "short"
+      },
+      "stop": 143.14,
+      "ziel": 135.76,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 140.68,
+        "kurs": 2.821,
+        "stueck": 354,
+        "kurswert": 998.63
+      },
+      "timeMachine": {
+        "zielZuerst": 4.9,
+        "stopZuerst": 20.5,
+        "keins": 74.6,
+        "gruen": 60.1,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 38,
+          "ziel": 10,
+          "stop": 12,
+          "oeR": 0.39
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-almonty-industries-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ALMONTY INDUSTRIES INC",
+      "isin": "CA0203987072",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:55:00.000Z",
+        "kurs": 7.488,
+        "level": 7.394,
+        "spanne": {
+          "hoch": 7.394,
+          "tief": 7.054
+        },
+        "richtung": "long"
+      },
+      "stop": 7.224,
+      "ziel": 7.956,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T14:55:00.000Z",
+        "basisKurs": 7.468,
+        "kurs": 7.4736,
+        "stueck": 133,
+        "kurswert": 993.99
+      },
+      "timeMachine": {
+        "zielZuerst": 7.7,
+        "stopZuerst": 39.7,
+        "keins": 52.6,
+        "gruen": 42.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 31,
+          "ziel": 7,
+          "stop": 13,
+          "oeR": 0.16
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-broadcom-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "BROADCOM INC",
+      "isin": "US11135F1012",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 373.92,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 311.6,
+        "level": 312.6,
+        "spanne": {
+          "hoch": 320,
+          "tief": 312.6
+        },
+        "richtung": "short"
+      },
+      "stop": 316.3,
+      "ziel": 302.2,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 311.6,
+        "kurs": 6.2476,
+        "stueck": 160,
+        "kurswert": 999.62
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T15:00:00.000Z",
+        "basisKurs": 316.55,
+        "kurs": 5.7227,
+        "kurswert": 915.63,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -83.99,
+        "bruttoProzent": -8.4,
+        "netto": -83.99,
+        "nettoProzent": -8.4,
+        "nettoTR": -85.99,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.05
+      },
+      "timeMachine": {
+        "zielZuerst": 8.4,
+        "stopZuerst": 32.3,
+        "keins": 59.3,
+        "gruen": 51.7,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 42,
+          "ziel": 8,
+          "stop": 21,
+          "oeR": -0.01
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-micron-technology-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MICRON TECHNOLOGY INC",
+      "isin": "US5951121038",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 762.84,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 636.5,
+        "level": 637.4,
+        "spanne": {
+          "hoch": 657.5,
+          "tief": 637.4
+        },
+        "richtung": "short"
+      },
+      "stop": 647.45,
+      "ziel": 612.2,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 635.7,
+        "kurs": 12.746,
+        "stueck": 78,
+        "kurswert": 994.19
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T15:00:00.000Z",
+        "basisKurs": 647.45,
+        "kurs": 11.51,
+        "kurswert": 897.78,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -96.41,
+        "bruttoProzent": -9.7,
+        "netto": -96.41,
+        "nettoProzent": -9.7,
+        "nettoTR": -98.41,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-18-scan-sk-hynix-inc-gds-reg-s",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SK HYNIX INC-GDS REG S",
+      "isin": "US78392B1070",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 904.8,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 754,
+        "level": 756,
+        "spanne": {
+          "hoch": 780,
+          "tief": 756
+        },
+        "richtung": "short"
+      },
+      "stop": 768,
+      "ziel": 726,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 754,
+        "kurs": 15.118,
+        "stueck": 66,
+        "kurswert": 997.79
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T15:00:00.000Z",
+        "basisKurs": 768,
+        "kurs": 13.646,
+        "kurswert": 900.64,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -97.15,
+        "bruttoProzent": -9.74,
+        "netto": -97.15,
+        "nettoProzent": -9.74,
+        "nettoTR": -99.15,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-18-scan-taiwan-semiconductor-sp-",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "TAIWAN SEMICONDUCTOR-SP ADR",
+      "isin": "US8740391003",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 393,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "kurs": 325.5,
+        "level": 326.5,
+        "spanne": {
+          "hoch": 335,
+          "tief": 326.5
+        },
+        "richtung": "short"
+      },
+      "stop": 330.75,
+      "ziel": 321,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T14:50:00.000Z",
+        "basisKurs": 327.5,
+        "kurs": 6.5664,
+        "stueck": 152,
+        "kurswert": 998.09
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T15:00:00.000Z",
+        "basisKurs": 330.75,
+        "kurs": 6.2094,
+        "kurswert": 943.83,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -54.26,
+        "bruttoProzent": -5.44,
+        "netto": -54.26,
+        "nettoProzent": -5.44,
+        "nettoTR": -56.26,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10390,46 +11027,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 130,
+      "anzahl": 134,
       "treffer": 58,
-      "quote": 44.6,
-      "netto": -443.81,
-      "brutto": -383.81,
-      "nettoTR": -642.81,
-      "oeNettoProzent": -0.34,
-      "oeR": 0.35
+      "quote": 43.3,
+      "netto": -775.62,
+      "brutto": -715.62,
+      "nettoTR": -982.62,
+      "oeNettoProzent": -0.58,
+      "oeR": 0.31
     },
     "heute": {
-      "anzahl": 11,
+      "anzahl": 15,
       "treffer": 6,
-      "quote": 54.5,
-      "netto": 237.54,
-      "brutto": 241.54,
-      "nettoTR": 219.54,
-      "oeNettoProzent": 2.16,
-      "oeR": 0.62
+      "quote": 40,
+      "netto": -94.27,
+      "brutto": -90.27,
+      "nettoTR": -120.27,
+      "oeNettoProzent": -0.63,
+      "oeR": 0.19
     },
-    "offen": 3,
+    "offen": 6,
     "gruppen": {
       "turbo": {
-        "anzahl": 100,
+        "anzahl": 104,
         "treffer": 48,
-        "quote": 48,
-        "netto": -211.9,
-        "brutto": -211.9,
-        "nettoTR": -410.9,
-        "oeNettoProzent": -0.22,
-        "oeR": 0.3
+        "quote": 46.2,
+        "netto": -543.71,
+        "brutto": -543.71,
+        "nettoTR": -750.71,
+        "oeNettoProzent": -0.53,
+        "oeR": 0.25
       },
       "short": {
-        "anzahl": 100,
+        "anzahl": 104,
         "treffer": 48,
-        "quote": 48,
-        "netto": -211.9,
-        "brutto": -211.9,
-        "nettoTR": -410.9,
-        "oeNettoProzent": -0.22,
-        "oeR": 0.3
+        "quote": 46.2,
+        "netto": -543.71,
+        "brutto": -543.71,
+        "nettoTR": -750.71,
+        "oeNettoProzent": -0.53,
+        "oeR": 0.25
       },
       "krypto": {
         "anzahl": 30,
@@ -10462,10 +11099,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 158,
-        "chance": 38,
-        "oeNetto": -0.79,
-        "wertung": -1.25
+        "faelle": 159,
+        "chance": 38.4,
+        "oeNetto": -0.76,
+        "wertung": -1.22
       }
     },
     "krypto:level_long": {
@@ -10473,10 +11110,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 20,
-        "chance": 15,
-        "oeNetto": -0.53,
-        "wertung": -0.92
+        "faelle": 21,
+        "chance": 14.3,
+        "oeNetto": -0.61,
+        "wertung": -0.99
       }
     },
     "eu:orb_long": {
