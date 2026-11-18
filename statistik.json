@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T15:30:20.237Z",
+  "stand": "2026-11-18T15:39:33.860Z",
   "gesamt": {
     "anzahl": 21,
     "treffer": 10,
@@ -428,8 +428,8 @@
   },
   "kandidaten": {
     "gesamt": {
-      "anzahl": 458,
-      "eintraege": 775,
+      "anzahl": 459,
+      "eintraege": 776,
       "n1h": 39,
       "n1T": 274,
       "n3T": 217,
@@ -521,8 +521,8 @@
         "quote1W": 42.9
       },
       "kursrakete": {
-        "anzahl": 68,
-        "eintraege": 76,
+        "anzahl": 69,
+        "eintraege": 77,
         "n1h": 10,
         "n1T": 52,
         "n3T": 39,
@@ -1282,8 +1282,8 @@
         "quote1W": 56.3
       },
       "Upbit": {
-        "anzahl": 40,
-        "eintraege": 56,
+        "anzahl": 41,
+        "eintraege": 57,
         "n1h": 20,
         "n1T": 34,
         "n3T": 32,
@@ -1859,8 +1859,8 @@
         "quote1W": 44
       },
       "pump_verdacht": {
-        "anzahl": 68,
-        "eintraege": 86,
+        "anzahl": 69,
+        "eintraege": 87,
         "n1h": 22,
         "n1T": 54,
         "n3T": 44,
@@ -1907,8 +1907,8 @@
         "quote1W": 49.1
       },
       "krypto": {
-        "anzahl": 54,
-        "eintraege": 93,
+        "anzahl": 55,
+        "eintraege": 94,
         "n1h": 30,
         "n1T": 46,
         "n3T": 44,
@@ -1955,8 +1955,8 @@
     },
     "nachPhase": {
       "seitwaerts_nervoes": {
-        "anzahl": 236,
-        "eintraege": 372,
+        "anzahl": 237,
+        "eintraege": 373,
         "n1h": 9,
         "n1T": 151,
         "n3T": 94,
@@ -2128,11 +2128,21 @@
       "quelle": "sammelkurse"
     },
     {
+      "typ": "gewinn_ueberraschung",
+      "gruppe": "aktie",
+      "faelle": 77,
+      "chance": 51.9,
+      "oeNetto": 0.15,
+      "huerde": 0.6,
+      "bewiesen": false,
+      "quelle": "sammelkurse"
+    },
+    {
       "typ": "gewinn_enttaeuschung",
       "gruppe": "aktie",
-      "faelle": 18,
-      "chance": 61.1,
-      "oeNetto": 0.24,
+      "faelle": 19,
+      "chance": 57.9,
+      "oeNetto": 0.04,
       "huerde": 0.6,
       "bewiesen": false,
       "quelle": "sammelkurse"
@@ -2140,19 +2150,9 @@
     {
       "typ": "nachzahlen_drift",
       "gruppe": "aktie",
-      "faelle": 18,
-      "chance": 50,
-      "oeNetto": -0.04,
-      "huerde": 0.6,
-      "bewiesen": false,
-      "quelle": "sammelkurse"
-    },
-    {
-      "typ": "gewinn_ueberraschung",
-      "gruppe": "aktie",
-      "faelle": 76,
-      "chance": 51.3,
-      "oeNetto": -0.13,
+      "faelle": 19,
+      "chance": 47.4,
+      "oeNetto": -0.23,
       "huerde": 0.6,
       "bewiesen": false,
       "quelle": "sammelkurse"
@@ -2178,16 +2178,6 @@
       "quelle": "sammelkurse"
     },
     {
-      "typ": "insider_kauf",
-      "gruppe": "aktie",
-      "faelle": 86,
-      "chance": 39.5,
-      "oeNetto": -1.65,
-      "huerde": 0.6,
-      "bewiesen": false,
-      "quelle": "sammelkurse"
-    },
-    {
       "typ": "tagesverlierer",
       "gruppe": "aktie",
       "faelle": 34,
@@ -2198,11 +2188,21 @@
       "quelle": "sammelkurse"
     },
     {
+      "typ": "insider_kauf",
+      "gruppe": "aktie",
+      "faelle": 87,
+      "chance": 39.1,
+      "oeNetto": -2.17,
+      "huerde": 0.6,
+      "bewiesen": false,
+      "quelle": "sammelkurse"
+    },
+    {
       "typ": "grossauftrag",
       "gruppe": "aktie",
-      "faelle": 104,
-      "chance": 42.3,
-      "oeNetto": -2.19,
+      "faelle": 116,
+      "chance": 42.2,
+      "oeNetto": -2.51,
       "huerde": 0.6,
       "bewiesen": false,
       "quelle": "sammelkurse"
@@ -2250,9 +2250,9 @@
     {
       "typ": "verwaesserung",
       "gruppe": "aktie",
-      "faelle": 144,
-      "chance": 38.9,
-      "oeNetto": -4.12,
+      "faelle": 149,
+      "chance": 39.6,
+      "oeNetto": -3.96,
       "huerde": 0.6,
       "bewiesen": false,
       "quelle": "sammelkurse"
@@ -2260,9 +2260,9 @@
     {
       "typ": "handelsstopp",
       "gruppe": "aktie",
-      "faelle": 258,
-      "chance": 43,
-      "oeNetto": -4.23,
+      "faelle": 262,
+      "chance": 43.1,
+      "oeNetto": -4.13,
       "huerde": 0.6,
       "bewiesen": false,
       "quelle": "sammelkurse"
@@ -2300,9 +2300,9 @@
     {
       "typ": "uebernahmeangebot",
       "gruppe": "aktie",
-      "faelle": 9,
+      "faelle": 12,
       "chance": 33.3,
-      "oeNetto": -5.01,
+      "oeNetto": -5.34,
       "huerde": 0.6,
       "bewiesen": false,
       "quelle": "sammelkurse"
@@ -2318,22 +2318,22 @@
       "quelle": "sammelkurse"
     },
     {
+      "typ": "leerverkauf_aenderung",
+      "gruppe": "aktie",
+      "faelle": 39,
+      "chance": 30.8,
+      "oeNetto": -5.96,
+      "huerde": 0.6,
+      "bewiesen": false,
+      "quelle": "sammelkurse"
+    },
+    {
       "typ": "kursrakete",
       "gruppe": "krypto",
       "faelle": 11,
       "chance": 18.2,
       "oeNetto": -7.81,
       "huerde": 0.7,
-      "bewiesen": false,
-      "quelle": "sammelkurse"
-    },
-    {
-      "typ": "leerverkauf_aenderung",
-      "gruppe": "aktie",
-      "faelle": 28,
-      "chance": 25,
-      "oeNetto": -9.71,
-      "huerde": 0.6,
       "bewiesen": false,
       "quelle": "sammelkurse"
     },
@@ -2360,9 +2360,9 @@
     {
       "typ": "kursrakete",
       "gruppe": "aktie",
-      "faelle": 71,
-      "chance": 29.6,
-      "oeNetto": -12.19,
+      "faelle": 74,
+      "chance": 28.4,
+      "oeNetto": -12.37,
       "huerde": 0.6,
       "bewiesen": false,
       "quelle": "sammelkurse"
