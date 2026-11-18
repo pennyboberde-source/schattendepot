@@ -786,6 +786,54 @@
           "3 bis 6 × Ø",
           "über 6 × Ø (Anhäufung)"
         ]
+      },
+      {
+        "merkmal": "aktien",
+        "grenzen": [
+          5,
+          20,
+          100,
+          500
+        ],
+        "namen": [
+          "unter 5 Mio. Aktien",
+          "5 bis 20 Mio.",
+          "20 bis 100 Mio.",
+          "100 bis 500 Mio.",
+          "über 500 Mio. Aktien"
+        ]
+      },
+      {
+        "merkmal": "boersenwertUS",
+        "grenzen": [
+          50,
+          300,
+          2000,
+          10000
+        ],
+        "namen": [
+          "Börsenwert unter 50 Mio. $ (Nano)",
+          "50 bis 300 Mio. $ (Micro)",
+          "300 Mio. bis 2 Mrd. $ (Small)",
+          "2 bis 10 Mrd. $ (Mid)",
+          "über 10 Mrd. $ (Large)"
+        ]
+      },
+      {
+        "merkmal": "leerAnteil",
+        "grenzen": [
+          2,
+          5,
+          10,
+          20
+        ],
+        "namen": [
+          "Leerbestand unter 2 % der Aktien",
+          "2 bis 5 %",
+          "5 bis 10 %",
+          "10 bis 20 %",
+          "über 20 % (Squeeze-Kandidat)"
+        ]
       }
     ],
     "quartalMindestFaelle": 5,
@@ -980,7 +1028,10 @@
       "otc",
       "max20",
       "volumen5",
-      "kurs"
+      "kurs",
+      "aktien",
+      "boersenwertUS",
+      "leerAnteil"
     ],
     "mindestSpruenge": 20,
     "fallstudie": [

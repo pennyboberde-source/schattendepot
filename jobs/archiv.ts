@@ -40,6 +40,7 @@ import { leerbestandCsv, parseFinraShortInterest, stichtagKandidaten } from '../
 import { FirdsLeser, GettexProdukte, HebelZaehler, type HebelStand } from '../core/volltreffer/firds.ts';
 import { hebelZeilen, produktAuswahl, richtungenAus, type ProdukteJeBasis } from '../core/volltreffer/hebelkurse.ts';
 import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, quartaleZwischen, quartalsEnde, quartalVon, type InsiderArchiv } from '../core/volltreffer/insider.ts';
+import { frameEinarbeiten, frameLesen, framesBis, type AktienzahlArchiv } from '../core/volltreffer/aktienzahl.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -81,6 +82,8 @@ interface Index {
   leerbestand?: Record<string, { werte: number; veroeffentlicht: string | null; geholt: string }>;
   /** Insider-Käufe (stamm/insider.json.gz) in Zählungen */
   insider?: { kaeufe: number; kuerzel: number; quartale: number; tage: number; ab: string | null; bis: string | null; geholt: string };
+  /** F4: Aktienzahl je Firma aus SEC-XBRL-Frames (nur Zählungen) */
+  aktienzahl?: { firmen: number; werte: number; frames: number; geholt: string };
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -811,6 +814,40 @@ async function leerbestand() {
   console.log(`Leerverkaufsbestand (FINRA): ${geholt} Stichtage geholt, ${offen} noch nicht veröffentlicht; Archiv: ${da.length} Stichtage (${da[0] ?? '–'} bis ${da[da.length - 1] ?? '–'}).`);
 }
 
+// ---------- F4: Aktienzahl je US-Firma (SEC XBRL frames, frei; Kontaktadresse wie bei den Zahlen-Terminen) ----------
+// Eine Abfrage je Quartal liefert das Deckblatt-Datum und die ausstehenden Aktien aller Firmen. Fehlende Quartale ab zwei
+// Jahren vor heute einmal, das laufende und das vorige Quartal bei jedem Lauf neu (sie füllen sich mit jeder Meldung).
+async function aktienzahl() {
+  const kontakt = process.env.SEC_KONTAKT?.trim();
+  if (!kontakt || !kontakt.includes('@')) {
+    console.log('Aktienzahl (SEC): SEC_KONTAKT fehlt – übersprungen.');
+    return;
+  }
+  const datei = join(ARCHIV, 'stamm', 'us-aktienzahl.json.gz');
+  const a: AktienzahlArchiv = existsSync(datei) ? (JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as AktienzahlArchiv) : { stand: iso, frames: {}, je: {} };
+  const heute = iso.slice(0, 10);
+  const alle = framesBis(tagPlus(heute, -Math.round(2 * 365.25) - 120), heute);
+  const neu = alle.filter((f, i) => !a.frames[f] || i >= alle.length - 2);
+  let werte = 0;
+  for (const f of neu) {
+    const r = await fetch(`https://data.sec.gov/api/xbrl/frames/dei/EntityCommonStockSharesOutstanding/shares/${f}.json`, { headers: { 'User-Agent': `Schattendepot-Forschung ${kontakt}`, Accept: 'application/json' }, signal: AbortSignal.timeout(120000) });
+    await pause(300);
+    if (r.status === 404) {
+      await r.arrayBuffer().catch(() => undefined);
+      continue;
+    }
+    if (r.status !== 200) throw new Error(`Aktienzahl ${f}: HTTP ${r.status}`);
+    werte += frameEinarbeiten(a, frameLesen(await r.json()));
+    a.frames[f] = iso;
+  }
+  a.stand = iso;
+  mkdirSync(dirname(datei), { recursive: true });
+  writeFileSync(datei, gzipSync(Buffer.from(JSON.stringify(a), 'utf8'), { level: 9 }));
+  const gesamt = Object.values(a.je).reduce((s, l) => s + l.length, 0);
+  index.aktienzahl = { firmen: Object.keys(a.je).length, werte: gesamt, frames: Object.keys(a.frames).length, geholt: iso };
+  console.log(`Aktienzahl (SEC-Frames): ${neu.length} Quartale abgefragt, ${werte} neue Werte; Archiv: ${Object.keys(a.je).length} Firmen, ${gesamt} Werte.`);
+}
+
 // ---------- Hebelprodukte je Basiswert (ESMA FIRDS, Quantensprung B Stufe 1) ----------
 // Wöchentliche Vollliste der Klasse R (samstags, ~19 Teile à ~9 MB gezippt, je ~470 MB XML in einer Zeile): nur wenn es
 // eine neue gibt, stückweise über `unzip -p` gelesen. Gezählt je US-Basiswert: Calls/Puts an gettex (MUND) und am
@@ -1083,6 +1120,7 @@ const TEILE = [
   ['leerbestand', 'Leerverkaufsbestand (FINRA)', leerbestand],
   ['hebel', 'Hebelprodukte (ESMA FIRDS)', hebel],
   ['insider', 'Insider-Käufe (SEC)', insider],
+  ['aktienzahl', 'Aktienzahl (SEC-Frames)', aktienzahl],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;

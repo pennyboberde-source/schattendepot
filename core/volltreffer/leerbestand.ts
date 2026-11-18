@@ -61,18 +61,18 @@ const tagPlus = (datum: string, tage: number) => new Date(Date.parse(`${datum}T1
  * Archiv-CSV zurück → ab wann bekannt (Tag, UTC) und je Kürzel Tage zum Eindecken und Änderung des Bestands in %
  * (eine Nachkommastelle; null bei Split, ohne Vorwert oder Vorwert 0).
  */
-export function leerbestandAusCsv(text: string, stichtag: string): { ab: string; werte: Map<string, { tage: number | null; aenderung: number | null }> } {
+export function leerbestandAusCsv(text: string, stichtag: string): { ab: string; werte: Map<string, { tage: number | null; aenderung: number | null; bestand: number }> } {
   const zeilen = text.split('\n');
   const v = /^#veroeffentlicht=(\S*)/.exec(zeilen[0] ?? '')?.[1] ?? '';
   const ab = /^\d{4}-\d{2}-\d{2}/.test(v) ? v.slice(0, 10) : tagPlus(stichtag, ERSATZ_VERZUG_TAGE);
-  const werte = new Map<string, { tage: number | null; aenderung: number | null }>();
+  const werte = new Map<string, { tage: number | null; aenderung: number | null; bestand: number }>();
   for (const z of zeilen.slice(zeilen[0]?.startsWith('#') ? 2 : 1)) {
     const [s, b, vo, , t] = z.split(',');
     const bestand = zahl(b);
     if (!s || bestand === null) continue;
     const vorher = zahl(vo);
     const tage = zahl(t);
-    werte.set(s, { tage: tage === null ? null : Math.round(tage * 100) / 100, aenderung: vorher !== null && vorher > 0 ? Math.round(((bestand - vorher) / vorher) * 1000) / 10 : null });
+    werte.set(s, { tage: tage === null ? null : Math.round(tage * 100) / 100, aenderung: vorher !== null && vorher > 0 ? Math.round(((bestand - vorher) / vorher) * 1000) / 10 : null, bestand });
   }
   // nie vor dem Stichtag selbst (falls Last-Modified fehlerhaft wäre)
   return { ab: ab < stichtag ? tagPlus(stichtag, ERSATZ_VERZUG_TAGE) : ab, werte };

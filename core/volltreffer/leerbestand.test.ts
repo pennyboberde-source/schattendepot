@@ -25,9 +25,9 @@ describe('Leerverkaufsbestand (FINRA)', () => {
     const csv = leerbestandCsv(parseFinraShortInterest(FINRA), '2026-11-02T11:00:21.000Z');
     const { ab, werte } = leerbestandAusCsv(csv, '2026-10-15');
     expect(ab).toBe('2026-11-02');
-    expect(werte.get('XYZ')).toEqual({ tage: 3, aenderung: 50 });
-    expect(werte.get('ABC.B')).toEqual({ tage: null, aenderung: -50 });
-    expect(werte.get('SPL')).toEqual({ tage: 3, aenderung: null });
+    expect(werte.get('XYZ')).toEqual({ tage: 3, aenderung: 50, bestand: 1500000 });
+    expect(werte.get('ABC.B')).toEqual({ tage: null, aenderung: -50, bestand: 200 });
+    expect(werte.get('SPL')).toEqual({ tage: 3, aenderung: null, bestand: 9000 });
   });
 
   it('ohne Veröffentlichungszeit (oder unsinnige) gilt der Stichtag + 21 Tage', () => {

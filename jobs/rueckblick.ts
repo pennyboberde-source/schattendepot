@@ -22,6 +22,7 @@ import { boersenwertAm, parseBoersenwertCsv } from '../core/volltreffer/boersenw
 import { aenderungAm, breite, fedAbstand, schluesse, summeBis, wertAm, type KryptoUmfeldArchiv, type UmfeldArchiv } from '../core/volltreffer/umfeld.ts';
 import { leerquotenAusCsv, leerquotenReihe } from '../core/volltreffer/leerverkauf.ts';
 import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbestand.ts';
+import { aktienzahlAm, type AktienzahlArchiv } from '../core/volltreffer/aktienzahl.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
 import { hebelDa, type HebelStand } from '../core/volltreffer/firds.ts';
 import { haltefristFortschreiben, type Haltefrist } from '../core/volltreffer/haltefrist.ts';
@@ -152,12 +153,14 @@ const boersenwerte = new Map<string, Map<string, number>>();
 // Vergangenes, künftige Termine fließen nicht ein – und die Branche aus dem SIC-Code
 let zahlenAb = '9999-12-31';
 const firmen = new Map<string, ZahlenFirma>();
+const firmenNachCik = new Map<string, ZahlenFirma>();
 {
   const p = join(ARCHIV, 'stamm', 'us-zahlen.json.gz');
   if (existsSync(p)) {
     const a = JSON.parse(gz(p)) as ZahlenArchiv;
     zahlenAb = a.ab;
     for (const [t, f] of firmaJeTicker(a)) firmen.set(t, f);
+    for (const [cik, f] of Object.entries(a.firmen)) firmenNachCik.set(String(Number(cik)), f);
   }
   const mit = new Set(reihen.filter((r) => r.markt === 'aktie' && firmen.has(r.schluessel.slice(2).split('#')[0])).map((r) => r.schluessel.split('#')[0]));
   const mitArten = new Set(reihen.filter((r) => r.markt === 'aktie' && meldungenErfasst(firmen.get(r.schluessel.slice(2).split('#')[0]))).map((r) => r.schluessel.split('#')[0]));
@@ -273,9 +276,10 @@ const lbJe = new Map<string, Float32Array>();
     for (const [k, w] of werte) {
       if (!usKuerzel.has(k)) continue;
       let a = lbJe.get(k);
-      if (!a) lbJe.set(k, (a = new Float32Array(dateien.length * 2).fill(Number.NaN)));
-      a[2 * i] = w.tage ?? Number.NaN;
-      a[2 * i + 1] = w.aenderung ?? Number.NaN;
+      if (!a) lbJe.set(k, (a = new Float32Array(dateien.length * 3).fill(Number.NaN)));
+      a[3 * i] = w.tage ?? Number.NaN;
+      a[3 * i + 1] = w.aenderung ?? Number.NaN;
+      a[3 * i + 2] = w.bestand;
     }
   });
   const letzte = lbDateien[lbDateien.length - 1];
@@ -288,9 +292,37 @@ const leerbestandAm = (r: Reihe, datum: string): { bestandTage: number | null; b
   let i = lbDateiAm.get(datum);
   if (i === undefined) lbDateiAm.set(datum, (i = leerbestandDatei(lbDateien, datum)));
   if (i < 0) return { bestandTage: null, bestandAenderung: null };
-  const t = a[2 * i];
-  const c = a[2 * i + 1];
+  const t = a[3 * i];
+  const c = a[3 * i + 1];
   return { bestandTage: Number.isNaN(t) ? null : Math.round(t * 100) / 100, bestandAenderung: Number.isNaN(c) ? null : Math.round(c * 10) / 10 };
+};
+// F4 (18.11.2026): Aktienzahl je Firma (SEC-Frames, privat stamm/us-aktienzahl.json.gz) → Aktienzahl, Börsenwert und
+// Leerbestand in % der Aktien (FINRA-Bestand der am Tag gültigen Datei)
+const aktienJe = new Map<string, [string, number][]>();
+{
+  const f = join(ARCHIV, 'stamm', 'us-aktienzahl.json.gz');
+  if (existsSync(f)) {
+    const a = JSON.parse(gz(f)) as AktienzahlArchiv;
+    for (const [cik, l] of Object.entries(a.je)) {
+      const firma = firmenNachCik.get(cik);
+      for (const t of firma?.tickers ?? []) aktienJe.set(t, l);
+    }
+  }
+  log(`Aktienzahl (SEC-Frames): ${aktienJe.size} Kürzel.`);
+}
+const aktienAm = (r: Reihe, x: Merkmale, datum: string): { aktien: number | null; boersenwertUS: number | null; leerAnteil: number | null } => {
+  if (r.markt !== 'aktie') return { aktien: null, boersenwertUS: null, leerAnteil: null };
+  const kz = r.schluessel.slice(2).split('#')[0];
+  const n = aktienzahlAm(aktienJe.get(kz), datum);
+  if (!n) return { aktien: null, boersenwertUS: null, leerAnteil: null };
+  let leer: number | null = null;
+  const lb = lbJe.get(kz);
+  if (lb) {
+    let i = lbDateiAm.get(datum);
+    if (i === undefined) lbDateiAm.set(datum, (i = leerbestandDatei(lbDateien, datum)));
+    if (i >= 0 && Number.isFinite(lb[3 * i + 2])) leer = Math.round((lb[3 * i + 2] / n) * 1000) / 10;
+  }
+  return { aktien: Math.round(n / 1e5) / 10, boersenwertUS: Math.round((n * x.kurs) / 1e5) / 10, leerAnteil: leer };
 };
 const brancheVon = (r: Reihe): number | null => (r.markt === 'aktie' ? brancheAusSic(firmen.get(r.schluessel.slice(2).split('#')[0])?.sic) : null);
 
@@ -510,8 +542,8 @@ const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
 const zw = new Zaehlwerk(gruppen.length, SP.length, F.length, 2);
 log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
-type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null; bestandTage: number | null; bestandAenderung: number | null; anleihen5: number | null; dollar5: number | null; kredit5: number | null; oel5: number | null; sektor5: number | null; angst: number | null; stable30: number | null; otc: number | null } & Partial<Record<MeldungArt, number | null>>;
-const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', 'otc', ...MELDUNG_ARTEN]);
+type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null; bestandTage: number | null; bestandAenderung: number | null; anleihen5: number | null; dollar5: number | null; kredit5: number | null; oel5: number | null; sektor5: number | null; angst: number | null; stable30: number | null; otc: number | null; aktien: number | null; boersenwertUS: number | null; leerAnteil: number | null } & Partial<Record<MeldungArt, number | null>>;
+const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', 'otc', 'aktien', 'boersenwertUS', 'leerAnteil', ...MELDUNG_ARTEN]);
 const merkmalWert = (e: Einteilung, m: Merkmale, kontext: Kontext): number | null =>
   KONTEXT_MERKMALE.has(e.merkmal) ? (kontext[e.merkmal as keyof Kontext] ?? null) : (m[e.merkmal as keyof Merkmale] as number | null);
 /** Meldungsarten, nach denen die Einteilungen fragen (nur die werden je Stichtag gerechnet) */
@@ -528,7 +560,7 @@ const lageFuer = (r: Reihe, datum: string) => {
 /** Klasse je Einteilung an einem Stichtag (Durchgang 2 und Klumpen-Prüfung rechnen genau gleich) */
 const klassenAm = (r: Reihe, x: Merkmale, datum: string) => {
   const mr = marktR1[r.markt].get(datum) ?? 0;
-  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null, ...(LB_GEFRAGT ? leerbestandAm(r, datum) : { bestandTage: null, bestandAenderung: null }), ...lageFuer(r, datum), otc: r.markt === 'aktie' ? (r.otc ? 1 : 0) : null };
+  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null, ...(LB_GEFRAGT ? leerbestandAm(r, datum) : { bestandTage: null, bestandAenderung: null }), ...lageFuer(r, datum), otc: r.markt === 'aktie' ? (r.otc ? 1 : 0) : null, ...aktienAm(r, x, datum) };
   for (const a of GEFRAGTE_ARTEN) kontext[a] = meldungAm(r, datum, a);
   return E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
 };
@@ -846,7 +878,7 @@ for (const r of reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: 'Beteiligung ab 5 % (13G)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %', otc: 'Handelsplatz (Börse/OTC)', max20: 'Größter Tagesgewinn 20 Tage %', volumen5: 'Umsatz 5 Tage (× Ø 20 Tage davor)' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: 'Beteiligung ab 5 % (13G)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %', otc: 'Handelsplatz (Börse/OTC)', aktien: 'Aktienzahl (Mio.)', boersenwertUS: 'Börsenwert (Mio. $)', leerAnteil: 'Leerbestand in % der Aktien', max20: 'Größter Tagesgewinn 20 Tage %', volumen5: 'Umsatz 5 Tage (× Ø 20 Tage davor)' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
