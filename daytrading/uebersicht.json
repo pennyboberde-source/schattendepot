@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T17:39:48.467Z",
+  "stand": "2026-11-18T17:53:32.260Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -1.56,
       "oeR": -0.97
     },
-    "offen": 5
+    "offen": 6
   },
   "gesamt": {
     "anzahl": 562,
@@ -957,60 +957,52 @@
       }
     },
     {
-      "id": "2026-11-18-scan-marvell-technology-inc",
+      "id": "2026-11-18-scan-advanced-micro-devices",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
       "markt": "us",
       "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MARVELL TECHNOLOGY INC",
-      "isin": "US5738741041",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 157.78,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ADVANCED MICRO DEVICES",
+      "isin": "US0079031078",
+      "spekulativ": false,
       "ausloeser": {
-        "zeit": "2026-11-18T17:00:00.000Z",
-        "kurs": 130.92,
-        "level": 131,
+        "zeit": "2026-11-18T17:30:00.000Z",
+        "kurs": 475.3,
+        "level": 473.6,
         "spanne": {
-          "hoch": 137.32,
-          "tief": 131
+          "hoch": 473.6,
+          "tief": 452.75
         },
-        "richtung": "short"
+        "richtung": "long"
       },
-      "stop": 134.16,
-      "ziel": 126.12,
+      "stop": 463.18,
+      "ziel": 501.65,
       "zielR": 2,
       "flatBis": "2026-11-18T20:55:00.000Z",
-      "virtuell": true,
       "einstieg": {
-        "zeit": "2026-11-18T17:00:00.000Z",
-        "basisKurs": 131.48,
-        "kurs": 2.6366,
-        "stueck": 379,
-        "kurswert": 999.27
+        "zeit": "2026-11-18T17:30:00.000Z",
+        "basisKurs": 476,
+        "kurs": 476.357,
+        "stueck": 2,
+        "kurswert": 952.71
       },
       "timeMachine": {
-        "zielZuerst": 4.2,
-        "stopZuerst": 22.3,
-        "keins": 73.5,
-        "gruen": 52.3,
+        "zielZuerst": 0.1,
+        "stopZuerst": 5.9,
+        "keins": 94.1,
+        "gruen": 50.3,
         "schwelle": 33.3,
         "urteil": "Deutlich Richtung Stop",
         "wiederholungen": 10000,
         "seed": 19,
         "sitzungen": 63,
         "historie": {
-          "faelle": 35,
-          "ziel": 8,
-          "stop": 13,
-          "oeR": 0.18
+          "faelle": 40,
+          "ziel": 5,
+          "stop": 17,
+          "oeR": 0.03
         }
       }
     }
@@ -1598,6 +1590,56 @@
       }
     },
     {
+      "id": "2026-11-18-scan-advanced-micro-devices",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ADVANCED MICRO DEVICES",
+      "isin": "US0079031078",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T17:30:00.000Z",
+        "kurs": 475.3,
+        "level": 473.6,
+        "spanne": {
+          "hoch": 473.6,
+          "tief": 452.75
+        },
+        "richtung": "long"
+      },
+      "stop": 463.18,
+      "ziel": 501.65,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T17:30:00.000Z",
+        "basisKurs": 476,
+        "kurs": 476.357,
+        "stueck": 2,
+        "kurswert": 952.71
+      },
+      "timeMachine": {
+        "zielZuerst": 0.1,
+        "stopZuerst": 5.9,
+        "keins": 94.1,
+        "gruen": 50.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 40,
+          "ziel": 5,
+          "stop": 17,
+          "oeR": 0.03
+        }
+      }
+    },
+    {
       "id": "2026-11-18-scan-marvell-technology-inc",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1653,6 +1695,25 @@
           "stop": 13,
           "oeR": 0.18
         }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T17:35:00.000Z",
+        "basisKurs": 134.16,
+        "kurs": 2.3561,
+        "kurswert": 892.96,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -106.31,
+        "bruttoProzent": -10.64,
+        "netto": -106.31,
+        "nettoProzent": -10.64,
+        "nettoTR": -108.31,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -12559,46 +12620,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 142,
+      "anzahl": 143,
       "treffer": 61,
-      "quote": 43,
-      "netto": -1015.2,
-      "brutto": -955.2,
-      "nettoTR": -1238.2,
-      "oeNettoProzent": -0.72,
+      "quote": 42.7,
+      "netto": -1121.51,
+      "brutto": -1061.51,
+      "nettoTR": -1346.51,
+      "oeNettoProzent": -0.79,
       "oeR": 0.28
     },
     "heute": {
-      "anzahl": 23,
+      "anzahl": 24,
       "treffer": 9,
-      "quote": 39.1,
-      "netto": -333.85,
-      "brutto": -329.85,
-      "nettoTR": -375.85,
-      "oeNettoProzent": -1.47,
-      "oeR": 0.09
+      "quote": 37.5,
+      "netto": -440.16,
+      "brutto": -436.16,
+      "nettoTR": -484.16,
+      "oeNettoProzent": -1.86,
+      "oeR": 0.05
     },
-    "offen": 7,
+    "offen": 6,
     "gruppen": {
       "turbo": {
-        "anzahl": 112,
+        "anzahl": 113,
         "treffer": 51,
-        "quote": 45.5,
-        "netto": -783.29,
-        "brutto": -783.29,
-        "nettoTR": -1006.29,
-        "oeNettoProzent": -0.71,
-        "oeR": 0.23
+        "quote": 45.1,
+        "netto": -889.6,
+        "brutto": -889.6,
+        "nettoTR": -1114.6,
+        "oeNettoProzent": -0.8,
+        "oeR": 0.22
       },
       "short": {
-        "anzahl": 112,
+        "anzahl": 113,
         "treffer": 51,
-        "quote": 45.5,
-        "netto": -783.29,
-        "brutto": -783.29,
-        "nettoTR": -1006.29,
-        "oeNettoProzent": -0.71,
-        "oeR": 0.23
+        "quote": 45.1,
+        "netto": -889.6,
+        "brutto": -889.6,
+        "nettoTR": -1114.6,
+        "oeNettoProzent": -0.8,
+        "oeR": 0.22
       },
       "krypto": {
         "anzahl": 30,
@@ -12675,10 +12736,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 110,
-        "chance": 36.4,
-        "oeNetto": -0.9,
-        "wertung": -1.7
+        "faelle": 112,
+        "chance": 35.7,
+        "oeNetto": -0.99,
+        "wertung": -1.78
       }
     },
     "us:orb_long": {
