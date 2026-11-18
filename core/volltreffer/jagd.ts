@@ -43,6 +43,12 @@ export interface JagdRegeln {
   tagesVerlustGrenze: number;
   /** V6: höchstens eine offene Jagd je Wert (derselbe Wert aus zwei Mustern wird nicht doppelt gehandelt) */
   einmalJeWert?: boolean;
+  /**
+   * Klumpen (18.11.2026): Werte, die sich gemeinsam bewegen (z. B. gehebelte Krypto-ETFs BITU/BITX/ETHU/MSTU), sind
+   * eine Wette. `klumpe` ordnet einem Fall eine Gruppe zu, höchstens `maxJeKlumpen` offene Jagden je Gruppe und Richtung.
+   */
+  klumpe?: (f: JagdFall) => string | null;
+  maxJeKlumpen?: number;
 }
 
 /** Wählt aus allen Fällen die virtuellen Jagden (Reihenfolge: Einstieg, dann Wertung). */
@@ -66,7 +72,10 @@ export function jagdenWaehlen(faelle: JagdFall[], r: JagdRegeln): { jagden: Jagd
       if (sperrtag.get(d) === tag) gesperrt = true;
     }
     const doppelt = !!r.einmalJeWert && offen.some((o) => o.wert === f.wert && o.markt === f.markt);
-    if (offen.length >= r.maxOffen || gesperrt || doppelt) {
+    const kl = r.klumpe?.(f) ?? null;
+    const richtung = (x: JagdFall) => (/short/i.test(x.spielart) ? 's' : 'l');
+    const klumpenVoll = kl !== null && r.maxJeKlumpen !== undefined && offen.filter((o) => r.klumpe!(o) === kl && richtung(o) === richtung(f)).length >= r.maxJeKlumpen;
+    if (offen.length >= r.maxOffen || gesperrt || doppelt || klumpenVoll) {
       uebersprungen++;
       continue;
     }

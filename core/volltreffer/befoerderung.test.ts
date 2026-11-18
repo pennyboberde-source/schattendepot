@@ -130,3 +130,18 @@ describe('Einzelmitteilungen', () => {
     expect(m4.neu[0].titel).toBe('🎯 Volltreffer-Order läuft: QQQ');
   });
 });
+
+describe('V6: verschiedene Tage und Ø je Tag (18.11.2026)', () => {
+  const r = { mindestFaelle: 20, mindestQuote: 25, mindestEv: 30, maxOffen: 3, tagesVerlustGrenze: 300, einsatz: 1000, mindestTage: 6, schnellspur: { mindestWertung: 30, mindestFaelle: 10, mindestTage: 4 } };
+  const rb = { quote: 30, ev: 40, se: 10 };
+  it('viele Fälle an wenigen Tagen reichen nicht', () => {
+    expect(befoerderungPruefen({ faelle: 599, ev: 60, rueckblick: rb, tage: 2, evTage: 60 }, r)).toMatchObject({ ok: false });
+    expect(befoerderungPruefen({ faelle: 599, ev: 60, rueckblick: rb, tage: 2, evTage: 60 }, r).grund).toMatch(/2 von 6 verschiedenen Tagen/);
+    expect(befoerderungPruefen({ faelle: 40, ev: 60, rueckblick: rb, tage: 6, evTage: 60 }, r).ok).toBe(true);
+  });
+  it('Ø je Tag entscheidet, Schnellspur braucht weniger Tage', () => {
+    expect(befoerderungPruefen({ faelle: 40, ev: 60, rueckblick: rb, tage: 6, evTage: -5 }, r).ok).toBe(false);
+    expect(befoerderungPruefen({ faelle: 12, ev: 60, rueckblick: rb, tage: 4, evTage: 60, wertung: 35 }, r).ok).toBe(true);
+    expect(befoerderungPruefen({ faelle: 12, ev: 60, rueckblick: rb, tage: 3, evTage: 60, wertung: 35 }, r).ok).toBe(false);
+  });
+});

@@ -42,7 +42,7 @@ interface VtConfig {
   };
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   erkennung?: { fenster: number; ereignisMerkmale: string[]; mindestSpruenge: number; liftMin: number; fallstudie: { wert: string; von: string; bis: string; anlass: string }[] };
-  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number; haltefristTage?: number };
+  v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number; haltefristTage?: number; maxJeKlumpen?: number; klumpenAnker?: string[]; klumpenMinKorrelation?: number };
   v6: V6Regeln & { ohneNein?: boolean };
   modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   hebel?: { nurGettex: boolean; maxAlterTage: number; mindestZugeordnet: number };
@@ -1724,7 +1724,52 @@ if (vt.erkennung) {
     if (u) Object.assign(f, u);
   }
   const ohnePump = vorwaerts.filter((f) => !f.pump);
-  const { jagden, uebersprungen } = jagdenWaehlen(ohnePump, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, einmalJeWert: true });
+  // Klumpen (18.11.2026): je Wert die Anker-Reihe mit der höchsten Korrelation der Tagesrenditen der letzten 120 Tage
+  // (ab 0,7), sonst der Wert selbst – höchstens maxJeKlumpen offene Jagden je Anker und Richtung
+  const klumpeCache = new Map<string, string | null>();
+  const reiheNach = new Map<string, Reihe>();
+  for (const r of reihen) if (!r.schluessel.includes('#')) reiheNach.set(r.schluessel, r);
+  const anker = (vt.v4.klumpenAnker ?? []).map((s) => reiheNach.get(s)).filter((r): r is Reihe => !!r);
+  const renditen = (r: Reihe) => {
+    const k = r.kerzen.slice(-121);
+    const m = new Map<string, number>();
+    for (let i = 1; i < k.length; i++) if (k[i - 1].c > 0) m.set(k[i].datum, k[i].c / k[i - 1].c - 1);
+    return m;
+  };
+  const ankerR = anker.map((r) => ({ name: r.schluessel, m: renditen(r) }));
+  const korrelation = (a: Map<string, number>, b: Map<string, number>) => {
+    const xs: number[] = [];
+    const ys: number[] = [];
+    for (const [d, x] of a) {
+      const y = b.get(d);
+      if (y !== undefined) (xs.push(x), ys.push(y));
+    }
+    if (xs.length < 40) return 0;
+    const mx = xs.reduce((s, v) => s + v, 0) / xs.length;
+    const my = ys.reduce((s, v) => s + v, 0) / ys.length;
+    let sxy = 0, sxx = 0, syy = 0;
+    for (let i = 0; i < xs.length; i++) (sxy += (xs[i] - mx) * (ys[i] - my), sxx += (xs[i] - mx) ** 2, syy += (ys[i] - my) ** 2);
+    return sxx > 0 && syy > 0 ? sxy / Math.sqrt(sxx * syy) : 0;
+  };
+  const klumpe = (f: JagdFall): string | null => {
+    const key = `${f.markt}|${f.wert}`;
+    if (klumpeCache.has(key)) return klumpeCache.get(key)!;
+    const r = reiheNach.get(`${f.markt === 'krypto' ? 'K' : 'T'}:${f.wert}`);
+    let best: string | null = key;
+    if (r) {
+      const m = renditen(r);
+      let bk = vt.v4.klumpenMinKorrelation ?? 0.7;
+      for (const a of ankerR) {
+        if (a.name === r.schluessel) continue;
+        const k = korrelation(m, a.m);
+        if (k >= bk) (bk = k, (best = a.name));
+      }
+    }
+    klumpeCache.set(key, best);
+    return best;
+  };
+  const klumpenRegel = { klumpe, maxJeKlumpen: vt.v4.maxJeKlumpen ?? 2 };
+  const { jagden, uebersprungen } = jagdenWaehlen(ohnePump, { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, einmalJeWert: true, ...klumpenRegel });
   // V6: Stufe 3 vor dem Fortschreiben – Stand je Muster (abgeschlossene Vorwärts-Fälle, Ø)
   const v6 = vt.v6;
   const zeitenVorher = stufe3Zeiten(musterBuch.eintraege);
@@ -1735,10 +1780,14 @@ if (vt.erkennung) {
     const f = vorwaerts.filter((x) => x.muster === e.schluessel && x.art !== 'offen' && x.art !== 'lauert');
     const summe = f.reduce((a, x) => a + (x.netto ?? 0), 0);
     const ev = f.length ? Math.round((summe / f.length) * 10) / 10 : 0;
+    // Klumpen vorwärts (18.11.2026): Fälle je Stichtag zusammenfassen, jeder Tag zählt gleich
+    const jeTag = new Map<string, number[]>();
+    for (const x of f) (jeTag.get(x.stichtag) ?? jeTag.set(x.stichtag, []).get(x.stichtag)!).push(x.netto ?? 0);
+    const evTage = jeTag.size ? Math.round(([...jeTag.values()].reduce((a, l) => a + l.reduce((s, v) => s + v, 0) / l.length, 0) / jeTag.size) * 10) / 10 : 0;
     // Stufe 2: mindestens 20 Fälle im Vorwärtstest und ein Ergebnis im Band des Rückblicks (Ø ≥ Rückblick − 2 Standardfehler und > 0)
     const stufe2 = f.length >= v4.stufe2Faelle && ev > 0 && ev >= e.rueckblick.ev - 2 * Math.max(e.rueckblick.se, 1);
     // Stufe 3 (V6): automatisch befördern bzw. zurückstufen – nur nach vorn, als Eintrag im Muster-Buch
-    const p6 = befoerderungPruefen({ faelle: f.length, ev, rueckblick: e.rueckblick, wertung: e.wertung }, v6);
+    const p6 = befoerderungPruefen({ faelle: f.length, ev, rueckblick: e.rueckblick, wertung: e.wertung, tage: jeTag.size, evTage }, v6);
     const war = istBefoerdert(zeitenVorher, e.schluessel);
     if (p6.ok && !war) {
       musterBuch.eintraege.push({ ...e, status: 'befoerdert', am: heute, grund: p6.grund });
@@ -1754,7 +1803,7 @@ if (vt.erkennung) {
   });
   if (befoerdertHeute.length || zurueckHeute.length) schreibeJson('lernen/muster/muster-buch.json', musterBuch);
   const zeiten3 = stufe3Zeiten(musterBuch.eintraege);
-  const s3 = stufe3Waehlen(ohnePump, zeiten3, v6, v6.ohneNein ?? false);
+  const s3 = stufe3Waehlen(ohnePump, zeiten3, v6, v6.ohneNein ?? false, klumpenRegel);
   const befoerdertJetzt = [...alleMuster.values(), ...musterBuch.eintraege]
     .filter((e, i, a) => a.findIndex((x) => x.schluessel === e.schluessel) === i && istBefoerdert(zeiten3, e.schluessel))
     .map((e) => ({ gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: zeiten3.get(e.schluessel)!.find((z) => z.bis === null)!.von, rueckblick: e.rueckblick }));

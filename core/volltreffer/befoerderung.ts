@@ -24,7 +24,13 @@ export interface V6Regeln {
    * Schnellspur (Nutzer 15.11.2026: „kannst auch von 20 Tests absehen, wenn du dir sicher bist“): Muster mit sehr
    * starker Wertung im Rückblick brauchen nur `mindestFaelle` abgeschlossene Fälle vorwärts – alle anderen Bedingungen gelten.
    */
-  schnellspur?: { mindestWertung: number; mindestFaelle: number };
+  schnellspur?: { mindestWertung: number; mindestFaelle: number; mindestTage?: number };
+  /**
+   * Verschiedene Stichtage unter den abgeschlossenen Vorwärts-Fällen mindestens (18.11.2026): Fälle desselben Tages sind
+   * ein Ereignis (wie die Klumpen-Prüfung im Rückblick). Befund 18.11.: ein Muster hatte 599 Vorwärts-Fälle aus 1–3
+   * Tagen – ein einziger Markttag hätte es befördert oder versenkt.
+   */
+  mindestTage?: number;
 }
 
 export interface MusterStand {
@@ -35,6 +41,10 @@ export interface MusterStand {
   rueckblick: { quote: number; ev: number; se: number };
   /** Wertung im Rückblick (für die Schnellspur) */
   wertung?: number;
+  /** verschiedene Stichtage der abgeschlossenen Vorwärts-Fälle */
+  tage?: number;
+  /** Ø je Tag (Mittel der Tagesmittel) – jeder Stichtag zählt gleich, egal wie viele Fälle er hat */
+  evTage?: number;
 }
 
 /** Wie viele abgeschlossene Vorwärts-Fälle braucht dieses Muster? */
@@ -42,14 +52,19 @@ export const noetigeFaelle = (m: Pick<MusterStand, 'wertung'>, r: V6Regeln) => (
 
 /** Erfüllt ein Muster heute die Bedingungen für Stufe 3? Mit Grund (für das Muster-Buch und die App). */
 export function befoerderungPruefen(m: MusterStand, r: V6Regeln): { ok: boolean; grund: string } {
+  const schnell = !!r.schnellspur && (m.wertung ?? 0) >= r.schnellspur.mindestWertung;
+  const tageNoetig = schnell && r.schnellspur?.mindestTage !== undefined ? Math.min(r.schnellspur.mindestTage, r.mindestTage ?? 0) : (r.mindestTage ?? 0);
+  // Ø vorwärts je Tag (Klumpen), falls bekannt
+  const ev = m.evTage ?? m.ev;
   if (m.rueckblick.quote < r.mindestQuote) return { ok: false, grund: `Volltreffer-Quote im Rückblick ${m.rueckblick.quote} % unter ${r.mindestQuote} %` };
   if (m.rueckblick.ev < r.mindestEv) return { ok: false, grund: `Ø im Rückblick ${euro(m.rueckblick.ev)} unter ${euro(r.mindestEv)}` };
   const noetig = noetigeFaelle(m, r);
   if (m.faelle < noetig) return { ok: false, grund: `erst ${m.faelle} von ${noetig} Fällen im Vorwärtstest${noetig < r.mindestFaelle ? ' (Schnellspur)' : ''}` };
-  if (m.ev <= 0) return { ok: false, grund: `vorwärts Ø ${euro(m.ev, { vorzeichen: true })} – nicht im Plus` };
+  if (tageNoetig && (m.tage ?? 0) < tageNoetig) return { ok: false, grund: `Fälle erst an ${m.tage ?? 0} von ${tageNoetig} verschiedenen Tagen` };
+  if (ev <= 0) return { ok: false, grund: `vorwärts Ø ${euro(ev, { vorzeichen: true })}${m.evTage !== undefined ? ' je Tag' : ''} – nicht im Plus` };
   const band = m.rueckblick.ev - 2 * Math.max(m.rueckblick.se, 1);
-  if (m.ev < band) return { ok: false, grund: `vorwärts Ø ${euro(m.ev)} unter dem Band des Rückblicks (${euro(band)})` };
-  return { ok: true, grund: `${m.faelle} Fälle vorwärts, Ø ${euro(m.ev, { vorzeichen: true })} im Band des Rückblicks (Quote ${m.rueckblick.quote} %, Ø ${euro(m.rueckblick.ev, { vorzeichen: true })})` };
+  if (ev < band) return { ok: false, grund: `vorwärts Ø ${euro(ev)}${m.evTage !== undefined ? ' je Tag' : ''} unter dem Band des Rückblicks (${euro(band)})` };
+  return { ok: true, grund: `${m.faelle} Fälle vorwärts${m.tage !== undefined ? ` an ${m.tage} Tagen` : ''}, Ø ${euro(ev, { vorzeichen: true })}${m.evTage !== undefined ? ' je Tag' : ''} im Band des Rückblicks (Quote ${m.rueckblick.quote} %, Ø ${euro(m.rueckblick.ev, { vorzeichen: true })})` };
 }
 
 export interface BuchEintragKurz {
@@ -98,11 +113,11 @@ const NAECHSTE = '9999-12-31';
  * höchstens eine offene Order. Lauernde Fälle laufen mit, damit die vorgemerkten nach denselben Regeln gewählt werden
  * wie am nächsten Morgen die echten.
  */
-export function stufe3Waehlen(faelle: JagdFall[], zeiten: Map<string, { von: string; bis: string | null }[]>, r: V6Regeln, ohneNein = false): Stufe3Ergebnis {
+export function stufe3Waehlen(faelle: JagdFall[], zeiten: Map<string, { von: string; bis: string | null }[]>, r: V6Regeln, ohneNein = false, klumpen?: { klumpe: (f: JagdFall) => string | null; maxJeKlumpen: number }): Stufe3Ergebnis {
   const kandidaten = faelle
     .filter((f) => inStufe3(zeiten, f) && !(ohneNein && f.urteil === 'nein'))
     .map((f) => (f.art === 'lauert' ? { ...f, einstieg: NAECHSTE } : f));
-  const { jagden, uebersprungen } = jagdenWaehlen(kandidaten, { maxOffen: r.maxOffen, tagesVerlustGrenze: r.tagesVerlustGrenze, einmalJeWert: true });
+  const { jagden, uebersprungen } = jagdenWaehlen(kandidaten, { maxOffen: r.maxOffen, tagesVerlustGrenze: r.tagesVerlustGrenze, einmalJeWert: true, ...(klumpen ?? {}) });
   const echt = jagden.filter((j) => j.einstieg !== NAECHSTE);
   const vorgemerkt = jagden.filter((j) => j.einstieg === NAECHSTE).map((j) => ({ ...j, einstieg: null }));
   const k = jagdKennzahlen(echt);

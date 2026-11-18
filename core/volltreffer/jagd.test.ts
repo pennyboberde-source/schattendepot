@@ -65,3 +65,15 @@ describe('Abendbilanz der Jagden', () => {
     expect(jagdBilanz({ kennzahlen: jagdKennzahlen([]), offen: [], abgeschlossen: [] }, [])).toBeNull();
   });
 });
+
+describe('Klumpen (18.11.2026)', () => {
+  it('höchstens maxJeKlumpen offene Jagden je Klumpen und Richtung', async () => {
+    const { jagdenWaehlen } = await import('./jagd.ts');
+    const f = (wert: string, spielart: string) => ({ muster: 'm', wertung: 1, wert, markt: 'aktie', stichtag: '2026-11-17', fenster: 10, spielart, einstieg: '2026-11-18', art: 'offen', netto: null, ende: null }) as never;
+    const faelle = [f('BITU', 'Turbo short Hebel 3'), f('BITX', 'Turbo short Hebel 3'), f('ETHU', 'Turbo short Hebel 3'), f('ACME', 'Turbo short Hebel 3'), f('MSTU', 'Turbo long Hebel 3')];
+    const klumpe = (x: { wert: string }) => (['BITU', 'BITX', 'ETHU', 'MSTU'].includes(x.wert) ? 'K:BTC' : null);
+    const { jagden, uebersprungen } = jagdenWaehlen(faelle, { maxOffen: 10, tagesVerlustGrenze: 300, einmalJeWert: true, klumpe: klumpe as never, maxJeKlumpen: 2 });
+    expect(jagden.map((j: { wert: string }) => j.wert)).toEqual(['BITU', 'BITX', 'ACME', 'MSTU']);
+    expect(uebersprungen).toBe(1);
+  });
+});
