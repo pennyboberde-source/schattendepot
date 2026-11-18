@@ -47,6 +47,40 @@ export interface Spielart {
   nachziehAb?: number;
   /** Anteil des besten Zwischenstands, den der Nachziehstop sichert (0,5 = die Hälfte) */
   nachziehAnteil?: number;
+  /**
+   * Treffer-Geometrie (Quantensprung 1, 18.11.2026): Hebel nach der Schwankung des einzelnen Werts. Der Stop liegt
+   * `vol` Tagesschwankungen (Standardabweichung der Tagesrenditen, 20 Tage) vom Einstieg entfernt; der Hebel folgt
+   * daraus je Fall (`volHebel`). In der Liste der Spielarten steht `hebel: 0` als Platzhalter.
+   */
+  vol?: number;
+}
+
+export interface VolEinstellung {
+  /** Stop-Abstand in Tagesschwankungen, je Faktor eine Spielart (long und short) */
+  faktoren: number[];
+  /** nur für diese Stops (€) */
+  stops: number[];
+  /** größter Hebel (darüber ist der Wert zu ruhig für das Ziel binnen des Fensters) */
+  maxHebel: number;
+  /** Hebel wird auf diese Stufe gerundet (0,5 → 1; 1,5; 2 …) */
+  stufe: number;
+  /** auch mit Nachziehstop (wie bei den festen Hebeln) */
+  mitNachzieh?: boolean;
+}
+
+/**
+ * Konkreter Hebel einer Schwankungs-Spielart für einen Fall: Stop-Bewegung des Basiswerts = vol × Schwankung, also
+ * Hebel = Stop / (Einsatz × vol × Schwankung). Long unter 1,25 → direkt (Hebel 1); Short mindestens 1,5 (nur über
+ * Turbos). `null`, wenn die Schwankung unbekannt ist. Spielarten ohne `vol` bleiben unverändert.
+ */
+export function volHebel(sp: Spielart, schwankungProzent: number | null, einsatz: number, v: Pick<VolEinstellung, 'maxHebel' | 'stufe'>): Spielart | null {
+  if (sp.vol === undefined) return sp;
+  if (schwankungProzent === null || !(schwankungProzent > 0)) return null;
+  const roh = sp.stopEuro / (einsatz * sp.vol * (schwankungProzent / 100));
+  let h = Math.min(v.maxHebel, Math.round(roh / v.stufe) * v.stufe);
+  if (sp.richtung === 'long' && h < 1.25) h = 1;
+  if (sp.richtung === 'short') h = Math.max(1.5, h);
+  return { ...sp, hebel: Math.round(h * 100) / 100 };
 }
 
 export interface Ausgang {
@@ -180,16 +214,26 @@ export interface NachziehEinstellung {
 }
 
 /** Alle Spielarten aus einer Einstellung: direkt nur long, Turbos long und short; mit `nachzieh` zusätzlich je Stop eine Spielart mit Nachziehstop. */
-export function spielarten(hebel: number[], stops: number[], nachzieh?: NachziehEinstellung): Spielart[] {
+export function spielarten(hebel: number[], stops: number[], nachzieh?: NachziehEinstellung, vol?: VolEinstellung): Spielart[] {
   const liste: Spielart[] = [];
+  // Schwankungs-Spielarten hinten anhängen (die Reihenfolge der festen bleibt, Schlüssel beginnen mit „V“)
+  const volListe: Spielart[] = [];
+  for (const f of vol?.faktoren ?? [])
+    for (const r of ['long', 'short'] as const)
+      for (const s of vol!.stops) {
+        volListe.push({ hebel: 0, richtung: r, stopEuro: s, vol: f });
+        if (vol!.mitNachzieh && nachzieh?.stops.includes(s)) volListe.push({ hebel: 0, richtung: r, stopEuro: s, vol: f, nachziehAb: nachzieh.ab, nachziehAnteil: nachzieh.anteil });
+      }
   for (const h of hebel)
     for (const r of h > 1 ? (['long', 'short'] as const) : (['long'] as const))
       for (const s of stops) {
         liste.push({ hebel: h, richtung: r, stopEuro: s });
         if (nachzieh?.stops.includes(s)) liste.push({ hebel: h, richtung: r, stopEuro: s, nachziehAb: nachzieh.ab, nachziehAnteil: nachzieh.anteil });
       }
-  return liste;
+  return [...liste, ...volListe];
 }
 
 export const spielartText = (sp: Spielart) =>
-  `${sp.hebel > 1 ? `Turbo ${sp.richtung === 'long' ? 'long' : 'short'} Hebel ${sp.hebel}` : 'direkt'}, Stop ${sp.stopEuro} €${sp.nachziehAb !== undefined ? `, Nachziehstop ab ${sp.nachziehAb} €` : ''}`;
+  sp.vol !== undefined && !(sp.hebel > 0)
+    ? `Hebel nach Schwankung ${sp.richtung} (Stop ${String(sp.vol).replace('.', ',')} Tagesschwankungen entfernt), Stop ${sp.stopEuro} €${sp.nachziehAb !== undefined ? `, Nachziehstop ab ${sp.nachziehAb} €` : ''}`
+    : `${sp.hebel > 1 ? `Turbo ${sp.richtung === 'long' ? 'long' : 'short'} Hebel ${String(sp.hebel).replace('.', ',')}` : 'direkt'}${sp.vol !== undefined ? ' (Hebel nach Schwankung)' : ''}, Stop ${sp.stopEuro} €${sp.nachziehAb !== undefined ? `, Nachziehstop ab ${sp.nachziehAb} €` : ''}`;

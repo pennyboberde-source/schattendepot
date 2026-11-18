@@ -8,7 +8,7 @@ import { dirname, join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { orderentgelt } from '../core/gebuehren.ts';
 import { parseKryptoKerzenArchiv, parseUsArchiv, parseUsSplitsArchiv } from '../core/sammelkurse.ts';
-import { etikett, spielarten, spielartText, sprungEpisoden, type Ausgang, type EtikettKosten, type Kerze, type NachziehEinstellung, type Spielart } from '../core/volltreffer/etikett.ts';
+import { etikett, spielarten, spielartText, sprungEpisoden, volHebel, type Ausgang, type EtikettKosten, type Kerze, type NachziehEinstellung, type Spielart, type VolEinstellung } from '../core/volltreffer/etikett.ts';
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
@@ -35,7 +35,7 @@ import { artErfasst, brancheAusSic, firmaJeTicker, MELDUNG_ARTEN, meldungenErfas
 
 type Markt = 'aktie' | 'krypto';
 interface VtConfig {
-  etikett: { einsatz: number; ziel: number; beinahe: number; zensusMaxHebel: number; hebel: number[]; stops: number[]; nachzieh?: NachziehEinstellung; standardStop: number; fenster: number[]; episodeAbstand: number; finanzierungProzentJahr: number; turboSpreadKlasse: string; turboEmittent: string };
+  etikett: { einsatz: number; ziel: number; beinahe: number; zensusMaxHebel: number; hebel: number[]; stops: number[]; nachzieh?: NachziehEinstellung; vol?: VolEinstellung; standardStop: number; fenster: number[]; episodeAbstand: number; finanzierungProzentJahr: number; turboSpreadKlasse: string; turboEmittent: string };
   handelbar: {
     aktie: { mindestKurs: number; otc?: boolean; mindestUmsatzStichtag: number; turboAbUmsatz20: number; spread: { abUmsatz20: number; klasse: string }[]; handelsplatz: string };
     krypto: { mindestUmsatzStichtag: number; turboBasiswerte: string[]; ohneBasis: string[]; mindestSchwankung20: number; spreadKlasse: string; handelsplatz: string };
@@ -44,7 +44,7 @@ interface VtConfig {
   erkennung?: { fenster: number; ereignisMerkmale: string[]; mindestSpruenge: number; liftMin: number; fallstudie: { wert: string; von: string; bis: string; anlass: string }[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number; haltefristTage?: number; maxJeKlumpen?: number; klumpenAnker?: string[]; klumpenMinKorrelation?: number };
   v6: V6Regeln & { ohneNein?: boolean };
-  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
+  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number; ziel?: 'netto' | 'treffer' }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   hebel?: { nurGettex: boolean; maxAlterTage: number; mindestZugeordnet: number };
   plattformen: {
     andereBoerse: { name: string; entgeltJeOrder: number };
@@ -556,7 +556,9 @@ for (const markt of MAERKTE) {
   for (let a = 0; a < E.length; a++) for (let b = a + 1; b < E.length; b++) if (E[a].paare !== false && E[b].paare !== false) for (let ca = 0; ca < klassenZahl(E[a]); ca++) for (let cb = 0; cb < klassenZahl(E[b]); cb++) neueGruppe(`${markt}|${a}=${ca}&${b}=${cb}`);
   for (const h of HYPOTHESEN) if (h.markt === 'alle' || h.markt === markt) neueGruppe(`${markt}|hyp=${h.nr}`);
 }
-const SP = spielarten(vt.etikett.hebel, vt.etikett.stops, vt.etikett.nachzieh);
+const SP = spielarten(vt.etikett.hebel, vt.etikett.stops, vt.etikett.nachzieh, vt.etikett.vol);
+/** Treffer-Geometrie (Quantensprung 1): Schwankungs-Spielart → konkreter Hebel für diesen Fall (null = Schwankung unbekannt) */
+const konk = (sp: Spielart, x: Merkmale): Spielart | null => volHebel(sp, x.schwankung20, vt.etikett.einsatz, vt.etikett.vol ?? { maxHebel: 20, stufe: 0.5 });
 const F = vt.etikett.fenster;
 const standard = SP.map((s) => s.stopEuro === vt.etikett.standardStop);
 const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
@@ -658,8 +660,8 @@ const vorwaerts: JagdFall[] = [];
 const FENSTER_ALLE = (f: number) => Array.from({ length: f }, (_, n) => n + 1);
 /** Fall eines Musters im Vorwärtstest: Ausgang, laufend oder noch lauernd (kein Folgetag) */
 const SEC_NAME: Record<MeldungArt, string> = { angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: '13D-Meldung (Großaktionär)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz/Delisting/Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzungsänderung (8-K 5.03, oft Aktiensplit)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: '13G-Meldung (Beteiligung ab 5 %)' };
-function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten, pl: Platz = 'gettex'): JagdFall | null {
-  const sp = spNachSchluessel.get(e.sp);
+function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten, pl: Platz = 'gettex', spKonkret?: Spielart): JagdFall | null {
+  const sp = spKonkret ?? spNachSchluessel.get(e.sp);
   if (!sp) return null;
   const k = r.kerzen;
   // V4: Pump-Verdacht (Hype-Signale ohne harte Fakten in den 3 Tagen bis zum Stichtag, Regel wie in der Datenkrake) –
@@ -768,11 +770,12 @@ for (const r of reihen) {
     for (const g of gruppen) {
       for (const e of testJeGruppe.get(g) ?? []) {
         if (k[i].datum <= e.seit || (e.status === 'beendet' && e.am && k[i].datum > e.am) || i - (testZuletzt.get(e.schluessel) ?? -1e9) <= vt.pruefung.sperreTage) continue;
-        const sp = spNachSchluessel.get(e.sp);
+        const sp0 = spNachSchluessel.get(e.sp);
+        const sp = sp0 ? konk(sp0, x) : null;
         if (!sp) continue;
         const pl = platzFuer(r, sp, plattformAm(r, x), true);
         if (!pl) continue;
-        const fall = jagdFall(r, i, e, kostenFuer(r.markt, x.umsatz20, pl, sp), pl);
+        const fall = jagdFall(r, i, e, kostenFuer(r.markt, x.umsatz20, pl, sp), pl, sp);
         if (fall) {
           vorwaerts.push(fall);
           testZuletzt.set(e.schluessel, i);
@@ -798,7 +801,9 @@ for (const r of reihen) {
     let gezaehlt = false;
     const pa = plattformAm(r, x);
     const mz = MODELL_MAERKTE.has(r.markt) ? modellZeile(r, i, klassen) : -1;
-    SP.forEach((sp, s) => {
+    SP.forEach((sp0, s) => {
+      const sp = konk(sp0, x);
+      if (!sp) return;
       const pl = platzFuer(r, sp, pa);
       if (!pl) return;
       const a = ausg(i, sp, x, pl);
@@ -821,7 +826,7 @@ for (const r of reihen) {
         for (const g of einzelFrei) zw.add(g, s, f, z, au);
         if (paarF[f]) for (const g of paareFrei) zw.add(g, s, f, z, au);
         // Zensus: echter Sprung – Volltreffer mit Standard-Stop binnen 10 Handelstagen, höchstens Hebel zensusMaxHebel
-        if (au.art === 'treffer' && sp.nachziehAb === undefined && F[f] <= 10 && sp.hebel <= vt.etikett.zensusMaxHebel && (!bester[i] || au.netto > bester[i]!.netto)) {
+        if (au.art === 'treffer' && sp.nachziehAb === undefined && sp.vol === undefined && F[f] <= 10 && sp.hebel <= vt.etikett.zensusMaxHebel && (!bester[i] || au.netto > bester[i]!.netto)) {
           treffer[i] = true;
           bester[i] = { datum: k[i].datum, schluessel: r.schluessel.replace(/#\d+$/, ''), markt: r.markt, spielart: spielartText(sp), fenster: F[f], netto: au.netto, tag: au.tag, umsatz20: x.umsatz20, r1: Math.round(x.r1 * 10) / 10, relVolumen: x.relVolumen === null ? null : Math.round(x.relVolumen * 10) / 10 };
         }
@@ -890,7 +895,9 @@ for (const r of reihen) {
       hypFaelle[h.nr] = (hypFaelle[h.nr] ?? 0) + 1;
       const z = k[i].datum < grenze ? 0 : 1;
       const pa = plattformAm(r, x);
-      SP.forEach((sp, s) => {
+      SP.forEach((sp0, s) => {
+        const sp = konk(sp0, x);
+        if (!sp) return;
         const pl = platzFuer(r, sp, pa);
         if (!pl) return;
         ausg(i, sp, x, pl).forEach((au, f) => au && zw.add(g, s, f, z, au));
@@ -999,7 +1006,8 @@ for (const name of gruppen) {
       const pa = plattformAm(r, x);
       for (const j of kandJeGruppe.get(g)!) {
         const c = kand[j];
-        const sp = SP[c.s];
+        const sp = konk(SP[c.s], x);
+        if (!sp) continue;
         const pl = platzFuer(r, sp, pa);
         if (!pl) continue;
         const a = cache.get(c.s) ?? cache.set(c.s, etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), F)).get(c.s)!;
@@ -1282,7 +1290,10 @@ if (MODELLE.length && mZahl) {
     const e = MC!.einstellungen;
     // Ziel gegen den Tagesdurchschnitt, ohne marktweite Merkmale: das Modell soll lernen, welcher Wert an einem Tag
     // besser ist als die anderen – nicht, welcher Tag gut war (sonst lernt es wenige Crash-Tage auswendig, Probe 16.11.)
-    const yRel = gegenTag(mY[m.idx], gelabelt, (z) => mTag[z]);
+    // Ziel „treffer“ (Quantensprung 1, 18.11.2026): das Modell lernt direkt die Volltreffer-Wahrscheinlichkeit (Treffer = Ziel €,
+    // sonst 0) statt des Ergebnisses in € – sortiert nach „+400 € vor dem Stop“, nicht nach dem Ø
+    const yZiel = m.ziel === 'treffer' ? Float32Array.from(mTreffer[m.idx].subarray(0, mY[m.idx].length), (t) => t * vt.etikett.ziel) : mY[m.idx];
+    const yRel = gegenTag(yZiel, gelabelt, (z) => mTag[z]);
     const mA = trainieren(mX, P, yRel, Int32Array.from(A), e, erlaubt);
     const mB = trainieren(mX, P, yRel, Int32Array.from(B), e, erlaubt);
     const bBdurchA = B.map((z) => bewerten(mA, mX, z));
@@ -1349,7 +1360,7 @@ if (MODELLE.length && mZahl) {
         if (qu[1] >= 4 && qu[0] / qu[1] < vt.pruefung.quartaleMindestAnteil) gruende.push(`nur ${qu[0]} von ${qu[1]} Quartalen im Plus`);
         const nAlle = a.n + b.n;
         const erg: ModellErgebnis = {
-          schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}|muster`,
+          schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}${m.ziel === 'treffer' ? '|treffer' : ''}|muster`,
           gruppe: `${m.markt === 'aktie' ? 'Aktien' : 'Krypto'}: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen ${Math.round((1 - pmin) * 100)} % ihres Tages sieht`,
           markt: m.markt,
           spielart: spielartText(sp),
@@ -1407,8 +1418,8 @@ if (MODELLE.length && mZahl) {
       if (qMit >= 4 && qPlus / qMit < vt.pruefung.quartaleMindestAnteil) gruende.push(`nur ${qPlus} von ${qMit} Quartalen im Plus`);
       const nAlle = wa.n + wb.n;
       const erg: ModellErgebnis = {
-        schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}`,
-        gruppe: `${m.markt === 'aktie' ? 'Aktien' : 'Krypto'}: Gesamtmodell aus allen Merkmalen – oberste ${String(q).replace('.', ',')} %`,
+        schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}${m.ziel === 'treffer' ? '|treffer' : ''}`,
+        gruppe: `${m.markt === 'aktie' ? 'Aktien' : 'Krypto'}: Gesamtmodell aus allen Merkmalen${m.ziel === 'treffer' ? ' (Ziel: Volltreffer-Wahrscheinlichkeit)' : ''} – oberste ${String(q).replace('.', ',')} %`,
         markt: m.markt,
         spielart: spielartText(sp),
         sp: m.spielart,
@@ -1423,7 +1434,7 @@ if (MODELLE.length && mZahl) {
         wichtig: [],
         faelleHeute: 0,
       };
-      log(`Gesamtmodell ${m.markt} ${erg.spielart} ${m.fenster} T, oberste ${q} %: A ${zr[0].n} Fälle/${zr[0].tage} Tage, Quote ${zr[0].quote} %, Ø ${zr[0].ev} ± ${zr[0].se} € (Grundrate ${zr[0].grundEv}) · B ${zr[1].n}/${zr[1].tage}, Quote ${zr[1].quote} %, Ø ${zr[1].ev} ± ${zr[1].se} € (Grundrate ${zr[1].grundEv}) · Quartale ${qPlus}/${qMit} im Plus · Wertung ${wertung} → ${erg.grund}`);
+      log(`Gesamtmodell${m.ziel === 'treffer' ? ' (Ziel Treffer)' : ''} ${m.markt} ${erg.spielart} ${m.fenster} T, oberste ${q} %: A ${zr[0].n} Fälle/${zr[0].tage} Tage, Quote ${zr[0].quote} %, Ø ${zr[0].ev} ± ${zr[0].se} € (Grundrate ${zr[0].grundEv}) · B ${zr[1].n}/${zr[1].tage}, Quote ${zr[1].quote} %, Ø ${zr[1].ev} ± ${zr[1].se} € (Grundrate ${zr[1].grundEv}) · Quartale ${qPlus}/${qMit} im Plus · Wertung ${wertung} → ${erg.grund}`);
       if (!bestes || (erg.bestanden && !bestes.bestanden) || (erg.bestanden === bestes.bestanden && erg.wertung > bestes.wertung)) bestes = erg;
     }
     if (!bestes) continue;
@@ -1453,7 +1464,7 @@ if (MODELLE.length && mZahl) {
       modellAuswahl.set(musterErg.schluessel, { modell: mAlle, q: bestes.q, m, musterP: pmin, passt });
       log(`Muster × Modell ${m.markt} ${musterErg.spielart} ${m.fenster} T: gewählt oberes ${musterErg.q} % (${musterErg.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), heute ${musterErg.faelleHeute} Fälle.`);
     }
-    log(`Gesamtmodell ${m.markt} ${bestes.spielart} ${m.fenster} T: gewählt oberste ${bestes.q} % (${bestes.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), wichtigste Merkmale: ${bestes.wichtig.join(', ')}; ${Math.round((Date.now() - t0m) / 1000)} s.`);
+    log(`Gesamtmodell${m.ziel === 'treffer' ? ' (Ziel Treffer)' : ''} ${m.markt} ${bestes.spielart} ${m.fenster} T: gewählt oberste ${bestes.q} % (${bestes.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), wichtigste Merkmale: ${bestes.wichtig.join(', ')}; ${Math.round((Date.now() - t0m) / 1000)} s.`);
   }
   // Vorwärtstest: Modelle im Muster-Buch bekommen ihre Fälle ab dem Tag nach dem Eintrag (je Wert ein Fall in sperreTage)
   for (const [schluessel, a] of modellAuswahl) {
@@ -1473,10 +1484,11 @@ if (MODELLE.length && mZahl) {
       const r = reihen[mReihe[z]];
       const x = merkmale(r.kerzen, mI[z]);
       if (!x) continue;
-      const spM = spNachSchluessel.get(e.sp);
+      const sp0 = spNachSchluessel.get(e.sp);
+      const spM = sp0 ? konk(sp0, x) : null;
       const pl = spM ? platzFuer(r, spM, plattformAm(r, x), true) : null;
       if (!spM || !pl) continue;
-      const fall = jagdFall(r, mI[z], e, kostenFuer(r.markt, x.umsatz20, pl, spM), pl);
+      const fall = jagdFall(r, mI[z], e, kostenFuer(r.markt, x.umsatz20, pl, spM), pl, spM);
       if (fall) vorwaerts.push(fall);
     }
   }
@@ -1495,7 +1507,7 @@ if (vt.erkennung) {
   const fi = F.indexOf(ek.fenster);
   // Standard-Stop und ein Paar-Fenster: nur dafür rechnet der Rückblick Einzel- und Paar-Gruppen
   const sMax = vt.etikett.standardStop;
-  const s1 = SP.findIndex((sp) => sp.hebel === 1 && sp.stopEuro === sMax && sp.nachziehAb === undefined);
+  const s1 = SP.findIndex((sp) => sp.hebel === 1 && sp.vol === undefined && sp.stopEuro === sMax && sp.nachziehAb === undefined);
   // Erkennungs-Muster: Gruppen, deren hebelfreie Volltreffer-Quote (direkt, dieser Stop, dieses Fenster) in BEIDEN Zeiträumen
   // mindestens liftMin × die Grundrate ist, mit genug Fällen. (Probe 17.11.: „irgendein bestandenes Muster“ feuert an 91 %
   // aller Tage – kein Maßstab.)

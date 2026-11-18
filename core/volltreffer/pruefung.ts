@@ -301,5 +301,5 @@ export function hypothesenFaelle(h: Hypothese, k: Kerze[], m: (Merkmale | null)[
   return faelle;
 }
 
-/** z. B. „2S150“, mit Nachziehstop „2S150N“ (alte Schlüssel bleiben gültig) */
-export const spielartSchluessel = (sp: Spielart) => `${sp.hebel}${sp.richtung === 'long' ? 'L' : 'S'}${sp.stopEuro}${sp.nachziehAb !== undefined ? 'N' : ''}`;
+/** z. B. „2S150“, mit Nachziehstop „2S150N“ (alte Schlüssel bleiben gültig); Hebel nach Schwankung „V1.5L150“ */
+export const spielartSchluessel = (sp: Spielart) => `${sp.vol !== undefined ? `V${sp.vol}` : sp.hebel}${sp.richtung === 'long' ? 'L' : 'S'}${sp.stopEuro}${sp.nachziehAb !== undefined ? 'N' : ''}`;

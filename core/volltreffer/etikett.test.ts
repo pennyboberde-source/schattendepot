@@ -185,3 +185,42 @@ describe('Episoden und Spielarten', () => {
     ]);
   });
 });
+
+describe('Treffer-Geometrie: Hebel nach Schwankung (18.11.2026)', () => {
+  it('rechnet den Hebel aus Stop, Faktor und Tagesschwankung', async () => {
+    const { volHebel, spielarten, spielartText } = await import('./etikett.ts');
+    const { spielartSchluessel } = await import('./pruefung.ts');
+    const v = { maxHebel: 20, stufe: 0.5 };
+    const sp = { hebel: 0, richtung: 'long' as const, stopEuro: 150, vol: 2 };
+    // 3 % Tagesschwankung: Stop-Bewegung 6 % → Hebel 0,15 / 0,06 = 2,5
+    expect(volHebel(sp, 3, 1000, v)!.hebel).toBe(2.5);
+    // ruhiger Wert (0,25 %) → gedeckelt bei 20
+    expect(volHebel(sp, 0.25, 1000, v)!.hebel).toBe(20);
+    // wilder Pennystock (12 %) → long direkt
+    expect(volHebel(sp, 12, 1000, v)!.hebel).toBe(1);
+    // short nie unter 1,5
+    expect(volHebel({ ...sp, richtung: 'short' }, 12, 1000, v)!.hebel).toBe(1.5);
+    expect(volHebel(sp, null, 1000, v)).toBeNull();
+    // feste Spielart bleibt, wie sie ist
+    const fest = { hebel: 3, richtung: 'long' as const, stopEuro: 150 };
+    expect(volHebel(fest, null, 1000, v)).toBe(fest);
+    const liste = spielarten([1, 2], [150], undefined, { faktoren: [1, 2], stops: [150], maxHebel: 20, stufe: 0.5 });
+    expect(liste.map(spielartSchluessel)).toEqual(['1L150', '2L150', '2S150', 'V1L150', 'V1S150', 'V2L150', 'V2S150']);
+    expect(spielartText(liste[5])).toMatch(/Hebel nach Schwankung long/);
+    expect(spielartText(volHebel(liste[5], 3, 1000, v)!)).toBe('Turbo long Hebel 2,5 (Hebel nach Schwankung), Stop 150 €');
+  });
+
+  it('der Stop des konkreten Falls liegt bei rund faktor × Schwankung', async () => {
+    const { volHebel, etikett } = await import('./etikett.ts');
+    const k = { einsatz: 1000, ziel: 400, beinahe: 200, spreadProzent: 0, entgeltDirekt: 0, turboSpreadProzent: 0, entgeltTurbo: 0, finanzierungProzentJahr: 0 };
+    const sp = volHebel({ hebel: 0, richtung: 'long', stopEuro: 150, vol: 2 }, 3, 1000, { maxHebel: 20, stufe: 0.5 })!;
+    const kerzen = [
+      { datum: '2026-01-01', o: 100, h: 100, l: 100, c: 100 },
+      { datum: '2026-01-02', o: 100, h: 101, l: 94.5, c: 95 }, // −5,5 %: knapp über dem Stop (−6 %)
+      { datum: '2026-01-05', o: 95, h: 95, l: 93.9, c: 94 }, // −6,1 %: Stop
+    ];
+    const [a] = etikett(kerzen, 0, sp, k, [5]);
+    expect(a?.art).toBe('niete');
+    expect(a?.tag).toBe(2);
+  });
+});

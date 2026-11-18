@@ -17,6 +17,14 @@
       250
     ],
     "standardStop": 150,
+    "vol": {
+      "hinweis": "Treffer-Geometrie (Quantensprung 1, Nutzer 18.11.2026: „Erst 1, dann 2, dann 3. Alle.“): Hebel nach der Schwankung des einzelnen Werts statt fester Hebel. Der Stop liegt faktor × Tagesschwankung (Standardabweichung der Tagesrenditen über 20 Tage, Merkmal schwankung20) vom Einstieg; Hebel = Stop / (Einsatz × faktor × Schwankung), gerundet auf stufe, höchstens maxHebel; long unter 1,25 → direkt, short mindestens 1,5. Ein fester Hebel passt für ruhige und wilde Werte nie zugleich: bei ruhigen dauert das Ziel länger als das Fenster, bei wilden reißt das Tagesrauschen den Stop. Schlüssel V<faktor><L|S><Stop>. Zählen wie jede Spielart (Gruppen, Muster, Vorwärtstest), nicht im Sprung-Zensus.",
+      "faktoren": [1, 2, 4],
+      "stops": [150],
+      "maxHebel": 20,
+      "stufe": 0.5,
+      "mitNachzieh": false
+    },
     "nachzieh": {
       "ab": 200,
       "anteil": 0.5,
@@ -919,6 +927,24 @@
         "markt": "krypto",
         "spielart": "1L150",
         "fenster": 10
+      },
+      {
+        "markt": "aktie",
+        "spielart": "2S150",
+        "fenster": 10,
+        "ziel": "treffer"
+      },
+      {
+        "markt": "aktie",
+        "spielart": "V2S150",
+        "fenster": 10,
+        "ziel": "treffer"
+      },
+      {
+        "markt": "aktie",
+        "spielart": "V2L150",
+        "fenster": 10,
+        "ziel": "treffer"
       }
     ],
     "obersteProzent": [
