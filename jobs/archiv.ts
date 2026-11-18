@@ -594,10 +594,16 @@ async function hebelAuswahlLaden(): Promise<{ auswahl: Map<string, { b: string; 
   const zf = join(ARCHIV, 'stamm', 'isin-kuerzel.json');
   if (!hc || !existsSync(pd) || !existsSync(zf)) return null;
   try {
-    const r = await fetch(hc.quelle, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(30000) });
-    if (r.status !== 200) throw new Error(`HTTP ${r.status}`);
-    const u = (await r.json()) as Record<string, unknown>;
-    const faelle = ['offen', 'sichtbar', 'lauerliste'].flatMap((k) => (Array.isArray(u[k]) ? (u[k] as { wert?: string; markt?: string; spielart?: string }[]) : []));
+    // zuerst die private volle Liste des Rückblicks (nur Werte mit Hebelprodukt), sonst die öffentliche Übersicht
+    const privat = join(ARCHIV, 'auswertung', 'hebelwerte.json');
+    let faelle: { wert?: string; markt?: string; spielart?: string }[];
+    if (existsSync(privat)) faelle = (JSON.parse(readFileSync(privat, 'utf8')) as { werte: typeof faelle }).werte;
+    else {
+      const r = await fetch(hc.quelle, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(30000) });
+      if (r.status !== 200) throw new Error(`HTTP ${r.status}`);
+      const u = (await r.json()) as Record<string, unknown>;
+      faelle = ['offen', 'sichtbar', 'lauerliste'].flatMap((k) => (Array.isArray(u[k]) ? (u[k] as { wert?: string; markt?: string; spielart?: string }[]) : []));
+    }
     const zu = JSON.parse(readFileSync(zf, 'utf8')) as Record<string, string | null>;
     const isinsJe = new Map<string, string[]>();
     for (const [isin, k] of Object.entries(zu)) if (k) isinsJe.set(k, [...(isinsJe.get(k) ?? []), isin]);

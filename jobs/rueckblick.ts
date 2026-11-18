@@ -1465,6 +1465,7 @@ if (MODELLE.length && mZahl) {
 }
 
 // ---------- F1: Erkennungsquote hebelfreier Volltreffer (KONZEPT-FRUEHERKENNUNG.md, 17.11.2026) ----------
+let hebelWerte: { wert: string; markt: string; spielart: string }[] = [];
 const fallstudieZeilen: { wert: string; datum: string; anlass: string; sprung: boolean; tag: number | null; muster: string[]; ereignisse: string[] }[] = [];
 if (vt.erkennung) {
   const ek = vt.erkennung;
@@ -1738,6 +1739,11 @@ if (vt.erkennung) {
   const pumpZahl = vorwaerts.filter((x) => x.pump).length;
   const musterText = new Map([...alleMuster.values()].map((e) => [e.schluessel, e.gruppe]));
   const ohneMuster = (j: JagdFall) => ({ ...j, muster: musterText.get(j.muster) ?? j.muster });
+  // B Stufe 2a (18.11.2026): privat alle Werte der Lauerliste und offenen Jagden mit Hebelprodukt in Deutschland – der
+  // Archivlauf schreibt deren gettex-Kurse mit (die öffentliche Lauerliste zeigt nur die obersten 40, meist ohne Produkt)
+  hebelWerte = [...jagden.filter((j) => j.art === 'offen'), ...lauerliste]
+    .filter((j) => /gettex|Börse|Stuttgart/i.test(j.plattform ?? ''))
+    .map((j) => ({ wert: j.wert, markt: j.markt, spielart: j.spielart }));
   schreibeJson('volltreffer/uebersicht.json', {
     stand: jetzt.toISOString(),
     hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens ' + v4.mindestQuote + ' % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Mitteilungen nur gesammelt in der Abendbilanz, kein echtes Geld.',
@@ -1801,6 +1807,7 @@ if (vt.erkennung) {
 
 // privat: Zensus mit Werten und die vollständige Prüfung
 const aus = join(ARCHIV, 'auswertung');
+if (hebelWerte.length) { mkdirSync(aus, { recursive: true }); writeFileSync(join(aus, 'hebelwerte.json'), JSON.stringify({ stand: jetzt.toISOString(), werte: hebelWerte })); }
 if (fallstudieZeilen.length) { mkdirSync(aus, { recursive: true }); writeFileSync(join(aus, `fallstudie-${heute}.json`), JSON.stringify(fallstudieZeilen, null, 1)); }
 mkdirSync(aus, { recursive: true });
 const zensusCsv = ['datum,schluessel,markt,spielart,fenster,netto,tag,umsatz20,r1,relVolumen', ...episoden.sort((a, b) => a.datum.localeCompare(b.datum)).map((e) => [e.datum, e.schluessel, e.markt, `"${e.spielart}"`, e.fenster, e.netto, e.tag, e.umsatz20 === null ? '' : Math.round(e.umsatz20), e.r1, e.relVolumen ?? ''].join(','))].join('\n');
