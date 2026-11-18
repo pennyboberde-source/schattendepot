@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T12:20:02.677Z",
-  "anzahl": 76,
+  "stand": "2026-11-18T12:55:21.486Z",
+  "anzahl": 79,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -1022,11 +1022,50 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.71,
+      "st": 0.77,
       "q": [
         "Upbit"
       ],
       "z": "2026-11-18T12:20:02.677Z"
+    },
+    {
+      "id": "handelsstopp:ADACW:2026-11-18",
+      "s": "T:ADACW",
+      "n": "American Drive Acquisition Wt",
+      "t": "ADACW",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ADAC:2026-11-18",
+      "s": "T:ADAC",
+      "n": "American Drive Acq Co Cl A Ord",
+      "t": "ADAC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ADACU:2026-11-18",
+      "s": "T:ADACU",
+      "n": "American Drive Acq Co Uts",
+      "t": "ADACU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
     }
   ]
 }
