@@ -1,0 +1,39 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-18",
+  "erstellt": "2026-11-18T07:55:00Z",
+  "briefing": [
+    "Keine neuen Orders: Seitwärts/nervös, VIX steigt, kein Lagebild (Datensammler seit 17.11. 23:27 UTC nicht gelaufen).",
+    "Nvidia-Zahlen gestern nach US-Schluss – Chipwerte heute im Fokus; neue US-Exportgrenzen für KI-Chips belasten.",
+    "Krypto: extreme Angst, BTC unter 50-Tage-Linie – keine Käufe, nur Prognose und virtuelle Jagden."
+  ],
+  "orders": [],
+  "prognose": [
+    {"name": "Nvidia", "ticker": "NVDA", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "Zahlen gestern Abend, Ausblick laut ersten Meldungen über Erwartung; Exportgrenzen bremsen."},
+    {"name": "AMD", "ticker": "AMD", "markt": "us", "richtung": "runter", "chance": 52, "grund": "Neue US-Exportbeschränkungen für KI-Chips, nervöser Markt, VIX steigt."},
+    {"name": "Rheinmetall", "ticker": "RHM.DE", "markt": "eu", "richtung": "hoch", "chance": 53, "grund": "Politik-Radar: Deutschland kauft Flugabwehrraketen für Ukraine."},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 52, "grund": "Extreme Angst, Stablecoins schrumpfen, Kurs deutlich unter 50-Tage-Linie."},
+    {"name": "Ethereum", "ticker": "ETH", "markt": "krypto", "richtung": "runter", "chance": 52, "grund": "Folgt BTC im nervösen Krypto-Abwärtsumfeld."},
+    {"name": "Polestar", "ticker": "PSNY", "markt": "us", "richtung": "runter", "chance": 54, "grund": "Lauerliste long, aber Going-Concern-Hinweis und Verkaufsdruck; nervöser Markt."},
+    {"name": "Public Policy Holding (PPHC)", "ticker": "PPHC", "markt": "us", "richtung": "hoch", "chance": 51, "grund": "Lauerliste: Kurslücke nach oben, Großvertrag (8-K 1.01) und Zahlen kurz zuvor."},
+    {"name": "CSEX", "ticker": "CSEX", "markt": "us", "richtung": "runter", "chance": 52, "grund": "Lauerliste short: Kurslücke unter −10 % ohne Erholung am Tag."},
+    {"name": "NTHI", "ticker": "NTHI", "markt": "us", "richtung": "hoch", "chance": 50, "grund": "Lauerliste long nach Zahlen vor 6 Handelstagen; Münzwurf."},
+    {"name": "BNAI", "ticker": "BNAI", "markt": "us", "richtung": "runter", "chance": 53, "grund": "Lauerliste long, aber Nebenwert ohne bekannten Anlass in nervösem Markt."}
+  ],
+  "volltrefferUrteil": [
+    {"wert": "CSEX", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Kein belegter Anlass für die Kurslücke gefunden; ohne Grund kein Short."},
+    {"wert": "BNAI", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": true, "urteil": "nein", "grund": "Kleiner KI-Nebenwert ohne harten Anlass, Werbe-/Hype-Gefahr."},
+    {"wert": "HGLB", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Geschlossener Fonds, kein Anlass für eine große Bewegung."},
+    {"wert": "IVA", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Biotech ohne bekannten neuen Katalysator; Studienrisiko dominiert."},
+    {"wert": "PSNY", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "runter", "werbung": false, "urteil": "nein", "grund": "Going-Concern-Unsicherheit, Analysten negativ; long gegen Trend und Markt."},
+    {"wert": "TROO", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": true, "urteil": "nein", "grund": "Mikrowert mit Pump-Historie, kein harter Anlass."},
+    {"wert": "GRO", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Kein Anlass bekannt; Muster allein im nervösen Markt zu schwach."},
+    {"wert": "CTEV", "markt": "aktie", "stichtag": "2026-11-16", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Kein Anlass bekannt, schwacher Gesamtmarkt."},
+    {"wert": "NTHI", "markt": "aktie", "stichtag": "2026-11-16", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "grund": "Zahlen vor 6 Tagen schon eingepreist; Muster ohne frischen Anlass."},
+    {"wert": "PPHC", "markt": "aktie", "stichtag": "2026-11-16", "anlass": true, "richtung": "hoch", "werbung": false, "urteil": "ja", "grund": "Frischer Großvertrag (8-K 1.01) plus Zahlen – einziger Wert mit hartem, belegtem Anlass."}
+  ],
+  "daytrading": [
+    {"name": "Nvidia", "markt": "us", "isin": "US67066G1040", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 35, "these": "Tag nach den Quartalszahlen: hoher Umsatz und große Spanne; nur Ausbruch nach oben aus der Eröffnungsspanne (Aktie long)."}
+  ],
+  "notiz": "Kein Lagebild: Datensammler-Zeitpläne 04:07–07:07 UTC am 18.11. nicht gelaufen (letzter Lauf 17.11. 23:27 UTC). Keine Order: Marktphase seitwärts/nervös (max. 2, kein Hebel), Depot-Statistik negativ, ohne Lagebild kein belegter Auslöser. Nvidia-Reaktion aus Websuche unsicher datiert, daher nur Prognose/Daytrading."
+}
