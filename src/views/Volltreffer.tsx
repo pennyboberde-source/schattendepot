@@ -13,7 +13,7 @@ interface Uebersicht {
   stand: string;
   regeln: { maxOffen: number; tagesVerlustGrenze: number; stufe2Faelle: number };
   kennzahlen: JagdKennzahlen;
-  urteil?: { ja: JagdKennzahlen; nein: JagdKennzahlen; urteile: number };
+  urteil?: { ja: JagdKennzahlen; nein: JagdKennzahlen; urteile: number; kalibrierung?: { bereich: string; kennzahlen: JagdKennzahlen }[]; neinFilter?: boolean };
   offen: JagdFall[];
   abgeschlossen: JagdFall[];
   lauerliste: JagdFall[];
@@ -53,7 +53,9 @@ function JagdZeile({ j }: { j: JagdFall }) {
       {j.hinweis && <span class="klein">📄 {j.hinweis}</span>}
       {j.urteil && (
         <span class="klein">
-          {j.urteil === 'ja' ? '✅ Claude: ja' : '❌ Claude: nein'} – {j.grund}
+          {j.urteil === 'ja' ? '✅ Claude: ja' : '❌ Claude: nein'}
+          {typeof j.claudeP === 'number' ? ` (${j.claudeP} % Volltreffer-Chance${typeof j.quote === 'number' ? `, Muster ${j.quote.toLocaleString('de-DE')} %` : ''})` : ''} – {j.grund}
+          {j.kontext ? ` · 🌍 ${j.kontext}` : ''}
         </span>
       )}
     </li>
@@ -185,6 +187,16 @@ export function JagdKarte() {
         {u.urteil && u.urteil.urteile > 0 && (
           <p class="klein" data-testid="claude-urteil">
             Claudes Urteil im Morgenlauf: „ja“ {zahl(u.urteil.ja.anzahl)} abgeschlossen, Volltreffer {u.urteil.ja.anzahl ? `${u.urteil.ja.quote.toLocaleString('de-DE')} %` : '–'}, Ø {u.urteil.ja.anzahl ? euro(u.urteil.ja.ev, { vorzeichen: true }) : '–'} · „nein“ {zahl(u.urteil.nein.anzahl)}, Volltreffer {u.urteil.nein.anzahl ? `${u.urteil.nein.quote.toLocaleString('de-DE')} %` : '–'}, Ø {u.urteil.nein.anzahl ? euro(u.urteil.nein.ev, { vorzeichen: true }) : '–'}
+            {u.urteil.neinFilter ? ' · Claudes „nein“ hält Fälle aus den sichtbaren Orders heraus (gemessen besser).' : ''}
+            {(u.urteil.kalibrierung ?? []).some((b) => b.kennzahlen.anzahl > 0) && (
+              <>
+                {' · Treffsicherheit seiner Prozente: '}
+                {(u.urteil.kalibrierung ?? [])
+                  .filter((b) => b.kennzahlen.anzahl > 0)
+                  .map((b) => `${b.bereich} geschätzt → ${b.kennzahlen.quote.toLocaleString('de-DE')} % wirklich (${zahl(b.kennzahlen.anzahl)})`)
+                  .join(' · ')}
+              </>
+            )}
           </p>
         )}
         <h3>Laufende Jagden</h3>

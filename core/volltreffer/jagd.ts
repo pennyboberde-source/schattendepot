@@ -36,6 +36,12 @@ export interface JagdFall {
   /** V5: Claudes Urteil im Morgenlauf (falls abgegeben) */
   urteil?: 'ja' | 'nein';
   grund?: string;
+  /** Gesamtbild-Urteil (Quantensprung 2, 18.11.2026): Claudes geschätzte Volltreffer-Wahrscheinlichkeit in % */
+  claudeP?: number;
+  /** ein Satz: welche äußeren Umstände (Politik, Wirtschaft, Branche, Nachrichten, Stimmung) Claude gewichtet hat */
+  kontext?: string;
+  /** Volltreffer-Quote des Musters im Rückblick in % (Ausgangspunkt für Claudes Schätzung) */
+  quote?: number;
 }
 
 export interface JagdRegeln {
@@ -147,4 +153,27 @@ export function jagdBilanz(u: JagdUebersicht, gemeldet: string[]): { titel: stri
   const titel = neuEnde.length ? `🎯 Volltreffer-Jagden: ${neuEnde.length} beendet, ${euro(summe, { vorzeichen: true })}` : `🎯 Volltreffer-Jagden: ${neuStart.length} neu`;
   const neueSchluessel = [...neuEnde.flatMap((j) => [`${jagdSchluessel(j)}|ende`, `${jagdSchluessel(j)}|start`]), ...neuStart.map((j) => `${jagdSchluessel(j)}|start`)];
   return { titel, text: `${teile.join(' · ')} – virtuell, Stand heute früh`, gemeldet: [...new Set([...gemeldet, ...neueSchluessel])].slice(-600) };
+}
+
+/**
+ * Gesamtbild-Urteil (Quantensprung 2, 18.11.2026): Wie treffsicher ist Claudes Wahrscheinlichkeit? Abgeschlossene
+ * Vorwärts-Fälle je Bereich der geschätzten Wahrscheinlichkeit (unter grenzen[0] %, dazwischen, ab grenzen[1] %).
+ */
+export function urteilKalibrierung(faelle: JagdFall[], grenzen: [number, number] = [15, 30]): { bereich: string; kennzahlen: JagdKennzahlen }[] {
+  const mitP = faelle.filter((f) => typeof f.claudeP === 'number');
+  const [u, o] = grenzen;
+  return [
+    { bereich: `unter ${u} %`, kennzahlen: jagdKennzahlen(mitP.filter((f) => f.claudeP! < u)) },
+    { bereich: `${u} bis ${o} %`, kennzahlen: jagdKennzahlen(mitP.filter((f) => f.claudeP! >= u && f.claudeP! < o)) },
+    { bereich: `ab ${o} %`, kennzahlen: jagdKennzahlen(mitP.filter((f) => f.claudeP! >= o)) },
+  ];
+}
+
+/**
+ * Gewichtet erst nach Messung: Claudes „nein“ hält Fälle aus den sichtbaren Orders (V6) heraus, sobald genug Fälle
+ * beider Seiten abgeschlossen sind und „ja“ im Vorwärtstest besser abschneidet (Ø und Quote). Die virtuellen Jagden
+ * laufen weiter mit allen Fällen – nur so bleibt die Messung ehrlich.
+ */
+export function neinFilterAktiv(ja: JagdKennzahlen, nein: JagdKennzahlen, r: { mindestJa: number; mindestNein: number }): boolean {
+  return ja.anzahl >= r.mindestJa && nein.anzahl >= r.mindestNein && ja.ev > nein.ev && ja.quote >= nein.quote;
 }

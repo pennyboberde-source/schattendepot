@@ -376,7 +376,7 @@
     },
     "volltrefferUrteil": {
       "type": "array",
-      "maxItems": 10,
+      "maxItems": 12,
       "description": "V5: Claudes Urteil über die obersten Werte der Volltreffer-Lauerliste (nur Morgenlauf) – wird gespeichert und gemessen",
       "items": {
         "type": "object",
@@ -426,6 +426,17 @@
             "type": "string",
             "minLength": 3,
             "maxLength": 240
+          },
+          "wahrscheinlichkeit": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Gesamtbild-Urteil (18.11.2026): geschätzte Wahrscheinlichkeit in %, dass diese Jagd das Ziel (+400 €) vor dem Stop im Fenster erreicht"
+          },
+          "kontext": {
+            "type": "string",
+            "maxLength": 240,
+            "description": "ein Satz: welche äußeren Umstände (Politik, Wirtschaft, Branche, Nachrichten, Stimmung) gewichtet wurden"
           }
         }
       }

@@ -64,6 +64,10 @@ export interface VolltrefferUrteil {
   /** würde Claude diese Jagd eingehen? */
   urteil: 'ja' | 'nein';
   grund: string;
+  /** Gesamtbild-Urteil (18.11.2026): geschätzte Volltreffer-Wahrscheinlichkeit in % */
+  wahrscheinlichkeit?: number;
+  /** ein Satz zu den gewichteten äußeren Umständen */
+  kontext?: string;
 }
 
 export interface TagesPrognose {

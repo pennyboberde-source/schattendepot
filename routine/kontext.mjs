@@ -160,12 +160,14 @@ if (typ === 'morgenlauf') {
   const vu = await json('volltreffer/uebersicht.json', null);
   const ll = vu?.lauerliste ?? [];
   if (ll.length) {
-    p(`## 🎯 Volltreffer-Lauerliste (${vu.lauerlisteZahl} Werte, die obersten ${Math.min(10, ll.length)}) – Urteil in \`volltrefferUrteil\``);
-    for (const j of ll.slice(0, 10)) p(`- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage · Muster: ${j.muster}${j.hinweis ? ` · ${j.hinweis}` : ''}`);
+    p(`## 🎯 Volltreffer-Lauerliste (${vu.lauerlisteZahl} Werte, die obersten ${Math.min(12, ll.length)}) – Gesamtbild-Urteil in \`volltrefferUrteil\``);
+    for (const j of ll.slice(0, 12)) p(`- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage${typeof j.quote === 'number' ? ` · Rückblick-Quote ${j.quote} %` : ''}${j.plattform ? ` · ${j.plattform}${j.ungeprueft ? ' (ungeprüft)' : ''}` : ''} · Muster: ${j.muster}${j.hinweis ? ` · ${j.hinweis}` : ''}`);
     const k = vu.kennzahlen;
     if (k?.anzahl) p(`Virtuelle Jagden bisher: ${k.anzahl} abgeschlossen, Volltreffer ${k.quote} %, Ø ${k.ev} € je Jagd.`);
     const u = vu.urteil;
-    if (u?.ja?.anzahl || u?.nein?.anzahl) p(`Dein Urteil bisher: „ja“ ${u.ja.anzahl} Fälle, Volltreffer ${u.ja.quote} %, Ø ${u.ja.ev} € · „nein“ ${u.nein.anzahl} Fälle, Volltreffer ${u.nein.quote} %, Ø ${u.nein.ev} €.`);
+    if (u?.ja?.anzahl || u?.nein?.anzahl) p(`Dein Urteil bisher: „ja“ ${u.ja.anzahl} Fälle, Volltreffer ${u.ja.quote} %, Ø ${u.ja.ev} € · „nein“ ${u.nein.anzahl} Fälle, Volltreffer ${u.nein.quote} %, Ø ${u.nein.ev} € · Filter für sichtbare Orders: ${u.neinFilter ? 'AKTIV (dein „nein“ zählt)' : 'aus (noch nicht genug belegt)'}.`);
+    const kal = (u?.kalibrierung ?? []).filter((b) => b.kennzahlen?.anzahl);
+    if (kal.length) p(`Deine Wahrscheinlichkeiten im Abgleich (abgeschlossene Fälle): ${kal.map((b) => `${b.bereich}: ${b.kennzahlen.anzahl} Fälle, wirklich ${b.kennzahlen.quote} % Volltreffer`).join(' · ')}.`);
     p('');
   }
 }

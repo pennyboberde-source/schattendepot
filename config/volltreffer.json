@@ -890,7 +890,12 @@
     "maxOffen": 3,
     "tagesVerlustGrenze": 300,
     "einsatz": 1000,
-    "ohneNein": false,
+    "ohneNein": "auto",
+    "urteilAuto": {
+      "hinweis": "Gesamtbild-Urteil (Quantensprung 2, 18.11.2026, Nutzer: „gewichtet erst nach Messung“): ohneNein „auto“ lässt Claudes „nein“-Fälle aus den sichtbaren Orders heraus, sobald mindestJa „ja“- und mindestNein „nein“-Fälle im Vorwärtstest abgeschlossen sind und „ja“ dort im Ø und in der Quote besser ist. Die virtuellen Jagden laufen immer mit allen Fällen weiter (sonst ist die Messung nicht mehr ehrlich).",
+      "mindestJa": 15,
+      "mindestNein": 30
+    },
     "schnellspur": {
       "mindestWertung": 30,
       "mindestFaelle": 10,

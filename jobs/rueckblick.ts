@@ -11,7 +11,7 @@ import { parseKryptoKerzenArchiv, parseUsArchiv, parseUsSplitsArchiv } from '../
 import { etikett, spielarten, spielartText, sprungEpisoden, volHebel, type Ausgang, type EtikettKosten, type Kerze, type NachziehEinstellung, type Spielart, type VolEinstellung } from '../core/volltreffer/etikett.ts';
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
-import { jagdenWaehlen, jagdKennzahlen, type JagdFall } from '../core/volltreffer/jagd.ts';
+import { jagdenWaehlen, jagdKennzahlen, neinFilterAktiv, urteilKalibrierung, type JagdFall } from '../core/volltreffer/jagd.ts';
 import { pumpVerdacht } from '../core/datenkrake.ts';
 import { befoerderungPruefen, istBefoerdert, noetigeFaelle, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
@@ -43,7 +43,7 @@ interface VtConfig {
   pruefung: { quartalMindestFaelle: number; quartaleMindestAnteil: number; mindestFaelle: number; mindestTage: number; klumpenJeGruppe: number; splitVerdachtMax: number; sperreTage: number; paareFenster: number[]; rangliste: number; einteilungen: Einteilung[] };
   erkennung?: { fenster: number; ereignisMerkmale: string[]; mindestSpruenge: number; liftMin: number; fallstudie: { wert: string; von: string; bis: string; anlass: string }[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number; haltefristTage?: number; maxJeKlumpen?: number; klumpenAnker?: string[]; klumpenMinKorrelation?: number };
-  v6: V6Regeln & { ohneNein?: boolean };
+  v6: V6Regeln & { ohneNein?: boolean | 'auto'; urteilAuto?: { mindestJa: number; mindestNein: number } };
   modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number; ziel?: 'netto' | 'treffer' }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   hebel?: { nurGettex: boolean; maxAlterTage: number; mindestZugeordnet: number };
   plattformen: {
@@ -682,7 +682,7 @@ function jagdFall(r: Reihe, i: number, e: BuchMuster, kosten: EtikettKosten, pl:
   if (ins !== null && ins <= 20) sec.push(`Insider-Kauf ${wann(ins)}`);
   const stu = studieAm(r, k[i].datum);
   if (stu !== null) sec.push(stu >= 0 ? `Studien-Ende (Phase 2/3) erwartet in ${stu} Tagen` : `Studien-Ende (Phase 2/3) vor ${-stu} Tagen erwartet, Daten ausstehend`);
-  const basis = { muster: e.schluessel, wertung: e.wertung, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), plattform: r.markt === 'krypto' && sp.hebel === 1 ? 'Trade Republic (Krypto direkt)' : PLATZ_NAME[pl], ...(pl === 'cfd' || pl === 'otc' ? { ungeprueft: true } : {}), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
+  const basis = { muster: e.schluessel, wertung: e.wertung, quote: e.rueckblick.quote, wert: r.schluessel.slice(2).split('#')[0], markt: r.markt, stichtag: k[i].datum, fenster: e.fenster, spielart: spielartText(sp), plattform: r.markt === 'krypto' && sp.hebel === 1 ? 'Trade Republic (Krypto direkt)' : PLATZ_NAME[pl], ...(pl === 'cfd' || pl === 'otc' ? { ungeprueft: true } : {}), ...(pump ? { pump: true } : {}), ...(sec.length ? { hinweis: `SEC: ${sec.join(', ')}` } : {}) };
   if (!k[i + 1]) return { ...basis, einstieg: null, ende: null, art: 'lauert', netto: null, tag: null };
   const res = etikett(k, i, sp, kosten, FENSTER_ALLE(e.fenster));
   const fertig = res.find((a) => a && a.art !== 'zeit') ?? res[e.fenster - 1];
@@ -1726,11 +1726,11 @@ if (vt.erkennung) {
   log(`Turbos: ${tp?.geprueft ?? 0} Werte neu geprüft in ${Math.round((Date.now() - tStart) / 1000)} s (${tp?.ohneName ?? 0} ohne Firmennamen, ${tp?.fehler ?? 0} Fehler), Cache ${cacheVorher} → ${Object.keys(turboCache).length}; ${nichtHandelbar} Vorwärts-Fälle ohne Produkt in ihrer Richtung entfernt. Eichung (Ø-Umsatz ab → Puts/Calls je geprüft): ${eich.map((e) => `${e.abUmsatz20 / 1e6} Mio. $: ${e.mitPuts}/${e.mitCalls} von ${e.geprueft}`).join(' · ')}.`);
   // V5: Claudes Urteile aus den Morgenläufen den Fällen zuordnen (Wert + Stichtag)
   const urteilOrdner = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'volltreffer', 'urteile');
-  const urteile = new Map<string, { urteil: 'ja' | 'nein'; grund: string }>();
+  const urteile = new Map<string, { urteil: 'ja' | 'nein'; grund: string; claudeP?: number; kontext?: string }>();
   if (existsSync(urteilOrdner))
     for (const f of readdirSync(urteilOrdner).filter((x) => x.endsWith('.json')))
-      for (const u of (JSON.parse(readFileSync(join(urteilOrdner, f), 'utf8')) as { urteile?: { wert: string; stichtag: string; urteil: 'ja' | 'nein'; grund: string }[] }).urteile ?? [])
-        urteile.set(`${u.wert.toUpperCase()}|${u.stichtag}`, { urteil: u.urteil, grund: u.grund });
+      for (const u of (JSON.parse(readFileSync(join(urteilOrdner, f), 'utf8')) as { urteile?: { wert: string; stichtag: string; urteil: 'ja' | 'nein'; grund: string; wahrscheinlichkeit?: number; kontext?: string }[] }).urteile ?? [])
+        urteile.set(`${u.wert.toUpperCase()}|${u.stichtag}`, { urteil: u.urteil, grund: u.grund, ...(typeof u.wahrscheinlichkeit === 'number' ? { claudeP: u.wahrscheinlichkeit } : {}), ...(u.kontext ? { kontext: u.kontext } : {}) });
   for (const f of vorwaerts) {
     const u = urteile.get(`${f.wert.toUpperCase()}|${f.stichtag}`);
     if (u) Object.assign(f, u);
@@ -1815,7 +1815,12 @@ if (vt.erkennung) {
   });
   if (befoerdertHeute.length || zurueckHeute.length) schreibeJson('lernen/muster/muster-buch.json', musterBuch);
   const zeiten3 = stufe3Zeiten(musterBuch.eintraege);
-  const s3 = stufe3Waehlen(ohnePump, zeiten3, v6, v6.ohneNein ?? false, klumpenRegel);
+  // Gesamtbild-Urteil (Quantensprung 2): Claudes „nein“ zählt für die sichtbaren Orders erst, wenn gemessen ist, dass es hilft
+  const urteilJa = jagdKennzahlen(vorwaerts.filter((f) => f.urteil === 'ja'));
+  const urteilNein = jagdKennzahlen(vorwaerts.filter((f) => f.urteil === 'nein'));
+  const ohneNein = v6.ohneNein === 'auto' ? neinFilterAktiv(urteilJa, urteilNein, v6.urteilAuto ?? { mindestJa: 15, mindestNein: 30 }) : (v6.ohneNein ?? false);
+  log(`Claudes Urteil: „ja“ ${urteilJa.anzahl} abgeschlossen (Quote ${urteilJa.quote} %, Ø ${urteilJa.ev} €), „nein“ ${urteilNein.anzahl} (Quote ${urteilNein.quote} %, Ø ${urteilNein.ev} €) → Filter für sichtbare Orders ${ohneNein ? 'AKTIV' : 'aus'}${v6.ohneNein === 'auto' ? ' (automatisch nach Messung)' : ''}.`);
+  const s3 = stufe3Waehlen(ohnePump, zeiten3, v6, ohneNein, klumpenRegel);
   const befoerdertJetzt = [...alleMuster.values(), ...musterBuch.eintraege]
     .filter((e, i, a) => a.findIndex((x) => x.schluessel === e.schluessel) === i && istBefoerdert(zeiten3, e.schluessel))
     .map((e) => ({ gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: zeiten3.get(e.schluessel)!.find((z) => z.bis === null)!.von, rueckblick: e.rueckblick }));
@@ -1834,7 +1839,7 @@ if (vt.erkennung) {
     regeln: { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, stufe2Faelle: v4.stufe2Faelle },
     kennzahlen: jagdKennzahlen(jagden),
     // V5: Wie gut ist Claudes Urteil? Alle Fälle im Vorwärtstest mit „ja“ gegen „nein“ (nicht nur die gewählten Jagden)
-    urteil: { ja: jagdKennzahlen(vorwaerts.filter((f) => f.urteil === 'ja')), nein: jagdKennzahlen(vorwaerts.filter((f) => f.urteil === 'nein')), urteile: urteile.size },
+    urteil: { ja: urteilJa, nein: urteilNein, urteile: urteile.size, kalibrierung: urteilKalibrierung(vorwaerts), neinFilter: ohneNein },
     offen: jagden.filter((j) => j.art === 'offen').map(ohneMuster),
     abgeschlossen: jagden.filter((j) => j.art !== 'offen').sort((a, b) => (b.ende ?? '').localeCompare(a.ende ?? '')).slice(0, 30).map(ohneMuster),
     lauerliste: lauerliste.slice(0, v4.lauerlisteMax).map(ohneMuster),

@@ -77,3 +77,25 @@ describe('Klumpen (18.11.2026)', () => {
     expect(uebersprungen).toBe(1);
   });
 });
+
+describe('Gesamtbild-Urteil (18.11.2026)', () => {
+  const fall = (art: JagdFall['art'], netto: number, claudeP?: number, urteil?: 'ja' | 'nein'): JagdFall => ({ muster: 'm', wertung: 1, wert: 'X', markt: 'aktie', stichtag: '2026-11-10', einstieg: '2026-11-11', ende: '2026-11-12', art, netto, tag: 2, fenster: 10, spielart: 'direkt, Stop 150 €', ...(claudeP !== undefined ? { claudeP } : {}), ...(urteil ? { urteil } : {}) });
+  it('Kalibrierung zählt je Bereich der geschätzten Wahrscheinlichkeit', async () => {
+    const { urteilKalibrierung } = await import('./jagd.ts');
+    const k = urteilKalibrierung([fall('niete', -150, 10), fall('treffer', 410, 35), fall('niete', -150, 40), fall('niete', -150, 20), fall('treffer', 400)]);
+    expect(k.map((b) => [b.bereich, b.kennzahlen.anzahl, b.kennzahlen.quote])).toEqual([
+      ['unter 15 %', 1, 0],
+      ['15 bis 30 %', 1, 0],
+      ['ab 30 %', 2, 50],
+    ]);
+  });
+  it('„nein“-Filter erst nach Messung und nur, wenn „ja“ besser ist', async () => {
+    const { jagdKennzahlen, neinFilterAktiv } = await import('./jagd.ts');
+    const r = { mindestJa: 2, mindestNein: 2 };
+    const ja = jagdKennzahlen([fall('treffer', 400), fall('niete', -150)]);
+    const nein = jagdKennzahlen([fall('niete', -150), fall('niete', -150)]);
+    expect(neinFilterAktiv(ja, nein, r)).toBe(true);
+    expect(neinFilterAktiv(nein, ja, r)).toBe(false);
+    expect(neinFilterAktiv(ja, nein, { mindestJa: 3, mindestNein: 2 })).toBe(false);
+  });
+});
