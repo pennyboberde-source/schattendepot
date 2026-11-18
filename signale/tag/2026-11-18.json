@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T11:20:08.886Z",
-  "anzahl": 75,
+  "stand": "2026-11-18T12:20:02.677Z",
+  "anzahl": 76,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -843,7 +843,7 @@
       "m": "us",
       "typ": "politik_massnahme",
       "r": 1,
-      "st": 0.7,
+      "st": 0.85,
       "q": [
         "CNBC Politics"
       ],
@@ -857,7 +857,7 @@
       "m": "eu",
       "typ": "politik_massnahme",
       "r": -1,
-      "st": 0.7,
+      "st": 0.85,
       "q": [
         "CNBC Politics"
       ],
@@ -1013,6 +1013,20 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-18T01:34:09.000Z"
+    },
+    {
+      "id": "kursrakete:K.PIEVERSE:2026-11-18",
+      "s": "K:PIEVERSE",
+      "n": "Pieverse",
+      "t": "PIEVERSE",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.71,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-18T12:20:02.677Z"
     }
   ]
 }
