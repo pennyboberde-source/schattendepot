@@ -1,26 +1,26 @@
 {
-  "stand": "2026-11-18T16:24:11.625Z",
+  "stand": "2026-11-18T16:39:40.566Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
-      "anzahl": 11,
+      "anzahl": 12,
       "treffer": 0,
       "quote": 0,
-      "netto": -151.07,
-      "brutto": -151.07,
-      "nettoTR": -173.07,
-      "oeNettoProzent": -1.44,
-      "oeR": -1.05
+      "netto": -161.68,
+      "brutto": -161.68,
+      "nettoTR": -185.68,
+      "oeNettoProzent": -1.41,
+      "oeR": -0.96
     },
-    "offen": 6
+    "offen": 5
   },
   "gesamt": {
-    "anzahl": 560,
+    "anzahl": 561,
     "treffer": 177,
     "quote": 31.6,
-    "netto": -4280.42,
-    "brutto": -4123.42,
-    "nettoTR": -5243.42,
+    "netto": -4291.03,
+    "brutto": -4134.03,
+    "nettoTR": -5256.03,
     "oeNettoProzent": -0.79,
     "oeR": -0.04
   },
@@ -141,19 +141,19 @@
     },
     {
       "datum": "2026-11-18",
-      "netto": -4280.42,
-      "brutto": -4123.42,
-      "nettoTR": -5243.42
+      "netto": -4291.03,
+      "brutto": -4134.03,
+      "nettoTR": -5256.03
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 549,
+      "anzahl": 550,
       "treffer": 174,
-      "quote": 31.7,
-      "netto": -4149,
-      "brutto": -3992,
-      "nettoTR": -5090,
+      "quote": 31.6,
+      "netto": -4159.61,
+      "brutto": -4002.61,
+      "nettoTR": -5102.61,
       "oeNettoProzent": -0.78,
       "oeR": -0.03
     },
@@ -170,12 +170,12 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 316,
+      "anzahl": 317,
       "treffer": 112,
-      "quote": 35.4,
-      "netto": -2061.6,
-      "brutto": -2061.6,
-      "nettoTR": -2693.6,
+      "quote": 35.3,
+      "netto": -2072.21,
+      "brutto": -2072.21,
+      "nettoTR": -2706.21,
       "oeNettoProzent": -0.67,
       "oeR": 0.02
     },
@@ -202,13 +202,13 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 380,
+      "anzahl": 381,
       "treffer": 120,
-      "quote": 31.6,
-      "netto": -1863.09,
-      "brutto": -1738.09,
-      "nettoTR": -2498.09,
-      "oeNettoProzent": -0.52,
+      "quote": 31.5,
+      "netto": -1873.7,
+      "brutto": -1748.7,
+      "nettoTR": -2510.7,
+      "oeNettoProzent": -0.53,
       "oeR": 0.03
     },
     "orb_short": {
@@ -234,12 +234,12 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 296,
+      "anzahl": 297,
       "treffer": 107,
-      "quote": 36.1,
-      "netto": -1000.55,
-      "brutto": -999.55,
-      "nettoTR": -1591.55,
+      "quote": 36,
+      "netto": -1011.16,
+      "brutto": -1010.16,
+      "nettoTR": -1604.16,
       "oeNettoProzent": -0.38,
       "oeR": 0.08
     },
@@ -276,12 +276,12 @@
       "oeR": 0.01
     },
     "spekulativ": {
-      "anzahl": 212,
+      "anzahl": 213,
       "treffer": 49,
-      "quote": 23.1,
-      "netto": -2354.76,
-      "brutto": -2253.76,
-      "nettoTR": -2677.76,
+      "quote": 23,
+      "netto": -2365.37,
+      "brutto": -2264.37,
+      "nettoTR": -2690.37,
       "oeNettoProzent": -1.15,
       "oeR": -0.11
     }
@@ -308,24 +308,24 @@
       "oeR": 2.03
     },
     "schluss": {
-      "anzahl": 122,
+      "anzahl": 123,
       "treffer": 70,
-      "quote": 57.4,
-      "netto": 1867.39,
-      "brutto": 1889.39,
-      "nettoTR": 1645.39,
-      "oeNettoProzent": 1.55,
+      "quote": 56.9,
+      "netto": 1856.78,
+      "brutto": 1878.78,
+      "nettoTR": 1632.78,
+      "oeNettoProzent": 1.53,
       "oeR": 0.35
     }
   },
   "nachPhase": {
     "seitwaerts_nervoes": {
-      "anzahl": 246,
+      "anzahl": 247,
       "treffer": 85,
-      "quote": 34.6,
-      "netto": -1391.98,
-      "brutto": -1390.98,
-      "nettoTR": -1882.98,
+      "quote": 34.4,
+      "netto": -1402.59,
+      "brutto": -1401.59,
+      "nettoTR": -1895.59,
       "oeNettoProzent": -0.61,
       "oeR": -0.04
     },
@@ -376,88 +376,6 @@
   ],
   "offen": [
     {
-      "id": "2026-11-18-scan-aurubis-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "AURUBIS AG",
-      "isin": "DE0006766504",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 156.96,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T08:20:00.000Z",
-        "kurs": 129.6,
-        "level": 129.8,
-        "spanne": {
-          "hoch": 131.5,
-          "tief": 129.8
-        },
-        "richtung": "short"
-      },
-      "stop": 133.42,
-      "ziel": 125.57,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T08:25:00.000Z",
-        "basisKurs": 130.8,
-        "kurs": 2.6225,
-        "stueck": 381,
-        "kurswert": 999.17
-      }
-    },
-    {
-      "id": "2026-11-18-scan-kion-group-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "KION GROUP AG",
-      "isin": "DE000KGX8881",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 38.1,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T09:05:00.000Z",
-        "kurs": 31.94,
-        "level": 32,
-        "spanne": {
-          "hoch": 32.35,
-          "tief": 32
-        },
-        "richtung": "short"
-      },
-      "stop": 32.18,
-      "ziel": 30.9,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T09:05:00.000Z",
-        "basisKurs": 31.75,
-        "kurs": 6.3659,
-        "stueck": 157,
-        "kurswert": 999.45
-      }
-    },
-    {
       "id": "2026-11-18-scan-nvidia-corp",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -890,39 +808,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-cts-eventim-ag-co-kgaa",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "CTS EVENTIM AG & CO KGAA",
-      "isin": "DE0005470306",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T15:15:00.000Z",
-        "kurs": 61.3,
-        "level": 61.05,
-        "spanne": {
-          "hoch": 61.05,
-          "tief": 59.5
-        },
-        "richtung": "long"
-      },
-      "stop": 60.28,
-      "ziel": 63.5,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-18T15:40:00.000Z",
-        "basisKurs": 61.35,
-        "kurs": 61.657,
-        "stueck": 16,
-        "kurswert": 986.51
-      }
-    },
-    {
       "id": "2026-11-18-scan-berkshire-hathaway-inc-c",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1068,94 +953,70 @@
           "ziel": 6,
           "stop": 14,
           "oeR": -0.07
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-sandisk-corp",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SANDISK CORP",
+      "isin": "US80004C2008",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 834,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:15:00.000Z",
+        "kurs": 690,
+        "level": 695,
+        "spanne": {
+          "hoch": 730,
+          "tief": 695
+        },
+        "richtung": "short"
+      },
+      "stop": 712.5,
+      "ziel": 660,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T16:15:00.000Z",
+        "basisKurs": 695,
+        "kurs": 13.935,
+        "stueck": 71,
+        "kurswert": 989.39
+      },
+      "timeMachine": {
+        "zielZuerst": 2.6,
+        "stopZuerst": 23.6,
+        "keins": 73.8,
+        "gruen": 51,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 5,
+          "stop": 10,
+          "oeR": 0.15
         }
       }
     }
   ],
   "trades": [
     {
-      "id": "2026-11-18-scan-aurubis-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "AURUBIS AG",
-      "isin": "DE0006766504",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 156.96,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T08:20:00.000Z",
-        "kurs": 129.6,
-        "level": 129.8,
-        "spanne": {
-          "hoch": 131.5,
-          "tief": 129.8
-        },
-        "richtung": "short"
-      },
-      "stop": 133.42,
-      "ziel": 125.57,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T08:25:00.000Z",
-        "basisKurs": 130.8,
-        "kurs": 2.6225,
-        "stueck": 381,
-        "kurswert": 999.17
-      }
-    },
-    {
-      "id": "2026-11-18-scan-kion-group-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "KION GROUP AG",
-      "isin": "DE000KGX8881",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 38.1,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T09:05:00.000Z",
-        "kurs": 31.94,
-        "level": 32,
-        "spanne": {
-          "hoch": 32.35,
-          "tief": 32
-        },
-        "richtung": "short"
-      },
-      "stop": 32.18,
-      "ziel": 30.9,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T09:05:00.000Z",
-        "basisKurs": 31.75,
-        "kurs": 6.3659,
-        "stueck": 157,
-        "kurswert": 999.45
-      }
-    },
-    {
       "id": "2026-11-18-scan-nvidia-corp",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1588,39 +1449,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-cts-eventim-ag-co-kgaa",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "CTS EVENTIM AG & CO KGAA",
-      "isin": "DE0005470306",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T15:15:00.000Z",
-        "kurs": 61.3,
-        "level": 61.05,
-        "spanne": {
-          "hoch": 61.05,
-          "tief": 59.5
-        },
-        "richtung": "long"
-      },
-      "stop": 60.28,
-      "ziel": 63.5,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-18T15:40:00.000Z",
-        "basisKurs": 61.35,
-        "kurs": 61.657,
-        "stueck": 16,
-        "kurswert": 986.51
-      }
-    },
-    {
       "id": "2026-11-18-scan-berkshire-hathaway-inc-c",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1767,6 +1595,236 @@
           "stop": 14,
           "oeR": -0.07
         }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-sandisk-corp",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SANDISK CORP",
+      "isin": "US80004C2008",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 834,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T16:15:00.000Z",
+        "kurs": 690,
+        "level": 695,
+        "spanne": {
+          "hoch": 730,
+          "tief": 695
+        },
+        "richtung": "short"
+      },
+      "stop": 712.5,
+      "ziel": 660,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T16:15:00.000Z",
+        "basisKurs": 695,
+        "kurs": 13.935,
+        "stueck": 71,
+        "kurswert": 989.39
+      },
+      "timeMachine": {
+        "zielZuerst": 2.6,
+        "stopZuerst": 23.6,
+        "keins": 73.8,
+        "gruen": 51,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 5,
+          "stop": 10,
+          "oeR": 0.15
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-aurubis-ag",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "AURUBIS AG",
+      "isin": "DE0006766504",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 156.96,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T08:20:00.000Z",
+        "kurs": 129.6,
+        "level": 129.8,
+        "spanne": {
+          "hoch": 131.5,
+          "tief": 129.8
+        },
+        "richtung": "short"
+      },
+      "stop": 133.42,
+      "ziel": 125.57,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T08:25:00.000Z",
+        "basisKurs": 130.8,
+        "kurs": 2.6225,
+        "stueck": 381,
+        "kurswert": 999.17
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T16:25:00.000Z",
+        "basisKurs": 126.6,
+        "kurs": 3.0284,
+        "kurswert": 1153.82,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 154.65,
+        "bruttoProzent": 15.48,
+        "netto": 154.65,
+        "nettoProzent": 15.48,
+        "nettoTR": 152.65,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.6
+      }
+    },
+    {
+      "id": "2026-11-18-scan-kion-group-ag",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "KION GROUP AG",
+      "isin": "DE000KGX8881",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 38.1,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T09:05:00.000Z",
+        "kurs": 31.94,
+        "level": 32,
+        "spanne": {
+          "hoch": 32.35,
+          "tief": 32
+        },
+        "richtung": "short"
+      },
+      "stop": 32.18,
+      "ziel": 30.9,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T09:05:00.000Z",
+        "basisKurs": 31.75,
+        "kurs": 6.3659,
+        "stueck": 157,
+        "kurswert": 999.45
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T16:25:00.000Z",
+        "basisKurs": 31.45,
+        "kurs": 6.6334,
+        "kurswert": 1041.44,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 41.99,
+        "bruttoProzent": 4.2,
+        "netto": 41.99,
+        "nettoProzent": 4.2,
+        "nettoTR": 39.99,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 0.7
+      }
+    },
+    {
+      "id": "2026-11-18-scan-cts-eventim-ag-co-kgaa",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "CTS EVENTIM AG & CO KGAA",
+      "isin": "DE0005470306",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:15:00.000Z",
+        "kurs": 61.3,
+        "level": 61.05,
+        "spanne": {
+          "hoch": 61.05,
+          "tief": 59.5
+        },
+        "richtung": "long"
+      },
+      "stop": 60.28,
+      "ziel": 63.5,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T15:40:00.000Z",
+        "basisKurs": 61.35,
+        "kurs": 61.657,
+        "stueck": 16,
+        "kurswert": 986.51
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T16:25:00.000Z",
+        "basisKurs": 61.3,
+        "kurs": 60.994,
+        "kurswert": 975.9,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": -10.61,
+        "bruttoProzent": -1.08,
+        "netto": -10.61,
+        "nettoProzent": -1.08,
+        "nettoTR": -12.61,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -0.05
       }
     },
     {
@@ -12201,46 +12259,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 137,
-      "treffer": 58,
-      "quote": 42.3,
-      "netto": -1123.68,
-      "brutto": -1063.68,
-      "nettoTR": -1336.68,
-      "oeNettoProzent": -0.83,
-      "oeR": 0.28
+      "anzahl": 139,
+      "treffer": 60,
+      "quote": 43.2,
+      "netto": -927.04,
+      "brutto": -867.04,
+      "nettoTR": -1144.04,
+      "oeNettoProzent": -0.67,
+      "oeR": 0.29
     },
     "heute": {
-      "anzahl": 18,
-      "treffer": 6,
-      "quote": 33.3,
-      "netto": -442.33,
-      "brutto": -438.33,
-      "nettoTR": -474.33,
-      "oeNettoProzent": -2.48,
-      "oeR": -0.01
+      "anzahl": 20,
+      "treffer": 8,
+      "quote": 40,
+      "netto": -245.69,
+      "brutto": -241.69,
+      "nettoTR": -281.69,
+      "oeNettoProzent": -1.25,
+      "oeR": 0.11
     },
-    "offen": 8,
+    "offen": 7,
     "gruppen": {
       "turbo": {
-        "anzahl": 107,
-        "treffer": 48,
-        "quote": 44.9,
-        "netto": -891.77,
-        "brutto": -891.77,
-        "nettoTR": -1104.77,
-        "oeNettoProzent": -0.84,
-        "oeR": 0.22
+        "anzahl": 109,
+        "treffer": 50,
+        "quote": 45.9,
+        "netto": -695.13,
+        "brutto": -695.13,
+        "nettoTR": -912.13,
+        "oeNettoProzent": -0.65,
+        "oeR": 0.23
       },
       "short": {
-        "anzahl": 107,
-        "treffer": 48,
-        "quote": 44.9,
-        "netto": -891.77,
-        "brutto": -891.77,
-        "nettoTR": -1104.77,
-        "oeNettoProzent": -0.84,
-        "oeR": 0.22
+        "anzahl": 109,
+        "treffer": 50,
+        "quote": 45.9,
+        "netto": -695.13,
+        "brutto": -695.13,
+        "nettoTR": -912.13,
+        "oeNettoProzent": -0.65,
+        "oeR": 0.23
       },
       "krypto": {
         "anzahl": 30,
@@ -12257,14 +12315,14 @@
   "seitUmstellung": {
     "ab": "2026-11-13",
     "gruppe": {
-      "anzahl": 63,
+      "anzahl": 64,
       "treffer": 8,
-      "quote": 12.7,
-      "netto": -665.53,
-      "brutto": -664.53,
-      "nettoTR": -790.53,
+      "quote": 12.5,
+      "netto": -676.14,
+      "brutto": -675.14,
+      "nettoTR": -803.14,
       "oeNettoProzent": -1.17,
-      "oeR": -0.38
+      "oeR": -0.37
     }
   },
   "varianten": {
@@ -12295,8 +12353,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 197,
-        "chance": 39.6,
+        "faelle": 198,
+        "chance": 39.4,
         "oeNetto": -0.09,
         "wertung": -0.2
       }
