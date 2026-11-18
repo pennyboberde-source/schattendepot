@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-18T09:23:28.274Z",
+  "stand": "2026-11-18T09:38:52.998Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
@@ -897,6 +897,47 @@
         "stueck": 186,
         "kurswert": 999.08
       }
+    },
+    {
+      "id": "2026-11-18-scan-rio-tinto-plc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "RIO TINTO PLC",
+      "isin": "GB0007188757",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 84.88,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T09:15:00.000Z",
+        "kurs": 70.71,
+        "level": 70.78,
+        "spanne": {
+          "hoch": 71.6,
+          "tief": 70.78
+        },
+        "richtung": "short"
+      },
+      "stop": 71.19,
+      "ziel": 69.81,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T09:15:00.000Z",
+        "basisKurs": 70.73,
+        "kurs": 14.185,
+        "stueck": 70,
+        "kurswert": 992.95
+      }
     }
   ],
   "trades": [
@@ -1421,6 +1462,47 @@
         "kurs": 5.3714,
         "stueck": 186,
         "kurswert": 999.08
+      }
+    },
+    {
+      "id": "2026-11-18-scan-rio-tinto-plc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "RIO TINTO PLC",
+      "isin": "GB0007188757",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 84.88,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T09:15:00.000Z",
+        "kurs": 70.71,
+        "level": 70.78,
+        "spanne": {
+          "hoch": 71.6,
+          "tief": 70.78
+        },
+        "richtung": "short"
+      },
+      "stop": 71.19,
+      "ziel": 69.81,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T09:15:00.000Z",
+        "basisKurs": 70.73,
+        "kurs": 14.185,
+        "stueck": 70,
+        "kurswert": 992.95
       }
     },
     {
@@ -10466,7 +10548,7 @@
       "oeNettoProzent": 4.79,
       "oeR": 0
     },
-    "offen": 9,
+    "offen": 10,
     "gruppen": {
       "turbo": {
         "anzahl": 93,
@@ -10519,10 +10601,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 150,
-        "chance": 36.7,
-        "oeNetto": -0.9,
-        "wertung": -1.38
+        "faelle": 152,
+        "chance": 36.8,
+        "oeNetto": -0.83,
+        "wertung": -1.31
       }
     },
     "krypto:level_long": {
@@ -10541,10 +10623,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 192,
-        "chance": 40.6,
+        "faelle": 193,
+        "chance": 40.4,
         "oeNetto": -0.07,
-        "wertung": -0.18
+        "wertung": -0.19
       }
     },
     "krypto:orb_long": {
