@@ -1,0 +1,66 @@
+{
+  "hinweis": "Kontext-Geschichte (Quantensprung 3, Nutzer 18.11.2026: Kursbewegungen der letzten zwei Jahre der wirtschaftlichen, politischen und allgemeinen Lage zuordnen und das laufend für heute; kostenlose Quellen mit Rückblick, auch andere Bereiche als Wirtschaft und Politik). Abruf im Archivlauf (Teile themen, aufmerksamkeit, weltgeschehen, amtsblatt), Merkmale im Rückblick, öffentlich nur Zählungen, Klassen und kurze Schlagzeilen mit Quellenangabe (lernen/kontext.json). Alle Quellen frei, ohne Schlüssel; Nutzungsbedingungen: GDELT offen mit Quellenangabe, Wikimedia (User-Agent mit Kontakt, höfliche Rate), Wikipedia-Texte CC BY-SA 4.0 mit Quellenangabe, Federal Register gemeinfrei (US-Regierung).",
+  "ab": "2024-10-01",
+  "gdelt": {
+    "hinweis": "GDELT DOC 2.0 API (Suche ab 01.01.2017), mode=timelinevolraw: Artikel je Tag zum Thema und alle beobachteten Artikel (norm). Höchstens ein Abruf alle pauseMs Millisekunden. Neue Themen hinten anhängen.",
+    "url": "https://api.gdeltproject.org/api/v2/doc/doc",
+    "pauseMs": 6000,
+    "themen": [
+      { "id": "zoelle", "name": "Zölle und Handelsstreit", "gdelt": "(tariff OR tariffs OR \"trade war\")", "politik": true, "sic": [[2000, 3999], [5000, 5199]] },
+      { "id": "sanktionen", "name": "Sanktionen und Embargos", "gdelt": "(sanctions OR embargo)", "politik": true, "sic": [[1300, 1399], [2900, 2999]] },
+      { "id": "krieg", "name": "Krieg und Angriffe", "gdelt": "(airstrike OR invasion OR \"missile attack\" OR \"military strike\")", "politik": true, "sic": [[3480, 3489], [3720, 3729], [3760, 3769], [3812, 3812], [1300, 1399]] },
+      { "id": "wahl", "name": "Wahlen", "gdelt": "(election OR \"polls show\")", "politik": true },
+      { "id": "erlass", "name": "Erlasse und Regierungshandeln", "gdelt": "(\"executive order\" OR \"White House\")", "politik": true },
+      { "id": "fed", "name": "Notenbank und Zinsen", "gdelt": "(\"Federal Reserve\" OR \"rate cut\" OR \"rate hike\")", "sic": [[6000, 6799]] },
+      { "id": "inflation", "name": "Inflation", "gdelt": "(inflation OR \"consumer prices\")" },
+      { "id": "rezession", "name": "Rezession und Entlassungen", "gdelt": "(recession OR layoffs)" },
+      { "id": "pleite", "name": "Pleiten", "gdelt": "(bankruptcy OR \"chapter 11\" OR insolvency)" },
+      { "id": "hack", "name": "Hackerangriffe", "gdelt": "(cyberattack OR ransomware OR \"data breach\")", "sic": [[7370, 7379]] },
+      { "id": "seuche", "name": "Seuchen und Ausbrüche", "gdelt": "(outbreak OR pandemic OR epidemic)", "sic": [[2830, 2836], [8731, 8731], [3840, 3851]] },
+      { "id": "katastrophe", "name": "Stürme, Beben, Brände", "gdelt": "(hurricane OR earthquake OR wildfire OR flooding)", "sic": [[6330, 6399], [4900, 4999], [1520, 1799]] },
+      { "id": "oel", "name": "Öl und OPEC", "gdelt": "(OPEC OR \"oil prices\" OR \"oil supply\")", "sic": [[1300, 1399], [2900, 2999], [4500, 4599]] },
+      { "id": "china", "name": "China und Taiwan", "gdelt": "(\"Taiwan Strait\" OR \"China trade\" OR Beijing)", "politik": true, "sic": [[3670, 3679], [3570, 3579]] },
+      { "id": "ki", "name": "Künstliche Intelligenz", "gdelt": "(\"artificial intelligence\" OR \"data center\" OR \"machine learning\")", "sic": [[3670, 3679], [3570, 3579], [7370, 7379], [4900, 4999]] },
+      { "id": "chips", "name": "Halbleiter und Exportkontrollen", "gdelt": "(semiconductor OR \"export controls\")", "sic": [[3670, 3679], [3550, 3559]] },
+      { "id": "krypto", "name": "Krypto", "gdelt": "(bitcoin OR cryptocurrency OR stablecoin)", "krypto": true, "sic": [[6199, 6199], [6211, 6211]] },
+      { "id": "fda", "name": "Zulassungen und Studien", "gdelt": "(\"FDA approval\" OR \"FDA approves\" OR \"clinical trial\")", "sic": [[2830, 2836], [8731, 8731], [3840, 3851]] },
+      { "id": "uebernahme", "name": "Übernahmen", "gdelt": "(merger OR acquisition OR takeover)" },
+      { "id": "meme", "name": "Meme-Aktien und Squeezes", "gdelt": "(\"short squeeze\" OR \"meme stock\" OR WallStreetBets)" },
+      { "id": "ruestung", "name": "Rüstung und Verteidigung", "gdelt": "(\"defense spending\" OR NATO OR Pentagon)", "politik": true, "sic": [[3480, 3489], [3720, 3729], [3760, 3769], [3812, 3812]] },
+      { "id": "energie", "name": "Atomkraft, Uran, Stromnetz", "gdelt": "(\"nuclear power\" OR uranium OR \"power grid\")", "sic": [[1090, 1099], [4910, 4939], [3620, 3629]] },
+      { "id": "raumfahrt", "name": "Raumfahrt", "gdelt": "(SpaceX OR \"rocket launch\" OR satellite)", "sic": [[3760, 3769], [4890, 4899]] },
+      { "id": "quanten", "name": "Quantencomputer", "gdelt": "(\"quantum computing\" OR \"quantum computer\")", "sic": [[3570, 3579], [7370, 7379]] },
+      { "id": "drohnen", "name": "Drohnen", "gdelt": "(drone OR drones OR UAV)", "sic": [[3720, 3729], [3812, 3812]] },
+      { "id": "abnehmspritze", "name": "Abnehmspritzen", "gdelt": "(GLP-1 OR Ozempic OR Wegovy)", "sic": [[2830, 2836], [8731, 8731]] }
+    ]
+  },
+  "aufmerksamkeit": {
+    "hinweis": "Wikipedia-Seitenaufrufe (Wikimedia REST, nur Menschen: agent=user) je Firma/Coin und Tag. Zuordnung Kürzel → Artikel über Wikidata (Börse in den USA, Eigenschaft P414 mit Kürzel P249), Coins aus der Liste. Erst die ganze Reihe je neuem Artikel (Nachtrag), danach täglich die letzten tageZurueck Tage für alle. parallel Anfragen gleichzeitig, höchstens laufzeitMinuten je Lauf.",
+    "wikidata": "https://query.wikidata.org/sparql",
+    "pageviews": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user",
+    "parallel": 8,
+    "pauseMs": 60,
+    "tageZurueck": 6,
+    "laufzeitMinuten": 18,
+    "coins": {
+      "BTC": "Bitcoin", "ETH": "Ethereum", "SOL": "Solana_(blockchain_platform)", "XRP": "Ripple_Labs", "DOGE": "Dogecoin", "ADA": "Cardano_(blockchain_platform)", "LTC": "Litecoin", "DOT": "Polkadot_(cryptocurrency)", "LINK": "Chainlink_(blockchain)", "AVAX": "Avalanche_(blockchain_platform)", "BCH": "Bitcoin_Cash", "XLM": "Stellar_(payment_network)", "TRX": "Tron_(cryptocurrency)", "SHIB": "Shiba_Inu_(cryptocurrency)", "XMR": "Monero", "ATOM": "Cosmos_(blockchain)", "ETC": "Ethereum_Classic", "FIL": "Filecoin", "ALGO": "Algorand", "NEAR": "Near_Protocol", "UNI": "Uniswap", "PEPE": "Pepe_(cryptocurrency)", "SUI": "Sui_(blockchain)", "TON": "Toncoin", "HBAR": "Hedera_(distributed_ledger)", "ICP": "Internet_Computer", "APT": "Aptos_(blockchain)", "ARB": "Arbitrum", "OP": "Optimism_(blockchain)", "TRUMP": "$Trump", "WLD": "World_(blockchain)", "ZEC": "Zcash", "DASH": "Dash_(cryptocurrency)", "BNB": "Binance", "USDT": "Tether_(cryptocurrency)", "USDC": "USD_Coin"
+    }
+  },
+  "weltgeschehen": {
+    "hinweis": "Wikipedia Portal:Current events – je Tag eine Seite, von Freiwilligen zusammengefasst (Text CC BY-SA 4.0, Quelle: Wikipedia). Eine Tagesdatei wird erst geschrieben, wenn der Tag stabilTage alt ist (Nachträge der Autoren); jüngere Tage stehen in aktuell.json.gz und werden täglich neu geholt.",
+    "api": "https://en.wikipedia.org/w/api.php",
+    "stabilTage": 3,
+    "maxTageJeLauf": 900,
+    "pauseMs": 250
+  },
+  "amtsblatt": {
+    "hinweis": "Federal Register (US-Amtsblatt) – tägliche Zahl der Dokumente: Präsidenten-Dokumente (Erlasse, Proklamationen) und Volltextsuche nach Zöllen, Sanktionen, Exportkontrollen. Ein Abruf je Reihe liefert alle Tage seit ab.",
+    "url": "https://www.federalregister.gov/api/v1/documents/facets/daily",
+    "reihen": [
+      { "id": "praesident", "name": "Präsidenten-Dokumente", "bedingung": "conditions[type][]=PRESDOCU" },
+      { "id": "zoelle", "name": "Zölle", "bedingung": "conditions[term]=tariff" },
+      { "id": "sanktionen", "name": "Sanktionen", "bedingung": "conditions[term]=sanctions" },
+      { "id": "export", "name": "Exportkontrollen", "bedingung": "conditions[term]=%22export%20administration%20regulations%22" }
+    ]
+  }
+}

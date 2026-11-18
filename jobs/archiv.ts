@@ -42,6 +42,7 @@ import { hebelZeilen, produktAuswahl, richtungenAus, type ProdukteJeBasis } from
 import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, quartaleZwischen, quartalsEnde, quartalVon, type InsiderArchiv } from '../core/volltreffer/insider.ts';
 import { frameEinarbeiten, frameLesen, framesBis, type AktienzahlArchiv } from '../core/volltreffer/aktienzahl.ts';
 import { istBiotech, sponsorName, studienLesen, type Studie } from '../core/volltreffer/studien.ts';
+import { amtsblattLesen, aufrufeLesen, gdeltLesen, weltgeschehenLesen, wikidataKuerzel, type Ereignis, type Tagesreihe, type Thema } from '../core/volltreffer/kontext.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -87,6 +88,11 @@ interface Index {
   aktienzahl?: { firmen: number; werte: number; frames: number; geholt: string };
   /** F3: tägliche Schnappschüsse der Studien-Termine (nur Zählungen) */
   studien?: Record<string, { firmen: number; mitStudien: number; studien: number; geholt: string }>;
+  /** Quantensprung 3: Kontext-Geschichte (nur Zählungen) */
+  themen?: { themen: number; tage: number; bis: string | null; geholt: string };
+  amtsblatt?: { reihen: number; tage: number; bis: string | null; geholt: string };
+  weltgeschehen?: { tage: number; ereignisse: number; bis: string | null; geholt: string };
+  aufmerksamkeit?: { zugeordnet: number; mitReihe: number; offen: number; bis: string | null; geholt: string; zuordnung: string };
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -101,7 +107,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider,aktienzahl,studien').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider,aktienzahl,studien,themen,amtsblatt,weltgeschehen,aufmerksamkeit').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -1159,6 +1165,227 @@ async function insider() {
   if (fehler) throw fehler;
 }
 
+
+// ---------- Quantensprung 3: Kontext-Geschichte (config/kontext.json, core/volltreffer/kontext.ts) ----------
+interface KontextConfig {
+  ab: string;
+  gdelt: { url: string; pauseMs: number; themen: Thema[] };
+  aufmerksamkeit: { wikidata: string; pageviews: string; parallel: number; pauseMs: number; tageZurueck: number; laufzeitMinuten: number; coins: Record<string, string> };
+  weltgeschehen: { api: string; stabilTage: number; maxTageJeLauf: number; pauseMs: number };
+  amtsblatt: { url: string; reihen: { id: string; name: string; bedingung: string }[] };
+}
+const kcfg = () => JSON.parse(readFileSync(join(process.cwd(), 'config', 'kontext.json'), 'utf8')) as KontextConfig;
+const ymd = (d: string) => d.replace(/-/g, '');
+const stammLesen = <T>(datei: string, standard: T): T => {
+  const p = join(ARCHIV, 'stamm', datei);
+  return existsSync(p) ? (JSON.parse(gunzipSync(readFileSync(p)).toString('utf8')) as T) : standard;
+};
+const stammSchreiben = (datei: string, inhalt: unknown) => {
+  const p = join(ARCHIV, 'stamm', datei);
+  mkdirSync(dirname(p), { recursive: true });
+  writeFileSync(p, gzipSync(Buffer.from(JSON.stringify(inhalt), 'utf8'), { level: 9 }));
+};
+/** Wikimedia verlangt einen User-Agent mit Kontakt (Kontaktadresse aus dem Secret, nie ins Log) */
+const wikiKopf = () => {
+  const kontakt = process.env.SEC_KONTAKT?.trim();
+  return kontakt ? { 'User-Agent': `Schattendepot-Forschung/1.0 (private Boersen-Simulation; ${kontakt})`, Accept: 'application/json' } : null;
+};
+
+/** GDELT: Tagesvolumen je Thema seit kontext.ab (ein Abruf je Thema liefert die ganze Reihe). */
+async function themen() {
+  const c = kcfg();
+  const heute = iso.slice(0, 10);
+  const alt = stammLesen<{ themen: Record<string, { treffer: Tagesreihe; gesamt: Tagesreihe }> }>('themen.json.gz', { themen: {} });
+  let ok = 0;
+  for (const t of c.gdelt.themen) {
+    const url = `${c.gdelt.url}?query=${encodeURIComponent(t.gdelt)}&mode=timelinevolraw&format=json&startdatetime=${ymd(c.ab)}000000&enddatetime=${ymd(heute)}235959&timelinesmooth=0`;
+    const r = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(60000) }).catch(() => null);
+    await pause(c.gdelt.pauseMs);
+    if (!r || r.status !== 200) {
+      console.log(`Themen: ${t.id} – ${r ? `HTTP ${r.status}` : 'keine Antwort'}`);
+      await r?.arrayBuffer().catch(() => undefined);
+      continue;
+    }
+    const text = await r.text();
+    let j: unknown = null;
+    try {
+      j = JSON.parse(text);
+    } catch {
+      console.log(`Themen: ${t.id} – keine JSON-Antwort (${text.slice(0, 80).replace(/\s+/g, ' ')})`);
+      continue;
+    }
+    const neu = gdeltLesen(j);
+    if (!Object.keys(neu.treffer).length) continue;
+    // ältere Tage behalten, neue Werte gehen vor
+    const a = alt.themen[t.id] ?? { treffer: {}, gesamt: {} };
+    alt.themen[t.id] = { treffer: { ...a.treffer, ...neu.treffer }, gesamt: { ...a.gesamt, ...neu.gesamt } };
+    ok++;
+  }
+  if (!ok) throw new Error('GDELT lieferte für kein Thema Daten');
+  stammSchreiben('themen.json.gz', { stand: iso, themen: alt.themen });
+  const tage = new Set(Object.values(alt.themen).flatMap((x) => Object.keys(x.treffer)));
+  const bis = [...tage].sort().pop() ?? null;
+  index.themen = { themen: Object.keys(alt.themen).length, tage: tage.size, bis, geholt: iso };
+  console.log(`Themen (GDELT): ${ok} von ${c.gdelt.themen.length} Themen geholt, ${tage.size} Tage bis ${bis}.`);
+}
+
+/** Federal Register: Dokumente je Tag (Präsidenten-Dokumente, Zölle, Sanktionen, Exportkontrollen). */
+async function amtsblatt() {
+  const c = kcfg();
+  const reihen: Record<string, Tagesreihe> = {};
+  for (const r0 of c.amtsblatt.reihen) {
+    const url = `${c.amtsblatt.url}?${r0.bedingung}&conditions[publication_date][gte]=${c.ab}`;
+    const r = await fetch(url, { headers: { 'User-Agent': USER_AGENT, Accept: 'application/json' }, signal: AbortSignal.timeout(60000) }).catch(() => null);
+    await pause(500);
+    if (!r || r.status !== 200) {
+      console.log(`Amtsblatt: ${r0.id} – ${r ? `HTTP ${r.status}` : 'keine Antwort'}`);
+      await r?.arrayBuffer().catch(() => undefined);
+      continue;
+    }
+    reihen[r0.id] = amtsblattLesen(await r.json());
+  }
+  if (!Object.keys(reihen).length) throw new Error('Federal Register lieferte keine Reihe');
+  stammSchreiben('amtsblatt.json.gz', { stand: iso, reihen });
+  const tage = new Set(Object.values(reihen).flatMap((x) => Object.keys(x)));
+  const bis = [...tage].sort().pop() ?? null;
+  index.amtsblatt = { reihen: Object.keys(reihen).length, tage: tage.size, bis, geholt: iso };
+  console.log(`Amtsblatt (Federal Register): ${Object.keys(reihen).length} Reihen, ${tage.size} Tage bis ${bis}.`);
+}
+
+/** Wikipedia „Portal:Current events“: stabile Tage als Tagesdatei (nur anhängen), junge Tage in stamm/weltgeschehen-aktuell. */
+async function weltgeschehen() {
+  const c = kcfg();
+  const kopf = wikiKopf();
+  if (!kopf) return console.log('Weltgeschehen: SEC_KONTAKT fehlt (Wikimedia verlangt einen Kontakt im User-Agent) – übersprungen.');
+  const heute = iso.slice(0, 10);
+  const MONATE = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const seite = (d: string) => `Portal:Current_events/${d.slice(0, 4)}_${MONATE[Number(d.slice(5, 7)) - 1]}_${Number(d.slice(8, 10))}`;
+  const holen = async (d: string): Promise<Ereignis[] | null> => {
+    const url = `${c.weltgeschehen.api}?action=parse&format=json&prop=wikitext&formatversion=2&page=${encodeURIComponent(seite(d))}`;
+    const r = await fetch(url, { headers: kopf, signal: AbortSignal.timeout(30000) }).catch(() => null);
+    await pause(c.weltgeschehen.pauseMs);
+    if (!r || r.status !== 200) {
+      await r?.arrayBuffer().catch(() => undefined);
+      return null;
+    }
+    const j = (await r.json().catch(() => null)) as { parse?: { wikitext?: string }; error?: { code?: string } } | null;
+    if (j?.error?.code === 'missingtitle') return [];
+    return typeof j?.parse?.wikitext === 'string' ? weltgeschehenLesen(j.parse.wikitext) : null;
+  };
+  let neuTage = 0;
+  let ereignisse = 0;
+  // stabile Tage (älter als stabilTage), die noch fehlen
+  for (let d = c.ab; d <= tagPlus(heute, -c.weltgeschehen.stabilTage) && neuTage < c.weltgeschehen.maxTageJeLauf; d = tagPlus(d, 1)) {
+    if (existsSync(pfad('weltgeschehen', d))) continue;
+    const e = await holen(d);
+    if (!e) continue;
+    ablegen('weltgeschehen', d, JSON.stringify(e));
+    neuTage++;
+    ereignisse += e.length;
+  }
+  // junge Tage: jedes Mal neu
+  const aktuell: Record<string, Ereignis[]> = {};
+  for (let i = c.weltgeschehen.stabilTage - 1; i >= 0; i--) {
+    const d = tagPlus(heute, -i);
+    const e = await holen(d);
+    if (e) aktuell[d] = e;
+  }
+  stammSchreiben('weltgeschehen-aktuell.json.gz', { stand: iso, tage: aktuell });
+  const alle = existsSync(join(ARCHIV, 'weltgeschehen')) ? readdirSync(join(ARCHIV, 'weltgeschehen')).flatMap((j) => readdirSync(join(ARCHIV, 'weltgeschehen', j))).length : 0;
+  index.weltgeschehen = { tage: alle, ereignisse: (index.weltgeschehen?.ereignisse ?? 0) + ereignisse, bis: Object.keys(aktuell).sort().pop() ?? null, geholt: iso };
+  console.log(`Weltgeschehen (Wikipedia): ${neuTage} neue Tage (${ereignisse} Ereignisse), ${alle} Tage im Archiv, junge Tage ${Object.keys(aktuell).length}.`);
+}
+
+/** Wikipedia-Seitenaufrufe je Firma/Coin: Zuordnung (Wikidata, wöchentlich), Nachtrag ganzer Reihen, täglicher Stand. */
+async function aufmerksamkeit() {
+  const c = kcfg();
+  const kopf = wikiKopf();
+  if (!kopf) return console.log('Aufmerksamkeit: SEC_KONTAKT fehlt (Wikimedia verlangt einen Kontakt im User-Agent) – übersprungen.');
+  const a = c.aufmerksamkeit;
+  const frist = Date.now() + a.laufzeitMinuten * 60000;
+  const heute = iso.slice(0, 10);
+  // 1. Zuordnung Kürzel → Artikel (US-Börsen über Wikidata), höchstens wöchentlich neu
+  let karte = stammLesen<{ stand: string; kuerzel: Record<string, string> }>('wiki-artikel.json.gz', { stand: '', kuerzel: {} });
+  if (!karte.stand || tagPlus(karte.stand.slice(0, 10), 7) <= heute) {
+    const sparql = `SELECT ?ticker ?artikel WHERE { ?firma p:P414 ?st . ?st ps:P414 ?boerse ; pq:P249 ?ticker . ?boerse wdt:P17 wd:Q30 . ?artikel schema:about ?firma ; schema:isPartOf <https://en.wikipedia.org/> . FILTER NOT EXISTS { ?st pq:P582 ?ende } }`;
+    const r = await fetch(`${a.wikidata}?format=json&query=${encodeURIComponent(sparql)}`, { headers: { ...kopf, Accept: 'application/sparql-results+json' }, signal: AbortSignal.timeout(120000) }).catch(() => null);
+    if (r?.status === 200) {
+      const k = wikidataKuerzel(await r.json());
+      if (Object.keys(k).length > 1000) karte = { stand: iso, kuerzel: k };
+      console.log(`Aufmerksamkeit: Wikidata ordnet ${Object.keys(k).length} US-Kürzel einem Artikel zu.`);
+    } else console.log(`Aufmerksamkeit: Wikidata ${r ? `HTTP ${r.status}` : 'keine Antwort'} – alte Zuordnung bleibt.`);
+    await r?.arrayBuffer().catch(() => undefined);
+    if (karte.stand) stammSchreiben('wiki-artikel.json.gz', karte);
+  }
+  // nur Kürzel, die das US-Archiv kennt (SEC-Firmen) – plus die Coins aus der Liste
+  const zf = join(ARCHIV, 'stamm', 'us-zahlen.json.gz');
+  const bekannt = new Set<string>();
+  if (existsSync(zf)) for (const f of Object.values((JSON.parse(gunzipSync(readFileSync(zf)).toString('utf8')) as ZahlenArchiv).firmen)) for (const t of f.tickers) bekannt.add(t.toUpperCase());
+  const artikel = new Set<string>([...Object.entries(karte.kuerzel).filter(([t]) => !bekannt.size || bekannt.has(t)).map(([, x]) => x), ...Object.values(a.coins)]);
+  const geholt = new Set(stammLesen<string[]>('wiki-geholt.json.gz', []));
+  const reihe = async (art: string, von: string, bis: string): Promise<Tagesreihe | null> => {
+    const r = await fetch(`${a.pageviews}/${encodeURIComponent(art)}/daily/${ymd(von)}00/${ymd(bis)}00`, { headers: kopf, signal: AbortSignal.timeout(30000) }).catch(() => null);
+    if (!r) return null;
+    if (r.status === 404) {
+      await r.arrayBuffer().catch(() => undefined);
+      return {};
+    }
+    if (r.status !== 200) {
+      await r.arrayBuffer().catch(() => undefined);
+      return null;
+    }
+    return aufrufeLesen(await r.json());
+  };
+  const parallel = async (liste: string[], f: (x: string) => Promise<void>) => {
+    let i = 0;
+    await Promise.all(
+      Array.from({ length: a.parallel }, async () => {
+        while (i < liste.length && Date.now() < frist) {
+          const x = liste[i++];
+          await f(x);
+          await pause(a.pauseMs);
+        }
+      }),
+    );
+  };
+  // 2. Nachtrag: ganze Reihe seit kontext.ab für jeden neuen Artikel (fortsetzbar)
+  const gestern = tagPlus(heute, -1);
+  const offen = [...artikel].filter((x) => !geholt.has(x)).sort();
+  const nachtrag: Record<string, Tagesreihe> = {};
+  await parallel(offen, async (art) => {
+    const r = await reihe(art, c.ab, gestern);
+    if (r) {
+      nachtrag[art] = r;
+      geholt.add(art);
+    }
+  });
+  if (Object.keys(nachtrag).length) {
+    let n = 1;
+    while (existsSync(pfad('aufmerksamkeit-nachtrag', `${heute}-${n}`))) n++;
+    ablegen('aufmerksamkeit-nachtrag', `${heute}-${n}`, JSON.stringify(nachtrag));
+    stammSchreiben('wiki-geholt.json.gz', [...geholt].sort());
+  }
+  // 3. täglicher Stand: die letzten tageZurueck Tage für alle geholten Artikel – Datei nach dem neuesten Tag benannt
+  const probe = await reihe('Bitcoin', tagPlus(heute, -3), heute);
+  const neuester = Object.keys(probe ?? {}).sort().pop();
+  let tagesZahl = 0;
+  if (neuester && !existsSync(pfad('aufmerksamkeit', neuester)) && Date.now() < frist) {
+    const stand: Record<string, Tagesreihe> = {};
+    const liste = [...geholt].sort();
+    await parallel(liste, async (art) => {
+      const r = await reihe(art, tagPlus(neuester, -(a.tageZurueck - 1)), neuester);
+      if (r && Object.keys(r).length) stand[art] = r;
+    });
+    // nur ablegen, wenn (fast) alle durchkamen – sonst holt der nächste Lauf den Tag neu
+    if (Object.keys(stand).length >= liste.length * 0.8) {
+      ablegen('aufmerksamkeit', neuester, JSON.stringify(stand));
+      tagesZahl = Object.keys(stand).length;
+    } else console.log(`Aufmerksamkeit: Tagesstand ${neuester} nur für ${Object.keys(stand).length} von ${liste.length} Artikeln – nächster Lauf.`);
+  }
+  index.aufmerksamkeit = { zugeordnet: artikel.size, mitReihe: geholt.size, offen: artikel.size - geholt.size, bis: neuester ?? null, geholt: iso, zuordnung: karte.stand };
+  console.log(`Aufmerksamkeit (Wikipedia): ${artikel.size} Artikel zugeordnet, ${Object.keys(nachtrag).length} Reihen nachgetragen (${artikel.size - geholt.size} offen), Tagesstand ${tagesZahl ? `${neuester} für ${tagesZahl} Artikel` : 'unverändert'}.`);
+}
+
 const TEILE = [
   ['krypto', 'Krypto', krypto],
   ['us', 'US', us],
@@ -1176,6 +1403,10 @@ const TEILE = [
   ['insider', 'Insider-Käufe (SEC)', insider],
   ['aktienzahl', 'Aktienzahl (SEC-Frames)', aktienzahl],
   ['studien', 'Studien-Termine (ClinicalTrials.gov)', studien],
+  ['themen', 'Themen der Weltnachrichten (GDELT)', themen],
+  ['amtsblatt', 'Amtsblatt (Federal Register)', amtsblatt],
+  ['weltgeschehen', 'Weltgeschehen (Wikipedia)', weltgeschehen],
+  ['aufmerksamkeit', 'Aufmerksamkeit (Wikipedia-Aufrufe)', aufmerksamkeit],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
