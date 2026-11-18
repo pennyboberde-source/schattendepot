@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-18T15:39:34.600Z",
+  "stand": "2026-11-18T15:53:29.606Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
-      "anzahl": 8,
+      "anzahl": 10,
       "treffer": 0,
       "quote": 0,
-      "netto": -78.72,
-      "brutto": -78.72,
-      "nettoTR": -94.72,
-      "oeNettoProzent": -1.05,
-      "oeR": -1.02
+      "netto": -144.94,
+      "brutto": -144.94,
+      "nettoTR": -164.94,
+      "oeNettoProzent": -1.51,
+      "oeR": -1.05
     },
-    "offen": 7
+    "offen": 6
   },
   "gesamt": {
-    "anzahl": 557,
+    "anzahl": 559,
     "treffer": 177,
-    "quote": 31.8,
-    "netto": -4208.07,
-    "brutto": -4051.07,
-    "nettoTR": -5165.07,
-    "oeNettoProzent": -0.78,
-    "oeR": -0.03
+    "quote": 31.7,
+    "netto": -4274.29,
+    "brutto": -4117.29,
+    "nettoTR": -5235.29,
+    "oeNettoProzent": -0.79,
+    "oeR": -0.04
   },
   "kurve": [
     {
@@ -141,20 +141,20 @@
     },
     {
       "datum": "2026-11-18",
-      "netto": -4208.07,
-      "brutto": -4051.07,
-      "nettoTR": -5165.07
+      "netto": -4274.29,
+      "brutto": -4117.29,
+      "nettoTR": -5235.29
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 546,
+      "anzahl": 548,
       "treffer": 174,
-      "quote": 31.9,
-      "netto": -4076.65,
-      "brutto": -3919.65,
-      "nettoTR": -5011.65,
-      "oeNettoProzent": -0.77,
+      "quote": 31.8,
+      "netto": -4142.87,
+      "brutto": -3985.87,
+      "nettoTR": -5081.87,
+      "oeNettoProzent": -0.78,
       "oeR": -0.03
     },
     "claude": {
@@ -180,14 +180,14 @@
       "oeR": 0.03
     },
     "us": {
-      "anzahl": 164,
+      "anzahl": 166,
       "treffer": 57,
-      "quote": 34.8,
-      "netto": -1618.84,
-      "brutto": -1617.84,
-      "nettoTR": -1945.84,
-      "oeNettoProzent": -1.05,
-      "oeR": -0.11
+      "quote": 34.3,
+      "netto": -1685.06,
+      "brutto": -1684.06,
+      "nettoTR": -2016.06,
+      "oeNettoProzent": -1.08,
+      "oeR": -0.12
     },
     "krypto": {
       "anzahl": 78,
@@ -202,14 +202,14 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 377,
+      "anzahl": 379,
       "treffer": 120,
-      "quote": 31.8,
-      "netto": -1790.74,
-      "brutto": -1665.74,
-      "nettoTR": -2419.74,
-      "oeNettoProzent": -0.51,
-      "oeR": 0.04
+      "quote": 31.7,
+      "netto": -1856.96,
+      "brutto": -1731.96,
+      "nettoTR": -2489.96,
+      "oeNettoProzent": -0.52,
+      "oeR": 0.03
     },
     "orb_short": {
       "anzahl": 164,
@@ -234,14 +234,14 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 293,
+      "anzahl": 295,
       "treffer": 107,
-      "quote": 36.5,
-      "netto": -928.2,
-      "brutto": -927.2,
-      "nettoTR": -1513.2,
-      "oeNettoProzent": -0.36,
-      "oeR": 0.09
+      "quote": 36.3,
+      "netto": -994.42,
+      "brutto": -993.42,
+      "nettoTR": -1583.42,
+      "oeNettoProzent": -0.38,
+      "oeR": 0.08
     },
     "turbo": {
       "anzahl": 186,
@@ -266,34 +266,34 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 346,
+      "anzahl": 347,
       "treffer": 128,
-      "quote": 37,
-      "netto": -1883.75,
-      "brutto": -1827.75,
-      "nettoTR": -2519.75,
-      "oeNettoProzent": -0.56,
+      "quote": 36.9,
+      "netto": -1919.53,
+      "brutto": -1863.53,
+      "nettoTR": -2557.53,
+      "oeNettoProzent": -0.57,
       "oeR": 0.01
     },
     "spekulativ": {
-      "anzahl": 211,
+      "anzahl": 212,
       "treffer": 49,
-      "quote": 23.2,
-      "netto": -2324.32,
-      "brutto": -2223.32,
-      "nettoTR": -2645.32,
-      "oeNettoProzent": -1.14,
+      "quote": 23.1,
+      "netto": -2354.76,
+      "brutto": -2253.76,
+      "nettoTR": -2677.76,
+      "oeNettoProzent": -1.15,
       "oeR": -0.11
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 307,
+      "anzahl": 309,
       "treffer": 0,
       "quote": 0,
-      "netto": -9979.31,
-      "brutto": -9884.31,
-      "nettoTR": -10498.31,
+      "netto": -10045.53,
+      "brutto": -9950.53,
+      "nettoTR": -10568.53,
       "oeNettoProzent": -3.33,
       "oeR": -1.05
     },
@@ -320,14 +320,14 @@
   },
   "nachPhase": {
     "seitwaerts_nervoes": {
-      "anzahl": 243,
+      "anzahl": 245,
       "treffer": 85,
-      "quote": 35,
-      "netto": -1319.63,
-      "brutto": -1318.63,
-      "nettoTR": -1804.63,
-      "oeNettoProzent": -0.58,
-      "oeR": -0.03
+      "quote": 34.7,
+      "netto": -1385.85,
+      "brutto": -1384.85,
+      "nettoTR": -1874.85,
+      "oeNettoProzent": -0.61,
+      "oeR": -0.04
     },
     "seitwaerts_ruhig": {
       "anzahl": 198,
@@ -363,9 +363,9 @@
   "zeitmaschine": [
     {
       "stufe": "0–29 %",
-      "anzahl": 42,
-      "quote": 26.2,
-      "oeR": -0.26
+      "anzahl": 44,
+      "quote": 25,
+      "oeR": -0.3
     },
     {
       "stufe": "30–44 %",
@@ -549,56 +549,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-almonty-industries-inc",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ALMONTY INDUSTRIES INC",
-      "isin": "CA0203987072",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-18T14:55:00.000Z",
-        "kurs": 7.488,
-        "level": 7.394,
-        "spanne": {
-          "hoch": 7.394,
-          "tief": 7.054
-        },
-        "richtung": "long"
-      },
-      "stop": 7.224,
-      "ziel": 7.956,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-18T14:55:00.000Z",
-        "basisKurs": 7.468,
-        "kurs": 7.4736,
-        "stueck": 133,
-        "kurswert": 993.99
-      },
-      "timeMachine": {
-        "zielZuerst": 7.7,
-        "stopZuerst": 39.7,
-        "keins": 52.6,
-        "gruen": 42.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 64,
-        "historie": {
-          "faelle": 31,
-          "ziel": 7,
-          "stop": 13,
-          "oeR": 0.16
-        }
-      }
-    },
-    {
       "id": "2026-11-18-scan-super-micro-computer-inc",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -695,56 +645,6 @@
           "ziel": 7,
           "stop": 21,
           "oeR": -0.18
-        }
-      }
-    },
-    {
-      "id": "2026-11-18-scan-rocket-lab-corp",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ROCKET LAB CORP",
-      "isin": "US7731211089",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T15:05:00.000Z",
-        "kurs": 51.2,
-        "level": 50.8,
-        "spanne": {
-          "hoch": 50.8,
-          "tief": 48.9
-        },
-        "richtung": "long"
-      },
-      "stop": 49.85,
-      "ziel": 52.4,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-18T15:05:00.000Z",
-        "basisKurs": 50.7,
-        "kurs": 50.954,
-        "stueck": 19,
-        "kurswert": 968.13
-      },
-      "timeMachine": {
-        "zielZuerst": 17.8,
-        "stopZuerst": 57.5,
-        "keins": 24.7,
-        "gruen": 35.8,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 29,
-          "ziel": 4,
-          "stop": 12,
-          "oeR": -0.13
         }
       }
     },
@@ -904,6 +804,155 @@
           "stop": 9,
           "oeR": 0.11
         }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-coinbase-global-inc-clas",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "COINBASE GLOBAL INC -CLASS A",
+      "isin": "US19260Q1076",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 123,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:30:00.000Z",
+        "kurs": 101.92,
+        "level": 101.94,
+        "spanne": {
+          "hoch": 104.98,
+          "tief": 101.94
+        },
+        "richtung": "short"
+      },
+      "stop": 103.46,
+      "ziel": 100.58,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T15:30:00.000Z",
+        "basisKurs": 102.5,
+        "kurs": 2.0551,
+        "stueck": 486,
+        "kurswert": 998.78
+      },
+      "timeMachine": {
+        "zielZuerst": 31.2,
+        "stopZuerst": 65.6,
+        "keins": 3.3,
+        "gruen": 33.6,
+        "schwelle": 33.3,
+        "urteil": "Nahe an der Gewinnschwelle",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 4,
+          "stop": 15,
+          "oeR": -0.01
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-ionq-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "IONQ INC",
+      "isin": "US46222L1089",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 26.25,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:35:00.000Z",
+        "kurs": 21.885,
+        "level": 21.91,
+        "spanne": {
+          "hoch": 23,
+          "tief": 21.91
+        },
+        "richtung": "short"
+      },
+      "stop": 22.46,
+      "ziel": 20.72,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T15:35:00.000Z",
+        "basisKurs": 21.875,
+        "kurs": 4.3859,
+        "stueck": 228,
+        "kurswert": 999.99
+      },
+      "timeMachine": {
+        "zielZuerst": 5,
+        "stopZuerst": 30.8,
+        "keins": 64.3,
+        "gruen": 50.5,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 4,
+          "stop": 8,
+          "oeR": 0.24
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-cts-eventim-ag-co-kgaa",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "CTS EVENTIM AG & CO KGAA",
+      "isin": "DE0005470306",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:15:00.000Z",
+        "kurs": 61.3,
+        "level": 61.05,
+        "spanne": {
+          "hoch": 61.05,
+          "tief": 59.5
+        },
+        "richtung": "long"
+      },
+      "stop": 60.28,
+      "ziel": 63.5,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T15:40:00.000Z",
+        "basisKurs": 61.35,
+        "kurs": 61.657,
+        "stueck": 16,
+        "kurswert": 986.51
       }
     }
   ],
@@ -1082,56 +1131,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-almonty-industries-inc",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ALMONTY INDUSTRIES INC",
-      "isin": "CA0203987072",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-18T14:55:00.000Z",
-        "kurs": 7.488,
-        "level": 7.394,
-        "spanne": {
-          "hoch": 7.394,
-          "tief": 7.054
-        },
-        "richtung": "long"
-      },
-      "stop": 7.224,
-      "ziel": 7.956,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-18T14:55:00.000Z",
-        "basisKurs": 7.468,
-        "kurs": 7.4736,
-        "stueck": 133,
-        "kurswert": 993.99
-      },
-      "timeMachine": {
-        "zielZuerst": 7.7,
-        "stopZuerst": 39.7,
-        "keins": 52.6,
-        "gruen": 42.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 64,
-        "historie": {
-          "faelle": 31,
-          "ziel": 7,
-          "stop": 13,
-          "oeR": 0.16
-        }
-      }
-    },
-    {
       "id": "2026-11-18-scan-super-micro-computer-inc",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1228,56 +1227,6 @@
           "ziel": 7,
           "stop": 21,
           "oeR": -0.18
-        }
-      }
-    },
-    {
-      "id": "2026-11-18-scan-rocket-lab-corp",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "ROCKET LAB CORP",
-      "isin": "US7731211089",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T15:05:00.000Z",
-        "kurs": 51.2,
-        "level": 50.8,
-        "spanne": {
-          "hoch": 50.8,
-          "tief": 48.9
-        },
-        "richtung": "long"
-      },
-      "stop": 49.85,
-      "ziel": 52.4,
-      "zielR": 2,
-      "flatBis": "2026-11-18T20:55:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-18T15:05:00.000Z",
-        "basisKurs": 50.7,
-        "kurs": 50.954,
-        "stueck": 19,
-        "kurswert": 968.13
-      },
-      "timeMachine": {
-        "zielZuerst": 17.8,
-        "stopZuerst": 57.5,
-        "keins": 24.7,
-        "gruen": 35.8,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 29,
-          "ziel": 4,
-          "stop": 12,
-          "oeR": -0.13
         }
       }
     },
@@ -1437,6 +1386,293 @@
           "stop": 9,
           "oeR": 0.11
         }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-coinbase-global-inc-clas",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "COINBASE GLOBAL INC -CLASS A",
+      "isin": "US19260Q1076",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 123,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:30:00.000Z",
+        "kurs": 101.92,
+        "level": 101.94,
+        "spanne": {
+          "hoch": 104.98,
+          "tief": 101.94
+        },
+        "richtung": "short"
+      },
+      "stop": 103.46,
+      "ziel": 100.58,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T15:30:00.000Z",
+        "basisKurs": 102.5,
+        "kurs": 2.0551,
+        "stueck": 486,
+        "kurswert": 998.78
+      },
+      "timeMachine": {
+        "zielZuerst": 31.2,
+        "stopZuerst": 65.6,
+        "keins": 3.3,
+        "gruen": 33.6,
+        "schwelle": 33.3,
+        "urteil": "Nahe an der Gewinnschwelle",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 4,
+          "stop": 15,
+          "oeR": -0.01
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-ionq-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "IONQ INC",
+      "isin": "US46222L1089",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 26.25,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:35:00.000Z",
+        "kurs": 21.885,
+        "level": 21.91,
+        "spanne": {
+          "hoch": 23,
+          "tief": 21.91
+        },
+        "richtung": "short"
+      },
+      "stop": 22.46,
+      "ziel": 20.72,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-18T15:35:00.000Z",
+        "basisKurs": 21.875,
+        "kurs": 4.3859,
+        "stueck": 228,
+        "kurswert": 999.99
+      },
+      "timeMachine": {
+        "zielZuerst": 5,
+        "stopZuerst": 30.8,
+        "keins": 64.3,
+        "gruen": 50.5,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 4,
+          "stop": 8,
+          "oeR": 0.24
+        }
+      }
+    },
+    {
+      "id": "2026-11-18-scan-cts-eventim-ag-co-kgaa",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "CTS EVENTIM AG & CO KGAA",
+      "isin": "DE0005470306",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:15:00.000Z",
+        "kurs": 61.3,
+        "level": 61.05,
+        "spanne": {
+          "hoch": 61.05,
+          "tief": 59.5
+        },
+        "richtung": "long"
+      },
+      "stop": 60.28,
+      "ziel": 63.5,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T15:40:00.000Z",
+        "basisKurs": 61.35,
+        "kurs": 61.657,
+        "stueck": 16,
+        "kurswert": 986.51
+      }
+    },
+    {
+      "id": "2026-11-18-scan-almonty-industries-inc",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ALMONTY INDUSTRIES INC",
+      "isin": "CA0203987072",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-18T14:55:00.000Z",
+        "kurs": 7.488,
+        "level": 7.394,
+        "spanne": {
+          "hoch": 7.394,
+          "tief": 7.054
+        },
+        "richtung": "long"
+      },
+      "stop": 7.224,
+      "ziel": 7.956,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T14:55:00.000Z",
+        "basisKurs": 7.468,
+        "kurs": 7.4736,
+        "stueck": 133,
+        "kurswert": 993.99
+      },
+      "timeMachine": {
+        "zielZuerst": 7.7,
+        "stopZuerst": 39.7,
+        "keins": 52.6,
+        "gruen": 42.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 31,
+          "ziel": 7,
+          "stop": 13,
+          "oeR": 0.16
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T15:45:00.000Z",
+        "basisKurs": 7.21,
+        "kurs": 7.2046,
+        "kurswert": 958.21,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -35.78,
+        "bruttoProzent": -3.6,
+        "netto": -35.78,
+        "nettoProzent": -3.6,
+        "nettoTR": -37.78,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.06
+      }
+    },
+    {
+      "id": "2026-11-18-scan-rocket-lab-corp",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ROCKET LAB CORP",
+      "isin": "US7731211089",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T15:05:00.000Z",
+        "kurs": 51.2,
+        "level": 50.8,
+        "spanne": {
+          "hoch": 50.8,
+          "tief": 48.9
+        },
+        "richtung": "long"
+      },
+      "stop": 49.85,
+      "ziel": 52.4,
+      "zielR": 2,
+      "flatBis": "2026-11-18T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T15:05:00.000Z",
+        "basisKurs": 50.7,
+        "kurs": 50.954,
+        "stueck": 19,
+        "kurswert": 968.13
+      },
+      "timeMachine": {
+        "zielZuerst": 17.8,
+        "stopZuerst": 57.5,
+        "keins": 24.7,
+        "gruen": 35.8,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 29,
+          "ziel": 4,
+          "stop": 12,
+          "oeR": -0.13
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T15:35:00.000Z",
+        "basisKurs": 49.6,
+        "kurs": 49.352,
+        "kurswert": 937.69,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -30.44,
+        "bruttoProzent": -3.14,
+        "netto": -30.44,
+        "nettoProzent": -3.14,
+        "nettoTR": -32.44,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.29
       }
     },
     {
@@ -11700,7 +11936,7 @@
       "oeNettoProzent": -2.48,
       "oeR": -0.01
     },
-    "offen": 4,
+    "offen": 6,
     "gruppen": {
       "turbo": {
         "anzahl": 107,
@@ -11737,14 +11973,14 @@
   "seitUmstellung": {
     "ab": "2026-11-13",
     "gruppe": {
-      "anzahl": 60,
+      "anzahl": 62,
       "treffer": 8,
-      "quote": 13.3,
-      "netto": -593.18,
-      "brutto": -592.18,
-      "nettoTR": -712.18,
-      "oeNettoProzent": -1.11,
-      "oeR": -0.34
+      "quote": 12.9,
+      "netto": -659.4,
+      "brutto": -658.4,
+      "nettoTR": -782.4,
+      "oeNettoProzent": -1.18,
+      "oeR": -0.37
     }
   },
   "varianten": {
@@ -11753,10 +11989,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 160,
-        "chance": 38.1,
-        "oeNetto": -0.79,
-        "wertung": -1.25
+        "faelle": 161,
+        "chance": 37.9,
+        "oeNetto": -0.85,
+        "wertung": -1.31
       }
     },
     "krypto:level_long": {
@@ -11808,10 +12044,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 107,
-        "chance": 43,
-        "oeNetto": -0.12,
-        "wertung": -0.32
+        "faelle": 108,
+        "chance": 42.6,
+        "oeNetto": -0.13,
+        "wertung": -0.34
       }
     }
   },
