@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T18:19:41.277Z",
-  "anzahl": 115,
+  "stand": "2026-11-18T19:20:09.793Z",
+  "anzahl": 117,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -1208,7 +1208,7 @@
       "t": "ANPA",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -1247,7 +1247,7 @@
       "t": "BKHAU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -1340,7 +1340,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.44,
+      "st": 0.52,
       "q": [
         "Upbit"
       ],
@@ -1545,6 +1545,32 @@
         "CNBC Top News"
       ],
       "z": "2026-11-18T18:14:42.000Z"
+    },
+    {
+      "id": "handelsstopp:AIOS:2026-11-18",
+      "s": "T:AIOS",
+      "n": "AIOS Tech Inc. Cl A",
+      "t": "AIOS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:EXOZ:2026-11-18",
+      "s": "T:EXOZ",
+      "n": "eXoZymes Inc. Cmn Stk",
+      "t": "EXOZ",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-18T00:00:00.000Z"
     }
   ]
 }
