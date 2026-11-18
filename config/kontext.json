@@ -4,7 +4,7 @@
   "gdelt": {
     "hinweis": "GDELT DOC 2.0 API (Suche ab 01.01.2017), mode=timelinevolraw: Artikel je Tag zum Thema und alle beobachteten Artikel (norm). Höchstens ein Abruf alle pauseMs Millisekunden. Neue Themen hinten anhängen.",
     "url": "https://api.gdeltproject.org/api/v2/doc/doc",
-    "pauseMs": 6000,
+    "pauseMs": 12000,
     "themen": [
       { "id": "zoelle", "name": "Zölle und Handelsstreit", "gdelt": "(tariff OR tariffs OR \"trade war\")", "politik": true, "sic": [[2000, 3999], [5000, 5199]] },
       { "id": "sanktionen", "name": "Sanktionen und Embargos", "gdelt": "(sanctions OR embargo)", "politik": true, "sic": [[1300, 1399], [2900, 2999]] },
@@ -38,10 +38,10 @@
     "hinweis": "Wikipedia-Seitenaufrufe (Wikimedia REST, nur Menschen: agent=user) je Firma/Coin und Tag. Zuordnung Kürzel → Artikel über Wikidata (Börse in den USA, Eigenschaft P414 mit Kürzel P249), Coins aus der Liste. Erst die ganze Reihe je neuem Artikel (Nachtrag), danach täglich die letzten tageZurueck Tage für alle. parallel Anfragen gleichzeitig, höchstens laufzeitMinuten je Lauf.",
     "wikidata": "https://query.wikidata.org/sparql",
     "pageviews": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user",
-    "parallel": 8,
-    "pauseMs": 60,
+    "parallel": 3,
+    "pauseMs": 150,
     "tageZurueck": 6,
-    "laufzeitMinuten": 18,
+    "laufzeitMinuten": 25,
     "coins": {
       "BTC": "Bitcoin", "ETH": "Ethereum", "SOL": "Solana_(blockchain_platform)", "XRP": "Ripple_Labs", "DOGE": "Dogecoin", "ADA": "Cardano_(blockchain_platform)", "LTC": "Litecoin", "DOT": "Polkadot_(cryptocurrency)", "LINK": "Chainlink_(blockchain)", "AVAX": "Avalanche_(blockchain_platform)", "BCH": "Bitcoin_Cash", "XLM": "Stellar_(payment_network)", "TRX": "Tron_(cryptocurrency)", "SHIB": "Shiba_Inu_(cryptocurrency)", "XMR": "Monero", "ATOM": "Cosmos_(blockchain)", "ETC": "Ethereum_Classic", "FIL": "Filecoin", "ALGO": "Algorand", "NEAR": "Near_Protocol", "UNI": "Uniswap", "PEPE": "Pepe_(cryptocurrency)", "SUI": "Sui_(blockchain)", "TON": "Toncoin", "HBAR": "Hedera_(distributed_ledger)", "ICP": "Internet_Computer", "APT": "Aptos_(blockchain)", "ARB": "Arbitrum", "OP": "Optimism_(blockchain)", "TRUMP": "$Trump", "WLD": "World_(blockchain)", "ZEC": "Zcash", "DASH": "Dash_(cryptocurrency)", "BNB": "Binance", "USDT": "Tether_(cryptocurrency)", "USDC": "USD_Coin"
     }

@@ -1191,6 +1191,20 @@ const wikiKopf = () => {
   return kontakt ? { 'User-Agent': `Schattendepot-Forschung/1.0 (private Boersen-Simulation; ${kontakt})`, Accept: 'application/json' } : null;
 };
 
+/** Abruf mit Geduld: bei 429/5xx/Zeitüberschreitung bis zu `versuche` Mal mit wachsender Pause; zählt Antworten je Status. */
+const statusZahl: Record<string, number> = {};
+async function geduldig(url: string, kopf: Record<string, string>, o: { zeitMs: number; versuche: number; warteMs: number }): Promise<Response | null> {
+  for (let v = 1; v <= o.versuche; v++) {
+    const r = await fetch(url, { headers: kopf, signal: AbortSignal.timeout(o.zeitMs) }).catch(() => null);
+    const k = r ? String(r.status) : 'keine Antwort';
+    statusZahl[k] = (statusZahl[k] ?? 0) + 1;
+    if (r && r.status !== 429 && r.status < 500) return r;
+    await r?.arrayBuffer().catch(() => undefined);
+    if (v < o.versuche) await pause(o.warteMs * v);
+  }
+  return null;
+}
+
 /** GDELT: Tagesvolumen je Thema seit kontext.ab (ein Abruf je Thema liefert die ganze Reihe). */
 async function themen() {
   const c = kcfg();
@@ -1199,7 +1213,12 @@ async function themen() {
   let ok = 0;
   for (const t of c.gdelt.themen) {
     const url = `${c.gdelt.url}?query=${encodeURIComponent(t.gdelt)}&mode=timelinevolraw&format=json&startdatetime=${ymd(c.ab)}000000&enddatetime=${ymd(heute)}235959&timelinesmooth=0`;
-    const r = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(60000) }).catch(() => null);
+    // schon heute geholt? (GDELT drosselt stark – lieber über mehrere Läufe verteilen)
+    if (alt.themen[t.id] && (alt as { geholt?: Record<string, string> }).geholt?.[t.id] === heute) {
+      ok++;
+      continue;
+    }
+    const r = await geduldig(url, { 'User-Agent': USER_AGENT }, { zeitMs: 150000, versuche: 3, warteMs: 30000 });
     await pause(c.gdelt.pauseMs);
     if (!r || r.status !== 200) {
       console.log(`Themen: ${t.id} – ${r ? `HTTP ${r.status}` : 'keine Antwort'}`);
@@ -1219,10 +1238,12 @@ async function themen() {
     // ältere Tage behalten, neue Werte gehen vor
     const a = alt.themen[t.id] ?? { treffer: {}, gesamt: {} };
     alt.themen[t.id] = { treffer: { ...a.treffer, ...neu.treffer }, gesamt: { ...a.gesamt, ...neu.gesamt } };
+    ((alt as { geholt?: Record<string, string> }).geholt ??= {})[t.id] = heute;
     ok++;
+    stammSchreiben('themen.json.gz', { stand: iso, themen: alt.themen, geholt: (alt as { geholt?: Record<string, string> }).geholt });
   }
+  console.log(`Themen: Antworten je Status ${JSON.stringify(statusZahl)}`);
   if (!ok) throw new Error('GDELT lieferte für kein Thema Daten');
-  stammSchreiben('themen.json.gz', { stand: iso, themen: alt.themen });
   const tage = new Set(Object.values(alt.themen).flatMap((x) => Object.keys(x.treffer)));
   const bis = [...tage].sort().pop() ?? null;
   index.themen = { themen: Object.keys(alt.themen).length, tage: tage.size, bis, geholt: iso };
@@ -1324,7 +1345,7 @@ async function aufmerksamkeit() {
   const artikel = new Set<string>([...Object.entries(karte.kuerzel).filter(([t]) => !bekannt.size || bekannt.has(t)).map(([, x]) => x), ...Object.values(a.coins)]);
   const geholt = new Set(stammLesen<string[]>('wiki-geholt.json.gz', []));
   const reihe = async (art: string, von: string, bis: string): Promise<Tagesreihe | null> => {
-    const r = await fetch(`${a.pageviews}/${encodeURIComponent(art)}/daily/${ymd(von)}00/${ymd(bis)}00`, { headers: kopf, signal: AbortSignal.timeout(30000) }).catch(() => null);
+    const r = await geduldig(`${a.pageviews}/${encodeURIComponent(art)}/daily/${ymd(von)}00/${ymd(bis)}00`, kopf, { zeitMs: 30000, versuche: 3, warteMs: 3000 });
     if (!r) return null;
     if (r.status === 404) {
       await r.arrayBuffer().catch(() => undefined);
@@ -1383,6 +1404,7 @@ async function aufmerksamkeit() {
     } else console.log(`Aufmerksamkeit: Tagesstand ${neuester} nur für ${Object.keys(stand).length} von ${liste.length} Artikeln – nächster Lauf.`);
   }
   index.aufmerksamkeit = { zugeordnet: artikel.size, mitReihe: geholt.size, offen: artikel.size - geholt.size, bis: neuester ?? null, geholt: iso, zuordnung: karte.stand };
+  console.log(`Aufmerksamkeit: Antworten je Status ${JSON.stringify(statusZahl)}`);
   console.log(`Aufmerksamkeit (Wikipedia): ${artikel.size} Artikel zugeordnet, ${Object.keys(nachtrag).length} Reihen nachgetragen (${artikel.size - geholt.size} offen), Tagesstand ${tagesZahl ? `${neuester} für ${tagesZahl} Artikel` : 'unverändert'}.`);
 }
 
