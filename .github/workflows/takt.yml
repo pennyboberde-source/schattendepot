@@ -1,17 +1,15 @@
 name: Takt Kurswächter
 
-# GitHub lässt Zeitpläne oft stark verzögert oder ganz aus (16./17.11.2026: Kurswächter 19 Std. ohne Tageslauf,
-# trotz Cron alle 15 Min.). Dieser Taktgeber läuft werktags 06–22 Uhr UTC als ein langer Job, prüft jede Minute,
-# wann der Kurswächter zuletzt gestartet wurde, und stößt ihn an, sobald der letzte Start 15 Min. her ist und
-# keiner wartet oder läuft. Startet der Wächter-Zeitplan doch, zählt das mit – es gibt also keine Doppelläufe.
-# Ein Job darf höchstens 6 Std. laufen: kurz davor stößt der Takt sich selbst neu an (workflow_dispatch mit dem
-# Action-Token ist erlaubt). Die Zeitpläne unten sind nur Zündung bzw. Rückfall, falls die Kette reißt.
-# Ohne Geheimnisse, ohne Checkout, nur Leserechte am Code und Startrechte für Workflows; nur aus main.
-# Kosten 0 €: öffentliches Repo, Standard-Runner. Die Übernahme zählt diesen Lauf nicht als „besetzt“.
+# Taktgeber für ALLE Zeitpläne (seit 18.11.2026; vorher nur der Kurswächter werktags). GitHub lässt Zeitpläne oft stark
+# verzögert oder ganz aus (17./18.11.: Rückblick 05:40, Sammler, Wächter und die Takt-Zündung selbst fielen aus).
+# jobs/takt.ts läuft rund um die Uhr als langer Job, prüft alle 90 s die in config/takt.json genannten Workflows gegen
+# ihre eigenen Cron-Zeilen und stößt verpasste Läufe an (keine Doppelläufe: ein Lauf seit dem fälligen Zeitpunkt zählt).
+# Nach ~5:40 Std. stößt er sich selbst neu an; die Zeitpläne unten sind nur Zündung, falls die Kette reißt.
+# Ohne Geheimnisse, nur Leserechte am Code und Startrechte für Workflows; nur aus main. Kosten 0 € (öffentliches Repo).
+# Die Übernahme zählt diesen Lauf nicht als „besetzt“.
 on:
   schedule:
-    - cron: '41 5 * * 1-5'
-    - cron: '41 8,11,14,17,20 * * 1-5'
+    - cron: '41 */2 * * *'
   workflow_dispatch:
 
 permissions:
@@ -28,43 +26,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 355
     steps:
-      - name: Kurswächter im Takt halten
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            core/takt.ts
+            jobs/takt.ts
+            config/takt.json
+            .github/workflows
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Taktgeber
         env:
           GH_TOKEN: ${{ github.token }}
-          ABSTAND_MIN: '15'
-          LAUFZEIT_MIN: '340'
-        run: |
-          set +e
-          start=$(date +%s)
-          imFenster() {
-            local tag stunde
-            tag=$(date -u +%u); stunde=$((10#$(date -u +%H)))
-            [ "$tag" -le 5 ] && [ "$stunde" -ge 6 ] && [ "$stunde" -le 21 ]
-          }
-          waechterAnstossen() {
-            gh api -X POST "repos/$GITHUB_REPOSITORY/actions/workflows/waechter.yml/dispatches" -f ref=main >/dev/null \
-              && echo "$(date -u +%H:%M) UTC: Kurswächter angestoßen" || echo "::warning::Anstoßen fehlgeschlagen"
-          }
-          while imFenster; do
-            offen=0
-            for s in queued pending waiting requested in_progress; do
-              n=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/waechter.yml/runs?status=$s&per_page=5" --jq '.total_count')
-              if [ $? -ne 0 ] || [ -z "$n" ]; then n=1; fi
-              offen=$((offen + n))
-            done
-            if [ "$offen" -eq 0 ]; then
-              letzter=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/waechter.yml/runs?per_page=1" --jq '.workflow_runs[0].created_at // empty')
-              if [ -n "$letzter" ]; then
-                alter=$(( ( $(date +%s) - $(date -d "$letzter" +%s) ) / 60 ))
-                if [ "$alter" -ge "$ABSTAND_MIN" ]; then waechterAnstossen; fi
-              fi
-            fi
-            if [ $(( ( $(date +%s) - start ) / 60 )) -ge "$LAUFZEIT_MIN" ]; then
-              echo "Laufzeit erreicht – Takt stößt sich selbst neu an"
-              gh api -X POST "repos/$GITHUB_REPOSITORY/actions/workflows/takt.yml/dispatches" -f ref=main >/dev/null \
-                || echo "::warning::Neustart des Takts fehlgeschlagen – der nächste Zeitplan zündet neu"
-              exit 0
-            fi
-            sleep 60
-          done
-          echo "Außerhalb des Wächter-Fensters (werktags 06–22 Uhr UTC) – Takt endet, der Morgen-Zeitplan zündet neu"
+        run: node jobs/takt.ts

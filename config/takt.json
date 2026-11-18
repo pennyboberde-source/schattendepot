@@ -1,0 +1,14 @@
+{
+  "hinweis": "Taktgeber (18.11.2026): GitHub lässt Zeitpläne oft aus (17./18.11.: Rückblick, Sammler, Wächter, Takt-Zündung). jobs/takt.ts stößt jeden hier genannten Workflow an, wenn sein letzter fälliger Cron-Zeitpunkt (aus der Workflow-Datei) länger als kulanz Minuten her ist und seitdem kein Lauf begonnen hat. Neuer Workflow mit Zeitplan → hier eintragen.",
+  "abstandSekunden": 90,
+  "laufzeitMinuten": 340,
+  "workflows": [
+    { "datei": "waechter.yml", "kulanz": 4 },
+    { "datei": "uebernahme.yml", "kulanz": 6 },
+    { "datei": "sammler.yml", "kulanz": 12 },
+    { "datei": "archiv.yml", "kulanz": 25 },
+    { "datei": "rueckblick.yml", "kulanz": 20 },
+    { "datei": "verbesserung.yml", "kulanz": 15 },
+    { "datei": "historie.yml", "kulanz": 30 }
+  ]
+}
