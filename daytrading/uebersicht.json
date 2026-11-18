@@ -1,26 +1,26 @@
 {
-  "stand": "2026-11-18T11:53:55.557Z",
+  "stand": "2026-11-18T12:09:23.081Z",
   "heute": {
     "datum": "2026-11-18",
     "gruppe": {
-      "anzahl": 3,
+      "anzahl": 4,
       "treffer": 0,
       "quote": 0,
-      "netto": -21.48,
-      "brutto": -21.48,
-      "nettoTR": -27.48,
-      "oeNettoProzent": -0.76,
+      "netto": -40.08,
+      "brutto": -40.08,
+      "nettoTR": -48.08,
+      "oeNettoProzent": -1.04,
       "oeR": -1
     },
-    "offen": 4
+    "offen": 3
   },
   "gesamt": {
-    "anzahl": 552,
+    "anzahl": 553,
     "treffer": 177,
-    "quote": 32.1,
-    "netto": -4150.83,
-    "brutto": -3993.83,
-    "nettoTR": -5097.83,
+    "quote": 32,
+    "netto": -4169.43,
+    "brutto": -4012.43,
+    "nettoTR": -5118.43,
     "oeNettoProzent": -0.78,
     "oeR": -0.02
   },
@@ -141,19 +141,19 @@
     },
     {
       "datum": "2026-11-18",
-      "netto": -4150.83,
-      "brutto": -3993.83,
-      "nettoTR": -5097.83
+      "netto": -4169.43,
+      "brutto": -4012.43,
+      "nettoTR": -5118.43
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 541,
+      "anzahl": 542,
       "treffer": 174,
-      "quote": 32.2,
-      "netto": -4019.41,
-      "brutto": -3862.41,
-      "nettoTR": -4944.41,
+      "quote": 32.1,
+      "netto": -4038.01,
+      "brutto": -3881.01,
+      "nettoTR": -4965.01,
       "oeNettoProzent": -0.77,
       "oeR": -0.02
     },
@@ -170,14 +170,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 312,
+      "anzahl": 313,
       "treffer": 112,
-      "quote": 35.9,
-      "netto": -2025.2,
-      "brutto": -2025.2,
-      "nettoTR": -2649.2,
+      "quote": 35.8,
+      "netto": -2043.8,
+      "brutto": -2043.8,
+      "nettoTR": -2669.8,
       "oeNettoProzent": -0.66,
-      "oeR": 0.04
+      "oeR": 0.03
     },
     "us": {
       "anzahl": 162,
@@ -202,12 +202,12 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 372,
+      "anzahl": 373,
       "treffer": 120,
-      "quote": 32.3,
-      "netto": -1733.5,
-      "brutto": -1608.5,
-      "nettoTR": -2352.5,
+      "quote": 32.2,
+      "netto": -1752.1,
+      "brutto": -1627.1,
+      "nettoTR": -2373.1,
       "oeNettoProzent": -0.5,
       "oeR": 0.05
     },
@@ -234,12 +234,12 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 288,
+      "anzahl": 289,
       "treffer": 107,
-      "quote": 37.2,
-      "netto": -870.96,
-      "brutto": -869.96,
-      "nettoTR": -1445.96,
+      "quote": 37,
+      "netto": -889.56,
+      "brutto": -888.56,
+      "nettoTR": -1466.56,
       "oeNettoProzent": -0.35,
       "oeR": 0.11
     },
@@ -276,24 +276,24 @@
       "oeR": 0.02
     },
     "spekulativ": {
-      "anzahl": 209,
+      "anzahl": 210,
       "treffer": 49,
-      "quote": 23.4,
-      "netto": -2294,
-      "brutto": -2193,
-      "nettoTR": -2611,
+      "quote": 23.3,
+      "netto": -2312.6,
+      "brutto": -2211.6,
+      "nettoTR": -2631.6,
       "oeNettoProzent": -1.14,
       "oeR": -0.1
     }
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 302,
+      "anzahl": 303,
       "treffer": 0,
       "quote": 0,
-      "netto": -9922.07,
-      "brutto": -9827.07,
-      "nettoTR": -10431.07,
+      "netto": -9940.67,
+      "brutto": -9845.67,
+      "nettoTR": -10451.67,
       "oeNettoProzent": -3.36,
       "oeR": -1.05
     },
@@ -320,12 +320,12 @@
   },
   "nachPhase": {
     "seitwaerts_nervoes": {
-      "anzahl": 238,
+      "anzahl": 239,
       "treffer": 85,
-      "quote": 35.7,
-      "netto": -1262.39,
-      "brutto": -1261.39,
-      "nettoTR": -1737.39,
+      "quote": 35.6,
+      "netto": -1280.99,
+      "brutto": -1279.99,
+      "nettoTR": -1757.99,
       "oeNettoProzent": -0.57,
       "oeR": -0.01
     },
@@ -628,39 +628,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-freenet-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "FREENET AG",
-      "isin": "DE000A0Z2ZZ5",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T08:45:00.000Z",
-        "kurs": 24.66,
-        "level": 24.62,
-        "spanne": {
-          "hoch": 24.62,
-          "tief": 24.26
-        },
-        "richtung": "long"
-      },
-      "stop": 24.44,
-      "ziel": 25.1,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-18T08:45:00.000Z",
-        "basisKurs": 24.66,
-        "kurs": 24.783,
-        "stueck": 40,
-        "kurswert": 991.32
-      }
-    },
-    {
       "id": "2026-11-18-scan-basf-se",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -822,47 +789,6 @@
         "kurs": 14.185,
         "stueck": 70,
         "kurswert": 992.95
-      }
-    },
-    {
-      "id": "2026-11-18-scan-deutsche-telekom-ag-reg",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE TELEKOM AG-REG",
-      "isin": "DE0005557508",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 32.29,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-18T10:35:00.000Z",
-        "kurs": 26.87,
-        "level": 26.92,
-        "spanne": {
-          "hoch": 27.14,
-          "tief": 26.92
-        },
-        "richtung": "short"
-      },
-      "stop": 27.03,
-      "ziel": 26.67,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-18T10:35:00.000Z",
-        "basisKurs": 26.91,
-        "kurs": 5.3935,
-        "stueck": 185,
-        "kurswert": 997.8
       }
     }
   ],
@@ -1120,39 +1046,6 @@
       }
     },
     {
-      "id": "2026-11-18-scan-freenet-ag",
-      "datum": "2026-11-18",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "FREENET AG",
-      "isin": "DE000A0Z2ZZ5",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-18T08:45:00.000Z",
-        "kurs": 24.66,
-        "level": 24.62,
-        "spanne": {
-          "hoch": 24.62,
-          "tief": 24.26
-        },
-        "richtung": "long"
-      },
-      "stop": 24.44,
-      "ziel": 25.1,
-      "zielR": 2,
-      "flatBis": "2026-11-18T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-18T08:45:00.000Z",
-        "basisKurs": 24.66,
-        "kurs": 24.783,
-        "stueck": 40,
-        "kurswert": 991.32
-      }
-    },
-    {
       "id": "2026-11-18-scan-basf-se",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1317,6 +1210,58 @@
       }
     },
     {
+      "id": "2026-11-18-scan-freenet-ag",
+      "datum": "2026-11-18",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "FREENET AG",
+      "isin": "DE000A0Z2ZZ5",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-18T08:45:00.000Z",
+        "kurs": 24.66,
+        "level": 24.62,
+        "spanne": {
+          "hoch": 24.62,
+          "tief": 24.26
+        },
+        "richtung": "long"
+      },
+      "stop": 24.44,
+      "ziel": 25.1,
+      "zielR": 2,
+      "flatBis": "2026-11-18T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-18T08:45:00.000Z",
+        "basisKurs": 24.66,
+        "kurs": 24.783,
+        "stueck": 40,
+        "kurswert": 991.32
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T12:00:00.000Z",
+        "basisKurs": 24.44,
+        "kurs": 24.318,
+        "kurswert": 972.72,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -18.6,
+        "bruttoProzent": -1.88,
+        "netto": -18.6,
+        "nettoProzent": -1.88,
+        "nettoTR": -20.6,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
       "id": "2026-11-18-scan-deutsche-telekom-ag-reg",
       "datum": "2026-11-18",
       "herkunft": "code_scan",
@@ -1355,6 +1300,25 @@
         "kurs": 5.3935,
         "stueck": 185,
         "kurswert": 997.8
+      },
+      "ausstieg": {
+        "zeit": "2026-11-18T11:55:00.000Z",
+        "basisKurs": 26.66,
+        "kurs": 5.6159,
+        "kurswert": 1038.94,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 41.14,
+        "bruttoProzent": 4.12,
+        "netto": 41.14,
+        "nettoProzent": 4.12,
+        "nettoTR": 39.14,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.08
       }
     },
     {
@@ -10553,46 +10517,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 124,
-      "treffer": 53,
-      "quote": 42.7,
-      "netto": -614.17,
-      "brutto": -556.17,
-      "nettoTR": -803.17,
-      "oeNettoProzent": -0.5,
-      "oeR": 0.29
+      "anzahl": 125,
+      "treffer": 54,
+      "quote": 43.2,
+      "netto": -573.03,
+      "brutto": -515.03,
+      "nettoTR": -764.03,
+      "oeNettoProzent": -0.46,
+      "oeR": 0.31
     },
     "heute": {
-      "anzahl": 5,
-      "treffer": 1,
-      "quote": 20,
-      "netto": 67.18,
-      "brutto": 69.18,
-      "nettoTR": 59.18,
-      "oeNettoProzent": 1.34,
-      "oeR": -0.41
+      "anzahl": 6,
+      "treffer": 2,
+      "quote": 33.3,
+      "netto": 108.32,
+      "brutto": 110.32,
+      "nettoTR": 98.32,
+      "oeNettoProzent": 1.8,
+      "oeR": 0
     },
-    "offen": 9,
+    "offen": 8,
     "gruppen": {
       "turbo": {
-        "anzahl": 95,
-        "treffer": 43,
-        "quote": 45.3,
-        "netto": -409.17,
-        "brutto": -409.17,
-        "nettoTR": -598.17,
-        "oeNettoProzent": -0.44,
-        "oeR": 0.21
+        "anzahl": 96,
+        "treffer": 44,
+        "quote": 45.8,
+        "netto": -368.03,
+        "brutto": -368.03,
+        "nettoTR": -559.03,
+        "oeNettoProzent": -0.39,
+        "oeR": 0.23
       },
       "short": {
-        "anzahl": 95,
-        "treffer": 43,
-        "quote": 45.3,
-        "netto": -409.17,
-        "brutto": -409.17,
-        "nettoTR": -598.17,
-        "oeNettoProzent": -0.44,
-        "oeR": 0.21
+        "anzahl": 96,
+        "treffer": 44,
+        "quote": 45.8,
+        "netto": -368.03,
+        "brutto": -368.03,
+        "nettoTR": -559.03,
+        "oeNettoProzent": -0.39,
+        "oeR": 0.23
       },
       "krypto": {
         "anzahl": 29,
@@ -10609,14 +10573,14 @@
   "seitUmstellung": {
     "ab": "2026-11-13",
     "gruppe": {
-      "anzahl": 55,
+      "anzahl": 56,
       "treffer": 8,
-      "quote": 14.5,
-      "netto": -535.94,
-      "brutto": -534.94,
-      "nettoTR": -644.94,
-      "oeNettoProzent": -1.1,
-      "oeR": -0.28
+      "quote": 14.3,
+      "netto": -554.54,
+      "brutto": -553.54,
+      "nettoTR": -665.54,
+      "oeNettoProzent": -1.11,
+      "oeR": -0.29
     }
   },
   "varianten": {
@@ -10647,9 +10611,9 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 193,
-        "chance": 40.4,
-        "oeNetto": -0.07,
+        "faelle": 194,
+        "chance": 40.2,
+        "oeNetto": -0.08,
         "wertung": -0.19
       }
     },
