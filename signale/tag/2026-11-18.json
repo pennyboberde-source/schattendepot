@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-18T12:55:21.486Z",
-  "anzahl": 79,
+  "stand": "2026-11-18T13:20:05.071Z",
+  "anzahl": 83,
   "signale": [
     {
       "id": "verwaesserung:RZLT:2026-11-16",
@@ -1022,7 +1022,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.77,
+      "st": 0.78,
       "q": [
         "Upbit"
       ],
@@ -1066,6 +1066,61 @@
         "Nasdaq Trader"
       ],
       "z": "2026-11-18T00:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.BTC:2026-11-18",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-18T12:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.ETH:2026-11-18",
+      "s": "K:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-18T12:00:00.000Z"
+    },
+    {
+      "id": "nachricht:BA:2026-11-18",
+      "s": "T:BA",
+      "n": "Boeing",
+      "t": "BA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-18T12:51:24.000Z"
+    },
+    {
+      "id": "kursrakete:K.BREV:2026-11-18",
+      "s": "K:BREV",
+      "n": "Brevis",
+      "t": "BREV",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": -1,
+      "st": 0.41,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-18T13:20:05.071Z"
     }
   ]
 }
