@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T08:54:19.380Z",
+  "stand": "2026-11-19T09:09:40.156Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -0.38,
       "oeR": 2.1
     },
-    "offen": 2
+    "offen": 3
   },
   "gesamt": {
     "anzahl": 569,
@@ -569,6 +569,148 @@
         "stueck": 3,
         "kurswert": 819.78
       }
+    },
+    {
+      "id": "2026-11-19-scan-bayer-ag-reg",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "BAYER AG-REG",
+      "isin": "DE000BAY0017",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:50:00.000Z",
+        "kurs": 56.5,
+        "level": 56.4,
+        "spanne": {
+          "hoch": 56.4,
+          "tief": 56.18
+        },
+        "richtung": "long"
+      },
+      "stop": 56.29,
+      "ziel": 57.16,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "basisKurs": 56.58,
+        "kurs": 56.622,
+        "stueck": 17,
+        "kurswert": 962.57
+      }
+    },
+    {
+      "id": "2026-11-19-scan-freenet-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "FREENET AG",
+      "isin": "DE000A0Z2ZZ5",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 29.04,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "kurs": 24.2,
+        "level": 24.24,
+        "spanne": {
+          "hoch": 24.44,
+          "tief": 24.24
+        },
+        "richtung": "short"
+      },
+      "stop": 24.34,
+      "ziel": 23.92,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "basisKurs": 24.2,
+        "kurs": 4.8521,
+        "stueck": 206,
+        "kurswert": 999.53
+      }
+    },
+    {
+      "id": "2026-11-19-scan-ada",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "kurs": 0.140203,
+        "level": 0.1402,
+        "spanne": {
+          "hoch": 0.140182,
+          "tief": 0.139703
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1399,
+      "ziel": 0.1405,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "basisKurs": 0.140142,
+        "kurs": 0.1405,
+        "stueck": 7117.437722,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-19-scan-xrp",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "kurs": 0.89493,
+        "level": 0.8943,
+        "spanne": {
+          "hoch": 0.89434,
+          "tief": 0.89218
+        },
+        "richtung": "long"
+      },
+      "stop": 0.8933,
+      "ziel": 0.8984,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "basisKurs": 0.89497,
+        "kurs": 0.8972,
+        "stueck": 1114.578689,
+        "kurswert": 1000
+      }
     }
   ],
   "trades": [
@@ -759,6 +901,148 @@
         "kurs": 273.26,
         "stueck": 3,
         "kurswert": 819.78
+      }
+    },
+    {
+      "id": "2026-11-19-scan-bayer-ag-reg",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "BAYER AG-REG",
+      "isin": "DE000BAY0017",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:50:00.000Z",
+        "kurs": 56.5,
+        "level": 56.4,
+        "spanne": {
+          "hoch": 56.4,
+          "tief": 56.18
+        },
+        "richtung": "long"
+      },
+      "stop": 56.29,
+      "ziel": 57.16,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "basisKurs": 56.58,
+        "kurs": 56.622,
+        "stueck": 17,
+        "kurswert": 962.57
+      }
+    },
+    {
+      "id": "2026-11-19-scan-freenet-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "FREENET AG",
+      "isin": "DE000A0Z2ZZ5",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 29.04,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "kurs": 24.2,
+        "level": 24.24,
+        "spanne": {
+          "hoch": 24.44,
+          "tief": 24.24
+        },
+        "richtung": "short"
+      },
+      "stop": 24.34,
+      "ziel": 23.92,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "basisKurs": 24.2,
+        "kurs": 4.8521,
+        "stueck": 206,
+        "kurswert": 999.53
+      }
+    },
+    {
+      "id": "2026-11-19-scan-ada",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "kurs": 0.140203,
+        "level": 0.1402,
+        "spanne": {
+          "hoch": 0.140182,
+          "tief": 0.139703
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1399,
+      "ziel": 0.1405,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "basisKurs": 0.140142,
+        "kurs": 0.1405,
+        "stueck": 7117.437722,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-19-scan-xrp",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "kurs": 0.89493,
+        "level": 0.8943,
+        "spanne": {
+          "hoch": 0.89434,
+          "tief": 0.89218
+        },
+        "richtung": "long"
+      },
+      "stop": 0.8933,
+      "ziel": 0.8984,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "basisKurs": 0.89497,
+        "kurs": 0.8972,
+        "stueck": 1114.578689,
+        "kurswert": 1000
       }
     },
     {
@@ -9907,7 +10191,7 @@
       "oeNettoProzent": 1.73,
       "oeR": 2
     },
-    "offen": 3,
+    "offen": 6,
     "gruppen": {
       "turbo": {
         "anzahl": 120,
@@ -9960,10 +10244,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 163,
-        "chance": 38.7,
-        "oeNetto": -0.77,
-        "wertung": -1.23
+        "faelle": 164,
+        "chance": 39,
+        "oeNetto": -0.76,
+        "wertung": -1.22
       }
     },
     "krypto:level_long": {
@@ -9982,8 +10266,8 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 199,
-        "chance": 39.2,
+        "faelle": 200,
+        "chance": 39.5,
         "oeNetto": -0.09,
         "wertung": -0.2
       }
@@ -10027,5 +10311,7 @@
     "claude": 2,
     "autopilot": 0
   },
-  "hinweise": []
+  "hinweise": [
+    "ASML HOLDING NV: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)"
+  ]
 }
