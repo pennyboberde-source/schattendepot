@@ -3,11 +3,13 @@ name: Rückblick und Musterprüfung
 # Plan Volltreffer V3 (mit Sprung-Zensus aus V2): rechnet über die ganze Kursgeschichte im PRIVATEN Archiv, ob eine
 # 1.000-€-Order ein Volltreffer geworden wäre, und prüft Merkmale, Kombinationen und Hypothesen in zwei Zeiträumen.
 # Öffentlich (Datenzweig lernen/muster/) gehen nur verdichtete Kennzahlen; der Zensus mit Werten bleibt im Archiv.
-# Täglich 05:40 UTC (nach dem Archivlauf 05:10: US-Vortag und gettex liegen vor) oder von Hand. Dazu Trefferbuch und
-# Signal-Prüfung: Welche Signale der Datenkrake (Datenzweig signale/tag/) gingen den Sprüngen voraus?
+# Täglich 01:20 UTC (seit 19.11.2026; vorher 05:40): nach den Archivläufen 22:25 und 00:10 liegen US-Vortag, Krypto-Tag
+# und gettex vor. Nachts bleiben über sechs Stunden bis zum Morgenlauf – Platz für weitere Merkmale (Laufzeit war
+# 80 von 120 Minuten). Oder von Hand. Dazu Trefferbuch und Signal-Prüfung: Welche Signale der Datenkrake
+# (Datenzweig signale/tag/) gingen den Sprüngen voraus?
 on:
   schedule:
-    - cron: '40 5 * * *'
+    - cron: '20 1 * * *'
   workflow_dispatch:
     inputs:
       probe:
@@ -24,7 +26,7 @@ jobs:
     environment:
       name: live
       deployment: false
-    timeout-minutes: 120
+    timeout-minutes: 300
     concurrency:
       # die Probe schreibt nicht ins Archiv und stört dessen Warteschlange nicht
       group: ${{ inputs.probe && 'rueckblick-probe' || 'archiv-schreiben' }}
