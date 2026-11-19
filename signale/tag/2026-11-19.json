@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-19T15:20:23.467Z",
-  "anzahl": 218,
+  "stand": "2026-11-19T15:38:28.049Z",
+  "anzahl": 222,
   "signale": [
     {
       "id": "verwaesserung:CNTHP:2026-11-17",
@@ -2763,7 +2763,7 @@
       "t": "TDTH",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2828,7 +2828,7 @@
       "t": "ZYN",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -2898,6 +2898,59 @@
         "Nasdaq Trader"
       ],
       "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:LVWR:2026-11-19",
+      "s": "T:LVWR",
+      "n": "LiveWire Group, Inc. Common Stock",
+      "t": "LVWR",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MBRX:2026-11-19",
+      "s": "T:MBRX",
+      "n": "Moleculin Biotech, Inc. COM",
+      "t": "MBRX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SAIH:2026-11-19",
+      "s": "T:SAIH",
+      "n": "SAIHEAT Limited",
+      "t": "SAIH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:K.MMT:2026-11-19",
+      "s": "K:MMT",
+      "n": "Momentum",
+      "t": "MMT",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.56,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-19T15:38:28.049Z"
     }
   ]
 }
