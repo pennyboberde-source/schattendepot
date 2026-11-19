@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T18:09:56.700Z",
+  "stand": "2026-11-19T18:23:52.888Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -607,47 +607,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-palantir-technologies-in",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "PALANTIR TECHNOLOGIES INC-A",
-      "isin": "US69608A1088",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 176.88,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "kurs": 147.78,
-        "level": 148.5,
-        "spanne": {
-          "hoch": 151.96,
-          "tief": 148.5
-        },
-        "richtung": "short"
-      },
-      "stop": 150.23,
-      "ziel": 141.74,
-      "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "basisKurs": 147.4,
-        "kurs": 2.9554,
-        "stueck": 338,
-        "kurswert": 998.93
-      }
-    },
-    {
       "id": "2026-11-19-scan-nvidia-corp",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -1073,47 +1032,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-palantir-technologies-in",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "PALANTIR TECHNOLOGIES INC-A",
-      "isin": "US69608A1088",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 176.88,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "kurs": 147.78,
-        "level": 148.5,
-        "spanne": {
-          "hoch": 151.96,
-          "tief": 148.5
-        },
-        "richtung": "short"
-      },
-      "stop": 150.23,
-      "ziel": 141.74,
-      "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "basisKurs": 147.4,
-        "kurs": 2.9554,
-        "stueck": 338,
-        "kurswert": 998.93
-      }
-    },
-    {
       "id": "2026-11-19-scan-nvidia-corp",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -1309,6 +1227,66 @@
           "stop": 8,
           "oeR": -0.08
         }
+      }
+    },
+    {
+      "id": "2026-11-19-scan-palantir-technologies-in",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "PALANTIR TECHNOLOGIES INC-A",
+      "isin": "US69608A1088",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 176.88,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T15:20:00.000Z",
+        "kurs": 147.78,
+        "level": 148.5,
+        "spanne": {
+          "hoch": 151.96,
+          "tief": 148.5
+        },
+        "richtung": "short"
+      },
+      "stop": 150.23,
+      "ziel": 141.74,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T15:20:00.000Z",
+        "basisKurs": 147.4,
+        "kurs": 2.9554,
+        "stueck": 338,
+        "kurswert": 998.93
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T18:15:00.000Z",
+        "basisKurs": 141.74,
+        "kurs": 3.5052,
+        "kurswert": 1184.76,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 185.83,
+        "bruttoProzent": 18.6,
+        "netto": 185.83,
+        "nettoProzent": 18.6,
+        "nettoTR": 183.83,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -12783,46 +12761,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 176,
-      "treffer": 84,
-      "quote": 47.7,
-      "netto": 272.33,
-      "brutto": 344.33,
-      "nettoTR": -6.67,
-      "oeNettoProzent": 0.15,
-      "oeR": 0.39
+      "anzahl": 177,
+      "treffer": 85,
+      "quote": 48,
+      "netto": 458.16,
+      "brutto": 530.16,
+      "nettoTR": 177.16,
+      "oeNettoProzent": 0.26,
+      "oeR": 0.4
     },
     "heute": {
-      "anzahl": 27,
-      "treffer": 18,
-      "quote": 66.7,
-      "netto": 1079.29,
-      "brutto": 1091.29,
-      "nettoTR": 1037.29,
-      "oeNettoProzent": 4.01,
-      "oeR": 0.98
+      "anzahl": 28,
+      "treffer": 19,
+      "quote": 67.9,
+      "netto": 1265.12,
+      "brutto": 1277.12,
+      "nettoTR": 1221.12,
+      "oeNettoProzent": 4.53,
+      "oeR": 1.02
     },
-    "offen": 8,
+    "offen": 7,
     "gruppen": {
       "turbo": {
-        "anzahl": 140,
-        "treffer": 74,
-        "quote": 52.9,
-        "netto": 568.73,
-        "brutto": 568.73,
-        "nettoTR": 289.73,
-        "oeNettoProzent": 0.4,
-        "oeR": 0.41
+        "anzahl": 141,
+        "treffer": 75,
+        "quote": 53.2,
+        "netto": 754.56,
+        "brutto": 754.56,
+        "nettoTR": 473.56,
+        "oeNettoProzent": 0.53,
+        "oeR": 0.42
       },
       "short": {
-        "anzahl": 140,
-        "treffer": 74,
-        "quote": 52.9,
-        "netto": 568.73,
-        "brutto": 568.73,
-        "nettoTR": 289.73,
-        "oeNettoProzent": 0.4,
-        "oeR": 0.41
+        "anzahl": 141,
+        "treffer": 75,
+        "quote": 53.2,
+        "netto": 754.56,
+        "brutto": 754.56,
+        "nettoTR": 473.56,
+        "oeNettoProzent": 0.53,
+        "oeR": 0.42
       },
       "krypto": {
         "anzahl": 36,
@@ -12899,10 +12877,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 128,
-        "chance": 40.6,
-        "oeNetto": -0.51,
-        "wertung": -1.22
+        "faelle": 129,
+        "chance": 41.1,
+        "oeNetto": -0.46,
+        "wertung": -1.17
       }
     },
     "us:orb_long": {
