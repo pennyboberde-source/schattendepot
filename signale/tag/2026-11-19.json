@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-19T11:20:36.139Z",
-  "anzahl": 199,
+  "stand": "2026-11-19T12:20:15.813Z",
+  "anzahl": 201,
   "signale": [
     {
       "id": "verwaesserung:CNTHP:2026-11-17",
@@ -365,9 +365,10 @@
       "t": "DBK.DE",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "FAZ Finanzen"
+        "FAZ Finanzen",
+        "MarketWatch"
       ],
       "z": "2026-11-18T17:18:16.000Z"
     },
@@ -2646,6 +2647,34 @@
         "CNBC Top News"
       ],
       "z": "2026-11-19T01:05:25.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-19",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "Handelsblatt Finanzen",
+        "MarketWatch",
+        "CNBC Top News"
+      ],
+      "z": "2026-11-19T10:41:09.000Z"
+    },
+    {
+      "id": "nachricht:VNA:2026-11-19",
+      "s": "T:VNA",
+      "n": "Vonovia",
+      "t": "VNA.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-19T12:08:24.000Z"
     }
   ]
 }
