@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T08:20:28.225Z",
+  "stand": "2026-11-19T09:20:26.415Z",
   "quellen": [
     {
       "id": "alphavantage",
@@ -38,7 +38,7 @@
       "name": "BTC-ECHO",
       "zuletztOk": "2026-11-19T08:20:28.225Z",
       "signale": 6,
-      "letzterFehler": "2026-11-02T08:59:57.419Z: The operation was aborted due to timeout"
+      "letzterFehler": "2026-11-19T09:20:26.415Z: The operation was aborted due to timeout"
     },
     {
       "id": "cftccot",
@@ -49,14 +49,14 @@
     {
       "id": "cnbc",
       "name": "CNBC Top News",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 6
     },
     {
       "id": "coinalyze",
       "name": "Coinalyze (Liquidationen, Funding)",
       "letzterFehler": "2026-10-28T18:45:56.603Z: Schlüssel COINALYZE_API_KEY fehlt",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 0
     },
     {
@@ -73,8 +73,8 @@
     {
       "id": "faz",
       "name": "FAZ Finanzen",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
-      "signale": 2
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
+      "signale": 3
     },
     {
       "id": "kryptostimmung",
@@ -98,10 +98,10 @@
       "id": "finnhub",
       "name": "Finnhub",
       "letzterFehler": "2026-10-21T15:25:20.991Z: Schlüssel FINNHUB_API_KEY fehlt",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 0,
       "kontingent": {
-        "genutzt": 4,
+        "genutzt": 8,
         "limit": 1500,
         "zeitraum": "Tag"
       }
@@ -130,24 +130,24 @@
       "name": "GDELT (Nachrichten zu Positionen)",
       "zuletztOk": "2026-11-19T07:20:42.798Z",
       "signale": 0,
-      "letzterFehler": "2026-11-19T08:20:28.225Z: fetch failed"
+      "letzterFehler": "2026-11-19T09:20:26.415Z: GDELT drosselt (HTTP 429: höchstens 1 Abfrage je 5 s, geteilte IPs oft gesperrt)"
     },
     {
       "id": "gettex-scanner",
       "name": "gettex-Kursraketen-Scanner",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 0
     },
     {
       "id": "handelsblatt",
       "name": "Handelsblatt Finanzen",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 3
     },
     {
       "id": "kraken",
       "name": "Kraken (Krypto)",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 0
     },
     {
@@ -161,12 +161,12 @@
       "name": "MarketWatch",
       "zuletztOk": "2026-11-19T08:20:28.225Z",
       "signale": 2,
-      "letzterFehler": "2026-11-18T13:20:05.071Z: HTTP 400 bei feeds.marketwatch.com"
+      "letzterFehler": "2026-11-19T09:20:26.415Z: HTTP 400 bei feeds.marketwatch.com"
     },
     {
       "id": "nasdaqhalts",
       "name": "Nasdaq Trader Handelsstopps",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 3
     },
     {
@@ -178,7 +178,7 @@
     {
       "id": "politik",
       "name": "Politik-Radar (Federal Register, tagesschau, CNBC, Polymarket)",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 5
     },
     {
@@ -198,19 +198,19 @@
       "id": "sec-verwaesserung",
       "name": "SEC EDGAR (Verwässerung 424B5/S-3)",
       "letzterFehler": "2026-11-18T19:20:09.793Z: The operation was aborted due to timeout",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 28
     },
     {
       "id": "shortseller",
       "name": "Short-Seller-Berichte (Grizzly, Fuzzy Panda, Bear Cave)",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 1
     },
     {
       "id": "tagesschau",
       "name": "tagesschau Wirtschaft",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 2
     },
     {
@@ -222,7 +222,7 @@
     {
       "id": "upbit",
       "name": "Upbit (Korea, Krypto)",
-      "zuletztOk": "2026-11-19T08:20:28.225Z",
+      "zuletztOk": "2026-11-19T09:20:26.415Z",
       "signale": 28
     },
     {
