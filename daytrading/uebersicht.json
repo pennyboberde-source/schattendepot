@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T13:23:42.645Z",
+  "stand": "2026-11-19T13:39:01.917Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -651,6 +651,36 @@
         "stueck": 129,
         "kurswert": 998.37
       }
+    },
+    {
+      "id": "2026-11-19-scan-ada-2",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "level",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T13:20:00.000Z",
+        "kurs": 0.14153,
+        "level": 0.1414,
+        "richtung": "long"
+      },
+      "stop": 0.1384,
+      "ziel": 0.1468,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T13:20:00.000Z",
+        "basisKurs": 0.141181,
+        "kurs": 0.1415,
+        "stueck": 7067.137809,
+        "kurswert": 1000
+      }
     }
   ],
   "trades": [
@@ -923,6 +953,36 @@
         "kurs": 7.7393,
         "stueck": 129,
         "kurswert": 998.37
+      }
+    },
+    {
+      "id": "2026-11-19-scan-ada-2",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "level",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T13:20:00.000Z",
+        "kurs": 0.14153,
+        "level": 0.1414,
+        "richtung": "long"
+      },
+      "stop": 0.1384,
+      "ziel": 0.1468,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T13:20:00.000Z",
+        "basisKurs": 0.141181,
+        "kurs": 0.1415,
+        "stueck": 7067.137809,
+        "kurswert": 1000
       }
     },
     {
@@ -10575,7 +10635,7 @@
       "oeNettoProzent": 1.13,
       "oeR": 0.64
     },
-    "offen": 5,
+    "offen": 6,
     "gruppen": {
       "turbo": {
         "anzahl": 124,
@@ -10628,10 +10688,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 167,
-        "chance": 39.5,
-        "oeNetto": -0.72,
-        "wertung": -1.17
+        "faelle": 168,
+        "chance": 39.9,
+        "oeNetto": -0.71,
+        "wertung": -1.16
       }
     },
     "krypto:level_long": {
