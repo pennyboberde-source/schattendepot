@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-19T08:38:56.206Z",
+  "stand": "2026-11-19T08:54:19.380Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
-      "anzahl": 0,
+      "anzahl": 1,
       "treffer": 0,
       "quote": 0,
-      "netto": 0,
-      "brutto": 0,
-      "nettoTR": 0,
-      "oeNettoProzent": 0,
-      "oeR": 0
+      "netto": -3.68,
+      "brutto": -3.68,
+      "nettoTR": -5.68,
+      "oeNettoProzent": -0.38,
+      "oeR": 2.1
     },
     "offen": 2
   },
   "gesamt": {
-    "anzahl": 568,
+    "anzahl": 569,
     "treffer": 179,
     "quote": 31.5,
-    "netto": -4425.54,
-    "brutto": -4268.54,
-    "nettoTR": -5404.54,
+    "netto": -4429.22,
+    "brutto": -4272.22,
+    "nettoTR": -5410.22,
     "oeNettoProzent": -0.8,
-    "oeR": -0.04
+    "oeR": -0.03
   },
   "kurve": [
     {
@@ -144,16 +144,22 @@
       "netto": -4425.54,
       "brutto": -4268.54,
       "nettoTR": -5404.54
+    },
+    {
+      "datum": "2026-11-19",
+      "netto": -4429.22,
+      "brutto": -4272.22,
+      "nettoTR": -5410.22
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 557,
+      "anzahl": 558,
       "treffer": 176,
-      "quote": 31.6,
-      "netto": -4294.12,
-      "brutto": -4137.12,
-      "nettoTR": -5251.12,
+      "quote": 31.5,
+      "netto": -4297.8,
+      "brutto": -4140.8,
+      "nettoTR": -5256.8,
       "oeNettoProzent": -0.79,
       "oeR": -0.03
     },
@@ -170,14 +176,14 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 317,
+      "anzahl": 318,
       "treffer": 112,
-      "quote": 35.3,
-      "netto": -2072.21,
-      "brutto": -2072.21,
-      "nettoTR": -2706.21,
+      "quote": 35.2,
+      "netto": -2075.89,
+      "brutto": -2075.89,
+      "nettoTR": -2711.89,
       "oeNettoProzent": -0.67,
-      "oeR": 0.02
+      "oeR": 0.03
     },
     "us": {
       "anzahl": 173,
@@ -202,12 +208,12 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 388,
+      "anzahl": 389,
       "treffer": 122,
       "quote": 31.4,
-      "netto": -2008.21,
-      "brutto": -1883.21,
-      "nettoTR": -2659.21,
+      "netto": -2011.89,
+      "brutto": -1886.89,
+      "nettoTR": -2664.89,
       "oeNettoProzent": -0.55,
       "oeR": 0.03
     },
@@ -234,12 +240,12 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 304,
+      "anzahl": 305,
       "treffer": 109,
-      "quote": 35.9,
-      "netto": -1145.67,
-      "brutto": -1144.67,
-      "nettoTR": -1752.67,
+      "quote": 35.7,
+      "netto": -1149.35,
+      "brutto": -1148.35,
+      "nettoTR": -1758.35,
       "oeNettoProzent": -0.42,
       "oeR": 0.08
     },
@@ -276,14 +282,14 @@
       "oeR": 0.01
     },
     "spekulativ": {
-      "anzahl": 215,
+      "anzahl": 216,
       "treffer": 49,
-      "quote": 22.8,
-      "netto": -2407.55,
-      "brutto": -2306.55,
-      "nettoTR": -2736.55,
+      "quote": 22.7,
+      "netto": -2411.23,
+      "brutto": -2310.23,
+      "nettoTR": -2742.23,
       "oeNettoProzent": -1.16,
-      "oeR": -0.12
+      "oeR": -0.11
     }
   },
   "nachAusstieg": {
@@ -298,13 +304,13 @@
       "oeR": -1.05
     },
     "ziel": {
-      "anzahl": 129,
+      "anzahl": 130,
       "treffer": 108,
-      "quote": 83.7,
-      "netto": 3917.4,
-      "brutto": 3957.4,
-      "nettoTR": 3699.4,
-      "oeNettoProzent": 3.1,
+      "quote": 83.1,
+      "netto": 3913.72,
+      "brutto": 3953.72,
+      "nettoTR": 3693.72,
+      "oeNettoProzent": 3.07,
       "oeR": 2.03
     },
     "schluss": {
@@ -320,14 +326,14 @@
   },
   "nachPhase": {
     "seitwaerts_nervoes": {
-      "anzahl": 254,
+      "anzahl": 255,
       "treffer": 87,
-      "quote": 34.3,
-      "netto": -1537.1,
-      "brutto": -1536.1,
-      "nettoTR": -2044.1,
-      "oeNettoProzent": -0.65,
-      "oeR": -0.04
+      "quote": 34.1,
+      "netto": -1540.78,
+      "brutto": -1539.78,
+      "nettoTR": -2049.78,
+      "oeNettoProzent": -0.64,
+      "oeR": -0.03
     },
     "seitwaerts_ruhig": {
       "anzahl": 198,
@@ -376,39 +382,6 @@
   ],
   "offen": [
     {
-      "id": "2026-11-19-scan-aixtron-se",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "AIXTRON SE",
-      "isin": "DE000A0WMPJ6",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:20:00.000Z",
-        "kurs": 33.58,
-        "level": 33.56,
-        "spanne": {
-          "hoch": 33.56,
-          "tief": 33.29
-        },
-        "richtung": "long"
-      },
-      "stop": 33.43,
-      "ziel": 33.74,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-19T08:20:00.000Z",
-        "basisKurs": 33.53,
-        "kurs": 33.698,
-        "stueck": 29,
-        "kurswert": 977.24
-      }
-    },
-    {
       "id": "2026-11-19-scan-deutsche-bank-ag-registe",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -439,47 +412,6 @@
         "kurs": 30.637,
         "stueck": 32,
         "kurswert": 980.38
-      }
-    },
-    {
-      "id": "2026-11-19-scan-muenchener-rueckver-ag-r",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MUENCHENER RUECKVER AG-REG",
-      "isin": "DE0008430026",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 694.8,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:20:00.000Z",
-        "kurs": 579,
-        "level": 579.2,
-        "spanne": {
-          "hoch": 581.4,
-          "tief": 579.2
-        },
-        "richtung": "short"
-      },
-      "stop": 580.3,
-      "ziel": 576.4,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T08:20:00.000Z",
-        "basisKurs": 579,
-        "kurs": 11.609,
-        "stueck": 86,
-        "kurswert": 998.37
       }
     },
     {
@@ -521,44 +453,126 @@
         "kurs": 3.8376,
         "stueck": 260,
         "kurswert": 997.78
+      }
+    },
+    {
+      "id": "2026-11-19-scan-sanofi",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SANOFI",
+      "isin": "FR0000120578",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 101.54,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 84.91,
+        "level": 85.18,
+        "spanne": {
+          "hoch": 85.54,
+          "tief": 85.18
+        },
+        "richtung": "short"
+      },
+      "stop": 85.36,
+      "ziel": 83.14,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:30:00.000Z",
+        "basisKurs": 84.62,
+        "kurs": 16.962,
+        "stueck": 58,
+        "kurswert": 983.8
+      }
+    },
+    {
+      "id": "2026-11-19-scan-rheinmetall-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "RHEINMETALL AG",
+      "isin": "DE0007030009",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 888.84,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "kurs": 741.6,
+        "level": 742.8,
+        "spanne": {
+          "hoch": 749.4,
+          "tief": 742.8
+        },
+        "richtung": "short"
+      },
+      "stop": 746.1,
+      "ziel": 729.9,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "basisKurs": 740.7,
+        "kurs": 14.851,
+        "stueck": 67,
+        "kurswert": 995.02
+      }
+    },
+    {
+      "id": "2026-11-19-scan-siemens-ag-reg",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SIEMENS AG-REG",
+      "isin": "DE0007236101",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "kurs": 271.7,
+        "level": 271.15,
+        "spanne": {
+          "hoch": 271.15,
+          "tief": 269.2
+        },
+        "richtung": "long"
+      },
+      "stop": 270.18,
+      "ziel": 275.35,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "basisKurs": 271.9,
+        "kurs": 273.26,
+        "stueck": 3,
+        "kurswert": 819.78
       }
     }
   ],
   "trades": [
     {
-      "id": "2026-11-19-scan-aixtron-se",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "AIXTRON SE",
-      "isin": "DE000A0WMPJ6",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:20:00.000Z",
-        "kurs": 33.58,
-        "level": 33.56,
-        "spanne": {
-          "hoch": 33.56,
-          "tief": 33.29
-        },
-        "richtung": "long"
-      },
-      "stop": 33.43,
-      "ziel": 33.74,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-19T08:20:00.000Z",
-        "basisKurs": 33.53,
-        "kurs": 33.698,
-        "stueck": 29,
-        "kurswert": 977.24
-      }
-    },
-    {
       "id": "2026-11-19-scan-deutsche-bank-ag-registe",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -589,47 +603,6 @@
         "kurs": 30.637,
         "stueck": 32,
         "kurswert": 980.38
-      }
-    },
-    {
-      "id": "2026-11-19-scan-muenchener-rueckver-ag-r",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MUENCHENER RUECKVER AG-REG",
-      "isin": "DE0008430026",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 694.8,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:20:00.000Z",
-        "kurs": 579,
-        "level": 579.2,
-        "spanne": {
-          "hoch": 581.4,
-          "tief": 579.2
-        },
-        "richtung": "short"
-      },
-      "stop": 580.3,
-      "ziel": 576.4,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T08:20:00.000Z",
-        "basisKurs": 579,
-        "kurs": 11.609,
-        "stueck": 86,
-        "kurswert": 998.37
       }
     },
     {
@@ -671,6 +644,233 @@
         "kurs": 3.8376,
         "stueck": 260,
         "kurswert": 997.78
+      }
+    },
+    {
+      "id": "2026-11-19-scan-sanofi",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SANOFI",
+      "isin": "FR0000120578",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 101.54,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 84.91,
+        "level": 85.18,
+        "spanne": {
+          "hoch": 85.54,
+          "tief": 85.18
+        },
+        "richtung": "short"
+      },
+      "stop": 85.36,
+      "ziel": 83.14,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:30:00.000Z",
+        "basisKurs": 84.62,
+        "kurs": 16.962,
+        "stueck": 58,
+        "kurswert": 983.8
+      }
+    },
+    {
+      "id": "2026-11-19-scan-rheinmetall-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "RHEINMETALL AG",
+      "isin": "DE0007030009",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 888.84,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "kurs": 741.6,
+        "level": 742.8,
+        "spanne": {
+          "hoch": 749.4,
+          "tief": 742.8
+        },
+        "richtung": "short"
+      },
+      "stop": 746.1,
+      "ziel": 729.9,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "basisKurs": 740.7,
+        "kurs": 14.851,
+        "stueck": 67,
+        "kurswert": 995.02
+      }
+    },
+    {
+      "id": "2026-11-19-scan-siemens-ag-reg",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SIEMENS AG-REG",
+      "isin": "DE0007236101",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "kurs": 271.7,
+        "level": 271.15,
+        "spanne": {
+          "hoch": 271.15,
+          "tief": 269.2
+        },
+        "richtung": "long"
+      },
+      "stop": 270.18,
+      "ziel": 275.35,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "basisKurs": 271.9,
+        "kurs": 273.26,
+        "stueck": 3,
+        "kurswert": 819.78
+      }
+    },
+    {
+      "id": "2026-11-19-scan-aixtron-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AIXTRON SE",
+      "isin": "DE000A0WMPJ6",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 33.58,
+        "level": 33.56,
+        "spanne": {
+          "hoch": 33.56,
+          "tief": 33.29
+        },
+        "richtung": "long"
+      },
+      "stop": 33.43,
+      "ziel": 33.74,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "basisKurs": 33.53,
+        "kurs": 33.698,
+        "stueck": 29,
+        "kurswert": 977.24
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T08:40:00.000Z",
+        "basisKurs": 33.74,
+        "kurs": 33.571,
+        "kurswert": 973.56,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": -3.68,
+        "bruttoProzent": -0.38,
+        "netto": -3.68,
+        "nettoProzent": -0.38,
+        "nettoTR": -5.68,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.1
+      }
+    },
+    {
+      "id": "2026-11-19-scan-muenchener-rueckver-ag-r",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MUENCHENER RUECKVER AG-REG",
+      "isin": "DE0008430026",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 694.8,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 579,
+        "level": 579.2,
+        "spanne": {
+          "hoch": 581.4,
+          "tief": 579.2
+        },
+        "richtung": "short"
+      },
+      "stop": 580.3,
+      "ziel": 576.4,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "basisKurs": 579,
+        "kurs": 11.609,
+        "stueck": 86,
+        "kurswert": 998.37
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T08:35:00.000Z",
+        "basisKurs": 576.4,
+        "kurs": 11.81,
+        "kurswert": 1015.66,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 17.29,
+        "bruttoProzent": 1.73,
+        "netto": 17.29,
+        "nettoProzent": 1.73,
+        "nettoTR": 15.29,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -9688,46 +9888,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 149,
-      "treffer": 66,
-      "quote": 44.3,
-      "netto": -806.96,
-      "brutto": -746.96,
-      "nettoTR": -1043.96,
-      "oeNettoProzent": -0.55,
-      "oeR": 0.28
+      "anzahl": 150,
+      "treffer": 67,
+      "quote": 44.7,
+      "netto": -789.67,
+      "brutto": -729.67,
+      "nettoTR": -1028.67,
+      "oeNettoProzent": -0.53,
+      "oeR": 0.3
     },
     "heute": {
-      "anzahl": 0,
-      "treffer": 0,
-      "quote": 0,
-      "netto": 0,
-      "brutto": 0,
-      "nettoTR": 0,
-      "oeNettoProzent": 0,
-      "oeR": 0
+      "anzahl": 1,
+      "treffer": 1,
+      "quote": 100,
+      "netto": 17.29,
+      "brutto": 17.29,
+      "nettoTR": 15.29,
+      "oeNettoProzent": 1.73,
+      "oeR": 2
     },
-    "offen": 2,
+    "offen": 3,
     "gruppen": {
       "turbo": {
-        "anzahl": 119,
-        "treffer": 56,
-        "quote": 47.1,
-        "netto": -575.05,
-        "brutto": -575.05,
-        "nettoTR": -812.05,
-        "oeNettoProzent": -0.49,
-        "oeR": 0.23
+        "anzahl": 120,
+        "treffer": 57,
+        "quote": 47.5,
+        "netto": -557.76,
+        "brutto": -557.76,
+        "nettoTR": -796.76,
+        "oeNettoProzent": -0.47,
+        "oeR": 0.25
       },
       "short": {
-        "anzahl": 119,
-        "treffer": 56,
-        "quote": 47.1,
-        "netto": -575.05,
-        "brutto": -575.05,
-        "nettoTR": -812.05,
-        "oeNettoProzent": -0.49,
-        "oeR": 0.23
+        "anzahl": 120,
+        "treffer": 57,
+        "quote": 47.5,
+        "netto": -557.76,
+        "brutto": -557.76,
+        "nettoTR": -796.76,
+        "oeNettoProzent": -0.47,
+        "oeR": 0.25
       },
       "krypto": {
         "anzahl": 30,
@@ -9744,14 +9944,14 @@
   "seitUmstellung": {
     "ab": "2026-11-13",
     "gruppe": {
-      "anzahl": 71,
+      "anzahl": 72,
       "treffer": 10,
-      "quote": 14.1,
-      "netto": -810.65,
-      "brutto": -809.65,
-      "nettoTR": -951.65,
-      "oeNettoProzent": -1.25,
-      "oeR": -0.35
+      "quote": 13.9,
+      "netto": -814.33,
+      "brutto": -813.33,
+      "nettoTR": -957.33,
+      "oeNettoProzent": -1.24,
+      "oeR": -0.31
     }
   },
   "varianten": {
@@ -9827,7 +10027,5 @@
     "claude": 2,
     "autopilot": 0
   },
-  "hinweise": [
-    "ALLIANZ SE-REG: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)"
-  ]
+  "hinweise": []
 }
