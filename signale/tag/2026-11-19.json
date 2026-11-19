@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-19T15:38:28.049Z",
-  "anzahl": 222,
+  "stand": "2026-11-19T16:20:22.315Z",
+  "anzahl": 228,
   "signale": [
     {
       "id": "verwaesserung:CNTHP:2026-11-17",
@@ -2951,6 +2951,84 @@
         "Upbit"
       ],
       "z": "2026-11-19T15:38:28.049Z"
+    },
+    {
+      "id": "handelsstopp:FSHPU:2026-11-19",
+      "s": "T:FSHPU",
+      "n": "Flag Ship Acquisition Cp Ut",
+      "t": "FSHPU",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RFAI:2026-11-19",
+      "s": "T:RFAI",
+      "n": "RF Acq Cp II Ord",
+      "t": "RFAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:SAP:2026-11-19",
+      "s": "T:SAP",
+      "n": "SAP",
+      "t": "SAP.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-19T15:44:34.000Z"
+    },
+    {
+      "id": "nachricht:BAS:2026-11-19",
+      "s": "T:BAS",
+      "n": "BASF",
+      "t": "BAS.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-19T15:55:43.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF18KR4:2026-11-19",
+      "s": "I:DE000HF18KR4",
+      "n": "DE000HF18KR4",
+      "i": "DE000HF18KR4",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.63,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-19T16:07:59.407Z"
+    },
+    {
+      "id": "nachricht:AMZN:2026-11-19",
+      "s": "T:AMZN",
+      "n": "Amazon",
+      "t": "AMZN",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-19T16:15:40.000Z"
     }
   ]
 }
