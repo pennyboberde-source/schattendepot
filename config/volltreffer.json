@@ -932,6 +932,20 @@
     "quartaleHinweis": "Rollierende Prüfung gegen den Startpunkt-Effekt (seit 16.11.2026): je bestandener Kombination die Kalenderquartale mit mindestens quartalMindestFaelle Fällen; ist bei mindestens 4 solchen Quartalen der Anteil mit Ø nach Kosten über 0 kleiner als quartaleMindestAnteil, gilt sie als nicht bestanden (der Erfolg hing an wenigen Phasen).",
     "lageHinweis": "Lage-Merkmale (paare: false, seit 16.11.2026) werden nur einzeln geprüft, nicht in Zweierkombinationen – das hält Laufzeit und Zufallstreffer klein; im Gesamtmodell wirken sie mit allen Merkmalen zusammen."
   },
+  "zeitreise": {
+    "hinweis": "Zeitreise (Quantensprung, Nutzer 19.11.2026): Gesamtsimulation des Ablaufs über die Kursgeschichte ohne Blick nach vorn (core/volltreffer/zeitreise.ts, Modus ZEITREISE=1 in jobs/rueckblick.ts, Workflow zeitreise.yml, Ergebnis lernen/zeitreise.json). Je Halbmonat Auswahl aus Fällen bis abstand Halbmonate vorher; Auswahl erst ab ersterAbschnitt (Halbmonate seit Beginn der Geschichte).",
+    "fenster": 10,
+    "mindestFaelleHaelfte": 30,
+    "mindestQuote": 10,
+    "maxMuster": 60,
+    "maxJeBaustein": 3,
+    "abstand": 1,
+    "ersterAbschnitt": 8,
+    "sichtbarMaxOffen": 3,
+    "sichtbarMaxJeTag": 3,
+    "jagdenMaxOffen": 10,
+    "jagdenMaxJeTag": 10
+  },
   "v4": {
     "hinweis": "Bereich Volltreffer, virtuell (Konzept V4): höchstens maxOffen Jagden gleichzeitig, nach tagesVerlustGrenze € realisiertem Verlust am nächsten Einstiegstag keine neue Jagd; höchstens vorwaertsMax Muster gleichzeitig im Vorwärtstest; Stufe 2 ab stufe2Faelle Fällen mit Ø im Band des Rückblicks. 15.11.2026 abends auf Wunsch des Nutzers („so viele Volltreffer wie möglich“): 10 statt 5 Jagden gleichzeitig, Tagesverlustgrenze im selben Verhältnis 900 statt 450 €, 40 statt 30 Muster im Vorwärtstest. Nachziehstop ab +200 € ist als Spielart gemessen (im Schnitt schlechter, nur wo besser gewählt). Nicht umgesetzt: höchstens 2 Jagden je Thema (würde Jagden kosten; Branche ist jetzt Merkmal im Rückblick), eigener Pump-Filter (Turbo-Handelbarkeit verlangt schon großen Umsatz).",
     "maxOffen": 10,

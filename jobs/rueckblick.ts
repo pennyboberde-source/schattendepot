@@ -12,6 +12,7 @@ import { etikett, spielarten, spielartText, sprungEpisoden, volHebel, type Ausga
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, neinFilterAktiv, urteilKalibrierung, type JagdFall } from '../core/volltreffer/jagd.ts';
+import { auswaehlen, bilanz, nachspielen, ZeitStat, type Gewaehlt, type Kandidat } from '../core/volltreffer/zeitreise.ts';
 import { pumpVerdacht } from '../core/datenkrake.ts';
 import { befoerderungPruefen, istBefoerdert, noetigeFaelle, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
@@ -855,6 +856,8 @@ const modellZeile = (r: Reihe, i: number, klassen: (number | null)[]): number =>
 };
 
 // ---------- 5. Durchgang 2: Etiketten, Zensus, Hypothesen ----------
+/** Zeitreise (19.11.2026): eigener Lauf (zeitreise.yml) – überspringt Durchgang 2 und rechnet nur die Gesamtsimulation */
+const ZEITREISE = process.env.ZEITREISE === '1';
 interface Episode {
   datum: string;
   schluessel: string;
@@ -871,7 +874,7 @@ const episoden: Episode[] = [];
 let stichtage = 0;
 const hypFaelle: Record<string, number> = {};
 
-for (const r of reihen) {
+for (const r of ZEITREISE ? [] : reihen) {
   const k = r.kerzen;
   const m = k.map((_, i) => merkmale(k, i));
   const treffer: boolean[] = new Array(k.length).fill(false);
@@ -1041,6 +1044,168 @@ const gruppenText = (name: string) => {
     })
     .join(' und ')}`;
 };
+if (ZEITREISE) {
+  // ---------- Zeitreise: Gesamtsimulation ohne Blick nach vorn (core/volltreffer/zeitreise.ts) ----------
+  const ZR = (vt as unknown as { zeitreise: { fenster: number; mindestFaelleHaelfte: number; mindestQuote: number; maxMuster: number; maxJeBaustein: number; abstand: number; ersterAbschnitt: number; sichtbarMaxOffen: number; sichtbarMaxJeTag: number; jagdenMaxOffen: number; jagdenMaxJeTag: number } }).zeitreise;
+  const fZ = F.indexOf(ZR.fenster);
+  const ZS = SP.map((sp, s) => (sp.stopEuro === vt.etikett.standardStop && sp.nachziehAb === undefined ? s : -1)).filter((s) => s >= 0);
+  const erster = alleTage[0] ?? heute;
+  const abschnitt = (d: string) => (Number(d.slice(0, 4)) * 12 + Number(d.slice(5, 7)) - 1 - (Number(erster.slice(0, 4)) * 12 + Number(erster.slice(5, 7)) - 1)) * 2 + (Number(d.slice(8, 10)) > 15 ? 1 : 0);
+  const ABSCHNITTE = abschnitt(heute) + 1;
+  const kal = (d: string) => Math.round((Date.parse(`${d}T12:00:00Z`) - Date.parse(`${erster}T12:00:00Z`)) / 86400000);
+  const st = new ZeitStat(ABSCHNITTE, gruppen.length, ZS.length);
+  // Fälle kompakt: Klassen je Einteilung (255 = unbekannt), Ergebnis je Standard-Spielart im Fenster
+  const NE = E.length;
+  let zeilen = 0;
+  const cap = 4_500_000;
+  const kl = new Uint8Array(cap * NE).fill(255);
+  const netto = new Float32Array(cap * ZS.length).fill(NaN);
+  const art = new Uint8Array(cap * ZS.length);
+  const aus = new Int32Array(cap * ZS.length);
+  const zTag = new Int32Array(cap);
+  const zAbs = new Int16Array(cap);
+  const zMarkt = new Uint8Array(cap);
+  const zWert: string[] = [];
+  // Gruppen-Nummern als Tabellen (keine Texte im inneren Kreis): Einzel [Markt][Einteilung][Klasse], Paar-Basis [Markt][a·NE+b]
+  const einzelTab = MAERKTE.map((mk) => E.map((e, a) => Array.from({ length: e.grenzen.length + 1 }, (_, c) => gid.get(`${mk}|${a}=${c}`)!)));
+  const paarTab = MAERKTE.map((mk) => {
+    const t = new Int32Array(NE * NE).fill(-1);
+    for (let a = 0; a < NE; a++) for (let b = a + 1; b < NE; b++) if (E[a].paare !== false && E[b].paare !== false) t[a * NE + b] = gid.get(`${mk}|${a}=0&${b}=0`)!;
+    return t;
+  });
+  const alleTab = MAERKTE.map((mk) => gid.get(`${mk}|alle`)!);
+  const breite = E.map((e) => e.grenzen.length + 1);
+  for (const r of reihen) {
+    const k = r.kerzen;
+    const m = k.map((_, i) => merkmale(k, i));
+    const mi = r.markt;
+    for (let i = 1; i < k.length - 1; i++) {
+      const x = m[i];
+      if (!x || !handelbar(r, x, k[i])) continue;
+      if (zeilen >= cap) break;
+      const klassen = klassenAm(r, x, k[i].datum);
+      const pa = plattformAm(r, x);
+      const b = abschnitt(k[i].datum);
+      let irgendwas = false;
+      const z = zeilen;
+      ZS.forEach((s, j) => {
+        const sp = konk(SP[s], x);
+        if (!sp) return;
+        const pl = platzFuer(r, sp, pa);
+        if (!pl) return;
+        const au = etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), F)[fZ];
+        if (!au) return;
+        netto[z * ZS.length + j] = au.netto;
+        art[z * ZS.length + j] = au.art === 'treffer' ? 1 : 0;
+        aus[z * ZS.length + j] = kal(k[Math.min(k.length - 1, i + au.tag)].datum);
+        irgendwas = true;
+      });
+      if (!irgendwas) continue;
+      for (let a = 0; a < NE; a++) if (klassen[a] !== null) kl[z * NE + a] = klassen[a]!;
+      zTag[z] = kal(k[i].datum);
+      zAbs[z] = b;
+      zMarkt[z] = mi === 'aktie' ? 0 : 1;
+      zWert[z] = r.schluessel.replace(/#\d+$/, '');
+      zeilen++;
+      // zählen: „alle“, Einzelklassen, Paare (wie der Rückblick, ohne Sperre – eher zu viele Fälle, also vorsichtig)
+      const mIdx = mi === 'aktie' ? 0 : 1;
+      const pt = paarTab[mIdx];
+      const ids: number[] = [alleTab[mIdx]];
+      for (let a = 0; a < NE; a++) if (klassen[a] !== null) ids.push(einzelTab[mIdx][a][klassen[a]!]);
+      for (let a = 0; a < NE; a++) {
+        const ca = klassen[a];
+        if (ca === null) continue;
+        for (let c = a + 1; c < NE; c++) {
+          const cc = klassen[c];
+          const basis = pt[a * NE + c];
+          if (cc !== null && basis >= 0) ids.push(basis + ca * breite[c] + cc);
+        }
+      }
+      for (let j = 0; j < ZS.length; j++) {
+        const v = netto[z * ZS.length + j];
+        if (Number.isNaN(v)) continue;
+        const t = art[z * ZS.length + j] === 1;
+        for (const g of ids) st.add(b, g, j, v, t);
+      }
+    }
+  }
+  st.kumulieren();
+  log(`Zeitreise: ${zeilen} Stichtage gezählt, ${ABSCHNITTE} Halbmonate seit ${erster}, ${ZS.length} Spielarten (Fenster ${ZR.fenster} Tage).`);
+  // Auswahl je Halbmonat nur aus Fällen, deren Ergebnis feststand
+  const alleVon = (g: number) => gid.get(`${gruppen[g].split('|')[0]}|alle`)!;
+  const kandidatGruppe = (g: number) => !gruppen[g].endsWith('|alle') && !gruppen[g].includes('|hyp=');
+  const bausteineVon = (g: number) => gruppen[g].split('|')[1]?.split('&') ?? [];
+  const regeln = { mindestFaelleHaelfte: ZR.mindestFaelleHaelfte, mindestQuote: ZR.mindestQuote, maxMuster: ZR.maxMuster, maxJeBaustein: ZR.maxJeBaustein, abstand: ZR.abstand, ersterAbschnitt: ZR.ersterAbschnitt };
+  const wahl: Gewaehlt[][] = [];
+  for (let b = 0; b < ABSCHNITTE; b++) wahl.push(auswaehlen(st, b, regeln, kandidatGruppe, alleVon, bausteineVon));
+  log(`Zeitreise: Auswahl je Halbmonat ${wahl.map((w) => w.length).join(',')}.`);
+  // Bedingungen der gewählten Gruppen (Einteilung=Klasse, ein oder zwei Bausteine) je Halbmonat
+  const bedingung = (g: number) => (gruppen[g].split('|')[1] ?? '').split('&').map((t) => t.split('=').map(Number) as [number, number]);
+  const wahlBed = wahl.map((w) => w.map((x) => ({ x, markt: gruppen[x.g].startsWith('aktie|') ? 0 : 1, bed: bedingung(x.g), text: '' })));
+  const kandidaten: Kandidat[] = [];
+  let alleN = 0, alleT = 0, alleSum = 0;
+  for (let z = 0; z < zeilen; z++) {
+    const w = wahlBed[zAbs[z]];
+    if (!w?.length) continue;
+    let beste: Kandidat | null = null;
+    for (const wb of w) {
+      const x = wb.x;
+      if (wb.markt !== zMarkt[z]) continue;
+      if (!wb.bed.every(([a, c]) => kl[z * NE + a] === c)) continue;
+      const v = netto[z * ZS.length + x.s];
+      if (Number.isNaN(v)) continue;
+      alleN++;
+      alleSum += v;
+      if (art[z * ZS.length + x.s] === 1) alleT++;
+      if (!beste || x.wertung > beste.wertung) {
+        if (!wb.text) wb.text = `${gruppenText(gruppen[x.g])} – ${spielartText(SP[ZS[x.s]])}`;
+        beste = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text };
+      }
+    }
+    if (beste) kandidaten.push(beste);
+  }
+  // Grundrate: alle handelbaren Stichtage im selben Zeitraum mit der Spielart der gewählten Muster
+  let grN = 0, grT = 0, grSum = 0;
+  const ab = Math.min(...wahl.map((w, b) => (w.length ? b : Infinity)));
+  for (let z = 0; z < zeilen; z++) {
+    if (zAbs[z] < ab) continue;
+    for (let j = 0; j < ZS.length; j++) {
+      const v = netto[z * ZS.length + j];
+      if (Number.isNaN(v)) continue;
+      grN++;
+      grSum += v;
+      if (art[z * ZS.length + j] === 1) grT++;
+    }
+  }
+  const monatVon = (t: number) => new Date(Date.parse(`${erster}T12:00:00Z`) + t * 86400000).toISOString().slice(0, 7);
+  const sichtbar = nachspielen(kandidaten, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag });
+  const jagden = nachspielen(kandidaten, { maxOffen: ZR.jagdenMaxOffen, maxJeTag: ZR.jagdenMaxJeTag });
+  const haeufig = new Map<string, { orders: number; volltreffer: number; netto: number }>();
+  for (const o of sichtbar) {
+    const h = haeufig.get(o.muster) ?? haeufig.set(o.muster, { orders: 0, volltreffer: 0, netto: 0 }).get(o.muster)!;
+    h.orders++;
+    if (o.treffer) h.volltreffer++;
+    h.netto += o.netto;
+  }
+  const ergebnis = {
+    stand: jetzt.toISOString(),
+    hinweis: `Zeitreise: der ganze Ablauf über die Kursgeschichte nachgespielt, als wäre er live gelaufen. Je Halbmonat wählt der Code bis zu ${ZR.maxMuster} Muster nur aus Fällen, deren Ergebnis da schon feststand (${ZR.abstand} Halbmonat Abstand): in beiden Hälften der Vergangenheit je mindestens ${ZR.mindestFaelleHaelfte} Fälle im Plus, besser als die Grundrate, Quote ab ${ZR.mindestQuote} %, höchstens ${ZR.maxJeBaustein} je Baustein. Dann je Tag die Fälle dieser Muster nach Wertung: „sichtbar“ höchstens ${ZR.sichtbarMaxOffen} offene Orders, „Jagden“ höchstens ${ZR.jagdenMaxOffen}, je Wert eine; 1.000 € je Order nach Kosten, Ausstieg bei Ziel (+400 €), Stop (−150 €) oder nach ${ZR.fenster} Handelstagen. Vereinfachungen: ohne Klumpen-Grenze, Pump-Filter und Gesamtmodell; Fälle ohne 10-Tage-Sperre gezählt (eher strenger). Nur Kennzahlen, keine Kurse.`,
+    zeitraum: { von: kandidaten.length ? monatVon(kandidaten.reduce((a, k) => Math.min(a, k.tag), Infinity)) : null, bis: heute.slice(0, 7) },
+    regeln: ZR,
+    auswahl: { halbmonate: wahl.filter((w) => w.length).length, oeMuster: Math.round(wahl.reduce((a, w) => a + w.length, 0) / Math.max(1, wahl.filter((w) => w.length).length)) },
+    sichtbar: bilanz(sichtbar, monatVon),
+    jagden: bilanz(jagden, monatVon),
+    alleMusterfaelle: { faelle: alleN, quote: alleN ? Math.round((alleT / alleN) * 1000) / 10 : 0, oe: alleN ? Math.round((alleSum / alleN) * 10) / 10 : 0 },
+    grundrate: { faelle: grN, quote: grN ? Math.round((grT / grN) * 1000) / 10 : 0, oe: grN ? Math.round((grSum / grN) * 10) / 10 : 0 },
+    haeufigsteMuster: [...haeufig.entries()].sort((a, b) => b[1].orders - a[1].orders).slice(0, 12).map(([muster, h]) => ({ muster, orders: h.orders, volltreffer: h.volltreffer, netto: Math.round(h.netto) })),
+  };
+  schreibeJson('lernen/zeitreise.json', ergebnis);
+  log(`Zeitreise sichtbar (${ZR.sichtbarMaxOffen} offen): ${ergebnis.sichtbar.orders} Orders, ${ergebnis.sichtbar.volltreffer} Volltreffer (${ergebnis.sichtbar.quote} %), netto ${ergebnis.sichtbar.netto} €, Ø ${ergebnis.sichtbar.oe} €, größter Rückgang ${ergebnis.sichtbar.maxRueckgang} €.`);
+  log(`Zeitreise Jagden (${ZR.jagdenMaxOffen} offen): ${ergebnis.jagden.orders} Orders, ${ergebnis.jagden.volltreffer} Volltreffer (${ergebnis.jagden.quote} %), netto ${ergebnis.jagden.netto} €, Ø ${ergebnis.jagden.oe} €, größter Rückgang ${ergebnis.jagden.maxRueckgang} €.`);
+  log(`Zeitreise Vergleich: alle Fälle der gewählten Muster ${alleN} (Quote ${ergebnis.alleMusterfaelle.quote} %, Ø ${ergebnis.alleMusterfaelle.oe} €) · Grundrate ${grN} (Quote ${ergebnis.grundrate.quote} %, Ø ${ergebnis.grundrate.oe} €).`);
+  for (const mo of ergebnis.sichtbar.monate) log(`  ${mo.monat}: ${mo.orders} Orders, ${mo.volltreffer} Volltreffer, ${mo.netto} €`);
+  process.exit(0);
+}
 const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string; tage?: [number, number]; groessterTag?: [number, number]; splitVerdacht?: number; quartale?: [number, number] })[] = [];
 for (const name of gruppen) {
   const g = gid.get(name)!;
