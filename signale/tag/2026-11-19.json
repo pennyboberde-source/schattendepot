@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-19T05:20:35.038Z",
-  "anzahl": 191,
+  "stand": "2026-11-19T07:20:42.798Z",
+  "anzahl": 195,
   "signale": [
     {
       "id": "verwaesserung:CNTHP:2026-11-17",
@@ -2351,7 +2351,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": -1,
-      "st": 0.47,
+      "st": 0.51,
       "q": [
         "Upbit"
       ],
@@ -2365,7 +2365,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.56,
+      "st": 0.74,
       "q": [
         "Upbit"
       ],
@@ -2536,6 +2536,62 @@
         "Finnhub Kurs"
       ],
       "z": "2026-11-19T05:20:35.038Z"
+    },
+    {
+      "id": "upbit_warnung:K.ELF:2026-11-19",
+      "s": "K:ELF",
+      "n": "aelf",
+      "t": "ELF",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-19T07:20:42.798Z"
+    },
+    {
+      "id": "politik_massnahme:RHM:2026-11-19:ukraine_russland",
+      "s": "T:RHM",
+      "n": "Rheinmetall",
+      "t": "RHM.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.95,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-19T07:20:42.798Z"
+    },
+    {
+      "id": "politik_massnahme:HAG:2026-11-19:ukraine_russland",
+      "s": "T:HAG",
+      "n": "Hensoldt",
+      "t": "HAG.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.95,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-19T07:20:42.798Z"
+    },
+    {
+      "id": "politik_massnahme:R3NK:2026-11-19:ukraine_russland",
+      "s": "T:R3NK",
+      "n": "Renk",
+      "t": "R3NK.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": -1,
+      "st": 0.95,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-19T07:20:42.798Z"
     }
   ]
 }
