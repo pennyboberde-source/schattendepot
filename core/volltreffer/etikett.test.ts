@@ -224,3 +224,12 @@ describe('Treffer-Geometrie: Hebel nach Schwankung (18.11.2026)', () => {
     expect(a?.tag).toBe(2);
   });
 });
+
+describe('Treffer-Geometrie: Mindest-Schwankung (19.11.2026)', () => {
+  it('unter minSchwankung keine Schwankungs-Spielart', async () => {
+    const { volHebel } = await import('./etikett.ts');
+    const sp = { hebel: 0, richtung: 'short' as const, stopEuro: 150, vol: 2 };
+    expect(volHebel(sp, 0.3, 1000, { maxHebel: 20, stufe: 0.5, minSchwankung: 1 })).toBeNull();
+    expect(volHebel(sp, 1.5, 1000, { maxHebel: 20, stufe: 0.5, minSchwankung: 1 })!.hebel).toBe(5);
+  });
+});

@@ -66,6 +66,8 @@ export interface VolEinstellung {
   stufe: number;
   /** auch mit Nachziehstop (wie bei den festen Hebeln) */
   mitNachzieh?: boolean;
+  /** kleinste Tagesschwankung in %, darunter keine Schwankungs-Spielart (Vorzugsaktien, Anleihe-ähnliches – 19.11.2026) */
+  minSchwankung?: number;
 }
 
 /**
@@ -73,9 +75,9 @@ export interface VolEinstellung {
  * Hebel = Stop / (Einsatz × vol × Schwankung). Long unter 1,25 → direkt (Hebel 1); Short mindestens 1,5 (nur über
  * Turbos). `null`, wenn die Schwankung unbekannt ist. Spielarten ohne `vol` bleiben unverändert.
  */
-export function volHebel(sp: Spielart, schwankungProzent: number | null, einsatz: number, v: Pick<VolEinstellung, 'maxHebel' | 'stufe'>): Spielart | null {
+export function volHebel(sp: Spielart, schwankungProzent: number | null, einsatz: number, v: Pick<VolEinstellung, 'maxHebel' | 'stufe' | 'minSchwankung'>): Spielart | null {
   if (sp.vol === undefined) return sp;
-  if (schwankungProzent === null || !(schwankungProzent > 0)) return null;
+  if (schwankungProzent === null || !(schwankungProzent > 0) || schwankungProzent < (v.minSchwankung ?? 0)) return null;
   const roh = sp.stopEuro / (einsatz * sp.vol * (schwankungProzent / 100));
   let h = Math.min(v.maxHebel, Math.round(roh / v.stufe) * v.stufe);
   if (sp.richtung === 'long' && h < 1.25) h = 1;
