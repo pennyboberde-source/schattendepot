@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T06:00:31.412Z",
+  "stand": "2026-11-19T14:40:15.075Z",
   "hinweis": "Weltlage für alle Bereiche (Quantensprung 3): Themen der Weltnachrichten als Spitze gegen die 30 Tage davor (GDELT, Anteil an allen Artikeln), US-Amtsblatt (Federal Register: Erlasse, Zölle, Sanktionen, Exportkontrollen), Weltgeschehen (Wikipedia, Portal:Current events, Text CC BY-SA 4.0), Chronik der stärksten Markttage der letzten zwei Jahre mit ihren Themen, und was der Aktienmarkt nach früheren Wellen desselben Themas in 5 Handelstagen tat. Nur Klassen, keine Kurswerte.",
   "quellen": [
     "GDELT Project (gdeltproject.org)",
@@ -9,6 +9,11 @@
   ],
   "datum": "2026-11-16",
   "themen": [
+    {
+      "name": "Meme-Aktien und Squeezes",
+      "spitze": 12.8,
+      "klasse": "Sturm"
+    },
     {
       "name": "Quantencomputer",
       "spitze": 5.4,
@@ -53,11 +58,6 @@
       "name": "Atomkraft, Uran, Stromnetz",
       "spitze": 1.2,
       "klasse": "ruhig"
-    },
-    {
-      "name": "China und Taiwan",
-      "spitze": 1.1,
-      "klasse": "ruhig"
     }
   ],
   "politik": "erhöht",
@@ -95,16 +95,21 @@
       {
         "datum": "2026-11-19",
         "erlasse": 0,
-        "zoelle": 0,
-        "sanktionen": 0,
-        "export": 0
+        "zoelle": 3,
+        "sanktionen": 7,
+        "export": 1
       }
     ]
   },
   "weltgeschehen": [
     {
       "datum": "2026-11-19",
-      "ereignisse": []
+      "ereignisse": [
+        "Armed conflicts and attacks: In Muksudpur, Gopalganj District, Bangladesh, members of the banned Awami League loot and set fire to the ancestral home of BNP Member of Parliament Md. Selimuzzaman Mollah, several supporters houses, an unoccup",
+        "International relations: APEC China 2026, Chile–Philippines relations: – The Philippines and Chile sign a free trade agreement during a bilateral meeting as part of the 33rd Asia-Pacific Economic Cooperation Economic Leaders' Meeting in She",
+        "Law and crime: Rohingya genocide case – The International Court of Justice rules that Myanmar had committed genocide against the Rohingya people.",
+        "Politics and elections: Corruption in Mongolia – The State Great Khural accepts the resignation of Mongolian president Ukhnaagiin Khürelsükh. The chamber's chairman, Sandagiin Byambatsogt, assumes the acting presidency until a new election "
+      ]
     },
     {
       "datum": "2026-11-18",
@@ -115,18 +120,31 @@
         "Armed conflicts and attacks: Aftermath of the July Uprising – In Bangladesh, a crowd allegedly led by Chatra Dal members storms and sets fire to the residence of former Awami League Member of Parliament Shamim Osman in Fatullah, Narayanganj",
         "Armed conflicts and attacks: Aftermath of the July Uprising – In Gopalganj District, Bangladesh, armed members of the banned Awami League, Chhatra League, and Jubo League detonate crude bombs and set fire to a private clinic owned by BNP Me",
         "Armed conflicts and attacks: Gaza war – The Israeli army launches its first operation in central Gaza Strip amid the displacement of families from the area, for the first time since the ceasefire agreement signed in October 2025 came into e",
-        "Armed conflicts and attacks: Insurgency in Jammu and Kashmir – A Lashkar-e-Taiba commander is killed by the Indian Armed Forces at a mosque in Kulgam district, Indian-administered Jammu and Kashmir, after escaping a shootout with troops two",
+        "Armed conflicts and attacks: Insurgency in Jammu and Kashmir – A militant commander is killed by the Indian Armed Forces at a mosque in Kulgam district, Indian-administered Jammu and Kashmir, after escaping a shootout with troops two days e",
         "Arts and culture: Vincent van Gogh's 1890 painting Blossoming Chestnut Trees sells for US$190.4 million at Sotheby's in New York City, United States, setting a new auction record for Van Gogh and surpassing the $117.2 million paid for Orcha",
         "Business and economy: 2026 Bangladesh garment workers protests – In Gazipur, Savar, and Ashulia, Bangladesh, thousands of garment workers demanding a monthly minimum wage increase from ৳12,500 (US$100) to ৳30,000 ($240) block the Dhaka–Myme",
         "Business and economy: 2026 Bangladesh garment workers protests – In Kafrul, Dhaka, police fire around ten stun grenades against demonstrating garment workers following clashes with Bangladesh Nationalist Party activists who allegedly harass",
         "Law and crime: Arsonists set fire to the ancestral home of former chief adviser Muhammad Yunus in Panchlaish, Chattogram, Bangladesh.",
         "Science and technology: NASA's space probe Voyager 1 reaches the distance of one light-day from Earth, being the first man-made object to reach that distance, after it launched in 1977.",
+        "Science and technology: PlayStation reports a major outage ahead of the release of Grand Theft Auto VI.",
         "Sports: Bangladeshi cricket team in South Africa in 2026–27",
         "Sports: In Test cricket, Bangladeshi wicketkeeper Litton Das sets a world record for the most dismissals in a single Test innings, recording six catches and two stumpings against South Africa in Johannesburg."
       ]
     }
   ],
   "aehnlich": [
+    {
+      "thema": "Meme-Aktien und Squeezes",
+      "heute": "Sturm",
+      "fruehereWellen": 48,
+      "danach5": {
+        "stark fallend": 1,
+        "fallend": 7,
+        "seitwärts": 31,
+        "steigend": 8,
+        "stark steigend": 1
+      }
+    },
     {
       "thema": "Quantencomputer",
       "heute": "Sturm",
@@ -186,18 +204,6 @@
         "steigend": 2,
         "stark steigend": 0
       }
-    },
-    {
-      "thema": "Krieg und Angriffe",
-      "heute": "erhöht",
-      "fruehereWellen": 5,
-      "danach5": {
-        "stark fallend": 0,
-        "fallend": 1,
-        "seitwärts": 4,
-        "steigend": 0,
-        "stark steigend": 0
-      }
     }
   ],
   "chronik": [
@@ -206,6 +212,7 @@
       "markt": "gefallen",
       "danach5": null,
       "themen": [
+        "Meme-Aktien und Squeezes (Sturm)",
         "Quantencomputer (Sturm)",
         "Hackerangriffe (Sturm)",
         "Abnehmspritzen (Welle)"
@@ -221,6 +228,7 @@
       "markt": "stark gestiegen",
       "danach5": "fallend",
       "themen": [
+        "Meme-Aktien und Squeezes (Sturm)",
         "Halbleiter und Exportkontrollen (Welle)",
         "China und Taiwan (Welle)"
       ],
@@ -235,10 +243,10 @@
       "markt": "stark gefallen",
       "danach5": "seitwärts",
       "themen": [
+        "Meme-Aktien und Squeezes (Sturm)",
         "Abnehmspritzen (Sturm)",
         "Hackerangriffe (Sturm)",
-        "Wahlen (Welle)",
-        "Halbleiter und Exportkontrollen (Welle)"
+        "Wahlen (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: A police officer is killed and another injured in a stabbing attack outside the Sri Lankan embassy in Amman, Jordan. The suspect is arrested. The event is described as a terrorist attack.",
@@ -251,10 +259,10 @@
       "markt": "gestiegen",
       "danach5": "seitwärts",
       "themen": [
+        "Meme-Aktien und Squeezes (Sturm)",
         "Abnehmspritzen (Sturm)",
         "Hackerangriffe (Sturm)",
-        "Wahlen (Welle)",
-        "Halbleiter und Exportkontrollen (Welle)"
+        "Wahlen (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: 2026 Bangladesh garment workers protests – Over 50 people are injured and police vehicles are torched as garment workers clash with police in Savar.",
@@ -281,7 +289,8 @@
       "markt": "gestiegen",
       "danach5": "seitwärts",
       "themen": [
-        "Hackerangriffe (Welle)"
+        "Hackerangriffe (Welle)",
+        "Meme-Aktien und Squeezes (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Middle Eastern crisis – 2026 Iran war – 2025–2026 Iran–United States negotiations – 2026 Iran war ceasefire, Qatar as a mediator in conflict",
@@ -561,7 +570,8 @@
       "markt": "gefallen",
       "danach5": "stark steigend",
       "themen": [
-        "Abnehmspritzen (Welle)"
+        "Abnehmspritzen (Welle)",
+        "Meme-Aktien und Squeezes (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Gaza war – Five Palestinians are killed in two Israeli attacks in Khan Yunis in the Gaza Strip.",
@@ -611,7 +621,8 @@
       "markt": "gestiegen",
       "danach5": "seitwärts",
       "themen": [
-        "Halbleiter und Exportkontrollen (Welle)"
+        "Halbleiter und Exportkontrollen (Welle)",
+        "Meme-Aktien und Squeezes (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Gaza war – Gaza peace plan – Hamas hands over the 20 remaining living Israeli hostages to the Red Cross, and Israel releases over 1,900 Palestinian detainees, including 250 people serving life sentences for conv",
@@ -623,7 +634,9 @@
       "datum": "2025-10-10",
       "markt": "stark gefallen",
       "danach5": "seitwärts",
-      "themen": [],
+      "themen": [
+        "Meme-Aktien und Squeezes (Welle)"
+      ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Gaza war – Gaza war peace plan – A ceasefire between Israel and Hamas comes into effect hours after the approval of the ceasefire agreement by the Israeli war cabinet. The Israel Defense Forces complete their wi",
         "Armed conflicts and attacks: Gaza war – Mental health impact of the Gaza war",
@@ -647,7 +660,9 @@
       "datum": "2025-08-12",
       "markt": "gestiegen",
       "danach5": "seitwärts",
-      "themen": [],
+      "themen": [
+        "Meme-Aktien und Squeezes (erhöht)"
+      ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Insurgency in Khyber Pakhtunkhwa – The Pakistani Armed Forces launches an operation in Bajaur, Khyber Pakhtunkhwa, a former stronghold of the Pakistani Taliban, to find insurgent hideouts. Over 100,000 civilians",
         "Business and economy: China–United States trade war – China and the United States extend their trade truce another 90 days to ease world tension after the international tariffs that went into effect after being signed on April 2.",
@@ -728,7 +743,7 @@
         "Quantencomputer (Sturm)",
         "Abnehmspritzen (Welle)",
         "Öl und OPEC (Welle)",
-        "Sanktionen und Embargos (Welle)"
+        "Meme-Aktien und Squeezes (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Gaza war – Gaza war hostage crisis – Israeli-American hostage Edan Alexander is released by Hamas after being kept in captivity in Gaza for 19 months since the October 7 attack.",
@@ -743,7 +758,8 @@
       "themen": [
         "Abnehmspritzen (Sturm)",
         "Hackerangriffe (Welle)",
-        "Zulassungen und Studien (erhöht)"
+        "Zulassungen und Studien (erhöht)",
+        "Meme-Aktien und Squeezes (erhöht)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Gaza war – Humanitarian aid during the Gaza war",
@@ -757,7 +773,8 @@
       "danach5": "seitwärts",
       "themen": [
         "Abnehmspritzen (Welle)",
-        "Notenbank und Zinsen (Welle)"
+        "Notenbank und Zinsen (Welle)",
+        "Meme-Aktien und Squeezes (erhöht)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Israeli–Palestinian conflict – Gaza war – Israeli invasion of the Gaza Strip",
@@ -770,7 +787,8 @@
       "markt": "stark gestiegen",
       "danach5": "steigend",
       "themen": [
-        "Notenbank und Zinsen (Welle)"
+        "Notenbank und Zinsen (Welle)",
+        "Meme-Aktien und Squeezes (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Gaza war – Israeli bombing of the Gaza Strip",
@@ -796,6 +814,7 @@
       "markt": "gestiegen",
       "danach5": "seitwärts",
       "themen": [
+        "Meme-Aktien und Squeezes (Sturm)",
         "Zölle und Handelsstreit (Welle)",
         "China und Taiwan (Welle)",
         "Öl und OPEC (erhöht)"
@@ -814,7 +833,7 @@
         "Öl und OPEC (Welle)",
         "Zölle und Handelsstreit (Welle)",
         "China und Taiwan (Welle)",
-        "Abnehmspritzen (erhöht)"
+        "Meme-Aktien und Squeezes (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Syrian civil war – Western Syria clashes – 2025 massacres of Syrian Alawites – The Syrian Observatory for Human Rights (SOHR) reports a marked re-escalation of extrajudicial killings of civilians in Alawite-domi",
@@ -891,6 +910,7 @@
       "danach5": "fallend",
       "themen": [
         "Zölle und Handelsstreit (Welle)",
+        "Meme-Aktien und Squeezes (Welle)",
         "Öl und OPEC (erhöht)"
       ],
       "schlagzeilen": [
@@ -904,6 +924,7 @@
       "markt": "gefallen",
       "danach5": "stark fallend",
       "themen": [
+        "Meme-Aktien und Squeezes (Welle)",
         "Stürme, Beben, Brände (Welle)"
       ],
       "schlagzeilen": [
@@ -931,7 +952,9 @@
       "datum": "2025-03-14",
       "markt": "gestiegen",
       "danach5": "seitwärts",
-      "themen": [],
+      "themen": [
+        "Meme-Aktien und Squeezes (erhöht)"
+      ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Gaza war – 2025 Gaza war ceasefire – Hamas says that it has agreed to resume ceasefire talks and release American Israeli hostage Edan Alexander following a proposal from U.S. Middle East envoy Steve Witkoff.",
         "Armed conflicts and attacks: War against the Islamic State – Islamic State insurgency in Iraq – Iraq announces that the deputy head of the Islamic State in Iraq and Syria, Abdallah Maki Mosleh al-Rifai, was killed in the Al Anbar Governorat",
@@ -957,6 +980,7 @@
       "markt": "gefallen",
       "danach5": "fallend",
       "themen": [
+        "Meme-Aktien und Squeezes (Welle)",
         "Rüstung und Verteidigung (Welle)"
       ],
       "schlagzeilen": [
@@ -1011,7 +1035,8 @@
       "themen": [
         "Notenbank und Zinsen (Welle)",
         "Quantencomputer (Welle)",
-        "Abnehmspritzen (erhöht)"
+        "Abnehmspritzen (erhöht)",
+        "Meme-Aktien und Squeezes (erhöht)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Syrian civil war – Syrian opposition – Hadi al-Bahra, President of the National Coalition of Syrian Revolutionary and Opposition Forces, says that the coalition will dissolve once a national conference is conven",

@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T06:00:31.412Z",
+  "stand": "2026-11-19T14:40:15.075Z",
   "hinweis": "Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise. Klumpen-Prüfung: Aktien desselben Tages bewegen sich gemeinsam – bestanden hat nur, was in beiden Zeiträumen Fälle an mindestens 30 verschiedenen Stichtagen hat; der Standardfehler rechnet den Tag als Einheit. Muster, bei denen mehr als 10 % der Volltreffer eine Lücke wie ein kleiner Aktiensplit im Fenster haben, bestehen nicht.",
   "zeitraum": {
     "von": "2024-11-18",
@@ -13,8 +13,8 @@
     "aktien": 48479,
     "coins": 643
   },
-  "bestandenZahl": 739,
-  "mitVorteilZahl": 694,
+  "bestandenZahl": 740,
+  "mitVorteilZahl": 698,
   "bestanden": [
     {
       "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
@@ -24,7 +24,7 @@
       "wertung": 34.3,
       "faelle": 409,
       "quote": 31.3,
-      "lift": 1.88,
+      "lift": 1.89,
       "erfassung": 1,
       "evGesamt": 68.1,
       "zeitraumA": {
@@ -50,45 +50,8 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 98.3,
-      "vorteilB": 116.2
-    },
-    {
-      "gruppe": "Aktien: Ø Tagesumsatz: 5000000 bis 20000000 und Kurs: ab 100",
-      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 21.2,
-      "faelle": 899,
-      "quote": 29.7,
-      "lift": 1.78,
-      "erfassung": 2.1,
-      "evGesamt": 41.4,
-      "zeitraumA": {
-        "n": 579,
-        "quote": 28.32,
-        "ev": 33.5,
-        "se": 12.3,
-        "tage": 199,
-        "groessterTag": 3.1
-      },
-      "zeitraumB": {
-        "n": 320,
-        "quote": 32.19,
-        "ev": 55.8,
-        "se": 15.6,
-        "tage": 166,
-        "groessterTag": 1.9
-      },
-      "quartale": {
-        "imPlus": 7,
-        "mitFaellen": 9
-      },
-      "knockoutQuote": 0.2,
-      "splitVerdacht": 0.4,
-      "vorteil": true,
-      "vorteilA": 80.2,
-      "vorteilB": 85.8
+      "vorteilA": 98.6,
+      "vorteilB": 116.5
     },
     {
       "gruppe": "Aktien: Ø Tagesumsatz: 5000000 bis 20000000 und Börsenwert (Mio. $): über 10 Mrd. $ (Large)",
@@ -96,17 +59,17 @@
       "fenster": 10,
       "bestanden": true,
       "wertung": 21,
-      "faelle": 368,
-      "quote": 28.53,
-      "lift": 1.71,
+      "faelle": 367,
+      "quote": 28.61,
+      "lift": 1.73,
       "erfassung": 0.8,
-      "evGesamt": 49.6,
+      "evGesamt": 50.1,
       "zeitraumA": {
-        "n": 206,
-        "quote": 28.64,
-        "ev": 55.6,
-        "se": 21,
-        "tage": 129,
+        "n": 205,
+        "quote": 28.78,
+        "ev": 56.6,
+        "se": 21.1,
+        "tage": 128,
         "groessterTag": 3.4
       },
       "zeitraumB": {
@@ -124,8 +87,45 @@
       "knockoutQuote": 0,
       "splitVerdacht": 1,
       "vorteil": true,
-      "vorteilA": 102.3,
-      "vorteilB": 71.9
+      "vorteilA": 103.6,
+      "vorteilB": 72.2
+    },
+    {
+      "gruppe": "Aktien: Ø Tagesumsatz: 5000000 bis 20000000 und Kurs: ab 100",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 20.6,
+      "faelle": 893,
+      "quote": 29.68,
+      "lift": 1.8,
+      "erfassung": 2.1,
+      "evGesamt": 41.5,
+      "zeitraumA": {
+        "n": 575,
+        "quote": 28.17,
+        "ev": 32.9,
+        "se": 12.3,
+        "tage": 199,
+        "groessterTag": 3
+      },
+      "zeitraumB": {
+        "n": 318,
+        "quote": 32.39,
+        "ev": 57.1,
+        "se": 15.6,
+        "tage": 165,
+        "groessterTag": 1.9
+      },
+      "quartale": {
+        "imPlus": 7,
+        "mitFaellen": 9
+      },
+      "knockoutQuote": 0.2,
+      "splitVerdacht": 0.4,
+      "vorteil": true,
+      "vorteilA": 79.9,
+      "vorteilB": 87.4
     },
     {
       "gruppe": "Aktien: Kurs: ab 100 und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
@@ -135,8 +135,8 @@
       "wertung": 16.8,
       "faelle": 488,
       "quote": 29.51,
-      "lift": 1.77,
-      "erfassung": 1.1,
+      "lift": 1.79,
+      "erfassung": 1.2,
       "evGesamt": 36,
       "zeitraumA": {
         "n": 312,
@@ -161,8 +161,8 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 79.1,
-      "vorteilB": 72.4
+      "vorteilA": 79.4,
+      "vorteilB": 72.7
     },
     {
       "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Aktienzahl (Mio.): über 500 Mio. Aktien",
@@ -246,7 +246,7 @@
       "wertung": 13.9,
       "faelle": 615,
       "quote": 27.15,
-      "lift": 1.63,
+      "lift": 1.64,
       "erfassung": 1.3,
       "evGesamt": 30.1,
       "zeitraumA": {
@@ -272,8 +272,8 @@
       "knockoutQuote": 0.7,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 79,
-      "vorteilB": 58.8
+      "vorteilA": 79.3,
+      "vorteilB": 59.1
     },
     {
       "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Stichtag und Aktienzahl (Mio.): unter 5 Mio. Aktien",
@@ -283,7 +283,7 @@
       "wertung": 13.7,
       "faelle": 217,
       "quote": 30.41,
-      "lift": 1.82,
+      "lift": 1.84,
       "erfassung": 0.5,
       "evGesamt": 47.8,
       "zeitraumA": {
@@ -309,8 +309,8 @@
       "knockoutQuote": 0.5,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 87.1,
-      "vorteilB": 84.2
+      "vorteilA": 87.4,
+      "vorteilB": 84.5
     },
     {
       "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
@@ -320,8 +320,8 @@
       "wertung": 13.6,
       "faelle": 1831,
       "quote": 23.7,
-      "lift": 1.42,
-      "erfassung": 3.3,
+      "lift": 1.43,
+      "erfassung": 3.5,
       "evGesamt": 23.9,
       "zeitraumA": {
         "n": 957,
@@ -346,8 +346,8 @@
       "knockoutQuote": 0.1,
       "splitVerdacht": 0.5,
       "vorteil": true,
-      "vorteilA": 69.6,
-      "vorteilB": 55
+      "vorteilA": 69.9,
+      "vorteilB": 55.3
     },
     {
       "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Tagesspanne (× Ø 20 Tage): unter 0,5",
@@ -357,7 +357,7 @@
       "wertung": 11.7,
       "faelle": 488,
       "quote": 28.28,
-      "lift": 1.7,
+      "lift": 1.71,
       "erfassung": 1.1,
       "evGesamt": 35.7,
       "zeitraumA": {
@@ -383,8 +383,8 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 95.6,
-      "vorteilB": 57.4
+      "vorteilA": 95.9,
+      "vorteilB": 57.7
     },
     {
       "gruppe": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -431,8 +431,8 @@
       "wertung": 11.6,
       "faelle": 563,
       "quote": 23.27,
-      "lift": 1.4,
-      "erfassung": 1,
+      "lift": 1.41,
+      "erfassung": 1.1,
       "evGesamt": 39.6,
       "zeitraumA": {
         "n": 273,
@@ -457,8 +457,8 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 72.5,
-      "vorteilB": 82.5
+      "vorteilA": 72.8,
+      "vorteilB": 82.8
     },
     {
       "gruppe": "Aktien: Tagesrendite %: unter -25 und Tagesspanne (× Ø 20 Tage): 0,5 bis 1",
@@ -468,7 +468,7 @@
       "wertung": 11.4,
       "faelle": 265,
       "quote": 30.94,
-      "lift": 4.1,
+      "lift": 4.16,
       "erfassung": 0.9,
       "evGesamt": 34.3,
       "zeitraumA": {
@@ -494,7 +494,7 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 85.1,
+      "vorteilA": 85.2,
       "vorteilB": 68.5
     },
     {
@@ -540,11 +540,11 @@
       "fenster": 10,
       "bestanden": true,
       "wertung": 7.8,
-      "faelle": 462,
-      "quote": 24.89,
-      "lift": 1.49,
+      "faelle": 461,
+      "quote": 24.73,
+      "lift": 1.5,
       "erfassung": 0.9,
-      "evGesamt": 30.4,
+      "evGesamt": 29.6,
       "zeitraumA": {
         "n": 227,
         "quote": 22.47,
@@ -554,10 +554,10 @@
         "groessterTag": 2.2
       },
       "zeitraumB": {
-        "n": 235,
-        "quote": 27.23,
-        "ev": 36.1,
-        "se": 16.7,
+        "n": 234,
+        "quote": 26.92,
+        "ev": 34.6,
+        "se": 16.9,
         "tage": 145,
         "groessterTag": 3
       },
@@ -568,8 +568,8 @@
       "knockoutQuote": 0.2,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 71.1,
-      "vorteilB": 66.1
+      "vorteilA": 71.4,
+      "vorteilB": 64.9
     },
     {
       "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): unter 0,5 und Aktienzahl (Mio.): unter 5 Mio. Aktien",
@@ -579,8 +579,8 @@
       "wertung": 6.8,
       "faelle": 536,
       "quote": 25.19,
-      "lift": 1.51,
-      "erfassung": 1,
+      "lift": 1.52,
+      "erfassung": 1.1,
       "evGesamt": 29.4,
       "zeitraumA": {
         "n": 235,
@@ -605,8 +605,8 @@
       "knockoutQuote": 0.4,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 69.5,
-      "vorteilB": 64.6
+      "vorteilA": 69.8,
+      "vorteilB": 64.9
     },
     {
       "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Zinsentscheid der Fed: kein Fed-Entscheid ±7 Tage",
@@ -690,8 +690,8 @@
       "wertung": 5.6,
       "faelle": 482,
       "quote": 28.01,
-      "lift": 1.68,
-      "erfassung": 1,
+      "lift": 1.7,
+      "erfassung": 1.1,
       "evGesamt": 28.6,
       "zeitraumA": {
         "n": 257,
@@ -716,8 +716,45 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0.7,
       "vorteil": true,
-      "vorteilA": 82.2,
-      "vorteilB": 50.7
+      "vorteilA": 82.5,
+      "vorteilB": 51
+    },
+    {
+      "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen und Satzung/Aktiensplit (8-K 5.03): Satzungsänderung vor 6 bis 20 Handelstagen",
+      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 5.4,
+      "faelle": 218,
+      "quote": 21.1,
+      "lift": 2.84,
+      "erfassung": 0.5,
+      "evGesamt": 30.1,
+      "zeitraumA": {
+        "n": 104,
+        "quote": 18.27,
+        "ev": 28.6,
+        "se": 23.2,
+        "tage": 80,
+        "groessterTag": 2.9
+      },
+      "zeitraumB": {
+        "n": 114,
+        "quote": 23.68,
+        "ev": 31.4,
+        "se": 22.8,
+        "tage": 81,
+        "groessterTag": 3.5
+      },
+      "quartale": {
+        "imPlus": 6,
+        "mitFaellen": 8
+      },
+      "knockoutQuote": 0,
+      "splitVerdacht": 0,
+      "vorteil": true,
+      "vorteilA": 76.9,
+      "vorteilB": 67.4
     },
     {
       "gruppe": "Aktien: Kurslücke %: 3 bis 10 und Markt am Stichtag %: -2 bis -0,5",
@@ -764,7 +801,7 @@
       "wertung": 4.8,
       "faelle": 441,
       "quote": 32.43,
-      "lift": 1.95,
+      "lift": 1.96,
       "erfassung": 1.1,
       "evGesamt": 43.8,
       "zeitraumA": {
@@ -790,45 +827,8 @@
       "knockoutQuote": 0.2,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 72.1,
-      "vorteilB": 85.8
-    },
-    {
-      "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen und Satzung/Aktiensplit (8-K 5.03): Satzungsänderung vor 6 bis 20 Handelstagen",
-      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 4.7,
-      "faelle": 226,
-      "quote": 20.8,
-      "lift": 2.76,
-      "erfassung": 0.5,
-      "evGesamt": 27.9,
-      "zeitraumA": {
-        "n": 109,
-        "quote": 18.35,
-        "ev": 27.5,
-        "se": 22.8,
-        "tage": 82,
-        "groessterTag": 2.8
-      },
-      "zeitraumB": {
-        "n": 117,
-        "quote": 23.08,
-        "ev": 28.3,
-        "se": 22.4,
-        "tage": 83,
-        "groessterTag": 3.4
-      },
-      "quartale": {
-        "imPlus": 6,
-        "mitFaellen": 8
-      },
-      "knockoutQuote": 0,
-      "splitVerdacht": 0,
-      "vorteil": true,
-      "vorteilA": 75.7,
-      "vorteilB": 64.3
+      "vorteilA": 72.4,
+      "vorteilB": 86.1
     },
     {
       "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen",
@@ -838,8 +838,8 @@
       "wertung": 4.6,
       "faelle": 1380,
       "quote": 22.1,
-      "lift": 1.33,
-      "erfassung": 2.3,
+      "lift": 1.34,
+      "erfassung": 2.4,
       "evGesamt": 19.2,
       "zeitraumA": {
         "n": 658,
@@ -864,8 +864,8 @@
       "knockoutQuote": 0.2,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 62.1,
-      "vorteilB": 52.6
+      "vorteilA": 62.4,
+      "vorteilB": 52.9
     },
     {
       "gruppe": "Aktien: 5-Tage-Rendite %: -10 bis 0 und Im Weltgeschehen erwähnt: vor 4 bis 20 Tagen erwähnt",
@@ -912,8 +912,8 @@
       "wertung": 4,
       "faelle": 965,
       "quote": 24.35,
-      "lift": 1.46,
-      "erfassung": 1.8,
+      "lift": 1.47,
+      "erfassung": 1.9,
       "evGesamt": 18.2,
       "zeitraumA": {
         "n": 444,
@@ -938,8 +938,8 @@
       "knockoutQuote": 0.3,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 68.5,
-      "vorteilB": 45.1
+      "vorteilA": 68.8,
+      "vorteilB": 45.4
     },
     {
       "gruppe": "Aktien: Tagesrendite über dem Markt %: unter -20 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
@@ -949,7 +949,7 @@
       "wertung": 4,
       "faelle": 299,
       "quote": 24.08,
-      "lift": 3.19,
+      "lift": 3.24,
       "erfassung": 0.8,
       "evGesamt": 29.3,
       "zeitraumA": {
@@ -975,7 +975,7 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 89.2,
+      "vorteilA": 89.3,
       "vorteilB": 57.8
     },
     {
@@ -1023,8 +1023,8 @@
       "wertung": 2.7,
       "faelle": 2026,
       "quote": 20.73,
-      "lift": 1.24,
-      "erfassung": 3.2,
+      "lift": 1.25,
+      "erfassung": 3.4,
       "evGesamt": 11.7,
       "zeitraumA": {
         "n": 1063,
@@ -1049,8 +1049,8 @@
       "knockoutQuote": 0.3,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 57.9,
-      "vorteilB": 42.2
+      "vorteilA": 58.2,
+      "vorteilB": 42.5
     },
     {
       "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 5 bis 10 und VIX-Änderung 5 Tage: VIX ruhig (−5 bis +5 %)",
@@ -1127,43 +1127,6 @@
       "vorteilB": 15.6
     },
     {
-      "gruppe": "Krypto: Tagesrendite über dem Markt %: -5 bis 5 und Im Weltgeschehen erwähnt: nicht erwähnt (20 Tage)",
-      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 1.6,
-      "faelle": 249,
-      "quote": 28.51,
-      "lift": 1.28,
-      "erfassung": 124.6,
-      "evGesamt": 24.9,
-      "zeitraumA": {
-        "n": 119,
-        "quote": 29.41,
-        "ev": 26.7,
-        "se": 24.3,
-        "tage": 112,
-        "groessterTag": 1.7
-      },
-      "zeitraumB": {
-        "n": 130,
-        "quote": 27.69,
-        "ev": 23.3,
-        "se": 21.7,
-        "tage": 130,
-        "groessterTag": 0.8
-      },
-      "quartale": {
-        "imPlus": 6,
-        "mitFaellen": 9
-      },
-      "knockoutQuote": 0,
-      "splitVerdacht": 0,
-      "vorteil": true,
-      "vorteilA": 11.4,
-      "vorteilB": 58.8
-    },
-    {
       "gruppe": "Aktien: Kurs: ab 100 und Tagesrendite über dem Markt %: unter -20",
       "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
       "fenster": 10,
@@ -1171,7 +1134,7 @@
       "wertung": 1.5,
       "faelle": 783,
       "quote": 26.18,
-      "lift": 3.47,
+      "lift": 3.52,
       "erfassung": 2.2,
       "evGesamt": 17.4,
       "zeitraumA": {
@@ -1197,7 +1160,7 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0.5,
       "vorteil": true,
-      "vorteilA": 62.6,
+      "vorteilA": 62.7,
       "vorteilB": 58.3
     },
     {
@@ -1208,8 +1171,8 @@
       "wertung": 1.3,
       "faelle": 1524,
       "quote": 20.14,
-      "lift": 1.21,
-      "erfassung": 2.4,
+      "lift": 1.22,
+      "erfassung": 2.5,
       "evGesamt": 15.4,
       "zeitraumA": {
         "n": 748,
@@ -1234,45 +1197,8 @@
       "knockoutQuote": 0.2,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 57.1,
-      "vorteilB": 50.3
-    },
-    {
-      "gruppe": "Aktien: Branche: Pharma/Biotech und Aufmerksamkeit (Wikipedia-Aufrufe): 3- bis 8-mal",
-      "spielart": "Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 1.2,
-      "faelle": 264,
-      "quote": 14.77,
-      "lift": 1.47,
-      "erfassung": 0.3,
-      "evGesamt": 21.2,
-      "zeitraumA": {
-        "n": 137,
-        "quote": 14.6,
-        "ev": 21.3,
-        "se": 20.1,
-        "tage": 106,
-        "groessterTag": 2.9
-      },
-      "zeitraumB": {
-        "n": 127,
-        "quote": 14.96,
-        "ev": 21.1,
-        "se": 19.9,
-        "tage": 99,
-        "groessterTag": 2.4
-      },
-      "quartale": {
-        "imPlus": 7,
-        "mitFaellen": 9
-      },
-      "knockoutQuote": 0,
-      "splitVerdacht": 0,
-      "vorteil": true,
-      "vorteilA": 36.2,
-      "vorteilB": 41.4
+      "vorteilA": 57.4,
+      "vorteilB": 50.6
     },
     {
       "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 5 bis 10 und Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): unter 0,2",
@@ -1312,6 +1238,43 @@
       "vorteilB": 51.9
     },
     {
+      "gruppe": "Krypto: Tagesrendite über dem Markt %: -5 bis 5 und Im Weltgeschehen erwähnt: nicht erwähnt (20 Tage)",
+      "spielart": "Turbo short Hebel 3, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 1,
+      "faelle": 255,
+      "quote": 12.16,
+      "lift": 1.07,
+      "erfassung": 103.3,
+      "evGesamt": 22.1,
+      "zeitraumA": {
+        "n": 126,
+        "quote": 15.87,
+        "ev": 27.8,
+        "se": 19.5,
+        "tage": 115,
+        "groessterTag": 3.2
+      },
+      "zeitraumB": {
+        "n": 129,
+        "quote": 8.53,
+        "ev": 16.6,
+        "se": 15.6,
+        "tage": 129,
+        "groessterTag": 0.8
+      },
+      "quartale": {
+        "imPlus": 5,
+        "mitFaellen": 9
+      },
+      "knockoutQuote": 0,
+      "splitVerdacht": 0,
+      "vorteil": true,
+      "vorteilA": 19.8,
+      "vorteilB": 7.4
+    },
+    {
       "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Stichtag und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
       "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
       "fenster": 10,
@@ -1319,8 +1282,8 @@
       "wertung": 0.9,
       "faelle": 385,
       "quote": 27.53,
-      "lift": 1.65,
-      "erfassung": 0.8,
+      "lift": 1.67,
+      "erfassung": 0.9,
       "evGesamt": 40.9,
       "zeitraumA": {
         "n": 198,
@@ -1345,8 +1308,8 @@
       "knockoutQuote": 0.3,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 67.5,
-      "vorteilB": 92.1
+      "vorteilA": 67.8,
+      "vorteilB": 92.4
     },
     {
       "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): unter 0,5 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
@@ -1356,7 +1319,7 @@
       "wertung": 0.7,
       "faelle": 246,
       "quote": 21.14,
-      "lift": 1.27,
+      "lift": 1.28,
       "erfassung": 0.4,
       "evGesamt": 26,
       "zeitraumA": {
@@ -1382,8 +1345,8 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 71.8,
-      "vorteilB": 57.1
+      "vorteilA": 72.1,
+      "vorteilB": 57.4
     },
     {
       "gruppe": "Aktien: Insider-Kauf (Formular 4): Insider-Kauf: Reaktion am Vortag und Thema der Branche in den Weltnachrichten: Branchen-Thema erhöht",
@@ -1428,18 +1391,18 @@
       "fenster": 10,
       "bestanden": true,
       "wertung": 0.6,
-      "faelle": 1059,
-      "quote": 20.77,
+      "faelle": 1057,
+      "quote": 20.72,
       "lift": 1.25,
-      "erfassung": 1.7,
-      "evGesamt": 14.7,
+      "erfassung": 1.8,
+      "evGesamt": 14.5,
       "zeitraumA": {
-        "n": 508,
-        "quote": 21.06,
-        "ev": 18,
+        "n": 506,
+        "quote": 20.95,
+        "ev": 17.6,
         "se": 10.5,
-        "tage": 201,
-        "groessterTag": 3.7
+        "tage": 200,
+        "groessterTag": 3.8
       },
       "zeitraumB": {
         "n": 551,
@@ -1456,8 +1419,8 @@
       "knockoutQuote": 0.3,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 64.7,
-      "vorteilB": 41.7
+      "vorteilA": 64.6,
+      "vorteilB": 42
     },
     {
       "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 0,5 bis 1 und Tagesrendite über dem Markt %: unter -20",
@@ -1467,7 +1430,7 @@
       "wertung": 0.5,
       "faelle": 537,
       "quote": 27.93,
-      "lift": 1.68,
+      "lift": 1.69,
       "erfassung": 1.2,
       "evGesamt": 18.6,
       "zeitraumA": {
@@ -1493,8 +1456,45 @@
       "knockoutQuote": 0,
       "splitVerdacht": 0,
       "vorteil": true,
-      "vorteilA": 64.3,
-      "vorteilB": 49.4
+      "vorteilA": 64.6,
+      "vorteilB": 49.7
+    },
+    {
+      "gruppe": "Aktien: Tagesrendite über dem Markt %: 5 bis 20 und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 0.5,
+      "faelle": 2258,
+      "quote": 22.05,
+      "lift": 1.34,
+      "erfassung": 4,
+      "evGesamt": 9.1,
+      "zeitraumA": {
+        "n": 1172,
+        "quote": 20.73,
+        "ev": 8.4,
+        "se": 7.9,
+        "tage": 227,
+        "groessterTag": 1.5
+      },
+      "zeitraumB": {
+        "n": 1086,
+        "quote": 23.48,
+        "ev": 9.8,
+        "se": 9,
+        "tage": 242,
+        "groessterTag": 1.5
+      },
+      "quartale": {
+        "imPlus": 7,
+        "mitFaellen": 9
+      },
+      "knockoutQuote": 0.4,
+      "splitVerdacht": 0,
+      "vorteil": true,
+      "vorteilA": 55.4,
+      "vorteilB": 40.1
     }
   ],
   "besteOhneBestehen": [
@@ -1506,7 +1506,7 @@
       "wertung": 400,
       "faelle": 2,
       "quote": 100,
-      "lift": 6,
+      "lift": 6.05,
       "erfassung": 0,
       "evGesamt": 400,
       "zeitraumA": {
@@ -1529,8 +1529,8 @@
       "knockoutQuote": 0,
       "splitVerdacht": null,
       "vorteil": true,
-      "vorteilA": 446.7,
-      "vorteilB": 430
+      "vorteilA": 447,
+      "vorteilB": 430.3
     },
     {
       "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): ab 4 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
@@ -1608,7 +1608,7 @@
       "wertung": 400,
       "faelle": 2,
       "quote": 100,
-      "lift": 6,
+      "lift": 6.05,
       "erfassung": 0,
       "evGesamt": 425.9,
       "zeitraumA": {
@@ -1631,42 +1631,8 @@
       "knockoutQuote": 0,
       "splitVerdacht": null,
       "vorteil": true,
-      "vorteilA": 498.4,
-      "vorteilB": 430
-    },
-    {
-      "gruppe": "Aktien: 20-Tage-Hoch: auf neuem Hoch und Im Weltgeschehen erwähnt: vor 1 bis 3 Tagen erwähnt",
-      "spielart": "Hebel nach Schwankung long (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
-      "fenster": 10,
-      "bestanden": false,
-      "wertung": 400,
-      "faelle": 2,
-      "quote": 100,
-      "lift": 4.55,
-      "erfassung": 0,
-      "evGesamt": 400,
-      "zeitraumA": {
-        "n": 1,
-        "quote": 100,
-        "ev": 400,
-        "se": 0,
-        "tage": null,
-        "groessterTag": null
-      },
-      "zeitraumB": {
-        "n": 1,
-        "quote": 100,
-        "ev": 400,
-        "se": 0,
-        "tage": null,
-        "groessterTag": null
-      },
-      "quartale": null,
-      "knockoutQuote": 0,
-      "splitVerdacht": null,
-      "vorteil": true,
-      "vorteilA": 405.4,
-      "vorteilB": 411.5
+      "vorteilA": 498.7,
+      "vorteilB": 430.3
     },
     {
       "gruppe": "Aktien: Abstand zum Jahreshoch %: unter -80 und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
@@ -1880,7 +1846,7 @@
       "wertung": 400,
       "faelle": 2,
       "quote": 100,
-      "lift": 6,
+      "lift": 6.05,
       "erfassung": 0,
       "evGesamt": 400,
       "zeitraumA": {
@@ -1903,8 +1869,8 @@
       "knockoutQuote": 0,
       "splitVerdacht": null,
       "vorteil": true,
-      "vorteilA": 446.7,
-      "vorteilB": 430
+      "vorteilA": 447,
+      "vorteilB": 430.3
     },
     {
       "gruppe": "Aktien: Großaktionär (13D): 13D-Meldung vor 6 bis 20 Handelstagen und Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 2 bis 5 Handelstagen",
@@ -2007,6 +1973,40 @@
       "vorteil": true,
       "vorteilA": 427.4,
       "vorteilB": 400.9
+    },
+    {
+      "gruppe": "Aktien: Insider-Kauf (Formular 4): Insider-Kauf: Reaktion am Vortag und Im Weltgeschehen erwähnt: im Weltgeschehen am Stichtag erwähnt",
+      "spielart": "Hebel nach Schwankung long (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "bestanden": false,
+      "wertung": 400,
+      "faelle": 3,
+      "quote": 100,
+      "lift": 4.56,
+      "erfassung": 0,
+      "evGesamt": 400,
+      "zeitraumA": {
+        "n": 1,
+        "quote": 100,
+        "ev": 400,
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
+      },
+      "zeitraumB": {
+        "n": 2,
+        "quote": 100,
+        "ev": 400,
+        "se": 0,
+        "tage": null,
+        "groessterTag": null
+      },
+      "quartale": null,
+      "knockoutQuote": 0,
+      "splitVerdacht": null,
+      "vorteil": true,
+      "vorteilA": 405.6,
+      "vorteilB": 411.3
     }
   ],
   "hypothesen": [
@@ -2157,7 +2157,7 @@
       "wertung": -21.8,
       "faelle": 588,
       "quote": 10.71,
-      "lift": 2.85,
+      "lift": 2.84,
       "erfassung": 76.8,
       "evGesamt": -9.4,
       "zeitraumA": {
@@ -2181,7 +2181,7 @@
       "splitVerdacht": null,
       "vorteil": true,
       "vorteilA": 3.5,
-      "vorteilB": 0.9
+      "vorteilB": 0.8
     },
     {
       "gruppe": "Aktien: C9k Rückprall nach Ausverkauf",
@@ -2191,8 +2191,8 @@
       "wertung": -25.1,
       "faelle": 3137,
       "quote": 15.78,
-      "lift": 2.09,
-      "erfassung": 5.2,
+      "lift": 2.12,
+      "erfassung": 5.4,
       "evGesamt": -18.7,
       "zeitraumA": {
         "n": 1324,
@@ -2214,7 +2214,7 @@
       "knockoutQuote": 0.2,
       "splitVerdacht": null,
       "vorteil": true,
-      "vorteilA": 31,
+      "vorteilA": 31.1,
       "vorteilB": 16.2
     },
     {
@@ -2317,7 +2317,7 @@
       "splitVerdacht": null,
       "vorteil": false,
       "vorteilA": 14.9,
-      "vorteilB": -13.4
+      "vorteilB": -13.5
     }
   ]
 }

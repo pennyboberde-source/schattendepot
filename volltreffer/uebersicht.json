@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T06:00:31.412Z",
+  "stand": "2026-11-19T14:40:15.075Z",
   "hinweis": "Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens 10 % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens 10 Jagden gleichzeitig, nach 900 € Tagesverlust am Folgetag keine neue. Mitteilungen nur gesammelt in der Abendbilanz, kein echtes Geld.",
   "regeln": {
     "maxOffen": 10,
@@ -34,7 +34,7 @@
       "summe": -5400,
       "offen": 1
     },
-    "urteile": 10,
+    "urteile": 22,
     "kalibrierung": [
       {
         "bereich": "unter 15 %",
@@ -337,7 +337,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Vorzugsaktie mit unter 1 % Tagesschwankung – −4 % binnen 10 Tagen braucht einen Zins- oder Kreditschock.",
+      "claudeP": 20,
+      "kontext": "Fed-Anhebung im Dezember fast sicher eingepreist; Kreditmarkt angespannt, aber kein Auslöser für den Einzelwert."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -355,7 +359,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Apollo-Vorzugspapier; Kapitalerhöhung vor 5 Tagen kann leicht drücken, ein −4 %-Rutsch bleibt selten.",
+      "claudeP": 21,
+      "kontext": "Zinsanhebungen belasten Vorzugsaktien, sind aber eingepreist; angespannter Kreditmarkt leicht negativ."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -373,7 +381,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Ruhiges Vorzugspapier einer Bank ohne neuen Anlass.",
+      "claudeP": 20,
+      "kontext": "Kein Bankenstress im Radar; Zinsrisiko eingepreist."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -391,7 +403,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Versicherer-Vorzugspapier ohne frische Meldung; Volltreffer nur mit Zinsschock.",
+      "claudeP": 20,
+      "kontext": "Lange Anleihen 5 Tage ruhig – spricht gegen einen schnellen Kursrutsch bei Zinspapieren."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -409,7 +425,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Chefwechsel vor 2 Tagen ist ein Anlass, Richtung aber offen; Short mit Hebel 10 fällt leicht dem Stop zum Opfer.",
+      "claudeP": 24,
+      "kontext": "Nervöser Markt erhöht die Schwankung, VIX steigt – leicht mehr Chance auf eine große Bewegung, beide Richtungen."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -426,7 +446,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Barangebot 32,50 $ (Übernahme, Abschluss Q1 2027) deckelt den Kurs; Absturz nur, wenn der Deal platzt.",
+      "claudeP": 6,
+      "kontext": "Kreditmarkt angespannt könnte die Finanzierung belasten, Fusionsunterlagen gestern eingereicht sprechen für planmäßigen Ablauf."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -444,7 +468,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "CHS-Vorzugsaktie, sehr ruhig; vier CHS-Serien sind ein Klumpen, kein unabhängiger Fall.",
+      "claudeP": 20,
+      "kontext": "Agrarpreise und Zinsen ohne Schock; Klumpen derselben Firma erhöht das Gesamtrisiko nicht die Quote."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -462,7 +490,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.",
+      "claudeP": 20,
+      "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -480,7 +512,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.",
+      "claudeP": 20,
+      "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -498,7 +534,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.",
+      "claudeP": 20,
+      "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -515,7 +555,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Barübernahme durch Fertitta zu 31 $ läuft; daher die geringe Schwankung – Short-Volltreffer nur bei Deal-Bruch.",
+      "claudeP": 7,
+      "kontext": "Regulierung und Bankfinanzierung sind das Restrisiko; angespannter Kreditmarkt leicht negativ, aber kein Hinweis auf ein Scheitern."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -533,7 +577,11 @@
       "ende": null,
       "art": "lauert",
       "netto": null,
-      "tag": null
+      "tag": null,
+      "urteil": "nein",
+      "grund": "Rückkauf durch Mehrheitsaktionär LKCM (79 %) zu 35 $ bar, ohne Finanzierungsvorbehalt – Absturz sehr unwahrscheinlich.",
+      "claudeP": 5,
+      "kontext": "Kartellfreigabe und Minderheitsvotum offen, aber Mehrheitsaktionär als Käufer macht den Abschluss wahrscheinlich."
     },
     {
       "muster": "Aktien: Schwankung je Tag %: unter 1 und Quartalszahlen: vor 6 bis 20 Handelstagen",
@@ -2250,6 +2298,44 @@
         "ev": 20,
         "se": 8,
         "faelle": 3617
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 13,70 € unter 30,00 €",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) – oberste 0,5 %",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 28.7,
+        "ev": 13.7,
+        "se": 7.4,
+        "faelle": 4422
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 23,50 € unter 30,00 €",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) – oberste 1 %",
+      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 28.6,
+        "ev": 23.5,
+        "se": 8.9,
+        "faelle": 3063
       },
       "stufe2": false
     }
