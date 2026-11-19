@@ -1757,9 +1757,12 @@ if (vt.erkennung) {
   for (const e of mitVorteil) {
     if (neu.length >= frei) break;
     if (e.gesamt.quote < v4.mindestQuote || imTest.has(`${e.schluessel}|${e.spielartSchluessel}|${e.fenster}`)) continue;
+    // eine andere Spielart einer Gruppe, die schon im Test ist (z. B. Hebel nach Schwankung statt festem Hebel), ist
+    // keine neue Idee – sie zählt nicht gegen die Vielfalt der Bausteine (19.11.2026)
+    const variante = [...imTest.values(), ...neu.map((x) => ({ gruppenSchluessel: x.schluessel }))].some((x) => x.gruppenSchluessel === e.schluessel);
     const bs = bausteine(e.schluessel);
-    if (bs.some((b) => (belegt.get(b) ?? 0) >= maxJe)) continue;
-    for (const b of bs) belegt.set(b, (belegt.get(b) ?? 0) + 1);
+    if (!variante && bs.some((b) => (belegt.get(b) ?? 0) >= maxJe)) continue;
+    if (!variante) for (const b of bs) belegt.set(b, (belegt.get(b) ?? 0) + 1);
     neu.push(e);
   }
   for (const e of neu) {
