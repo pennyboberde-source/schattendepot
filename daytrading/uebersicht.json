@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T10:23:31.441Z",
+  "stand": "2026-11-19T10:38:58.160Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -415,47 +415,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-sap-se",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SAP SE",
-      "isin": "DE0007164600",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 229.7,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:25:00.000Z",
-        "kurs": 191.34,
-        "level": 191.7,
-        "spanne": {
-          "hoch": 193.54,
-          "tief": 191.7
-        },
-        "richtung": "short"
-      },
-      "stop": 192.62,
-      "ziel": 189.02,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T08:25:00.000Z",
-        "basisKurs": 191.42,
-        "kurs": 3.8376,
-        "stueck": 260,
-        "kurswert": 997.78
-      }
-    },
-    {
       "id": "2026-11-19-scan-sanofi",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -844,47 +803,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-sap-se",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SAP SE",
-      "isin": "DE0007164600",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 229.7,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:25:00.000Z",
-        "kurs": 191.34,
-        "level": 191.7,
-        "spanne": {
-          "hoch": 193.54,
-          "tief": 191.7
-        },
-        "richtung": "short"
-      },
-      "stop": 192.62,
-      "ziel": 189.02,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T08:25:00.000Z",
-        "basisKurs": 191.42,
-        "kurs": 3.8376,
-        "stueck": 260,
-        "kurswert": 997.78
-      }
-    },
-    {
       "id": "2026-11-19-scan-sanofi",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -1235,6 +1153,66 @@
         "kurs": 3.4135,
         "stueck": 292,
         "kurswert": 996.74
+      }
+    },
+    {
+      "id": "2026-11-19-scan-sap-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SAP SE",
+      "isin": "DE0007164600",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 229.7,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:25:00.000Z",
+        "kurs": 191.34,
+        "level": 191.7,
+        "spanne": {
+          "hoch": 193.54,
+          "tief": 191.7
+        },
+        "richtung": "short"
+      },
+      "stop": 192.62,
+      "ziel": 189.02,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:25:00.000Z",
+        "basisKurs": 191.42,
+        "kurs": 3.8376,
+        "stueck": 260,
+        "kurswert": 997.78
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T10:25:00.000Z",
+        "basisKurs": 189.02,
+        "kurs": 4.0578,
+        "kurswert": 1055.03,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 57.25,
+        "bruttoProzent": 5.74,
+        "netto": 57.25,
+        "nettoProzent": 5.74,
+        "nettoTR": 55.25,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -10576,46 +10554,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 154,
-      "treffer": 67,
-      "quote": 43.5,
-      "netto": -818.08,
-      "brutto": -750.08,
-      "nettoTR": -1057.08,
-      "oeNettoProzent": -0.54,
-      "oeR": 0.28
+      "anzahl": 155,
+      "treffer": 68,
+      "quote": 43.9,
+      "netto": -760.83,
+      "brutto": -692.83,
+      "nettoTR": -1001.83,
+      "oeNettoProzent": -0.5,
+      "oeR": 0.29
     },
     "heute": {
-      "anzahl": 5,
-      "treffer": 1,
-      "quote": 20,
-      "netto": -11.12,
-      "brutto": -3.12,
-      "nettoTR": -13.12,
-      "oeNettoProzent": -0.22,
-      "oeR": 0.17
+      "anzahl": 6,
+      "treffer": 2,
+      "quote": 33.3,
+      "netto": 46.13,
+      "brutto": 54.13,
+      "nettoTR": 42.13,
+      "oeNettoProzent": 0.77,
+      "oeR": 0.48
     },
-    "offen": 8,
+    "offen": 7,
     "gruppen": {
       "turbo": {
-        "anzahl": 120,
-        "treffer": 57,
-        "quote": 47.5,
-        "netto": -557.76,
-        "brutto": -557.76,
-        "nettoTR": -796.76,
-        "oeNettoProzent": -0.47,
-        "oeR": 0.25
+        "anzahl": 121,
+        "treffer": 58,
+        "quote": 47.9,
+        "netto": -500.51,
+        "brutto": -500.51,
+        "nettoTR": -741.51,
+        "oeNettoProzent": -0.42,
+        "oeR": 0.26
       },
       "short": {
-        "anzahl": 120,
-        "treffer": 57,
-        "quote": 47.5,
-        "netto": -557.76,
-        "brutto": -557.76,
-        "nettoTR": -796.76,
-        "oeNettoProzent": -0.47,
-        "oeR": 0.25
+        "anzahl": 121,
+        "treffer": 58,
+        "quote": 47.9,
+        "netto": -500.51,
+        "brutto": -500.51,
+        "nettoTR": -741.51,
+        "oeNettoProzent": -0.42,
+        "oeR": 0.26
       },
       "krypto": {
         "anzahl": 34,
