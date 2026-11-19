@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T16:23:32.970Z",
+  "stand": "2026-11-19T16:38:53.279Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -381,170 +381,6 @@
     }
   ],
   "offen": [
-    {
-      "id": "2026-11-19-scan-freenet-ag",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "FREENET AG",
-      "isin": "DE000A0Z2ZZ5",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 29.04,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:55:00.000Z",
-        "kurs": 24.2,
-        "level": 24.24,
-        "spanne": {
-          "hoch": 24.44,
-          "tief": 24.24
-        },
-        "richtung": "short"
-      },
-      "stop": 24.34,
-      "ziel": 23.92,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T08:55:00.000Z",
-        "basisKurs": 24.2,
-        "kurs": 4.8521,
-        "stueck": 206,
-        "kurswert": 999.53
-      }
-    },
-    {
-      "id": "2026-11-19-scan-deutsche-telekom-ag-reg",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE TELEKOM AG-REG",
-      "isin": "DE0005557508",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 31.48,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:10:00.000Z",
-        "kurs": 26.25,
-        "level": 26.27,
-        "spanne": {
-          "hoch": 26.41,
-          "tief": 26.27
-        },
-        "richtung": "short"
-      },
-      "stop": 26.34,
-      "ziel": 26.01,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:10:00.000Z",
-        "basisKurs": 26.23,
-        "kurs": 5.2631,
-        "stueck": 190,
-        "kurswert": 999.99
-      }
-    },
-    {
-      "id": "2026-11-19-scan-deutz-ag",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTZ AG",
-      "isin": "DE0006305006",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 9.468,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "kurs": 7.9,
-        "level": 7.93,
-        "spanne": {
-          "hoch": 8.095,
-          "tief": 7.93
-        },
-        "richtung": "short"
-      },
-      "stop": 8.0125,
-      "ziel": 7.645,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "basisKurs": 7.89,
-        "kurs": 1.5819,
-        "stueck": 632,
-        "kurswert": 999.76
-      }
-    },
-    {
-      "id": "2026-11-19-scan-mercedes-benz-group-ag",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MERCEDES-BENZ GROUP AG",
-      "isin": "DE0007100000",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 46.32,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T12:10:00.000Z",
-        "kurs": 38.615,
-        "level": 38.65,
-        "spanne": {
-          "hoch": 39.17,
-          "tief": 38.65
-        },
-        "richtung": "short"
-      },
-      "stop": 38.91,
-      "ziel": 37.98,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T12:10:00.000Z",
-        "basisKurs": 38.6,
-        "kurs": 7.7393,
-        "stueck": 129,
-        "kurswert": 998.37
-      }
-    },
     {
       "id": "2026-11-19-claude-alibaba",
       "datum": "2026-11-19",
@@ -1295,170 +1131,6 @@
   ],
   "trades": [
     {
-      "id": "2026-11-19-scan-freenet-ag",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "FREENET AG",
-      "isin": "DE000A0Z2ZZ5",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 29.04,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:55:00.000Z",
-        "kurs": 24.2,
-        "level": 24.24,
-        "spanne": {
-          "hoch": 24.44,
-          "tief": 24.24
-        },
-        "richtung": "short"
-      },
-      "stop": 24.34,
-      "ziel": 23.92,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T08:55:00.000Z",
-        "basisKurs": 24.2,
-        "kurs": 4.8521,
-        "stueck": 206,
-        "kurswert": 999.53
-      }
-    },
-    {
-      "id": "2026-11-19-scan-deutsche-telekom-ag-reg",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE TELEKOM AG-REG",
-      "isin": "DE0005557508",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 31.48,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:10:00.000Z",
-        "kurs": 26.25,
-        "level": 26.27,
-        "spanne": {
-          "hoch": 26.41,
-          "tief": 26.27
-        },
-        "richtung": "short"
-      },
-      "stop": 26.34,
-      "ziel": 26.01,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:10:00.000Z",
-        "basisKurs": 26.23,
-        "kurs": 5.2631,
-        "stueck": 190,
-        "kurswert": 999.99
-      }
-    },
-    {
-      "id": "2026-11-19-scan-deutz-ag",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTZ AG",
-      "isin": "DE0006305006",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 9.468,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "kurs": 7.9,
-        "level": 7.93,
-        "spanne": {
-          "hoch": 8.095,
-          "tief": 7.93
-        },
-        "richtung": "short"
-      },
-      "stop": 8.0125,
-      "ziel": 7.645,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "basisKurs": 7.89,
-        "kurs": 1.5819,
-        "stueck": 632,
-        "kurswert": 999.76
-      }
-    },
-    {
-      "id": "2026-11-19-scan-mercedes-benz-group-ag",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MERCEDES-BENZ GROUP AG",
-      "isin": "DE0007100000",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 46.32,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T12:10:00.000Z",
-        "kurs": 38.615,
-        "level": 38.65,
-        "spanne": {
-          "hoch": 39.17,
-          "tief": 38.65
-        },
-        "richtung": "short"
-      },
-      "stop": 38.91,
-      "ziel": 37.98,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T12:10:00.000Z",
-        "basisKurs": 38.6,
-        "kurs": 7.7393,
-        "stueck": 129,
-        "kurswert": 998.37
-      }
-    },
-    {
       "id": "2026-11-19-claude-alibaba",
       "datum": "2026-11-19",
       "herkunft": "claude",
@@ -2203,6 +1875,246 @@
         "kurs": 10.378,
         "stueck": 96,
         "kurswert": 996.29
+      }
+    },
+    {
+      "id": "2026-11-19-scan-freenet-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "FREENET AG",
+      "isin": "DE000A0Z2ZZ5",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 29.04,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "kurs": 24.2,
+        "level": 24.24,
+        "spanne": {
+          "hoch": 24.44,
+          "tief": 24.24
+        },
+        "richtung": "short"
+      },
+      "stop": 24.34,
+      "ziel": 23.92,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "basisKurs": 24.2,
+        "kurs": 4.8521,
+        "stueck": 206,
+        "kurswert": 999.53
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T16:25:00.000Z",
+        "basisKurs": 24.04,
+        "kurs": 4.9875,
+        "kurswert": 1027.43,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 27.9,
+        "bruttoProzent": 2.79,
+        "netto": 27.9,
+        "nettoProzent": 2.79,
+        "nettoTR": 25.9,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.14
+      }
+    },
+    {
+      "id": "2026-11-19-scan-deutsche-telekom-ag-reg",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 31.48,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:10:00.000Z",
+        "kurs": 26.25,
+        "level": 26.27,
+        "spanne": {
+          "hoch": 26.41,
+          "tief": 26.27
+        },
+        "richtung": "short"
+      },
+      "stop": 26.34,
+      "ziel": 26.01,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:10:00.000Z",
+        "basisKurs": 26.23,
+        "kurs": 5.2631,
+        "stueck": 190,
+        "kurswert": 999.99
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T16:25:00.000Z",
+        "basisKurs": 26.08,
+        "kurs": 5.3865,
+        "kurswert": 1023.44,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 23.45,
+        "bruttoProzent": 2.35,
+        "netto": 23.45,
+        "nettoProzent": 2.35,
+        "nettoTR": 21.45,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.36
+      }
+    },
+    {
+      "id": "2026-11-19-scan-deutz-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTZ AG",
+      "isin": "DE0006305006",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 9.468,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 7.9,
+        "level": 7.93,
+        "spanne": {
+          "hoch": 8.095,
+          "tief": 7.93
+        },
+        "richtung": "short"
+      },
+      "stop": 8.0125,
+      "ziel": 7.645,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 7.89,
+        "kurs": 1.5819,
+        "stueck": 632,
+        "kurswert": 999.76
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T16:25:00.000Z",
+        "basisKurs": 7.755,
+        "kurs": 1.7087,
+        "kurswert": 1079.9,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 80.14,
+        "bruttoProzent": 8.02,
+        "netto": 80.14,
+        "nettoProzent": 8.02,
+        "nettoTR": 78.14,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.1
+      }
+    },
+    {
+      "id": "2026-11-19-scan-mercedes-benz-group-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MERCEDES-BENZ GROUP AG",
+      "isin": "DE0007100000",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 46.32,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T12:10:00.000Z",
+        "kurs": 38.615,
+        "level": 38.65,
+        "spanne": {
+          "hoch": 39.17,
+          "tief": 38.65
+        },
+        "richtung": "short"
+      },
+      "stop": 38.91,
+      "ziel": 37.98,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T12:10:00.000Z",
+        "basisKurs": 38.6,
+        "kurs": 7.7393,
+        "stueck": 129,
+        "kurswert": 998.37
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T16:25:00.000Z",
+        "basisKurs": 38.35,
+        "kurs": 7.9501,
+        "kurswert": 1025.56,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 27.19,
+        "bruttoProzent": 2.72,
+        "netto": 27.19,
+        "nettoProzent": 2.72,
+        "nettoTR": 25.19,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 0.81
       }
     },
     {
@@ -12963,46 +12875,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 167,
-      "treffer": 75,
-      "quote": 44.9,
-      "netto": -303.37,
-      "brutto": -231.37,
-      "nettoTR": -564.37,
-      "oeNettoProzent": -0.19,
-      "oeR": 0.32
+      "anzahl": 171,
+      "treffer": 79,
+      "quote": 46.2,
+      "netto": -144.69,
+      "brutto": -72.69,
+      "nettoTR": -413.69,
+      "oeNettoProzent": -0.09,
+      "oeR": 0.34
     },
     "heute": {
-      "anzahl": 18,
-      "treffer": 9,
-      "quote": 50,
-      "netto": 503.59,
-      "brutto": 515.59,
-      "nettoTR": 479.59,
-      "oeNettoProzent": 2.81,
-      "oeR": 0.65
+      "anzahl": 22,
+      "treffer": 13,
+      "quote": 59.1,
+      "netto": 662.27,
+      "brutto": 674.27,
+      "nettoTR": 630.27,
+      "oeNettoProzent": 3.02,
+      "oeR": 0.74
     },
-    "offen": 16,
+    "offen": 12,
     "gruppen": {
       "turbo": {
-        "anzahl": 131,
-        "treffer": 65,
-        "quote": 49.6,
-        "netto": -6.97,
-        "brutto": -6.97,
-        "nettoTR": -267.97,
-        "oeNettoProzent": -0.01,
-        "oeR": 0.32
+        "anzahl": 135,
+        "treffer": 69,
+        "quote": 51.1,
+        "netto": 151.71,
+        "brutto": 151.71,
+        "nettoTR": -117.29,
+        "oeNettoProzent": 0.11,
+        "oeR": 0.35
       },
       "short": {
-        "anzahl": 131,
-        "treffer": 65,
-        "quote": 49.6,
-        "netto": -6.97,
-        "brutto": -6.97,
-        "nettoTR": -267.97,
-        "oeNettoProzent": -0.01,
-        "oeR": 0.32
+        "anzahl": 135,
+        "treffer": 69,
+        "quote": 51.1,
+        "netto": 151.71,
+        "brutto": 151.71,
+        "nettoTR": -117.29,
+        "oeNettoProzent": 0.11,
+        "oeR": 0.35
       },
       "krypto": {
         "anzahl": 36,
@@ -13102,7 +13014,5 @@
     "claude": 2,
     "autopilot": 0
   },
-  "hinweise": [
-    "Time Machine BERKSHIRE HATHAWAY INC-CL B: HTTP 404 bei api.twelvedata.com"
-  ]
+  "hinweise": []
 }
