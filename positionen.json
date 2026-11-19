@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T16:38:48.233Z",
+  "stand": "2026-11-19T16:54:08.812Z",
   "offen": [
     {
       "id": "2026-11-19-auto-applied-optoelectronics-inc",
@@ -107,8 +107,8 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 7.59,
-        "zeit": "2026-11-19T16:38:36.000Z",
+        "prozent": 10.84,
+        "zeit": "2026-11-19T16:53:54.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -219,8 +219,8 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 4.95,
-        "zeit": "2026-11-19T16:36:42.000Z",
+        "prozent": 6.93,
+        "zeit": "2026-11-19T16:53:23.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -320,6 +320,14 @@
           "alt": 7.6981,
           "neu": 7.752,
           "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 8.8091 € (+18.1 %)"
+        },
+        {
+          "zeit": "2026-11-19T16:54:08.812Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 7.752,
+          "neu": 7.8984,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 8.9755 € (+20.3 %)"
         }
       ],
       "kauf": {
@@ -337,7 +345,7 @@
         "synthetisch": true
       },
       "zielkurs": 10.4555,
-      "stopkurs": 7.752,
+      "stopkurs": 7.8984,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -346,9 +354,26 @@
         "hinweis": "letztes Geschäft 2026-11-19",
         "vortag": 130.745
       },
+      "teilverkaeufe": [
+        {
+          "zeit": "2026-11-19T16:54:08.812Z",
+          "stueck": 67,
+          "kurs": 8.9755,
+          "kurswert": 601.36,
+          "entgelt": {
+            "provision": 0,
+            "handelsplatz": 5.5,
+            "gesamt": 5.5
+          },
+          "betrag": 595.86,
+          "kursquelle": "Finnhub (2026-11-19T16:53:54.000Z)",
+          "synthetisch": true,
+          "grund": "teilziel"
+        }
+      ],
       "stand": {
-        "prozent": 18.77,
-        "zeit": "2026-11-19T16:38:29.000Z",
+        "prozent": 20.89,
+        "zeit": "2026-11-19T16:53:54.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
