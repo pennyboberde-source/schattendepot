@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T18:23:52.888Z",
+  "stand": "2026-11-19T18:39:00.250Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -450,64 +450,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-broadcom-inc",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "BROADCOM INC",
-      "isin": "US11135F1012",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 392.1,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "kurs": 326.9,
-        "level": 328.85,
-        "spanne": {
-          "hoch": 335.2,
-          "tief": 328.85
-        },
-        "richtung": "short"
-      },
-      "stop": 332.03,
-      "ziel": 316.2,
-      "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "basisKurs": 326.75,
-        "kurs": 6.5513,
-        "stueck": 152,
-        "kurswert": 995.8
-      },
-      "timeMachine": {
-        "zielZuerst": 3.7,
-        "stopZuerst": 24.1,
-        "keins": 72.2,
-        "gruen": 52.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 40,
-          "ziel": 8,
-          "stop": 20,
-          "oeR": 0.01
-        }
-      }
-    },
-    {
       "id": "2026-11-19-scan-d-wave-quantum-inc",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -546,64 +488,6 @@
         "kurs": 1.4332,
         "stueck": 697,
         "kurswert": 998.94
-      }
-    },
-    {
-      "id": "2026-11-19-scan-netflix-inc",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NETFLIX INC",
-      "isin": "US64110L1061",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 65.08,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "kurs": 54.33,
-        "level": 54.45,
-        "spanne": {
-          "hoch": 54.93,
-          "tief": 54.45
-        },
-        "richtung": "short"
-      },
-      "stop": 54.69,
-      "ziel": 53.31,
-      "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "basisKurs": 54.23,
-        "kurs": 10.877,
-        "stueck": 91,
-        "kurswert": 989.81
-      },
-      "timeMachine": {
-        "zielZuerst": 13.5,
-        "stopZuerst": 35.2,
-        "keins": 51.3,
-        "gruen": 52.2,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 34,
-          "ziel": 6,
-          "stop": 11,
-          "oeR": 0.27
-        }
       }
     },
     {
@@ -875,64 +759,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-broadcom-inc",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "BROADCOM INC",
-      "isin": "US11135F1012",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 392.1,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "kurs": 326.9,
-        "level": 328.85,
-        "spanne": {
-          "hoch": 335.2,
-          "tief": 328.85
-        },
-        "richtung": "short"
-      },
-      "stop": 332.03,
-      "ziel": 316.2,
-      "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "basisKurs": 326.75,
-        "kurs": 6.5513,
-        "stueck": 152,
-        "kurswert": 995.8
-      },
-      "timeMachine": {
-        "zielZuerst": 3.7,
-        "stopZuerst": 24.1,
-        "keins": 72.2,
-        "gruen": 52.3,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 40,
-          "ziel": 8,
-          "stop": 20,
-          "oeR": 0.01
-        }
-      }
-    },
-    {
       "id": "2026-11-19-scan-d-wave-quantum-inc",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -971,64 +797,6 @@
         "kurs": 1.4332,
         "stueck": 697,
         "kurswert": 998.94
-      }
-    },
-    {
-      "id": "2026-11-19-scan-netflix-inc",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NETFLIX INC",
-      "isin": "US64110L1061",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 65.08,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "kurs": 54.33,
-        "level": 54.45,
-        "spanne": {
-          "hoch": 54.93,
-          "tief": 54.45
-        },
-        "richtung": "short"
-      },
-      "stop": 54.69,
-      "ziel": 53.31,
-      "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T15:20:00.000Z",
-        "basisKurs": 54.23,
-        "kurs": 10.877,
-        "stueck": 91,
-        "kurswert": 989.81
-      },
-      "timeMachine": {
-        "zielZuerst": 13.5,
-        "stopZuerst": 35.2,
-        "keins": 51.3,
-        "gruen": 52.2,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 34,
-          "ziel": 6,
-          "stop": 11,
-          "oeR": 0.27
-        }
       }
     },
     {
@@ -1227,6 +995,160 @@
           "stop": 8,
           "oeR": -0.08
         }
+      }
+    },
+    {
+      "id": "2026-11-19-scan-broadcom-inc",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "BROADCOM INC",
+      "isin": "US11135F1012",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 392.1,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T15:20:00.000Z",
+        "kurs": 326.9,
+        "level": 328.85,
+        "spanne": {
+          "hoch": 335.2,
+          "tief": 328.85
+        },
+        "richtung": "short"
+      },
+      "stop": 332.03,
+      "ziel": 316.2,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T15:20:00.000Z",
+        "basisKurs": 326.75,
+        "kurs": 6.5513,
+        "stueck": 152,
+        "kurswert": 995.8
+      },
+      "timeMachine": {
+        "zielZuerst": 3.7,
+        "stopZuerst": 24.1,
+        "keins": 72.2,
+        "gruen": 52.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 40,
+          "ziel": 8,
+          "stop": 20,
+          "oeR": 0.01
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T18:20:00.000Z",
+        "basisKurs": 315.9,
+        "kurs": 7.601,
+        "kurswert": 1155.35,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 159.55,
+        "bruttoProzent": 16.02,
+        "netto": 159.55,
+        "nettoProzent": 16.02,
+        "nettoTR": 157.55,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.05
+      }
+    },
+    {
+      "id": "2026-11-19-scan-netflix-inc",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NETFLIX INC",
+      "isin": "US64110L1061",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 65.08,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T15:20:00.000Z",
+        "kurs": 54.33,
+        "level": 54.45,
+        "spanne": {
+          "hoch": 54.93,
+          "tief": 54.45
+        },
+        "richtung": "short"
+      },
+      "stop": 54.69,
+      "ziel": 53.31,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T15:20:00.000Z",
+        "basisKurs": 54.23,
+        "kurs": 10.877,
+        "stueck": 91,
+        "kurswert": 989.81
+      },
+      "timeMachine": {
+        "zielZuerst": 13.5,
+        "stopZuerst": 35.2,
+        "keins": 51.3,
+        "gruen": 52.2,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 34,
+          "ziel": 6,
+          "stop": 11,
+          "oeR": 0.27
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T18:20:00.000Z",
+        "basisKurs": 53.31,
+        "kurs": 11.741,
+        "kurswert": 1068.43,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 78.62,
+        "bruttoProzent": 7.94,
+        "netto": 78.62,
+        "nettoProzent": 7.94,
+        "nettoTR": 76.62,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -12761,46 +12683,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 177,
-      "treffer": 85,
-      "quote": 48,
-      "netto": 458.16,
-      "brutto": 530.16,
-      "nettoTR": 177.16,
-      "oeNettoProzent": 0.26,
-      "oeR": 0.4
+      "anzahl": 179,
+      "treffer": 87,
+      "quote": 48.6,
+      "netto": 696.33,
+      "brutto": 768.33,
+      "nettoTR": 411.33,
+      "oeNettoProzent": 0.39,
+      "oeR": 0.42
     },
     "heute": {
-      "anzahl": 28,
-      "treffer": 19,
-      "quote": 67.9,
-      "netto": 1265.12,
-      "brutto": 1277.12,
-      "nettoTR": 1221.12,
-      "oeNettoProzent": 4.53,
-      "oeR": 1.02
+      "anzahl": 30,
+      "treffer": 21,
+      "quote": 70,
+      "netto": 1503.29,
+      "brutto": 1515.29,
+      "nettoTR": 1455.29,
+      "oeNettoProzent": 5.03,
+      "oeR": 1.08
     },
-    "offen": 7,
+    "offen": 5,
     "gruppen": {
       "turbo": {
-        "anzahl": 141,
-        "treffer": 75,
-        "quote": 53.2,
-        "netto": 754.56,
-        "brutto": 754.56,
-        "nettoTR": 473.56,
-        "oeNettoProzent": 0.53,
-        "oeR": 0.42
+        "anzahl": 143,
+        "treffer": 77,
+        "quote": 53.8,
+        "netto": 992.73,
+        "brutto": 992.73,
+        "nettoTR": 707.73,
+        "oeNettoProzent": 0.69,
+        "oeR": 0.44
       },
       "short": {
-        "anzahl": 141,
-        "treffer": 75,
-        "quote": 53.2,
-        "netto": 754.56,
-        "brutto": 754.56,
-        "nettoTR": 473.56,
-        "oeNettoProzent": 0.53,
-        "oeR": 0.42
+        "anzahl": 143,
+        "treffer": 77,
+        "quote": 53.8,
+        "netto": 992.73,
+        "brutto": 992.73,
+        "nettoTR": 707.73,
+        "oeNettoProzent": 0.69,
+        "oeR": 0.44
       },
       "krypto": {
         "anzahl": 36,
@@ -12877,10 +12799,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 129,
-        "chance": 41.1,
-        "oeNetto": -0.46,
-        "wertung": -1.17
+        "faelle": 130,
+        "chance": 41.5,
+        "oeNetto": -0.37,
+        "wertung": -1.08
       }
     },
     "us:orb_long": {
