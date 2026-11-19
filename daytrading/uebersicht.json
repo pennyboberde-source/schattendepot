@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T09:23:52.017Z",
+  "stand": "2026-11-19T09:38:54.018Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -645,40 +645,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-ada",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "ADA",
-      "symbol": "ADA",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:00:00.000Z",
-        "kurs": 0.140203,
-        "level": 0.1402,
-        "spanne": {
-          "hoch": 0.140182,
-          "tief": 0.139703
-        },
-        "richtung": "long"
-      },
-      "stop": 0.1399,
-      "ziel": 0.1405,
-      "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:00:00.000Z",
-        "basisKurs": 0.140142,
-        "kurs": 0.1405,
-        "stueck": 7117.437722,
-        "kurswert": 1000
-      }
-    },
-    {
       "id": "2026-11-19-scan-deutsche-telekom-ag-reg",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -717,6 +683,129 @@
         "kurs": 5.2631,
         "stueck": 190,
         "kurswert": 999.99
+      }
+    },
+    {
+      "id": "2026-11-19-scan-deutz-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTZ AG",
+      "isin": "DE0006305006",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 9.468,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 7.9,
+        "level": 7.93,
+        "spanne": {
+          "hoch": 8.095,
+          "tief": 7.93
+        },
+        "richtung": "short"
+      },
+      "stop": 8.0125,
+      "ziel": 7.645,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 7.89,
+        "kurs": 1.5819,
+        "stueck": 632,
+        "kurswert": 999.76
+      }
+    },
+    {
+      "id": "2026-11-19-scan-siemens-energy-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SIEMENS ENERGY AG",
+      "isin": "DE000ENER6Y0",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 155.69,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 129.84,
+        "level": 130,
+        "spanne": {
+          "hoch": 131.18,
+          "tief": 130
+        },
+        "richtung": "short"
+      },
+      "stop": 130.59,
+      "ziel": 128.04,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 129.74,
+        "kurs": 2.6015,
+        "stueck": 384,
+        "kurswert": 998.98
+      }
+    },
+    {
+      "id": "2026-11-19-scan-vonovia-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "VONOVIA SE",
+      "isin": "DE000A1ML7J1",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 20.42,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 17.02,
+        "level": 17.04,
+        "spanne": {
+          "hoch": 17.1,
+          "tief": 17.04
+        },
+        "richtung": "short"
+      },
+      "stop": 17.07,
+      "ziel": 16.91,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 17.015,
+        "kurs": 3.4135,
+        "stueck": 292,
+        "kurswert": 996.74
       }
     }
   ],
@@ -985,40 +1074,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-ada",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "ADA",
-      "symbol": "ADA",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:00:00.000Z",
-        "kurs": 0.140203,
-        "level": 0.1402,
-        "spanne": {
-          "hoch": 0.140182,
-          "tief": 0.139703
-        },
-        "richtung": "long"
-      },
-      "stop": 0.1399,
-      "ziel": 0.1405,
-      "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:00:00.000Z",
-        "basisKurs": 0.140142,
-        "kurs": 0.1405,
-        "stueck": 7117.437722,
-        "kurswert": 1000
-      }
-    },
-    {
       "id": "2026-11-19-scan-deutsche-telekom-ag-reg",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -1057,6 +1112,182 @@
         "kurs": 5.2631,
         "stueck": 190,
         "kurswert": 999.99
+      }
+    },
+    {
+      "id": "2026-11-19-scan-deutz-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTZ AG",
+      "isin": "DE0006305006",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 9.468,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 7.9,
+        "level": 7.93,
+        "spanne": {
+          "hoch": 8.095,
+          "tief": 7.93
+        },
+        "richtung": "short"
+      },
+      "stop": 8.0125,
+      "ziel": 7.645,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 7.89,
+        "kurs": 1.5819,
+        "stueck": 632,
+        "kurswert": 999.76
+      }
+    },
+    {
+      "id": "2026-11-19-scan-siemens-energy-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SIEMENS ENERGY AG",
+      "isin": "DE000ENER6Y0",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 155.69,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 129.84,
+        "level": 130,
+        "spanne": {
+          "hoch": 131.18,
+          "tief": 130
+        },
+        "richtung": "short"
+      },
+      "stop": 130.59,
+      "ziel": 128.04,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 129.74,
+        "kurs": 2.6015,
+        "stueck": 384,
+        "kurswert": 998.98
+      }
+    },
+    {
+      "id": "2026-11-19-scan-vonovia-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "VONOVIA SE",
+      "isin": "DE000A1ML7J1",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 20.42,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 17.02,
+        "level": 17.04,
+        "spanne": {
+          "hoch": 17.1,
+          "tief": 17.04
+        },
+        "richtung": "short"
+      },
+      "stop": 17.07,
+      "ziel": 16.91,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 17.015,
+        "kurs": 3.4135,
+        "stueck": 292,
+        "kurswert": 996.74
+      }
+    },
+    {
+      "id": "2026-11-19-scan-ada",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "kurs": 0.140203,
+        "level": 0.1402,
+        "spanne": {
+          "hoch": 0.140182,
+          "tief": 0.139703
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1399,
+      "ziel": 0.1405,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:00:00.000Z",
+        "basisKurs": 0.140142,
+        "kurs": 0.1405,
+        "stueck": 7117.437722,
+        "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T09:35:00.000Z",
+        "basisKurs": 0.139856,
+        "kurs": 0.1395,
+        "kurswert": 992.88,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -7.12,
+        "bruttoProzent": -0.71,
+        "netto": -9.12,
+        "nettoProzent": -0.91,
+        "nettoTR": -9.12,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1.18
       }
     },
     {
@@ -10345,26 +10576,26 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 153,
+      "anzahl": 154,
       "treffer": 67,
-      "quote": 43.8,
-      "netto": -808.96,
-      "brutto": -742.96,
-      "nettoTR": -1047.96,
+      "quote": 43.5,
+      "netto": -818.08,
+      "brutto": -750.08,
+      "nettoTR": -1057.08,
       "oeNettoProzent": -0.54,
-      "oeR": 0.29
+      "oeR": 0.28
     },
     "heute": {
-      "anzahl": 4,
+      "anzahl": 5,
       "treffer": 1,
-      "quote": 25,
-      "netto": -2,
-      "brutto": 4,
-      "nettoTR": -4,
-      "oeNettoProzent": -0.05,
-      "oeR": 0.51
+      "quote": 20,
+      "netto": -11.12,
+      "brutto": -3.12,
+      "nettoTR": -13.12,
+      "oeNettoProzent": -0.22,
+      "oeR": 0.17
     },
-    "offen": 6,
+    "offen": 8,
     "gruppen": {
       "turbo": {
         "anzahl": 120,
@@ -10387,14 +10618,14 @@
         "oeR": 0.25
       },
       "krypto": {
-        "anzahl": 33,
+        "anzahl": 34,
         "treffer": 10,
-        "quote": 30.3,
-        "netto": -251.2,
-        "brutto": -185.2,
-        "nettoTR": -251.2,
-        "oeNettoProzent": -0.76,
-        "oeR": 0.45
+        "quote": 29.4,
+        "netto": -260.32,
+        "brutto": -192.32,
+        "nettoTR": -260.32,
+        "oeNettoProzent": -0.77,
+        "oeR": 0.41
       }
     }
   },
@@ -10450,9 +10681,9 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 87,
+        "faelle": 90,
         "chance": 35.6,
-        "oeNetto": -0.05,
+        "oeNetto": -0.06,
         "wertung": -0.11
       }
     },
