@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T15:23:31.099Z",
+  "stand": "2026-11-19T15:39:32.378Z",
   "offen": [
     {
       "id": "2026-11-19-auto-applied-optoelectronics-inc",
@@ -72,7 +72,16 @@
         }
       },
       "verkaufstermin": "2026-11-24T07:20:42.798Z",
-      "anpassungen": [],
+      "anpassungen": [
+        {
+          "zeit": "2026-11-19T15:39:32.378Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 18.62,
+          "neu": 19.53,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 22.19 € (+12 %)"
+        }
+      ],
       "kauf": {
         "zeit": "2026-11-19T14:39:07.926Z",
         "stueck": 50,
@@ -88,7 +97,7 @@
         "synthetisch": true
       },
       "zielkurs": 27.5,
-      "stopkurs": 18.62,
+      "stopkurs": 19.53,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -98,8 +107,8 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 8.86,
-        "zeit": "2026-11-19T15:23:10.000Z",
+        "prozent": 12.57,
+        "zeit": "2026-11-19T15:39:12.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -175,7 +184,16 @@
         }
       },
       "verkaufstermin": "2026-11-24T08:20:28.225Z",
-      "anpassungen": [],
+      "anpassungen": [
+        {
+          "zeit": "2026-11-19T15:39:32.378Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 1.7649,
+          "neu": 1.8293,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 2.0788 € (+10.7 %)"
+        }
+      ],
       "kauf": {
         "zeit": "2026-11-19T14:39:07.926Z",
         "stueck": 532,
@@ -191,7 +209,7 @@
         "synthetisch": true
       },
       "zielkurs": 2.6202,
-      "stopkurs": 1.7649,
+      "stopkurs": 1.8293,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -201,8 +219,8 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 3.44,
-        "zeit": "2026-11-19T15:22:45.000Z",
+        "prozent": 11.28,
+        "zeit": "2026-11-19T15:38:27.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -286,6 +304,14 @@
           "alt": 7.0144,
           "neu": 7.3662,
           "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 8.3707 € (+12.2 %)"
+        },
+        {
+          "zeit": "2026-11-19T15:39:32.378Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 7.3662,
+          "neu": 7.6981,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 8.7478 € (+17.2 %)"
         }
       ],
       "kauf": {
@@ -303,7 +329,7 @@
         "synthetisch": true
       },
       "zielkurs": 10.4555,
-      "stopkurs": 7.3662,
+      "stopkurs": 7.6981,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -313,8 +339,8 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 12.74,
-        "zeit": "2026-11-19T15:23:11.000Z",
+        "prozent": 17.82,
+        "zeit": "2026-11-19T15:39:12.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
