@@ -1,0 +1,638 @@
+{
+  "stand": "2026-11-19T05:20:35.038Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:TGT",
+      "name": "TGT",
+      "ticker": "TGT",
+      "score": 4.35,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:NVDA",
+      "name": "Nvidia",
+      "ticker": "NVDA",
+      "score": 4.34,
+      "typen": [
+        "nachricht",
+        "aktienrueckkauf",
+        "gewinn_ueberraschung",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "Handelsblatt Finanzen",
+        "CNBC Top News",
+        "Finnhub News",
+        "MarketWatch",
+        "Finnhub",
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:DIS",
+      "name": "DIS",
+      "ticker": "DIS",
+      "score": 3.38,
+      "typen": [
+        "gewinn_ueberraschung",
+        "nachzahlen_drift"
+      ],
+      "quellen": [
+        "FMP",
+        "Finnhub Kurs"
+      ]
+    },
+    {
+      "schluessel": "T:AKAN",
+      "name": "Akanda Corp.",
+      "ticker": "AKAN",
+      "pump": true,
+      "score": 2.25,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:BLLN",
+      "name": "BillionToOne",
+      "ticker": "BLLN",
+      "score": -2,
+      "typen": [
+        "shortreport"
+      ],
+      "quellen": [
+        "Fuzzy Panda Research"
+      ]
+    },
+    {
+      "schluessel": "T:SKYA",
+      "name": "SkyAI, Inc.",
+      "ticker": "SKYA",
+      "pump": true,
+      "score": 1.9,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:CUE",
+      "name": "Cue Biopharma, Inc.",
+      "ticker": "CUE",
+      "pump": true,
+      "score": 1.84,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:CLRO",
+      "name": "ClearOne, Inc.",
+      "ticker": "CLRO",
+      "score": 1.54,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:BTOC",
+      "name": "Armlogi Holding Corp. common stock",
+      "ticker": "BTOC",
+      "score": 1.54,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:MPU",
+      "name": "Mega Matrix Corp.",
+      "ticker": "MPU",
+      "score": 1.54,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:HY",
+      "name": "Hyster-Yale Materials Handling, Inc.",
+      "ticker": "HY",
+      "score": -1.54,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:JMIA",
+      "name": "Jumia Technologies AG",
+      "ticker": "JMIA",
+      "score": -1.54,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:PRE",
+      "name": "Prenetics Global Limited",
+      "ticker": "PRE",
+      "score": -1.54,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:NCT",
+      "name": "Intercont (Cayman) Limited Ordinary shares",
+      "ticker": "NCT",
+      "score": -1.54,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:FUN",
+      "name": "Six Flags Entertainment Corporation/New",
+      "ticker": "FUN",
+      "score": 1.49,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BPRE",
+      "name": "Bluerock Private Real Estate Fund",
+      "ticker": "BPRE",
+      "score": 1.46,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:UPBD",
+      "name": "Upbound Group, Inc.",
+      "ticker": "UPBD",
+      "score": 1.29,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:RMIX",
+      "name": "Suncrete, Inc.",
+      "ticker": "RMIX",
+      "score": 1.21,
+      "typen": [
+        "insider_cluster_kauf",
+        "insider_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:CNTHP",
+      "name": "CONNECTICUT LIGHT & POWER CO",
+      "ticker": "CNTHP",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:AAOI",
+      "name": "APPLIED OPTOELECTRONICS, INC.",
+      "ticker": "AAOI",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:XGN",
+      "name": "EXAGEN INC.",
+      "ticker": "XGN",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SLS",
+      "name": "SELLAS Life Sciences Group, Inc.",
+      "ticker": "SLS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ENLV",
+      "name": "Enlivex Ltd.",
+      "ticker": "ENLV",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NNVC",
+      "name": "NANOVIRICIDES, INC.",
+      "ticker": "NNVC",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SDEV",
+      "name": "Stablecoin Development Corp",
+      "ticker": "SDEV",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MEDS",
+      "name": "DataMeds AI, Inc.",
+      "ticker": "MEDS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ARDT",
+      "name": "Ardent Health, Inc.",
+      "ticker": "ARDT",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:AZI",
+      "name": "Autozi Internet Technology (Global) Ltd.",
+      "ticker": "AZI",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PZG",
+      "name": "Paramount Gold Nevada Corp.",
+      "ticker": "PZG",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:VRMK",
+      "name": "ERP OPERATING LTD PARTNERSHIP",
+      "ticker": "VRMK",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:IDAI",
+      "name": "T Stamp Inc",
+      "ticker": "IDAI",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LOW",
+      "name": "LOW",
+      "ticker": "LOW",
+      "score": 1.19,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:PAM",
+      "name": "Pampa Energy Inc.",
+      "ticker": "PAM",
+      "score": 1.09,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:STWD",
+      "name": "Starwood Property Trust, Inc.",
+      "ticker": "STWD",
+      "score": 1.01,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 0.94,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "K:BTC",
+      "name": "Bitcoin",
+      "ticker": "BTC",
+      "markt": "krypto",
+      "score": -0.91,
+      "typen": [
+        "nachricht",
+        "liquidationen_spitze",
+        "stimmung_extrem"
+      ],
+      "quellen": [
+        "BTC-ECHO",
+        "Coinalyze",
+        "alternative.me"
+      ]
+    },
+    {
+      "schluessel": "T:ITG",
+      "name": "Itg, Inc./De/",
+      "ticker": "ITG",
+      "score": 0.91,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MP",
+      "name": "Mp Materials Corp. / De",
+      "ticker": "MP",
+      "score": 0.9,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:GLXY",
+      "name": "Galaxy Digital Inc.",
+      "ticker": "GLXY",
+      "score": 0.88,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:DKNG",
+      "name": "Draftkings Inc.",
+      "ticker": "DKNG",
+      "score": 0.84,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BLX",
+      "name": "Bladex, Inc.",
+      "ticker": "BLX",
+      "score": 0.84,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:EQPT",
+      "name": "Equipmentshare.Com Inc",
+      "ticker": "EQPT",
+      "score": 0.81,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:TH",
+      "name": "Target Hospitality Corp.",
+      "ticker": "TH",
+      "score": 0.81,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:HPE-PC",
+      "name": "Hewlett Packard Enterprise Co",
+      "ticker": "HPE-PC",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:INHD",
+      "name": "INNO HOLDINGS INC.",
+      "ticker": "INHD",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LPLA",
+      "name": "LPL Financial Holdings Inc.",
+      "ticker": "LPLA",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SPGI",
+      "name": "S&P Global Inc.",
+      "ticker": "SPGI",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CODI-PA",
+      "name": "Compass Diversified Holdings",
+      "ticker": "CODI-PA",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:GATX",
+      "name": "GATX CORP",
+      "ticker": "GATX",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BG",
+      "name": "Bunge Global SA",
+      "ticker": "BG",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    }
+  ],
+  "anzahlSignale": 191
+}
