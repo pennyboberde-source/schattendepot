@@ -18,13 +18,13 @@ import { ereignisBehandeln } from './lib/routine.ts';
 import { schwaerzen } from './lib/schwaerzen.ts';
 import { trackingAktualisieren, trackingText } from './lib/tracking.ts';
 import { autopilotLauf } from './lib/autopilot.ts';
+import { kompakt } from './lib/kompakt.ts';
 import { marktphaseAktualisieren } from './lib/marktphase.ts';
 import { wochenzeugnisErstellen } from './lib/wochenzeugnis.ts';
 import { phaseText } from '../core/marktphase.ts';
 import { gegensignaleFinden } from '../core/gegensignal.ts';
 import type { Gegensignal } from '../core/waechter.ts';
 import type { AutopilotKandidat } from '../core/autopilot.ts';
-import type { Kandidat } from '../core/signale.ts';
 import { gdelt } from './quellen/gdelt.ts';
 import { apeWisdom, fred, krakenKrypto } from './quellen/maerkte.ts';
 import { openInsider } from './quellen/openinsider.ts';
@@ -90,13 +90,6 @@ if (!laufart) {
 
 const orders = ordersAusEreignissen(leseEreignisse());
 
-/** Kandidat → kompakte Form (Signale-Datei, Schattenbuch, Autopilot) */
-function kompakt(k: Kandidat): AutopilotKandidat {
-  const typen = [...new Set(k.signale.map((s) => s.typ))];
-  const markt = k.wertpapier.markt ?? k.signale.find((s) => s.wertpapier.markt)?.wertpapier.markt;
-  const pump = pumpVerdacht(typen, { fakten: k.signale.flatMap((s) => s.quellen.map((q) => q.fakt)) });
-  return { schluessel: k.schluessel, name: k.wertpapier.name, ticker: k.wertpapier.ticker, isin: k.wertpapier.isin, ...(markt ? { markt } : {}), ...(pump ? { pump } : {}), score: k.score, typen, quellen: [...new Set(k.signale.flatMap((s) => s.quellen.map((q) => q.quelle)))] };
-}
 const offen = orders
   .filter((o) => o.status === 'offen' || o.status === 'vorgemerkt')
   .map((o) => ({ id: o.id, name: o.plan.wertpapier.name, ticker: o.plan.wertpapier.kursbasis?.symbol ?? o.plan.wertpapier.ticker }));

@@ -57,6 +57,12 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Schnell-SEC (Meldungen im Wächter-Takt, Fehler stoppen den Wächter nicht)
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          SEC_KONTAKT: ${{ secrets.SEC_KONTAKT }}
+        run: node jobs/schnell.ts
       - name: Kurswächter
         env:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}

@@ -106,3 +106,21 @@ export const secVerwaesserung: Quelle = {
     return { signale, abfragen: 3 };
   },
 };
+
+/**
+ * Schnell-SEC (Quantensprung „Echtzeit“, 19.11.2026): dieselben Feeds wie 8-K und Verwässerung, aber mit EINER
+ * Firmenliste – für den Kurswächter-Takt (alle 15 Min.) statt nur stündlich bzw. morgens. 3 Abrufe je Lauf.
+ */
+export async function secSchnell(jetzt: Date): Promise<Signal[]> {
+  const header = { 'User-Agent': secUa(), Accept: 'application/json, application/atom+xml' };
+  const tickers = await holeJson<Record<string, { cik_str: number; ticker: string; title: string }>>('https://www.sec.gov/files/company_tickers.json', { header });
+  const karte = cikKarte(Object.values(tickers));
+  const out: Signal[] = [];
+  for (const form of ['424B5', 'S-3'] as const) {
+    const atom = await holeText(`https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=${form}&company=&dateb=&owner=include&count=100&output=atom`, { header });
+    out.push(...verwaesserungAuswerten(atom, form, karte, jetzt));
+  }
+  const atom8k = await holeText('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&company=&dateb=&owner=include&count=100&output=atom', { header });
+  out.push(...secAuswerten(atom8k, karte, jetzt));
+  return out;
+}
