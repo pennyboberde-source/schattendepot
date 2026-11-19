@@ -1,0 +1,42 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-19",
+  "erstellt": "2026-11-19T07:55:00Z",
+  "briefing": [
+    "Keine neue Order: Markt seitwärts/nervös, VIX steigt, Depot Ø −1,0 % – kein Kandidat mit Vorsprung nach Gebühren.",
+    "Heute: Zahlen von Walmart, Alibaba, NetEase vor US-Start; 14:30 Philly Fed und Arbeitslosenanträge, Lagarde spricht.",
+    "Lauerliste: 9 Vorzugsaktien plus Caesars, Baldwin und DSG mit Barangebot – Short-Volltreffer unwahrscheinlich, alles „nein“."
+  ],
+  "orders": [],
+  "prognose": [
+    {"name": "Nvidia", "ticker": "NVDA", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "Gestern −2,9 % trotz starker Zahlen; Asien stützt, Gegenbewegung möglich."},
+    {"name": "Target", "ticker": "TGT", "markt": "us", "richtung": "runter", "chance": 52, "grund": "Große EPS-Überraschung, +4 % eingepreist; bei Large Caps bisher keine Drift."},
+    {"name": "Walmart", "ticker": "WMT", "markt": "us", "richtung": "hoch", "chance": 51, "grund": "Zahlen vor US-Start; Discounter zuletzt stark, Reaktion offen."},
+    {"name": "Alibaba", "ticker": "BABA", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "Zahlen heute, Rückenwind durch China-Handelsabkommen und starke Asien-Börsen."},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "hoch", "chance": 51, "grund": "Fear & Greed 10, Short-Liquidationen – Extremwerte drehen oft, Trend aber schwach."},
+    {"name": "Akanda", "ticker": "AKAN", "markt": "us", "richtung": "runter", "chance": 62, "grund": "Kursrakete +97 % mit Pump-Verdacht; Schattenbuch kursrakete Median −11,8 % nach 1 Woche."},
+    {"name": "SaverOne", "ticker": "SVRE", "markt": "us", "richtung": "runter", "chance": 60, "grund": "Pennystock +111 % ohne harten Anlass; Raketen fallen meist zurück."},
+    {"name": "Caesars Entertainment", "ticker": "CZR", "markt": "us", "richtung": "hoch", "chance": 51, "grund": "Lauerliste: Barangebot 31 $ läuft, Kurs klebt am Angebot, Arbitrage-Spanne schließt langsam."},
+    {"name": "BillionToOne", "ticker": "BLLN", "markt": "us", "richtung": "runter", "chance": 57, "grund": "Neuer Short-Seller-Bericht (Abrechnungsvorwürfe) wirkt meist noch nach."},
+    {"name": "Hyster-Yale", "ticker": "HY", "markt": "us", "richtung": "hoch", "chance": 52, "grund": "Tagesverlierer −41 %; kleiner Rückprall nach Ausverkauf wahrscheinlich, aber unsicher."}
+  ],
+  "volltrefferUrteil": [
+    {"wert": "ACGLN", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Vorzugsaktie mit unter 1 % Tagesschwankung – −4 % binnen 10 Tagen braucht einen Zins- oder Kreditschock.", "kontext": "Fed-Anhebung im Dezember fast sicher eingepreist; Kreditmarkt angespannt, aber kein Auslöser für den Einzelwert."},
+    {"wert": "APOS", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 21, "grund": "Apollo-Vorzugspapier; Kapitalerhöhung vor 5 Tagen kann leicht drücken, ein −4 %-Rutsch bleibt selten.", "kontext": "Zinsanhebungen belasten Vorzugsaktien, sind aber eingepreist; angespannter Kreditmarkt leicht negativ."},
+    {"wert": "ASBA", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Ruhiges Vorzugspapier einer Bank ohne neuen Anlass.", "kontext": "Kein Bankenstress im Radar; Zinsrisiko eingepreist."},
+    {"wert": "ATHS", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Versicherer-Vorzugspapier ohne frische Meldung; Volltreffer nur mit Zinsschock.", "kontext": "Lange Anleihen 5 Tage ruhig – spricht gegen einen schnellen Kursrutsch bei Zinspapieren."},
+    {"wert": "BOW", "markt": "aktie", "stichtag": "2026-11-18", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 24, "grund": "Chefwechsel vor 2 Tagen ist ein Anlass, Richtung aber offen; Short mit Hebel 10 fällt leicht dem Stop zum Opfer.", "kontext": "Nervöser Markt erhöht die Schwankung, VIX steigt – leicht mehr Chance auf eine große Bewegung, beide Richtungen."},
+    {"wert": "BWIN", "markt": "aktie", "stichtag": "2026-11-18", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 6, "grund": "Barangebot 32,50 $ (Übernahme, Abschluss Q1 2027) deckelt den Kurs; Absturz nur, wenn der Deal platzt.", "kontext": "Kreditmarkt angespannt könnte die Finanzierung belasten, Fusionsunterlagen gestern eingereicht sprechen für planmäßigen Ablauf."},
+    {"wert": "CHSCL", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "CHS-Vorzugsaktie, sehr ruhig; vier CHS-Serien sind ein Klumpen, kein unabhängiger Fall.", "kontext": "Agrarpreise und Zinsen ohne Schock; Klumpen derselben Firma erhöht das Gesamtrisiko nicht die Quote."},
+    {"wert": "CHSCM", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.", "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."},
+    {"wert": "CHSCO", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.", "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."},
+    {"wert": "CHSCP", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.", "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."},
+    {"wert": "CZR", "markt": "aktie", "stichtag": "2026-11-18", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 7, "grund": "Barübernahme durch Fertitta zu 31 $ läuft; daher die geringe Schwankung – Short-Volltreffer nur bei Deal-Bruch.", "kontext": "Regulierung und Bankfinanzierung sind das Restrisiko; angespannter Kreditmarkt leicht negativ, aber kein Hinweis auf ein Scheitern."},
+    {"wert": "DSGR", "markt": "aktie", "stichtag": "2026-11-18", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 5, "grund": "Rückkauf durch Mehrheitsaktionär LKCM (79 %) zu 35 $ bar, ohne Finanzierungsvorbehalt – Absturz sehr unwahrscheinlich.", "kontext": "Kartellfreigabe und Minderheitsvotum offen, aber Mehrheitsaktionär als Käufer macht den Abschluss wahrscheinlich."}
+  ],
+  "daytrading": [
+    {"name": "Walmart", "markt": "us", "isin": "US9311421039", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 35, "these": "Quartalszahlen vor US-Start: hoher Umsatz und große Eröffnungsspanne; nur Ausbruch nach oben handeln."},
+    {"name": "Alibaba", "markt": "us", "isin": "US01609W1027", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 35, "these": "Zahlen heute plus China-Handelsabkommen; Ausbruch nach oben aus der Eröffnungsspanne."}
+  ],
+  "notiz": "Keine Order: Marktphase seitwärts/nervös (max. 2, kein Hebel ohne Volltreffer-Beleg), Depot und Daytrading negativ, Lektion 30. TGT: Websuche fand nur die Vorjahreszahlen, Überraschung +27 % unbestätigt – Large Caps ohne Drift (Lektion 23). BLLN-Short-Bericht per Suche nicht bestätigt, Short nur mit Hebel möglich. Lauerliste: 9 Vorzugsaktien + 3 Werte mit laufendem Barangebot (CZR 31 $, BWIN 32,50 $, DSGR 35 $) – das Muster „Schwankung unter 1 %“ fängt Arbitrage-Werte ein; Vorschlag: Werte mit laufendem Barangebot und Vorzugsaktien aus dem Short-Muster ausschließen. Websuchen: 5 (Schritt 4: 2, Schritt 6b: 3)."
+}
