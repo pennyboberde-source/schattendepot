@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-19T13:20:28.474Z",
-  "anzahl": 203,
+  "stand": "2026-11-19T14:18:40.845Z",
+  "anzahl": 207,
   "signale": [
     {
       "id": "verwaesserung:CNTHP:2026-11-17",
@@ -2701,6 +2701,59 @@
         "tagesschau Wirtschaft"
       ],
       "z": "2026-11-19T12:57:07.000Z"
+    },
+    {
+      "id": "verwaesserung:INLF:2026-11-19",
+      "s": "T:INLF",
+      "n": "INLIF Ltd",
+      "t": "INLF",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-19T12:11:23.000Z"
+    },
+    {
+      "id": "verwaesserung:NIVF:2026-11-19",
+      "s": "T:NIVF",
+      "n": "NewGenIvf Group Ltd",
+      "t": "NIVF",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-19T13:00:43.000Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-11-19",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-19T14:11:00.000Z"
+    },
+    {
+      "id": "kursrakete:K.PUFFER:2026-11-19",
+      "s": "K:PUFFER",
+      "n": "Puffer",
+      "t": "PUFFER",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.43,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-19T14:18:40.845Z"
     }
   ]
 }
