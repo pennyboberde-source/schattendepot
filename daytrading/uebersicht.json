@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T08:23:38.804Z",
+  "stand": "2026-11-19T08:38:56.206Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": 0,
       "oeR": 0
     },
-    "offen": 0
+    "offen": 2
   },
   "gesamt": {
     "anzahl": 568,
@@ -374,8 +374,305 @@
       "oeR": 0.1
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-11-19-scan-aixtron-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AIXTRON SE",
+      "isin": "DE000A0WMPJ6",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 33.58,
+        "level": 33.56,
+        "spanne": {
+          "hoch": 33.56,
+          "tief": 33.29
+        },
+        "richtung": "long"
+      },
+      "stop": 33.43,
+      "ziel": 33.74,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "basisKurs": 33.53,
+        "kurs": 33.698,
+        "stueck": 29,
+        "kurswert": 977.24
+      }
+    },
+    {
+      "id": "2026-11-19-scan-deutsche-bank-ag-registe",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "DEUTSCHE BANK AG-REGISTERED",
+      "isin": "DE0005140008",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 30.465,
+        "level": 30.35,
+        "spanne": {
+          "hoch": 30.35,
+          "tief": 30.14
+        },
+        "richtung": "long"
+      },
+      "stop": 30.25,
+      "ziel": 30.97,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "basisKurs": 30.485,
+        "kurs": 30.637,
+        "stueck": 32,
+        "kurswert": 980.38
+      }
+    },
+    {
+      "id": "2026-11-19-scan-muenchener-rueckver-ag-r",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MUENCHENER RUECKVER AG-REG",
+      "isin": "DE0008430026",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 694.8,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 579,
+        "level": 579.2,
+        "spanne": {
+          "hoch": 581.4,
+          "tief": 579.2
+        },
+        "richtung": "short"
+      },
+      "stop": 580.3,
+      "ziel": 576.4,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "basisKurs": 579,
+        "kurs": 11.609,
+        "stueck": 86,
+        "kurswert": 998.37
+      }
+    },
+    {
+      "id": "2026-11-19-scan-sap-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SAP SE",
+      "isin": "DE0007164600",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 229.7,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:25:00.000Z",
+        "kurs": 191.34,
+        "level": 191.7,
+        "spanne": {
+          "hoch": 193.54,
+          "tief": 191.7
+        },
+        "richtung": "short"
+      },
+      "stop": 192.62,
+      "ziel": 189.02,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:25:00.000Z",
+        "basisKurs": 191.42,
+        "kurs": 3.8376,
+        "stueck": 260,
+        "kurswert": 997.78
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-11-19-scan-aixtron-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AIXTRON SE",
+      "isin": "DE000A0WMPJ6",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 33.58,
+        "level": 33.56,
+        "spanne": {
+          "hoch": 33.56,
+          "tief": 33.29
+        },
+        "richtung": "long"
+      },
+      "stop": 33.43,
+      "ziel": 33.74,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "basisKurs": 33.53,
+        "kurs": 33.698,
+        "stueck": 29,
+        "kurswert": 977.24
+      }
+    },
+    {
+      "id": "2026-11-19-scan-deutsche-bank-ag-registe",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "DEUTSCHE BANK AG-REGISTERED",
+      "isin": "DE0005140008",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 30.465,
+        "level": 30.35,
+        "spanne": {
+          "hoch": 30.35,
+          "tief": 30.14
+        },
+        "richtung": "long"
+      },
+      "stop": 30.25,
+      "ziel": 30.97,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "basisKurs": 30.485,
+        "kurs": 30.637,
+        "stueck": 32,
+        "kurswert": 980.38
+      }
+    },
+    {
+      "id": "2026-11-19-scan-muenchener-rueckver-ag-r",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MUENCHENER RUECKVER AG-REG",
+      "isin": "DE0008430026",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 694.8,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "kurs": 579,
+        "level": 579.2,
+        "spanne": {
+          "hoch": 581.4,
+          "tief": 579.2
+        },
+        "richtung": "short"
+      },
+      "stop": 580.3,
+      "ziel": 576.4,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:20:00.000Z",
+        "basisKurs": 579,
+        "kurs": 11.609,
+        "stueck": 86,
+        "kurswert": 998.37
+      }
+    },
+    {
+      "id": "2026-11-19-scan-sap-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SAP SE",
+      "isin": "DE0007164600",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 229.7,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:25:00.000Z",
+        "kurs": 191.34,
+        "level": 191.7,
+        "spanne": {
+          "hoch": 193.54,
+          "tief": 191.7
+        },
+        "richtung": "short"
+      },
+      "stop": 192.62,
+      "ziel": 189.02,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T08:25:00.000Z",
+        "basisKurs": 191.42,
+        "kurs": 3.8376,
+        "stueck": 260,
+        "kurswert": 997.78
+      }
+    },
     {
       "id": "2026-11-18-scan-nvidia-corp",
       "datum": "2026-11-18",
@@ -9410,7 +9707,7 @@
       "oeNettoProzent": 0,
       "oeR": 0
     },
-    "offen": 0,
+    "offen": 2,
     "gruppen": {
       "turbo": {
         "anzahl": 119,
@@ -9530,5 +9827,7 @@
     "claude": 2,
     "autopilot": 0
   },
-  "hinweise": []
+  "hinweise": [
+    "ALLIANZ SE-REG: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)"
+  ]
 }
