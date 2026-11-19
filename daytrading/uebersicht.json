@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T13:09:49.782Z",
+  "stand": "2026-11-19T13:23:42.645Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -612,47 +612,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-vonovia-se",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "VONOVIA SE",
-      "isin": "DE000A1ML7J1",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 20.42,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "kurs": 17.02,
-        "level": 17.04,
-        "spanne": {
-          "hoch": 17.1,
-          "tief": 17.04
-        },
-        "richtung": "short"
-      },
-      "stop": 17.07,
-      "ziel": 16.91,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "basisKurs": 17.015,
-        "kurs": 3.4135,
-        "stueck": 292,
-        "kurswert": 996.74
-      }
-    },
-    {
       "id": "2026-11-19-scan-mercedes-benz-group-ag",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -926,47 +885,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-vonovia-se",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "VONOVIA SE",
-      "isin": "DE000A1ML7J1",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 20.42,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "kurs": 17.02,
-        "level": 17.04,
-        "spanne": {
-          "hoch": 17.1,
-          "tief": 17.04
-        },
-        "richtung": "short"
-      },
-      "stop": 17.07,
-      "ziel": 16.91,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "basisKurs": 17.015,
-        "kurs": 3.4135,
-        "stueck": 292,
-        "kurswert": 996.74
-      }
-    },
-    {
       "id": "2026-11-19-scan-mercedes-benz-group-ag",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -1005,6 +923,66 @@
         "kurs": 7.7393,
         "stueck": 129,
         "kurswert": 998.37
+      }
+    },
+    {
+      "id": "2026-11-19-scan-vonovia-se",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "VONOVIA SE",
+      "isin": "DE000A1ML7J1",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 20.42,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 17.02,
+        "level": 17.04,
+        "spanne": {
+          "hoch": 17.1,
+          "tief": 17.04
+        },
+        "richtung": "short"
+      },
+      "stop": 17.07,
+      "ziel": 16.91,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 17.015,
+        "kurs": 3.4135,
+        "stueck": 292,
+        "kurswert": 996.74
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T13:10:00.000Z",
+        "basisKurs": 16.91,
+        "kurs": 3.5012,
+        "kurswert": 1022.35,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 25.61,
+        "bruttoProzent": 2.57,
+        "netto": 25.61,
+        "nettoProzent": 2.57,
+        "nettoTR": 23.61,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.91
       }
     },
     {
@@ -10578,46 +10556,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 157,
-      "treffer": 69,
-      "quote": 43.9,
-      "netto": -731.19,
-      "brutto": -663.19,
-      "nettoTR": -976.19,
-      "oeNettoProzent": -0.47,
-      "oeR": 0.29
+      "anzahl": 158,
+      "treffer": 70,
+      "quote": 44.3,
+      "netto": -705.58,
+      "brutto": -637.58,
+      "nettoTR": -952.58,
+      "oeNettoProzent": -0.45,
+      "oeR": 0.3
     },
     "heute": {
-      "anzahl": 8,
-      "treffer": 3,
-      "quote": 37.5,
-      "netto": 75.77,
-      "brutto": 83.77,
-      "nettoTR": 67.77,
-      "oeNettoProzent": 0.95,
-      "oeR": 0.48
+      "anzahl": 9,
+      "treffer": 4,
+      "quote": 44.4,
+      "netto": 101.38,
+      "brutto": 109.38,
+      "nettoTR": 91.38,
+      "oeNettoProzent": 1.13,
+      "oeR": 0.64
     },
-    "offen": 6,
+    "offen": 5,
     "gruppen": {
       "turbo": {
-        "anzahl": 123,
-        "treffer": 59,
-        "quote": 48,
-        "netto": -470.87,
-        "brutto": -470.87,
-        "nettoTR": -715.87,
-        "oeNettoProzent": -0.39,
-        "oeR": 0.26
+        "anzahl": 124,
+        "treffer": 60,
+        "quote": 48.4,
+        "netto": -445.26,
+        "brutto": -445.26,
+        "nettoTR": -692.26,
+        "oeNettoProzent": -0.37,
+        "oeR": 0.28
       },
       "short": {
-        "anzahl": 123,
-        "treffer": 59,
-        "quote": 48,
-        "netto": -470.87,
-        "brutto": -470.87,
-        "nettoTR": -715.87,
-        "oeNettoProzent": -0.39,
-        "oeR": 0.26
+        "anzahl": 124,
+        "treffer": 60,
+        "quote": 48.4,
+        "netto": -445.26,
+        "brutto": -445.26,
+        "nettoTR": -692.26,
+        "oeNettoProzent": -0.37,
+        "oeR": 0.28
       },
       "krypto": {
         "anzahl": 34,
