@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T13:54:18.723Z",
+  "stand": "2026-11-19T14:09:49.647Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -681,6 +681,40 @@
         "stueck": 7067.137809,
         "kurswert": 1000
       }
+    },
+    {
+      "id": "2026-11-19-scan-sol",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T13:55:00.000Z",
+        "kurs": 68.3,
+        "level": 68.19,
+        "spanne": {
+          "hoch": 68.19,
+          "tief": 67.91
+        },
+        "richtung": "long"
+      },
+      "stop": 68.05,
+      "ziel": 68.68,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T13:55:00.000Z",
+        "basisKurs": 68.26,
+        "kurs": 68.431,
+        "stueck": 14.61326,
+        "kurswert": 1000
+      }
     }
   ],
   "trades": [
@@ -982,6 +1016,40 @@
         "basisKurs": 0.141181,
         "kurs": 0.1415,
         "stueck": 7067.137809,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-19-scan-sol",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "SOL",
+      "symbol": "SOL",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T13:55:00.000Z",
+        "kurs": 68.3,
+        "level": 68.19,
+        "spanne": {
+          "hoch": 68.19,
+          "tief": 67.91
+        },
+        "richtung": "long"
+      },
+      "stop": 68.05,
+      "ziel": 68.68,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T13:55:00.000Z",
+        "basisKurs": 68.26,
+        "kurs": 68.431,
+        "stueck": 14.61326,
         "kurswert": 1000
       }
     },
@@ -10635,7 +10703,7 @@
       "oeNettoProzent": 1.13,
       "oeR": 0.64
     },
-    "offen": 6,
+    "offen": 7,
     "gruppen": {
       "turbo": {
         "anzahl": 124,
