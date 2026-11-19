@@ -1,0 +1,62 @@
+{
+  "stand": "2026-11-19T22:15:00Z",
+  "hinweis": "DEMO Zeitreise",
+  "zeitraum": {
+    "von": "2025-03",
+    "bis": "2026-11"
+  },
+  "regeln": {},
+  "auswahl": {
+    "halbmonate": 42,
+    "oeMuster": 60
+  },
+  "sichtbar": {
+    "orders": 439,
+    "volltreffer": 116,
+    "quote": 26.4,
+    "netto": 6901,
+    "oe": 15.7,
+    "maxRueckgang": 2875,
+    "monate": [
+      {
+        "monat": "2025-03",
+        "orders": 17,
+        "volltreffer": 3,
+        "netto": -505
+      },
+      {
+        "monat": "2025-04",
+        "orders": 20,
+        "volltreffer": 5,
+        "netto": 395
+      }
+    ]
+  },
+  "jagden": {
+    "orders": 1500,
+    "volltreffer": 375,
+    "quote": 25,
+    "netto": -2254,
+    "oe": -1.5,
+    "maxRueckgang": 13267,
+    "monate": []
+  },
+  "alleMusterfaelle": {
+    "faelle": 269602,
+    "quote": 18.5,
+    "oe": -6.9
+  },
+  "grundrate": {
+    "faelle": 19714795,
+    "quote": 7.1,
+    "oe": -27.6
+  },
+  "haeufigsteMuster": [
+    {
+      "muster": "Aktien: DEMO – Hebel nach Schwankung short",
+      "orders": 40,
+      "volltreffer": 12,
+      "netto": 1200
+    }
+  ]
+}

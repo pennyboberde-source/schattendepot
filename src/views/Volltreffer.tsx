@@ -7,7 +7,7 @@ import { useDaten } from '../lib/daten';
 import { datumKurz } from '../lib/zeit';
 import { Karte } from '../ui';
 import { GesamtmodellKarte } from './Kontext';
-import { TrefferbuchKarte, VolltrefferRueckblickKarte } from './LernenVolltreffer';
+import { TrefferbuchKarte, VolltrefferRueckblickKarte, ZeitreiseKarte } from './LernenVolltreffer';
 
 interface Uebersicht {
   stand: string;
@@ -263,6 +263,7 @@ export function VolltrefferView() {
       <p class="klein">Ziel: Signale finden, die einem großen, handelbaren Kurssprung vorausgehen – mindestens +400 € netto aus einer 1.000-€-Order. Alles hier ist simuliert.</p>
       <OrdersKarte />
       <JagdKarte />
+      <ZeitreiseKarte />
       <GesamtmodellKarte />
       <VolltrefferRueckblickKarte />
       <TrefferbuchKarte />

@@ -184,3 +184,74 @@ export function VolltrefferRueckblickKarte() {
     </Karte>
   );
 }
+
+// ---------- Zeitreise (lernen/zeitreise.json, seit 19.11.2026) ----------
+interface ZBilanz {
+  orders: number;
+  volltreffer: number;
+  quote: number;
+  netto: number;
+  oe: number;
+  maxRueckgang: number;
+  monate: { monat: string; orders: number; volltreffer: number; netto: number }[];
+}
+interface Zeitreise {
+  stand: string;
+  hinweis: string;
+  zeitraum: { von: string | null; bis: string };
+  sichtbar: ZBilanz;
+  jagden: ZBilanz;
+  alleMusterfaelle: { faelle: number; quote: number; oe: number };
+  grundrate: { faelle: number; quote: number; oe: number };
+  haeufigsteMuster: { muster: string; orders: number; volltreffer: number; netto: number }[];
+}
+
+/** Zeitreise: der ganze Ablauf über zwei Jahre nachgespielt, ohne Blick nach vorn */
+export function ZeitreiseKarte() {
+  const z = useDaten<Zeitreise>('lernen/zeitreise.json');
+  if (z.status !== 'ok') return null;
+  const d = z.daten;
+  const zeile = (titel: string, b: ZBilanz) => (
+    <p>
+      <strong>{titel}:</strong> {b.orders.toLocaleString('de-DE')} Orders, {b.volltreffer.toLocaleString('de-DE')} Volltreffer ({b.quote.toLocaleString('de-DE')} %), zusammen {euro(b.netto, { vorzeichen: true })}, Ø {euro(b.oe, { vorzeichen: true })} je Order, größter Rückgang {euro(-b.maxRueckgang)}
+    </p>
+  );
+  const plusMonate = d.sichtbar.monate.filter((m) => m.netto > 0).length;
+  return (
+    <Karte titel="🕰️ Zeitreise – so wäre der Ablauf gelaufen">
+      <div data-testid="zeitreise">
+        <p class="klein">
+          {d.zeitraum.von ? `${d.zeitraum.von} bis ${d.zeitraum.bis}` : '–'} · Stand {datumKurz(d.stand.slice(0, 10))} · jede Auswahl kennt nur, was damals schon feststand
+        </p>
+        {zeile('Sichtbar (höchstens 3 offene Orders)', d.sichtbar)}
+        {zeile('Jagden (höchstens 10 offen)', d.jagden)}
+        <p class="klein">
+          {plusMonate} von {d.sichtbar.monate.length} Monaten im Plus · Vergleich: alle Fälle der gewählten Muster Ø {euro(d.alleMusterfaelle.oe, { vorzeichen: true })} ({d.alleMusterfaelle.quote.toLocaleString('de-DE')} % Volltreffer), zufällige Order Ø {euro(d.grundrate.oe, { vorzeichen: true })} ({d.grundrate.quote.toLocaleString('de-DE')} %)
+        </p>
+        <details>
+          <summary>Monate (sichtbar)</summary>
+          <ul class="klein">
+            {d.sichtbar.monate.map((m) => (
+              <li key={m.monat}>
+                {m.monat}: {m.orders} Orders, {m.volltreffer} Volltreffer, {euro(m.netto, { vorzeichen: true })}
+              </li>
+            ))}
+          </ul>
+        </details>
+        {d.haeufigsteMuster.length > 0 && (
+          <details>
+            <summary>Häufigste Muster der sichtbaren Orders</summary>
+            <ul class="klein">
+              {d.haeufigsteMuster.slice(0, 8).map((m) => (
+                <li key={m.muster}>
+                  {m.muster}: {m.orders} Orders, {m.volltreffer} Volltreffer, {euro(m.netto, { vorzeichen: true })}
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+        <p class="klein">{d.hinweis}</p>
+      </div>
+    </Karte>
+  );
+}
