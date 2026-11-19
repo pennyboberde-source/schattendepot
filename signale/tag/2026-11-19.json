@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-19T19:20:21.091Z",
-  "anzahl": 241,
+  "stand": "2026-11-19T20:20:26.507Z",
+  "anzahl": 242,
   "signale": [
     {
       "id": "verwaesserung:CNTHP:2026-11-17",
@@ -2972,7 +2972,7 @@
       "t": "RFAI",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3154,7 +3154,7 @@
       "t": "MACIU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3199,6 +3199,19 @@
         "CNBC Top News"
       ],
       "z": "2026-11-19T17:59:04.000Z"
+    },
+    {
+      "id": "nachricht:AVGO:2026-11-19",
+      "s": "T:AVGO",
+      "n": "Broadcom",
+      "t": "AVGO",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-19T19:43:00.000Z"
     }
   ]
 }
