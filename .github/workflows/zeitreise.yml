@@ -1,0 +1,93 @@
+name: Zeitreise (Gesamtsimulation)
+
+# Quantensprung (Nutzer 19.11.2026): spielt den ganzen Ablauf – Muster wählen, Jagden, höchstens 3 sichtbare Orders –
+# über die Kursgeschichte im PRIVATEN Archiv Tag für Tag nach, als wäre er live gelaufen. Jede Auswahl kennt nur Fälle,
+# deren Ergebnis da schon feststand. Öffentlich geht nur lernen/zeitreise.json (Kennzahlen je Monat, keine Kurse).
+# Sonntags 07:13 UTC (das Archiv ruht, der Rückblick ist durch) oder von Hand.
+on:
+  schedule:
+    - cron: '13 7 * * 0'
+  workflow_dispatch:
+    inputs:
+      probe:
+        description: 'Probe: Code des gewählten Branchs rechnen, nichts veröffentlichen'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  rechnen:
+    runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
+    timeout-minutes: 150
+    concurrency:
+      group: ${{ inputs.probe && 'zeitreise-probe' || 'zeitreise' }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.probe && github.ref || 'main' }}
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+      - uses: actions/checkout@v5
+        with:
+          repository: pennyboberde-source/schattendepot-archiv
+          token: ${{ secrets.ARCHIV_TOKEN }}
+          path: _archiv
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Zeitreise rechnen
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+          DATEN_DIR: ${{ runner.temp }}/zeitreise
+          SIGNALE_DIR: _daten
+          ZEITREISE: '1'
+        run: |
+          mkdir -p "$DATEN_DIR/lernen"
+          node jobs/rueckblick.ts
+      - name: nur das Ergebnis weitergeben
+        run: |
+          mkdir -p "${{ runner.temp }}/ergebnis/lernen"
+          cp "${{ runner.temp }}/zeitreise/lernen/zeitreise.json" "${{ runner.temp }}/ergebnis/lernen/"
+      - uses: actions/upload-artifact@v4
+        if: ${{ !inputs.probe }}
+        with:
+          name: zeitreise
+          path: ${{ runner.temp }}/ergebnis
+          retention-days: 3
+
+  veroeffentlichen:
+    needs: rechnen
+    if: ${{ !inputs.probe }}
+    runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    concurrency:
+      group: daten-schreiben
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          ref: daten
+          path: _daten
+          ssh-key: ${{ secrets.SCHREIB_SCHLUESSEL }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: zeitreise
+          path: _daten
+      - name: Daten sichern
+        run: bash scripts/daten-sichern.sh "Zeitreise $(date -u +%Y-%m-%dT%H:%MZ)"
