@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T16:09:37.243Z",
+  "stand": "2026-11-19T16:23:32.970Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -1250,6 +1250,47 @@
         "stueck": 157,
         "kurswert": 997.7
       }
+    },
+    {
+      "id": "2026-11-19-scan-berkshire-hathaway-inc-c",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "BERKSHIRE HATHAWAY INC-CL B",
+      "isin": "US0846707026",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 621.12,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T16:00:00.000Z",
+        "kurs": 516.5,
+        "level": 516.6,
+        "spanne": {
+          "hoch": 519.9,
+          "tief": 516.6
+        },
+        "richtung": "short"
+      },
+      "stop": 518.25,
+      "ziel": 516.3,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T16:00:00.000Z",
+        "basisKurs": 517.6,
+        "kurs": 10.378,
+        "stueck": 96,
+        "kurswert": 996.29
+      }
     }
   ],
   "trades": [
@@ -2121,6 +2162,47 @@
         "kurs": 6.3548,
         "stueck": 157,
         "kurswert": 997.7
+      }
+    },
+    {
+      "id": "2026-11-19-scan-berkshire-hathaway-inc-c",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "BERKSHIRE HATHAWAY INC-CL B",
+      "isin": "US0846707026",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 621.12,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T16:00:00.000Z",
+        "kurs": 516.5,
+        "level": 516.6,
+        "spanne": {
+          "hoch": 519.9,
+          "tief": 516.6
+        },
+        "richtung": "short"
+      },
+      "stop": 518.25,
+      "ziel": 516.3,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T16:00:00.000Z",
+        "basisKurs": 517.6,
+        "kurs": 10.378,
+        "stueck": 96,
+        "kurswert": 996.29
       }
     },
     {
@@ -12900,7 +12982,7 @@
       "oeNettoProzent": 2.81,
       "oeR": 0.65
     },
-    "offen": 15,
+    "offen": 16,
     "gruppen": {
       "turbo": {
         "anzahl": 131,
@@ -13020,5 +13102,7 @@
     "claude": 2,
     "autopilot": 0
   },
-  "hinweise": []
+  "hinweise": [
+    "Time Machine BERKSHIRE HATHAWAY INC-CL B: HTTP 404 bei api.twelvedata.com"
+  ]
 }
