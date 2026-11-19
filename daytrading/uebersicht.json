@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T14:23:33.691Z",
+  "stand": "2026-11-19T14:39:12.732Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -715,6 +715,47 @@
         "stueck": 14.61326,
         "kurswert": 1000
       }
+    },
+    {
+      "id": "2026-11-19-scan-infineon-technologies-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "INFINEON TECHNOLOGIES AG",
+      "isin": "DE0006231004",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 60.6,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T14:15:00.000Z",
+        "kurs": 50.44,
+        "level": 50.52,
+        "spanne": {
+          "hoch": 51.28,
+          "tief": 50.52
+        },
+        "richtung": "short"
+      },
+      "stop": 50.9,
+      "ziel": 49.7,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T14:15:00.000Z",
+        "basisKurs": 50.5,
+        "kurs": 10.125,
+        "stueck": 98,
+        "kurswert": 992.25
+      }
     }
   ],
   "trades": [
@@ -1051,6 +1092,47 @@
         "kurs": 68.431,
         "stueck": 14.61326,
         "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-19-scan-infineon-technologies-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "INFINEON TECHNOLOGIES AG",
+      "isin": "DE0006231004",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 60.6,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T14:15:00.000Z",
+        "kurs": 50.44,
+        "level": 50.52,
+        "spanne": {
+          "hoch": 51.28,
+          "tief": 50.52
+        },
+        "richtung": "short"
+      },
+      "stop": 50.9,
+      "ziel": 49.7,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T14:15:00.000Z",
+        "basisKurs": 50.5,
+        "kurs": 10.125,
+        "stueck": 98,
+        "kurswert": 992.25
       }
     },
     {
@@ -10703,7 +10785,7 @@
       "oeNettoProzent": 1.13,
       "oeR": 0.64
     },
-    "offen": 7,
+    "offen": 8,
     "gruppen": {
       "turbo": {
         "anzahl": 124,
