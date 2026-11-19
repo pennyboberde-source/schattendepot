@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-19T14:18:40.845Z",
-  "anzahl": 207,
+  "stand": "2026-11-19T15:20:23.467Z",
+  "anzahl": 218,
   "signale": [
     {
       "id": "verwaesserung:CNTHP:2026-11-17",
@@ -2642,9 +2642,10 @@
       "t": "INTC",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.3,
+      "st": 0.41,
       "q": [
-        "CNBC Top News"
+        "CNBC Top News",
+        "MarketWatch"
       ],
       "z": "2026-11-19T01:05:25.000Z"
     },
@@ -2754,6 +2755,149 @@
         "Upbit"
       ],
       "z": "2026-11-19T14:18:40.845Z"
+    },
+    {
+      "id": "handelsstopp:TDTH:2026-11-19",
+      "s": "T:TDTH",
+      "n": "Trident Dgtl Tch Hld Cl B Ords",
+      "t": "TDTH",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:POAS:2026-11-19",
+      "s": "T:POAS",
+      "n": "Phaos Technology Holdings (Cayman) Limited Class A Ordinary ",
+      "t": "POAS",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.6,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:BRBI:2026-11-19",
+      "s": "T:BRBI",
+      "n": "BRBI BR Partners SA ADS",
+      "t": "BRBI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RILYL:2026-11-19",
+      "s": "T:RILYL",
+      "n": "BRC Grp Dep Sh 7.375 Pref Stk",
+      "t": "RILYL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:INSM:2026-11-19",
+      "s": "T:INSM",
+      "n": "Insmed Incorporated",
+      "t": "INSM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ZYN:2026-11-19",
+      "s": "T:ZYN",
+      "n": "PTL LTD Ord A",
+      "t": "ZYN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:CUE:2026-11-19",
+      "s": "T:CUE",
+      "n": "Cue Biopharma, Inc. CM",
+      "t": "CUE",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:SFWL:2026-11-19",
+      "s": "T:SFWL",
+      "n": "Shengfeng Development Os",
+      "t": "SFWL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ZOAR:2026-11-19",
+      "s": "T:ZOAR",
+      "n": "Zoar Limited Ordinary Shares",
+      "t": "ZOAR",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:FHIL:2026-11-19",
+      "s": "T:FHIL",
+      "n": "Federated Hermes International Leaders ETF",
+      "t": "FHIL",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RYOJ:2026-11-19",
+      "s": "T:RYOJ",
+      "n": "rYojbaba Co Cmn Shs",
+      "t": "RYOJ",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-19T00:00:00.000Z"
     }
   ]
 }
