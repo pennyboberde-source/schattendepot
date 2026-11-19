@@ -37,7 +37,7 @@ export interface KennzahlEingaben {
   tracking: TrackingEintrag[];
   statistik?: Partial<Statistik> | null;
   depot?: { netto?: number; etfNetto?: number; trefferquote?: number | null } | null;
-  daytrading?: Pick<DtUebersicht, 'gesamt'> | null;
+  daytrading?: Pick<DtUebersicht, 'gesamt' | 'seitAnfang'> | null;
   quellen?: { zuletztOk?: string; signale?: number }[];
   signaleHeute?: number | null;
   zeugnisNote?: number | null;
@@ -58,9 +58,9 @@ export function kennzahlenHeute(e: KennzahlEingaben): Record<string, number | nu
     'depot.vsEtf': zahl(e.depot?.netto) !== null && zahl(e.depot?.etfNetto) !== null ? Math.round((e.depot!.netto! - e.depot!.etfNetto!) * 100) / 100 : null,
     'depot.trefferquote': zahl(e.depot?.trefferquote),
     'autopilot.oeNetto': zahl(e.statistik?.nachHerkunft?.autopilot?.oeNetto),
-    'daytrading.netto': zahl(e.daytrading?.gesamt?.netto),
-    'daytrading.quote': zahl(e.daytrading?.gesamt?.quote),
-    'daytrading.oeR': zahl(e.daytrading?.gesamt?.oeR),
+    'daytrading.netto': zahl((e.daytrading?.seitAnfang ?? e.daytrading?.gesamt)?.netto),
+    'daytrading.quote': zahl((e.daytrading?.seitAnfang ?? e.daytrading?.gesamt)?.quote),
+    'daytrading.oeR': zahl((e.daytrading?.seitAnfang ?? e.daytrading?.gesamt)?.oeR),
     'prognose.quote1T': zahl(e.statistik?.prognose?.quote1T),
     'quellen.ok': e.quellen ? e.quellen.filter((q) => q.zuletztOk && Date.parse(q.zuletztOk) >= vor26h).length : null,
     'quellen.ohneSignale': e.quellen ? e.quellen.filter((q) => q.signale === 0).length : null,

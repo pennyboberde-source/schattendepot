@@ -1,10 +1,11 @@
 import einstellungen from '../../config/einstellungen.json';
 import gebuehren from '../../config/gebuehren-smartbroker.json';
 import steuern from '../../config/steuern.json';
-import { prozent } from '../../core/geld.ts';
+import { euro, prozent } from '../../core/geld.ts';
 import { steuersatz, type SteuerConfig } from '../../core/steuern.ts';
 import { PFLICHTHINWEIS } from '../../core/typen.ts';
-import { kalenderUrl, ladeJson } from '../lib/daten';
+import { kalenderUrl, ladeJson, useDaten, type Kennzahlen } from '../lib/daten';
+import { datumKurz } from '../lib/zeit';
 import { fehlerMeldenUrl, konfigBearbeitenUrl } from '../lib/links';
 import { useEinstellung } from '../lib/lokal';
 import { Karte } from '../ui';
@@ -84,6 +85,8 @@ export function EinstellungenView() {
         </dl>
       </Karte>
 
+      <SeitAnfangKarte />
+
       <Karte titel="Kalender-Abo">
         <p>Verkaufstermine als abonnierter Kalender – aktualisiert sich bei Änderungen von selbst.</p>
         <div class="knopfreihe">
@@ -125,4 +128,31 @@ async function exportieren() {
   a.download = `schattendepot-export-${new Date().toISOString().slice(0, 10)}.json`;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+/** Werte seit Anfang (Neustart der sichtbaren Zähler am 19.11.2026 – Nutzer: Zähler neu, Anfangswerte bleiben hier stehen) */
+function SeitAnfangKarte() {
+  const k = useDaten<Kennzahlen>('kennzahlen.json');
+  const d = useDaten<{ zaehlerAb?: string; seitAnfang?: { anzahl: number; netto: number; brutto: number; quote: number } }>('daytrading/uebersicht.json');
+  const a = k.status === 'ok' ? k.daten.seitAnfang : undefined;
+  const dt = d.status === 'ok' ? d.daten.seitAnfang : undefined;
+  if (!a && !dt) return null;
+  const ab = (k.status === 'ok' && k.daten.zaehlerAb) || (d.status === 'ok' && d.daten.zaehlerAb) || '';
+  return (
+    <Karte titel="Werte seit Anfang (vor dem Neustart)">
+      <div data-testid="seit-anfang">
+        <p class="klein">Die sichtbaren Zähler laufen seit {ab ? datumKurz(ab) : '–'} neu, weil das Programm grundlegend erneuert wurde. Hier stehen die Werte seit dem ersten Tag (21.10.2026).</p>
+        {a && (
+          <p>
+            Depot: {euro(a.netto, { vorzeichen: true })} nach Gebühren aus {a.anzahlGeschlossen} Orders · Trefferquote {a.trefferquote === null ? '–' : prozent(a.trefferquote, { vorzeichen: false, stellen: 0 })} · gleiche Orders im MSCI World {euro(a.etfNetto, { vorzeichen: true })}
+          </p>
+        )}
+        {dt && (
+          <p>
+            Daytrading: {euro(dt.netto, { vorzeichen: true })} nach Gebühren aus {dt.anzahl} Trades · vor Gebühren {euro(dt.brutto, { vorzeichen: true })} · Treffer {prozent(dt.quote, { vorzeichen: false })}
+          </p>
+        )}
+      </div>
+    </Karte>
+  );
 }

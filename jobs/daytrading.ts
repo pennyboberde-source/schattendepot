@@ -410,7 +410,7 @@ if (dt.timeMachine.aktiv && tdKey) {
 // --- Schreiben ---
 const geschrieben = anhaengen(alleEreignisse, neueEreignisse);
 const nachher = tradesAusEreignissen([...alleEreignisse, ...geschrieben]);
-const uebersicht = uebersichtBerechnen(nachher, datum, jetzt.toISOString(), leseJson('lernen/marktphasen.json', {}), dt.virtuell);
+const uebersicht = uebersichtBerechnen(nachher, datum, jetzt.toISOString(), leseJson('lernen/marktphasen.json', {}), dt.virtuell, cfg.einstellungen.zaehlerAb);
 schreibeJson('daytrading/uebersicht.json', {
   ...uebersicht,
   varianten,

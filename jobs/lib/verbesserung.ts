@@ -80,7 +80,8 @@ export async function verbesserungTaeglich(jetzt: Date, opt: { ohneNetz?: boolea
     heute,
     tracking,
     statistik,
-    depot: leseJson<{ netto?: number; etfNetto?: number; trefferquote?: number | null } | null>('kennzahlen.json', null),
+    // Zeitreihe ohne Sprung beim Neustart der sichtbaren Zähler (19.11.2026): Werte seit Anfang, falls vorhanden
+    depot: ((k) => k?.seitAnfang ?? k)(leseJson<({ netto?: number; etfNetto?: number; trefferquote?: number | null; seitAnfang?: { netto?: number; etfNetto?: number; trefferquote?: number | null } }) | null>('kennzahlen.json', null)),
     daytrading: leseJson<DtUebersicht | null>('daytrading/uebersicht.json', null),
     quellen,
     signaleHeute: leseJson<{ anzahl?: number } | null>(`signale/tag/${heute}.json`, null)?.anzahl ?? null,

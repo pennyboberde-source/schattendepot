@@ -40,6 +40,10 @@ export interface DtUebersicht {
   virtuell?: { ab?: string; gesamt: DtGruppe; heute: DtGruppe; offen: number; gruppen: Record<string, DtGruppe> };
   /** sichtbare Trades seit der Umstellung – zeigt, was der sichtbare Rest allein bringt */
   seitUmstellung?: { ab: string; gruppe: DtGruppe };
+  /** Neustart der sichtbaren Zähler (19.11.2026): gesamt und kurve zählen nur Trades ab diesem Tag */
+  zaehlerAb?: string;
+  /** sichtbare Trades seit Anfang (ohne virtuelle) */
+  seitAnfang?: DtGruppe;
 }
 
 export function dtGruppe(l: DtTrade[]): DtGruppe {
@@ -126,7 +130,7 @@ const STUFEN: [string, number, number][] = [
   ['60–100 %', 60, 100],
 ];
 
-export function uebersichtBerechnen(alleTrades: DtTrade[], heute: string, stand: string, phasen: PhasenVerlauf = {}, regel?: VirtuellRegel): DtUebersicht {
+export function uebersichtBerechnen(alleTrades: DtTrade[], heute: string, stand: string, phasen: PhasenVerlauf = {}, regel?: VirtuellRegel, zaehlerAb?: string): DtUebersicht {
   // Sichtbare Kennzahlen ohne die nur virtuell mitgeführten Trades; die Listen zeigen beide (mit Kennzeichen)
   const virt = (t: DtTrade) => istVirtuell(t, regel);
   const markiert = (t: DtTrade): DtTrade => (virt(t) && !t.virtuell ? { ...t, virtuell: true } : t);
@@ -136,8 +140,10 @@ export function uebersichtBerechnen(alleTrades: DtTrade[], heute: string, stand:
   const zu = neuesteZuerst(alle);
   const zuAlle = neuesteZuerst(alleTrades);
   const vZu = neuesteZuerst(virtuelle);
+  // sichtbare Gesamtwerte und Kurve erst ab dem Neustart der Zähler
+  const zuSicht = zaehlerAb ? zu.filter((t) => t.datum >= zaehlerAb) : zu;
   const tage = new Map<string, DtTrade[]>();
-  for (const t of [...zu].reverse()) tage.set(t.datum, [...(tage.get(t.datum) ?? []), t]);
+  for (const t of [...zuSicht].reverse()) tage.set(t.datum, [...(tage.get(t.datum) ?? []), t]);
   let summe = { netto: 0, brutto: 0, nettoTR: 0 };
   const kurve = [...tage.entries()].map(([datum, l]) => {
     const g = dtGruppe(l);
@@ -148,8 +154,9 @@ export function uebersichtBerechnen(alleTrades: DtTrade[], heute: string, stand:
   return {
     stand,
     heute: { datum: heute, gruppe: dtGruppe(zu.filter((t) => t.datum === heute)), offen: alle.filter((t) => !t.ausstieg).length },
-    gesamt: dtGruppe(zu),
+    gesamt: dtGruppe(zuSicht),
     kurve,
+    ...(zaehlerAb ? { zaehlerAb, seitAnfang: dtGruppe(zu) } : {}),
     nachHerkunft: gruppiert(zu, (t) => t.herkunft),
     nachMarkt: gruppiert(zu, (t) => t.markt),
     nachSetup: gruppiert(zu, (t) => `${t.setup}_${t.ausloeser.richtung ?? t.richtung}`),

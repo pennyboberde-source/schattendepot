@@ -54,6 +54,11 @@ describe('Smartbroker+ als Depot-Modell', () => {
     expect(o.etfVergleich!.netto).toBeGreaterThan(-20);
     // mit dem alten Modell ergibt sich die ursprüngliche Buchung
     expect(ableiten(ev, {}, { ...cfg, gebuehren: prozent }, 'x').kennzahlen.netto).toBe(8.2);
+    // Neustart der sichtbaren Zähler (Nutzer 19.11.2026): die Order von vor dem Neustart zählt nur noch „seit Anfang“
+    const neu = ableiten(ev, {}, { ...cfg, gebuehren: sb, einstellungen: { orderBetrag: 1000, zaehlerAb: '2026-10-21' } }, 'x').kennzahlen;
+    expect(neu).toMatchObject({ zaehlerAb: '2026-10-21', netto: 0, anzahlGeschlossen: 0, etfNetto: 0, trefferquote: null, kurve: [] });
+    expect(neu.seitAnfang).toMatchObject({ netto: 30, anzahlGeschlossen: 1 });
+    expect(ableiten(ev, {}, { ...cfg, gebuehren: sb, einstellungen: { orderBetrag: 1000, zaehlerAb: '2026-10-20' } }, 'x').kennzahlen.netto).toBe(30);
   });
 });
 

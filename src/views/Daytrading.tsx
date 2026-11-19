@@ -48,7 +48,7 @@ function Inhalt({ d }: { d: Daten }) {
           </span>
         </div>
         <div class="kennzahl">
-          <span class="kennzahl-label">Gesamt nach Gebühren (Smartbroker+)</span>
+          <span class="kennzahl-label">Gesamt{d.zaehlerAb ? ` seit ${datumKurz(d.zaehlerAb)}` : ''} nach Gebühren (Smartbroker+)</span>
           <Betrag wert={g.netto} />
           <span class="klein">
             {g.anzahl} Trades · Ø {g.oeR.toLocaleString('de-DE')} R

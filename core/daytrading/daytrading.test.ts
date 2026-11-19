@@ -167,6 +167,13 @@ describe('Auswertung und Abendbilanz', () => {
     expect(a.text).toMatch(/Claude/);
     expect(a.text).toMatch(/Trade Republic wäre/);
     expect(a.text).not.toMatch(/Consorsbank/);
+    // Neustart der sichtbaren Zähler (Nutzer 19.11.2026): Trades vor dem Tag zählen nur noch „seit Anfang“
+    const neu = uebersichtBerechnen(trades, DATUM, 'x', {}, undefined, '2099-01-01');
+    expect(neu.gesamt.anzahl).toBe(0);
+    expect(neu.kurve).toEqual([]);
+    expect(neu.seitAnfang!.anzahl).toBe(1);
+    expect(neu.zaehlerAb).toBe('2099-01-01');
+    expect(uebersichtBerechnen(trades, DATUM, 'x', {}, undefined, DATUM).gesamt.anzahl).toBe(1);
   });
 });
 

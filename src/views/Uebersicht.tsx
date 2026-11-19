@@ -24,7 +24,10 @@ export function UebersichtView() {
         kinder={(k) => (
           <div class="raster-kennzahlen">
             <div class="kennzahl">
-              <span class="kennzahl-label">Schattendepot {nachSteuern ? 'nach Steuern' : 'nach Gebühren (Smartbroker+)'}</span>
+              <span class="kennzahl-label">
+                Schattendepot {nachSteuern ? 'nach Steuern' : 'nach Gebühren (Smartbroker+)'}
+                {k.zaehlerAb ? ` seit ${datumKurz(k.zaehlerAb)}` : ''}
+              </span>
               <Betrag wert={nachSteuern ? k.nachSteuern : k.netto} />
             </div>
             <div class="kennzahl">

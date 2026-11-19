@@ -143,6 +143,10 @@ export interface Kennzahlen {
   trefferquote: number | null;
   etfNetto: number;
   kurve: { datum: string; depot: number; etf: number }[];
+  /** Neustart der sichtbaren Zähler (19.11.2026): Werte oben zählen nur Orders mit Kauf ab diesem Tag (Berlin) */
+  zaehlerAb?: string;
+  /** dieselben Kennzahlen über alle Orders seit Anfang */
+  seitAnfang?: Omit<Kennzahlen, 'stand' | 'zaehlerAb' | 'seitAnfang'>;
 }
 
 export interface Abgeleitet {
@@ -176,7 +180,7 @@ export function ohneTagesstand(o: Order): Order {
 export function ableiten(
   ereignisse: Ereignis[],
   kurse: Record<string, Kurs>,
-  cfg: { steuern: SteuerConfig; gebuehren: GebuehrenConfig; spreads: SpreadConfig; einstellungen?: { orderBetrag: number } },
+  cfg: { steuern: SteuerConfig; gebuehren: GebuehrenConfig; spreads: SpreadConfig; einstellungen?: { orderBetrag: number; zaehlerAb?: string } },
   stand: string,
 ): Abgeleitet {
   const orders = gebuehrenUmrechnen(ordersAusEreignissen(ereignisse), cfg.gebuehren, { spreads: cfg.spreads, orderBetrag: cfg.einstellungen?.orderBetrag ?? 1000 });
@@ -194,32 +198,49 @@ export function ableiten(
   for (const o of geschlossen) Object.assign(o.ergebnis!, steuer.proFall[o.id]);
 
   const offen = orders.filter((o) => o.status === 'offen');
-  let unrealisiert = 0;
   for (const o of offen) {
     const k = kurse[o.id];
     if (k) o.letzterKurs = k;
-    if (!k || !o.kauf) continue;
-    const { geld } = geldBrief(k, o.plan.wertpapier.spreadKlasse, cfg.spreads);
-    const teile = (o.teilverkaeufe ?? []).reduce((a, t) => a + t.betrag, 0);
-    const rest = restStueck(o);
-    unrealisiert += (rest > 0 ? verkaufen(rest, geld, cfg.gebuehren, depotEntgeltOpt(o.plan)).betrag : 0) + teile - o.kauf.betrag;
   }
-
   const nachDatum = [...geschlossen].sort((a, b) => a.verkauf!.zeit.localeCompare(b.verkauf!.zeit));
-  const kurve: Kennzahlen['kurve'] = [];
-  let depot = 0;
-  let etf = 0;
-  for (const o of nachDatum) {
-    depot += o.ergebnis!.netto;
-    etf += o.etfVergleich?.netto ?? 0;
-    const datum = berlin(new Date(o.verkauf!.zeit)).datum;
-    const letzter = kurve[kurve.length - 1];
-    if (letzter && letzter.datum === datum) Object.assign(letzter, { depot: runde(depot), etf: runde(etf) });
-    else kurve.push({ datum, depot: runde(depot), etf: runde(etf) });
-  }
-  if (kurve.length > 0) kurve.unshift({ datum: berlin(new Date(nachDatum[0].kauf!.zeit)).datum, depot: 0, etf: 0 });
+  const ab = cfg.einstellungen?.zaehlerAb;
+  const abDa = (o: Order) => !ab || berlin(new Date(o.kauf?.zeit ?? o.verkauf?.zeit ?? stand)).datum >= ab;
+  const zaehlen = (geschl: Order[], off: Order[]): Omit<Kennzahlen, 'stand' | 'zaehlerAb' | 'seitAnfang'> => {
+    let unrealisiert = 0;
+    for (const o of off) {
+      const k = o.letzterKurs;
+      if (!k || !o.kauf) continue;
+      const { geld } = geldBrief(k, o.plan.wertpapier.spreadKlasse, cfg.spreads);
+      const teile = (o.teilverkaeufe ?? []).reduce((a, t) => a + t.betrag, 0);
+      const rest = restStueck(o);
+      unrealisiert += (rest > 0 ? verkaufen(rest, geld, cfg.gebuehren, depotEntgeltOpt(o.plan)).betrag : 0) + teile - o.kauf.betrag;
+    }
+    const kurve: Kennzahlen['kurve'] = [];
+    let depot = 0;
+    let etf = 0;
+    for (const o of geschl) {
+      depot += o.ergebnis!.netto;
+      etf += o.etfVergleich?.netto ?? 0;
+      const datum = berlin(new Date(o.verkauf!.zeit)).datum;
+      const letzter = kurve[kurve.length - 1];
+      if (letzter && letzter.datum === datum) Object.assign(letzter, { depot: runde(depot), etf: runde(etf) });
+      else kurve.push({ datum, depot: runde(depot), etf: runde(etf) });
+    }
+    if (kurve.length > 0) kurve.unshift({ datum: berlin(new Date(geschl[0].kauf!.zeit)).datum, depot: 0, etf: 0 });
+    const gewinner = geschl.filter((o) => o.ergebnis!.netto > 0).length;
+    return {
+      anzahlOffen: off.length,
+      anzahlGeschlossen: geschl.length,
+      netto: runde(geschl.reduce((s, o) => s + o.ergebnis!.netto, 0)),
+      nachSteuern: runde(geschl.reduce((s, o) => s + o.ergebnis!.nachSteuern, 0)),
+      unrealisiert: runde(unrealisiert),
+      trefferquote: geschl.length ? runde((gewinner / geschl.length) * 100, 1) : null,
+      etfNetto: runde(etf),
+      kurve,
+    };
+  };
+  const sichtbar = zaehlen(nachDatum.filter(abDa), offen.filter(abDa));
 
-  const gewinner = geschlossen.filter((o) => o.ergebnis!.netto > 0).length;
   return {
     orders,
     positionen: {
@@ -228,16 +249,6 @@ export function ableiten(
       vorgemerkt: orders.filter((o) => o.status === 'vorgemerkt'),
     },
     abgeschlossen: { stand, orders: [...nachDatum].reverse() },
-    kennzahlen: {
-      stand,
-      anzahlOffen: offen.length,
-      anzahlGeschlossen: geschlossen.length,
-      netto: runde(geschlossen.reduce((s, o) => s + o.ergebnis!.netto, 0)),
-      nachSteuern: runde(geschlossen.reduce((s, o) => s + o.ergebnis!.nachSteuern, 0)),
-      unrealisiert: runde(unrealisiert),
-      trefferquote: geschlossen.length ? runde((gewinner / geschlossen.length) * 100, 1) : null,
-      etfNetto: runde(etf),
-      kurve,
-    },
+    kennzahlen: { stand, ...sichtbar, ...(ab ? { zaehlerAb: ab, seitAnfang: zaehlen(nachDatum, offen) } : {}) },
   };
 }

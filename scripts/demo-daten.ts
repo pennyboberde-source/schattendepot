@@ -103,6 +103,8 @@ schreibe('positionen.json', { stand, offen: [offen], vorgemerkt: [vorgemerkt] })
 schreibe('abgeschlossen.json', { stand, orders: abgeschlossen });
 schreibe('kennzahlen.json', {
   stand,
+  zaehlerAb: '2026-11-19',
+  seitAnfang: { anzahlOffen: 1, anzahlGeschlossen: 21, netto: -195.75, nachSteuern: -195.75, unrealisiert: 0, trefferquote: 47.6, etfNetto: 39.5, kurve: [] },
   anzahlOffen: 1,
   anzahlGeschlossen: abgeschlossen.length,
   netto: Math.round(netto * 100) / 100,

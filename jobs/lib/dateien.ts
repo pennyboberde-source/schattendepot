@@ -51,6 +51,8 @@ function config<T>(datei: string): T {
 }
 
 export interface Einstellungen {
+  /** Neustart der sichtbaren Zähler (Berliner Datum, 19.11.2026) */
+  zaehlerAb?: string;
   orderBetrag: number;
   /** Berichte vor diesem Zeitpunkt dürfen einmal neu geschrieben werden */
   berichteNeuVor?: string;

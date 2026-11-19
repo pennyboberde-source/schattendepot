@@ -136,6 +136,8 @@ test('Daytrading: eigener Bereich mit Kennzahlen, Herkunft und Trades', async ({
 test('Einstellungen: Push-Hinweis außerhalb der Home-Bildschirm-App', async ({ page }) => {
   await page.goto('/#/einstellungen');
   await expect(page.getByText('Zum Home-Bildschirm')).toBeVisible();
+  // Neustart der sichtbaren Zähler (19.11.2026): Werte seit Anfang bleiben in den Einstellungen sichtbar
+  await expect(page.getByTestId('seit-anfang')).toContainText('Depot: −195,75');
 });
 
 test('Keine horizontale Scrollleiste', async ({ page }) => {

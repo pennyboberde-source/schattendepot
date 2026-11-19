@@ -23,6 +23,9 @@ export interface Kennzahlen {
   trefferquote: number | null;
   etfNetto: number;
   kurve: { datum: string; depot: number; etf: number }[];
+  /** Neustart der sichtbaren Zähler (19.11.2026) – Werte oben zählen ab diesem Tag */
+  zaehlerAb?: string;
+  seitAnfang?: { anzahlOffen: number; anzahlGeschlossen: number; netto: number; nachSteuern: number; unrealisiert?: number; trefferquote: number | null; etfNetto: number };
 }
 
 export interface Systemstatus {
