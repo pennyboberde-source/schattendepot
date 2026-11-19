@@ -1,28 +1,28 @@
 {
-  "stand": "2026-11-19T10:54:16.267Z",
+  "stand": "2026-11-19T11:09:54.504Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
-      "anzahl": 1,
+      "anzahl": 2,
       "treffer": 0,
       "quote": 0,
-      "netto": -3.68,
-      "brutto": -3.68,
-      "nettoTR": -5.68,
-      "oeNettoProzent": -0.38,
-      "oeR": 2.1
+      "netto": -10.03,
+      "brutto": -10.03,
+      "nettoTR": -14.03,
+      "oeNettoProzent": -0.52,
+      "oeR": 0.55
     },
-    "offen": 3
+    "offen": 2
   },
   "gesamt": {
-    "anzahl": 569,
+    "anzahl": 570,
     "treffer": 179,
-    "quote": 31.5,
-    "netto": -4429.22,
-    "brutto": -4272.22,
-    "nettoTR": -5410.22,
+    "quote": 31.4,
+    "netto": -4435.57,
+    "brutto": -4278.57,
+    "nettoTR": -5418.57,
     "oeNettoProzent": -0.8,
-    "oeR": -0.03
+    "oeR": -0.04
   },
   "kurve": [
     {
@@ -147,19 +147,19 @@
     },
     {
       "datum": "2026-11-19",
-      "netto": -4429.22,
-      "brutto": -4272.22,
-      "nettoTR": -5410.22
+      "netto": -4435.57,
+      "brutto": -4278.57,
+      "nettoTR": -5418.57
     }
   ],
   "nachHerkunft": {
     "code_scan": {
-      "anzahl": 558,
+      "anzahl": 559,
       "treffer": 176,
       "quote": 31.5,
-      "netto": -4297.8,
-      "brutto": -4140.8,
-      "nettoTR": -5256.8,
+      "netto": -4304.15,
+      "brutto": -4147.15,
+      "nettoTR": -5265.15,
       "oeNettoProzent": -0.79,
       "oeR": -0.03
     },
@@ -176,12 +176,12 @@
   },
   "nachMarkt": {
     "eu": {
-      "anzahl": 318,
+      "anzahl": 319,
       "treffer": 112,
-      "quote": 35.2,
-      "netto": -2075.89,
-      "brutto": -2075.89,
-      "nettoTR": -2711.89,
+      "quote": 35.1,
+      "netto": -2082.24,
+      "brutto": -2082.24,
+      "nettoTR": -2720.24,
       "oeNettoProzent": -0.67,
       "oeR": 0.03
     },
@@ -208,12 +208,12 @@
   },
   "nachSetup": {
     "orb_long": {
-      "anzahl": 389,
+      "anzahl": 390,
       "treffer": 122,
-      "quote": 31.4,
-      "netto": -2011.89,
-      "brutto": -1886.89,
-      "nettoTR": -2664.89,
+      "quote": 31.3,
+      "netto": -2018.24,
+      "brutto": -1893.24,
+      "nettoTR": -2673.24,
       "oeNettoProzent": -0.55,
       "oeR": 0.03
     },
@@ -240,12 +240,12 @@
   },
   "nachInstrument": {
     "aktie": {
-      "anzahl": 305,
+      "anzahl": 306,
       "treffer": 109,
-      "quote": 35.7,
-      "netto": -1149.35,
-      "brutto": -1148.35,
-      "nettoTR": -1758.35,
+      "quote": 35.6,
+      "netto": -1155.7,
+      "brutto": -1154.7,
+      "nettoTR": -1766.7,
       "oeNettoProzent": -0.42,
       "oeR": 0.08
     },
@@ -272,12 +272,12 @@
   },
   "nachRisiko": {
     "skill_filter": {
-      "anzahl": 353,
+      "anzahl": 354,
       "treffer": 130,
-      "quote": 36.8,
-      "netto": -2017.99,
-      "brutto": -1961.99,
-      "nettoTR": -2667.99,
+      "quote": 36.7,
+      "netto": -2024.34,
+      "brutto": -1968.34,
+      "nettoTR": -2676.34,
       "oeNettoProzent": -0.59,
       "oeR": 0.01
     },
@@ -294,13 +294,13 @@
   },
   "nachAusstieg": {
     "stop": {
-      "anzahl": 312,
+      "anzahl": 313,
       "treffer": 0,
       "quote": 0,
-      "netto": -10180.9,
-      "brutto": -10085.9,
-      "nettoTR": -10709.9,
-      "oeNettoProzent": -3.34,
+      "netto": -10187.25,
+      "brutto": -10092.25,
+      "nettoTR": -10718.25,
+      "oeNettoProzent": -3.33,
       "oeR": -1.05
     },
     "ziel": {
@@ -326,14 +326,14 @@
   },
   "nachPhase": {
     "seitwaerts_nervoes": {
-      "anzahl": 255,
+      "anzahl": 256,
       "treffer": 87,
-      "quote": 34.1,
-      "netto": -1540.78,
-      "brutto": -1539.78,
-      "nettoTR": -2049.78,
+      "quote": 34,
+      "netto": -1547.13,
+      "brutto": -1546.13,
+      "nettoTR": -2058.13,
       "oeNettoProzent": -0.64,
-      "oeR": -0.03
+      "oeR": -0.04
     },
     "seitwaerts_ruhig": {
       "anzahl": 198,
@@ -530,39 +530,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-bayer-ag-reg",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "BAYER AG-REG",
-      "isin": "DE000BAY0017",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:50:00.000Z",
-        "kurs": 56.5,
-        "level": 56.4,
-        "spanne": {
-          "hoch": 56.4,
-          "tief": 56.18
-        },
-        "richtung": "long"
-      },
-      "stop": 56.29,
-      "ziel": 57.16,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-19T08:55:00.000Z",
-        "basisKurs": 56.58,
-        "kurs": 56.622,
-        "stueck": 17,
-        "kurswert": 962.57
-      }
-    },
-    {
       "id": "2026-11-19-scan-freenet-ag",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -683,47 +650,6 @@
         "kurs": 1.5819,
         "stueck": 632,
         "kurswert": 999.76
-      }
-    },
-    {
-      "id": "2026-11-19-scan-siemens-energy-ag",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SIEMENS ENERGY AG",
-      "isin": "DE000ENER6Y0",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 155.69,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "kurs": 129.84,
-        "level": 130,
-        "spanne": {
-          "hoch": 131.18,
-          "tief": 130
-        },
-        "richtung": "short"
-      },
-      "stop": 130.59,
-      "ziel": 128.04,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "basisKurs": 129.74,
-        "kurs": 2.6015,
-        "stueck": 384,
-        "kurswert": 998.98
       }
     },
     {
@@ -918,39 +844,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-bayer-ag-reg",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "aktie",
-      "name": "BAYER AG-REG",
-      "isin": "DE000BAY0017",
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T08:50:00.000Z",
-        "kurs": 56.5,
-        "level": 56.4,
-        "spanne": {
-          "hoch": 56.4,
-          "tief": 56.18
-        },
-        "richtung": "long"
-      },
-      "stop": 56.29,
-      "ziel": 57.16,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "einstieg": {
-        "zeit": "2026-11-19T08:55:00.000Z",
-        "basisKurs": 56.58,
-        "kurs": 56.622,
-        "stueck": 17,
-        "kurswert": 962.57
-      }
-    },
-    {
       "id": "2026-11-19-scan-freenet-ag",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -1074,47 +967,6 @@
       }
     },
     {
-      "id": "2026-11-19-scan-siemens-energy-ag",
-      "datum": "2026-11-19",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SIEMENS ENERGY AG",
-      "isin": "DE000ENER6Y0",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 155.69,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "kurs": 129.84,
-        "level": 130,
-        "spanne": {
-          "hoch": 131.18,
-          "tief": 130
-        },
-        "richtung": "short"
-      },
-      "stop": 130.59,
-      "ziel": 128.04,
-      "zielR": 2,
-      "flatBis": "2026-11-19T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-19T09:15:00.000Z",
-        "basisKurs": 129.74,
-        "kurs": 2.6015,
-        "stueck": 384,
-        "kurswert": 998.98
-      }
-    },
-    {
       "id": "2026-11-19-scan-vonovia-se",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -1153,6 +1005,118 @@
         "kurs": 3.4135,
         "stueck": 292,
         "kurswert": 996.74
+      }
+    },
+    {
+      "id": "2026-11-19-scan-siemens-energy-ag",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SIEMENS ENERGY AG",
+      "isin": "DE000ENER6Y0",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 155.69,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "kurs": 129.84,
+        "level": 130,
+        "spanne": {
+          "hoch": 131.18,
+          "tief": 130
+        },
+        "richtung": "short"
+      },
+      "stop": 130.59,
+      "ziel": 128.04,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 129.74,
+        "kurs": 2.6015,
+        "stueck": 384,
+        "kurswert": 998.98
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T11:00:00.000Z",
+        "basisKurs": 130.59,
+        "kurs": 2.5037,
+        "kurswert": 961.42,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -37.56,
+        "bruttoProzent": -3.76,
+        "netto": -37.56,
+        "nettoProzent": -3.76,
+        "nettoTR": -39.56,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-19-scan-bayer-ag-reg",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "BAYER AG-REG",
+      "isin": "DE000BAY0017",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T08:50:00.000Z",
+        "kurs": 56.5,
+        "level": 56.4,
+        "spanne": {
+          "hoch": 56.4,
+          "tief": 56.18
+        },
+        "richtung": "long"
+      },
+      "stop": 56.29,
+      "ziel": 57.16,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-19T08:55:00.000Z",
+        "basisKurs": 56.58,
+        "kurs": 56.622,
+        "stueck": 17,
+        "kurswert": 962.57
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T10:50:00.000Z",
+        "basisKurs": 56.29,
+        "kurs": 56.248,
+        "kurswert": 956.22,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -6.35,
+        "bruttoProzent": -0.66,
+        "netto": -6.35,
+        "nettoProzent": -0.66,
+        "nettoTR": -8.35,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10554,46 +10518,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 155,
+      "anzahl": 156,
       "treffer": 68,
-      "quote": 43.9,
-      "netto": -760.83,
-      "brutto": -692.83,
-      "nettoTR": -1001.83,
-      "oeNettoProzent": -0.5,
-      "oeR": 0.29
+      "quote": 43.6,
+      "netto": -798.39,
+      "brutto": -730.39,
+      "nettoTR": -1041.39,
+      "oeNettoProzent": -0.52,
+      "oeR": 0.28
     },
     "heute": {
-      "anzahl": 6,
+      "anzahl": 7,
       "treffer": 2,
-      "quote": 33.3,
-      "netto": 46.13,
-      "brutto": 54.13,
-      "nettoTR": 42.13,
-      "oeNettoProzent": 0.77,
-      "oeR": 0.48
+      "quote": 28.6,
+      "netto": 8.57,
+      "brutto": 16.57,
+      "nettoTR": 2.57,
+      "oeNettoProzent": 0.12,
+      "oeR": 0.27
     },
-    "offen": 7,
+    "offen": 6,
     "gruppen": {
       "turbo": {
-        "anzahl": 121,
+        "anzahl": 122,
         "treffer": 58,
-        "quote": 47.9,
-        "netto": -500.51,
-        "brutto": -500.51,
-        "nettoTR": -741.51,
-        "oeNettoProzent": -0.42,
-        "oeR": 0.26
+        "quote": 47.5,
+        "netto": -538.07,
+        "brutto": -538.07,
+        "nettoTR": -781.07,
+        "oeNettoProzent": -0.45,
+        "oeR": 0.25
       },
       "short": {
-        "anzahl": 121,
+        "anzahl": 122,
         "treffer": 58,
-        "quote": 47.9,
-        "netto": -500.51,
-        "brutto": -500.51,
-        "nettoTR": -741.51,
-        "oeNettoProzent": -0.42,
-        "oeR": 0.26
+        "quote": 47.5,
+        "netto": -538.07,
+        "brutto": -538.07,
+        "nettoTR": -781.07,
+        "oeNettoProzent": -0.45,
+        "oeR": 0.25
       },
       "krypto": {
         "anzahl": 34,
@@ -10610,14 +10574,14 @@
   "seitUmstellung": {
     "ab": "2026-11-13",
     "gruppe": {
-      "anzahl": 72,
+      "anzahl": 73,
       "treffer": 10,
-      "quote": 13.9,
-      "netto": -814.33,
-      "brutto": -813.33,
-      "nettoTR": -957.33,
-      "oeNettoProzent": -1.24,
-      "oeR": -0.31
+      "quote": 13.7,
+      "netto": -820.68,
+      "brutto": -819.68,
+      "nettoTR": -965.68,
+      "oeNettoProzent": -1.23,
+      "oeR": -0.32
     }
   },
   "varianten": {
