@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T09:09:40.156Z",
+  "stand": "2026-11-19T09:23:52.017Z",
   "heute": {
     "datum": "2026-11-19",
     "gruppe": {
@@ -679,37 +679,44 @@
       }
     },
     {
-      "id": "2026-11-19-scan-xrp",
+      "id": "2026-11-19-scan-deutsche-telekom-ag-reg",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
-      "markt": "krypto",
+      "markt": "eu",
       "setup": "orb",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "XRP",
-      "symbol": "XRP",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 31.48,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
       "spekulativ": true,
       "ausloeser": {
-        "zeit": "2026-11-19T09:00:00.000Z",
-        "kurs": 0.89493,
-        "level": 0.8943,
+        "zeit": "2026-11-19T09:10:00.000Z",
+        "kurs": 26.25,
+        "level": 26.27,
         "spanne": {
-          "hoch": 0.89434,
-          "tief": 0.89218
+          "hoch": 26.41,
+          "tief": 26.27
         },
-        "richtung": "long"
+        "richtung": "short"
       },
-      "stop": 0.8933,
-      "ziel": 0.8984,
+      "stop": 26.34,
+      "ziel": 26.01,
       "zielR": 2,
-      "flatBis": "2026-11-19T20:55:00.000Z",
+      "flatBis": "2026-11-19T16:25:00.000Z",
       "virtuell": true,
       "einstieg": {
-        "zeit": "2026-11-19T09:00:00.000Z",
-        "basisKurs": 0.89497,
-        "kurs": 0.8972,
-        "stueck": 1114.578689,
-        "kurswert": 1000
+        "zeit": "2026-11-19T09:10:00.000Z",
+        "basisKurs": 26.23,
+        "kurs": 5.2631,
+        "stueck": 190,
+        "kurswert": 999.99
       }
     }
   ],
@@ -1012,6 +1019,153 @@
       }
     },
     {
+      "id": "2026-11-19-scan-deutsche-telekom-ag-reg",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "DEUTSCHE TELEKOM AG-REG",
+      "isin": "DE0005557508",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 31.48,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:10:00.000Z",
+        "kurs": 26.25,
+        "level": 26.27,
+        "spanne": {
+          "hoch": 26.41,
+          "tief": 26.27
+        },
+        "richtung": "short"
+      },
+      "stop": 26.34,
+      "ziel": 26.01,
+      "zielR": 2,
+      "flatBis": "2026-11-19T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:10:00.000Z",
+        "basisKurs": 26.23,
+        "kurs": 5.2631,
+        "stueck": 190,
+        "kurswert": 999.99
+      }
+    },
+    {
+      "id": "2026-11-19-scan-btc",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:05:00.000Z",
+        "kurs": 58063.4,
+        "level": 58049.8,
+        "spanne": {
+          "hoch": 58049.8,
+          "tief": 57900
+        },
+        "richtung": "long"
+      },
+      "stop": 57974.9,
+      "ziel": 58240.7,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:05:00.000Z",
+        "basisKurs": 58063.5,
+        "kurs": 58208.659,
+        "stueck": 0.017179,
+        "kurswert": 999.97
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 57974.9,
+        "kurs": 57829.963,
+        "kurswert": 993.46,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -6.51,
+        "bruttoProzent": -0.65,
+        "netto": -8.51,
+        "nettoProzent": -0.85,
+        "nettoTR": -8.51,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
+      "id": "2026-11-19-scan-eth",
+      "datum": "2026-11-19",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ETH",
+      "symbol": "ETH",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-19T09:05:00.000Z",
+        "kurs": 1643.73,
+        "level": 1643.47,
+        "spanne": {
+          "hoch": 1643.47,
+          "tief": 1640.23
+        },
+        "richtung": "long"
+      },
+      "stop": 1641.85,
+      "ziel": 1645.21,
+      "zielR": 2,
+      "flatBis": "2026-11-19T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-19T09:05:00.000Z",
+        "basisKurs": 1642.97,
+        "kurs": 1647.077,
+        "stueck": 0.607136,
+        "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T09:15:00.000Z",
+        "basisKurs": 1641.85,
+        "kurs": 1637.745,
+        "kurswert": 994.33,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -5.67,
+        "bruttoProzent": -0.57,
+        "netto": -7.67,
+        "nettoProzent": -0.77,
+        "nettoTR": -7.67,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": -1
+      }
+    },
+    {
       "id": "2026-11-19-scan-xrp",
       "datum": "2026-11-19",
       "herkunft": "code_scan",
@@ -1043,6 +1197,25 @@
         "kurs": 0.8972,
         "stueck": 1114.578689,
         "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-11-19T09:10:00.000Z",
+        "basisKurs": 0.8984,
+        "kurs": 0.8962,
+        "kurswert": 998.89,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": -1.11,
+        "bruttoProzent": -0.11,
+        "netto": -3.11,
+        "nettoProzent": -0.31,
+        "nettoTR": -3.11,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": 2.05
       }
     },
     {
@@ -10172,24 +10345,24 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 150,
+      "anzahl": 153,
       "treffer": 67,
-      "quote": 44.7,
-      "netto": -789.67,
-      "brutto": -729.67,
-      "nettoTR": -1028.67,
-      "oeNettoProzent": -0.53,
-      "oeR": 0.3
+      "quote": 43.8,
+      "netto": -808.96,
+      "brutto": -742.96,
+      "nettoTR": -1047.96,
+      "oeNettoProzent": -0.54,
+      "oeR": 0.29
     },
     "heute": {
-      "anzahl": 1,
+      "anzahl": 4,
       "treffer": 1,
-      "quote": 100,
-      "netto": 17.29,
-      "brutto": 17.29,
-      "nettoTR": 15.29,
-      "oeNettoProzent": 1.73,
-      "oeR": 2
+      "quote": 25,
+      "netto": -2,
+      "brutto": 4,
+      "nettoTR": -4,
+      "oeNettoProzent": -0.05,
+      "oeR": 0.51
     },
     "offen": 6,
     "gruppen": {
@@ -10214,14 +10387,14 @@
         "oeR": 0.25
       },
       "krypto": {
-        "anzahl": 30,
+        "anzahl": 33,
         "treffer": 10,
-        "quote": 33.3,
-        "netto": -231.91,
-        "brutto": -171.91,
-        "nettoTR": -231.91,
-        "oeNettoProzent": -0.77,
-        "oeR": 0.5
+        "quote": 30.3,
+        "netto": -251.2,
+        "brutto": -185.2,
+        "nettoTR": -251.2,
+        "oeNettoProzent": -0.76,
+        "oeR": 0.45
       }
     }
   },
@@ -10311,7 +10484,5 @@
     "claude": 2,
     "autopilot": 0
   },
-  "hinweise": [
-    "ASML HOLDING NV: Auslöser verworfen (Risiko zu klein oder kein Stück bezahlbar)"
-  ]
+  "hinweise": []
 }
