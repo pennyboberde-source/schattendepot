@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T08:09:39.811Z",
+  "stand": "2026-11-19T08:20:28.225Z",
   "offen": [],
   "vorgemerkt": [
     {
@@ -106,6 +106,112 @@
         }
       },
       "verkaufstermin": "2026-11-24T07:20:42.798Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-19-auto-exagen-inc",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-19T08:20:28.225Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "EXAGEN INC.",
+          "isin": "",
+          "ticker": "XGN",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "XGN",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:XGN: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:XGN:2026-11-19"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-24T08:20:28.225Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (17 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        }
+      },
+      "verkaufstermin": "2026-11-24T08:20:28.225Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-19-auto-sellas-life-sciences-group-inc",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-19T08:20:28.225Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "SELLAS Life Sciences Group, Inc.",
+          "isin": "",
+          "ticker": "SLS",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "SLS",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:SLS: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:SLS:2026-11-19"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-24T08:20:28.225Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (17 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        }
+      },
+      "verkaufstermin": "2026-11-24T08:20:28.225Z",
       "anpassungen": []
     }
   ]
