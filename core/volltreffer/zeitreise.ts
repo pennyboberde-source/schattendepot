@@ -28,10 +28,11 @@ export class ZeitStat {
   private pos(b: number, g: number, s: number) {
     return (b * this.gruppen + g) * this.spielarten + s;
   }
-  add(b: number, g: number, s: number, netto: number, treffer: boolean) {
+  /** ein Fall – oder ein Tag als Einheit: netto = Ø des Tages, treffer = Anteil der Volltreffer an dem Tag (0..1) */
+  add(b: number, g: number, s: number, netto: number, treffer: boolean | number) {
     const p = this.pos(b, g, s);
     this.n[p]++;
-    if (treffer) this.t[p]++;
+    this.t[p] += typeof treffer === 'number' ? treffer : treffer ? 1 : 0;
     this.sum[p] += netto;
     this.sq[p] += netto * netto;
   }
@@ -61,7 +62,7 @@ export class ZeitStat {
 }
 
 export interface AuswahlRegeln {
-  /** Fälle je Hälfte der Vergangenheit mindestens */
+  /** Einheiten (seit v2: Tage mit Fällen) je Hälfte der Vergangenheit mindestens */
   mindestFaelleHaelfte: number;
   /** Volltreffer-Quote insgesamt mindestens (%) */
   mindestQuote: number;

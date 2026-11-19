@@ -1107,27 +1107,69 @@ if (ZEITREISE) {
       zMarkt[z] = mi === 'aktie' ? 0 : 1;
       zWert[z] = r.schluessel.replace(/#\d+$/, '');
       zeilen++;
-      // zählen: „alle“, Einzelklassen, Paare (wie der Rückblick, ohne Sperre – eher zu viele Fälle, also vorsichtig)
-      const mIdx = mi === 'aktie' ? 0 : 1;
-      const pt = paarTab[mIdx];
-      const ids: number[] = [alleTab[mIdx]];
-      for (let a = 0; a < NE; a++) if (klassen[a] !== null) ids.push(einzelTab[mIdx][a][klassen[a]!]);
-      for (let a = 0; a < NE; a++) {
-        const ca = klassen[a];
-        if (ca === null) continue;
-        for (let c = a + 1; c < NE; c++) {
-          const cc = klassen[c];
-          const basis = pt[a * NE + c];
-          if (cc !== null && basis >= 0) ids.push(basis + ca * breite[c] + cc);
-        }
+    }
+  }
+  // Zählen mit dem Tag als Einheit (wie die Klumpen-Prüfung des Rückblicks): je Tag, Gruppe und Spielart ein Wert –
+  // Ø der Fälle des Tages und Anteil der Volltreffer. Sonst wählen Muster, deren Fälle an wenigen Tagen klumpen.
+  const gruppenIds = (z: number): number[] => {
+    const mIdx = zMarkt[z];
+    const pt = paarTab[mIdx];
+    const ids: number[] = [alleTab[mIdx]];
+    for (let a = 0; a < NE; a++) {
+      const ca = kl[z * NE + a];
+      if (ca !== 255) ids.push(einzelTab[mIdx][a][ca]);
+    }
+    for (let a = 0; a < NE; a++) {
+      const ca = kl[z * NE + a];
+      if (ca === 255) continue;
+      for (let c = a + 1; c < NE; c++) {
+        const cc = kl[z * NE + c];
+        const basis = pt[a * NE + c];
+        if (cc !== 255 && basis >= 0) ids.push(basis + ca * breite[c] + cc);
       }
+    }
+    return ids;
+  };
+  {
+    const reihenfolge = Array.from({ length: zeilen }, (_, z) => z).sort((p, q) => zTag[p] - zTag[q] || zMarkt[p] - zMarkt[q]);
+    const L = gruppen.length * ZS.length;
+    const tN = new Float32Array(L);
+    const tS = new Float64Array(L);
+    const tT = new Float32Array(L);
+    const beruehrt: number[] = [];
+    let tagJetzt = -1;
+    let absJetzt = 0;
+    const abschliessen = () => {
+      for (const p of beruehrt) {
+        const g = Math.floor(p / ZS.length);
+        st.add(absJetzt, g, p - g * ZS.length, tS[p] / tN[p], tT[p] / tN[p]);
+        tN[p] = 0;
+        tS[p] = 0;
+        tT[p] = 0;
+      }
+      beruehrt.length = 0;
+    };
+    for (const z of reihenfolge) {
+      if (zTag[z] !== tagJetzt) {
+        abschliessen();
+        tagJetzt = zTag[z];
+        absJetzt = zAbs[z];
+      }
+      const ids = gruppenIds(z);
       for (let j = 0; j < ZS.length; j++) {
         const v = netto[z * ZS.length + j];
         if (Number.isNaN(v)) continue;
-        const t = art[z * ZS.length + j] === 1;
-        for (const g of ids) st.add(b, g, j, v, t);
+        const t = art[z * ZS.length + j];
+        for (const g of ids) {
+          const p = g * ZS.length + j;
+          if (tN[p] === 0) beruehrt.push(p);
+          tN[p]++;
+          tS[p] += v;
+          tT[p] += t;
+        }
       }
     }
+    abschliessen();
   }
   st.kumulieren();
   log(`Zeitreise: ${zeilen} Stichtage gezählt, ${ABSCHNITTE} Halbmonate seit ${erster}, ${ZS.length} Spielarten (Fenster ${ZR.fenster} Tage).`);
@@ -1189,7 +1231,7 @@ if (ZEITREISE) {
   }
   const ergebnis = {
     stand: jetzt.toISOString(),
-    hinweis: `Zeitreise: der ganze Ablauf über die Kursgeschichte nachgespielt, als wäre er live gelaufen. Je Halbmonat wählt der Code bis zu ${ZR.maxMuster} Muster nur aus Fällen, deren Ergebnis da schon feststand (${ZR.abstand} Halbmonat Abstand): in beiden Hälften der Vergangenheit je mindestens ${ZR.mindestFaelleHaelfte} Fälle im Plus, besser als die Grundrate, Quote ab ${ZR.mindestQuote} %, höchstens ${ZR.maxJeBaustein} je Baustein. Dann je Tag die Fälle dieser Muster nach Wertung: „sichtbar“ höchstens ${ZR.sichtbarMaxOffen} offene Orders, „Jagden“ höchstens ${ZR.jagdenMaxOffen}, je Wert eine; 1.000 € je Order nach Kosten, Ausstieg bei Ziel (+400 €), Stop (−150 €) oder nach ${ZR.fenster} Handelstagen. Vereinfachungen: ohne Klumpen-Grenze, Pump-Filter und Gesamtmodell; Fälle ohne 10-Tage-Sperre gezählt (eher strenger). Nur Kennzahlen, keine Kurse.`,
+    hinweis: `Zeitreise: der ganze Ablauf über die Kursgeschichte nachgespielt, als wäre er live gelaufen. Je Halbmonat wählt der Code bis zu ${ZR.maxMuster} Muster nur aus Fällen, deren Ergebnis da schon feststand (${ZR.abstand} Halbmonat Abstand): der Tag zählt als Einheit (Ø und Volltreffer-Anteil der Fälle eines Tages), in beiden Hälften der Vergangenheit je mindestens ${ZR.mindestFaelleHaelfte} Tage im Plus, besser als die Grundrate, Quote ab ${ZR.mindestQuote} %, höchstens ${ZR.maxJeBaustein} je Baustein. Dann je Tag die Fälle dieser Muster nach Wertung: „sichtbar“ höchstens ${ZR.sichtbarMaxOffen} offene Orders, „Jagden“ höchstens ${ZR.jagdenMaxOffen}, je Wert eine; 1.000 € je Order nach Kosten, Ausstieg bei Ziel (+400 €), Stop (−150 €) oder nach ${ZR.fenster} Handelstagen. Vereinfachungen: ohne Klumpen-Grenze zwischen Werten, Pump-Filter und Gesamtmodell. Nur Kennzahlen, keine Kurse.`,
     zeitraum: { von: kandidaten.length ? monatVon(kandidaten.reduce((a, k) => Math.min(a, k.tag), Infinity)) : null, bis: heute.slice(0, 7) },
     regeln: ZR,
     auswahl: { halbmonate: wahl.filter((w) => w.length).length, oeMuster: Math.round(wahl.reduce((a, w) => a + w.length, 0) / Math.max(1, wahl.filter((w) => w.length).length)) },
