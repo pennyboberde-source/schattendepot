@@ -1,21 +1,21 @@
 {
-  "stand": "2026-11-18T14:31:58.234Z",
+  "stand": "2026-11-19T06:00:31.412Z",
   "hinweis": "Schattenbuch auf Sammelkursen (Plan V1 Teil b): jedes Signal der Datenkrake aus den Tageskerzen des privaten Archivs gemessen, ohne Einzelabruf. Start = Eröffnung des ersten Handelstags nach dem Signaltag; Renditen in % nach 1, 3, 5, 10 und 21 Handelstagen (Schluss), höchster/tiefster Stand seit dem Start (Median), Überrendite gegen den Markt und gegen Werte gleicher Größenklasse (Ø-Tagesumsatz) über dieselben Tage (Median, Näherung über Tagesrenditen). Je Wert und Typ ein Fall in 10 Handelstagen. Abdeckung: Signale (Wert und Tag) mit Handelstag danach, die im Archiv eine Kursreihe haben (US-Aktien/ETFs, Kraken-Coins; deutsche Werte und Rohstoffe noch nicht). Nur verdichtete Kennzahlen.",
   "abdeckung": {
-    "signale": 2856,
-    "gemessen": 2334,
-    "anteil": 81.7,
+    "signale": 3023,
+    "gemessen": 2458,
+    "anteil": 81.3,
     "jeMarkt": {
       "aktie": {
-        "gesamt": 2262,
-        "gemessen": 2026
+        "gesamt": 2396,
+        "gemessen": 2150
       },
       "krypto": {
-        "gesamt": 500,
+        "gesamt": 528,
         "gemessen": 308
       },
       "sonstige": {
-        "gesamt": 94,
+        "gesamt": 99,
         "gemessen": 0
       }
     }
@@ -24,54 +24,54 @@
     {
       "markt": "aktie",
       "typ": "handelsstopp",
-      "faelle": 312,
+      "faelle": 328,
       "punkte": {
         "r1T": {
-          "n": 312,
-          "mittel": 0.5,
+          "n": 328,
+          "mittel": 0.6,
           "median": 0,
-          "imPlus": 47.1,
+          "imPlus": 47.3,
           "ueberMarkt": 0.7,
           "ueberKlasse": 0.6,
           "netto": {
-            "imPlus": 42.9,
-            "mittel": -0.1
+            "imPlus": 43.3,
+            "mittel": 0.02
           }
         },
         "r3T": {
-          "n": 262,
-          "mittel": -3.5,
-          "median": -1.5,
-          "imPlus": 44.7,
-          "ueberMarkt": -1.1,
-          "ueberKlasse": -1.2,
+          "n": 284,
+          "mittel": -2.1,
+          "median": -1.6,
+          "imPlus": 43.7,
+          "ueberMarkt": -1.2,
+          "ueberKlasse": -1.3,
           "netto": {
-            "imPlus": 43.1,
-            "mittel": -4.13
+            "imPlus": 41.2,
+            "mittel": -2.66
           }
         },
         "r1W": {
-          "n": 231,
-          "mittel": -3.9,
+          "n": 242,
+          "mittel": -4.1,
           "median": -3,
-          "imPlus": 42.9,
-          "ueberMarkt": -3,
-          "ueberKlasse": -2.7,
+          "imPlus": 42.6,
+          "ueberMarkt": -3.2,
+          "ueberKlasse": -3.2,
           "netto": {
-            "imPlus": 41.1,
-            "mittel": -4.5
+            "imPlus": 40.9,
+            "mittel": -4.69
           }
         },
         "r10T": {
-          "n": 120,
-          "mittel": -10.7,
-          "median": -10.9,
-          "imPlus": 31.7,
-          "ueberMarkt": -10,
-          "ueberKlasse": -9.5,
+          "n": 141,
+          "mittel": -11.2,
+          "median": -11.4,
+          "imPlus": 31.2,
+          "ueberMarkt": -9.6,
+          "ueberKlasse": -9.2,
           "netto": {
-            "imPlus": 30.8,
-            "mittel": -11.31
+            "imPlus": 30.5,
+            "mittel": -11.78
           }
         },
         "r1M": {
@@ -83,60 +83,60 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 12.6,
-      "tief": -16.8
+      "hoch": 11.9,
+      "tief": -17.2
     },
     {
       "markt": "aktie",
       "typ": "leerverkauf_quote",
-      "faelle": 191,
+      "faelle": 205,
       "punkte": {
         "r1T": {
-          "n": 191,
-          "mittel": -0.8,
+          "n": 205,
+          "mittel": -1,
           "median": 0,
-          "imPlus": 35.6,
+          "imPlus": 34.1,
           "ueberMarkt": 0,
           "ueberKlasse": 0,
           "netto": {
-            "imPlus": 13.6,
-            "mittel": -1.41
+            "imPlus": 13.7,
+            "mittel": -1.6
           }
         },
         "r3T": {
-          "n": 165,
+          "n": 177,
           "mittel": -2.2,
-          "median": -0.6,
-          "imPlus": 32.7,
+          "median": -0.5,
+          "imPlus": 33.9,
           "ueberMarkt": 0,
-          "ueberKlasse": -0.2,
+          "ueberKlasse": 0,
           "netto": {
-            "imPlus": 21.2,
-            "mittel": -2.8
+            "imPlus": 20.3,
+            "mittel": -2.79
           }
         },
         "r1W": {
-          "n": 135,
-          "mittel": -3,
-          "median": -0.5,
-          "imPlus": 36.3,
+          "n": 152,
+          "mittel": -3.2,
+          "median": -0.6,
+          "imPlus": 34.2,
           "ueberMarkt": 0.2,
           "ueberKlasse": 0.2,
           "netto": {
-            "imPlus": 23.7,
-            "mittel": -3.61
+            "imPlus": 21.1,
+            "mittel": -3.84
           }
         },
         "r10T": {
-          "n": 61,
-          "mittel": -3.9,
-          "median": -1.3,
-          "imPlus": 29.5,
+          "n": 76,
+          "mittel": -6.1,
+          "median": -1.5,
+          "imPlus": 23.7,
           "ueberMarkt": -0.2,
-          "ueberKlasse": -0.8,
+          "ueberKlasse": -0.7,
           "netto": {
-            "imPlus": 18,
-            "mittel": -4.46
+            "imPlus": 14.5,
+            "mittel": -6.71
           }
         },
         "r1M": {
@@ -149,59 +149,59 @@
         }
       },
       "hoch": 0.9,
-      "tief": -3.1
+      "tief": -3.3
     },
     {
       "markt": "aktie",
       "typ": "verwaesserung",
-      "faelle": 178,
+      "faelle": 190,
       "punkte": {
         "r1T": {
-          "n": 178,
-          "mittel": -0.7,
+          "n": 190,
+          "mittel": -0.6,
           "median": -0.3,
-          "imPlus": 43.3,
+          "imPlus": 44.2,
           "ueberMarkt": -0.3,
           "ueberKlasse": -0.3,
           "netto": {
-            "imPlus": 36,
-            "mittel": -1.32
+            "imPlus": 36.8,
+            "mittel": -1.19
           }
         },
         "r3T": {
-          "n": 149,
+          "n": 165,
           "mittel": -3.4,
-          "median": -1,
-          "imPlus": 43.6,
+          "median": -2,
+          "imPlus": 41.2,
           "ueberMarkt": -1.3,
-          "ueberKlasse": -1.2,
+          "ueberKlasse": -1.3,
           "netto": {
-            "imPlus": 39.6,
-            "mittel": -3.96
+            "imPlus": 37.6,
+            "mittel": -4
           }
         },
         "r1W": {
-          "n": 133,
+          "n": 134,
           "mittel": -6.3,
           "median": -2.7,
-          "imPlus": 33.8,
-          "ueberMarkt": -1.9,
-          "ueberKlasse": -2.2,
+          "imPlus": 33.6,
+          "ueberMarkt": -1.7,
+          "ueberKlasse": -2,
           "netto": {
-            "imPlus": 31.6,
-            "mittel": -6.94
+            "imPlus": 31.3,
+            "mittel": -6.91
           }
         },
         "r10T": {
-          "n": 61,
-          "mittel": -12,
-          "median": -4.5,
-          "imPlus": 32.8,
-          "ueberMarkt": -2.5,
-          "ueberKlasse": -3.4,
+          "n": 69,
+          "mittel": -11.3,
+          "median": -4.4,
+          "imPlus": 31.9,
+          "ueberMarkt": -2.2,
+          "ueberKlasse": -2.6,
           "netto": {
             "imPlus": 24.6,
-            "mittel": -12.6
+            "mittel": -11.94
           }
         },
         "r1M": {
@@ -213,36 +213,36 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 5.5,
-      "tief": -11.3
+      "hoch": 5.9,
+      "tief": -11.8
     },
     {
       "markt": "aktie",
       "typ": "grossauftrag",
-      "faelle": 138,
+      "faelle": 139,
       "punkte": {
         "r1T": {
-          "n": 138,
+          "n": 139,
           "mittel": -0.3,
           "median": -0.3,
-          "imPlus": 40.6,
+          "imPlus": 41,
           "ueberMarkt": -0.6,
           "ueberKlasse": -0.7,
           "netto": {
-            "imPlus": 34.1,
+            "imPlus": 33.8,
             "mittel": -0.92
           }
         },
         "r3T": {
-          "n": 116,
-          "mittel": -1.9,
-          "median": -0.4,
-          "imPlus": 47.4,
-          "ueberMarkt": -0.6,
-          "ueberKlasse": -1,
+          "n": 129,
+          "mittel": -2.3,
+          "median": -1,
+          "imPlus": 44.2,
+          "ueberMarkt": -0.7,
+          "ueberKlasse": -1.1,
           "netto": {
-            "imPlus": 42.2,
-            "mittel": -2.51
+            "imPlus": 38.8,
+            "mittel": -2.91
           }
         },
         "r1W": {
@@ -258,15 +258,15 @@
           }
         },
         "r10T": {
-          "n": 50,
-          "mittel": -4.9,
-          "median": -1.6,
-          "imPlus": 38,
-          "ueberMarkt": -0.8,
+          "n": 59,
+          "mittel": -5,
+          "median": -1.9,
+          "imPlus": 37.3,
+          "ueberMarkt": -0.6,
           "ueberKlasse": -1,
           "netto": {
-            "imPlus": 36,
-            "mittel": -5.53
+            "imPlus": 35.6,
+            "mittel": -5.56
           }
         },
         "r1M": {
@@ -278,24 +278,24 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 5,
-      "tief": -7.9
+      "hoch": 5.3,
+      "tief": -8.9
     },
     {
       "markt": "aktie",
       "typ": "quartalstermin",
-      "faelle": 125,
+      "faelle": 129,
       "punkte": {
         "r1T": {
-          "n": 125,
+          "n": 129,
           "mittel": -0.3,
           "median": -0.1,
-          "imPlus": 45.6,
+          "imPlus": 45.7,
           "ueberMarkt": 0.5,
           "ueberKlasse": 0.5,
           "netto": {
-            "imPlus": 38.4,
-            "mittel": -0.85
+            "imPlus": 38.8,
+            "mittel": -0.86
           }
         },
         "r3T": {
@@ -311,27 +311,27 @@
           }
         },
         "r1W": {
-          "n": 114,
-          "mittel": -0.8,
-          "median": 0.4,
-          "imPlus": 54.4,
+          "n": 115,
+          "mittel": -0.9,
+          "median": 0.3,
+          "imPlus": 53.9,
           "ueberMarkt": 0.7,
           "ueberKlasse": 0.4,
           "netto": {
-            "imPlus": 48.2,
-            "mittel": -1.37
+            "imPlus": 47.8,
+            "mittel": -1.47
           }
         },
         "r10T": {
-          "n": 66,
-          "mittel": -1.9,
-          "median": -1.5,
-          "imPlus": 34.8,
-          "ueberMarkt": -0.2,
-          "ueberKlasse": -0.7,
+          "n": 84,
+          "mittel": -2.3,
+          "median": -2.3,
+          "imPlus": 28.6,
+          "ueberMarkt": 0.6,
+          "ueberKlasse": 0,
           "netto": {
-            "imPlus": 28.8,
-            "mittel": -2.54
+            "imPlus": 23.8,
+            "mittel": -2.86
           }
         },
         "r1M": {
@@ -343,60 +343,60 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 3.6,
-      "tief": -3.9
+      "hoch": 3.5,
+      "tief": -4.8
     },
     {
       "markt": "aktie",
       "typ": "insider_kauf",
-      "faelle": 110,
+      "faelle": 119,
       "punkte": {
         "r1T": {
-          "n": 110,
-          "mittel": 0.1,
-          "median": 0.2,
-          "imPlus": 51.8,
-          "ueberMarkt": 0.5,
-          "ueberKlasse": 0.4,
+          "n": 119,
+          "mittel": 0,
+          "median": 0,
+          "imPlus": 49.6,
+          "ueberMarkt": 0.3,
+          "ueberKlasse": 0.2,
           "netto": {
-            "imPlus": 44.5,
-            "mittel": -0.51
+            "imPlus": 42.9,
+            "mittel": -0.56
           }
         },
         "r3T": {
-          "n": 87,
-          "mittel": -1.6,
-          "median": -0.1,
-          "imPlus": 44.8,
-          "ueberMarkt": 0.1,
+          "n": 101,
+          "mittel": -2,
+          "median": -0.5,
+          "imPlus": 40.6,
+          "ueberMarkt": 0,
           "ueberKlasse": -0.2,
           "netto": {
-            "imPlus": 39.1,
-            "mittel": -2.17
+            "imPlus": 35.6,
+            "mittel": -2.55
           }
         },
         "r1W": {
-          "n": 80,
-          "mittel": -2.9,
-          "median": -1.8,
-          "imPlus": 38.8,
+          "n": 87,
+          "mittel": -3,
+          "median": -1.9,
+          "imPlus": 37.9,
           "ueberMarkt": -0.6,
           "ueberKlasse": -0.7,
           "netto": {
-            "imPlus": 37.5,
-            "mittel": -3.49
+            "imPlus": 36.8,
+            "mittel": -3.59
           }
         },
         "r10T": {
-          "n": 34,
-          "mittel": -3.6,
-          "median": -1.5,
-          "imPlus": 35.3,
-          "ueberMarkt": -0.4,
-          "ueberKlasse": -0.5,
+          "n": 42,
+          "mittel": -4.1,
+          "median": -2,
+          "imPlus": 31,
+          "ueberMarkt": -0.6,
+          "ueberKlasse": -1,
           "netto": {
-            "imPlus": 35.3,
-            "mittel": -4.22
+            "imPlus": 31,
+            "mittel": -4.68
           }
         },
         "r1M": {
@@ -408,8 +408,8 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 3.9,
-      "tief": -5.4
+      "hoch": 4,
+      "tief": -5.6
     },
     {
       "markt": "krypto",
@@ -479,54 +479,54 @@
     {
       "markt": "aktie",
       "typ": "kursrakete",
-      "faelle": 88,
+      "faelle": 92,
       "punkte": {
         "r1T": {
-          "n": 88,
-          "mittel": -4,
-          "median": -3.8,
-          "imPlus": 30.7,
-          "ueberMarkt": -3.2,
-          "ueberKlasse": -3.1,
+          "n": 92,
+          "mittel": -4.4,
+          "median": -3.9,
+          "imPlus": 29.3,
+          "ueberMarkt": -3.5,
+          "ueberKlasse": -3.6,
           "netto": {
-            "imPlus": 30.7,
-            "mittel": -4.55
+            "imPlus": 29.3,
+            "mittel": -5.03
           }
         },
         "r3T": {
-          "n": 74,
-          "mittel": -11.8,
-          "median": -10.9,
-          "imPlus": 31.1,
-          "ueberMarkt": -10,
-          "ueberKlasse": -10.2,
+          "n": 81,
+          "mittel": -11.1,
+          "median": -12.3,
+          "imPlus": 30.9,
+          "ueberMarkt": -11.1,
+          "ueberKlasse": -10.9,
           "netto": {
             "imPlus": 28.4,
-            "mittel": -12.37
+            "mittel": -11.67
           }
         },
         "r1W": {
-          "n": 59,
-          "mittel": -18.6,
-          "median": -16.3,
-          "imPlus": 28.8,
-          "ueberMarkt": -14.4,
-          "ueberKlasse": -14.5,
+          "n": 66,
+          "mittel": -17.7,
+          "median": -15.7,
+          "imPlus": 30.3,
+          "ueberMarkt": -13.9,
+          "ueberKlasse": -14,
           "netto": {
-            "imPlus": 23.7,
-            "mittel": -19.2
+            "imPlus": 24.2,
+            "mittel": -18.25
           }
         },
         "r10T": {
-          "n": 24,
-          "mittel": -12.4,
-          "median": -12.9,
-          "imPlus": 20.8,
-          "ueberMarkt": -11.7,
-          "ueberKlasse": -11.8,
+          "n": 32,
+          "mittel": -15.8,
+          "median": -10.7,
+          "imPlus": 21.9,
+          "ueberMarkt": -8.9,
+          "ueberKlasse": -9.1,
           "netto": {
             "imPlus": 12.5,
-            "mittel": -12.98
+            "mittel": -16.42
           }
         },
         "r1M": {
@@ -538,60 +538,60 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 9.2,
-      "tief": -25
+      "hoch": 9.8,
+      "tief": -26.3
     },
     {
       "markt": "aktie",
       "typ": "gewinn_ueberraschung",
-      "faelle": 78,
+      "faelle": 80,
       "punkte": {
         "r1T": {
-          "n": 78,
-          "mittel": -0.6,
+          "n": 80,
+          "mittel": -0.9,
           "median": -0.2,
-          "imPlus": 43.6,
-          "ueberMarkt": -0.2,
-          "ueberKlasse": -0.2,
+          "imPlus": 42.5,
+          "ueberMarkt": -0.3,
+          "ueberKlasse": -0.3,
           "netto": {
-            "imPlus": 32.1,
-            "mittel": -1.22
+            "imPlus": 31.3,
+            "mittel": -1.48
           }
         },
         "r3T": {
-          "n": 77,
-          "mittel": 0.7,
-          "median": 0.9,
-          "imPlus": 55.8,
-          "ueberMarkt": 0.5,
-          "ueberKlasse": 0.2,
+          "n": 78,
+          "mittel": 0.8,
+          "median": 1,
+          "imPlus": 56.4,
+          "ueberMarkt": 0.6,
+          "ueberKlasse": 0.3,
           "netto": {
-            "imPlus": 51.9,
-            "mittel": 0.15
+            "imPlus": 52.6,
+            "mittel": 0.18
           }
         },
         "r1W": {
-          "n": 76,
+          "n": 77,
           "mittel": -1.6,
-          "median": 0.1,
-          "imPlus": 50,
+          "median": 0,
+          "imPlus": 49.4,
           "ueberMarkt": -0.1,
           "ueberKlasse": -0.4,
           "netto": {
-            "imPlus": 47.4,
-            "mittel": -2.17
+            "imPlus": 46.8,
+            "mittel": -2.22
           }
         },
         "r10T": {
-          "n": 42,
-          "mittel": -2.3,
-          "median": -1.8,
-          "imPlus": 38.1,
+          "n": 52,
+          "mittel": -2.7,
+          "median": -2.3,
+          "imPlus": 32.7,
           "ueberMarkt": -0.9,
           "ueberKlasse": -1.7,
           "netto": {
-            "imPlus": 35.7,
-            "mittel": -2.86
+            "imPlus": 30.8,
+            "mittel": -3.31
           }
         },
         "r1M": {
@@ -603,36 +603,36 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 4.6,
-      "tief": -5.3
+      "hoch": 4.4,
+      "tief": -6.2
     },
     {
       "markt": "aktie",
       "typ": "stimmung_social",
-      "faelle": 62,
+      "faelle": 68,
       "punkte": {
         "r1T": {
-          "n": 62,
-          "mittel": 0.6,
-          "median": 0.5,
-          "imPlus": 56.5,
-          "ueberMarkt": -0.5,
-          "ueberKlasse": -0.8,
+          "n": 68,
+          "mittel": 0.5,
+          "median": 0.2,
+          "imPlus": 54.4,
+          "ueberMarkt": -0.3,
+          "ueberKlasse": -0.7,
           "netto": {
-            "imPlus": 43.5,
-            "mittel": -0.03
+            "imPlus": 41.2,
+            "mittel": -0.1
           }
         },
         "r3T": {
-          "n": 59,
-          "mittel": 1,
-          "median": 0.2,
-          "imPlus": 50.8,
-          "ueberMarkt": 0.3,
-          "ueberKlasse": -0.1,
+          "n": 62,
+          "mittel": 0.7,
+          "median": 0,
+          "imPlus": 48.4,
+          "ueberMarkt": 0.2,
+          "ueberKlasse": -0.3,
           "netto": {
-            "imPlus": 49.2,
-            "mittel": 0.42
+            "imPlus": 46.8,
+            "mittel": 0.11
           }
         },
         "r1W": {
@@ -648,15 +648,15 @@
           }
         },
         "r10T": {
-          "n": 23,
-          "mittel": -6.3,
-          "median": -4.7,
-          "imPlus": 34.8,
-          "ueberMarkt": -2.5,
-          "ueberKlasse": -3,
+          "n": 24,
+          "mittel": -6.6,
+          "median": -4.8,
+          "imPlus": 33.3,
+          "ueberMarkt": -3.1,
+          "ueberKlasse": -3.7,
           "netto": {
-            "imPlus": 26.1,
-            "mittel": -6.9
+            "imPlus": 25,
+            "mittel": -7.21
           }
         },
         "r1M": {
@@ -668,60 +668,60 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 4.6,
-      "tief": -5
+      "hoch": 4.2,
+      "tief": -5.2
     },
     {
       "markt": "aktie",
       "typ": "volumen_ungewoehnlich",
-      "faelle": 62,
+      "faelle": 68,
       "punkte": {
         "r1T": {
-          "n": 62,
-          "mittel": -1.2,
-          "median": -1.7,
-          "imPlus": 37.1,
-          "ueberMarkt": -1.2,
-          "ueberKlasse": -1.4,
+          "n": 68,
+          "mittel": -2,
+          "median": -1.9,
+          "imPlus": 35.3,
+          "ueberMarkt": -1.3,
+          "ueberKlasse": -1.5,
           "netto": {
-            "imPlus": 33.9,
-            "mittel": -1.77
+            "imPlus": 30.9,
+            "mittel": -2.56
           }
         },
         "r3T": {
-          "n": 52,
-          "mittel": -9.8,
-          "median": -5.8,
-          "imPlus": 23.1,
-          "ueberMarkt": -5.2,
-          "ueberKlasse": -5.1,
+          "n": 56,
+          "mittel": -8.9,
+          "median": -5.3,
+          "imPlus": 25,
+          "ueberMarkt": -4.5,
+          "ueberKlasse": -4.7,
           "netto": {
-            "imPlus": 21.2,
-            "mittel": -10.42
+            "imPlus": 21.4,
+            "mittel": -9.53
           }
         },
         "r1W": {
-          "n": 46,
-          "mittel": -14.2,
+          "n": 49,
+          "mittel": -14.5,
           "median": -10.7,
-          "imPlus": 21.7,
-          "ueberMarkt": -9.9,
-          "ueberKlasse": -10.2,
+          "imPlus": 20.4,
+          "ueberMarkt": -10.6,
+          "ueberKlasse": -10.8,
           "netto": {
-            "imPlus": 21.7,
-            "mittel": -14.77
+            "imPlus": 20.4,
+            "mittel": -15.08
           }
         },
         "r10T": {
-          "n": 27,
-          "mittel": -12,
-          "median": -13.5,
-          "imPlus": 25.9,
-          "ueberMarkt": -11,
-          "ueberKlasse": -10.4,
+          "n": 30,
+          "mittel": -13.7,
+          "median": -11.1,
+          "imPlus": 23.3,
+          "ueberMarkt": -9.7,
+          "ueberKlasse": -9.9,
           "netto": {
-            "imPlus": 22.2,
-            "mittel": -12.64
+            "imPlus": 20,
+            "mittel": -14.31
           }
         },
         "r1M": {
@@ -734,124 +734,59 @@
         }
       },
       "hoch": 7.9,
-      "tief": -21.1
-    },
-    {
-      "markt": "aktie",
-      "typ": "tagesgewinner",
-      "faelle": 61,
-      "punkte": {
-        "r1T": {
-          "n": 61,
-          "mittel": -2.8,
-          "median": -4.2,
-          "imPlus": 32.8,
-          "ueberMarkt": -3.4,
-          "ueberKlasse": -3.4,
-          "netto": {
-            "imPlus": 32.8,
-            "mittel": -3.44
-          }
-        },
-        "r3T": {
-          "n": 52,
-          "mittel": -9.2,
-          "median": -6.5,
-          "imPlus": 30.8,
-          "ueberMarkt": -5.6,
-          "ueberKlasse": -5.6,
-          "netto": {
-            "imPlus": 26.9,
-            "mittel": -9.8
-          }
-        },
-        "r1W": {
-          "n": 46,
-          "mittel": -15.5,
-          "median": -12,
-          "imPlus": 28.3,
-          "ueberMarkt": -11.3,
-          "ueberKlasse": -11.2,
-          "netto": {
-            "imPlus": 23.9,
-            "mittel": -16.13
-          }
-        },
-        "r10T": {
-          "n": 19,
-          "mittel": -10,
-          "median": -10,
-          "imPlus": 36.8,
-          "ueberMarkt": -8.4,
-          "ueberKlasse": -8.2,
-          "netto": {
-            "imPlus": 31.6,
-            "mittel": -10.56
-          }
-        },
-        "r1M": {
-          "n": 0,
-          "mittel": null,
-          "median": null,
-          "imPlus": null,
-          "ueberMarkt": null,
-          "ueberKlasse": null
-        }
-      },
-      "hoch": 8.6,
-      "tief": -25.7
+      "tief": -22.8
     },
     {
       "markt": "aktie",
       "typ": "insider_cluster_kauf",
-      "faelle": 59,
+      "faelle": 65,
       "punkte": {
         "r1T": {
-          "n": 59,
-          "mittel": -0.6,
-          "median": -0.8,
-          "imPlus": 42.4,
-          "ueberMarkt": -0.4,
-          "ueberKlasse": -0.4,
+          "n": 65,
+          "mittel": -0.7,
+          "median": -1,
+          "imPlus": 40,
+          "ueberMarkt": -0.7,
+          "ueberKlasse": -0.6,
           "netto": {
-            "imPlus": 35.6,
-            "mittel": -1.18
+            "imPlus": 32.3,
+            "mittel": -1.3
           }
         },
         "r3T": {
-          "n": 44,
-          "mittel": -0.6,
-          "median": -0.2,
-          "imPlus": 47.7,
-          "ueberMarkt": -0.3,
-          "ueberKlasse": -0.2,
+          "n": 54,
+          "mittel": -1.2,
+          "median": -0.9,
+          "imPlus": 42.6,
+          "ueberMarkt": -0.6,
+          "ueberKlasse": -0.4,
           "netto": {
-            "imPlus": 40.9,
-            "mittel": -1.24
+            "imPlus": 37,
+            "mittel": -1.85
           }
         },
         "r1W": {
-          "n": 40,
-          "mittel": -2.1,
-          "median": -2.7,
-          "imPlus": 35,
+          "n": 44,
+          "mittel": -2.8,
+          "median": -2.9,
+          "imPlus": 31.8,
           "ueberMarkt": -1.5,
           "ueberKlasse": -1.2,
           "netto": {
-            "imPlus": 35,
-            "mittel": -2.65
+            "imPlus": 31.8,
+            "mittel": -3.4
           }
         },
         "r10T": {
-          "n": 12,
-          "mittel": -3.7,
+          "n": 14,
+          "mittel": -5.2,
           "median": -5.6,
-          "imPlus": 8.3,
+          "imPlus": 7.1,
           "ueberMarkt": -3.7,
           "ueberKlasse": -3.6,
           "netto": {
-            "imPlus": 8.3,
-            "mittel": -4.3
+            "imPlus": 7.1,
+            "mittel": -5.84
           }
         },
         "r1M": {
@@ -863,24 +798,89 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 3.9,
-      "tief": -5.7
+      "hoch": 3.5,
+      "tief": -6
+    },
+    {
+      "markt": "aktie",
+      "typ": "tagesgewinner",
+      "faelle": 64,
+      "punkte": {
+        "r1T": {
+          "n": 64,
+          "mittel": -2.3,
+          "median": -4.6,
+          "imPlus": 32.8,
+          "ueberMarkt": -3.6,
+          "ueberKlasse": -3.6,
+          "netto": {
+            "imPlus": 32.8,
+            "mittel": -2.9
+          }
+        },
+        "r3T": {
+          "n": 57,
+          "mittel": -8.9,
+          "median": -9.1,
+          "imPlus": 29.8,
+          "ueberMarkt": -6.6,
+          "ueberKlasse": -6.8,
+          "netto": {
+            "imPlus": 26.3,
+            "mittel": -9.48
+          }
+        },
+        "r1W": {
+          "n": 49,
+          "mittel": -14.5,
+          "median": -10.9,
+          "imPlus": 30.6,
+          "ueberMarkt": -8.1,
+          "ueberKlasse": -8.2,
+          "netto": {
+            "imPlus": 26.5,
+            "mittel": -15.14
+          }
+        },
+        "r10T": {
+          "n": 23,
+          "mittel": -13.6,
+          "median": -10,
+          "imPlus": 39.1,
+          "ueberMarkt": -8.4,
+          "ueberKlasse": -8.2,
+          "netto": {
+            "imPlus": 30.4,
+            "mittel": -14.22
+          }
+        },
+        "r1M": {
+          "n": 0,
+          "mittel": null,
+          "median": null,
+          "imPlus": null,
+          "ueberMarkt": null,
+          "ueberKlasse": null
+        }
+      },
+      "hoch": 9.5,
+      "tief": -28.4
     },
     {
       "markt": "aktie",
       "typ": "nachricht",
-      "faelle": 48,
+      "faelle": 49,
       "punkte": {
         "r1T": {
-          "n": 48,
-          "mittel": -0.7,
+          "n": 49,
+          "mittel": -0.8,
           "median": -0.5,
-          "imPlus": 39.6,
+          "imPlus": 38.8,
           "ueberMarkt": 0,
-          "ueberKlasse": -0.2,
+          "ueberKlasse": -0.3,
           "netto": {
-            "imPlus": 20.8,
-            "mittel": -1.32
+            "imPlus": 20.4,
+            "mittel": -1.39
           }
         },
         "r3T": {
@@ -896,27 +896,27 @@
           }
         },
         "r1W": {
-          "n": 37,
-          "mittel": -2.3,
+          "n": 39,
+          "mittel": -2,
           "median": -0.6,
-          "imPlus": 43.2,
+          "imPlus": 43.6,
           "ueberMarkt": -0.2,
           "ueberKlasse": -0.6,
           "netto": {
-            "imPlus": 32.4,
-            "mittel": -2.91
+            "imPlus": 33.3,
+            "mittel": -2.57
           }
         },
         "r10T": {
-          "n": 28,
-          "mittel": -2.9,
-          "median": -1.4,
-          "imPlus": 39.3,
-          "ueberMarkt": -0.4,
-          "ueberKlasse": -0.7,
+          "n": 31,
+          "mittel": -3,
+          "median": -1.5,
+          "imPlus": 38.7,
+          "ueberMarkt": 0.3,
+          "ueberKlasse": -0.3,
           "netto": {
-            "imPlus": 35.7,
-            "mittel": -3.5
+            "imPlus": 35.5,
+            "mittel": -3.61
           }
         },
         "r1M": {
@@ -929,7 +929,72 @@
         }
       },
       "hoch": 3.7,
-      "tief": -5.1
+      "tief": -6.2
+    },
+    {
+      "markt": "aktie",
+      "typ": "tagesverlierer",
+      "faelle": 42,
+      "punkte": {
+        "r1T": {
+          "n": 42,
+          "mittel": 0.5,
+          "median": 1.5,
+          "imPlus": 57.1,
+          "ueberMarkt": 1.5,
+          "ueberKlasse": 1.5,
+          "netto": {
+            "imPlus": 57.1,
+            "mittel": -0.11
+          }
+        },
+        "r3T": {
+          "n": 37,
+          "mittel": -2.7,
+          "median": -2.6,
+          "imPlus": 45.9,
+          "ueberMarkt": -1.8,
+          "ueberKlasse": -1.9,
+          "netto": {
+            "imPlus": 43.2,
+            "mittel": -3.26
+          }
+        },
+        "r1W": {
+          "n": 31,
+          "mittel": -4,
+          "median": -6.3,
+          "imPlus": 32.3,
+          "ueberMarkt": -7.4,
+          "ueberKlasse": -7.1,
+          "netto": {
+            "imPlus": 32.3,
+            "mittel": -4.63
+          }
+        },
+        "r10T": {
+          "n": 16,
+          "mittel": -5.5,
+          "median": -9.3,
+          "imPlus": 18.8,
+          "ueberMarkt": -7.7,
+          "ueberKlasse": -8.2,
+          "netto": {
+            "imPlus": 12.5,
+            "mittel": -6.07
+          }
+        },
+        "r1M": {
+          "n": 0,
+          "mittel": null,
+          "median": null,
+          "imPlus": null,
+          "ueberMarkt": null,
+          "ueberKlasse": null
+        }
+      },
+      "hoch": 13.3,
+      "tief": -15
     },
     {
       "markt": "aktie",
@@ -961,15 +1026,15 @@
           }
         },
         "r1W": {
-          "n": 21,
-          "mittel": -10.3,
-          "median": -12.7,
-          "imPlus": 19,
-          "ueberMarkt": -10.2,
-          "ueberKlasse": -10.3,
+          "n": 36,
+          "mittel": -10.9,
+          "median": -9.9,
+          "imPlus": 16.7,
+          "ueberMarkt": -6.9,
+          "ueberKlasse": -7,
           "netto": {
-            "imPlus": 19,
-            "mittel": -10.91
+            "imPlus": 13.9,
+            "mittel": -11.54
           }
         },
         "r10T": {
@@ -994,59 +1059,59 @@
         }
       },
       "hoch": 7.3,
-      "tief": -25
+      "tief": -29.5
     },
     {
       "markt": "aktie",
-      "typ": "tagesverlierer",
-      "faelle": 40,
+      "typ": "gewinn_enttaeuschung",
+      "faelle": 20,
       "punkte": {
         "r1T": {
-          "n": 40,
+          "n": 20,
           "mittel": 0.6,
-          "median": 2.2,
-          "imPlus": 60,
-          "ueberMarkt": 2,
-          "ueberKlasse": 2,
+          "median": 0.6,
+          "imPlus": 70,
+          "ueberMarkt": 0.8,
+          "ueberKlasse": 0.7,
           "netto": {
-            "imPlus": 60,
-            "mittel": 0.02
+            "imPlus": 50,
+            "mittel": -0.02
           }
         },
         "r3T": {
-          "n": 34,
-          "mittel": -1.5,
-          "median": -0.3,
-          "imPlus": 50,
-          "ueberMarkt": -0.7,
-          "ueberKlasse": -0.5,
+          "n": 19,
+          "mittel": 0.6,
+          "median": 1,
+          "imPlus": 57.9,
+          "ueberMarkt": 0.6,
+          "ueberKlasse": 0.4,
           "netto": {
-            "imPlus": 47.1,
-            "mittel": -2.13
+            "imPlus": 57.9,
+            "mittel": 0.04
           }
         },
         "r1W": {
-          "n": 31,
-          "mittel": -4,
-          "median": -6.3,
-          "imPlus": 32.3,
-          "ueberMarkt": -7.4,
-          "ueberKlasse": -7.1,
+          "n": 19,
+          "mittel": -0.6,
+          "median": 0.5,
+          "imPlus": 52.6,
+          "ueberMarkt": 0.2,
+          "ueberKlasse": 0.2,
           "netto": {
-            "imPlus": 32.3,
-            "mittel": -4.63
+            "imPlus": 47.4,
+            "mittel": -1.24
           }
         },
         "r10T": {
-          "n": 14,
-          "mittel": -2.4,
-          "median": -8.7,
-          "imPlus": 21.4,
-          "ueberMarkt": -7.7,
-          "ueberKlasse": -8.1,
+          "n": 12,
+          "mittel": -1.3,
+          "median": -0.5,
+          "imPlus": 50,
+          "ueberMarkt": 1.2,
+          "ueberKlasse": 0.8,
           "netto": {
-            "imPlus": 14.3,
-            "mittel": -2.96
+            "imPlus": 41.7,
+            "mittel": -1.87
           }
         },
         "r1M": {
@@ -1058,8 +1123,8 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 13.4,
-      "tief": -14.8
+      "hoch": 4.2,
+      "tief": -4.1
     },
     {
       "markt": "aktie",
@@ -1091,27 +1156,27 @@
           }
         },
         "r1W": {
-          "n": 17,
-          "mittel": -1.5,
+          "n": 19,
+          "mittel": -1.7,
           "median": -0.7,
-          "imPlus": 41.2,
+          "imPlus": 42.1,
           "ueberMarkt": -0.2,
           "ueberKlasse": -0.4,
           "netto": {
-            "imPlus": 41.2,
-            "mittel": -2.14
+            "imPlus": 36.8,
+            "mittel": -2.33
           }
         },
         "r10T": {
-          "n": 5,
-          "mittel": -5.5,
-          "median": -5.2,
-          "imPlus": 20,
-          "ueberMarkt": -4,
-          "ueberKlasse": -4.8,
+          "n": 9,
+          "mittel": -2.5,
+          "median": -3.1,
+          "imPlus": 33.3,
+          "ueberMarkt": -1.9,
+          "ueberKlasse": -2.7,
           "netto": {
-            "imPlus": 20,
-            "mittel": -6.12
+            "imPlus": 33.3,
+            "mittel": -3.11
           }
         },
         "r1M": {
@@ -1124,72 +1189,7 @@
         }
       },
       "hoch": 4.4,
-      "tief": -5
-    },
-    {
-      "markt": "aktie",
-      "typ": "gewinn_enttaeuschung",
-      "faelle": 19,
-      "punkte": {
-        "r1T": {
-          "n": 19,
-          "mittel": 0.6,
-          "median": 0.5,
-          "imPlus": 68.4,
-          "ueberMarkt": 0.6,
-          "ueberKlasse": 0.7,
-          "netto": {
-            "imPlus": 47.4,
-            "mittel": -0.04
-          }
-        },
-        "r3T": {
-          "n": 19,
-          "mittel": 0.6,
-          "median": 1,
-          "imPlus": 57.9,
-          "ueberMarkt": 0.6,
-          "ueberKlasse": 0.4,
-          "netto": {
-            "imPlus": 57.9,
-            "mittel": 0.04
-          }
-        },
-        "r1W": {
-          "n": 19,
-          "mittel": -0.6,
-          "median": 0.5,
-          "imPlus": 52.6,
-          "ueberMarkt": 0.2,
-          "ueberKlasse": 0.2,
-          "netto": {
-            "imPlus": 47.4,
-            "mittel": -1.24
-          }
-        },
-        "r10T": {
-          "n": 9,
-          "mittel": 0.7,
-          "median": 0.7,
-          "imPlus": 66.7,
-          "ueberMarkt": 1.4,
-          "ueberKlasse": 0.7,
-          "netto": {
-            "imPlus": 55.6,
-            "mittel": 0.13
-          }
-        },
-        "r1M": {
-          "n": 0,
-          "mittel": null,
-          "median": null,
-          "imPlus": null,
-          "ueberMarkt": null,
-          "ueberKlasse": null
-        }
-      },
-      "hoch": 4.6,
-      "tief": -4.3
+      "tief": -7
     },
     {
       "markt": "krypto",
@@ -1363,15 +1363,15 @@
           }
         },
         "r10T": {
-          "n": 5,
-          "mittel": -10.5,
-          "median": -11.5,
+          "n": 6,
+          "mittel": -9.6,
+          "median": -8.2,
           "imPlus": 0,
-          "ueberMarkt": -10,
-          "ueberKlasse": -10,
+          "ueberMarkt": -5.7,
+          "ueberKlasse": -5.7,
           "netto": {
             "imPlus": 0,
-            "mittel": -11.12
+            "mittel": -10.2
           }
         },
         "r1M": {
@@ -1383,8 +1383,8 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 6.1,
-      "tief": -9.9
+      "hoch": 6.3,
+      "tief": -13.6
     },
     {
       "markt": "krypto",
@@ -1450,6 +1450,67 @@
       },
       "hoch": 10.8,
       "tief": -27.3
+    },
+    {
+      "markt": "aktie",
+      "typ": "politik_massnahme",
+      "faelle": 8,
+      "punkte": {
+        "r1T": {
+          "n": 8,
+          "mittel": -0.5,
+          "median": -0.9,
+          "imPlus": 37.5,
+          "ueberMarkt": -0.1,
+          "ueberKlasse": 0,
+          "netto": {
+            "imPlus": 25,
+            "mittel": -1.07
+          }
+        },
+        "r3T": {
+          "n": 5,
+          "mittel": -2.5,
+          "median": -4,
+          "imPlus": 40,
+          "ueberMarkt": -1.5,
+          "ueberKlasse": -1.4,
+          "netto": {
+            "imPlus": 40,
+            "mittel": -3.06
+          }
+        },
+        "r1W": {
+          "n": 2,
+          "mittel": 2.3,
+          "median": 2.3,
+          "imPlus": 100,
+          "ueberMarkt": 2.9,
+          "ueberKlasse": 2.6,
+          "netto": {
+            "imPlus": 50,
+            "mittel": 1.65
+          }
+        },
+        "r10T": {
+          "n": 0,
+          "mittel": null,
+          "median": null,
+          "imPlus": null,
+          "ueberMarkt": null,
+          "ueberKlasse": null
+        },
+        "r1M": {
+          "n": 0,
+          "mittel": null,
+          "median": null,
+          "imPlus": null,
+          "ueberMarkt": null,
+          "ueberKlasse": null
+        }
+      },
+      "hoch": 2,
+      "tief": -3.5
     },
     {
       "markt": "krypto",
@@ -1518,67 +1579,6 @@
     },
     {
       "markt": "aktie",
-      "typ": "politik_massnahme",
-      "faelle": 5,
-      "punkte": {
-        "r1T": {
-          "n": 5,
-          "mittel": -0.8,
-          "median": -1.1,
-          "imPlus": 20,
-          "ueberMarkt": -0.2,
-          "ueberKlasse": -0.2,
-          "netto": {
-            "imPlus": 0,
-            "mittel": -1.42
-          }
-        },
-        "r3T": {
-          "n": 2,
-          "mittel": 1.4,
-          "median": 1.4,
-          "imPlus": 100,
-          "ueberMarkt": 0.8,
-          "ueberKlasse": 0.6,
-          "netto": {
-            "imPlus": 100,
-            "mittel": 0.8
-          }
-        },
-        "r1W": {
-          "n": 2,
-          "mittel": 2.3,
-          "median": 2.3,
-          "imPlus": 100,
-          "ueberMarkt": 2.9,
-          "ueberKlasse": 2.6,
-          "netto": {
-            "imPlus": 50,
-            "mittel": 1.65
-          }
-        },
-        "r10T": {
-          "n": 0,
-          "mittel": null,
-          "median": null,
-          "imPlus": null,
-          "ueberMarkt": null,
-          "ueberKlasse": null
-        },
-        "r1M": {
-          "n": 0,
-          "mittel": null,
-          "median": null,
-          "imPlus": null,
-          "ueberMarkt": null,
-          "ueberKlasse": null
-        }
-      },
-      "hoch": 1.5,
-      "tief": -3
-    },
-    {
-      "markt": "aktie",
       "typ": "prognose_senkung",
       "faelle": 5,
       "punkte": {
@@ -1595,15 +1595,15 @@
           }
         },
         "r3T": {
-          "n": 2,
-          "mittel": -2.4,
-          "median": -2.4,
-          "imPlus": 50,
-          "ueberMarkt": -2.9,
-          "ueberKlasse": -2.9,
+          "n": 3,
+          "mittel": 1.3,
+          "median": 8.7,
+          "imPlus": 66.7,
+          "ueberMarkt": 9.1,
+          "ueberKlasse": 9.2,
           "netto": {
-            "imPlus": 50,
-            "mittel": -3.05
+            "imPlus": 66.7,
+            "mittel": 0.67
           }
         },
         "r1W": {
@@ -1635,8 +1635,8 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 11.5,
-      "tief": -16
+      "hoch": 20,
+      "tief": -20
     },
     {
       "markt": "krypto",
@@ -1830,7 +1830,7 @@
           "ueberKlasse": null
         }
       },
-      "hoch": 2.4,
+      "hoch": 3.3,
       "tief": -4.2
     },
     {

@@ -1,17 +1,17 @@
 {
-  "stand": "2026-11-18T14:31:58.234Z",
+  "stand": "2026-11-19T06:00:31.412Z",
   "hinweis": "Tages-Lagebild in groben Klassen (keine Kurswerte): Angstbarometer VIX, Marktbreite und 5-Tage-Bewegung des Markts, lange US-Anleihen (Zinsen), Dollar, Kreditmarkt und Öl über ETF-Kurse; Krypto: Fear & Greed (alternative.me) und Stablecoin-Menge (DefiLlama). Stichtag = US-Handelstag bzw. Krypto-Tag (UTC).",
   "heute": {
-    "datum": "2026-11-17",
+    "datum": "2026-11-18",
     "aktien": {
-      "vix": "VIX 25 bis 30",
+      "vix": "VIX 20 bis 25",
       "vix5": "VIX steigt stark (über +15 %)",
-      "breite": "unter 25 % der Werte im Plus",
-      "markt5": "Markt 5 Tage −3 bis −1 %",
-      "anleihen": "Lange US-Anleihen 5 Tage gefallen",
+      "breite": "40 bis 60 % im Plus",
+      "markt5": "Markt 5 Tage unter −3 %",
+      "anleihen": "Lange US-Anleihen 5 Tage ruhig",
       "dollar": "Dollar 5 Tage stärker",
-      "kredit": "Kreditmarkt 5 Tage ruhig",
-      "oel": "Öl 5 Tage ruhig"
+      "kredit": "Kreditmarkt 5 Tage angespannt",
+      "oel": "Öl 5 Tage gefallen"
     },
     "krypto": {
       "angst": "Krypto: extreme Angst (Fear & Greed unter 25)",
@@ -21,25 +21,6 @@
     }
   },
   "verlauf": [
-    {
-      "datum": "2026-03-12",
-      "aktien": {
-        "vix": "VIX 25 bis 30",
-        "vix5": "VIX steigt (+5 bis +15 %)",
-        "breite": "unter 25 % der Werte im Plus",
-        "markt5": "Markt 5 Tage −3 bis −1 %",
-        "anleihen": "Lange US-Anleihen 5 Tage gefallen",
-        "dollar": "Dollar 5 Tage stärker",
-        "kredit": "Kreditmarkt 5 Tage ruhig",
-        "oel": "Öl 5 Tage stark gestiegen"
-      },
-      "krypto": {
-        "angst": "Krypto: extreme Angst (Fear & Greed unter 25)",
-        "stablecoins": "Stablecoins 30 Tage gewachsen (2 bis 5 %)",
-        "breite": "über 75 % im Plus",
-        "markt5": "Markt 5 Tage über +3 %"
-      }
-    },
     {
       "datum": "2026-03-13",
       "aktien": {
@@ -4763,6 +4744,25 @@
         "dollar": "Dollar 5 Tage stärker",
         "kredit": "Kreditmarkt 5 Tage ruhig",
         "oel": "Öl 5 Tage ruhig"
+      },
+      "krypto": {
+        "angst": "Krypto: extreme Angst (Fear & Greed unter 25)",
+        "stablecoins": "Stablecoins 30 Tage geschrumpft (über 1 %)",
+        "breite": null,
+        "markt5": null
+      }
+    },
+    {
+      "datum": "2026-11-18",
+      "aktien": {
+        "vix": "VIX 20 bis 25",
+        "vix5": "VIX steigt stark (über +15 %)",
+        "breite": "40 bis 60 % im Plus",
+        "markt5": "Markt 5 Tage unter −3 %",
+        "anleihen": "Lange US-Anleihen 5 Tage ruhig",
+        "dollar": "Dollar 5 Tage stärker",
+        "kredit": "Kreditmarkt 5 Tage angespannt",
+        "oel": "Öl 5 Tage gefallen"
       },
       "krypto": {
         "angst": "Krypto: extreme Angst (Fear & Greed unter 25)",

@@ -3915,6 +3915,38 @@
         "faelle": 3617
       },
       "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "modell|aktie|2S150|10|treffer",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) – oberste 0,5 %",
+      "gruppenSchluessel": "modell|aktie",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "wertung": 1.7,
+      "rueckblick": {
+        "quote": 28.7,
+        "ev": 13.7,
+        "se": 7.4,
+        "faelle": 4422
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "modell|aktie|V2S150|10|treffer",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) – oberste 1 %",
+      "gruppenSchluessel": "modell|aktie",
+      "sp": "V2S150",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "wertung": 14.2,
+      "rueckblick": {
+        "quote": 28.6,
+        "ev": 23.5,
+        "se": 8.9,
+        "faelle": 3063
+      },
+      "status": "vorwaertstest"
     }
   ]
 }

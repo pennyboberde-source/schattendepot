@@ -1,138 +1,138 @@
 {
-  "stand": "2026-11-18T14:31:58.234Z",
+  "stand": "2026-11-19T06:00:31.412Z",
   "hinweis": "Wie oft folgte auf ein Signal der Datenkrake ein Volltreffer (Kauf zur Eröffnung des Folgetags, direkt oder Turbo bis Hebel 3 in beide Richtungen, Stop 150 €, binnen 10 Handelstagen)? Je Wert und Signaltyp höchstens ein Fall in 10 Handelstagen; Grundrate = alle handelbaren Stichtage derselben Tage. Kleine Fallzahlen sind Zufall – erst ab etwa 100 Fällen aussagekräftig.",
   "von": "2026-10-26",
-  "bis": "2026-11-18",
+  "bis": "2026-11-19",
   "grundrate": {
-    "aktie": 11.31131327177117,
+    "aktie": 11.190608060869645,
     "krypto": 5.502183406113537
   },
   "typen": [
     {
       "typ": "handelsstopp",
       "markt": "aktie",
-      "faelle": 146,
-      "treffer": 57,
-      "quote": 39,
-      "grundrate": 11.3,
-      "lift": 3.45
+      "faelle": 153,
+      "treffer": 61,
+      "quote": 39.9,
+      "grundrate": 11.2,
+      "lift": 3.56
     },
     {
       "typ": "verwaesserung",
       "markt": "aktie",
-      "faelle": 125,
-      "treffer": 33,
-      "quote": 26.4,
-      "grundrate": 11.3,
-      "lift": 2.33
+      "faelle": 130,
+      "treffer": 35,
+      "quote": 26.9,
+      "grundrate": 11.2,
+      "lift": 2.41
     },
     {
       "typ": "quartalstermin",
       "markt": "aktie",
-      "faelle": 120,
+      "faelle": 128,
       "treffer": 12,
-      "quote": 10,
-      "grundrate": 11.3,
-      "lift": 0.88
+      "quote": 9.4,
+      "grundrate": 11.2,
+      "lift": 0.84
     },
     {
       "typ": "leerverkauf_quote",
       "markt": "aktie",
-      "faelle": 107,
-      "treffer": 12,
-      "quote": 11.2,
-      "grundrate": 11.3,
-      "lift": 0.99
+      "faelle": 124,
+      "treffer": 16,
+      "quote": 12.9,
+      "grundrate": 11.2,
+      "lift": 1.15
     },
     {
       "typ": "insider_kauf",
       "markt": "aktie",
-      "faelle": 94,
-      "treffer": 9,
-      "quote": 9.6,
-      "grundrate": 11.3,
+      "faelle": 105,
+      "treffer": 10,
+      "quote": 9.5,
+      "grundrate": 11.2,
       "lift": 0.85
     },
     {
       "typ": "kursrakete",
       "markt": "aktie",
-      "faelle": 79,
-      "treffer": 30,
-      "quote": 38,
-      "grundrate": 11.3,
-      "lift": 3.36
+      "faelle": 83,
+      "treffer": 34,
+      "quote": 41,
+      "grundrate": 11.2,
+      "lift": 3.66
     },
     {
       "typ": "grossauftrag",
       "markt": "aktie",
-      "faelle": 77,
-      "treffer": 11,
-      "quote": 14.3,
-      "grundrate": 11.3,
-      "lift": 1.26
+      "faelle": 79,
+      "treffer": 13,
+      "quote": 16.5,
+      "grundrate": 11.2,
+      "lift": 1.47
     },
     {
       "typ": "gewinn_ueberraschung",
       "markt": "aktie",
-      "faelle": 77,
-      "treffer": 11,
-      "quote": 14.3,
-      "grundrate": 11.3,
-      "lift": 1.26
+      "faelle": 79,
+      "treffer": 12,
+      "quote": 15.2,
+      "grundrate": 11.2,
+      "lift": 1.36
     },
     {
       "typ": "stimmung_social",
       "markt": "aktie",
-      "faelle": 57,
-      "treffer": 25,
-      "quote": 43.9,
-      "grundrate": 11.3,
-      "lift": 3.88
+      "faelle": 63,
+      "treffer": 26,
+      "quote": 41.3,
+      "grundrate": 11.2,
+      "lift": 3.69
     },
     {
       "typ": "volumen_ungewoehnlich",
       "markt": "aktie",
-      "faelle": 56,
-      "treffer": 20,
-      "quote": 35.7,
-      "grundrate": 11.3,
-      "lift": 3.16
-    },
-    {
-      "typ": "tagesgewinner",
-      "markt": "aktie",
-      "faelle": 56,
-      "treffer": 20,
-      "quote": 35.7,
-      "grundrate": 11.3,
-      "lift": 3.16
+      "faelle": 61,
+      "treffer": 23,
+      "quote": 37.7,
+      "grundrate": 11.2,
+      "lift": 3.37
     },
     {
       "typ": "insider_cluster_kauf",
       "markt": "aktie",
-      "faelle": 52,
-      "treffer": 8,
-      "quote": 15.4,
-      "grundrate": 11.3,
-      "lift": 1.36
+      "faelle": 60,
+      "treffer": 9,
+      "quote": 15,
+      "grundrate": 11.2,
+      "lift": 1.34
+    },
+    {
+      "typ": "tagesgewinner",
+      "markt": "aktie",
+      "faelle": 60,
+      "treffer": 23,
+      "quote": 38.3,
+      "grundrate": 11.2,
+      "lift": 3.43
     },
     {
       "typ": "nachricht",
       "markt": "aktie",
-      "faelle": 46,
-      "treffer": 8,
-      "quote": 17.4,
-      "grundrate": 11.3,
-      "lift": 1.54
+      "faelle": 48,
+      "treffer": 9,
+      "quote": 18.8,
+      "grundrate": 11.2,
+      "lift": 1.68
     },
     {
       "typ": "tagesverlierer",
       "markt": "aktie",
-      "faelle": 40,
-      "treffer": 12,
-      "quote": 30,
-      "grundrate": 11.3,
-      "lift": 2.65
+      "faelle": 41,
+      "treffer": 13,
+      "quote": 31.7,
+      "grundrate": 11.2,
+      "lift": 2.83
     },
     {
       "typ": "upbit_warnung",
@@ -146,20 +146,20 @@
     {
       "typ": "nachzahlen_drift",
       "markt": "aktie",
-      "faelle": 18,
+      "faelle": 19,
       "treffer": 2,
-      "quote": 11.1,
-      "grundrate": 11.3,
-      "lift": 0.98
+      "quote": 10.5,
+      "grundrate": 11.2,
+      "lift": 0.94
     },
     {
       "typ": "gewinn_enttaeuschung",
       "markt": "aktie",
-      "faelle": 18,
+      "faelle": 19,
       "treffer": 2,
-      "quote": 11.1,
-      "grundrate": 11.3,
-      "lift": 0.98
+      "quote": 10.5,
+      "grundrate": 11.2,
+      "lift": 0.94
     },
     {
       "typ": "funding_extrem",
@@ -174,10 +174,19 @@
       "typ": "leerverkauf_aenderung",
       "markt": "aktie",
       "faelle": 12,
-      "treffer": 2,
-      "quote": 16.7,
-      "grundrate": 11.3,
-      "lift": 1.47
+      "treffer": 3,
+      "quote": 25,
+      "grundrate": 11.2,
+      "lift": 2.23
+    },
+    {
+      "typ": "politik_massnahme",
+      "markt": "aktie",
+      "faelle": 8,
+      "treffer": 0,
+      "quote": 0,
+      "grundrate": 11.2,
+      "lift": 0
     },
     {
       "typ": "liquidationen_spitze",
@@ -198,22 +207,13 @@
       "lift": 2.6
     },
     {
-      "typ": "politik_massnahme",
-      "markt": "aktie",
-      "faelle": 5,
-      "treffer": 0,
-      "quote": 0,
-      "grundrate": 11.3,
-      "lift": 0
-    },
-    {
       "typ": "uebernahmeangebot",
       "markt": "aktie",
       "faelle": 5,
       "treffer": 2,
       "quote": 40,
-      "grundrate": 11.3,
-      "lift": 3.54
+      "grundrate": 11.2,
+      "lift": 3.57
     },
     {
       "typ": "nachricht",
@@ -239,7 +239,7 @@
       "faelle": 2,
       "treffer": 0,
       "quote": 0,
-      "grundrate": 11.3,
+      "grundrate": 11.2,
       "lift": 0
     },
     {
@@ -248,8 +248,8 @@
       "faelle": 2,
       "treffer": 1,
       "quote": 50,
-      "grundrate": 11.3,
-      "lift": 4.42
+      "grundrate": 11.2,
+      "lift": 4.47
     },
     {
       "typ": "ueberreaktion",
@@ -275,7 +275,7 @@
       "faelle": 1,
       "treffer": 0,
       "quote": 0,
-      "grundrate": 11.3,
+      "grundrate": 11.2,
       "lift": 0
     },
     {
@@ -284,8 +284,8 @@
       "faelle": 1,
       "treffer": 1,
       "quote": 100,
-      "grundrate": 11.3,
-      "lift": 8.84
+      "grundrate": 11.2,
+      "lift": 8.94
     },
     {
       "typ": "aktienrueckkauf",
@@ -293,7 +293,7 @@
       "faelle": 1,
       "treffer": 0,
       "quote": 0,
-      "grundrate": 11.3,
+      "grundrate": 11.2,
       "lift": 0
     },
     {
@@ -302,7 +302,7 @@
       "faelle": 1,
       "treffer": 0,
       "quote": 0,
-      "grundrate": 11.3,
+      "grundrate": 11.2,
       "lift": 0
     },
     {
