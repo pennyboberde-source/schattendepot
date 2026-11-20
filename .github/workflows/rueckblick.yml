@@ -55,7 +55,7 @@ jobs:
         run: |
           mkdir -p "$DATEN_DIR/lernen/muster"
           # Hypothesen- und Muster-Buch werden nur angehängt → bisherigen Stand mitnehmen
-          for b in hypothesen.json muster-buch.json; do [ -f "_daten/lernen/muster/$b" ] && cp "_daten/lernen/muster/$b" "$DATEN_DIR/lernen/muster/"; done
+          for b in hypothesen.json muster-buch.json zeitreise-buch.json; do [ -f "_daten/lernen/muster/$b" ] && cp "_daten/lernen/muster/$b" "$DATEN_DIR/lernen/muster/"; done
           node jobs/rueckblick.ts
       - name: Probe – Rangliste zeigen
         if: ${{ inputs.probe }}

@@ -12,9 +12,9 @@ import { etikett, spielarten, spielartText, sprungEpisoden, volHebel, type Ausga
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, neinFilterAktiv, urteilKalibrierung, type JagdFall } from '../core/volltreffer/jagd.ts';
-import { auswaehlen, bilanz, nachspielen, ZeitStat, type Gewaehlt, type Kandidat } from '../core/volltreffer/zeitreise.ts';
+import { auswaehlen, bilanz, nachspielen, zrAktiv, zrBremse, zrBuchFortschreiben, zrZeiten, ZeitStat, type Gewaehlt, type Kandidat, type ZrBremsRegel, type ZrBuchEintrag, type ZrMuster } from '../core/volltreffer/zeitreise.ts';
 import { pumpVerdacht } from '../core/datenkrake.ts';
-import { befoerderungPruefen, istBefoerdert, noetigeFaelle, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
+import { befoerderungPruefen, inStufe3, istBefoerdert, noetigeFaelle, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
 import { ladeConfig, leseJson, schreibeJson } from './lib/dateien.ts';
 import { huerdenAusConfig } from './lib/abgeleitet.ts';
@@ -774,6 +774,39 @@ for (const e of alleMuster.values()) {
 }
 const spNachSchluessel = new Map(SP.map((sp) => [spielartSchluessel(sp), sp]));
 const vorwaerts: JagdFall[] = [];
+
+// ---------- 4d. Zeitreise-Regel (Nutzer 20.11.2026): Auswahl des laufenden Halbmonats ordert sichtbar ----------
+// Die Zeitreise (zeitreise.yml, täglich 23:40 UTC) legt in lernen/zeitreise.json › aktuell die Muster des laufenden
+// Halbmonats ab – gewählt nur aus Fällen, deren Ergebnis feststand. Das Zeitreise-Buch (nur anhängen) hält fest, ab
+// welchem Stichtag ein Muster gilt; seine Fälle entstehen wie im Vorwärtstest, zählen aber nicht für V4.
+const ZRV = (vt.v6 as unknown as { zeitreise?: { aktiv: boolean; ab: string; frischTage?: number; ohneUngeprueft?: boolean; bremse: ZrBremsRegel } }).zeitreise;
+const zrBuch = leseJson<{ eintraege: ZrBuchEintrag[] }>('lernen/muster/zeitreise-buch.json', { eintraege: [] });
+const zrPfad = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'lernen', 'zeitreise.json');
+const zrDatei = existsSync(zrPfad) ? (JSON.parse(readFileSync(zrPfad, 'utf8')) as { stand?: string; aktuell?: { halbmonatVon: string; muster: ZrMuster[] } }) : null;
+const zrGebremst = !!ZRV && zrBuch.eintraege.some((e) => e.status === 'bremse' && e.am >= ZRV.ab);
+const zrFrisch = zrDatei?.aktuell && zrDatei.stand && (Date.parse(heute) - Date.parse(zrDatei.stand.slice(0, 10))) / 86400000 <= (ZRV?.frischTage ?? 2) ? zrDatei.aktuell.muster : null;
+// neuester Stichtag je Markt: ab dort gilt eine neue Auswahl (Einstieg zur nächsten Eröffnung – kein Blick zurück)
+const neuesterTag = (m: Markt) => [...r1JeTag[m].keys()].reduce((a, d) => (d > a ? d : a), '');
+const zrAb = (x: { gruppenSchluessel?: string; schluessel: string }) => {
+  const d = neuesterTag((x.gruppenSchluessel ?? x.schluessel).startsWith('krypto|') ? 'krypto' : 'aktie');
+  return ZRV && d < ZRV.ab ? ZRV.ab : d;
+};
+const zrNeu = ZRV ? zrBuchFortschreiben(zrBuch.eintraege, zrFrisch, zrAb, ZRV.aktiv && !zrGebremst, ZRV.aktiv ? 'Bremse' : 'Regel ausgeschaltet') : [];
+zrBuch.eintraege.push(...zrNeu);
+const zrErst = new Map<string, ZrBuchEintrag>();
+for (const e of zrBuch.eintraege) if (e.status === 'gewaehlt' && !zrErst.has(e.schluessel)) zrErst.set(e.schluessel, e);
+/** Muster nur der Zeitreise (nicht im Muster-Buch): ihre Fälle zählen nicht für V4 */
+const zrNur = new Set<string>();
+for (const [k, e] of zrErst) {
+  if (alleMuster.has(k) || !e.gruppenSchluessel || !e.sp || !spNachSchluessel.has(e.sp)) continue;
+  const g = gid.get(e.gruppenSchluessel);
+  if (g === undefined) continue;
+  const seit = new Date(Date.parse(`${e.am}T12:00:00Z`) - 86400000).toISOString().slice(0, 10);
+  const bm: BuchMuster = { schluessel: k, gruppe: e.gruppe ?? k, gruppenSchluessel: e.gruppenSchluessel, sp: e.sp, fenster: e.fenster ?? 10, seit, wertung: e.wertung ?? 0, rueckblick: { quote: e.quote ?? 0, ev: e.ev ?? 0, se: 0, faelle: e.tage ?? 0 }, status: 'zeitreise' };
+  (testJeGruppe.get(g) ?? testJeGruppe.set(g, []).get(g)!).push(bm);
+  zrNur.add(k);
+}
+if (ZRV) log(`Zeitreise-Regel: ${ZRV.aktiv ? (zrGebremst ? 'GEBREMST' : 'an') : 'aus'}, Auswahl ${zrFrisch ? `${zrFrisch.length} Muster (Halbmonat ab ${zrDatei?.aktuell?.halbmonatVon})` : 'nicht frisch – unverändert'}, aktiv ${zrAktiv(zrBuch.eintraege).size}, heute ${zrNeu.filter((e) => e.status === 'gewaehlt').length} gewählt/${zrNeu.filter((e) => e.status === 'abgewaehlt').length} abgewählt.`);
 const FENSTER_ALLE = (f: number) => Array.from({ length: f }, (_, n) => n + 1);
 /** Fall eines Musters im Vorwärtstest: Ausgang, laufend oder noch lauernd (kein Folgetag) */
 const SEC_NAME: Record<MeldungArt, string> = { angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: '13D-Meldung (Großaktionär)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz/Delisting/Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzungsänderung (8-K 5.03, oft Aktiensplit)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: '13G-Meldung (Beteiligung ab 5 %)' };
@@ -2087,7 +2120,7 @@ if (vt.erkennung) {
     const u = urteile.get(`${f.wert.toUpperCase()}|${f.stichtag}`);
     if (u) Object.assign(f, u);
   }
-  const ohnePump = vorwaerts.filter((f) => !f.pump);
+  const ohnePump = vorwaerts.filter((f) => !f.pump && !zrNur.has(f.muster));
   // Klumpen (18.11.2026): je Wert die Anker-Reihe mit der höchsten Korrelation der Tagesrenditen der letzten 120 Tage
   // (ab 0,7), sonst der Wert selbst – höchstens maxJeKlumpen offene Jagden je Anker und Richtung
   const klumpeCache = new Map<string, string | null>();
@@ -2172,13 +2205,38 @@ if (vt.erkennung) {
   const urteilNein = jagdKennzahlen(vorwaerts.filter((f) => f.urteil === 'nein'));
   const ohneNein = v6.ohneNein === 'auto' ? neinFilterAktiv(urteilJa, urteilNein, v6.urteilAuto ?? { mindestJa: 15, mindestNein: 30 }) : (v6.ohneNein ?? false);
   log(`Claudes Urteil: „ja“ ${urteilJa.anzahl} abgeschlossen (Quote ${urteilJa.quote} %, Ø ${urteilJa.ev} €), „nein“ ${urteilNein.anzahl} (Quote ${urteilNein.quote} %, Ø ${urteilNein.ev} €) → Filter für sichtbare Orders ${ohneNein ? 'AKTIV' : 'aus'}${v6.ohneNein === 'auto' ? ' (automatisch nach Messung)' : ''}.`);
-  const s3 = stufe3Waehlen(ohnePump, zeiten3, v6, ohneNein, klumpenRegel);
+  // Zeitreise-Regel (20.11.2026): Fälle der Zeitreise-Muster im Gültigkeitsfenster ordern zusätzlich sichtbar – mit der
+  // Wertung der Zeitreise (Rang wie dort), ohne Pump-Verdacht und ohne ungeprüfte Plattform; danach die Bremse
+  const zrWertung = new Map([...zrErst.values()].map((e) => [e.schluessel, e.wertung ?? 0]));
+  const s3Waehlen = () => {
+    const zz = zrZeiten(zrBuch.eintraege);
+    const inZR = (f: JagdFall) => zz.get(f.muster)?.some((x) => f.stichtag >= x.von && (x.bis === null || f.stichtag < x.bis)) ?? false;
+    const kand = vorwaerts
+      .filter((f) => !f.pump)
+      .flatMap((f) => (inStufe3(zeiten3, f) ? [f] : inZR(f) && !(ZRV?.ohneUngeprueft && f.ungeprueft) ? [{ ...f, wertung: zrWertung.get(f.muster) ?? f.wertung, zeitreise: true }] : []));
+    const zeiten = new Map(zeiten3);
+    for (const [k, l] of zz) zeiten.set(k, [...(zeiten.get(k) ?? []), ...l]);
+    return stufe3Waehlen(kand, zeiten, v6, ohneNein, klumpenRegel);
+  };
+  let s3 = s3Waehlen();
+  const zrOrders = () => [...s3.offen, ...s3.abgeschlossen].filter((j) => j.zeitreise && ZRV && j.stichtag >= ZRV.ab);
+  let zrStand = ZRV ? zrBremse(zrOrders(), ZRV.bremse) : null;
+  if (ZRV && zrStand?.aus && ZRV.aktiv && !zrGebremst) {
+    zrBuch.eintraege.push({ schluessel: '*', status: 'bremse', am: heute, grund: zrStand.grund });
+    zrBuch.eintraege.push(...zrBuchFortschreiben(zrBuch.eintraege, null, zrAb, false, 'Bremse'));
+    s3 = s3Waehlen();
+    zrStand = zrBremse(zrOrders(), ZRV.bremse);
+    log(`Zeitreise-Regel GEBREMST: ${zrStand.grund} – zurück zur strengen 6er-Regel, laufende Orders laufen zu Ende.`);
+  }
+  if (ZRV) schreibeJson('lernen/muster/zeitreise-buch.json', { stand: jetzt.toISOString(), hinweis: 'Zeitreise-Regel (seit 20.11.2026): ab welchem Stichtag ein Muster der Zeitreise-Auswahl sichtbar ordern darf (gewaehlt) und ab wann nicht mehr (abgewaehlt); bremse = Regel gestoppt. Nur anhängen.', eintraege: zrBuch.eintraege });
+  const zrBremsEintrag = ZRV ? [...zrBuch.eintraege].reverse().find((e) => e.status === 'bremse' && e.am >= ZRV.ab) ?? null : null;
   const befoerdertJetzt = [...alleMuster.values(), ...musterBuch.eintraege]
     .filter((e, i, a) => a.findIndex((x) => x.schluessel === e.schluessel) === i && istBefoerdert(zeiten3, e.schluessel))
     .map((e) => ({ gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: zeiten3.get(e.schluessel)!.find((z) => z.bis === null)!.von, rueckblick: e.rueckblick }));
   const lauerliste = ohnePump.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung);
-  const pumpZahl = vorwaerts.filter((x) => x.pump).length;
+  const pumpZahl = vorwaerts.filter((x) => x.pump && !zrNur.has(x.muster)).length;
   const musterText = new Map([...alleMuster.values()].map((e) => [e.schluessel, e.gruppe]));
+  for (const e of zrErst.values()) if (!musterText.has(e.schluessel) && e.gruppe) musterText.set(e.schluessel, e.gruppe);
   const ohneMuster = (j: JagdFall) => ({ ...j, muster: musterText.get(j.muster) ?? j.muster });
   // B Stufe 2a (18.11.2026): privat alle Werte der Lauerliste und offenen Jagden mit Hebelprodukt in Deutschland – der
   // Archivlauf schreibt deren gettex-Kurse mit (die öffentliche Lauerliste zeigt nur die obersten 40, meist ohne Produkt)
@@ -2212,9 +2270,25 @@ if (vt.erkennung) {
       vorgemerkt: s3.vorgemerkt.map(ohneMuster),
       uebersprungen: s3.uebersprungen,
       befoerdert: befoerdertJetzt,
+      // Zeitreise-Regel (20.11.2026): Stand, Bremse und Kennzahlen nur ihrer Orders
+      ...(ZRV
+        ? {
+            zeitreise: {
+              an: ZRV.aktiv && !zrBremsEintrag,
+              ab: ZRV.ab,
+              halbmonatVon: zrDatei?.aktuell?.halbmonatVon ?? null,
+              muster: zrAktiv(zrBuch.eintraege).size,
+              bremse: zrBremsEintrag ? { am: zrBremsEintrag.am, grund: zrBremsEintrag.grund ?? '' } : null,
+              regel: ZRV.bremse,
+              stand: zrStand,
+              kennzahlen: jagdKennzahlen(zrOrders()),
+            },
+          }
+        : {}),
     },
   });
   if (neu.length) log(`V4 neu im Vorwärtstest: ${neu.map((e) => `${e.gruppe} – ${e.spielart}`).join(" | ")}`);
+  if (ZRV) log(`Zeitreise-Regel: ${zrStand?.grund ?? '–'}; sichtbar offen ${s3.offen.filter((j) => j.zeitreise).length}, vorgemerkt ${s3.vorgemerkt.filter((j) => j.zeitreise).length}.`);
   log(`V6: ${befoerdertJetzt.length} Muster in Stufe 3 (heute ${befoerdertHeute.length} befördert, ${zurueckHeute.length} zurückgestuft), ${s3.kennzahlen.anzahl} sichtbare Orders abgeschlossen (Rendite ${s3.rendite} %), ${s3.offen.length} offen, ${s3.vorgemerkt.length} vorgemerkt.`);
   log(`V4: ${imTest.size} Muster im Vorwärtstest (+${neu.length} neu, ${beendet.length} beendet), ${vorwaerts.length} Fälle, ${jagden.length} Jagden (${uebersprungen} übersprungen), Lauerliste ${lauerliste.length}, Pump-Verdacht ${pumpZahl} (nicht gejagt).`);
 }

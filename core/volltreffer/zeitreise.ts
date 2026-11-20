@@ -217,3 +217,91 @@ export function bilanz(orders: Order[], monatVon: (tag: number) => string): Bila
     monate: [...monate.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([monat, x]) => ({ monat, orders: x.orders, volltreffer: x.volltreffer, netto: Math.round(x.netto) })),
   };
 }
+
+// ---------- Live-Regel (Nutzer 20.11.2026: „Ja, darfst du machen … sei bereit, sehr schnell zurück zur 6er-Regel zu
+// gehen“): die Auswahl des laufenden Halbmonats ordert sichtbar, mit Bremse ----------
+
+/** Muster der Zeitreise-Auswahl des laufenden Halbmonats (lernen/zeitreise.json › aktuell.muster) */
+export interface ZrMuster {
+  schluessel: string;
+  gruppe: string;
+  gruppenSchluessel: string;
+  sp: string;
+  fenster: number;
+  wertung: number;
+  quote: number;
+  ev: number;
+  tage?: number;
+}
+
+/** Eintrag im Zeitreise-Buch (lernen/muster/zeitreise-buch.json, nur anhängen) */
+export interface ZrBuchEintrag extends Partial<ZrMuster> {
+  schluessel: string;
+  /** gewaehlt: gilt für Stichtage ab `am`; abgewaehlt: gilt nicht mehr für Stichtage ab `am`; bremse: Regel gestoppt */
+  status: 'gewaehlt' | 'abgewaehlt' | 'bremse';
+  am: string;
+  grund?: string;
+}
+
+/** Je Schlüssel der jüngste Eintrag mit Status „gewaehlt“ (ohne folgendes „abgewaehlt“) */
+export function zrAktiv(eintraege: ZrBuchEintrag[]): Map<string, ZrBuchEintrag> {
+  const m = new Map<string, ZrBuchEintrag>();
+  for (const e of eintraege) {
+    if (e.status === 'gewaehlt') m.set(e.schluessel, e);
+    else if (e.status === 'abgewaehlt') m.delete(e.schluessel);
+  }
+  return m;
+}
+
+/**
+ * Neue Einträge für das Buch: Muster, die neu in der Auswahl sind → „gewaehlt“, nicht mehr enthaltene → „abgewaehlt“,
+ * jeweils am neuesten Stichtag ihres Markts (`ab`). Ist die Regel aus (Schalter, Bremse) → alle aktiven „abgewaehlt“.
+ * `aktuell` = null (Zeitreise-Datei fehlt oder ist veraltet) → nichts ändern.
+ */
+export function zrBuchFortschreiben(eintraege: ZrBuchEintrag[], aktuell: ZrMuster[] | null, ab: (m: ZrMuster | ZrBuchEintrag) => string, an: boolean, grund?: string): ZrBuchEintrag[] {
+  const aktiv = zrAktiv(eintraege);
+  const neu: ZrBuchEintrag[] = [];
+  if (!an) {
+    for (const e of aktiv.values()) neu.push({ schluessel: e.schluessel, status: 'abgewaehlt', am: ab(e), ...(grund ? { grund } : {}) });
+    return neu;
+  }
+  if (!aktuell) return neu;
+  const jetzt = new Set(aktuell.map((m) => m.schluessel));
+  for (const e of aktiv.values()) if (!jetzt.has(e.schluessel)) neu.push({ schluessel: e.schluessel, status: 'abgewaehlt', am: ab(e), grund: 'nicht mehr in der Auswahl des Halbmonats' });
+  for (const m of aktuell) if (!aktiv.has(m.schluessel)) neu.push({ ...m, status: 'gewaehlt', am: ab(m) });
+  return neu;
+}
+
+/** Gültigkeitszeiten je Muster: Stichtag ≥ von und < bis (bis = null: gilt noch) */
+export function zrZeiten(eintraege: ZrBuchEintrag[]): Map<string, { von: string; bis: string | null }[]> {
+  const z = new Map<string, { von: string; bis: string | null }[]>();
+  for (const e of eintraege) {
+    const liste = z.get(e.schluessel) ?? [];
+    const letzte = liste[liste.length - 1];
+    if (e.status === 'gewaehlt' && (!letzte || letzte.bis !== null)) liste.push({ von: e.am, bis: null });
+    else if (e.status === 'abgewaehlt' && letzte && letzte.bis === null) letzte.bis = e.am;
+    if (liste.length) z.set(e.schluessel, liste);
+  }
+  return z;
+}
+
+export interface ZrBremsRegel {
+  /** ab so vielen abgeschlossenen Orders zählt der Durchschnitt */
+  mindestOrders: number;
+  /** Ø je abgeschlossener Order darunter (€) → Bremse */
+  minOe: number;
+  /** Summe abgeschlossen + Stand der offenen ≤ −maxVerlust (€) → Bremse, unabhängig von der Zahl */
+  maxVerlust: number;
+}
+
+/** Bremse der Zeitreise-Regel: zu schlechte Orders seit dem Start → zurück zur strengen Regel */
+export function zrBremse(orders: { art: string; netto: number | null }[], r: ZrBremsRegel): { aus: boolean; grund: string; abgeschlossen: number; summe: number; offen: number } {
+  const fertig = orders.filter((o) => o.art !== 'offen' && o.art !== 'lauert');
+  const summe = Math.round(fertig.reduce((s, o) => s + (o.netto ?? 0), 0) * 100) / 100;
+  const offen = Math.round(orders.filter((o) => o.art === 'offen').reduce((s, o) => s + (o.netto ?? 0), 0) * 100) / 100;
+  const oe = fertig.length ? summe / fertig.length : 0;
+  const zahl = (x: number) => x.toLocaleString('de-DE', { maximumFractionDigits: 0 });
+  if (summe + offen <= -r.maxVerlust) return { aus: true, grund: `Summe ${zahl(summe + offen)} € (abgeschlossen ${zahl(summe)} €, offen ${zahl(offen)} €) erreicht die Grenze −${zahl(r.maxVerlust)} €`, abgeschlossen: fertig.length, summe, offen };
+  if (fertig.length >= r.mindestOrders && oe < r.minOe) return { aus: true, grund: `Ø ${zahl(oe)} € je Order nach ${fertig.length} Orders unter ${zahl(r.minOe)} €`, abgeschlossen: fertig.length, summe, offen };
+  return { aus: false, grund: `${fertig.length} abgeschlossen, Summe ${zahl(summe)} €, offen ${zahl(offen)} €`, abgeschlossen: fertig.length, summe, offen };
+}

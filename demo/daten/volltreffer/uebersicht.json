@@ -1,227 +1,256 @@
 {
- "stand": "2026-10-21T12:45:00Z",
- "regeln": {
-  "maxOffen": 5,
-  "tagesVerlustGrenze": 450,
-  "stufe2Faelle": 20
- },
- "kennzahlen": {
-  "anzahl": 2,
-  "volltreffer": 1,
-  "quote": 50,
-  "oeNiete": -150,
-  "ev": 125,
-  "summe": 250,
-  "offen": 1
- },
- "urteil": {
-  "ja": {
-   "anzahl": 1,
-   "volltreffer": 1,
-   "quote": 100,
-   "oeNiete": 0,
-   "ev": 400,
-   "summe": 400,
-   "offen": 0
-  },
-  "nein": {
-   "anzahl": 1,
-   "volltreffer": 0,
-   "quote": 0,
-   "oeNiete": -150,
-   "ev": -150,
-   "summe": -150,
-   "offen": 0
-  },
-  "urteile": 2
- },
- "offen": [
-  {
-   "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
-   "wertung": 12,
-   "wert": "DEMOJ",
-   "markt": "aktie",
-   "stichtag": "2026-10-20",
-   "einstieg": "2026-10-21",
-   "ende": null,
-   "art": "offen",
-   "netto": 85.5,
-   "tag": 2,
-   "fenster": 10,
-   "spielart": "Turbo long Hebel 5, Stop 150 €"
-  }
- ],
- "abgeschlossen": [
-  {
-   "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
-   "wertung": 12,
-   "wert": "DEMOT",
-   "markt": "aktie",
-   "stichtag": "2026-10-20",
-   "einstieg": "2026-10-15",
-   "ende": "2026-10-21",
-   "art": "treffer",
-   "netto": 400,
-   "tag": 3,
-   "fenster": 10,
-   "spielart": "Turbo long Hebel 5, Stop 150 €",
-   "urteil": "ja",
-   "grund": "DEMO: Prognoseanhebung bestätigt"
-  },
-  {
-   "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
-   "wertung": 12,
-   "wert": "DEMON",
-   "markt": "aktie",
-   "stichtag": "2026-10-20",
-   "einstieg": "2026-10-14",
-   "ende": "2026-10-21",
-   "art": "niete",
-   "netto": -150,
-   "tag": 1,
-   "fenster": 10,
-   "spielart": "Turbo long Hebel 5, Stop 150 €"
-  }
- ],
- "lauerliste": [
-  {
-   "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
-   "wertung": 12,
-   "wert": "DEMOL",
-   "markt": "aktie",
-   "stichtag": "2026-10-20",
-   "einstieg": null,
-   "ende": null,
-   "art": "lauert",
-   "netto": null,
-   "tag": null,
-   "fenster": 10,
-   "spielart": "Turbo long Hebel 5, Stop 150 €",
-   "hinweis": "SEC: Kapital-Registrierung (S-1/S-3) vor 3 Handelstagen"
-  }
- ],
- "lauerlisteZahl": 1,
- "uebersprungen": 0,
- "muster": [
-  {
-   "gruppe": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
-   "spielart": "Turbo long Hebel 5, Stop 150 €",
-   "fenster": 10,
-   "seit": "2026-10-10",
-   "faelle": 3,
-   "treffer": 1,
-   "ev": 125,
-   "offen": 1,
-   "rueckblick": {
-    "quote": 9.5,
-    "ev": 16.5,
-    "se": 5,
-    "faelle": 420
-   },
-   "stufe2": false
-  }
- ],
- "sichtbar": {
-  "hinweis": "DEMO",
+  "stand": "2026-10-21T12:45:00Z",
   "regeln": {
-   "mindestFaelle": 20,
-   "mindestQuote": 25,
-   "mindestEv": 30,
-   "maxOffen": 3,
-   "tagesVerlustGrenze": 300,
-   "einsatz": 1000
+    "maxOffen": 5,
+    "tagesVerlustGrenze": 450,
+    "stufe2Faelle": 20
   },
   "kennzahlen": {
-   "anzahl": 2,
-   "volltreffer": 1,
-   "quote": 50,
-   "oeNiete": -150,
-   "ev": 125,
-   "summe": 250,
-   "offen": 1
+    "anzahl": 2,
+    "volltreffer": 1,
+    "quote": 50,
+    "oeNiete": -150,
+    "ev": 125,
+    "summe": 250,
+    "offen": 1
   },
-  "rendite": 12.5,
+  "urteil": {
+    "ja": {
+      "anzahl": 1,
+      "volltreffer": 1,
+      "quote": 100,
+      "oeNiete": 0,
+      "ev": 400,
+      "summe": 400,
+      "offen": 0
+    },
+    "nein": {
+      "anzahl": 1,
+      "volltreffer": 0,
+      "quote": 0,
+      "oeNiete": -150,
+      "ev": -150,
+      "summe": -150,
+      "offen": 0
+    },
+    "urteile": 2
+  },
   "offen": [
-   {
-    "muster": "Aktien: DEMO Kurslücke %: unter -10",
-    "wertung": 20,
-    "wert": "DEMOV",
-    "markt": "aktie",
-    "stichtag": "2026-10-19",
-    "einstieg": "2026-10-20",
-    "ende": null,
-    "art": "offen",
-    "netto": 35,
-    "tag": 2,
-    "fenster": 10,
-    "spielart": "Turbo short Hebel 2, Stop 150 €"
-   }
+    {
+      "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "wertung": 12,
+      "wert": "DEMOJ",
+      "markt": "aktie",
+      "stichtag": "2026-10-20",
+      "einstieg": "2026-10-21",
+      "ende": null,
+      "art": "offen",
+      "netto": 85.5,
+      "tag": 2,
+      "fenster": 10,
+      "spielart": "Turbo long Hebel 5, Stop 150 €"
+    }
   ],
   "abgeschlossen": [
-   {
-    "muster": "Aktien: DEMO Kurslücke %: unter -10",
-    "wertung": 20,
-    "wert": "DEMOW",
-    "markt": "aktie",
-    "stichtag": "2026-10-12",
-    "einstieg": "2026-10-13",
-    "ende": "2026-10-15",
-    "art": "treffer",
-    "netto": 400,
-    "tag": 3,
-    "fenster": 10,
-    "spielart": "Turbo short Hebel 2, Stop 150 €"
-   },
-   {
-    "muster": "Aktien: DEMO Kurslücke %: unter -10",
-    "wertung": 20,
-    "wert": "DEMOX",
-    "markt": "aktie",
-    "stichtag": "2026-10-05",
-    "einstieg": "2026-10-06",
-    "ende": "2026-10-07",
-    "art": "niete",
-    "netto": -150,
-    "tag": 2,
-    "fenster": 10,
-    "spielart": "Turbo short Hebel 2, Stop 150 €"
-   }
-  ],
-  "vorgemerkt": [
-   {
-    "muster": "Aktien: DEMO Kurslücke %: unter -10",
-    "wertung": 20,
-    "wert": "DEMOY",
-    "markt": "aktie",
-    "stichtag": "2026-10-21",
-    "einstieg": null,
-    "ende": null,
-    "art": "lauert",
-    "netto": null,
-    "tag": null,
-    "fenster": 10,
-    "spielart": "Turbo short Hebel 2, Stop 150 €"
-   }
-  ],
-  "uebersprungen": 0,
-  "befoerdert": [
-   {
-    "gruppe": "Aktien: DEMO Kurslücke %: unter -10",
-    "spielart": "Turbo short Hebel 2, Stop 150 €",
-    "fenster": 10,
-    "seit": "2026-10-01",
-    "rueckblick": {
-     "quote": 33.9,
-     "ev": 58.9,
-     "se": 25
+    {
+      "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "wertung": 12,
+      "wert": "DEMOT",
+      "markt": "aktie",
+      "stichtag": "2026-10-20",
+      "einstieg": "2026-10-15",
+      "ende": "2026-10-21",
+      "art": "treffer",
+      "netto": 400,
+      "tag": 3,
+      "fenster": 10,
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "urteil": "ja",
+      "grund": "DEMO: Prognoseanhebung bestätigt"
+    },
+    {
+      "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "wertung": 12,
+      "wert": "DEMON",
+      "markt": "aktie",
+      "stichtag": "2026-10-20",
+      "einstieg": "2026-10-14",
+      "ende": "2026-10-21",
+      "art": "niete",
+      "netto": -150,
+      "tag": 1,
+      "fenster": 10,
+      "spielart": "Turbo long Hebel 5, Stop 150 €"
     }
-   }
-  ]
- },
- "handelbarkeit": {
-  "geprueft": 36,
-  "neuGeprueft": 12,
-  "nichtHandelbar": 2,
-  "eichung": []
- }
+  ],
+  "lauerliste": [
+    {
+      "muster": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "wertung": 12,
+      "wert": "DEMOL",
+      "markt": "aktie",
+      "stichtag": "2026-10-20",
+      "einstieg": null,
+      "ende": null,
+      "art": "lauert",
+      "netto": null,
+      "tag": null,
+      "fenster": 10,
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "hinweis": "SEC: Kapital-Registrierung (S-1/S-3) vor 3 Handelstagen"
+    }
+  ],
+  "lauerlisteZahl": 1,
+  "uebersprungen": 0,
+  "muster": [
+    {
+      "gruppe": "Aktien: DEMO Umsatz (× Ø 20 Tage): 5 bis 10",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-10-10",
+      "faelle": 3,
+      "treffer": 1,
+      "ev": 125,
+      "offen": 1,
+      "rueckblick": {
+        "quote": 9.5,
+        "ev": 16.5,
+        "se": 5,
+        "faelle": 420
+      },
+      "stufe2": false
+    }
+  ],
+  "sichtbar": {
+    "hinweis": "DEMO",
+    "regeln": {
+      "mindestFaelle": 20,
+      "mindestQuote": 25,
+      "mindestEv": 30,
+      "maxOffen": 3,
+      "tagesVerlustGrenze": 300,
+      "einsatz": 1000
+    },
+    "kennzahlen": {
+      "anzahl": 2,
+      "volltreffer": 1,
+      "quote": 50,
+      "oeNiete": -150,
+      "ev": 125,
+      "summe": 250,
+      "offen": 1
+    },
+    "rendite": 12.5,
+    "offen": [
+      {
+        "muster": "Aktien: DEMO Kurslücke %: unter -10",
+        "wertung": 20,
+        "wert": "DEMOV",
+        "markt": "aktie",
+        "stichtag": "2026-10-19",
+        "einstieg": "2026-10-20",
+        "ende": null,
+        "art": "offen",
+        "netto": 35,
+        "tag": 2,
+        "fenster": 10,
+        "spielart": "Turbo short Hebel 2, Stop 150 €"
+      }
+    ],
+    "abgeschlossen": [
+      {
+        "muster": "Aktien: DEMO Kurslücke %: unter -10",
+        "wertung": 20,
+        "wert": "DEMOW",
+        "markt": "aktie",
+        "stichtag": "2026-10-12",
+        "einstieg": "2026-10-13",
+        "ende": "2026-10-15",
+        "art": "treffer",
+        "netto": 400,
+        "tag": 3,
+        "fenster": 10,
+        "spielart": "Turbo short Hebel 2, Stop 150 €"
+      },
+      {
+        "muster": "Aktien: DEMO Kurslücke %: unter -10",
+        "wertung": 20,
+        "wert": "DEMOX",
+        "markt": "aktie",
+        "stichtag": "2026-10-05",
+        "einstieg": "2026-10-06",
+        "ende": "2026-10-07",
+        "art": "niete",
+        "netto": -150,
+        "tag": 2,
+        "fenster": 10,
+        "spielart": "Turbo short Hebel 2, Stop 150 €"
+      }
+    ],
+    "vorgemerkt": [
+      {
+        "muster": "Aktien: DEMO Kurslücke %: unter -10",
+        "wertung": 20,
+        "wert": "DEMOY",
+        "markt": "aktie",
+        "stichtag": "2026-10-21",
+        "einstieg": null,
+        "ende": null,
+        "art": "lauert",
+        "netto": null,
+        "tag": null,
+        "fenster": 10,
+        "spielart": "Turbo short Hebel 2, Stop 150 €",
+        "zeitreise": true
+      }
+    ],
+    "uebersprungen": 0,
+    "befoerdert": [
+      {
+        "gruppe": "Aktien: DEMO Kurslücke %: unter -10",
+        "spielart": "Turbo short Hebel 2, Stop 150 €",
+        "fenster": 10,
+        "seit": "2026-10-01",
+        "rueckblick": {
+          "quote": 33.9,
+          "ev": 58.9,
+          "se": 25
+        }
+      }
+    ],
+    "zeitreise": {
+      "an": true,
+      "ab": "2026-11-20",
+      "halbmonatVon": "2026-11-16",
+      "muster": 58,
+      "bremse": null,
+      "regel": {
+        "mindestOrders": 8,
+        "minOe": -20,
+        "maxVerlust": 750
+      },
+      "stand": {
+        "aus": false,
+        "grund": "0 abgeschlossen",
+        "abgeschlossen": 0,
+        "summe": 0,
+        "offen": 0
+      },
+      "kennzahlen": {
+        "anzahl": 0,
+        "volltreffer": 0,
+        "quote": 0,
+        "oeNiete": 0,
+        "ev": 0,
+        "summe": 0,
+        "offen": 0
+      }
+    }
+  },
+  "handelbarkeit": {
+    "geprueft": 36,
+    "neuGeprueft": 12,
+    "nichtHandelbar": 2,
+    "eichung": []
+  }
 }

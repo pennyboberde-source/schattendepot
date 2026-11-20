@@ -1001,7 +1001,15 @@
     },
     "schnellspurHinweis": "Schnellspur (Nutzer 15.11.2026: „kannst auch von 20 Tests absehen, wenn du dir sicher bist“): Muster mit Wertung ab mindestWertung im Rückblick brauchen nur mindestFaelle abgeschlossene Vorwärts-Fälle; Quote, Ø und Band gelten unverändert.",
     "mindestTage": 6,
-    "tageHinweis": "Seit 18.11.2026: Vorwärts-Fälle desselben Stichtags sind ein Ereignis – befördert wird erst mit Fällen an mindestTage (Schnellspur: schnellspur.mindestTage) verschiedenen Tagen, und Ø/Band gelten für das Mittel der Tagesmittel. Befund: ein Muster hatte 599 Vorwärts-Fälle aus 1–3 Tagen (Rückblick 33 % Quote, vorwärts 4 Treffer, Ø −146 €)."
+    "tageHinweis": "Seit 18.11.2026: Vorwärts-Fälle desselben Stichtags sind ein Ereignis – befördert wird erst mit Fällen an mindestTage (Schnellspur: schnellspur.mindestTage) verschiedenen Tagen, und Ø/Band gelten für das Mittel der Tagesmittel. Befund: ein Muster hatte 599 Vorwärts-Fälle aus 1–3 Tagen (Rückblick 33 % Quote, vorwärts 4 Treffer, Ø −146 €).",
+    "zeitreise": {
+      "hinweis": "Zeitreise-Regel (Nutzer 20.11.2026: „Ja, darfst du machen. Sobald sich aber abzeichnen sollte, dass das Ganze keinen Gewinn bringt … sei bereit, sehr schnell zurück zur 6er-Regel zu gehen.“): die Muster-Auswahl des laufenden Halbmonats aus der Zeitreise (lernen/zeitreise.json › aktuell, täglich 23:40 UTC) ordert zusätzlich sichtbar – dieselben Grenzen wie V6 (höchstens maxOffen gleichzeitig, je Wert eine, Tagesverlustgrenze, Klumpen), ohne Pump-Verdacht und ohne ungeprüfte Plattform (CFD), Kennzeichen „zeitreise“. Bremse: Summe der Zeitreise-Orders seit „ab“ (abgeschlossen + Stand der offenen) ≤ −maxVerlust € oder nach mindestOrders abgeschlossenen Ø unter minOe € → Eintrag „bremse“ im Zeitreise-Buch, alle Muster abgewählt, laufende Orders laufen zu Ende; nur die 6er-Regel ordert weiter. Neu starten: „ab“ auf einen späteren Tag setzen.",
+      "aktiv": true,
+      "ab": "2026-11-20",
+      "frischTage": 2,
+      "ohneUngeprueft": true,
+      "bremse": { "mindestOrders": 8, "minOe": -20, "maxVerlust": 750 }
+    }
   },
   "turbos": {
     "hinweis": "Echte Handelbarkeit (seit 16.11.2026, Plan V1 „Liste der Basiswerte mit Turbos“): OpenFIGI-Suche (frei, ohne Schlüssel, 5 Suchen je Minute) nach Hebelprodukten auf US-Aktien an deutschen Börsen (boerse GR = alle deutschen Plätze; nur gettex/München wäre zu eng: Beyond Meat hat dort nur Calls, an anderen Plätzen Hunderte Puts). Je Lauf des Rückblicks höchstens maxSuchen Suchen (je bis zu maxSeiten Seiten à 100 Produkte), zuerst die Werte der lauernden und laufenden Fälle, dann zur Eichung abgeschlossene Fälle und eine feste Stichprobe ab stichprobeAbUmsatz20 $ Ø-Umsatz. Ein Stand gilt gueltigTage Tage. Wo geprüft, ersetzt er die Umsatz-Näherung (turboAbUmsatz20); Fälle ohne Produkt in ihrer Richtung fallen aus Vorwärtstest, Jagd und sichtbaren Orders.",

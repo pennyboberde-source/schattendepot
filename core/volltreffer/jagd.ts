@@ -42,6 +42,8 @@ export interface JagdFall {
   kontext?: string;
   /** Volltreffer-Quote des Musters im Rückblick in % (Ausgangspunkt für Claudes Schätzung) */
   quote?: number;
+  /** sichtbare Order nach der Zeitreise-Regel (seit 20.11.2026) statt nach der 6er-Regel */
+  zeitreise?: boolean;
 }
 
 export interface JagdRegeln {

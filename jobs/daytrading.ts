@@ -456,10 +456,10 @@ if ((handelstag || kryptoTaeglich) && b.minuten >= bilanzAb && zustand.abendbila
 }
 // Volltreffer Stufe 3 (V6): sichtbare Orders bewährter Muster als Einzelmitteilungen – vorgemerkt, läuft, beendet
 {
-  const vs = leseJson<{ sichtbar?: Pick<Stufe3Ergebnis, 'offen' | 'abgeschlossen' | 'vorgemerkt'> } | null>('volltreffer/uebersicht.json', null)?.sichtbar;
+  const vs = leseJson<{ sichtbar?: Pick<Stufe3Ergebnis, 'offen' | 'abgeschlossen' | 'vorgemerkt'> & { zeitreise?: { bremse: { am: string; grund: string } | null } } } | null>('volltreffer/uebersicht.json', null)?.sichtbar;
   if (vs?.offen && vs.abgeschlossen && vs.vorgemerkt) {
     const g = leseJson<{ schluessel: string[] }>('volltreffer/gemeldet-sichtbar.json', { schluessel: [] });
-    const m = stufe3Mitteilungen(vs, g.schluessel);
+    const m = stufe3Mitteilungen(vs, g.schluessel, vs.zeitreise?.bremse ?? null);
     for (const x of m.neu) pushes.push({ typ: x.typ, titel: x.titel, text: x.text, ziel: '#/volltreffer', tag: x.tag, erstellt: iso });
     if (m.neu.length) schreibeJson('volltreffer/gemeldet-sichtbar.json', { hinweis: 'Schon gemeldete sichtbare Volltreffer-Orders (Stufe 3: vorgemerkt/läuft, beendet), damit nichts doppelt kommt.', schluessel: m.gemeldet });
   }

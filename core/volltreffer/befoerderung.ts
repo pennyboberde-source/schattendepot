@@ -145,11 +145,16 @@ const schluesselVon = (j: JagdFall) => `${j.muster}|${j.wert}|${j.stichtag}`;
  * Einzelmitteilungen der sichtbaren Orders (V6): vorgemerkt (Einstieg zur nächsten Eröffnung), gestartet (falls die
  * Vormerkung nicht gemeldet wurde) und beendet – je Order und Ereignis höchstens einmal (Gedächtnis `gemeldet`).
  */
-export function stufe3Mitteilungen(s: Pick<Stufe3Ergebnis, 'offen' | 'abgeschlossen' | 'vorgemerkt'>, gemeldet: string[]): { neu: Mitteilung[]; gemeldet: string[] } {
+export function stufe3Mitteilungen(s: Pick<Stufe3Ergebnis, 'offen' | 'abgeschlossen' | 'vorgemerkt'>, gemeldet: string[], zeitreiseBremse?: { am: string; grund: string } | null): { neu: Mitteilung[]; gemeldet: string[] } {
   const schon = new Set(gemeldet);
   const neu: Mitteilung[] = [];
   const merke: string[] = [];
-  const kurz = (j: JagdFall) => j.spielart.split(',').slice(0, 2).join(',');
+  // Zeitreise-Regel (20.11.2026): Orders nach ihr sind gekennzeichnet; ihre Bremse wird einmal gemeldet
+  const kurz = (j: JagdFall) => `${j.zeitreise ? '🕰️ Zeitreise-Regel · ' : ''}${j.spielart.split(',').slice(0, 2).join(',')}`;
+  if (zeitreiseBremse && !schon.has(`zr-bremse|${zeitreiseBremse.am}`)) {
+    neu.push({ typ: 'verkauft', titel: '🕰️ Zeitreise-Regel gestoppt', text: `${zeitreiseBremse.grund} – Volltreffer-Orders nur noch nach der strengen 6er-Regel, laufende Orders laufen zu Ende (simuliert).`, tag: `v6-zr-bremse-${zeitreiseBremse.am}` });
+    merke.push(`zr-bremse|${zeitreiseBremse.am}`);
+  }
   for (const j of s.vorgemerkt) {
     const k = `${schluesselVon(j)}|vor`;
     if (schon.has(k)) continue;

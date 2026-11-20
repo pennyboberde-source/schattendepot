@@ -129,6 +129,15 @@ describe('Einzelmitteilungen', () => {
     const m4 = stufe3Mitteilungen({ vorgemerkt: [], offen: [fall('QQQ', '2026-12-03', '2026-12-04', null, 'offen', -40)], abgeschlossen: [] }, []);
     expect(m4.neu[0].titel).toBe('🎯 Volltreffer-Order läuft: QQQ');
   });
+  it('Zeitreise-Regel: Kennzeichen im Text, Bremse einmal gemeldet (20.11.2026)', () => {
+    const vor = { ...fall('ZR', '2026-12-07', null, null, 'lauert', null), zeitreise: true };
+    const m1 = stufe3Mitteilungen({ vorgemerkt: [vor], offen: [], abgeschlossen: [] }, [], null);
+    expect(m1.neu[0].text).toMatch(/^🕰️ Zeitreise-Regel · /);
+    const b = { am: '2026-12-09', grund: 'Summe −760 € erreicht die Grenze −750 €' };
+    const m2 = stufe3Mitteilungen({ vorgemerkt: [], offen: [], abgeschlossen: [] }, m1.gemeldet, b);
+    expect(m2.neu.map((m) => m.titel)).toEqual(['🕰️ Zeitreise-Regel gestoppt']);
+    expect(stufe3Mitteilungen({ vorgemerkt: [], offen: [], abgeschlossen: [] }, m2.gemeldet, b).neu).toEqual([]);
+  });
 });
 
 describe('V6: verschiedene Tage und Ø je Tag (18.11.2026)', () => {

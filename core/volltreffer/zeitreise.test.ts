@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { auswaehlen, bilanz, nachspielen, ZeitStat, type Kandidat } from './zeitreise.ts';
+import { auswaehlen, bilanz, nachspielen, zrAktiv, zrBremse, zrBuchFortschreiben, zrZeiten, ZeitStat, type Kandidat, type ZrBuchEintrag, type ZrMuster } from './zeitreise.ts';
 
 describe('Zeitreise: Auswahl nur aus der Vergangenheit (19.11.2026)', () => {
   // Gruppe 0 = „alle“ (Grundrate), Gruppe 1 = gutes Muster, Gruppe 2 = erst später gut, Gruppe 3 = nur in einer Hälfte gut
@@ -42,5 +42,41 @@ describe('Zeitreise: Depot nachspielen', () => {
       { monat: '2025-01', orders: 2, volltreffer: 1, netto: 250 },
       { monat: '2025-02', orders: 1, volltreffer: 1, netto: 400 },
     ]);
+  });
+});
+
+describe('Zeitreise-Regel live (20.11.2026)', () => {
+  const m = (k: string): ZrMuster => ({ schluessel: k, gruppe: k, gruppenSchluessel: `aktie|${k}`, sp: '2S150', fenster: 10, wertung: 3, quote: 25, ev: 20 });
+  it('Buch: neu gewählt, abgewählt, unverändert – nur anhängen', () => {
+    const buch: ZrBuchEintrag[] = [];
+    buch.push(...zrBuchFortschreiben(buch, [m('a'), m('b')], () => '2026-11-20', true));
+    expect(buch.map((e) => `${e.schluessel}:${e.status}`)).toEqual(['a:gewaehlt', 'b:gewaehlt']);
+    expect(zrBuchFortschreiben(buch, [m('a'), m('b')], () => '2026-11-23', true)).toEqual([]);
+    buch.push(...zrBuchFortschreiben(buch, [m('b'), m('c')], () => '2026-12-01', true));
+    expect(buch.slice(2).map((e) => `${e.schluessel}:${e.status}:${e.am}`)).toEqual(['a:abgewaehlt:2026-12-01', 'c:gewaehlt:2026-12-01']);
+    expect([...zrAktiv(buch).keys()].sort()).toEqual(['b', 'c']);
+    // veraltete Datei: nichts ändern
+    expect(zrBuchFortschreiben(buch, null, () => '2026-12-02', true)).toEqual([]);
+    // Regel aus (Bremse): alle aktiven abwählen
+    const aus = zrBuchFortschreiben(buch, [m('b'), m('c')], () => '2026-12-03', false, 'Bremse');
+    expect(aus.map((e) => `${e.schluessel}:${e.status}`).sort()).toEqual(['b:abgewaehlt', 'c:abgewaehlt']);
+  });
+  it('Zeiten: Stichtag ab „gewaehlt“, vor „abgewaehlt“; erneut gewählt = zweites Fenster', () => {
+    const buch: ZrBuchEintrag[] = [
+      { schluessel: 'a', status: 'gewaehlt', am: '2026-11-20' },
+      { schluessel: 'a', status: 'abgewaehlt', am: '2026-12-01' },
+      { schluessel: 'a', status: 'gewaehlt', am: '2026-12-16' },
+    ];
+    expect(zrZeiten(buch).get('a')).toEqual([{ von: '2026-11-20', bis: '2026-12-01' }, { von: '2026-12-16', bis: null }]);
+  });
+  it('Bremse: Verlustgrenze sofort, Durchschnitt erst ab mindestOrders', () => {
+    const r = { mindestOrders: 8, minOe: -20, maxVerlust: 750 };
+    const o = (art: string, netto: number) => ({ art, netto });
+    expect(zrBremse([o('niete', -160), o('niete', -160), o('offen', -100)], r).aus).toBe(false);
+    expect(zrBremse([o('niete', -160), o('niete', -160), o('niete', -160), o('niete', -160), o('offen', -120)], r).aus).toBe(true);
+    const sieben = Array.from({ length: 7 }, () => o('zeit', -40));
+    expect(zrBremse(sieben, r).aus).toBe(false);
+    expect(zrBremse([...sieben, o('zeit', -40)], r).aus).toBe(true);
+    expect(zrBremse([...sieben, o('treffer', 420)], r).aus).toBe(false);
   });
 });

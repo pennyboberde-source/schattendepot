@@ -32,6 +32,16 @@ interface Uebersicht {
     abgeschlossen: JagdFall[];
     vorgemerkt: JagdFall[];
     befoerdert: { gruppe: string; spielart: string; fenster: number; seit: string; rueckblick: { quote: number; ev: number; se: number } }[];
+    /** Zeitreise-Regel (seit 20.11.2026) */
+    zeitreise?: {
+      an: boolean;
+      ab: string;
+      halbmonatVon: string | null;
+      muster: number;
+      bremse: { am: string; grund: string } | null;
+      regel: { mindestOrders: number; minOe: number; maxVerlust: number };
+      kennzahlen: JagdKennzahlen;
+    };
   };
 }
 
@@ -42,7 +52,7 @@ function JagdZeile({ j }: { j: JagdFall }) {
   return (
     <li class="muster-zeile">
       <strong>
-        {`${j.wert}${j.markt === 'krypto' ? ' (Coin)' : ''} · ${ART[j.art] ?? j.art}`}
+        {`${j.zeitreise ? '🕰️ ' : ''}${j.wert}${j.markt === 'krypto' ? ' (Coin)' : ''} · ${ART[j.art] ?? j.art}`}
         {j.netto !== null ? ` · ${euro(j.netto, { vorzeichen: true })}` : ''}
       </strong>
       <span class="klein">
@@ -80,6 +90,19 @@ export function OrdersKarte() {
         <p class="klein">
           Nur bewährte Muster handeln hier – simuliert mit {euro(s.regeln.einsatz)} je Order, ohne Rückfrage, aber Klasse vor Masse: mindestens {zahl(s.regeln.mindestFaelle)} Fälle im Vorwärtstest im Plus, im Rückblick mindestens {zahl(s.regeln.mindestQuote)} % Volltreffer und Ø {euro(s.regeln.mindestEv)}; höchstens {zahl(s.regeln.maxOffen)} Orders gleichzeitig. Jede Order kommt als Mitteilung.
         </p>
+        {s.zeitreise && (
+          <p class="klein" data-testid="zeitreise-regel">
+            🕰️ <strong>Zeitreise-Regel {s.zeitreise.an ? 'an' : 'aus'}</strong>
+            {s.zeitreise.an
+              ? ` – zusätzlich ordern die ${zahl(s.zeitreise.muster)} Muster, die die Zeitreise für den Halbmonat${s.zeitreise.halbmonatVon ? ` ab ${datumKurz(s.zeitreise.halbmonatVon)}` : ''} gewählt hat (gekennzeichnet mit 🕰️). Bremse: Summe ab ${euro(-s.zeitreise.regel.maxVerlust)} oder nach ${zahl(s.zeitreise.regel.mindestOrders)} Orders Ø unter ${euro(s.zeitreise.regel.minOe)} → zurück zur strengen Regel.`
+              : s.zeitreise.bremse
+                ? ` – gestoppt am ${datumKurz(s.zeitreise.bremse.am)}: ${s.zeitreise.bremse.grund}. Es gilt wieder nur die strenge Regel.`
+                : ' – ausgeschaltet.'}
+            {s.zeitreise.kennzahlen.anzahl + s.zeitreise.kennzahlen.offen > 0
+              ? ` Bisher ${zahl(s.zeitreise.kennzahlen.anzahl)} beendet (${zahl(s.zeitreise.kennzahlen.volltreffer)} Volltreffer, Summe ${euro(s.zeitreise.kennzahlen.summe, { vorzeichen: true })}), ${zahl(s.zeitreise.kennzahlen.offen)} laufen.`
+              : ''}
+          </p>
+        )}
         <div class="raster-kennzahlen">
           <div class="kennzahl">
             <span class="kennzahl-label">Gewinn auf den Einsatz</span>
