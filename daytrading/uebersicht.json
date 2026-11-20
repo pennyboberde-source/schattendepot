@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T19:53:35.987Z",
+  "stand": "2026-11-20T20:09:07.343Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -278,64 +278,6 @@
     }
   ],
   "offen": [
-    {
-      "id": "2026-11-20-scan-micron-technology-inc",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MICRON TECHNOLOGY INC",
-      "isin": "US5951121038",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 689.76,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:20:00.000Z",
-        "kurs": 574.8,
-        "level": 577.5,
-        "spanne": {
-          "hoch": 602.6,
-          "tief": 577.5
-        },
-        "richtung": "short"
-      },
-      "stop": 590.05,
-      "ziel": 544.3,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:20:00.000Z",
-        "basisKurs": 574.8,
-        "kurs": 11.525,
-        "stueck": 86,
-        "kurswert": 991.15
-      },
-      "timeMachine": {
-        "zielZuerst": 1.7,
-        "stopZuerst": 20.6,
-        "keins": 77.7,
-        "gruen": 52.2,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 33,
-          "ziel": 5,
-          "stop": 9,
-          "oeR": 0.11
-        }
-      }
-    },
     {
       "id": "2026-11-20-scan-arista-networks-inc",
       "datum": "2026-11-20",
@@ -711,64 +653,6 @@
   ],
   "trades": [
     {
-      "id": "2026-11-20-scan-micron-technology-inc",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MICRON TECHNOLOGY INC",
-      "isin": "US5951121038",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 689.76,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:20:00.000Z",
-        "kurs": 574.8,
-        "level": 577.5,
-        "spanne": {
-          "hoch": 602.6,
-          "tief": 577.5
-        },
-        "richtung": "short"
-      },
-      "stop": 590.05,
-      "ziel": 544.3,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:20:00.000Z",
-        "basisKurs": 574.8,
-        "kurs": 11.525,
-        "stueck": 86,
-        "kurswert": 991.15
-      },
-      "timeMachine": {
-        "zielZuerst": 1.7,
-        "stopZuerst": 20.6,
-        "keins": 77.7,
-        "gruen": 52.2,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 33,
-          "ziel": 5,
-          "stop": 9,
-          "oeR": 0.11
-        }
-      }
-    },
-    {
       "id": "2026-11-20-scan-arista-networks-inc",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -1138,6 +1022,83 @@
           "stop": 8,
           "oeR": -0.08
         }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-micron-technology-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MICRON TECHNOLOGY INC",
+      "isin": "US5951121038",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 689.76,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:20:00.000Z",
+        "kurs": 574.8,
+        "level": 577.5,
+        "spanne": {
+          "hoch": 602.6,
+          "tief": 577.5
+        },
+        "richtung": "short"
+      },
+      "stop": 590.05,
+      "ziel": 544.3,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:20:00.000Z",
+        "basisKurs": 574.8,
+        "kurs": 11.525,
+        "stueck": 86,
+        "kurswert": 991.15
+      },
+      "timeMachine": {
+        "zielZuerst": 1.7,
+        "stopZuerst": 20.6,
+        "keins": 77.7,
+        "gruen": 52.2,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 33,
+          "ziel": 5,
+          "stop": 9,
+          "oeR": 0.11
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T19:50:00.000Z",
+        "basisKurs": 544.3,
+        "kurs": 14.51,
+        "kurswert": 1247.86,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 256.71,
+        "bruttoProzent": 25.9,
+        "netto": 256.71,
+        "nettoProzent": 25.9,
+        "nettoTR": 254.71,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -12516,46 +12477,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 201,
-      "treffer": 98,
-      "quote": 48.8,
-      "netto": 1947.31,
-      "brutto": 2027.31,
-      "nettoTR": 1626.31,
-      "oeNettoProzent": 0.97,
-      "oeR": 0.41
+      "anzahl": 202,
+      "treffer": 99,
+      "quote": 49,
+      "netto": 2204.02,
+      "brutto": 2284.02,
+      "nettoTR": 1881.02,
+      "oeNettoProzent": 1.09,
+      "oeR": 0.42
     },
     "heute": {
-      "anzahl": 17,
-      "treffer": 7,
-      "quote": 41.2,
-      "netto": 478.53,
-      "brutto": 486.53,
-      "nettoTR": 452.53,
-      "oeNettoProzent": 2.83,
-      "oeR": 0.13
+      "anzahl": 18,
+      "treffer": 8,
+      "quote": 44.4,
+      "netto": 735.24,
+      "brutto": 743.24,
+      "nettoTR": 707.24,
+      "oeNettoProzent": 4.11,
+      "oeR": 0.24
     },
-    "offen": 8,
+    "offen": 7,
     "gruppen": {
       "turbo": {
-        "anzahl": 161,
-        "treffer": 88,
-        "quote": 54.7,
-        "netto": 2283.59,
-        "brutto": 2283.59,
-        "nettoTR": 1962.59,
-        "oeNettoProzent": 1.42,
-        "oeR": 0.46
+        "anzahl": 162,
+        "treffer": 89,
+        "quote": 54.9,
+        "netto": 2540.3,
+        "brutto": 2540.3,
+        "nettoTR": 2217.3,
+        "oeNettoProzent": 1.57,
+        "oeR": 0.47
       },
       "short": {
-        "anzahl": 161,
-        "treffer": 88,
-        "quote": 54.7,
-        "netto": 2283.59,
-        "brutto": 2283.59,
-        "nettoTR": 1962.59,
-        "oeNettoProzent": 1.42,
-        "oeR": 0.46
+        "anzahl": 162,
+        "treffer": 89,
+        "quote": 54.9,
+        "netto": 2540.3,
+        "brutto": 2540.3,
+        "nettoTR": 2217.3,
+        "oeNettoProzent": 1.57,
+        "oeR": 0.47
       },
       "krypto": {
         "anzahl": 40,
@@ -12642,18 +12603,18 @@
       "beste": {
         "richtung": "gegen",
         "hebel": 3,
-        "faelle": 142,
-        "chance": 62.7,
-        "oeNetto": 0.86,
-        "wertung": 0.3
+        "faelle": 143,
+        "chance": 62.9,
+        "oeNetto": 0.89,
+        "wertung": 0.33
       },
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 142,
-        "chance": 35.2,
-        "oeNetto": -0.6,
-        "wertung": -0.79
+        "faelle": 143,
+        "chance": 35,
+        "oeNetto": -0.61,
+        "wertung": -0.8
       }
     }
   },
