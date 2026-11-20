@@ -1020,14 +1020,15 @@
     "tageHinweis": "Seit 18.11.2026: Vorwärts-Fälle desselben Stichtags sind ein Ereignis – befördert wird erst mit Fällen an mindestTage (Schnellspur: schnellspur.mindestTage) verschiedenen Tagen, und Ø/Band gelten für das Mittel der Tagesmittel. Befund: ein Muster hatte 599 Vorwärts-Fälle aus 1–3 Tagen (Rückblick 33 % Quote, vorwärts 4 Treffer, Ø −146 €).",
     "modellRegel": {
       "hinweis": "Modell-Regel (gebaut 20.11.2026, Nutzer-Go nötig): Das Gesamtmodell wählt je Handelstag die obersten Prozent der Fälle seines Universums (Training nur mit bekannten Ergebnissen, Auswahl je Tag im Buch lernen/muster/modell-wahl.json festgehalten, nie nachträglich geändert). Belegt durch die Modell-Zeitreise (Probe 44764026797: Turbo short Hebel 2 auf die wilden Werte, oberste 5 %, sichtbar mit Gegenwind 464 Orders, 38,6 % Volltreffer, Ø +72 €, 16 von 21 Monaten im Plus, größter Rückgang 2.196 €). Eigene Plätze, Gegenwind-Filter für Shorts, Leerverkauf beim US-Broker nur, wenn bei IBKR leihbar (jüngste Liste), eigene Bremse. Solange aktiv false: läuft virtuell mit (eigene Kennzahlen, keine Mitteilung).",
-      "aktiv": false,
-      "ausGrund": "wartet auf das Go des Nutzers – läuft bis dahin virtuell mit",
+      "aktiv": true,
+      "freigabe": "Nutzer 20.11.2026 17:26: „Ja, wenn bestanden und aus deiner Sicht wirklich sicher und voraussichtlich Gewinn bringt.“ Bestanden: Gegenprobe mit 14-Tage-Sperre je Wert Ø +63,7 €, 18 von 21 Monaten im Plus (44772640736); Rückblick-Probe der Regel fehlerfrei (44780793784).",
+      "ausGrund": "ausgeschaltet",
       "ab": "2026-11-20",
       "modelle": ["2S150|wild"],
-      "oberste": 5,
+      "oberste": 20,
       "maxOffen": 3,
       "beleg": { "orders": 464, "quote": 38.6, "oe": 72.4, "monatePlus": 16, "monate": 21 },
-      "leihe": { "pruefen": true, "maxGebuehrProzent": 50 },
+      "leihe": { "pruefen": true, "maxGebuehrProzent": 150, "hinweis": "Probe 20.11.: von 7 Werten der obersten 5 % waren 6 bei IBKR nicht leihbar (nicht gelistet, zu wenig verfügbar oder Gebühr über 50 %). Deshalb: Auswahl aus den obersten 20 % des Tages (Modell-Zeitreise dort Ø +38 bis +40 € je Fall, Tag als Einheit), nach Rang, nur leihbare Werte (verfügbare Stück ≥ Bedarf, Gebühr bis 150 % p. a.); die echte Gebühr laut IBKR ersetzt die Annahme in den Kosten." },
       "bremse": { "mindestOrders": 8, "minOe": -20, "maxVerlust": 750 }
     },
     "rueckenwind": {

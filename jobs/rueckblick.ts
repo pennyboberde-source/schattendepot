@@ -2348,7 +2348,7 @@ interface ModellErgebnis {
 const MR = (vt.v6 as unknown as { modellRegel?: { aktiv: boolean; ausGrund?: string; ab: string; modelle: string[]; oberste: number; maxOffen: number; beleg?: { orders: number; quote: number; oe: number; monatePlus: number; monate: number }; leihe?: { pruefen: boolean; maxGebuehrProzent: number }; bremse: ZrBremsRegel } }).modellRegel;
 // Probe: MODELLREGEL_AB setzt den ersten Tag früher (nur zum Prüfen des Ablaufs; Probeläufe veröffentlichen nichts)
 const abMR = process.env.MODELLREGEL_AB || MR?.ab || '9999-12-31';
-type WahlEintrag = { w: string; r: number; pl?: string; leihbar?: boolean | null };
+type WahlEintrag = { w: string; r: number; pl?: string; leihbar?: boolean | null; g?: number };
 const mwBuch = leseJson<{ eintraege: Record<string, Record<string, WahlEintrag[]>> }>('lernen/muster/modell-wahl.json', { eintraege: {} });
 let mwNeu = 0;
 const modellLive = new Map<string, { modell: Modell; m: (typeof MODELLE)[number] }>();
@@ -2659,12 +2659,14 @@ if (MODELLE.length && mZahl) {
           const spM = x ? konk(sp0, x) : null;
           const pl = x && spM ? platzFuer(r, spM, plattformAm(r, x), false) : null;
           let leihbar: boolean | null = null;
+          let g: number | undefined;
           if (pl === 'us' && spM?.richtung === 'short' && leihe.size) {
             const l = leihe.get(r.schluessel.slice(2).split('#')[0]);
             const stueck = Math.ceil((vt.v6.einsatz * 1.1 * Math.max(1, spM.hebel)) / Math.max(0.01, r.kerzen[mI[z]].c));
             leihbar = !!l && l.verfuegbar >= stueck && l.gebuehr <= (MR.leihe?.maxGebuehrProzent ?? 100);
+            if (l) g = l.gebuehr;
           }
-          return { w: r.schluessel, r: k + 1, ...(pl ? { pl } : {}), ...(leihbar !== null ? { leihbar } : {}) };
+          return { w: r.schluessel, r: k + 1, ...(pl ? { pl } : {}), ...(leihbar !== null ? { leihbar } : {}), ...(g !== undefined ? { g } : {}) };
         });
         mwNeu++;
       }
@@ -2685,8 +2687,14 @@ if (MODELLE.length && mZahl) {
           const spM = x ? konk(sp0, x) : null;
           const pl = x && spM ? platzFuer(r, spM, plattformAm(r, x), false) : null;
           if (!x || !spM || !pl) continue;
-          const f = jagdFall(r, i, { ...e, wertung: 100 - w.r }, kostenFuer(r.markt, x.umsatz20, pl, spM), pl, spM);
-          if (f) mrFaelle.push({ ...f, modellRegel: true });
+          const f = jagdFall(r, i, { ...e, wertung: 1000 - w.r }, kostenFuer(r.markt, x.umsatz20, pl, spM), pl, spM);
+          if (!f) continue;
+          // echte Leihgebühr laut IBKR statt der Annahme: Mehrkosten auf den geliehenen Betrag über die Haltedauer abziehen
+          if (pl === 'us' && spM.richtung === 'short' && w.g !== undefined && f.netto !== null && f.tag) {
+            const mehr = (Math.max(0, w.g - leihProzent(x.umsatz20)) / 100) * vt.v6.einsatz * Math.max(1, spM.hebel) * ((f.tag * 7) / 5 / 365);
+            f.netto = Math.round((f.netto - mehr) * 100) / 100;
+          }
+          mrFaelle.push({ ...f, modellRegel: true });
         }
       }
       log(`Modell-Regel ${name}: ${Object.keys(buchM).length} Tage festgehalten, ${mrFaelle.length} Fälle, ${ohneLeihe} Shorts beim US-Broker nicht leihbar (IBKR-Liste ${leihe.size} Werte).`);
