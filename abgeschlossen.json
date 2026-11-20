@@ -1,6 +1,132 @@
 {
-  "stand": "2026-11-20T17:54:27.985Z",
+  "stand": "2026-11-20T18:09:00.811Z",
   "orders": [
+    {
+      "id": "2026-11-20-auto-ardent-health-inc",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-20T05:19:21.799Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Ardent Health, Inc.",
+          "isin": "",
+          "ticker": "ARDT",
+          "anlageklasse": "hebel",
+          "spreadKlasse": "hebel",
+          "handelsplatz": "USB",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "ARDT",
+            "waehrung": "USD"
+          },
+          "plattform": "US-Broker (simuliert) – kein Put/Short-Turbo an deutschen Börsen – Leerverkauf beim US-Broker (Hebel 2)"
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:ARDT: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:ARDT:2026-11-20"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-25T05:19:21.799Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        },
+        "hebel": {
+          "typ": "turbo",
+          "richtung": "short",
+          "emittent": "UniCredit (synthetisch)",
+          "basiswert": {
+            "name": "Ardent Health, Inc.",
+            "isin": "",
+            "kursbasis": {
+              "markt": "us",
+              "symbol": "ARDT",
+              "waehrung": "EUR"
+            }
+          },
+          "basispreis": 19.97,
+          "koSchwelle": 19.97,
+          "bezugsverhaeltnis": 1,
+          "synthetisch": true,
+          "finanzierungProzentJahr": 5
+        }
+      },
+      "verkaufstermin": "2026-11-25T05:19:21.799Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-20T14:39:02.996Z",
+        "stueck": 149,
+        "kurs": 6.6933,
+        "kurswert": 997.3,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 3,
+          "gesamt": 3
+        },
+        "betrag": 1000.3,
+        "kursquelle": "Finnhub (2026-11-20T14:38:13.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 9.341,
+      "stopkurs": 6.2917,
+      "etfKauf": {
+        "wert": 124.04,
+        "zeit": "2026-11-20T14:29:51.622Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-20",
+        "vortag": 124.99
+      },
+      "etfVergleich": {
+        "netto": -15.05,
+        "nettoProzent": -1.52,
+        "etfKauf": 124.04,
+        "etfVerkauf": 122.305
+      },
+      "verkauf": {
+        "zeit": "2026-11-20T18:09:00.811Z",
+        "stueck": 149,
+        "kurs": 6.2672,
+        "kurswert": 933.81,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 2.93,
+          "gesamt": 2.93
+        },
+        "betrag": 930.88,
+        "kursquelle": "Finnhub (2026-11-20T18:07:37.000Z)",
+        "synthetisch": true,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "kursProzent": -6.37,
+        "netto": -69.42,
+        "nettoProzent": -6.94,
+        "gebuehren": 5.93,
+        "steuer": 0,
+        "nachSteuern": -69.42
+      }
+    },
     {
       "id": "2026-11-19-auto-applied-optoelectronics-inc",
       "status": "geschlossen",

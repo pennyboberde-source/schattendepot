@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T17:54:31.644Z",
+  "stand": "2026-11-20T18:09:05.591Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -757,6 +757,64 @@
           "oeR": -0.09
         }
       }
+    },
+    {
+      "id": "2026-11-20-scan-jinko-holdings-ltd",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "JINKO HOLDINGS LTD",
+      "isin": "US47759T1007",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 8.04,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T17:45:00.000Z",
+        "kurs": 6.71,
+        "level": 6.72,
+        "spanne": {
+          "hoch": 7.01,
+          "tief": 6.72
+        },
+        "richtung": "short"
+      },
+      "stop": 6.865,
+      "ziel": 6.37,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T17:45:00.000Z",
+        "basisKurs": 6.7,
+        "kurs": 1.3434,
+        "stueck": 744,
+        "kurswert": 999.49
+      },
+      "timeMachine": {
+        "zielZuerst": 0.1,
+        "stopZuerst": 12.6,
+        "keins": 87.3,
+        "gruen": 51.1,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 56,
+        "historie": {
+          "faelle": 38,
+          "ziel": 10,
+          "stop": 14,
+          "oeR": 0.15
+        }
+      }
     }
   ],
   "trades": [
@@ -1237,6 +1295,64 @@
           "ziel": 1,
           "stop": 9,
           "oeR": -0.09
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-jinko-holdings-ltd",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "JINKO HOLDINGS LTD",
+      "isin": "US47759T1007",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 8.04,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T17:45:00.000Z",
+        "kurs": 6.71,
+        "level": 6.72,
+        "spanne": {
+          "hoch": 7.01,
+          "tief": 6.72
+        },
+        "richtung": "short"
+      },
+      "stop": 6.865,
+      "ziel": 6.37,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T17:45:00.000Z",
+        "basisKurs": 6.7,
+        "kurs": 1.3434,
+        "stueck": 744,
+        "kurswert": 999.49
+      },
+      "timeMachine": {
+        "zielZuerst": 0.1,
+        "stopZuerst": 12.6,
+        "keins": 87.3,
+        "gruen": 51.1,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 56,
+        "historie": {
+          "faelle": 38,
+          "ziel": 10,
+          "stop": 14,
+          "oeR": 0.15
         }
       }
     },
@@ -12412,7 +12528,7 @@
       "oeNettoProzent": 2.14,
       "oeR": 0.08
     },
-    "offen": 8,
+    "offen": 9,
     "gruppen": {
       "turbo": {
         "anzahl": 159,
@@ -12509,10 +12625,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 140,
-        "chance": 44.3,
-        "oeNetto": 0.19,
-        "wertung": -0.51
+        "faelle": 141,
+        "chance": 44.7,
+        "oeNetto": 0.22,
+        "wertung": -0.47
       }
     },
     "us:orb_long": {

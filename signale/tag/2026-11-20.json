@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T17:39:05.012Z",
-  "anzahl": 281,
+  "stand": "2026-11-20T18:08:20.427Z",
+  "anzahl": 283,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -3718,6 +3718,32 @@
         "SEC EDGAR Volltext"
       ],
       "z": "2026-11-20T17:39:05.012Z"
+    },
+    {
+      "id": "katalysator_long:XCUR:2026-11-20",
+      "s": "T:XCUR",
+      "n": "XCUR",
+      "t": "XCUR",
+      "typ": "katalysator_long",
+      "r": 1,
+      "st": 0.5,
+      "q": [
+        "SEC EDGAR Volltext"
+      ],
+      "z": "2026-11-20T18:08:20.427Z"
+    },
+    {
+      "id": "katalysator_short:CWD:2026-11-20",
+      "s": "T:CWD",
+      "n": "CWD",
+      "t": "CWD",
+      "typ": "katalysator_short",
+      "r": -1,
+      "st": 0.5,
+      "q": [
+        "SEC EDGAR Volltext"
+      ],
+      "z": "2026-11-20T18:08:20.427Z"
     }
   ]
 }
