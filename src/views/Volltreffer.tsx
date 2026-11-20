@@ -24,6 +24,8 @@ interface Uebersicht {
   /** echte Handelbarkeit: geprüfte Werte (Hebelprodukte in Deutschland), entfernte Fälle */
   handelbarkeit?: { quelle?: string; geprueft: number; neuGeprueft: number; nichtHandelbar: number; jePlattform?: Record<string, number> };
   muster: { gruppe: string; spielart: string; fenster: number; seit: string; faelle: number; treffer: number; ev: number; offen: number; rueckblick: { quote: number; ev: number; se: number; faelle: number }; stufe2: boolean; stufe3?: boolean; stufe3Grund?: string }[];
+  /** Q4 Gegenwind am jüngsten Stichtag */
+  gegenwind?: { datum: string; aktiv: boolean; grund: string } | null;
   sichtbar?: {
     regeln: { mindestFaelle: number; mindestQuote: number; mindestEv: number; maxOffen: number; einsatz: number };
     kennzahlen: JagdKennzahlen;
@@ -91,6 +93,11 @@ export function OrdersKarte() {
         <p class="klein">
           Nur bewährte Muster handeln hier – simuliert mit {euro(s.regeln.einsatz)} je Order, ohne Rückfrage, aber Klasse vor Masse: mindestens {zahl(s.regeln.mindestFaelle)} Fälle im Vorwärtstest im Plus, im Rückblick mindestens {zahl(s.regeln.mindestQuote)} % Volltreffer und Ø {euro(s.regeln.mindestEv)}; höchstens {zahl(s.regeln.maxOffen)} Orders gleichzeitig. Jede Order kommt als Mitteilung.
         </p>
+        {z.status === 'ok' && z.daten.gegenwind?.aktiv && (
+          <p class="klein" data-testid="gegenwind">
+            🌬️ <strong>Gegenwind</strong> (Stichtag {datumKurz(z.daten.gegenwind.datum)}): keine neuen Aktien-Shorts – {z.daten.gegenwind.grund}.
+          </p>
+        )}
         {s.zeitreise && (
           <p class="klein" data-testid="zeitreise-regel">
             🕰️ <strong>Zeitreise-Regel {s.zeitreise.an ? 'an' : 'aus'}</strong>

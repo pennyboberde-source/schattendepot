@@ -21,7 +21,10 @@ export function autopilotLauf(jetzt: Date, kandidaten: AutopilotKandidat[]): { n
   const beweise = beweiseVereinen(signalBeweise(tracking, schwelle, huerden), sammelBeweise(sammel, schwelle, huerden), e.mindestFaelle);
   const st = leseJson<Partial<Statistik>>('statistik.json', {});
   const varianten = variantenSchattenbuch(tracking, marktGruppe, variantenKosten(cfg), { mindestFaelle: cfg.einstellungen.varianten?.mindestFaelle ?? 25, mindestChance: cfg.einstellungen.mindestChance ?? 40, kellyAnteil: cfg.einstellungen.varianten?.kellyAnteil ?? 0.5, hebelMax: cfg.einstellungen.varianten?.hebelMax ?? 50 });
-  const r = autopilotOrders(kandidaten, beweise, ordersAusEreignissen(leseEreignisse()), jetzt, e, { zielStop: st.zielStop, appUrl: APP_URL, varianten });
+  // Q4 Gegenwind: der nächtliche Rückblick schreibt die Marktlage des letzten Stichtags (höchstens 5 Tage alt)
+  const gw = leseJson<{ gegenwind?: { datum: string; aktiv: boolean; grund: string } }>('volltreffer/uebersicht.json', {}).gegenwind;
+  const gwFrisch = gw?.aktiv && (jetzt.getTime() - Date.parse(`${gw.datum}T22:00:00Z`)) / 86400000 <= 5;
+  const r = autopilotOrders(kandidaten, beweise, ordersAusEreignissen(leseEreignisse()), jetzt, e, { zielStop: st.zielStop, appUrl: APP_URL, varianten, ...(gwFrisch ? { ohneShortAktien: `Gegenwind (${gw!.grund})` } : {}) });
   const neu = haengeEreignisseAn(r.ereignisse);
   return { neu: neu.length, hinweise: r.hinweise };
 }

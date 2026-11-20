@@ -104,6 +104,13 @@ describe('Autopilot handelt die beste Spielart', () => {
     expect((r.ereignisse[0].daten as { plan: OrderPlan }).plan.hebelWunsch).toEqual({ richtung: 'short', hebel: 3 });
     expect(autopilotOrders([k(3)], [], [], jetzt, E, { varianten: v('gegen', 1) }).ereignisse).toHaveLength(0);
   });
+
+  it('Gegenwind: keine Aktien-Shorts, Longs weiter (20.11.2026)', () => {
+    const r = autopilotOrders([k(3)], [], [], jetzt, E, { varianten: v('gegen', 3), ohneShortAktien: 'Gegenwind' });
+    expect(r.ereignisse).toHaveLength(0);
+    expect(r.hinweise.join(' ')).toMatch(/short übersprungen – Gegenwind/);
+    expect(autopilotOrders([k(3)], [], [], jetzt, E, { varianten: v('mit', 3), ohneShortAktien: 'Gegenwind' }).ereignisse).toHaveLength(1);
+  });
 });
 
 describe('Daytrading: Spielart je Setup', () => {

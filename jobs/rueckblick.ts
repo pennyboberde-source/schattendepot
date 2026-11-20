@@ -831,6 +831,28 @@ for (const [k, e] of zrErst) {
   (testJeGruppe.get(g) ?? testJeGruppe.set(g, []).get(g)!).push(bm);
   zrNur.add(k);
 }
+// ---------- Q4 Gegenwind (20.11.2026): Marktlage zum Schluss je Stichtag ----------
+// Gegenwind = Markt (Median der Aktien) über 5 Tage oder VIX im obersten Zehntel der vorigen rollTage Handelstage (nur
+// Vergangenheit). Dort keine sichtbaren Aktien-Shorts (V6 und Zeitreise-Regel) und keine Autopilot-Shorts (über
+// volltreffer/uebersicht.json › gegenwind). Zeitreise mit dieser Regel: Ø +12,3 statt +2,2 € je Order (Probe 44717816325).
+const GWC = (vt.v6 as unknown as { gegenwind?: { aktiv: boolean; ab: string; rollTage: number; quantil: number } }).gegenwind;
+const gegenwindJeTag = new Map<string, { aktiv: boolean; markt5: number | null; vix: number | null; sM5: number; sVix: number }>();
+{
+  const q = (l: number[]) => {
+    const t2 = l.filter((v) => Number.isFinite(v)).sort((a, b) => a - b);
+    return t2.length >= 60 ? t2[Math.floor(t2.length * (GWC?.quantil ?? 0.9))] : Infinity;
+  };
+  const tageA = alleTage.filter((d) => markt5JeTag.aktie.has(d));
+  for (let n = 0; n < tageA.length; n++) {
+    const vor = tageA.slice(Math.max(0, n - (GWC?.rollTage ?? 250)), n);
+    const sM5 = q(vor.map((d) => markt5JeTag.aktie.get(d) ?? NaN));
+    const sVix = q(vor.map((d) => umfeldJeTag.get(d)?.vix ?? NaN));
+    const m5 = markt5JeTag.aktie.get(tageA[n]) ?? null;
+    const vix = umfeldJeTag.get(tageA[n])?.vix ?? null;
+    gegenwindJeTag.set(tageA[n], { aktiv: (m5 !== null && m5 >= sM5) || (vix !== null && vix >= sVix), markt5: m5, vix, sM5, sVix });
+  }
+}
+const gegenwindShort = (f: JagdFall) => !!GWC?.aktiv && f.markt === 'aktie' && /short/i.test(f.spielart) && f.stichtag >= GWC.ab && !!gegenwindJeTag.get(f.stichtag)?.aktiv;
 if (ZRV) log(`Zeitreise-Regel: ${ZRV.aktiv ? (zrGebremst ? 'GEBREMST' : 'an') : 'aus'}, Auswahl ${zrFrisch ? `${zrFrisch.length} Muster (Halbmonat ab ${zrDatei?.aktuell?.halbmonatVon})` : 'nicht frisch – unverändert'}, aktiv ${zrAktiv(zrBuch.eintraege).size}, heute ${zrNeu.filter((e) => e.status === 'gewaehlt').length} gewählt/${zrNeu.filter((e) => e.status === 'abgewaehlt').length} abgewählt.`);
 const FENSTER_ALLE = (f: number) => Array.from({ length: f }, (_, n) => n + 1);
 /** Fall eines Musters im Vorwärtstest: Ausgang, laufend oder noch lauernd (kein Folgetag) */
@@ -1335,7 +1357,10 @@ if (ZEITREISE) {
     }
   }
   const monatVon = (t: number) => new Date(Date.parse(`${erster}T12:00:00Z`) + t * 86400000).toISOString().slice(0, 7);
-  const sichtbar = nachspielen(kandidaten, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag });
+  // Seit 20.11.2026 (Q4): die sichtbare Regel nutzt den rollenden Gegenwind-Filter (wie live); ohne Filter zum Vergleich
+  const iRoll = GW_VARIANTEN.findIndex((g) => g.rollend);
+  const sichtbar = nachspielen(kandidatenWindV[iRoll], { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag });
+  const sichtbarOhne = nachspielen(kandidaten, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag });
   const jagden = nachspielen(kandidaten, { maxOffen: ZR.jagdenMaxOffen, maxJeTag: ZR.jagdenMaxJeTag });
   const haeufig = new Map<string, { orders: number; volltreffer: number; netto: number }>();
   for (const o of sichtbar) {
@@ -1346,11 +1371,12 @@ if (ZEITREISE) {
   }
   const ergebnis = {
     stand: jetzt.toISOString(),
-    hinweis: `Zeitreise: der ganze Ablauf über die Kursgeschichte nachgespielt, als wäre er live gelaufen. Je Halbmonat wählt der Code bis zu ${ZR.maxMuster} Muster nur aus Fällen, deren Ergebnis da schon feststand (${ZR.abstand} Halbmonat Abstand): der Tag zählt als Einheit (Ø und Volltreffer-Anteil der Fälle eines Tages), in beiden Hälften der Vergangenheit je mindestens ${ZR.mindestFaelleHaelfte} Tage im Plus, besser als die Grundrate, Quote ab ${ZR.mindestQuote} %, höchstens ${ZR.maxJeBaustein} je Baustein. Dann je Tag die Fälle dieser Muster nach Wertung: „sichtbar“ höchstens ${ZR.sichtbarMaxOffen} offene Orders, „Jagden“ höchstens ${ZR.jagdenMaxOffen}, je Wert eine; 1.000 € je Order nach Kosten, Ausstieg bei Ziel (+400 €), Stop (−150 €) oder nach ${ZR.fenster} Handelstagen. Vereinfachungen: ohne Klumpen-Grenze zwischen Werten, Pump-Filter und Gesamtmodell. Nur Kennzahlen, keine Kurse.`,
+    hinweis: `Zeitreise: der ganze Ablauf über die Kursgeschichte nachgespielt, als wäre er live gelaufen. Je Halbmonat wählt der Code bis zu ${ZR.maxMuster} Muster nur aus Fällen, deren Ergebnis da schon feststand (${ZR.abstand} Halbmonat Abstand): der Tag zählt als Einheit (Ø und Volltreffer-Anteil der Fälle eines Tages), in beiden Hälften der Vergangenheit je mindestens ${ZR.mindestFaelleHaelfte} Tage im Plus, besser als die Grundrate, Quote ab ${ZR.mindestQuote} %, höchstens ${ZR.maxJeBaustein} je Baustein. Dann je Tag die Fälle dieser Muster nach Wertung: „sichtbar“ höchstens ${ZR.sichtbarMaxOffen} offene Orders, ohne Aktien-Shorts bei Gegenwind (Markt 5 Tage oder VIX im obersten Zehntel der vorigen 250 Tage), „Jagden“ höchstens ${ZR.jagdenMaxOffen}, je Wert eine; 1.000 € je Order nach Kosten, Ausstieg bei Ziel (+400 €), Stop (−150 €) oder nach ${ZR.fenster} Handelstagen. Vereinfachungen: ohne Klumpen-Grenze zwischen Werten, Pump-Filter und Gesamtmodell. Nur Kennzahlen, keine Kurse.`,
     zeitraum: { von: kandidaten.length ? monatVon(kandidaten.reduce((a, k) => Math.min(a, k.tag), Infinity)) : null, bis: heute.slice(0, 7) },
     regeln: ZR,
     auswahl: { halbmonate: wahl.filter((w) => w.length).length, oeMuster: Math.round(wahl.reduce((a, w) => a + w.length, 0) / Math.max(1, wahl.filter((w) => w.length).length)) },
     sichtbar: bilanz(sichtbar, monatVon),
+    sichtbarOhneFilter: bilanz(sichtbarOhne, monatVon),
     // Q4: Variante mit Gegenwind-Filter (keine Shorts bei starkem Markt über 5 Tage oder hohem VIX)
     sichtbarGegenwind: bilanz(nachspielen(kandidatenWindV[0], { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatVon),
     gegenwind: GW,
@@ -1380,7 +1406,8 @@ if (ZEITREISE) {
     },
   };
   schreibeJson('lernen/zeitreise.json', ergebnis);
-  log(`Zeitreise sichtbar (${ZR.sichtbarMaxOffen} offen): ${ergebnis.sichtbar.orders} Orders, ${ergebnis.sichtbar.volltreffer} Volltreffer (${ergebnis.sichtbar.quote} %), netto ${ergebnis.sichtbar.netto} €, Ø ${ergebnis.sichtbar.oe} €, größter Rückgang ${ergebnis.sichtbar.maxRueckgang} €.`);
+  log(`Zeitreise sichtbar ohne Gegenwind-Filter: ${ergebnis.sichtbarOhneFilter.orders} Orders, Ø ${ergebnis.sichtbarOhneFilter.oe} €, netto ${ergebnis.sichtbarOhneFilter.netto} €.`);
+  log(`Zeitreise sichtbar mit rollendem Gegenwind (${ZR.sichtbarMaxOffen} offen): ${ergebnis.sichtbar.orders} Orders, ${ergebnis.sichtbar.volltreffer} Volltreffer (${ergebnis.sichtbar.quote} %), netto ${ergebnis.sichtbar.netto} €, Ø ${ergebnis.sichtbar.oe} €, größter Rückgang ${ergebnis.sichtbar.maxRueckgang} €.`);
   log(`Zeitreise Jagden (${ZR.jagdenMaxOffen} offen): ${ergebnis.jagden.orders} Orders, ${ergebnis.jagden.volltreffer} Volltreffer (${ergebnis.jagden.quote} %), netto ${ergebnis.jagden.netto} €, Ø ${ergebnis.jagden.oe} €, größter Rückgang ${ergebnis.jagden.maxRueckgang} €.`);
   log(`Zeitreise Vergleich: alle Fälle der gewählten Muster ${alleN} (Quote ${ergebnis.alleMusterfaelle.quote} %, Ø ${ergebnis.alleMusterfaelle.oe} €) · Grundrate ${grN} (Quote ${ergebnis.grundrate.quote} %, Ø ${ergebnis.grundrate.oe} €).`);
   for (const mo of ergebnis.sichtbar.monate) log(`  ${mo.monat}: ${mo.orders} Orders, ${mo.volltreffer} Volltreffer, ${mo.netto} €`);
@@ -2692,7 +2719,7 @@ if (vt.erkennung) {
     const zz = zrZeiten(zrBuch.eintraege);
     const inZR = (f: JagdFall) => zz.get(f.muster)?.some((x) => f.stichtag >= x.von && (x.bis === null || f.stichtag < x.bis)) ?? false;
     const kand = vorwaerts
-      .filter((f) => !f.pump)
+      .filter((f) => !f.pump && !gegenwindShort(f))
       .flatMap((f) => (inStufe3(zeiten3, f) ? [f] : inZR(f) && !(ZRV?.ohneUngeprueft && f.ungeprueft) ? [{ ...f, wertung: zrWertung.get(f.muster) ?? f.wertung, zeitreise: true }] : []));
     const zeiten = new Map(zeiten3);
     for (const [k, l] of zz) zeiten.set(k, [...(zeiten.get(k) ?? []), ...l]);
@@ -2728,6 +2755,13 @@ if (vt.erkennung) {
     hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens ' + v4.mindestQuote + ' % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Mitteilungen nur gesammelt in der Abendbilanz, kein echtes Geld.',
     regeln: { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, stufe2Faelle: v4.stufe2Faelle },
     kennzahlen: jagdKennzahlen(jagden),
+    // Q4 Gegenwind am jüngsten Aktien-Stichtag (Autopilot und App lesen das)
+    gegenwind: (() => {
+      const d = [...gegenwindJeTag.keys()].pop();
+      const g = d ? gegenwindJeTag.get(d)! : null;
+      const zahl = (x: number | null) => (x === null || !Number.isFinite(x) ? '–' : x.toLocaleString('de-DE', { maximumFractionDigits: 1 }));
+      return d && g ? { datum: d, aktiv: !!GWC?.aktiv && g.aktiv, grund: g.aktiv ? `Markt 5 Tage ${zahl(g.markt5)} % (Schwelle ${zahl(g.sM5)} %), VIX ${zahl(g.vix)} (Schwelle ${zahl(g.sVix)})` : 'kein Gegenwind', markt5: g.markt5 === null ? null : Math.round(g.markt5 * 10) / 10, schwelleMarkt5: Number.isFinite(g.sM5) ? Math.round(g.sM5 * 10) / 10 : null, vix: g.vix, schwelleVix: Number.isFinite(g.sVix) ? Math.round(g.sVix * 10) / 10 : null } : null;
+    })(),
     // V5: Wie gut ist Claudes Urteil? Alle Fälle im Vorwärtstest mit „ja“ gegen „nein“ (nicht nur die gewählten Jagden)
     urteil: { ja: urteilJa, nein: urteilNein, urteile: urteile.size, kalibrierung: urteilKalibrierung(vorwaerts), neinFilter: ohneNein },
     offen: jagden.filter((j) => j.art === 'offen').map(ohneMuster),

@@ -1012,9 +1012,17 @@
     "schnellspurHinweis": "Schnellspur (Nutzer 15.11.2026: „kannst auch von 20 Tests absehen, wenn du dir sicher bist“): Muster mit Wertung ab mindestWertung im Rückblick brauchen nur mindestFaelle abgeschlossene Vorwärts-Fälle; Quote, Ø und Band gelten unverändert.",
     "mindestTage": 6,
     "tageHinweis": "Seit 18.11.2026: Vorwärts-Fälle desselben Stichtags sind ein Ereignis – befördert wird erst mit Fällen an mindestTage (Schnellspur: schnellspur.mindestTage) verschiedenen Tagen, und Ø/Band gelten für das Mittel der Tagesmittel. Befund: ein Muster hatte 599 Vorwärts-Fälle aus 1–3 Tagen (Rückblick 33 % Quote, vorwärts 4 Treffer, Ø −146 €).",
+    "gegenwind": {
+      "hinweis": "Q4 Wellen (Nutzer 20.11.2026: „Punkt 4 besonders interessant“): Gegenwind = Markt über 5 Tage (Median der Aktien) oder VIX im obersten quantil der vorigen rollTage Handelstage (nur Vergangenheit). Dann keine sichtbaren Aktien-Shorts (V6, Zeitreise-Regel) und keine Autopilot-Shorts auf Aktien. Belege: Wellen-Analyse (Shorts schwankungsreicher Werte nach starkem Markt Ø −61 bis −70 €, beide Zeiträume) und Zeitreise (rollend Ø +12,3 statt +2,2 € je Order; Schwellen 1,2/1,7/2,2 % alle besser). Gilt für Stichtage ab ab (nie rückwirkend).",
+      "aktiv": true,
+      "ab": "2026-11-20",
+      "rollTage": 250,
+      "quantil": 0.9
+    },
     "zeitreise": {
       "hinweis": "Zeitreise-Regel (Nutzer 20.11.2026: „Ja, darfst du machen. Sobald sich aber abzeichnen sollte, dass das Ganze keinen Gewinn bringt … sei bereit, sehr schnell zurück zur 6er-Regel zu gehen.“): die Muster-Auswahl des laufenden Halbmonats aus der Zeitreise (lernen/zeitreise.json › aktuell, täglich 23:40 UTC) ordert zusätzlich sichtbar – dieselben Grenzen wie V6 (höchstens maxOffen gleichzeitig, je Wert eine, Tagesverlustgrenze, Klumpen), ohne Pump-Verdacht und ohne ungeprüfte Plattform (CFD), Kennzeichen „zeitreise“. Bremse: Summe der Zeitreise-Orders seit „ab“ (abgeschlossen + Stand der offenen) ≤ −maxVerlust € oder nach mindestOrders abgeschlossenen Ø unter minOe € → Eintrag „bremse“ im Zeitreise-Buch, alle Muster abgewählt, laufende Orders laufen zu Ende; nur die 6er-Regel ordert weiter. Neu starten: „ab“ auf einen späteren Tag setzen.",
-      "aktiv": false,
+      "aktiv": true,
+      "aktivHinweis": "20.11.2026 mittags wieder eingeschaltet: mit dem rollenden Gegenwind-Filter (Q4) zeigt die Zeitreise Ø +12,3 € je Order (395 Orders, 97 Volltreffer, 12 von 21 Monaten im Plus, größter Rückgang 3.257 €). Bremse bleibt.",
       "ausGrund": "Nach der Korrektur der Zeitreise (20.11.2026: Ergebnisse zählen erst im Halbmonat ihres Ausstiegs) bleibt für die besten 3 nur Ø +5 € je Order (vorher +16 €), 10 von 21 Monaten im Plus, größter Rückgang 4.723 € – kein gesicherter Vorteil. Die Regel ist fertig gebaut und schaltet sich mit aktiv: true ein; die Zeitreise läuft täglich weiter.",
       "ab": "2026-11-20",
       "frischTage": 2,

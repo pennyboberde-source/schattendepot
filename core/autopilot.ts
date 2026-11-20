@@ -204,7 +204,7 @@ export function autopilotOrders(
   orders: Order[],
   jetzt: Date,
   e: AutopilotEinstellungen,
-  opt: { zielStop?: ZielStopVorschlag[]; appUrl?: string; varianten?: VariantenErgebnis[] } = {},
+  opt: { zielStop?: ZielStopVorschlag[]; appUrl?: string; varianten?: VariantenErgebnis[]; ohneShortAktien?: string } = {},
 ): AutopilotErgebnis {
   const hinweise: string[] = [];
   const ereignisse: Ereignis[] = [];
@@ -237,6 +237,12 @@ export function autopilotOrders(
     const v: Variante | undefined = vErg?.beste ?? undefined;
     const handelLong = v ? (k.score > 0) === (v.richtung === 'mit') : true;
     if (v && v.hebel === 1 && !handelLong) continue; // ohne Hebel kein Leerverkauf
+    // Q4 Gegenwind (20.11.2026): nach starkem Markt (5 Tage) oder hohem VIX keine Aktien-Shorts – dort verloren Shorts
+    // schwankungsreicher Werte im Rückblick Ø 60 bis 80 € je Order, in beiden Zeiträumen
+    if (opt.ohneShortAktien && !handelLong && gruppe === 'aktie') {
+      hinweise.push(`Autopilot: ${k.schluessel} short übersprungen – ${opt.ohneShortAktien}`);
+      continue;
+    }
     const beweisAlt = bewiesen.filter((b) => b.gruppe === gruppe && k.typen.includes(b.typ)).sort((a, b) => b.oeNetto - a.oeNetto)[0];
     if (!v && (!beweisAlt || !(k.score > 0))) continue;
     const beweis = v
