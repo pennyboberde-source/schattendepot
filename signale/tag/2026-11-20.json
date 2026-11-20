@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T18:08:20.427Z",
-  "anzahl": 283,
+  "stand": "2026-11-20T18:20:42.402Z",
+  "anzahl": 287,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -3255,7 +3255,7 @@
       "t": "IPFXU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3320,7 +3320,7 @@
       "t": "MSS",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.9,
+      "st": 1,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3744,6 +3744,63 @@
         "SEC EDGAR Volltext"
       ],
       "z": "2026-11-20T18:08:20.427Z"
+    },
+    {
+      "id": "handelsstopp:TRIB:2026-11-20",
+      "s": "T:TRIB",
+      "n": "Trinity Biotech PLC ADR",
+      "t": "TRIB",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:K.BTC:2026-11-20",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "BTC-ECHO",
+        "CNBC Top News",
+        "Handelsblatt Finanzen"
+      ],
+      "z": "2026-11-20T05:37:56.000Z"
+    },
+    {
+      "id": "politik_wahrscheinlichkeit:XOM:2026-11-20:6831496",
+      "s": "T:XOM",
+      "n": "Exxon Mobil",
+      "t": "XOM",
+      "m": "us",
+      "typ": "politik_wahrscheinlichkeit",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Polymarket (Politik)"
+      ],
+      "z": "2026-11-20T18:20:42.402Z"
+    },
+    {
+      "id": "politik_wahrscheinlichkeit:LHA:2026-11-20:6831496",
+      "s": "T:LHA",
+      "n": "Lufthansa",
+      "t": "LHA.DE",
+      "m": "eu",
+      "typ": "politik_wahrscheinlichkeit",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Polymarket (Politik)"
+      ],
+      "z": "2026-11-20T18:20:42.402Z"
     }
   ]
 }
