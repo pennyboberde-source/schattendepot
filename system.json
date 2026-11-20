@@ -1,7 +1,7 @@
 {
-  "stand": "2026-11-19T20:54:11.095Z",
+  "stand": "2026-11-20T06:53:17.838Z",
   "letzterSammlerLauf": "2026-11-20T05:19:21.799Z",
-  "letzterWaechterLauf": "2026-11-19T20:54:11.095Z",
+  "letzterWaechterLauf": "2026-11-20T06:53:17.838Z",
   "hinweise": [],
   "letzterClaudeLauf": {
     "zeit": "2026-11-19T22:37:30.634Z",
@@ -10,22 +10,23 @@
   "ausfallWarnung": "2026-11-03",
   "pushAnmeldungHash": "ab877b9c3190e15d",
   "pushAbgelaufen": false,
-  "letzterPush": "2026-11-19T21:23:30.792Z",
+  "letzterPush": "2026-11-20T06:53:17.838Z",
   "kursabrufe": {
     "gettex": {
       "ok": 1,
       "fehler": 0,
-      "zuletztOk": "2026-11-19T20:54:11.095Z"
+      "zuletztOk": "2026-11-20T06:53:17.838Z"
     },
     "finnhub": {
-      "ok": 4,
-      "fehler": 0,
-      "zuletztOk": "2026-11-19T20:54:11.095Z"
+      "ok": 5,
+      "fehler": 1,
+      "zuletztOk": "2026-11-20T06:53:17.838Z",
+      "letzterFehler": "2026-11-20T06:53:17.838Z: kein Kurs für VRMK"
     },
     "twelvedata": {
-      "ok": 1,
+      "ok": 2,
       "fehler": 0,
-      "zuletztOk": "2026-11-19T20:54:11.095Z"
+      "zuletztOk": "2026-11-20T06:53:17.838Z"
     }
   },
   "ereignislaeufe": {
