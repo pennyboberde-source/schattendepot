@@ -1265,7 +1265,7 @@ if (ZEITREISE) {
   // ist oder der VIX hoch steht (Wellen-Analyse: Shorts schwankungsreicher Werte dort Ø −60 bis −80 € in beiden Zeiträumen)
   const GW = (ZR as unknown as { gegenwind?: { markt5Ab: number; vixAb: number } }).gegenwind ?? { markt5Ab: 1.7, vixAb: 24 };
   // Beständigkeit: dieselbe Regel mit lockereren/strengeren Schwellen und je Bedingung allein
-  const GW_VARIANTEN: { markt5Ab: number; vixAb: number; rollend?: boolean }[] = [GW, { markt5Ab: 1.2, vixAb: 22 }, { markt5Ab: 2.2, vixAb: 28 }, { markt5Ab: GW.markt5Ab, vixAb: Infinity }, { markt5Ab: Infinity, vixAb: GW.vixAb }, { markt5Ab: NaN, vixAb: NaN, rollend: true }];
+  const GW_VARIANTEN: { markt5Ab: number; vixAb: number; rollend?: boolean; markt5Bis?: number }[] = [GW, { markt5Ab: 1.2, vixAb: 22 }, { markt5Ab: 2.2, vixAb: 28 }, { markt5Ab: GW.markt5Ab, vixAb: Infinity }, { markt5Ab: Infinity, vixAb: GW.vixAb }, { markt5Ab: NaN, vixAb: NaN, rollend: true }, { markt5Ab: GW.markt5Ab, vixAb: GW.vixAb, markt5Bis: -1.8 }];
   // rollend: Schwellen = oberstes Zehntel der vorigen 250 Handelstage (nur Vergangenheit, kein Blick nach vorn)
   const rollSchwelle = new Map<string, { m5: number; vix: number }>();
   {
@@ -1296,7 +1296,7 @@ if (ZEITREISE) {
     const besteWindV: (Kandidat | null)[] = GW_VARIANTEN.map(() => null);
     const lz = lageVon(zTag[z]);
     const rs = rollSchwelle.get(datumVonTag(zTag[z]));
-    const gwV = GW_VARIANTEN.map((g) => zMarkt[z] === 0 && (g.rollend ? !!rs && (lz.m5 >= rs.m5 || lz.vix >= rs.vix) : lz.m5 >= g.markt5Ab || lz.vix >= g.vixAb));
+    const gwV = GW_VARIANTEN.map((g) => zMarkt[z] === 0 && (g.rollend ? !!rs && (lz.m5 >= rs.m5 || lz.vix >= rs.vix) : lz.m5 >= g.markt5Ab || lz.vix >= g.vixAb || (g.markt5Bis !== undefined && lz.m5 <= g.markt5Bis)));
     for (const wb of w) {
       const x = wb.x;
       if (wb.markt !== zMarkt[z]) continue;
@@ -1356,7 +1356,7 @@ if (ZEITREISE) {
     gegenwind: GW,
     gegenwindVarianten: GW_VARIANTEN.map((g, gi) => {
       const b2 = bilanz(nachspielen(kandidatenWindV[gi], { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatVon);
-      return { rollend: !!g.rollend, markt5Ab: Number.isFinite(g.markt5Ab) ? g.markt5Ab : null, vixAb: Number.isFinite(g.vixAb) ? g.vixAb : null, orders: b2.orders, volltreffer: b2.volltreffer, quote: b2.quote, netto: b2.netto, oe: b2.oe, maxRueckgang: b2.maxRueckgang, monatePlus: b2.monate.filter((mo) => mo.netto > 0).length, monate: b2.monate.length };
+      return { rollend: !!g.rollend, markt5Bis: g.markt5Bis ?? null, markt5Ab: Number.isFinite(g.markt5Ab) ? g.markt5Ab : null, vixAb: Number.isFinite(g.vixAb) ? g.vixAb : null, orders: b2.orders, volltreffer: b2.volltreffer, quote: b2.quote, netto: b2.netto, oe: b2.oe, maxRueckgang: b2.maxRueckgang, monatePlus: b2.monate.filter((mo) => mo.netto > 0).length, monate: b2.monate.length };
     }),
     jagden: bilanz(jagden, monatVon),
     alleMusterfaelle: { faelle: alleN, quote: alleN ? Math.round((alleT / alleN) * 1000) / 10 : 0, oe: alleN ? Math.round((alleSum / alleN) * 10) / 10 : 0 },
@@ -1384,7 +1384,7 @@ if (ZEITREISE) {
   log(`Zeitreise Jagden (${ZR.jagdenMaxOffen} offen): ${ergebnis.jagden.orders} Orders, ${ergebnis.jagden.volltreffer} Volltreffer (${ergebnis.jagden.quote} %), netto ${ergebnis.jagden.netto} €, Ø ${ergebnis.jagden.oe} €, größter Rückgang ${ergebnis.jagden.maxRueckgang} €.`);
   log(`Zeitreise Vergleich: alle Fälle der gewählten Muster ${alleN} (Quote ${ergebnis.alleMusterfaelle.quote} %, Ø ${ergebnis.alleMusterfaelle.oe} €) · Grundrate ${grN} (Quote ${ergebnis.grundrate.quote} %, Ø ${ergebnis.grundrate.oe} €).`);
   for (const mo of ergebnis.sichtbar.monate) log(`  ${mo.monat}: ${mo.orders} Orders, ${mo.volltreffer} Volltreffer, ${mo.netto} €`);
-  for (const g of ergebnis.gegenwindVarianten) log(`Zeitreise Gegenwind-Variante ${g.rollend ? 'rollend (oberstes Zehntel der vorigen 250 Tage)' : `Markt5 ≥ ${g.markt5Ab ?? '–'} / VIX ≥ ${g.vixAb ?? '–'}`}: ${g.orders} Orders, ${g.volltreffer} Volltreffer (${g.quote} %), netto ${g.netto} €, Ø ${g.oe} €, Rückgang ${g.maxRueckgang} €, ${g.monatePlus}/${g.monate} Monate im Plus.`);
+  for (const g of ergebnis.gegenwindVarianten) log(`Zeitreise Gegenwind-Variante ${g.rollend ? 'rollend (oberstes Zehntel der vorigen 250 Tage)' : `Markt5 ≥ ${g.markt5Ab ?? '–'} / VIX ≥ ${g.vixAb ?? '–'}${g.markt5Bis !== null ? ` / Markt5 ≤ ${g.markt5Bis}` : ''}`}: ${g.orders} Orders, ${g.volltreffer} Volltreffer (${g.quote} %), netto ${g.netto} €, Ø ${g.oe} €, Rückgang ${g.maxRueckgang} €, ${g.monatePlus}/${g.monate} Monate im Plus.`);
   log(`Zeitreise sichtbar mit Gegenwind-Filter (keine Shorts bei Markt 5 Tage ≥ ${GW.markt5Ab} % oder VIX ≥ ${GW.vixAb}): ${ergebnis.sichtbarGegenwind.orders} Orders, ${ergebnis.sichtbarGegenwind.volltreffer} Volltreffer (${ergebnis.sichtbarGegenwind.quote} %), netto ${ergebnis.sichtbarGegenwind.netto} €, Ø ${ergebnis.sichtbarGegenwind.oe} €, größter Rückgang ${ergebnis.sichtbarGegenwind.maxRueckgang} €.`);
   log(`Zeitreise aktuell (Halbmonat ab ${ergebnis.aktuell.halbmonatVon}): ${ergebnis.aktuell.muster.length} Muster für die Live-Regel.`);
   process.exit(0);
