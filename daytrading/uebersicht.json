@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T18:09:05.591Z",
+  "stand": "2026-11-20T18:23:57.470Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -643,64 +643,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-mcdonald-s-corp",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MCDONALD'S CORP",
-      "isin": "US5801351017",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 300.66,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T16:45:00.000Z",
-        "kurs": 250.4,
-        "level": 250.45,
-        "spanne": {
-          "hoch": 253,
-          "tief": 250.45
-        },
-        "richtung": "short"
-      },
-      "stop": 251.73,
-      "ziel": 248.2,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T16:45:00.000Z",
-        "basisKurs": 250.55,
-        "kurs": 5.0235,
-        "stueck": 199,
-        "kurswert": 999.68
-      },
-      "timeMachine": {
-        "zielZuerst": 9.9,
-        "stopZuerst": 46.9,
-        "keins": 43.2,
-        "gruen": 42.6,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 36,
-          "ziel": 2,
-          "stop": 13,
-          "oeR": -0.01
-        }
-      }
-    },
-    {
       "id": "2026-11-20-scan-palo-alto-networks-inc",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -1183,64 +1125,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-mcdonald-s-corp",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MCDONALD'S CORP",
-      "isin": "US5801351017",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 300.66,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T16:45:00.000Z",
-        "kurs": 250.4,
-        "level": 250.45,
-        "spanne": {
-          "hoch": 253,
-          "tief": 250.45
-        },
-        "richtung": "short"
-      },
-      "stop": 251.73,
-      "ziel": 248.2,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T16:45:00.000Z",
-        "basisKurs": 250.55,
-        "kurs": 5.0235,
-        "stueck": 199,
-        "kurswert": 999.68
-      },
-      "timeMachine": {
-        "zielZuerst": 9.9,
-        "stopZuerst": 46.9,
-        "keins": 43.2,
-        "gruen": 42.6,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 36,
-          "ziel": 2,
-          "stop": 13,
-          "oeR": -0.01
-        }
-      }
-    },
-    {
       "id": "2026-11-20-scan-palo-alto-networks-inc",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -1354,6 +1238,83 @@
           "stop": 14,
           "oeR": 0.15
         }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-mcdonald-s-corp",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MCDONALD'S CORP",
+      "isin": "US5801351017",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 300.66,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T16:45:00.000Z",
+        "kurs": 250.4,
+        "level": 250.45,
+        "spanne": {
+          "hoch": 253,
+          "tief": 250.45
+        },
+        "richtung": "short"
+      },
+      "stop": 251.73,
+      "ziel": 248.2,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T16:45:00.000Z",
+        "basisKurs": 250.55,
+        "kurs": 5.0235,
+        "stueck": 199,
+        "kurswert": 999.68
+      },
+      "timeMachine": {
+        "zielZuerst": 9.9,
+        "stopZuerst": 46.9,
+        "keins": 43.2,
+        "gruen": 42.6,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 2,
+          "stop": 13,
+          "oeR": -0.01
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T18:15:00.000Z",
+        "basisKurs": 251.73,
+        "kurs": 4.8808,
+        "kurswert": 971.28,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -28.4,
+        "bruttoProzent": -2.84,
+        "netto": -28.4,
+        "nettoProzent": -2.84,
+        "nettoTR": -30.4,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -12509,46 +12470,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 199,
+      "anzahl": 200,
       "treffer": 97,
-      "quote": 48.7,
-      "netto": 1786.34,
-      "brutto": 1866.34,
-      "nettoTR": 1469.34,
-      "oeNettoProzent": 0.9,
-      "oeR": 0.41
+      "quote": 48.5,
+      "netto": 1757.94,
+      "brutto": 1837.94,
+      "nettoTR": 1438.94,
+      "oeNettoProzent": 0.88,
+      "oeR": 0.4
     },
     "heute": {
-      "anzahl": 15,
+      "anzahl": 16,
       "treffer": 6,
-      "quote": 40,
-      "netto": 317.56,
-      "brutto": 325.56,
-      "nettoTR": 295.56,
-      "oeNettoProzent": 2.14,
-      "oeR": 0.08
+      "quote": 37.5,
+      "netto": 289.16,
+      "brutto": 297.16,
+      "nettoTR": 265.16,
+      "oeNettoProzent": 1.83,
+      "oeR": 0.02
     },
-    "offen": 9,
+    "offen": 8,
     "gruppen": {
       "turbo": {
-        "anzahl": 159,
+        "anzahl": 160,
         "treffer": 87,
-        "quote": 54.7,
-        "netto": 2122.62,
-        "brutto": 2122.62,
-        "nettoTR": 1805.62,
-        "oeNettoProzent": 1.34,
-        "oeR": 0.46
+        "quote": 54.4,
+        "netto": 2094.22,
+        "brutto": 2094.22,
+        "nettoTR": 1775.22,
+        "oeNettoProzent": 1.31,
+        "oeR": 0.45
       },
       "short": {
-        "anzahl": 159,
+        "anzahl": 160,
         "treffer": 87,
-        "quote": 54.7,
-        "netto": 2122.62,
-        "brutto": 2122.62,
-        "nettoTR": 1805.62,
-        "oeNettoProzent": 1.34,
-        "oeR": 0.46
+        "quote": 54.4,
+        "netto": 2094.22,
+        "brutto": 2094.22,
+        "nettoTR": 1775.22,
+        "oeNettoProzent": 1.31,
+        "oeR": 0.45
       },
       "krypto": {
         "anzahl": 40,
