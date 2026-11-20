@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T22:37:30.634Z",
+  "stand": "2026-11-20T05:19:21.799Z",
   "offen": [
     {
       "id": "2026-11-19-auto-applied-optoelectronics-inc",
@@ -463,6 +463,112 @@
         }
       },
       "verkaufstermin": "2026-11-24T07:20:42.798Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-20-auto-ardent-health-inc",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-20T05:19:21.799Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Ardent Health, Inc.",
+          "isin": "",
+          "ticker": "ARDT",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "ARDT",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:ARDT: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:ARDT:2026-11-20"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-25T05:19:21.799Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        }
+      },
+      "verkaufstermin": "2026-11-25T05:19:21.799Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-20-auto-erp-operating-ltd-partnership",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-20T05:19:21.799Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "ERP OPERATING LTD PARTNERSHIP",
+          "isin": "",
+          "ticker": "VRMK",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "VRMK",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:VRMK: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:VRMK:2026-11-20"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-25T05:19:21.799Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        }
+      },
+      "verkaufstermin": "2026-11-25T05:19:21.799Z",
       "anpassungen": []
     }
   ]

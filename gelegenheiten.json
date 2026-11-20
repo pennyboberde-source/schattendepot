@@ -1,157 +1,127 @@
 {
-  "datum": "2026-11-19",
+  "datum": "2026-11-20",
   "liste": [
     {
-      "id": "kursrakete:SVRE:2026-11-19",
-      "zeit": "2026-11-19T05:20:35.038Z",
+      "id": "uebernahmeangebot:GEO:2026-11-19",
+      "zeit": "2026-11-19T21:15:16.000Z",
+      "typ": "uebernahmeangebot",
+      "wertpapier": {
+        "name": "GEO GROUP INC",
+        "ticker": "GEO"
+      },
+      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
+      "link": "https://www.sec.gov/Archives/edgar/data/923796/000119312526468605/0001193125-26-468605-index.htm",
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "id": "uebernahmeangebot:PMCB:2026-11-19",
+      "zeit": "2026-11-19T22:00:13.000Z",
+      "typ": "uebernahmeangebot",
+      "wertpapier": {
+        "name": "PharmaCyte Biotech, Inc.",
+        "ticker": "PMCB"
+      },
+      "fakt": "8-K Item 2.01: Erwerb/Veräußerung abgeschlossen",
+      "link": "https://www.sec.gov/Archives/edgar/data/1157075/000168316826008964/0001683168-26-008964-index.htm",
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "id": "kursrakete:VIVS:2026-11-20",
+      "zeit": "2026-11-20T05:19:21.799Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "SVRE",
-        "ticker": "SVRE"
+        "name": "VIVS",
+        "ticker": "VIVS"
       },
-      "fakt": "Tagesgewinner +111 % bei 0.8647 $ (Volumen 159 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +143 % bei 0.2915 $ (Volumen 735 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:AKAN:2026-11-19",
-      "zeit": "2026-11-19T05:20:35.038Z",
+      "id": "kursrakete:LVWR:2026-11-20",
+      "zeit": "2026-11-20T05:19:21.799Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "AKAN",
-        "ticker": "AKAN"
+        "name": "LVWR",
+        "ticker": "LVWR"
       },
-      "fakt": "Tagesgewinner +97 % bei 4.03 $ (Volumen 106 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +74 % bei 0.6446 $ (Volumen 64 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:SKYA:2026-11-19",
-      "zeit": "2026-11-19T05:20:35.038Z",
+      "id": "kursrakete:MPU:2026-11-20",
+      "zeit": "2026-11-20T05:19:21.799Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "SKYA",
-        "ticker": "SKYA"
+        "name": "MPU",
+        "ticker": "MPU"
       },
-      "fakt": "Tagesgewinner +90 % bei 4.13 $ (Volumen 12 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +68 % bei 4.76 $ (Volumen 2 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:CUE:2026-11-19",
-      "zeit": "2026-11-19T05:20:35.038Z",
+      "id": "kursrakete:SEAT:2026-11-20",
+      "zeit": "2026-11-20T05:19:21.799Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "CUE",
-        "ticker": "CUE"
+        "name": "SEAT",
+        "ticker": "SEAT"
       },
-      "fakt": "Tagesgewinner +68 % bei 4.76 $ (Volumen 13 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +63 % bei 2.09 $ (Volumen 125 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:VWAV:2026-11-19",
-      "zeit": "2026-11-19T05:20:35.038Z",
+      "id": "kursrakete:MRKR:2026-11-20",
+      "zeit": "2026-11-20T05:19:21.799Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "VWAV",
-        "ticker": "VWAV"
+        "name": "MRKR",
+        "ticker": "MRKR"
       },
-      "fakt": "Tagesgewinner +57 % bei 0.7808 $ (Volumen 26 Mio.) – spekulativ",
+      "fakt": "Tagesgewinner +55 % bei 1.32 $ (Volumen 35 Mio.) – spekulativ",
       "quellen": [
         "Alpha Vantage"
       ]
     },
     {
-      "id": "kursrakete:K.PIEVERSE:2026-11-19",
-      "zeit": "2026-11-19T05:20:35.038Z",
+      "id": "kursrakete:K.META2:2026-11-20",
+      "zeit": "2026-11-20T05:19:21.799Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "Pieverse",
-        "ticker": "PIEVERSE",
+        "name": "MetaDAO",
+        "ticker": "META2",
         "markt": "krypto"
       },
-      "fakt": "Pieverse -23,5 % an Upbit seit Tagesbeginn (Korea)",
-      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-PIEVERSE",
+      "fakt": "MetaDAO +26,0 % an Upbit seit Tagesbeginn (Korea)",
+      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-META2",
       "quellen": [
         "Upbit"
       ]
     },
     {
-      "id": "kursrakete:K.IRYS:2026-11-19",
-      "zeit": "2026-11-19T05:20:35.038Z",
+      "id": "kursrakete:K.BARD:2026-11-20",
+      "zeit": "2026-11-20T05:19:21.799Z",
       "typ": "kursrakete",
       "wertpapier": {
-        "name": "Irys",
-        "ticker": "IRYS",
+        "name": "Lombard",
+        "ticker": "BARD",
         "markt": "krypto"
       },
-      "fakt": "Irys +27,8 % an Upbit seit Tagesbeginn (Korea)",
-      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-IRYS",
+      "fakt": "Lombard +26,5 % an Upbit seit Tagesbeginn (Korea)",
+      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BARD",
       "quellen": [
         "Upbit"
-      ]
-    },
-    {
-      "id": "kursrakete:K.PUFFER:2026-11-19",
-      "zeit": "2026-11-19T14:18:40.845Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "Puffer",
-        "ticker": "PUFFER",
-        "markt": "krypto"
-      },
-      "fakt": "Puffer +21,6 % an Upbit seit Tagesbeginn (Korea)",
-      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-PUFFER",
-      "quellen": [
-        "Upbit"
-      ]
-    },
-    {
-      "id": "kursrakete:K.MMT:2026-11-19",
-      "zeit": "2026-11-19T15:38:28.049Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "Momentum",
-        "ticker": "MMT",
-        "markt": "krypto"
-      },
-      "fakt": "Momentum +28,2 % an Upbit seit Tagesbeginn (Korea)",
-      "link": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-MMT",
-      "quellen": [
-        "Upbit"
-      ]
-    },
-    {
-      "id": "kursrakete:DE000HF18KR4:2026-11-19",
-      "zeit": "2026-11-19T16:07:59.407Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "DE000HF18KR4",
-        "isin": "DE000HF18KR4"
-      },
-      "fakt": "+32 % in der letzten Stunde auf 5.26 € (31 Geschäfte, Umsatz 24 T€, gettex) – spekulativ",
-      "link": "https://www.gettex.de/suche/?q=DE000HF18KR4",
-      "quellen": [
-        "gettex-Scanner"
-      ]
-    },
-    {
-      "id": "kursrakete:DE000HF28ZV3:2026-11-19",
-      "zeit": "2026-11-19T17:10:30.292Z",
-      "typ": "kursrakete",
-      "wertpapier": {
-        "name": "DE000HF28ZV3",
-        "isin": "DE000HF28ZV3"
-      },
-      "fakt": "+103 % in der letzten Stunde auf 4.74 € (43 Geschäfte, Umsatz 45 T€, gettex) – spekulativ",
-      "link": "https://www.gettex.de/suche/?q=DE000HF28ZV3",
-      "quellen": [
-        "gettex-Scanner"
       ]
     }
   ]

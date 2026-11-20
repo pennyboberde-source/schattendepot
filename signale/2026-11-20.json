@@ -1,0 +1,626 @@
+{
+  "stand": "2026-11-20T05:19:21.799Z",
+  "kandidaten": [
+    {
+      "schluessel": "T:TGT",
+      "name": "TGT",
+      "ticker": "TGT",
+      "score": 3.26,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:BABA",
+      "name": "BABA",
+      "ticker": "BABA",
+      "score": -2.46,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:GEO",
+      "name": "GEO GROUP INC",
+      "ticker": "GEO",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:PMCB",
+      "name": "PharmaCyte Biotech, Inc.",
+      "ticker": "PMCB",
+      "score": 2.3,
+      "typen": [
+        "grossauftrag",
+        "uebernahmeangebot"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SEAT",
+      "name": "Vivid Seats Inc.",
+      "ticker": "SEAT",
+      "pump": true,
+      "score": 2.17,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:OZVN",
+      "name": "OZ VISION INC.",
+      "ticker": "OZVN",
+      "score": -2.1,
+      "typen": [
+        "prognose_senkung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:BLLN",
+      "name": "BillionToOne",
+      "ticker": "BLLN",
+      "score": -2,
+      "typen": [
+        "shortreport"
+      ],
+      "quellen": [
+        "Fuzzy Panda Research"
+      ]
+    },
+    {
+      "schluessel": "T:AAOI",
+      "name": "APPLIED OPTOELECTRONICS, INC.",
+      "ticker": "AAOI",
+      "score": 1.84,
+      "typen": [
+        "nachricht",
+        "analysten_hochstufung",
+        "aktienrueckkauf"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MPU",
+      "name": "Mega Matrix Corp.",
+      "ticker": "MPU",
+      "pump": true,
+      "score": 1.84,
+      "typen": [
+        "tagesgewinner",
+        "kursrakete"
+      ],
+      "quellen": [
+        "FMP",
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:RERE",
+      "name": "RERE",
+      "ticker": "RERE",
+      "score": -1.58,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:MDRN",
+      "name": "Modern Mining Technology Corp.",
+      "ticker": "MDRN",
+      "score": 1.54,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:POAS",
+      "name": "Phaos Technology Holdings (Caym",
+      "ticker": "POAS",
+      "score": 1.54,
+      "typen": [
+        "tagesgewinner"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:ZOAR",
+      "name": "Zoar Limited",
+      "ticker": "ZOAR",
+      "score": -1.54,
+      "typen": [
+        "tagesverlierer"
+      ],
+      "quellen": [
+        "FMP"
+      ]
+    },
+    {
+      "schluessel": "T:SLS",
+      "name": "SELLAS Life Sciences Group, Inc.",
+      "ticker": "SLS",
+      "score": -1.26,
+      "typen": [
+        "nachricht",
+        "verwaesserung"
+      ],
+      "quellen": [
+        "Finnhub",
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:VRMK",
+      "name": "ERP OPERATING LTD PARTNERSHIP",
+      "ticker": "VRMK",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ARDT",
+      "name": "Ardent Health, Inc.",
+      "ticker": "ARDT",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:IDAI",
+      "name": "T Stamp Inc",
+      "ticker": "IDAI",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:INLF",
+      "name": "INLIF Ltd",
+      "ticker": "INLF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NIVF",
+      "name": "NewGenIvf Group Ltd",
+      "ticker": "NIVF",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:HSCS",
+      "name": "HeartSciences Inc.",
+      "ticker": "HSCS",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MDAI",
+      "name": "Spectral AI, Inc.",
+      "ticker": "MDAI",
+      "score": -1.2,
+      "typen": [
+        "verwaesserung"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:LOW",
+      "name": "LOW",
+      "ticker": "LOW",
+      "score": 1.19,
+      "typen": [
+        "gewinn_ueberraschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:NTES",
+      "name": "NTES",
+      "ticker": "NTES",
+      "score": -1.16,
+      "typen": [
+        "gewinn_enttaeuschung"
+      ],
+      "quellen": [
+        "Finnhub"
+      ]
+    },
+    {
+      "schluessel": "T:PAM",
+      "name": "Pampa Energy Inc.",
+      "ticker": "PAM",
+      "score": 1.09,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:BPRE",
+      "name": "Bluerock Private Real Estate Fund",
+      "ticker": "BPRE",
+      "score": 1.06,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:FUN",
+      "name": "Six Flags Entertainment Corporation/New",
+      "ticker": "FUN",
+      "score": 1.04,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:RMIX",
+      "name": "Suncrete, Inc.",
+      "ticker": "RMIX",
+      "score": 1.01,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:STWD",
+      "name": "Starwood Property Trust, Inc.",
+      "ticker": "STWD",
+      "score": 1.01,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ATEC",
+      "name": "Alphatec Holdings, Inc.",
+      "ticker": "ATEC",
+      "score": 0.94,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:ITG",
+      "name": "Itg, Inc./De/",
+      "ticker": "ITG",
+      "score": 0.91,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:MP",
+      "name": "Mp Materials Corp. / De",
+      "ticker": "MP",
+      "score": 0.9,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:HPP",
+      "name": "Hudson Pacific Properties, Inc.",
+      "ticker": "HPP",
+      "score": 0.81,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:EQPT",
+      "name": "Equipmentshare.Com Inc",
+      "ticker": "EQPT",
+      "score": 0.81,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:VIVS",
+      "name": "VIVS",
+      "ticker": "VIVS",
+      "pump": true,
+      "score": 0.81,
+      "typen": [
+        "kursrakete",
+        "volumen_ungewoehnlich"
+      ],
+      "quellen": [
+        "Alpha Vantage"
+      ]
+    },
+    {
+      "schluessel": "T:EW",
+      "name": "Edwards Lifesciences Corp",
+      "ticker": "EW",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NBR",
+      "name": "NABORS INDUSTRIES LTD",
+      "ticker": "NBR",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:MDAIW",
+      "name": "Spectral AI, Inc.",
+      "ticker": "MDAIW",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:RNR-PG",
+      "name": "RENAISSANCERE HOLDINGS LTD",
+      "ticker": "RNR-PG",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:CNTM",
+      "name": "ConnectM Technology Solutions, Inc.",
+      "ticker": "CNTM",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:FWDI",
+      "name": "Forward Industries, Inc.",
+      "ticker": "FWDI",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:SHPH",
+      "name": "Shuttle Pharmaceuticals Holdings, Inc.",
+      "ticker": "SHPH",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:NSIT",
+      "name": "INSIGHT ENTERPRISES INC",
+      "ticker": "NSIT",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:INTU",
+      "name": "INTUIT INC.",
+      "ticker": "INTU",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:ARAI",
+      "name": "Arrive AI Inc.",
+      "ticker": "ARAI",
+      "score": 0.8,
+      "typen": [
+        "grossauftrag"
+      ],
+      "quellen": [
+        "SEC EDGAR"
+      ]
+    },
+    {
+      "schluessel": "T:TSM",
+      "name": "Taiwan Semiconductor Manufacturing Co Ltd",
+      "ticker": "TSM",
+      "score": 0.8,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:RHM",
+      "name": "Rheinmetall",
+      "ticker": "RHM.DE",
+      "markt": "eu",
+      "score": -0.8,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "CNBC Politics"
+      ]
+    },
+    {
+      "schluessel": "T:HAG",
+      "name": "Hensoldt",
+      "ticker": "HAG.DE",
+      "markt": "eu",
+      "score": -0.8,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "CNBC Politics"
+      ]
+    },
+    {
+      "schluessel": "T:R3NK",
+      "name": "Renk",
+      "ticker": "R3NK.DE",
+      "markt": "eu",
+      "score": -0.8,
+      "typen": [
+        "politik_massnahme"
+      ],
+      "quellen": [
+        "CNBC Politics"
+      ]
+    },
+    {
+      "schluessel": "T:CGON",
+      "name": "Cg Oncology, Inc.",
+      "ticker": "CGON",
+      "score": 0.79,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    },
+    {
+      "schluessel": "T:EFC",
+      "name": "Ellington Financial Inc.",
+      "ticker": "EFC",
+      "score": 0.78,
+      "typen": [
+        "insider_cluster_kauf"
+      ],
+      "quellen": [
+        "OpenInsider"
+      ]
+    }
+  ],
+  "anzahlSignale": 190
+}

@@ -1,9 +1,46 @@
 {
-  "datum": "2026-11-19",
-  "stand": "2026-11-19T05:20:35.038Z",
-  "anzahl": 22,
-  "abdeckung": 27.3,
+  "datum": "2026-11-20",
+  "stand": "2026-11-20T05:19:21.799Z",
+  "anzahl": 27,
+  "abdeckung": 55.6,
   "mover": [
+    {
+      "s": "K:BARD",
+      "n": "Lombard",
+      "t": "BARD",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 6,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 7,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 8,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 9,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
     {
       "s": "T:NCT",
       "n": "Intercont (Cayman) Limited Ordinary shares",
@@ -13,21 +50,14 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 2,
+          "tageVorher": 3,
           "q": [
             "Nasdaq Trader"
           ]
         },
         {
           "typ": "handelsstopp",
-          "tageVorher": 5,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 7,
+          "tageVorher": 6,
           "q": [
             "Nasdaq Trader"
           ]
@@ -35,6 +65,114 @@
         {
           "typ": "handelsstopp",
           "tageVorher": 8,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        },
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 9,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "K:PUFFER",
+      "n": "Puffer",
+      "t": "PUFFER",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 2,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 3,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 9,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "K:PIEVERSE",
+      "n": "Pieverse",
+      "t": "PIEVERSE",
+      "typ": "kursrakete",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 2,
+          "q": [
+            "Upbit"
+          ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 10,
+          "q": [
+            "Upbit"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:MPU",
+      "n": "Mega Matrix Corp.",
+      "t": "MPU",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:MDRN",
+      "n": "Modern Mining Technology Corp.",
+      "t": "MDRN",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 3,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:POAS",
+      "n": "Phaos Technology Holdings (Caym",
+      "t": "POAS",
+      "typ": "tagesgewinner",
+      "r": 1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 7,
           "q": [
             "Nasdaq Trader"
           ]
@@ -50,7 +188,7 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 6,
+          "tageVorher": 7,
           "q": [
             "Nasdaq Trader"
           ]
@@ -66,7 +204,7 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 2,
+          "tageVorher": 3,
           "q": [
             "Nasdaq Trader"
           ]
@@ -74,9 +212,9 @@
       ]
     },
     {
-      "s": "T:MPU",
-      "n": "Mega Matrix Corp.",
-      "t": "MPU",
+      "s": "T:CLRO",
+      "n": "ClearOne, Inc.",
+      "t": "CLRO",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": [
@@ -90,27 +228,75 @@
       ]
     },
     {
-      "s": "K:PIEVERSE",
-      "n": "Pieverse",
-      "t": "PIEVERSE",
-      "typ": "kursrakete",
+      "s": "T:HY",
+      "n": "Hyster-Yale Materials Handling, Inc.",
+      "t": "HY",
+      "typ": "tagesverlierer",
       "r": -1,
       "vorzeichen": [
         {
-          "typ": "upbit_warnung",
-          "tageVorher": 9,
+          "typ": "handelsstopp",
+          "tageVorher": 2,
           "q": [
-            "Upbit"
+            "Nasdaq Trader"
           ]
         }
       ]
     },
     {
-      "s": "K:BREV",
-      "n": "Brevis",
-      "t": "BREV",
-      "typ": "kursrakete",
+      "s": "T:JMIA",
+      "n": "Jumia Technologies AG",
+      "t": "JMIA",
+      "typ": "tagesverlierer",
       "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:PRE",
+      "n": "Prenetics Global Limited",
+      "t": "PRE",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "T:SVRE",
+      "n": "SVRE",
+      "t": "SVRE",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "handelsstopp",
+          "tageVorher": 2,
+          "q": [
+            "Nasdaq Trader"
+          ]
+        }
+      ]
+    },
+    {
+      "s": "K:MMT",
+      "n": "Momentum",
+      "t": "MMT",
+      "typ": "kursrakete",
+      "r": 1,
       "vorzeichen": [
         {
           "typ": "upbit_warnung",
@@ -122,17 +308,57 @@
       ]
     },
     {
-      "s": "T:SKYA",
-      "n": "SkyAI, Inc.",
-      "t": "SKYA",
+      "s": "T:SEAT",
+      "n": "Vivid Seats Inc.",
+      "t": "SEAT",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": []
     },
     {
-      "s": "T:CLRO",
-      "n": "ClearOne, Inc.",
-      "t": "CLRO",
+      "s": "T:ZOAR",
+      "n": "Zoar Limited",
+      "t": "ZOAR",
+      "typ": "tagesverlierer",
+      "r": -1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:VIVS",
+      "n": "VIVS",
+      "t": "VIVS",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:LVWR",
+      "n": "LVWR",
+      "t": "LVWR",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:MRKR",
+      "n": "MRKR",
+      "t": "MRKR",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "K:META2",
+      "n": "MetaDAO",
+      "t": "META2",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "T:SKYA",
+      "n": "SkyAI, Inc.",
+      "t": "SKYA",
       "typ": "tagesgewinner",
       "r": 1,
       "vorzeichen": []
@@ -143,38 +369,6 @@
       "t": "BTOC",
       "typ": "tagesgewinner",
       "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:HY",
-      "n": "Hyster-Yale Materials Handling, Inc.",
-      "t": "HY",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:JMIA",
-      "n": "Jumia Technologies AG",
-      "t": "JMIA",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:PRE",
-      "n": "Prenetics Global Limited",
-      "t": "PRE",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:SVRE",
-      "n": "SVRE",
-      "t": "SVRE",
-      "typ": "kursrakete",
-      "r": 0,
       "vorzeichen": []
     },
     {
@@ -194,55 +388,15 @@
       "vorzeichen": []
     },
     {
-      "s": "K:MMT",
-      "n": "Momentum",
-      "t": "MMT",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "K:ZKP",
-      "n": "zkPass",
-      "t": "ZKP",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "K:ZKC",
-      "n": "Boundless",
-      "t": "ZKC",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "K:META2",
-      "n": "MetaDAO",
-      "t": "META2",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "K:PROS",
-      "n": "Pharos",
-      "t": "PROS",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF14T74",
-      "n": "DE000HF14T74",
+      "s": "I:DE000HF18KR4",
+      "n": "DE000HF18KR4",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000GN8BJ62",
-      "n": "DE000GN8BJ62",
+      "s": "I:DE000HF28ZV3",
+      "n": "DE000HF28ZV3",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
