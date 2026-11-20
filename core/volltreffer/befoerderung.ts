@@ -150,7 +150,7 @@ export function stufe3Mitteilungen(s: Pick<Stufe3Ergebnis, 'offen' | 'abgeschlos
   const neu: Mitteilung[] = [];
   const merke: string[] = [];
   // Zeitreise-Regel (20.11.2026): Orders nach ihr sind gekennzeichnet; ihre Bremse wird einmal gemeldet
-  const kurz = (j: JagdFall) => `${j.zeitreise ? '🕰️ Zeitreise-Regel · ' : ''}${j.spielart.split(',').slice(0, 2).join(',')}`;
+  const kurz = (j: JagdFall) => `${j.zeitreise ? '🕰️ Zeitreise-Regel · ' : ''}${j.rueckenwind ? '🌬️ Rückenwind-Long · ' : ''}${j.spielart.split(',').slice(0, 2).join(',')}`;
   if (zeitreiseBremse && !schon.has(`zr-bremse|${zeitreiseBremse.am}`)) {
     neu.push({ typ: 'verkauft', titel: '🕰️ Zeitreise-Regel gestoppt', text: `${zeitreiseBremse.grund} – Volltreffer-Orders nur noch nach der strengen 6er-Regel, laufende Orders laufen zu Ende (simuliert).`, tag: `v6-zr-bremse-${zeitreiseBremse.am}` });
     merke.push(`zr-bremse|${zeitreiseBremse.am}`);

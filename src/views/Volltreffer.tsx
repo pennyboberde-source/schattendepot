@@ -55,7 +55,7 @@ function JagdZeile({ j }: { j: JagdFall }) {
   return (
     <li class="muster-zeile">
       <strong>
-        {`${j.zeitreise ? '🕰️ ' : ''}${j.wert}${j.markt === 'krypto' ? ' (Coin)' : ''} · ${ART[j.art] ?? j.art}`}
+        {`${j.zeitreise ? '🕰️ ' : ''}${j.rueckenwind ? '🌬️ ' : ''}${j.wert}${j.markt === 'krypto' ? ' (Coin)' : ''} · ${ART[j.art] ?? j.art}`}
         {j.netto !== null ? ` · ${euro(j.netto, { vorzeichen: true })}` : ''}
       </strong>
       <span class="klein">

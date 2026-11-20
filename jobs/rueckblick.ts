@@ -809,7 +809,7 @@ const ZRV = (vt.v6 as unknown as { zeitreise?: { aktiv: boolean; ausGrund?: stri
 const zrBuch = leseJson<{ eintraege: ZrBuchEintrag[] }>('lernen/muster/zeitreise-buch.json', { eintraege: [] });
 const zrPfad = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'lernen', 'zeitreise.json');
 const zrDatei = existsSync(zrPfad) ? (JSON.parse(readFileSync(zrPfad, 'utf8')) as { stand?: string; aktuell?: { halbmonatVon: string; muster: ZrMuster[] } }) : null;
-const zrGebremst = !!ZRV && zrBuch.eintraege.some((e) => e.status === 'bremse' && e.am >= ZRV.ab);
+const zrGebremst = !!ZRV && zrBuch.eintraege.some((e) => e.status === 'bremse' && e.schluessel !== 'rueckenwind' && e.am >= ZRV.ab);
 const zrFrisch = zrDatei?.aktuell && zrDatei.stand && (Date.parse(heute) - Date.parse(zrDatei.stand.slice(0, 10))) / 86400000 <= (ZRV?.frischTage ?? 2) ? zrDatei.aktuell.muster : null;
 // neuester Stichtag je Markt: ab dort gilt eine neue Auswahl (Einstieg zur nächsten Eröffnung – kein Blick zurück)
 const neuesterTag = (m: Markt) => [...r1JeTag[m].keys()].reduce((a, d) => (d > a ? d : a), '');
@@ -851,6 +851,26 @@ const gegenwindJeTag = new Map<string, { aktiv: boolean; markt5: number | null; 
     const m5 = markt5JeTag.aktie.get(tageA[n]) ?? null;
     const vix = umfeldJeTag.get(tageA[n])?.vix ?? null;
     gegenwindJeTag.set(tageA[n], { aktiv: (m5 !== null && m5 >= sM5) || (vix !== null && vix >= sVix), markt5: m5, vix, sM5, sVix });
+  }
+}
+// ---------- Q4 Rückenwind-Long (20.11.2026): eigener Platz neben den Mustern ----------
+// An Gegenwind-Tagen (starker Markt) schwankungsreiche Aktien long nach Schwankung (2 σ) – Zeitreise: allein 65 Orders,
+// Ø +66 € (Probe 44736666134); Wellen-Analyse: Ø +15 € für alle solchen Werte, in beiden Zeiträumen. Eigene Plätze
+// (maxOffen), zuerst die umsatzstärksten; Fälle entstehen nur an Gegenwind-Tagen und zählen nicht für V4.
+const RWC = (vt.v6 as unknown as { rueckenwind?: { aktiv: boolean; ab: string; sp: string; fenster: number; maxOffen: number; schwankungKlassen: number[]; bremse: ZrBremsRegel } }).rueckenwind;
+const rwSchluessel = new Set<string>();
+const rwUmsatz = new Map<string, number>();
+if (RWC?.aktiv && spNachSchluessel.has(RWC.sp)) {
+  const iS = E.findIndex((e) => e.merkmal === 'schwankung20');
+  for (const kl of RWC.schwankungKlassen) {
+    const gs = `aktie|${iS}=${kl}`;
+    const g = gid.get(gs);
+    if (g === undefined) continue;
+    const schl = `${gs}|${RWC.sp}|${RWC.fenster}|rueckenwind`;
+    const seit = new Date(Date.parse(`${RWC.ab}T12:00:00Z`) - 86400000).toISOString().slice(0, 10);
+    (testJeGruppe.get(g) ?? testJeGruppe.set(g, []).get(g)!).push({ schluessel: schl, gruppe: 'Rückenwind-Long: schwankungsreiche Aktie nach starkem Markt', gruppenSchluessel: gs, sp: RWC.sp, fenster: RWC.fenster, seit, wertung: -5, rueckblick: { quote: 0, ev: 0, se: 0, faelle: 0 }, status: 'rueckenwind' });
+    rwSchluessel.add(schl);
+    zrNur.add(schl);
   }
 }
 const gegenwindShort = (f: JagdFall) => !!GWC?.aktiv && f.markt === 'aktie' && /short/i.test(f.spielart) && f.stichtag >= GWC.ab && !!gegenwindJeTag.get(f.stichtag)?.aktiv;
@@ -979,6 +999,7 @@ for (const r of ZEITREISE || ANALYSE || ZEITLUPE || WELLEN ? [] : reihen) {
     for (const g of gruppen) {
       for (const e of testJeGruppe.get(g) ?? []) {
         if (k[i].datum <= e.seit || (e.status === 'beendet' && e.am && k[i].datum > e.am) || i - (testZuletzt.get(e.schluessel) ?? -1e9) <= vt.pruefung.sperreTage) continue;
+        if (e.status === 'rueckenwind' && (r.markt !== 'aktie' || !gegenwindJeTag.get(k[i].datum)?.aktiv)) continue;
         const sp0 = spNachSchluessel.get(e.sp);
         const sp = sp0 ? konk(sp0, x) : null;
         if (!sp) continue;
@@ -988,6 +1009,7 @@ for (const r of ZEITREISE || ANALYSE || ZEITLUPE || WELLEN ? [] : reihen) {
         if (fall) {
           vorwaerts.push(fall);
           testZuletzt.set(e.schluessel, i);
+          if (e.status === 'rueckenwind') rwUmsatz.set(`${fall.wert}|${fall.stichtag}`, x.umsatz20 ?? 0);
         }
       }
     }
@@ -2755,8 +2777,29 @@ if (vt.erkennung) {
     zrStand = zrBremse(zrOrders(), ZRV.bremse);
     log(`Zeitreise-Regel GEBREMST: ${zrStand.grund} – zurück zur strengen 6er-Regel, laufende Orders laufen zu Ende.`);
   }
-  if (ZRV) schreibeJson('lernen/muster/zeitreise-buch.json', { stand: jetzt.toISOString(), hinweis: 'Zeitreise-Regel (seit 20.11.2026): ab welchem Stichtag ein Muster der Zeitreise-Auswahl sichtbar ordern darf (gewaehlt) und ab wann nicht mehr (abgewaehlt); bremse = Regel gestoppt. Nur anhängen.', eintraege: zrBuch.eintraege });
-  const zrBremsEintrag = ZRV ? [...zrBuch.eintraege].reverse().find((e) => e.status === 'bremse' && e.am >= ZRV.ab) ?? null : null;
+  // Q4 Rückenwind-Long: eigene Plätze, eigene Bremse (Eintrag „bremse“ mit Schlüssel „rueckenwind“ im Zeitreise-Buch)
+  let rw: ReturnType<typeof stufe3Waehlen> | null = null;
+  let rwStand: ReturnType<typeof zrBremse> | null = null;
+  const rwBremsEintrag = () => (RWC ? [...zrBuch.eintraege].reverse().find((e) => e.status === 'bremse' && e.schluessel === 'rueckenwind' && e.am >= RWC.ab) ?? null : null);
+  if (RWC?.aktiv && rwSchluessel.size) {
+    const kand = vorwaerts
+      .filter((f) => rwSchluessel.has(f.muster) && !f.pump && f.stichtag >= RWC.ab)
+      .map((f) => ({ ...f, wertung: -5 + Math.log10(Math.max(1, rwUmsatz.get(`${f.wert}|${f.stichtag}`) ?? 1)) / 100, rueckenwind: true }));
+    const waehleRw = () => {
+      const b2 = rwBremsEintrag();
+      return stufe3Waehlen(kand, new Map([...rwSchluessel].map((k2) => [k2, [{ von: RWC.ab, bis: b2 ? b2.am : null }]])), { ...v6, maxOffen: RWC.maxOffen }, false, klumpenRegel);
+    };
+    rw = waehleRw();
+    rwStand = zrBremse([...rw.offen, ...rw.abgeschlossen], RWC.bremse);
+    if (rwStand.aus && !rwBremsEintrag()) {
+      zrBuch.eintraege.push({ schluessel: 'rueckenwind', status: 'bremse', am: neuesterTag('aktie'), grund: rwStand.grund });
+      rw = waehleRw();
+      log(`Rückenwind-Long GEBREMST: ${rwStand.grund}.`);
+    }
+    log(`Rückenwind-Long: ${kand.length} Fälle an Gegenwind-Tagen, ${rw.offen.length} offen, ${rw.vorgemerkt.length} vorgemerkt, ${rw.kennzahlen.anzahl} abgeschlossen (${rwStand.grund}).`);
+  }
+  if (ZRV || RWC) schreibeJson('lernen/muster/zeitreise-buch.json', { stand: jetzt.toISOString(), hinweis: 'Zeitreise-Regel (seit 20.11.2026): ab welchem Stichtag ein Muster der Zeitreise-Auswahl sichtbar ordern darf (gewaehlt) und ab wann nicht mehr (abgewaehlt); bremse = Regel gestoppt. Nur anhängen.', eintraege: zrBuch.eintraege });
+  const zrBremsEintrag = ZRV ? [...zrBuch.eintraege].reverse().find((e) => e.status === 'bremse' && e.schluessel !== 'rueckenwind' && e.am >= ZRV.ab) ?? null : null;
   const befoerdertJetzt = [...alleMuster.values(), ...musterBuch.eintraege]
     .filter((e, i, a) => a.findIndex((x) => x.schluessel === e.schluessel) === i && istBefoerdert(zeiten3, e.schluessel))
     .map((e) => ({ gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: zeiten3.get(e.schluessel)!.find((z) => z.bis === null)!.von, rueckblick: e.rueckblick }));
@@ -2786,7 +2829,7 @@ if (vt.erkennung) {
     const t = stimmungText(redditJe.get(f.wert), leiheJe.get(f.wert));
     return t ? { ...f, stimmung: t } : f;
   };
-  for (const liste of [s3.offen, s3.vorgemerkt]) liste.splice(0, liste.length, ...liste.map(mitStimmung));
+  for (const liste of [s3.offen, s3.vorgemerkt, ...(rw ? [rw.offen, rw.vorgemerkt] : [])]) liste.splice(0, liste.length, ...liste.map(mitStimmung));
   const lauerliste = ohnePump.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung).map(mitStimmung);
   const pumpZahl = vorwaerts.filter((x) => x.pump && !zrNur.has(x.muster)).length;
   const musterText = new Map([...alleMuster.values()].map((e) => [e.schluessel, e.gruppe]));
@@ -2824,11 +2867,17 @@ if (vt.erkennung) {
     sichtbar: {
       hinweis: 'Stufe 3 (Plan V6): Muster mit mindestens ' + v6.mindestFaelle + ' abgeschlossenen Fällen im Vorwärtstest, Ø im Plus und im Band des Rückblicks, Volltreffer-Quote im Rückblick ab ' + v6.mindestQuote + ' % und Ø ab ' + v6.mindestEv + ' € handeln sichtbar – ohne Rückfrage, aber Klasse vor Masse: höchstens ' + v6.maxOffen + ' Orders gleichzeitig, je Wert eine. Nur Fälle ab dem Tag der Beförderung, nie rückwirkend. Simuliert, kein echtes Geld.',
       regeln: { mindestFaelle: v6.mindestFaelle, mindestQuote: v6.mindestQuote, mindestEv: v6.mindestEv, maxOffen: v6.maxOffen, tagesVerlustGrenze: v6.tagesVerlustGrenze, einsatz: v6.einsatz },
-      kennzahlen: s3.kennzahlen,
-      rendite: s3.rendite,
-      offen: s3.offen.map(ohneMuster),
-      abgeschlossen: s3.abgeschlossen.slice(0, 30).map(ohneMuster),
-      vorgemerkt: s3.vorgemerkt.map(ohneMuster),
+      // Rückenwind-Long (eigene Plätze) zählt in die Kennzahlen der sichtbaren Orders mit
+      kennzahlen: rw ? jagdKennzahlen([...s3.offen, ...s3.abgeschlossen, ...rw.offen, ...rw.abgeschlossen]) : s3.kennzahlen,
+      rendite: (() => {
+        if (!rw) return s3.rendite;
+        const k2 = jagdKennzahlen([...s3.offen, ...s3.abgeschlossen, ...rw.offen, ...rw.abgeschlossen]);
+        return k2.anzahl ? Math.round((k2.summe / (k2.anzahl * v6.einsatz)) * 1000) / 10 : 0;
+      })(),
+      offen: [...s3.offen, ...(rw?.offen ?? [])].map(ohneMuster),
+      abgeschlossen: [...s3.abgeschlossen, ...(rw?.abgeschlossen ?? [])].sort((a, b) => (b.ende ?? '').localeCompare(a.ende ?? '')).slice(0, 30).map(ohneMuster),
+      vorgemerkt: [...s3.vorgemerkt, ...(rw?.vorgemerkt ?? [])].map(ohneMuster),
+      ...(RWC ? { rueckenwind: { an: RWC.aktiv && !rwBremsEintrag(), ab: RWC.ab, maxOffen: RWC.maxOffen, kennzahlen: rw ? jagdKennzahlen([...rw.offen, ...rw.abgeschlossen]) : null, bremse: rwBremsEintrag() ? { am: rwBremsEintrag()!.am, grund: rwBremsEintrag()!.grund ?? '' } : null } } : {}),
       uebersprungen: s3.uebersprungen,
       befoerdert: befoerdertJetzt,
       // Zeitreise-Regel (20.11.2026): Stand, Bremse und Kennzahlen nur ihrer Orders

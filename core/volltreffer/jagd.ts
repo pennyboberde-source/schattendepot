@@ -46,6 +46,8 @@ export interface JagdFall {
   zeitreise?: boolean;
   /** Q6/Q7: Reddit-Aufmerksamkeit und Leihgebühr in Klassen (jüngster Schnappschuss) */
   stimmung?: string;
+  /** Q4 Rückenwind-Long (eigene Plätze an Gegenwind-Tagen) */
+  rueckenwind?: boolean;
 }
 
 export interface JagdRegeln {
