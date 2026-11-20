@@ -895,6 +895,8 @@ const ZEITREISE = process.env.ZEITREISE === '1';
 const ANALYSE = process.env.TREFFERANALYSE === '1';
 /** Zeitlupe (Q1, 20.11.2026): eigener Lauf (zeitreise.yml, modus=zeitlupe) – Einstieg im Tagesverlauf auf Minutenkerzen nachgerechnet */
 const ZEITLUPE = process.env.ZEITLUPE === '1';
+/** Wellen (Q4, 20.11.2026): eigener Lauf (zeitreise.yml, modus=wellen) – sagt die Marktlage zum Schluss die Volltreffer-Wellen des Folgetags voraus? */
+const WELLEN = process.env.WELLEN === '1';
 interface Episode {
   datum: string;
   schluessel: string;
@@ -911,7 +913,7 @@ const episoden: Episode[] = [];
 let stichtage = 0;
 const hypFaelle: Record<string, number> = {};
 
-for (const r of ZEITREISE || ANALYSE || ZEITLUPE ? [] : reihen) {
+for (const r of ZEITREISE || ANALYSE || ZEITLUPE || WELLEN ? [] : reihen) {
   const k = r.kerzen;
   const m = k.map((_, i) => merkmale(k, i));
   const treffer: boolean[] = new Array(k.length).fill(false);
@@ -1309,6 +1311,104 @@ if (ZEITREISE) {
   log(`Zeitreise Vergleich: alle Fälle der gewählten Muster ${alleN} (Quote ${ergebnis.alleMusterfaelle.quote} %, Ø ${ergebnis.alleMusterfaelle.oe} €) · Grundrate ${grN} (Quote ${ergebnis.grundrate.quote} %, Ø ${ergebnis.grundrate.oe} €).`);
   for (const mo of ergebnis.sichtbar.monate) log(`  ${mo.monat}: ${mo.orders} Orders, ${mo.volltreffer} Volltreffer, ${mo.netto} €`);
   log(`Zeitreise aktuell (Halbmonat ab ${ergebnis.aktuell.halbmonatVon}): ${ergebnis.aktuell.muster.length} Muster für die Live-Regel.`);
+  process.exit(0);
+}
+if (WELLEN) {
+  // ---------- Wellen (Q4, Nutzer 20.11.2026: „Punkt 4 besonders interessant … das Bestmögliche rausholen“) ----------
+  // 37 % der Volltreffer beginnen an 10 % der Tage. Frage: Kündigt die Marktlage zum Schluss eines Tages (alles, was dann
+  // bekannt ist) an, dass ab der nächsten Eröffnung viele Volltreffer in EINE Richtung beginnen? Gemessen für die
+  // schwankungsreichen Werte (Schwankung je Tag ≥ hochVol %), Turbo Hebel 2 und Hebel nach Schwankung (2 σ), long und
+  // short, Fenster 10 Tage. Je Merkmal der Marktlage: Zehntel der Tage → Volltreffer-Quote und Ø je Order, getrennt nach
+  // den beiden Zeiträumen (Beständigkeit). Nur Zählungen.
+  const TAGE = Number(process.env.ANALYSE_TAGE ?? 520);
+  const hochVol = Number(process.env.WELLEN_HOCHVOL ?? 5);
+  const fA = F.indexOf(10);
+  const std = vt.etikett.standardStop;
+  const finde = (h: number, rt: 'long' | 'short', vol?: number) => SP.find((sp) => sp.stopEuro === std && sp.nachziehAb === undefined && sp.richtung === rt && (vol ? sp.vol === vol : sp.vol === undefined && sp.hebel === h));
+  const ARTEN = [['H2L', finde(2, 'long')], ['H2S', finde(2, 'short')], ['V2L', finde(0, 'long', 2)], ['V2S', finde(0, 'short', 2)]].filter((x): x is [string, Spielart] => !!x[1]);
+  type T = { n: number; vt: number[]; sum: number[]; m: number[] };
+  const jeTag = new Map<string, T>();
+  const neuT = (): T => ({ n: 0, vt: ARTEN.map(() => 0), sum: ARTEN.map(() => 0), m: ARTEN.map(() => 0) });
+  for (const r of reihen) {
+    if (r.markt !== 'aktie') continue;
+    const k = r.kerzen;
+    for (let i = Math.max(21, k.length - TAGE - 12); i + 10 < k.length; i++) {
+      const x = merkmale(k, i);
+      if (!x || !handelbar(r, x, k[i]) || !((x.schwankung20 ?? 0) >= hochVol)) continue;
+      const t = jeTag.get(k[i].datum) ?? jeTag.set(k[i].datum, neuT()).get(k[i].datum)!;
+      t.n++;
+      const pa = plattformAm(r, x);
+      ARTEN.forEach(([, sp0], j) => {
+        const sp = konk(sp0, x);
+        if (!sp) return;
+        const pl = platzFuer(r, sp, pa, true);
+        if (!pl) return;
+        const a = etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), F)[fA];
+        if (!a) return;
+        t.m[j]++;
+        t.sum[j] += a.netto;
+        if (a.art === 'treffer') t.vt[j]++;
+      });
+    }
+  }
+  const tage = [...jeTag.keys()].filter((d) => jeTag.get(d)!.n >= 20).sort();
+  // Marktlage zum Schluss: aus allen handelbaren Aktien des Tages (r1JeTag) und dem Umfeld
+  const anteil = (l: number[], f: (v: number) => boolean) => (l.length ? l.filter(f).length / l.length : null);
+  const med = (l: number[]) => {
+    const s2 = [...l].sort((a, b) => a - b);
+    return s2.length ? s2[Math.floor(s2.length / 2)] : null;
+  };
+  const lage = new Map<string, Record<string, number | null>>();
+  for (const [n, d] of alleTage.entries()) {
+    const l = r1JeTag.aktie.get(d) ?? [];
+    const vorher = alleTage[n - 1] ? lage.get(alleTage[n - 1]) : undefined;
+    const u = umfeldJeTag.get(d);
+    const w = {
+      markt: med(l),
+      breite: anteil(l, (v) => v > 0),
+      absturz10: anteil(l, (v) => v <= -10),
+      sprung10: anteil(l, (v) => v >= 10),
+      markt5: markt5JeTag.aktie.get(d) ?? null,
+      vix: u?.vix ?? null,
+      vix5: u?.vix5 ?? null,
+      vortagAbsturz10: vorher?.absturz10 ?? null,
+      vortagSprung10: vorher?.sprung10 ?? null,
+    };
+    lage.set(d, w);
+  }
+  const MERK = ['markt', 'breite', 'absturz10', 'sprung10', 'markt5', 'vix', 'vix5', 'vortagAbsturz10', 'vortagSprung10'];
+  const pct = (a: number, b: number) => (b ? Math.round((a / b) * 1000) / 10 : 0);
+  const oe = (a: number, b: number) => (b ? Math.round((a / b) * 10) / 10 : 0);
+  const auswertung: Record<string, unknown> = {};
+  // Grundwerte je Spielart
+  const grund = ARTEN.map(([name], j) => {
+    let m = 0, vt2 = 0, sum = 0;
+    for (const d of tage) (m += jeTag.get(d)!.m[j], (vt2 += jeTag.get(d)!.vt[j]), (sum += jeTag.get(d)!.sum[j]));
+    return { spielart: name, orders: m, quote: pct(vt2, m), oe: oe(sum, m) };
+  });
+  log(`Wellen: ${tage.length} Tage mit ≥ 20 schwankungsreichen Werten (Schwankung ≥ ${hochVol} %), Grundwerte ${JSON.stringify(grund)}.`);
+  for (const mk of MERK) {
+    const mit = tage.filter((d) => typeof lage.get(d)?.[mk] === 'number');
+    const sortiert = [...mit].sort((a, b) => (lage.get(a)![mk] as number) - (lage.get(b)![mk] as number));
+    const zehntel = Array.from({ length: 10 }, (_, z) => sortiert.slice(Math.floor((z * sortiert.length) / 10), Math.floor(((z + 1) * sortiert.length) / 10)));
+    const zeilen = zehntel.map((ds, z) => {
+      const von = ds.length ? (lage.get(ds[0])![mk] as number) : null;
+      const bis = ds.length ? (lage.get(ds[ds.length - 1])![mk] as number) : null;
+      const je = ARTEN.map(([name], j) => {
+        const sumF = (teil: string[]) => teil.reduce((a, d) => ({ m: a.m + jeTag.get(d)!.m[j], vt: a.vt + jeTag.get(d)!.vt[j], s: a.s + jeTag.get(d)!.sum[j] }), { m: 0, vt: 0, s: 0 });
+        const g = sumF(ds);
+        const a = sumF(ds.filter((d) => d < grenze));
+        const b = sumF(ds.filter((d) => d >= grenze));
+        // Tage als Einheit: Ø der Tages-Ø (ein Wellentag zählt einmal)
+        const tagesOe = ds.length ? oe(ds.reduce((s3, d) => s3 + (jeTag.get(d)!.m[j] ? jeTag.get(d)!.sum[j] / jeTag.get(d)!.m[j] : 0), 0), ds.length) : 0;
+        return { spielart: name, quote: pct(g.vt, g.m), oe: oe(g.s, g.m), tagesOe, oeA: oe(a.s, a.m), oeB: oe(b.s, b.m), tageA: ds.filter((d) => d < grenze).length, tageB: ds.filter((d) => d >= grenze).length };
+      });
+      return { zehntel: z + 1, tage: ds.length, von: von === null ? null : Math.round(von * 1000) / 1000, bis: bis === null ? null : Math.round(bis * 1000) / 1000, je };
+    });
+    auswertung[mk] = zeilen;
+    for (const z of zeilen) log(`Wellen ${mk} Zehntel ${z.zehntel} (${z.von}…${z.bis}, ${z.tage} Tage): ${z.je.map((e) => `${e.spielart} Q ${e.quote} % Ø ${e.oe} (Tag-Ø ${e.tagesOe}, A ${e.oeA}/B ${e.oeB})`).join(' · ')}`);
+  }
+  schreibeJson('lernen/wellen.json', { stand: jetzt.toISOString(), hinweis: `Wellen (Q4): Marktlage zum Schluss in Zehnteln der Tage gegen Volltreffer-Quote und Ø je Order der schwankungsreichen Werte (Schwankung ≥ ${hochVol} % je Tag) ab der nächsten Eröffnung; A/B = die beiden Zeiträume. Nur Zählungen.`, grund, auswertung });
   process.exit(0);
 }
 if (ZEITLUPE) {
