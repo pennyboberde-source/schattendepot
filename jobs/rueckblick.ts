@@ -1269,6 +1269,7 @@ if (ZEITREISE) {
     if (absStart[ABSCHNITTE] < 0) absStart[ABSCHNITTE] = kal(heute) + 1;
     const monatZ = (t: number) => datumZ(t).slice(0, 7);
     const ergebnisse: unknown[] = [];
+    const kombi = new Map<string, Kandidat[]>();
     const bew = new Float64Array(zeilen);
     for (const m of MODELLE) {
       const name = `${m.spielart}${modellZusatz(m)}`;
@@ -1337,6 +1338,37 @@ if (ZEITREISE) {
         log(`Modell-Zeitreise ${text}, oberste ${q} %: ${kz.faelle} Fälle an ${kz.tage} Tagen, Quote ${kz.quote} %, Ø ${kz.oe} € (Tag als Einheit ${kz.oeTag} ± ${kz.seTag}; Hälften ${kz.haelften.map((h) => `${h.oeTag} € / ${h.quote} %`).join(' | ')}) · sichtbar ${sichtGw ? 'mit Gegenwind ' : ''}${s2.orders} Orders, ${s2.volltreffer} Volltreffer (${s2.quote} %), Ø ${s2.oe} €, netto ${s2.netto} €, Rückgang ${s2.maxRueckgang} €, ${s2.monate.filter((mo) => mo.netto > 0).length}/${s2.monate.length} Monate im Plus · mit 14-Tage-Sperre je Wert ${mitSperreB.orders} Orders, Ø ${mitSperreB.oe} €, ${mitSperreB.monate.filter((mo) => mo.netto > 0).length}/${mitSperreB.monate.length} Monate · je Plattform ${Object.entries(jePlatz).map(([k3, v3]) => `${k3} ${v3.orders}/${v3.volltreffer} VT/Ø ${v3.oe} €`).join(', ')}.`);
       }
       log(`Modell-Zeitreise ${text}: ${trainings} Trainings, ${R.length} Fälle, ${Math.round((Date.now() - t0m) / 1000)} s.`);
+      // Varianten der sichtbaren Regel (20.11.2026 abends): Zahl der Plätze, ohne Gegenwind-Filter; Rang je Tag für die Kombination
+      const basis = kand.get(qs[qs.length - 1])!;
+      const mitWind = short ? basis.filter((x) => !gegenwindZ(x.tag)) : basis;
+      const plaetze = [1, 3, 5, 10].map((mo) => {
+        const b2 = bilanz(nachspielen(mitWind, { maxOffen: mo, maxJeTag: mo }), monatZ);
+        return { maxOffen: mo, orders: b2.orders, quote: b2.quote, oe: b2.oe, netto: b2.netto, maxRueckgang: b2.maxRueckgang, monatePlus: b2.monate.filter((x) => x.netto > 0).length, monate: b2.monate.length };
+      });
+      const ohneWind = short ? bilanz(nachspielen(basis, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatZ) : null;
+      log(`Modell-Zeitreise ${text} – Plätze: ${plaetze.map((x) => `${x.maxOffen} offen → ${x.orders} Orders, ${x.quote} % VT, Ø ${x.oe} €, netto ${x.netto} €, Rückgang ${x.maxRueckgang} €, ${x.monatePlus}/${x.monate} Monate`).join(' · ')}${ohneWind ? ` · ohne Gegenwind-Filter (3 offen): Ø ${ohneWind.oe} €, netto ${ohneWind.netto} €` : ''}.`);
+      ergebnisse.push({ modell: name, text, variante: 'plaetze', plaetze, ...(ohneWind ? { ohneGegenwind: { orders: ohneWind.orders, oe: ohneWind.oe, netto: ohneWind.netto } } : {}) });
+      const jeT = new Map<number, Kandidat[]>();
+      for (const x of mitWind) (jeT.get(x.tag) ?? jeT.set(x.tag, []).get(x.tag)!).push(x);
+      const rangL: Kandidat[] = [];
+      for (const l of jeT.values()) {
+        l.sort((a2, b2) => b2.wertung - a2.wertung);
+        l.forEach((x, i) => rangL.push({ ...x, wertung: 1 - i / l.length }));
+      }
+      kombi.set(name, rangL);
+    }
+    // Kombination der Short-Modelle auf den wilden Werten: je Tag nach Rang innerhalb des eigenen Modells
+    {
+      const teile = [...kombi.entries()].filter(([n]) => n.endsWith('|wild') && /S150/.test(n));
+      if (teile.length >= 2) {
+        const alle = teile.flatMap(([, l]) => l);
+        const k3 = [3, 5].map((mo) => {
+          const b2 = bilanz(nachspielen(alle, { maxOffen: mo, maxJeTag: mo }), monatZ);
+          return { maxOffen: mo, orders: b2.orders, quote: b2.quote, oe: b2.oe, netto: b2.netto, maxRueckgang: b2.maxRueckgang, monatePlus: b2.monate.filter((x) => x.netto > 0).length, monate: b2.monate.length };
+        });
+        log(`Modell-Zeitreise Kombination ${teile.map(([n]) => n).join(' + ')}: ${k3.map((x) => `${x.maxOffen} offen → ${x.orders} Orders, ${x.quote} % VT, Ø ${x.oe} €, netto ${x.netto} €, Rückgang ${x.maxRueckgang} €, ${x.monatePlus}/${x.monate} Monate`).join(' · ')}.`);
+        ergebnisse.push({ modell: teile.map(([n]) => n).join('+'), variante: 'kombination', plaetze: k3 });
+      }
     }
     schreibeJson('lernen/zeitreise-modell.json', {
       stand: jetzt.toISOString(),

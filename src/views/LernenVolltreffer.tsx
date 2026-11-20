@@ -210,7 +210,7 @@ interface Zeitreise {
 export function ZeitreiseKarte() {
   const z = useDaten<Zeitreise>('lernen/zeitreise.json');
   const pl = useDaten<{ sichtbar: ZBilanz }>('lernen/zeitreise-placebo.json');
-  const mz = useDaten<{ hinweis: string; ergebnisse: { modell: string; text: string; sichtbar: ZBilanz; sichtbarGegenwind?: ZBilanz; mitSperre?: ZBilanz }[] }>('lernen/zeitreise-modell.json');
+  const mz = useDaten<{ hinweis: string; ergebnisse: { modell: string; text: string; sichtbar?: ZBilanz; sichtbarGegenwind?: ZBilanz; mitSperre?: ZBilanz }[] }>('lernen/zeitreise-modell.json');
   if (z.status !== 'ok') return null;
   const d = z.daten;
   const zeile = (titel: string, b: ZBilanz) => (
@@ -262,9 +262,9 @@ export function ZeitreiseKarte() {
             <summary>Modell-Zeitreise: Gesamtmodelle wie live nachgespielt</summary>
             <ul class="klein">
               {mz.daten.ergebnisse
-                .filter((e, i, a) => a.findIndex((x) => x.modell === e.modell) === i)
+                .filter((e, i, a) => !!e.sichtbar && a.findIndex((x) => x.modell === e.modell) === i)
                 .map((e) => {
-                  const b = e.sichtbarGegenwind ?? e.sichtbar;
+                  const b = (e.sichtbarGegenwind ?? e.sichtbar)!;
                   return (
                     <li key={e.modell}>
                       {e.text}: {b.orders.toLocaleString('de-DE')} Orders, {b.quote.toLocaleString('de-DE')} % Volltreffer, Ø {euro(b.oe, { vorzeichen: true })}, {b.monate.filter((m) => m.netto > 0).length} von {b.monate.length} Monaten im Plus{e.mitSperre ? ` · mit 14-Tage-Sperre je Wert Ø ${euro(e.mitSperre.oe, { vorzeichen: true })}` : ''}
