@@ -1,12 +1,12 @@
 {
-  "stand": "2026-11-20T15:24:47.320Z",
-  "anzahlOffen": 5,
-  "anzahlGeschlossen": 1,
-  "netto": -170.03,
-  "nachSteuern": -170.03,
-  "unrealisiert": 650.83,
-  "trefferquote": 0,
-  "etfNetto": 3.65,
+  "stand": "2026-11-20T15:38:37.711Z",
+  "anzahlOffen": 4,
+  "anzahlGeschlossen": 2,
+  "netto": 185,
+  "nachSteuern": 185,
+  "unrealisiert": 343.75,
+  "trefferquote": 50,
+  "etfNetto": -27.05,
   "kurve": [
     {
       "datum": "2026-11-20",
@@ -15,19 +15,19 @@
     },
     {
       "datum": "2026-11-20",
-      "depot": -170.03,
-      "etf": 3.65
+      "depot": 185,
+      "etf": -27.05
     }
   ],
   "zaehlerAb": "2026-11-19",
   "seitAnfang": {
-    "anzahlOffen": 5,
-    "anzahlGeschlossen": 22,
-    "netto": -365.78,
-    "nachSteuern": -365.78,
-    "unrealisiert": 650.83,
-    "trefferquote": 45.5,
-    "etfNetto": 43.15,
+    "anzahlOffen": 4,
+    "anzahlGeschlossen": 23,
+    "netto": -10.75,
+    "nachSteuern": -10.75,
+    "unrealisiert": 343.75,
+    "trefferquote": 47.8,
+    "etfNetto": 12.45,
     "kurve": [
       {
         "datum": "2026-10-27",
@@ -91,8 +91,8 @@
       },
       {
         "datum": "2026-11-20",
-        "depot": -365.78,
-        "etf": 43.15
+        "depot": -10.75,
+        "etf": 12.45
       }
     ]
   }

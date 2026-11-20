@@ -1,183 +1,6 @@
 {
-  "stand": "2026-11-20T15:24:47.320Z",
+  "stand": "2026-11-20T15:38:37.711Z",
   "offen": [
-    {
-      "id": "2026-11-19-auto-applied-optoelectronics-inc",
-      "status": "offen",
-      "vorgemerktUm": "2026-11-19T07:20:42.798Z",
-      "vorgemerktVon": "autopilot",
-      "plan": {
-        "wertpapier": {
-          "name": "APPLIED OPTOELECTRONICS, INC.",
-          "isin": "",
-          "ticker": "AAOI",
-          "anlageklasse": "hebel",
-          "spreadKlasse": "hebel",
-          "handelsplatz": "GTX",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "AAOI",
-            "waehrung": "USD"
-          },
-          "plattform": "Smartbroker+ an gettex – Put/Short-Turbo an gettex vorhanden (ESMA FIRDS)"
-        },
-        "risikoklasse": "spekulativ",
-        "herkunft": "autopilot",
-        "strategie": "sonstige",
-        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
-        "ausloeser": "Autopilot-Kandidat T:AAOI: verwaesserung (Score -1.2)",
-        "signalIds": [
-          "verwaesserung:AAOI:2026-11-19"
-        ],
-        "quellen": [
-          {
-            "name": "SEC EDGAR",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          }
-        ],
-        "konfidenz": 70,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 19.8,
-        "zielNettoProzent": 38.8,
-        "stopProzent": -6,
-        "verkaufstermin": "2026-11-24T07:20:42.798Z",
-        "risiken": [
-          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
-          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
-        ],
-        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (17 Fälle)",
-        "hebelWunsch": {
-          "richtung": "short",
-          "hebel": 2
-        },
-        "hebel": {
-          "typ": "turbo",
-          "richtung": "short",
-          "emittent": "UniCredit (synthetisch)",
-          "basiswert": {
-            "name": "APPLIED OPTOELECTRONICS, INC.",
-            "isin": "",
-            "kursbasis": {
-              "markt": "us",
-              "symbol": "AAOI",
-              "waehrung": "EUR"
-            }
-          },
-          "basispreis": 59.13,
-          "koSchwelle": 59.13,
-          "bezugsverhaeltnis": 1,
-          "synthetisch": true,
-          "finanzierungProzentJahr": 5
-        }
-      },
-      "verkaufstermin": "2026-11-24T07:20:42.798Z",
-      "anpassungen": [
-        {
-          "zeit": "2026-11-19T15:39:32.378Z",
-          "quelle": "waechter",
-          "feld": "stop",
-          "alt": 18.62,
-          "neu": 19.53,
-          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 22.19 € (+12 %)"
-        },
-        {
-          "zeit": "2026-11-19T17:09:38.704Z",
-          "quelle": "waechter",
-          "feld": "stop",
-          "alt": 19.53,
-          "neu": 19.83,
-          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 22.539 € (+13.8 %)"
-        },
-        {
-          "zeit": "2026-11-19T20:09:43.720Z",
-          "quelle": "waechter",
-          "feld": "stop",
-          "alt": 19.83,
-          "neu": 20.14,
-          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 22.882 € (+15.5 %)"
-        },
-        {
-          "zeit": "2026-11-20T07:09:25.227Z",
-          "quelle": "waechter",
-          "feld": "stop",
-          "alt": 20.14,
-          "neu": 20.32,
-          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 23.087 € (+16.5 %)"
-        },
-        {
-          "zeit": "2026-11-20T14:39:02.996Z",
-          "quelle": "waechter",
-          "feld": "stop",
-          "alt": 20.32,
-          "neu": 22.81,
-          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 25.916 € (+30.8 %)"
-        },
-        {
-          "zeit": "2026-11-20T15:17:54.017Z",
-          "quelle": "waechter",
-          "feld": "stop",
-          "alt": 22.81,
-          "neu": 23.45,
-          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 26.643 € (+34.5 %)"
-        },
-        {
-          "zeit": "2026-11-20T15:24:47.320Z",
-          "quelle": "waechter",
-          "feld": "stop",
-          "alt": 23.45,
-          "neu": 23.9,
-          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 27.159 € (+37.1 %)"
-        }
-      ],
-      "kauf": {
-        "zeit": "2026-11-19T14:39:07.926Z",
-        "stueck": 50,
-        "kurs": 19.811,
-        "kurswert": 990.55,
-        "entgelt": {
-          "provision": 0,
-          "handelsplatz": 0,
-          "gesamt": 0
-        },
-        "betrag": 990.55,
-        "kursquelle": "Finnhub (2026-11-19T14:38:52.000Z)",
-        "synthetisch": true
-      },
-      "zielkurs": 27.5,
-      "stopkurs": 23.9,
-      "etfKauf": {
-        "wert": 127.81,
-        "zeit": "2026-11-19T14:29:50.268Z",
-        "quelle": "gettex (verzögert, MiFIR)",
-        "verzoegertMin": 9,
-        "hinweis": "letztes Geschäft 2026-11-19",
-        "vortag": 130.745
-      },
-      "teilverkaeufe": [
-        {
-          "zeit": "2026-11-20T14:39:02.996Z",
-          "stueck": 25,
-          "kurs": 25.916,
-          "kurswert": 647.9,
-          "entgelt": {
-            "provision": 0,
-            "handelsplatz": 0,
-            "gesamt": 0
-          },
-          "betrag": 647.9,
-          "kursquelle": "Finnhub (2026-11-20T14:38:33.000Z)",
-          "synthetisch": true,
-          "grund": "teilziel"
-        }
-      ],
-      "stand": {
-        "prozent": 37.78,
-        "zeit": "2026-11-20T15:24:22.000Z",
-        "quelle": "Finnhub",
-        "synthetisch": true
-      }
-    },
     {
       "id": "2026-11-19-auto-exagen-inc",
       "status": "offen",
@@ -292,8 +115,8 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 12.7,
-        "zeit": "2026-11-20T15:23:55.000Z",
+        "prozent": 14.3,
+        "zeit": "2026-11-20T15:37:03.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -433,6 +256,14 @@
           "alt": 8.2049,
           "neu": 8.3898,
           "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 9.5339 € (+27.8 %)"
+        },
+        {
+          "zeit": "2026-11-20T15:38:37.711Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 8.3898,
+          "neu": 8.438,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 9.5886 € (+28.5 %)"
         }
       ],
       "kauf": {
@@ -450,7 +281,7 @@
         "synthetisch": true
       },
       "zielkurs": 10.4555,
-      "stopkurs": 8.3898,
+      "stopkurs": 8.438,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -477,8 +308,8 @@
         }
       ],
       "stand": {
-        "prozent": 28.41,
-        "zeit": "2026-11-20T15:24:18.000Z",
+        "prozent": 29.14,
+        "zeit": "2026-11-20T15:38:21.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -580,8 +411,8 @@
         "vortag": 124.99
       },
       "stand": {
-        "prozent": -2.86,
-        "zeit": "2026-11-20T15:23:26.000Z",
+        "prozent": -2.03,
+        "zeit": "2026-11-20T15:37:55.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -683,8 +514,8 @@
         "vortag": 124.99
       },
       "stand": {
-        "prozent": 2.61,
-        "zeit": "2026-11-20T15:23:01.000Z",
+        "prozent": 2.76,
+        "zeit": "2026-11-20T15:31:13.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
