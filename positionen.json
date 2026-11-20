@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T06:53:17.838Z",
+  "stand": "2026-11-20T07:09:25.227Z",
   "offen": [
     {
       "id": "2026-11-19-auto-applied-optoelectronics-inc",
@@ -96,6 +96,14 @@
           "alt": 19.83,
           "neu": 20.14,
           "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 22.882 € (+15.5 %)"
+        },
+        {
+          "zeit": "2026-11-20T07:09:25.227Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 20.14,
+          "neu": 20.32,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 23.087 € (+16.5 %)"
         }
       ],
       "kauf": {
@@ -113,7 +121,7 @@
         "synthetisch": true
       },
       "zielkurs": 27.5,
-      "stopkurs": 20.14,
+      "stopkurs": 20.32,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -123,10 +131,10 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 17.16,
+        "prozent": 17.12,
         "zeit": "2026-11-19T21:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 593,
+        "verzoegertMin": 609,
         "synthetisch": true
       }
     },
@@ -209,6 +217,14 @@
           "alt": 1.7649,
           "neu": 1.8293,
           "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 2.0788 € (+10.7 %)"
+        },
+        {
+          "zeit": "2026-11-20T07:09:25.227Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 1.8293,
+          "neu": 1.8779,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 2.134 € (+13.7 %)"
         }
       ],
       "kauf": {
@@ -226,7 +242,7 @@
         "synthetisch": true
       },
       "zielkurs": 2.6202,
-      "stopkurs": 1.8293,
+      "stopkurs": 1.8779,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -236,10 +252,10 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 14.27,
+        "prozent": 14.23,
         "zeit": "2026-11-19T21:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 593,
+        "verzoegertMin": 609,
         "synthetisch": true
       }
     },
@@ -406,10 +422,10 @@
         }
       ],
       "stand": {
-        "prozent": 17.17,
+        "prozent": 17.13,
         "zeit": "2026-11-19T21:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 593,
+        "verzoegertMin": 609,
         "synthetisch": true
       }
     }
@@ -572,6 +588,112 @@
         }
       },
       "verkaufstermin": "2026-11-25T05:19:21.799Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-20-auto-insight-molecular-diagnostics-",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-20T07:08:44.836Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Insight Molecular Diagnostics Inc.",
+          "isin": "",
+          "ticker": "IMDX",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "IMDX",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:IMDX: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:IMDX:2026-11-20"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-25T07:08:44.836Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        }
+      },
+      "verkaufstermin": "2026-11-25T07:08:44.836Z",
+      "anpassungen": []
+    },
+    {
+      "id": "2026-11-20-auto-t-stamp-inc",
+      "status": "vorgemerkt",
+      "vorgemerktUm": "2026-11-20T07:08:44.836Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "T Stamp Inc",
+          "isin": "",
+          "ticker": "IDAI",
+          "anlageklasse": "aktie",
+          "spreadKlasse": "aktie_neben",
+          "handelsplatz": "TGT",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "IDAI",
+            "waehrung": "USD"
+          }
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:IDAI: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:IDAI:2026-11-20"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-25T07:08:44.836Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        }
+      },
+      "verkaufstermin": "2026-11-25T07:08:44.836Z",
       "anpassungen": []
     }
   ]
