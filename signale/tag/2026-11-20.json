@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T16:24:36.450Z",
-  "anzahl": 273,
+  "stand": "2026-11-20T17:20:27.017Z",
+  "anzahl": 279,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -3177,7 +3177,7 @@
       "t": "BKHAU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.7,
+      "st": 0.8,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3320,7 +3320,7 @@
       "t": "MSS",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.8,
+      "st": 0.9,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3398,7 +3398,7 @@
       "t": "MPU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3555,7 +3555,7 @@
       "i": "DE000HF2APT9",
       "typ": "kursrakete",
       "r": 0,
-      "st": 0.63,
+      "st": 0.85,
       "q": [
         "gettex-Scanner"
       ],
@@ -3582,7 +3582,7 @@
       "m": "krypto",
       "typ": "ueberreaktion",
       "r": 0,
-      "st": 0.44,
+      "st": 0.48,
       "q": [
         "Kraken"
       ],
@@ -3614,6 +3614,84 @@
         "SEC EDGAR Volltext"
       ],
       "z": "2026-11-20T16:24:36.450Z"
+    },
+    {
+      "id": "handelsstopp:NINE:2026-11-20",
+      "s": "T:NINE",
+      "n": "Nine Energy Service, Inc. Common Stock",
+      "t": "NINE",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:RMBC:2026-11-20",
+      "s": "T:RMBC",
+      "n": "Corgi RMBS 2x Daily ETF",
+      "t": "RMBC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:APMI:2026-11-20",
+      "s": "T:APMI",
+      "n": "Corgi AMAT 2x Daily ETF",
+      "t": "APMI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:MPWC:2026-11-20",
+      "s": "T:MPWC",
+      "n": "Corgi MPWR 2x Daily ETF",
+      "t": "MPWC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ATCX:2026-11-20",
+      "s": "T:ATCX",
+      "n": "Atlas Critical Minerals Co CS",
+      "t": "ATCX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF31NJ8:2026-11-20",
+      "s": "I:DE000HF31NJ8",
+      "n": "DE000HF31NJ8",
+      "i": "DE000HF31NJ8",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-20T17:14:31.799Z"
     }
   ]
 }
