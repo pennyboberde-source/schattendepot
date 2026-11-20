@@ -12,6 +12,7 @@ import { etikett, spielarten, spielartText, sprungEpisoden, volHebel, type Ausga
 import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '../core/volltreffer/merkmale.ts';
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, neinFilterAktiv, urteilKalibrierung, type JagdFall } from '../core/volltreffer/jagd.ts';
+import { abdeckungBerechnen } from '../core/volltreffer/abdeckung.ts';
 import { auswaehlen, bilanz, nachspielen, zrAktiv, zrBremse, zrBuchFortschreiben, zrZeiten, ZeitStat, type Gewaehlt, type Kandidat, type ZrBremsRegel, type ZrBuchEintrag, type ZrMuster } from '../core/volltreffer/zeitreise.ts';
 import { pumpVerdacht } from '../core/datenkrake.ts';
 import { befoerderungPruefen, inStufe3, istBefoerdert, noetigeFaelle, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
@@ -2840,11 +2841,22 @@ if (vt.erkennung) {
   hebelWerte = [...jagden.filter((j) => j.art === 'offen'), ...lauerliste]
     .filter((j) => /gettex|Börse|Stuttgart/i.test(j.plattform ?? ''))
     .map((j) => ({ wert: j.wert, markt: j.markt, spielart: j.spielart }));
+  const abdeckung = abdeckungBerechnen(
+    trefferbuch,
+    vorwaerts,
+    jagden,
+    [...s3.offen, ...s3.abgeschlossen, ...(rw ? [...rw.offen, ...rw.abgeschlossen] : [])],
+    7,
+  );
+  log(`Abdeckung des Trefferbuchs seit ${abdeckung.ab ?? '–'}: ${abdeckung.volltreffer} Volltreffer, ${abdeckung.erkannt} vorher erkannt (${abdeckung.anteilErkannt} %), ${abdeckung.richtig} richtig erwischt (${abdeckung.anteilRichtig} %), ${abdeckung.gejagt} gejagt, ${abdeckung.sichtbar} sichtbar · Vorwärts-Fälle ${abdeckung.vorwaerts.faelle} an ${abdeckung.vorwaerts.tage} Tagen, ${abdeckung.vorwaerts.quote} % Volltreffer.`);
   schreibeJson('volltreffer/uebersicht.json', {
     stand: jetzt.toISOString(),
     hinweis: 'Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens ' + v4.mindestQuote + ' % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens ' + v4.maxOffen + ' Jagden gleichzeitig, nach ' + v4.tagesVerlustGrenze + ' € Tagesverlust am Folgetag keine neue. Mitteilungen nur gesammelt in der Abendbilanz, kein echtes Geld.',
     regeln: { maxOffen: v4.maxOffen, tagesVerlustGrenze: v4.tagesVerlustGrenze, stufe2Faelle: v4.stufe2Faelle },
     kennzahlen: jagdKennzahlen(jagden),
+    // 20.11.2026: Abdeckung des Trefferbuchs – wie viele Volltreffer seit Beginn des Vorwärtstests vorher erkannt und
+    // wirklich erwischt wurden (Vorwärts-Fälle, Jagden, sichtbare Orders), dazu die Treffsicherheit der Vorwärts-Fälle
+    abdeckung,
     // Q4 Gegenwind am jüngsten Aktien-Stichtag (Autopilot und App lesen das)
     gegenwind: (() => {
       const d = [...gegenwindJeTag.keys()].pop();
@@ -2853,7 +2865,14 @@ if (vt.erkennung) {
       return d && g ? { datum: d, aktiv: !!GWC?.aktiv && g.aktiv, grund: g.aktiv ? `Markt 5 Tage ${zahl(g.markt5)} % (Schwelle ${zahl(g.sM5)} %), VIX ${zahl(g.vix)} (Schwelle ${zahl(g.sVix)})` : 'kein Gegenwind', markt5: g.markt5 === null ? null : Math.round(g.markt5 * 10) / 10, schwelleMarkt5: Number.isFinite(g.sM5) ? Math.round(g.sM5 * 10) / 10 : null, vix: g.vix, schwelleVix: Number.isFinite(g.sVix) ? Math.round(g.sVix * 10) / 10 : null } : null;
     })(),
     // V5: Wie gut ist Claudes Urteil? Alle Fälle im Vorwärtstest mit „ja“ gegen „nein“ (nicht nur die gewählten Jagden)
-    urteil: { ja: urteilJa, nein: urteilNein, urteile: urteile.size, kalibrierung: urteilKalibrierung(vorwaerts), neinFilter: ohneNein },
+    urteil: {
+      ja: urteilJa, nein: urteilNein, urteile: urteile.size, kalibrierung: urteilKalibrierung(vorwaerts), neinFilter: ohneNein,
+      // 20.11.2026: Claudes Urteil auf den sichtbaren Orders (6er-Regel, Zeitreise-Regel, Rückenwind-Long) getrennt gemessen
+      sichtbar: (() => {
+        const alle = [...s3.offen, ...s3.abgeschlossen, ...(rw ? [...rw.offen, ...rw.abgeschlossen] : [])];
+        return { ja: jagdKennzahlen(alle.filter((f) => f.urteil === 'ja')), nein: jagdKennzahlen(alle.filter((f) => f.urteil === 'nein')), ohne: jagdKennzahlen(alle.filter((f) => !f.urteil)) };
+      })(),
+    },
     offen: jagden.filter((j) => j.art === 'offen').map(ohneMuster),
     abgeschlossen: jagden.filter((j) => j.art !== 'offen').sort((a, b) => (b.ende ?? '').localeCompare(a.ende ?? '')).slice(0, 30).map(ohneMuster),
     lauerliste: lauerliste.slice(0, v4.lauerlisteMax).map(ohneMuster),

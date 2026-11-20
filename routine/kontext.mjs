@@ -169,13 +169,26 @@ p('');
 if (typ === 'morgenlauf') {
   const vu = await json('volltreffer/uebersicht.json', null);
   const ll = vu?.lauerliste ?? [];
+  // 20.11.2026: die vorgemerkten SICHTBAREN Orders (6er-Regel, Zeitreise-Regel, Rückenwind-Long) zuerst – sie steigen zur
+  // nächsten Eröffnung ein; dein Urteil wird je Wert und Stichtag gemessen und kann sie über den „nein“-Filter herausnehmen
+  const vm = vu?.sichtbar?.vorgemerkt ?? [];
+  const zeile = (j) => `- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage${typeof j.quote === 'number' ? ` · Rückblick-Quote ${j.quote} %` : ''}${j.plattform ? ` · ${j.plattform}${j.ungeprueft ? ' (ungeprüft)' : ''}` : ''} · Muster: ${j.muster}${j.hinweis ? ` · ${j.hinweis}` : ''}${j.stimmung ? ` · 👥 ${j.stimmung}` : ''}`;
+  if (vm.length) {
+    p(`## 🟢 Sichtbare Volltreffer-Orders, vorgemerkt (${vm.length}, Einstieg zur nächsten Eröffnung) – ZUERST beurteilen, ebenfalls in \`volltrefferUrteil\``);
+    for (const j of vm.slice(0, 6)) p(`${zeile(j)}${j.zeitreise ? ' · 🕰️ Zeitreise-Regel' : ''}${j.rueckenwind ? ' · 🌬️ Rückenwind-Long' : ''}`);
+    p('');
+  }
   if (ll.length) {
-    p(`## 🎯 Volltreffer-Lauerliste (${vu.lauerlisteZahl} Werte, die obersten ${Math.min(12, ll.length)}) – Gesamtbild-Urteil in \`volltrefferUrteil\``);
-    for (const j of ll.slice(0, 12)) p(`- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage${typeof j.quote === 'number' ? ` · Rückblick-Quote ${j.quote} %` : ''}${j.plattform ? ` · ${j.plattform}${j.ungeprueft ? ' (ungeprüft)' : ''}` : ''} · Muster: ${j.muster}${j.hinweis ? ` · ${j.hinweis}` : ''}${j.stimmung ? ` · 👥 ${j.stimmung}` : ''}`);
+    const nLl = Math.max(0, Math.min(12, 18 - Math.min(6, vm.length), ll.length));
+    p(`## 🎯 Volltreffer-Lauerliste (${vu.lauerlisteZahl} Werte, die obersten ${nLl}) – Gesamtbild-Urteil in \`volltrefferUrteil\``);
+    for (const j of ll.slice(0, nLl)) p(zeile(j));
+    const ab = vu.abdeckung;
+    if (ab?.volltreffer) p(`Abdeckung des Trefferbuchs seit ${ab.ab}: ${ab.volltreffer} Volltreffer am Markt, ${ab.erkannt} vorher erkannt, ${ab.richtig} richtig erwischt (${ab.anteilRichtig} %), ${ab.sichtbar} davon sichtbar geordert; Vorwärts-Fälle ${ab.vorwaerts.faelle}, davon ${ab.vorwaerts.quote} % Volltreffer.`);
     const k = vu.kennzahlen;
     if (k?.anzahl) p(`Virtuelle Jagden bisher: ${k.anzahl} abgeschlossen, Volltreffer ${k.quote} %, Ø ${k.ev} € je Jagd.`);
     const u = vu.urteil;
     if (u?.ja?.anzahl || u?.nein?.anzahl) p(`Dein Urteil bisher: „ja“ ${u.ja.anzahl} Fälle, Volltreffer ${u.ja.quote} %, Ø ${u.ja.ev} € · „nein“ ${u.nein.anzahl} Fälle, Volltreffer ${u.nein.quote} %, Ø ${u.nein.ev} € · Filter für sichtbare Orders: ${u.neinFilter ? 'AKTIV (dein „nein“ zählt)' : 'aus (noch nicht genug belegt)'}.`);
+    if (u?.sichtbar?.ja?.anzahl || u?.sichtbar?.nein?.anzahl) p(`Davon bei den SICHTBAREN Orders: „ja“ ${u.sichtbar.ja.anzahl}, Volltreffer ${u.sichtbar.ja.quote} %, Ø ${u.sichtbar.ja.ev} € · „nein“ ${u.sichtbar.nein.anzahl}, Volltreffer ${u.sichtbar.nein.quote} %, Ø ${u.sichtbar.nein.ev} €.`);
     const kal = (u?.kalibrierung ?? []).filter((b) => b.kennzahlen?.anzahl);
     if (kal.length) p(`Deine Wahrscheinlichkeiten im Abgleich (abgeschlossene Fälle): ${kal.map((b) => `${b.bereich}: ${b.kennzahlen.anzahl} Fälle, wirklich ${b.kennzahlen.quote} % Volltreffer`).join(' · ')}.`);
     p('');

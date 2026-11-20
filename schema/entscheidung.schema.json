@@ -376,8 +376,8 @@
     },
     "volltrefferUrteil": {
       "type": "array",
-      "maxItems": 12,
-      "description": "V5: Claudes Urteil über die obersten Werte der Volltreffer-Lauerliste (nur Morgenlauf) – wird gespeichert und gemessen",
+      "maxItems": 18,
+      "description": "V5: Claudes Urteil über die vorgemerkten sichtbaren Volltreffer-Orders und die obersten Werte der Lauerliste (nur Morgenlauf) – wird gespeichert und gemessen",
       "items": {
         "type": "object",
         "additionalProperties": false,

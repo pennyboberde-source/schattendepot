@@ -13,7 +13,7 @@ interface Uebersicht {
   stand: string;
   regeln: { maxOffen: number; tagesVerlustGrenze: number; stufe2Faelle: number };
   kennzahlen: JagdKennzahlen;
-  urteil?: { ja: JagdKennzahlen; nein: JagdKennzahlen; urteile: number; kalibrierung?: { bereich: string; kennzahlen: JagdKennzahlen }[]; neinFilter?: boolean };
+  urteil?: { ja: JagdKennzahlen; nein: JagdKennzahlen; urteile: number; kalibrierung?: { bereich: string; kennzahlen: JagdKennzahlen }[]; neinFilter?: boolean; sichtbar?: { ja: JagdKennzahlen; nein: JagdKennzahlen; ohne: JagdKennzahlen } };
   offen: JagdFall[];
   abgeschlossen: JagdFall[];
   lauerliste: JagdFall[];
@@ -26,6 +26,7 @@ interface Uebersicht {
   muster: { gruppe: string; spielart: string; fenster: number; seit: string; faelle: number; treffer: number; ev: number; offen: number; rueckblick: { quote: number; ev: number; se: number; faelle: number }; stufe2: boolean; stufe3?: boolean; stufe3Grund?: string }[];
   /** Q4 Gegenwind am jüngsten Stichtag */
   gegenwind?: { datum: string; aktiv: boolean; grund: string } | null;
+  abdeckung?: { ab: string | null; fensterTage: number; volltreffer: number; erkannt: number; richtig: number; gejagt: number; sichtbar: number; anteilErkannt: number; anteilRichtig: number; vorwaerts: { faelle: number; treffer: number; quote: number; tage: number } };
   sichtbar?: {
     regeln: { mindestFaelle: number; mindestQuote: number; mindestEv: number; maxOffen: number; einsatz: number };
     kennzahlen: JagdKennzahlen;
@@ -94,6 +95,11 @@ export function OrdersKarte() {
         <p class="klein">
           Nur bewährte Muster handeln hier – simuliert mit {euro(s.regeln.einsatz)} je Order, ohne Rückfrage, aber Klasse vor Masse: mindestens {zahl(s.regeln.mindestFaelle)} Fälle im Vorwärtstest im Plus, im Rückblick mindestens {zahl(s.regeln.mindestQuote)} % Volltreffer und Ø {euro(s.regeln.mindestEv)}; höchstens {zahl(s.regeln.maxOffen)} Orders gleichzeitig. Jede Order kommt als Mitteilung.
         </p>
+        {z.status === 'ok' && z.daten.abdeckung?.ab && z.daten.abdeckung.volltreffer > 0 && (
+          <p class="klein" data-testid="abdeckung">
+            🎯 <strong>Abdeckung des Trefferbuchs</strong> seit {datumKurz(z.daten.abdeckung.ab)}: {zahl(z.daten.abdeckung.volltreffer)} Volltreffer am Markt, davon {zahl(z.daten.abdeckung.erkannt)} vorher erkannt ({z.daten.abdeckung.anteilErkannt.toLocaleString('de-DE')} %), {zahl(z.daten.abdeckung.richtig)} richtig erwischt ({z.daten.abdeckung.anteilRichtig.toLocaleString('de-DE')} %), {zahl(z.daten.abdeckung.gejagt)} gejagt, {zahl(z.daten.abdeckung.sichtbar)} sichtbar geordert · Treffsicherheit: {zahl(z.daten.abdeckung.vorwaerts.treffer)} von {zahl(z.daten.abdeckung.vorwaerts.faelle)} Vorwärts-Fällen ({z.daten.abdeckung.vorwaerts.quote.toLocaleString('de-DE')} %, an {zahl(z.daten.abdeckung.vorwaerts.tage)} Tagen).
+          </p>
+        )}
         {z.status === 'ok' && z.daten.gegenwind?.aktiv && (
           <p class="klein" data-testid="gegenwind">
             🌬️ <strong>Gegenwind</strong> (Stichtag {datumKurz(z.daten.gegenwind.datum)}): keine neuen Aktien-Shorts – {z.daten.gegenwind.grund}.
@@ -220,6 +226,11 @@ export function JagdKarte() {
           <p class="klein" data-testid="claude-urteil">
             Claudes Urteil im Morgenlauf: „ja“ {zahl(u.urteil.ja.anzahl)} abgeschlossen, Volltreffer {u.urteil.ja.anzahl ? `${u.urteil.ja.quote.toLocaleString('de-DE')} %` : '–'}, Ø {u.urteil.ja.anzahl ? euro(u.urteil.ja.ev, { vorzeichen: true }) : '–'} · „nein“ {zahl(u.urteil.nein.anzahl)}, Volltreffer {u.urteil.nein.anzahl ? `${u.urteil.nein.quote.toLocaleString('de-DE')} %` : '–'}, Ø {u.urteil.nein.anzahl ? euro(u.urteil.nein.ev, { vorzeichen: true }) : '–'}
             {u.urteil.neinFilter ? ' · Claudes „nein“ hält Fälle aus den sichtbaren Orders heraus (gemessen besser).' : ''}
+            {u.urteil.sichtbar && u.urteil.sichtbar.ja.anzahl + u.urteil.sichtbar.nein.anzahl > 0 && (
+              <span data-testid="claude-urteil-sichtbar">
+                {` · bei den sichtbaren Orders: „ja“ ${zahl(u.urteil.sichtbar.ja.anzahl)} (${zahl(u.urteil.sichtbar.ja.volltreffer)} Volltreffer, Ø ${u.urteil.sichtbar.ja.anzahl ? euro(u.urteil.sichtbar.ja.ev, { vorzeichen: true }) : '–'}), „nein“ ${zahl(u.urteil.sichtbar.nein.anzahl)} (${zahl(u.urteil.sichtbar.nein.volltreffer)} Volltreffer, Ø ${u.urteil.sichtbar.nein.anzahl ? euro(u.urteil.sichtbar.nein.ev, { vorzeichen: true }) : '–'})`}
+              </span>
+            )}
             {(u.urteil.kalibrierung ?? []).some((b) => b.kennzahlen.anzahl > 0) && (
               <>
                 {' · Treffsicherheit seiner Prozente: '}

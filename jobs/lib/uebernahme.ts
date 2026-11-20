@@ -117,7 +117,7 @@ export function uebernehmeAlle(jetzt: Date): UebernahmeErgebnis {
       }
       // V5: Claudes Urteil über die Volltreffer-Lauerliste – der Rückblick misst „ja“ gegen „nein“
       if (e.typ === 'morgenlauf' && e.volltrefferUrteil?.length && !leseJson<unknown>(`volltreffer/urteile/${e.datum}.json`, null)) {
-        schreibeJson(`volltreffer/urteile/${e.datum}.json`, { datum: e.datum, erstellt: e.erstellt, urteile: e.volltrefferUrteil.slice(0, 12) });
+        schreibeJson(`volltreffer/urteile/${e.datum}.json`, { datum: e.datum, erstellt: e.erstellt, urteile: e.volltrefferUrteil.slice(0, 18) });
       }
       // Daytrading-Watchlist (S3): der Daytrading-Job handelt die Werte heute nach der Skill-Regel
       if (e.typ === 'morgenlauf' && e.daytrading?.length) {
