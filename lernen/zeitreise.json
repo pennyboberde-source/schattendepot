@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T08:23:04.512Z",
-  "hinweis": "Zeitreise: der ganze Ablauf über die Kursgeschichte nachgespielt, als wäre er live gelaufen. Je Halbmonat wählt der Code bis zu 60 Muster nur aus Fällen, deren Ergebnis da schon feststand (1 Halbmonat Abstand): der Tag zählt als Einheit (Ø und Volltreffer-Anteil der Fälle eines Tages), in beiden Hälften der Vergangenheit je mindestens 30 Tage im Plus, besser als die Grundrate, Quote ab 10 %, höchstens 3 je Baustein. Dann je Tag die Fälle dieser Muster nach Wertung: „sichtbar“ höchstens 3 offene Orders, „Jagden“ höchstens 10, je Wert eine; 1.000 € je Order nach Kosten, Ausstieg bei Ziel (+400 €), Stop (−150 €) oder nach 10 Handelstagen. Vereinfachungen: ohne Klumpen-Grenze zwischen Werten, Pump-Filter und Gesamtmodell. Nur Kennzahlen, keine Kurse.",
+  "stand": "2026-11-20T12:30:50.569Z",
+  "hinweis": "Zeitreise: der ganze Ablauf über die Kursgeschichte nachgespielt, als wäre er live gelaufen. Je Halbmonat wählt der Code bis zu 60 Muster nur aus Fällen, deren Ergebnis da schon feststand (1 Halbmonat Abstand): der Tag zählt als Einheit (Ø und Volltreffer-Anteil der Fälle eines Tages), in beiden Hälften der Vergangenheit je mindestens 30 Tage im Plus, besser als die Grundrate, Quote ab 10 %, höchstens 3 je Baustein. Dann je Tag die Fälle dieser Muster nach Wertung: „sichtbar“ höchstens 3 offene Orders, ohne Aktien-Shorts bei Gegenwind (Markt 5 Tage oder VIX im obersten Zehntel der vorigen 250 Tage), „Jagden“ höchstens 10, je Wert eine; 1.000 € je Order nach Kosten, Ausstieg bei Ziel (+400 €), Stop (−150 €) oder nach 10 Handelstagen. Vereinfachungen: ohne Klumpen-Grenze zwischen Werten, Pump-Filter und Gesamtmodell. Nur Kennzahlen, keine Kurse.",
   "zeitraum": {
     "von": "2025-03",
     "bis": "2026-11"
@@ -24,12 +24,148 @@
     "oeMuster": 59
   },
   "sichtbar": {
-    "orders": 447,
-    "volltreffer": 111,
-    "quote": 24.8,
-    "netto": 2407,
-    "oe": 5.4,
-    "maxRueckgang": 4723,
+    "orders": 395,
+    "volltreffer": 97,
+    "quote": 24.6,
+    "netto": 4851,
+    "oe": 12.3,
+    "maxRueckgang": 3257,
+    "monate": [
+      {
+        "monat": "2025-03",
+        "orders": 31,
+        "volltreffer": 11,
+        "netto": 1412
+      },
+      {
+        "monat": "2025-04",
+        "orders": 25,
+        "volltreffer": 4,
+        "netto": -978
+      },
+      {
+        "monat": "2025-05",
+        "orders": 12,
+        "volltreffer": 0,
+        "netto": -1455
+      },
+      {
+        "monat": "2025-06",
+        "orders": 7,
+        "volltreffer": 1,
+        "netto": 130
+      },
+      {
+        "monat": "2025-07",
+        "orders": 12,
+        "volltreffer": 4,
+        "netto": 1546
+      },
+      {
+        "monat": "2025-08",
+        "orders": 22,
+        "volltreffer": 4,
+        "netto": -957
+      },
+      {
+        "monat": "2025-09",
+        "orders": 16,
+        "volltreffer": 4,
+        "netto": -15
+      },
+      {
+        "monat": "2025-10",
+        "orders": 17,
+        "volltreffer": 6,
+        "netto": 2060
+      },
+      {
+        "monat": "2025-11",
+        "orders": 13,
+        "volltreffer": 3,
+        "netto": 716
+      },
+      {
+        "monat": "2025-12",
+        "orders": 30,
+        "volltreffer": 5,
+        "netto": -1371
+      },
+      {
+        "monat": "2026-01",
+        "orders": 21,
+        "volltreffer": 7,
+        "netto": 930
+      },
+      {
+        "monat": "2026-02",
+        "orders": 14,
+        "volltreffer": 3,
+        "netto": 1672
+      },
+      {
+        "monat": "2026-03",
+        "orders": 12,
+        "volltreffer": 0,
+        "netto": -1950
+      },
+      {
+        "monat": "2026-04",
+        "orders": 13,
+        "volltreffer": 2,
+        "netto": 169
+      },
+      {
+        "monat": "2026-05",
+        "orders": 25,
+        "volltreffer": 4,
+        "netto": -1027
+      },
+      {
+        "monat": "2026-06",
+        "orders": 21,
+        "volltreffer": 10,
+        "netto": 2745
+      },
+      {
+        "monat": "2026-07",
+        "orders": 22,
+        "volltreffer": 9,
+        "netto": 1625
+      },
+      {
+        "monat": "2026-08",
+        "orders": 17,
+        "volltreffer": 5,
+        "netto": -38
+      },
+      {
+        "monat": "2026-09",
+        "orders": 20,
+        "volltreffer": 4,
+        "netto": 50
+      },
+      {
+        "monat": "2026-10",
+        "orders": 25,
+        "volltreffer": 7,
+        "netto": 372
+      },
+      {
+        "monat": "2026-11",
+        "orders": 20,
+        "volltreffer": 4,
+        "netto": -787
+      }
+    ]
+  },
+  "sichtbarOhneFilter": {
+    "orders": 438,
+    "volltreffer": 103,
+    "quote": 23.5,
+    "netto": 970,
+    "oe": 2.2,
+    "maxRueckgang": 5239,
     "monate": [
       {
         "monat": "2025-03",
@@ -39,27 +175,27 @@
       },
       {
         "monat": "2025-04",
-        "orders": 28,
+        "orders": 27,
         "volltreffer": 4,
-        "netto": -1792
+        "netto": -1620
       },
       {
         "monat": "2025-05",
         "orders": 10,
-        "volltreffer": 1,
-        "netto": -820
+        "volltreffer": 0,
+        "netto": -1121
       },
       {
         "monat": "2025-06",
-        "orders": 13,
-        "volltreffer": 3,
-        "netto": -156
+        "orders": 8,
+        "volltreffer": 0,
+        "netto": 333
       },
       {
         "monat": "2025-07",
-        "orders": 12,
-        "volltreffer": 4,
-        "netto": 1546
+        "orders": 9,
+        "volltreffer": 0,
+        "netto": -251
       },
       {
         "monat": "2025-08",
@@ -159,43 +295,283 @@
       }
     ]
   },
-  "jagden": {
-    "orders": 1474,
-    "volltreffer": 357,
-    "quote": 24.2,
-    "netto": -5207,
-    "oe": -3.5,
-    "maxRueckgang": 11449,
+  "sichtbarGegenwind": {
+    "orders": 391,
+    "volltreffer": 93,
+    "quote": 23.8,
+    "netto": 4110,
+    "oe": 10.5,
+    "maxRueckgang": 4347,
     "monate": [
       {
         "monat": "2025-03",
-        "orders": 61,
-        "volltreffer": 18,
-        "netto": 530
+        "orders": 31,
+        "volltreffer": 11,
+        "netto": 1412
       },
       {
         "monat": "2025-04",
-        "orders": 105,
-        "volltreffer": 19,
-        "netto": -4748
+        "orders": 25,
+        "volltreffer": 7,
+        "netto": 746
       },
       {
         "monat": "2025-05",
-        "orders": 48,
-        "volltreffer": 6,
-        "netto": -2502
+        "orders": 8,
+        "volltreffer": 0,
+        "netto": -430
       },
       {
         "monat": "2025-06",
-        "orders": 48,
-        "volltreffer": 14,
-        "netto": 1810
+        "orders": 8,
+        "volltreffer": 0,
+        "netto": 187
       },
       {
         "monat": "2025-07",
-        "orders": 63,
+        "orders": 13,
+        "volltreffer": 2,
+        "netto": -151
+      },
+      {
+        "monat": "2025-08",
+        "orders": 18,
+        "volltreffer": 2,
+        "netto": -1077
+      },
+      {
+        "monat": "2025-09",
+        "orders": 12,
+        "volltreffer": 2,
+        "netto": -615
+      },
+      {
+        "monat": "2025-10",
+        "orders": 17,
+        "volltreffer": 6,
+        "netto": 2060
+      },
+      {
+        "monat": "2025-11",
+        "orders": 11,
+        "volltreffer": 3,
+        "netto": 1016
+      },
+      {
+        "monat": "2025-12",
+        "orders": 28,
+        "volltreffer": 5,
+        "netto": -1011
+      },
+      {
+        "monat": "2026-01",
+        "orders": 21,
+        "volltreffer": 7,
+        "netto": 930
+      },
+      {
+        "monat": "2026-02",
+        "orders": 19,
+        "volltreffer": 3,
+        "netto": 73
+      },
+      {
+        "monat": "2026-03",
+        "orders": 18,
+        "volltreffer": 1,
+        "netto": -1881
+      },
+      {
+        "monat": "2026-04",
+        "orders": 12,
+        "volltreffer": 1,
+        "netto": -91
+      },
+      {
+        "monat": "2026-05",
+        "orders": 25,
+        "volltreffer": 4,
+        "netto": -1027
+      },
+      {
+        "monat": "2026-06",
+        "orders": 21,
+        "volltreffer": 10,
+        "netto": 2745
+      },
+      {
+        "monat": "2026-07",
+        "orders": 22,
+        "volltreffer": 9,
+        "netto": 1625
+      },
+      {
+        "monat": "2026-08",
+        "orders": 17,
+        "volltreffer": 5,
+        "netto": -38
+      },
+      {
+        "monat": "2026-09",
+        "orders": 20,
+        "volltreffer": 4,
+        "netto": 50
+      },
+      {
+        "monat": "2026-10",
+        "orders": 25,
+        "volltreffer": 7,
+        "netto": 372
+      },
+      {
+        "monat": "2026-11",
+        "orders": 20,
+        "volltreffer": 4,
+        "netto": -787
+      }
+    ]
+  },
+  "gegenwind": {
+    "markt5Ab": 1.7,
+    "vixAb": 24
+  },
+  "gegenwindVarianten": [
+    {
+      "rollend": false,
+      "markt5Bis": null,
+      "markt5Ab": 1.7,
+      "vixAb": 24,
+      "orders": 391,
+      "volltreffer": 93,
+      "quote": 23.8,
+      "netto": 4110,
+      "oe": 10.5,
+      "maxRueckgang": 4347,
+      "monatePlus": 11,
+      "monate": 21
+    },
+    {
+      "rollend": false,
+      "markt5Bis": null,
+      "markt5Ab": 1.2,
+      "vixAb": 22,
+      "orders": 344,
+      "volltreffer": 87,
+      "quote": 25.3,
+      "netto": 9654,
+      "oe": 28.1,
+      "maxRueckgang": 2207,
+      "monatePlus": 14,
+      "monate": 21
+    },
+    {
+      "rollend": false,
+      "markt5Bis": null,
+      "markt5Ab": 2.2,
+      "vixAb": 28,
+      "orders": 418,
+      "volltreffer": 107,
+      "quote": 25.6,
+      "netto": 6609,
+      "oe": 15.8,
+      "maxRueckgang": 2939,
+      "monatePlus": 12,
+      "monate": 21
+    },
+    {
+      "rollend": false,
+      "markt5Bis": null,
+      "markt5Ab": 1.7,
+      "vixAb": null,
+      "orders": 408,
+      "volltreffer": 99,
+      "quote": 24.3,
+      "netto": 5165,
+      "oe": 12.7,
+      "maxRueckgang": 4227,
+      "monatePlus": 11,
+      "monate": 21
+    },
+    {
+      "rollend": false,
+      "markt5Bis": null,
+      "markt5Ab": null,
+      "vixAb": 24,
+      "orders": 428,
+      "volltreffer": 101,
+      "quote": 23.6,
+      "netto": 1001,
+      "oe": 2.3,
+      "maxRueckgang": 6117,
+      "monatePlus": 11,
+      "monate": 21
+    },
+    {
+      "rollend": true,
+      "markt5Bis": null,
+      "markt5Ab": null,
+      "vixAb": null,
+      "orders": 395,
+      "volltreffer": 97,
+      "quote": 24.6,
+      "netto": 4851,
+      "oe": 12.3,
+      "maxRueckgang": 3257,
+      "monatePlus": 12,
+      "monate": 21
+    },
+    {
+      "rollend": false,
+      "markt5Bis": -1.8,
+      "markt5Ab": 1.7,
+      "vixAb": 24,
+      "orders": 381,
+      "volltreffer": 83,
+      "quote": 21.8,
+      "netto": 347,
+      "oe": 0.9,
+      "maxRueckgang": 4106,
+      "monatePlus": 9,
+      "monate": 21
+    }
+  ],
+  "jagden": {
+    "orders": 1431,
+    "volltreffer": 343,
+    "quote": 24,
+    "netto": -2971,
+    "oe": -2.1,
+    "maxRueckgang": 10953,
+    "monate": [
+      {
+        "monat": "2025-03",
+        "orders": 60,
         "volltreffer": 17,
-        "netto": 1634
+        "netto": 428
+      },
+      {
+        "monat": "2025-04",
+        "orders": 95,
+        "volltreffer": 20,
+        "netto": -2657
+      },
+      {
+        "monat": "2025-05",
+        "orders": 36,
+        "volltreffer": 1,
+        "netto": -3551
+      },
+      {
+        "monat": "2025-06",
+        "orders": 31,
+        "volltreffer": 5,
+        "netto": 2568
+      },
+      {
+        "monat": "2025-07",
+        "orders": 60,
+        "volltreffer": 17,
+        "netto": 2173
       },
       {
         "monat": "2025-08",
@@ -296,8 +672,8 @@
     ]
   },
   "alleMusterfaelle": {
-    "faelle": 248295,
-    "quote": 18.6,
+    "faelle": 248485,
+    "quote": 18.3,
     "oe": -5
   },
   "grundrate": {
@@ -308,21 +684,15 @@
   "haeufigsteMuster": [
     {
       "muster": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer) – Turbo short Hebel 2, Stop 150 €",
-      "orders": 234,
-      "volltreffer": 66,
-      "netto": 4755
+      "orders": 172,
+      "volltreffer": 56,
+      "netto": 7590
     },
     {
       "muster": "Aktien: Ø Tagesumsatz: 20000000 bis 100000000 und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer) – Turbo short Hebel 2, Stop 150 €",
-      "orders": 94,
-      "volltreffer": 18,
-      "netto": -2651
-    },
-    {
-      "muster": "Aktien: Tagesrendite über dem Markt %: unter -20 und Leerverkaufsanteil: Leerverkaufsanteil 45 bis 60 % – Turbo short Hebel 2, Stop 150 €",
-      "orders": 35,
-      "volltreffer": 6,
-      "netto": -1594
+      "orders": 64,
+      "volltreffer": 10,
+      "netto": -2938
     },
     {
       "muster": "Aktien: Ø Tagesumsatz: 20000000 bis 100000000 und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer) – Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
@@ -337,46 +707,52 @@
       "netto": 150
     },
     {
+      "muster": "Aktien: Branche: Energie/Rohstoffe und Aktienzahl (Mio.): über 500 Mio. Aktien – Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "orders": 20,
+      "volltreffer": 0,
+      "netto": -1701
+    },
+    {
+      "muster": "Aktien: Branche: Medizintechnik/Gesundheit und Leerbestand in % der Aktien: 10 bis 20 % – Turbo long Hebel 3, Stop 150 €",
+      "orders": 16,
+      "volltreffer": 4,
+      "netto": 384
+    },
+    {
+      "muster": "Aktien: Ø Tagesumsatz: ab 100000000 und Kurs: 1 bis 5 – Turbo long Hebel 2, Stop 150 €",
+      "orders": 13,
+      "volltreffer": 2,
+      "netto": -289
+    },
+    {
       "muster": "Aktien: Ø Tagesumsatz: 20000000 bis 100000000 und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer) – Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
       "orders": 9,
       "volltreffer": 2,
       "netto": 1171
     },
     {
-      "muster": "Aktien: 20-Tage-Rendite %: ab 50 und Ø Tagesumsatz: ab 100000000 – Turbo short Hebel 2, Stop 150 €",
-      "orders": 6,
+      "muster": "Aktien: Aktienzahl (Mio.): über 500 Mio. Aktien und Katalysator-Meldung (SEC-Volltext) in 20 Tagen: gemischte Katalysatoren vor 0–20 Tagen – Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "orders": 8,
       "volltreffer": 1,
-      "netto": -618
+      "netto": -32
+    },
+    {
+      "muster": "Krypto: 20-Tage-Hoch: 3 bis 10 % darunter – Turbo short Hebel 3, Stop 150 €",
+      "orders": 7,
+      "volltreffer": 0,
+      "netto": -857
+    },
+    {
+      "muster": "Aktien: Tagesrendite über dem Markt %: unter -20 und Leerverkaufsanteil: Leerverkaufsanteil 45 bis 60 % – Turbo short Hebel 2, Stop 150 €",
+      "orders": 6,
+      "volltreffer": 3,
+      "netto": 750
     },
     {
       "muster": "Krypto: Kurs: ab 100 und Im Weltgeschehen erwähnt: nicht erwähnt (20 Tage) – Turbo short Hebel 5, Stop 150 €",
       "orders": 5,
       "volltreffer": 2,
       "netto": 350
-    },
-    {
-      "muster": "Aktien: Insider-Kauf (Formular 4): Insider-Kauf vor 6 bis 20 Handelstagen und Leerbestand in % der Aktien: über 20 % (Squeeze-Kandidat) – Turbo short Hebel 2, Stop 150 €",
-      "orders": 4,
-      "volltreffer": 0,
-      "netto": -453
-    },
-    {
-      "muster": "Aktien: Leerverkaufsbestand: Tage zum Eindecken: Leerverkaufsbestand 2 bis 5 Tage Umsatz und Übernahmeangebot (SC TO/14D9): Übernahmeangebot vor 6 bis 20 Handelstagen – Turbo short Hebel 3, Stop 150 €",
-      "orders": 3,
-      "volltreffer": 0,
-      "netto": -260
-    },
-    {
-      "muster": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen und Leerbestand in % der Aktien: über 20 % (Squeeze-Kandidat) – Turbo short Hebel 2, Stop 150 €",
-      "orders": 2,
-      "volltreffer": 0,
-      "netto": -508
-    },
-    {
-      "muster": "Aktien: Ø Tagesumsatz: ab 100000000 und Leerverkaufsbestand gegen den vorigen FINRA-Stichtag: Leerverkaufsbestand stark gesunken (über 25 %) – Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
-      "orders": 2,
-      "volltreffer": 0,
-      "netto": -175
     }
   ],
   "aktuell": {
@@ -587,15 +963,15 @@
         "tage": 472
       },
       {
-        "schluessel": "aktie|4=4&10=2|2S150|10",
-        "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): ab 4 und Ø Tagesumsatz: 5000000 bis 20000000",
-        "gruppenSchluessel": "aktie|4=4&10=2",
-        "sp": "2S150",
-        "spielart": "Turbo short Hebel 2, Stop 150 €",
+        "schluessel": "aktie|10=2&57=2|V1S150|10",
+        "gruppe": "Aktien: Ø Tagesumsatz: 5000000 bis 20000000 und Katalysator-Meldung (SEC-Volltext) in 20 Tagen: Katalysator short-Art vor 0–20 Tagen",
+        "gruppenSchluessel": "aktie|10=2&57=2",
+        "sp": "V1S150",
+        "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
         "fenster": 10,
-        "wertung": 9.36,
-        "quote": 17.9,
-        "ev": 3.1,
+        "wertung": 9.71,
+        "quote": 19.5,
+        "ev": 7.6,
         "tage": 471
       },
       {
@@ -635,6 +1011,18 @@
         "tage": 490
       },
       {
+        "schluessel": "aktie|3=0&56=2|V1S150|10",
+        "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Katalysator-Meldung (SEC-Volltext) in 5 Tagen: Katalysator short-Art vor 0–5 Tagen (Direktplatzierung, Zusammenlegung, Fortbestand …)",
+        "gruppenSchluessel": "aktie|3=0&56=2",
+        "sp": "V1S150",
+        "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+        "fenster": 10,
+        "wertung": 8.63,
+        "quote": 21.8,
+        "ev": 15.2,
+        "tage": 473
+      },
+      {
         "schluessel": "aktie|12=0&25=2|2S150|10",
         "gruppe": "Aktien: Tagesrendite über dem Markt %: unter -20 und VIX-Änderung 5 Tage: VIX ruhig (−5 bis +5 %)",
         "gruppenSchluessel": "aktie|12=0&25=2",
@@ -657,6 +1045,18 @@
         "quote": 21.3,
         "ev": 2.2,
         "tage": 323
+      },
+      {
+        "schluessel": "aktie|2=5&56=2|V4S150|10",
+        "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Katalysator-Meldung (SEC-Volltext) in 5 Tagen: Katalysator short-Art vor 0–5 Tagen (Direktplatzierung, Zusammenlegung, Fortbestand …)",
+        "gruppenSchluessel": "aktie|2=5&56=2",
+        "sp": "V4S150",
+        "spielart": "Hebel nach Schwankung short (Stop 4 Tagesschwankungen entfernt), Stop 150 €",
+        "fenster": 10,
+        "wertung": 7.88,
+        "quote": 19,
+        "ev": 8.8,
+        "tage": 457
       },
       {
         "schluessel": "aktie|3=0&17=2|V1S150|10",
@@ -693,18 +1093,6 @@
         "quote": 22.3,
         "ev": 13.5,
         "tage": 466
-      },
-      {
-        "schluessel": "aktie|3=0&18=3|V1S150|10",
-        "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
-        "gruppenSchluessel": "aktie|3=0&18=3",
-        "sp": "V1S150",
-        "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
-        "fenster": 10,
-        "wertung": 7.6,
-        "quote": 20.2,
-        "ev": 15.6,
-        "tage": 471
       },
       {
         "schluessel": "aktie|17=2&49=4|2S150|10",
@@ -803,18 +1191,6 @@
         "tage": 471
       },
       {
-        "schluessel": "aktie|2=5&15=4|V1S150|10",
-        "gruppe": "Aktien: 20-Tage-Rendite %: ab 50 und Quartalszahlen: keine in 20 Handelstagen",
-        "gruppenSchluessel": "aktie|2=5&15=4",
-        "sp": "V1S150",
-        "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
-        "fenster": 10,
-        "wertung": 6.38,
-        "quote": 19.5,
-        "ev": 1.2,
-        "tage": 473
-      },
-      {
         "schluessel": "aktie|16=5&52=3|V2L150|10",
         "gruppe": "Aktien: Branche: Energie/Rohstoffe und Im Weltgeschehen erwähnt: nicht erwähnt (20 Tage)",
         "gruppenSchluessel": "aktie|16=5&52=3",
@@ -887,6 +1263,18 @@
         "tage": 255
       },
       {
+        "schluessel": "aktie|18=3&56=2|V1S150|10",
+        "gruppe": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen und Katalysator-Meldung (SEC-Volltext) in 5 Tagen: Katalysator short-Art vor 0–5 Tagen (Direktplatzierung, Zusammenlegung, Fortbestand …)",
+        "gruppenSchluessel": "aktie|18=3&56=2",
+        "sp": "V1S150",
+        "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+        "fenster": 10,
+        "wertung": 5.53,
+        "quote": 21,
+        "ev": 20.7,
+        "tage": 405
+      },
+      {
         "schluessel": "aktie|20=0&24=1|V1S150|10",
         "gruppe": "Aktien: Großvertrag (8-K 1.01): Großvertrag: Reaktion am Stichtag und VIX (Angstbarometer): VIX 15 bis 20",
         "gruppenSchluessel": "aktie|20=0&24=1",
@@ -933,6 +1321,18 @@
         "quote": 18.5,
         "ev": 14.4,
         "tage": 408
+      },
+      {
+        "schluessel": "aktie|2=1&56=4|V1S150|10",
+        "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und Katalysator-Meldung (SEC-Volltext) in 5 Tagen: gemischte Katalysatoren vor 0–5 Tagen",
+        "gruppenSchluessel": "aktie|2=1&56=4",
+        "sp": "V1S150",
+        "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+        "fenster": 10,
+        "wertung": 5.28,
+        "quote": 20.1,
+        "ev": 25.6,
+        "tage": 383
       },
       {
         "schluessel": "aktie|23=3&33=0|V1S150|10",
@@ -1043,6 +1443,18 @@
         "tage": 267
       },
       {
+        "schluessel": "aktie|1=5&57=3|V4L150|10",
+        "gruppe": "Aktien: 5-Tage-Rendite %: ab 30 und Katalysator-Meldung (SEC-Volltext) in 20 Tagen: binärer Katalysator vor 0–20 Tagen",
+        "gruppenSchluessel": "aktie|1=5&57=3",
+        "sp": "V4L150",
+        "spielart": "Hebel nach Schwankung long (Stop 4 Tagesschwankungen entfernt), Stop 150 €",
+        "fenster": 10,
+        "wertung": 4.74,
+        "quote": 14.7,
+        "ev": 27.8,
+        "tage": 323
+      },
+      {
         "schluessel": "aktie|8=4&16=2|V1S150|10",
         "gruppe": "Aktien: Kurslücke %: ab 10 und Branche: Technologie",
         "gruppenSchluessel": "aktie|8=4&16=2",
@@ -1065,42 +1477,6 @@
         "quote": 12.8,
         "ev": 73.8,
         "tage": 180
-      },
-      {
-        "schluessel": "aktie|8=0&18=3|2S150|10",
-        "gruppe": "Aktien: Kurslücke %: unter -10 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
-        "gruppenSchluessel": "aktie|8=0&18=3",
-        "sp": "2S150",
-        "spielart": "Turbo short Hebel 2, Stop 150 €",
-        "fenster": 10,
-        "wertung": 4.65,
-        "quote": 26.3,
-        "ev": 8.5,
-        "tage": 308
-      },
-      {
-        "schluessel": "aktie|4=4&8=4|V1S150|10",
-        "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): ab 4 und Kurslücke %: ab 10",
-        "gruppenSchluessel": "aktie|4=4&8=4",
-        "sp": "V1S150",
-        "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
-        "fenster": 10,
-        "wertung": 4.62,
-        "quote": 24.1,
-        "ev": 7.8,
-        "tage": 460
-      },
-      {
-        "schluessel": "aktie|21=3&31=3|5S150|10",
-        "gruppe": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 6 bis 20 Handelstagen und Insider-Kauf (Formular 4): Insider-Kauf vor 6 bis 20 Handelstagen",
-        "gruppenSchluessel": "aktie|21=3&31=3",
-        "sp": "5S150",
-        "spielart": "Turbo short Hebel 5, Stop 150 €",
-        "fenster": 10,
-        "wertung": 4.6,
-        "quote": 48.2,
-        "ev": 115.7,
-        "tage": 83
       }
     ]
   }
