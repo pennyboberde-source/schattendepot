@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T17:09:49.816Z",
+  "stand": "2026-11-20T17:23:43.980Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -757,6 +757,64 @@
           "oeR": -0.01
         }
       }
+    },
+    {
+      "id": "2026-11-20-scan-palo-alto-networks-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "PALO ALTO NETWORKS INC",
+      "isin": "US6974351057",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 380.04,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T17:00:00.000Z",
+        "kurs": 315.3,
+        "level": 316.6,
+        "spanne": {
+          "hoch": 333.1,
+          "tief": 316.6
+        },
+        "richtung": "short"
+      },
+      "stop": 324.85,
+      "ziel": 300.4,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T17:05:00.000Z",
+        "basisKurs": 316.7,
+        "kurs": 6.3498,
+        "stueck": 157,
+        "kurswert": 996.92
+      },
+      "timeMachine": {
+        "zielZuerst": 0,
+        "stopZuerst": 8.6,
+        "keins": 91.4,
+        "gruen": 46.4,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 26,
+          "ziel": 1,
+          "stop": 9,
+          "oeR": -0.09
+        }
+      }
     }
   ],
   "trades": [
@@ -1237,6 +1295,64 @@
           "ziel": 2,
           "stop": 13,
           "oeR": -0.01
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-palo-alto-networks-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "PALO ALTO NETWORKS INC",
+      "isin": "US6974351057",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 380.04,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T17:00:00.000Z",
+        "kurs": 315.3,
+        "level": 316.6,
+        "spanne": {
+          "hoch": 333.1,
+          "tief": 316.6
+        },
+        "richtung": "short"
+      },
+      "stop": 324.85,
+      "ziel": 300.4,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T17:05:00.000Z",
+        "basisKurs": 316.7,
+        "kurs": 6.3498,
+        "stueck": 157,
+        "kurswert": 996.92
+      },
+      "timeMachine": {
+        "zielZuerst": 0,
+        "stopZuerst": 8.6,
+        "keins": 91.4,
+        "gruen": 46.4,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 26,
+          "ziel": 1,
+          "stop": 9,
+          "oeR": -0.09
         }
       }
     },
@@ -12335,7 +12451,7 @@
       "oeNettoProzent": 1.76,
       "oeR": -0.05
     },
-    "offen": 8,
+    "offen": 9,
     "gruppen": {
       "turbo": {
         "anzahl": 158,
@@ -12432,10 +12548,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 139,
-        "chance": 43.9,
-        "oeNetto": 0.12,
-        "wertung": -0.58
+        "faelle": 140,
+        "chance": 44.3,
+        "oeNetto": 0.19,
+        "wertung": -0.51
       }
     },
     "us:orb_long": {

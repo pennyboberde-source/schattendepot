@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T17:09:46.601Z",
+  "stand": "2026-11-20T17:23:38.227Z",
   "offen": [
     {
       "id": "2026-11-19-auto-exagen-inc",
@@ -120,6 +120,14 @@
           "alt": 1.9405,
           "neu": 1.9562,
           "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 2.223 € (+18.4 %)"
+        },
+        {
+          "zeit": "2026-11-20T17:23:38.227Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 1.9562,
+          "neu": 1.9801,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 2.2501 € (+19.8 %)"
         }
       ],
       "kauf": {
@@ -137,7 +145,7 @@
         "synthetisch": true
       },
       "zielkurs": 2.6202,
-      "stopkurs": 1.9562,
+      "stopkurs": 1.9801,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -146,9 +154,26 @@
         "hinweis": "letztes Geschäft 2026-11-19",
         "vortag": 130.745
       },
+      "teilverkaeufe": [
+        {
+          "zeit": "2026-11-20T17:23:38.227Z",
+          "stueck": 266,
+          "kurs": 2.2501,
+          "kurswert": 598.53,
+          "entgelt": {
+            "provision": 0,
+            "handelsplatz": 2.6,
+            "gesamt": 2.6
+          },
+          "betrag": 595.93,
+          "kursquelle": "Finnhub (2026-11-20T17:23:11.000Z)",
+          "synthetisch": true,
+          "grund": "teilziel"
+        }
+      ],
       "stand": {
-        "prozent": 19,
-        "zeit": "2026-11-20T17:08:38.000Z",
+        "prozent": 20.45,
+        "zeit": "2026-11-20T17:23:11.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -364,8 +389,8 @@
         }
       ],
       "stand": {
-        "prozent": 34.5,
-        "zeit": "2026-11-20T17:09:31.000Z",
+        "prozent": 34.49,
+        "zeit": "2026-11-20T17:23:14.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -467,8 +492,8 @@
         "vortag": 124.99
       },
       "stand": {
-        "prozent": -3.96,
-        "zeit": "2026-11-20T17:08:32.000Z",
+        "prozent": -4.24,
+        "zeit": "2026-11-20T17:23:14.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -587,8 +612,8 @@
         "vortag": 124.99
       },
       "stand": {
-        "prozent": 9.98,
-        "zeit": "2026-11-20T16:59:30.000Z",
+        "prozent": 15.23,
+        "zeit": "2026-11-20T17:22:08.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
