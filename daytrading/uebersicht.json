@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T15:54:07.114Z",
+  "stand": "2026-11-20T16:09:16.607Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -813,6 +813,122 @@
         "stueck": 68,
         "kurswert": 992.53
       }
+    },
+    {
+      "id": "2026-11-20-scan-netflix-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NETFLIX INC",
+      "isin": "US64110L1061",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 63.71,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:45:00.000Z",
+        "kurs": 53.14,
+        "level": 53.39,
+        "spanne": {
+          "hoch": 54,
+          "tief": 53.39
+        },
+        "richtung": "short"
+      },
+      "stop": 53.7,
+      "ziel": 51.88,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:45:00.000Z",
+        "basisKurs": 53.09,
+        "kurs": 10.647,
+        "stueck": 93,
+        "kurswert": 990.17
+      },
+      "timeMachine": {
+        "zielZuerst": 3.7,
+        "stopZuerst": 17.7,
+        "keins": 78.6,
+        "gruen": 57.4,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 7,
+          "stop": 11,
+          "oeR": 0.32
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-nike-inc-cl-b",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NIKE INC -CL B",
+      "isin": "US6541061031",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 37.13,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:50:00.000Z",
+        "kurs": 30.955,
+        "level": 30.965,
+        "spanne": {
+          "hoch": 31.41,
+          "tief": 30.965
+        },
+        "richtung": "short"
+      },
+      "stop": 31.19,
+      "ziel": 30.46,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:50:00.000Z",
+        "basisKurs": 30.945,
+        "kurs": 6.2005,
+        "stueck": 161,
+        "kurswert": 998.28
+      },
+      "timeMachine": {
+        "zielZuerst": 18.9,
+        "stopZuerst": 44.6,
+        "keins": 36.5,
+        "gruen": 45.8,
+        "schwelle": 33.3,
+        "urteil": "Nahe an der Gewinnschwelle",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 38,
+          "ziel": 7,
+          "stop": 17,
+          "oeR": -0.08
+        }
+      }
     }
   ],
   "trades": [
@@ -1350,6 +1466,122 @@
         "kurs": 14.596,
         "stueck": 68,
         "kurswert": 992.53
+      }
+    },
+    {
+      "id": "2026-11-20-scan-netflix-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NETFLIX INC",
+      "isin": "US64110L1061",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 63.71,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:45:00.000Z",
+        "kurs": 53.14,
+        "level": 53.39,
+        "spanne": {
+          "hoch": 54,
+          "tief": 53.39
+        },
+        "richtung": "short"
+      },
+      "stop": 53.7,
+      "ziel": 51.88,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:45:00.000Z",
+        "basisKurs": 53.09,
+        "kurs": 10.647,
+        "stueck": 93,
+        "kurswert": 990.17
+      },
+      "timeMachine": {
+        "zielZuerst": 3.7,
+        "stopZuerst": 17.7,
+        "keins": 78.6,
+        "gruen": 57.4,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 7,
+          "stop": 11,
+          "oeR": 0.32
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-nike-inc-cl-b",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NIKE INC -CL B",
+      "isin": "US6541061031",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 37.13,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:50:00.000Z",
+        "kurs": 30.955,
+        "level": 30.965,
+        "spanne": {
+          "hoch": 31.41,
+          "tief": 30.965
+        },
+        "richtung": "short"
+      },
+      "stop": 31.19,
+      "ziel": 30.46,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:50:00.000Z",
+        "basisKurs": 30.945,
+        "kurs": 6.2005,
+        "stueck": 161,
+        "kurswert": 998.28
+      },
+      "timeMachine": {
+        "zielZuerst": 18.9,
+        "stopZuerst": 44.6,
+        "keins": 36.5,
+        "gruen": 45.8,
+        "schwelle": 33.3,
+        "urteil": "Nahe an der Gewinnschwelle",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 38,
+          "ziel": 7,
+          "stop": 17,
+          "oeR": -0.08
+        }
       }
     },
     {
@@ -12103,7 +12335,7 @@
       "oeNettoProzent": -1.05,
       "oeR": -0.46
     },
-    "offen": 9,
+    "offen": 11,
     "gruppen": {
       "turbo": {
         "anzahl": 154,
@@ -12211,10 +12443,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 137,
-        "chance": 36.5,
-        "oeNetto": -0.56,
-        "wertung": -0.75
+        "faelle": 140,
+        "chance": 35.7,
+        "oeNetto": -0.58,
+        "wertung": -0.77
       }
     }
   },
@@ -12223,7 +12455,5 @@
     "claude": 1,
     "autopilot": 0
   },
-  "hinweise": [
-    "Time Machine SK HYNIX INC-GDS REG S: HTTP 404 bei api.twelvedata.com"
-  ]
+  "hinweise": []
 }
