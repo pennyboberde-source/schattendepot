@@ -146,6 +146,8 @@ export interface Kandidat {
   muster: string;
   /** Plattform mit ungeprüfter Handelbarkeit (CFD/außerbörslich) */
   ungeprueft?: boolean;
+  /** Plattform (gettex, boerse, ausland, us …) für die Auswertung */
+  platz?: string;
 }
 
 export interface Order {
@@ -156,14 +158,18 @@ export interface Order {
   treffer: boolean;
   muster: string;
   ungeprueft?: boolean;
+  platz?: string;
 }
 
 /**
  * Depot nachspielen: je Tag die Kandidaten nach Wertung, höchstens `maxOffen` Orders gleichzeitig, je Wert eine, höchstens
  * `maxJeTag` neue am Tag. Eine Order belegt ihren Platz vom Einstieg (Tag nach dem Stichtag) bis zum Ausstieg.
  */
-export function nachspielen(kandidaten: Kandidat[], r: { maxOffen: number; maxJeTag: number }): Order[] {
+export function nachspielen(kandidaten: Kandidat[], r: { maxOffen: number; maxJeTag: number; sperreTage?: number }): Order[] {
   const jeTag = new Map<number, Kandidat[]>();
+  // sperreTage (20.11.2026): derselbe Wert frühestens so viele Tage nach seinem letzten Einstieg wieder (Prüfung, ob das
+  // Ergebnis an wiederholten Einstiegen in dieselbe Bewegung hängt)
+  const letzter = new Map<string, number>();
   for (const k of kandidaten) (jeTag.get(k.tag) ?? jeTag.set(k.tag, []).get(k.tag)!).push(k);
   const offen: Order[] = [];
   const fertig: Order[] = [];
@@ -174,7 +180,9 @@ export function nachspielen(kandidaten: Kandidat[], r: { maxOffen: number; maxJe
     for (const k of jeTag.get(tag)!.sort((a, b) => b.wertung - a.wertung)) {
       if (offen.length >= r.maxOffen || neu >= r.maxJeTag) break;
       if (offen.some((o) => o.wert === k.wert)) continue;
-      offen.push({ einstieg, ausstieg: einstieg + Math.max(0, k.dauer - 1), wert: k.wert, netto: k.netto, treffer: k.treffer, muster: k.muster, ...(k.ungeprueft ? { ungeprueft: true } : {}) });
+      if (r.sperreTage && einstieg - (letzter.get(k.wert) ?? -1e9) < r.sperreTage) continue;
+      letzter.set(k.wert, einstieg);
+      offen.push({ einstieg, ausstieg: einstieg + Math.max(0, k.dauer - 1), wert: k.wert, netto: k.netto, treffer: k.treffer, muster: k.muster, ...(k.ungeprueft ? { ungeprueft: true } : {}), ...(k.platz ? { platz: k.platz } : {}) });
       neu++;
     }
   }

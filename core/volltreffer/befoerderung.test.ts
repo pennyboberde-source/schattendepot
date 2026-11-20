@@ -138,6 +138,10 @@ describe('Einzelmitteilungen', () => {
     expect(m2.neu.map((m) => m.titel)).toEqual(['🕰️ Zeitreise-Regel gestoppt']);
     expect(stufe3Mitteilungen({ vorgemerkt: [], offen: [], abgeschlossen: [] }, m2.gemeldet, b).neu).toEqual([]);
   });
+  it('Modell-Regel: Kennzeichen im Text (20.11.2026)', () => {
+    const vor = { ...fall('MR', '2026-12-07', null, null, 'lauert', null), modellRegel: true };
+    expect(stufe3Mitteilungen({ vorgemerkt: [vor], offen: [], abgeschlossen: [] }, [], null).neu[0].text).toMatch(/^🧠 Modell-Regel · /);
+  });
 });
 
 describe('V6: verschiedene Tage und Ø je Tag (18.11.2026)', () => {

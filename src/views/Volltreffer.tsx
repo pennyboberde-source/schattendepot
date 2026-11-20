@@ -46,6 +46,19 @@ interface Uebersicht {
       regel: { mindestOrders: number; minOe: number; maxVerlust: number };
       kennzahlen: JagdKennzahlen;
     };
+    /** Modell-Regel (seit 20.11.2026): bis zum Go nur virtuell */
+    modellRegel?: {
+      an: boolean;
+      aktiv: boolean;
+      ausGrund?: string;
+      ab: string;
+      oberste: number;
+      maxOffen: number;
+      beleg: { orders: number; quote: number; oe: number; monatePlus: number; monate: number } | null;
+      kennzahlen: JagdKennzahlen | null;
+      bremse: { am: string; grund: string } | null;
+      virtuell?: { offen: JagdFall[]; vorgemerkt: JagdFall[]; abgeschlossen: JagdFall[] };
+    };
   };
 }
 
@@ -56,7 +69,7 @@ function JagdZeile({ j }: { j: JagdFall }) {
   return (
     <li class="muster-zeile">
       <strong>
-        {`${j.zeitreise ? '🕰️ ' : ''}${j.rueckenwind ? '🌬️ ' : ''}${j.wert}${j.markt === 'krypto' ? ' (Coin)' : ''} · ${ART[j.art] ?? j.art}`}
+        {`${j.zeitreise ? '🕰️ ' : ''}${j.rueckenwind ? '🌬️ ' : ''}${j.modellRegel ? '🧠 ' : ''}${j.wert}${j.markt === 'krypto' ? ' (Coin)' : ''} · ${ART[j.art] ?? j.art}`}
         {j.netto !== null ? ` · ${euro(j.netto, { vorzeichen: true })}` : ''}
       </strong>
       <span class="klein">
@@ -115,6 +128,17 @@ export function OrdersKarte() {
                 : ` – ${s.zeitreise.ausGrund ?? 'ausgeschaltet.'}`}
             {s.zeitreise.kennzahlen.anzahl + s.zeitreise.kennzahlen.offen > 0
               ? ` Bisher ${zahl(s.zeitreise.kennzahlen.anzahl)} beendet (${zahl(s.zeitreise.kennzahlen.volltreffer)} Volltreffer, Summe ${euro(s.zeitreise.kennzahlen.summe, { vorzeichen: true })}), ${zahl(s.zeitreise.kennzahlen.offen)} laufen.`
+              : ''}
+          </p>
+        )}
+        {s.modellRegel && (
+          <p class="klein" data-testid="modell-regel">
+            🧠 <strong>Modell-Regel {s.modellRegel.an ? 'an' : s.modellRegel.aktiv ? 'gestoppt' : 'virtuell'}</strong>
+            {` – das Gesamtmodell wählt je Tag die obersten ${s.modellRegel.oberste.toLocaleString('de-DE')} % seiner Werte, höchstens ${zahl(s.modellRegel.maxOffen)} Orders gleichzeitig (gekennzeichnet mit 🧠).`}
+            {s.modellRegel.beleg ? ` Beleg Modell-Zeitreise: ${zahl(s.modellRegel.beleg.orders)} Orders, ${s.modellRegel.beleg.quote.toLocaleString('de-DE')} % Volltreffer, Ø ${euro(s.modellRegel.beleg.oe, { vorzeichen: true })}, ${zahl(s.modellRegel.beleg.monatePlus)} von ${zahl(s.modellRegel.beleg.monate)} Monaten im Plus.` : ''}
+            {s.modellRegel.bremse ? ` Gestoppt am ${datumKurz(s.modellRegel.bremse.am)}: ${s.modellRegel.bremse.grund}.` : !s.modellRegel.aktiv ? ` ${s.modellRegel.ausGrund ?? ''}.` : ''}
+            {s.modellRegel.kennzahlen && s.modellRegel.kennzahlen.anzahl + s.modellRegel.kennzahlen.offen > 0
+              ? ` Seit ${datumKurz(s.modellRegel.ab)}: ${zahl(s.modellRegel.kennzahlen.anzahl)} beendet (${zahl(s.modellRegel.kennzahlen.volltreffer)} Volltreffer, Summe ${euro(s.modellRegel.kennzahlen.summe, { vorzeichen: true })}), ${zahl(s.modellRegel.kennzahlen.offen)} laufen${s.modellRegel.virtuell ? `, ${zahl(s.modellRegel.virtuell.vorgemerkt.length)} vorgemerkt` : ''}.`
               : ''}
           </p>
         )}

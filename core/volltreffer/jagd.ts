@@ -44,6 +44,8 @@ export interface JagdFall {
   quote?: number;
   /** sichtbare Order nach der Zeitreise-Regel (seit 20.11.2026) statt nach der 6er-Regel */
   zeitreise?: boolean;
+  /** sichtbare (oder bis zum Go virtuelle) Order nach der Modell-Regel (seit 20.11.2026): Gesamtmodell, belegt per Modell-Zeitreise */
+  modellRegel?: boolean;
   /** Q6/Q7: Reddit-Aufmerksamkeit und Leihgebühr in Klassen (jüngster Schnappschuss) */
   stimmung?: string;
   /** Q4 Rückenwind-Long (eigene Plätze an Gegenwind-Tagen) */

@@ -1176,7 +1176,9 @@ if (ZEITREISE) {
   const art = new Uint8Array(cap * ZS.length);
   const aus = new Int32Array(cap * ZS.length);
   // 20.11.2026: Plattform ungeprüft (CFD/außerbörslich) – zeigt, wie viel der sichtbaren Ergebnisse daran hängt
-  const ung = new Uint8Array(cap * ZS.length);
+  const PLAETZE: Platz[] = ['gettex', 'boerse', 'ausland', 'us', 'cfd', 'otc'];
+  const plz = new Uint8Array(cap * ZS.length);
+  const ungZ = (i: number) => plz[i] === 5 || plz[i] === 6;
   const zTag = new Int32Array(cap);
   const zAbs = new Int16Array(cap);
   const zMarkt = new Uint8Array(cap);
@@ -1212,7 +1214,7 @@ if (ZEITREISE) {
         if (!au) return;
         netto[z * ZS.length + j] = au.netto;
         art[z * ZS.length + j] = au.art === 'treffer' ? 1 : 0;
-        ung[z * ZS.length + j] = pl === 'cfd' || pl === 'otc' ? 1 : 0;
+        plz[z * ZS.length + j] = PLAETZE.indexOf(pl) + 1;
         aus[z * ZS.length + j] = kal(k[Math.min(k.length - 1, i + au.tag)].datum);
         irgendwas = true;
       });
@@ -1311,16 +1313,28 @@ if (ZEITREISE) {
         const bw = zs.map((z) => (bew[z] = bewerten(modell!, X, z)));
         for (const q of qs)
           for (const z of tagesAuswahl(zs, bw, (zz) => zTag[zz], q))
-            kand.get(q)!.push({ tag: zTag[z], wert: zWert[z], wertung: bew[z], netto: netto[z * ZS.length + j], treffer: art[z * ZS.length + j] === 1, dauer: Math.max(1, aus[z * ZS.length + j] - zTag[z]), muster: text });
+            kand.get(q)!.push({ tag: zTag[z], wert: zWert[z], wertung: bew[z], netto: netto[z * ZS.length + j], treffer: art[z * ZS.length + j] === 1, dauer: Math.max(1, aus[z * ZS.length + j] - zTag[z]), muster: text, platz: PLAETZE[plz[z * ZS.length + j] - 1] ?? '?' });
       }
       for (const q of qs) {
         const k2 = kand.get(q)!;
         const kz = tagesKennzahlen(k2);
         const sicht = bilanz(nachspielen(k2, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatZ);
-        const sichtGw = short ? bilanz(nachspielen(k2.filter((x) => !gegenwindZ(x.tag)), { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatZ) : null;
-        ergebnisse.push({ modell: name, text, markt: m.markt, spielart: m.spielart, ziel: m.ziel ?? 'netto', universum: m.universum?.name ?? null, oberste: q, ab: erstesAbs >= 0 ? datumZ(absStart[erstesAbs]) : null, trainings, faelle: kz, sichtbar: sicht, ...(sichtGw ? { sichtbarGegenwind: sichtGw } : {}) });
+        const ordersGw = nachspielen(short ? k2.filter((x) => !gegenwindZ(x.tag)) : k2, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag });
+        const sichtGw = short ? bilanz(ordersGw, monatZ) : null;
+        // je Plattform (US-Broker = Leerverkauf/Marge simuliert, Leihbarkeit rückwirkend nicht prüfbar)
+        const jePlatz: Record<string, { orders: number; volltreffer: number; oe: number }> = {};
+        for (const o of ordersGw) {
+          const e2 = (jePlatz[o.platz ?? '?'] ??= { orders: 0, volltreffer: 0, oe: 0 });
+          e2.orders++;
+          if (o.treffer) e2.volltreffer++;
+          e2.oe += o.netto;
+        }
+        for (const e2 of Object.values(jePlatz)) e2.oe = Math.round((e2.oe / e2.orders) * 10) / 10;
+        // Gegenprobe: derselbe Wert erst 14 Tage nach seinem letzten Einstieg wieder (wie die Sperre der A/B-Prüfung)
+        const mitSperreB = bilanz(nachspielen(short ? k2.filter((x) => !gegenwindZ(x.tag)) : k2, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag, sperreTage: 14 }), monatZ);
+        ergebnisse.push({ modell: name, text, markt: m.markt, spielart: m.spielart, ziel: m.ziel ?? 'netto', universum: m.universum?.name ?? null, oberste: q, ab: erstesAbs >= 0 ? datumZ(absStart[erstesAbs]) : null, trainings, faelle: kz, sichtbar: sicht, ...(sichtGw ? { sichtbarGegenwind: sichtGw } : {}), jePlatz, mitSperre: mitSperreB });
         const s2 = sichtGw ?? sicht;
-        log(`Modell-Zeitreise ${text}, oberste ${q} %: ${kz.faelle} Fälle an ${kz.tage} Tagen, Quote ${kz.quote} %, Ø ${kz.oe} € (Tag als Einheit ${kz.oeTag} ± ${kz.seTag}; Hälften ${kz.haelften.map((h) => `${h.oeTag} € / ${h.quote} %`).join(' | ')}) · sichtbar ${sichtGw ? 'mit Gegenwind ' : ''}${s2.orders} Orders, ${s2.volltreffer} Volltreffer (${s2.quote} %), Ø ${s2.oe} €, netto ${s2.netto} €, Rückgang ${s2.maxRueckgang} €, ${s2.monate.filter((mo) => mo.netto > 0).length}/${s2.monate.length} Monate im Plus.`);
+        log(`Modell-Zeitreise ${text}, oberste ${q} %: ${kz.faelle} Fälle an ${kz.tage} Tagen, Quote ${kz.quote} %, Ø ${kz.oe} € (Tag als Einheit ${kz.oeTag} ± ${kz.seTag}; Hälften ${kz.haelften.map((h) => `${h.oeTag} € / ${h.quote} %`).join(' | ')}) · sichtbar ${sichtGw ? 'mit Gegenwind ' : ''}${s2.orders} Orders, ${s2.volltreffer} Volltreffer (${s2.quote} %), Ø ${s2.oe} €, netto ${s2.netto} €, Rückgang ${s2.maxRueckgang} €, ${s2.monate.filter((mo) => mo.netto > 0).length}/${s2.monate.length} Monate im Plus · mit 14-Tage-Sperre je Wert ${mitSperreB.orders} Orders, Ø ${mitSperreB.oe} €, ${mitSperreB.monate.filter((mo) => mo.netto > 0).length}/${mitSperreB.monate.length} Monate · je Plattform ${Object.entries(jePlatz).map(([k3, v3]) => `${k3} ${v3.orders}/${v3.volltreffer} VT/Ø ${v3.oe} €`).join(', ')}.`);
       }
       log(`Modell-Zeitreise ${text}: ${trainings} Trainings, ${R.length} Fälle, ${Math.round((Date.now() - t0m) / 1000)} s.`);
     }
@@ -1472,7 +1486,7 @@ if (ZEITREISE) {
         if (!wb.text) wb.text = `${gruppenText(gruppen[x.g])} – ${spielartText(SP[ZS[x.s]])}`;
         beste = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text };
       }
-      if (!(gwV[iRollK] && SP[ZS[x.s]].richtung === 'short') && !ung[z * ZS.length + x.s] && (!besteGeprueft || x.wertung > besteGeprueft.wertung)) {
+      if (!(gwV[iRollK] && SP[ZS[x.s]].richtung === 'short') && !ungZ(z * ZS.length + x.s) && (!besteGeprueft || x.wertung > besteGeprueft.wertung)) {
         if (!wb.text) wb.text = `${gruppenText(gruppen[x.g])} – ${spielartText(SP[ZS[x.s]])}`;
         besteGeprueft = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text };
       }
@@ -1481,7 +1495,7 @@ if (ZEITREISE) {
         const bw = besteWindV[gi];
         if (bw && x.wertung <= bw.wertung) continue;
         if (!wb.text) wb.text = `${gruppenText(gruppen[x.g])} – ${spielartText(SP[ZS[x.s]])}`;
-        besteWindV[gi] = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text, ...(ung[z * ZS.length + x.s] ? { ungeprueft: true } : {}) };
+        besteWindV[gi] = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text, ...(ungZ(z * ZS.length + x.s) ? { ungeprueft: true } : {}) };
       }
     }
     if (beste) kandidaten.push(beste);
@@ -2328,6 +2342,31 @@ interface ModellErgebnis {
   wichtig: string[];
   faelleHeute: number;
 }
+// Modell-Regel (20.11.2026) und ehrlicher Vorwärtstest der Modelle: Die Auswahl eines Tages wird im Modell-Wahl-Buch
+// festgehalten (nur anhängen) und nie neu gerechnet – ein später trainiertes Modell kennt die Ergebnisse dieser Tage schon.
+// Gewählt wird ein Tag nur, solange keiner seiner Fälle ein Ergebnis hat (praktisch: der jüngste Stichtag).
+const MR = (vt.v6 as unknown as { modellRegel?: { aktiv: boolean; ausGrund?: string; ab: string; modelle: string[]; oberste: number; maxOffen: number; beleg?: { orders: number; quote: number; oe: number; monatePlus: number; monate: number }; leihe?: { pruefen: boolean; maxGebuehrProzent: number }; bremse: ZrBremsRegel } }).modellRegel;
+type WahlEintrag = { w: string; r: number; pl?: string; leihbar?: boolean | null };
+const mwBuch = leseJson<{ eintraege: Record<string, Record<string, WahlEintrag[]>> }>('lernen/muster/modell-wahl.json', { eintraege: {} });
+let mwNeu = 0;
+const modellLive = new Map<string, { modell: Modell; m: (typeof MODELLE)[number] }>();
+const mrFaelle: JagdFall[] = [];
+/** jüngste IBKR-Leihliste (Kürzel → Gebühr % p. a., verfügbare Stück) aus dem privaten Archiv, einmal geladen */
+let leiheKarte: Map<string, Leihe> | null = null;
+const leiheLaden = (): Map<string, Leihe> => {
+  if (leiheKarte) return leiheKarte;
+  leiheKarte = new Map();
+  try {
+    const o = join(ARCHIV, 'leihe');
+    if (existsSync(o)) {
+      const f = readdirSync(o).filter((j) => /^\d{4}$/.test(j)).sort().flatMap((j) => readdirSync(join(o, j)).sort().map((x) => join(o, j, x))).pop();
+      if (f) for (const l of leiheLesen(gunzipSync(readFileSync(f)).toString('utf8').split('\n').map((z, i) => (i === 0 ? '#SYM|FEERATE|AVAILABLE|' : z.replace(/,/g, '|'))).join('\n'))) leiheKarte.set(l.kuerzel, l);
+    }
+  } catch (err) {
+    log(`Leihliste nicht lesbar: ${String(err).slice(0, 120)}`);
+  }
+  return leiheKarte;
+};
 const modellErgebnisse: ModellErgebnis[] = [];
 const modellAuswahl = new Map<string, { modell: Modell; q: number; m: (typeof MODELLE)[number]; musterP?: number; passt?: (z: number) => boolean }>();
 if (MODELLE.length && mZahl) {
@@ -2509,6 +2548,7 @@ if (MODELLE.length && mZahl) {
     if (!bestes) continue;
     // Endgültiges Modell auf allen Fällen; gewählt wird später je Tag (oberste q % des Tages)
     const mAlle = trainieren(mX, P, gegenTag(mY[m.idx], gelabelt, (z) => mTag[z]), Int32Array.from(gelabelt), MC!.einstellungen, erlaubt);
+    modellLive.set(`${m.spielart}${modellZusatz(m)}`, { modell: mAlle, m });
     const w = wichtigkeit(mAlle);
     bestes.wichtig = w
       .map((x, a) => [x, a] as const)
@@ -2543,13 +2583,34 @@ if (MODELLE.length && mZahl) {
     const zeilen: number[] = [];
     const uniL = universumIdx.get(a.m.idx)!;
     for (let z = 0; z < mZahl; z++) if (mAnw[a.m.idx][z] && mTag[z] >= vonTag && reihen[mReihe[z]].markt === a.m.markt && (!uniL.length || uniL.some((b) => b.a >= 0 && b.klassen.has(mX[z * P + b.a])))) zeilen.push(z);
-    const bew = zeilen.map((z) => bewerten(a.modell, mX, z));
-    let gewaehlt: number[];
-    if (a.passt) {
-      // Muster × Modell: Musterfälle, die das Modell im oberen Teil ihres Tages sieht
-      const r = tagesRang(zeilen, bew, (z) => mTag[z]);
-      gewaehlt = zeilen.filter((z, k) => a.passt!(z) && r[k] >= a.musterP!);
-    } else gewaehlt = tagesAuswahl(zeilen, bew, (z) => mTag[z], a.q);
+    // je Tag: festgehaltene Auswahl aus dem Modell-Wahl-Buch; neu gewählt nur Tage ohne bekannte Ergebnisse (20.11.2026 –
+    // vorher wählte das heute trainierte Modell alle Tage seit dem Eintrag neu und kannte deren Ergebnisse teilweise schon)
+    const jeTagZ = new Map<number, number[]>();
+    for (const z of zeilen) (jeTagZ.get(mTag[z]) ?? jeTagZ.set(mTag[z], []).get(mTag[z])!).push(z);
+    const buchM = (mwBuch.eintraege[schluessel] ??= {});
+    const gewaehlt: number[] = [];
+    for (const [t, zs] of [...jeTagZ].sort((x, y) => x[0] - y[0])) {
+      const d = alleTage[t];
+      const fest = buchM[d];
+      if (fest) {
+        const w = new Set(fest.map((x) => x.w));
+        gewaehlt.push(...zs.filter((z) => w.has(reihen[mReihe[z]].schluessel)));
+        continue;
+      }
+      if (zs.some((z) => Number.isFinite(mY[a.m.idx][z]))) continue;
+      const bew = zs.map((z) => bewerten(a.modell, mX, z));
+      let sel: number[];
+      if (a.passt) {
+        // Muster × Modell: Musterfälle, die das Modell im oberen Teil ihres Tages sieht
+        const r = tagesRang(zs, bew, (z) => mTag[z]);
+        sel = zs.filter((z, k) => a.passt!(z) && r[k] >= a.musterP!);
+      } else sel = tagesAuswahl(zs, bew, (z) => mTag[z], a.q);
+      const rang = new Map(zs.map((z, k) => [z, bew[k]]));
+      sel.sort((x, y) => rang.get(y)! - rang.get(x)!);
+      buchM[d] = sel.map((z, k) => ({ w: reihen[mReihe[z]].schluessel, r: k + 1 }));
+      mwNeu++;
+      gewaehlt.push(...sel);
+    }
     for (const { z } of mitSperre(gewaehlt.map((z) => ({ z, wert: mReihe[z], tag: mI[z] })), vt.pruefung.sperreTage)) {
       const r = reihen[mReihe[z]];
       const x = merkmale(r.kerzen, mI[z]);
@@ -2562,6 +2623,73 @@ if (MODELLE.length && mZahl) {
       if (fall) vorwaerts.push(fall);
     }
   }
+  // Modell-Regel (20.11.2026): je Handelstag ab „ab“ die obersten Prozent des Modell-Universums, festgehalten im Buch
+  if (MR) {
+    const vonTagMR = tagNrAlle.get(alleTage.find((d) => d >= MR.ab) ?? '9999') ?? Infinity;
+    const leihe = MR.leihe?.pruefen ? leiheLaden() : new Map<string, Leihe>();
+    const reiheNachSchluessel = new Map(reihen.map((r) => [r.schluessel, r]));
+    for (const name of MR.modelle) {
+      const live = modellLive.get(name);
+      if (!live) {
+        log(`Modell-Regel ${name}: Modell nicht trainiert – übersprungen.`);
+        continue;
+      }
+      const { modell, m } = live;
+      const key = `modellregel|${name}`;
+      const buchM = (mwBuch.eintraege[key] ??= {});
+      const uniL = universumIdx.get(m.idx)!;
+      const jeTagZ = new Map<number, number[]>();
+      for (let z = 0; z < mZahl; z++)
+        if (mAnw[m.idx][z] && mTag[z] >= vonTagMR && reihen[mReihe[z]].markt === m.markt && (!uniL.length || uniL.some((b) => b.a >= 0 && b.klassen.has(mX[z * P + b.a]))))
+          (jeTagZ.get(mTag[z]) ?? jeTagZ.set(mTag[z], []).get(mTag[z])!).push(z);
+      const sp0 = SP[m.s];
+      for (const [t, zs] of [...jeTagZ].sort((x, y) => x[0] - y[0])) {
+        const d = alleTage[t];
+        if (buchM[d] || zs.some((z) => Number.isFinite(mY[m.idx][z]))) continue;
+        const bew = zs.map((z) => bewerten(modell, mX, z));
+        const sel = tagesAuswahl(zs, bew, (z) => mTag[z], MR.oberste);
+        const rang = new Map(zs.map((z, k) => [z, bew[k]]));
+        sel.sort((x, y) => rang.get(y)! - rang.get(x)!);
+        buchM[d] = sel.map((z, k) => {
+          const r = reihen[mReihe[z]];
+          const x = merkmale(r.kerzen, mI[z]);
+          const spM = x ? konk(sp0, x) : null;
+          const pl = x && spM ? platzFuer(r, spM, plattformAm(r, x), false) : null;
+          let leihbar: boolean | null = null;
+          if (pl === 'us' && spM?.richtung === 'short' && leihe.size) {
+            const l = leihe.get(r.schluessel.slice(2).split('#')[0]);
+            const stueck = Math.ceil((vt.v6.einsatz * 1.1 * Math.max(1, spM.hebel)) / Math.max(0.01, r.kerzen[mI[z]].c));
+            leihbar = !!l && l.verfuegbar >= stueck && l.gebuehr <= (MR.leihe?.maxGebuehrProzent ?? 100);
+          }
+          return { w: r.schluessel, r: k + 1, ...(pl ? { pl } : {}), ...(leihbar !== null ? { leihbar } : {}) };
+        });
+        mwNeu++;
+      }
+      // Fälle aller festgehaltenen Tage (Einstieg zur nächsten Eröffnung; Kosten je Plattform; ohne CFD)
+      const e: BuchMuster = { schluessel: key, gruppe: `Modell-Regel: Gesamtmodell ${spielartText(sp0)}${m.universum ? ` – ${m.universum.text}` : ''}, oberste ${MR.oberste} % des Tages`, gruppenSchluessel: key, sp: m.spielart, fenster: m.fenster, seit: MR.ab, wertung: 0, rueckblick: { quote: MR.beleg?.quote ?? 0, ev: MR.beleg?.oe ?? 0, se: 0, faelle: MR.beleg?.orders ?? 0 }, status: 'test' };
+      let ohneLeihe = 0;
+      for (const [d, liste] of Object.entries(buchM)) {
+        if (d < MR.ab) continue;
+        for (const w of liste) {
+          if (MR.leihe?.pruefen && w.leihbar === false) {
+            ohneLeihe++;
+            continue;
+          }
+          const r = reiheNachSchluessel.get(w.w);
+          const i = r ? r.kerzen.findIndex((kz) => kz.datum === d) : -1;
+          if (!r || i < 0) continue;
+          const x = merkmale(r.kerzen, i);
+          const spM = x ? konk(sp0, x) : null;
+          const pl = x && spM ? platzFuer(r, spM, plattformAm(r, x), false) : null;
+          if (!x || !spM || !pl) continue;
+          const f = jagdFall(r, i, { ...e, wertung: 100 - w.r }, kostenFuer(r.markt, x.umsatz20, pl, spM), pl, spM);
+          if (f) mrFaelle.push({ ...f, modellRegel: true });
+        }
+      }
+      log(`Modell-Regel ${name}: ${Object.keys(buchM).length} Tage festgehalten, ${mrFaelle.length} Fälle, ${ohneLeihe} Shorts beim US-Broker nicht leihbar (IBKR-Liste ${leihe.size} Werte).`);
+    }
+  }
+  if (mwNeu || MR) schreibeJson('lernen/muster/modell-wahl.json', { stand: jetzt.toISOString(), hinweis: 'Modell-Wahl-Buch (seit 20.11.2026, nur anhängen): je Modell und Stichtag die Werte, die das Modell an diesem Tag gewählt hat (Rang), bei Modell-Regel-Shorts beim US-Broker auch die Plattform und ob der Wert bei IBKR leihbar war. Ein Tag wird nur gewählt, solange keiner seiner Fälle ein Ergebnis hat – danach nie neu.', eintraege: mwBuch.eintraege });
   schreibeJson('lernen/muster/modell.json', {
     stand: jetzt.toISOString(),
     hinweis: 'Gesamtmodell (Quantensprung, seit 16.11.2026): Gradient Boosting über die Klassen aller wertbezogenen Merkmale (marktweite wie VIX, Fed, Öl bleiben draußen), Ziel Ergebnis nach Kosten gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % des Tages. Gemessen nur außerhalb der Trainingsdaten (Modell aus Zeitraum A bewertet B und umgekehrt); bestanden wie ein Muster. Nur verdichtete Kennzahlen.',
@@ -2937,7 +3065,33 @@ if (vt.erkennung) {
     }
     log(`Rückenwind-Long: ${kand.length} Fälle an Gegenwind-Tagen, ${rw.offen.length} offen, ${rw.vorgemerkt.length} vorgemerkt, ${rw.kennzahlen.anzahl} abgeschlossen (${rwStand.grund}).`);
   }
-  if (ZRV || RWC) schreibeJson('lernen/muster/zeitreise-buch.json', { stand: jetzt.toISOString(), hinweis: 'Zeitreise-Regel (seit 20.11.2026): ab welchem Stichtag ein Muster der Zeitreise-Auswahl sichtbar ordern darf (gewaehlt) und ab wann nicht mehr (abgewaehlt); bremse = Regel gestoppt. Nur anhängen.', eintraege: zrBuch.eintraege });
+  // Modell-Regel (20.11.2026): eigene Plätze, Gegenwind-Filter für Shorts, eigene Bremse (Eintrag „bremse“ mit Schlüssel
+  // „modellregel“ im Zeitreise-Buch); bis zum Go des Nutzers nur virtuell (eigene Kennzahlen, keine Mitteilung)
+  let mr: ReturnType<typeof stufe3Waehlen> | null = null;
+  let mrStand: ReturnType<typeof zrBremse> | null = null;
+  const mrBremsEintrag = () => (MR ? [...zrBuch.eintraege].reverse().find((e) => e.status === 'bremse' && e.schluessel === 'modellregel' && e.am >= MR.ab) ?? null : null);
+  if (MR && mrFaelle.length) {
+    for (const f of mrFaelle) {
+      const u = urteile.get(`${f.wert.toUpperCase()}|${f.stichtag}`);
+      if (u) Object.assign(f, u);
+    }
+    const kand = mrFaelle.filter((f) => !gegenwindShort(f) && f.stichtag >= MR.ab);
+    const keys = new Set(kand.map((f) => f.muster));
+    const waehleMr = () => {
+      const b2 = mrBremsEintrag();
+      return stufe3Waehlen(kand, new Map([...keys].map((k2) => [k2, [{ von: MR.ab, bis: b2 ? b2.am : null }]])), { ...v6, maxOffen: MR.maxOffen }, ohneNein, klumpenRegel);
+    };
+    mr = waehleMr();
+    mrStand = zrBremse([...mr.offen, ...mr.abgeschlossen], MR.bremse);
+    if (mrStand.aus && !mrBremsEintrag()) {
+      zrBuch.eintraege.push({ schluessel: 'modellregel', status: 'bremse', am: neuesterTag('aktie'), grund: mrStand.grund });
+      mr = waehleMr();
+      log(`Modell-Regel GEBREMST: ${mrStand.grund}.`);
+    }
+    log(`Modell-Regel (${MR.aktiv ? 'sichtbar' : 'virtuell bis zum Go'}): ${kand.length} Fälle, ${mr.offen.length} offen, ${mr.vorgemerkt.length} vorgemerkt, ${mr.kennzahlen.anzahl} abgeschlossen (Volltreffer ${mr.kennzahlen.quote} %, Ø ${mr.kennzahlen.ev} €; ${mrStand.grund}).`);
+  }
+  const mrS = MR?.aktiv ? mr : null;
+  if (ZRV || RWC || MR) schreibeJson('lernen/muster/zeitreise-buch.json', { stand: jetzt.toISOString(), hinweis: 'Zeitreise-Regel (seit 20.11.2026): ab welchem Stichtag ein Muster der Zeitreise-Auswahl sichtbar ordern darf (gewaehlt) und ab wann nicht mehr (abgewaehlt); bremse = Regel gestoppt. Nur anhängen.', eintraege: zrBuch.eintraege });
   const zrBremsEintrag = ZRV ? [...zrBuch.eintraege].reverse().find((e) => e.status === 'bremse' && e.schluessel !== 'rueckenwind' && e.am >= ZRV.ab) ?? null : null;
   const befoerdertJetzt = [...alleMuster.values(), ...musterBuch.eintraege]
     .filter((e, i, a) => a.findIndex((x) => x.schluessel === e.schluessel) === i && istBefoerdert(zeiten3, e.schluessel))
@@ -2968,7 +3122,7 @@ if (vt.erkennung) {
     const t = stimmungText(redditJe.get(f.wert), leiheJe.get(f.wert));
     return t ? { ...f, stimmung: t } : f;
   };
-  for (const liste of [s3.offen, s3.vorgemerkt, ...(rw ? [rw.offen, rw.vorgemerkt] : [])]) liste.splice(0, liste.length, ...liste.map(mitStimmung));
+  for (const liste of [s3.offen, s3.vorgemerkt, ...(rw ? [rw.offen, rw.vorgemerkt] : []), ...(mr ? [mr.offen, mr.vorgemerkt] : [])]) liste.splice(0, liste.length, ...liste.map(mitStimmung));
   const lauerliste = ohnePump.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung).map(mitStimmung);
   const pumpZahl = vorwaerts.filter((x) => x.pump && !zrNur.has(x.muster)).length;
   const musterText = new Map([...alleMuster.values()].map((e) => [e.schluessel, e.gruppe]));
@@ -2983,7 +3137,7 @@ if (vt.erkennung) {
     trefferbuch,
     vorwaerts,
     jagden,
-    [...s3.offen, ...s3.abgeschlossen, ...(rw ? [...rw.offen, ...rw.abgeschlossen] : [])],
+    [...s3.offen, ...s3.abgeschlossen, ...(rw ? [...rw.offen, ...rw.abgeschlossen] : []), ...(mrS ? [...mrS.offen, ...mrS.abgeschlossen] : [])],
     7,
   );
   log(`Abdeckung des Trefferbuchs seit ${abdeckung.ab ?? '–'}: ${abdeckung.volltreffer} Volltreffer, ${abdeckung.erkannt} vorher erkannt (${abdeckung.anteilErkannt} %), ${abdeckung.richtig} richtig erwischt (${abdeckung.anteilRichtig} %), ${abdeckung.gejagt} gejagt, ${abdeckung.sichtbar} sichtbar · Vorwärts-Fälle ${abdeckung.vorwaerts.faelle} an ${abdeckung.vorwaerts.tage} Tagen, ${abdeckung.vorwaerts.quote} % Volltreffer.`);
@@ -3007,7 +3161,7 @@ if (vt.erkennung) {
       ja: urteilJa, nein: urteilNein, urteile: urteile.size, kalibrierung: urteilKalibrierung(vorwaerts), neinFilter: ohneNein,
       // 20.11.2026: Claudes Urteil auf den sichtbaren Orders (6er-Regel, Zeitreise-Regel, Rückenwind-Long) getrennt gemessen
       sichtbar: (() => {
-        const alle = [...s3.offen, ...s3.abgeschlossen, ...(rw ? [...rw.offen, ...rw.abgeschlossen] : [])];
+        const alle = [...s3.offen, ...s3.abgeschlossen, ...(rw ? [...rw.offen, ...rw.abgeschlossen] : []), ...(mrS ? [...mrS.offen, ...mrS.abgeschlossen] : [])];
         return { ja: jagdKennzahlen(alle.filter((f) => f.urteil === 'ja')), nein: jagdKennzahlen(alle.filter((f) => f.urteil === 'nein')), ohne: jagdKennzahlen(alle.filter((f) => !f.urteil)) };
       })(),
     },
@@ -3025,15 +3179,35 @@ if (vt.erkennung) {
       hinweis: 'Stufe 3 (Plan V6): Muster mit mindestens ' + v6.mindestFaelle + ' abgeschlossenen Fällen im Vorwärtstest, Ø im Plus und im Band des Rückblicks, Volltreffer-Quote im Rückblick ab ' + v6.mindestQuote + ' % und Ø ab ' + v6.mindestEv + ' € handeln sichtbar – ohne Rückfrage, aber Klasse vor Masse: höchstens ' + v6.maxOffen + ' Orders gleichzeitig, je Wert eine. Nur Fälle ab dem Tag der Beförderung, nie rückwirkend. Simuliert, kein echtes Geld.',
       regeln: { mindestFaelle: v6.mindestFaelle, mindestQuote: v6.mindestQuote, mindestEv: v6.mindestEv, maxOffen: v6.maxOffen, tagesVerlustGrenze: v6.tagesVerlustGrenze, einsatz: v6.einsatz },
       // Rückenwind-Long (eigene Plätze) zählt in die Kennzahlen der sichtbaren Orders mit
-      kennzahlen: rw ? jagdKennzahlen([...s3.offen, ...s3.abgeschlossen, ...rw.offen, ...rw.abgeschlossen]) : s3.kennzahlen,
+      kennzahlen: rw || mrS ? jagdKennzahlen([...s3.offen, ...s3.abgeschlossen, ...(rw ? [...rw.offen, ...rw.abgeschlossen] : []), ...(mrS ? [...mrS.offen, ...mrS.abgeschlossen] : [])]) : s3.kennzahlen,
       rendite: (() => {
-        if (!rw) return s3.rendite;
-        const k2 = jagdKennzahlen([...s3.offen, ...s3.abgeschlossen, ...rw.offen, ...rw.abgeschlossen]);
+        if (!rw && !mrS) return s3.rendite;
+        const k2 = jagdKennzahlen([...s3.offen, ...s3.abgeschlossen, ...(rw ? [...rw.offen, ...rw.abgeschlossen] : []), ...(mrS ? [...mrS.offen, ...mrS.abgeschlossen] : [])]);
         return k2.anzahl ? Math.round((k2.summe / (k2.anzahl * v6.einsatz)) * 1000) / 10 : 0;
       })(),
-      offen: [...s3.offen, ...(rw?.offen ?? [])].map(ohneMuster),
-      abgeschlossen: [...s3.abgeschlossen, ...(rw?.abgeschlossen ?? [])].sort((a, b) => (b.ende ?? '').localeCompare(a.ende ?? '')).slice(0, 30).map(ohneMuster),
-      vorgemerkt: [...s3.vorgemerkt, ...(rw?.vorgemerkt ?? [])].map(ohneMuster),
+      offen: [...s3.offen, ...(rw?.offen ?? []), ...(mrS?.offen ?? [])].map(ohneMuster),
+      abgeschlossen: [...s3.abgeschlossen, ...(rw?.abgeschlossen ?? []), ...(mrS?.abgeschlossen ?? [])].sort((a, b) => (b.ende ?? '').localeCompare(a.ende ?? '')).slice(0, 30).map(ohneMuster),
+      vorgemerkt: [...s3.vorgemerkt, ...(rw?.vorgemerkt ?? []), ...(mrS?.vorgemerkt ?? [])].map(ohneMuster),
+      // Modell-Regel (20.11.2026): Stand; bis zum Go des Nutzers laufen ihre Orders nur virtuell (Listen hier, nicht oben)
+      ...(MR
+        ? {
+            modellRegel: {
+              an: MR.aktiv && !mrBremsEintrag(),
+              aktiv: MR.aktiv,
+              ...(MR.aktiv ? {} : { ausGrund: MR.ausGrund ?? 'ausgeschaltet' }),
+              ab: MR.ab,
+              modelle: MR.modelle,
+              oberste: MR.oberste,
+              maxOffen: MR.maxOffen,
+              beleg: MR.beleg ?? null,
+              kennzahlen: mr ? mr.kennzahlen : null,
+              bremse: mrBremsEintrag() ? { am: mrBremsEintrag()!.am, grund: mrBremsEintrag()!.grund ?? '' } : null,
+              regel: MR.bremse,
+              stand: mrStand,
+              ...(!MR.aktiv && mr ? { virtuell: { offen: mr.offen.map(ohneMuster), vorgemerkt: mr.vorgemerkt.map(ohneMuster), abgeschlossen: mr.abgeschlossen.slice(-30).map(ohneMuster) } } : {}),
+            },
+          }
+        : {}),
       ...(RWC ? { rueckenwind: { an: RWC.aktiv && !rwBremsEintrag(), ab: RWC.ab, maxOffen: RWC.maxOffen, kennzahlen: rw ? jagdKennzahlen([...rw.offen, ...rw.abgeschlossen]) : null, bremse: rwBremsEintrag() ? { am: rwBremsEintrag()!.am, grund: rwBremsEintrag()!.grund ?? '' } : null } } : {}),
       uebersprungen: s3.uebersprungen,
       befoerdert: befoerdertJetzt,

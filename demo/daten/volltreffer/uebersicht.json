@@ -231,6 +231,20 @@
         }
       }
     ],
+    "modellRegel": {
+      "an": false,
+      "aktiv": false,
+      "ausGrund": "wartet auf das Go des Nutzers – läuft bis dahin virtuell mit",
+      "ab": "2026-11-20",
+      "modelle": ["2S150|wild"],
+      "oberste": 5,
+      "maxOffen": 3,
+      "beleg": { "orders": 464, "quote": 38.6, "oe": 72.4, "monatePlus": 16, "monate": 21 },
+      "kennzahlen": { "anzahl": 2, "volltreffer": 1, "quote": 50, "oeNiete": -150, "ev": 125, "summe": 250, "offen": 1 },
+      "bremse": null,
+      "regel": { "mindestOrders": 8, "minOe": -20, "maxVerlust": 750 },
+      "virtuell": { "offen": [], "vorgemerkt": [], "abgeschlossen": [] }
+    },
     "zeitreise": {
       "an": true,
       "ab": "2026-11-20",

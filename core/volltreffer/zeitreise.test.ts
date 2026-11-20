@@ -119,3 +119,13 @@ describe('Prüfungen der Zeitreise', () => {
     expect(k.haelften.map((h) => h.faelle)).toEqual([3, 1]);
   });
 });
+
+describe('nachspielen mit Sperre', () => {
+  it('lässt denselben Wert erst nach sperreTage wieder einsteigen', () => {
+    const k = (tag: number, wert: string): Kandidat => ({ tag, wert, wertung: 1, netto: 400, treffer: true, dauer: 1, muster: 'm' });
+    const ohne = nachspielen([k(1, 'A'), k(3, 'A'), k(20, 'A')], { maxOffen: 3, maxJeTag: 3 });
+    const mit = nachspielen([k(1, 'A'), k(3, 'A'), k(20, 'A')], { maxOffen: 3, maxJeTag: 3, sperreTage: 14 });
+    expect(ohne.length).toBe(3);
+    expect(mit.map((o) => o.einstieg)).toEqual([2, 21]);
+  });
+});

@@ -171,11 +171,12 @@ if (typ === 'morgenlauf') {
   const ll = vu?.lauerliste ?? [];
   // 20.11.2026: die vorgemerkten SICHTBAREN Orders (6er-Regel, Zeitreise-Regel, Rückenwind-Long) zuerst – sie steigen zur
   // nächsten Eröffnung ein; dein Urteil wird je Wert und Stichtag gemessen und kann sie über den „nein“-Filter herausnehmen
-  const vm = vu?.sichtbar?.vorgemerkt ?? [];
+  // Modell-Regel bis zum Go nur virtuell – trotzdem beurteilen (dein Urteil wird gemessen)
+  const vm = [...(vu?.sichtbar?.vorgemerkt ?? []), ...(vu?.sichtbar?.modellRegel?.virtuell?.vorgemerkt ?? [])];
   const zeile = (j) => `- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage${typeof j.quote === 'number' ? ` · Rückblick-Quote ${j.quote} %` : ''}${j.plattform ? ` · ${j.plattform}${j.ungeprueft ? ' (ungeprüft)' : ''}` : ''} · Muster: ${j.muster}${j.hinweis ? ` · ${j.hinweis}` : ''}${j.stimmung ? ` · 👥 ${j.stimmung}` : ''}`;
   if (vm.length) {
     p(`## 🟢 Sichtbare Volltreffer-Orders, vorgemerkt (${vm.length}, Einstieg zur nächsten Eröffnung) – ZUERST beurteilen, ebenfalls in \`volltrefferUrteil\``);
-    for (const j of vm.slice(0, 6)) p(`${zeile(j)}${j.zeitreise ? ' · 🕰️ Zeitreise-Regel' : ''}${j.rueckenwind ? ' · 🌬️ Rückenwind-Long' : ''}`);
+    for (const j of vm.slice(0, 6)) p(`${zeile(j)}${j.zeitreise ? ' · 🕰️ Zeitreise-Regel' : ''}${j.rueckenwind ? ' · 🌬️ Rückenwind-Long' : ''}${j.modellRegel ? ` · 🧠 Modell-Regel${vu?.sichtbar?.modellRegel?.aktiv ? '' : ' (virtuell bis zum Go)'}` : ''}`);
     p('');
   }
   if (ll.length) {

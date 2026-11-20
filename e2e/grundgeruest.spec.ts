@@ -75,6 +75,7 @@ test('Bereich Volltreffer: Jagd, Rückblick mit bestandenen Mustern und Hypothes
   await expect(orders.getByTestId('zeitreise-regel')).toContainText('Zeitreise-Regel an');
   await expect(orders.getByTestId('gegenwind')).toContainText('keine neuen Aktien-Shorts');
   await expect(orders.getByTestId('abdeckung')).toContainText('9 richtig erwischt');
+  await expect(orders.getByTestId('modell-regel')).toContainText('Modell-Regel virtuell');
   await expect(orders.getByText(/DEMOW · 🎯 Volltreffer/)).toBeVisible();
   await expect(orders.getByText('Bewährte Muster (1)')).toBeVisible();
   const jagd = page.getByTestId('volltreffer-jagd');
