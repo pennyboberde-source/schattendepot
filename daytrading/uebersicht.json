@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T09:39:40.811Z",
+  "stand": "2026-11-20T09:53:48.613Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -361,47 +361,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-allianz-se-reg",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ALLIANZ SE-REG",
-      "isin": "DE0008404005",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 546.12,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T08:35:00.000Z",
-        "kurs": 455,
-        "level": 455.6,
-        "spanne": {
-          "hoch": 458,
-          "tief": 455.6
-        },
-        "richtung": "short"
-      },
-      "stop": 456.8,
-      "ziel": 451.7,
-      "zielR": 2,
-      "flatBis": "2026-11-20T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T08:35:00.000Z",
-        "basisKurs": 455.1,
-        "kurs": 9.1248,
-        "stueck": 109,
-        "kurswert": 994.6
-      }
-    },
-    {
       "id": "2026-11-20-scan-sap-se",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -560,47 +519,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-allianz-se-reg",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ALLIANZ SE-REG",
-      "isin": "DE0008404005",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 546.12,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T08:35:00.000Z",
-        "kurs": 455,
-        "level": 455.6,
-        "spanne": {
-          "hoch": 458,
-          "tief": 455.6
-        },
-        "richtung": "short"
-      },
-      "stop": 456.8,
-      "ziel": 451.7,
-      "zielR": 2,
-      "flatBis": "2026-11-20T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T08:35:00.000Z",
-        "basisKurs": 455.1,
-        "kurs": 9.1248,
-        "stueck": 109,
-        "kurswert": 994.6
-      }
-    },
-    {
       "id": "2026-11-20-scan-sap-se",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -672,6 +590,66 @@
         "kurs": 5.1809,
         "stueck": 193,
         "kurswert": 999.91
+      }
+    },
+    {
+      "id": "2026-11-20-scan-allianz-se-reg",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ALLIANZ SE-REG",
+      "isin": "DE0008404005",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 546.12,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T08:35:00.000Z",
+        "kurs": 455,
+        "level": 455.6,
+        "spanne": {
+          "hoch": 458,
+          "tief": 455.6
+        },
+        "richtung": "short"
+      },
+      "stop": 456.8,
+      "ziel": 451.7,
+      "zielR": 2,
+      "flatBis": "2026-11-20T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T08:35:00.000Z",
+        "basisKurs": 455.1,
+        "kurs": 9.1248,
+        "stueck": 109,
+        "kurswert": 994.6
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T09:40:00.000Z",
+        "basisKurs": 451.7,
+        "kurs": 9.4184,
+        "kurswert": 1026.61,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 32.01,
+        "bruttoProzent": 3.22,
+        "netto": 32.01,
+        "nettoProzent": 3.22,
+        "nettoTR": 30.01,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -10141,46 +10119,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 186,
-      "treffer": 92,
-      "quote": 49.5,
-      "netto": 1479.49,
-      "brutto": 1551.49,
-      "nettoTR": 1180.49,
-      "oeNettoProzent": 0.79,
-      "oeR": 0.43
+      "anzahl": 187,
+      "treffer": 93,
+      "quote": 49.7,
+      "netto": 1511.5,
+      "brutto": 1583.5,
+      "nettoTR": 1210.5,
+      "oeNettoProzent": 0.81,
+      "oeR": 0.44
     },
     "heute": {
-      "anzahl": 2,
-      "treffer": 1,
-      "quote": 50,
-      "netto": 10.71,
-      "brutto": 10.71,
-      "nettoTR": 6.71,
-      "oeNettoProzent": 0.54,
-      "oeR": 0.45
+      "anzahl": 3,
+      "treffer": 2,
+      "quote": 66.7,
+      "netto": 42.72,
+      "brutto": 42.72,
+      "nettoTR": 36.72,
+      "oeNettoProzent": 1.43,
+      "oeR": 0.97
     },
-    "offen": 4,
+    "offen": 3,
     "gruppen": {
       "turbo": {
-        "anzahl": 150,
-        "treffer": 82,
-        "quote": 54.7,
-        "netto": 1775.89,
-        "brutto": 1775.89,
-        "nettoTR": 1476.89,
-        "oeNettoProzent": 1.18,
-        "oeR": 0.46
+        "anzahl": 151,
+        "treffer": 83,
+        "quote": 55,
+        "netto": 1807.9,
+        "brutto": 1807.9,
+        "nettoTR": 1506.9,
+        "oeNettoProzent": 1.2,
+        "oeR": 0.47
       },
       "short": {
-        "anzahl": 150,
-        "treffer": 82,
-        "quote": 54.7,
-        "netto": 1775.89,
-        "brutto": 1775.89,
-        "nettoTR": 1476.89,
-        "oeNettoProzent": 1.18,
-        "oeR": 0.46
+        "anzahl": 151,
+        "treffer": 83,
+        "quote": 55,
+        "netto": 1807.9,
+        "brutto": 1807.9,
+        "nettoTR": 1506.9,
+        "oeNettoProzent": 1.2,
+        "oeR": 0.47
       },
       "krypto": {
         "anzahl": 36,
