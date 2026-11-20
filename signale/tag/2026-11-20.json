@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T11:09:20.887Z",
-  "anzahl": 206,
+  "stand": "2026-11-20T11:20:22.862Z",
+  "anzahl": 212,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -2729,6 +2729,89 @@
         "SEC EDGAR Volltext"
       ],
       "z": "2026-11-20T11:09:20.887Z"
+    },
+    {
+      "id": "nachricht:AAPL:2026-11-20",
+      "s": "T:AAPL",
+      "n": "Apple",
+      "t": "AAPL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "MarketWatch"
+      ],
+      "z": "2026-11-20T11:05:00.000Z"
+    },
+    {
+      "id": "kursrakete:AKAN:2026-11-20",
+      "s": "T:AKAN",
+      "n": "AKANDA CORP",
+      "t": "AKAN",
+      "i": "CA00971M7008",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-20T11:13:18.043Z"
+    },
+    {
+      "id": "upbit_warnung:K.MBL:2026-11-20",
+      "s": "K:MBL",
+      "n": "MovieBloc",
+      "t": "MBL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-20T11:20:22.862Z"
+    },
+    {
+      "id": "politik_massnahme:RHM:2026-11-20:ruestung",
+      "s": "T:RHM",
+      "n": "Rheinmetall",
+      "t": "RHM.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-20T11:20:22.862Z"
+    },
+    {
+      "id": "politik_massnahme:HAG:2026-11-20:ruestung",
+      "s": "T:HAG",
+      "n": "Hensoldt",
+      "t": "HAG.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-20T11:20:22.862Z"
+    },
+    {
+      "id": "politik_massnahme:R3NK:2026-11-20:ruestung",
+      "s": "T:R3NK",
+      "n": "Renk",
+      "t": "R3NK.DE",
+      "m": "eu",
+      "typ": "politik_massnahme",
+      "r": 1,
+      "st": 0.35,
+      "q": [
+        "CNBC Politics"
+      ],
+      "z": "2026-11-20T11:20:22.862Z"
     }
   ]
 }
