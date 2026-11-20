@@ -1,6 +1,132 @@
 {
-  "stand": "2026-11-20T14:53:54.674Z",
+  "stand": "2026-11-20T15:09:09.922Z",
   "orders": [
+    {
+      "id": "2026-11-20-auto-insight-molecular-diagnostics-",
+      "status": "geschlossen",
+      "vorgemerktUm": "2026-11-20T07:08:44.836Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Insight Molecular Diagnostics Inc.",
+          "isin": "",
+          "ticker": "IMDX",
+          "anlageklasse": "hebel",
+          "spreadKlasse": "hebel",
+          "handelsplatz": "USB",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "IMDX",
+            "waehrung": "USD"
+          },
+          "plattform": "US-Broker (simuliert) – kein Put/Short-Turbo an deutschen Börsen – Leerverkauf beim US-Broker (Hebel 2)"
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:IMDX: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:IMDX:2026-11-20"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-25T07:08:44.836Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        },
+        "hebel": {
+          "typ": "turbo",
+          "richtung": "short",
+          "emittent": "UniCredit (synthetisch)",
+          "basiswert": {
+            "name": "Insight Molecular Diagnostics Inc.",
+            "isin": "",
+            "kursbasis": {
+              "markt": "us",
+              "symbol": "IMDX",
+              "waehrung": "EUR"
+            }
+          },
+          "basispreis": 2.2943,
+          "koSchwelle": 2.2943,
+          "bezugsverhaeltnis": 1,
+          "synthetisch": true,
+          "finanzierungProzentJahr": 5
+        }
+      },
+      "verkaufstermin": "2026-11-25T07:08:44.836Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-20T14:39:02.996Z",
+        "stueck": 1301,
+        "kurs": 0.7686,
+        "kurswert": 999.95,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 3,
+          "gesamt": 3
+        },
+        "betrag": 1002.95,
+        "kursquelle": "Finnhub (2026-11-20T14:35:57.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 1.0727,
+      "stopkurs": 0.7225,
+      "etfKauf": {
+        "wert": 124.04,
+        "zeit": "2026-11-20T14:29:51.622Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-20",
+        "vortag": 124.99
+      },
+      "etfVergleich": {
+        "netto": 3.65,
+        "nettoProzent": 0.37,
+        "etfKauf": 124.04,
+        "etfVerkauf": 124.645
+      },
+      "verkauf": {
+        "zeit": "2026-11-20T15:09:09.922Z",
+        "stueck": 1301,
+        "kurs": 0.6424,
+        "kurswert": 835.76,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 2.84,
+          "gesamt": 2.84
+        },
+        "betrag": 832.92,
+        "kursquelle": "Finnhub (2026-11-20T15:08:45.000Z)",
+        "synthetisch": true,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "kursProzent": -16.42,
+        "netto": -170.03,
+        "nettoProzent": -16.95,
+        "gebuehren": 5.84,
+        "steuer": 0,
+        "nachSteuern": -170.03
+      }
+    },
     {
       "id": "2026-11-12-auto-six-flags-entertainment-corpor",
       "status": "geschlossen",

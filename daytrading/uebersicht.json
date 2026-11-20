@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T14:53:59.227Z",
+  "stand": "2026-11-20T15:09:14.108Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -12,7 +12,7 @@
       "oeNettoProzent": -1.15,
       "oeR": -1
     },
-    "offen": 0
+    "offen": 10
   },
   "gesamt": {
     "anzahl": 20,
@@ -359,6 +359,370 @@
         "stueck": 86,
         "kurswert": 997
       }
+    },
+    {
+      "id": "2026-11-20-scan-anthropic-pbc-cl-a",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ANTHROPIC PBC-CL A",
+      "isin": "US03703U1079",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 83.7,
+        "level": 81.95,
+        "spanne": {
+          "hoch": 81.95,
+          "tief": 79.39
+        },
+        "richtung": "long"
+      },
+      "stop": 80.67,
+      "ziel": 89.67,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 83.67,
+        "kurs": 83.733,
+        "stueck": 11,
+        "kurswert": 921.06
+      }
+    },
+    {
+      "id": "2026-11-20-scan-ionq-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "IONQ INC",
+      "isin": "US46222L1089",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 20.165,
+        "level": 20.085,
+        "spanne": {
+          "hoch": 20.085,
+          "tief": 19.566
+        },
+        "richtung": "long"
+      },
+      "stop": 19.83,
+      "ziel": 20.75,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 20.135,
+        "kurs": 20.15,
+        "stueck": 49,
+        "kurswert": 987.35
+      }
+    },
+    {
+      "id": "2026-11-20-scan-microsoft-corp",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "MICROSOFT CORP",
+      "isin": "US5949181045",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 454.15,
+        "level": 453.7,
+        "spanne": {
+          "hoch": 453.7,
+          "tief": 448
+        },
+        "richtung": "long"
+      },
+      "stop": 450.85,
+      "ziel": 462.1,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 454.6,
+        "kurs": 456.873,
+        "stueck": 2,
+        "kurswert": 913.75
+      }
+    },
+    {
+      "id": "2026-11-20-scan-moderna-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "MODERNA INC",
+      "isin": "US60770K1079",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 188.5,
+        "level": 188.04,
+        "spanne": {
+          "hoch": 188.04,
+          "tief": 181.9
+        },
+        "richtung": "long"
+      },
+      "stop": 184.97,
+      "ziel": 199.94,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 189.96,
+        "kurs": 190.91,
+        "stueck": 5,
+        "kurswert": 954.55
+      }
+    },
+    {
+      "id": "2026-11-20-scan-alphabet-inc-cl-a",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ALPHABET INC-CL A",
+      "isin": "US02079K3059",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 255,
+        "level": 254.2,
+        "spanne": {
+          "hoch": 254.2,
+          "tief": 248.5
+        },
+        "richtung": "long"
+      },
+      "stop": 251.35,
+      "ziel": 265.15,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 255.95,
+        "kurs": 256.142,
+        "stueck": 3,
+        "kurswert": 768.43
+      }
+    },
+    {
+      "id": "2026-11-20-scan-amazon-com-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AMAZON.COM INC",
+      "isin": "US0231351067",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 234.4,
+        "level": 233.25,
+        "spanne": {
+          "hoch": 233.25,
+          "tief": 228.65
+        },
+        "richtung": "long"
+      },
+      "stop": 230.95,
+      "ziel": 243.1,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 235,
+        "kurs": 235.176,
+        "stueck": 4,
+        "kurswert": 940.7
+      }
+    },
+    {
+      "id": "2026-11-20-scan-bloom-energy-corp-a",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "BLOOM ENERGY CORP- A",
+      "isin": "US0937121079",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 144.68,
+        "level": 143.58,
+        "spanne": {
+          "hoch": 143.58,
+          "tief": 137.56
+        },
+        "richtung": "long"
+      },
+      "stop": 140.57,
+      "ziel": 153.86,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 145,
+        "kurs": 145.725,
+        "stueck": 6,
+        "kurswert": 874.35
+      },
+      "timeMachine": {
+        "zielZuerst": 9.2,
+        "stopZuerst": 43.8,
+        "keins": 47,
+        "gruen": 42.7,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 41,
+          "ziel": 1,
+          "stop": 20,
+          "oeR": -0.29
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-servicenow-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SERVICENOW INC",
+      "isin": "US81762P1021",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 83,
+        "level": 82.67,
+        "spanne": {
+          "hoch": 82.67,
+          "tief": 80.59
+        },
+        "richtung": "long"
+      },
+      "stop": 81.63,
+      "ziel": 85.53,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 82.93,
+        "kurs": 83.345,
+        "stueck": 11,
+        "kurswert": 916.8
+      },
+      "timeMachine": {
+        "zielZuerst": 8,
+        "stopZuerst": 48.6,
+        "keins": 43.4,
+        "gruen": 37.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 30,
+          "ziel": 2,
+          "stop": 14,
+          "oeR": -0.18
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-space-exploration-techn-",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SPACE EXPLORATION TECHN-CL A",
+      "isin": "US84615Q1031",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 120.62,
+        "level": 120.36,
+        "spanne": {
+          "hoch": 120.36,
+          "tief": 117.94
+        },
+        "richtung": "long"
+      },
+      "stop": 119.15,
+      "ziel": 123.62,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 120.64,
+        "kurs": 120.73,
+        "stueck": 8,
+        "kurswert": 965.84
+      }
+    },
+    {
+      "id": "2026-11-20-scan-take-two-interactive-sof",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "TAKE-TWO INTERACTIVE SOFTWRE",
+      "isin": "US8740541094",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 192.22,
+        "level": 191.28,
+        "spanne": {
+          "hoch": 191.28,
+          "tief": 185.98
+        },
+        "richtung": "long"
+      },
+      "stop": 188.63,
+      "ziel": 198.8,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 192.02,
+        "kurs": 192.164,
+        "stueck": 5,
+        "kurswert": 960.82
+      }
     }
   ],
   "trades": [
@@ -442,6 +806,447 @@
         "kurs": 11.593,
         "stueck": 86,
         "kurswert": 997
+      }
+    },
+    {
+      "id": "2026-11-20-scan-anthropic-pbc-cl-a",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ANTHROPIC PBC-CL A",
+      "isin": "US03703U1079",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 83.7,
+        "level": 81.95,
+        "spanne": {
+          "hoch": 81.95,
+          "tief": 79.39
+        },
+        "richtung": "long"
+      },
+      "stop": 80.67,
+      "ziel": 89.67,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 83.67,
+        "kurs": 83.733,
+        "stueck": 11,
+        "kurswert": 921.06
+      }
+    },
+    {
+      "id": "2026-11-20-scan-ionq-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "IONQ INC",
+      "isin": "US46222L1089",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 20.165,
+        "level": 20.085,
+        "spanne": {
+          "hoch": 20.085,
+          "tief": 19.566
+        },
+        "richtung": "long"
+      },
+      "stop": 19.83,
+      "ziel": 20.75,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 20.135,
+        "kurs": 20.15,
+        "stueck": 49,
+        "kurswert": 987.35
+      }
+    },
+    {
+      "id": "2026-11-20-scan-microsoft-corp",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "MICROSOFT CORP",
+      "isin": "US5949181045",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 454.15,
+        "level": 453.7,
+        "spanne": {
+          "hoch": 453.7,
+          "tief": 448
+        },
+        "richtung": "long"
+      },
+      "stop": 450.85,
+      "ziel": 462.1,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 454.6,
+        "kurs": 456.873,
+        "stueck": 2,
+        "kurswert": 913.75
+      }
+    },
+    {
+      "id": "2026-11-20-scan-moderna-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "MODERNA INC",
+      "isin": "US60770K1079",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 188.5,
+        "level": 188.04,
+        "spanne": {
+          "hoch": 188.04,
+          "tief": 181.9
+        },
+        "richtung": "long"
+      },
+      "stop": 184.97,
+      "ziel": 199.94,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 189.96,
+        "kurs": 190.91,
+        "stueck": 5,
+        "kurswert": 954.55
+      }
+    },
+    {
+      "id": "2026-11-20-scan-alphabet-inc-cl-a",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "ALPHABET INC-CL A",
+      "isin": "US02079K3059",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 255,
+        "level": 254.2,
+        "spanne": {
+          "hoch": 254.2,
+          "tief": 248.5
+        },
+        "richtung": "long"
+      },
+      "stop": 251.35,
+      "ziel": 265.15,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 255.95,
+        "kurs": 256.142,
+        "stueck": 3,
+        "kurswert": 768.43
+      }
+    },
+    {
+      "id": "2026-11-20-scan-amazon-com-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "AMAZON.COM INC",
+      "isin": "US0231351067",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 234.4,
+        "level": 233.25,
+        "spanne": {
+          "hoch": 233.25,
+          "tief": 228.65
+        },
+        "richtung": "long"
+      },
+      "stop": 230.95,
+      "ziel": 243.1,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 235,
+        "kurs": 235.176,
+        "stueck": 4,
+        "kurswert": 940.7
+      }
+    },
+    {
+      "id": "2026-11-20-scan-bloom-energy-corp-a",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "BLOOM ENERGY CORP- A",
+      "isin": "US0937121079",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 144.68,
+        "level": 143.58,
+        "spanne": {
+          "hoch": 143.58,
+          "tief": 137.56
+        },
+        "richtung": "long"
+      },
+      "stop": 140.57,
+      "ziel": 153.86,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 145,
+        "kurs": 145.725,
+        "stueck": 6,
+        "kurswert": 874.35
+      },
+      "timeMachine": {
+        "zielZuerst": 9.2,
+        "stopZuerst": 43.8,
+        "keins": 47,
+        "gruen": 42.7,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 41,
+          "ziel": 1,
+          "stop": 20,
+          "oeR": -0.29
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-servicenow-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SERVICENOW INC",
+      "isin": "US81762P1021",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 83,
+        "level": 82.67,
+        "spanne": {
+          "hoch": 82.67,
+          "tief": 80.59
+        },
+        "richtung": "long"
+      },
+      "stop": 81.63,
+      "ziel": 85.53,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 82.93,
+        "kurs": 83.345,
+        "stueck": 11,
+        "kurswert": 916.8
+      },
+      "timeMachine": {
+        "zielZuerst": 8,
+        "stopZuerst": 48.6,
+        "keins": 43.4,
+        "gruen": 37.3,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 30,
+          "ziel": 2,
+          "stop": 14,
+          "oeR": -0.18
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-space-exploration-techn-",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "SPACE EXPLORATION TECHN-CL A",
+      "isin": "US84615Q1031",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 120.62,
+        "level": 120.36,
+        "spanne": {
+          "hoch": 120.36,
+          "tief": 117.94
+        },
+        "richtung": "long"
+      },
+      "stop": 119.15,
+      "ziel": 123.62,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 120.64,
+        "kurs": 120.73,
+        "stueck": 8,
+        "kurswert": 965.84
+      }
+    },
+    {
+      "id": "2026-11-20-scan-take-two-interactive-sof",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "aktie",
+      "name": "TAKE-TWO INTERACTIVE SOFTWRE",
+      "isin": "US8740541094",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "kurs": 192.22,
+        "level": 191.28,
+        "spanne": {
+          "hoch": 191.28,
+          "tief": 185.98
+        },
+        "richtung": "long"
+      },
+      "stop": 188.63,
+      "ziel": 198.8,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "einstieg": {
+        "zeit": "2026-11-20T14:55:00.000Z",
+        "basisKurs": 192.02,
+        "kurs": 192.164,
+        "stueck": 5,
+        "kurswert": 960.82
+      }
+    },
+    {
+      "id": "2026-11-20-scan-unitedhealth-group-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "UNITEDHEALTH GROUP INC",
+      "isin": "US91324P1021",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 372,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "kurs": 308.3,
+        "level": 309.95,
+        "spanne": {
+          "hoch": 313.75,
+          "tief": 309.95
+        },
+        "richtung": "short"
+      },
+      "stop": 311.85,
+      "ziel": 306.3,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T14:50:00.000Z",
+        "basisKurs": 310,
+        "kurs": 6.2155,
+        "stueck": 160,
+        "kurswert": 994.48
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T15:00:00.000Z",
+        "basisKurs": 312.75,
+        "kurs": 5.9102,
+        "kurswert": 945.63,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -48.85,
+        "bruttoProzent": -4.91,
+        "netto": -48.85,
+        "nettoProzent": -4.91,
+        "nettoTR": -50.85,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1.49
+      },
+      "timeMachine": {
+        "zielZuerst": 37.4,
+        "stopZuerst": 56.5,
+        "keins": 6.1,
+        "gruen": 41.9,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Ziel",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 36,
+          "ziel": 3,
+          "stop": 14,
+          "oeR": -0.09
+        }
       }
     },
     {
@@ -10355,46 +11160,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 193,
+      "anzahl": 194,
       "treffer": 93,
-      "quote": 48.2,
-      "netto": 1412.35,
-      "brutto": 1492.35,
-      "nettoTR": 1107.35,
-      "oeNettoProzent": 0.73,
-      "oeR": 0.4
+      "quote": 47.9,
+      "netto": 1363.5,
+      "brutto": 1443.5,
+      "nettoTR": 1056.5,
+      "oeNettoProzent": 0.7,
+      "oeR": 0.39
     },
     "heute": {
-      "anzahl": 9,
+      "anzahl": 10,
       "treffer": 2,
-      "quote": 22.2,
-      "netto": -56.43,
-      "brutto": -48.43,
-      "nettoTR": -66.43,
-      "oeNettoProzent": -0.63,
-      "oeR": -0.34
+      "quote": 20,
+      "netto": -105.28,
+      "brutto": -97.28,
+      "nettoTR": -117.28,
+      "oeNettoProzent": -1.05,
+      "oeR": -0.46
     },
     "offen": 2,
     "gruppen": {
       "turbo": {
-        "anzahl": 153,
+        "anzahl": 154,
         "treffer": 83,
-        "quote": 54.2,
-        "netto": 1748.63,
-        "brutto": 1748.63,
-        "nettoTR": 1443.63,
-        "oeNettoProzent": 1.14,
-        "oeR": 0.45
+        "quote": 53.9,
+        "netto": 1699.78,
+        "brutto": 1699.78,
+        "nettoTR": 1392.78,
+        "oeNettoProzent": 1.1,
+        "oeR": 0.44
       },
       "short": {
-        "anzahl": 153,
+        "anzahl": 154,
         "treffer": 83,
-        "quote": 54.2,
-        "netto": 1748.63,
-        "brutto": 1748.63,
-        "nettoTR": 1443.63,
-        "oeNettoProzent": 1.14,
-        "oeR": 0.45
+        "quote": 53.9,
+        "netto": 1699.78,
+        "brutto": 1699.78,
+        "nettoTR": 1392.78,
+        "oeNettoProzent": 1.1,
+        "oeR": 0.44
       },
       "krypto": {
         "anzahl": 40,
@@ -10427,9 +11232,9 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 178,
-        "chance": 42.1,
-        "oeNetto": -0.57,
+        "faelle": 179,
+        "chance": 41.9,
+        "oeNetto": -0.58,
         "wertung": -1
       }
     },
