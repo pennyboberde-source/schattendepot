@@ -1311,6 +1311,10 @@ if (ZEITREISE) {
     }
     return lageCache.get(t)!;
   };
+  const rueckenwind: Kandidat[] = [];
+  const jV2L = ZS.findIndex((si) => SP[si].vol === 2 && SP[si].richtung === 'long');
+  const iSchw = E.findIndex((e) => e.merkmal === 'schwankung20');
+  const iUms = E.findIndex((e) => e.merkmal === 'umsatz20');
   let alleN = 0, alleT = 0, alleSum = 0;
   for (let z = 0; z < zeilen; z++) {
     const w = wahlBed[zAbs[z]];
@@ -1343,6 +1347,17 @@ if (ZEITREISE) {
     }
     if (beste) kandidaten.push(beste);
     besteWindV.forEach((k, gi) => k && kandidatenWindV[gi].push(k));
+    // Q4 Rückenwind-Long (Wellen-Analyse: V2L auf schwankungsreiche Werte an Rückenwind-Tagen Ø +15 € in beiden Zeiträumen):
+    // an Gegenwind-Tagen (rollend) ist jede Aktie mit Schwankung ≥ 4 %/Tag ein Ersatz-Kandidat long nach Schwankung (2 σ),
+    // nachrangig hinter den Mustern (Wertung 0); bei mehreren je Tag zuerst die mit dem höchsten Umsatz
+    const iR = GW_VARIANTEN.findIndex((g) => g.rollend);
+    if (jV2L >= 0 && gwV[iR] && zMarkt[z] === 0 && kl[z * NE + iSchw] !== 255 && kl[z * NE + iSchw] >= 3) {
+      const v2 = netto[z * ZS.length + jV2L];
+      if (!Number.isNaN(v2)) {
+        const um = kl[z * NE + iUms] === 255 ? 0 : kl[z * NE + iUms];
+        rueckenwind.push({ tag: zTag[z], wert: zWert[z], wertung: -5 + um * 0.01, netto: v2, treffer: art[z * ZS.length + jV2L] === 1, dauer: Math.max(1, aus[z * ZS.length + jV2L] - zTag[z]), muster: 'Rückenwind-Long: schwankungsreiche Aktie nach starkem Markt – Hebel nach Schwankung long (2 σ)' });
+      }
+    }
   }
   // Grundrate: alle handelbaren Stichtage im selben Zeitraum mit der Spielart der gewählten Muster
   let grN = 0, grT = 0, grSum = 0;
@@ -1378,6 +1393,8 @@ if (ZEITREISE) {
     auswahl: { halbmonate: wahl.filter((w) => w.length).length, oeMuster: Math.round(wahl.reduce((a, w) => a + w.length, 0) / Math.max(1, wahl.filter((w) => w.length).length)) },
     sichtbar: bilanz(sichtbar, monatVon),
     sichtbarOhneFilter: bilanz(sichtbarOhne, monatVon),
+    sichtbarMitRueckenwind: bilanz(nachspielen([...kandidatenWindV[iRoll], ...rueckenwind], { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatVon),
+    nurRueckenwind: bilanz(nachspielen(rueckenwind, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatVon),
     // Q4: Variante mit Gegenwind-Filter (keine Shorts bei starkem Markt über 5 Tage oder hohem VIX)
     sichtbarGegenwind: bilanz(nachspielen(kandidatenWindV[0], { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatVon),
     gegenwind: GW,
@@ -1407,6 +1424,7 @@ if (ZEITREISE) {
     },
   };
   schreibeJson('lernen/zeitreise.json', ergebnis);
+  log(`Zeitreise mit Rückenwind-Long als Ersatz: ${ergebnis.sichtbarMitRueckenwind.orders} Orders, ${ergebnis.sichtbarMitRueckenwind.volltreffer} Volltreffer, netto ${ergebnis.sichtbarMitRueckenwind.netto} €, Ø ${ergebnis.sichtbarMitRueckenwind.oe} €, Rückgang ${ergebnis.sichtbarMitRueckenwind.maxRueckgang} €, ${ergebnis.sichtbarMitRueckenwind.monate.filter((mo) => mo.netto > 0).length}/${ergebnis.sichtbarMitRueckenwind.monate.length} Monate · nur Rückenwind-Long (3 offen): ${ergebnis.nurRueckenwind.orders} Orders, Ø ${ergebnis.nurRueckenwind.oe} €, netto ${ergebnis.nurRueckenwind.netto} €.`);
   log(`Zeitreise sichtbar ohne Gegenwind-Filter: ${ergebnis.sichtbarOhneFilter.orders} Orders, Ø ${ergebnis.sichtbarOhneFilter.oe} €, netto ${ergebnis.sichtbarOhneFilter.netto} €.`);
   log(`Zeitreise sichtbar mit rollendem Gegenwind (${ZR.sichtbarMaxOffen} offen): ${ergebnis.sichtbar.orders} Orders, ${ergebnis.sichtbar.volltreffer} Volltreffer (${ergebnis.sichtbar.quote} %), netto ${ergebnis.sichtbar.netto} €, Ø ${ergebnis.sichtbar.oe} €, größter Rückgang ${ergebnis.sichtbar.maxRueckgang} €.`);
   log(`Zeitreise Jagden (${ZR.jagdenMaxOffen} offen): ${ergebnis.jagden.orders} Orders, ${ergebnis.jagden.volltreffer} Volltreffer (${ergebnis.jagden.quote} %), netto ${ergebnis.jagden.netto} €, Ø ${ergebnis.jagden.oe} €, größter Rückgang ${ergebnis.jagden.maxRueckgang} €.`);
