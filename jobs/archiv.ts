@@ -1457,7 +1457,10 @@ async function minuten() {
   const ordner = join(ARCHIV, 'minuten');
   const fertigPfad = join(ordner, 'fertig.json');
   const fertig = new Set<string>(existsSync(fertigPfad) ? (JSON.parse(readFileSync(fertigPfad, 'utf8')) as string[]) : []);
-  const offen = ereignisse.filter((e) => !fertig.has(`${e.d}|${e.t}`)).sort((a, b) => b.d.localeCompare(a.d) || a.t.localeCompare(b.t));
+  // Reihenfolge: feste Zufallsmischung über die zwei Jahre (Streuung über alle Marktlagen statt nur der jüngsten Wochen –
+  // 92.000 Tage sind bei 5 Abrufen je Minute nicht in Wochen zu holen, eine gleichmäßige Stichprobe trägt schon nach wenigen Tausend)
+  const misch = (x: string) => [...x].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) | 0, 17) >>> 0;
+  const offen = ereignisse.filter((e) => !fertig.has(`${e.d}|${e.t}`)).sort((a, b) => misch(`${a.d}|${a.t}`) - misch(`${b.d}|${b.t}`));
   const dateiVon = (d: string) => join(ordner, d.slice(0, 4), `${d}.json.gz`);
   const cache = new Map<string, Record<string, number[][]>>();
   const tagDatei = (d: string) => {
