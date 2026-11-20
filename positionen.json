@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T18:54:42.619Z",
+  "stand": "2026-11-20T19:09:11.304Z",
   "offen": [
     {
       "id": "2026-11-19-auto-exagen-inc",
@@ -144,6 +144,14 @@
           "alt": 1.9957,
           "neu": 2.0098,
           "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 2.2839 € (+21.6 %)"
+        },
+        {
+          "zeit": "2026-11-20T19:09:11.304Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 2.0098,
+          "neu": 2.0407,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 2.319 € (+23.5 %)"
         }
       ],
       "kauf": {
@@ -161,7 +169,7 @@
         "synthetisch": true
       },
       "zielkurs": 2.6202,
-      "stopkurs": 2.0098,
+      "stopkurs": 2.0407,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -188,8 +196,8 @@
         }
       ],
       "stand": {
-        "prozent": 20.22,
-        "zeit": "2026-11-20T18:53:44.000Z",
+        "prozent": 24.14,
+        "zeit": "2026-11-20T19:06:54.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -405,8 +413,8 @@
         }
       ],
       "stand": {
-        "prozent": 31.72,
-        "zeit": "2026-11-20T18:54:13.000Z",
+        "prozent": 31.75,
+        "zeit": "2026-11-20T19:08:55.000Z",
         "quelle": "Finnhub",
         "synthetisch": true
       }
@@ -525,10 +533,9 @@
         "vortag": 124.99
       },
       "stand": {
-        "prozent": 7.62,
-        "zeit": "2026-11-20T18:19:55.000Z",
+        "prozent": 7.66,
+        "zeit": "2026-11-20T19:03:35.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 35,
         "synthetisch": true
       }
     }
