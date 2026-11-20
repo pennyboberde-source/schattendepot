@@ -891,6 +891,8 @@ const modellZeile = (r: Reihe, i: number, klassen: (number | null)[]): number =>
 // ---------- 5. Durchgang 2: Etiketten, Zensus, Hypothesen ----------
 /** Zeitreise (19.11.2026): eigener Lauf (zeitreise.yml) – überspringt Durchgang 2 und rechnet nur die Gesamtsimulation */
 const ZEITREISE = process.env.ZEITREISE === '1';
+/** Trefferanalyse (20.11.2026): eigener Lauf (zeitreise.yml, modus=trefferanalyse) – wo entsteht der Volltreffer, was war vorher sichtbar */
+const ANALYSE = process.env.TREFFERANALYSE === '1';
 interface Episode {
   datum: string;
   schluessel: string;
@@ -907,7 +909,7 @@ const episoden: Episode[] = [];
 let stichtage = 0;
 const hypFaelle: Record<string, number> = {};
 
-for (const r of ZEITREISE ? [] : reihen) {
+for (const r of ZEITREISE || ANALYSE ? [] : reihen) {
   const k = r.kerzen;
   const m = k.map((_, i) => merkmale(k, i));
   const treffer: boolean[] = new Array(k.length).fill(false);
@@ -1305,6 +1307,131 @@ if (ZEITREISE) {
   log(`Zeitreise Vergleich: alle Fälle der gewählten Muster ${alleN} (Quote ${ergebnis.alleMusterfaelle.quote} %, Ø ${ergebnis.alleMusterfaelle.oe} €) · Grundrate ${grN} (Quote ${ergebnis.grundrate.quote} %, Ø ${ergebnis.grundrate.oe} €).`);
   for (const mo of ergebnis.sichtbar.monate) log(`  ${mo.monat}: ${mo.orders} Orders, ${mo.volltreffer} Volltreffer, ${mo.netto} €`);
   log(`Zeitreise aktuell (Halbmonat ab ${ergebnis.aktuell.halbmonatVon}): ${ergebnis.aktuell.muster.length} Muster für die Live-Regel.`);
+  process.exit(0);
+}
+if (ANALYSE) {
+  // ---------- Trefferanalyse (Nutzer 20.11.2026: „Prüfe … bei jedem Wert, wie wir das Ganze frühzeitig erkennen können“) ----------
+  // Je Stichtag der letzten TAGE Handelstage: Volltreffer mit einer Standard-Spielart (direkt, Turbo 2/3 long/short,
+  // Stop 150 €, Fenster 10)? Wann (Tag)? Wäre er mit Einstieg zum Schluss des Stichtags statt zur nächsten Eröffnung
+  // auch/eher gekommen? Was war vorher sichtbar (Extremtag, SEC-Meldung, Datenkrake-Signal, Marktwelle)? Nur Zählungen.
+  const TAGE = Number(process.env.ANALYSE_TAGE ?? 250);
+  const fA = F.indexOf(10);
+  const STD = SP.filter((sp) => sp.stopEuro === vt.etikett.standardStop && sp.nachziehAb === undefined && sp.vol === undefined && [1, 2, 3].includes(sp.hebel));
+  const ab30 = new Date(Date.parse(heute) - 30 * 86400000).toISOString().slice(0, 10);
+  const vorTagen = (d: string, n: number) => new Date(Date.parse(`${d}T12:00:00Z`) - n * 86400000).toISOString().slice(0, 10);
+  type Z = { n: number; vt: number; vtS: number; vtSchluss: number; sum: number; sumSchluss: number };
+  const neuZ = (): Z => ({ n: 0, vt: 0, vtS: 0, vtSchluss: 0, sum: 0, sumSchluss: 0 });
+  const zaehler = new Map<string, Z>();
+  const zz = (k: string) => zaehler.get(k) ?? zaehler.set(k, neuZ()).get(k)!;
+  const tagJe = new Map<string, { l: number; s: number }>();
+  const faelle: { d: string; richtung: 'long' | 'short'; flags: string[] }[] = [];
+  const tagVerteilung = new Map<number, number>();
+  let tag1Luecke = 0;
+  for (const r of reihen) {
+    const k = r.kerzen;
+    const von = Math.max(1, k.length - TAGE - 1);
+    for (let i = von; i < k.length - 1; i++) {
+      const x = merkmale(k, i);
+      if (!x || !handelbar(r, x, k[i])) continue;
+      const d = k[i].datum;
+      const fertig = i + 10 < k.length;
+      // beste Standard-Spielart: Einstieg zur nächsten Eröffnung (wie live) und zum Schluss des Stichtags
+      let vt: { sp: Spielart; tag: number; netto: number } | null = null;
+      let bestNetto = -Infinity;
+      for (const sp of STD) {
+        const pl = platzFuer(r, sp, plattformAm(r, x), true);
+        if (!pl) continue;
+        const a = etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), F)[fA];
+        if (!a) continue;
+        if (a.netto > bestNetto) bestNetto = a.netto;
+        if (a.art === 'treffer' && (!vt || a.tag < vt.tag)) vt = { sp, tag: a.tag, netto: a.netto };
+      }
+      // Schluss-Einstieg: Eröffnung des Folgetags durch den Schluss des Stichtags ersetzen (Lücke wird mitgenommen)
+      const k1 = k[i + 1];
+      const alt = { o: k1.o, h: k1.h, l: k1.l };
+      k1.o = k[i].c;
+      k1.h = Math.max(alt.h, k[i].c);
+      k1.l = Math.min(alt.l, k[i].c);
+      let vtSchluss = false;
+      let bestSchluss = -Infinity;
+      for (const sp of STD) {
+        const pl = platzFuer(r, sp, plattformAm(r, x), true);
+        if (!pl) continue;
+        const a = etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), F)[fA];
+        if (!a) continue;
+        if (a.netto > bestSchluss) bestSchluss = a.netto;
+        if (a.art === 'treffer') vtSchluss = true;
+      }
+      k1.o = alt.o;
+      k1.h = alt.h;
+      k1.l = alt.l;
+      if (!fertig && !vt && !vtSchluss) continue;
+      // Vorzeichen
+      const flags: string[] = [];
+      if (Math.abs(x.r1) >= 25 || (x.relVolumen ?? 0) >= 10) flags.push('extremtag');
+      let sec = false;
+      for (const a of MELDUNG_ARTEN) {
+        const m = meldungAm(r, d, a);
+        if (m !== null && m <= 5) sec = true;
+      }
+      const za = zahlenAm(r, d);
+      if (sec || (za !== null && za <= 5)) flags.push('sec5');
+      const sig = (signaleJe.get(r.schluessel.split('#')[0]) ?? []).some((s) => s.datum >= vorTagen(d, 14) && s.datum <= d);
+      if (sig) flags.push('datenkrake14');
+      if ((x.max20 ?? 0) >= 50) flags.push('wiederholungslaeufer');
+      const zeitraum = d >= ab30 ? '30' : 'alt';
+      const lage = x.r1 >= 25 ? (x.lageSchluss >= 0.67 ? 'up-schlussOben' : x.lageSchluss <= 0.33 ? 'up-schlussUnten' : 'up-schlussMitte') : x.r1 <= -25 ? 'down' : '';
+      const schluessel = [`alle|${zeitraum}`, ...flags.map((f) => `${f}|${zeitraum}`), ...(flags.length ? [] : [`ohne|${zeitraum}`]), ...(lage ? [`${lage}|${zeitraum}`] : [])];
+      for (const s of schluessel) {
+        const z = zz(s);
+        z.n++;
+        if (vt) {
+          z.vt++;
+          if (vt.sp.richtung === 'short') z.vtS++;
+        }
+        if (vtSchluss) z.vtSchluss++;
+        if (bestNetto > -Infinity) z.sum += bestNetto;
+        if (bestSchluss > -Infinity) z.sumSchluss += bestSchluss;
+      }
+      if (vt) {
+        tagVerteilung.set(vt.tag, (tagVerteilung.get(vt.tag) ?? 0) + 1);
+        const t = tagJe.get(d) ?? tagJe.set(d, { l: 0, s: 0 }).get(d)!;
+        if (vt.sp.richtung === 'long') t.l++;
+        else t.s++;
+        faelle.push({ d, richtung: vt.sp.richtung, flags });
+        // Anteil der Bewegung schon in der Lücke zum Folgetag (in Richtung des Treffers)
+        const luecke = ((vt.sp.richtung === 'long' ? 1 : -1) * (k1.o / k[i].c - 1)) * 100;
+        if (luecke >= 10) tag1Luecke++;
+      }
+    }
+  }
+  // Marktwelle: Tage, an denen in einer Richtung besonders viele Volltreffer beginnen (oberstes Zehntel)
+  const proTag = [...tagJe.values()].flatMap((t) => [t.l, t.s]).sort((a, b) => a - b);
+  const schwelle = proTag[Math.floor(proTag.length * 0.9)] ?? Infinity;
+  let inWelle = 0;
+  for (const f of faelle) {
+    const t = tagJe.get(f.d)!;
+    if ((f.richtung === 'long' ? t.l : t.s) >= schwelle) inWelle++;
+  }
+  const pct = (a: number, b: number) => (b ? Math.round((a / b) * 1000) / 10 : 0);
+  const zeile = (s: string) => {
+    const z = zaehler.get(s) ?? neuZ();
+    return { stichtage: z.n, volltreffer: z.vt, quote: pct(z.vt, z.n), shortAnteil: pct(z.vtS, z.vt), schlussEinstiegQuote: pct(z.vtSchluss, z.n), oeBesteSpielart: z.n ? Math.round((z.sum / z.n) * 10) / 10 : 0, oeBesteSchluss: z.n ? Math.round((z.sumSchluss / z.n) * 10) / 10 : 0 };
+  };
+  const arten = ['alle', 'extremtag', 'sec5', 'datenkrake14', 'wiederholungslaeufer', 'ohne', 'up-schlussOben', 'up-schlussMitte', 'up-schlussUnten', 'down'];
+  const ergebnis = {
+    stand: jetzt.toISOString(),
+    hinweis: `Trefferanalyse: Stichtage der letzten ${TAGE} Handelstage, Volltreffer = eine Standard-Spielart (direkt, Turbo Hebel 2/3 long/short, Stop 150 €) erreicht +400 € in höchstens 10 Handelstagen; „Schluss-Einstieg“ = Einstieg zum Schluss des Stichtags statt zur nächsten Eröffnung. Nur Zählungen.`,
+    gruppen: Object.fromEntries(arten.flatMap((a) => [[`${a} (30 Tage)`, zeile(`${a}|30`)], [`${a} (davor)`, zeile(`${a}|alt`)]])),
+    tagDesTreffers: Object.fromEntries([...tagVerteilung].sort((a, b) => a[0] - b[0])),
+    trefferMitLueckeAb10: pct(tag1Luecke, faelle.length),
+    marktwelle: { schwelleJeTagUndRichtung: schwelle, anteilTrefferInWelle: pct(inWelle, faelle.length) },
+    vorzeichenAnteil: Object.fromEntries(['extremtag', 'sec5', 'datenkrake14', 'wiederholungslaeufer'].map((f) => [f, pct(faelle.filter((x) => x.flags.includes(f)).length, faelle.length)])),
+    ohneVorzeichen: pct(faelle.filter((x) => !x.flags.length).length, faelle.length),
+  };
+  schreibeJson('lernen/trefferanalyse.json', ergebnis);
+  for (const [k2, v] of Object.entries(ergebnis.gruppen)) log(`Trefferanalyse ${k2}: ${JSON.stringify(v)}`);
+  log(`Trefferanalyse: Tag des Treffers ${JSON.stringify(ergebnis.tagDesTreffers)}, Lücke ≥ 10 % in Trefferrichtung ${ergebnis.trefferMitLueckeAb10} %, Marktwelle ${JSON.stringify(ergebnis.marktwelle)}, Vorzeichen ${JSON.stringify(ergebnis.vorzeichenAnteil)}, ohne ${ergebnis.ohneVorzeichen} %.`);
   process.exit(0);
 }
 const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string; tage?: [number, number]; groessterTag?: [number, number]; splitVerdacht?: number; quartale?: [number, number] })[] = [];
