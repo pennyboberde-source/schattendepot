@@ -35,6 +35,7 @@ interface Uebersicht {
     /** Zeitreise-Regel (seit 20.11.2026) */
     zeitreise?: {
       an: boolean;
+      ausGrund?: string;
       ab: string;
       halbmonatVon: string | null;
       muster: number;
@@ -97,7 +98,7 @@ export function OrdersKarte() {
               ? ` – zusätzlich ordern die ${zahl(s.zeitreise.muster)} Muster, die die Zeitreise für den Halbmonat${s.zeitreise.halbmonatVon ? ` ab ${datumKurz(s.zeitreise.halbmonatVon)}` : ''} gewählt hat (gekennzeichnet mit 🕰️). Bremse: Summe ab ${euro(-s.zeitreise.regel.maxVerlust)} oder nach ${zahl(s.zeitreise.regel.mindestOrders)} Orders Ø unter ${euro(s.zeitreise.regel.minOe)} → zurück zur strengen Regel.`
               : s.zeitreise.bremse
                 ? ` – gestoppt am ${datumKurz(s.zeitreise.bremse.am)}: ${s.zeitreise.bremse.grund}. Es gilt wieder nur die strenge Regel.`
-                : ' – ausgeschaltet.'}
+                : ` – ${s.zeitreise.ausGrund ?? 'ausgeschaltet.'}`}
             {s.zeitreise.kennzahlen.anzahl + s.zeitreise.kennzahlen.offen > 0
               ? ` Bisher ${zahl(s.zeitreise.kennzahlen.anzahl)} beendet (${zahl(s.zeitreise.kennzahlen.volltreffer)} Volltreffer, Summe ${euro(s.zeitreise.kennzahlen.summe, { vorzeichen: true })}), ${zahl(s.zeitreise.kennzahlen.offen)} laufen.`
               : ''}

@@ -779,7 +779,7 @@ const vorwaerts: JagdFall[] = [];
 // Die Zeitreise (zeitreise.yml, täglich 23:40 UTC) legt in lernen/zeitreise.json › aktuell die Muster des laufenden
 // Halbmonats ab – gewählt nur aus Fällen, deren Ergebnis feststand. Das Zeitreise-Buch (nur anhängen) hält fest, ab
 // welchem Stichtag ein Muster gilt; seine Fälle entstehen wie im Vorwärtstest, zählen aber nicht für V4.
-const ZRV = (vt.v6 as unknown as { zeitreise?: { aktiv: boolean; ab: string; frischTage?: number; ohneUngeprueft?: boolean; bremse: ZrBremsRegel } }).zeitreise;
+const ZRV = (vt.v6 as unknown as { zeitreise?: { aktiv: boolean; ausGrund?: string; ab: string; frischTage?: number; ohneUngeprueft?: boolean; bremse: ZrBremsRegel } }).zeitreise;
 const zrBuch = leseJson<{ eintraege: ZrBuchEintrag[] }>('lernen/muster/zeitreise-buch.json', { eintraege: [] });
 const zrPfad = join(process.env.SIGNALE_DIR ?? process.env.DATEN_DIR ?? '_daten', 'lernen', 'zeitreise.json');
 const zrDatei = existsSync(zrPfad) ? (JSON.parse(readFileSync(zrPfad, 'utf8')) as { stand?: string; aktuell?: { halbmonatVon: string; muster: ZrMuster[] } }) : null;
@@ -2402,6 +2402,7 @@ if (vt.erkennung) {
         ? {
             zeitreise: {
               an: ZRV.aktiv && !zrBremsEintrag,
+              ...(ZRV.aktiv ? {} : { ausGrund: ZRV.ausGrund ?? 'ausgeschaltet' }),
               ab: ZRV.ab,
               halbmonatVon: zrDatei?.aktuell?.halbmonatVon ?? null,
               muster: zrAktiv(zrBuch.eintraege).size,

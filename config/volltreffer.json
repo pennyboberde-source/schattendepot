@@ -1004,7 +1004,8 @@
     "tageHinweis": "Seit 18.11.2026: Vorwärts-Fälle desselben Stichtags sind ein Ereignis – befördert wird erst mit Fällen an mindestTage (Schnellspur: schnellspur.mindestTage) verschiedenen Tagen, und Ø/Band gelten für das Mittel der Tagesmittel. Befund: ein Muster hatte 599 Vorwärts-Fälle aus 1–3 Tagen (Rückblick 33 % Quote, vorwärts 4 Treffer, Ø −146 €).",
     "zeitreise": {
       "hinweis": "Zeitreise-Regel (Nutzer 20.11.2026: „Ja, darfst du machen. Sobald sich aber abzeichnen sollte, dass das Ganze keinen Gewinn bringt … sei bereit, sehr schnell zurück zur 6er-Regel zu gehen.“): die Muster-Auswahl des laufenden Halbmonats aus der Zeitreise (lernen/zeitreise.json › aktuell, täglich 23:40 UTC) ordert zusätzlich sichtbar – dieselben Grenzen wie V6 (höchstens maxOffen gleichzeitig, je Wert eine, Tagesverlustgrenze, Klumpen), ohne Pump-Verdacht und ohne ungeprüfte Plattform (CFD), Kennzeichen „zeitreise“. Bremse: Summe der Zeitreise-Orders seit „ab“ (abgeschlossen + Stand der offenen) ≤ −maxVerlust € oder nach mindestOrders abgeschlossenen Ø unter minOe € → Eintrag „bremse“ im Zeitreise-Buch, alle Muster abgewählt, laufende Orders laufen zu Ende; nur die 6er-Regel ordert weiter. Neu starten: „ab“ auf einen späteren Tag setzen.",
-      "aktiv": true,
+      "aktiv": false,
+      "ausGrund": "Nach der Korrektur der Zeitreise (20.11.2026: Ergebnisse zählen erst im Halbmonat ihres Ausstiegs) bleibt für die besten 3 nur Ø +5 € je Order (vorher +16 €), 10 von 21 Monaten im Plus, größter Rückgang 4.723 € – kein gesicherter Vorteil. Die Regel ist fertig gebaut und schaltet sich mit aktiv: true ein; die Zeitreise läuft täglich weiter.",
       "ab": "2026-11-20",
       "frischTage": 2,
       "ohneUngeprueft": true,
