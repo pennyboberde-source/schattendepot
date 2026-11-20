@@ -2750,7 +2750,7 @@ if (vt.erkennung) {
   };
   const leiheJe = new Map<string, Leihe>();
   const redditJe = new Map<string, Nennung>();
-  {
+  try {
     const fl = juengste('leihe');
     if (fl) for (const l of leiheLesen(gz(fl).split('\n').map((z, i) => (i === 0 ? '#SYM|FEERATE|AVAILABLE|' : z.replace(/,/g, '|'))).join('\n'))) leiheJe.set(l.kuerzel, l);
     const fr = juengste('reddit');
@@ -2758,7 +2758,10 @@ if (vt.erkennung) {
       const j = JSON.parse(gz(fr)) as { aktien?: (string | number | null)[][] };
       for (const [kuerzel, rang, nennungen, upvotes, rangVor24h, nennungenVor24h] of j.aktien ?? []) redditJe.set(String(kuerzel), { kuerzel: String(kuerzel), rang: Number(rang), nennungen: Number(nennungen), upvotes: Number(upvotes), rangVor24h: rangVor24h === null ? null : Number(rangVor24h), nennungenVor24h: nennungenVor24h === null ? null : Number(nennungenVor24h) });
     }
+  } catch (e) {
+    log(`Stimmung (Leihe/Reddit): nicht lesbar – ${(e as Error).message}`);
   }
+  log(`Stimmung: Leihgebühren für ${leiheJe.size} Werte, Reddit-Nennungen für ${redditJe.size} Werte.`);
   const mitStimmung = (f: JagdFall): JagdFall => {
     if (f.markt !== 'aktie') return f;
     const t = stimmungText(redditJe.get(f.wert), leiheJe.get(f.wert));
