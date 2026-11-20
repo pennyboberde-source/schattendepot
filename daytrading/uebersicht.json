@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T19:09:14.750Z",
+  "stand": "2026-11-20T19:24:17.758Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -486,64 +486,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-nvidia-corp",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NVIDIA CORP",
-      "isin": "US67066G1040",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 151.06,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "kurs": 126.02,
-        "level": 126.5,
-        "spanne": {
-          "hoch": 130.18,
-          "tief": 126.5
-        },
-        "richtung": "short"
-      },
-      "stop": 128.34,
-      "ziel": 120.96,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "basisKurs": 125.88,
-        "kurs": 2.5243,
-        "stueck": 396,
-        "kurswert": 999.62
-      },
-      "timeMachine": {
-        "zielZuerst": 1.4,
-        "stopZuerst": 11.9,
-        "keins": 86.7,
-        "gruen": 63,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 37,
-          "ziel": 11,
-          "stop": 11,
-          "oeR": 0.47
-        }
-      }
-    },
-    {
       "id": "2026-11-20-scan-xpeng-inc-adr",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -968,64 +910,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-nvidia-corp",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NVIDIA CORP",
-      "isin": "US67066G1040",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 151.06,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "kurs": 126.02,
-        "level": 126.5,
-        "spanne": {
-          "hoch": 130.18,
-          "tief": 126.5
-        },
-        "richtung": "short"
-      },
-      "stop": 128.34,
-      "ziel": 120.96,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "basisKurs": 125.88,
-        "kurs": 2.5243,
-        "stueck": 396,
-        "kurswert": 999.62
-      },
-      "timeMachine": {
-        "zielZuerst": 1.4,
-        "stopZuerst": 11.9,
-        "keins": 86.7,
-        "gruen": 63,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 37,
-          "ziel": 11,
-          "stop": 11,
-          "oeR": 0.47
-        }
-      }
-    },
-    {
       "id": "2026-11-20-scan-xpeng-inc-adr",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -1238,6 +1122,83 @@
           "stop": 14,
           "oeR": 0.15
         }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-nvidia-corp",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NVIDIA CORP",
+      "isin": "US67066G1040",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 151.06,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:25:00.000Z",
+        "kurs": 126.02,
+        "level": 126.5,
+        "spanne": {
+          "hoch": 130.18,
+          "tief": 126.5
+        },
+        "richtung": "short"
+      },
+      "stop": 128.34,
+      "ziel": 120.96,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:25:00.000Z",
+        "basisKurs": 125.88,
+        "kurs": 2.5243,
+        "stueck": 396,
+        "kurswert": 999.62
+      },
+      "timeMachine": {
+        "zielZuerst": 1.4,
+        "stopZuerst": 11.9,
+        "keins": 86.7,
+        "gruen": 63,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 37,
+          "ziel": 11,
+          "stop": 11,
+          "oeR": 0.47
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T19:15:00.000Z",
+        "basisKurs": 120.96,
+        "kurs": 3.0025,
+        "kurswert": 1188.99,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 189.37,
+        "bruttoProzent": 18.94,
+        "netto": 189.37,
+        "nettoProzent": 18.94,
+        "nettoTR": 187.37,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -12470,46 +12431,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 200,
-      "treffer": 97,
-      "quote": 48.5,
-      "netto": 1757.94,
-      "brutto": 1837.94,
-      "nettoTR": 1438.94,
-      "oeNettoProzent": 0.88,
-      "oeR": 0.4
+      "anzahl": 201,
+      "treffer": 98,
+      "quote": 48.8,
+      "netto": 1947.31,
+      "brutto": 2027.31,
+      "nettoTR": 1626.31,
+      "oeNettoProzent": 0.97,
+      "oeR": 0.41
     },
     "heute": {
-      "anzahl": 16,
-      "treffer": 6,
-      "quote": 37.5,
-      "netto": 289.16,
-      "brutto": 297.16,
-      "nettoTR": 265.16,
-      "oeNettoProzent": 1.83,
-      "oeR": 0.02
+      "anzahl": 17,
+      "treffer": 7,
+      "quote": 41.2,
+      "netto": 478.53,
+      "brutto": 486.53,
+      "nettoTR": 452.53,
+      "oeNettoProzent": 2.83,
+      "oeR": 0.13
     },
-    "offen": 8,
+    "offen": 7,
     "gruppen": {
       "turbo": {
-        "anzahl": 160,
-        "treffer": 87,
-        "quote": 54.4,
-        "netto": 2094.22,
-        "brutto": 2094.22,
-        "nettoTR": 1775.22,
-        "oeNettoProzent": 1.31,
-        "oeR": 0.45
+        "anzahl": 161,
+        "treffer": 88,
+        "quote": 54.7,
+        "netto": 2283.59,
+        "brutto": 2283.59,
+        "nettoTR": 1962.59,
+        "oeNettoProzent": 1.42,
+        "oeR": 0.46
       },
       "short": {
-        "anzahl": 160,
-        "treffer": 87,
-        "quote": 54.4,
-        "netto": 2094.22,
-        "brutto": 2094.22,
-        "nettoTR": 1775.22,
-        "oeNettoProzent": 1.31,
-        "oeR": 0.45
+        "anzahl": 161,
+        "treffer": 88,
+        "quote": 54.7,
+        "netto": 2283.59,
+        "brutto": 2283.59,
+        "nettoTR": 1962.59,
+        "oeNettoProzent": 1.42,
+        "oeR": 0.46
       },
       "krypto": {
         "anzahl": 40,
