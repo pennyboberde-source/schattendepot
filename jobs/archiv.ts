@@ -1459,7 +1459,17 @@ async function minuten() {
   const fertig = new Set<string>(existsSync(fertigPfad) ? (JSON.parse(readFileSync(fertigPfad, 'utf8')) as string[]) : []);
   // Reihenfolge: feste Zufallsmischung über die zwei Jahre (Streuung über alle Marktlagen statt nur der jüngsten Wochen –
   // 92.000 Tage sind bei 5 Abrufen je Minute nicht in Wochen zu holen, eine gleichmäßige Stichprobe trägt schon nach wenigen Tausend)
-  const misch = (x: string) => [...x].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) | 0, 17) >>> 0;
+  // Polynom-Hash plus Durchmischung (murmur3-Finalisierer) – ohne sie bestimmt das Datum die oberen Bits und die
+  // „Zufallsreihenfolge“ holte ganze Tage am Stück (Befund 20.11.: 952 Ereignisse aus nur 28 Tagen)
+  const misch = (x: string) => {
+    let h = [...x].reduce((a, c) => (Math.imul(a, 31) + c.charCodeAt(0)) | 0, 17);
+    h ^= h >>> 16;
+    h = Math.imul(h, 0x85ebca6b);
+    h ^= h >>> 13;
+    h = Math.imul(h, 0xc2b2ae35);
+    h ^= h >>> 16;
+    return h >>> 0;
+  };
   const offen = ereignisse.filter((e) => !fertig.has(`${e.d}|${e.t}`)).sort((a, b) => misch(`${a.d}|${a.t}`) - misch(`${b.d}|${b.t}`));
   const dateiVon = (d: string) => join(ordner, d.slice(0, 4), `${d}.json.gz`);
   const cache = new Map<string, Record<string, number[][]>>();
