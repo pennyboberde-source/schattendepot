@@ -305,3 +305,95 @@ export function zrBremse(orders: { art: string; netto: number | null }[], r: ZrB
   if (fertig.length >= r.mindestOrders && oe < r.minOe) return { aus: true, grund: `Ø ${zahl(oe)} € je Order nach ${fertig.length} Orders unter ${zahl(r.minOe)} €`, abgeschlossen: fertig.length, summe, offen };
   return { aus: false, grund: `${fertig.length} abgeschlossen, Summe ${zahl(summe)} €, offen ${zahl(offen)} €`, abgeschlossen: fertig.length, summe, offen };
 }
+
+// ---------- Prüfungen der Zeitreise (20.11.2026): Zufallsprobe (Placebo) und Modell-Zeitreise ----------
+
+/**
+ * Zufallsprobe: vertauscht die Ergebnisse (netto, Volltreffer ja/nein, Ausstiegstag) je Tag, Markt und Spielart zufällig
+ * unter den Fällen dieses Tages (nur Fälle mit Ergebnis). Was danach noch gewinnt, kommt aus der Wahl der Tage und
+ * Richtungen (die Marktlage bleibt an ihrem Tag), nicht aus der Wahl der Werte. Fester Zufallsstart, verändert die Felder.
+ */
+export function ergebnisseMischen(
+  zeilen: number,
+  spielarten: number,
+  tagVon: (z: number) => number,
+  marktVon: (z: number) => number,
+  netto: Float32Array,
+  art: Uint8Array,
+  aus: Int32Array,
+  saat = 1,
+): number {
+  let a = saat >>> 0;
+  const zufall = () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  const reihenfolge = Array.from({ length: zeilen }, (_, z) => z).sort((p, q) => tagVon(p) - tagVon(q) || marktVon(p) - marktVon(q) || p - q);
+  let getauscht = 0;
+  let i = 0;
+  const idx: number[] = [];
+  while (i < reihenfolge.length) {
+    let e = i;
+    while (e < reihenfolge.length && tagVon(reihenfolge[e]) === tagVon(reihenfolge[i]) && marktVon(reihenfolge[e]) === marktVon(reihenfolge[i])) e++;
+    for (let j = 0; j < spielarten; j++) {
+      idx.length = 0;
+      for (let k = i; k < e; k++) if (!Number.isNaN(netto[reihenfolge[k] * spielarten + j])) idx.push(reihenfolge[k] * spielarten + j);
+      for (let k = idx.length - 1; k > 0; k--) {
+        const r = Math.floor(zufall() * (k + 1));
+        if (r === k) continue;
+        const x = idx[k];
+        const y = idx[r];
+        const n = netto[x];
+        netto[x] = netto[y];
+        netto[y] = n;
+        const t = art[x];
+        art[x] = art[y];
+        art[y] = t;
+        const u = aus[x];
+        aus[x] = aus[y];
+        aus[y] = u;
+        getauscht++;
+      }
+    }
+    i = e;
+  }
+  return getauscht;
+}
+
+/** Kennzahlen mit dem Tag als Einheit: Ø der Tages-Ø und sein Standardfehler, dazu je Hälfte des Zeitraums */
+export interface TagesKennzahlen {
+  faelle: number;
+  volltreffer: number;
+  quote: number;
+  oe: number;
+  tage: number;
+  oeTag: number;
+  seTag: number;
+  haelften: { faelle: number; quote: number; oe: number; oeTag: number; tage: number }[];
+}
+
+export function tagesKennzahlen(faelle: { tag: number; netto: number; treffer: boolean }[]): TagesKennzahlen {
+  const r1 = (x: number) => Math.round(x * 10) / 10;
+  const teil = (l: typeof faelle) => {
+    const je = new Map<number, [number, number]>();
+    for (const f of l) {
+      const t = je.get(f.tag) ?? [0, 0];
+      t[0] += f.netto;
+      t[1]++;
+      je.set(f.tag, t);
+    }
+    const ms = [...je.values()].map(([s, n]) => s / n);
+    const m = ms.length ? ms.reduce((s, x) => s + x, 0) / ms.length : 0;
+    const sd = ms.length > 1 ? Math.sqrt(ms.reduce((s, x) => s + (x - m) ** 2, 0) / (ms.length - 1)) : 0;
+    const vt = l.filter((f) => f.treffer).length;
+    return { faelle: l.length, volltreffer: vt, quote: l.length ? r1((vt / l.length) * 100) : 0, oe: l.length ? r1(l.reduce((s, f) => s + f.netto, 0) / l.length) : 0, tage: ms.length, oeTag: r1(m), seTag: ms.length > 1 ? r1(sd / Math.sqrt(ms.length)) : 0 };
+  };
+  const g = teil(faelle);
+  const tage = [...new Set(faelle.map((f) => f.tag))].sort((a, b) => a - b);
+  const mitte = tage.length ? tage[Math.floor(tage.length / 2)] : 0;
+  const h = [teil(faelle.filter((f) => f.tag < mitte)), teil(faelle.filter((f) => f.tag >= mitte))].map(({ faelle: n, quote, oe, oeTag, tage: t }) => ({ faelle: n, quote, oe, oeTag, tage: t }));
+  return { ...g, haelften: h };
+}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { auswaehlen, bilanz, nachspielen, zrAktiv, zrBremse, zrBuchFortschreiben, zrZeiten, ZeitStat, type Kandidat, type ZrBuchEintrag, type ZrMuster } from './zeitreise.ts';
+import { auswaehlen, bilanz, ergebnisseMischen, nachspielen, tagesKennzahlen, zrAktiv, zrBremse, zrBuchFortschreiben, zrZeiten, ZeitStat, type Kandidat, type ZrBuchEintrag, type ZrMuster } from './zeitreise.ts';
 
 describe('Zeitreise: Auswahl nur aus der Vergangenheit (19.11.2026)', () => {
   // Gruppe 0 = „alle“ (Grundrate), Gruppe 1 = gutes Muster, Gruppe 2 = erst später gut, Gruppe 3 = nur in einer Hälfte gut
@@ -78,5 +78,44 @@ describe('Zeitreise-Regel live (20.11.2026)', () => {
     expect(zrBremse(sieben, r).aus).toBe(false);
     expect(zrBremse([...sieben, o('zeit', -40)], r).aus).toBe(true);
     expect(zrBremse([...sieben, o('treffer', 420)], r).aus).toBe(false);
+  });
+});
+
+describe('Prüfungen der Zeitreise', () => {
+  it('ergebnisseMischen tauscht nur innerhalb von Tag, Markt und Spielart und behält die Summen', () => {
+    // 4 Fälle, 2 Spielarten: Tag 1 Markt 0 (z0, z1), Tag 1 Markt 1 (z2), Tag 2 Markt 0 (z3)
+    const tag = [1, 1, 1, 2];
+    const markt = [0, 0, 1, 0];
+    const netto = Float32Array.from([10, 1, 20, 2, 30, 3, 40, Number.NaN]);
+    const art = Uint8Array.from([1, 0, 0, 0, 1, 0, 1, 0]);
+    const aus = Int32Array.from([5, 6, 7, 8, 9, 10, 11, 12]);
+    let getauscht = 0;
+    for (let s = 1; s <= 20 && !getauscht; s++) {
+      const n = netto.slice();
+      const a = art.slice();
+      const u = aus.slice();
+      getauscht = ergebnisseMischen(4, 2, (z) => tag[z], (z) => markt[z], n, a, u, s);
+      // Tag 1 Markt 0 Spielart 0: {10, 20} bleiben unter sich, mit ihrem Volltreffer-Kennzeichen und Ausstieg
+      expect(new Set([n[0], n[2]])).toEqual(new Set([10, 20]));
+      expect(n[0] === 10 ? [a[0], u[0]] : [a[2], u[2]]).toEqual([1, 5]);
+      expect([n[4], n[6], Number.isNaN(n[7])]).toEqual([30, 40, true]);
+      expect(n[5]).toBe(3);
+    }
+    expect(getauscht).toBeGreaterThan(0);
+  });
+
+  it('tagesKennzahlen zählt den Tag als Einheit und teilt in zwei Hälften', () => {
+    const k = tagesKennzahlen([
+      { tag: 1, netto: 400, treffer: true },
+      { tag: 1, netto: -150, treffer: false },
+      { tag: 1, netto: -150, treffer: false },
+      { tag: 2, netto: -150, treffer: false },
+    ]);
+    expect(k.faelle).toBe(4);
+    expect(k.quote).toBe(25);
+    expect(k.oe).toBe(-12.5);
+    expect(k.tage).toBe(2);
+    expect(k.oeTag).toBe(-58.3); // (33,3 − 150) / 2
+    expect(k.haelften.map((h) => h.faelle)).toEqual([3, 1]);
   });
 });

@@ -954,7 +954,13 @@
     "sichtbarMaxOffen": 3,
     "sichtbarMaxJeTag": 3,
     "jagdenMaxOffen": 10,
-    "jagdenMaxJeTag": 10
+    "jagdenMaxJeTag": 10,
+    "modell": {
+      "hinweis": "Modell-Zeitreise (20.11.2026, zeitreise.yml modus=modell): diese Gesamtmodelle (Spielart|Ziel|Universum) werden so nachgespielt, wie sie live gelaufen wären – trainiert nur mit Fällen, deren Ausstieg vor dem Halbmonat lag, neu alle neuJe Halbmonate (mindestens mindestTraining Fälle).",
+      "neuJe": 4,
+      "mindestTraining": 5000,
+      "modelle": ["2S150|treffer", "V2S150|treffer", "V2L150|treffer", "V2S150|treffer|wild", "V2L150|treffer|wild", "2S150|wild"]
+    }
   },
   "v4": {
     "hinweis": "Bereich Volltreffer, virtuell (Konzept V4): höchstens maxOffen Jagden gleichzeitig, nach tagesVerlustGrenze € realisiertem Verlust am nächsten Einstiegstag keine neue Jagd; höchstens vorwaertsMax Muster gleichzeitig im Vorwärtstest; Stufe 2 ab stufe2Faelle Fällen mit Ø im Band des Rückblicks. 15.11.2026 abends auf Wunsch des Nutzers („so viele Volltreffer wie möglich“): 10 statt 5 Jagden gleichzeitig, Tagesverlustgrenze im selben Verhältnis 900 statt 450 €, 40 statt 30 Muster im Vorwärtstest. Nachziehstop ab +200 € ist als Spielart gemessen (im Schnitt schlechter, nur wo besser gewählt). Nicht umgesetzt: höchstens 2 Jagden je Thema (würde Jagden kosten; Branche ist jetzt Merkmal im Rückblick), eigener Pump-Filter (Turbo-Handelbarkeit verlangt schon großen Umsatz).",

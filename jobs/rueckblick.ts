@@ -13,7 +13,7 @@ import { klasse, klassenName, merkmale, type Einteilung, type Merkmale } from '.
 import { HYPOTHESEN, hypothesenFaelle, pruefen, spielartSchluessel, TagesKlumpen, Zaehlwerk, type Pruefergebnis } from '../core/volltreffer/pruefung.ts';
 import { jagdenWaehlen, jagdKennzahlen, neinFilterAktiv, urteilKalibrierung, type JagdFall } from '../core/volltreffer/jagd.ts';
 import { abdeckungBerechnen } from '../core/volltreffer/abdeckung.ts';
-import { auswaehlen, bilanz, nachspielen, zrAktiv, zrBremse, zrBuchFortschreiben, zrZeiten, ZeitStat, type Gewaehlt, type Kandidat, type ZrBremsRegel, type ZrBuchEintrag, type ZrMuster } from '../core/volltreffer/zeitreise.ts';
+import { auswaehlen, bilanz, ergebnisseMischen, nachspielen, tagesKennzahlen, zrAktiv, zrBremse, zrBuchFortschreiben, zrZeiten, ZeitStat, type Gewaehlt, type Kandidat, type ZrBremsRegel, type ZrBuchEintrag, type ZrMuster } from '../core/volltreffer/zeitreise.ts';
 import { pumpVerdacht } from '../core/datenkrake.ts';
 import { befoerderungPruefen, inStufe3, istBefoerdert, noetigeFaelle, stufe3Waehlen, stufe3Zeiten, type V6Regeln } from '../core/volltreffer/befoerderung.ts';
 import { istUsAktie, kryptoPaar, median, splitBereinigen, splitVerdacht, unbekannteSplitsTeilen, type Split } from '../core/volltreffer/reihen.ts';
@@ -1222,6 +1222,112 @@ if (ZEITREISE) {
       zeilen++;
     }
   }
+  const datumZ = (t: number) => new Date(Date.parse(`${erster}T12:00:00Z`) + t * 86400000).toISOString().slice(0, 10);
+  // Rollender Gegenwind wie live (oberstes Zehntel von Markt 5 Tage oder VIX der vorigen 250 Handelstage)
+  const gegenwindZ = (() => {
+    const q90 = (l: number[]) => {
+      const t2 = l.filter((v) => Number.isFinite(v)).sort((a, b) => a - b);
+      return t2.length >= 60 ? t2[Math.floor(t2.length * 0.9)] : Infinity;
+    };
+    const m = new Map<string, boolean>();
+    for (let n = 0; n < alleTage.length; n++) {
+      const vor = alleTage.slice(Math.max(0, n - 250), n);
+      const s5 = q90(vor.map((d) => markt5JeTag.aktie.get(d) ?? NaN));
+      const sv = q90(vor.map((d) => umfeldJeTag.get(d)?.vix ?? NaN));
+      m.set(alleTage[n], (markt5JeTag.aktie.get(alleTage[n]) ?? 0) >= s5 || (umfeldJeTag.get(alleTage[n])?.vix ?? 0) >= sv);
+    }
+    return (t: number) => m.get(datumZ(t)) ?? false;
+  })();
+  // ---------- Zufallsprobe (Placebo, 20.11.2026): Ergebnisse je Tag, Markt und Spielart vertauschen ----------
+  // Danach läuft die Zeitreise unverändert. Was dann noch gewinnt, kommt aus Marktlage und Richtung des Tages, nicht aus der
+  // Wahl der Werte – der Abstand zur echten Zeitreise ist der Anteil, den die Muster wirklich mit der Wertauswahl verdienen.
+  const PLACEBO = process.env.PLACEBO === '1';
+  if (PLACEBO) {
+    const saat = Number(process.env.PLACEBO_SAAT ?? 1);
+    const n = ergebnisseMischen(zeilen, ZS.length, (z) => zTag[z], (z) => zMarkt[z], netto, art, aus, saat);
+    log(`Zufallsprobe (Saat ${saat}): ${n} Ergebnisse innerhalb von Tag, Markt und Spielart vertauscht – die folgende Zeitreise ist der Vergleich ohne Wertauswahl.`);
+  }
+  // ---------- Modell-Zeitreise (20.11.2026): das Gesamtmodell so, wie es live liefe ----------
+  // Je Halbmonat (neu trainiert alle `neuJe` Halbmonate) nur mit Fällen, deren Ausstieg VOR dem Halbmonat lag; dann je Tag die
+  // obersten q % der Fälle des Halbmonats nach Bewertung → Kennzahlen (Tag als Einheit, zwei Hälften) und die sichtbare Regel
+  // nachgespielt (3 offen, je Wert eine, bei Short-Spielarten ohne Orders an Gegenwind-Tagen). Nur Kennzahlen.
+  if (process.env.MODELLZEIT === '1') {
+    const MZ = (ZR as unknown as { modell?: { neuJe: number; modelle: string[]; mindestTraining: number } }).modell ?? { neuJe: 4, modelle: [], mindestTraining: 5000 };
+    const X = kl.subarray(0, zeilen * NE);
+    for (let i = 0; i < X.length; i++) X[i] = X[i] === 255 ? 0 : X[i] + 1;
+    const erlaubtZ = E.map((e) => !MC!.ohne.includes(e.merkmal));
+    const absStart = new Int32Array(ABSCHNITTE + 1).fill(-1);
+    for (let t = 0; t <= kal(heute) + 1; t++) {
+      const b = abschnitt(datumZ(t));
+      if (b <= ABSCHNITTE && absStart[b] < 0) absStart[b] = t;
+    }
+    if (absStart[ABSCHNITTE] < 0) absStart[ABSCHNITTE] = kal(heute) + 1;
+    const monatZ = (t: number) => datumZ(t).slice(0, 7);
+    const ergebnisse: unknown[] = [];
+    const bew = new Float64Array(zeilen);
+    for (const m of MODELLE) {
+      const name = `${m.spielart}${modellZusatz(m)}`;
+      if (!MZ.modelle.includes(name)) continue;
+      const j = ZS.indexOf(m.s);
+      if (j < 0 || F[m.f] !== ZR.fenster) {
+        log(`Modell-Zeitreise ${name}: Spielart/Fenster nicht in der Zeitreise – übersprungen.`);
+        continue;
+      }
+      const t0m = Date.now();
+      const mm = m.markt === 'aktie' ? 0 : 1;
+      const uni = universumIdx.get(m.idx)!;
+      const R: number[] = [];
+      for (let z = 0; z < zeilen; z++) {
+        if (zMarkt[z] !== mm || Number.isNaN(netto[z * ZS.length + j])) continue;
+        if (uni.length && !uni.some((b) => b.a >= 0 && b.klassen.has(X[z * NE + b.a]))) continue;
+        R.push(z);
+      }
+      const y = new Float32Array(zeilen).fill(Number.NaN);
+      for (const z of R) y[z] = m.ziel === 'treffer' ? art[z * ZS.length + j] * vt.etikett.ziel : netto[z * ZS.length + j];
+      const jeAbs: number[][] = Array.from({ length: ABSCHNITTE }, () => []);
+      for (const z of R) jeAbs[zAbs[z]].push(z);
+      const qs = m.oberste ?? MC!.obersteProzent;
+      const kand = new Map<number, Kandidat[]>(qs.map((q) => [q, []]));
+      let modell: Modell | null = null;
+      let trainings = 0;
+      let erstesAbs = -1;
+      const short = SP[ZS[j]].richtung === 'short';
+      const text = `Modell ${spielartText(SP[ZS[j]])}${m.ziel === 'treffer' ? ' (Ziel Volltreffer)' : ''}${m.universum ? ` – ${m.universum.name}` : ''}`;
+      for (let b = ZR.ersterAbschnitt; b < ABSCHNITTE; b++) {
+        if (!modell || (b - ZR.ersterAbschnitt) % MZ.neuJe === 0) {
+          const grenzeT = absStart[b];
+          const train = R.filter((z) => aus[z * ZS.length + j] < grenzeT);
+          if (train.length >= MZ.mindestTraining) {
+            modell = trainieren(X, NE, gegenTag(y, train, (z) => zTag[z]), Int32Array.from(train), MC!.einstellungen, erlaubtZ);
+            trainings++;
+          }
+        }
+        if (!modell || !jeAbs[b].length) continue;
+        if (erstesAbs < 0) erstesAbs = b;
+        const zs = jeAbs[b];
+        const bw = zs.map((z) => (bew[z] = bewerten(modell!, X, z)));
+        for (const q of qs)
+          for (const z of tagesAuswahl(zs, bw, (zz) => zTag[zz], q))
+            kand.get(q)!.push({ tag: zTag[z], wert: zWert[z], wertung: bew[z], netto: netto[z * ZS.length + j], treffer: art[z * ZS.length + j] === 1, dauer: Math.max(1, aus[z * ZS.length + j] - zTag[z]), muster: text });
+      }
+      for (const q of qs) {
+        const k2 = kand.get(q)!;
+        const kz = tagesKennzahlen(k2);
+        const sicht = bilanz(nachspielen(k2, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatZ);
+        const sichtGw = short ? bilanz(nachspielen(k2.filter((x) => !gegenwindZ(x.tag)), { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatZ) : null;
+        ergebnisse.push({ modell: name, text, markt: m.markt, spielart: m.spielart, ziel: m.ziel ?? 'netto', universum: m.universum?.name ?? null, oberste: q, ab: erstesAbs >= 0 ? datumZ(absStart[erstesAbs]) : null, trainings, faelle: kz, sichtbar: sicht, ...(sichtGw ? { sichtbarGegenwind: sichtGw } : {}) });
+        const s2 = sichtGw ?? sicht;
+        log(`Modell-Zeitreise ${text}, oberste ${q} %: ${kz.faelle} Fälle an ${kz.tage} Tagen, Quote ${kz.quote} %, Ø ${kz.oe} € (Tag als Einheit ${kz.oeTag} ± ${kz.seTag}; Hälften ${kz.haelften.map((h) => `${h.oeTag} € / ${h.quote} %`).join(' | ')}) · sichtbar ${sichtGw ? 'mit Gegenwind ' : ''}${s2.orders} Orders, ${s2.volltreffer} Volltreffer (${s2.quote} %), Ø ${s2.oe} €, netto ${s2.netto} €, Rückgang ${s2.maxRueckgang} €, ${s2.monate.filter((mo) => mo.netto > 0).length}/${s2.monate.length} Monate im Plus.`);
+      }
+      log(`Modell-Zeitreise ${text}: ${trainings} Trainings, ${R.length} Fälle, ${Math.round((Date.now() - t0m) / 1000)} s.`);
+    }
+    schreibeJson('lernen/zeitreise-modell.json', {
+      stand: jetzt.toISOString(),
+      hinweis: `Modell-Zeitreise: das Gesamtmodell so nachgespielt, wie es live gelaufen wäre – trainiert nur mit Fällen, deren Ausstieg vor dem Halbmonat lag (neu alle ${MZ.neuJe} Halbmonate), dann je Tag die obersten q % der Fälle. Kennzahlen mit dem Tag als Einheit und je Hälfte des Zeitraums; „sichtbar“ = dieselbe Regel wie die Zeitreise (${ZR.sichtbarMaxOffen} offen, je Wert eine, Shorts ohne Gegenwind-Tage). Nur Kennzahlen, keine Kurse.`,
+      ergebnisse,
+    });
+    process.exit(0);
+  }
   // Zählen mit dem Tag als Einheit (wie die Klumpen-Prüfung des Rückblicks): je Tag, Gruppe und Spielart ein Wert –
   // Ø der Fälle des Tages und Anteil der Volltreffer. Sonst wählen Muster, deren Fälle an wenigen Tagen klumpen.
   const gruppenIds = (z: number): number[] => {
@@ -1446,7 +1552,20 @@ if (ZEITREISE) {
       })),
     },
   };
-  schreibeJson('lernen/zeitreise.json', ergebnis);
+  if (PLACEBO) {
+    // Zufallsprobe: nie die Live-Auswahl überschreiben – eigenes Ergebnis, nur Kennzahlen
+    schreibeJson('lernen/zeitreise-placebo.json', {
+      stand: jetzt.toISOString(),
+      saat: Number(process.env.PLACEBO_SAAT ?? 1),
+      hinweis: 'Zufallsprobe der Zeitreise: Ergebnisse je Tag, Markt und Spielart zufällig vertauscht, sonst alles gleich. Was hier gewinnt, kommt aus Marktlage und Richtung des Tages, nicht aus der Wahl der Werte. Der Abstand zur echten Zeitreise zeigt, was die Muster mit der Wertauswahl verdienen.',
+      auswahlJeHalbmonat: wahl.map((w) => w.length),
+      sichtbar: ergebnis.sichtbar,
+      sichtbarOhneFilter: ergebnis.sichtbarOhneFilter,
+      jagden: ergebnis.jagden,
+      alleMusterfaelle: ergebnis.alleMusterfaelle,
+      grundrate: ergebnis.grundrate,
+    });
+  } else schreibeJson('lernen/zeitreise.json', ergebnis);
   log(`Zeitreise mit Rückenwind-Long als Ersatz: ${ergebnis.sichtbarMitRueckenwind.orders} Orders, ${ergebnis.sichtbarMitRueckenwind.volltreffer} Volltreffer, netto ${ergebnis.sichtbarMitRueckenwind.netto} €, Ø ${ergebnis.sichtbarMitRueckenwind.oe} €, Rückgang ${ergebnis.sichtbarMitRueckenwind.maxRueckgang} €, ${ergebnis.sichtbarMitRueckenwind.monate.filter((mo) => mo.netto > 0).length}/${ergebnis.sichtbarMitRueckenwind.monate.length} Monate · nur Rückenwind-Long (3 offen): ${ergebnis.nurRueckenwind.orders} Orders, Ø ${ergebnis.nurRueckenwind.oe} €, netto ${ergebnis.nurRueckenwind.netto} €.`);
   log(`Rückenwind-Long je Monat: ${ergebnis.nurRueckenwind.monate.map((mo) => `${mo.monat} ${mo.orders}/${mo.volltreffer}/${Math.round(mo.netto)} €`).join(' · ')}`);
   log(`Zeitreise sichtbar ohne Gegenwind-Filter: ${ergebnis.sichtbarOhneFilter.orders} Orders, Ø ${ergebnis.sichtbarOhneFilter.oe} €, netto ${ergebnis.sichtbarOhneFilter.netto} €.`);
