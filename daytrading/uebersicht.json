@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T14:39:06.630Z",
+  "stand": "2026-11-20T14:53:59.227Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -359,47 +359,6 @@
         "stueck": 86,
         "kurswert": 997
       }
-    },
-    {
-      "id": "2026-11-20-scan-deutsche-telekom-ag-reg",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "DEUTSCHE TELEKOM AG-REG",
-      "isin": "DE0005557508",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 31.38,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T13:35:00.000Z",
-        "kurs": 26.12,
-        "level": 26.13,
-        "spanne": {
-          "hoch": 26.4,
-          "tief": 26.13
-        },
-        "richtung": "short"
-      },
-      "stop": 26.27,
-      "ziel": 25.92,
-      "zielR": 2,
-      "flatBis": "2026-11-20T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T13:40:00.000Z",
-        "basisKurs": 26.15,
-        "kurs": 5.2431,
-        "stueck": 190,
-        "kurswert": 996.19
-      }
     }
   ],
   "trades": [
@@ -524,6 +483,25 @@
         "kurs": 5.2431,
         "stueck": 190,
         "kurswert": 996.19
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T14:35:00.000Z",
+        "basisKurs": 26.27,
+        "kurs": 5.0972,
+        "kurswert": 968.47,
+        "grund": "stop"
+      },
+      "ergebnis": {
+        "brutto": -27.72,
+        "bruttoProzent": -2.78,
+        "netto": -27.72,
+        "nettoProzent": -2.78,
+        "nettoTR": -29.72,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -1
       }
     },
     {
@@ -10377,46 +10355,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 192,
+      "anzahl": 193,
       "treffer": 93,
-      "quote": 48.4,
-      "netto": 1440.07,
-      "brutto": 1520.07,
-      "nettoTR": 1137.07,
-      "oeNettoProzent": 0.75,
-      "oeR": 0.41
+      "quote": 48.2,
+      "netto": 1412.35,
+      "brutto": 1492.35,
+      "nettoTR": 1107.35,
+      "oeNettoProzent": 0.73,
+      "oeR": 0.4
     },
     "heute": {
-      "anzahl": 8,
+      "anzahl": 9,
       "treffer": 2,
-      "quote": 25,
-      "netto": -28.71,
-      "brutto": -20.71,
-      "nettoTR": -36.71,
-      "oeNettoProzent": -0.36,
-      "oeR": -0.26
+      "quote": 22.2,
+      "netto": -56.43,
+      "brutto": -48.43,
+      "nettoTR": -66.43,
+      "oeNettoProzent": -0.63,
+      "oeR": -0.34
     },
-    "offen": 3,
+    "offen": 2,
     "gruppen": {
       "turbo": {
-        "anzahl": 152,
+        "anzahl": 153,
         "treffer": 83,
-        "quote": 54.6,
-        "netto": 1776.35,
-        "brutto": 1776.35,
-        "nettoTR": 1473.35,
-        "oeNettoProzent": 1.17,
-        "oeR": 0.46
+        "quote": 54.2,
+        "netto": 1748.63,
+        "brutto": 1748.63,
+        "nettoTR": 1443.63,
+        "oeNettoProzent": 1.14,
+        "oeR": 0.45
       },
       "short": {
-        "anzahl": 152,
+        "anzahl": 153,
         "treffer": 83,
-        "quote": 54.6,
-        "netto": 1776.35,
-        "brutto": 1776.35,
-        "nettoTR": 1473.35,
-        "oeNettoProzent": 1.17,
-        "oeR": 0.46
+        "quote": 54.2,
+        "netto": 1748.63,
+        "brutto": 1748.63,
+        "nettoTR": 1443.63,
+        "oeNettoProzent": 1.14,
+        "oeR": 0.45
       },
       "krypto": {
         "anzahl": 40,
@@ -10512,7 +10490,7 @@
     }
   },
   "beobachtet": {
-    "code_scan": 22,
+    "code_scan": 52,
     "claude": 1,
     "autopilot": 0
   },
