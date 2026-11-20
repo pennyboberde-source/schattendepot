@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T13:56:47.331Z",
-  "anzahl": 227,
+  "stand": "2026-11-20T14:09:05.290Z",
+  "anzahl": 233,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -3011,6 +3011,84 @@
         "gettex-Scanner"
       ],
       "z": "2026-11-20T13:40:04.569Z"
+    },
+    {
+      "id": "grossauftrag:CTSO:2026-11-20",
+      "s": "T:CTSO",
+      "n": "Cytosorbents Corp",
+      "t": "CTSO",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-20T13:56:08.000Z"
+    },
+    {
+      "id": "verwaesserung:CTSO:2026-11-20",
+      "s": "T:CTSO",
+      "n": "Cytosorbents Corp",
+      "t": "CTSO",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-20T13:58:11.000Z"
+    },
+    {
+      "id": "verwaesserung:NIVF:2026-11-20",
+      "s": "T:NIVF",
+      "n": "NewGenIvf Group Ltd",
+      "t": "NIVF",
+      "typ": "verwaesserung",
+      "r": -1,
+      "st": 0.6,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-20T14:00:18.000Z"
+    },
+    {
+      "id": "grossauftrag:BILL:2026-11-20",
+      "s": "T:BILL",
+      "n": "BILL Holdings, Inc.",
+      "t": "BILL",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-20T14:03:57.000Z"
+    },
+    {
+      "id": "katalysator_short:APRE:2026-11-20",
+      "s": "T:APRE",
+      "n": "APRE",
+      "t": "APRE",
+      "typ": "katalysator_short",
+      "r": -1,
+      "st": 0.5,
+      "q": [
+        "SEC EDGAR Volltext"
+      ],
+      "z": "2026-11-20T14:09:05.290Z"
+    },
+    {
+      "id": "katalysator_short:CTSO:2026-11-20",
+      "s": "T:CTSO",
+      "n": "CTSO",
+      "t": "CTSO",
+      "typ": "katalysator_short",
+      "r": -1,
+      "st": 0.5,
+      "q": [
+        "SEC EDGAR Volltext"
+      ],
+      "z": "2026-11-20T14:09:05.290Z"
     }
   ]
 }
