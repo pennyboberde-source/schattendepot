@@ -17,7 +17,7 @@ on:
       modus:
         description: 'zeitreise (Standard) oder trefferanalyse (wo entsteht der Volltreffer, was war vorher sichtbar)'
         type: choice
-        options: [zeitreise, trefferanalyse]
+        options: [zeitreise, trefferanalyse, zeitlupe]
         default: zeitreise
 
 permissions:
@@ -54,15 +54,16 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=8192
           DATEN_DIR: ${{ runner.temp }}/zeitreise
           SIGNALE_DIR: _daten
-          ZEITREISE: ${{ inputs.modus == 'trefferanalyse' && '0' || '1' }}
+          ZEITREISE: ${{ (inputs.modus == 'trefferanalyse' || inputs.modus == 'zeitlupe') && '0' || '1' }}
           TREFFERANALYSE: ${{ inputs.modus == 'trefferanalyse' && '1' || '0' }}
+          ZEITLUPE: ${{ inputs.modus == 'zeitlupe' && '1' || '0' }}
         run: |
           mkdir -p "$DATEN_DIR/lernen"
           node jobs/rueckblick.ts
       - name: nur das Ergebnis weitergeben
         run: |
           mkdir -p "${{ runner.temp }}/ergebnis/lernen"
-          for f in zeitreise.json trefferanalyse.json; do [ -f "${{ runner.temp }}/zeitreise/lernen/$f" ] && cp "${{ runner.temp }}/zeitreise/lernen/$f" "${{ runner.temp }}/ergebnis/lernen/"; done; true
+          for f in zeitreise.json trefferanalyse.json zeitlupe.json; do [ -f "${{ runner.temp }}/zeitreise/lernen/$f" ] && cp "${{ runner.temp }}/zeitreise/lernen/$f" "${{ runner.temp }}/ergebnis/lernen/"; done; true
       - uses: actions/upload-artifact@v4
         if: ${{ !inputs.probe }}
         with:

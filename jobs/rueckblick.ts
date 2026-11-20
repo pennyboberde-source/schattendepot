@@ -893,6 +893,8 @@ const modellZeile = (r: Reihe, i: number, klassen: (number | null)[]): number =>
 const ZEITREISE = process.env.ZEITREISE === '1';
 /** Trefferanalyse (20.11.2026): eigener Lauf (zeitreise.yml, modus=trefferanalyse) – wo entsteht der Volltreffer, was war vorher sichtbar */
 const ANALYSE = process.env.TREFFERANALYSE === '1';
+/** Zeitlupe (Q1, 20.11.2026): eigener Lauf (zeitreise.yml, modus=zeitlupe) – Einstieg im Tagesverlauf auf Minutenkerzen nachgerechnet */
+const ZEITLUPE = process.env.ZEITLUPE === '1';
 interface Episode {
   datum: string;
   schluessel: string;
@@ -909,7 +911,7 @@ const episoden: Episode[] = [];
 let stichtage = 0;
 const hypFaelle: Record<string, number> = {};
 
-for (const r of ZEITREISE || ANALYSE ? [] : reihen) {
+for (const r of ZEITREISE || ANALYSE || ZEITLUPE ? [] : reihen) {
   const k = r.kerzen;
   const m = k.map((_, i) => merkmale(k, i));
   const treffer: boolean[] = new Array(k.length).fill(false);
@@ -1307,6 +1309,178 @@ if (ZEITREISE) {
   log(`Zeitreise Vergleich: alle Fälle der gewählten Muster ${alleN} (Quote ${ergebnis.alleMusterfaelle.quote} %, Ø ${ergebnis.alleMusterfaelle.oe} €) · Grundrate ${grN} (Quote ${ergebnis.grundrate.quote} %, Ø ${ergebnis.grundrate.oe} €).`);
   for (const mo of ergebnis.sichtbar.monate) log(`  ${mo.monat}: ${mo.orders} Orders, ${mo.volltreffer} Volltreffer, ${mo.netto} €`);
   log(`Zeitreise aktuell (Halbmonat ab ${ergebnis.aktuell.halbmonatVon}): ${ergebnis.aktuell.muster.length} Muster für die Live-Regel.`);
+  process.exit(0);
+}
+if (ZEITLUPE) {
+  // ---------- Zeitlupe (Q1, Nutzer 20.11.2026): Einstieg im Tagesverlauf statt zur nächsten Eröffnung ----------
+  // Grundlage: Minutenkerzen (privat, minuten/) der Tage, an denen das Tageshoch ≥ +15 % über dem Vortagesschluss lag,
+  // samt Folgetag. Jede Regel löst nur mit dem aus, was bis zur jeweiligen Minute bekannt war; Einstieg zur Eröffnung der
+  // nächsten Minute; danach Minuten bis zum Ende des Folgetags, dann Tageskerzen bis 10 Handelstage. Vergleich: der
+  // bisherige Weg (Schluss ≥ +X % → Einstieg zur nächsten Eröffnung) auf denselben Tagen. Nur Zählungen öffentlich.
+  const ordner = join(ARCHIV, 'minuten');
+  const dateien: string[] = [];
+  if (existsSync(ordner)) for (const j of readdirSync(ordner)) if (/^\d{4}$/.test(j)) for (const f of readdirSync(join(ordner, j))) if (f.endsWith('.json.gz')) dateien.push(join(ordner, j, f));
+  const jeTicker = new Map<string, Reihe[]>();
+  for (const r of reihen) if (r.markt === 'aktie') (jeTicker.get(r.schluessel.slice(2).split('#')[0]) ?? jeTicker.set(r.schluessel.slice(2).split('#')[0], []).get(r.schluessel.slice(2).split('#')[0])!).push(r);
+  const STD = SP.filter((sp) => sp.stopEuro === vt.etikett.standardStop && sp.nachziehAb === undefined && sp.vol === undefined && [1, 2, 3].includes(sp.hebel));
+  // Börsenzeiten in Minuten seit 0 Uhr UTC (Sommerzeit USA: zweiter Sonntag im März bis erster Sonntag im November)
+  const sommer = (d: string) => {
+    const y = Number(d.slice(0, 4));
+    const sonntag = (m: number, n: number) => {
+      const erster = new Date(Date.UTC(y, m, 1)).getUTCDay();
+      return `${y}-${String(m + 1).padStart(2, '0')}-${String(1 + ((7 - erster) % 7) + 7 * (n - 1)).padStart(2, '0')}`;
+    };
+    return d >= sonntag(2, 2) && d < sonntag(10, 1);
+  };
+  const auf = (d: string) => (sommer(d) ? 810 : 870);
+  type Bar = { m: number; o: number; h: number; l: number; c: number; v: number };
+  type Regel = { name: string; richtung: 'long' | 'short'; text: string };
+  const R: Regel[] = [];
+  const st = new Map<string, { n: number; vt: number; sum: number; werte: number[]; nA: number; sumA: number; nB: number; sumB: number; tage: Set<string> }>();
+  const zaehle = (regel: string, sp: Spielart, d: string, a: Ausgang) => {
+    const k = `${regel}|${spielartSchluessel(sp)}`;
+    const z = st.get(k) ?? st.set(k, { n: 0, vt: 0, sum: 0, werte: [], nA: 0, sumA: 0, nB: 0, sumB: 0, tage: new Set() }).get(k)!;
+    z.n++;
+    z.sum += a.netto;
+    z.werte.push(a.netto);
+    if (a.art === 'treffer') z.vt++;
+    if (d < grenze) (z.nA++, (z.sumA += a.netto));
+    else (z.nB++, (z.sumB += a.netto));
+    z.tage.add(d);
+  };
+  const regel = (name: string, richtung: 'long' | 'short', text: string) => {
+    if (!R.some((x) => x.name === name)) R.push({ name, richtung, text });
+    return name;
+  };
+  let ereignisse = 0, ohneReihe = 0, uneinheitlich = 0;
+  for (const datei of dateien.sort()) {
+    const d = datei.slice(-18, -8);
+    const inhalt = JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as Record<string, number[][]>;
+    for (const [ticker, roh] of Object.entries(inhalt)) {
+      const r = (jeTicker.get(ticker) ?? []).find((x) => x.kerzen.some((k) => k.datum === d));
+      if (!r) {
+        ohneReihe++;
+        continue;
+      }
+      const k = r.kerzen;
+      const i = k.findIndex((x) => x.datum === d);
+      if (i < 21 || i + 1 >= k.length) continue;
+      const d1 = k[i + 1].datum;
+      const tageBis = Math.round((Date.parse(`${d1}T00:00:00Z`) - Date.parse(`${d}T00:00:00Z`)) / 86400000);
+      const bars: Bar[] = roh.map(([m, o, h, l, c, v]) => ({ m, o, h, l, c, v }));
+      const regTag0 = bars.filter((b) => b.m >= auf(d) && b.m < auf(d) + 390);
+      const vorTag0 = bars.filter((b) => b.m >= auf(d) - 330 && b.m < auf(d));
+      const regTag1 = bars.filter((b) => b.m >= tageBis * 1440 + auf(d1) && b.m < tageBis * 1440 + auf(d1) + 390);
+      if (regTag0.length < 30 || !regTag1.length) continue;
+      // Faktor zwischen bereinigter Tagesreihe und unbereinigten Minuten (Splits) – muss an beiden Tagen passen
+      const f0 = k[i].c / regTag0[regTag0.length - 1].c;
+      const f1 = k[i + 1].c / regTag1[regTag1.length - 1].c;
+      if (!(f0 > 0) || Math.abs(f1 / f0 - 1) > 0.03) {
+        uneinheitlich++;
+        continue;
+      }
+      ereignisse++;
+      const pc = k[i - 1].c / f0;
+      const avgVol = (k.slice(i - 20, i).reduce((s, x) => s + (x.v ?? 0), 0) / 20) * f0;
+      const x = merkmale(k, i - 1);
+      if (!x) continue;
+      const pa = plattformAm(r, x);
+      const tageskerzen = k.slice(i + 2, i + 10).map((y) => ({ datum: y.datum, o: y.o / f0, h: y.h / f0, l: y.l / f0, c: y.c / f0 }));
+      /** Einstieg bei Minute idx (Eröffnung) in regTag0 bzw. ganz am Anfang von regTag1 (idx = regTag0.length) */
+      const ausgang = (start: Bar[], rest: Bar[], sp: Spielart): Ausgang | null => {
+        const pl = platzFuer(r, sp, pa, true);
+        if (!pl || !start.length) return null;
+        const cs: Kerze[] = [{ datum: d, o: start[0].o, h: start[0].o, l: start[0].o, c: start[0].o }, ...start.map((b) => ({ datum: d, o: b.o, h: b.h, l: b.l, c: b.c })), ...rest.map((b) => ({ datum: d1, o: b.o, h: b.h, l: b.l, c: b.c })), ...tageskerzen];
+        return etikett(cs, 0, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), [cs.length - 1])[0];
+      };
+      const einstiegAb = (idx: number, name: string, richtung: 'long' | 'short') => {
+        if (idx < 0) return;
+        const start = regTag0.slice(idx);
+        const rest = regTag1;
+        const s0 = start.length ? start : rest;
+        const r2 = start.length ? rest : [];
+        for (const sp of STD) {
+          if (sp.richtung !== richtung) continue;
+          const a = ausgang(s0, r2, sp);
+          if (a) zaehle(name, sp, d, a);
+        }
+      };
+      // kumulierte Stückzahl und VWAP je Minute der regulären Sitzung
+      let cumV = 0, cumPV = 0, hod = 0;
+      const cum = regTag0.map((b) => {
+        cumV += b.v;
+        cumPV += b.v * (b.h + b.l + b.c) / 3;
+        hod = Math.max(hod, b.h);
+        return { v: cumV, vwap: cumV ? cumPV / cumV : b.c, hod };
+      });
+      // Long: Kurs ≥ +X % mit Umsatz ≥ V × Ø-Tagesumsatz (ab 5 Minuten nach Eröffnung), Einstieg zur nächsten Minute
+      for (const X of [15, 25, 40])
+        for (const V of [0.5, 2]) {
+          const t = regTag0.findIndex((b, j) => j >= 5 && b.c >= pc * (1 + X / 100) && cum[j].v >= V * avgVol);
+          einstiegAb(t >= 0 ? t + 1 : -1, regel(`L${X}V${V}`, 'long', `long, sobald Kurs ≥ +${X} % und Tagesumsatz ≥ ${V} × Ø-Tag`), 'long');
+          if (V === 0.5) {
+            const tf = t >= 0 && t <= 60 ? t : -1;
+            einstiegAb(tf >= 0 ? tf + 1 : -1, regel(`L${X}V${V}frueh`, 'long', `wie L${X}V${V}, nur in der ersten Stunde`), 'long');
+          }
+        }
+      // Vormarkt: letzter Kurs vor der Eröffnung ≥ +X % mit Vormarkt-Umsatz ≥ 0,2 × Ø-Tag → Einstieg zur Eröffnung
+      for (const X of [15, 30]) {
+        const vv = vorTag0.reduce((s, b) => s + b.v, 0);
+        const letzter = vorTag0[vorTag0.length - 1];
+        if (letzter && letzter.c >= pc * (1 + X / 100) && vv >= 0.2 * avgVol) einstiegAb(0, regel(`P${X}`, 'long', `long zur Eröffnung, wenn der Vormarkt ≥ +${X} % steht`), 'long');
+        else regel(`P${X}`, 'long', `long zur Eröffnung, wenn der Vormarkt ≥ +${X} % steht`);
+        if (letzter && letzter.c >= pc * (1 + X / 100) && vv >= 0.2 * avgVol) einstiegAb(0, regel(`P${X}S`, 'short', `short zur Eröffnung, wenn der Vormarkt ≥ +${X} % steht`), 'short');
+        else regel(`P${X}S`, 'short', `short zur Eröffnung, wenn der Vormarkt ≥ +${X} % steht`);
+      }
+      // Abverkauf: nach Hoch ≥ +X % fällt der Kurs Y % unter das Tageshoch und unter den VWAP → short
+      for (const X of [25, 50])
+        for (const Y of [10, 20]) {
+          const t = regTag0.findIndex((b, j) => cum[j].hod >= pc * (1 + X / 100) && b.c <= cum[j].hod * (1 - Y / 100) && b.c < cum[j].vwap);
+          einstiegAb(t >= 0 ? t + 1 : -1, regel(`S${X}R${Y}`, 'short', `short, wenn nach Hoch ≥ +${X} % der Kurs ${Y} % unter das Hoch und unter den VWAP fällt`), 'short');
+        }
+      // kurz vor Schluss (15:45 New York): Kurs ≥ +X % → long bzw. short zur nächsten Minute
+      const t1545 = regTag0.findIndex((b) => b.m >= auf(d) + 375);
+      for (const X of [15, 30]) {
+        const ok = t1545 >= 0 && regTag0[t1545].c >= pc * (1 + X / 100);
+        einstiegAb(ok ? t1545 + 1 : -1, regel(`C${X}L`, 'long', `long um 15:45 New York, wenn ≥ +${X} %`), 'long');
+        einstiegAb(ok ? t1545 + 1 : -1, regel(`C${X}S`, 'short', `short um 15:45 New York, wenn ≥ +${X} %`), 'short');
+      }
+      // bisheriger Weg: Schluss ≥ +X % → Einstieg zur nächsten Eröffnung (Tageskerzen)
+      for (const X of [15, 30]) {
+        const ok = k[i].c / k[i - 1].c >= 1 + X / 100;
+        for (const richtung of ['long', 'short'] as const) {
+          const name = regel(`B${X}${richtung === 'long' ? 'L' : 'S'}`, richtung, `bisher: Schluss ≥ +${X} % → ${richtung} zur nächsten Eröffnung`);
+          if (!ok) continue;
+          for (const sp of STD) {
+            if (sp.richtung !== richtung) continue;
+            const pl = platzFuer(r, sp, pa, true);
+            if (!pl) continue;
+            const a = etikett(k, i, sp, kostenFuer(r.markt, x.umsatz20, pl, sp), [10])[0];
+            if (a) zaehle(name, sp, d, a);
+          }
+        }
+      }
+    }
+  }
+  const median = (w: number[]) => {
+    const s2 = [...w].sort((a, b) => a - b);
+    return s2.length ? s2[Math.floor(s2.length / 2)] : 0;
+  };
+  const zeilen = [...st.entries()].map(([k2, z]) => {
+    const [name, sp] = k2.split('|');
+    const rg = R.find((x) => x.name === name)!;
+    return { regel: name, text: rg.text, spielart: spielartText(spNachSchluessel.get(sp)!), faelle: z.n, tage: z.tage.size, volltreffer: z.vt, quote: Math.round((z.vt / z.n) * 1000) / 10, oe: Math.round((z.sum / z.n) * 10) / 10, median: Math.round(median(z.werte) * 10) / 10, oeA: z.nA ? Math.round((z.sumA / z.nA) * 10) / 10 : null, oeB: z.nB ? Math.round((z.sumB / z.nB) * 10) / 10 : null, nA: z.nA, nB: z.nB };
+  });
+  zeilen.sort((a, b) => b.oe - a.oe);
+  schreibeJson('lernen/zeitlupe.json', {
+    stand: jetzt.toISOString(),
+    hinweis: 'Zeitlupe (Q1): Einstieg im Tagesverlauf auf Minutenkerzen nachgerechnet – nur Tage mit Tageshoch ≥ +15 % (alle Tage, an denen eine der Regeln auslösen konnte), Einstieg zur Eröffnung der Minute nach dem Auslöser, Ziel +400 €, Stop 150 €, höchstens 10 Handelstage, Kosten je Plattform. B-Regeln = bisheriger Weg auf denselben Tagen. Nur Zählungen.',
+    tage: dateien.length,
+    ereignisse,
+    zeilen,
+  });
+  log(`Zeitlupe: ${dateien.length} Tage, ${ereignisse} Ereignisse ausgewertet (${ohneReihe} ohne Tagesreihe, ${uneinheitlich} mit unpassendem Split-Faktor).`);
+  for (const z of zeilen) log(`Zeitlupe ${z.regel} ${z.spielart}: ${z.faelle} Fälle an ${z.tage} Tagen, Quote ${z.quote} %, Ø ${z.oe} € (Median ${z.median}), A ${z.oeA} (${z.nA}) / B ${z.oeB} (${z.nB}).`);
   process.exit(0);
 }
 if (ANALYSE) {
