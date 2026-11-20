@@ -144,6 +144,8 @@ export interface Kandidat {
   dauer: number;
   /** Muster (für die Statistik) */
   muster: string;
+  /** Plattform mit ungeprüfter Handelbarkeit (CFD/außerbörslich) */
+  ungeprueft?: boolean;
 }
 
 export interface Order {
@@ -153,6 +155,7 @@ export interface Order {
   netto: number;
   treffer: boolean;
   muster: string;
+  ungeprueft?: boolean;
 }
 
 /**
@@ -171,7 +174,7 @@ export function nachspielen(kandidaten: Kandidat[], r: { maxOffen: number; maxJe
     for (const k of jeTag.get(tag)!.sort((a, b) => b.wertung - a.wertung)) {
       if (offen.length >= r.maxOffen || neu >= r.maxJeTag) break;
       if (offen.some((o) => o.wert === k.wert)) continue;
-      offen.push({ einstieg, ausstieg: einstieg + Math.max(0, k.dauer - 1), wert: k.wert, netto: k.netto, treffer: k.treffer, muster: k.muster });
+      offen.push({ einstieg, ausstieg: einstieg + Math.max(0, k.dauer - 1), wert: k.wert, netto: k.netto, treffer: k.treffer, muster: k.muster, ...(k.ungeprueft ? { ungeprueft: true } : {}) });
       neu++;
     }
   }

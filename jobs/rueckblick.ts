@@ -1175,6 +1175,8 @@ if (ZEITREISE) {
   const netto = new Float32Array(cap * ZS.length).fill(NaN);
   const art = new Uint8Array(cap * ZS.length);
   const aus = new Int32Array(cap * ZS.length);
+  // 20.11.2026: Plattform ungeprüft (CFD/außerbörslich) – zeigt, wie viel der sichtbaren Ergebnisse daran hängt
+  const ung = new Uint8Array(cap * ZS.length);
   const zTag = new Int32Array(cap);
   const zAbs = new Int16Array(cap);
   const zMarkt = new Uint8Array(cap);
@@ -1210,6 +1212,7 @@ if (ZEITREISE) {
         if (!au) return;
         netto[z * ZS.length + j] = au.netto;
         art[z * ZS.length + j] = au.art === 'treffer' ? 1 : 0;
+        ung[z * ZS.length + j] = pl === 'cfd' || pl === 'otc' ? 1 : 0;
         aus[z * ZS.length + j] = kal(k[Math.min(k.length - 1, i + au.tag)].datum);
         irgendwas = true;
       });
@@ -1441,6 +1444,8 @@ if (ZEITREISE) {
     return lageCache.get(t)!;
   };
   const rueckenwind: Kandidat[] = [];
+  const kandidatenGeprueft: Kandidat[] = [];
+  const iRollK = GW_VARIANTEN.findIndex((g) => g.rollend);
   const jV2L = ZS.findIndex((si) => SP[si].vol === 2 && SP[si].richtung === 'long');
   const iSchw = E.findIndex((e) => e.merkmal === 'schwankung20');
   const iUms = E.findIndex((e) => e.merkmal === 'umsatz20');
@@ -1450,6 +1455,7 @@ if (ZEITREISE) {
     if (!w?.length) continue;
     let beste: Kandidat | null = null;
     const besteWindV: (Kandidat | null)[] = GW_VARIANTEN.map(() => null);
+    let besteGeprueft: Kandidat | null = null;
     const lz = lageVon(zTag[z]);
     const rs = rollSchwelle.get(datumVonTag(zTag[z]));
     const gwV = GW_VARIANTEN.map((g) => zMarkt[z] === 0 && (g.rollend ? !!rs && (lz.m5 >= rs.m5 || lz.vix >= rs.vix) : lz.m5 >= g.markt5Ab || lz.vix >= g.vixAb || (g.markt5Bis !== undefined && lz.m5 <= g.markt5Bis)));
@@ -1466,15 +1472,20 @@ if (ZEITREISE) {
         if (!wb.text) wb.text = `${gruppenText(gruppen[x.g])} – ${spielartText(SP[ZS[x.s]])}`;
         beste = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text };
       }
+      if (!(gwV[iRollK] && SP[ZS[x.s]].richtung === 'short') && !ung[z * ZS.length + x.s] && (!besteGeprueft || x.wertung > besteGeprueft.wertung)) {
+        if (!wb.text) wb.text = `${gruppenText(gruppen[x.g])} – ${spielartText(SP[ZS[x.s]])}`;
+        besteGeprueft = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text };
+      }
       for (let gi = 0; gi < GW_VARIANTEN.length; gi++) {
         if (gwV[gi] && SP[ZS[x.s]].richtung === 'short') continue;
         const bw = besteWindV[gi];
         if (bw && x.wertung <= bw.wertung) continue;
         if (!wb.text) wb.text = `${gruppenText(gruppen[x.g])} – ${spielartText(SP[ZS[x.s]])}`;
-        besteWindV[gi] = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text };
+        besteWindV[gi] = { tag: zTag[z], wert: zWert[z], wertung: x.wertung, netto: v, treffer: art[z * ZS.length + x.s] === 1, dauer: Math.max(1, aus[z * ZS.length + x.s] - zTag[z]), muster: wb.text, ...(ung[z * ZS.length + x.s] ? { ungeprueft: true } : {}) };
       }
     }
     if (beste) kandidaten.push(beste);
+    if (besteGeprueft) kandidatenGeprueft.push(besteGeprueft);
     besteWindV.forEach((k, gi) => k && kandidatenWindV[gi].push(k));
     // Q4 Rückenwind-Long (Wellen-Analyse: V2L auf schwankungsreiche Werte an Rückenwind-Tagen Ø +15 € in beiden Zeiträumen):
     // an Gegenwind-Tagen (rollend) ist jede Aktie mit Schwankung ≥ 4 %/Tag ein Ersatz-Kandidat long nach Schwankung (2 σ),
@@ -1522,6 +1533,12 @@ if (ZEITREISE) {
     auswahl: { halbmonate: wahl.filter((w) => w.length).length, oeMuster: Math.round(wahl.reduce((a, w) => a + w.length, 0) / Math.max(1, wahl.filter((w) => w.length).length)) },
     sichtbar: bilanz(sichtbar, monatVon),
     sichtbarOhneFilter: bilanz(sichtbarOhne, monatVon),
+    // nur Plattformen mit geprüfter Handelbarkeit (gettex, andere deutsche Börse, US-Broker) – ohne CFD/außerbörslich
+    sichtbarNurGeprueft: bilanz(nachspielen(kandidatenGeprueft, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatVon),
+    sichtbarAnteilUngeprueft: (() => {
+      const n = sichtbar.length;
+      return n ? Math.round((sichtbar.filter((o) => o.ungeprueft).length / n) * 1000) / 10 : 0;
+    })(),
     sichtbarMitRueckenwind: bilanz(nachspielen([...kandidatenWindV[iRoll], ...rueckenwind], { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatVon),
     nurRueckenwind: bilanz(nachspielen(rueckenwind, { maxOffen: ZR.sichtbarMaxOffen, maxJeTag: ZR.sichtbarMaxJeTag }), monatVon),
     // Q4: Variante mit Gegenwind-Filter (keine Shorts bei starkem Markt über 5 Tage oder hohem VIX)
@@ -1561,6 +1578,7 @@ if (ZEITREISE) {
       auswahlJeHalbmonat: wahl.map((w) => w.length),
       sichtbar: ergebnis.sichtbar,
       sichtbarOhneFilter: ergebnis.sichtbarOhneFilter,
+      sichtbarNurGeprueft: ergebnis.sichtbarNurGeprueft,
       jagden: ergebnis.jagden,
       alleMusterfaelle: ergebnis.alleMusterfaelle,
       grundrate: ergebnis.grundrate,
@@ -1569,6 +1587,7 @@ if (ZEITREISE) {
   log(`Zeitreise mit Rückenwind-Long als Ersatz: ${ergebnis.sichtbarMitRueckenwind.orders} Orders, ${ergebnis.sichtbarMitRueckenwind.volltreffer} Volltreffer, netto ${ergebnis.sichtbarMitRueckenwind.netto} €, Ø ${ergebnis.sichtbarMitRueckenwind.oe} €, Rückgang ${ergebnis.sichtbarMitRueckenwind.maxRueckgang} €, ${ergebnis.sichtbarMitRueckenwind.monate.filter((mo) => mo.netto > 0).length}/${ergebnis.sichtbarMitRueckenwind.monate.length} Monate · nur Rückenwind-Long (3 offen): ${ergebnis.nurRueckenwind.orders} Orders, Ø ${ergebnis.nurRueckenwind.oe} €, netto ${ergebnis.nurRueckenwind.netto} €.`);
   log(`Rückenwind-Long je Monat: ${ergebnis.nurRueckenwind.monate.map((mo) => `${mo.monat} ${mo.orders}/${mo.volltreffer}/${Math.round(mo.netto)} €`).join(' · ')}`);
   log(`Zeitreise sichtbar ohne Gegenwind-Filter: ${ergebnis.sichtbarOhneFilter.orders} Orders, Ø ${ergebnis.sichtbarOhneFilter.oe} €, netto ${ergebnis.sichtbarOhneFilter.netto} €.`);
+  log(`Zeitreise sichtbar: ${ergebnis.sichtbarAnteilUngeprueft} % der Orders auf ungeprüfter Plattform (CFD/außerbörslich) · nur geprüfte Plattformen: ${ergebnis.sichtbarNurGeprueft.orders} Orders, ${ergebnis.sichtbarNurGeprueft.volltreffer} Volltreffer (${ergebnis.sichtbarNurGeprueft.quote} %), Ø ${ergebnis.sichtbarNurGeprueft.oe} €, netto ${ergebnis.sichtbarNurGeprueft.netto} €, Rückgang ${ergebnis.sichtbarNurGeprueft.maxRueckgang} €, ${ergebnis.sichtbarNurGeprueft.monate.filter((mo) => mo.netto > 0).length}/${ergebnis.sichtbarNurGeprueft.monate.length} Monate im Plus.`);
   log(`Zeitreise sichtbar mit rollendem Gegenwind (${ZR.sichtbarMaxOffen} offen): ${ergebnis.sichtbar.orders} Orders, ${ergebnis.sichtbar.volltreffer} Volltreffer (${ergebnis.sichtbar.quote} %), netto ${ergebnis.sichtbar.netto} €, Ø ${ergebnis.sichtbar.oe} €, größter Rückgang ${ergebnis.sichtbar.maxRueckgang} €.`);
   log(`Zeitreise Jagden (${ZR.jagdenMaxOffen} offen): ${ergebnis.jagden.orders} Orders, ${ergebnis.jagden.volltreffer} Volltreffer (${ergebnis.jagden.quote} %), netto ${ergebnis.jagden.netto} €, Ø ${ergebnis.jagden.oe} €, größter Rückgang ${ergebnis.jagden.maxRueckgang} €.`);
   log(`Zeitreise Vergleich: alle Fälle der gewählten Muster ${alleN} (Quote ${ergebnis.alleMusterfaelle.quote} %, Ø ${ergebnis.alleMusterfaelle.oe} €) · Grundrate ${grN} (Quote ${ergebnis.grundrate.quote} %, Ø ${ergebnis.grundrate.oe} €).`);
