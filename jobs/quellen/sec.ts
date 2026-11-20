@@ -4,6 +4,9 @@ import type { Signal } from '../../core/signale.ts';
 import { holeJson, holeText } from '../lib/netz.ts';
 import { signal } from './hilfen.ts';
 import { parseRss } from './parser.ts';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { eftsLesen, type Katalysator } from '../../core/volltreffer/volltext.ts';
 import type { Quelle } from './typen.ts';
 
 // SEC verlangt „Name Kontakt-E-Mail“ im User-Agent (sonst HTTP 403). Die Adresse kommt nur aus dem Secret SEC_KONTAKT.
@@ -111,6 +114,27 @@ export const secVerwaesserung: Quelle = {
  * Schnell-SEC (Quantensprung „Echtzeit“, 19.11.2026): dieselben Feeds wie 8-K und Verwässerung, aber mit EINER
  * Firmenliste – für den Kurswächter-Takt (alle 15 Min.) statt nur stündlich bzw. morgens. 3 Abrufe je Lauf.
  */
+/**
+ * Q2 Nachrichtenart live (20.11.2026): Katalysator-Begriffe der SEC-Volltextsuche (config/katalysatoren.json) aus den
+ * Meldungen des Tages → Signale katalysator_long/_short/_binaer für die Datenkrake (Schattenbuch misst sie; Autopilot nur
+ * nach Beweis). Große Konzerne (Rang < minRang in company_tickers) bleiben draußen – bei ihnen bewegen solche Worte wenig.
+ */
+export function katalysatorSignale(json: unknown, kat: Katalysator, rangJeTicker: Map<string, number>, jetzt: Date, minRang = 1500): Signal[] {
+  const a = eftsLesen(json);
+  if (!a) return [];
+  const typ = `katalysator_${kat.richtung}`;
+  const richtung = kat.richtung === 'long' ? 1 : kat.richtung === 'short' ? -1 : 0;
+  const out: Signal[] = [];
+  for (const t of a.treffer) {
+    const kuerzel = t.kuerzel.find((k) => rangJeTicker.has(k)) ?? t.kuerzel[0];
+    if (!kuerzel) continue;
+    const rang = rangJeTicker.get(kuerzel);
+    if (rang !== undefined && rang < minRang) continue;
+    out.push(signal(typ, { name: kuerzel, ticker: kuerzel }, 0.5, richtung, jetzt.toISOString(), 'SEC EDGAR Volltext', `${t.form} mit „${kat.begriff}“ (${t.datum})`));
+  }
+  return out;
+}
+
 export async function secSchnell(jetzt: Date): Promise<Signal[]> {
   const header = { 'User-Agent': secUa(), Accept: 'application/json, application/atom+xml' };
   const tickers = await holeJson<Record<string, { cik_str: number; ticker: string; title: string }>>('https://www.sec.gov/files/company_tickers.json', { header });
@@ -122,5 +146,18 @@ export async function secSchnell(jetzt: Date): Promise<Signal[]> {
   }
   const atom8k = await holeText('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&company=&dateb=&owner=include&count=100&output=atom', { header });
   out.push(...secAuswerten(atom8k, karte, jetzt));
+  // Q2: Katalysator-Begriffe des Tages (Volltextsuche), höchstens 6 Abrufe gleichzeitig
+  const kc = JSON.parse(readFileSync(join(process.cwd(), 'config', 'katalysatoren.json'), 'utf8')) as { liste: Katalysator[] };
+  const rang = new Map<string, number>([...karte.values()].filter((f) => f.rang !== undefined).map((f) => [f.ticker, f.rang!]));
+  const tag = jetzt.toISOString().slice(0, 10);
+  const liste = [...kc.liste];
+  const bis = Date.now() + 15000;
+  const arbeiter = async () => {
+    for (let kat = liste.shift(); kat && Date.now() < bis; kat = liste.shift()) {
+      const json = await holeJson<unknown>(`https://efts.sec.gov/LATEST/search-index?q=${encodeURIComponent(`"${kat.begriff}"`)}&forms=${kat.formen.join(',')}&dateRange=custom&startdt=${tag}&enddt=${tag}`, { header }).catch(() => null);
+      out.push(...katalysatorSignale(json, kat, rang, jetzt));
+    }
+  };
+  await Promise.all(Array.from({ length: 6 }, arbeiter));
   return out;
 }

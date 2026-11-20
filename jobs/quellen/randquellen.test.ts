@@ -178,3 +178,13 @@ describe('SEC Verwässerung (S4, gleiches Atom-Format wie 8-K)', async () => {
     expect(s.map((x) => x.wertpapier.ticker)).toEqual(['TINY']);
   });
 });
+
+describe('SEC-Volltext: Katalysator-Signale (Q2, 20.11.2026)', async () => {
+  const { katalysatorSignale } = await import('./sec.ts');
+  it('Kleinwerte bekommen ein Signal mit Richtung, Konzerne nicht', () => {
+    const json = { hits: { total: { value: 2 }, hits: [{ _source: { display_names: ['Highway Holdings Ltd  (HIHO)  (CIK 0000123)'], file_date: '2026-11-16', form: '8-K' } }, { _source: { display_names: ['Apple Inc.  (AAPL)  (CIK 0000320193)'], file_date: '2026-11-16', form: '8-K' } }] } };
+    const s = katalysatorSignale(json, { id: 'sonderdividende', begriff: 'special dividend', formen: ['8-K'], richtung: 'long' }, new Map([['AAPL', 0], ['HIHO', 9000]]), new Date('2026-11-16T15:00:00Z'));
+    expect(s.map((x) => [x.typ, x.wertpapier.ticker, x.richtung])).toEqual([['katalysator_long', 'HIHO', 1]]);
+    expect(katalysatorSignale({ kaputt: 1 }, { id: 'x', begriff: 'x', formen: ['8-K'], richtung: 'short' }, new Map(), new Date())).toEqual([]);
+  });
+});

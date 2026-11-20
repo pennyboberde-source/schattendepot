@@ -182,6 +182,9 @@
       "gewicht": 1,
       "richtung": 0
     },
+    "katalysator_long": { "name": "Katalysator long-Art (SEC-Volltext: Sonderdividende, Auftrag, Zulassung …)", "gewicht": 1, "richtung": 1 },
+    "katalysator_short": { "name": "Katalysator short-Art (SEC-Volltext: Direktplatzierung, Zusammenlegung, Fortbestand …)", "gewicht": 1, "richtung": -1 },
+    "katalysator_binaer": { "name": "Binärer Katalysator (SEC-Volltext: FDA-Termin, Studiendaten)", "gewicht": 1, "richtung": 0 },
     "verwaesserung": {
       "name": "Verwässerung (Prospekt 424B5/S-3)",
       "gewicht": 2,
