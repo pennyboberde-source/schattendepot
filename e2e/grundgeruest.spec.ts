@@ -87,6 +87,8 @@ test('Bereich Volltreffer: Jagd, Rückblick mit bestandenen Mustern und Hypothes
   await expect(jagd.getByText(/Claude: ja – DEMO: Prognoseanhebung/)).toBeVisible();
   // Zeitreise (19.11.2026): Gesamtsimulation ohne Blick nach vorn
   await expect(page.getByTestId('zeitreise')).toContainText('439 Orders, 116 Volltreffer');
+  await expect(page.getByTestId('zeitreise-placebo')).toContainText('Zufallsprobe');
+  await expect(page.getByTestId('zeitreise-modell')).toContainText('Modell-Zeitreise');
   const karte = page.getByTestId('volltreffer-rueckblick');
   await expect(karte).toBeVisible();
   await expect(karte.getByText(/Bestanden: 1 Muster/)).toBeVisible();

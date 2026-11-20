@@ -1,0 +1,76 @@
+{
+  "stand": "2026-10-21T12:00:00Z",
+  "hinweis": "Demo-Modell-Zeitreise",
+  "ergebnisse": [
+    {
+      "modell": "2S150|wild",
+      "text": "Modell Turbo short Hebel 2, Stop 150 € – wild",
+      "sichtbar": {
+        "orders": 470,
+        "volltreffer": 170,
+        "quote": 36.2,
+        "netto": 28200,
+        "oe": 60,
+        "maxRueckgang": 2000,
+        "monate": [
+          {
+            "monat": "2026-01",
+            "orders": 20,
+            "volltreffer": 7,
+            "netto": 900
+          },
+          {
+            "monat": "2026-02",
+            "orders": 20,
+            "volltreffer": 5,
+            "netto": -300
+          }
+        ]
+      },
+      "sichtbarGegenwind": {
+        "orders": 464,
+        "volltreffer": 179,
+        "quote": 38.6,
+        "netto": 33594,
+        "oe": 72.4,
+        "maxRueckgang": 2000,
+        "monate": [
+          {
+            "monat": "2026-01",
+            "orders": 20,
+            "volltreffer": 7,
+            "netto": 900
+          },
+          {
+            "monat": "2026-02",
+            "orders": 20,
+            "volltreffer": 5,
+            "netto": -300
+          }
+        ]
+      },
+      "mitSperre": {
+        "orders": 439,
+        "volltreffer": 160,
+        "quote": 36.4,
+        "netto": 27964,
+        "oe": 63.7,
+        "maxRueckgang": 2000,
+        "monate": [
+          {
+            "monat": "2026-01",
+            "orders": 20,
+            "volltreffer": 7,
+            "netto": 900
+          },
+          {
+            "monat": "2026-02",
+            "orders": 20,
+            "volltreffer": 5,
+            "netto": -300
+          }
+        ]
+      }
+    }
+  ]
+}

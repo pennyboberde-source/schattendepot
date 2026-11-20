@@ -209,6 +209,8 @@ interface Zeitreise {
 /** Zeitreise: der ganze Ablauf über zwei Jahre nachgespielt, ohne Blick nach vorn */
 export function ZeitreiseKarte() {
   const z = useDaten<Zeitreise>('lernen/zeitreise.json');
+  const pl = useDaten<{ sichtbar: ZBilanz }>('lernen/zeitreise-placebo.json');
+  const mz = useDaten<{ hinweis: string; ergebnisse: { modell: string; text: string; sichtbar: ZBilanz; sichtbarGegenwind?: ZBilanz; mitSperre?: ZBilanz }[] }>('lernen/zeitreise-modell.json');
   if (z.status !== 'ok') return null;
   const d = z.daten;
   const zeile = (titel: string, b: ZBilanz) => (
@@ -248,6 +250,29 @@ export function ZeitreiseKarte() {
                 </li>
               ))}
             </ul>
+          </details>
+        )}
+        {pl.status === 'ok' && (
+          <p class="klein" data-testid="zeitreise-placebo">
+            <strong>Zufallsprobe</strong> (Ergebnisse je Tag vertauscht, sonst gleich): sichtbar {pl.daten.sichtbar.orders.toLocaleString('de-DE')} Orders, Ø {euro(pl.daten.sichtbar.oe, { vorzeichen: true })} je Order ({pl.daten.sichtbar.quote.toLocaleString('de-DE')} % Volltreffer) – der Abstand zur echten Zeitreise ist, was die Muster mit der Wertauswahl verdienen.
+          </p>
+        )}
+        {mz.status === 'ok' && mz.daten.ergebnisse.length > 0 && (
+          <details data-testid="zeitreise-modell">
+            <summary>Modell-Zeitreise: Gesamtmodelle wie live nachgespielt</summary>
+            <ul class="klein">
+              {mz.daten.ergebnisse
+                .filter((e, i, a) => a.findIndex((x) => x.modell === e.modell) === i)
+                .map((e) => {
+                  const b = e.sichtbarGegenwind ?? e.sichtbar;
+                  return (
+                    <li key={e.modell}>
+                      {e.text}: {b.orders.toLocaleString('de-DE')} Orders, {b.quote.toLocaleString('de-DE')} % Volltreffer, Ø {euro(b.oe, { vorzeichen: true })}, {b.monate.filter((m) => m.netto > 0).length} von {b.monate.length} Monaten im Plus{e.mitSperre ? ` · mit 14-Tage-Sperre je Wert Ø ${euro(e.mitSperre.oe, { vorzeichen: true })}` : ''}
+                    </li>
+                  );
+                })}
+            </ul>
+            <p class="klein">{mz.daten.hinweis}</p>
           </details>
         )}
         <p class="klein">{d.hinweis}</p>
