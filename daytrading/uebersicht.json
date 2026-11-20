@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T20:53:39.961Z",
+  "stand": "2026-11-20T21:09:00.446Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -277,182 +277,7 @@
       "oeR": 0.1
     }
   ],
-  "offen": [
-    {
-      "id": "2026-11-20-scan-arista-networks-inc",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ARISTA NETWORKS INC",
-      "isin": "US0404132054",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 189.5,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "kurs": 157.96,
-        "level": 158.44,
-        "spanne": {
-          "hoch": 165,
-          "tief": 158.44
-        },
-        "richtung": "short"
-      },
-      "stop": 161.72,
-      "ziel": 150.32,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "basisKurs": 157.92,
-        "kurs": 3.1659,
-        "stueck": 315,
-        "kurswert": 997.26
-      },
-      "timeMachine": {
-        "zielZuerst": 0.9,
-        "stopZuerst": 16.2,
-        "keins": 83,
-        "gruen": 53.6,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 29,
-          "ziel": 2,
-          "stop": 8,
-          "oeR": 0.1
-        }
-      }
-    },
-    {
-      "id": "2026-11-20-scan-palo-alto-networks-inc",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "PALO ALTO NETWORKS INC",
-      "isin": "US6974351057",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 380.04,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T17:00:00.000Z",
-        "kurs": 315.3,
-        "level": 316.6,
-        "spanne": {
-          "hoch": 333.1,
-          "tief": 316.6
-        },
-        "richtung": "short"
-      },
-      "stop": 324.85,
-      "ziel": 300.4,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T17:05:00.000Z",
-        "basisKurs": 316.7,
-        "kurs": 6.3498,
-        "stueck": 157,
-        "kurswert": 996.92
-      },
-      "timeMachine": {
-        "zielZuerst": 0,
-        "stopZuerst": 8.6,
-        "keins": 91.4,
-        "gruen": 46.4,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 26,
-          "ziel": 1,
-          "stop": 9,
-          "oeR": -0.09
-        }
-      }
-    },
-    {
-      "id": "2026-11-20-scan-crowdstrike-holdings-inc",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "CROWDSTRIKE HOLDINGS INC - A",
-      "isin": "US22788C1053",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 249.42,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T19:35:00.000Z",
-        "kurs": 207.8,
-        "level": 208,
-        "spanne": {
-          "hoch": 218.9,
-          "tief": 208
-        },
-        "richtung": "short"
-      },
-      "stop": 213.45,
-      "ziel": 196.65,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T19:35:00.000Z",
-        "basisKurs": 207.85,
-        "kurs": 4.1674,
-        "stueck": 239,
-        "kurswert": 996.01
-      },
-      "timeMachine": {
-        "zielZuerst": 0,
-        "stopZuerst": 0.1,
-        "keins": 99.9,
-        "gruen": 49.2,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 28,
-          "ziel": 1,
-          "stop": 8,
-          "oeR": -0.08
-        }
-      }
-    }
-  ],
+  "offen": [],
   "trades": [
     {
       "id": "2026-11-20-scan-arista-networks-inc",
@@ -510,6 +335,25 @@
           "stop": 8,
           "oeR": 0.1
         }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T20:55:00.000Z",
+        "basisKurs": 151.4,
+        "kurs": 3.8005,
+        "kurswert": 1197.16,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 199.9,
+        "bruttoProzent": 20.04,
+        "netto": 199.9,
+        "nettoProzent": 20.04,
+        "nettoTR": 197.9,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.72
       }
     },
     {
@@ -568,6 +412,25 @@
           "stop": 9,
           "oeR": -0.09
         }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T20:55:00.000Z",
+        "basisKurs": 311.25,
+        "kurs": 6.8618,
+        "kurswert": 1077.3,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 80.38,
+        "bruttoProzent": 8.06,
+        "netto": 80.38,
+        "nettoProzent": 8.06,
+        "nettoTR": 78.38,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 0.67
       }
     },
     {
@@ -626,6 +489,25 @@
           "stop": 8,
           "oeR": -0.08
         }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T20:55:00.000Z",
+        "basisKurs": 208.2,
+        "kurs": 4.1117,
+        "kurswert": 982.7,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": -13.31,
+        "bruttoProzent": -1.34,
+        "netto": -13.31,
+        "nettoProzent": -1.34,
+        "nettoTR": -15.31,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -0.06
       }
     },
     {
@@ -12355,45 +12237,45 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 206,
-      "treffer": 103,
-      "quote": 50,
-      "netto": 3003.48,
-      "brutto": 3083.48,
-      "nettoTR": 2672.48,
-      "oeNettoProzent": 1.46,
+      "anzahl": 209,
+      "treffer": 105,
+      "quote": 50.2,
+      "netto": 3270.45,
+      "brutto": 3350.45,
+      "nettoTR": 2933.45,
+      "oeNettoProzent": 1.57,
       "oeR": 0.45
     },
     "heute": {
-      "anzahl": 22,
-      "treffer": 12,
-      "quote": 54.5,
-      "netto": 1534.7,
-      "brutto": 1542.7,
-      "nettoTR": 1498.7,
-      "oeNettoProzent": 7.01,
-      "oeR": 0.56
+      "anzahl": 25,
+      "treffer": 14,
+      "quote": 56,
+      "netto": 1801.67,
+      "brutto": 1809.67,
+      "nettoTR": 1759.67,
+      "oeNettoProzent": 7.24,
+      "oeR": 0.58
     },
-    "offen": 3,
+    "offen": 0,
     "gruppen": {
       "turbo": {
-        "anzahl": 166,
-        "treffer": 93,
-        "quote": 56,
-        "netto": 3339.76,
-        "brutto": 3339.76,
-        "nettoTR": 3008.76,
-        "oeNettoProzent": 2.02,
+        "anzahl": 169,
+        "treffer": 95,
+        "quote": 56.2,
+        "netto": 3606.73,
+        "brutto": 3606.73,
+        "nettoTR": 3269.73,
+        "oeNettoProzent": 2.14,
         "oeR": 0.51
       },
       "short": {
-        "anzahl": 166,
-        "treffer": 93,
-        "quote": 56,
-        "netto": 3339.76,
-        "brutto": 3339.76,
-        "nettoTR": 3008.76,
-        "oeNettoProzent": 2.02,
+        "anzahl": 169,
+        "treffer": 95,
+        "quote": 56.2,
+        "netto": 3606.73,
+        "brutto": 3606.73,
+        "nettoTR": 3269.73,
+        "oeNettoProzent": 2.14,
         "oeR": 0.51
       },
       "krypto": {
@@ -12471,10 +12353,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 146,
-        "chance": 45.9,
-        "oeNetto": 0.57,
-        "wertung": -0.13
+        "faelle": 148,
+        "chance": 46.6,
+        "oeNetto": 0.7,
+        "wertung": 0.01
       }
     },
     "us:orb_long": {
