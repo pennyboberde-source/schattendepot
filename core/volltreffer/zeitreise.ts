@@ -70,7 +70,7 @@ export interface AuswahlRegeln {
   maxMuster: number;
   /** höchstens so viele Muster je Baustein (Merkmal=Klasse) */
   maxJeBaustein: number;
-  /** Abschnitte, die zwischen Fall und Auswahl mindestens liegen (Ergebnis muss feststehen) */
+  /** Abschnitte zwischen dem Abschnitt, in dem das Ergebnis eines Falls feststand (Ausstieg), und der Auswahl mindestens */
   abstand: number;
   /** ab diesem Abschnitt wird gewählt (davor reicht die Geschichte nicht) */
   ersterAbschnitt: number;

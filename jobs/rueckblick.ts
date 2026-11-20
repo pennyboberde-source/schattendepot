@@ -1136,16 +1136,23 @@ if (ZEITREISE) {
     const tN = new Float32Array(L);
     const tS = new Float64Array(L);
     const tT = new Float32Array(L);
+    // Abschnitt, in dem das Ergebnis feststand (spätester Ausstieg der Fälle des Tages): erst ab dann darf die Auswahl
+    // es kennen (20.11.2026: vorher zählte der Abschnitt des Stichtags – Fälle vom Ende eines Halbmonats endeten oft erst
+    // im nächsten, ihre Ergebnisse flossen so zu früh in dessen Auswahl ein)
+    const tA = new Int16Array(L);
+    const absVonKal = new Int16Array(kal(heute) + 2);
+    for (let t = 0; t < absVonKal.length; t++) absVonKal[t] = abschnitt(new Date(Date.parse(`${erster}T12:00:00Z`) + t * 86400000).toISOString().slice(0, 10));
     const beruehrt: number[] = [];
     let tagJetzt = -1;
     let absJetzt = 0;
     const abschliessen = () => {
       for (const p of beruehrt) {
         const g = Math.floor(p / ZS.length);
-        st.add(absJetzt, g, p - g * ZS.length, tS[p] / tN[p], tT[p] / tN[p]);
+        st.add(Math.min(ABSCHNITTE - 1, Math.max(absJetzt, tA[p])), g, p - g * ZS.length, tS[p] / tN[p], tT[p] / tN[p]);
         tN[p] = 0;
         tS[p] = 0;
         tT[p] = 0;
+        tA[p] = 0;
       }
       beruehrt.length = 0;
     };
@@ -1160,12 +1167,14 @@ if (ZEITREISE) {
         const v = netto[z * ZS.length + j];
         if (Number.isNaN(v)) continue;
         const t = art[z * ZS.length + j];
+        const ea = absVonKal[Math.min(absVonKal.length - 1, aus[z * ZS.length + j])];
         for (const g of ids) {
           const p = g * ZS.length + j;
           if (tN[p] === 0) beruehrt.push(p);
           tN[p]++;
           tS[p] += v;
           tT[p] += t;
+          if (ea > tA[p]) tA[p] = ea;
         }
       }
     }
@@ -1240,12 +1249,29 @@ if (ZEITREISE) {
     alleMusterfaelle: { faelle: alleN, quote: alleN ? Math.round((alleT / alleN) * 1000) / 10 : 0, oe: alleN ? Math.round((alleSum / alleN) * 10) / 10 : 0 },
     grundrate: { faelle: grN, quote: grN ? Math.round((grT / grN) * 1000) / 10 : 0, oe: grN ? Math.round((grSum / grN) * 10) / 10 : 0 },
     haeufigsteMuster: [...haeufig.entries()].sort((a, b) => b[1].orders - a[1].orders).slice(0, 12).map(([muster, h]) => ({ muster, orders: h.orders, volltreffer: h.volltreffer, netto: Math.round(h.netto) })),
+    // Live-Regel (Nutzer 20.11.2026): die Auswahl des laufenden Halbmonats – der nächtliche Rückblick ordert daraus sichtbar
+    aktuell: {
+      halbmonatVon: `${heute.slice(0, 8)}${Number(heute.slice(8, 10)) > 15 ? '16' : '01'}`,
+      muster: (wahl[ABSCHNITTE - 1] ?? []).map((x) => ({
+        schluessel: `${gruppen[x.g]}|${spielartSchluessel(SP[ZS[x.s]])}|${ZR.fenster}`,
+        gruppe: gruppenText(gruppen[x.g]),
+        gruppenSchluessel: gruppen[x.g],
+        sp: spielartSchluessel(SP[ZS[x.s]]),
+        spielart: spielartText(SP[ZS[x.s]]),
+        fenster: ZR.fenster,
+        wertung: Math.round(x.wertung * 100) / 100,
+        quote: Math.round(x.quote * 10) / 10,
+        ev: Math.round(x.ev * 10) / 10,
+        tage: x.n,
+      })),
+    },
   };
   schreibeJson('lernen/zeitreise.json', ergebnis);
   log(`Zeitreise sichtbar (${ZR.sichtbarMaxOffen} offen): ${ergebnis.sichtbar.orders} Orders, ${ergebnis.sichtbar.volltreffer} Volltreffer (${ergebnis.sichtbar.quote} %), netto ${ergebnis.sichtbar.netto} €, Ø ${ergebnis.sichtbar.oe} €, größter Rückgang ${ergebnis.sichtbar.maxRueckgang} €.`);
   log(`Zeitreise Jagden (${ZR.jagdenMaxOffen} offen): ${ergebnis.jagden.orders} Orders, ${ergebnis.jagden.volltreffer} Volltreffer (${ergebnis.jagden.quote} %), netto ${ergebnis.jagden.netto} €, Ø ${ergebnis.jagden.oe} €, größter Rückgang ${ergebnis.jagden.maxRueckgang} €.`);
   log(`Zeitreise Vergleich: alle Fälle der gewählten Muster ${alleN} (Quote ${ergebnis.alleMusterfaelle.quote} %, Ø ${ergebnis.alleMusterfaelle.oe} €) · Grundrate ${grN} (Quote ${ergebnis.grundrate.quote} %, Ø ${ergebnis.grundrate.oe} €).`);
   for (const mo of ergebnis.sichtbar.monate) log(`  ${mo.monat}: ${mo.orders} Orders, ${mo.volltreffer} Volltreffer, ${mo.netto} €`);
+  log(`Zeitreise aktuell (Halbmonat ab ${ergebnis.aktuell.halbmonatVon}): ${ergebnis.aktuell.muster.length} Muster für die Live-Regel.`);
   process.exit(0);
 }
 const ergebnisse: (Pruefergebnis & { schluessel: string; art: 'alle' | 'einzel' | 'paar' | 'hypothese'; vorteil: boolean; vorteilA: number; vorteilB: number; spielartSchluessel: string; tage?: [number, number]; groessterTag?: [number, number]; splitVerdacht?: number; quartale?: [number, number] })[] = [];

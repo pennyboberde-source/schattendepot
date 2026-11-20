@@ -3,10 +3,11 @@ name: Zeitreise (Gesamtsimulation)
 # Quantensprung (Nutzer 19.11.2026): spielt den ganzen Ablauf – Muster wählen, Jagden, höchstens 3 sichtbare Orders –
 # über die Kursgeschichte im PRIVATEN Archiv Tag für Tag nach, als wäre er live gelaufen. Jede Auswahl kennt nur Fälle,
 # deren Ergebnis da schon feststand. Öffentlich geht nur lernen/zeitreise.json (Kennzahlen je Monat, keine Kurse).
-# Sonntags 07:13 UTC (das Archiv ruht, der Rückblick ist durch) oder von Hand.
+# Täglich 23:40 UTC (seit 20.11.2026: die Auswahl des laufenden Halbmonats, `aktuell`, ordert im nächtlichen Rückblick
+# um 01:20 UTC sichtbar – Nutzer: „Ja, darfst du machen“) oder von Hand.
 on:
   schedule:
-    - cron: '13 7 * * 0'
+    - cron: '40 23 * * *'
   workflow_dispatch:
     inputs:
       probe:
