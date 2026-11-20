@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T16:38:35.018Z",
+  "stand": "2026-11-20T16:54:38.283Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -544,47 +544,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-oracle-corp",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ORACLE CORP",
-      "isin": "US68389X1054",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 115.92,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "kurs": 96.8,
-        "level": 96.95,
-        "spanne": {
-          "hoch": 98.9,
-          "tief": 96.95
-        },
-        "richtung": "short"
-      },
-      "stop": 97.93,
-      "ziel": 93.95,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "basisKurs": 96.6,
-        "kurs": 19.368,
-        "stueck": 51,
-        "kurswert": 987.77
-      }
-    },
-    {
       "id": "2026-11-20-scan-xpeng-inc-adr",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -1050,47 +1009,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-oracle-corp",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "ORACLE CORP",
-      "isin": "US68389X1054",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 115.92,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "kurs": 96.8,
-        "level": 96.95,
-        "spanne": {
-          "hoch": 98.9,
-          "tief": 96.95
-        },
-        "richtung": "short"
-      },
-      "stop": 97.93,
-      "ziel": 93.95,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:25:00.000Z",
-        "basisKurs": 96.6,
-        "kurs": 19.368,
-        "stueck": 51,
-        "kurswert": 987.77
-      }
-    },
-    {
       "id": "2026-11-20-scan-xpeng-inc-adr",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -1286,6 +1204,66 @@
           "stop": 17,
           "oeR": -0.08
         }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-oracle-corp",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "ORACLE CORP",
+      "isin": "US68389X1054",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 115.92,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:25:00.000Z",
+        "kurs": 96.8,
+        "level": 96.95,
+        "spanne": {
+          "hoch": 98.9,
+          "tief": 96.95
+        },
+        "richtung": "short"
+      },
+      "stop": 97.93,
+      "ziel": 93.95,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:25:00.000Z",
+        "basisKurs": 96.6,
+        "kurs": 19.368,
+        "stueck": 51,
+        "kurswert": 987.77
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T16:40:00.000Z",
+        "basisKurs": 93.89,
+        "kurs": 21.975,
+        "kurswert": 1120.73,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 132.96,
+        "bruttoProzent": 13.46,
+        "netto": 132.96,
+        "nettoProzent": 13.46,
+        "nettoTR": 130.96,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2.04
       }
     },
     {
@@ -12244,46 +12222,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 196,
-      "treffer": 94,
-      "quote": 48,
-      "netto": 1408.24,
-      "brutto": 1488.24,
-      "nettoTR": 1097.24,
-      "oeNettoProzent": 0.72,
-      "oeR": 0.38
+      "anzahl": 197,
+      "treffer": 95,
+      "quote": 48.2,
+      "netto": 1541.2,
+      "brutto": 1621.2,
+      "nettoTR": 1228.2,
+      "oeNettoProzent": 0.78,
+      "oeR": 0.39
     },
     "heute": {
-      "anzahl": 12,
-      "treffer": 3,
-      "quote": 25,
-      "netto": -60.54,
-      "brutto": -52.54,
-      "nettoTR": -76.54,
-      "oeNettoProzent": -0.51,
-      "oeR": -0.4
+      "anzahl": 13,
+      "treffer": 4,
+      "quote": 30.8,
+      "netto": 72.42,
+      "brutto": 80.42,
+      "nettoTR": 54.42,
+      "oeNettoProzent": 0.57,
+      "oeR": -0.21
     },
-    "offen": 9,
+    "offen": 8,
     "gruppen": {
       "turbo": {
-        "anzahl": 156,
-        "treffer": 84,
-        "quote": 53.8,
-        "netto": 1744.52,
-        "brutto": 1744.52,
-        "nettoTR": 1433.52,
-        "oeNettoProzent": 1.12,
-        "oeR": 0.43
+        "anzahl": 157,
+        "treffer": 85,
+        "quote": 54.1,
+        "netto": 1877.48,
+        "brutto": 1877.48,
+        "nettoTR": 1564.48,
+        "oeNettoProzent": 1.2,
+        "oeR": 0.44
       },
       "short": {
-        "anzahl": 156,
-        "treffer": 84,
-        "quote": 53.8,
-        "netto": 1744.52,
-        "brutto": 1744.52,
-        "nettoTR": 1433.52,
-        "oeNettoProzent": 1.12,
-        "oeR": 0.43
+        "anzahl": 157,
+        "treffer": 85,
+        "quote": 54.1,
+        "netto": 1877.48,
+        "brutto": 1877.48,
+        "nettoTR": 1564.48,
+        "oeNettoProzent": 1.2,
+        "oeR": 0.44
       },
       "krypto": {
         "anzahl": 40,
@@ -12316,10 +12294,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 179,
-        "chance": 41.9,
-        "oeNetto": -0.58,
-        "wertung": -1
+        "faelle": 181,
+        "chance": 42,
+        "oeNetto": -0.56,
+        "wertung": -0.98
       }
     },
     "krypto:level_long": {
