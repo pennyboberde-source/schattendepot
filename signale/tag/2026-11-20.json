@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T13:09:09.401Z",
-  "anzahl": 220,
+  "stand": "2026-11-20T13:19:49.457Z",
+  "anzahl": 223,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -2887,7 +2887,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.77,
+      "st": 1,
       "q": [
         "Upbit"
       ],
@@ -2918,6 +2918,47 @@
         "SEC EDGAR"
       ],
       "z": "2026-11-20T13:03:14.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.BTC:2026-11-20",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-20T12:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.SOL:2026-11-20",
+      "s": "K:SOL",
+      "n": "Solana",
+      "t": "SOL",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-20T12:00:00.000Z"
+    },
+    {
+      "id": "kursrakete:DE000HF2AP57:2026-11-20",
+      "s": "I:DE000HF2AP57",
+      "n": "DE000HF2AP57",
+      "i": "DE000HF2AP57",
+      "typ": "kursrakete",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "gettex-Scanner"
+      ],
+      "z": "2026-11-20T13:12:33.646Z"
     }
   ]
 }
