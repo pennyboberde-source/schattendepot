@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T14:25:08.305Z",
+  "stand": "2026-11-20T14:39:02.996Z",
   "offen": [
     {
       "id": "2026-11-19-auto-applied-optoelectronics-inc",
@@ -104,6 +104,14 @@
           "alt": 20.14,
           "neu": 20.32,
           "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 23.087 € (+16.5 %)"
+        },
+        {
+          "zeit": "2026-11-20T14:39:02.996Z",
+          "quelle": "waechter",
+          "feld": "stop",
+          "alt": 20.32,
+          "neu": 22.81,
+          "begruendung": "Nachziehender Stop: 12 % unter Geldkurs 25.916 € (+30.8 %)"
         }
       ],
       "kauf": {
@@ -121,7 +129,7 @@
         "synthetisch": true
       },
       "zielkurs": 27.5,
-      "stopkurs": 20.32,
+      "stopkurs": 22.81,
       "etfKauf": {
         "wert": 127.81,
         "zeit": "2026-11-19T14:29:50.268Z",
@@ -130,11 +138,27 @@
         "hinweis": "letztes Geschäft 2026-11-19",
         "vortag": 130.745
       },
+      "teilverkaeufe": [
+        {
+          "zeit": "2026-11-20T14:39:02.996Z",
+          "stueck": 25,
+          "kurs": 25.916,
+          "kurswert": 647.9,
+          "entgelt": {
+            "provision": 0,
+            "handelsplatz": 0,
+            "gesamt": 0
+          },
+          "betrag": 647.9,
+          "kursquelle": "Finnhub (2026-11-20T14:38:33.000Z)",
+          "synthetisch": true,
+          "grund": "teilziel"
+        }
+      ],
       "stand": {
-        "prozent": 17.19,
-        "zeit": "2026-11-19T21:00:00.000Z",
+        "prozent": 31.47,
+        "zeit": "2026-11-20T14:38:33.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 1045,
         "synthetisch": true
       }
     },
@@ -252,10 +276,9 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 14.3,
-        "zeit": "2026-11-19T21:00:00.000Z",
+        "prozent": 11.78,
+        "zeit": "2026-11-20T14:38:33.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 1045,
         "synthetisch": true
       }
     },
@@ -422,18 +445,15 @@
         }
       ],
       "stand": {
-        "prozent": 17.19,
-        "zeit": "2026-11-19T21:00:00.000Z",
+        "prozent": 16.37,
+        "zeit": "2026-11-20T14:38:29.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 1045,
         "synthetisch": true
       }
-    }
-  ],
-  "vorgemerkt": [
+    },
     {
       "id": "2026-11-20-auto-ardent-health-inc",
-      "status": "vorgemerkt",
+      "status": "offen",
       "vorgemerktUm": "2026-11-20T05:19:21.799Z",
       "vorgemerktVon": "autopilot",
       "plan": {
@@ -441,15 +461,16 @@
           "name": "Ardent Health, Inc.",
           "isin": "",
           "ticker": "ARDT",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_neben",
-          "handelsplatz": "TGT",
+          "anlageklasse": "hebel",
+          "spreadKlasse": "hebel",
+          "handelsplatz": "USB",
           "steuertopf": "aktien",
           "kursbasis": {
             "markt": "us",
             "symbol": "ARDT",
             "waehrung": "USD"
-          }
+          },
+          "plattform": "US-Broker (simuliert) – kein Put/Short-Turbo an deutschen Börsen – Leerverkauf beim US-Broker (Hebel 2)"
         },
         "risikoklasse": "spekulativ",
         "herkunft": "autopilot",
@@ -479,11 +500,250 @@
         "hebelWunsch": {
           "richtung": "short",
           "hebel": 2
+        },
+        "hebel": {
+          "typ": "turbo",
+          "richtung": "short",
+          "emittent": "UniCredit (synthetisch)",
+          "basiswert": {
+            "name": "Ardent Health, Inc.",
+            "isin": "",
+            "kursbasis": {
+              "markt": "us",
+              "symbol": "ARDT",
+              "waehrung": "EUR"
+            }
+          },
+          "basispreis": 19.97,
+          "koSchwelle": 19.97,
+          "bezugsverhaeltnis": 1,
+          "synthetisch": true,
+          "finanzierungProzentJahr": 5
         }
       },
       "verkaufstermin": "2026-11-25T05:19:21.799Z",
-      "anpassungen": []
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-20T14:39:02.996Z",
+        "stueck": 149,
+        "kurs": 6.6933,
+        "kurswert": 997.3,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 3,
+          "gesamt": 3
+        },
+        "betrag": 1000.3,
+        "kursquelle": "Finnhub (2026-11-20T14:38:13.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 9.341,
+      "stopkurs": 6.2917,
+      "etfKauf": {
+        "wert": 124.04,
+        "zeit": "2026-11-20T14:29:51.622Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-20",
+        "vortag": 124.99
+      }
     },
+    {
+      "id": "2026-11-20-auto-insight-molecular-diagnostics-",
+      "status": "offen",
+      "vorgemerktUm": "2026-11-20T07:08:44.836Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "Insight Molecular Diagnostics Inc.",
+          "isin": "",
+          "ticker": "IMDX",
+          "anlageklasse": "hebel",
+          "spreadKlasse": "hebel",
+          "handelsplatz": "USB",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "IMDX",
+            "waehrung": "USD"
+          },
+          "plattform": "US-Broker (simuliert) – kein Put/Short-Turbo an deutschen Börsen – Leerverkauf beim US-Broker (Hebel 2)"
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:IMDX: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:IMDX:2026-11-20"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-25T07:08:44.836Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        },
+        "hebel": {
+          "typ": "turbo",
+          "richtung": "short",
+          "emittent": "UniCredit (synthetisch)",
+          "basiswert": {
+            "name": "Insight Molecular Diagnostics Inc.",
+            "isin": "",
+            "kursbasis": {
+              "markt": "us",
+              "symbol": "IMDX",
+              "waehrung": "EUR"
+            }
+          },
+          "basispreis": 2.2943,
+          "koSchwelle": 2.2943,
+          "bezugsverhaeltnis": 1,
+          "synthetisch": true,
+          "finanzierungProzentJahr": 5
+        }
+      },
+      "verkaufstermin": "2026-11-25T07:08:44.836Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-20T14:39:02.996Z",
+        "stueck": 1301,
+        "kurs": 0.7686,
+        "kurswert": 999.95,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 3,
+          "gesamt": 3
+        },
+        "betrag": 1002.95,
+        "kursquelle": "Finnhub (2026-11-20T14:35:57.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 1.0727,
+      "stopkurs": 0.7225,
+      "etfKauf": {
+        "wert": 124.04,
+        "zeit": "2026-11-20T14:29:51.622Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-20",
+        "vortag": 124.99
+      }
+    },
+    {
+      "id": "2026-11-20-auto-t-stamp-inc",
+      "status": "offen",
+      "vorgemerktUm": "2026-11-20T07:08:44.836Z",
+      "vorgemerktVon": "autopilot",
+      "plan": {
+        "wertpapier": {
+          "name": "T Stamp Inc",
+          "isin": "",
+          "ticker": "IDAI",
+          "anlageklasse": "hebel",
+          "spreadKlasse": "hebel",
+          "handelsplatz": "USB",
+          "steuertopf": "aktien",
+          "kursbasis": {
+            "markt": "us",
+            "symbol": "IDAI",
+            "waehrung": "USD"
+          },
+          "plattform": "US-Broker (simuliert) – kein Put/Short-Turbo an deutschen Börsen – Leerverkauf beim US-Broker (Hebel 2)"
+        },
+        "risikoklasse": "spekulativ",
+        "herkunft": "autopilot",
+        "strategie": "sonstige",
+        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
+        "ausloeser": "Autopilot-Kandidat T:IDAI: verwaesserung (Score -1.2)",
+        "signalIds": [
+          "verwaesserung:IDAI:2026-11-20"
+        ],
+        "quellen": [
+          {
+            "name": "SEC EDGAR",
+            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
+          }
+        ],
+        "konfidenz": 70,
+        "pflichtOrder": false,
+        "erwarteteRenditeNetto": 19.8,
+        "zielNettoProzent": 38.8,
+        "stopProzent": -6,
+        "verkaufstermin": "2026-11-25T07:08:44.836Z",
+        "risiken": [
+          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
+          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
+        ],
+        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
+        "hebelWunsch": {
+          "richtung": "short",
+          "hebel": 2
+        },
+        "hebel": {
+          "typ": "turbo",
+          "richtung": "short",
+          "emittent": "UniCredit (synthetisch)",
+          "basiswert": {
+            "name": "T Stamp Inc",
+            "isin": "",
+            "kursbasis": {
+              "markt": "us",
+              "symbol": "IDAI",
+              "waehrung": "EUR"
+            }
+          },
+          "basispreis": 2.5811,
+          "koSchwelle": 2.5811,
+          "bezugsverhaeltnis": 1,
+          "synthetisch": true,
+          "finanzierungProzentJahr": 5
+        }
+      },
+      "verkaufstermin": "2026-11-25T07:08:44.836Z",
+      "anpassungen": [],
+      "kauf": {
+        "zeit": "2026-11-20T14:39:02.996Z",
+        "stueck": 1156,
+        "kurs": 0.8647,
+        "kurswert": 999.59,
+        "entgelt": {
+          "provision": 0,
+          "handelsplatz": 3,
+          "gesamt": 3
+        },
+        "betrag": 1002.59,
+        "kursquelle": "Finnhub (2026-11-20T14:37:05.000Z)",
+        "synthetisch": true
+      },
+      "zielkurs": 1.2068,
+      "stopkurs": 0.8128,
+      "etfKauf": {
+        "wert": 124.04,
+        "zeit": "2026-11-20T14:29:51.622Z",
+        "quelle": "gettex (verzögert, MiFIR)",
+        "verzoegertMin": 9,
+        "hinweis": "letztes Geschäft 2026-11-20",
+        "vortag": 124.99
+      }
+    }
+  ],
+  "vorgemerkt": [
     {
       "id": "2026-11-20-auto-erp-operating-ltd-partnership",
       "status": "vorgemerkt",
@@ -535,112 +795,6 @@
         }
       },
       "verkaufstermin": "2026-11-25T05:19:21.799Z",
-      "anpassungen": []
-    },
-    {
-      "id": "2026-11-20-auto-insight-molecular-diagnostics-",
-      "status": "vorgemerkt",
-      "vorgemerktUm": "2026-11-20T07:08:44.836Z",
-      "vorgemerktVon": "autopilot",
-      "plan": {
-        "wertpapier": {
-          "name": "Insight Molecular Diagnostics Inc.",
-          "isin": "",
-          "ticker": "IMDX",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_neben",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "IMDX",
-            "waehrung": "USD"
-          }
-        },
-        "risikoklasse": "spekulativ",
-        "herkunft": "autopilot",
-        "strategie": "sonstige",
-        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
-        "ausloeser": "Autopilot-Kandidat T:IMDX: verwaesserung (Score -1.2)",
-        "signalIds": [
-          "verwaesserung:IMDX:2026-11-20"
-        ],
-        "quellen": [
-          {
-            "name": "SEC EDGAR",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          }
-        ],
-        "konfidenz": 70,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 19.8,
-        "zielNettoProzent": 38.8,
-        "stopProzent": -6,
-        "verkaufstermin": "2026-11-25T07:08:44.836Z",
-        "risiken": [
-          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
-          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
-        ],
-        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
-        "hebelWunsch": {
-          "richtung": "short",
-          "hebel": 2
-        }
-      },
-      "verkaufstermin": "2026-11-25T07:08:44.836Z",
-      "anpassungen": []
-    },
-    {
-      "id": "2026-11-20-auto-t-stamp-inc",
-      "status": "vorgemerkt",
-      "vorgemerktUm": "2026-11-20T07:08:44.836Z",
-      "vorgemerktVon": "autopilot",
-      "plan": {
-        "wertpapier": {
-          "name": "T Stamp Inc",
-          "isin": "",
-          "ticker": "IDAI",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_neben",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "IDAI",
-            "waehrung": "USD"
-          }
-        },
-        "risikoklasse": "spekulativ",
-        "herkunft": "autopilot",
-        "strategie": "sonstige",
-        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
-        "ausloeser": "Autopilot-Kandidat T:IDAI: verwaesserung (Score -1.2)",
-        "signalIds": [
-          "verwaesserung:IDAI:2026-11-20"
-        ],
-        "quellen": [
-          {
-            "name": "SEC EDGAR",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          }
-        ],
-        "konfidenz": 70,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 19.8,
-        "zielNettoProzent": 38.8,
-        "stopProzent": -6,
-        "verkaufstermin": "2026-11-25T07:08:44.836Z",
-        "risiken": [
-          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
-          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
-        ],
-        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (18 Fälle)",
-        "hebelWunsch": {
-          "richtung": "short",
-          "hebel": 2
-        }
-      },
-      "verkaufstermin": "2026-11-25T07:08:44.836Z",
       "anpassungen": []
     }
   ]
