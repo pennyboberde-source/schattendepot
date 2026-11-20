@@ -1,0 +1,27 @@
+{
+  "hinweis": "Q2 Nachrichtenart (Nutzer 20.11.2026: „Alles davon machen“): Begriffe der SEC-Volltextsuche (efts.sec.gov, ohne Schlüssel, seit 2001, höchstens 10 Abrufe/s, User-Agent mit SEC_KONTAKT) mit der erwarteten Richtung. Die Richtung ist nur eine Vorab-Einteilung für das Merkmal „Katalysator“ (long-, short-, binäre oder gemischte Art); ob sie stimmt, misst der Rückblick. Meldungen zählen wie Zahlen nach Börsenschluss (ab dem folgenden Handelstag), weil die Volltextsuche nur das Datum liefert. Neue Begriffe hinten anhängen und stufe erhöhen (dann holt der Archivlauf alles neu).",
+  "stufe": 1,
+  "ab": "2024-10-01",
+  "maxSeitenJeMonat": 30,
+  "pauseMs": 150,
+  "liste": [
+    { "id": "sonderdividende", "begriff": "special dividend", "formen": ["8-K"], "richtung": "long" },
+    { "id": "auftrag", "begriff": "purchase order", "formen": ["8-K"], "richtung": "long" },
+    { "id": "zulassung", "begriff": "FDA approval", "formen": ["8-K"], "richtung": "long" },
+    { "id": "rueckkauf", "begriff": "share repurchase program", "formen": ["8-K"], "richtung": "long" },
+    { "id": "kryptoschatz", "begriff": "digital asset treasury", "formen": ["8-K"], "richtung": "long" },
+    { "id": "bitcoinschatz", "begriff": "bitcoin treasury", "formen": ["8-K"], "richtung": "long" },
+    { "id": "beteiligung", "begriff": "strategic investment", "formen": ["8-K"], "richtung": "long" },
+    { "id": "fusion", "begriff": "definitive merger agreement", "formen": ["8-K"], "richtung": "long" },
+    { "id": "direktplatzierung", "begriff": "registered direct offering", "formen": ["8-K", "424B5"], "richtung": "short" },
+    { "id": "optionsanreiz", "begriff": "warrant inducement", "formen": ["8-K"], "richtung": "short" },
+    { "id": "fortbestand", "begriff": "going concern", "formen": ["8-K"], "richtung": "short" },
+    { "id": "zusammenlegung", "begriff": "reverse stock split", "formen": ["8-K"], "richtung": "short" },
+    { "id": "insolvenz", "begriff": "Chapter 11", "formen": ["8-K"], "richtung": "short" },
+    { "id": "privatplatzierung", "begriff": "private placement", "formen": ["8-K"], "richtung": "short" },
+    { "id": "emission", "begriff": "underwritten public offering", "formen": ["8-K"], "richtung": "short" },
+    { "id": "ablehnung", "begriff": "complete response letter", "formen": ["8-K"], "richtung": "short" },
+    { "id": "pdufa", "begriff": "PDUFA", "formen": ["8-K"], "richtung": "binaer" },
+    { "id": "studiendaten", "begriff": "topline", "formen": ["8-K"], "richtung": "binaer" }
+  ]
+}

@@ -26,6 +26,7 @@ import { leerbestandAusCsv, leerbestandDatei } from '../core/volltreffer/leerbes
 import { aktienzahlAm, type AktienzahlArchiv } from '../core/volltreffer/aktienzahl.ts';
 import { tageBisStudie, type Studie } from '../core/volltreffer/studien.ts';
 import { alsFolge, kalenderTage, spitzenFolge, spitzenKlasse, suchName, themenFuer, type Ereignis, type Tagesreihe, type Thema } from '../core/volltreffer/kontext.ts';
+import { katalysatorKlasse, type Katalysator } from '../core/volltreffer/volltext.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
 import { hebelDa, type HebelStand } from '../core/volltreffer/firds.ts';
 import { haltefristFortschreiben, type Haltefrist } from '../core/volltreffer/haltefrist.ts';
@@ -200,6 +201,29 @@ const meldungAm = (r: Reihe, datum: string, art: MeldungArt): number | null => {
   }
   return meldungCache.je.get(art)?.get(datum) ?? null;
 };
+// Q2 Katalysator-Begriffe aus der SEC-Volltextsuche (privat stamm/volltext.json.gz, config/katalysatoren.json): Klasse
+// nach der Art der jüngsten Meldungen (long-, short-, binäre, gemischte Art) in 5 bzw. 20 Handelstagen; Meldungen zählen
+// wie nach Börsenschluss (die Suche liefert nur das Datum) – kein Blick nach vorn.
+const KAT = JSON.parse(readFileSync(join(process.cwd(), 'config', 'katalysatoren.json'), 'utf8')) as { ab: string; liste: Katalysator[] };
+const volltextTreffer: Record<string, Record<string, string[]>> = (() => {
+  const pf = join(ARCHIV, 'stamm', 'volltext.json.gz');
+  return existsSync(pf) ? ((JSON.parse(gz(pf)) as { treffer?: Record<string, Record<string, string[]>> }).treffer ?? {}) : {};
+})();
+const KAT_DA = KAT.liste.every((k) => volltextTreffer[k.id]);
+const katArten = KAT.liste.map((k) => k.richtung);
+let katCache: { r: Reihe; je: Map<string, [number | null, number | null]> } | null = null;
+const katalysatorAm = (r: Reihe, datum: string): { katalysator5: number | null; katalysator20: number | null } => {
+  if (!KAT_DA || r.markt !== 'aktie') return { katalysator5: null, katalysator20: null };
+  if (katCache?.r !== r) {
+    const t = r.schluessel.slice(2).split('#')[0];
+    const daten = r.kerzen.map((k) => k.datum);
+    const abst = KAT.liste.map((k) => zahlenAbstaende(daten, (volltextTreffer[k.id]?.[t] ?? []).map((d) => [d, '23:59'] as [string, string]), KAT.ab));
+    katCache = { r, je: new Map(daten.map((d, i) => [d, [katalysatorKlasse(abst.map((a) => a[i]), katArten, 5), katalysatorKlasse(abst.map((a) => a[i]), katArten, 20)]])) };
+  }
+  const v = katCache.je.get(datum);
+  return { katalysator5: v?.[0] ?? null, katalysator20: v?.[1] ?? null };
+};
+log(`Katalysator-Begriffe (SEC-Volltext): ${KAT_DA ? `${KAT.liste.length} Begriffe, ${Object.values(volltextTreffer).reduce((a, je) => a + Object.keys(je).length, 0)} Kürzel-Einträge` : 'noch nicht vollständig im Archiv – Merkmal unbekannt'}.`);
 // Leerverkaufsanteil (FINRA, privat im Archiv): je Kürzel ein Float32Array über alle Archivtage (NaN = keine Angabe)
 const leerTage: string[] = [];
 const leerJe = new Map<string, Float32Array>();
@@ -681,8 +705,8 @@ const paarF = F.map((f) => vt.pruefung.paareFenster.includes(f));
 const zw = new Zaehlwerk(gruppen.length, SP.length, F.length, 2);
 log(`${gruppen.length} Gruppen, ${SP.length} Spielarten, ${F.length} Fenster.`);
 
-type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null; bestandTage: number | null; bestandAenderung: number | null; anleihen5: number | null; dollar5: number | null; kredit5: number | null; oel5: number | null; sektor5: number | null; angst: number | null; stable30: number | null; otc: number | null; aktien: number | null; boersenwertUS: number | null; leerAnteil: number | null; aufmerksamkeit: number | null; branchenThema: number | null; erwaehnt: number | null; nachrichtenlage: number | null; politikDruck: number | null; amtsblatt5: number | null } & Partial<Record<MeldungArt, number | null>>;
-const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', 'otc', 'aktien', 'boersenwertUS', 'leerAnteil', 'aufmerksamkeit', 'branchenThema', 'erwaehnt', 'nachrichtenlage', 'politikDruck', 'amtsblatt5', ...MELDUNG_ARTEN]);
+type Kontext = { marktR1: number; ueberrendite1: number; boersenwert: number | null; zahlen: number | null; branche: number | null; vix: number | null; vix5: number | null; fed: number | null; breite: number | null; markt5: number | null; leerquote: number | null; leerquoteRel: number | null; insider: number | null; bestandTage: number | null; bestandAenderung: number | null; anleihen5: number | null; dollar5: number | null; kredit5: number | null; oel5: number | null; sektor5: number | null; angst: number | null; stable30: number | null; otc: number | null; aktien: number | null; boersenwertUS: number | null; leerAnteil: number | null; aufmerksamkeit: number | null; branchenThema: number | null; erwaehnt: number | null; nachrichtenlage: number | null; politikDruck: number | null; amtsblatt5: number | null; katalysator5: number | null; katalysator20: number | null } & Partial<Record<MeldungArt, number | null>>;
+const KONTEXT_MERKMALE = new Set<string>(['marktR1', 'ueberrendite1', 'boersenwert', 'zahlen', 'branche', 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', 'otc', 'aktien', 'boersenwertUS', 'leerAnteil', 'aufmerksamkeit', 'branchenThema', 'erwaehnt', 'nachrichtenlage', 'politikDruck', 'amtsblatt5', 'katalysator5', 'katalysator20', ...MELDUNG_ARTEN]);
 const merkmalWert = (e: Einteilung, m: Merkmale, kontext: Kontext): number | null =>
   KONTEXT_MERKMALE.has(e.merkmal) ? (kontext[e.merkmal as keyof Kontext] ?? null) : (m[e.merkmal as keyof Merkmale] as number | null);
 /** Meldungsarten, nach denen die Einteilungen fragen (nur die werden je Stichtag gerechnet) */
@@ -691,6 +715,7 @@ const LEER_GEFRAGT = E.some((e) => e.merkmal === 'leerquote' || e.merkmal === 'l
 const INSIDER_GEFRAGT = E.some((e) => e.merkmal === 'insider');
 const LB_GEFRAGT = E.some((e) => e.merkmal === 'bestandTage' || e.merkmal === 'bestandAenderung');
 const KONTEXT_GEFRAGT = E.some((e) => ['aufmerksamkeit', 'branchenThema', 'erwaehnt', 'nachrichtenlage', 'politikDruck', 'amtsblatt5'].includes(e.merkmal));
+const KAT_GEFRAGT = E.some((e) => e.merkmal === 'katalysator5' || e.merkmal === 'katalysator20');
 const LEER_LAGE = { anleihen5: null, dollar5: null, kredit5: null, oel5: null, angst: null, stable30: null };
 /** Lage am Stichtag: US-Lage nur für Aktien, Krypto-Lage nur für Coins */
 const lageFuer = (r: Reihe, datum: string) => {
@@ -700,7 +725,7 @@ const lageFuer = (r: Reihe, datum: string) => {
 /** Klasse je Einteilung an einem Stichtag (Durchgang 2 und Klumpen-Prüfung rechnen genau gleich) */
 const klassenAm = (r: Reihe, x: Merkmale, datum: string) => {
   const mr = marktR1[r.markt].get(datum) ?? 0;
-  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null, ...(LB_GEFRAGT ? leerbestandAm(r, datum) : { bestandTage: null, bestandAenderung: null }), ...lageFuer(r, datum), otc: r.markt === 'aktie' ? (r.otc ? 1 : 0) : null, ...aktienAm(r, x, datum), ...(KONTEXT_GEFRAGT ? { ...wertKontextAm(r, datum), ...marktKontextAm(datum) } : { aufmerksamkeit: null, branchenThema: null, erwaehnt: null, nachrichtenlage: null, politikDruck: null, amtsblatt5: null }) };
+  const kontext: Kontext = { marktR1: mr, ueberrendite1: x.r1 - mr, boersenwert: r.markt === 'krypto' ? boersenwertAm(boersenwerte.get(r.schluessel.slice(2)), datum) : null, zahlen: zahlenAm(r, datum), branche: brancheVon(r), ...(umfeldJeTag.get(datum) ?? { vix: null, vix5: null, fed: null }), breite: breiteJeTag[r.markt].get(datum) ?? null, markt5: markt5JeTag[r.markt].get(datum) ?? null, ...(LEER_GEFRAGT ? leerAm(r, datum) : { leerquote: null, leerquoteRel: null }), insider: INSIDER_GEFRAGT ? insiderAm(r, datum) : null, ...(LB_GEFRAGT ? leerbestandAm(r, datum) : { bestandTage: null, bestandAenderung: null }), ...lageFuer(r, datum), otc: r.markt === 'aktie' ? (r.otc ? 1 : 0) : null, ...aktienAm(r, x, datum), ...(KONTEXT_GEFRAGT ? { ...wertKontextAm(r, datum), ...marktKontextAm(datum) } : { aufmerksamkeit: null, branchenThema: null, erwaehnt: null, nachrichtenlage: null, politikDruck: null, amtsblatt5: null }), ...(KAT_GEFRAGT ? katalysatorAm(r, datum) : { katalysator5: null, katalysator20: null }) };
   for (const a of GEFRAGTE_ARTEN) kontext[a] = meldungAm(r, datum, a);
   return E.map((e) => klasse(merkmalWert(e, x, kontext), e.grenzen));
 };
@@ -1066,7 +1091,7 @@ for (const r of ZEITREISE || ANALYSE || ZEITLUPE || WELLEN ? [] : reihen) {
 log(`${stichtage} handelbare Stichtage, ${episoden.length} Sprung-Episoden, Hypothesen-Fälle: ${JSON.stringify(hypFaelle)}.`);
 
 // ---------- 6. Auswertung ----------
-const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: 'Beteiligung ab 5 % (13G)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %', otc: 'Handelsplatz (Börse/OTC)', aktien: 'Aktienzahl (Mio.)', boersenwertUS: 'Börsenwert (Mio. $)', leerAnteil: 'Leerbestand in % der Aktien', max20: 'Größter Tagesgewinn 20 Tage %', volumen5: 'Umsatz 5 Tage (× Ø 20 Tage davor)' , aufmerksamkeit: 'Aufmerksamkeit (Wikipedia-Aufrufe)', branchenThema: 'Thema der Branche in den Weltnachrichten', erwaehnt: 'Im Weltgeschehen erwähnt', nachrichtenlage: 'Nachrichtenlage (stärkstes Thema)', politikDruck: 'Politik-Druck in den Nachrichten', amtsblatt5: 'US-Amtsblatt: Erlasse, Zölle, Sanktionen' };
+const MERKMAL_TEXT: Record<string, string> = { r1: 'Tagesrendite %', r5: '5-Tage-Rendite %', r20: '20-Tage-Rendite %', relVolumen: 'Umsatz (× Ø 20 Tage)', relSpanne: 'Tagesspanne (× Ø 20 Tage)', abstandHoch20: '20-Tage-Hoch', abstandHoch250: 'Abstand zum Jahreshoch %', lageSchluss: 'Schluss in der Tagesspanne (0 = Tief, 1 = Hoch)', luecke: 'Kurslücke %', schwankung20: 'Schwankung je Tag %', umsatz20: 'Ø Tagesumsatz', kurs: 'Kurs', ueberrendite1: 'Tagesrendite über dem Markt %', marktR1: 'Markt am Stichtag %', boersenwert: 'Börsenwert (Coins)', zahlen: 'Quartalszahlen', branche: 'Branche', angebot: 'Kapitalerhöhung (Prospekt)', registrierung: 'Kapital-Registrierung (S-1/S-3)', grossaktionaer: 'Großaktionär (13D)', vertrag: 'Großvertrag (8-K 1.01)', warnung: 'Warnmeldung (Insolvenz, Delisting, Korrektur)', fuehrung: 'Chefwechsel (8-K 5.02)', satzung: 'Satzung/Aktiensplit (8-K 5.03)', fusion: 'Fusion (425/DEFM14A)', uebernahme: 'Übernahmeangebot (SC TO/14D9)', beteiligung: 'Beteiligung ab 5 % (13G)', vix: 'VIX (Angstbarometer)', vix5: 'VIX-Änderung 5 Tage', fed: 'Zinsentscheid der Fed', breite: 'Marktbreite', markt5: 'Markt 5 Tage', leerquote: 'Leerverkaufsanteil', leerquoteRel: 'Leerverkäufe gegen den eigenen Schnitt', insider: 'Insider-Kauf (Formular 4)', bestandTage: 'Leerverkaufsbestand: Tage zum Eindecken', bestandAenderung: 'Leerverkaufsbestand gegen den vorigen FINRA-Stichtag', anleihen5: 'Lange US-Anleihen (TLT) 5 Tage %', dollar5: 'Dollar (UUP) 5 Tage %', kredit5: 'Kreditmarkt (HYG gegen IEF) 5 Tage, Punkte', oel5: 'Öl (USO) 5 Tage %', sektor5: 'Eigene Branche (Branchen-ETF) 5 Tage %', angst: 'Krypto Fear & Greed', stable30: 'Stablecoin-Menge 30 Tage %', otc: 'Handelsplatz (Börse/OTC)', aktien: 'Aktienzahl (Mio.)', boersenwertUS: 'Börsenwert (Mio. $)', leerAnteil: 'Leerbestand in % der Aktien', max20: 'Größter Tagesgewinn 20 Tage %', volumen5: 'Umsatz 5 Tage (× Ø 20 Tage davor)' , aufmerksamkeit: 'Aufmerksamkeit (Wikipedia-Aufrufe)', branchenThema: 'Thema der Branche in den Weltnachrichten', erwaehnt: 'Im Weltgeschehen erwähnt', nachrichtenlage: 'Nachrichtenlage (stärkstes Thema)', politikDruck: 'Politik-Druck in den Nachrichten', amtsblatt5: 'US-Amtsblatt: Erlasse, Zölle, Sanktionen', katalysator5: 'Katalysator-Meldung (SEC-Volltext) in 5 Tagen', katalysator20: 'Katalysator-Meldung (SEC-Volltext) in 20 Tagen' };
 const gruppenText = (name: string) => {
   const [markt, rest] = name.split('|');
   const marktText = markt === 'aktie' ? 'Aktien' : 'Krypto';
@@ -2801,7 +2826,7 @@ log(`Fertig: ${bestanden.length} Gruppen bestanden, davon ${mitVorteil.length} m
   .join(' | ') || '–'}`);
 for (const h of hypothesen) log(`${h.gruppe}: ${h.spielart}, ${h.fenster} T – ${h.faelle} Fälle, Quote ${h.quote} %, Ø A ${h.zeitraumA.ev} € / B ${h.zeitraumB.ev} € → ${h.bestanden ? 'BESTANDEN' : 'nicht bestanden'}`);
 // Was bringen die Merkmale aus Zusatzquellen (Quartalszahlen, Branche)? Nur verdichtete Kennzahlen ins Log
-for (const merkmal of ['zahlen', 'branche', ...MELDUNG_ARTEN, 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', 'otc', 'max20', 'volumen5', 'aktien', 'boersenwertUS', 'leerAnteil', 'aufmerksamkeit', 'branchenThema', 'erwaehnt', 'nachrichtenlage', 'politikDruck', 'amtsblatt5']) {
+for (const merkmal of ['zahlen', 'branche', ...MELDUNG_ARTEN, 'vix', 'vix5', 'fed', 'breite', 'markt5', 'leerquote', 'leerquoteRel', 'insider', 'bestandTage', 'bestandAenderung', 'anleihen5', 'dollar5', 'kredit5', 'oel5', 'sektor5', 'angst', 'stable30', 'otc', 'max20', 'volumen5', 'aktien', 'boersenwertUS', 'leerAnteil', 'aufmerksamkeit', 'branchenThema', 'erwaehnt', 'nachrichtenlage', 'politikDruck', 'amtsblatt5', 'katalysator5', 'katalysator20']) {
   const a = E.findIndex((e) => e.merkmal === merkmal);
   if (a < 0) continue;
   const mit = (e: (typeof bestanden)[number]) => e.schluessel.split('|')[1].split('&').some((t) => t.startsWith(`${a}=`));

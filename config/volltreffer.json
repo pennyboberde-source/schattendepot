@@ -925,7 +925,17 @@
           "Welle (US-Amtsblatt)"
         ],
         "paare": false
-      }
+      },
+        {
+          "merkmal": "katalysator5",
+          "grenzen": [0.5, 1.5, 2.5, 3.5],
+          "namen": ["keine Katalysator-Meldung (5 Tage)", "Katalysator long-Art vor 0–5 Tagen (Sonderdividende, Auftrag, Zulassung …)", "Katalysator short-Art vor 0–5 Tagen (Direktplatzierung, Zusammenlegung, Fortbestand …)", "binärer Katalysator vor 0–5 Tagen (FDA-Termin, Studiendaten)", "gemischte Katalysatoren vor 0–5 Tagen"]
+        },
+        {
+          "merkmal": "katalysator20",
+          "grenzen": [0.5, 1.5, 2.5, 3.5],
+          "namen": ["keine Katalysator-Meldung (20 Tage)", "Katalysator long-Art vor 0–20 Tagen", "Katalysator short-Art vor 0–20 Tagen", "binärer Katalysator vor 0–20 Tagen", "gemischte Katalysatoren vor 0–20 Tagen"]
+        }
     ],
     "quartalMindestFaelle": 5,
     "quartaleMindestAnteil": 0.5,

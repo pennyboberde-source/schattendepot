@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       teile:
-        description: 'us, kryptokerzen, ussplits, zahlen, leerverkauf, leerbestand, insider (mit Komma)'
+        description: 'us, kryptokerzen, ussplits, zahlen, leerverkauf, leerbestand, insider, volltext, leihe, reddit (mit Komma)'
         default: 'us,kryptokerzen,ussplits'
       us_ab:
         description: 'US ab diesem Tag (JJJJ-MM-TT; leer = vor 2 Jahren und 5 Tagen)'
@@ -61,6 +61,8 @@ jobs:
           LEER_MAX_TAGE: '600'
           # Insider-Käufe: Quartals-Datensätze und alle Formular-4-Meldungen danach auf einmal (rund 1.500 je Tag)
           INSIDER_MAX: '80000'
+          # Katalysator-Begriffe (SEC-Volltextsuche): erstes Laden aller Monate auf einmal
+          VOLLTEXT_MINUTEN: '120'
           TEILE: ${{ github.event.inputs.teile || 'kryptokerzen,ussplits' }}
           US_AB_EINGABE: ${{ github.event.inputs.us_ab }}
           RUNDEN: ${{ github.event.inputs.runden || '14' }}

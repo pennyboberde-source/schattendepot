@@ -45,6 +45,7 @@ import { frameEinarbeiten, frameLesen, framesBis, type AktienzahlArchiv } from '
 import { istBiotech, sponsorName, studienLesen, type Studie } from '../core/volltreffer/studien.ts';
 import { amtsblattLesen, aufrufeLesen, gdeltLesen, weltgeschehenLesen, wikidataKuerzel, type Ereignis, type Tagesreihe, type Thema } from '../core/volltreffer/kontext.ts';
 import { apewisdomLesen, leiheCsv, leiheLesen, type Nennung } from '../core/volltreffer/stimmung.ts';
+import { eftsLesen, type Katalysator } from '../core/volltreffer/volltext.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -101,6 +102,8 @@ interface Index {
   /** Q6 Leihgebühren (Interactive Brokers) und Q7 Reddit/4chan-Nennungen (ApeWisdom): Schnappschüsse in Zählungen */
   leihe?: Record<string, { werte: number; geholt: string }>;
   reddit?: Record<string, { aktien: number; coins: number; geholt: string }>;
+  /** Q2 Katalysator-Begriffe aus der SEC-Volltextsuche (stamm/volltext.json.gz) in Zählungen */
+  volltext?: { begriffe: number; meldungen: number; kuerzel: number; monateOffen: number; geholt: string };
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -115,7 +118,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider,aktienzahl,studien,themen,amtsblatt,weltgeschehen,aufmerksamkeit,leihe,reddit').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider,aktienzahl,studien,themen,amtsblatt,weltgeschehen,aufmerksamkeit,leihe,reddit,volltext').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -1553,6 +1556,63 @@ async function reddit() {
   console.log(`ApeWisdom: ${aktien.length} Aktien, ${coins.length} Coins mit Nennungen.`);
 }
 
+// ---------- Q2 Katalysator-Begriffe (SEC-Volltextsuche efts.sec.gov) ----------
+// Je Begriff und Monat alle Treffer (Kürzel, Datum, Formular); fertige Monate werden nicht neu geholt, der laufende und der
+// vorige Monat bei jedem Lauf. Privat: stamm/volltext.json.gz { stufe, monate: {id: [JJJJ-MM…]}, treffer: {id: {KÜRZEL: [Datum…]}} }.
+async function volltext() {
+  const kontakt = process.env.SEC_KONTAKT?.trim();
+  if (!kontakt) return console.log('Volltext (SEC): SEC_KONTAKT fehlt – übersprungen.');
+  const kc = JSON.parse(readFileSync(join(process.cwd(), 'config', 'katalysatoren.json'), 'utf8')) as { stufe: number; ab: string; maxSeitenJeMonat: number; pauseMs: number; liste: Katalysator[] };
+  const datei = join(ARCHIV, 'stamm', 'volltext.json.gz');
+  type V = { stufe: number; monate: Record<string, string[]>; treffer: Record<string, Record<string, string[]>> };
+  let v: V = existsSync(datei) ? (JSON.parse(gunzipSync(readFileSync(datei)).toString('utf8')) as V) : { stufe: kc.stufe, monate: {}, treffer: {} };
+  if (v.stufe !== kc.stufe) v = { stufe: kc.stufe, monate: {}, treffer: {} };
+  const kopf = { 'User-Agent': `Schattendepot-Forschung ${kontakt}`, Accept: 'application/json' };
+  const jetztMonat = iso.slice(0, 7);
+  const vorMonat = new Date(Date.UTC(Number(iso.slice(0, 4)), Number(iso.slice(5, 7)) - 2, 15)).toISOString().slice(0, 7);
+  const monate: string[] = [];
+  for (let m = kc.ab.slice(0, 7); m <= jetztMonat; m = new Date(Date.UTC(Number(m.slice(0, 4)), Number(m.slice(5, 7)), 15)).toISOString().slice(0, 7)) monate.push(m);
+  const ende = Date.now() + Number(process.env.VOLLTEXT_MINUTEN ?? 8) * 60000;
+  let abrufe = 0, neuGezaehlt = 0, abgeschnitten = 0;
+  for (const kat of kc.liste) {
+    const fertig = new Set(v.monate[kat.id] ?? []);
+    const je = (v.treffer[kat.id] ??= {});
+    for (const m of monate) {
+      if (Date.now() > ende) break;
+      if (fertig.has(m) && m !== jetztMonat && m !== vorMonat) continue;
+      const bis = new Date(Date.UTC(Number(m.slice(0, 4)), Number(m.slice(5, 7)), 0)).toISOString().slice(0, 10);
+      let ok = true;
+      for (let seite = 0; seite < kc.maxSeitenJeMonat; seite++) {
+        await pause(kc.pauseMs);
+        abrufe++;
+        const url = `https://efts.sec.gov/LATEST/search-index?q=${encodeURIComponent(`"${kat.begriff}"`)}&forms=${kat.formen.join(',')}&dateRange=custom&startdt=${m}-01&enddt=${bis}&from=${seite * 100}`;
+        const r = await geduldig(url, kopf, { zeitMs: 60000, versuche: 3, warteMs: 10000 });
+        const a = r && r.status === 200 ? eftsLesen(await r.json().catch(() => null)) : null;
+        if (!a) {
+          ok = false;
+          break;
+        }
+        for (const t of a.treffer)
+          for (const k of t.kuerzel) {
+            const l = (je[k] ??= []);
+            if (!l.includes(t.datum)) (l.push(t.datum), neuGezaehlt++);
+          }
+        if ((seite + 1) * 100 >= a.gesamt || !a.treffer.length) break;
+        if (seite + 1 === kc.maxSeitenJeMonat) abgeschnitten++;
+      }
+      if (ok) fertig.add(m);
+    }
+    v.monate[kat.id] = [...fertig].sort();
+  }
+  for (const je of Object.values(v.treffer)) for (const k of Object.keys(je)) je[k].sort();
+  mkdirSync(dirname(datei), { recursive: true });
+  writeFileSync(datei, gzipSync(Buffer.from(JSON.stringify(v), 'utf8'), { level: 9 }));
+  const offen = kc.liste.reduce((s2, k) => s2 + monate.filter((m) => !(v.monate[k.id] ?? []).includes(m)).length, 0);
+  const meldungen = Object.values(v.treffer).reduce((s2, je) => s2 + Object.values(je).reduce((a, l) => a + l.length, 0), 0);
+  index.volltext = { begriffe: kc.liste.length, meldungen, kuerzel: new Set(Object.values(v.treffer).flatMap((je) => Object.keys(je))).size, monateOffen: offen, geholt: iso };
+  console.log(`Volltext (SEC): ${abrufe} Abrufe, ${neuGezaehlt} neue Meldungen, ${meldungen} insgesamt, ${offen} Begriff-Monate offen${abgeschnitten ? `, ${abgeschnitten} Monate abgeschnitten (über ${kc.maxSeitenJeMonat * 100} Treffer)` : ''}. Antworten je Status ${JSON.stringify(statusZahl)}`);
+}
+
 const TEILE = [
   ['krypto', 'Krypto', krypto],
   ['us', 'US', us],
@@ -1577,6 +1637,7 @@ const TEILE = [
   ['minuten', 'Zeitlupe (Minutenkerzen)', minuten],
   ['leihe', 'Leihgebühren (Interactive Brokers)', leihe],
   ['reddit', 'Reddit/4chan-Nennungen (ApeWisdom)', reddit],
+  ['volltext', 'Katalysator-Begriffe (SEC-Volltextsuche)', volltext],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -1635,6 +1696,7 @@ const stand = {
     return { stichtage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };
   })(),
   minuten: index.minuten ?? null,
+  volltext: index.volltext ?? null,
   leihe: { schnappschuesse: Object.keys(index.leihe ?? {}).length, letzter: Object.keys(index.leihe ?? {}).sort().pop() ?? null },
   reddit: { schnappschuesse: Object.keys(index.reddit ?? {}).length, letzter: Object.keys(index.reddit ?? {}).sort().pop() ?? null },
   neu:neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
