@@ -44,6 +44,7 @@ import { formular4Dateien, kaeufeAusDatensatz, kaeufeVereinen, kaufAusMeldung, q
 import { frameEinarbeiten, frameLesen, framesBis, type AktienzahlArchiv } from '../core/volltreffer/aktienzahl.ts';
 import { istBiotech, sponsorName, studienLesen, type Studie } from '../core/volltreffer/studien.ts';
 import { amtsblattLesen, aufrufeLesen, gdeltLesen, weltgeschehenLesen, wikidataKuerzel, type Ereignis, type Tagesreihe, type Thema } from '../core/volltreffer/kontext.ts';
+import { apewisdomLesen, leiheCsv, leiheLesen, type Nennung } from '../core/volltreffer/stimmung.ts';
 import { gettexDateiLaden, gettexDateiliste } from './kurse/gettex.ts';
 import { USER_AGENT } from './lib/netz.ts';
 
@@ -97,6 +98,9 @@ interface Index {
   aufmerksamkeit?: { zugeordnet: number; mitReihe: number; offen: number; bis: string | null; geholt: string; zuordnung: string };
   /** Zeitlupe (Q1, 20.11.2026): Minutenkerzen der Tage mit großem Tageshoch (minuten/JJJJ/JJJJ-MM-TT.json.gz) in Zählungen */
   minuten?: { ereignisse: number; tage: number; offen: number; leer: number; geholt: string };
+  /** Q6 Leihgebühren (Interactive Brokers) und Q7 Reddit/4chan-Nennungen (ApeWisdom): Schnappschüsse in Zählungen */
+  leihe?: Record<string, { werte: number; geholt: string }>;
+  reddit?: Record<string, { aktien: number; coins: number; geholt: string }>;
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -111,7 +115,7 @@ const pfad = (markt: string, datum: string) => join(ARCHIV, markt, datum.slice(0
 const fehler: string[] = [];
 const neu: string[] = [];
 // Welche Teile laufen? Der tägliche Lauf holt Krypto-Stand, US und gettex; Kursgeschichte und Splits nur auf Wunsch.
-const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider,aktienzahl,studien,themen,amtsblatt,weltgeschehen,aufmerksamkeit').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
+const NUR = new Set((process.env.ARCHIV_NUR?.trim() || 'krypto,us,gettex,stamm,boersenwert,zahlen,umfeld,kryptoumfeld,leerverkauf,leerbestand,hebel,insider,aktienzahl,studien,themen,amtsblatt,weltgeschehen,aufmerksamkeit,leihe,reddit').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean));
 const istDatum = (x: string | undefined): x is string => !!x && /^\d{4}-\d{2}-\d{2}$/.test(x);
 const usAb = istDatum(process.env.US_AB?.trim()) ? process.env.US_AB!.trim() : cfg.us.ab;
 const usMaxTage = Number(process.env.US_MAX_TAGE) > 0 ? Math.floor(Number(process.env.US_MAX_TAGE)) : cfg.us.maxTageJeLauf;
@@ -1497,6 +1501,58 @@ async function minuten() {
   console.log(`Zeitlupe: ${ereignisse.length} Tage mit Hoch ≥ +${mc.schwelleHoch} % (2 Jahre), ${geholt} neu geholt, ${leer} ohne Minuten, ${rest} offen.`);
 }
 
+// ---------- Q6 Leihgebühren (Interactive Brokers, öffentliches FTP) – ein Schnappschuss je Lauf ----------
+async function leihe() {
+  const zeit = iso.slice(0, 16).replace(/[-:T]/g, '').slice(0, 12);
+  const name = `${iso.slice(0, 10)}-${zeit.slice(8, 12)}`;
+  const p = join(ARCHIV, 'leihe', iso.slice(0, 4), `${name}.csv.gz`);
+  if (existsSync(p)) return;
+  let text = '';
+  for (let v = 1; v <= 3 && !text; v++) {
+    try {
+      text = execFileSync('curl', ['-s', '--max-time', '120', '--user', 'shortstock:', 'ftp://ftp2.interactivebrokers.com/usa.txt'], { encoding: 'utf8', maxBuffer: 1e8 });
+    } catch {
+      await pause(5000 * v);
+    }
+  }
+  const l = leiheLesen(text);
+  if (l.length < 1000) throw new Error(`Leihgebühren: nur ${l.length} Werte – Datei nicht erreichbar oder Format geändert`);
+  mkdirSync(dirname(p), { recursive: true });
+  writeFileSync(p, gzipSync(Buffer.from(leiheCsv(l), 'utf8'), { level: 9 }));
+  neu.push(`leihe/${name}`);
+  (index.leihe ??= {})[name] = { werte: l.length, geholt: iso };
+  console.log(`Leihgebühren: ${l.length} US-Werte, ${l.filter((x) => x.gebuehr >= 20).length} mit Gebühr ab 20 %, ${l.filter((x) => x.verfuegbar === 0).length} nicht leihbar.`);
+}
+
+// ---------- Q7 Reddit/4chan-Nennungen (ApeWisdom) – ein Schnappschuss je Lauf ----------
+async function reddit() {
+  const zeit = iso.slice(11, 16).replace(':', '');
+  const name = `${iso.slice(0, 10)}-${zeit}`;
+  const p = join(ARCHIV, 'reddit', iso.slice(0, 4), `${name}.json.gz`);
+  if (existsSync(p)) return;
+  const hole = async (filter: string) => {
+    const alle: Nennung[] = [];
+    for (let seite = 1; seite <= 20; seite++) {
+      if (seite > 1) await pause(1500);
+      const r = await geduldig(`https://apewisdom.io/api/v1.0/filter/${filter}/page/${seite}`, { 'User-Agent': USER_AGENT, Accept: 'application/json' }, { zeitMs: 30000, versuche: 3, warteMs: 5000 });
+      if (!r || r.status !== 200) break;
+      const a = apewisdomLesen(await r.json().catch(() => null));
+      alle.push(...a.nennungen);
+      if (!a.nennungen.length || seite >= a.seiten) break;
+    }
+    return alle;
+  };
+  const aktien = await hole('all-stocks');
+  const coins = await hole('all-crypto');
+  if (aktien.length < 50) throw new Error(`ApeWisdom: nur ${aktien.length} Aktien – Dienst nicht erreichbar oder Format geändert`);
+  const kompakt = (l: Nennung[]) => l.map((x) => [x.kuerzel, x.rang, x.nennungen, x.upvotes, x.rangVor24h, x.nennungenVor24h]);
+  mkdirSync(dirname(p), { recursive: true });
+  writeFileSync(p, gzipSync(Buffer.from(JSON.stringify({ zeit: iso, felder: ['kuerzel', 'rang', 'nennungen', 'upvotes', 'rangVor24h', 'nennungenVor24h'], aktien: kompakt(aktien), coins: kompakt(coins) }), 'utf8'), { level: 9 }));
+  neu.push(`reddit/${name}`);
+  (index.reddit ??= {})[name] = { aktien: aktien.length, coins: coins.length, geholt: iso };
+  console.log(`ApeWisdom: ${aktien.length} Aktien, ${coins.length} Coins mit Nennungen.`);
+}
+
 const TEILE = [
   ['krypto', 'Krypto', krypto],
   ['us', 'US', us],
@@ -1519,6 +1575,8 @@ const TEILE = [
   ['weltgeschehen', 'Weltgeschehen (Wikipedia)', weltgeschehen],
   ['aufmerksamkeit', 'Aufmerksamkeit (Wikipedia-Aufrufe)', aufmerksamkeit],
   ['minuten', 'Zeitlupe (Minutenkerzen)', minuten],
+  ['leihe', 'Leihgebühren (Interactive Brokers)', leihe],
+  ['reddit', 'Reddit/4chan-Nennungen (ApeWisdom)', reddit],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -1577,6 +1635,8 @@ const stand = {
     return { stichtage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };
   })(),
   minuten: index.minuten ?? null,
+  leihe: { schnappschuesse: Object.keys(index.leihe ?? {}).length, letzter: Object.keys(index.leihe ?? {}).sort().pop() ?? null },
+  reddit: { schnappschuesse: Object.keys(index.reddit ?? {}).length, letzter: Object.keys(index.reddit ?? {}).sort().pop() ?? null },
   neu:neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };
