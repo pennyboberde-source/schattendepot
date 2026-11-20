@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T09:08:50.154Z",
+  "stand": "2026-11-20T09:24:13.045Z",
   "offen": [
     {
       "id": "2026-11-19-auto-applied-optoelectronics-inc",
@@ -131,10 +131,10 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 16.78,
+        "prozent": 16.85,
         "zeit": "2026-11-19T21:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 729,
+        "verzoegertMin": 744,
         "synthetisch": true
       }
     },
@@ -252,10 +252,10 @@
         "vortag": 130.745
       },
       "stand": {
-        "prozent": 13.89,
+        "prozent": 13.95,
         "zeit": "2026-11-19T21:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 729,
+        "verzoegertMin": 744,
         "synthetisch": true
       }
     },
@@ -422,68 +422,15 @@
         }
       ],
       "stand": {
-        "prozent": 16.79,
+        "prozent": 16.86,
         "zeit": "2026-11-19T21:00:00.000Z",
         "quelle": "Finnhub",
-        "verzoegertMin": 729,
+        "verzoegertMin": 744,
         "synthetisch": true
       }
     }
   ],
   "vorgemerkt": [
-    {
-      "id": "2026-11-19-auto-connecticut-light-power-co",
-      "status": "vorgemerkt",
-      "vorgemerktUm": "2026-11-19T07:20:42.798Z",
-      "vorgemerktVon": "autopilot",
-      "plan": {
-        "wertpapier": {
-          "name": "CONNECTICUT LIGHT & POWER CO",
-          "isin": "",
-          "ticker": "CNTHP",
-          "anlageklasse": "aktie",
-          "spreadKlasse": "aktie_neben",
-          "handelsplatz": "TGT",
-          "steuertopf": "aktien",
-          "kursbasis": {
-            "markt": "us",
-            "symbol": "CNTHP",
-            "waehrung": "USD"
-          }
-        },
-        "risikoklasse": "spekulativ",
-        "herkunft": "autopilot",
-        "strategie": "sonstige",
-        "these": "Autopilot: beste gemessene Spielart für „verwaesserung“ – mit dem Signal, Turbo Hebel 2, 3 Tage: Ø 19.8 % nach Kosten, 69.7 % im Plus (33 Fälle, vorsichtig bewertet).",
-        "ausloeser": "Autopilot-Kandidat T:CNTHP: verwaesserung (Score -1.2)",
-        "signalIds": [
-          "verwaesserung:CNTHP:2026-11-19"
-        ],
-        "quellen": [
-          {
-            "name": "SEC EDGAR",
-            "link": "https://pennyboberde-source.github.io/schattendepot/#/lernen"
-          }
-        ],
-        "konfidenz": 70,
-        "pflichtOrder": false,
-        "erwarteteRenditeNetto": 19.8,
-        "zielNettoProzent": 38.8,
-        "stopProzent": -6,
-        "verkaufstermin": "2026-11-24T07:20:42.798Z",
-        "risiken": [
-          "Autopilot ohne Claude-Urteil – Claude prüft im nächsten Lauf",
-          "Bisherige Trefferquote garantiert nichts (kleine Stichprobe möglich)"
-        ],
-        "einflussLektionen": "Schattenbuch-Beweis + Ziel/Stop-Vorschlag (17 Fälle)",
-        "hebelWunsch": {
-          "richtung": "short",
-          "hebel": 2
-        }
-      },
-      "verkaufstermin": "2026-11-24T07:20:42.798Z",
-      "anpassungen": []
-    },
     {
       "id": "2026-11-20-auto-ardent-health-inc",
       "status": "vorgemerkt",
