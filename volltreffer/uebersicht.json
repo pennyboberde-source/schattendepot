@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T14:40:15.075Z",
+  "stand": "2026-11-20T01:41:24.193Z",
   "hinweis": "Bereich Volltreffer, rein virtuell (Plan Volltreffer V4): Muster, die im Rückblick mit Vorteil bestanden haben und eine Volltreffer-Quote von mindestens 10 % zeigen, laufen ab dem Folgetag im Vorwärtstest. Jagd = 1.000-€-Order zur Eröffnung des Handelstags nach dem Stichtag, Ausstieg nach den Regeln des Etiketts (Ziel +400 €, Stop, Fenster). Höchstens 10 Jagden gleichzeitig, nach 900 € Tagesverlust am Folgetag keine neue. Mitteilungen nur gesammelt in der Abendbilanz, kein echtes Geld.",
   "regeln": {
     "maxOffen": 10,
@@ -1081,14 +1081,14 @@
       "tag": null
     }
   ],
-  "lauerlisteZahl": 5397,
-  "pumpVerdacht": 80,
+  "lauerlisteZahl": 5396,
+  "pumpVerdacht": 81,
   "handelbarkeit": {
     "jePlattform": {
-      "Smartbroker+ an gettex": 1913,
+      "Smartbroker+ an gettex": 1912,
       "CFD-Broker (simuliert, Handelbarkeit nicht geprüft)": 14268,
       "Smartbroker+ an Börse Stuttgart/außerbörslich": 1320,
-      "US-Broker (simuliert, Leerverkauf/Marge)": 549
+      "US-Broker (simuliert, Leerverkauf/Marge)": 550
     },
     "quelle": "ESMA FIRDS, nur gettex",
     "geprueft": 1606,
@@ -2336,6 +2336,1070 @@
         "ev": 23.5,
         "se": 8.9,
         "faelle": 3063
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 10 Fällen im Vorwärtstest (Schnellspur)",
+      "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 31.3,
+        "ev": 68.1,
+        "se": 20,
+        "faelle": 409
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: Ø Tagesumsatz: 5000000 bis 20000000 und Börsenwert (Mio. $): über 10 Mrd. $ (Large)",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 28.61,
+        "ev": 50.1,
+        "se": 21.1,
+        "faelle": 367
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: Kurs: ab 100 und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 29.51,
+        "ev": 36,
+        "se": 20,
+        "faelle": 488
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Vortag und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 30.33,
+        "ev": 36.5,
+        "se": 21.4,
+        "faelle": 366
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Tagesspanne (× Ø 20 Tage): unter 0,5",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 28.28,
+        "ev": 35.7,
+        "se": 20.4,
+        "faelle": 488
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: Tagesrendite %: unter -25 und Tagesspanne (× Ø 20 Tage): 0,5 bis 1",
+      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 30.94,
+        "ev": 34.3,
+        "se": 25.5,
+        "faelle": 265
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 29,40 € unter 30,00 €",
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): unter 0,5 und Aktienzahl (Mio.): unter 5 Mio. Aktien",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 25.19,
+        "ev": 29.4,
+        "se": 16.6,
+        "faelle": 536
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 17,40 € unter 30,00 €",
+      "gruppe": "Aktien: Kurs: ab 100 und Tagesrendite über dem Markt %: unter -20",
+      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 26.18,
+        "ev": 17.4,
+        "se": 16.4,
+        "faelle": 783
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 20.14 % unter 25 %",
+      "gruppe": "Aktien: Schwankung je Tag %: ab 8 und Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 20.14,
+        "ev": 15.4,
+        "se": 9.7,
+        "faelle": 1524
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 12.16 % unter 25 %",
+      "gruppe": "Krypto: Tagesrendite über dem Markt %: -5 bis 5 und Im Weltgeschehen erwähnt: nicht erwähnt (20 Tage)",
+      "spielart": "Turbo short Hebel 3, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 12.16,
+        "ev": 22.1,
+        "se": 19.5,
+        "faelle": 255
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 21.14 % unter 25 %",
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): unter 0,5 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 21.14,
+        "ev": 26,
+        "se": 26.4,
+        "faelle": 246
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 18,60 € unter 30,00 €",
+      "gruppe": "Aktien: Tagesspanne (× Ø 20 Tage): 0,5 bis 1 und Tagesrendite über dem Markt %: unter -20",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 27.93,
+        "ev": 18.6,
+        "se": 17.1,
+        "faelle": 537
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 15.57 % unter 25 %",
+      "gruppe": "Krypto: Im Weltgeschehen erwähnt: nicht erwähnt (20 Tage)",
+      "spielart": "Hebel nach Schwankung short (Stop 4 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 21,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 15.57,
+        "ev": 24.4,
+        "se": 24.8,
+        "faelle": 244
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 22.95 % unter 25 %",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Tagesrendite über dem Markt %: ab 20",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 22.95,
+        "ev": 16.6,
+        "se": 16.3,
+        "faelle": 475
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 14.86 % unter 25 %",
+      "gruppe": "Aktien: Chefwechsel (8-K 5.02): Chefwechsel vor 2 bis 5 Handelstagen und Umsatz 5 Tage (× Ø 20 Tage davor): Umsatz 5 Tage unter 0,7 × Ø",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 14.86,
+        "ev": 11.7,
+        "se": 11.6,
+        "faelle": 1279
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "erst 0 von 20 Fällen im Vorwärtstest",
+      "gruppe": "Aktien: 20-Tage-Hoch: mehr als 30 % darunter und Aktienzahl (Mio.): über 500 Mio. Aktien",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 32.53,
+        "ev": 35.8,
+        "se": 33.6,
+        "faelle": 289
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 20.75 % unter 25 %",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): unter 0,5 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 20.75,
+        "ev": 17.8,
+        "se": 19.1,
+        "faelle": 424
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 17.66 % unter 25 %",
+      "gruppe": "Aktien: Schluss in der Tagesspanne (0 = Tief, 1 = Hoch): 0,8 bis 0,95 und Thema der Branche in den Weltnachrichten: Branchen-Thema als Sturm",
+      "spielart": "Turbo short Hebel 5, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 17.66,
+        "ev": 24.1,
+        "se": 24.2,
+        "faelle": 1155
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 18.85 % unter 25 %",
+      "gruppe": "Aktien: Ø Tagesumsatz: 20000000 bis 100000000 und Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 6 bis 20 Handelstagen",
+      "spielart": "Hebel nach Schwankung short (Stop 4 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 18.85,
+        "ev": 29.2,
+        "se": 20,
+        "faelle": 260
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 11.82 % unter 25 %",
+      "gruppe": "Aktien: Leerverkaufsanteil: Leerverkaufsanteil 30 bis 45 % und Im Weltgeschehen erwähnt: vor 4 bis 20 Tagen erwähnt",
+      "spielart": "Turbo long Hebel 5, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 11.82,
+        "ev": 21.6,
+        "se": 17,
+        "faelle": 330
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 18.04 % unter 25 %",
+      "gruppe": "Aktien: 20-Tage-Rendite %: -20 bis 0 und Im Weltgeschehen erwähnt: vor 4 bis 20 Tagen erwähnt",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 18.04,
+        "ev": 18.5,
+        "se": 19.7,
+        "faelle": 327
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 18.47 % unter 25 %",
+      "gruppe": "Aktien: Ø Tagesumsatz: 20000000 bis 100000000 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung: Reaktion am Stichtag",
+      "spielart": "Hebel nach Schwankung short (Stop 4 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 18.47,
+        "ev": 20.8,
+        "se": 21.8,
+        "faelle": 222
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 14.45 % unter 25 %",
+      "gruppe": "Aktien: Branche: Pharma/Biotech und Aufmerksamkeit (Wikipedia-Aufrufe): 3- bis 8-mal",
+      "spielart": "Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 14.45,
+        "ev": 19.8,
+        "se": 20.1,
+        "faelle": 263
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 13,10 € unter 30,00 €",
+      "gruppe": "Aktien: 20-Tage-Rendite %: unter -50 und Ø Tagesumsatz: 5000000 bis 20000000",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 25.8,
+        "ev": 13.1,
+        "se": 12.8,
+        "faelle": 1446
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 28,10 € unter 30,00 €",
+      "gruppe": "Aktien: Tagesrendite %: -25 bis -10 und Markt am Stichtag %: 0,5 bis 2",
+      "spielart": "Turbo short Hebel 10, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 29.31,
+        "ev": 28.1,
+        "se": 38.8,
+        "faelle": 290
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 24.76 % unter 25 %",
+      "gruppe": "Aktien: Großvertrag (8-K 1.01): Großvertrag: Reaktion am Vortag und Leerverkaufsbestand gegen den vorigen FINRA-Stichtag: Leerverkaufsbestand stark gestiegen (über 25 %)",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 24.76,
+        "ev": 29.4,
+        "se": 15.6,
+        "faelle": 513
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 16.45 % unter 25 %",
+      "gruppe": "Aktien: Ø Tagesumsatz: 5000000 bis 20000000 und Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Stichtag",
+      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 16.45,
+        "ev": 14,
+        "se": 14.4,
+        "faelle": 766
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 14.29 % unter 25 %",
+      "gruppe": "Aktien: Schwankung je Tag %: unter 1 und Leerbestand in % der Aktien: 2 bis 5 %",
+      "spielart": "Turbo short Hebel 10, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 14.29,
+        "ev": 9.5,
+        "se": 13.4,
+        "faelle": 1463
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 14.78 % unter 25 %",
+      "gruppe": "Aktien: Großvertrag (8-K 1.01): Großvertrag vor 2 bis 5 Handelstagen und Umsatz 5 Tage (× Ø 20 Tage davor): Umsatz 5 Tage unter 0,7 × Ø",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 14.78,
+        "ev": 9.2,
+        "se": 12.2,
+        "faelle": 785
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 20,60 € unter 30,00 €",
+      "gruppe": "Aktien: Kurslücke %: unter -10 und Börsenwert (Mio. $): über 10 Mrd. $ (Large)",
+      "spielart": "Turbo short Hebel 10, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 31.19,
+        "ev": 20.6,
+        "se": 22.5,
+        "faelle": 295
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 19.61 % unter 25 %",
+      "gruppe": "Aktien: Branche: Pharma/Biotech und Aktienzahl (Mio.): über 500 Mio. Aktien",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 19.61,
+        "ev": 20.4,
+        "se": 26.8,
+        "faelle": 709
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 22.23 % unter 25 %",
+      "gruppe": "Aktien: Großvertrag (8-K 1.01): Großvertrag: Reaktion am Vortag und Marktbreite: 60 bis 75 % im Plus",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 22.23,
+        "ev": 10.2,
+        "se": 13.9,
+        "faelle": 1201
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 24.36 % unter 25 %",
+      "gruppe": "Aktien: Schwankung je Tag %: ab 8 und Kurs: ab 100",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 24.36,
+        "ev": 12.3,
+        "se": 9.3,
+        "faelle": 2393
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 14.92 % unter 25 %",
+      "gruppe": "Krypto: Tagesrendite %: -3 bis 3 und Im Weltgeschehen erwähnt: nicht erwähnt (20 Tage)",
+      "spielart": "Turbo short Hebel 5, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 14.92,
+        "ev": 17.5,
+        "se": 21.4,
+        "faelle": 248
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 23.4 % unter 25 %",
+      "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 2 bis 5 und Beteiligung ab 5 % (13G): 13G-Meldung vor 2 bis 5 Handelstagen",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 23.4,
+        "ev": 11.6,
+        "se": 17.8,
+        "faelle": 671
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 17,10 € unter 30,00 €",
+      "gruppe": "Aktien: 5-Tage-Rendite %: -30 bis -10 und Marktbreite: 60 bis 75 % im Plus",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 28.27,
+        "ev": 17.1,
+        "se": 23.5,
+        "faelle": 4015
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 23.41 % unter 25 %",
+      "gruppe": "Aktien: Aktienzahl (Mio.): unter 5 Mio. Aktien und Leerbestand in % der Aktien: über 20 % (Squeeze-Kandidat)",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 23.41,
+        "ev": 21.3,
+        "se": 23.5,
+        "faelle": 346
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 17,70 € unter 30,00 €",
+      "gruppe": "Aktien: Aktienzahl (Mio.): über 500 Mio. Aktien",
+      "spielart": "Turbo long Hebel 10, Stop 150 €",
+      "fenster": 21,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 28.21,
+        "ev": 17.7,
+        "se": 27.2,
+        "faelle": 9562
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 20.45 % unter 25 %",
+      "gruppe": "Aktien: Tagesrendite über dem Markt %: 5 bis 20 und Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 20.45,
+        "ev": 14.2,
+        "se": 20.4,
+        "faelle": 401
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 19.74 % unter 25 %",
+      "gruppe": "Aktien: Tagesrendite %: -10 bis -3 und Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Vortag",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 19.74,
+        "ev": 9.8,
+        "se": 14.8,
+        "faelle": 623
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 27,20 € unter 30,00 €",
+      "gruppe": "Aktien: Großvertrag (8-K 1.01): Großvertrag vor 6 bis 20 Handelstagen und Beteiligung ab 5 % (13G): 13G-Meldung vor 2 bis 5 Handelstagen",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 29.31,
+        "ev": 27.2,
+        "se": 25.5,
+        "faelle": 290
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 10.06 % unter 25 %",
+      "gruppe": "Aktien: Satzung/Aktiensplit (8-K 5.03): Satzungsänderung vor 2 bis 5 Handelstagen und Aktienzahl (Mio.): 100 bis 500 Mio.",
+      "spielart": "Turbo long Hebel 3, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 10.06,
+        "ev": 15.3,
+        "se": 21.2,
+        "faelle": 318
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 21.59 % unter 25 %",
+      "gruppe": "Aktien: Schwankung je Tag %: ab 8 und Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Stichtag",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 21.59,
+        "ev": 14.3,
+        "se": 10.9,
+        "faelle": 1334
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 12.18 % unter 25 %",
+      "gruppe": "Aktien: Schwankung je Tag %: unter 1 und Umsatz 5 Tage (× Ø 20 Tage davor): Umsatz 5 Tage unter 0,7 × Ø",
+      "spielart": "Turbo short Hebel 10, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 12.18,
+        "ev": 10.7,
+        "se": 12.8,
+        "faelle": 977
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 20.24 % unter 25 %",
+      "gruppe": "Aktien: Tagesrendite über dem Markt %: 5 bis 20 und Umsatz 5 Tage (× Ø 20 Tage davor): 3 bis 6 × Ø",
+      "spielart": "Turbo short Hebel 5, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 20.24,
+        "ev": 11.6,
+        "se": 15.5,
+        "faelle": 410
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 17.85 % unter 25 %",
+      "gruppe": "Aktien: Branche: Technologie und Leerbestand in % der Aktien: 5 bis 10 %",
+      "spielart": "Turbo long Hebel 3, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 17.85,
+        "ev": 5.5,
+        "se": 14.4,
+        "faelle": 2706
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 21.93 % unter 25 %",
+      "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Vortag und Markt 5 Tage: Markt 5 Tage −1 bis +1 %",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 21.93,
+        "ev": 11.7,
+        "se": 10.8,
+        "faelle": 1733
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 22.86 % unter 25 %",
+      "gruppe": "Aktien: Leerverkaufsbestand gegen den vorigen FINRA-Stichtag: Leerverkaufsbestand stark gestiegen (über 25 %) und Beteiligung ab 5 % (13G): 13G-Meldung: Reaktion am Vortag",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 22.86,
+        "ev": 11.8,
+        "se": 17.8,
+        "faelle": 385
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 17.99 % unter 25 %",
+      "gruppe": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung: Reaktion am Stichtag und VIX-Änderung 5 Tage: VIX fällt (−15 bis −5 %)",
+      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 17.99,
+        "ev": 17.8,
+        "se": 20.7,
+        "faelle": 289
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 19,50 € unter 30,00 €",
+      "gruppe": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen und Thema der Branche in den Weltnachrichten: Branchen-Thema ruhig",
+      "spielart": "Turbo short Hebel 10, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 27.24,
+        "ev": 19.5,
+        "se": 21.6,
+        "faelle": 279
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 19.7 % unter 25 %",
+      "gruppe": "Aktien: Kurslücke %: ab 10 und VIX-Änderung 5 Tage: VIX ruhig (−5 bis +5 %)",
+      "spielart": "Turbo short Hebel 5, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 19.7,
+        "ev": 9.8,
+        "se": 16.6,
+        "faelle": 467
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 19.8 % unter 25 %",
+      "gruppe": "Aktien: Quartalszahlen: Reaktion am Stichtag und Leerverkaufsanteil: Leerverkaufsanteil über 75 %",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 19.8,
+        "ev": 11,
+        "se": 14.9,
+        "faelle": 707
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 23.12 % unter 25 %",
+      "gruppe": "Aktien: Leerverkaufsanteil: Leerverkaufsanteil 30 bis 45 % und Thema der Branche in den Weltnachrichten: Branchen-Thema als Sturm",
+      "spielart": "Turbo short Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 23.12,
+        "ev": 8.8,
+        "se": 17.7,
+        "faelle": 1592
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 13.37 % unter 25 %",
+      "gruppe": "Aktien: Markt 5 Tage: Markt 5 Tage −3 bis −1 % und Beteiligung ab 5 % (13G): 13G-Meldung: Reaktion am Vortag",
+      "spielart": "Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 13.37,
+        "ev": 12.6,
+        "se": 19.9,
+        "faelle": 1025
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Ø im Rückblick 21,10 € unter 30,00 €",
+      "gruppe": "Aktien: 20-Tage-Rendite %: -50 bis -20 und VIX-Änderung 5 Tage: VIX steigt stark (über +15 %)",
+      "spielart": "Turbo long Hebel 5, Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 29.81,
+        "ev": 21.1,
+        "se": 23.7,
+        "faelle": 3804
+      },
+      "stufe2": false
+    },
+    {
+      "stufe3": false,
+      "stufe3Grund": "Volltreffer-Quote im Rückblick 24.13 % unter 25 %",
+      "gruppe": "Aktien: Kurslücke %: -10 bis -3 und Marktbreite: 60 bis 75 % im Plus",
+      "spielart": "Hebel nach Schwankung short (Stop 1 Tagesschwankungen entfernt), Stop 150 €",
+      "fenster": 10,
+      "seit": "2026-11-19",
+      "faelle": 0,
+      "treffer": 0,
+      "ev": 0,
+      "offen": 0,
+      "rueckblick": {
+        "quote": 24.13,
+        "ev": 10.6,
+        "se": 21.8,
+        "faelle": 6797
       },
       "stufe2": false
     }

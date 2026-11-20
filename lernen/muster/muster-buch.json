@@ -4843,6 +4843,38 @@
         "faelle": 6797
       },
       "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "modell|aktie|V2S150|10|treffer|muster",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 25 % ihres Tages sieht",
+      "gruppenSchluessel": "modell|aktie",
+      "sp": "V2S150",
+      "fenster": 10,
+      "seit": "2026-11-20",
+      "wertung": 3.9,
+      "rueckblick": {
+        "quote": 25.4,
+        "ev": 17.9,
+        "se": 12,
+        "faelle": 1348
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "modell|aktie|V2L150|10|treffer|muster",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 50 % ihres Tages sieht",
+      "gruppenSchluessel": "modell|aktie",
+      "sp": "V2L150",
+      "fenster": 10,
+      "seit": "2026-11-20",
+      "wertung": 10.4,
+      "rueckblick": {
+        "quote": 17.2,
+        "ev": 33.7,
+        "se": 19.2,
+        "faelle": 580
+      },
+      "status": "vorwaertstest"
     }
   ]
 }

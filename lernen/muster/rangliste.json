@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T14:40:15.075Z",
+  "stand": "2026-11-20T01:41:24.193Z",
   "hinweis": "Rückblick über die Kursgeschichte im privaten Archiv (nur verdichtete Kennzahlen). 1.000-€-Order, Volltreffer = mindestens +400 € netto, Einstieg zur Eröffnung des Folgetags. Bestanden = in beiden Zeiträumen mindestens 100 Fälle und Ø nach Kosten über null; Rang = schwächerer Zeitraum minus ein Standardfehler. „Vorteil“ = in beiden Zeiträumen besser als die Grundrate derselben Spielart (sonst ist es nur der Markttrend); Muster mit Vorteil stehen vorn. Handelbarkeit ist eine Näherung. Je Wert und Gruppe zählt höchstens ein Fall in 10 Handelstagen (ehrliche Fallzahl); bei 21-Tage-Fenstern überlappen Fälle trotzdem teilweise. Klumpen-Prüfung: Aktien desselben Tages bewegen sich gemeinsam – bestanden hat nur, was in beiden Zeiträumen Fälle an mindestens 30 verschiedenen Stichtagen hat; der Standardfehler rechnet den Tag als Einheit. Muster, bei denen mehr als 10 % der Volltreffer eine Lücke wie ein kleiner Aktiensplit im Fenster haben, bestehen nicht.",
   "zeitraum": {
     "von": "2024-11-18",
@@ -13,8 +13,8 @@
     "aktien": 48479,
     "coins": 643
   },
-  "bestandenZahl": 740,
-  "mitVorteilZahl": 698,
+  "bestandenZahl": 745,
+  "mitVorteilZahl": 701,
   "bestanden": [
     {
       "gruppe": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 2 bis 5 Handelstagen und Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
@@ -979,6 +979,43 @@
       "vorteilB": 57.8
     },
     {
+      "gruppe": "Aktien: Insider-Kauf (Formular 4): Insider-Kauf: Reaktion am Vortag und Thema der Branche in den Weltnachrichten: Branchen-Thema erhöht",
+      "spielart": "Turbo long Hebel 5, Stop 150 €, Nachziehstop ab 200 €",
+      "fenster": 10,
+      "bestanden": true,
+      "wertung": 3.4,
+      "faelle": 411,
+      "quote": 15.82,
+      "lift": 1.28,
+      "erfassung": 0.8,
+      "evGesamt": 26.1,
+      "zeitraumA": {
+        "n": 211,
+        "quote": 17.54,
+        "ev": 32,
+        "se": 23.2,
+        "tage": 96,
+        "groessterTag": 16.1
+      },
+      "zeitraumB": {
+        "n": 200,
+        "quote": 14,
+        "ev": 19.8,
+        "se": 16.4,
+        "tage": 97,
+        "groessterTag": 4
+      },
+      "quartale": {
+        "imPlus": 6,
+        "mitFaellen": 8
+      },
+      "knockoutQuote": 0,
+      "splitVerdacht": 0,
+      "vorteil": true,
+      "vorteilA": 32.3,
+      "vorteilB": 21
+    },
+    {
       "gruppe": "Aktien: Umsatz (× Ø 20 Tage): 1 bis 2 und Im Weltgeschehen erwähnt: vor 4 bis 20 Tagen erwähnt",
       "spielart": "direkt, Stop 150 €",
       "fenster": 10,
@@ -1347,43 +1384,6 @@
       "vorteil": true,
       "vorteilA": 72.1,
       "vorteilB": 57.4
-    },
-    {
-      "gruppe": "Aktien: Insider-Kauf (Formular 4): Insider-Kauf: Reaktion am Vortag und Thema der Branche in den Weltnachrichten: Branchen-Thema erhöht",
-      "spielart": "Turbo long Hebel 3, Stop 150 €, Nachziehstop ab 200 €",
-      "fenster": 10,
-      "bestanden": true,
-      "wertung": 0.7,
-      "faelle": 400,
-      "quote": 8.75,
-      "lift": 1.2,
-      "erfassung": 0.7,
-      "evGesamt": 22.2,
-      "zeitraumA": {
-        "n": 205,
-        "quote": 9.27,
-        "ev": 24.2,
-        "se": 23.5,
-        "tage": 94,
-        "groessterTag": 16.6
-      },
-      "zeitraumB": {
-        "n": 195,
-        "quote": 8.21,
-        "ev": 20,
-        "se": 12.9,
-        "tage": 93,
-        "groessterTag": 4.1
-      },
-      "quartale": {
-        "imPlus": 6,
-        "mitFaellen": 8
-      },
-      "knockoutQuote": 0,
-      "splitVerdacht": 0,
-      "vorteil": true,
-      "vorteilA": 27.7,
-      "vorteilB": 24
     },
     {
       "gruppe": "Aktien: Ø Tagesumsatz: 5000000 bis 20000000 und Kapitalerhöhung (Prospekt): Kapitalerhöhung vor 6 bis 20 Handelstagen",

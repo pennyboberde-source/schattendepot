@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-19T14:40:15.075Z",
+  "stand": "2026-11-20T01:41:24.193Z",
   "hinweis": "Weltlage für alle Bereiche (Quantensprung 3): Themen der Weltnachrichten als Spitze gegen die 30 Tage davor (GDELT, Anteil an allen Artikeln), US-Amtsblatt (Federal Register: Erlasse, Zölle, Sanktionen, Exportkontrollen), Weltgeschehen (Wikipedia, Portal:Current events, Text CC BY-SA 4.0), Chronik der stärksten Markttage der letzten zwei Jahre mit ihren Themen, und was der Aktienmarkt nach früheren Wellen desselben Themas in 5 Handelstagen tat. Nur Klassen, keine Kurswerte.",
   "quellen": [
     "GDELT Project (gdeltproject.org)",
@@ -7,37 +7,17 @@
     "Federal Register (federalregister.gov)",
     "Wikimedia Pageviews"
   ],
-  "datum": "2026-11-16",
+  "datum": "2026-11-20",
   "themen": [
     {
-      "name": "Meme-Aktien und Squeezes",
-      "spitze": 12.8,
+      "name": "Notenbank und Zinsen",
+      "spitze": 4.4,
       "klasse": "Sturm"
-    },
-    {
-      "name": "Quantencomputer",
-      "spitze": 5.4,
-      "klasse": "Sturm"
-    },
-    {
-      "name": "Hackerangriffe",
-      "spitze": 4.3,
-      "klasse": "Sturm"
-    },
-    {
-      "name": "Abnehmspritzen",
-      "spitze": 2.6,
-      "klasse": "Welle"
     },
     {
       "name": "Drohnen",
-      "spitze": 1.8,
-      "klasse": "erhöht"
-    },
-    {
-      "name": "Rüstung und Verteidigung",
-      "spitze": 1.8,
-      "klasse": "erhöht"
+      "spitze": 2.5,
+      "klasse": "Welle"
     },
     {
       "name": "Krieg und Angriffe",
@@ -45,18 +25,18 @@
       "klasse": "erhöht"
     },
     {
-      "name": "Pleiten",
-      "spitze": 1.3,
+      "name": "Sanktionen und Embargos",
+      "spitze": 1.4,
+      "klasse": "erhöht"
+    },
+    {
+      "name": "Seuchen und Ausbrüche",
+      "spitze": 0.7,
       "klasse": "ruhig"
     },
     {
-      "name": "Raumfahrt",
-      "spitze": 1.3,
-      "klasse": "ruhig"
-    },
-    {
-      "name": "Atomkraft, Uran, Stromnetz",
-      "spitze": 1.2,
+      "name": "Krypto",
+      "spitze": 0.7,
       "klasse": "ruhig"
     }
   ],
@@ -64,13 +44,6 @@
   "amtsblatt": {
     "klasse": "Welle",
     "tage": [
-      {
-        "datum": "2026-11-15",
-        "erlasse": 0,
-        "zoelle": 0,
-        "sanktionen": 0,
-        "export": 0
-      },
       {
         "datum": "2026-11-16",
         "erlasse": 2,
@@ -98,92 +71,61 @@
         "zoelle": 3,
         "sanktionen": 7,
         "export": 1
+      },
+      {
+        "datum": "2026-11-20",
+        "erlasse": 0,
+        "zoelle": 0,
+        "sanktionen": 0,
+        "export": 0
       }
     ]
   },
   "weltgeschehen": [
     {
-      "datum": "2026-11-19",
-      "ereignisse": [
-        "Armed conflicts and attacks: In Muksudpur, Gopalganj District, Bangladesh, members of the banned Awami League loot and set fire to the ancestral home of BNP Member of Parliament Md. Selimuzzaman Mollah, several supporters houses, an unoccup",
-        "International relations: APEC China 2026, Chile–Philippines relations: – The Philippines and Chile sign a free trade agreement during a bilateral meeting as part of the 33rd Asia-Pacific Economic Cooperation Economic Leaders' Meeting in She",
-        "Law and crime: Rohingya genocide case – The International Court of Justice rules that Myanmar had committed genocide against the Rohingya people.",
-        "Politics and elections: Corruption in Mongolia – The State Great Khural accepts the resignation of Mongolian president Ukhnaagiin Khürelsükh. The chamber's chairman, Sandagiin Byambatsogt, assumes the acting presidency until a new election "
-      ]
+      "datum": "2026-11-20",
+      "ereignisse": []
     },
     {
-      "datum": "2026-11-18",
+      "datum": "2026-11-19",
       "ereignisse": [
-        "Armed conflicts and attacks: Russo-Ukrainian War – Crimea attacks – 2026 Crimean Bridge explosions – The Crimean Bridge is struck by Ukrainian forces for the third time in four days, prompting Russian authorities to close the bridge to all ",
-        "Armed conflicts and attacks: Haitian conflict – Salvadoran military intervention in Haiti – Salvadoran forces destroy a house belonging to Jeff Larose, the leader of the Taliban gang that operates in Canaan, Haiti. The Gang Suppression Forc",
-        "Armed conflicts and attacks: Aftermath of the July Uprising – Two Bangladesh Nationalist Party members are killed when suspected members of the banned Awami League attack a motorcycle procession in Kalia, Narail District, Bangladesh.",
-        "Armed conflicts and attacks: Aftermath of the July Uprising – In Bangladesh, a crowd allegedly led by Chatra Dal members storms and sets fire to the residence of former Awami League Member of Parliament Shamim Osman in Fatullah, Narayanganj",
-        "Armed conflicts and attacks: Aftermath of the July Uprising – In Gopalganj District, Bangladesh, armed members of the banned Awami League, Chhatra League, and Jubo League detonate crude bombs and set fire to a private clinic owned by BNP Me",
-        "Armed conflicts and attacks: Gaza war – The Israeli army launches its first operation in central Gaza Strip amid the displacement of families from the area, for the first time since the ceasefire agreement signed in October 2025 came into e",
-        "Armed conflicts and attacks: Insurgency in Jammu and Kashmir – A militant commander is killed by the Indian Armed Forces at a mosque in Kulgam district, Indian-administered Jammu and Kashmir, after escaping a shootout with troops two days e",
-        "Arts and culture: Vincent van Gogh's 1890 painting Blossoming Chestnut Trees sells for US$190.4 million at Sotheby's in New York City, United States, setting a new auction record for Van Gogh and surpassing the $117.2 million paid for Orcha",
-        "Business and economy: 2026 Bangladesh garment workers protests – In Gazipur, Savar, and Ashulia, Bangladesh, thousands of garment workers demanding a monthly minimum wage increase from ৳12,500 (US$100) to ৳30,000 ($240) block the Dhaka–Myme",
-        "Business and economy: 2026 Bangladesh garment workers protests – In Kafrul, Dhaka, police fire around ten stun grenades against demonstrating garment workers following clashes with Bangladesh Nationalist Party activists who allegedly harass",
-        "Law and crime: Arsonists set fire to the ancestral home of former chief adviser Muhammad Yunus in Panchlaish, Chattogram, Bangladesh.",
-        "Science and technology: NASA's space probe Voyager 1 reaches the distance of one light-day from Earth, being the first man-made object to reach that distance, after it launched in 1977.",
-        "Science and technology: PlayStation reports a major outage ahead of the release of Grand Theft Auto VI.",
-        "Sports: Bangladeshi cricket team in South Africa in 2026–27",
-        "Sports: In Test cricket, Bangladeshi wicketkeeper Litton Das sets a world record for the most dismissals in a single Test innings, recording six catches and two stumpings against South Africa in Johannesburg."
+        "Armed conflicts and attacks: Middle Eastern crisis – 2026 Iran war – 2026 Strait of Hormuz crisis – Iran's navy claims that an oil tanker caught on fire after hitting a naval mine east of the Strait of Hormuz.",
+        "Armed conflicts and attacks: Middle Eastern crisis – 2026 Iran war – 2026 Lebanon war – The Israeli Air Force strikes a Hezbollah underground facility in Lebanon's Bekaa valley.",
+        "Armed conflicts and attacks: Middle Eastern crisis – 2026 Iran war – 2026 Lebanon war – Two Israeli drones explode in Nabatieh, Lebanon, without causing any injuries.",
+        "Armed conflicts and attacks: Middle Eastern crisis – Gaza war – Gaza's health ministry reports that two people have been killed by recent Israeli attacks and two others died from their wounds over the past day.",
+        "Armed conflicts and attacks: Middle Eastern crisis – Yemeni civil war – Houthi–Saudi conflict – The Houthis fire missiles at King Abdullah Financial District in Riyadh, Saudi Arabia, which damage Public Investment Fund Tower and other build",
+        "Armed conflicts and attacks: Middle Eastern crisis – Yemeni civil war – 2026 Yemen offensives – The Yemeni government's military claims to have killed or injured 144 Houthi fighters during recent operations in the Taiz, Marib, and Al-Jawf g",
+        "Armed conflicts and attacks: Middle Eastern crisis – Yemeni civil war – 2026 Yemen offensives – The Houthis claim that Saudi-led coalition airstrikes have killed 10 people in Sanaa, Yemen, over the past two days.",
+        "Armed conflicts and attacks: In Bangladesh, banned Awami League members loot and burn properties in Gopalganj District, including BNP MP Md. Selimuzzaman Mollah's ancestral home, a police station, and a Grameen Bank branch, and vandalise BN",
+        "Business and economy: Economic impact of the 2026 Iran war",
+        "Business and economy: The Joint Organisations Data Initiative reports that Saudi Arabia's oil exports rose in September to their highest level since the outbreak of the war in February, despite the Houthi attacks on Red Sea ports and infras",
+        "International relations: APEC China 2026 – Chile–Philippines relations – The Philippines and Chile sign a free trade agreement as part of the 33rd Asia-Pacific Economic Cooperation Economic Leaders' Meeting in Shenzhen, China, marking the f",
+        "International relations: APEC China 2026 – China–Russia relations, China–United States relations, Russia–United States relations",
+        "International relations: APEC China 2026 – Chinese leader Xi Jinping, Russian president Vladimir Putin, and United States president Donald Trump hold their first trilateral meeting in Shenzhen during the APEC summit and issue a joint declar",
+        "International relations: Pakistan–Qatar relations – Pakistan and Qatar sign a memorandum of understanding on cooperation between their Federal Constabulary and Internal Security Force, respectively.",
+        "International relations: Somalia–United Arab Emirates relations – Somalia expels the ambassador of the United Arab Emirates, accusing the country of undermining Somalia's sovereignty.",
+        "Law and crime: Palestinians in Israeli custody – An Israeli court extends the detention of Gaza's Kamal Edwan hospital director Hussam Abu Safiya by six months.",
+        "Law and crime: Rohingya genocide case – The International Court of Justice rules that Myanmar has committed genocide against the Rohingya people.",
+        "Politics and elections: Corruption in Mongolia – The State Great Khural accepts the resignation of Mongolian president Ukhnaagiin Khürelsükh. The chamber's chairman, Sandagiin Byambatsogt, assumes the acting presidency until a new election "
       ]
     }
   ],
   "aehnlich": [
     {
-      "thema": "Meme-Aktien und Squeezes",
-      "heute": "Sturm",
-      "fruehereWellen": 48,
-      "danach5": {
-        "stark fallend": 1,
-        "fallend": 7,
-        "seitwärts": 31,
-        "steigend": 8,
-        "stark steigend": 1
-      }
-    },
-    {
-      "thema": "Quantencomputer",
+      "thema": "Notenbank und Zinsen",
       "heute": "Sturm",
       "fruehereWellen": 25,
       "danach5": {
         "stark fallend": 0,
-        "fallend": 4,
+        "fallend": 2,
         "seitwärts": 17,
-        "steigend": 4,
+        "steigend": 6,
         "stark steigend": 0
-      }
-    },
-    {
-      "thema": "Hackerangriffe",
-      "heute": "Sturm",
-      "fruehereWellen": 44,
-      "danach5": {
-        "stark fallend": 0,
-        "fallend": 4,
-        "seitwärts": 35,
-        "steigend": 5,
-        "stark steigend": 0
-      }
-    },
-    {
-      "thema": "Abnehmspritzen",
-      "heute": "Welle",
-      "fruehereWellen": 65,
-      "danach5": {
-        "stark fallend": 0,
-        "fallend": 6,
-        "seitwärts": 46,
-        "steigend": 12,
-        "stark steigend": 1
       }
     },
     {
       "thema": "Drohnen",
-      "heute": "erhöht",
+      "heute": "Welle",
       "fruehereWellen": 9,
       "danach5": {
         "stark fallend": 0,
@@ -194,14 +136,26 @@
       }
     },
     {
-      "thema": "Rüstung und Verteidigung",
+      "thema": "Krieg und Angriffe",
       "heute": "erhöht",
-      "fruehereWellen": 15,
+      "fruehereWellen": 5,
       "danach5": {
         "stark fallend": 0,
-        "fallend": 4,
-        "seitwärts": 9,
-        "steigend": 2,
+        "fallend": 1,
+        "seitwärts": 4,
+        "steigend": 0,
+        "stark steigend": 0
+      }
+    },
+    {
+      "thema": "Sanktionen und Embargos",
+      "heute": "erhöht",
+      "fruehereWellen": 6,
+      "danach5": {
+        "stark fallend": 0,
+        "fallend": 1,
+        "seitwärts": 5,
+        "steigend": 0,
         "stark steigend": 0
       }
     }
@@ -230,6 +184,7 @@
       "themen": [
         "Meme-Aktien und Squeezes (Sturm)",
         "Halbleiter und Exportkontrollen (Welle)",
+        "Krypto (Welle)",
         "China und Taiwan (Welle)"
       ],
       "schlagzeilen": [
@@ -290,7 +245,8 @@
       "danach5": "seitwärts",
       "themen": [
         "Hackerangriffe (Welle)",
-        "Meme-Aktien und Squeezes (Welle)"
+        "Meme-Aktien und Squeezes (Welle)",
+        "Krypto (erhöht)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Middle Eastern crisis – 2026 Iran war – 2025–2026 Iran–United States negotiations – 2026 Iran war ceasefire, Qatar as a mediator in conflict",
@@ -328,7 +284,9 @@
       "datum": "2026-05-20",
       "markt": "gestiegen",
       "danach5": "seitwärts",
-      "themen": [],
+      "themen": [
+        "Krypto (erhöht)"
+      ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Middle Eastern crisis – 2026 Iran war – 2025–2026 Iran–United States negotiations – 2026 Iran war ceasefire – Pakistan in the 2026 Iran war",
         "Armed conflicts and attacks: Middle Eastern crisis – 2026 Iran war – 2025–2026 Iran–United States negotiations – 2026 Iran war ceasefire – Iranian foreign ministry spokesperson Esmaeil Baghaei says that Iran has received and is reviewing a ",
@@ -382,6 +340,7 @@
       "themen": [
         "Atomkraft, Uran, Stromnetz (Welle)",
         "Abnehmspritzen (Welle)",
+        "Krypto (Welle)",
         "Sanktionen und Embargos (erhöht)"
       ],
       "schlagzeilen": [
@@ -407,7 +366,9 @@
       "datum": "2026-03-27",
       "markt": "gefallen",
       "danach5": "steigend",
-      "themen": [],
+      "themen": [
+        "Krypto (Welle)"
+      ],
       "schlagzeilen": [
         "Armed conflicts and attacks: 2026 Iran war – 2026 Iranian strikes on Arab countries",
         "Armed conflicts and attacks: 2026 Iran war – 2026 Iranian strikes on Saudi Arabia",
@@ -505,6 +466,7 @@
       "markt": "stark gestiegen",
       "danach5": "seitwärts",
       "themen": [
+        "Krypto (Sturm)",
         "Abnehmspritzen (Welle)"
       ],
       "schlagzeilen": [
@@ -518,7 +480,8 @@
       "markt": "gefallen",
       "danach5": "seitwärts",
       "themen": [
-        "Abnehmspritzen (Welle)"
+        "Abnehmspritzen (Welle)",
+        "Krypto (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Sudanese civil war – Kordofan Campaign – At least 22 people are killed and eight others are injured in a bombing by the Rapid Support Forces at a military hospital in South Kordofan, Sudan.",
@@ -558,7 +521,9 @@
       "datum": "2025-11-21",
       "markt": "gestiegen",
       "danach5": "steigend",
-      "themen": [],
+      "themen": [
+        "Krypto (erhöht)"
+      ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Russo-Ukrainian war – Kupiansk offensive – Russian Chief of the General Staff Valery Gerasimov announces that Russian forces have captured the city of Kupiansk, the administrative centre of Kupiansk Raion, Khark",
         "Armed conflicts and attacks: Russo-Ukrainian war – Peace negotiations in the Russo-Ukrainian war, United States and the Russian invasion of Ukraine",
@@ -864,7 +829,7 @@
         "Öl und OPEC (Sturm)",
         "Zölle und Handelsstreit (Welle)",
         "Notenbank und Zinsen (Welle)",
-        "Abnehmspritzen (Welle)"
+        "Krypto (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Russo-Ukrainian War – 2025 Belgorod Oblast incursion – Ukrainian president Volodymyr Zelenskyy confirms the presence of Ukrainian troops in Russia's Belgorod Oblast.",
@@ -880,7 +845,7 @@
         "Öl und OPEC (Sturm)",
         "Zölle und Handelsstreit (Welle)",
         "Notenbank und Zinsen (Welle)",
-        "Abnehmspritzen (Welle)"
+        "Krypto (Welle)"
       ],
       "schlagzeilen": [
         "Armed conflicts and attacks: Syrian civil war – Western Syria clashes – 2025 massacres of Syrian Alawites – The number of mainly-Alawite Syrian civilians killed in ongoing sectarian reprisal massacres by pro-Syrian government forces and Sun",
