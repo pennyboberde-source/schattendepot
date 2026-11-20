@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T16:54:38.283Z",
+  "stand": "2026-11-20T17:09:49.816Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -585,47 +585,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-sk-hynix-inc-gds-reg-s",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SK HYNIX INC-GDS REG S",
-      "isin": "US78392B1070",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 873.6,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:30:00.000Z",
-        "kurs": 726,
-        "level": 728,
-        "spanne": {
-          "hoch": 754,
-          "tief": 728
-        },
-        "richtung": "short"
-      },
-      "stop": 741,
-      "ziel": 702,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:30:00.000Z",
-        "basisKurs": 728,
-        "kurs": 14.596,
-        "stueck": 68,
-        "kurswert": 992.53
-      }
-    },
-    {
       "id": "2026-11-20-scan-netflix-inc",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -738,6 +697,64 @@
           "ziel": 7,
           "stop": 17,
           "oeR": -0.08
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-mcdonald-s-corp",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MCDONALD'S CORP",
+      "isin": "US5801351017",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 300.66,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T16:45:00.000Z",
+        "kurs": 250.4,
+        "level": 250.45,
+        "spanne": {
+          "hoch": 253,
+          "tief": 250.45
+        },
+        "richtung": "short"
+      },
+      "stop": 251.73,
+      "ziel": 248.2,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T16:45:00.000Z",
+        "basisKurs": 250.55,
+        "kurs": 5.0235,
+        "stueck": 199,
+        "kurswert": 999.68
+      },
+      "timeMachine": {
+        "zielZuerst": 9.9,
+        "stopZuerst": 46.9,
+        "keins": 43.2,
+        "gruen": 42.6,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 2,
+          "stop": 13,
+          "oeR": -0.01
         }
       }
     }
@@ -1050,47 +1067,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-sk-hynix-inc-gds-reg-s",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "SK HYNIX INC-GDS REG S",
-      "isin": "US78392B1070",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 873.6,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:30:00.000Z",
-        "kurs": 726,
-        "level": 728,
-        "spanne": {
-          "hoch": 754,
-          "tief": 728
-        },
-        "richtung": "short"
-      },
-      "stop": 741,
-      "ziel": 702,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:30:00.000Z",
-        "basisKurs": 728,
-        "kurs": 14.596,
-        "stueck": 68,
-        "kurswert": 992.53
-      }
-    },
-    {
       "id": "2026-11-20-scan-netflix-inc",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -1204,6 +1180,124 @@
           "stop": 17,
           "oeR": -0.08
         }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-mcdonald-s-corp",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MCDONALD'S CORP",
+      "isin": "US5801351017",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 300.66,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T16:45:00.000Z",
+        "kurs": 250.4,
+        "level": 250.45,
+        "spanne": {
+          "hoch": 253,
+          "tief": 250.45
+        },
+        "richtung": "short"
+      },
+      "stop": 251.73,
+      "ziel": 248.2,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T16:45:00.000Z",
+        "basisKurs": 250.55,
+        "kurs": 5.0235,
+        "stueck": 199,
+        "kurswert": 999.68
+      },
+      "timeMachine": {
+        "zielZuerst": 9.9,
+        "stopZuerst": 46.9,
+        "keins": 43.2,
+        "gruen": 42.6,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 36,
+          "ziel": 2,
+          "stop": 13,
+          "oeR": -0.01
+        }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-sk-hynix-inc-gds-reg-s",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "SK HYNIX INC-GDS REG S",
+      "isin": "US78392B1070",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 873.6,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:30:00.000Z",
+        "kurs": 726,
+        "level": 728,
+        "spanne": {
+          "hoch": 754,
+          "tief": 728
+        },
+        "richtung": "short"
+      },
+      "stop": 741,
+      "ziel": 702,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:30:00.000Z",
+        "basisKurs": 728,
+        "kurs": 14.596,
+        "stueck": 68,
+        "kurswert": 992.53
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T16:50:00.000Z",
+        "basisKurs": 702,
+        "kurs": 17.117,
+        "kurswert": 1163.96,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 171.43,
+        "bruttoProzent": 17.27,
+        "netto": 171.43,
+        "nettoProzent": 17.27,
+        "nettoTR": 169.43,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -12222,46 +12316,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 197,
-      "treffer": 95,
-      "quote": 48.2,
-      "netto": 1541.2,
-      "brutto": 1621.2,
-      "nettoTR": 1228.2,
-      "oeNettoProzent": 0.78,
-      "oeR": 0.39
+      "anzahl": 198,
+      "treffer": 96,
+      "quote": 48.5,
+      "netto": 1712.63,
+      "brutto": 1792.63,
+      "nettoTR": 1397.63,
+      "oeNettoProzent": 0.87,
+      "oeR": 0.4
     },
     "heute": {
-      "anzahl": 13,
-      "treffer": 4,
-      "quote": 30.8,
-      "netto": 72.42,
-      "brutto": 80.42,
-      "nettoTR": 54.42,
-      "oeNettoProzent": 0.57,
-      "oeR": -0.21
+      "anzahl": 14,
+      "treffer": 5,
+      "quote": 35.7,
+      "netto": 243.85,
+      "brutto": 251.85,
+      "nettoTR": 223.85,
+      "oeNettoProzent": 1.76,
+      "oeR": -0.05
     },
     "offen": 8,
     "gruppen": {
       "turbo": {
-        "anzahl": 157,
-        "treffer": 85,
-        "quote": 54.1,
-        "netto": 1877.48,
-        "brutto": 1877.48,
-        "nettoTR": 1564.48,
-        "oeNettoProzent": 1.2,
-        "oeR": 0.44
+        "anzahl": 158,
+        "treffer": 86,
+        "quote": 54.4,
+        "netto": 2048.91,
+        "brutto": 2048.91,
+        "nettoTR": 1733.91,
+        "oeNettoProzent": 1.3,
+        "oeR": 0.45
       },
       "short": {
-        "anzahl": 157,
-        "treffer": 85,
-        "quote": 54.1,
-        "netto": 1877.48,
-        "brutto": 1877.48,
-        "nettoTR": 1564.48,
-        "oeNettoProzent": 1.2,
-        "oeR": 0.44
+        "anzahl": 158,
+        "treffer": 86,
+        "quote": 54.4,
+        "netto": 2048.91,
+        "brutto": 2048.91,
+        "nettoTR": 1733.91,
+        "oeNettoProzent": 1.3,
+        "oeR": 0.45
       },
       "krypto": {
         "anzahl": 40,
@@ -12338,10 +12432,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 138,
-        "chance": 43.5,
-        "oeNetto": 0.06,
-        "wertung": -0.64
+        "faelle": 139,
+        "chance": 43.9,
+        "oeNetto": 0.12,
+        "wertung": -0.58
       }
     },
     "us:orb_long": {
