@@ -1,0 +1,41 @@
+{
+  "typ": "morgenlauf",
+  "datum": "2026-11-20",
+  "erstellt": "2026-11-20T07:55:00Z",
+  "briefing": [
+    "Keine neue Order: Markt seitwärts/nervös, KI-Ausverkauf nach Anthropic-Börsengang (SoftBank −16 %), Depot Ø −1,0 %.",
+    "Heute: BJ's Zahlen vor US-Start, Lagarde 09:15, 16:00 Uni Michigan Stimmung/Inflationserwartung, großer Optionsverfall.",
+    "Autopilot AAOI, XGN, SLS je rund +14 bis +17 %; SLS halb verkauft, Stop über Einstand – These intakt."
+  ],
+  "orders": [],
+  "prognose": [
+    {"name": "Nvidia", "ticker": "NVDA", "markt": "us", "richtung": "runter", "chance": 53, "grund": "KI-Ausverkauf in Asien nach Anthropic-Debüt (SoftBank −16 %) dürfte auf US-Chips übergreifen."},
+    {"name": "Alibaba", "ticker": "BABA", "markt": "us", "richtung": "runter", "chance": 55, "grund": "Gewinnenttäuschung −29 % und Asien-Tech schwach; Schattenbuch gewinn_enttaeuschung Median −1,6 %."},
+    {"name": "NetEase", "ticker": "NTES", "markt": "us", "richtung": "runter", "chance": 53, "grund": "Gewinnenttäuschung −14 % bei schwacher Asien-Technologie."},
+    {"name": "Target", "ticker": "TGT", "markt": "us", "richtung": "runter", "chance": 51, "grund": "Überraschung eingepreist; Large Caps zeigten bisher keine Drift."},
+    {"name": "Applied Optoelectronics", "ticker": "AAOI", "markt": "us", "richtung": "runter", "chance": 54, "grund": "Nach +17 % seit Kauf und KI-Ausverkauf Gewinnmitnahmen wahrscheinlich; Platzierung 550 Mio. $ drückt."},
+    {"name": "SELLAS Life Sciences", "ticker": "SLS", "markt": "us", "richtung": "hoch", "chance": 51, "grund": "Platzierung nach positiver Phase-3-Studie abgeschlossen; Verwässerungs-Signal im Schattenbuch meist positiv."},
+    {"name": "Vivid Seats", "ticker": "SEAT", "markt": "us", "richtung": "runter", "chance": 60, "grund": "Kursrakete +63 % mit Pump-Verdacht; kursrakete Median −5,7 % nach 1 Woche."},
+    {"name": "Mega Matrix", "ticker": "MPU", "markt": "us", "richtung": "runter", "chance": 58, "grund": "Zweiter Sprung nach Handelsstopp, Lektion 14: nie nach dem zweiten Sprung long."},
+    {"name": "Bitcoin", "ticker": "BTC", "markt": "krypto", "richtung": "runter", "chance": 52, "grund": "Risikoscheu, Long-Liquidationen 78 %, Stablecoins schrumpfen; Fear & Greed 12 bremst nur leicht."},
+    {"name": "Rheinmetall", "ticker": "RHM.DE", "markt": "eu", "richtung": "runter", "chance": 53, "grund": "Dreiergipfel Trump/Xi/Putin nährt Waffenruhe-Erwartung, Politik-Radar Rüstung ↓."}
+  ],
+  "volltrefferUrteil": [
+    {"wert": "ACGLN", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Vorzugsaktie mit unter 1 % Tagesschwankung – ein Volltreffer short braucht einen Zins- oder Kreditschock.", "kontext": "Fed-Anhebung im Dezember zu 93 % eingepreist; KI-Ausverkauf trifft Tech, kaum Vorzugspapiere."},
+    {"wert": "APOS", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 21, "grund": "Apollo-Vorzugspapier, Kapitalerhöhung vor 5 Tagen drückt höchstens leicht.", "kontext": "Angespannter Kreditmarkt leicht negativ, Zinsrisiko eingepreist."},
+    {"wert": "ASBA", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Ruhiges Bank-Vorzugspapier ohne neuen Anlass.", "kontext": "Kein Bankenstress im Radar."},
+    {"wert": "ATHS", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Versicherer-Vorzugspapier ohne frische Meldung.", "kontext": "Lange Anleihen ruhig – spricht gegen einen schnellen Rutsch bei Zinspapieren."},
+    {"wert": "BOW", "markt": "aktie", "stichtag": "2026-11-18", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 24, "grund": "Chefwechsel ist ein Anlass, Richtung offen; Hebel 10 short fällt leicht dem Stop zum Opfer.", "kontext": "Nervöser Markt, VIX hoch – etwas mehr Schwankung in beide Richtungen."},
+    {"wert": "BWIN", "markt": "aktie", "stichtag": "2026-11-18", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 6, "grund": "Laufendes Barangebot deckelt den Kurs; Absturz nur bei Deal-Bruch.", "kontext": "Kreditmarkt angespannt, aber kein Hinweis auf ein Scheitern der Finanzierung."},
+    {"wert": "CHSCL", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "CHS-Vorzugsaktie, sehr ruhig; vier CHS-Serien sind ein Klumpen.", "kontext": "Agrarpreise und Zinsen ohne Schock."},
+    {"wert": "CHSCM", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.", "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."},
+    {"wert": "CHSCO", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.", "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."},
+    {"wert": "CHSCP", "markt": "aktie", "stichtag": "2026-11-18", "anlass": false, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 20, "grund": "Wie CHSCL – gleiche Firma, gleiche Lage.", "kontext": "Zinsanhebung eingepreist, kein firmeneigener Auslöser."},
+    {"wert": "CZR", "markt": "aktie", "stichtag": "2026-11-18", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 7, "grund": "Barübernahme läuft, daher die geringe Schwankung – Short-Volltreffer nur bei Deal-Bruch.", "kontext": "Regulierung und Bankfinanzierung als Restrisiko, kein Hinweis auf Scheitern."},
+    {"wert": "DSGR", "markt": "aktie", "stichtag": "2026-11-18", "anlass": true, "richtung": "unklar", "werbung": false, "urteil": "nein", "wahrscheinlichkeit": 5, "grund": "Rückkauf durch den Mehrheitsaktionär zu festem Barpreis – Absturz sehr unwahrscheinlich.", "kontext": "Mehrheitsaktionär als Käufer macht den Abschluss wahrscheinlich."}
+  ],
+  "daytrading": [
+    {"name": "BJ's Wholesale Club", "markt": "us", "isin": "US05550J1016", "setup": "orb", "richtung": "long", "instrument": "aktie", "chance": 35, "these": "Quartalszahlen vor US-Start: hoher Umsatz und weite Eröffnungsspanne; nur Ausbruch nach oben handeln."}
+  ],
+  "notiz": "Keine Order: Marktphase seitwärts/nervös (max. 2, kein Hebel ohne Volltreffer-Beleg), KI-Ausverkauf in Asien nach dem Anthropic-Börsengang, Depot und Daytrading negativ (Lektionen 18, 30). Offenes Ereignis SLS (−17,21 % gemeldet): Kurs 8,74 € liegt +17 % über Kauf; Hintergrund positive Phase-3-Studie (Überleben, AML) und 150-Mio.-$-Platzierung (17.11.) – These intakt, keine Anpassung, Stop bleibt über Einstand. AAOI/XGN laufen, keine Gegenmeldung. TGT-Überraschung weiter Large Cap ohne Drift; BABA/NTES-Enttäuschungen nur als Prognose, kein Short-Hebel in Seitwärtsphase. Lauerliste unverändert seit gestern (Vorzugsaktien + Barangebote) – Vorschlag von gestern gilt: solche Werte aus dem Short-Muster ausschließen. Websuchen: 3 (Schritt 4)."
+}
