@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T12:09:11.297Z",
-  "anzahl": 216,
+  "stand": "2026-11-20T12:19:49.215Z",
+  "anzahl": 218,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -2864,6 +2864,34 @@
         "SEC EDGAR Volltext"
       ],
       "z": "2026-11-20T12:09:11.297Z"
+    },
+    {
+      "id": "upbit_warnung:K.KERNEL:2026-11-20",
+      "s": "K:KERNEL",
+      "n": "KernelDAO",
+      "t": "KERNEL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-20T12:19:49.215Z"
+    },
+    {
+      "id": "kursrakete:K.KERNEL:2026-11-20",
+      "s": "K:KERNEL",
+      "n": "KernelDAO",
+      "t": "KERNEL",
+      "m": "krypto",
+      "typ": "kursrakete",
+      "r": 1,
+      "st": 0.77,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-20T12:19:49.215Z"
     }
   ]
 }
