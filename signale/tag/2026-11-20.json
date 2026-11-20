@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T19:08:30.914Z",
-  "anzahl": 289,
+  "stand": "2026-11-20T19:19:19.643Z",
+  "anzahl": 296,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -3255,7 +3255,7 @@
       "t": "IPFXU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.6,
+      "st": 0.7,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3502,7 +3502,7 @@
       "t": "RFAIU",
       "typ": "handelsstopp",
       "r": 0,
-      "st": 0.5,
+      "st": 0.6,
       "q": [
         "Nasdaq Trader"
       ],
@@ -3582,7 +3582,7 @@
       "m": "krypto",
       "typ": "ueberreaktion",
       "r": 0,
-      "st": 0.48,
+      "st": 0.63,
       "q": [
         "Kraken"
       ],
@@ -3596,7 +3596,7 @@
       "m": "krypto",
       "typ": "kursrakete",
       "r": 1,
-      "st": 0.46,
+      "st": 0.57,
       "q": [
         "Upbit"
       ],
@@ -3827,6 +3827,99 @@
         "SEC EDGAR Volltext"
       ],
       "z": "2026-11-20T19:08:30.914Z"
+    },
+    {
+      "id": "handelsstopp:MACI:2026-11-20",
+      "s": "T:MACI",
+      "n": "Melar Acquisition Cp I Ord A",
+      "t": "MACI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:PFX:2026-11-20",
+      "s": "T:PFX",
+      "n": "PhenixFIN Corporation Common",
+      "t": "PFX",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:VMAR:2026-11-20",
+      "s": "T:VMAR",
+      "n": "Vision Marine Tech Cm Sh",
+      "t": "VMAR",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ARAI:2026-11-20",
+      "s": "T:ARAI",
+      "n": "Arrive AI Inc. CS",
+      "t": "ARAI",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:GPN:2026-11-20",
+      "s": "T:GPN",
+      "n": "Global Payments Inc. Common Stock",
+      "t": "GPN",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:NVDA:2026-11-20",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "tagesschau Wirtschaft",
+        "MarketWatch"
+      ],
+      "z": "2026-11-20T07:47:56.000Z"
+    },
+    {
+      "id": "ueberreaktion:K.BTC:2026-11-20",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "ueberreaktion",
+      "r": 0,
+      "st": 0.42,
+      "q": [
+        "Kraken"
+      ],
+      "z": "2026-11-20T19:19:19.643Z"
     }
   ]
 }
