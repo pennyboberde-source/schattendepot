@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T16:25:19.735Z",
+  "stand": "2026-11-20T16:38:35.018Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -278,88 +278,6 @@
     }
   ],
   "offen": [
-    {
-      "id": "2026-11-20-scan-nel-asa",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NEL ASA",
-      "isin": "NO0010081235",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 0.1903,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T08:20:00.000Z",
-        "kurs": 0.157,
-        "level": 0.1658,
-        "spanne": {
-          "hoch": 0.1744,
-          "tief": 0.1658
-        },
-        "richtung": "short"
-      },
-      "stop": 0.1701,
-      "ziel": 0.1356,
-      "zielR": 2,
-      "flatBis": "2026-11-20T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T08:20:00.000Z",
-        "basisKurs": 0.1586,
-        "kurs": 0.0318,
-        "stueck": 31446,
-        "kurswert": 999.98
-      }
-    },
-    {
-      "id": "2026-11-20-scan-muenchener-rueckver-ag-r",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MUENCHENER RUECKVER AG-REG",
-      "isin": "DE0008430026",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 693.84,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T08:30:00.000Z",
-        "kurs": 578.6,
-        "level": 578.8,
-        "spanne": {
-          "hoch": 581.8,
-          "tief": 578.8
-        },
-        "richtung": "short"
-      },
-      "stop": 580.3,
-      "ziel": 574,
-      "zielR": 2,
-      "flatBis": "2026-11-20T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T08:30:00.000Z",
-        "basisKurs": 578.2,
-        "kurs": 11.593,
-        "stueck": 86,
-        "kurswert": 997
-      }
-    },
     {
       "id": "2026-11-20-scan-servicenow-inc",
       "datum": "2026-11-20",
@@ -867,88 +785,6 @@
   ],
   "trades": [
     {
-      "id": "2026-11-20-scan-nel-asa",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NEL ASA",
-      "isin": "NO0010081235",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 0.1903,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T08:20:00.000Z",
-        "kurs": 0.157,
-        "level": 0.1658,
-        "spanne": {
-          "hoch": 0.1744,
-          "tief": 0.1658
-        },
-        "richtung": "short"
-      },
-      "stop": 0.1701,
-      "ziel": 0.1356,
-      "zielR": 2,
-      "flatBis": "2026-11-20T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T08:20:00.000Z",
-        "basisKurs": 0.1586,
-        "kurs": 0.0318,
-        "stueck": 31446,
-        "kurswert": 999.98
-      }
-    },
-    {
-      "id": "2026-11-20-scan-muenchener-rueckver-ag-r",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "eu",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "MUENCHENER RUECKVER AG-REG",
-      "isin": "DE0008430026",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 693.84,
-        "bezugsverhaeltnis": 0.1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": false,
-      "ausloeser": {
-        "zeit": "2026-11-20T08:30:00.000Z",
-        "kurs": 578.6,
-        "level": 578.8,
-        "spanne": {
-          "hoch": 581.8,
-          "tief": 578.8
-        },
-        "richtung": "short"
-      },
-      "stop": 580.3,
-      "ziel": 574,
-      "zielR": 2,
-      "flatBis": "2026-11-20T16:25:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T08:30:00.000Z",
-        "basisKurs": 578.2,
-        "kurs": 11.593,
-        "stueck": 86,
-        "kurswert": 997
-      }
-    },
-    {
       "id": "2026-11-20-scan-servicenow-inc",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -1450,6 +1286,126 @@
           "stop": 17,
           "oeR": -0.08
         }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-nel-asa",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NEL ASA",
+      "isin": "NO0010081235",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 0.1903,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T08:20:00.000Z",
+        "kurs": 0.157,
+        "level": 0.1658,
+        "spanne": {
+          "hoch": 0.1744,
+          "tief": 0.1658
+        },
+        "richtung": "short"
+      },
+      "stop": 0.1701,
+      "ziel": 0.1356,
+      "zielR": 2,
+      "flatBis": "2026-11-20T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T08:20:00.000Z",
+        "basisKurs": 0.1586,
+        "kurs": 0.0318,
+        "stueck": 31446,
+        "kurswert": 999.98
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T16:25:00.000Z",
+        "basisKurs": 0.1566,
+        "kurs": 0.0336,
+        "kurswert": 1056.59,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": 56.61,
+        "bruttoProzent": 5.66,
+        "netto": 56.61,
+        "nettoProzent": 5.66,
+        "nettoTR": 54.61,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 0.17
+      }
+    },
+    {
+      "id": "2026-11-20-scan-muenchener-rueckver-ag-r",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "eu",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "MUENCHENER RUECKVER AG-REG",
+      "isin": "DE0008430026",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 693.84,
+        "bezugsverhaeltnis": 0.1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T08:30:00.000Z",
+        "kurs": 578.6,
+        "level": 578.8,
+        "spanne": {
+          "hoch": 581.8,
+          "tief": 578.8
+        },
+        "richtung": "short"
+      },
+      "stop": 580.3,
+      "ziel": 574,
+      "zielR": 2,
+      "flatBis": "2026-11-20T16:25:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T08:30:00.000Z",
+        "basisKurs": 578.2,
+        "kurs": 11.593,
+        "stueck": 86,
+        "kurswert": 997
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T16:25:00.000Z",
+        "basisKurs": 579,
+        "kurs": 11.455,
+        "kurswert": 985.13,
+        "grund": "schluss"
+      },
+      "ergebnis": {
+        "brutto": -11.87,
+        "bruttoProzent": -1.19,
+        "netto": -11.87,
+        "nettoProzent": -1.19,
+        "nettoTR": -13.87,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": -0.38
       }
     },
     {
@@ -12288,46 +12244,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 194,
-      "treffer": 93,
-      "quote": 47.9,
-      "netto": 1363.5,
-      "brutto": 1443.5,
-      "nettoTR": 1056.5,
-      "oeNettoProzent": 0.7,
-      "oeR": 0.39
+      "anzahl": 196,
+      "treffer": 94,
+      "quote": 48,
+      "netto": 1408.24,
+      "brutto": 1488.24,
+      "nettoTR": 1097.24,
+      "oeNettoProzent": 0.72,
+      "oeR": 0.38
     },
     "heute": {
-      "anzahl": 10,
-      "treffer": 2,
-      "quote": 20,
-      "netto": -105.28,
-      "brutto": -97.28,
-      "nettoTR": -117.28,
-      "oeNettoProzent": -1.05,
-      "oeR": -0.46
+      "anzahl": 12,
+      "treffer": 3,
+      "quote": 25,
+      "netto": -60.54,
+      "brutto": -52.54,
+      "nettoTR": -76.54,
+      "oeNettoProzent": -0.51,
+      "oeR": -0.4
     },
-    "offen": 11,
+    "offen": 9,
     "gruppen": {
       "turbo": {
-        "anzahl": 154,
-        "treffer": 83,
-        "quote": 53.9,
-        "netto": 1699.78,
-        "brutto": 1699.78,
-        "nettoTR": 1392.78,
-        "oeNettoProzent": 1.1,
-        "oeR": 0.44
+        "anzahl": 156,
+        "treffer": 84,
+        "quote": 53.8,
+        "netto": 1744.52,
+        "brutto": 1744.52,
+        "nettoTR": 1433.52,
+        "oeNettoProzent": 1.12,
+        "oeR": 0.43
       },
       "short": {
-        "anzahl": 154,
-        "treffer": 83,
-        "quote": 53.9,
-        "netto": 1699.78,
-        "brutto": 1699.78,
-        "nettoTR": 1392.78,
-        "oeNettoProzent": 1.1,
-        "oeR": 0.44
+        "anzahl": 156,
+        "treffer": 84,
+        "quote": 53.8,
+        "netto": 1744.52,
+        "brutto": 1744.52,
+        "nettoTR": 1433.52,
+        "oeNettoProzent": 1.12,
+        "oeR": 0.43
       },
       "krypto": {
         "anzahl": 40,
@@ -12411,14 +12367,21 @@
       }
     },
     "us:orb_long": {
-      "beste": null,
+      "beste": {
+        "richtung": "gegen",
+        "hebel": 3,
+        "faelle": 142,
+        "chance": 62.7,
+        "oeNetto": 0.86,
+        "wertung": 0.3
+      },
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 140,
-        "chance": 35.7,
-        "oeNetto": -0.58,
-        "wertung": -0.77
+        "faelle": 142,
+        "chance": 35.2,
+        "oeNetto": -0.6,
+        "wertung": -0.79
       }
     }
   },
