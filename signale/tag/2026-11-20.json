@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T19:19:19.643Z",
-  "anzahl": 296,
+  "stand": "2026-11-20T20:19:30.125Z",
+  "anzahl": 302,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -3900,10 +3900,11 @@
       "t": "NVDA",
       "typ": "nachricht",
       "r": 0,
-      "st": 0.41,
+      "st": 0.51,
       "q": [
         "tagesschau Wirtschaft",
-        "MarketWatch"
+        "MarketWatch",
+        "CNBC Top News"
       ],
       "z": "2026-11-20T07:47:56.000Z"
     },
@@ -3920,6 +3921,85 @@
         "Kraken"
       ],
       "z": "2026-11-20T19:19:19.643Z"
+    },
+    {
+      "id": "handelsstopp:NYYY:2026-11-20",
+      "s": "T:NYYY",
+      "n": "xETFs NVDA Daily Income ETF",
+      "t": "NYYY",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:ARMA:2026-11-20",
+      "s": "T:ARMA",
+      "n": "Corgi ARM 2x Daily ETF",
+      "t": "ARMA",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:NICM:2026-11-20",
+      "s": "T:NICM",
+      "n": "Nicola Mining Inc. ADS",
+      "t": "NICM",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:UUUC:2026-11-20",
+      "s": "T:UUUC",
+      "n": "Corgi UUUU 2x Daily ETF",
+      "t": "UUUC",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "handelsstopp:EMAG:2026-11-20",
+      "s": "T:EMAG",
+      "n": "Emerging Markets AI Mag 3 ETF",
+      "t": "EMAG",
+      "typ": "handelsstopp",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Nasdaq Trader"
+      ],
+      "z": "2026-11-20T00:00:00.000Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-11-20",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "MarketWatch",
+        "CNBC Top News"
+      ],
+      "z": "2026-11-20T19:23:00.000Z"
     }
   ]
 }
