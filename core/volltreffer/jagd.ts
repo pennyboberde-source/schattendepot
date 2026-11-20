@@ -44,6 +44,8 @@ export interface JagdFall {
   quote?: number;
   /** sichtbare Order nach der Zeitreise-Regel (seit 20.11.2026) statt nach der 6er-Regel */
   zeitreise?: boolean;
+  /** Q6/Q7: Reddit-Aufmerksamkeit und Leihgebühr in Klassen (jüngster Schnappschuss) */
+  stimmung?: string;
 }
 
 export interface JagdRegeln {

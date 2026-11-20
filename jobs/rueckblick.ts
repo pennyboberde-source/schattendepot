@@ -27,6 +27,7 @@ import { aktienzahlAm, type AktienzahlArchiv } from '../core/volltreffer/aktienz
 import { tageBisStudie, type Studie } from '../core/volltreffer/studien.ts';
 import { alsFolge, kalenderTage, spitzenFolge, spitzenKlasse, suchName, themenFuer, type Ereignis, type Tagesreihe, type Thema } from '../core/volltreffer/kontext.ts';
 import { katalysatorKlasse, type Katalysator } from '../core/volltreffer/volltext.ts';
+import { leiheLesen, stimmungText, type Leihe, type Nennung } from '../core/volltreffer/stimmung.ts';
 import { turboDa, type TurboStand } from '../core/volltreffer/turbos.ts';
 import { hebelDa, type HebelStand } from '../core/volltreffer/firds.ts';
 import { haltefristFortschreiben, type Haltefrist } from '../core/volltreffer/haltefrist.ts';
@@ -2740,7 +2741,31 @@ if (vt.erkennung) {
   const befoerdertJetzt = [...alleMuster.values(), ...musterBuch.eintraege]
     .filter((e, i, a) => a.findIndex((x) => x.schluessel === e.schluessel) === i && istBefoerdert(zeiten3, e.schluessel))
     .map((e) => ({ gruppe: e.gruppe, spielart: spielartText(spNachSchluessel.get(e.sp)!), fenster: e.fenster, seit: zeiten3.get(e.schluessel)!.find((z) => z.bis === null)!.von, rueckblick: e.rueckblick }));
-  const lauerliste = ohnePump.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung);
+  // Q6/Q7: jüngste Schnappschüsse von Leihgebühr (IBKR) und Reddit (ApeWisdom) aus dem privaten Archiv → Klassen-Text
+  const juengste = (teil: string) => {
+    const o = join(ARCHIV, teil);
+    if (!existsSync(o)) return null;
+    const f = readdirSync(o).filter((j) => /^\d{4}$/.test(j)).sort().flatMap((j) => readdirSync(join(o, j)).sort().map((x) => join(o, j, x))).pop();
+    return f ?? null;
+  };
+  const leiheJe = new Map<string, Leihe>();
+  const redditJe = new Map<string, Nennung>();
+  {
+    const fl = juengste('leihe');
+    if (fl) for (const l of leiheLesen(gz(fl).split('\n').map((z, i) => (i === 0 ? '#SYM|FEERATE|AVAILABLE|' : z.replace(/,/g, '|'))).join('\n'))) leiheJe.set(l.kuerzel, l);
+    const fr = juengste('reddit');
+    if (fr) {
+      const j = JSON.parse(gz(fr)) as { aktien?: (string | number | null)[][] };
+      for (const [kuerzel, rang, nennungen, upvotes, rangVor24h, nennungenVor24h] of j.aktien ?? []) redditJe.set(String(kuerzel), { kuerzel: String(kuerzel), rang: Number(rang), nennungen: Number(nennungen), upvotes: Number(upvotes), rangVor24h: rangVor24h === null ? null : Number(rangVor24h), nennungenVor24h: nennungenVor24h === null ? null : Number(nennungenVor24h) });
+    }
+  }
+  const mitStimmung = (f: JagdFall): JagdFall => {
+    if (f.markt !== 'aktie') return f;
+    const t = stimmungText(redditJe.get(f.wert), leiheJe.get(f.wert));
+    return t ? { ...f, stimmung: t } : f;
+  };
+  for (const liste of [s3.offen, s3.vorgemerkt]) liste.splice(0, liste.length, ...liste.map(mitStimmung));
+  const lauerliste = ohnePump.filter((x) => x.art === 'lauert').sort((a, b) => b.wertung - a.wertung).map(mitStimmung);
   const pumpZahl = vorwaerts.filter((x) => x.pump && !zrNur.has(x.muster)).length;
   const musterText = new Map([...alleMuster.values()].map((e) => [e.schluessel, e.gruppe]));
   for (const e of zrErst.values()) if (!musterText.has(e.schluessel) && e.gruppe) musterText.set(e.schluessel, e.gruppe);

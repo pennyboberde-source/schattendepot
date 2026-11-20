@@ -64,3 +64,22 @@ export function apewisdomLesen(json: unknown): { seiten: number; nennungen: Nenn
   }
   return { seiten: Number(j.pages ?? 0) || 0, nennungen };
 }
+
+/**
+ * Kurztext für die Lauerliste (öffentlich nur als Klassen, keine Rohwerte der Anbieter): Reddit-Rang und Veränderung der
+ * Nennungen in 24 Stunden, Leihgebühr in groben Stufen. null = nichts Bemerkenswertes.
+ */
+export function stimmungText(n: Nennung | undefined, l: Leihe | undefined): string | null {
+  const teile: string[] = [];
+  if (n && n.rang <= 100) {
+    const faktor = n.nennungenVor24h ? n.nennungen / n.nennungenVor24h : null;
+    const stufe = n.rang <= 10 ? 'Top 10' : n.rang <= 30 ? 'Top 30' : 'Top 100';
+    teile.push(`Reddit ${stufe}${faktor !== null && faktor >= 2 ? `, Nennungen über ${faktor >= 5 ? '5' : '2'}-fach in 24 Std.` : ''}`);
+  }
+  if (l) {
+    if (l.verfuegbar === 0) teile.push('Leihe: nicht leihbar (Short kaum möglich)');
+    else if (l.gebuehr >= 100) teile.push('Leihgebühr über 100 % p. a. (Squeeze-Gefahr, Short teuer)');
+    else if (l.gebuehr >= 20) teile.push('Leihgebühr über 20 % p. a.');
+  }
+  return teile.length ? teile.join(' · ') : null;
+}

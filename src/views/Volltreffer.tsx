@@ -64,6 +64,7 @@ function JagdZeile({ j }: { j: JagdFall }) {
       </span>
       <span class="klein">Muster: {j.muster}</span>
       {j.hinweis && <span class="klein">📄 {j.hinweis}</span>}
+      {j.stimmung && <span class="klein">👥 {j.stimmung}</span>}
       {j.urteil && (
         <span class="klein">
           {j.urteil === 'ja' ? '✅ Claude: ja' : '❌ Claude: nein'}

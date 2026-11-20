@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { apewisdomLesen, leiheCsv, leiheLesen } from './stimmung.ts';
+import { apewisdomLesen, leiheCsv, leiheLesen, stimmungText } from './stimmung.ts';
 
 describe('Leihgebühren (Interactive Brokers usa.txt)', () => {
   it('liest Kürzel, Gebühr und Verfügbarkeit, überspringt Kopf und Ende', () => {
@@ -21,4 +21,12 @@ describe('ApeWisdom', () => {
     expect(r.nennungen).toEqual([{ kuerzel: 'GME', rang: 1, nennungen: 420, upvotes: 900, rangVor24h: 3, nennungenVor24h: 120 }]);
   });
   it('fremdes Format: leer', () => expect(apewisdomLesen({ fehler: 1 })).toEqual({ seiten: 0, nennungen: [] }));
+});
+
+describe('Stimmung für die Lauerliste', () => {
+  it('nur Klassen, nichts Bemerkenswertes → null', () => {
+    expect(stimmungText({ kuerzel: 'GME', rang: 3, nennungen: 600, upvotes: 1, rangVor24h: 9, nennungenVor24h: 100 }, { kuerzel: 'GME', gebuehr: 150, verfuegbar: 2000 })).toBe('Reddit Top 10, Nennungen über 5-fach in 24 Std. · Leihgebühr über 100 % p. a. (Squeeze-Gefahr, Short teuer)');
+    expect(stimmungText(undefined, { kuerzel: 'X', gebuehr: 0.3, verfuegbar: 1e7 })).toBeNull();
+    expect(stimmungText({ kuerzel: 'Y', rang: 500, nennungen: 1, upvotes: 0, rangVor24h: null, nennungenVor24h: null }, undefined)).toBeNull();
+  });
 });

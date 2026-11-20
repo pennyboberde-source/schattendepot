@@ -171,7 +171,7 @@ if (typ === 'morgenlauf') {
   const ll = vu?.lauerliste ?? [];
   if (ll.length) {
     p(`## 🎯 Volltreffer-Lauerliste (${vu.lauerlisteZahl} Werte, die obersten ${Math.min(12, ll.length)}) – Gesamtbild-Urteil in \`volltrefferUrteil\``);
-    for (const j of ll.slice(0, 12)) p(`- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage${typeof j.quote === 'number' ? ` · Rückblick-Quote ${j.quote} %` : ''}${j.plattform ? ` · ${j.plattform}${j.ungeprueft ? ' (ungeprüft)' : ''}` : ''} · Muster: ${j.muster}${j.hinweis ? ` · ${j.hinweis}` : ''}`);
+    for (const j of ll.slice(0, 12)) p(`- ${j.wert} (${j.markt === 'krypto' ? 'Coin' : 'Aktie'}) · Stichtag ${j.stichtag} · ${j.spielart}, bis ${j.fenster} Tage${typeof j.quote === 'number' ? ` · Rückblick-Quote ${j.quote} %` : ''}${j.plattform ? ` · ${j.plattform}${j.ungeprueft ? ' (ungeprüft)' : ''}` : ''} · Muster: ${j.muster}${j.hinweis ? ` · ${j.hinweis}` : ''}${j.stimmung ? ` · 👥 ${j.stimmung}` : ''}`);
     const k = vu.kennzahlen;
     if (k?.anzahl) p(`Virtuelle Jagden bisher: ${k.anzahl} abgeschlossen, Volltreffer ${k.quote} %, Ø ${k.ev} € je Jagd.`);
     const u = vu.urteil;
