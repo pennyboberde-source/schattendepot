@@ -47,7 +47,7 @@ interface VtConfig {
   erkennung?: { fenster: number; ereignisMerkmale: string[]; mindestSpruenge: number; liftMin: number; fallstudie: { wert: string; von: string; bis: string; anlass: string }[] };
   v4: { maxOffen: number; tagesVerlustGrenze: number; vorwaertsMax: number; lauerlisteMax: number; stufe2Faelle: number; mindestQuote: number; maxJeBaustein?: number; haltefristTage?: number; maxJeKlumpen?: number; klumpenAnker?: string[]; klumpenMinKorrelation?: number };
   v6: V6Regeln & { ohneNein?: boolean | 'auto'; urteilAuto?: { mindestJa: number; mindestNein: number } };
-  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number; ziel?: 'netto' | 'treffer' }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
+  modell?: { aktiv: boolean; modelle: { markt: Markt; spielart: string; fenster: number; ziel?: 'netto' | 'treffer'; universum?: { name: string; text: string; oder: { merkmal: string; klassen: number[] }[] }; oberste?: number[] }[]; obersteProzent: number[]; ohne: string[]; musterFilter?: number[]; einstellungen: ModellEinstellungen; abstandTage: number; mindestFaelle: number };
   hebel?: { nurGettex: boolean; maxAlterTage: number; mindestZugeordnet: number };
   plattformen: {
     andereBoerse: { name: string; entgeltJeOrder: number };
@@ -875,6 +875,9 @@ const MODELLE = (MC?.aktiv ? MC.modelle : [])
   .map((m, idx) => ({ ...m, idx, s: SP.findIndex((sp) => spielartSchluessel(sp) === m.spielart), f: F.indexOf(m.fenster) }))
   .filter((m) => m.s >= 0 && m.f >= 0);
 const MODELL_MAERKTE = new Set<Markt>(MODELLE.map((m) => m.markt));
+/** Q3 (20.11.2026): Modelle nur für einen Ausschnitt („Universum“, z. B. die wilden Werte) – Zusatz im Schlüssel */
+const modellZusatz = (m: (typeof MODELLE)[number]) => `${m.ziel === 'treffer' ? '|treffer' : ''}${m.universum ? `|${m.universum.name}` : ''}`;
+const universumIdx = new Map(MODELLE.map((m) => [m.idx, (m.universum?.oder ?? []).map((b) => ({ a: E.findIndex((e) => e.merkmal === b.merkmal), klassen: new Set(b.klassen.map((k) => k + 1)) }))]));
 const P = E.length;
 const wachse = <A extends Uint8Array | Int32Array | Float32Array>(a: A, n: number): A => {
   if (n <= a.length) return a;
@@ -2112,7 +2115,9 @@ if (MODELLE.length && mZahl) {
   for (const m of MODELLE) {
     const t0m = Date.now();
     const gelabelt: number[] = [];
-    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && Number.isFinite(mY[m.idx][z]) && reihen[mReihe[z]].markt === m.markt) gelabelt.push(z);
+    const uni = universumIdx.get(m.idx)!;
+    const imUni = (z: number) => !uni.length || uni.some((b) => b.a >= 0 && b.klassen.has(mX[z * P + b.a]));
+    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && Number.isFinite(mY[m.idx][z]) && reihen[mReihe[z]].markt === m.markt && imUni(z)) gelabelt.push(z);
     const A = gelabelt.filter((z) => mTag[z] < grenzeTag - ab);
     const B = gelabelt.filter((z) => mTag[z] >= grenzeTag);
     if (A.length < 5000 || B.length < 5000) {
@@ -2192,7 +2197,7 @@ if (MODELLE.length && mZahl) {
         if (qu[1] >= 4 && qu[0] / qu[1] < vt.pruefung.quartaleMindestAnteil) gruende.push(`nur ${qu[0]} von ${qu[1]} Quartalen im Plus`);
         const nAlle = a.n + b.n;
         const erg: ModellErgebnis = {
-          schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}${m.ziel === 'treffer' ? '|treffer' : ''}|muster`,
+          schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}${modellZusatz(m)}|muster`,
           gruppe: `${m.markt === 'aktie' ? 'Aktien' : 'Krypto'}: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen ${Math.round((1 - pmin) * 100)} % ihres Tages sieht`,
           markt: m.markt,
           spielart: spielartText(sp),
@@ -2213,7 +2218,7 @@ if (MODELLE.length && mZahl) {
       }
     }
     let bestes: ModellErgebnis | null = null;
-    for (const q of MC!.obersteProzent) {
+    for (const q of m.oberste ?? MC!.obersteProzent) {
       const wahl = (zeilen: number[], b: number[]) => mitSperre(tagesAuswahl(zeilen, b, (z) => mTag[z], q).map((z) => ({ z, wert: mReihe[z], tag: mI[z] })), vt.pruefung.sperreTage).map((x) => x.z);
       const selA = wahl(A, bAdurchB);
       const selB = wahl(B, bBdurchA);
@@ -2250,8 +2255,8 @@ if (MODELLE.length && mZahl) {
       if (qMit >= 4 && qPlus / qMit < vt.pruefung.quartaleMindestAnteil) gruende.push(`nur ${qPlus} von ${qMit} Quartalen im Plus`);
       const nAlle = wa.n + wb.n;
       const erg: ModellErgebnis = {
-        schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}${m.ziel === 'treffer' ? '|treffer' : ''}`,
-        gruppe: `${m.markt === 'aktie' ? 'Aktien' : 'Krypto'}: Gesamtmodell aus allen Merkmalen${m.ziel === 'treffer' ? ' (Ziel: Volltreffer-Wahrscheinlichkeit)' : ''} – oberste ${String(q).replace('.', ',')} %`,
+        schluessel: `modell|${m.markt}|${m.spielart}|${m.fenster}${modellZusatz(m)}`,
+        gruppe: `${m.markt === 'aktie' ? 'Aktien' : 'Krypto'}: Gesamtmodell aus allen Merkmalen${m.ziel === 'treffer' ? ' (Ziel: Volltreffer-Wahrscheinlichkeit)' : ''}${m.universum ? ` nur ${m.universum.text}` : ''} – oberste ${String(q).replace('.', ',')} %`,
         markt: m.markt,
         spielart: spielartText(sp),
         sp: m.spielart,
@@ -2266,7 +2271,7 @@ if (MODELLE.length && mZahl) {
         wichtig: [],
         faelleHeute: 0,
       };
-      log(`Gesamtmodell${m.ziel === 'treffer' ? ' (Ziel Treffer)' : ''} ${m.markt} ${erg.spielart} ${m.fenster} T, oberste ${q} %: A ${zr[0].n} Fälle/${zr[0].tage} Tage, Quote ${zr[0].quote} %, Ø ${zr[0].ev} ± ${zr[0].se} € (Grundrate ${zr[0].grundEv}) · B ${zr[1].n}/${zr[1].tage}, Quote ${zr[1].quote} %, Ø ${zr[1].ev} ± ${zr[1].se} € (Grundrate ${zr[1].grundEv}) · Quartale ${qPlus}/${qMit} im Plus · Wertung ${wertung} → ${erg.grund}`);
+      log(`Gesamtmodell${m.ziel === 'treffer' ? ' (Ziel Treffer)' : ''}${m.universum ? ` [${m.universum.name}]` : ''} ${m.markt} ${erg.spielart} ${m.fenster} T, oberste ${q} %: A ${zr[0].n} Fälle/${zr[0].tage} Tage, Quote ${zr[0].quote} %, Ø ${zr[0].ev} ± ${zr[0].se} € (Grundrate ${zr[0].grundEv}) · B ${zr[1].n}/${zr[1].tage}, Quote ${zr[1].quote} %, Ø ${zr[1].ev} ± ${zr[1].se} € (Grundrate ${zr[1].grundEv}) · Quartale ${qPlus}/${qMit} im Plus · Wertung ${wertung} → ${erg.grund}`);
       if (!bestes || (erg.bestanden && !bestes.bestanden) || (erg.bestanden === bestes.bestanden && erg.wertung > bestes.wertung)) bestes = erg;
     }
     if (!bestes) continue;
@@ -2283,7 +2288,7 @@ if (MODELLE.length && mZahl) {
     let juengster = -1;
     for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && reihen[mReihe[z]].markt === m.markt && mTag[z] > juengster) juengster = mTag[z];
     const heuteZeilen: number[] = [];
-    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && reihen[mReihe[z]].markt === m.markt && mTag[z] === juengster) heuteZeilen.push(z);
+    for (let z = 0; z < mZahl; z++) if (mAnw[m.idx][z] && reihen[mReihe[z]].markt === m.markt && mTag[z] === juengster && imUni(z)) heuteZeilen.push(z);
     bestes.faelleHeute = tagesAuswahl(heuteZeilen, heuteZeilen.map((z) => bewerten(mAlle, mX, z)), (z) => mTag[z], bestes.q).length;
     modellErgebnisse.push(bestes);
     modellAuswahl.set(bestes.schluessel, { modell: mAlle, q: bestes.q, m });
@@ -2296,7 +2301,7 @@ if (MODELLE.length && mZahl) {
       modellAuswahl.set(musterErg.schluessel, { modell: mAlle, q: bestes.q, m, musterP: pmin, passt });
       log(`Muster × Modell ${m.markt} ${musterErg.spielart} ${m.fenster} T: gewählt oberes ${musterErg.q} % (${musterErg.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), heute ${musterErg.faelleHeute} Fälle.`);
     }
-    log(`Gesamtmodell${m.ziel === 'treffer' ? ' (Ziel Treffer)' : ''} ${m.markt} ${bestes.spielart} ${m.fenster} T: gewählt oberste ${bestes.q} % (${bestes.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), wichtigste Merkmale: ${bestes.wichtig.join(', ')}; ${Math.round((Date.now() - t0m) / 1000)} s.`);
+    log(`Gesamtmodell${m.ziel === 'treffer' ? ' (Ziel Treffer)' : ''}${m.universum ? ` [${m.universum.name}]` : ''} ${m.markt} ${bestes.spielart} ${m.fenster} T: gewählt oberste ${bestes.q} % (${bestes.bestanden ? 'BESTANDEN' : 'nicht bestanden'}), wichtigste Merkmale: ${bestes.wichtig.join(', ')}; ${Math.round((Date.now() - t0m) / 1000)} s.`);
   }
   // Vorwärtstest: Modelle im Muster-Buch bekommen ihre Fälle ab dem Tag nach dem Eintrag (je Wert ein Fall in sperreTage)
   for (const [schluessel, a] of modellAuswahl) {
@@ -2304,7 +2309,8 @@ if (MODELLE.length && mZahl) {
     if (!e) continue;
     const vonTag = tagNrAlle.get(alleTage.find((d) => d > e.seit) ?? '9999') ?? Infinity;
     const zeilen: number[] = [];
-    for (let z = 0; z < mZahl; z++) if (mAnw[a.m.idx][z] && mTag[z] >= vonTag && reihen[mReihe[z]].markt === a.m.markt) zeilen.push(z);
+    const uniL = universumIdx.get(a.m.idx)!;
+    for (let z = 0; z < mZahl; z++) if (mAnw[a.m.idx][z] && mTag[z] >= vonTag && reihen[mReihe[z]].markt === a.m.markt && (!uniL.length || uniL.some((b) => b.a >= 0 && b.klassen.has(mX[z * P + b.a])))) zeilen.push(z);
     const bew = zeilen.map((z) => bewerten(a.modell, mX, z));
     let gewaehlt: number[];
     if (a.passt) {

@@ -1067,7 +1067,11 @@
         "spielart": "V2L150",
         "fenster": 10,
         "ziel": "treffer"
-      }
+      },
+        { "markt": "aktie", "spielart": "V2S150", "fenster": 10, "ziel": "treffer", "universum": { "name": "wild", "text": "die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach)", "oder": [{ "merkmal": "max20", "klassen": [4] }, { "merkmal": "r1", "klassen": [0, 6] }, { "merkmal": "relVolumen", "klassen": [5] }] }, "oberste": [5, 10, 20] },
+        { "markt": "aktie", "spielart": "V2L150", "fenster": 10, "ziel": "treffer", "universum": { "name": "wild", "text": "die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach)", "oder": [{ "merkmal": "max20", "klassen": [4] }, { "merkmal": "r1", "klassen": [0, 6] }, { "merkmal": "relVolumen", "klassen": [5] }] }, "oberste": [5, 10, 20] },
+        { "markt": "aktie", "spielart": "2S150", "fenster": 10, "universum": { "name": "wild", "text": "die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach)", "oder": [{ "merkmal": "max20", "klassen": [4] }, { "merkmal": "r1", "klassen": [0, 6] }, { "merkmal": "relVolumen", "klassen": [5] }] }, "oberste": [5, 10, 20] },
+        { "markt": "aktie", "spielart": "3L150", "fenster": 10, "universum": { "name": "wild", "text": "die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach)", "oder": [{ "merkmal": "max20", "klassen": [4] }, { "merkmal": "r1", "klassen": [0, 6] }, { "merkmal": "relVolumen", "klassen": [5] }] }, "oberste": [5, 10, 20] }
     ],
     "obersteProzent": [
       0.5,
