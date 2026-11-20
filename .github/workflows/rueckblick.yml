@@ -16,6 +16,10 @@ on:
         description: 'Probe: Code des gewählten Branchs rechnen, nichts sichern, nichts veröffentlichen'
         type: boolean
         default: false
+      modellregel_ab:
+        description: 'Nur Probe: erster Tag der Modell-Regel früher setzen (JJJJ-MM-TT), um den Ablauf zu prüfen'
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -52,6 +56,7 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=8192
           DATEN_DIR: ${{ runner.temp }}/muster
           SIGNALE_DIR: _daten
+          MODELLREGEL_AB: ${{ inputs.probe && inputs.modellregel_ab || '' }}
         run: |
           mkdir -p "$DATEN_DIR/lernen/muster"
           # Hypothesen- und Muster-Buch werden nur angehängt → bisherigen Stand mitnehmen

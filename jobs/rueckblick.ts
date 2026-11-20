@@ -2346,6 +2346,8 @@ interface ModellErgebnis {
 // festgehalten (nur anhängen) und nie neu gerechnet – ein später trainiertes Modell kennt die Ergebnisse dieser Tage schon.
 // Gewählt wird ein Tag nur, solange keiner seiner Fälle ein Ergebnis hat (praktisch: der jüngste Stichtag).
 const MR = (vt.v6 as unknown as { modellRegel?: { aktiv: boolean; ausGrund?: string; ab: string; modelle: string[]; oberste: number; maxOffen: number; beleg?: { orders: number; quote: number; oe: number; monatePlus: number; monate: number }; leihe?: { pruefen: boolean; maxGebuehrProzent: number }; bremse: ZrBremsRegel } }).modellRegel;
+// Probe: MODELLREGEL_AB setzt den ersten Tag früher (nur zum Prüfen des Ablaufs; Probeläufe veröffentlichen nichts)
+const abMR = process.env.MODELLREGEL_AB || MR?.ab || '9999-12-31';
 type WahlEintrag = { w: string; r: number; pl?: string; leihbar?: boolean | null };
 const mwBuch = leseJson<{ eintraege: Record<string, Record<string, WahlEintrag[]>> }>('lernen/muster/modell-wahl.json', { eintraege: {} });
 let mwNeu = 0;
@@ -2624,8 +2626,9 @@ if (MODELLE.length && mZahl) {
     }
   }
   // Modell-Regel (20.11.2026): je Handelstag ab „ab“ die obersten Prozent des Modell-Universums, festgehalten im Buch
-  if (MR) {
-    const vonTagMR = tagNrAlle.get(alleTage.find((d) => d >= MR.ab) ?? '9999') ?? Infinity;
+  // (Fehler hier dürfen den Rückblick nicht anhalten – sie werden gemeldet, die Regel fällt für diese Nacht aus)
+  if (MR) try {
+    const vonTagMR = tagNrAlle.get(alleTage.find((d) => d >= abMR) ?? '9999') ?? Infinity;
     const leihe = MR.leihe?.pruefen ? leiheLaden() : new Map<string, Leihe>();
     const reiheNachSchluessel = new Map(reihen.map((r) => [r.schluessel, r]));
     for (const name of MR.modelle) {
@@ -2669,7 +2672,7 @@ if (MODELLE.length && mZahl) {
       const e: BuchMuster = { schluessel: key, gruppe: `Modell-Regel: Gesamtmodell ${spielartText(sp0)}${m.universum ? ` – ${m.universum.text}` : ''}, oberste ${MR.oberste} % des Tages`, gruppenSchluessel: key, sp: m.spielart, fenster: m.fenster, seit: MR.ab, wertung: 0, rueckblick: { quote: MR.beleg?.quote ?? 0, ev: MR.beleg?.oe ?? 0, se: 0, faelle: MR.beleg?.orders ?? 0 }, status: 'test' };
       let ohneLeihe = 0;
       for (const [d, liste] of Object.entries(buchM)) {
-        if (d < MR.ab) continue;
+        if (d < abMR) continue;
         for (const w of liste) {
           if (MR.leihe?.pruefen && w.leihbar === false) {
             ohneLeihe++;
@@ -2688,6 +2691,9 @@ if (MODELLE.length && mZahl) {
       }
       log(`Modell-Regel ${name}: ${Object.keys(buchM).length} Tage festgehalten, ${mrFaelle.length} Fälle, ${ohneLeihe} Shorts beim US-Broker nicht leihbar (IBKR-Liste ${leihe.size} Werte).`);
     }
+  } catch (err) {
+    mrFaelle.length = 0;
+    log(`FEHLER Modell-Regel (Auswahl): ${String((err as Error)?.stack ?? err).slice(0, 400)}`);
   }
   if (mwNeu || MR) schreibeJson('lernen/muster/modell-wahl.json', { stand: jetzt.toISOString(), hinweis: 'Modell-Wahl-Buch (seit 20.11.2026, nur anhängen): je Modell und Stichtag die Werte, die das Modell an diesem Tag gewählt hat (Rang), bei Modell-Regel-Shorts beim US-Broker auch die Plattform und ob der Wert bei IBKR leihbar war. Ein Tag wird nur gewählt, solange keiner seiner Fälle ein Ergebnis hat – danach nie neu.', eintraege: mwBuch.eintraege });
   schreibeJson('lernen/muster/modell.json', {
@@ -3070,16 +3076,16 @@ if (vt.erkennung) {
   let mr: ReturnType<typeof stufe3Waehlen> | null = null;
   let mrStand: ReturnType<typeof zrBremse> | null = null;
   const mrBremsEintrag = () => (MR ? [...zrBuch.eintraege].reverse().find((e) => e.status === 'bremse' && e.schluessel === 'modellregel' && e.am >= MR.ab) ?? null : null);
-  if (MR && mrFaelle.length) {
+  if (MR && mrFaelle.length) try {
     for (const f of mrFaelle) {
       const u = urteile.get(`${f.wert.toUpperCase()}|${f.stichtag}`);
       if (u) Object.assign(f, u);
     }
-    const kand = mrFaelle.filter((f) => !gegenwindShort(f) && f.stichtag >= MR.ab);
+    const kand = mrFaelle.filter((f) => !gegenwindShort(f) && f.stichtag >= abMR);
     const keys = new Set(kand.map((f) => f.muster));
     const waehleMr = () => {
       const b2 = mrBremsEintrag();
-      return stufe3Waehlen(kand, new Map([...keys].map((k2) => [k2, [{ von: MR.ab, bis: b2 ? b2.am : null }]])), { ...v6, maxOffen: MR.maxOffen }, ohneNein, klumpenRegel);
+      return stufe3Waehlen(kand, new Map([...keys].map((k2) => [k2, [{ von: abMR, bis: b2 ? b2.am : null }]])), { ...v6, maxOffen: MR.maxOffen }, ohneNein, klumpenRegel);
     };
     mr = waehleMr();
     mrStand = zrBremse([...mr.offen, ...mr.abgeschlossen], MR.bremse);
@@ -3089,6 +3095,10 @@ if (vt.erkennung) {
       log(`Modell-Regel GEBREMST: ${mrStand.grund}.`);
     }
     log(`Modell-Regel (${MR.aktiv ? 'sichtbar' : 'virtuell bis zum Go'}): ${kand.length} Fälle, ${mr.offen.length} offen, ${mr.vorgemerkt.length} vorgemerkt, ${mr.kennzahlen.anzahl} abgeschlossen (Volltreffer ${mr.kennzahlen.quote} %, Ø ${mr.kennzahlen.ev} €; ${mrStand.grund}).`);
+  } catch (err) {
+    mr = null;
+    mrStand = null;
+    log(`FEHLER Modell-Regel (Orders): ${String((err as Error)?.stack ?? err).slice(0, 400)}`);
   }
   const mrS = MR?.aktiv ? mr : null;
   if (ZRV || RWC || MR) schreibeJson('lernen/muster/zeitreise-buch.json', { stand: jetzt.toISOString(), hinweis: 'Zeitreise-Regel (seit 20.11.2026): ab welchem Stichtag ein Muster der Zeitreise-Auswahl sichtbar ordern darf (gewaehlt) und ab wann nicht mehr (abgewaehlt); bremse = Regel gestoppt. Nur anhängen.', eintraege: zrBuch.eintraege });
