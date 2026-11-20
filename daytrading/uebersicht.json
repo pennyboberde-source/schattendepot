@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T20:39:54.481Z",
+  "stand": "2026-11-20T20:53:39.961Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -337,64 +337,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-netflix-inc",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NETFLIX INC",
-      "isin": "US64110L1061",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 63.71,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:45:00.000Z",
-        "kurs": 53.14,
-        "level": 53.39,
-        "spanne": {
-          "hoch": 54,
-          "tief": 53.39
-        },
-        "richtung": "short"
-      },
-      "stop": 53.7,
-      "ziel": 51.88,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:45:00.000Z",
-        "basisKurs": 53.09,
-        "kurs": 10.647,
-        "stueck": 93,
-        "kurswert": 990.17
-      },
-      "timeMachine": {
-        "zielZuerst": 3.7,
-        "stopZuerst": 17.7,
-        "keins": 78.6,
-        "gruen": 57.4,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 35,
-          "ziel": 7,
-          "stop": 11,
-          "oeR": 0.32
-        }
-      }
-    },
-    {
       "id": "2026-11-20-scan-palo-alto-networks-inc",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -449,64 +391,6 @@
           "ziel": 1,
           "stop": 9,
           "oeR": -0.09
-        }
-      }
-    },
-    {
-      "id": "2026-11-20-scan-jinko-holdings-ltd",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "JINKO HOLDINGS LTD",
-      "isin": "US47759T1007",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 8.04,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T17:45:00.000Z",
-        "kurs": 6.71,
-        "level": 6.72,
-        "spanne": {
-          "hoch": 7.01,
-          "tief": 6.72
-        },
-        "richtung": "short"
-      },
-      "stop": 6.865,
-      "ziel": 6.37,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T17:45:00.000Z",
-        "basisKurs": 6.7,
-        "kurs": 1.3434,
-        "stueck": 744,
-        "kurswert": 999.49
-      },
-      "timeMachine": {
-        "zielZuerst": 0.1,
-        "stopZuerst": 12.6,
-        "keins": 87.3,
-        "gruen": 51.1,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 56,
-        "historie": {
-          "faelle": 38,
-          "ziel": 10,
-          "stop": 14,
-          "oeR": 0.15
         }
       }
     },
@@ -629,64 +513,6 @@
       }
     },
     {
-      "id": "2026-11-20-scan-netflix-inc",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "NETFLIX INC",
-      "isin": "US64110L1061",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 63.71,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T15:45:00.000Z",
-        "kurs": 53.14,
-        "level": 53.39,
-        "spanne": {
-          "hoch": 54,
-          "tief": 53.39
-        },
-        "richtung": "short"
-      },
-      "stop": 53.7,
-      "ziel": 51.88,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T15:45:00.000Z",
-        "basisKurs": 53.09,
-        "kurs": 10.647,
-        "stueck": 93,
-        "kurswert": 990.17
-      },
-      "timeMachine": {
-        "zielZuerst": 3.7,
-        "stopZuerst": 17.7,
-        "keins": 78.6,
-        "gruen": 57.4,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 63,
-        "historie": {
-          "faelle": 35,
-          "ziel": 7,
-          "stop": 11,
-          "oeR": 0.32
-        }
-      }
-    },
-    {
       "id": "2026-11-20-scan-palo-alto-networks-inc",
       "datum": "2026-11-20",
       "herkunft": "code_scan",
@@ -741,64 +567,6 @@
           "ziel": 1,
           "stop": 9,
           "oeR": -0.09
-        }
-      }
-    },
-    {
-      "id": "2026-11-20-scan-jinko-holdings-ltd",
-      "datum": "2026-11-20",
-      "herkunft": "code_scan",
-      "markt": "us",
-      "setup": "orb",
-      "richtung": "short",
-      "instrument": "turbo",
-      "name": "JINKO HOLDINGS LTD",
-      "isin": "US47759T1007",
-      "turbo": {
-        "richtung": "short",
-        "hebel": 5,
-        "basispreis": 8.04,
-        "bezugsverhaeltnis": 1,
-        "emittent": "UniCredit (synthetisch)"
-      },
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-20T17:45:00.000Z",
-        "kurs": 6.71,
-        "level": 6.72,
-        "spanne": {
-          "hoch": 7.01,
-          "tief": 6.72
-        },
-        "richtung": "short"
-      },
-      "stop": 6.865,
-      "ziel": 6.37,
-      "zielR": 2,
-      "flatBis": "2026-11-20T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-20T17:45:00.000Z",
-        "basisKurs": 6.7,
-        "kurs": 1.3434,
-        "stueck": 744,
-        "kurswert": 999.49
-      },
-      "timeMachine": {
-        "zielZuerst": 0.1,
-        "stopZuerst": 12.6,
-        "keins": 87.3,
-        "gruen": 51.1,
-        "schwelle": 33.3,
-        "urteil": "Deutlich Richtung Stop",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 56,
-        "historie": {
-          "faelle": 38,
-          "ziel": 10,
-          "stop": 14,
-          "oeR": 0.15
         }
       }
     },
@@ -858,6 +626,160 @@
           "stop": 8,
           "oeR": -0.08
         }
+      }
+    },
+    {
+      "id": "2026-11-20-scan-netflix-inc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "NETFLIX INC",
+      "isin": "US64110L1061",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 63.71,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T15:45:00.000Z",
+        "kurs": 53.14,
+        "level": 53.39,
+        "spanne": {
+          "hoch": 54,
+          "tief": 53.39
+        },
+        "richtung": "short"
+      },
+      "stop": 53.7,
+      "ziel": 51.88,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T15:45:00.000Z",
+        "basisKurs": 53.09,
+        "kurs": 10.647,
+        "stueck": 93,
+        "kurswert": 990.17
+      },
+      "timeMachine": {
+        "zielZuerst": 3.7,
+        "stopZuerst": 17.7,
+        "keins": 78.6,
+        "gruen": 57.4,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 63,
+        "historie": {
+          "faelle": 35,
+          "ziel": 7,
+          "stop": 11,
+          "oeR": 0.32
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T20:45:00.000Z",
+        "basisKurs": 51.88,
+        "kurs": 11.8,
+        "kurswert": 1097.4,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 107.23,
+        "bruttoProzent": 10.83,
+        "netto": 107.23,
+        "nettoProzent": 10.83,
+        "nettoTR": 105.23,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 1.98
+      }
+    },
+    {
+      "id": "2026-11-20-scan-jinko-holdings-ltd",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "us",
+      "setup": "orb",
+      "richtung": "short",
+      "instrument": "turbo",
+      "name": "JINKO HOLDINGS LTD",
+      "isin": "US47759T1007",
+      "turbo": {
+        "richtung": "short",
+        "hebel": 5,
+        "basispreis": 8.04,
+        "bezugsverhaeltnis": 1,
+        "emittent": "UniCredit (synthetisch)"
+      },
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-20T17:45:00.000Z",
+        "kurs": 6.71,
+        "level": 6.72,
+        "spanne": {
+          "hoch": 7.01,
+          "tief": 6.72
+        },
+        "richtung": "short"
+      },
+      "stop": 6.865,
+      "ziel": 6.37,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T17:45:00.000Z",
+        "basisKurs": 6.7,
+        "kurs": 1.3434,
+        "stueck": 744,
+        "kurswert": 999.49
+      },
+      "timeMachine": {
+        "zielZuerst": 0.1,
+        "stopZuerst": 12.6,
+        "keins": 87.3,
+        "gruen": 51.1,
+        "schwelle": 33.3,
+        "urteil": "Deutlich Richtung Stop",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 56,
+        "historie": {
+          "faelle": 38,
+          "ziel": 10,
+          "stop": 14,
+          "oeR": 0.15
+        }
+      },
+      "ausstieg": {
+        "zeit": "2026-11-20T20:40:00.000Z",
+        "basisKurs": 6.37,
+        "kurs": 1.6658,
+        "kurswert": 1239.36,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 239.87,
+        "bruttoProzent": 24,
+        "netto": 239.87,
+        "nettoProzent": 24,
+        "nettoTR": 237.87,
+        "gebuehren": {
+          "haupt": 0,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -12433,46 +12355,46 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 204,
-      "treffer": 101,
-      "quote": 49.5,
-      "netto": 2656.38,
-      "brutto": 2736.38,
-      "nettoTR": 2329.38,
-      "oeNettoProzent": 1.3,
-      "oeR": 0.43
+      "anzahl": 206,
+      "treffer": 103,
+      "quote": 50,
+      "netto": 3003.48,
+      "brutto": 3083.48,
+      "nettoTR": 2672.48,
+      "oeNettoProzent": 1.46,
+      "oeR": 0.45
     },
     "heute": {
-      "anzahl": 20,
-      "treffer": 10,
-      "quote": 50,
-      "netto": 1187.6,
-      "brutto": 1195.6,
-      "nettoTR": 1155.6,
-      "oeNettoProzent": 5.97,
-      "oeR": 0.41
+      "anzahl": 22,
+      "treffer": 12,
+      "quote": 54.5,
+      "netto": 1534.7,
+      "brutto": 1542.7,
+      "nettoTR": 1498.7,
+      "oeNettoProzent": 7.01,
+      "oeR": 0.56
     },
-    "offen": 5,
+    "offen": 3,
     "gruppen": {
       "turbo": {
-        "anzahl": 164,
-        "treffer": 91,
-        "quote": 55.5,
-        "netto": 2992.66,
-        "brutto": 2992.66,
-        "nettoTR": 2665.66,
-        "oeNettoProzent": 1.83,
-        "oeR": 0.49
+        "anzahl": 166,
+        "treffer": 93,
+        "quote": 56,
+        "netto": 3339.76,
+        "brutto": 3339.76,
+        "nettoTR": 3008.76,
+        "oeNettoProzent": 2.02,
+        "oeR": 0.51
       },
       "short": {
-        "anzahl": 164,
-        "treffer": 91,
-        "quote": 55.5,
-        "netto": 2992.66,
-        "brutto": 2992.66,
-        "nettoTR": 2665.66,
-        "oeNettoProzent": 1.83,
-        "oeR": 0.49
+        "anzahl": 166,
+        "treffer": 93,
+        "quote": 56,
+        "netto": 3339.76,
+        "brutto": 3339.76,
+        "nettoTR": 3008.76,
+        "oeNettoProzent": 2.02,
+        "oeR": 0.51
       },
       "krypto": {
         "anzahl": 40,
