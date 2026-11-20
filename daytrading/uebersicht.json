@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T10:24:26.225Z",
+  "stand": "2026-11-20T10:39:42.431Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -400,6 +400,40 @@
         "stueck": 193,
         "kurswert": 999.91
       }
+    },
+    {
+      "id": "2026-11-20-scan-btc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T10:30:00.000Z",
+        "kurs": 56499.3,
+        "level": 56471.2,
+        "spanne": {
+          "hoch": 56471.2,
+          "tief": 56190.1
+        },
+        "richtung": "long"
+      },
+      "stop": 56330.65,
+      "ziel": 56839,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T10:30:00.000Z",
+        "basisKurs": 56500.1,
+        "kurs": 56641.35,
+        "stueck": 0.017654,
+        "kurswert": 999.95
+      }
     }
   ],
   "trades": [
@@ -524,6 +558,40 @@
         "kurs": 5.1809,
         "stueck": 193,
         "kurswert": 999.91
+      }
+    },
+    {
+      "id": "2026-11-20-scan-btc",
+      "datum": "2026-11-20",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "BTC",
+      "symbol": "BTC",
+      "spekulativ": false,
+      "ausloeser": {
+        "zeit": "2026-11-20T10:30:00.000Z",
+        "kurs": 56499.3,
+        "level": 56471.2,
+        "spanne": {
+          "hoch": 56471.2,
+          "tief": 56190.1
+        },
+        "richtung": "long"
+      },
+      "stop": 56330.65,
+      "ziel": 56839,
+      "zielR": 2,
+      "flatBis": "2026-11-20T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-20T10:30:00.000Z",
+        "basisKurs": 56500.1,
+        "kurs": 56641.35,
+        "stueck": 0.017654,
+        "kurswert": 999.95
       }
     },
     {
@@ -10124,7 +10192,7 @@
       "oeNettoProzent": 1.43,
       "oeR": 0.97
     },
-    "offen": 3,
+    "offen": 4,
     "gruppen": {
       "turbo": {
         "anzahl": 151,
