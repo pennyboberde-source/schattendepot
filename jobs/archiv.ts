@@ -22,6 +22,7 @@ import {
   parseKrakenOhlc,
   parseMassive,
   parseMassiveSplits,
+  parseUsArchiv,
   parseUsSplitsArchiv,
   splitsVereinen,
   tageInFolge,
@@ -51,6 +52,7 @@ interface ArchivConfig {
   gettex: { handelVon: string; handelBis: string; fertigNachMinuten: number; parallel: number };
   us: { host: string; ab: string; maxTageJeLauf: number; pauseSekunden: number; bereinigt: boolean; mitOtc: boolean };
   krypto: { host: string };
+  minuten?: { schwelleHoch: number; minKurs: number; maxFaktor: number; mitOtc: boolean; pauseSekunden: number; laufzeitMinuten: number; ab: string };
   kryptoKerzen?: { waehrungen: string[]; pauseMs: number; mindestAnteil: number; tageZurueck: number };
   stamm?: { maxAnfragen: number; pauseMs: number; fenster: number; mindestTage: number };
   boersenwert?: { seiten: number; maxVerlaeufe: number; pauseMs: number; tage: number };
@@ -93,6 +95,8 @@ interface Index {
   amtsblatt?: { reihen: number; tage: number; bis: string | null; geholt: string };
   weltgeschehen?: { tage: number; ereignisse: number; bis: string | null; geholt: string };
   aufmerksamkeit?: { zugeordnet: number; mitReihe: number; offen: number; bis: string | null; geholt: string; zuordnung: string };
+  /** Zeitlupe (Q1, 20.11.2026): Minutenkerzen der Tage mit großem Tageshoch (minuten/JJJJ/JJJJ-MM-TT.json.gz) in Zählungen */
+  minuten?: { ereignisse: number; tage: number; offen: number; leer: number; geholt: string };
   usZahlen?: { firmen: number; abgerufen: number; offen: number; mitZahlen: number; meldungen: number; mitBranche: number; ab: string; tageBis: string | null; geholt: string; mitArten?: number; arten?: Record<string, number> };
 }
 
@@ -1411,6 +1415,88 @@ async function aufmerksamkeit() {
   console.log(`Aufmerksamkeit (Wikipedia): ${artikel.size} Artikel zugeordnet, ${Object.keys(nachtrag).length} Reihen nachgetragen (${artikel.size - geholt.size} offen), Tagesstand ${tagesZahl ? `${neuester} für ${tagesZahl} Artikel` : 'unverändert'}.`);
 }
 
+// ---------- Zeitlupe (Q1, Nutzer 20.11.2026): Minutenkerzen der Tage mit großem Tageshoch ----------
+// Massive Basic liefert Minutenkerzen über 2 Jahre (5 Abrufe je Minute). Geholt werden der Tag, an dem das Tageshoch
+// mindestens schwelleHoch % über dem Vortagesschluss lag, und der Folgetag – genau die Tage, an denen ein Einstieg im
+// Tagesverlauf überhaupt hätte auslösen können (Auswahl nach dem Hoch, nicht nach dem Schluss: kein Blick nach vorn).
+// Neueste Tage zuerst, je Lauf höchstens laufzeitMinuten. Ablage privat je Tag: { KÜRZEL: [[Minute seit 0 Uhr UTC des
+// Tages, o, h, l, c, v], …] } (Minute kann über 1440 gehen = Folgetag). Logs und öffentlicher Stand nur in Zählungen.
+async function minuten() {
+  const key = process.env.MASSIVE_API_KEY?.trim();
+  if (!key) {
+    console.log('Zeitlupe: MASSIVE_API_KEY fehlt – übersprungen.');
+    return;
+  }
+  const mc = cfg.minuten ?? { schwelleHoch: 15, minKurs: 0.1, maxFaktor: 5, mitOtc: false, pauseSekunden: 13, laufzeitMinuten: 40, ab: '' };
+  const laufzeit = Number(process.env.MINUTEN_LAUFZEIT ?? mc.laufzeitMinuten);
+  const ende = Date.now() + laufzeit * 60000;
+  const tage = Object.keys(index.us).filter((d) => index.us[d].werte && existsSync(pfad('us', d))).sort();
+  // Ereignisse aus den Tagesdateien: Hoch ≥ Vortagesschluss × (1 + schwelle), ohne Ausreißer (unbereinigte Splits)
+  const ereignisse: { d: string; d1: string; t: string }[] = [];
+  let vor: Map<string, { c: number }> | null = null;
+  for (let i = 0; i < tage.length; i++) {
+    const tag = parseUsArchiv(gunzipSync(readFileSync(pfad('us', tage[i]))).toString('utf8'));
+    if (vor && i + 1 < tage.length && (!mc.ab || tage[i] >= mc.ab)) {
+      for (const k of tag.values()) {
+        if (k.otc && !mc.mitOtc) continue;
+        const p = vor.get(k.ticker);
+        if (!p || !(p.c >= mc.minKurs) || !(k.v > 0)) continue;
+        const f = k.h / p.c;
+        if (f >= 1 + mc.schwelleHoch / 100 && f <= mc.maxFaktor) ereignisse.push({ d: tage[i], d1: tage[i + 1], t: k.ticker });
+      }
+    }
+    vor = tag;
+  }
+  const ordner = join(ARCHIV, 'minuten');
+  const fertigPfad = join(ordner, 'fertig.json');
+  const fertig = new Set<string>(existsSync(fertigPfad) ? (JSON.parse(readFileSync(fertigPfad, 'utf8')) as string[]) : []);
+  const offen = ereignisse.filter((e) => !fertig.has(`${e.d}|${e.t}`)).sort((a, b) => b.d.localeCompare(a.d) || a.t.localeCompare(b.t));
+  const dateiVon = (d: string) => join(ordner, d.slice(0, 4), `${d}.json.gz`);
+  const cache = new Map<string, Record<string, number[][]>>();
+  const tagDatei = (d: string) => {
+    if (!cache.has(d)) cache.set(d, existsSync(dateiVon(d)) ? (JSON.parse(gunzipSync(readFileSync(dateiVon(d))).toString('utf8')) as Record<string, number[][]>) : {});
+    return cache.get(d)!;
+  };
+  const sichern = () => {
+    for (const [d, inhalt] of cache) {
+      mkdirSync(dirname(dateiVon(d)), { recursive: true });
+      writeFileSync(dateiVon(d), gzipSync(Buffer.from(JSON.stringify(inhalt), 'utf8'), { level: 9 }));
+    }
+    mkdirSync(ordner, { recursive: true });
+    writeFileSync(fertigPfad, JSON.stringify([...fertig].sort()));
+  };
+  let geholt = 0;
+  let leer = 0;
+  let sperren = 0;
+  for (const e of offen) {
+    if (Date.now() > ende) break;
+    if (geholt + leer > 0) await pause(mc.pauseSekunden * 1000);
+    const url = `${cfg.us.host}/v2/aggs/ticker/${encodeURIComponent(e.t)}/range/1/minute/${e.d}/${e.d1}?adjusted=false&sort=asc&limit=50000`;
+    const r = await fetch(url, { headers: { Authorization: `Bearer ${key}`, 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(60000) }).catch(() => null);
+    if (!r) continue;
+    if (r.status === 429) {
+      if (++sperren > 3) break;
+      await pause(65000);
+      continue;
+    }
+    if (r.status === 403) throw new Error(`Zeitlupe: HTTP 403 (${e.d}) – Tarif oder Schlüssel`);
+    if (r.status !== 200) continue;
+    const j = (await r.json().catch(() => null)) as { results?: { t: number; o: number; h: number; l: number; c: number; v: number }[] } | null;
+    const basis = Date.parse(`${e.d}T00:00:00Z`);
+    const kerzen = (j?.results ?? []).map((x) => [Math.round((x.t - basis) / 60000), x.o, x.h, x.l, x.c, Math.round(x.v)]);
+    if (kerzen.length) {
+      tagDatei(e.d)[e.t] = kerzen;
+      geholt++;
+    } else leer++;
+    fertig.add(`${e.d}|${e.t}`);
+    if ((geholt + leer) % 50 === 0) sichern();
+  }
+  sichern();
+  const rest = offen.length - geholt - leer;
+  index.minuten = { ereignisse: fertig.size, tage: new Set([...fertig].map((x) => x.split('|')[0])).size, offen: rest, leer: (index.minuten?.leer ?? 0) + leer, geholt: iso };
+  console.log(`Zeitlupe: ${ereignisse.length} Tage mit Hoch ≥ +${mc.schwelleHoch} % (2 Jahre), ${geholt} neu geholt, ${leer} ohne Minuten, ${rest} offen.`);
+}
+
 const TEILE = [
   ['krypto', 'Krypto', krypto],
   ['us', 'US', us],
@@ -1432,6 +1518,7 @@ const TEILE = [
   ['amtsblatt', 'Amtsblatt (Federal Register)', amtsblatt],
   ['weltgeschehen', 'Weltgeschehen (Wikipedia)', weltgeschehen],
   ['aufmerksamkeit', 'Aufmerksamkeit (Wikipedia-Aufrufe)', aufmerksamkeit],
+  ['minuten', 'Zeitlupe (Minutenkerzen)', minuten],
 ] as const;
 for (const [schalter, name, lauf] of TEILE) {
   if (!NUR.has(schalter)) continue;
@@ -1489,6 +1576,7 @@ const stand = {
     const da = Object.keys(index.leerbestand ?? {}).filter((d) => index.leerbestand![d].werte > 0).sort();
     return { stichtage: da.length, von: da[0] ?? null, bis: da[da.length - 1] ?? null };
   })(),
+  minuten: index.minuten ?? null,
   neu:neu.length > 40 ? [...neu.slice(0, 20), `… ${neu.length - 40} weitere …`, ...neu.slice(-20)] : neu,
   fehler,
 };

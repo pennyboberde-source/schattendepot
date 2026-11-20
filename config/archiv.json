@@ -88,5 +88,15 @@
     "produkteJeRichtung": 150,
     "kursstellungJedesNteFenster": 2,
     "quelle": "https://raw.githubusercontent.com/pennyboberde-source/schattendepot/daten/volltreffer/uebersicht.json"
+  },
+  "minuten": {
+    "hinweis": "Zeitlupe (Q1, Nutzer 20.11.2026): Minutenkerzen (Massive Basic, 2 Jahre) der US-Tage, an denen das Tageshoch mindestens schwelleHoch % über dem Vortagesschluss lag, samt Folgetag – Grundlage, um einen Einstieg im Tagesverlauf ehrlich nachzurechnen. Nur börsennotierte Werte (mitOtc false), Kurs am Vortag ab minKurs $, Faktor über maxFaktor gilt als unbereinigter Split. Workflow zeitlupe.yml, je Lauf höchstens laufzeitMinuten, neueste Tage zuerst. Privat: minuten/JJJJ/JJJJ-MM-TT.json.gz.",
+    "schwelleHoch": 15,
+    "minKurs": 0.1,
+    "maxFaktor": 5,
+    "mitOtc": false,
+    "pauseSekunden": 13,
+    "laufzeitMinuten": 40,
+    "ab": ""
   }
 }

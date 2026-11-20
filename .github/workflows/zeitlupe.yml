@@ -1,0 +1,48 @@
+name: Zeitlupe (Minutenkerzen)
+
+# Q1 „Zeitlupe“ (Nutzer 20.11.2026): Minutenkerzen der US-Tage mit großem Tageshoch und des Folgetags ins PRIVATE
+# Archiv (Massive Basic, 5 Abrufe je Minute, 2 Jahre) – Grundlage, um einen Einstieg im Tagesverlauf ehrlich
+# nachzurechnen. Je Lauf rund 40 Minuten, tagsüber zwischen den Archivläufen (die gemeinsame Gruppe archiv-schreiben
+# hält gettex- und US-Tagesabruf nicht länger als einen Lauf auf). Logs und öffentlicher Stand nur in Zählungen.
+on:
+  schedule:
+    - cron: '40 7,9,11,13,15,17,19 * * *'
+  workflow_dispatch:
+    inputs:
+      minuten:
+        description: 'Laufzeit in Minuten (höchstens 280)'
+        default: '40'
+
+permissions:
+  contents: read
+
+jobs:
+  zeitlupe:
+    runs-on: ubuntu-latest
+    environment:
+      name: live
+      deployment: false
+    timeout-minutes: 300
+    concurrency:
+      group: archiv-schreiben
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
+        with:
+          repository: pennyboberde-source/schattendepot-archiv
+          token: ${{ secrets.ARCHIV_TOKEN }}
+          path: _archiv
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Minutenkerzen holen
+        env:
+          MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
+          ARCHIV_NUR: minuten
+          MINUTEN_LAUFZEIT: ${{ github.event.inputs.minuten || '40' }}
+        run: node jobs/archiv.ts | grep -E '^(Zeitlupe|FEHLER)' || true
+      - name: Im privaten Archiv sichern
+        run: bash scripts/archiv-sichern.sh "Zeitlupe $(date -u +%Y-%m-%dT%H:%MZ)"
