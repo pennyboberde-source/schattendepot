@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T11:20:22.862Z",
-  "anzahl": 212,
+  "stand": "2026-11-20T12:09:11.297Z",
+  "anzahl": 216,
   "signale": [
     {
       "id": "shortreport:BLLN:2026-11-18",
@@ -2812,6 +2812,58 @@
         "CNBC Politics"
       ],
       "z": "2026-11-20T11:20:22.862Z"
+    },
+    {
+      "id": "grossauftrag:VWAV:2026-11-20",
+      "s": "T:VWAV",
+      "n": "VisionWave Holdings, Inc.",
+      "t": "VWAV",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-20T12:00:29.000Z"
+    },
+    {
+      "id": "uebernahmeangebot:VWAV:2026-11-20",
+      "s": "T:VWAV",
+      "n": "VisionWave Holdings, Inc.",
+      "t": "VWAV",
+      "typ": "uebernahmeangebot",
+      "r": 1,
+      "st": 0.5,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-20T12:00:29.000Z"
+    },
+    {
+      "id": "grossauftrag:VNDA:2026-11-20",
+      "s": "T:VNDA",
+      "n": "Vanda Pharmaceuticals Inc.",
+      "t": "VNDA",
+      "typ": "grossauftrag",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "SEC EDGAR"
+      ],
+      "z": "2026-11-20T12:05:49.000Z"
+    },
+    {
+      "id": "katalysator_long:VWAV:2026-11-20",
+      "s": "T:VWAV",
+      "n": "VWAV",
+      "t": "VWAV",
+      "typ": "katalysator_long",
+      "r": 1,
+      "st": 0.5,
+      "q": [
+        "SEC EDGAR Volltext"
+      ],
+      "z": "2026-11-20T12:09:11.297Z"
     }
   ]
 }
