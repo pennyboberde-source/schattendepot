@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T15:09:14.108Z",
+  "stand": "2026-11-20T15:17:58.092Z",
   "heute": {
     "datum": "2026-11-20",
     "gruppe": {
@@ -1212,6 +1212,23 @@
         "stueck": 160,
         "kurswert": 994.48
       },
+      "timeMachine": {
+        "zielZuerst": 37.4,
+        "stopZuerst": 56.5,
+        "keins": 6.1,
+        "gruen": 41.9,
+        "schwelle": 33.3,
+        "urteil": "Neigt zum Ziel",
+        "wiederholungen": 10000,
+        "seed": 19,
+        "sitzungen": 64,
+        "historie": {
+          "faelle": 36,
+          "ziel": 3,
+          "stop": 14,
+          "oeR": -0.09
+        }
+      },
       "ausstieg": {
         "zeit": "2026-11-20T15:00:00.000Z",
         "basisKurs": 312.75,
@@ -1230,23 +1247,6 @@
           "tr": 2
         },
         "r": -1.49
-      },
-      "timeMachine": {
-        "zielZuerst": 37.4,
-        "stopZuerst": 56.5,
-        "keins": 6.1,
-        "gruen": 41.9,
-        "schwelle": 33.3,
-        "urteil": "Neigt zum Ziel",
-        "wiederholungen": 10000,
-        "seed": 19,
-        "sitzungen": 64,
-        "historie": {
-          "faelle": 36,
-          "ziel": 3,
-          "stop": 14,
-          "oeR": -0.09
-        }
       }
     },
     {
@@ -11276,10 +11276,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 3,
-        "faelle": 137,
-        "chance": 43.8,
-        "oeNetto": 0.09,
-        "wertung": -0.62
+        "faelle": 138,
+        "chance": 43.5,
+        "oeNetto": 0.06,
+        "wertung": -0.64
       }
     },
     "us:orb_long": {
