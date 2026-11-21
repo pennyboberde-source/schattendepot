@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T12:30:50.569Z",
+  "stand": "2026-11-21T00:42:01.827Z",
   "hinweis": "Zeitreise: der ganze Ablauf über die Kursgeschichte nachgespielt, als wäre er live gelaufen. Je Halbmonat wählt der Code bis zu 60 Muster nur aus Fällen, deren Ergebnis da schon feststand (1 Halbmonat Abstand): der Tag zählt als Einheit (Ø und Volltreffer-Anteil der Fälle eines Tages), in beiden Hälften der Vergangenheit je mindestens 30 Tage im Plus, besser als die Grundrate, Quote ab 10 %, höchstens 3 je Baustein. Dann je Tag die Fälle dieser Muster nach Wertung: „sichtbar“ höchstens 3 offene Orders, ohne Aktien-Shorts bei Gegenwind (Markt 5 Tage oder VIX im obersten Zehntel der vorigen 250 Tage), „Jagden“ höchstens 10, je Wert eine; 1.000 € je Order nach Kosten, Ausstieg bei Ziel (+400 €), Stop (−150 €) oder nach 10 Handelstagen. Vereinfachungen: ohne Klumpen-Grenze zwischen Werten, Pump-Filter und Gesamtmodell. Nur Kennzahlen, keine Kurse.",
   "zeitraum": {
     "von": "2025-03",
@@ -17,7 +17,20 @@
     "sichtbarMaxOffen": 3,
     "sichtbarMaxJeTag": 3,
     "jagdenMaxOffen": 10,
-    "jagdenMaxJeTag": 10
+    "jagdenMaxJeTag": 10,
+    "modell": {
+      "hinweis": "Modell-Zeitreise (20.11.2026, zeitreise.yml modus=modell): diese Gesamtmodelle (Spielart|Ziel|Universum) werden so nachgespielt, wie sie live gelaufen wären – trainiert nur mit Fällen, deren Ausstieg vor dem Halbmonat lag, neu alle neuJe Halbmonate (mindestens mindestTraining Fälle).",
+      "neuJe": 4,
+      "mindestTraining": 5000,
+      "modelle": [
+        "2S150|treffer",
+        "V2S150|treffer",
+        "V2L150|treffer",
+        "V2S150|treffer|wild",
+        "V2L150|treffer|wild",
+        "2S150|wild"
+      ]
+    }
   },
   "auswahl": {
     "halbmonate": 42,
@@ -292,6 +305,373 @@
         "orders": 23,
         "volltreffer": 5,
         "netto": -687
+      }
+    ]
+  },
+  "sichtbarNurGeprueft": {
+    "orders": 395,
+    "volltreffer": 97,
+    "quote": 24.6,
+    "netto": 4851,
+    "oe": 12.3,
+    "maxRueckgang": 3257,
+    "monate": [
+      {
+        "monat": "2025-03",
+        "orders": 31,
+        "volltreffer": 11,
+        "netto": 1412
+      },
+      {
+        "monat": "2025-04",
+        "orders": 25,
+        "volltreffer": 4,
+        "netto": -978
+      },
+      {
+        "monat": "2025-05",
+        "orders": 12,
+        "volltreffer": 0,
+        "netto": -1455
+      },
+      {
+        "monat": "2025-06",
+        "orders": 7,
+        "volltreffer": 1,
+        "netto": 130
+      },
+      {
+        "monat": "2025-07",
+        "orders": 12,
+        "volltreffer": 4,
+        "netto": 1546
+      },
+      {
+        "monat": "2025-08",
+        "orders": 22,
+        "volltreffer": 4,
+        "netto": -957
+      },
+      {
+        "monat": "2025-09",
+        "orders": 16,
+        "volltreffer": 4,
+        "netto": -15
+      },
+      {
+        "monat": "2025-10",
+        "orders": 17,
+        "volltreffer": 6,
+        "netto": 2060
+      },
+      {
+        "monat": "2025-11",
+        "orders": 13,
+        "volltreffer": 3,
+        "netto": 716
+      },
+      {
+        "monat": "2025-12",
+        "orders": 30,
+        "volltreffer": 5,
+        "netto": -1371
+      },
+      {
+        "monat": "2026-01",
+        "orders": 21,
+        "volltreffer": 7,
+        "netto": 930
+      },
+      {
+        "monat": "2026-02",
+        "orders": 14,
+        "volltreffer": 3,
+        "netto": 1672
+      },
+      {
+        "monat": "2026-03",
+        "orders": 12,
+        "volltreffer": 0,
+        "netto": -1950
+      },
+      {
+        "monat": "2026-04",
+        "orders": 13,
+        "volltreffer": 2,
+        "netto": 169
+      },
+      {
+        "monat": "2026-05",
+        "orders": 25,
+        "volltreffer": 4,
+        "netto": -1027
+      },
+      {
+        "monat": "2026-06",
+        "orders": 21,
+        "volltreffer": 10,
+        "netto": 2745
+      },
+      {
+        "monat": "2026-07",
+        "orders": 22,
+        "volltreffer": 9,
+        "netto": 1625
+      },
+      {
+        "monat": "2026-08",
+        "orders": 17,
+        "volltreffer": 5,
+        "netto": -38
+      },
+      {
+        "monat": "2026-09",
+        "orders": 20,
+        "volltreffer": 4,
+        "netto": 50
+      },
+      {
+        "monat": "2026-10",
+        "orders": 25,
+        "volltreffer": 7,
+        "netto": 372
+      },
+      {
+        "monat": "2026-11",
+        "orders": 20,
+        "volltreffer": 4,
+        "netto": -787
+      }
+    ]
+  },
+  "sichtbarAnteilUngeprueft": 0,
+  "sichtbarMitRueckenwind": {
+    "orders": 395,
+    "volltreffer": 97,
+    "quote": 24.6,
+    "netto": 4851,
+    "oe": 12.3,
+    "maxRueckgang": 3257,
+    "monate": [
+      {
+        "monat": "2025-03",
+        "orders": 31,
+        "volltreffer": 11,
+        "netto": 1412
+      },
+      {
+        "monat": "2025-04",
+        "orders": 25,
+        "volltreffer": 4,
+        "netto": -978
+      },
+      {
+        "monat": "2025-05",
+        "orders": 12,
+        "volltreffer": 0,
+        "netto": -1455
+      },
+      {
+        "monat": "2025-06",
+        "orders": 7,
+        "volltreffer": 1,
+        "netto": 130
+      },
+      {
+        "monat": "2025-07",
+        "orders": 12,
+        "volltreffer": 4,
+        "netto": 1546
+      },
+      {
+        "monat": "2025-08",
+        "orders": 22,
+        "volltreffer": 4,
+        "netto": -957
+      },
+      {
+        "monat": "2025-09",
+        "orders": 16,
+        "volltreffer": 4,
+        "netto": -15
+      },
+      {
+        "monat": "2025-10",
+        "orders": 17,
+        "volltreffer": 6,
+        "netto": 2060
+      },
+      {
+        "monat": "2025-11",
+        "orders": 13,
+        "volltreffer": 3,
+        "netto": 716
+      },
+      {
+        "monat": "2025-12",
+        "orders": 30,
+        "volltreffer": 5,
+        "netto": -1371
+      },
+      {
+        "monat": "2026-01",
+        "orders": 21,
+        "volltreffer": 7,
+        "netto": 930
+      },
+      {
+        "monat": "2026-02",
+        "orders": 14,
+        "volltreffer": 3,
+        "netto": 1672
+      },
+      {
+        "monat": "2026-03",
+        "orders": 12,
+        "volltreffer": 0,
+        "netto": -1950
+      },
+      {
+        "monat": "2026-04",
+        "orders": 13,
+        "volltreffer": 2,
+        "netto": 169
+      },
+      {
+        "monat": "2026-05",
+        "orders": 25,
+        "volltreffer": 4,
+        "netto": -1027
+      },
+      {
+        "monat": "2026-06",
+        "orders": 21,
+        "volltreffer": 10,
+        "netto": 2745
+      },
+      {
+        "monat": "2026-07",
+        "orders": 22,
+        "volltreffer": 9,
+        "netto": 1625
+      },
+      {
+        "monat": "2026-08",
+        "orders": 17,
+        "volltreffer": 5,
+        "netto": -38
+      },
+      {
+        "monat": "2026-09",
+        "orders": 20,
+        "volltreffer": 4,
+        "netto": 50
+      },
+      {
+        "monat": "2026-10",
+        "orders": 25,
+        "volltreffer": 7,
+        "netto": 372
+      },
+      {
+        "monat": "2026-11",
+        "orders": 20,
+        "volltreffer": 4,
+        "netto": -787
+      }
+    ]
+  },
+  "nurRueckenwind": {
+    "orders": 65,
+    "volltreffer": 10,
+    "quote": 15.4,
+    "netto": 4305,
+    "oe": 66.2,
+    "maxRueckgang": 777,
+    "monate": [
+      {
+        "monat": "2025-03",
+        "orders": 7,
+        "volltreffer": 1,
+        "netto": 579
+      },
+      {
+        "monat": "2025-04",
+        "orders": 7,
+        "volltreffer": 0,
+        "netto": -107
+      },
+      {
+        "monat": "2025-05",
+        "orders": 7,
+        "volltreffer": 1,
+        "netto": 375
+      },
+      {
+        "monat": "2025-10",
+        "orders": 3,
+        "volltreffer": 1,
+        "netto": 485
+      },
+      {
+        "monat": "2025-11",
+        "orders": 1,
+        "volltreffer": 1,
+        "netto": 400
+      },
+      {
+        "monat": "2025-12",
+        "orders": 3,
+        "volltreffer": 2,
+        "netto": 1098
+      },
+      {
+        "monat": "2026-01",
+        "orders": 5,
+        "volltreffer": 1,
+        "netto": 101
+      },
+      {
+        "monat": "2026-02",
+        "orders": 4,
+        "volltreffer": 1,
+        "netto": 1418
+      },
+      {
+        "monat": "2026-03",
+        "orders": 8,
+        "volltreffer": 1,
+        "netto": -279
+      },
+      {
+        "monat": "2026-04",
+        "orders": 6,
+        "volltreffer": 1,
+        "netto": 843
+      },
+      {
+        "monat": "2026-05",
+        "orders": 4,
+        "volltreffer": 0,
+        "netto": -348
+      },
+      {
+        "monat": "2026-06",
+        "orders": 3,
+        "volltreffer": 0,
+        "netto": -49
+      },
+      {
+        "monat": "2026-08",
+        "orders": 3,
+        "volltreffer": 0,
+        "netto": 222
+      },
+      {
+        "monat": "2026-11",
+        "orders": 4,
+        "volltreffer": 0,
+        "netto": -431
       }
     ]
   },
@@ -672,9 +1052,9 @@
     ]
   },
   "alleMusterfaelle": {
-    "faelle": 248485,
+    "faelle": 247245,
     "quote": 18.3,
-    "oe": -5
+    "oe": -5.1
   },
   "grundrate": {
     "faelle": 19773975,
