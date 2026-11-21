@@ -54,6 +54,7 @@ interface Uebersicht {
       ab: string;
       oberste: number;
       maxOffen: number;
+      plaetzeJetzt?: number;
       beleg: { orders: number; quote: number; oe: number; monatePlus: number; monate: number } | null;
       kennzahlen: JagdKennzahlen | null;
       bremse: { am: string; grund: string } | null;
@@ -134,7 +135,7 @@ export function OrdersKarte() {
         {s.modellRegel && (
           <p class="klein" data-testid="modell-regel">
             🧠 <strong>Modell-Regel {s.modellRegel.an ? 'an' : s.modellRegel.aktiv ? 'gestoppt' : 'virtuell'}</strong>
-            {` – das Gesamtmodell wählt je Tag die obersten ${s.modellRegel.oberste.toLocaleString('de-DE')} % seiner Werte, höchstens ${zahl(s.modellRegel.maxOffen)} Orders gleichzeitig (gekennzeichnet mit 🧠).`}
+            {` – das Gesamtmodell wählt je Tag die obersten ${s.modellRegel.oberste.toLocaleString('de-DE')} % seiner Werte, höchstens ${zahl(s.modellRegel.plaetzeJetzt ?? s.modellRegel.maxOffen)} Orders gleichzeitig (gekennzeichnet mit 🧠).`}
             {s.modellRegel.beleg ? ` Beleg Modell-Zeitreise: ${zahl(s.modellRegel.beleg.orders)} Orders, ${s.modellRegel.beleg.quote.toLocaleString('de-DE')} % Volltreffer, Ø ${euro(s.modellRegel.beleg.oe, { vorzeichen: true })}, ${zahl(s.modellRegel.beleg.monatePlus)} von ${zahl(s.modellRegel.beleg.monate)} Monaten im Plus.` : ''}
             {s.modellRegel.bremse ? ` Gestoppt am ${datumKurz(s.modellRegel.bremse.am)}: ${s.modellRegel.bremse.grund}.` : !s.modellRegel.aktiv ? ` ${s.modellRegel.ausGrund ?? ''}.` : ''}
             {s.modellRegel.kennzahlen && s.modellRegel.kennzahlen.anzahl + s.modellRegel.kennzahlen.offen > 0

@@ -1028,6 +1028,7 @@
       "kombination": "21.11.2026 (Nutzer-Go): beide Short-Modelle auf den wilden Werten, je Tag nach Rang im eigenen Modell, 5 Plätze – Modell-Zeitreise 44808793769: 720 Orders, 39,2 % Volltreffer, Ø +78,9 €, 19 von 21 Monaten im Plus, größter Rückgang 2.546 € (vorher 2S150|wild mit 3 Plätzen: 464 Orders, Ø +72,4 €, 16/21).",
       "oberste": 20,
       "maxOffen": 5,
+      "rueckfall": { "hinweis": "Nutzer 21.11.2026: erst Variante A (5 Plätze); fällt der Ø je Order stark unter 60 €, auf Variante B (3 Plätze) umschwenken. Umgesetzt: ab mindestOrders abgeschlossenen Orders und Ø unter minOe € schreibt der Rückblick den Eintrag „modellregel-b“ ins Zeitreise-Buch; ab dem Folgetag gelten maxOffen Plätze, frühere Orders bleiben unverändert.", "mindestOrders": 20, "minOe": 40, "maxOffen": 3 },
       "beleg": { "orders": 720, "quote": 39.2, "oe": 78.9, "monatePlus": 19, "monate": 21 },
       "leihe": { "pruefen": true, "maxGebuehrProzent": 150, "hinweis": "Probe 20.11.: von 7 Werten der obersten 5 % waren 6 bei IBKR nicht leihbar (nicht gelistet, zu wenig verfügbar oder Gebühr über 50 %). Deshalb: Auswahl aus den obersten 20 % des Tages (Modell-Zeitreise dort Ø +38 bis +40 € je Fall, Tag als Einheit), nach Rang, nur leihbare Werte (verfügbare Stück ≥ Bedarf, Gebühr bis 150 % p. a.); die echte Gebühr laut IBKR ersetzt die Annahme in den Kosten." },
       "bremse": { "mindestOrders": 8, "minOe": -20, "maxVerlust": 750 }

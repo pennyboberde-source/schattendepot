@@ -54,6 +54,8 @@ export interface JagdFall {
 
 export interface JagdRegeln {
   maxOffen: number;
+  /** ab einem Einstiegstag eine andere Zahl offener Jagden (21.11.2026: Rückfall der Modell-Regel ohne Rückwirkung) */
+  maxOffenAb?: { ab: string; maxOffen: number }[];
   tagesVerlustGrenze: number;
   /** V6: höchstens eine offene Jagd je Wert (derselbe Wert aus zwei Mustern wird nicht doppelt gehandelt) */
   einmalJeWert?: boolean;
@@ -89,7 +91,8 @@ export function jagdenWaehlen(faelle: JagdFall[], r: JagdRegeln): { jagden: Jagd
     const kl = r.klumpe?.(f) ?? null;
     const richtung = (x: JagdFall) => (/short/i.test(x.spielart) ? 's' : 'l');
     const klumpenVoll = kl !== null && r.maxJeKlumpen !== undefined && offen.filter((o) => r.klumpe!(o) === kl && richtung(o) === richtung(f)).length >= r.maxJeKlumpen;
-    if (offen.length >= r.maxOffen || gesperrt || doppelt || klumpenVoll) {
+    const grenze = (r.maxOffenAb ?? []).filter((x) => x.ab <= tag).sort((a, b) => a.ab.localeCompare(b.ab)).pop()?.maxOffen ?? r.maxOffen;
+    if (offen.length >= grenze || gesperrt || doppelt || klumpenVoll) {
       uebersprungen++;
       continue;
     }

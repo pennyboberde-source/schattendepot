@@ -16,6 +16,7 @@ export interface V6Regeln {
   mindestEv: number;
   /** sichtbare Orders gleichzeitig höchstens */
   maxOffen: number;
+  maxOffenAb?: { ab: string; maxOffen: number }[];
   /** nach so viel realisiertem Verlust an einem Tag (€) am nächsten Einstiegstag keine neue sichtbare Order */
   tagesVerlustGrenze: number;
   /** Einsatz je Order (€) */
@@ -117,7 +118,7 @@ export function stufe3Waehlen(faelle: JagdFall[], zeiten: Map<string, { von: str
   const kandidaten = faelle
     .filter((f) => inStufe3(zeiten, f) && !(ohneNein && f.urteil === 'nein'))
     .map((f) => (f.art === 'lauert' ? { ...f, einstieg: NAECHSTE } : f));
-  const { jagden, uebersprungen } = jagdenWaehlen(kandidaten, { maxOffen: r.maxOffen, tagesVerlustGrenze: r.tagesVerlustGrenze, einmalJeWert: true, ...(klumpen ?? {}) });
+  const { jagden, uebersprungen } = jagdenWaehlen(kandidaten, { maxOffen: r.maxOffen, ...(r.maxOffenAb ? { maxOffenAb: r.maxOffenAb } : {}), tagesVerlustGrenze: r.tagesVerlustGrenze, einmalJeWert: true, ...(klumpen ?? {}) });
   const echt = jagden.filter((j) => j.einstieg !== NAECHSTE);
   const vorgemerkt = jagden.filter((j) => j.einstieg === NAECHSTE).map((j) => ({ ...j, einstieg: null }));
   const k = jagdKennzahlen(echt);

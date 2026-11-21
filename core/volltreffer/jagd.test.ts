@@ -99,3 +99,14 @@ describe('Gesamtbild-Urteil (18.11.2026)', () => {
     expect(neinFilterAktiv(ja, nein, { mindestJa: 3, mindestNein: 2 })).toBe(false);
   });
 });
+
+describe('jagdenWaehlen mit maxOffenAb (21.11.2026)', () => {
+  it('weniger Plätze erst ab dem genannten Einstiegstag, frühere Jagden bleiben', () => {
+    const f = (wert: string, einstieg: string): JagdFall => ({ muster: 'm', wertung: 1, wert, markt: 'aktie', stichtag: einstieg, einstieg, ende: null, art: 'offen', netto: 0, tag: 1, fenster: 10, spielart: 'x' });
+    const faelle = [f('A', '2026-11-23'), f('B', '2026-11-23'), f('C', '2026-11-23'), f('D', '2026-11-25'), f('E', '2026-11-25')];
+    const ohne = jagdenWaehlen(faelle, { maxOffen: 5, tagesVerlustGrenze: -1e9 });
+    const mit = jagdenWaehlen(faelle, { maxOffen: 5, maxOffenAb: [{ ab: '2026-11-24', maxOffen: 3 }], tagesVerlustGrenze: -1e9 });
+    expect(ohne.jagden.map((j) => j.wert)).toEqual(['A', 'B', 'C', 'D', 'E']);
+    expect(mit.jagden.map((j) => j.wert)).toEqual(['A', 'B', 'C']);
+  });
+});

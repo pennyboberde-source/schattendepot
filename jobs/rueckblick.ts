@@ -2400,7 +2400,7 @@ interface ModellErgebnis {
 // Modell-Regel (20.11.2026) und ehrlicher Vorwärtstest der Modelle: Die Auswahl eines Tages wird im Modell-Wahl-Buch
 // festgehalten (nur anhängen) und nie neu gerechnet – ein später trainiertes Modell kennt die Ergebnisse dieser Tage schon.
 // Gewählt wird ein Tag nur, solange keiner seiner Fälle ein Ergebnis hat (praktisch: der jüngste Stichtag).
-const MR = (vt.v6 as unknown as { modellRegel?: { aktiv: boolean; ausGrund?: string; ab: string; modelle: string[]; oberste: number; maxOffen: number; beleg?: { orders: number; quote: number; oe: number; monatePlus: number; monate: number }; leihe?: { pruefen: boolean; maxGebuehrProzent: number }; bremse: ZrBremsRegel } }).modellRegel;
+const MR = (vt.v6 as unknown as { modellRegel?: { aktiv: boolean; ausGrund?: string; ab: string; modelle: string[]; oberste: number; maxOffen: number; rueckfall?: { mindestOrders: number; minOe: number; maxOffen: number }; beleg?: { orders: number; quote: number; oe: number; monatePlus: number; monate: number }; leihe?: { pruefen: boolean; maxGebuehrProzent: number }; bremse: ZrBremsRegel } }).modellRegel;
 // Probe: MODELLREGEL_AB setzt den ersten Tag früher (nur zum Prüfen des Ablaufs; Probeläufe veröffentlichen nichts)
 const abMR = process.env.MODELLREGEL_AB || MR?.ab || '9999-12-31';
 type WahlEintrag = { w: string; r: number; pl?: string; leihbar?: boolean | null; g?: number };
@@ -3146,11 +3146,20 @@ if (vt.erkennung) {
     }
     const kand = mrFaelle.filter((f) => !gegenwindShort(f) && f.stichtag >= abMR);
     const keys = new Set(kand.map((f) => f.muster));
+    // Rückfall auf Variante B (Nutzer 21.11.2026): ab dem Tag nach dem Eintrag „modellregel-b“ weniger Plätze, ohne Rückwirkung
+    const rbEintrag = () => zrBuch.eintraege.find((e) => e.schluessel === 'modellregel-b' && e.am >= MR.ab) ?? null;
+    const folgetag = (d: string) => new Date(Date.parse(`${d}T12:00:00Z`) + 86400000).toISOString().slice(0, 10);
     const waehleMr = () => {
       const b2 = mrBremsEintrag();
-      return stufe3Waehlen(kand, new Map([...keys].map((k2) => [k2, [{ von: abMR, bis: b2 ? b2.am : null }]])), { ...v6, maxOffen: MR.maxOffen }, ohneNein, klumpenRegel);
+      const rb = rbEintrag();
+      return stufe3Waehlen(kand, new Map([...keys].map((k2) => [k2, [{ von: abMR, bis: b2 ? b2.am : null }]])), { ...v6, maxOffen: MR.maxOffen, ...(rb && MR.rueckfall ? { maxOffenAb: [{ ab: folgetag(rb.am), maxOffen: MR.rueckfall.maxOffen }] } : {}) }, ohneNein, klumpenRegel);
     };
     mr = waehleMr();
+    if (MR.rueckfall && !rbEintrag() && mr.kennzahlen.anzahl >= MR.rueckfall.mindestOrders && mr.kennzahlen.ev < MR.rueckfall.minOe) {
+      zrBuch.eintraege.push({ schluessel: 'modellregel-b', status: 'gewaehlt', am: neuesterTag('aktie'), grund: `Ø ${mr.kennzahlen.ev} € nach ${mr.kennzahlen.anzahl} Orders unter ${MR.rueckfall.minOe} € → Variante B mit ${MR.rueckfall.maxOffen} Plätzen` });
+      mr = waehleMr();
+      log(`Modell-Regel: Rückfall auf Variante B (${MR.rueckfall.maxOffen} Plätze) ab dem nächsten Handelstag.`);
+    }
     mrStand = zrBremse([...mr.offen, ...mr.abgeschlossen], MR.bremse);
     if (mrStand.aus && !mrBremsEintrag()) {
       zrBuch.eintraege.push({ schluessel: 'modellregel', status: 'bremse', am: neuesterTag('aktie'), grund: mrStand.grund });
@@ -3277,6 +3286,10 @@ if (vt.erkennung) {
               bremse: mrBremsEintrag() ? { am: mrBremsEintrag()!.am, grund: mrBremsEintrag()!.grund ?? '' } : null,
               regel: MR.bremse,
               stand: mrStand,
+              plaetzeJetzt: (() => {
+                const rb = zrBuch.eintraege.find((e) => e.schluessel === 'modellregel-b' && e.am >= MR.ab);
+                return rb && MR.rueckfall ? MR.rueckfall.maxOffen : MR.maxOffen;
+              })(),
               ...(!MR.aktiv && mr ? { virtuell: { offen: mr.offen.map(ohneMuster), vorgemerkt: mr.vorgemerkt.map(ohneMuster), abgeschlossen: mr.abgeschlossen.slice(-30).map(ohneMuster) } } : {}),
             },
           }
