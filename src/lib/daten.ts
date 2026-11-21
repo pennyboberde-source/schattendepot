@@ -35,6 +35,8 @@ export interface Systemstatus {
   letzterClaudeLauf?: { zeit: string; typ: string };
   pushAbgelaufen?: boolean;
   letzterPush?: string;
+  /** je Gerät (Secret-Name → Kurz-Hash, Ablauf, letzter Push), seit 21.11.2026 */
+  pushGeraete?: Record<string, { hash: string; abgelaufen?: boolean; letzterPush?: string }>;
   hinweise?: string[];
 }
 

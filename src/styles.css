@@ -393,6 +393,20 @@ a {
 .chips li.aus {
   opacity: 0.55;
 }
+/* Auswahl-Chips (z. B. Gerät für die Push-Anmeldung): Touch-Ziel ≥ 44 px */
+.chips li:has(> .chip-knopf) {
+  padding: 0;
+}
+.chip-knopf {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
 
 .push-code textarea {
   width: 100%;
@@ -599,6 +613,12 @@ select {
   }
   .karte-kopf {
     flex-wrap: wrap;
+  }
+  /* iPhone: Pflichthinweis bleibt, nimmt aber weniger Höhe weg */
+  .hinweis-fuss {
+    font-size: 0.66rem;
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
 }
 

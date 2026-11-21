@@ -13,11 +13,16 @@ export const SECRET_NAMEN = [
   'YOUTUBE_API_KEY',
   'VAPID_PRIVATE_KEY',
   'PUSH_SUBSCRIPTION',
+  'PUSH_SUBSCRIPTION_2',
+  'PUSH_SUBSCRIPTION_3',
   'ROUTINE_FIRE_URL',
   'ROUTINE_FIRE_TOKEN',
   'GH_TOKEN',
   'GITHUB_TOKEN',
 ];
+
+/** Secrets mit Push-Anmeldungen (je Gerät eines: iPad, iPhone …) */
+export const PUSH_NAMEN = ['PUSH_SUBSCRIPTION', 'PUSH_SUBSCRIPTION_2', 'PUSH_SUBSCRIPTION_3'];
 
 /** Alle geheimen Werte inkl. abgeleiteter Teile (z. B. Endpoint und Schlüssel aus der Push-Anmeldung). */
 export function geheimeWerte(env: Record<string, string | undefined> = process.env): string[] {
@@ -26,12 +31,16 @@ export function geheimeWerte(env: Record<string, string | undefined> = process.e
     const w = env[n]?.trim();
     if (w && w.length >= 6) werte.push(w);
   }
-  try {
-    const sub = JSON.parse(env.PUSH_SUBSCRIPTION ?? '') as { endpoint?: string; keys?: Record<string, string> };
-    if (sub.endpoint) werte.push(sub.endpoint, new URL(sub.endpoint).pathname);
-    for (const k of Object.values(sub.keys ?? {})) if (k.length >= 6) werte.push(k);
-  } catch {
-    /* keine/ungültige Anmeldung */
+  for (const n of PUSH_NAMEN) {
+    try {
+      const roh = JSON.parse(env[n] ?? '') as unknown;
+      for (const sub of (Array.isArray(roh) ? roh : [roh]) as { endpoint?: string; keys?: Record<string, string> }[]) {
+        if (sub?.endpoint) werte.push(sub.endpoint, new URL(sub.endpoint).pathname);
+        for (const k of Object.values(sub?.keys ?? {})) if (typeof k === 'string' && k.length >= 6) werte.push(k);
+      }
+    } catch {
+      /* keine/ungültige Anmeldung */
+    }
   }
   try {
     if (env.ROUTINE_FIRE_URL) werte.push(new URL(env.ROUTINE_FIRE_URL).pathname);

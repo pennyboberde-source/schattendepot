@@ -29,7 +29,7 @@ if (!ohnePrivat) {
 }
 const privatDir = ohnePrivat ? join(privatKopie, 'nicht-erreichbar') : privatKopie;
 // Ab hier arbeitet alles auf den Kopien – und ohne Mitteilungen/Ereignislauf
-Object.assign(process.env, { DATEN_DIR: kopie, PRIVAT_DIR: privatDir, PUSH_SUBSCRIPTION: '', VAPID_PRIVATE_KEY: '', ROUTINE_FIRE_URL: '', ROUTINE_FIRE_TOKEN: '', OHNE_UEBERNAHME: '1' });
+Object.assign(process.env, { DATEN_DIR: kopie, PRIVAT_DIR: privatDir, PUSH_SUBSCRIPTION: '', PUSH_SUBSCRIPTION_2: '', PUSH_SUBSCRIPTION_3: '', VAPID_PRIVATE_KEY: '', ROUTINE_FIRE_URL: '', ROUTINE_FIRE_TOKEN: '', OHNE_UEBERNAHME: '1' });
 console.log(`Probelauf „${art}“ auf Datenkopie ${kopie} (Original ${quelle} bleibt unberührt).`);
 console.log(ohnePrivat ? 'Privater Zustand: absichtlich NICHT erreichbar (Test „ohne-privat“).' : `Privater Zustand: Kopie ${privatKopie} – ${privatEcht ? `aus ${privatQuelle}` : 'leer begonnen (kein Checkout vorhanden)'}.`);
 

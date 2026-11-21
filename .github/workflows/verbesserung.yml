@@ -134,6 +134,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          PUSH_SUBSCRIPTION_2: ${{ secrets.PUSH_SUBSCRIPTION_2 }}
+          PUSH_SUBSCRIPTION_3: ${{ secrets.PUSH_SUBSCRIPTION_3 }}
           ERGEBNIS: ${{ runner.temp }}/ergebnis/verbesserung-ergebnis.json
         run: node jobs/verbesserung.ts uebernehmen "$ERGEBNIS"
       - name: Daten sichern
@@ -178,6 +180,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          PUSH_SUBSCRIPTION_2: ${{ secrets.PUSH_SUBSCRIPTION_2 }}
+          PUSH_SUBSCRIPTION_3: ${{ secrets.PUSH_SUBSCRIPTION_3 }}
         run: node jobs/fehlerlage.ts
       - name: Daten sichern
         run: bash scripts/daten-sichern.sh "Fehlerlage $(date -u +%Y-%m-%dT%H:%MZ)"
@@ -221,6 +225,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          PUSH_SUBSCRIPTION_2: ${{ secrets.PUSH_SUBSCRIPTION_2 }}
+          PUSH_SUBSCRIPTION_3: ${{ secrets.PUSH_SUBSCRIPTION_3 }}
           ERGEBNIS: ${{ runner.temp }}/ergebnis/verbesserung-ergebnis.json
         run: node jobs/verbesserung.ts ablehnen "$ERGEBNIS"
       - name: Daten sichern

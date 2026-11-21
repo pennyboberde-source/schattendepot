@@ -1,5 +1,5 @@
 // Web-Push-Anmeldung im Browser. Ohne Server: Die App zeigt den „Push-Code“ (Subscription-JSON),
-// Der Nutzer hinterlegt ihn als GitHub-Secret PUSH_SUBSCRIPTION.
+// Der Nutzer hinterlegt ihn als GitHub-Secret: iPad PUSH_SUBSCRIPTION, iPhone PUSH_SUBSCRIPTION_2 (weiteres Gerät _3).
 import pushCfg from '../../config/push.json';
 
 export function pushMoeglich(): boolean {
@@ -27,7 +27,7 @@ export async function aktuelleAnmeldung(): Promise<PushSubscription | null> {
 export async function pushAnmelden(neu = false): Promise<string> {
   if (!pushMoeglich()) throw new Error('Dieses Gerät/dieser Browser unterstützt keine Web-Push-Mitteilungen.');
   const erlaubnis = await Notification.requestPermission();
-  if (erlaubnis !== 'granted') throw new Error('Mitteilungen wurden nicht erlaubt. Ändern kannst du das in den iPad-Einstellungen → Mitteilungen → Schattendepot.');
+  if (erlaubnis !== 'granted') throw new Error('Mitteilungen wurden nicht erlaubt. Ändern kannst du das unter Einstellungen → Mitteilungen → Schattendepot.');
   const reg = await navigator.serviceWorker.ready;
   let sub = await reg.pushManager.getSubscription();
   if (sub && neu) {
@@ -36,4 +36,16 @@ export async function pushAnmelden(neu = false): Promise<string> {
   }
   sub ??= await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: schluesselBytes(pushCfg.vapidPublicKey) as BufferSource });
   return JSON.stringify(sub.toJSON());
+}
+
+/** Push-Secrets je Gerät (die Jobs lesen alle drei). */
+export const PUSH_GERAETE = [
+  { secret: 'PUSH_SUBSCRIPTION', name: 'iPad' },
+  { secret: 'PUSH_SUBSCRIPTION_2', name: 'iPhone' },
+  { secret: 'PUSH_SUBSCRIPTION_3', name: 'weiteres Gerät' },
+] as const;
+
+/** Vorschlag, welches Secret zu diesem Gerät gehört: iPhone → PUSH_SUBSCRIPTION_2, sonst (iPad) PUSH_SUBSCRIPTION. */
+export function secretFuerDiesesGeraet(): (typeof PUSH_GERAETE)[number]['secret'] {
+  return /iPhone|iPod|Android.*Mobile/.test(navigator.userAgent) ? 'PUSH_SUBSCRIPTION_2' : 'PUSH_SUBSCRIPTION';
 }

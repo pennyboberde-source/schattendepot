@@ -67,6 +67,8 @@ jobs:
         env:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          PUSH_SUBSCRIPTION_2: ${{ secrets.PUSH_SUBSCRIPTION_2 }}
+          PUSH_SUBSCRIPTION_3: ${{ secrets.PUSH_SUBSCRIPTION_3 }}
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
@@ -79,6 +81,8 @@ jobs:
         env:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          PUSH_SUBSCRIPTION_2: ${{ secrets.PUSH_SUBSCRIPTION_2 }}
+          PUSH_SUBSCRIPTION_3: ${{ secrets.PUSH_SUBSCRIPTION_3 }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
           OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
         run: node jobs/daytrading.ts

@@ -26,6 +26,8 @@ jobs:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          PUSH_SUBSCRIPTION_2: ${{ secrets.PUSH_SUBSCRIPTION_2 }}
+          PUSH_SUBSCRIPTION_3: ${{ secrets.PUSH_SUBSCRIPTION_3 }}
           SEC_KONTAKT: ${{ secrets.SEC_KONTAKT }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
@@ -34,5 +36,8 @@ jobs:
           fehlt=0
           for name in ALPHAVANTAGE_API_KEY ARCHIV_TOKEN COINALYZE_API_KEY COINGECKO_API_KEY FINNHUB_API_KEY FMP_API_KEY MASSIVE_API_KEY PUSH_SUBSCRIPTION SEC_KONTAKT TWELVEDATA_API_KEY VAPID_PRIVATE_KEY SCHREIB_SCHLUESSEL; do
             if [ -n "${!name}" ]; then echo "$name: vorhanden"; else echo "::error::$name fehlt"; fehlt=1; fi
+          done
+          for name in PUSH_SUBSCRIPTION_2 PUSH_SUBSCRIPTION_3; do
+            if [ -n "${!name}" ]; then echo "$name: vorhanden"; else echo "$name: nicht gesetzt (freiwillig, weiteres Gerät)"; fi
           done
           exit $fehlt

@@ -52,6 +52,8 @@ jobs:
         env:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           PUSH_SUBSCRIPTION: ${{ secrets.PUSH_SUBSCRIPTION }}
+          PUSH_SUBSCRIPTION_2: ${{ secrets.PUSH_SUBSCRIPTION_2 }}
+          PUSH_SUBSCRIPTION_3: ${{ secrets.PUSH_SUBSCRIPTION_3 }}
           COMMIT: ${{ github.event.inputs.commit || 'letzte' }}
           AUSLOESER: ${{ github.event.inputs.ausloeser || 'nutzer' }}
           GRUND: ${{ github.event.inputs.grund || 'vom Nutzer zurückgenommen' }}

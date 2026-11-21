@@ -8,4 +8,4 @@ const n = await pushen(
   { sofort: true },
 );
 console.log(`${n} Mitteilung(en) gesendet.`);
-if (!process.env.PUSH_SUBSCRIPTION) process.exitCode = 0;
+process.exitCode = 0;

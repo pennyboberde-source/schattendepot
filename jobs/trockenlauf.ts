@@ -50,7 +50,7 @@ const tests: [string, OrderPlan][] = [
 const ereignisse: Ereignis[] = tests.map(([id, plan]) => ({ id: `${vor}-vorgemerkt-${id}`, zeit: vor, typ: 'vorgemerkt', quelle: 'system', orderId: id, daten: { plan, verkaufstermin: plan.verkaufstermin } }));
 appendFileSync(join(kopie, 'ereignisse.jsonl'), ereignisse.map((e) => JSON.stringify(e)).join('\n') + '\n');
 
-const env = { ...process.env, DATEN_DIR: kopie, OHNE_UEBERNAHME: '1', PUSH_SUBSCRIPTION: '', ROUTINE_FIRE_URL: '', ROUTINE_FIRE_TOKEN: '' };
+const env = { ...process.env, DATEN_DIR: kopie, OHNE_UEBERNAHME: '1', PUSH_SUBSCRIPTION: '', PUSH_SUBSCRIPTION_2: '', PUSH_SUBSCRIPTION_3: '', ROUTINE_FIRE_URL: '', ROUTINE_FIRE_TOKEN: '' };
 console.log(execFileSync('node', ['jobs/waechter.ts'], { env, encoding: 'utf8' }));
 
 const neu = readFileSync(join(kopie, 'ereignisse.jsonl'), 'utf8').trim().split('\n').map((z) => JSON.parse(z) as Ereignis).filter((e) => e.quelle === 'waechter');

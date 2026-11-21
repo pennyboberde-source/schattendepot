@@ -3,27 +3,53 @@ import { createHash } from 'node:crypto';
 import webpush from 'web-push';
 import { zustellen, type PushNachricht } from '../../core/push.ts';
 import { ladeConfig, leseJson, schreibeJson } from './dateien.ts';
-import { logsMaskieren, schwaerzen } from './schwaerzen.ts';
+import { logsMaskieren, PUSH_NAMEN, schwaerzen } from './schwaerzen.ts';
 
 logsMaskieren();
 
 interface PushStatus {
   stand?: string;
+  /** mindestens ein Gerät meldet eine abgelaufene Anmeldung */
   pushAbgelaufen?: boolean;
   letzterPush?: string;
+  /** Hash der ersten Anmeldung (alt, bleibt für die Anzeige) */
   pushAnmeldungHash?: string;
+  /** je Gerät (Secret-Name → Kurz-Hash, Ablauf, letzter Push); seit 21.11.2026 mehrere Geräte (iPad + iPhone) */
+  pushGeraete?: Record<string, { hash: string; abgelaufen?: boolean; letzterPush?: string }>;
   [k: string]: unknown;
 }
 
-function anmeldung(): webpush.PushSubscription | null {
-  const roh = process.env.PUSH_SUBSCRIPTION?.trim();
-  if (!roh) return null;
-  try {
-    return JSON.parse(roh) as webpush.PushSubscription;
-  } catch {
-    console.error('PUSH_SUBSCRIPTION ist kein gültiges JSON');
-    return null;
+interface Geraet {
+  /** Name des Secrets, z. B. PUSH_SUBSCRIPTION_2 (für Status und Log, nie der Inhalt) */
+  name: string;
+  sub: webpush.PushSubscription;
+  hash: string;
+}
+
+/** Alle Push-Anmeldungen aus den Secrets PUSH_SUBSCRIPTION, PUSH_SUBSCRIPTION_2, … (je Gerät eine; ein Secret darf auch eine Liste enthalten). */
+function anmeldungen(): Geraet[] {
+  const geraete: Geraet[] = [];
+  const gesehen = new Set<string>();
+  for (const name of PUSH_NAMEN) {
+    const roh = process.env[name]?.trim();
+    if (!roh) continue;
+    let liste: webpush.PushSubscription[];
+    try {
+      const j = JSON.parse(roh) as webpush.PushSubscription | webpush.PushSubscription[];
+      liste = Array.isArray(j) ? j : [j];
+    } catch {
+      console.error(`${name} ist kein gültiges JSON`);
+      continue;
+    }
+    liste.forEach((sub, i) => {
+      if (!sub?.endpoint) return;
+      const hash = createHash('sha256').update(sub.endpoint).digest('hex').slice(0, 16);
+      if (gesehen.has(hash)) return;
+      gesehen.add(hash);
+      geraete.push({ name: liste.length > 1 ? `${name}#${i + 1}` : name, sub, hash });
+    });
   }
+  return geraete;
 }
 
 async function sendeEine(sub: webpush.PushSubscription, n: PushNachricht): Promise<'ok' | 'abgelaufen' | 'fehler'> {
@@ -54,40 +80,55 @@ async function sendeEine(sub: webpush.PushSubscription, n: PushNachricht): Promi
  */
 export async function pushen(neu: PushNachricht[], jetzt: Date, opt: { sofort?: boolean } = {}): Promise<number> {
   const { einstellungen } = ladeConfig();
-  const sub = anmeldung();
+  const geraete = anmeldungen();
   const system = leseJson<PushStatus>('system.json', {});
   let schlange = leseJson<PushNachricht[]>('push-warteschlange.json', []);
+  const status = { ...(system.pushGeraete ?? {}) };
+  // Übergang: die bisher einzige Anmeldung ist schon bestätigt
+  if (system.pushAnmeldungHash && !Object.keys(status).length) status.PUSH_SUBSCRIPTION = { hash: system.pushAnmeldungHash, abgelaufen: system.pushAbgelaufen };
 
-  // Neue/geänderte Anmeldung erkennen → einmalige Bestätigung.
-  if (sub) {
-    const hash = createHash('sha256').update(sub.endpoint).digest('hex').slice(0, 16);
-    if (system.pushAnmeldungHash !== hash) {
-      neu = [{ typ: 'warnung', titel: '✅ Push verbunden', text: 'Schattendepot kann dir jetzt Mitteilungen schicken.', ziel: '#/einstellungen', tag: 'push-verbunden', erstellt: jetzt.toISOString() }, ...neu];
-      system.pushAnmeldungHash = hash;
-      system.pushAbgelaufen = false;
-      opt = { ...opt, sofort: true };
-    }
+  // Neue/geänderte Anmeldung je Gerät → einmalige Bestätigung nur an dieses Gerät
+  for (const g of geraete) {
+    if (status[g.name]?.hash === g.hash) continue;
+    status[g.name] = { hash: g.hash };
+    const r = await sendeEine(g.sub, { typ: 'warnung', titel: '✅ Push verbunden', text: 'Schattendepot kann diesem Gerät jetzt Mitteilungen schicken.', ziel: '#/einstellungen', tag: 'push-verbunden', erstellt: jetzt.toISOString() });
+    if (r === 'abgelaufen') status[g.name].abgelaufen = true;
+    if (r === 'ok') status[g.name].letzterPush = jetzt.toISOString();
+    console.log(`Push-Anmeldung ${g.name} neu verbunden (${r}).`);
   }
+  // Geräte, deren Secret entfernt wurde, vergessen
+  for (const n of Object.keys(status)) if (!geraete.some((g) => g.name === n)) delete status[n];
 
   const z = opt.sofort ? { senden: [...schlange, ...neu], warteschlange: [] } : zustellen(neu, schlange, jetzt, einstellungen);
   schlange = z.warteschlange;
+  const aktiv = geraete.filter((g) => !status[g.name]?.abgelaufen);
   let gesendet = 0;
-  if (z.senden.length && !sub) {
-    console.log(`Keine Push-Anmeldung (PUSH_SUBSCRIPTION) – ${z.senden.length} Nachricht(en) nur protokolliert.`);
-  } else if (sub) {
+  const zugestellt = new Set<PushNachricht>();
+  if (z.senden.length && !geraete.length) {
+    console.log(`Keine Push-Anmeldung (${PUSH_NAMEN.join(', ')}) – ${z.senden.length} Nachricht(en) nur protokolliert.`);
+  }
+  for (const g of aktiv) {
     for (const n of z.senden) {
-      const r = await sendeEine(sub, n);
-      if (r === 'ok') gesendet++;
+      const r = await sendeEine(g.sub, n);
+      if (r === 'ok') {
+        zugestellt.add(n);
+        status[g.name].letzterPush = jetzt.toISOString();
+      }
       if (r === 'abgelaufen') {
-        system.pushAbgelaufen = true;
+        status[g.name].abgelaufen = true;
+        console.error(`Push-Anmeldung ${g.name} ist abgelaufen – in der App neu verbinden.`);
         break;
       }
     }
   }
+  gesendet = zugestellt.size;
   if (gesendet) system.letzterPush = jetzt.toISOString();
+  system.pushGeraete = status;
+  system.pushAbgelaufen = Object.values(status).some((g) => g.abgelaufen);
+  if (geraete[0]) system.pushAnmeldungHash = status[geraete[0].name]?.hash ?? system.pushAnmeldungHash;
 
   const protokoll = leseJson<(PushNachricht & { gesendet: boolean })[]>('pushes.json', []);
-  protokoll.unshift(...z.senden.map((n) => ({ ...n, gesendet: !!sub && !system.pushAbgelaufen })));
+  protokoll.unshift(...z.senden.map((n) => ({ ...n, gesendet: zugestellt.has(n) })));
   schreibeJson('pushes.json', protokoll.slice(0, 100));
   schreibeJson('push-warteschlange.json', schlange);
   schreibeJson('system.json', system);

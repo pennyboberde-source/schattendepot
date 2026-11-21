@@ -2,7 +2,7 @@ import { useEffect, useState } from 'preact/hooks';
 import einstellungen from '../../config/einstellungen.json';
 import { useDaten, type Systemstatus } from '../lib/daten';
 import { REPO } from '../lib/links';
-import { aktuelleAnmeldung, istStandalone, pushAnmelden, pushMoeglich } from '../lib/push';
+import { aktuelleAnmeldung, istStandalone, PUSH_GERAETE, pushAnmelden, pushMoeglich, secretFuerDiesesGeraet } from '../lib/push';
 import { relativ } from '../lib/zeit';
 import { Karte } from '../ui';
 
@@ -24,6 +24,10 @@ export function PushKarte() {
   const [fehler, setFehler] = useState<string | null>(null);
   const [angemeldet, setAngemeldet] = useState(false);
   const [kopiert, setKopiert] = useState(false);
+  const [secret, setSecret] = useState<string>(() => secretFuerDiesesGeraet());
+  const geraete = system.status === 'ok' ? (system.daten.pushGeraete ?? {}) : {};
+  // Gibt es das Secret schon? (vor dem ersten Lauf mit Geräteliste ist nur das iPad-Secret bekannt)
+  const schonDa = !!geraete[secret] || (secret === 'PUSH_SUBSCRIPTION' && !Object.keys(geraete).length);
   const abgelaufen = system.status === 'ok' && system.daten.pushAbgelaufen;
 
   useEffect(() => {
@@ -54,13 +58,13 @@ export function PushKarte() {
 
   return (
     <Karte titel="Mitteilungen">
-      {abgelaufen && <p class="banner warnung">Die Push-Anmeldung ist abgelaufen. Tippe auf „Push neu verbinden“ und hinterlege den neuen Code.</p>}
+      {abgelaufen && <p class="banner warnung">Eine Push-Anmeldung ist abgelaufen. Tippe auf dem betroffenen Gerät auf „Push neu verbinden“ und hinterlege den neuen Code.</p>}
       {!pushMoeglich() ? (
         <p>Dieser Browser unterstützt keine Web-Push-Mitteilungen.</p>
       ) : !istStandalone() ? (
         <p>
-          Mitteilungen gibt es auf dem iPad nur für die App auf dem Home-Bildschirm: in Safari auf <strong>Teilen → Zum Home-Bildschirm</strong> tippen, die App dort öffnen und
-          hier „Mitteilungen erlauben“ wählen.
+          Mitteilungen gibt es auf iPad und iPhone nur für die App auf dem Home-Bildschirm: in Safari auf <strong>Teilen → Zum Home-Bildschirm</strong> tippen, die App dort öffnen
+          und hier „Mitteilungen erlauben“ wählen. Jedes Gerät bekommt dieselben Mitteilungen und zeigt dieselben Daten.
         </p>
       ) : (
         <div class="knopfreihe">
@@ -77,8 +81,28 @@ export function PushKarte() {
       {fehler && <p class="banner warnung">{fehler}</p>}
       {code && (
         <div class="push-code">
-          <p>
-            <strong>Letzter Schritt:</strong> Code kopieren und auf GitHub im Tresor speichern: „live“ antippen, beim Secret <code>PUSH_SUBSCRIPTION</code> auf den Stift tippen, Code einsetzen, „Update secret“. Nur dort lesen ihn die Jobs.
+          <p class="klein">Dieses Gerät:</p>
+          <ul class="chips" data-testid="push-geraet-wahl">
+            {PUSH_GERAETE.map((g) => (
+              <li key={g.secret} class={g.secret === secret ? 'an' : 'aus'}>
+                <button type="button" class="chip-knopf" onClick={() => setSecret(g.secret)}>
+                  {g.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <p data-testid="push-schritt">
+            <strong>Letzter Schritt:</strong> Code kopieren und auf GitHub im Tresor speichern: „live“ antippen,{' '}
+            {schonDa ? (
+              <>
+                beim Secret <code>{secret}</code> auf den Stift tippen, Code einsetzen, „Update secret“.
+              </>
+            ) : (
+              <>
+                „Add environment secret“ antippen, als Name <code>{secret}</code> eintragen, Code einsetzen, „Add secret“.
+              </>
+            )}{' '}
+            Nur dort lesen ihn die Jobs.
           </p>
           <textarea readOnly rows={4} value={code} aria-label="Push-Code" onFocus={(e) => (e.target as HTMLTextAreaElement).select()} />
           <div class="knopfreihe">
@@ -94,6 +118,16 @@ export function PushKarte() {
           <p class="klein">Zeigt GitHub „404“? Die Home-Bildschirm-App ist dort nicht angemeldet. Dann den Code kopieren, <strong>Safari</strong> öffnen, bei GitHub anmelden und <code>github.com/{REPO}/settings/environments</code> aufrufen.</p>
           <p class="klein">Kurz danach kommt automatisch eine Test-Mitteilung „✅ Push verbunden“.</p>
         </div>
+      )}
+      {Object.keys(geraete).length > 0 && (
+        <ul class="liste klein" data-testid="push-geraete">
+          {PUSH_GERAETE.filter((g) => geraete[g.secret]).map((g) => (
+            <li key={g.secret}>
+              {g.name}: {geraete[g.secret].abgelaufen ? '⚠️ abgelaufen – auf diesem Gerät „Push neu verbinden“' : '✅ verbunden'}
+              {geraete[g.secret].letzterPush ? ` · letzte Mitteilung ${relativ(geraete[g.secret].letzterPush!)}` : ''}
+            </li>
+          ))}
+        </ul>
       )}
       {system.status === 'ok' && system.daten.letzterPush && <p class="klein">Letzte Mitteilung {relativ(system.daten.letzterPush)}</p>}
       <p class="klein">
