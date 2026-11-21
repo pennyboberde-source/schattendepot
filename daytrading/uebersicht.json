@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-21T09:11:56.717Z",
+  "stand": "2026-11-21T09:42:45.785Z",
   "heute": {
     "datum": "2026-11-21",
     "gruppe": {
@@ -311,6 +311,40 @@
         "stueck": 7905.138339,
         "kurswert": 1000
       }
+    },
+    {
+      "id": "2026-11-21-scan-xrp",
+      "datum": "2026-11-21",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-21T09:10:00.000Z",
+        "kurs": 0.81511,
+        "level": 0.814,
+        "spanne": {
+          "hoch": 0.81404,
+          "tief": 0.81
+        },
+        "richtung": "long"
+      },
+      "stop": 0.812,
+      "ziel": 0.8203,
+      "zielR": 2,
+      "flatBis": "2026-11-21T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-21T09:10:00.000Z",
+        "basisKurs": 0.81477,
+        "kurs": 0.8168,
+        "stueck": 1224.289911,
+        "kurswert": 1000
+      }
     }
   ],
   "trades": [
@@ -345,6 +379,40 @@
         "basisKurs": 0.126135,
         "kurs": 0.1265,
         "stueck": 7905.138339,
+        "kurswert": 1000
+      }
+    },
+    {
+      "id": "2026-11-21-scan-xrp",
+      "datum": "2026-11-21",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "XRP",
+      "symbol": "XRP",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-21T09:10:00.000Z",
+        "kurs": 0.81511,
+        "level": 0.814,
+        "spanne": {
+          "hoch": 0.81404,
+          "tief": 0.81
+        },
+        "richtung": "long"
+      },
+      "stop": 0.812,
+      "ziel": 0.8203,
+      "zielR": 2,
+      "flatBis": "2026-11-21T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-21T09:10:00.000Z",
+        "basisKurs": 0.81477,
+        "kurs": 0.8168,
+        "stueck": 1224.289911,
         "kurswert": 1000
       }
     },
@@ -9835,7 +9903,7 @@
       "oeNettoProzent": -1.08,
       "oeR": -1
     },
-    "offen": 1,
+    "offen": 2,
     "gruppen": {
       "turbo": {
         "anzahl": 169,
@@ -9921,10 +9989,10 @@
       "basis": {
         "richtung": "mit",
         "hebel": 1,
-        "faelle": 96,
-        "chance": 33.3,
-        "oeNetto": -0.08,
-        "wertung": -0.14
+        "faelle": 99,
+        "chance": 32.3,
+        "oeNetto": -0.09,
+        "wertung": -0.15
       }
     },
     "us:orb_short": {
