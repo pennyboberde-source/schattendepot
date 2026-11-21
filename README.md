@@ -112,7 +112,7 @@ deployt; die App auf dem iPad aktualisiert sich beim nächsten Öffnen selbst.
 
 | Problem | Ursache / Lösung |
 |---|---|
-| Keine Mitteilungen | App vom Home-Bildschirm öffnen → Einstellungen → „Push neu verbinden“, neuen Code als Secret `PUSH_SUBSCRIPTION` speichern. iPad-Einstellungen → Mitteilungen → Schattendepot prüfen. |
+| Keine Mitteilungen | App vom Home-Bildschirm öffnen → Einstellungen → „Push neu verbinden“, neuen Code als Secret speichern: iPad `PUSH_SUBSCRIPTION`, iPhone `PUSH_SUBSCRIPTION_2` (weiteres Gerät `PUSH_SUBSCRIPTION_3`). iPad-Einstellungen → Mitteilungen → Schattendepot prüfen. |
 | „Push-Anmeldung abgelaufen“ | Der Versand meldete 404/410 → wie oben neu verbinden. |
 | Order wird nicht ausgeführt | Quellenstatus prüfen: Kurs nur nach der Entscheidung und in der Handelszeit (Tradegate 08–22 Uhr). US-Werte erst nach US-Eröffnung (15:30). Nach 26 h ohne Kurs wird die Vormerkung verworfen (Push). |
 | Order ohne Kurs (DE/EU) | ISIN falsch oder Wert wird auf gettex nicht gehandelt → Quellenstatus/`system.json kursabrufe` prüfen. Ersatz: Alpha Vantage-Tagesschluss (abends). |
