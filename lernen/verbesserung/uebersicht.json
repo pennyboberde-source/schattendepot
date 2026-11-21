@@ -1,8 +1,24 @@
 {
-  "stand": "2026-11-21T08:22:23.044Z",
+  "stand": "2026-11-21T11:59:03.942Z",
   "aktiv": true,
   "rueckgaengigLink": "https://github.com/pennyboberde-source/schattendepot/actions/workflows/verbesserung-zurueck.yml",
   "uebernahmen": [
+    {
+      "datum": "2026-11-21",
+      "zeit": "2026-11-21T11:59:03.942Z",
+      "merge": "92fa522ea2454fb08f20fc281a9d4c590d9fcb28",
+      "zusammenfassung": "Daytrading-Scan nimmt nur noch Aktien mit mindestens 100.000 € Umsatz in der Eröffnungsspanne – die umsatzschwachen, spekulativen Werte waren die größten Verlustbringer.",
+      "status": "aktiv",
+      "aenderungen": [
+        {
+          "id": "daytrading-mindestumsatz-100k",
+          "titel": "Daytrading-Scan: Mindestumsatz der Eröffnungsspanne von 20.000 auf 100.000 €",
+          "bereich": "daytrading",
+          "hypothese": "Spekulative Trades (u. a. Umsatz unter 100.000 €) trafen nur 22 % (−1.681 €, n=118), Skill-Filter-Trades 35 % (n=214). Ein Code-Hebel für eine 20-%-Obergrenze ist nicht freigegeben; der Mindestumsatz in Höhe der Spekulativ-Grenze schließt den umsatzschwachen Teil aus und senkt den Spekulativ-Anteil deutlich.",
+          "messkriterium": "Trefferquote im sichtbaren Daytrading steigt von 30 % auf über 33 %."
+        }
+      ]
+    },
     {
       "datum": "2026-11-14",
       "zeit": "2026-11-14T14:24:35.336Z",
