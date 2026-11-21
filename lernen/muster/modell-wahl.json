@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-21T01:44:15.024Z",
+  "stand": "2026-11-21T06:40:06.697Z",
   "hinweis": "Modell-Wahl-Buch (seit 20.11.2026, nur anhängen): je Modell und Stichtag die Werte, die das Modell an diesem Tag gewählt hat (Rang), bei Modell-Regel-Shorts beim US-Broker auch die Plattform und ob der Wert bei IBKR leihbar war. Ein Tag wird nur gewählt, solange keiner seiner Fälle ein Ergebnis hat – danach nie neu.",
   "eintraege": {
     "modell|aktie|2S150|10": {
@@ -152,6 +152,160 @@
           "w": "T:GDXU",
           "r": 37
         }
+      ],
+      "2026-11-20": [
+        {
+          "w": "T:AMUU",
+          "r": 1
+        },
+        {
+          "w": "T:MRNX",
+          "r": 2
+        },
+        {
+          "w": "T:INLF",
+          "r": 3
+        },
+        {
+          "w": "T:AEHG",
+          "r": 4
+        },
+        {
+          "w": "T:LITE",
+          "r": 5
+        },
+        {
+          "w": "T:GMM",
+          "r": 6
+        },
+        {
+          "w": "T:CLRO",
+          "r": 7
+        },
+        {
+          "w": "T:AXTX",
+          "r": 8
+        },
+        {
+          "w": "T:AMDG",
+          "r": 9
+        },
+        {
+          "w": "T:MOD",
+          "r": 10
+        },
+        {
+          "w": "T:ALAB",
+          "r": 11
+        },
+        {
+          "w": "T:SOXL",
+          "r": 12
+        },
+        {
+          "w": "T:JNUG",
+          "r": 13
+        },
+        {
+          "w": "T:AMDL",
+          "r": 14
+        },
+        {
+          "w": "T:POAS",
+          "r": 15
+        },
+        {
+          "w": "T:LABX",
+          "r": 16
+        },
+        {
+          "w": "T:HIBL",
+          "r": 17
+        },
+        {
+          "w": "T:TECS",
+          "r": 18
+        },
+        {
+          "w": "T:SMX",
+          "r": 19
+        },
+        {
+          "w": "T:WULX",
+          "r": 20
+        },
+        {
+          "w": "T:NCT",
+          "r": 21
+        },
+        {
+          "w": "T:TWST",
+          "r": 22
+        },
+        {
+          "w": "T:COHR",
+          "r": 23
+        },
+        {
+          "w": "T:BEX",
+          "r": 24
+        },
+        {
+          "w": "T:CRWU",
+          "r": 25
+        },
+        {
+          "w": "T:LITX",
+          "r": 26
+        },
+        {
+          "w": "T:TSXU",
+          "r": 27
+        },
+        {
+          "w": "T:OMH",
+          "r": 28
+        },
+        {
+          "w": "T:NVDU",
+          "r": 29
+        },
+        {
+          "w": "T:TECL",
+          "r": 30
+        },
+        {
+          "w": "T:NEBX",
+          "r": 31
+        },
+        {
+          "w": "T:NBIG",
+          "r": 32
+        },
+        {
+          "w": "T:SEAT",
+          "r": 33
+        },
+        {
+          "w": "T:RGTX",
+          "r": 34
+        },
+        {
+          "w": "T:AMD",
+          "r": 35
+        },
+        {
+          "w": "T:USD",
+          "r": 36
+        },
+        {
+          "w": "T:AAOX",
+          "r": 37
+        },
+        {
+          "w": "T:SNDU",
+          "r": 38
+        }
       ]
     },
     "modell|aktie|2S150|10|muster": {
@@ -244,12 +398,754 @@
           "w": "T:GSHD",
           "r": 22
         }
+      ],
+      "2026-11-20": [
+        {
+          "w": "T:AMUU",
+          "r": 1
+        },
+        {
+          "w": "T:MRNX",
+          "r": 2
+        },
+        {
+          "w": "T:INLF",
+          "r": 3
+        },
+        {
+          "w": "T:LITE",
+          "r": 4
+        },
+        {
+          "w": "T:MOD",
+          "r": 5
+        },
+        {
+          "w": "T:ALAB",
+          "r": 6
+        },
+        {
+          "w": "T:TECS",
+          "r": 7
+        },
+        {
+          "w": "T:SMX",
+          "r": 8
+        },
+        {
+          "w": "T:TWST",
+          "r": 9
+        },
+        {
+          "w": "T:COHR",
+          "r": 10
+        },
+        {
+          "w": "T:OMH",
+          "r": 11
+        },
+        {
+          "w": "T:AMD",
+          "r": 12
+        },
+        {
+          "w": "T:MEDS",
+          "r": 13
+        },
+        {
+          "w": "T:APP",
+          "r": 14
+        },
+        {
+          "w": "T:AAOI",
+          "r": 15
+        },
+        {
+          "w": "T:SPCE",
+          "r": 16
+        },
+        {
+          "w": "T:GDXU",
+          "r": 17
+        },
+        {
+          "w": "T:GKOS",
+          "r": 18
+        },
+        {
+          "w": "T:FROG",
+          "r": 19
+        },
+        {
+          "w": "T:XRPN",
+          "r": 20
+        },
+        {
+          "w": "T:PEPG",
+          "r": 21
+        },
+        {
+          "w": "T:BULZ",
+          "r": 22
+        },
+        {
+          "w": "T:GDXD",
+          "r": 23
+        },
+        {
+          "w": "T:RMIX",
+          "r": 24
+        },
+        {
+          "w": "T:SLS",
+          "r": 25
+        },
+        {
+          "w": "T:OBX",
+          "r": 26
+        },
+        {
+          "w": "T:SMHU",
+          "r": 27
+        }
       ]
     },
-    "modell|aktie|2S150|10|treffer": {},
-    "modell|aktie|V2S150|10|treffer": {},
+    "modell|aktie|2S150|10|treffer": {
+      "2026-11-20": [
+        {
+          "w": "T:AMUU",
+          "r": 1
+        },
+        {
+          "w": "T:MRNX",
+          "r": 2
+        },
+        {
+          "w": "T:INLF",
+          "r": 3
+        },
+        {
+          "w": "T:AEHG",
+          "r": 4
+        },
+        {
+          "w": "T:LITE",
+          "r": 5
+        },
+        {
+          "w": "T:GMM",
+          "r": 6
+        },
+        {
+          "w": "T:CLRO",
+          "r": 7
+        },
+        {
+          "w": "T:AXTX",
+          "r": 8
+        },
+        {
+          "w": "T:AMDG",
+          "r": 9
+        },
+        {
+          "w": "T:MOD",
+          "r": 10
+        },
+        {
+          "w": "T:ALAB",
+          "r": 11
+        },
+        {
+          "w": "T:SOXL",
+          "r": 12
+        },
+        {
+          "w": "T:JNUG",
+          "r": 13
+        },
+        {
+          "w": "T:AMDL",
+          "r": 14
+        },
+        {
+          "w": "T:POAS",
+          "r": 15
+        },
+        {
+          "w": "T:LABX",
+          "r": 16
+        },
+        {
+          "w": "T:HIBL",
+          "r": 17
+        },
+        {
+          "w": "T:TECS",
+          "r": 18
+        },
+        {
+          "w": "T:SMX",
+          "r": 19
+        },
+        {
+          "w": "T:WULX",
+          "r": 20
+        },
+        {
+          "w": "T:NCT",
+          "r": 21
+        },
+        {
+          "w": "T:TWST",
+          "r": 22
+        },
+        {
+          "w": "T:COHR",
+          "r": 23
+        },
+        {
+          "w": "T:BEX",
+          "r": 24
+        },
+        {
+          "w": "T:CRWU",
+          "r": 25
+        },
+        {
+          "w": "T:LITX",
+          "r": 26
+        },
+        {
+          "w": "T:TSXU",
+          "r": 27
+        },
+        {
+          "w": "T:OMH",
+          "r": 28
+        },
+        {
+          "w": "T:NVDU",
+          "r": 29
+        },
+        {
+          "w": "T:TECL",
+          "r": 30
+        },
+        {
+          "w": "T:NEBX",
+          "r": 31
+        },
+        {
+          "w": "T:NBIG",
+          "r": 32
+        },
+        {
+          "w": "T:SEAT",
+          "r": 33
+        },
+        {
+          "w": "T:RGTX",
+          "r": 34
+        },
+        {
+          "w": "T:AMD",
+          "r": 35
+        },
+        {
+          "w": "T:USD",
+          "r": 36
+        },
+        {
+          "w": "T:AAOX",
+          "r": 37
+        },
+        {
+          "w": "T:SNDU",
+          "r": 38
+        }
+      ]
+    },
+    "modell|aktie|V2S150|10|treffer": {
+      "2026-11-20": [
+        {
+          "w": "T:INLF",
+          "r": 1
+        },
+        {
+          "w": "T:MRNX",
+          "r": 2
+        },
+        {
+          "w": "T:CLRO",
+          "r": 3
+        },
+        {
+          "w": "T:GDXU",
+          "r": 4
+        },
+        {
+          "w": "T:SOXL",
+          "r": 5
+        },
+        {
+          "w": "T:JNUG",
+          "r": 6
+        },
+        {
+          "w": "T:OMH",
+          "r": 7
+        },
+        {
+          "w": "T:AEHG",
+          "r": 8
+        },
+        {
+          "w": "T:NCT",
+          "r": 9
+        },
+        {
+          "w": "T:LABT",
+          "r": 10
+        },
+        {
+          "w": "T:GPUS",
+          "r": 11
+        },
+        {
+          "w": "T:AMUU",
+          "r": 12
+        },
+        {
+          "w": "T:POAS",
+          "r": 13
+        },
+        {
+          "w": "T:XRPN",
+          "r": 14
+        },
+        {
+          "w": "T:SMX",
+          "r": 15
+        },
+        {
+          "w": "T:GMM",
+          "r": 16
+        },
+        {
+          "w": "T:STAK",
+          "r": 17
+        },
+        {
+          "w": "T:BRAI",
+          "r": 18
+        },
+        {
+          "w": "T:MEDS",
+          "r": 19
+        },
+        {
+          "w": "T:SKYA",
+          "r": 20
+        },
+        {
+          "w": "T:GDHG",
+          "r": 21
+        },
+        {
+          "w": "T:LINT",
+          "r": 22
+        },
+        {
+          "w": "T:AMDG",
+          "r": 23
+        },
+        {
+          "w": "T:AAOI",
+          "r": 24
+        },
+        {
+          "w": "T:AMDL",
+          "r": 25
+        },
+        {
+          "w": "T:VIVS",
+          "r": 26
+        },
+        {
+          "w": "T:LITE",
+          "r": 27
+        },
+        {
+          "w": "T:AIOK",
+          "r": 28
+        },
+        {
+          "w": "T:TECL",
+          "r": 29
+        },
+        {
+          "w": "T:NCPL",
+          "r": 30
+        },
+        {
+          "w": "T:HIBL",
+          "r": 31
+        },
+        {
+          "w": "T:SVRE",
+          "r": 32
+        },
+        {
+          "w": "T:TEMT",
+          "r": 33
+        }
+      ]
+    },
     "modell|aktie|V2S150|10|treffer|muster": {},
     "modell|aktie|V2L150|10|treffer|muster": {},
-    "modellregel|2S150|wild": {}
+    "modellregel|2S150|wild": {
+      "2026-11-20": [
+        {
+          "w": "T:INLF",
+          "r": 1,
+          "pl": "us",
+          "leihbar": false,
+          "g": 331.2001
+        },
+        {
+          "w": "T:SMX",
+          "r": 2,
+          "pl": "us",
+          "leihbar": false,
+          "g": 328.0554
+        },
+        {
+          "w": "T:LABT",
+          "r": 3,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:AMUU",
+          "r": 4,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:OMH",
+          "r": 5,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:SEGG",
+          "r": 6,
+          "pl": "us",
+          "leihbar": false,
+          "g": 222.444
+        },
+        {
+          "w": "T:NCT",
+          "r": 7,
+          "pl": "us",
+          "leihbar": false,
+          "g": 524.9784
+        },
+        {
+          "w": "T:POAS",
+          "r": 8,
+          "pl": "us",
+          "leihbar": false,
+          "g": 661.19
+        },
+        {
+          "w": "T:SOXL",
+          "r": 9,
+          "pl": "us",
+          "leihbar": true,
+          "g": 2.7281
+        },
+        {
+          "w": "T:AIOK",
+          "r": 10,
+          "pl": "us",
+          "leihbar": false,
+          "g": 483.8194
+        },
+        {
+          "w": "T:BRAI",
+          "r": 11,
+          "pl": "us",
+          "leihbar": false,
+          "g": 656.6863
+        },
+        {
+          "w": "T:CLRO",
+          "r": 12,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:CKX",
+          "r": 13,
+          "pl": "us",
+          "leihbar": true,
+          "g": 0.3804
+        },
+        {
+          "w": "T:MULL",
+          "r": 14,
+          "pl": "us",
+          "leihbar": true,
+          "g": 14.2383
+        },
+        {
+          "w": "T:GDHG",
+          "r": 15,
+          "pl": "us",
+          "leihbar": false,
+          "g": 475.1782
+        },
+        {
+          "w": "T:AKAN",
+          "r": 16,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:BEX",
+          "r": 17,
+          "pl": "us",
+          "leihbar": true,
+          "g": 5.5617
+        },
+        {
+          "w": "T:APPX",
+          "r": 18,
+          "pl": "us",
+          "leihbar": true,
+          "g": 7.7056
+        },
+        {
+          "w": "T:AMDG",
+          "r": 19,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:LITX",
+          "r": 20,
+          "pl": "us",
+          "leihbar": true,
+          "g": 6.1375
+        },
+        {
+          "w": "T:NVDU",
+          "r": 21,
+          "pl": "us",
+          "leihbar": true,
+          "g": 4.36
+        },
+        {
+          "w": "T:AMDL",
+          "r": 22,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:LABX",
+          "r": 23,
+          "pl": "us",
+          "leihbar": true,
+          "g": 4.5378
+        },
+        {
+          "w": "T:GMM",
+          "r": 24,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:SNXX",
+          "r": 25,
+          "pl": "us",
+          "leihbar": true,
+          "g": 5.1763
+        },
+        {
+          "w": "T:SNDG",
+          "r": 26,
+          "pl": "us",
+          "leihbar": true,
+          "g": 8.0935
+        },
+        {
+          "w": "T:PEPG",
+          "r": 27,
+          "pl": "us",
+          "leihbar": true,
+          "g": 3.7865
+        },
+        {
+          "w": "T:SNDU",
+          "r": 28,
+          "pl": "us",
+          "leihbar": true,
+          "g": 12.0406
+        },
+        {
+          "w": "T:GP",
+          "r": 29,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:COHH",
+          "r": 30,
+          "pl": "us",
+          "leihbar": true,
+          "g": 5.6181
+        },
+        {
+          "w": "T:NBIL",
+          "r": 31,
+          "pl": "us",
+          "leihbar": true,
+          "g": 7.9801
+        },
+        {
+          "w": "T:SKYA",
+          "r": 32,
+          "pl": "us",
+          "leihbar": false,
+          "g": 153.7978
+        },
+        {
+          "w": "T:AAOZ",
+          "r": 33,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:BMNU",
+          "r": 34,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:NVDX",
+          "r": 35,
+          "pl": "us",
+          "leihbar": true,
+          "g": 6.9674
+        },
+        {
+          "w": "T:COHX",
+          "r": 36,
+          "pl": "us",
+          "leihbar": true,
+          "g": 10.156
+        },
+        {
+          "w": "T:CUE",
+          "r": 37,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:STAK",
+          "r": 38,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:SKHX",
+          "r": 39,
+          "pl": "us",
+          "leihbar": true,
+          "g": 7.8634
+        },
+        {
+          "w": "T:DAMD",
+          "r": 40,
+          "pl": "us",
+          "leihbar": true,
+          "g": 35.4729
+        },
+        {
+          "w": "T:NVDG",
+          "r": 41,
+          "pl": "us",
+          "leihbar": true,
+          "g": 4.6837
+        },
+        {
+          "w": "T:NEBX",
+          "r": 42,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:NBIG",
+          "r": 43,
+          "pl": "us",
+          "leihbar": true,
+          "g": 7.2174
+        },
+        {
+          "w": "T:MUU",
+          "r": 44,
+          "pl": "us",
+          "leihbar": true,
+          "g": 9.6538
+        },
+        {
+          "w": "T:NVDL",
+          "r": 45,
+          "pl": "us",
+          "leihbar": true,
+          "g": 3.6319
+        },
+        {
+          "w": "T:WULX",
+          "r": 46,
+          "pl": "us",
+          "leihbar": true,
+          "g": 10.0295
+        },
+        {
+          "w": "T:NCPL",
+          "r": 47,
+          "pl": "us",
+          "leihbar": false
+        },
+        {
+          "w": "T:SK",
+          "r": 48,
+          "pl": "us",
+          "leihbar": true,
+          "g": 5.8634
+        },
+        {
+          "w": "T:BEG",
+          "r": 49,
+          "pl": "us",
+          "leihbar": true,
+          "g": 27.0979
+        },
+        {
+          "w": "T:IREX",
+          "r": 50,
+          "pl": "us",
+          "leihbar": true,
+          "g": 8.4164
+        }
+      ]
+    },
+    "modell|aktie|V2S150|10|treffer|wild": {},
+    "modell|aktie|V2S150|10|treffer|wild|muster": {},
+    "modell|aktie|2S150|10|wild": {},
+    "modell|aktie|2S150|10|wild|muster": {}
   }
 }

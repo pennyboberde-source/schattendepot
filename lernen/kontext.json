@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-21T01:44:15.024Z",
+  "stand": "2026-11-21T06:40:06.697Z",
   "hinweis": "Weltlage für alle Bereiche (Quantensprung 3): Themen der Weltnachrichten als Spitze gegen die 30 Tage davor (GDELT, Anteil an allen Artikeln), US-Amtsblatt (Federal Register: Erlasse, Zölle, Sanktionen, Exportkontrollen), Weltgeschehen (Wikipedia, Portal:Current events, Text CC BY-SA 4.0), Chronik der stärksten Markttage der letzten zwei Jahre mit ihren Themen, und was der Aktienmarkt nach früheren Wellen desselben Themas in 5 Handelstagen tat. Nur Klassen, keine Kurswerte.",
   "quellen": [
     "GDELT Project (gdeltproject.org)",
@@ -25,14 +25,19 @@
       "klasse": "Welle"
     },
     {
-      "name": "Krypto",
+      "name": "Erlasse und Regierungshandeln",
       "spitze": 2.3,
       "klasse": "Welle"
     },
     {
       "name": "Hackerangriffe",
-      "spitze": 2.2,
+      "spitze": 2.1,
       "klasse": "Welle"
+    },
+    {
+      "name": "Krypto",
+      "spitze": 1.9,
+      "klasse": "erhöht"
     },
     {
       "name": "Abnehmspritzen",
@@ -45,22 +50,17 @@
       "klasse": "erhöht"
     },
     {
-      "name": "Raumfahrt",
-      "spitze": 1.5,
+      "name": "Künstliche Intelligenz",
+      "spitze": 1.6,
       "klasse": "erhöht"
     },
     {
-      "name": "Sanktionen und Embargos",
-      "spitze": 1.4,
+      "name": "Rüstung und Verteidigung",
+      "spitze": 1.6,
       "klasse": "erhöht"
-    },
-    {
-      "name": "Krieg und Angriffe",
-      "spitze": 1.3,
-      "klasse": "ruhig"
     }
   ],
-  "politik": "erhöht",
+  "politik": "Welle",
   "amtsblatt": {
     "klasse": "ruhig",
     "tage": [
@@ -114,9 +114,9 @@
         "Armed conflicts and attacks: Middle Eastern crisis – Yemeni civil war – 2026 Yemen offensives – Yemeni government forces say they have conducted operations in the Al-Jawf, Marib, and Taiz governorates that have killed or injured 193 Houthi ",
         "Armed conflicts and attacks: Russo-Ukrainian war – Violations of non-combatant airspace during the Russo-Ukrainian war",
         "Armed conflicts and attacks: Russo-Ukrainian war – A Russian Kh-101 cruise missile strikes a field near the village of Nowy Lipowiec in Lublin Voivodeship, Poland, around 60 miles from a Coalition of the Willing training excercise. Air raid",
-        "Armed conflicts and attacks: Haitian conflict – Salvadoran military intervention in Haiti – Two Salvadoran soldiers are killed and two more are injured when explosive they are handling detonate.",
+        "Armed conflicts and attacks: Haitian conflict – Salvadoran military intervention in Haiti – Three Salvadoran soldiers are killed and another is injured when explosives they are handling detonate.",
         "Armed conflicts and attacks: Haitian conflict – Salvadoran military intervention in Haiti – The governments of Haiti and El Salvador agree to build three new prisons to incarcerate Haitian gang members.",
-        "Disasters and accidents: 2026 Bayelsa boat disaster – 30 people are dead and around 300 are missing after a ship carrying funeral goers capsizes in Bayelsa State, Nigeria.",
+        "Disasters and accidents: 2026 Bayelsa boat disaster – 30 people are killed and around 300 are missing after a ship carrying funeral goers capsizes in Bayelsa State, Nigeria.",
         "Politics and elections: 2026 European unrest – 2026 Italian unrest – A general strike is held in Italy, with protests in multiple cities across the country.",
         "Politics and elections: Politics of Iraq – Iraqi prime minister Ali al-Zaidi announces that an agreement has been reached with Kata'ib Hezbollah to establish a joint operations center and jointly station troops in Jurf al-Sakhar, south of B",
         "Science and technology: Anthropic employee and mathematician Levent Alpöge releases a claimed proof of the Riemann hypothesis. The proof was created with assistance from Claude."
@@ -161,15 +161,15 @@
       }
     },
     {
-      "thema": "Krypto",
+      "thema": "Erlasse und Regierungshandeln",
       "heute": "Welle",
-      "fruehereWellen": 13,
+      "fruehereWellen": 11,
       "danach5": {
         "stark fallend": 0,
-        "fallend": 1,
-        "seitwärts": 8,
-        "steigend": 3,
-        "stark steigend": 1
+        "fallend": 2,
+        "seitwärts": 7,
+        "steigend": 2,
+        "stark steigend": 0
       }
     },
     {
@@ -185,19 +185,35 @@
       }
     },
     {
-      "thema": "Abnehmspritzen",
+      "thema": "Krypto",
       "heute": "erhöht",
-      "fruehereWellen": 65,
+      "fruehereWellen": 13,
       "danach5": {
         "stark fallend": 0,
-        "fallend": 6,
-        "seitwärts": 46,
-        "steigend": 12,
+        "fallend": 1,
+        "seitwärts": 8,
+        "steigend": 3,
         "stark steigend": 1
       }
     }
   ],
   "chronik": [
+    {
+      "datum": "2026-11-20",
+      "markt": "stark gefallen",
+      "danach5": null,
+      "themen": [
+        "Abnehmspritzen (Sturm)",
+        "Hackerangriffe (Welle)",
+        "Drohnen (Welle)",
+        "Notenbank und Zinsen (Welle)"
+      ],
+      "schlagzeilen": [
+        "Armed conflicts and attacks: Middle Eastern crisis – 2026 Iran war – 2026 Strait of Hormuz crisis – The Islamic Revolutionary Guard Corps Navy and the United Kingdom Maritime Trade Operations report that an oil tanker has been damaged and c",
+        "Armed conflicts and attacks: Middle Eastern crisis – Yemeni civil war – Houthi–Saudi conflict – The Saudi-led coalition launches airstrikes on Hodeidah, Yemen, targeting weapons smuggling used by the Houthis, and on targets in the Sanaa, Sa",
+        "Armed conflicts and attacks: Middle Eastern crisis – Yemeni civil war – 2026 Yemen offensives – Yemeni government forces say they have conducted operations in the Al-Jawf, Marib, and Taiz governorates that have killed or injured 193 Houthi "
+      ]
+    },
     {
       "datum": "2026-11-19",
       "markt": "gefallen",
@@ -540,20 +556,6 @@
         "Armed conflicts and attacks: Sudanese civil war – Kordofan Campaign – At least 22 people are killed and eight others are injured in a bombing by the Rapid Support Forces at a military hospital in South Kordofan, Sudan.",
         "Armed conflicts and attacks: Middle Eastern crisis – Iran's Islamic Revolutionary Guard Corps Navy seizes two foreign oil tankers allegedly smuggling fuel in the Persian Gulf. Fifteen crew members onboard both tankers are taken into custody",
         "Armed conflicts and attacks: United States strikes on alleged drug traffickers during Operation Southern Spear"
-      ]
-    },
-    {
-      "datum": "2026-01-21",
-      "markt": "gestiegen",
-      "danach5": "seitwärts",
-      "themen": [
-        "Zölle und Handelsstreit (Welle)",
-        "Rüstung und Verteidigung (Welle)"
-      ],
-      "schlagzeilen": [
-        "Armed conflicts and attacks: Gaza war – Killing of journalists in the Gaza war",
-        "Armed conflicts and attacks: Gaza war – At least eleven Palestinians, including two children and three journalists documenting Egyptian state aid distribution, are killed in Israeli airstrikes in the Netzarim Corridor in Gaza.",
-        "Armed conflicts and attacks: Israel–Hezbollah conflict – Israel launches a series of airstrikes in Lebanon, killing one person each in Tyre and Sidon and wounding 19 others in Qanarit."
       ]
     },
     {
