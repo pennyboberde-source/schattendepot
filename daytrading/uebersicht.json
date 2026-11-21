@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-21T10:53:51.088Z",
+  "stand": "2026-11-21T11:12:07.519Z",
   "heute": {
     "datum": "2026-11-21",
     "gruppe": {
@@ -311,40 +311,6 @@
         "stueck": 7905.138339,
         "kurswert": 1000
       }
-    },
-    {
-      "id": "2026-11-21-scan-xrp",
-      "datum": "2026-11-21",
-      "herkunft": "code_scan",
-      "markt": "krypto",
-      "setup": "orb",
-      "richtung": "long",
-      "instrument": "krypto",
-      "name": "XRP",
-      "symbol": "XRP",
-      "spekulativ": true,
-      "ausloeser": {
-        "zeit": "2026-11-21T09:10:00.000Z",
-        "kurs": 0.81511,
-        "level": 0.814,
-        "spanne": {
-          "hoch": 0.81404,
-          "tief": 0.81
-        },
-        "richtung": "long"
-      },
-      "stop": 0.812,
-      "ziel": 0.8203,
-      "zielR": 2,
-      "flatBis": "2026-11-21T20:55:00.000Z",
-      "virtuell": true,
-      "einstieg": {
-        "zeit": "2026-11-21T09:10:00.000Z",
-        "basisKurs": 0.81477,
-        "kurs": 0.8168,
-        "stueck": 1224.289911,
-        "kurswert": 1000
-      }
     }
   ],
   "trades": [
@@ -414,6 +380,25 @@
         "kurs": 0.8168,
         "stueck": 1224.289911,
         "kurswert": 1000
+      },
+      "ausstieg": {
+        "zeit": "2026-11-21T10:55:00.000Z",
+        "basisKurs": 0.8203,
+        "kurs": 0.8182,
+        "kurswert": 1001.71,
+        "grund": "ziel"
+      },
+      "ergebnis": {
+        "brutto": 1.71,
+        "bruttoProzent": 0.17,
+        "netto": -0.29,
+        "nettoProzent": -0.03,
+        "nettoTR": -0.29,
+        "gebuehren": {
+          "haupt": 2,
+          "tr": 2
+        },
+        "r": 2
       }
     },
     {
@@ -9884,26 +9869,26 @@
   "virtuell": {
     "ab": "2026-11-13",
     "gesamt": {
-      "anzahl": 212,
+      "anzahl": 213,
       "treffer": 105,
-      "quote": 49.5,
-      "netto": 3237.92,
-      "brutto": 3323.92,
-      "nettoTR": 2900.92,
-      "oeNettoProzent": 1.53,
-      "oeR": 0.43
+      "quote": 49.3,
+      "netto": 3237.63,
+      "brutto": 3325.63,
+      "nettoTR": 2900.63,
+      "oeNettoProzent": 1.52,
+      "oeR": 0.44
     },
     "heute": {
-      "anzahl": 3,
+      "anzahl": 4,
       "treffer": 0,
       "quote": 0,
-      "netto": -32.53,
-      "brutto": -26.53,
-      "nettoTR": -32.53,
-      "oeNettoProzent": -1.08,
-      "oeR": -1
+      "netto": -32.82,
+      "brutto": -24.82,
+      "nettoTR": -32.82,
+      "oeNettoProzent": -0.82,
+      "oeR": -0.25
     },
-    "offen": 2,
+    "offen": 1,
     "gruppen": {
       "turbo": {
         "anzahl": 169,
@@ -9926,14 +9911,14 @@
         "oeR": 0.51
       },
       "krypto": {
-        "anzahl": 43,
+        "anzahl": 44,
         "treffer": 10,
-        "quote": 23.3,
-        "netto": -368.81,
-        "brutto": -282.81,
-        "nettoTR": -368.81,
-        "oeNettoProzent": -0.86,
-        "oeR": 0.11
+        "quote": 22.7,
+        "netto": -369.1,
+        "brutto": -281.1,
+        "nettoTR": -369.1,
+        "oeNettoProzent": -0.84,
+        "oeR": 0.15
       }
     }
   },
