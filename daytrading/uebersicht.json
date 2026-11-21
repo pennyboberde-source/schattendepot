@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-21T08:11:52.552Z",
+  "stand": "2026-11-21T08:42:44.327Z",
   "heute": {
     "datum": "2026-11-21",
     "gruppe": {
@@ -277,8 +277,77 @@
       "oeR": 0.1
     }
   ],
-  "offen": [],
+  "offen": [
+    {
+      "id": "2026-11-21-scan-ada",
+      "datum": "2026-11-21",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-21T08:20:00.000Z",
+        "kurs": 0.1266,
+        "level": 0.1266,
+        "spanne": {
+          "hoch": 0.126566,
+          "tief": 0.125964
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1236,
+      "ziel": 0.1312,
+      "zielR": 2,
+      "flatBis": "2026-11-21T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-21T08:20:00.000Z",
+        "basisKurs": 0.126135,
+        "kurs": 0.1265,
+        "stueck": 7905.138339,
+        "kurswert": 1000
+      }
+    }
+  ],
   "trades": [
+    {
+      "id": "2026-11-21-scan-ada",
+      "datum": "2026-11-21",
+      "herkunft": "code_scan",
+      "markt": "krypto",
+      "setup": "orb",
+      "richtung": "long",
+      "instrument": "krypto",
+      "name": "ADA",
+      "symbol": "ADA",
+      "spekulativ": true,
+      "ausloeser": {
+        "zeit": "2026-11-21T08:20:00.000Z",
+        "kurs": 0.1266,
+        "level": 0.1266,
+        "spanne": {
+          "hoch": 0.126566,
+          "tief": 0.125964
+        },
+        "richtung": "long"
+      },
+      "stop": 0.1236,
+      "ziel": 0.1312,
+      "zielR": 2,
+      "flatBis": "2026-11-21T20:55:00.000Z",
+      "virtuell": true,
+      "einstieg": {
+        "zeit": "2026-11-21T08:20:00.000Z",
+        "basisKurs": 0.126135,
+        "kurs": 0.1265,
+        "stueck": 7905.138339,
+        "kurswert": 1000
+      }
+    },
     {
       "id": "2026-11-20-scan-arista-networks-inc",
       "datum": "2026-11-20",
@@ -9607,7 +9676,7 @@
       "oeNettoProzent": 0,
       "oeR": 0
     },
-    "offen": 0,
+    "offen": 1,
     "gruppen": {
       "turbo": {
         "anzahl": 169,
