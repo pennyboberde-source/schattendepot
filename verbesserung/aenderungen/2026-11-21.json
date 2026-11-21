@@ -1,0 +1,19 @@
+{
+  "datum": "2026-11-21",
+  "zusammenfassung": "Daytrading-Scan nimmt nur noch Aktien mit mindestens 100.000 € Umsatz in der Eröffnungsspanne – die umsatzschwachen, spekulativen Werte waren die größten Verlustbringer.",
+  "aenderungen": [
+    {
+      "id": "daytrading-mindestumsatz-100k",
+      "titel": "Daytrading-Scan: Mindestumsatz der Eröffnungsspanne von 20.000 auf 100.000 €",
+      "bereich": "daytrading",
+      "kandidat": "monatspruefung:2026-11:4",
+      "hypothese": "Spekulative Trades (u. a. Umsatz unter 100.000 €) trafen nur 22 % (−1.681 €, n=118), Skill-Filter-Trades 35 % (n=214). Ein Code-Hebel für eine 20-%-Obergrenze ist nicht freigegeben; der Mindestumsatz in Höhe der Spekulativ-Grenze schließt den umsatzschwachen Teil aus und senkt den Spekulativ-Anteil deutlich.",
+      "messkriterium": { "kennzahl": "daytrading.quote", "richtung": "steigt", "ausgangswert": 30, "zielwert": 33, "text": "Trefferquote im sichtbaren Daytrading steigt von 30 % auf über 33 %." },
+      "dateien": ["config/daytrading.json"]
+    }
+  ],
+  "nichtUmgesetzt": [
+    { "kandidat": "monatspruefung:2026-11:6", "grund": "Die Signalgewichte führt der Code wöchentlich selbst aus dem Schattenbuch nach (Gewichte-Tabelle hat Vorrang vor config/signale.json); gewinn_enttaeuschung und verwaesserung haben Richtung −1, ein Kursrückgang ist dort kein Fehlsignal – Senken wäre nicht sauber messbar." },
+    { "kandidat": "quelle:emskeptic:ausfall", "grund": "HTTP 403 vom Substack-Feed; aus dieser Umgebung nicht prüfbar, ob der Feed umgezogen ist. Quelle bleibt (Quellen werden nie entfernt) – Bau-Sitzung soll die Adresse prüfen." }
+  ]
+}

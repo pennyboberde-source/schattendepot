@@ -21,7 +21,8 @@
     "hinweis": "Code-Scan: je Sitzung die umsatzstärksten Aktien der Eröffnungsspanne auf gettex (nur Stammaktien/ADRs laut OpenFIGI).",
     "jeSitzung": 30,
     "minGeschaefte": 15,
-    "minUmsatzEuro": 20000,
+    "minUmsatzEuro": 100000,
+    "minUmsatzHinweis": "Verbesserungslauf 21.11.2026: von 20.000 auf 100.000 € (= spekulativ.unterUmsatzEuro) – Werte mit wenig Umsatz in der Eröffnungsspanne waren die Verlustbringer (spekulativ 22 % Quote, −1.681 €, n=118, gegen 35 % im Skill-Filter).",
     "laenderEu": ["DE", "FR", "NL", "IT", "ES", "BE", "AT", "FI", "IE", "LU", "PT", "CH", "GB", "DK", "SE", "NO"],
     "laenderUs": ["US", "CA"]
   },
