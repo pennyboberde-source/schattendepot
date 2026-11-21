@@ -4875,6 +4875,70 @@
         "faelle": 580
       },
       "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "modell|aktie|V2S150|10|treffer|wild",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) nur die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach) – oberste 5 %",
+      "gruppenSchluessel": "modell|aktie",
+      "sp": "V2S150",
+      "fenster": 10,
+      "seit": "2026-11-21",
+      "wertung": 3.2,
+      "rueckblick": {
+        "quote": 31.5,
+        "ev": 34.1,
+        "se": 14.3,
+        "faelle": 821
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "modell|aktie|V2S150|10|treffer|wild|muster",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 25 % ihres Tages sieht",
+      "gruppenSchluessel": "modell|aktie",
+      "sp": "V2S150",
+      "fenster": 10,
+      "seit": "2026-11-21",
+      "wertung": 14.2,
+      "rueckblick": {
+        "quote": 31.2,
+        "ev": 35.4,
+        "se": 18.5,
+        "faelle": 564
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "modell|aktie|2S150|10|wild",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen nur die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach) – oberste 10 %",
+      "gruppenSchluessel": "modell|aktie",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-21",
+      "wertung": 3.8,
+      "rueckblick": {
+        "quote": 28.8,
+        "ev": 18.3,
+        "se": 10,
+        "faelle": 1986
+      },
+      "status": "vorwaertstest"
+    },
+    {
+      "schluessel": "modell|aktie|2S150|10|wild|muster",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 25 % ihres Tages sieht",
+      "gruppenSchluessel": "modell|aktie",
+      "sp": "2S150",
+      "fenster": 10,
+      "seit": "2026-11-21",
+      "wertung": 12.4,
+      "rueckblick": {
+        "quote": 31.5,
+        "ev": 29.8,
+        "se": 11.8,
+        "faelle": 1554
+      },
+      "status": "vorwaertstest"
     }
   ]
 }

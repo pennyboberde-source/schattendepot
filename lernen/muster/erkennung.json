@@ -1,189 +1,189 @@
 {
-  "stand": "2026-11-20T01:41:24.193Z",
+  "stand": "2026-11-21T01:44:15.024Z",
   "hinweis": "F1 Erkennungsquote: hebelfreie Volltreffer (direkt, Stop 150 €, ≥ +400 € nach Kosten binnen 10 Handelstagen, je Wert einer in 10 Tagen). „erkannt“ = am Stichtag feuerte mindestens ein Erkennungs-Muster (hebelfreie Volltreffer-Quote in beiden Zeiträumen ≥ 3 × Grundrate; auf derselben Geschichte gefunden – die Quote ist eine Obergrenze). Klassen: Anteil der Sprünge unter allen Stichtagen mit dieser Klasse gegen die Grundrate (Lift).",
   "maerkte": [
     {
       "markt": "aktie",
-      "stichtage": 3287522,
-      "spruenge": 12183,
+      "stichtage": 3295443,
+      "spruenge": 12189,
       "grundrate": 0.37,
-      "erkannt": 11583,
-      "anteilErkannt": 95.1,
-      "anteilFeuern": 36.6,
-      "lift": 2.6,
+      "erkannt": 11602,
+      "anteilErkannt": 95.2,
+      "anteilFeuern": 37.7,
+      "lift": 2.5,
       "klassen": [
         {
           "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung: Reaktion am Vortag",
-          "faelle": 753,
+          "faelle": 755,
           "spruenge": 42,
           "quote": 5.6,
-          "lift": 15.1
+          "lift": 15
         },
         {
           "merkmal": "Aktien: 20-Tage-Rendite %: unter -50",
-          "faelle": 21206,
-          "spruenge": 1142,
+          "faelle": 21333,
+          "spruenge": 1144,
           "quote": 5.4,
           "lift": 14.5
         },
         {
           "merkmal": "Aktien: Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
-          "faelle": 27343,
-          "spruenge": 977,
+          "faelle": 27387,
+          "spruenge": 979,
           "quote": 3.6,
-          "lift": 9.6
+          "lift": 9.7
         },
         {
           "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung: Reaktion am Vortag",
-          "faelle": 2117,
+          "faelle": 2121,
           "spruenge": 72,
           "quote": 3.4,
           "lift": 9.2
         },
         {
           "merkmal": "Aktien: Börsenwert (Mio. $): Börsenwert unter 50 Mio. $ (Nano)",
-          "faelle": 29922,
-          "spruenge": 1010,
+          "faelle": 29973,
+          "spruenge": 1011,
           "quote": 3.4,
           "lift": 9.1
         },
         {
           "merkmal": "Aktien: Abstand zum Jahreshoch %: unter -80",
-          "faelle": 41322,
-          "spruenge": 1289,
+          "faelle": 41528,
+          "spruenge": 1293,
           "quote": 3.1,
           "lift": 8.4
         },
         {
           "merkmal": "Aktien: Umsatz (× Ø 20 Tage): ab 10",
-          "faelle": 31678,
-          "spruenge": 889,
+          "faelle": 31780,
+          "spruenge": 890,
           "quote": 2.8,
           "lift": 7.6
         },
         {
           "merkmal": "Aktien: Umsatz 5 Tage (× Ø 20 Tage davor): über 6 × Ø (Anhäufung)",
-          "faelle": 45146,
-          "spruenge": 1156,
+          "faelle": 45273,
+          "spruenge": 1158,
           "quote": 2.6,
           "lift": 6.9
         },
         {
           "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung: Reaktion am Stichtag",
-          "faelle": 676,
+          "faelle": 677,
           "spruenge": 16,
           "quote": 2.4,
           "lift": 6.4
         },
         {
           "merkmal": "Aktien: Größter Tagesgewinn 20 Tage %: 20 bis 50 %",
-          "faelle": 115741,
+          "faelle": 116042,
           "spruenge": 2724,
-          "quote": 2.4,
-          "lift": 6.4
+          "quote": 2.3,
+          "lift": 6.3
         },
         {
           "merkmal": "Aktien: 20-Tage-Rendite %: ab 50",
-          "faelle": 52488,
+          "faelle": 52538,
           "spruenge": 1218,
           "quote": 2.3,
           "lift": 6.3
         },
         {
           "merkmal": "Aktien: Großaktionär (13D): 13D-Meldung: Reaktion am Vortag",
-          "faelle": 1053,
+          "faelle": 1055,
           "spruenge": 22,
           "quote": 2.1,
           "lift": 5.6
         },
         {
           "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 2 bis 5 Handelstagen",
-          "faelle": 8188,
+          "faelle": 8200,
           "spruenge": 167,
           "quote": 2,
           "lift": 5.5
         },
         {
           "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 6 bis 20 Handelstagen",
-          "faelle": 10125,
+          "faelle": 10139,
           "spruenge": 204,
           "quote": 2,
           "lift": 5.4
         },
         {
           "merkmal": "Aktien: Satzung/Aktiensplit (8-K 5.03): Satzungsänderung: Reaktion am Stichtag",
-          "faelle": 2213,
-          "spruenge": 41,
-          "quote": 1.9,
-          "lift": 5
+          "faelle": 2220,
+          "spruenge": 40,
+          "quote": 1.8,
+          "lift": 4.9
         },
         {
           "merkmal": "Aktien: Satzung/Aktiensplit (8-K 5.03): Satzungsänderung: Reaktion am Vortag",
-          "faelle": 2492,
+          "faelle": 2499,
           "spruenge": 44,
           "quote": 1.8,
           "lift": 4.8
         },
         {
           "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 2 bis 5 Handelstagen",
-          "faelle": 2886,
+          "faelle": 2895,
           "spruenge": 51,
           "quote": 1.8,
           "lift": 4.8
         },
         {
           "merkmal": "Aktien: Aktienzahl (Mio.): unter 5 Mio. Aktien",
-          "faelle": 35475,
+          "faelle": 35546,
           "spruenge": 629,
           "quote": 1.8,
           "lift": 4.8
         },
         {
           "merkmal": "Aktien: 20-Tage-Rendite %: -50 bis -20",
-          "faelle": 152825,
+          "faelle": 153751,
           "spruenge": 2472,
           "quote": 1.6,
-          "lift": 4.4
+          "lift": 4.3
         },
         {
           "merkmal": "Aktien: Kurs: 1 bis 5",
-          "faelle": 253682,
-          "spruenge": 3935,
-          "quote": 1.6,
+          "faelle": 254391,
+          "spruenge": 3939,
+          "quote": 1.5,
           "lift": 4.2
         },
         {
           "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
-          "faelle": 28233,
+          "faelle": 28258,
           "spruenge": 440,
           "quote": 1.6,
           "lift": 4.2
         },
         {
           "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung: Reaktion am Stichtag",
-          "faelle": 1624,
+          "faelle": 1627,
           "spruenge": 24,
           "quote": 1.5,
           "lift": 4
         },
         {
           "merkmal": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Vortag",
-          "faelle": 8745,
-          "spruenge": 123,
+          "faelle": 8766,
+          "spruenge": 124,
           "quote": 1.4,
           "lift": 3.8
         },
         {
           "merkmal": "Aktien: Großaktionär (13D): 13D-Meldung: Reaktion am Stichtag",
-          "faelle": 916,
+          "faelle": 918,
           "spruenge": 12,
           "quote": 1.3,
           "lift": 3.5
         },
         {
           "merkmal": "Aktien: Größter Tagesgewinn 20 Tage %: 10 bis 20 %",
-          "faelle": 322919,
-          "spruenge": 4058,
+          "faelle": 323783,
+          "spruenge": 4062,
           "quote": 1.3,
           "lift": 3.4
         }
@@ -191,122 +191,122 @@
     },
     {
       "markt": "penny",
-      "stichtage": 298041,
-      "spruenge": 1688,
+      "stichtage": 298996,
+      "spruenge": 1693,
       "grundrate": 0.57,
-      "erkannt": 1668,
-      "anteilErkannt": 98.8,
-      "anteilFeuern": 45.5,
+      "erkannt": 1675,
+      "anteilErkannt": 98.9,
+      "anteilFeuern": 45.6,
       "lift": 2.2,
       "klassen": [
         {
           "merkmal": "Aktien: 20-Tage-Rendite %: unter -50",
-          "faelle": 3814,
-          "spruenge": 241,
+          "faelle": 3862,
+          "spruenge": 244,
           "quote": 6.3,
           "lift": 11.2
         },
         {
           "merkmal": "Aktien: Börsenwert (Mio. $): Börsenwert unter 50 Mio. $ (Nano)",
-          "faelle": 7591,
-          "spruenge": 424,
+          "faelle": 7654,
+          "spruenge": 428,
           "quote": 5.6,
           "lift": 9.9
         },
         {
           "merkmal": "Aktien: Leerverkäufe gegen den eigenen Schnitt: Leerverkäufe viel häufiger als sonst (über 15 Punkte mehr)",
-          "faelle": 4910,
-          "spruenge": 245,
+          "faelle": 4948,
+          "spruenge": 247,
           "quote": 5,
           "lift": 8.8
         },
         {
           "merkmal": "Aktien: Beteiligung ab 5 % (13G): 13G-Meldung: Reaktion am Vortag",
-          "faelle": 265,
+          "faelle": 269,
           "spruenge": 12,
           "quote": 4.5,
-          "lift": 8
+          "lift": 7.9
         },
         {
           "merkmal": "Aktien: Größter Tagesgewinn 20 Tage %: über 50 % (Wiederholungsläufer)",
-          "faelle": 4261,
-          "spruenge": 186,
+          "faelle": 4277,
+          "spruenge": 187,
           "quote": 4.4,
           "lift": 7.7
         },
         {
           "merkmal": "Aktien: Handelsplatz (Börse/OTC): an Nasdaq/NYSE",
-          "faelle": 19663,
-          "spruenge": 844,
+          "faelle": 19781,
+          "spruenge": 847,
           "quote": 4.3,
           "lift": 7.6
         },
         {
           "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung: Reaktion am Vortag",
-          "faelle": 212,
+          "faelle": 213,
           "spruenge": 9,
           "quote": 4.2,
           "lift": 7.5
         },
         {
           "merkmal": "Aktien: Abstand zum Jahreshoch %: unter -80",
-          "faelle": 8317,
-          "spruenge": 339,
+          "faelle": 8403,
+          "spruenge": 342,
           "quote": 4.1,
           "lift": 7.2
         },
         {
           "merkmal": "Aktien: Kurs: unter 1",
-          "faelle": 27268,
-          "spruenge": 1074,
+          "faelle": 27421,
+          "spruenge": 1078,
           "quote": 3.9,
-          "lift": 7
+          "lift": 6.9
         },
         {
           "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung: Reaktion am Stichtag",
-          "faelle": 227,
+          "faelle": 229,
           "spruenge": 9,
-          "quote": 4,
-          "lift": 7
-        },
-        {
-          "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 2 bis 5 Handelstagen",
-          "faelle": 757,
-          "spruenge": 29,
-          "quote": 3.8,
-          "lift": 6.8
+          "quote": 3.9,
+          "lift": 6.9
         },
         {
           "merkmal": "Aktien: Leerverkaufsanteil: Leerverkaufsanteil 45 bis 60 %",
-          "faelle": 16476,
-          "spruenge": 621,
+          "faelle": 16545,
+          "spruenge": 624,
           "quote": 3.8,
           "lift": 6.7
         },
         {
-          "merkmal": "Aktien: Aktienzahl (Mio.): unter 5 Mio. Aktien",
-          "faelle": 2787,
-          "spruenge": 102,
-          "quote": 3.7,
-          "lift": 6.5
+          "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 2 bis 5 Handelstagen",
+          "faelle": 762,
+          "spruenge": 29,
+          "quote": 3.8,
+          "lift": 6.7
         },
         {
           "merkmal": "Aktien: Leerverkäufe gegen den eigenen Schnitt: Leerverkäufe häufiger als sonst (5 bis 15 Punkte mehr)",
-          "faelle": 9067,
-          "spruenge": 328,
+          "faelle": 9114,
+          "spruenge": 329,
+          "quote": 3.6,
+          "lift": 6.4
+        },
+        {
+          "merkmal": "Aktien: Aktienzahl (Mio.): unter 5 Mio. Aktien",
+          "faelle": 2801,
+          "spruenge": 102,
           "quote": 3.6,
           "lift": 6.4
         },
         {
           "merkmal": "Aktien: Warnmeldung (Insolvenz, Delisting, Korrektur): Warnmeldung vor 6 bis 20 Handelstagen",
-          "faelle": 2406,
-          "spruenge": 86,
+          "faelle": 2423,
+          "spruenge": 87,
           "quote": 3.6,
           "lift": 6.3
         },
         {
           "merkmal": "Aktien: Kapitalerhöhung (Prospekt): Kapitalerhöhung: Reaktion am Stichtag",
-          "faelle": 453,
+          "faelle": 455,
           "spruenge": 16,
           "quote": 3.5,
           "lift": 6.2
@@ -319,37 +319,37 @@
           "lift": 6
         },
         {
-          "merkmal": "Aktien: Größter Tagesgewinn 20 Tage %: 20 bis 50 %",
-          "faelle": 12141,
-          "spruenge": 400,
-          "quote": 3.3,
-          "lift": 5.8
+          "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
+          "faelle": 2167,
+          "spruenge": 73,
+          "quote": 3.4,
+          "lift": 5.9
         },
         {
-          "merkmal": "Aktien: Kapital-Registrierung (S-1/S-3): Kapital-Registrierung vor 6 bis 20 Handelstagen",
-          "faelle": 2155,
-          "spruenge": 71,
+          "merkmal": "Aktien: Größter Tagesgewinn 20 Tage %: 20 bis 50 %",
+          "faelle": 12184,
+          "spruenge": 403,
           "quote": 3.3,
           "lift": 5.8
         },
         {
           "merkmal": "Aktien: Großaktionär (13D): 13D-Meldung vor 6 bis 20 Handelstagen",
-          "faelle": 557,
+          "faelle": 559,
           "spruenge": 18,
           "quote": 3.2,
           "lift": 5.7
         },
         {
           "merkmal": "Aktien: Großvertrag (8-K 1.01): Großvertrag: Reaktion am Stichtag",
-          "faelle": 678,
+          "faelle": 679,
           "spruenge": 22,
           "quote": 3.2,
           "lift": 5.7
         },
         {
           "merkmal": "Aktien: Aktienzahl (Mio.): 20 bis 100 Mio.",
-          "faelle": 9761,
-          "spruenge": 308,
+          "faelle": 9803,
+          "spruenge": 309,
           "quote": 3.2,
           "lift": 5.6
         },
@@ -361,17 +361,17 @@
           "lift": 5.6
         },
         {
-          "merkmal": "Aktien: 20-Tage-Rendite %: ab 50",
-          "faelle": 6273,
-          "spruenge": 185,
-          "quote": 2.9,
-          "lift": 5.2
+          "merkmal": "Aktien: Quartalszahlen: Reaktion am Vortag",
+          "faelle": 597,
+          "spruenge": 18,
+          "quote": 3,
+          "lift": 5.3
         },
         {
-          "merkmal": "Aktien: Quartalszahlen: Reaktion am Vortag",
-          "faelle": 582,
-          "spruenge": 17,
-          "quote": 2.9,
+          "merkmal": "Aktien: 20-Tage-Rendite %: ab 50",
+          "faelle": 6280,
+          "spruenge": 186,
+          "quote": 3,
           "lift": 5.2
         }
       ]

@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-20T01:41:24.193Z",
+  "stand": "2026-11-21T01:44:15.024Z",
   "hinweis": "Gesamtmodell (Quantensprung, seit 16.11.2026): Gradient Boosting über die Klassen aller wertbezogenen Merkmale (marktweite wie VIX, Fed, Öl bleiben draußen), Ziel Ergebnis nach Kosten gegen den Tagesdurchschnitt, Auswahl je Tag die obersten q % des Tages. Gemessen nur außerhalb der Trainingsdaten (Modell aus Zeitraum A bewertet B und umgekehrt); bestanden wie ein Muster. Nur verdichtete Kennzahlen.",
   "modelle": [
     {
@@ -10,48 +10,48 @@
       "sp": "2S150",
       "fenster": 10,
       "q": 0.5,
-      "bestanden": true,
-      "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen)",
+      "bestanden": false,
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0",
       "zeitraeume": [
         {
-          "n": 2026,
-          "quote": 26.3,
-          "ev": 7.6,
-          "se": 7.2,
+          "n": 1964,
+          "quote": 27.5,
+          "ev": 18.4,
+          "se": 6.6,
           "tage": 240,
           "grundEv": -48.5
         },
         {
-          "n": 2421,
-          "quote": 26.1,
-          "ev": 8.7,
-          "se": 6.8,
-          "tage": 248,
-          "grundEv": -46
+          "n": 2385,
+          "quote": 25.6,
+          "ev": 4,
+          "se": 6.6,
+          "tage": 250,
+          "grundEv": -45.8
         }
       ],
       "quartale": [
-        6,
+        5,
         9
       ],
-      "wertung": 0.4,
+      "wertung": -2.6,
       "gesamt": {
-        "n": 4447,
-        "quote": 26.2,
-        "ev": 8.2,
-        "se": 7.2
+        "n": 4349,
+        "quote": 26.4,
+        "ev": 10.5,
+        "se": 6.6
       },
       "wichtig": [
-        "Ø Tagesumsatz (118)",
-        "20-Tage-Hoch (82)",
-        "Abstand zum Jahreshoch % (80)",
-        "Schwankung je Tag % (80)",
-        "20-Tage-Rendite % (64)",
-        "Kurs (60)",
-        "Quartalszahlen (60)",
-        "5-Tage-Rendite % (42)"
+        "Ø Tagesumsatz (127)",
+        "20-Tage-Hoch (81)",
+        "Abstand zum Jahreshoch % (77)",
+        "Schwankung je Tag % (76)",
+        "20-Tage-Rendite % (62)",
+        "Kurs (61)",
+        "Quartalszahlen (53)",
+        "Leerverkaufsanteil (43)"
       ],
-      "faelleHeute": 36
+      "faelleHeute": 37
     },
     {
       "schluessel": "modell|aktie|2S150|10|muster",
@@ -65,44 +65,44 @@
       "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen, besser als alle Musterfälle)",
       "zeitraeume": [
         {
-          "n": 1735,
-          "quote": 27.5,
-          "ev": 24.5,
-          "se": 8.4,
+          "n": 1832,
+          "quote": 27.1,
+          "ev": 21.3,
+          "se": 8.1,
           "tage": 239,
-          "grundEv": -3.6
+          "grundEv": -3.7
         },
         {
-          "n": 1658,
-          "quote": 26.2,
-          "ev": 18.8,
-          "se": 7.1,
+          "n": 1674,
+          "quote": 26,
+          "ev": 18.4,
+          "se": 6.9,
           "tage": 248,
-          "grundEv": 1
+          "grundEv": 1.1
         }
       ],
       "quartale": [
-        6,
+        7,
         9
       ],
-      "wertung": 11.7,
+      "wertung": 11.5,
       "gesamt": {
-        "n": 3393,
-        "quote": 26.9,
-        "ev": 21.7,
-        "se": 8.4
+        "n": 3506,
+        "quote": 26.6,
+        "ev": 19.9,
+        "se": 8.1
       },
       "wichtig": [
-        "Ø Tagesumsatz (118)",
-        "20-Tage-Hoch (82)",
-        "Abstand zum Jahreshoch % (80)",
-        "Schwankung je Tag % (80)",
-        "20-Tage-Rendite % (64)",
-        "Kurs (60)",
-        "Quartalszahlen (60)",
-        "5-Tage-Rendite % (42)"
+        "Ø Tagesumsatz (127)",
+        "20-Tage-Hoch (81)",
+        "Abstand zum Jahreshoch % (77)",
+        "Schwankung je Tag % (76)",
+        "20-Tage-Rendite % (62)",
+        "Kurs (61)",
+        "Quartalszahlen (53)",
+        "Leerverkaufsanteil (43)"
       ],
-      "faelleHeute": 28
+      "faelleHeute": 22
     },
     {
       "schluessel": "modell|aktie|3L150|10",
@@ -116,42 +116,42 @@
       "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als die Grundrate; nur 3 von 9 Quartalen im Plus",
       "zeitraeume": [
         {
-          "n": 710,
-          "quote": 9.3,
-          "ev": -10.8,
-          "se": 8.1,
-          "tage": 229,
+          "n": 755,
+          "quote": 11,
+          "ev": -11.2,
+          "se": 9.3,
+          "tage": 233,
           "grundEv": -13.4
         },
         {
-          "n": 594,
-          "quote": 18.9,
-          "ev": -19.6,
-          "se": 11.3,
-          "tage": 233,
-          "grundEv": -12.1
+          "n": 599,
+          "quote": 20.4,
+          "ev": -13.4,
+          "se": 11.1,
+          "tage": 234,
+          "grundEv": -12.8
         }
       ],
       "quartale": [
         3,
         9
       ],
-      "wertung": -30.9,
+      "wertung": -24.5,
       "gesamt": {
-        "n": 1304,
-        "quote": 13.7,
-        "ev": -14.8,
-        "se": 11.3
+        "n": 1354,
+        "quote": 15.1,
+        "ev": -12.2,
+        "se": 11.1
       },
       "wichtig": [
-        "Abstand zum Jahreshoch % (98)",
-        "Branche (84)",
-        "Quartalszahlen (71)",
-        "Leerverkaufsbestand: Tage zum Eindecken (55)",
-        "20-Tage-Rendite % (54)",
-        "Größter Tagesgewinn 20 Tage % (52)",
-        "Ø Tagesumsatz (38)",
-        "Aktienzahl (Mio.) (38)"
+        "Branche (97)",
+        "Abstand zum Jahreshoch % (88)",
+        "20-Tage-Rendite % (64)",
+        "Quartalszahlen (55)",
+        "Größter Tagesgewinn 20 Tage % (49)",
+        "Ø Tagesumsatz (46)",
+        "Aktienzahl (Mio.) (45)",
+        "20-Tage-Hoch (43)"
       ],
       "faelleHeute": 8
     },
@@ -167,44 +167,44 @@
       "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als alle Musterfälle ohne Modell",
       "zeitraeume": [
         {
-          "n": 3494,
-          "quote": 14.3,
-          "ev": 5.8,
-          "se": 9.4,
-          "tage": 238,
+          "n": 3601,
+          "quote": 14.2,
+          "ev": 5.2,
+          "se": 9.6,
+          "tage": 236,
           "grundEv": 12.1
         },
         {
-          "n": 6068,
-          "quote": 19,
-          "ev": 0.5,
-          "se": 9,
-          "tage": 250,
-          "grundEv": -1.2
+          "n": 6143,
+          "quote": 18.9,
+          "ev": -1.5,
+          "se": 9.2,
+          "tage": 251,
+          "grundEv": -2.8
         }
       ],
       "quartale": [
         6,
         9
       ],
-      "wertung": -8.5,
+      "wertung": -10.7,
       "gesamt": {
-        "n": 9562,
-        "quote": 17.3,
-        "ev": 2.4,
-        "se": 9.4
+        "n": 9744,
+        "quote": 17.2,
+        "ev": 1,
+        "se": 9.6
       },
       "wichtig": [
-        "Abstand zum Jahreshoch % (98)",
-        "Branche (84)",
-        "Quartalszahlen (71)",
-        "Leerverkaufsbestand: Tage zum Eindecken (55)",
-        "20-Tage-Rendite % (54)",
-        "Größter Tagesgewinn 20 Tage % (52)",
-        "Ø Tagesumsatz (38)",
-        "Aktienzahl (Mio.) (38)"
+        "Branche (97)",
+        "Abstand zum Jahreshoch % (88)",
+        "20-Tage-Rendite % (64)",
+        "Quartalszahlen (55)",
+        "Größter Tagesgewinn 20 Tage % (49)",
+        "Ø Tagesumsatz (46)",
+        "Aktienzahl (Mio.) (45)",
+        "20-Tage-Hoch (43)"
       ],
-      "faelleHeute": 193
+      "faelleHeute": 213
     },
     {
       "schluessel": "modell|krypto|1L150|10",
@@ -215,14 +215,14 @@
       "fenster": 10,
       "q": 2,
       "bestanden": false,
-      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nur 2 von 9 Quartalen im Plus",
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nur 4 von 9 Quartalen im Plus",
       "zeitraeume": [
         {
-          "n": 215,
-          "quote": 8.8,
-          "ev": -22.1,
-          "se": 12.5,
-          "tage": 202,
+          "n": 219,
+          "quote": 10.5,
+          "ev": -15.5,
+          "se": 12.7,
+          "tage": 206,
           "grundEv": -33.8
         },
         {
@@ -235,25 +235,25 @@
         }
       ],
       "quartale": [
-        2,
+        4,
         9
       ],
-      "wertung": -34.6,
+      "wertung": -28.2,
       "gesamt": {
-        "n": 328,
-        "quote": 8.8,
-        "ev": -12.7,
+        "n": 332,
+        "quote": 9.9,
+        "ev": -8.4,
         "se": 15.2
       },
       "wichtig": [
         "Börsenwert (Coins) (97)",
-        "5-Tage-Rendite % (67)",
-        "20-Tage-Rendite % (67)",
-        "Größter Tagesgewinn 20 Tage % (62)",
-        "Abstand zum Jahreshoch % (60)",
+        "20-Tage-Rendite % (65)",
+        "5-Tage-Rendite % (64)",
+        "Größter Tagesgewinn 20 Tage % (61)",
+        "Abstand zum Jahreshoch % (59)",
         "Schwankung je Tag % (55)",
-        "20-Tage-Hoch (49)",
-        "Kurs (47)"
+        "Umsatz 5 Tage (× Ø 20 Tage davor) (50)",
+        "Kurs (49)"
       ],
       "faelleHeute": 2
     },
@@ -265,48 +265,48 @@
       "sp": "2S150",
       "fenster": 10,
       "q": 0.5,
-      "bestanden": true,
-      "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen)",
+      "bestanden": false,
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0",
       "zeitraeume": [
         {
-          "n": 2075,
-          "quote": 27.2,
-          "ev": 8.7,
-          "se": 6.7,
+          "n": 2114,
+          "quote": 26.7,
+          "ev": 6,
+          "se": 6.6,
           "tage": 240,
           "grundEv": -48.5
         },
         {
-          "n": 2364,
-          "quote": 29.7,
-          "ev": 15.8,
-          "se": 7.2,
-          "tage": 249,
-          "grundEv": -46
+          "n": 2332,
+          "quote": 29.5,
+          "ev": 14.5,
+          "se": 7.4,
+          "tage": 250,
+          "grundEv": -45.8
         }
       ],
       "quartale": [
-        5,
+        6,
         9
       ],
-      "wertung": 2,
+      "wertung": -0.6,
       "gesamt": {
-        "n": 4439,
-        "quote": 28.5,
-        "ev": 12.5,
-        "se": 7.2
+        "n": 4446,
+        "quote": 28.2,
+        "ev": 10.5,
+        "se": 7.4
       },
       "wichtig": [
-        "Ø Tagesumsatz (118)",
-        "20-Tage-Hoch (82)",
-        "Abstand zum Jahreshoch % (80)",
-        "Schwankung je Tag % (80)",
-        "20-Tage-Rendite % (64)",
-        "Kurs (60)",
-        "Quartalszahlen (60)",
-        "5-Tage-Rendite % (42)"
+        "Ø Tagesumsatz (127)",
+        "20-Tage-Hoch (81)",
+        "Abstand zum Jahreshoch % (77)",
+        "Schwankung je Tag % (76)",
+        "20-Tage-Rendite % (62)",
+        "Kurs (61)",
+        "Quartalszahlen (53)",
+        "Leerverkaufsanteil (43)"
       ],
-      "faelleHeute": 36
+      "faelleHeute": 37
     },
     {
       "schluessel": "modell|aktie|2S150|10|treffer|muster",
@@ -322,42 +322,42 @@
         {
           "n": 2545,
           "quote": 23.1,
-          "ev": -2.2,
+          "ev": -2.1,
           "se": 7,
           "tage": 240,
-          "grundEv": -3.6
+          "grundEv": -3.7
         },
         {
-          "n": 2502,
-          "quote": 23.4,
-          "ev": 1.8,
+          "n": 2511,
+          "quote": 23.5,
+          "ev": 2.1,
           "se": 6,
-          "tage": 249,
-          "grundEv": 1
+          "tage": 250,
+          "grundEv": 1.1
         }
       ],
       "quartale": [
         4,
         9
       ],
-      "wertung": -9.2,
+      "wertung": -9.1,
       "gesamt": {
-        "n": 5047,
+        "n": 5056,
         "quote": 23.3,
-        "ev": -0.2,
+        "ev": 0,
         "se": 7
       },
       "wichtig": [
-        "Ø Tagesumsatz (118)",
-        "20-Tage-Hoch (82)",
-        "Abstand zum Jahreshoch % (80)",
-        "Schwankung je Tag % (80)",
-        "20-Tage-Rendite % (64)",
-        "Kurs (60)",
-        "Quartalszahlen (60)",
-        "5-Tage-Rendite % (42)"
+        "Ø Tagesumsatz (127)",
+        "20-Tage-Hoch (81)",
+        "Abstand zum Jahreshoch % (77)",
+        "Schwankung je Tag % (76)",
+        "20-Tage-Rendite % (62)",
+        "Kurs (61)",
+        "Quartalszahlen (53)",
+        "Leerverkaufsanteil (43)"
       ],
-      "faelleHeute": 28
+      "faelleHeute": 22
     },
     {
       "schluessel": "modell|aktie|V2S150|10|treffer",
@@ -371,42 +371,42 @@
       "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen)",
       "zeitraeume": [
         {
-          "n": 1236,
-          "quote": 28.1,
-          "ev": 26.1,
-          "se": 7.9,
-          "tage": 222,
+          "n": 1277,
+          "quote": 28.5,
+          "ev": 26.8,
+          "se": 8.2,
+          "tage": 220,
           "grundEv": -37.1
         },
         {
-          "n": 1750,
-          "quote": 27.9,
-          "ev": 16.8,
+          "n": 1747,
+          "quote": 28.1,
+          "ev": 17.5,
           "se": 7.7,
-          "tage": 250,
-          "grundEv": -30.7
+          "tage": 251,
+          "grundEv": -30.4
         }
       ],
       "quartale": [
-        6,
+        7,
         9
       ],
-      "wertung": 9.1,
+      "wertung": 9.8,
       "gesamt": {
-        "n": 2986,
-        "quote": 28,
-        "ev": 20.6,
-        "se": 7.9
+        "n": 3024,
+        "quote": 28.3,
+        "ev": 21.4,
+        "se": 8.2
       },
       "wichtig": [
-        "Schwankung je Tag % (103)",
-        "Kurs (82)",
-        "Abstand zum Jahreshoch % (78)",
-        "Ø Tagesumsatz (76)",
-        "Branche (59)",
-        "20-Tage-Rendite % (51)",
+        "Schwankung je Tag % (100)",
+        "Kurs (89)",
+        "Abstand zum Jahreshoch % (79)",
+        "Ø Tagesumsatz (78)",
+        "20-Tage-Rendite % (54)",
+        "Branche (53)",
         "20-Tage-Hoch (50)",
-        "Umsatz 5 Tage (× Ø 20 Tage davor) (45)"
+        "Umsatz 5 Tage (× Ø 20 Tage davor) (49)"
       ],
       "faelleHeute": 32
     },
@@ -422,95 +422,95 @@
       "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen, besser als alle Musterfälle)",
       "zeitraeume": [
         {
-          "n": 760,
-          "quote": 23.3,
-          "ev": 13.9,
-          "se": 10,
+          "n": 777,
+          "quote": 23,
+          "ev": 12.6,
+          "se": 9.8,
           "tage": 205,
           "grundEv": 11.4
         },
         {
-          "n": 588,
-          "quote": 28.1,
-          "ev": 23.1,
-          "se": 12,
-          "tage": 212,
-          "grundEv": 9.6
+          "n": 594,
+          "quote": 28.3,
+          "ev": 24.9,
+          "se": 11.8,
+          "tage": 213,
+          "grundEv": 10
         }
       ],
       "quartale": [
         7,
         9
       ],
-      "wertung": 3.9,
+      "wertung": 2.8,
       "gesamt": {
-        "n": 1348,
-        "quote": 25.4,
+        "n": 1371,
+        "quote": 25.3,
         "ev": 17.9,
-        "se": 12
+        "se": 11.8
       },
       "wichtig": [
-        "Schwankung je Tag % (103)",
-        "Kurs (82)",
-        "Abstand zum Jahreshoch % (78)",
-        "Ø Tagesumsatz (76)",
-        "Branche (59)",
-        "20-Tage-Rendite % (51)",
+        "Schwankung je Tag % (100)",
+        "Kurs (89)",
+        "Abstand zum Jahreshoch % (79)",
+        "Ø Tagesumsatz (78)",
+        "20-Tage-Rendite % (54)",
+        "Branche (53)",
         "20-Tage-Hoch (50)",
-        "Umsatz 5 Tage (× Ø 20 Tage davor) (45)"
+        "Umsatz 5 Tage (× Ø 20 Tage davor) (49)"
       ],
-      "faelleHeute": 2
+      "faelleHeute": 1
     },
     {
       "schluessel": "modell|aktie|V2L150|10|treffer",
-      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) – oberste 2 %",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) – oberste 0,5 %",
       "markt": "aktie",
       "spielart": "Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
       "sp": "V2L150",
       "fenster": 10,
-      "q": 2,
+      "q": 0.5,
       "bestanden": false,
-      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als die Grundrate; nur 3 von 9 Quartalen im Plus",
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nicht besser als die Grundrate; nur 2 von 9 Quartalen im Plus",
       "zeitraeume": [
         {
-          "n": 3182,
-          "quote": 15.5,
-          "ev": -22.7,
-          "se": 5.7,
+          "n": 1074,
+          "quote": 18.9,
+          "ev": -17.8,
+          "se": 8.5,
           "tage": 222,
           "grundEv": -15.7
         },
         {
-          "n": 4095,
-          "quote": 16.7,
-          "ev": 48.7,
-          "se": 66.7,
-          "tage": 250,
-          "grundEv": -24.7
+          "n": 1319,
+          "quote": 18,
+          "ev": -14.4,
+          "se": 7.5,
+          "tage": 251,
+          "grundEv": -25.2
         }
       ],
       "quartale": [
-        3,
+        2,
         9
       ],
-      "wertung": -28.4,
+      "wertung": -26.3,
       "gesamt": {
-        "n": 7277,
-        "quote": 16.1,
-        "ev": 17.5,
-        "se": 66.7
+        "n": 2393,
+        "quote": 18.4,
+        "ev": -15.9,
+        "se": 8.5
       },
       "wichtig": [
-        "Kurs (92)",
-        "Abstand zum Jahreshoch % (88)",
-        "Ø Tagesumsatz (87)",
-        "Größter Tagesgewinn 20 Tage % (77)",
-        "Schwankung je Tag % (76)",
-        "Handelsplatz (Börse/OTC) (56)",
-        "Branche (54)",
-        "Quartalszahlen (49)"
+        "Ø Tagesumsatz (104)",
+        "Kurs (94)",
+        "Abstand zum Jahreshoch % (78)",
+        "Größter Tagesgewinn 20 Tage % (74)",
+        "Schwankung je Tag % (73)",
+        "20-Tage-Hoch (55)",
+        "Handelsplatz (Börse/OTC) (50)",
+        "Quartalszahlen (48)"
       ],
-      "faelleHeute": 67
+      "faelleHeute": 17
     },
     {
       "schluessel": "modell|aktie|V2L150|10|treffer|muster",
@@ -524,44 +524,350 @@
       "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen, besser als alle Musterfälle)",
       "zeitraeume": [
         {
-          "n": 225,
-          "quote": 16.4,
-          "ev": 29.6,
-          "se": 19.2,
-          "tage": 100,
+          "n": 218,
+          "quote": 17,
+          "ev": 29.8,
+          "se": 18.7,
+          "tage": 99,
           "grundEv": 18
         },
         {
-          "n": 355,
-          "quote": 17.7,
-          "ev": 36.3,
-          "se": 17.6,
-          "tage": 99,
-          "grundEv": 13
+          "n": 374,
+          "quote": 17.6,
+          "ev": 31,
+          "se": 17.8,
+          "tage": 102,
+          "grundEv": 6.3
         }
       ],
       "quartale": [
-        6,
+        5,
         9
       ],
-      "wertung": 10.4,
+      "wertung": 11.1,
       "gesamt": {
-        "n": 580,
-        "quote": 17.2,
-        "ev": 33.7,
-        "se": 19.2
+        "n": 592,
+        "quote": 17.4,
+        "ev": 30.6,
+        "se": 18.7
       },
       "wichtig": [
-        "Kurs (92)",
-        "Abstand zum Jahreshoch % (88)",
-        "Ø Tagesumsatz (87)",
-        "Größter Tagesgewinn 20 Tage % (77)",
-        "Schwankung je Tag % (76)",
-        "Handelsplatz (Börse/OTC) (56)",
-        "Branche (54)",
-        "Quartalszahlen (49)"
+        "Ø Tagesumsatz (104)",
+        "Kurs (94)",
+        "Abstand zum Jahreshoch % (78)",
+        "Größter Tagesgewinn 20 Tage % (74)",
+        "Schwankung je Tag % (73)",
+        "20-Tage-Hoch (55)",
+        "Handelsplatz (Börse/OTC) (50)",
+        "Quartalszahlen (48)"
       ],
       "faelleHeute": 0
+    },
+    {
+      "schluessel": "modell|aktie|V2S150|10|treffer|wild",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) nur die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach) – oberste 5 %",
+      "markt": "aktie",
+      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "sp": "V2S150",
+      "fenster": 10,
+      "q": 5,
+      "bestanden": true,
+      "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen)",
+      "zeitraeume": [
+        {
+          "n": 339,
+          "quote": 33.6,
+          "ev": 58.3,
+          "se": 14.3,
+          "tage": 186,
+          "grundEv": -12.4
+        },
+        {
+          "n": 482,
+          "quote": 30.1,
+          "ev": 17.1,
+          "se": 13.9,
+          "tage": 227,
+          "grundEv": -10.2
+        }
+      ],
+      "quartale": [
+        8,
+        9
+      ],
+      "wertung": 3.2,
+      "gesamt": {
+        "n": 821,
+        "quote": 31.5,
+        "ev": 34.1,
+        "se": 14.3
+      },
+      "wichtig": [
+        "Kurs (72)",
+        "Ø Tagesumsatz (69)",
+        "20-Tage-Rendite % (48)",
+        "5-Tage-Rendite % (47)",
+        "Abstand zum Jahreshoch % (46)",
+        "Leerverkaufsbestand gegen den vorigen FINRA-Stichtag (42)",
+        "Quartalszahlen (40)",
+        "Tagesrendite % (37)"
+      ],
+      "faelleHeute": 4
+    },
+    {
+      "schluessel": "modell|aktie|V2S150|10|treffer|wild|muster",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 25 % ihres Tages sieht",
+      "markt": "aktie",
+      "spielart": "Hebel nach Schwankung short (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "sp": "V2S150",
+      "fenster": 10,
+      "q": 25,
+      "bestanden": true,
+      "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen, besser als alle Musterfälle)",
+      "zeitraeume": [
+        {
+          "n": 315,
+          "quote": 28.6,
+          "ev": 32,
+          "se": 17.8,
+          "tage": 163,
+          "grundEv": 12.8
+        },
+        {
+          "n": 249,
+          "quote": 34.5,
+          "ev": 39.7,
+          "se": 18.5,
+          "tage": 147,
+          "grundEv": 16.8
+        }
+      ],
+      "quartale": [
+        8,
+        9
+      ],
+      "wertung": 14.2,
+      "gesamt": {
+        "n": 564,
+        "quote": 31.2,
+        "ev": 35.4,
+        "se": 18.5
+      },
+      "wichtig": [
+        "Kurs (72)",
+        "Ø Tagesumsatz (69)",
+        "20-Tage-Rendite % (48)",
+        "5-Tage-Rendite % (47)",
+        "Abstand zum Jahreshoch % (46)",
+        "Leerverkaufsbestand gegen den vorigen FINRA-Stichtag (42)",
+        "Quartalszahlen (40)",
+        "Tagesrendite % (37)"
+      ],
+      "faelleHeute": 0
+    },
+    {
+      "schluessel": "modell|aktie|V2L150|10|treffer|wild",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen (Ziel: Volltreffer-Wahrscheinlichkeit) nur die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach) – oberste 5 %",
+      "markt": "aktie",
+      "spielart": "Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "sp": "V2L150",
+      "fenster": 10,
+      "q": 5,
+      "bestanden": false,
+      "grund": "Ø − Standardfehler nicht in beiden Zeiträumen über 0; nur 4 von 9 Quartalen im Plus",
+      "zeitraeume": [
+        {
+          "n": 682,
+          "quote": 19.5,
+          "ev": 196.6,
+          "se": 216.5,
+          "tage": 218,
+          "grundEv": -28.2
+        },
+        {
+          "n": 670,
+          "quote": 19.1,
+          "ev": -11.3,
+          "se": 11,
+          "tage": 239,
+          "grundEv": -29.2
+        }
+      ],
+      "quartale": [
+        4,
+        9
+      ],
+      "wertung": -22.3,
+      "gesamt": {
+        "n": 1352,
+        "quote": 19.3,
+        "ev": 93.6,
+        "se": 216.5
+      },
+      "wichtig": [
+        "Kurs (66)",
+        "20-Tage-Hoch (46)",
+        "Ø Tagesumsatz (46)",
+        "20-Tage-Rendite % (40)",
+        "Leerverkaufsbestand gegen den vorigen FINRA-Stichtag (39)",
+        "Leerbestand in % der Aktien (39)",
+        "Umsatz (× Ø 20 Tage) (37)",
+        "Handelsplatz (Börse/OTC) (37)"
+      ],
+      "faelleHeute": 4
+    },
+    {
+      "schluessel": "modell|aktie|V2L150|10|treffer|wild|muster",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 25 % ihres Tages sieht",
+      "markt": "aktie",
+      "spielart": "Hebel nach Schwankung long (Stop 2 Tagesschwankungen entfernt), Stop 150 €",
+      "sp": "V2L150",
+      "fenster": 10,
+      "q": 25,
+      "bestanden": false,
+      "grund": "weniger als 100 Fälle in einem Zeitraum; weniger als 30 Tage in einem Zeitraum; Ø − Standardfehler nicht in beiden Zeiträumen über 0",
+      "zeitraeume": [
+        {
+          "n": 9,
+          "quote": 33.3,
+          "ev": 47.3,
+          "se": 85.9,
+          "tage": 8,
+          "grundEv": -24.7
+        },
+        {
+          "n": 9,
+          "quote": 22.2,
+          "ev": 6.1,
+          "se": 67.3,
+          "tage": 8,
+          "grundEv": -3
+        }
+      ],
+      "quartale": [
+        1,
+        1
+      ],
+      "wertung": -61.2,
+      "gesamt": {
+        "n": 18,
+        "quote": 27.8,
+        "ev": 26.7,
+        "se": 85.9
+      },
+      "wichtig": [
+        "Kurs (66)",
+        "20-Tage-Hoch (46)",
+        "Ø Tagesumsatz (46)",
+        "20-Tage-Rendite % (40)",
+        "Leerverkaufsbestand gegen den vorigen FINRA-Stichtag (39)",
+        "Leerbestand in % der Aktien (39)",
+        "Umsatz (× Ø 20 Tage) (37)",
+        "Handelsplatz (Börse/OTC) (37)"
+      ],
+      "faelleHeute": 0
+    },
+    {
+      "schluessel": "modell|aktie|2S150|10|wild",
+      "gruppe": "Aktien: Gesamtmodell aus allen Merkmalen nur die wilden Werte (größter Tagesgewinn 20 Tage über 50 %, Tagesbewegung ab ±25 % oder Umsatz ab 10-fach) – oberste 10 %",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "sp": "2S150",
+      "fenster": 10,
+      "q": 10,
+      "bestanden": true,
+      "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen)",
+      "zeitraeume": [
+        {
+          "n": 855,
+          "quote": 27.6,
+          "ev": 13.5,
+          "se": 9.7,
+          "tage": 232,
+          "grundEv": -37.9
+        },
+        {
+          "n": 1131,
+          "quote": 29.6,
+          "ev": 21.9,
+          "se": 10,
+          "tage": 249,
+          "grundEv": -37.9
+        }
+      ],
+      "quartale": [
+        7,
+        9
+      ],
+      "wertung": 3.8,
+      "gesamt": {
+        "n": 1986,
+        "quote": 28.8,
+        "ev": 18.3,
+        "se": 10
+      },
+      "wichtig": [
+        "Ø Tagesumsatz (67)",
+        "20-Tage-Rendite % (62)",
+        "5-Tage-Rendite % (60)",
+        "Kurs (59)",
+        "20-Tage-Hoch (45)",
+        "Leerverkaufsbestand gegen den vorigen FINRA-Stichtag (44)",
+        "Abstand zum Jahreshoch % (41)",
+        "Tagesrendite % (39)"
+      ],
+      "faelleHeute": 14
+    },
+    {
+      "schluessel": "modell|aktie|2S150|10|wild|muster",
+      "gruppe": "Aktien: Muster × Gesamtmodell – Fälle der Muster im Vorwärtstest, die das Modell im oberen 25 % ihres Tages sieht",
+      "markt": "aktie",
+      "spielart": "Turbo short Hebel 2, Stop 150 €",
+      "sp": "2S150",
+      "fenster": 10,
+      "q": 25,
+      "bestanden": true,
+      "grund": "bestanden (außerhalb der Trainingsdaten in beiden Zeiträumen, besser als alle Musterfälle)",
+      "zeitraeume": [
+        {
+          "n": 863,
+          "quote": 30.6,
+          "ev": 23.8,
+          "se": 11.4,
+          "tage": 232,
+          "grundEv": -3.5
+        },
+        {
+          "n": 691,
+          "quote": 32.6,
+          "ev": 37.3,
+          "se": 11.8,
+          "tage": 231,
+          "grundEv": 17.2
+        }
+      ],
+      "quartale": [
+        7,
+        9
+      ],
+      "wertung": 12.4,
+      "gesamt": {
+        "n": 1554,
+        "quote": 31.5,
+        "ev": 29.8,
+        "se": 11.8
+      },
+      "wichtig": [
+        "Ø Tagesumsatz (67)",
+        "20-Tage-Rendite % (62)",
+        "5-Tage-Rendite % (60)",
+        "Kurs (59)",
+        "20-Tage-Hoch (45)",
+        "Leerverkaufsbestand gegen den vorigen FINRA-Stichtag (44)",
+        "Abstand zum Jahreshoch % (41)",
+        "Tagesrendite % (39)"
+      ],
+      "faelleHeute": 4
     }
   ]
 }
