@@ -3,13 +3,14 @@ name: Rückblick und Musterprüfung
 # Plan Volltreffer V3 (mit Sprung-Zensus aus V2): rechnet über die ganze Kursgeschichte im PRIVATEN Archiv, ob eine
 # 1.000-€-Order ein Volltreffer geworden wäre, und prüft Merkmale, Kombinationen und Hypothesen in zwei Zeiträumen.
 # Öffentlich (Datenzweig lernen/muster/) gehen nur verdichtete Kennzahlen; der Zensus mit Werten bleibt im Archiv.
-# Täglich 01:20 UTC (seit 19.11.2026; vorher 05:40): nach den Archivläufen 22:25 und 00:10 liegen US-Vortag, Krypto-Tag
-# und gettex vor. Nachts bleiben über sechs Stunden bis zum Morgenlauf – Platz für weitere Merkmale (Laufzeit war
-# 80 von 120 Minuten). Oder von Hand. Dazu Trefferbuch und Signal-Prüfung: Welche Signale der Datenkrake
+# Täglich 05:45 UTC (seit 21.11.2026; 19.–20.11. 01:20 – Fehler: Massive stellt den US-Tag X erst gegen 05:00–05:40 UTC
+# am Tag X+1 bereit, um 01:20 sah der Rückblick nur X−1, die sichtbaren Orders zu X erschienen erst nach ihrem Einstieg).
+# Der erste Schritt wartet bis zu 60 Min. auf den US-Tag im Archiv (jobs/warte-us-tag.ts). Eigene Concurrency-Gruppe:
+# in „archiv-schreiben“ hätte er den Archivlauf, auf den er wartet, blockiert. Oder von Hand. Dazu Trefferbuch und Signal-Prüfung: Welche Signale der Datenkrake
 # (Datenzweig signale/tag/) gingen den Sprüngen voraus?
 on:
   schedule:
-    - cron: '20 1 * * *'
+    - cron: '45 5 * * *'
   workflow_dispatch:
     inputs:
       probe:
@@ -33,7 +34,7 @@ jobs:
     timeout-minutes: 300
     concurrency:
       # die Probe schreibt nicht ins Archiv und stört dessen Warteschlange nicht
-      group: ${{ inputs.probe && 'rueckblick-probe' || 'archiv-schreiben' }}
+      group: ${{ inputs.probe && 'rueckblick-probe' || 'rueckblick' }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
@@ -51,6 +52,11 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 24
+      - name: Auf den jüngsten US-Tag im Archiv warten
+        if: ${{ !inputs.probe }}
+        env:
+          WARTE_MINUTEN: 60
+        run: node jobs/warte-us-tag.ts
       - name: Rückblick rechnen
         env:
           NODE_OPTIONS: --max-old-space-size=8192
