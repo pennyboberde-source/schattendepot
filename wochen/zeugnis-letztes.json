@@ -1,45 +1,50 @@
 {
-  "von": "2026-11-09",
-  "bis": "2026-11-13",
-  "kw": 46,
-  "note": 4.9,
-  "notenText": "4,9 (mangelhaft)",
+  "von": "2026-11-16",
+  "bis": "2026-11-20",
+  "kw": 47,
+  "note": 3.7,
+  "notenText": "3,7 (ausreichend)",
   "faecher": [
     {
       "fach": "Depot gegen MSCI World",
-      "note": 5,
+      "note": 1,
       "gewicht": 3,
-      "wert": "-1,48 % je Order (6 Orders)"
+      "wert": "+3,81 % je Order (7 Orders)"
     },
     {
       "fach": "Daytrading nach Gebühren",
-      "note": 5,
+      "note": 6,
       "gewicht": 2,
-      "wert": "-0,47 % je Trade (182 Trades)"
+      "wert": "-1,56 % je Trade (90 Trades)"
     },
     {
       "fach": "Trefferquote",
-      "note": 5,
+      "note": 6,
       "gewicht": 1,
-      "wert": "39,4 % von 188"
+      "wert": "12,4 % von 97"
     },
     {
       "fach": "Ehrliche Chancen (Kalibrierung)",
-      "note": 6,
+      "note": 3,
       "gewicht": 1,
-      "wert": "30,7 Punkte daneben"
+      "wert": "14,3 Punkte daneben"
     },
     {
       "fach": "Claudes Tagesprognose",
-      "note": 2,
+      "note": 5,
       "gewicht": 1,
-      "wert": "61,1 % richtig (n=36)"
+      "wert": "47,5 % richtig (n=40)"
     },
     {
       "fach": "Schattenbuch (Signale nach 1 Tag)",
-      "note": 6,
+      "note": 4,
       "gewicht": 1,
-      "wert": "38 % im Plus (n=79)"
+      "wert": "47,4 % im Plus (n=137)"
     }
+  ],
+  "verbesserungen": [
+    "gettex-Scanner sortiert Hebelprodukte (Turbos, Optionsscheine) aus und meldet nur Aktien/ADRs",
+    "Seitwärtsphase: höchstens 2 neue Depot-Orders je Lauf, kein Hebel ohne Volltreffer-Beleg",
+    "Autopilot-Stop von −6 % auf −8 % geweitet, damit normale Schwankung nicht ausstoppt"
   ]
 }

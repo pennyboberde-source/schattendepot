@@ -1,0 +1,760 @@
+{
+  "stand": "2026-11-21T07:30:12.443Z",
+  "anzahl": 54,
+  "signale": [
+    {
+      "id": "nachricht:NVDA:2026-11-20",
+      "s": "T:NVDA",
+      "n": "Nvidia",
+      "t": "NVDA",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.51,
+      "q": [
+        "tagesschau Wirtschaft",
+        "MarketWatch",
+        "CNBC Top News"
+      ],
+      "z": "2026-11-20T07:47:56.000Z"
+    },
+    {
+      "id": "nachricht:K.ETH:2026-11-20",
+      "s": "K:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-20T08:23:43.000Z"
+    },
+    {
+      "id": "nachricht:VOW3:2026-11-20",
+      "s": "T:VOW3",
+      "n": "Volkswagen",
+      "t": "VOW3.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-20T09:55:01.000Z"
+    },
+    {
+      "id": "nachricht:K.BTC:2026-11-20",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.41,
+      "q": [
+        "BTC-ECHO",
+        "CNBC Top News"
+      ],
+      "z": "2026-11-20T10:21:29.000Z"
+    },
+    {
+      "id": "nachricht:GOOGL:2026-11-20",
+      "s": "T:GOOGL",
+      "n": "Alphabet",
+      "t": "GOOGL",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "CNBC Top News"
+      ],
+      "z": "2026-11-20T20:06:12.000Z"
+    },
+    {
+      "id": "nachricht:BAYN:2026-11-21",
+      "s": "T:BAYN",
+      "n": "Bayer",
+      "t": "BAYN.DE",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "tagesschau Wirtschaft"
+      ],
+      "z": "2026-11-21T03:50:50.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.BTC:2026-11-21",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-21T06:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.ETH:2026-11-21",
+      "s": "K:ETH",
+      "n": "Ethereum",
+      "t": "ETH",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-21T06:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.SOL:2026-11-21",
+      "s": "K:SOL",
+      "n": "Solana",
+      "t": "SOL",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": -1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-21T06:00:00.000Z"
+    },
+    {
+      "id": "liquidationen_spitze:K.XRP:2026-11-21",
+      "s": "K:XRP",
+      "n": "XRP",
+      "t": "XRP",
+      "m": "krypto",
+      "typ": "liquidationen_spitze",
+      "r": 1,
+      "st": 0.4,
+      "q": [
+        "Coinalyze"
+      ],
+      "z": "2026-11-21T06:00:00.000Z"
+    },
+    {
+      "id": "nachricht:MSTR:2026-11-21",
+      "s": "T:MSTR",
+      "n": "MicroStrategy",
+      "t": "MSTR",
+      "typ": "nachricht",
+      "r": 0,
+      "st": 0.3,
+      "q": [
+        "BTC-ECHO"
+      ],
+      "z": "2026-11-21T07:00:10.000Z"
+    },
+    {
+      "id": "upbit_warnung:K.CARV:2026-11-21",
+      "s": "K:CARV",
+      "n": "CARV",
+      "t": "CARV",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.PROM:2026-11-21",
+      "s": "K:PROM",
+      "n": "Prom",
+      "t": "PROM",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.META2:2026-11-21",
+      "s": "K:META2",
+      "n": "MetaDAO",
+      "t": "META2",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.WAVES:2026-11-21",
+      "s": "K:WAVES",
+      "n": "Waves",
+      "t": "WAVES",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.CYBER:2026-11-21",
+      "s": "K:CYBER",
+      "n": "Cyber",
+      "t": "CYBER",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.HBAR:2026-11-21",
+      "s": "K:HBAR",
+      "n": "Hedera",
+      "t": "HBAR",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.HYPE:2026-11-21",
+      "s": "K:HYPE",
+      "n": "Hyperliquid",
+      "t": "HYPE",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.AI:2026-11-21",
+      "s": "K:AI",
+      "n": "Gensyn",
+      "t": "AI",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.TRUMP:2026-11-21",
+      "s": "K:TRUMP",
+      "n": "Official Trump",
+      "t": "TRUMP",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.API3:2026-11-21",
+      "s": "K:API3",
+      "n": "API3",
+      "t": "API3",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.EGLD:2026-11-21",
+      "s": "K:EGLD",
+      "n": "MultiversX",
+      "t": "EGLD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.ID:2026-11-21",
+      "s": "K:ID",
+      "n": "SPACE ID",
+      "t": "ID",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.MANTRA:2026-11-21",
+      "s": "K:MANTRA",
+      "n": "MANTRA",
+      "t": "MANTRA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.BLUR:2026-11-21",
+      "s": "K:BLUR",
+      "n": "Blur",
+      "t": "BLUR",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.WCT:2026-11-21",
+      "s": "K:WCT",
+      "n": "WalletConnect",
+      "t": "WCT",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.KERNEL:2026-11-21",
+      "s": "K:KERNEL",
+      "n": "KernelDAO",
+      "t": "KERNEL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.PONS:2026-11-21",
+      "s": "K:PONS",
+      "n": "Pons",
+      "t": "PONS",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.KAVA:2026-11-21",
+      "s": "K:KAVA",
+      "n": "Kava",
+      "t": "KAVA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.BARD:2026-11-21",
+      "s": "K:BARD",
+      "n": "Lombard",
+      "t": "BARD",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.ADA:2026-11-21",
+      "s": "K:ADA",
+      "n": "Ada",
+      "t": "ADA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.ELF:2026-11-21",
+      "s": "K:ELF",
+      "n": "aelf",
+      "t": "ELF",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.ELSA:2026-11-21",
+      "s": "K:ELSA",
+      "n": "HeyElsa",
+      "t": "ELSA",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.DOS:2026-11-21",
+      "s": "K:DOS",
+      "n": "DAPPOS",
+      "t": "DOS",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.7,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.SOL:2026-11-21",
+      "s": "K:SOL",
+      "n": "Solana",
+      "t": "SOL",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.SUI:2026-11-21",
+      "s": "K:SUI",
+      "n": "Sui",
+      "t": "SUI",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.SYRUP:2026-11-21",
+      "s": "K:SYRUP",
+      "n": "Maple Finance",
+      "t": "SYRUP",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "upbit_warnung:K.STRAX:2026-11-21",
+      "s": "K:STRAX",
+      "n": "Xertra",
+      "t": "STRAX",
+      "m": "krypto",
+      "typ": "upbit_warnung",
+      "r": 0,
+      "st": 0.5,
+      "q": [
+        "Upbit"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:K.TAO:2026-11-21",
+      "s": "K:TAO",
+      "n": "TAO",
+      "t": "TAO",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.35,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:K.MSTRX:2026-11-21",
+      "s": "K:MSTRX",
+      "n": "MSTRX",
+      "t": "MSTRX",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 1,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:R.XAU:2026-11-21",
+      "s": "R:XAU",
+      "n": "Gold (Rohstoff)",
+      "t": "XAU",
+      "m": "rohstoff",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.45,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:K.ANTX:2026-11-21",
+      "s": "K:ANTX",
+      "n": "ANTX",
+      "t": "ANTX",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.95,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:K.CRCLX:2026-11-21",
+      "s": "K:CRCLX",
+      "n": "CRCLX",
+      "t": "CRCLX",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.9,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:K.XMR:2026-11-21",
+      "s": "K:XMR",
+      "n": "XMR",
+      "t": "XMR",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.55,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:K.AVAX:2026-11-21",
+      "s": "K:AVAX",
+      "n": "AVAX",
+      "t": "AVAX",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.38,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:K.INJ:2026-11-21",
+      "s": "K:INJ",
+      "n": "INJ",
+      "t": "INJ",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.48,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "funding_extrem:K.SKHY:2026-11-21",
+      "s": "K:SKHY",
+      "n": "SKHY",
+      "t": "SKHY",
+      "m": "krypto",
+      "typ": "funding_extrem",
+      "r": 0,
+      "st": 0.47,
+      "q": [
+        "Kraken Futures"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "krypto_einnahmen:K.JUP:2026-11-21",
+      "s": "K:JUP",
+      "n": "Jupiter Perpetual Exchange",
+      "t": "JUP",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.59,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "krypto_einnahmen:K.ASTER:2026-11-21",
+      "s": "K:ASTER",
+      "n": "Aster Perps",
+      "t": "ASTER",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.57,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "krypto_einnahmen:K.HYPE:2026-11-21",
+      "s": "K:HYPE",
+      "n": "Hyperliquid Perps",
+      "t": "HYPE",
+      "m": "krypto",
+      "typ": "krypto_einnahmen",
+      "r": 1,
+      "st": 0.51,
+      "q": [
+        "DefiLlama"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "stimmung_extrem:K.BTC:2026-11-21",
+      "s": "K:BTC",
+      "n": "Bitcoin",
+      "t": "BTC",
+      "m": "krypto",
+      "typ": "stimmung_extrem",
+      "r": 0,
+      "st": 0.84,
+      "q": [
+        "alternative.me"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "cot_extrem:R.NATGAS:2026-11-21",
+      "s": "R:NATGAS",
+      "n": "Erdgas (Rohstoff)",
+      "t": "NATGAS",
+      "m": "rohstoff",
+      "typ": "cot_extrem",
+      "r": 0,
+      "st": 0.98,
+      "q": [
+        "CFTC COT"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "cot_extrem:R.WTIOIL:2026-11-21",
+      "s": "R:WTIOIL",
+      "n": "Rohöl WTI (Rohstoff)",
+      "t": "WTIOIL",
+      "m": "rohstoff",
+      "typ": "cot_extrem",
+      "r": 0,
+      "st": 0.86,
+      "q": [
+        "CFTC COT"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    },
+    {
+      "id": "cot_extrem:R.XAG:2026-11-21",
+      "s": "R:XAG",
+      "n": "Silber (Rohstoff)",
+      "t": "XAG",
+      "m": "rohstoff",
+      "typ": "cot_extrem",
+      "r": 0,
+      "st": 0.94,
+      "q": [
+        "CFTC COT"
+      ],
+      "z": "2026-11-21T07:30:12.443Z"
+    }
+  ]
+}

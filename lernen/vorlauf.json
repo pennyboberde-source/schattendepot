@@ -20,7 +20,8 @@
     "2026-11-10",
     "2026-11-12",
     "2026-11-11",
-    "2026-11-13"
+    "2026-11-13",
+    "2026-11-14"
   ],
   "jeTyp": {
     "gewinn_ueberraschung": {
@@ -48,8 +49,8 @@
       "vorRakete": 30
     },
     "nachricht": {
-      "signale": 241,
-      "vorRakete": 101
+      "signale": 251,
+      "vorRakete": 105
     },
     "prognose_erhoehung": {
       "signale": 4,
@@ -72,32 +73,32 @@
       "vorRakete": 1
     },
     "handelsstopp": {
-      "signale": 572,
-      "vorRakete": 81
+      "signale": 582,
+      "vorRakete": 82
     },
     "upbit_warnung": {
-      "signale": 268,
-      "vorRakete": 113
+      "signale": 288,
+      "vorRakete": 123
     },
     "verwaesserung": {
-      "signale": 483,
+      "signale": 518,
       "vorRakete": 25
     },
     "liquidationen_spitze": {
-      "signale": 42,
-      "vorRakete": 22
+      "signale": 44,
+      "vorRakete": 24
     },
     "grossauftrag": {
       "signale": 176,
       "vorRakete": 10
     },
     "funding_extrem": {
-      "signale": 42,
+      "signale": 44,
       "vorRakete": 9
     },
     "krypto_einnahmen": {
-      "signale": 70,
-      "vorRakete": 4
+      "signale": 75,
+      "vorRakete": 6
     },
     "leerverkauf_aenderung": {
       "signale": 44,
@@ -112,8 +113,8 @@
       "vorRakete": 0
     },
     "open_interest_sprung": {
-      "signale": 3,
-      "vorRakete": 0
+      "signale": 4,
+      "vorRakete": 1
     },
     "prognose_senkung": {
       "signale": 4,
@@ -132,14 +133,18 @@
       "vorRakete": 0
     },
     "politik_massnahme": {
-      "signale": 61,
-      "vorRakete": 28
+      "signale": 69,
+      "vorRakete": 29
     },
     "politik_wahrscheinlichkeit": {
       "signale": 4,
       "vorRakete": 2
     },
     "analysten_abstufung": {
+      "signale": 1,
+      "vorRakete": 1
+    },
+    "stimmung_extrem": {
       "signale": 1,
       "vorRakete": 1
     }
@@ -166,16 +171,16 @@
       "vorRakete": 0
     },
     "tagesschau Wirtschaft": {
-      "signale": 41,
+      "signale": 43,
       "vorRakete": 11
     },
     "CNBC Top News": {
-      "signale": 89,
-      "vorRakete": 43
+      "signale": 93,
+      "vorRakete": 44
     },
     "MarketWatch": {
-      "signale": 50,
-      "vorRakete": 24
+      "signale": 53,
+      "vorRakete": 26
     },
     "FMP": {
       "signale": 48,
@@ -186,48 +191,48 @@
       "vorRakete": 40
     },
     "FAZ Finanzen": {
-      "signale": 18,
-      "vorRakete": 10
+      "signale": 20,
+      "vorRakete": 11
     },
     "Handelsblatt Finanzen": {
-      "signale": 53,
-      "vorRakete": 22
+      "signale": 55,
+      "vorRakete": 24
     },
     "FINRA": {
       "signale": 190,
       "vorRakete": 1
     },
     "BTC-ECHO": {
-      "signale": 49,
-      "vorRakete": 31
+      "signale": 51,
+      "vorRakete": 33
     },
     "Nasdaq Trader": {
-      "signale": 572,
-      "vorRakete": 81
+      "signale": 582,
+      "vorRakete": 82
     },
     "Upbit": {
-      "signale": 271,
-      "vorRakete": 113
+      "signale": 291,
+      "vorRakete": 123
     },
     "SEC EDGAR": {
-      "signale": 655,
+      "signale": 690,
       "vorRakete": 35
     },
     "Coinalyze": {
-      "signale": 42,
-      "vorRakete": 22
+      "signale": 44,
+      "vorRakete": 24
     },
     "Finnhub News": {
       "signale": 22,
       "vorRakete": 11
     },
     "Kraken Futures": {
-      "signale": 45,
-      "vorRakete": 9
+      "signale": 48,
+      "vorRakete": 10
     },
     "DefiLlama": {
-      "signale": 70,
-      "vorRakete": 4
+      "signale": 75,
+      "vorRakete": 6
     },
     "FINRA Short Interest": {
       "signale": 50,
@@ -242,7 +247,7 @@
       "vorRakete": 1
     },
     "tagesschau Ausland": {
-      "signale": 29,
+      "signale": 32,
       "vorRakete": 16
     },
     "CNBC Politics": {
@@ -262,13 +267,17 @@
       "vorRakete": 0
     },
     "CNBC World": {
-      "signale": 7,
-      "vorRakete": 6
+      "signale": 12,
+      "vorRakete": 7
+    },
+    "alternative.me": {
+      "signale": 1,
+      "vorRakete": 1
     }
   },
   "gesamt": {
-    "signale": 2940,
-    "vorRakete": 471
+    "signale": 3030,
+    "vorRakete": 489
   },
   "verlauf": [
     {
@@ -365,6 +374,11 @@
       "datum": "2026-11-20",
       "mover": 27,
       "abdeckung": 55.6
+    },
+    {
+      "datum": "2026-11-21",
+      "mover": 23,
+      "abdeckung": 34.8
     }
   ]
 }

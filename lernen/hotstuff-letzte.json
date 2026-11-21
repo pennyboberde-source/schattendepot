@@ -1,8 +1,8 @@
 {
-  "datum": "2026-11-20",
-  "stand": "2026-11-20T05:19:21.799Z",
-  "anzahl": 27,
-  "abdeckung": 55.6,
+  "datum": "2026-11-21",
+  "stand": "2026-11-21T07:30:12.443Z",
+  "anzahl": 23,
+  "abdeckung": 34.8,
   "mover": [
     {
       "s": "K:BARD",
@@ -11,13 +11,6 @@
       "typ": "kursrakete",
       "r": 1,
       "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 6,
-          "q": [
-            "Upbit"
-          ]
-        },
         {
           "typ": "upbit_warnung",
           "tageVorher": 7,
@@ -38,26 +31,26 @@
           "q": [
             "Upbit"
           ]
+        },
+        {
+          "typ": "upbit_warnung",
+          "tageVorher": 10,
+          "q": [
+            "Upbit"
+          ]
         }
       ]
     },
     {
-      "s": "T:NCT",
-      "n": "Intercont (Cayman) Limited Ordinary shares",
-      "t": "NCT",
-      "typ": "tagesverlierer",
-      "r": -1,
+      "s": "T:POAS",
+      "n": "Phaos Technology Holdings (Caym",
+      "t": "POAS",
+      "typ": "tagesgewinner",
+      "r": 1,
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 3,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        },
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 6,
+          "tageVorher": 2,
           "q": [
             "Nasdaq Trader"
           ]
@@ -68,65 +61,28 @@
           "q": [
             "Nasdaq Trader"
           ]
+        }
+      ]
+    },
+    {
+      "s": "T:AKAN",
+      "n": "AKANDA CORP",
+      "t": "AKAN",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": [
+        {
+          "typ": "volumen_ungewoehnlich",
+          "tageVorher": 2,
+          "q": [
+            "Alpha Vantage"
+          ]
         },
         {
           "typ": "handelsstopp",
-          "tageVorher": 9,
+          "tageVorher": 8,
           "q": [
             "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "K:PUFFER",
-      "n": "Puffer",
-      "t": "PUFFER",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 2,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 3,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 9,
-          "q": [
-            "Upbit"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "K:PIEVERSE",
-      "n": "Pieverse",
-      "t": "PIEVERSE",
-      "typ": "kursrakete",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 2,
-          "q": [
-            "Upbit"
-          ]
-        },
-        {
-          "typ": "upbit_warnung",
-          "tageVorher": 10,
-          "q": [
-            "Upbit"
           ]
         }
       ]
@@ -140,7 +96,7 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 3,
+          "tageVorher": 4,
           "q": [
             "Nasdaq Trader"
           ]
@@ -156,7 +112,7 @@
       "vorzeichen": [
         {
           "typ": "handelsstopp",
-          "tageVorher": 3,
+          "tageVorher": 4,
           "q": [
             "Nasdaq Trader"
           ]
@@ -164,73 +120,9 @@
       ]
     },
     {
-      "s": "T:POAS",
-      "n": "Phaos Technology Holdings (Caym",
-      "t": "POAS",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 7,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:AKAN",
-      "n": "Akanda Corp.",
-      "t": "AKAN",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 7,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:CUE",
-      "n": "Cue Biopharma, Inc.",
-      "t": "CUE",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 3,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:CLRO",
-      "n": "ClearOne, Inc.",
-      "t": "CLRO",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:HY",
-      "n": "Hyster-Yale Materials Handling, Inc.",
-      "t": "HY",
+      "s": "T:ZOAR",
+      "n": "Zoar Limited",
+      "t": "ZOAR",
       "typ": "tagesverlierer",
       "r": -1,
       "vorzeichen": [
@@ -244,41 +136,9 @@
       ]
     },
     {
-      "s": "T:JMIA",
-      "n": "Jumia Technologies AG",
-      "t": "JMIA",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:PRE",
-      "n": "Prenetics Global Limited",
-      "t": "PRE",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": [
-        {
-          "typ": "handelsstopp",
-          "tageVorher": 2,
-          "q": [
-            "Nasdaq Trader"
-          ]
-        }
-      ]
-    },
-    {
-      "s": "T:SVRE",
-      "n": "SVRE",
-      "t": "SVRE",
+      "s": "T:LVWR",
+      "n": "LVWR",
+      "t": "LVWR",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": [
@@ -292,9 +152,9 @@
       ]
     },
     {
-      "s": "K:MMT",
-      "n": "Momentum",
-      "t": "MMT",
+      "s": "K:META2",
+      "n": "MetaDAO",
+      "t": "META2",
       "typ": "kursrakete",
       "r": 1,
       "vorzeichen": [
@@ -316,25 +176,9 @@
       "vorzeichen": []
     },
     {
-      "s": "T:ZOAR",
-      "n": "Zoar Limited",
-      "t": "ZOAR",
-      "typ": "tagesverlierer",
-      "r": -1,
-      "vorzeichen": []
-    },
-    {
       "s": "T:VIVS",
       "n": "VIVS",
       "t": "VIVS",
-      "typ": "kursrakete",
-      "r": 0,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:LVWR",
-      "n": "LVWR",
-      "t": "LVWR",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
@@ -348,55 +192,88 @@
       "vorzeichen": []
     },
     {
-      "s": "K:META2",
-      "n": "MetaDAO",
-      "t": "META2",
+      "s": "K:CYBER",
+      "n": "Cyber",
+      "t": "CYBER",
       "typ": "kursrakete",
       "r": 1,
       "vorzeichen": []
     },
     {
-      "s": "T:SKYA",
-      "n": "SkyAI, Inc.",
-      "t": "SKYA",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:BTOC",
-      "n": "Armlogi Holding Corp. common stock",
-      "t": "BTOC",
-      "typ": "tagesgewinner",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "T:VWAV",
-      "n": "VWAV",
-      "t": "VWAV",
+      "s": "I:DE000HF290T4",
+      "n": "DE000HF290T4",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "K:IRYS",
-      "n": "Irys",
-      "t": "IRYS",
-      "typ": "kursrakete",
-      "r": 1,
-      "vorzeichen": []
-    },
-    {
-      "s": "I:DE000HF18KR4",
-      "n": "DE000HF18KR4",
+      "s": "I:DE000HF1BPJ0",
+      "n": "DE000HF1BPJ0",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
     },
     {
-      "s": "I:DE000HF28ZV3",
-      "n": "DE000HF28ZV3",
+      "s": "K:KERNEL",
+      "n": "KernelDAO",
+      "t": "KERNEL",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF2AP57",
+      "n": "DE000HF2AP57",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF31Y92",
+      "n": "DE000HF31Y92",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF1B2S4",
+      "n": "DE000HF1B2S4",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF34S71",
+      "n": "DE000HF34S71",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF2APT9",
+      "n": "DE000HF2APT9",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF1BR22",
+      "n": "DE000HF1BR22",
+      "typ": "kursrakete",
+      "r": 0,
+      "vorzeichen": []
+    },
+    {
+      "s": "K:ELSA",
+      "n": "HeyElsa",
+      "t": "ELSA",
+      "typ": "kursrakete",
+      "r": 1,
+      "vorzeichen": []
+    },
+    {
+      "s": "I:DE000HF31NJ8",
+      "n": "DE000HF31NJ8",
       "typ": "kursrakete",
       "r": 0,
       "vorzeichen": []
