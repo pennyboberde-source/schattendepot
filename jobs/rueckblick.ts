@@ -1270,6 +1270,16 @@ if (ZEITREISE) {
     const monatZ = (t: number) => datumZ(t).slice(0, 7);
     const ergebnisse: unknown[] = [];
     const kombi = new Map<string, Kandidat[]>();
+    const zVonK = new WeakMap<Kandidat, number>();
+    // Näherung „leihbar“ (21.11.2026): die IBKR-Liste gibt es nur ab jetzt – rückwirkend über Umsatz, Börsenwert, Leerbestand
+    const iU2 = E.findIndex((e) => e.merkmal === 'umsatz20');
+    const iB2 = E.findIndex((e) => e.merkmal === 'boersenwertUS');
+    const iL2 = E.findIndex((e) => e.merkmal === 'leerAnteil');
+    const LEIH: [string, (z: number) => boolean][] = [
+      ['Umsatz ≥ 20 Mio. $ je Tag', (z) => iU2 >= 0 && X[z * NE + iU2] >= 4],
+      ['Börsenwert ≥ 300 Mio. $ oder ohne Börsenwert (ETF) mit Umsatz ≥ 20 Mio. $', (z) => iB2 >= 0 && iU2 >= 0 && (X[z * NE + iB2] >= 3 || (X[z * NE + iB2] === 0 && X[z * NE + iU2] >= 4))],
+      ['Leerbestand unter 10 % und Umsatz ≥ 5 Mio. $', (z) => iL2 >= 0 && iU2 >= 0 && X[z * NE + iL2] >= 1 && X[z * NE + iL2] <= 3 && X[z * NE + iU2] >= 3],
+    ];
     const bew = new Float64Array(zeilen);
     for (const m of MODELLE) {
       const name = `${m.spielart}${modellZusatz(m)}`;
@@ -1314,7 +1324,11 @@ if (ZEITREISE) {
         const bw = zs.map((z) => (bew[z] = bewerten(modell!, X, z)));
         for (const q of qs)
           for (const z of tagesAuswahl(zs, bw, (zz) => zTag[zz], q))
-            kand.get(q)!.push({ tag: zTag[z], wert: zWert[z], wertung: bew[z], netto: netto[z * ZS.length + j], treffer: art[z * ZS.length + j] === 1, dauer: Math.max(1, aus[z * ZS.length + j] - zTag[z]), muster: text, platz: PLAETZE[plz[z * ZS.length + j] - 1] ?? '?' });
+          {
+            const kd: Kandidat = { tag: zTag[z], wert: zWert[z], wertung: bew[z], netto: netto[z * ZS.length + j], treffer: art[z * ZS.length + j] === 1, dauer: Math.max(1, aus[z * ZS.length + j] - zTag[z]), muster: text, platz: PLAETZE[plz[z * ZS.length + j] - 1] ?? '?' };
+            zVonK.set(kd, z);
+            kand.get(q)!.push(kd);
+          }
       }
       for (const q of qs) {
         const k2 = kand.get(q)!;
@@ -1356,6 +1370,15 @@ if (ZEITREISE) {
         l.forEach((x, i) => rangL.push({ ...x, wertung: 1 - i / l.length }));
       }
       kombi.set(name, rangL);
+      for (const [lt, lf] of LEIH) {
+        const teil = mitWind.filter((x) => lf(zVonK.get(x) ?? -1));
+        const lb = [3, 5].map((mo) => {
+          const b2 = bilanz(nachspielen(teil, { maxOffen: mo, maxJeTag: mo }), monatZ);
+          return { maxOffen: mo, orders: b2.orders, quote: b2.quote, oe: b2.oe, netto: b2.netto, maxRueckgang: b2.maxRueckgang, monatePlus: b2.monate.filter((x) => x.netto > 0).length, monate: b2.monate.length };
+        });
+        log(`Modell-Zeitreise ${text} – nur „${lt}“ (${teil.length} von ${mitWind.length} Kandidaten): ${lb.map((x) => `${x.maxOffen} offen → ${x.orders} Orders, ${x.quote} % VT, Ø ${x.oe} €, netto ${x.netto} €, Rückgang ${x.maxRueckgang} €, ${x.monatePlus}/${x.monate} Monate`).join(' · ')}.`);
+        ergebnisse.push({ modell: name, text, variante: 'leihbar-naeherung', bedingung: lt, plaetze: lb });
+      }
     }
     // Kombination der Short-Modelle auf den wilden Werten: je Tag nach Rang innerhalb des eigenen Modells
     {
