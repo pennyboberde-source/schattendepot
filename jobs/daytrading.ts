@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { signalBeweise } from '../core/autopilot.ts';
 import { beobachtung, kerzenVerarbeiten, spreadFuer, type DtBeobachtung, type DtLaufCfg } from '../core/daytrading/ablauf.ts';
 import { abendbilanzText, setupVarianten, tradeBeschreibung, uebersichtBerechnen } from '../core/daytrading/auswertung.ts';
-import { istVirtuell, kerzenAusGeschaeften, krakenKerzen, sitzung, tradesAusEreignissen, tradeSchritt, ausstiegAusfuehren, ergebnisRechnen, type VirtuellRegel, type DtEreignis, type DtMarkt, type DtTrade, type Kerze, type MarktConfig, type Sitzung } from '../core/daytrading/kern.ts';
+import { istVirtuell, lageSchalter, type LageEintrag, kerzenAusGeschaeften, krakenKerzen, sitzung, tradesAusEreignissen, tradeSchritt, ausstiegAusfuehren, ergebnisRechnen, type VirtuellRegel, type DtEreignis, type DtMarkt, type DtTrade, type Kerze, type MarktConfig, type Sitzung } from '../core/daytrading/kern.ts';
 import { historie, monteCarlo, volleSitzungen } from '../core/daytrading/zeitmaschine.ts';
 import { euro } from '../core/geld.ts';
 import { jagdBilanz, type JagdUebersicht } from '../core/volltreffer/jagd.ts';
@@ -151,6 +151,10 @@ const laufCfg: DtLaufCfg = {
   gebuehren,
   virtuell: dt.virtuell,
 };
+// Marktlage-Schalter (Nutzer 21.11.2026): VIX am letzten US-Handelstag vor heute (lernen/lage.json, nur Vergangenheit)
+const marktlage = lageSchalter(leseJson<{ verlauf?: LageEintrag[] }>('lernen/lage.json', {}).verlauf ?? [], datum, dt.virtuell?.lage);
+laufCfg.lageAn = marktlage.an;
+if (dt.virtuell?.lage?.aktiv) console.log(`Marktlage-Schalter ${marktlage.an ? 'AN' : 'aus'}: ${marktlage.grund}`);
 
 // Spielart je Setup (Nutzer 28.10.: „herausfiltern, wo Hebel und Co. passen“): erst ab genug Trades, vorsichtig bewertet
 const varianten = dt.varianten?.aktiv ? setupVarianten(trades, { aktie: dt.spreads.aktie, turbo: dt.spreads.turbo }, dt.varianten) : {};
@@ -416,6 +420,7 @@ schreibeJson('daytrading/uebersicht.json', {
   varianten,
   beobachtet: Object.fromEntries((['code_scan', 'claude', 'autopilot'] as const).map((h) => [h, zustand.beobachtungen.filter((x) => x.herkunft === h).length])),
   hinweise: hinweise.slice(-20),
+  ...(dt.virtuell?.lage?.aktiv ? { marktlage } : {}),
 });
 // Zustand ohne erledigte Beobachtungen der Vergangenheit; Dateiliste bleibt für den Tag
 zustandSichern(zustand);

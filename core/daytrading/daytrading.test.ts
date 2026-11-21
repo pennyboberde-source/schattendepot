@@ -5,7 +5,7 @@ import trDatei from '../../config/gebuehren-traderepublic.json';
 import type { GebuehrenConfig } from '../gebuehren.ts';
 import { beobachtung, kerzenVerarbeiten, type DtLaufCfg } from './ablauf.ts';
 import { abendbilanzText, uebersichtBerechnen } from './auswertung.ts';
-import { kerzenAusGeschaeften, krakenKerzen, ortszeitZuUtc, sitzung, tradesAusEreignissen, turboAnlegen, turboWert, type DtTrade, type Kerze } from './kern.ts';
+import { kerzenAusGeschaeften, krakenKerzen, lageSchalter, ortszeitZuUtc, sitzung, tradesAusEreignissen, turboAnlegen, turboWert, virtuellNachRegel, type DtTrade, type Kerze, type LageRegel, type VirtuellRegel } from './kern.ts';
 import { historie, monteCarlo, volleSitzungen, type SKerze } from './zeitmaschine.ts';
 
 const g = (x: unknown) => x as GebuehrenConfig;
@@ -263,5 +263,63 @@ describe('Verlustbringer nur noch virtuell (Plan Volltreffer V0)', () => {
     expect(u.gesamt.anzahl).toBe(0);
     expect(u.virtuell!.gruppen.krypto.anzahl).toBe(1);
     expect(abendbilanzText(u, [t]).text).toMatch(/Keine abgeschlossenen Trades/);
+  });
+});
+
+describe('Marktlage-Schalter (Nutzer 21.11.2026: Turbo-Shorts USA sichtbar bei VIX-Vortag ≥ 20)', () => {
+  const LAGE: LageRegel = {
+    aktiv: true,
+    ab: '2026-11-23',
+    vixKlassen: ['VIX 20 bis 25', 'VIX 25 bis 30', 'VIX über 30'],
+    maxAlterTage: 5,
+    sichtbar: [{ instrument: 'turbo', richtung: 'short', markt: 'us' }],
+    virtuell: [{ instrument: 'aktie', richtung: 'long' }],
+  };
+  const REGEL: VirtuellRegel = { aktiv: true, instrumente: ['turbo'], richtungen: ['short'], maerkte: ['krypto'], lage: LAGE };
+  const verlauf = [
+    { datum: '2026-11-19', aktien: { vix: 'VIX 15 bis 20' } },
+    { datum: '2026-11-20', aktien: { vix: 'VIX 25 bis 30' } },
+    { datum: '2026-11-23', aktien: { vix: 'VIX unter 15' } },
+  ];
+
+  it('nimmt den jüngsten Lage-Eintrag vor dem Trade-Tag, nie den Tag selbst', () => {
+    expect(lageSchalter(verlauf, '2026-11-23', LAGE)).toEqual({ an: true, grund: 'VIX 25 bis 30 am 20.11.', lageVom: '2026-11-20' });
+    expect(lageSchalter(verlauf, '2026-11-24', LAGE)).toMatchObject({ an: false, lageVom: '2026-11-23' });
+  });
+
+  it('greift nicht vor dem Start, ohne Lage, bei veralteter Lage oder unbekanntem VIX', () => {
+    expect(lageSchalter(verlauf, '2026-11-20', LAGE)).toMatchObject({ an: false, grund: 'Marktlage-Schalter erst ab 23.11.' });
+    expect(lageSchalter([], '2026-11-24', LAGE)).toMatchObject({ an: false });
+    expect(lageSchalter(verlauf.slice(0, 2), '2026-11-30', LAGE)).toMatchObject({ an: false, grund: 'Marktlage vom 20.11. ist zu alt' });
+    expect(lageSchalter([{ datum: '2026-11-23', aktien: { vix: null } }], '2026-11-24', LAGE)).toMatchObject({ an: false, grund: 'VIX am 23.11. unbekannt' });
+    expect(lageSchalter(verlauf, '2026-11-24', { ...LAGE, aktiv: false })).toMatchObject({ an: false, grund: 'Marktlage-Schalter aus' });
+    expect(lageSchalter(verlauf, '2026-11-24')).toMatchObject({ an: false });
+  });
+
+  it('an unruhigen Tagen: Turbo-Shorts USA sichtbar, Aktien-Longs virtuell, alles andere nach der Grundregel', () => {
+    expect(virtuellNachRegel({ instrument: 'turbo', richtung: 'short', markt: 'us' }, REGEL, true)).toBe(false);
+    expect(virtuellNachRegel({ instrument: 'turbo', richtung: 'short', markt: 'eu' }, REGEL, true)).toBe(true);
+    expect(virtuellNachRegel({ instrument: 'aktie', richtung: 'long', markt: 'us' }, REGEL, true)).toBe(true);
+    expect(virtuellNachRegel({ instrument: 'aktie', richtung: 'long', markt: 'eu' }, REGEL, true)).toBe(true);
+    expect(virtuellNachRegel({ instrument: 'krypto', richtung: 'long', markt: 'krypto' }, REGEL, true)).toBe(true);
+    // ruhige Tage oder Schalter aus: Grundregel
+    expect(virtuellNachRegel({ instrument: 'turbo', richtung: 'short', markt: 'us' }, REGEL, false)).toBe(true);
+    expect(virtuellNachRegel({ instrument: 'aktie', richtung: 'long', markt: 'us' }, REGEL, false)).toBe(false);
+    expect(virtuellNachRegel({ instrument: 'turbo', richtung: 'short', markt: 'us' }, { ...REGEL, lage: { ...LAGE, aktiv: false } }, true)).toBe(true);
+  });
+
+  it('im Ablauf: der Short ist sichtbar, der Long läuft virtuell mit eigener Tagesgrenze', () => {
+    const regelEu: VirtuellRegel = { ...REGEL, lage: { ...LAGE, sichtbar: [{ instrument: 'turbo', richtung: 'short', markt: 'eu' }] } };
+    const bShort = beobachtung({ basis: 'X', herkunft: 'claude', markt: 'eu', name: 'Xetra AG', isin: 'X', instrumentLong: 'aktie', hebel: 5, spekulativ: false }, 'orb', ['long', 'short']);
+    const bLong = beobachtung({ basis: 'DE1', herkunft: 'claude', markt: 'eu', name: 'Eins', isin: 'DE1', instrumentLong: 'aktie', hebel: 5, spekulativ: false }, 'orb', ['long']);
+    const kShort = [k('09:00', 50, 50.5, 49.5, 50), k('09:05', 50, 50.2, 49.8, 50), k('09:10', 50, 50.1, 49.9, 50), k('09:15', 49.9, 50, 49.2, 49.3), k('09:20', 49.2, 49.3, 49, 49.1), k('17:25', 49.4, 49.5, 49.3, 49.4)];
+    const kLong = [k('09:00', 100, 101, 99.5, 100.5), k('09:05', 100.5, 101.5, 100, 101), k('09:10', 101, 101.2, 100.2, 100.8), k('09:20', 101.4, 102, 101.3, 101.9), k('09:25', 102, 102.5, 101.9, 102.4), k('09:30', 102.4, 105.1, 102.3, 105)];
+    const z = { heuteEroeffnet: 0, heuteVirtuell: 0, vergeben: new Set<string>() };
+    const r = kerzenVerarbeiten(new Map([['X', kShort], ['DE1', kLong]]), [bShort, bLong], [], { ...cfg(), virtuell: regelEu, lageAn: true }, z);
+    const trades = tradesAusEreignissen(r.ereignisse);
+    expect(trades.find((t) => t.richtung === 'short')).toMatchObject({ instrument: 'turbo' });
+    expect(trades.find((t) => t.richtung === 'short')!.virtuell).toBeUndefined();
+    expect(trades.find((t) => t.richtung === 'long')!.virtuell).toBe(true);
+    expect(z).toMatchObject({ heuteEroeffnet: 1, heuteVirtuell: 1 });
   });
 });

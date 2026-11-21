@@ -43,6 +43,30 @@
     "instrumente": ["turbo"],
     "richtungen": ["short"],
     "maerkte": ["krypto"],
-    "rueckwirkend": false
+    "rueckwirkend": false,
+    "lage": {
+      "hinweis": "Marktlage-Schalter (Nutzer-Go 21.11.2026): Steht der VIX am letzten US-Handelstag vor dem Trade-Tag bei 20 oder mehr (lernen/lage.json, nur Vergangenheit), laufen US-Turbo-Shorts sichtbar und Aktien-Longs nur virtuell; sonst gilt die Grundregel. Beleg (virtuelle Trades 13.–20.11.2026): US-Turbo-Shorts nach VIX-Vortag ≥ 20 67 Trades Ø +59 €, nach VIX-Vortag < 20 38 Trades Ø −10 €; sichtbare Aktien-Longs an allen Tagen im Minus (107 Trades, 11 % im Plus, Ø −14 €). Vorbehalt: nur 6 Handelstage einer fallenden Woche – nach ~2 Wochen neu bewerten.",
+      "aktiv": true,
+      "ab": "2026-11-23",
+      "vixKlassen": [
+        "VIX 20 bis 25",
+        "VIX 25 bis 30",
+        "VIX über 30"
+      ],
+      "maxAlterTage": 5,
+      "sichtbar": [
+        {
+          "instrument": "turbo",
+          "richtung": "short",
+          "markt": "us"
+        }
+      ],
+      "virtuell": [
+        {
+          "instrument": "aktie",
+          "richtung": "long"
+        }
+      ]
+    }
   }
 }

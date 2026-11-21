@@ -3,12 +3,12 @@
 import { euro, prozent } from '../../core/geld.ts';
 import type { SignalBeweis } from '../../core/autopilot.ts';
 import { tradeBeschreibung, type DtGruppe, type DtUebersicht, type DtVariante } from '../../core/daytrading/auswertung.ts';
-import type { DtTrade } from '../../core/daytrading/kern.ts';
+import type { DtTrade, LageSchalter } from '../../core/daytrading/kern.ts';
 import { useDaten } from '../lib/daten';
 import { datumKurz } from '../lib/zeit';
 import { Betrag, Geladen, Karte } from '../ui';
 
-type Daten = DtUebersicht & { beobachtet?: Record<string, number>; hinweise?: string[]; varianten?: Record<string, { beste: DtVariante | null; basis: DtVariante | null }> };
+type Daten = DtUebersicht & { beobachtet?: Record<string, number>; hinweise?: string[]; marktlage?: LageSchalter; varianten?: Record<string, { beste: DtVariante | null; basis: DtVariante | null }> };
 
 const HERKUNFT: Record<string, string> = { code_scan: '🔎 Code-Scan', claude: '🧠 Claude', autopilot: '🤖 Autopilot' };
 const MARKT: Record<string, string> = { us: 'USA', eu: 'Europa', krypto: 'Krypto' };
@@ -106,6 +106,14 @@ function Inhalt({ d }: { d: Daten }) {
             laufen {d.virtuell.ab ? 'sie ' : ''}nur noch virtuell mit: Der Code spielt sie weiter durch und wertet sie hier getrennt aus, sie zählen aber nicht mehr in die Kennzahlen oben, die Abendbilanz, das Wochenzeugnis und die Mitteilungen.
             Frühere Trades bleiben in der Bilanz, wie sie waren.
           </p>
+          {d.marktlage && (
+            <p class="klein" data-testid="dt-marktlage">
+              <strong>Marktlage-Schalter:</strong> {d.marktlage.grund} →{' '}
+              {d.marktlage.an
+                ? 'heute laufen Turbo-Shorts USA sichtbar und Aktien-Longs nur virtuell (an unruhigen Tagen haben die Shorts gewonnen, die Longs verloren).'
+                : 'heute gilt die Grundregel (Aktien-Longs sichtbar, Turbo-Shorts virtuell). Ab einem VIX von 20 am Vortag laufen Turbo-Shorts USA sichtbar.'}
+            </p>
+          )}
           <div class="raster-kennzahlen">
             <div class="kennzahl">
               <span class="kennzahl-label">Virtuell gesamt</span>

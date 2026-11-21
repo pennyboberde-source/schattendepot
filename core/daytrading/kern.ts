@@ -95,12 +95,79 @@ export interface VirtuellRegel {
   ab?: string;
   /** true: auch ältere Trades ohne Kennzeichen zählen nach der Regel als virtuell (Standard: nein – nichts wird nachträglich geschönt) */
   rueckwirkend?: boolean;
+  /** Marktlage-Schalter (Nutzer 21.11.2026): an unruhigen Tagen andere Spielarten sichtbar bzw. virtuell */
+  lage?: LageRegel;
 }
 
-/** Würde ein Trade dieser Spielart nach der Regel nur virtuell laufen? */
-export function virtuellNachRegel(t: Pick<DtTrade, 'instrument' | 'richtung' | 'markt'>, r?: VirtuellRegel): boolean {
+/** Eine Spielart für den Marktlage-Schalter: alle angegebenen Felder müssen passen. */
+export interface SpielartMuster {
+  instrument?: DtInstrument;
+  richtung?: DtRichtung;
+  markt?: DtMarkt;
+}
+
+/**
+ * Marktlage-Schalter (Nutzer 21.11.2026): Steht der VIX am letzten US-Handelstag vor dem Trade-Tag in einer der Klassen
+ * `vixKlassen` (lernen/lage.json, nur Vergangenheit), laufen die Spielarten in `sichtbar` sichtbar und die in `virtuell`
+ * nur virtuell – unabhängig von der Grundregel. Sonst gilt die Grundregel.
+ */
+export interface LageRegel {
+  aktiv: boolean;
+  /** erster Trade-Tag mit dem Schalter (nie rückwirkend) */
+  ab?: string;
+  vixKlassen: string[];
+  /** ältester Lage-Eintrag in Kalendertagen, der noch zählt (Wochenende, Feiertag) */
+  maxAlterTage: number;
+  sichtbar: SpielartMuster[];
+  virtuell: SpielartMuster[];
+}
+
+type SpielartKern = Pick<DtTrade, 'instrument' | 'richtung' | 'markt'>;
+
+function passt(t: SpielartKern, m: SpielartMuster): boolean {
+  return (!m.instrument || m.instrument === t.instrument) && (!m.richtung || m.richtung === t.richtung) && (!m.markt || m.markt === t.markt);
+}
+
+/** Würde ein Trade dieser Spielart nach der Regel nur virtuell laufen? `lageAn`: Marktlage-Schalter greift heute. */
+export function virtuellNachRegel(t: SpielartKern, r?: VirtuellRegel, lageAn = false): boolean {
   if (!r?.aktiv) return false;
+  if (lageAn && r.lage?.aktiv) {
+    if (r.lage.sichtbar.some((m) => passt(t, m))) return false;
+    if (r.lage.virtuell.some((m) => passt(t, m))) return true;
+  }
   return (r.instrumente ?? []).includes(t.instrument) || (r.richtungen ?? []).includes(t.richtung) || (r.maerkte ?? []).includes(t.markt);
+}
+
+/** Ein Tag aus lernen/lage.json (nur die Klassen, die der Schalter braucht). */
+export interface LageEintrag {
+  datum: string;
+  aktien?: { vix?: string | null } | null;
+}
+
+export interface LageSchalter {
+  an: boolean;
+  /** Klartext für Log und App, z. B. „VIX 25 bis 30 am 19.11.“ */
+  grund: string;
+  /** Datum des maßgeblichen Lage-Eintrags */
+  lageVom?: string;
+}
+
+const tagKurz = (d: string) => `${d.slice(8, 10)}.${d.slice(5, 7)}.`;
+
+/** Greift der Marktlage-Schalter am Trade-Tag? Maßgeblich ist der jüngste Lage-Eintrag vor dem Tag (kein Blick nach vorn). */
+export function lageSchalter(verlauf: LageEintrag[], datum: string, r?: LageRegel): LageSchalter {
+  if (!r?.aktiv) return { an: false, grund: 'Marktlage-Schalter aus' };
+  if (r.ab && datum < r.ab) return { an: false, grund: `Marktlage-Schalter erst ab ${tagKurz(r.ab)}` };
+  const vor = verlauf
+    .filter((e) => e.datum < datum)
+    .sort((a, b) => a.datum.localeCompare(b.datum))
+    .at(-1);
+  if (!vor) return { an: false, grund: 'keine Marktlage vor dem Tag bekannt' };
+  const alter = (Date.parse(`${datum}T12:00:00Z`) - Date.parse(`${vor.datum}T12:00:00Z`)) / 86_400_000;
+  if (alter > r.maxAlterTage) return { an: false, grund: `Marktlage vom ${tagKurz(vor.datum)} ist zu alt`, lageVom: vor.datum };
+  const vix = vor.aktien?.vix;
+  if (!vix) return { an: false, grund: `VIX am ${tagKurz(vor.datum)} unbekannt`, lageVom: vor.datum };
+  return { an: r.vixKlassen.includes(vix), grund: `${vix} am ${tagKurz(vor.datum)}`, lageVom: vor.datum };
 }
 
 /** Zählt der Trade als virtuell? Maßgeblich ist das Kennzeichen am Einstiegs-Ereignis. */

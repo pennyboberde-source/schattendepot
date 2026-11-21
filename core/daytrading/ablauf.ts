@@ -58,6 +58,8 @@ export interface DtLaufCfg {
   gebuehren: DtGebuehren;
   /** belegte Verlustbringer laufen nur virtuell mit (Plan Volltreffer V0); eigene Tages- und Positionsgrenze */
   virtuell?: VirtuellRegel;
+  /** Marktlage-Schalter greift heute (`lageSchalter`, Nutzer 21.11.2026) */
+  lageAn?: boolean;
 }
 
 /** Wie wird ein Auslöser gehandelt (Richtung, Instrument, Hebel)? Standard: long als Aktie/Krypto, short als Turbo. */
@@ -127,7 +129,7 @@ export function kerzenVerarbeiten(
         if (!a || a.typ !== 'einstieg') continue;
         // Sichtbare und nur virtuell mitlaufende Trades haben getrennte Grenzen – keiner nimmt dem anderen den Platz
         const sp = spielart(b, a.richtung);
-        const virt = virtuellNachRegel({ ...sp, markt: b.markt }, cfg.virtuell);
+        const virt = virtuellNachRegel({ ...sp, markt: b.markt }, cfg.virtuell, cfg.lageAn);
         const heuteGleiche = virt ? (zaehler.heuteVirtuell ?? 0) : zaehler.heuteEroeffnet;
         if (heuteGleiche >= cfg.maxTradesJeTag || offen.filter((t) => !!t.virtuell === virt).length >= cfg.maxOffen) {
           hinweise.push(`${b.name}: Auslöser ohne Einstieg (Tages- oder Positionsgrenze erreicht)`);
@@ -184,7 +186,7 @@ function tradeAnlegen(b: DtBeobachtung, ausloeserRichtung: DtRichtung, k: Kerze,
     flatBis: s.flatBis.toISOString(),
     ...(b.chance !== undefined ? { chance: b.chance } : {}),
     ...(b.these ? { these: b.these } : {}),
-    ...(virtuellNachRegel({ richtung, instrument, markt: b.markt }, cfg.virtuell) ? { virtuell: true } : {}),
+    ...(virtuellNachRegel({ richtung, instrument, markt: b.markt }, cfg.virtuell, cfg.lageAn) ? { virtuell: true } : {}),
   };
   const einstieg = einstiegAusfuehren(ohneEinstieg, k, spreadFuer(ohneEinstieg, cfg.spreads), cfg.orderBetrag);
   if (!einstieg) return null;
